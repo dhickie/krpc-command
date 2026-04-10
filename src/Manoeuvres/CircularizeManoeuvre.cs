@@ -11,9 +11,9 @@ public class CircularizeManoeuvre : IManoeuvre
     public string Name => "Circularize";
     public string Description => "Circularize orbit at apoapsis or periapsis.";
 
-    private readonly ManoeuvreParameter _atApoapsis = new("atApoapsis", "At apoapsis? (true/false)", "true");
+    private readonly ManoeuvreParameter<bool> _atApoapsis = new("atApoapsis", "At apoapsis? (true/false)", true);
 
-    public IReadOnlyList<ManoeuvreParameter> Parameters => [_atApoapsis];
+    public IReadOnlyList<ManoeuvreParameterBase> Parameters => [_atApoapsis];
 
     public async Task ExecuteAsync(ManoeuvreContext context, ManoeuvreLogger logger, CancellationToken cancellationToken)
     {
@@ -31,7 +31,7 @@ public class CircularizeManoeuvre : IManoeuvre
         }
         logger.Log("MechJeb API is ready.");
 
-        bool atApoapsis = _atApoapsis.AsBool();
+        bool atApoapsis = _atApoapsis.Value;
         string location = atApoapsis ? "apoapsis" : "periapsis";
         logger.Log($"Planning circularization at {location}...");
 

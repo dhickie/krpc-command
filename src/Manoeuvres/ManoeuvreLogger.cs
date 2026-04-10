@@ -13,7 +13,7 @@ public class ManoeuvreLogger
     /// Callback invoked when a new log message is added.
     /// Used by the UI to update the log display.
     /// </summary>
-    public event Action<string>? OnLog;
+    public event Action? OnLog;
 
     /// <summary>
     /// Log a message during manoeuvre execution.
@@ -25,7 +25,7 @@ public class ManoeuvreLogger
         {
             _messages.Add(timestamped);
         }
-        OnLog?.Invoke(timestamped);
+        OnLog?.Invoke();
     }
 
     /// <summary>

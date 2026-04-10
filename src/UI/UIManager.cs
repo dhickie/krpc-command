@@ -10,13 +10,11 @@ namespace KrpcCommand.UI;
 /// </summary>
 public class UIManager : IDisposable
 {
-    private readonly Connection _connection;
-    private readonly Service _ui;
     private readonly IReadOnlyList<IManoeuvre> _manoeuvres;
     private readonly ManoeuvreContext _context;
 
-    private Panel _window = null!;
-    private Text _titleText = null!;
+    private Panel _window;
+    private Text _titleText;
     private UIState _state = UIState.Selection;
 
     // Selection state UI elements
@@ -43,18 +41,11 @@ public class UIManager : IDisposable
 
     public UIManager(Connection connection, IReadOnlyList<IManoeuvre> manoeuvres)
     {
-        _connection = connection;
-        _ui = connection.UI();
+        var ui = connection.UI();
         _manoeuvres = manoeuvres;
         _context = new ManoeuvreContext(connection);
-    }
 
-    /// <summary>
-    /// Create the UI window and show the manoeuvre selection list.
-    /// </summary>
-    public void Initialise()
-    {
-        var canvas = _ui.StockCanvas;
+        var canvas = ui.StockCanvas;
 
         // Create main window panel
         _window = canvas.AddPanel();
@@ -95,11 +86,6 @@ public class UIManager : IDisposable
         }
     }
 
-    /// <summary>
-    /// Whether the application should keep running.
-    /// </summary>
-    public bool IsRunning => true;
-
     #region Selection State
 
     private void ShowSelection()
@@ -136,7 +122,6 @@ public class UIManager : IDisposable
                 _manoeuvreButtons[i].Clicked = false;
                 _selectedManoeuvre = _manoeuvres[i];
                 ShowConfiguration();
-                return;
             }
         }
     }
@@ -179,7 +164,7 @@ public class UIManager : IDisposable
 
             // Input field
             var input = _window.AddInputField();
-            input.Value = param.DefaultValue;
+            input.Value = param.ValueAsString;
             var inputRect = input.RectTransform;
             inputRect.Anchor = new Tuple<double, double>(0.5, 1.0);
             inputRect.Position = new Tuple<double, double>(0, yOffset);
@@ -228,7 +213,7 @@ public class UIManager : IDisposable
             var parameters = _selectedManoeuvre!.Parameters;
             for (int i = 0; i < parameters.Count; i++)
             {
-                parameters[i].Value = _parameterFields[i].Input.Value;
+                parameters[i].SetFromString(_parameterFields[i].Input.Value);
             }
 
             StartExecution();
@@ -294,7 +279,7 @@ public class UIManager : IDisposable
         });
     }
 
-    private void OnLogMessage(string message)
+    private void OnLogMessage()
     {
         // Update the log text in the UI (will be picked up on next Update call)
         // We keep the last N messages to avoid overflow

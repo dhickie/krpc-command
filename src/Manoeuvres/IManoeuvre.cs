@@ -20,7 +20,7 @@ public interface IManoeuvre
     /// Configuration parameters that the user can set before execution.
     /// These are rendered as input fields in the UI.
     /// </summary>
-    IReadOnlyList<ManoeuvreParameter> Parameters { get; }
+    IReadOnlyList<ManoeuvreParameterBase> Parameters { get; }
 
     /// <summary>
     /// Execute the manoeuvre. This method should periodically check the cancellation token

@@ -5,7 +5,7 @@ using KrpcCommand.UI;
 // Register all available manoeuvres
 var manoeuvres = new List<IManoeuvre>
 {
-    new KrpcCommand.Manoeuvres.CircularizeManoeuvre(),
+    new CircularizeManoeuvre(),
 };
 
 Console.WriteLine("krpc-command: Connecting to kRPC server...");
@@ -14,7 +14,6 @@ using var connection = new Connection("Mission Control");
 Console.WriteLine("Connected to kRPC server.");
 
 using var ui = new UIManager(connection, manoeuvres);
-ui.Initialise();
 Console.WriteLine("UI initialised. Use the in-game window to select and execute manoeuvres.");
 Console.WriteLine("Press Ctrl+C to exit.");
 
