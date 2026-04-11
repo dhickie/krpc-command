@@ -23,6 +23,14 @@ This documentation should be used as the source of truth for what is possible us
 
 At times, you may be provided with scripts written for a different automation mod called kOS, in order to convert these into C# code for krpc-command. When interpresting kOS scripts, the [kOS documentation](https://ksp-kos.github.io/KOS/) should be used in order to parse and understand them.
 
+A summary of the capabilities of each of these mods can be found in the markdown files contained in the `research` folder. Use these files to understand what is possible when planning changes, but refer to the official documentation to understand the exact detail of method signatures and functions when implementing changes.
+
+## Orbital mechanics
+
+Bodes in Kerbal Space Program follow strictly two body Keplerian orbits using a patched conics system. Each body has a sphere of influence, inside of which any vessel will be affected only by the gravity of that body, following a Keplerian orbit around it based on its current velocity.
+
+When implementing new manoeuvres, this should be taken into account. Use the dictionary of celestial bodies from the `Bodies` dictionary in the `SpaceCenter` API when calculating the timing, duration and direction of manoeuvre nodes in order to achieve a desired effect including that body. This should help to eliminate "guess work" when trying to determine how to perform a particular manoeuvre, as we can deterministically calculate where each body will be at any given time.
+
 ## Method of operation
 
 kRPC exposes an API that allows client applications to render UI elements within the game. When krpc-command runs, it connects to the kRPC server, and creates a window in the UI for the user to interact with.
