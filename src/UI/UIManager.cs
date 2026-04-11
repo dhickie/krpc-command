@@ -94,9 +94,9 @@ public class UIManager : IDisposable
         _state = UIState.Selection;
         _titleText.Content = "Mission Control";
 
-        float yOffset = -(WindowPadding + ElementHeight + ElementSpacing);
+        var yOffset = -(WindowPadding + ElementHeight + ElementSpacing);
 
-        for (int i = 0; i < _manoeuvres.Count; i++)
+        for (var i = 0; i < _manoeuvres.Count; i++)
         {
             var manoeuvre = _manoeuvres[i];
             var button = _window.AddButton(manoeuvre.Name);
@@ -115,7 +115,7 @@ public class UIManager : IDisposable
 
     private void UpdateSelection()
     {
-        for (int i = 0; i < _manoeuvreButtons.Count; i++)
+        for (var i = 0; i < _manoeuvreButtons.Count; i++)
         {
             if (_manoeuvreButtons[i].Clicked)
             {
@@ -138,7 +138,7 @@ public class UIManager : IDisposable
         _state = UIState.Configuration;
         _titleText.Content = _selectedManoeuvre!.Name;
 
-        float yOffset = -(WindowPadding + ElementHeight + ElementSpacing);
+        var yOffset = -(WindowPadding + ElementHeight + ElementSpacing);
 
         // Description
         var descText = _window.AddText(_selectedManoeuvre.Description);
@@ -213,7 +213,7 @@ public class UIManager : IDisposable
 
             // Copy parameter values from UI inputs
             var parameters = _selectedManoeuvre!.Parameters;
-            for (int i = 0; i < parameters.Count; i++)
+            for (var i = 0; i < parameters.Count; i++)
             {
                 parameters[i].Set(_parameterFields[i].Input.Value);
             }
@@ -232,7 +232,7 @@ public class UIManager : IDisposable
         _state = UIState.Execution;
         _titleText.Content = $"Executing: {_selectedManoeuvre!.Name}";
 
-        float yOffset = -(WindowPadding + ElementHeight + ElementSpacing);
+        var yOffset = -(WindowPadding + ElementHeight + ElementSpacing);
 
         // Log text area
         _logText = _window.AddText("Starting...");
@@ -324,7 +324,7 @@ public class UIManager : IDisposable
             backRect.Anchor = new Tuple<double, double>(0.5, 1.0);
 
             // Position at the same location as the cancel button was
-            float yOffset = -(WindowPadding + ElementHeight + ElementSpacing + 250 + ElementSpacing);
+            var yOffset = -(WindowPadding + ElementHeight + ElementSpacing + 250 + ElementSpacing);
             backRect.Position = new Tuple<double, double>(0, yOffset);
             backRect.Size = new Tuple<double, double>(WindowWidth - 2 * WindowPadding, ElementHeight);
 

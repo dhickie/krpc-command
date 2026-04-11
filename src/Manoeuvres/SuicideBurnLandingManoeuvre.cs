@@ -1,6 +1,7 @@
 using KRPC.Client.Services.SpaceCenter;
 using KrpcCommand.Extensions;
 using KrpcCommand.Manoeuvres.Parameters;
+using KrpcCommand.Utilities;
 
 namespace KrpcCommand.Manoeuvres;
 
@@ -48,14 +49,14 @@ public class SuicideBurnLandingManoeuvre(ManoeuvreLogger logger, ManoeuvreContex
 
         var vessel = context.ActiveVessel;
         var body = vessel.Orbit.Body;
-        double targetLat = _targetLatitude.Value;
-        double targetLng = _targetLongitude.Value;
+        var targetLat = _targetLatitude.Value;
+        var targetLng = _targetLongitude.Value;
 
         logger.Log($"Target: {targetLat:F4}°, {targetLng:F4}° on {body.Name}");
-        logger.Log($"Surface gravity: {body.SurfaceGravity:F2} m/s²");
+        logger.Log($"Surface gravity (sea level): {body.SurfaceGravity:F2} m/s²");
 
-        double targetSurfaceHeight = body.SurfaceHeight(targetLat, targetLng);
-        double targetRadius = body.EquatorialRadius + targetSurfaceHeight;
+        var targetSurfaceHeight = body.SurfaceHeight(targetLat, targetLng);
+        var targetRadius = body.EquatorialRadius + targetSurfaceHeight;
         logger.Log($"Target surface elevation: {targetSurfaceHeight:F0} m");
 
         // Phase 1: Adjust inclination so the ground track can reach the target latitude.
@@ -94,10 +95,10 @@ public class SuicideBurnLandingManoeuvre(ManoeuvreLogger logger, ManoeuvreContex
         var body = vessel.Orbit.Body;
 
         // Target a periapsis that skims just above the surface (10km above target elevation)
-        double deorbitPeriapsis = targetRadius - body.EquatorialRadius + 10000;
+        var deorbitPeriapsis = targetRadius - body.EquatorialRadius + 10000;
 
         // Only deorbit if periapsis is significantly above the target
-        double currentPeriapsis = vessel.Orbit.PeriapsisAltitude;
+        var currentPeriapsis = vessel.Orbit.PeriapsisAltitude;
         if (currentPeriapsis <= deorbitPeriapsis + 1000)
         {
             logger.Log("Periapsis already near surface, skipping deorbit burn.");
@@ -137,18 +138,11 @@ public class SuicideBurnLandingManoeuvre(ManoeuvreLogger logger, ManoeuvreContex
         var vessel = context.ActiveVessel;
         var body = vessel.Orbit.Body;
 
-        // If the target is near the equator and inclination is already low, skip
-        double currentInclination = vessel.Orbit.Inclination * (180.0 / Math.PI);
-        if (Math.Abs(targetLat) < 0.5 && currentInclination < 0.5)
-        {
-            logger.Log("Target near equator and orbit already equatorial, skipping inclination adjustment.");
-            return;
-        }
-
         // We need to change inclination to reach the target latitude.
         // The minimum inclination needed is abs(targetLat).
-        double requiredInclination = Math.Abs(targetLat);
-        double inclinationDelta = requiredInclination - currentInclination;
+        var currentInclination = MathUtil.RadToDeg(vessel.Orbit.Inclination);
+        var requiredInclination = Math.Abs(targetLat);
+        var inclinationDelta = requiredInclination - currentInclination;
 
         if (Math.Abs(inclinationDelta) < 0.1)
         {
@@ -160,23 +154,23 @@ public class SuicideBurnLandingManoeuvre(ManoeuvreLogger logger, ManoeuvreContex
 
         // Calculate the burn: we need to burn at the node 90° before the target longitude.
         // The burn location is at the equator, at (targetLng - 90°).
-        double nodeLng = NormalizeLongitude(targetLng - 90.0);
+        var nodeLng = NormalizeLongitude(targetLng - 90.0);
 
         // Calculate eta to pass over this longitude
-        double eta = CalculateEtaToLongitude(vessel, body, nodeLng);
+        var eta = CalculateEtaToLongitude(vessel, body, nodeLng);
 
         // Calculate the velocity at the burn point
-        double ut = context.UT + eta;
-        double velAtNode = vessel.Orbit.OrbitalSpeedAt(eta);
+        var ut = context.UT + eta;
+        var velAtNode = vessel.Orbit.OrbitalSpeedAt(eta);
 
         // The delta-v for a plane change is: 2 * v * sin(deltaAngle / 2)
         // We decompose this into normal and prograde components
-        double deltaAngleRad = inclinationDelta * Math.PI / 180.0;
+        var deltaAngleRad = inclinationDelta * Math.PI / 180.0;
 
         // For a simple inclination change, the burn is purely in the normal direction
         // relative to the orbital plane at the ascending/descending node
-        double normalDv = velAtNode * Math.Sin(deltaAngleRad);
-        double progradeDv = velAtNode * (Math.Cos(deltaAngleRad) - 1.0);
+        var normalDv = velAtNode * Math.Sin(deltaAngleRad);
+        var progradeDv = velAtNode * (Math.Cos(deltaAngleRad) - 1.0);
 
         // Create a manoeuvre node
         var control = vessel.Control;
@@ -186,7 +180,7 @@ public class SuicideBurnLandingManoeuvre(ManoeuvreLogger logger, ManoeuvreContex
         var executor = context.MechJeb.NodeExecutor;
         await executor.ExecuteNodeAsync(cancellationToken);
 
-        double newInclination = vessel.Orbit.Inclination * (180.0 / Math.PI);
+        var newInclination = vessel.Orbit.Inclination * (180.0 / Math.PI);
         logger.Log($"Inclination adjustment complete. New inclination: {newInclination:F2}°");
     }
 
@@ -202,10 +196,10 @@ public class SuicideBurnLandingManoeuvre(ManoeuvreLogger logger, ManoeuvreContex
         logger.Log("Warping to landing site...");
 
         // Calculate when we'll pass over the target
-        double eta = CalculateEtaToLongitude(vessel, body, targetLng);
+        var eta = CalculateEtaToLongitude(vessel, body, targetLng);
 
         // Warp to near the flyover point (leave some time for the burn)
-        double warpTo = context.UT + eta - 60;
+        var warpTo = context.UT + eta - 60;
         if (warpTo > context.UT + 10)
         {
             context.SpaceCenter.WarpTo(warpTo);
@@ -220,7 +214,7 @@ public class SuicideBurnLandingManoeuvre(ManoeuvreLogger logger, ManoeuvreContex
             cancellationToken.ThrowIfCancellationRequested();
 
             var flight = vessel.Flight(bodyRef);
-            double lngDiff = Math.Abs(NormalizeLongitude(flight.Longitude - targetLng));
+            var lngDiff = Math.Abs(NormalizeLongitude(flight.Longitude - targetLng));
             if (lngDiff < 1.0)
                 break;
 
@@ -231,27 +225,27 @@ public class SuicideBurnLandingManoeuvre(ManoeuvreLogger logger, ManoeuvreContex
         logger.Log("Killing lateral velocity...");
 
         var surfVelocity = vessel.Velocity(bodyRef);
-        double vx = surfVelocity.Item1;
-        double vy = surfVelocity.Item2;
-        double vz = surfVelocity.Item3;
+        var vx = surfVelocity.Item1;
+        var vy = surfVelocity.Item2;
+        var vz = surfVelocity.Item3;
 
         // Get the radial (up) direction at the vessel's position
         var vesselPos = vessel.Position(bodyRef);
-        double posR = Math.Sqrt(vesselPos.Item1 * vesselPos.Item1 +
+        var posR = Math.Sqrt(vesselPos.Item1 * vesselPos.Item1 +
                                 vesselPos.Item2 * vesselPos.Item2 +
                                 vesselPos.Item3 * vesselPos.Item3);
-        double upX = vesselPos.Item1 / posR;
-        double upY = vesselPos.Item2 / posR;
-        double upZ = vesselPos.Item3 / posR;
+        var upX = vesselPos.Item1 / posR;
+        var upY = vesselPos.Item2 / posR;
+        var upZ = vesselPos.Item3 / posR;
 
         // Radial (vertical) component of velocity
-        double vRadial = vx * upX + vy * upY + vz * upZ;
+        var vRadial = vx * upX + vy * upY + vz * upZ;
 
         // Lateral velocity is total minus radial
-        double latVx = vx - vRadial * upX;
-        double latVy = vy - vRadial * upY;
-        double latVz = vz - vRadial * upZ;
-        double lateralSpeed = Math.Sqrt(latVx * latVx + latVy * latVy + latVz * latVz);
+        var latVx = vx - vRadial * upX;
+        var latVy = vy - vRadial * upY;
+        var latVz = vz - vRadial * upZ;
+        var lateralSpeed = Math.Sqrt(latVx * latVx + latVy * latVy + latVz * latVz);
 
         if (lateralSpeed < 1.0)
         {
@@ -280,16 +274,16 @@ public class SuicideBurnLandingManoeuvre(ManoeuvreLogger logger, ManoeuvreContex
 
             var vel = vessel.Velocity(bodyRef);
             var pos = vessel.Position(bodyRef);
-            double r = Math.Sqrt(pos.Item1 * pos.Item1 + pos.Item2 * pos.Item2 + pos.Item3 * pos.Item3);
-            double ux = pos.Item1 / r;
-            double uy = pos.Item2 / r;
-            double uz = pos.Item3 / r;
+            var r = Math.Sqrt(pos.Item1 * pos.Item1 + pos.Item2 * pos.Item2 + pos.Item3 * pos.Item3);
+            var ux = pos.Item1 / r;
+            var uy = pos.Item2 / r;
+            var uz = pos.Item3 / r;
 
-            double vRad = vel.Item1 * ux + vel.Item2 * uy + vel.Item3 * uz;
-            double lx = vel.Item1 - vRad * ux;
-            double ly = vel.Item2 - vRad * uy;
-            double lz = vel.Item3 - vRad * uz;
-            double hSpeed = Math.Sqrt(lx * lx + ly * ly + lz * lz);
+            var vRad = vel.Item1 * ux + vel.Item2 * uy + vel.Item3 * uz;
+            var lx = vel.Item1 - vRad * ux;
+            var ly = vel.Item2 - vRad * uy;
+            var lz = vel.Item3 - vRad * uz;
+            var hSpeed = Math.Sqrt(lx * lx + ly * ly + lz * lz);
 
             if (hSpeed < 2.0)
             {
@@ -335,7 +329,7 @@ public class SuicideBurnLandingManoeuvre(ManoeuvreLogger logger, ManoeuvreContex
         {
             cancellationToken.ThrowIfCancellationRequested();
 
-            double requiredThrottle = CalculateRequiredThrottle(vessel, body, bodyRef);
+            var requiredThrottle = CalculateRequiredThrottle(vessel, body, bodyRef);
 
             if (requiredThrottle >= 0.95)
             {
@@ -345,7 +339,7 @@ public class SuicideBurnLandingManoeuvre(ManoeuvreLogger logger, ManoeuvreContex
 
             // Warp during the waiting period if we're high up, otherwise just wait
             var flight = vessel.Flight(bodyRef);
-            double altitude = flight.SurfaceAltitude;
+            var altitude = flight.SurfaceAltitude;
             if (altitude > 50000 && requiredThrottle < 0.1)
             {
                 // Use physics warp for faster descent
@@ -385,7 +379,7 @@ public class SuicideBurnLandingManoeuvre(ManoeuvreLogger logger, ManoeuvreContex
         autopilot.TargetDirection = new Tuple<double, double, double>(0, -1, 0);
         autopilot.Engage();
 
-        bool gearDeployed = false;
+        var gearDeployed = false;
         control.Throttle = 1.0f;
 
         while (true)
@@ -393,8 +387,8 @@ public class SuicideBurnLandingManoeuvre(ManoeuvreLogger logger, ManoeuvreContex
             cancellationToken.ThrowIfCancellationRequested();
 
             var flight = vessel.Flight(bodyRef);
-            double altitude = flight.SurfaceAltitude;
-            double verticalSpeed = flight.VerticalSpeed;
+            var altitude = flight.SurfaceAltitude;
+            var verticalSpeed = flight.VerticalSpeed;
 
             // Deploy landing gear at low altitude
             if (!gearDeployed && altitude < GearDeployAltitude)
@@ -406,18 +400,18 @@ public class SuicideBurnLandingManoeuvre(ManoeuvreLogger logger, ManoeuvreContex
             }
 
             // Calculate required throttle to stop at the surface
-            double requiredThrottle = CalculateRequiredThrottle(vessel, body, bodyRef);
+            var requiredThrottle = CalculateRequiredThrottle(vessel, body, bodyRef);
 
             // Near touchdown, switch to a gentler descent
             if (altitude < TouchdownAltitude * 3 && Math.Abs(verticalSpeed) < 5.0)
             {
                 // Final descent - maintain a gentle touchdown speed
-                double gravAccel = body.SurfaceGravity;
-                double maxAccel = vessel.AvailableThrust / vessel.Mass;
+                var gravAccel = body.SurfaceGravity;
+                var maxAccel = vessel.AvailableThrust / vessel.Mass;
                 if (maxAccel > 0)
                 {
                     // Throttle to hover minus a slight descent rate
-                    double desiredAccel = gravAccel + (verticalSpeed - TouchdownSpeed) * 0.5;
+                    var desiredAccel = gravAccel + (verticalSpeed - TouchdownSpeed) * 0.5;
                     control.Throttle = (float)Math.Clamp(desiredAccel / maxAccel, 0, 1);
                 }
             }
@@ -460,22 +454,22 @@ public class SuicideBurnLandingManoeuvre(ManoeuvreLogger logger, ManoeuvreContex
     private double CalculateRequiredThrottle(Vessel vessel, CelestialBody body, ReferenceFrame bodyRef)
     {
         var flight = vessel.Flight(bodyRef);
-        double altitude = flight.SurfaceAltitude;
-        double speed = flight.Speed;
-        double verticalSpeed = flight.VerticalSpeed;
+        var altitude = flight.SurfaceAltitude;
+        var speed = flight.Speed;
+        var verticalSpeed = flight.VerticalSpeed;
 
         // If we're barely moving or already very close, return high throttle to enter burn phase
         if (altitude < 100 && speed < 5)
             return 1.0;
 
-        double mass = vessel.Mass;
-        double maxThrust = vessel.AvailableThrust;
+        var mass = vessel.Mass;
+        var maxThrust = vessel.AvailableThrust;
 
         if (maxThrust <= 0)
             return 1.0; // No thrust available, signal immediate action needed
 
-        double gravity = body.GravitationalParameter / Math.Pow(body.EquatorialRadius + altitude, 2);
-        double isp = vessel.VacuumSpecificImpulse;
+        var gravity = body.GravitationalParameter / Math.Pow(body.EquatorialRadius + altitude, 2);
+        var isp = vessel.VacuumSpecificImpulse;
 
         // Calculate stopping distance using the rocket equation with gravity
         // The deceleration available is: a(t) = (maxThrust / m(t)) - g
@@ -485,18 +479,18 @@ public class SuicideBurnLandingManoeuvre(ManoeuvreLogger logger, ManoeuvreContex
         // The stopping distance with variable mass and constant gravity is:
         //
         // We integrate numerically for accuracy.
-        double stoppingDistance = CalculateStoppingDistance(speed, mass, maxThrust, isp, gravity);
+        var stoppingDistance = CalculateStoppingDistance(speed, mass, maxThrust, isp, gravity);
 
         // The throttle required is the ratio of stopping distance to current altitude
         // We use altitude as the distance to surface (simplified - assumes vertical descent)
         // For non-vertical descent, project onto the velocity vector
-        double effectiveAltitude = altitude;
+        var effectiveAltitude = altitude;
 
         // If we have significant horizontal velocity, use the total distance along the velocity vector
         if (speed > 1.0 && verticalSpeed < -0.5)
         {
             // Ratio of downward speed to total speed gives us the vertical component
-            double verticalFraction = Math.Abs(verticalSpeed) / speed;
+            var verticalFraction = Math.Abs(verticalSpeed) / speed;
             if (verticalFraction > 0.01)
             {
                 effectiveAltitude = altitude / verticalFraction;
@@ -515,16 +509,16 @@ public class SuicideBurnLandingManoeuvre(ManoeuvreLogger logger, ManoeuvreContex
     /// </summary>
     private static double CalculateStoppingDistance(double speed, double mass, double maxThrust, double isp, double gravity)
     {
-        double g0 = 9.80665;
-        double fuelFlowRate = maxThrust / (isp * g0); // kg/s
-        double dt = 0.1; // Time step in seconds
-        double remainingSpeed = speed;
-        double totalDistance = 0;
-        double currentMass = mass;
+        var g0 = 9.80665;
+        var fuelFlowRate = maxThrust / (isp * g0); // kg/s
+        var dt = 0.1; // Time step in seconds
+        var remainingSpeed = speed;
+        var totalDistance = 0.0;
+        var currentMass = mass;
 
         while (remainingSpeed > 0.1 && currentMass > 0)
         {
-            double currentAccel = (maxThrust / currentMass) - gravity;
+            var currentAccel = (maxThrust / currentMass) - gravity;
 
             if (currentAccel <= 0)
             {
@@ -532,11 +526,11 @@ public class SuicideBurnLandingManoeuvre(ManoeuvreLogger logger, ManoeuvreContex
                 return double.MaxValue;
             }
 
-            double speedReduction = currentAccel * dt;
+            var speedReduction = currentAccel * dt;
             if (speedReduction > remainingSpeed)
             {
                 // Partial time step for the final bit
-                double partialDt = remainingSpeed / currentAccel;
+                var partialDt = remainingSpeed / currentAccel;
                 totalDistance += remainingSpeed * partialDt - 0.5 * currentAccel * partialDt * partialDt;
                 remainingSpeed = 0;
             }
@@ -560,21 +554,21 @@ public class SuicideBurnLandingManoeuvre(ManoeuvreLogger logger, ManoeuvreContex
         var bodyRef = body.ReferenceFrame;
         var flight = vessel.Flight(bodyRef);
 
-        double currentLng = flight.Longitude;
-        double angularDiff = NormalizeLongitude(targetLng - currentLng);
+        var currentLng = flight.Longitude;
+        var angularDiff = NormalizeLongitude(targetLng - currentLng);
 
         if (angularDiff < 0)
             angularDiff += 360.0;
 
         // The vessel's angular velocity over the surface is its orbital angular velocity
         // minus the body's rotational angular velocity
-        double orbitalPeriod = vessel.Orbit.Period;
-        double orbitalAngularVelocity = 360.0 / orbitalPeriod; // degrees per second
+        var orbitalPeriod = vessel.Orbit.Period;
+        var orbitalAngularVelocity = 360.0 / orbitalPeriod; // degrees per second
 
-        double bodyRotationPeriod = body.RotationalPeriod;
-        double bodyAngularVelocity = 360.0 / bodyRotationPeriod; // degrees per second
+        var bodyRotationPeriod = body.RotationalPeriod;
+        var bodyAngularVelocity = 360.0 / bodyRotationPeriod; // degrees per second
 
-        double relativeAngularVelocity = orbitalAngularVelocity - bodyAngularVelocity;
+        var relativeAngularVelocity = orbitalAngularVelocity - bodyAngularVelocity;
 
         if (relativeAngularVelocity <= 0)
         {

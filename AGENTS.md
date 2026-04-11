@@ -68,6 +68,7 @@ Each manoeuvre has a separate file under the `Manoeuvres` folder.
 - Avoid stringly-typed values. Use proper types that represent the data (e.g. `bool` not `string` for a boolean parameter).
 - Do not leave dead code in the codebase, such as unused properties, unreachable statements, or methods that are never called.
 - All public methods and properties should have XML doc comments.
+- Prefer `var` over explicit type declarations.
 
 ## Architecture and design patterns
 

@@ -42,8 +42,8 @@ public class CircularizeManoeuvre(ManoeuvreLogger logger, ManoeuvreContext conte
 
     private void CreateManoeuvreNode()
     {
-        bool atApoapsis = _atApoapsis.Value;
-        string location = atApoapsis ? "apoapsis" : "periapsis";
+        var atApoapsis = _atApoapsis.Value;
+        var location = atApoapsis ? "apoapsis" : "periapsis";
         logger.Log($"Planning circularization at {location}...");
 
         // Configure the circularization operation
