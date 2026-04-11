@@ -58,12 +58,14 @@ public class SuicideBurnLandingManoeuvre(ManoeuvreLogger logger, ManoeuvreContex
         double targetRadius = body.EquatorialRadius + targetSurfaceHeight;
         logger.Log($"Target surface elevation: {targetSurfaceHeight:F0} m");
 
-        // Phase 1: Deorbit - lower periapsis to skim the surface near the target
-        await PerformDeorbitBurn(targetRadius, cancellationToken);
+        // Phase 1: Adjust inclination so the ground track can reach the target latitude.
+        // This must happen before the deorbit burn, because changing the orbital plane
+        // after lowering periapsis would move the periapsis away from the landing site.
+        await AdjustInclinationForTarget(targetLat, targetLng, cancellationToken);
         cancellationToken.ThrowIfCancellationRequested();
 
-        // Phase 2: Adjust inclination to pass over the target latitude
-        await AdjustInclinationForTarget(targetLat, targetLng, cancellationToken);
+        // Phase 2: Deorbit - lower periapsis to skim the surface near the target
+        await PerformDeorbitBurn(targetRadius, cancellationToken);
         cancellationToken.ThrowIfCancellationRequested();
 
         // Phase 3: Kill lateral velocity above the landing site
