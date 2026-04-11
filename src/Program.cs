@@ -1,12 +1,13 @@
+using System.Reflection;
 using KRPC.Client;
 using KrpcCommand.Manoeuvres;
 using KrpcCommand.UI;
 
-// Register all available manoeuvres
-var manoeuvres = new List<IManoeuvre>
-{
-    new CircularizeManoeuvre(),
-};
+// Register all available manoeuvres via reflection
+var manoeuvres = Assembly.GetExecutingAssembly()
+    .GetTypes()
+    .Where(t => typeof(IManoeuvre).IsAssignableFrom(t))
+    .ToList();
 
 Console.WriteLine("krpc-command: Connecting to kRPC server...");
 

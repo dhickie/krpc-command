@@ -29,7 +29,6 @@ public interface IManoeuvre
     /// and log progress via the logger.
     /// </summary>
     /// <param name="context">Access to kRPC services.</param>
-    /// <param name="logger">Logger for reporting progress to the UI.</param>
     /// <param name="cancellationToken">Token to support cancellation.</param>
-    Task ExecuteAsync(ManoeuvreContext context, ManoeuvreLogger logger, CancellationToken cancellationToken);
+    Task ExecuteAsync(CancellationToken cancellationToken);
 }

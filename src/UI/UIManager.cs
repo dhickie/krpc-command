@@ -10,11 +10,11 @@ namespace KrpcCommand.UI;
 /// </summary>
 public class UIManager : IDisposable
 {
-    private readonly IReadOnlyList<IManoeuvre> _manoeuvres;
+    private readonly IReadOnlyList<Type> _manoeuvres;
     private readonly ManoeuvreContext _context;
-
-    private Panel _window;
-    private Text _titleText;
+    private readonly Panel _window;
+    private readonly Text _titleText;
+    
     private UIState _state = UIState.Selection;
 
     // Selection state UI elements
@@ -39,7 +39,7 @@ public class UIManager : IDisposable
     private const float ElementHeight = 30f;
     private const float ElementSpacing = 5f;
 
-    public UIManager(Connection connection, IReadOnlyList<IManoeuvre> manoeuvres)
+    public UIManager(Connection connection, IReadOnlyList<Type> manoeuvres)
     {
         var ui = connection.UI();
         _manoeuvres = manoeuvres;
@@ -120,7 +120,9 @@ public class UIManager : IDisposable
             if (_manoeuvreButtons[i].Clicked)
             {
                 _manoeuvreButtons[i].Clicked = false;
-                _selectedManoeuvre = _manoeuvres[i];
+
+                _currentLogger = new ManoeuvreLogger(OnLogMessage);
+                _selectedManoeuvre = (IManoeuvre)Activator.CreateInstance(_manoeuvres[i], _currentLogger, _context)!;
                 ShowConfiguration();
             }
         }
@@ -257,24 +259,22 @@ public class UIManager : IDisposable
 
         // Start execution
         _cancellationTokenSource = new CancellationTokenSource();
-        _currentLogger = new ManoeuvreLogger();
-        _currentLogger.OnLog += OnLogMessage;
 
         _executionTask = Task.Run(async () =>
         {
             try
             {
-                _currentLogger.Log("Manoeuvre started.");
-                await _selectedManoeuvre!.ExecuteAsync(_context, _currentLogger, _cancellationTokenSource.Token);
+                _currentLogger!.Log("Manoeuvre started.");
+                await _selectedManoeuvre!.ExecuteAsync(_cancellationTokenSource.Token);
                 _currentLogger.Log("Manoeuvre completed successfully.");
             }
             catch (OperationCanceledException)
             {
-                _currentLogger.Log("Manoeuvre cancelled.");
+                _currentLogger!.Log("Manoeuvre cancelled.");
             }
             catch (Exception ex)
             {
-                _currentLogger.Log($"ERROR: {ex.Message}");
+                _currentLogger!.Log($"ERROR: {ex.Message}");
             }
         });
     }

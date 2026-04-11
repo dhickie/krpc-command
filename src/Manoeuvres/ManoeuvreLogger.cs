@@ -4,16 +4,10 @@ namespace KrpcCommand.Manoeuvres;
 /// Provides logging capabilities during manoeuvre execution.
 /// Log messages are displayed in the in-game UI.
 /// </summary>
-public class ManoeuvreLogger
+public class ManoeuvreLogger(Action onLog)
 {
     private readonly List<string> _messages = new();
     private readonly object _lock = new();
-
-    /// <summary>
-    /// Callback invoked when a new log message is added.
-    /// Used by the UI to update the log display.
-    /// </summary>
-    public event Action? OnLog;
 
     /// <summary>
     /// Log a message during manoeuvre execution.
@@ -25,7 +19,7 @@ public class ManoeuvreLogger
         {
             _messages.Add(timestamped);
         }
-        OnLog?.Invoke();
+        onLog.Invoke();
     }
 
     /// <summary>

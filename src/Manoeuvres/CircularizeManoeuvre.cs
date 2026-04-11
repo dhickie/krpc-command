@@ -1,4 +1,5 @@
 using KRPC.Client.Services.MechJeb;
+using KrpcCommand.Extensions;
 using KrpcCommand.Manoeuvres.Parameters;
 
 namespace KrpcCommand.Manoeuvres;
@@ -7,7 +8,7 @@ namespace KrpcCommand.Manoeuvres;
 /// Circularizes the vessel's orbit at either apoapsis or periapsis using MechJeb's
 /// ManeuverPlanner and NodeExecutor.
 /// </summary>
-public class CircularizeManoeuvre : IManoeuvre
+public class CircularizeManoeuvre(ManoeuvreLogger logger, ManoeuvreContext context) : IManoeuvre
 {
     public string Name => "Circularize";
     public string Description => "Circularize orbit at apoapsis or periapsis.";
@@ -16,28 +17,37 @@ public class CircularizeManoeuvre : IManoeuvre
 
     public IReadOnlyList<ManoeuvreParameter> Parameters => [_atApoapsis];
 
-    public async Task ExecuteAsync(ManoeuvreContext context, ManoeuvreLogger logger, CancellationToken cancellationToken)
+    public async Task ExecuteAsync(CancellationToken cancellationToken)
     {
         var mj = context.MechJeb;
 
         // Check MechJeb API is ready
-        if (!mj.APIReady)
-        {
-            logger.Log("Waiting for MechJeb API to become ready...");
-            while (!mj.APIReady)
-            {
-                cancellationToken.ThrowIfCancellationRequested();
-                await Task.Delay(500, cancellationToken);
-            }
-        }
-        logger.Log("MechJeb API is ready.");
+        logger.Log("Ensuring MechJeb API is ready.");
+        await mj.EnsureApiReadyAsync(cancellationToken);
 
+        CreateManoeuvreNode();
+        cancellationToken.ThrowIfCancellationRequested();
+
+        // Execute the node using MechJeb's NodeExecutor
+        logger.Log("Starting node execution. Waiting for completion...");
+        var executor = mj.NodeExecutor;
+        await executor.ExecuteNodeAsync(cancellationToken);
+
+        logger.Log("Circularization complete.");
+
+        // Report final orbit parameters
+        var orbit = context.ActiveVessel.Orbit;
+        logger.Log($"Final orbit: {orbit.ApoapsisAltitude / 1000:F1} km x {orbit.PeriapsisAltitude / 1000:F1} km");
+    }
+
+    private void CreateManoeuvreNode()
+    {
         bool atApoapsis = _atApoapsis.Value;
         string location = atApoapsis ? "apoapsis" : "periapsis";
         logger.Log($"Planning circularization at {location}...");
 
         // Configure the circularization operation
-        var planner = mj.ManeuverPlanner;
+        var planner = context.MechJeb.ManeuverPlanner;
         var operation = planner.OperationCircularize;
         operation.TimeSelector.TimeReference = atApoapsis
             ? TimeReference.Apoapsis
@@ -47,7 +57,7 @@ public class CircularizeManoeuvre : IManoeuvre
         logger.Log("Creating manoeuvre node...");
         try
         {
-            operation.MakeNodes();
+            operation.MakeNode();
         }
         catch (Exception ex)
         {
@@ -59,25 +69,5 @@ public class CircularizeManoeuvre : IManoeuvre
         }
 
         logger.Log("Manoeuvre node created.");
-        cancellationToken.ThrowIfCancellationRequested();
-
-        // Execute the node using MechJeb's NodeExecutor
-        var executor = mj.NodeExecutor;
-        executor.Autowarp = true;
-        executor.ExecuteOneNode();
-        logger.Log("Node execution started. Waiting for completion...");
-
-        // Poll until execution completes
-        while (executor.Enabled)
-        {
-            cancellationToken.ThrowIfCancellationRequested();
-            await Task.Delay(1000, cancellationToken);
-        }
-
-        logger.Log("Circularization complete.");
-
-        // Report final orbit parameters
-        var orbit = context.ActiveVessel.Orbit;
-        logger.Log($"Final orbit: {orbit.ApoapsisAltitude / 1000:F1} km x {orbit.PeriapsisAltitude / 1000:F1} km");
     }
 }
