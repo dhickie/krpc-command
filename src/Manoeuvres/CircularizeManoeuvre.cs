@@ -1,4 +1,5 @@
 using KRPC.Client.Services.MechJeb;
+using KrpcCommand.Manoeuvres.Parameters;
 
 namespace KrpcCommand.Manoeuvres;
 
@@ -11,9 +12,9 @@ public class CircularizeManoeuvre : IManoeuvre
     public string Name => "Circularize";
     public string Description => "Circularize orbit at apoapsis or periapsis.";
 
-    private readonly ManoeuvreParameter<bool> _atApoapsis = new("atApoapsis", "At apoapsis? (true/false)", true);
+    private readonly BoolManoeuvreParameter _atApoapsis = new("atApoapsis", "At apoapsis? (true/false)", true);
 
-    public IReadOnlyList<ManoeuvreParameterBase> Parameters => [_atApoapsis];
+    public IReadOnlyList<ManoeuvreParameter> Parameters => [_atApoapsis];
 
     public async Task ExecuteAsync(ManoeuvreContext context, ManoeuvreLogger logger, CancellationToken cancellationToken)
     {

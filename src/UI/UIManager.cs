@@ -213,7 +213,7 @@ public class UIManager : IDisposable
             var parameters = _selectedManoeuvre!.Parameters;
             for (int i = 0; i < parameters.Count; i++)
             {
-                parameters[i].SetFromString(_parameterFields[i].Input.Value);
+                parameters[i].Set(_parameterFields[i].Input.Value);
             }
 
             StartExecution();

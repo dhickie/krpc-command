@@ -1,3 +1,5 @@
+using KrpcCommand.Manoeuvres.Parameters;
+
 namespace KrpcCommand.Manoeuvres;
 
 /// <summary>
@@ -20,7 +22,7 @@ public interface IManoeuvre
     /// Configuration parameters that the user can set before execution.
     /// These are rendered as input fields in the UI.
     /// </summary>
-    IReadOnlyList<ManoeuvreParameterBase> Parameters { get; }
+    IReadOnlyList<ManoeuvreParameter> Parameters { get; }
 
     /// <summary>
     /// Execute the manoeuvre. This method should periodically check the cancellation token
