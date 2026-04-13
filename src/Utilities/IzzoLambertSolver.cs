@@ -60,7 +60,7 @@ public class IzzoLambertSolver(
         var k = gravitationalParameter;
         var r1 = initialPosition;
         var r2 = finalPosition;
-        var tof = timeOfFlight.Seconds;
+        var tof = timeOfFlight.TotalSeconds;
 
         Validate(tof > 0, nameof(timeOfFlight));
         Validate(k > 0, nameof(gravitationalParameter));
