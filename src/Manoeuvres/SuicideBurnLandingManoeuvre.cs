@@ -2,6 +2,7 @@ using KRPC.Client.Services.SpaceCenter;
 using KrpcCommand.Extensions;
 using KrpcCommand.Manoeuvres.Parameters;
 using KrpcCommand.Utilities;
+using MathNet.Spatial.Euclidean;
 
 namespace KrpcCommand.Manoeuvres;
 
@@ -58,15 +59,11 @@ public class SuicideBurnLandingManoeuvre(ManoeuvreLogger logger, ManoeuvreContex
         var targetSurfaceHeight = body.SurfaceHeight(targetLat, targetLng);
         var targetRadius = body.EquatorialRadius + targetSurfaceHeight;
         logger.Log($"Target surface elevation: {targetSurfaceHeight:F0} m");
-
-        // Phase 1: Adjust inclination so the ground track can reach the target latitude.
-        // This must happen before the deorbit burn, because changing the orbital plane
-        // after lowering periapsis would move the periapsis away from the landing site.
-        await AdjustInclinationForTarget(targetLat, targetLng, cancellationToken);
-        cancellationToken.ThrowIfCancellationRequested();
-
-        // Phase 2: Deorbit - lower periapsis to skim the surface near the target
-        await PerformDeorbitBurn(targetRadius, cancellationToken);
+        
+        // Phase 1: Perform a deorbit burn that adjusts the ship's trajectory so that it passes a short distance above
+        // the target landing site. The exact altitude at which it passes over the landing site will differ depending
+        // on the ship's initial altitude when the burn begins
+        await PerformDeorbitBurn(cancellationToken);
         cancellationToken.ThrowIfCancellationRequested();
 
         // Phase 3: Kill lateral velocity above the landing site
@@ -85,103 +82,93 @@ public class SuicideBurnLandingManoeuvre(ManoeuvreLogger logger, ManoeuvreContex
         logger.Log($"Final position: {flight.Latitude:F4}°, {flight.Longitude:F4}°");
     }
 
-    /// <summary>
-    /// Lowers periapsis to just above the target surface radius so the vessel will descend
-    /// toward the landing site.
-    /// </summary>
-    private async Task PerformDeorbitBurn(double targetRadius, CancellationToken cancellationToken)
+    private async Task PerformDeorbitBurn(double landingSiteLat, double landingSiteLng, CancellationToken cancellationToken)
     {
-        var vessel = context.ActiveVessel;
-        var body = vessel.Orbit.Body;
+        var ship = context.ActiveVessel;
+        var body = ship.Orbit.Body;
+        
+        // Calculate mean anomaly of the ship at the point in its orbit that is 60 degrees before the landing site
+        var deorbitAnomaly = CalculateDeorbitMeanAnomaly();
+        
+        // Calculate the time at which the ship will be at that point in its orbit
+        var timeToBurn = ship.Orbit.TimeToMeanAnomaly(deorbitAnomaly);
+        var burnUt = context.SpaceCenter.UT + timeToBurn;
+        
+        // Calculate where the ship will be when the burn takes place
+        var positionAtBurn = 
+            ship.Orbit.PositionAt(burnUt, body.ReferenceFrame);
+        
+        // Calculate a reasonable upper bound for the flyover altitude over the landing site
+        var flyoverAltitude = CalculateWorstCaseLandingBurnAltitude(positionAtBurn, landingSiteLat, landingSiteLng);
+        
+        // Calculate what the ship's velocity needs to be after the burn to hit the flyover position
+        var postBurnVelocity = 
+            CalculatePostBurnVelocity(positionAtBurn, landingSiteLat, landingSiteLng, flyoverAltitude);
+    }
 
-        // Target a periapsis that skims just above the surface (10km above target elevation)
-        var deorbitPeriapsis = targetRadius - body.EquatorialRadius + 10000;
-
-        // Only deorbit if periapsis is significantly above the target
-        var currentPeriapsis = vessel.Orbit.PeriapsisAltitude;
-        if (currentPeriapsis <= deorbitPeriapsis + 1000)
-        {
-            logger.Log("Periapsis already near surface, skipping deorbit burn.");
-            return;
-        }
-
-        logger.Log($"Lowering periapsis to {deorbitPeriapsis / 1000:F1} km...");
-
-        var planner = context.MechJeb.ManeuverPlanner;
-        var operation = planner.OperationPeriapsis;
-        operation.NewPeriapsis = deorbitPeriapsis;
-        operation.TimeSelector.TimeReference = KRPC.Client.Services.MechJeb.TimeReference.Apoapsis;
-
-        try
-        {
-            operation.MakeNode();
-        }
-        catch (Exception ex)
-        {
-            logger.Log($"Failed to create deorbit node: {ex.Message}");
-            throw;
-        }
-
-        logger.Log("Executing deorbit burn...");
-        var executor = context.MechJeb.NodeExecutor;
-        await executor.ExecuteNodeAsync(cancellationToken);
-
-        logger.Log($"Deorbit complete. Periapsis: {vessel.Orbit.PeriapsisAltitude / 1000:F1} km");
+    private double CalculateDeorbitMeanAnomaly()
+    {
+        throw new NotImplementedException();
     }
 
     /// <summary>
-    /// Adjusts the orbital inclination so the ground track passes over the target latitude.
-    /// Burns at the point 90° before the target longitude to rotate the orbital plane.
+    /// Calculates the worst case for the altitude of the ship when it has to initiate its landing burn.
+    /// Models the worst case as the ship falling with surface gravity, with maximum weight, falling straight down
+    /// from the point of the deorbit burn to the landing site, without any initial vertical velocity.
+    /// This is a very conservative model that should give a safe upper bound on the required burn altitude.
     /// </summary>
-    private async Task AdjustInclinationForTarget(double targetLat, double targetLng, CancellationToken cancellationToken)
+    /// <param name="deorbitBurnPosition">The position of the ship relative to the body when the deorbit burn is performed</param>
+    /// <param name="landingSiteLat">The latitude of the landing site in degrees</param>
+    /// <param name="landingSiteLng">The longitude of the landing site in degrees</param>
+    /// <returns>The worst case altitude for when the burn would need to be initialised</returns>
+    private double CalculateWorstCaseLandingBurnAltitude(Tuple<double, double, double> deorbitBurnPosition,
+        double landingSiteLat,
+        double landingSiteLng)
     {
-        var vessel = context.ActiveVessel;
-        var body = vessel.Orbit.Body;
+        var ship = context.ActiveVessel;
+        var body = ship.Orbit.Body;
+        
+        var landingSiteAltitude = body.SurfaceHeight(landingSiteLat, landingSiteLng);
+        var fallDistance = deorbitBurnPosition.ToVector3D().Length - (body.EquatorialRadius + landingSiteAltitude);
+        var g = body.GravitationalParameter / Math.Pow(body.EquatorialRadius, 2);
+        
+        var maxBurnHeight = (ship.Mass * g * fallDistance) / ship.AvailableThrust;
+        
+        return maxBurnHeight;
+    }
 
-        // We need to change inclination to reach the target latitude.
-        // The minimum inclination needed is abs(targetLat).
-        var currentInclination = MathUtil.RadToDeg(vessel.Orbit.Inclination);
-        var requiredInclination = Math.Abs(targetLat);
-        var inclinationDelta = requiredInclination - currentInclination;
-
-        if (Math.Abs(inclinationDelta) < 0.1)
-        {
-            logger.Log("Orbital inclination already sufficient to reach target latitude.");
-            return;
-        }
-
-        logger.Log($"Adjusting inclination from {currentInclination:F2}° to {requiredInclination:F2}°...");
-
-        // Calculate the burn: we need to burn at the node 90° before the target longitude.
-        // The burn location is at the equator, at (targetLng - 90°).
-        var nodeLng = NormalizeLongitude(targetLng - 90.0);
-
-        // Calculate eta to pass over this longitude
-        var eta = CalculateEtaToLongitude(vessel, body, nodeLng);
-
-        // Calculate the velocity at the burn point
-        var ut = context.UT + eta;
-        var velAtNode = vessel.Orbit.OrbitalSpeedAt(eta);
-
-        // The delta-v for a plane change is: 2 * v * sin(deltaAngle / 2)
-        // We decompose this into normal and prograde components
-        var deltaAngleRad = inclinationDelta * Math.PI / 180.0;
-
-        // For a simple inclination change, the burn is purely in the normal direction
-        // relative to the orbital plane at the ascending/descending node
-        var normalDv = velAtNode * Math.Sin(deltaAngleRad);
-        var progradeDv = velAtNode * (Math.Cos(deltaAngleRad) - 1.0);
-
-        // Create a manoeuvre node
-        var control = vessel.Control;
-        control.AddNode(ut, prograde: (float)progradeDv, normal: (float)normalDv);
-
-        logger.Log("Executing inclination adjustment burn...");
-        var executor = context.MechJeb.NodeExecutor;
-        await executor.ExecuteNodeAsync(cancellationToken);
-
-        var newInclination = vessel.Orbit.Inclination * (180.0 / Math.PI);
-        logger.Log($"Inclination adjustment complete. New inclination: {newInclination:F2}°");
+    private Vector3D CalculatePostBurnVelocity(Vector3D deorbitBurnPosition,
+        double burnUt,
+        double landingSiteLat,
+        double landingSiteLng,
+        double flyoverAltitude)
+    {
+        var ship = context.ActiveVessel;
+        var body = ship.Orbit.Body;
+        
+        // Calculate a lower bound for the time of flight, as the circular orbit time between the two points at the 
+        // same altitude
+        var circularOrbitVelocity = Math.Sqrt(body.GravitationalParameter / deorbitBurnPosition.Length);
+        var arcAngle = deorbitBurnPosition.AngleTo(
+            body.SurfacePosition(
+                landingSiteLat, landingSiteLng, body.NonRotatingReferenceFrame).ToVector3D());
+        var t0 = (deorbitBurnPosition.Length * arcAngle.Radians) / circularOrbitVelocity;
+        
+        // Calculate where the flyover point will be at time t0 after deorbit burn
+        var flyoverPosition = body.PositionAtAltitudeAt(
+            burnUt + t0, 
+            landingSiteLat, 
+            landingSiteLng, 
+            flyoverAltitude, 
+            body.NonRotatingReferenceFrame).ToVector3D();
+        
+        // Solve the Lambert problem for these parameters to get the required post-burn velocity
+        var solver = new IzzoLambertSolver();
+        solver.TrySolve(body.GravitationalParameter, 
+            deorbitBurnPosition, 
+            flyoverPosition, 
+            TimeSpan.FromSeconds(t0), 
+            out var solution);
     }
 
     /// <summary>
