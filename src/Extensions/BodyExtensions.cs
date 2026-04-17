@@ -49,10 +49,10 @@ public static class BodyExtensions
         
         // Calculate what position would be right now
         var position = 
-            body.PositionAtAltitude(latitude, longitude, altitude, body.NonRotatingReferenceFrame);
+            body.PositionAtAltitude(latitude, longitude, altitude, referenceFrame);
         
         // Get the axis of rotation for the body
-        var axis = body.SurfacePosition(90, 0, body.NonRotatingReferenceFrame)
+        var axis = body.SurfacePosition(90, 0, referenceFrame)
             .ToVector3D()
             .Normalize();
         

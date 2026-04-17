@@ -1,8 +1,13 @@
+using System.Runtime.Intrinsics;
 using KRPC.Client.Services.SpaceCenter;
 using KrpcCommand.Extensions;
 using KrpcCommand.Manoeuvres.Parameters;
+using KrpcCommand.Models;
 using KrpcCommand.Utilities;
+using MathNet.Numerics.Optimization.TrustRegion;
+using MathNet.Numerics.RootFinding;
 using MathNet.Spatial.Euclidean;
+using MathNet.Spatial.Units;
 
 namespace KrpcCommand.Manoeuvres;
 
@@ -63,7 +68,7 @@ public class SuicideBurnLandingManoeuvre(ManoeuvreLogger logger, ManoeuvreContex
         // Phase 1: Perform a deorbit burn that adjusts the ship's trajectory so that it passes a short distance above
         // the target landing site. The exact altitude at which it passes over the landing site will differ depending
         // on the ship's initial altitude when the burn begins
-        await PerformDeorbitBurn(cancellationToken);
+        await PerformDeorbitBurn(_targetLatitude.Value, _targetLongitude.Value, cancellationToken);
         cancellationToken.ThrowIfCancellationRequested();
 
         // Phase 3: Kill lateral velocity above the landing site
@@ -85,30 +90,68 @@ public class SuicideBurnLandingManoeuvre(ManoeuvreLogger logger, ManoeuvreContex
     private async Task PerformDeorbitBurn(double landingSiteLat, double landingSiteLng, CancellationToken cancellationToken)
     {
         var ship = context.ActiveVessel;
-        var body = ship.Orbit.Body;
+        var body = ship.Orbit.Body; 
         
-        // Calculate mean anomaly of the ship at the point in its orbit that is 60 degrees before the landing site
-        var deorbitAnomaly = CalculateDeorbitMeanAnomaly();
-        
-        // Calculate the time at which the ship will be at that point in its orbit
-        var timeToBurn = ship.Orbit.TimeToMeanAnomaly(deorbitAnomaly);
-        var burnUt = context.SpaceCenter.UT + timeToBurn;
+        // Calculate the UT at which we will perform the deorbit burn
+        var burnUt = CalculateDeorbitUt(landingSiteLat, landingSiteLng);
         
         // Calculate where the ship will be when the burn takes place
         var positionAtBurn = 
-            ship.Orbit.PositionAt(burnUt, body.ReferenceFrame);
+            ship.Orbit.PositionAt(burnUt, body.ReferenceFrame).ToVector3D();
         
         // Calculate a reasonable upper bound for the flyover altitude over the landing site
         var flyoverAltitude = CalculateWorstCaseLandingBurnAltitude(positionAtBurn, landingSiteLat, landingSiteLng);
         
         // Calculate what the ship's velocity needs to be after the burn to hit the flyover position
         var postBurnVelocity = 
-            CalculatePostBurnVelocity(positionAtBurn, landingSiteLat, landingSiteLng, flyoverAltitude);
+            CalculatePostBurnVelocity(positionAtBurn, burnUt, landingSiteLat, landingSiteLng, flyoverAltitude);
     }
 
-    private double CalculateDeorbitMeanAnomaly()
+    private double CalculateDeorbitUt(double landingSiteLat, double landingSiteLng)
     {
-        throw new NotImplementedException();
+        var ship = context.ActiveVessel;
+        var body = ship.Orbit.Body;
+        var ut = context.SpaceCenter.UT;
+        
+        // Calculate the position along the existing orbit that is closest to the landing site
+        var orbitNormal = ship.OrbitNormal().ToUnitVector3D();
+        var landingPosition = 
+            body.SurfacePosition(landingSiteLat, landingSiteLng, body.NonRotatingReferenceFrame)
+                .ToVector3D();
+        var angle = orbitNormal.AngleTo(landingPosition).Degrees;
+        if (angle is 0 or 180)
+        {
+            // Special case - if the ship's orbit is exactly 90 degrees out the choice of deorbit burn point is
+            // arbitrary
+            // Just pick a time 10 minutes into the future to give us time to calculate and orient the ship and 
+            // accommodate for particularly long deorbit burns
+            return ut + 600;
+        }
+        
+        var closestPosition = body
+            .SurfacePosition(landingSiteLat, landingSiteLng, body.NonRotatingReferenceFrame)
+            .ToVector3D()
+            .ProjectOn(orbitNormal);
+        
+        // Rotate the closest position by 60 degrees retrograde
+        var burnPosition = closestPosition.Rotate(orbitNormal, Angle.FromDegrees(-60));
+        
+        // Calculate the true anomaly at that point
+        var timeToPeriapsis = ship.Orbit.TimeToPeriapsis;
+        var periapsisPosition = 
+            ship.Orbit.PositionAt(timeToPeriapsis + ut, body.NonRotatingReferenceFrame).ToVector3D();
+        var trueAnomaly = burnPosition.AngleTo(periapsisPosition);
+
+        var normal = burnPosition.CrossProduct(periapsisPosition);
+        if (normal.AngleTo(orbitNormal).Degrees < 90)
+        {
+            // If the cross product of the burn position to the periapsis points in the same direction as the orbit
+            // normal, then that point of the orbit is after the apoapsis. Since the angle given by AngleTo will always
+            // be less than 180, we need to get the other part of the orbit
+            trueAnomaly = Angle.FromDegrees(360 - trueAnomaly.Degrees);
+        }
+        
+        return ship.Orbit.TimeToTrueAnomaly(trueAnomaly.Radians) + ut;
     }
 
     /// <summary>
@@ -121,7 +164,7 @@ public class SuicideBurnLandingManoeuvre(ManoeuvreLogger logger, ManoeuvreContex
     /// <param name="landingSiteLat">The latitude of the landing site in degrees</param>
     /// <param name="landingSiteLng">The longitude of the landing site in degrees</param>
     /// <returns>The worst case altitude for when the burn would need to be initialised</returns>
-    private double CalculateWorstCaseLandingBurnAltitude(Tuple<double, double, double> deorbitBurnPosition,
+    private double CalculateWorstCaseLandingBurnAltitude(Vector3D deorbitBurnPosition,
         double landingSiteLat,
         double landingSiteLng)
     {
@@ -129,7 +172,7 @@ public class SuicideBurnLandingManoeuvre(ManoeuvreLogger logger, ManoeuvreContex
         var body = ship.Orbit.Body;
         
         var landingSiteAltitude = body.SurfaceHeight(landingSiteLat, landingSiteLng);
-        var fallDistance = deorbitBurnPosition.ToVector3D().Length - (body.EquatorialRadius + landingSiteAltitude);
+        var fallDistance = deorbitBurnPosition.Length - (body.EquatorialRadius + landingSiteAltitude);
         var g = body.GravitationalParameter / Math.Pow(body.EquatorialRadius, 2);
         
         var maxBurnHeight = (ship.Mass * g * fallDistance) / ship.AvailableThrust;
@@ -154,21 +197,109 @@ public class SuicideBurnLandingManoeuvre(ManoeuvreLogger logger, ManoeuvreContex
                 landingSiteLat, landingSiteLng, body.NonRotatingReferenceFrame).ToVector3D());
         var t0 = (deorbitBurnPosition.Length * arcAngle.Radians) / circularOrbitVelocity;
         
-        // Calculate where the flyover point will be at time t0 after deorbit burn
-        var flyoverPosition = body.PositionAtAltitudeAt(
-            burnUt + t0, 
-            landingSiteLat, 
-            landingSiteLng, 
-            flyoverAltitude, 
+        // Calculate a time bracket for the root search, by incrementing the time of flight until the initial
+        // radial velocity flips from negative (falling toward the body) to positive (moving away from the body)
+        var lambertParams = new DeorbitLambertProblemParams(
+            burnUt,
+            t0,
+            landingSiteLat,
+            landingSiteLng,
+            flyoverAltitude,
+            deorbitBurnPosition);
+        var (tMin, tMax) = FindRootSearchBracket(lambertParams);
+        
+        // Use Brent's method to search over the bracket to find the exact velocity that keeps the ship's radial
+        // velocity at zero after the deorbit burn
+        Func<double, double> func = t =>
+        {
+            lambertParams.TimeOfFlight = t;
+            var (v1, v2) = SolveLambert(lambertParams);
+            var radialVelocity = v1.DotProduct(lambertParams.DeorbitBurnPosition.Normalize());
+            return radialVelocity;
+        };
+        var root = Brent.FindRoot(func, tMin, tMax, 1, 100);
+
+        lambertParams.TimeOfFlight = root;
+        return SolveLambert(lambertParams).v1;
+    }
+
+    private (double tMin, double tMax) FindRootSearchBracket(DeorbitLambertProblemParams parameters)
+    {
+        const double timeStep = 60;
+        var t0 = parameters.TimeOfFlight;
+        var tMin = t0;
+        var tMax = 0.0;
+
+        var flipPointFound = false;
+        while (!flipPointFound)
+        {
+            parameters.TimeOfFlight = tMin + timeStep;
+            if (!TrySolveLambert(parameters, out (Vector3D v1, Vector3D _) solution))
+            {
+                // If this has happened after finding an initial viable trajectory, then we can't find the root later
+                // so throw an exception to abandon the manoeuvre
+                if (tMin > t0)
+                {
+                    throw new InvalidOperationException(
+                        "Impossible to find valid trajectory for provided manoeuvre parameters");
+                }
+                
+                // Otherwise increment tMin to skip over the unsolvable time of flight
+                tMin += timeStep;
+                continue;
+            }
+            
+            var radialVelocity = solution.v1.DotProduct(parameters.DeorbitBurnPosition.Normalize());
+            if (radialVelocity > 0)
+            {
+                flipPointFound = true;
+                tMax = tMin + timeStep;
+            }
+            else
+            {
+                tMin += timeStep;
+            }
+        }
+
+        return (tMin, tMax);
+    }
+
+    private (Vector3D v1, Vector3D v2) SolveLambert(DeorbitLambertProblemParams parameters)
+    {
+        if (TrySolveLambert(parameters, out var solution))
+        {
+            return solution;
+        }
+        
+        throw new InvalidOperationException("Unable to solve lambert problem for provided parameters.");
+    }
+
+    private bool TrySolveLambert(DeorbitLambertProblemParams parameters, out (Vector3D v1, Vector3D v2) solution)
+    {
+        var body = context.ActiveVessel.Orbit.Body;
+        
+        var ut = parameters.BurnUt;
+        var tof = parameters.TimeOfFlight;
+        var lat = parameters.LandingSiteLat;
+        var lng = parameters.LandingSiteLng;
+        var alt = parameters.FlyoverAltitude;
+        var pos = parameters.DeorbitBurnPosition;
+        
+        // Calculate where the flyover point will be at the end of the trajectory
+        var flyPos = body.PositionAtAltitudeAt(
+            ut + tof, 
+            lat, 
+            lng, 
+            alt, 
             body.NonRotatingReferenceFrame).ToVector3D();
         
         // Solve the Lambert problem for these parameters to get the required post-burn velocity
         var solver = new IzzoLambertSolver();
-        solver.TrySolve(body.GravitationalParameter, 
-            deorbitBurnPosition, 
-            flyoverPosition, 
-            TimeSpan.FromSeconds(t0), 
-            out var solution);
+        return solver.TrySolve(body.GravitationalParameter, 
+            pos, 
+            flyPos, 
+            TimeSpan.FromSeconds(tof), 
+            out solution);
     }
 
     /// <summary>

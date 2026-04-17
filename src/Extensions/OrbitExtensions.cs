@@ -1,11 +1,12 @@
 using KRPC.Client.Services.SpaceCenter;
+using KrpcCommand.Utilities;
 
 namespace KrpcCommand.Extensions;
 
 public static class OrbitExtensions
 {
     /// <summary>
-    /// Returns the time in seconds until the orbit reaches the given mean anomaly (radians).
+    /// Calculates the time in seconds until the orbit reaches the given mean anomaly (radians).
     /// The result is always non-negative — if the anomaly is behind the current position
     /// the returned time spans the remainder of the current orbit plus the lead-in.
     /// </summary>
@@ -25,5 +26,19 @@ public static class OrbitExtensions
 
         // Mean anomaly advances uniformly at 2π per orbital period
         return delta / (2 * Math.PI) * orbit.Period;
+    }
+
+    /// <summary>
+    /// Calculates the time in seconds until the orbit reaches the given true anomaly (radians).
+    /// The result is always non-negative — if the anomaly is behind the current position
+    /// the returned time spans the remainder of the current orbit plus the lead-in.
+    /// </summary>
+    /// <param name="orbit">The orbit for which to calculate the time</param>
+    /// <param name="trueAnomaly">The true anomaly to determine the ETA of, in radians</param>
+    /// <returns>The time until the orbit reaches the target true anomaly, in seconds</returns>
+    public static double TimeToTrueAnomaly(this Orbit orbit, double trueAnomaly)
+    {
+        var ma = OrbitUtil.MeanAnomalyFromTrueAnomaly(orbit, trueAnomaly);
+        return orbit.TimeToMeanAnomaly(ma);
     }
 }

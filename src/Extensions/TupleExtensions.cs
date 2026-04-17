@@ -8,4 +8,9 @@ public static class TupleExtensions
     {
         return new Vector3D(tuple.Item1, tuple.Item2, tuple.Item3);
     }
+
+    public static UnitVector3D ToUnitVector3D(this Tuple<double, double, double> tuple)
+    {
+        return tuple.ToVector3D().Normalize();
+    }
 }
