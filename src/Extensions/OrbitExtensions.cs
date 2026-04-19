@@ -41,4 +41,20 @@ public static class OrbitExtensions
         var ma = OrbitUtil.MeanAnomalyFromTrueAnomaly(orbit, trueAnomaly);
         return orbit.TimeToMeanAnomaly(ma);
     }
+
+    /// <summary>
+    /// Returns the eccentricity vector of the orbit, given the orbital state vectors at a consistent point in time.
+    /// Assumes that all vectors, both arguments and return value, are in the non-rotating reference frame of the
+    /// orbit's body.
+    /// </summary>
+    /// <param name="orbit">The orbit to get the eccentricity vector of</param>
+    /// <param name="position">The position of the orbiting object at a point in time</param>
+    /// <param name="velocity">The velocity of the orbiting object at a point in time</param>
+    /// <returns></returns>
+    public static Tuple<double, double, double> EccentricityVector(this Orbit orbit,
+        Tuple<double, double, double> position,
+        Tuple<double, double, double> velocity)
+    {
+        
+    }
 }

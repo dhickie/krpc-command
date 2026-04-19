@@ -83,7 +83,7 @@ public class SuicideBurnLandingManoeuvre(ManoeuvreLogger logger, ManoeuvreContex
         await PerformSuicideBurn(body, cancellationToken);
 
         logger.Log("Landing complete.");
-        var flight = vessel.Flight(body.ReferenceFrame);
+        var flight = vessel.Flight(body.NonRotatingReferenceFrame);
         logger.Log($"Final position: {flight.Latitude:F4}°, {flight.Longitude:F4}°");
     }
 
@@ -97,7 +97,7 @@ public class SuicideBurnLandingManoeuvre(ManoeuvreLogger logger, ManoeuvreContex
         
         // Calculate where the ship will be when the burn takes place
         var positionAtBurn = 
-            ship.Orbit.PositionAt(burnUt, body.ReferenceFrame).ToVector3D();
+            ship.Orbit.PositionAt(burnUt, body.NonRotatingReferenceFrame).ToVector3D();
         
         // Calculate a reasonable upper bound for the flyover altitude over the landing site
         var flyoverAltitude = CalculateWorstCaseLandingBurnAltitude(positionAtBurn, landingSiteLat, landingSiteLng);
@@ -105,6 +105,11 @@ public class SuicideBurnLandingManoeuvre(ManoeuvreLogger logger, ManoeuvreContex
         // Calculate what the ship's velocity needs to be after the burn to hit the flyover position
         var postBurnVelocity = 
             CalculatePostBurnVelocity(positionAtBurn, burnUt, landingSiteLat, landingSiteLng, flyoverAltitude);
+        
+        // Create the manoeuvre node
+        NodeUtil.CreateNodeFromTargetVelocity(ship, burnUt, postBurnVelocity);
+        
+        // Perform the burn
     }
 
     private double CalculateDeorbitUt(double landingSiteLat, double landingSiteLng)
@@ -326,7 +331,7 @@ public class SuicideBurnLandingManoeuvre(ManoeuvreLogger logger, ManoeuvreContex
 
         // Now refine: wait until we're close to the target longitude
         logger.Log("Fine-tuning approach to landing site...");
-        var bodyRef = body.ReferenceFrame;
+        var bodyRef = body.NonRotatingReferenceFrame;
         while (true)
         {
             cancellationToken.ThrowIfCancellationRequested();
@@ -442,7 +447,7 @@ public class SuicideBurnLandingManoeuvre(ManoeuvreLogger logger, ManoeuvreContex
         logger.Log("Aligned. Waiting for suicide burn start...");
 
         // Continuously compute required throttle and wait until it reaches 1.0
-        var bodyRef = body.ReferenceFrame;
+        var bodyRef = body.NonRotatingReferenceFrame;
         while (true)
         {
             cancellationToken.ThrowIfCancellationRequested();
@@ -487,7 +492,7 @@ public class SuicideBurnLandingManoeuvre(ManoeuvreLogger logger, ManoeuvreContex
     {
         var vessel = context.ActiveVessel;
         var control = vessel.Control;
-        var bodyRef = body.ReferenceFrame;
+        var bodyRef = body.NonRotatingReferenceFrame;
 
         logger.Log("Executing suicide burn...");
 
@@ -669,7 +674,7 @@ public class SuicideBurnLandingManoeuvre(ManoeuvreLogger logger, ManoeuvreContex
     /// </summary>
     private double CalculateEtaToLongitude(Vessel vessel, CelestialBody body, double targetLng)
     {
-        var bodyRef = body.ReferenceFrame;
+        var bodyRef = body.NonRotatingReferenceFrame;
         var flight = vessel.Flight(bodyRef);
 
         var currentLng = flight.Longitude;
