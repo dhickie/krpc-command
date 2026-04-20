@@ -36,10 +36,32 @@ public class IzzoLambertSolver(
     bool lowPath = true,
     bool prograde = true,
     double tolerance = 1e-8,
-    int maxIterations = 32,
+    int maxIterations = 100,
     int revolutions = 0)
 {
     private readonly Vector3D _zeroVector = new(0, 0, 0);
+
+    /// <summary>
+    /// Solves the Lambert problem using the Izzo algorithm. Assumes that there is a solution, and throw an
+    /// exception if one can't be found.
+    /// </summary>
+    /// <param name="gravitationalParameter">Gravitational constant of main attractor (m^3 / s^2).</param>
+    /// <param name="initialPosition">Initial position (m).</param>
+    /// <param name="finalPosition">Final position (m).</param>
+    /// <param name="timeOfFlight">Time of flight (timespan).</param>
+    /// <returns></returns>
+    public (Vector3D v1, Vector3D v2) Solve(double gravitationalParameter,
+        Vector3D initialPosition,
+        Vector3D finalPosition,
+        TimeSpan timeOfFlight)
+    {
+        if (TrySolve(gravitationalParameter, initialPosition, finalPosition, timeOfFlight, out var solution))
+        {
+            return solution;
+        }
+        
+        throw new InvalidOperationException("No solution could be found for the provided flight parameters");
+    }
     
     /// <summary>
     ///     Solves the Lambert problem using the Izzo Algorithm.
