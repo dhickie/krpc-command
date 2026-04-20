@@ -110,6 +110,7 @@ public class SuicideBurnLandingManoeuvre(ManoeuvreLogger logger, ManoeuvreContex
         NodeUtil.CreateNodeFromTargetVelocity(ship, burnUt, postBurnVelocity);
         
         // Perform the burn
+        await context.MechJeb.NodeExecutor.ExecuteNodeAsync(cancellationToken);
     }
 
     private double CalculateDeorbitUt(double landingSiteLat, double landingSiteLng)

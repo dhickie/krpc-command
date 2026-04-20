@@ -46,15 +46,25 @@ public static class OrbitExtensions
     /// Returns the eccentricity vector of the orbit, given the orbital state vectors at a consistent point in time.
     /// Assumes that all vectors, both arguments and return value, are in the non-rotating reference frame of the
     /// orbit's body.
+    /// https://en.wikipedia.org/wiki/Eccentricity_vector
     /// </summary>
     /// <param name="orbit">The orbit to get the eccentricity vector of</param>
     /// <param name="position">The position of the orbiting object at a point in time</param>
     /// <param name="velocity">The velocity of the orbiting object at a point in time</param>
-    /// <returns></returns>
+    /// <returns>The eccentricity vector, in the orbit's body's non-rotating reference frame</returns>
     public static Tuple<double, double, double> EccentricityVector(this Orbit orbit,
         Tuple<double, double, double> position,
         Tuple<double, double, double> velocity)
     {
-        
+        var r = position.ToVector3D();
+        var rMag = r.Length;
+        var v = velocity.ToVector3D();
+        var vMag = v.Length;
+        var mu = orbit.Body.GravitationalParameter;
+
+        var e = ((Math.Pow(vMag, 2) / mu) - (1 / rMag)) * r;
+        e -= (r.DotProduct(v) / mu) * v;
+
+        return e.ToTuple();
     }
 }
