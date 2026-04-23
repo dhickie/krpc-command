@@ -3,9 +3,13 @@ using KrpcCommand.Extensions;
 using KrpcCommand.Manoeuvres.Parameters;
 using KrpcCommand.Models;
 using KrpcCommand.Utilities;
+using MathNet.Numerics.LinearAlgebra;
+using MathNet.Numerics.LinearAlgebra.Double;
+using MathNet.Numerics.Optimization;
 using MathNet.Numerics.RootFinding;
 using MathNet.Spatial.Euclidean;
 using MathNet.Spatial.Units;
+using AutoPilot = KRPC.Client.Services.SpaceCenter.AutoPilot;
 
 namespace KrpcCommand.Manoeuvres;
 
@@ -26,7 +30,9 @@ public class SuicideBurnLandingManoeuvre(ManoeuvreLogger logger, ManoeuvreContex
     public string Description => "Land on an airless body using a suicide burn targeted at a specific location.";
 
     private readonly DoubleManoeuvreParameter _targetLatitude = new("targetLatitude", "Target latitude (degrees)", 0.0);
-    private readonly DoubleManoeuvreParameter _targetLongitude = new("targetLongitude", "Target longitude (degrees)", 0.0);
+
+    private readonly DoubleManoeuvreParameter _targetLongitude =
+        new("targetLongitude", "Target longitude (degrees)", 0.0);
 
     /// <inheritdoc />
     public IReadOnlyList<ManoeuvreParameter> Parameters => [_targetLatitude, _targetLongitude];
@@ -42,13 +48,15 @@ public class SuicideBurnLandingManoeuvre(ManoeuvreLogger logger, ManoeuvreContex
 
     // Polling interval for the control loops (ms)
     private const int ControlLoopInterval = 50;
-    
+
     // Manoeuvre variables that are useful to have across functions
     // ReSharper disable once InconsistentNaming
     private double _lat => _targetLatitude.Value;
+
     // ReSharper disable InconsistentNaming
     private double _lng => _targetLongitude.Value;
     // ReSharper restore InconsistentNaming
+
     private Vector3D _flyoverPosition;
     private double _deorbitBurnUt;
     private double _flyoverUt;
@@ -72,20 +80,20 @@ public class SuicideBurnLandingManoeuvre(ManoeuvreLogger logger, ManoeuvreContex
         var targetSurfaceHeight = body.SurfaceHeight(targetLat, targetLng);
         var targetRadius = body.EquatorialRadius + targetSurfaceHeight;
         logger.Log($"Target surface elevation: {targetSurfaceHeight:F0} m");
-        
+
         // Phase 1: Perform a deorbit burn that adjusts the ship's trajectory so that it passes a short distance above
         // the target landing site. The exact altitude at which it passes over the landing site will differ depending
         // on the ship's initial altitude when the burn begins
         await PerformDeorbitBurn(cancellationToken);
         cancellationToken.ThrowIfCancellationRequested();
-        
+
         // Phase 2: Halfway to the flyover point, perform a correction burn to ensure we pass over the flyover point
         // at the correct time
         await PerformDeorbitCorrectionBurn(cancellationToken);
         cancellationToken.ThrowIfCancellationRequested();
 
         // Phase 3: Kill lateral velocity above the landing site
-        await KillLateralVelocityAboveSite(targetLat, targetLng, cancellationToken);
+        await KillLateralVelocityAboveSite(cancellationToken);
         cancellationToken.ThrowIfCancellationRequested();
 
         // Phase 4: Orient for the burn and wait until it's time
@@ -103,26 +111,26 @@ public class SuicideBurnLandingManoeuvre(ManoeuvreLogger logger, ManoeuvreContex
     private async Task PerformDeorbitBurn(CancellationToken cancellationToken)
     {
         var ship = context.ActiveVessel;
-        var body = ship.Orbit.Body; 
-        
+        var body = ship.Orbit.Body;
+
         // Calculate the UT at which we will perform the deorbit burn
         var burnUt = CalculateDeorbitUt();
         _deorbitBurnUt = burnUt;
-        
+
         // Calculate where the ship will be when the burn takes place
-        var positionAtBurn = 
+        var positionAtBurn =
             ship.Orbit.PositionAt(burnUt, body.NonRotatingReferenceFrame).ToVector3D();
-        
+
         // Calculate a reasonable upper bound for the flyover altitude over the landing site
         var flyoverAltitude = CalculateWorstCaseLandingBurnAltitude(positionAtBurn);
-        
+
         // Calculate what the ship's velocity needs to be after the burn to hit the flyover position
-        var postBurnVelocity = 
+        var postBurnVelocity =
             CalculatePostBurnVelocity(positionAtBurn, burnUt, flyoverAltitude);
-        
+
         // Create the manoeuvre node
         NodeUtil.CreateNodeFromTargetVelocity(ship, burnUt, postBurnVelocity);
-        
+
         // Perform the burn
         await context.MechJeb.NodeExecutor.ExecuteNodeAsync(cancellationToken);
     }
@@ -130,32 +138,32 @@ public class SuicideBurnLandingManoeuvre(ManoeuvreLogger logger, ManoeuvreContex
     private async Task PerformDeorbitCorrectionBurn(CancellationToken cancellationToken)
     {
         const double correctionBurnTolerance = 5;
-        
+
         var ship = context.ActiveVessel;
         var orbit = ship.Orbit;
         var body = orbit.Body;
-        
+
         // Calculate the parameters for the Lambert solve
         var tof = (_flyoverUt - _deorbitBurnUt) / 2;
         var burnUt = tof + _deorbitBurnUt;
         var burnPosition = orbit.PositionAt(burnUt, body.NonRotatingReferenceFrame).ToVector3D();
-        
+
         // Solve Lambert
         var solver = new IzzoLambertSolver();
         var (v1, _) = solver.Solve(
-            body.GravitationalParameter, 
-            burnPosition, 
-            _flyoverPosition, 
+            body.GravitationalParameter,
+            burnPosition,
+            _flyoverPosition,
             TimeSpan.FromSeconds(tof));
-        
+
         var burn = ship.VelocityAt(burnUt).ToVector3D() - v1;
-        
+
         // Skip the correction burn if it's sufficiently small
         if (burn.Length <= correctionBurnTolerance)
         {
             return;
         }
-        
+
         // Create and execute the node
         NodeUtil.CreateNodeFromTargetVelocity(ship, burnUt, burnPosition);
         await context.MechJeb.NodeExecutor.ExecuteNodeAsync(cancellationToken);
@@ -166,10 +174,10 @@ public class SuicideBurnLandingManoeuvre(ManoeuvreLogger logger, ManoeuvreContex
         var ship = context.ActiveVessel;
         var body = ship.Orbit.Body;
         var ut = context.UT;
-        
+
         // Calculate the position along the existing orbit that is closest to the landing site
         var orbitNormal = ship.OrbitNormal().ToUnitVector3D();
-        var landingPosition = 
+        var landingPosition =
             body.SurfacePosition(_lat, _lng, body.NonRotatingReferenceFrame)
                 .ToVector3D();
         var angle = orbitNormal.AngleTo(landingPosition).Degrees;
@@ -181,18 +189,18 @@ public class SuicideBurnLandingManoeuvre(ManoeuvreLogger logger, ManoeuvreContex
             // accommodate for particularly long deorbit burns
             return ut + 600;
         }
-        
+
         var closestPosition = body
             .SurfacePosition(_lat, _lng, body.NonRotatingReferenceFrame)
             .ToVector3D()
             .ProjectOn(orbitNormal);
-        
+
         // Rotate the closest position by 60 degrees retrograde
         var burnPosition = closestPosition.Rotate(orbitNormal, Angle.FromDegrees(-60));
-        
+
         // Calculate the true anomaly at that point
         var timeToPeriapsis = ship.Orbit.TimeToPeriapsis;
-        var periapsisPosition = 
+        var periapsisPosition =
             ship.Orbit.PositionAt(timeToPeriapsis + ut, body.NonRotatingReferenceFrame).ToVector3D();
         var trueAnomaly = burnPosition.AngleTo(periapsisPosition);
 
@@ -204,7 +212,7 @@ public class SuicideBurnLandingManoeuvre(ManoeuvreLogger logger, ManoeuvreContex
             // be less than 180, we need to get the other part of the orbit
             trueAnomaly = Angle.FromDegrees(360 - trueAnomaly.Degrees);
         }
-        
+
         return ship.Orbit.TimeToTrueAnomaly(trueAnomaly.Radians) + ut;
     }
 
@@ -220,13 +228,13 @@ public class SuicideBurnLandingManoeuvre(ManoeuvreLogger logger, ManoeuvreContex
     {
         var ship = context.ActiveVessel;
         var body = ship.Orbit.Body;
-        
+
         var landingSiteAltitude = body.SurfaceHeight(_lat, _lng);
         var fallDistance = deorbitBurnPosition.Length - (body.EquatorialRadius + landingSiteAltitude);
         var g = body.GravitationalParameter / Math.Pow(body.EquatorialRadius, 2);
-        
+
         var maxBurnHeight = (ship.Mass * g * fallDistance) / ship.AvailableThrust;
-        
+
         return maxBurnHeight;
     }
 
@@ -236,7 +244,7 @@ public class SuicideBurnLandingManoeuvre(ManoeuvreLogger logger, ManoeuvreContex
     {
         var ship = context.ActiveVessel;
         var body = ship.Orbit.Body;
-        
+
         // Calculate a lower bound for the time of flight, as the circular orbit time between the two points at the 
         // same altitude
         var circularOrbitVelocity = Math.Sqrt(body.GravitationalParameter / deorbitBurnPosition.Length);
@@ -244,7 +252,7 @@ public class SuicideBurnLandingManoeuvre(ManoeuvreLogger logger, ManoeuvreContex
             body.SurfacePosition(
                 _lat, _lng, body.NonRotatingReferenceFrame).ToVector3D());
         var t0 = (deorbitBurnPosition.Length * arcAngle.Radians) / circularOrbitVelocity;
-        
+
         // Calculate a time bracket for the root search, by incrementing the time of flight until the initial
         // radial velocity flips from negative (falling toward the body) to positive (moving away from the body)
         var lambertParams = new DeorbitLambertProblemParams(
@@ -253,7 +261,7 @@ public class SuicideBurnLandingManoeuvre(ManoeuvreLogger logger, ManoeuvreContex
             flyoverAltitude,
             deorbitBurnPosition);
         var (tMin, tMax) = FindRootSearchBracket(lambertParams);
-        
+
         // Use Brent's method to search over the bracket to find the exact velocity that keeps the ship's radial
         // velocity at zero after the deorbit burn
         Func<double, double> func = t =>
@@ -266,10 +274,10 @@ public class SuicideBurnLandingManoeuvre(ManoeuvreLogger logger, ManoeuvreContex
         var root = Brent.FindRoot(func, tMin, tMax, 1, 100);
         _flyoverUt = burnUt + root; // Store the flyover time & position for the correction burn later
         _flyoverPosition = body.PositionAtAltitudeAt(
-            _flyoverUt, 
-            _lat, 
-            _lng, 
-            flyoverAltitude, 
+            _flyoverUt,
+            _lat,
+            _lng,
+            flyoverAltitude,
             body.NonRotatingReferenceFrame).ToVector3D();
 
         lambertParams.TimeOfFlight = root;
@@ -296,12 +304,12 @@ public class SuicideBurnLandingManoeuvre(ManoeuvreLogger logger, ManoeuvreContex
                     throw new InvalidOperationException(
                         "Impossible to find valid trajectory for provided manoeuvre parameters");
                 }
-                
+
                 // Otherwise increment tMin to skip over the unsolvable time of flight
                 tMin += timeStep;
                 continue;
             }
-            
+
             var radialVelocity = solution.v1.DotProduct(parameters.DeorbitBurnPosition.Normalize());
             if (radialVelocity > 0)
             {
@@ -323,153 +331,125 @@ public class SuicideBurnLandingManoeuvre(ManoeuvreLogger logger, ManoeuvreContex
         {
             return solution;
         }
-        
+
         throw new InvalidOperationException("Unable to solve lambert problem for provided parameters.");
     }
 
     private bool TrySolveLambert(DeorbitLambertProblemParams parameters, out (Vector3D v1, Vector3D v2) solution)
     {
         var body = context.ActiveVessel.Orbit.Body;
-        
+
         var ut = parameters.BurnUt;
         var tof = parameters.TimeOfFlight;
         var alt = parameters.FlyoverAltitude;
         var pos = parameters.DeorbitBurnPosition;
-        
+
         // Calculate where the flyover point will be at the end of the trajectory
         var flyPos = body.PositionAtAltitudeAt(
-            ut + tof, 
-            _lat, 
-            _lng, 
-            alt, 
+            ut + tof,
+            _lat,
+            _lng,
+            alt,
             body.NonRotatingReferenceFrame).ToVector3D();
-        
+
         // Solve the Lambert problem for these parameters to get the required post-burn velocity
         var solver = new IzzoLambertSolver();
-        return solver.TrySolve(body.GravitationalParameter, 
-            pos, 
-            flyPos, 
-            TimeSpan.FromSeconds(tof), 
+        return solver.TrySolve(body.GravitationalParameter,
+            pos,
+            flyPos,
+            TimeSpan.FromSeconds(tof),
             out solution);
     }
 
     /// <summary>
     /// Kills lateral (horizontal) velocity relative to the surface when passing above
     /// the landing site, leaving only a vertical descent.
+    /// Assumes that the ship's flyover time is accurate after the correction burn.
     /// </summary>
-    private async Task KillLateralVelocityAboveSite(double targetLat, double targetLng, CancellationToken cancellationToken)
+    private async Task KillLateralVelocityAboveSite(CancellationToken cancellationToken)
     {
-        var vessel = context.ActiveVessel;
-        var body = vessel.Orbit.Body;
+        // There are several factors affecting the accuracy of the burn here.
+        // If we burn when we hit the flyover point, the ship will overshoot as we shed the lateral velocity
+        // If we burn early, the total time of flight will be longer and so the body below will have rotated more
+        // by the time we hit the flyover position.
+        // So we use a numerical method (BFGS) to calculate the ideal time to start burning that minimises
+        // the final distance to the landing site.
+        
+        // Calculate when to perform the burn
+        var burnUt = CalculateLateralBurnUt();
 
-        logger.Log("Warping to landing site...");
-
-        // Calculate when we'll pass over the target
-        var eta = CalculateEtaToLongitude(vessel, body, targetLng);
-
-        // Warp to near the flyover point (leave some time for the burn)
-        var warpTo = context.UT + eta - 60;
-        if (warpTo > context.UT + 10)
+        // Perform the burn
+        Vector3D GetTarget(Vector3D velocity)
         {
-            context.SpaceCenter.WarpTo(warpTo);
-            await WaitForWarpComplete(cancellationToken);
+            // Vector that takes the lateral components of the ship's velocity relative to the surface
+            return new Vector3D(0, -velocity.Y, -velocity.Z);
         }
 
-        // Now refine: wait until we're close to the target longitude
-        logger.Log("Fine-tuning approach to landing site...");
-        var bodyRef = body.NonRotatingReferenceFrame;
-        while (true)
+        double GetRemainingBurn(Vector3D velocity)
         {
-            cancellationToken.ThrowIfCancellationRequested();
-
-            var flight = vessel.Flight(bodyRef);
-            var lngDiff = Math.Abs(NormalizeLongitude(flight.Longitude - targetLng));
-            if (lngDiff < 1.0)
-                break;
-
-            await Task.Delay(100, CancellationToken.None);
+            return GetTarget(velocity).Length;
         }
 
-        // Now kill horizontal velocity relative to the surface
-        logger.Log("Killing lateral velocity...");
+        var ap = new AutoPilotUtil(context.Connection);
+        ap.LockTarget(GetTarget, context.ActiveVessel.SurfaceReferenceFrame);
+        ap.SetRemainingBurn(GetRemainingBurn);
+        ap.BurnAt(burnUt);
+        
+        await ap.Engage(cancellationToken);
+    }
 
-        var surfVelocity = vessel.Velocity(bodyRef);
-        var vx = surfVelocity.Item1;
-        var vy = surfVelocity.Item2;
-        var vz = surfVelocity.Item3;
-
-        // Get the radial (up) direction at the vessel's position
-        var vesselPos = vessel.Position(bodyRef);
-        var posR = Math.Sqrt(vesselPos.Item1 * vesselPos.Item1 +
-                                vesselPos.Item2 * vesselPos.Item2 +
-                                vesselPos.Item3 * vesselPos.Item3);
-        var upX = vesselPos.Item1 / posR;
-        var upY = vesselPos.Item2 / posR;
-        var upZ = vesselPos.Item3 / posR;
-
-        // Radial (vertical) component of velocity
-        var vRadial = vx * upX + vy * upY + vz * upZ;
-
-        // Lateral velocity is total minus radial
-        var latVx = vx - vRadial * upX;
-        var latVy = vy - vRadial * upY;
-        var latVz = vz - vRadial * upZ;
-        var lateralSpeed = Math.Sqrt(latVx * latVx + latVy * latVy + latVz * latVz);
-
-        if (lateralSpeed < 1.0)
+    private double CalculateLateralBurnUt()
+    {
+        // Use the flyover time as the initial guess
+        var initialGuess = new DenseVector([_flyoverUt]);
+        double EvalFunc(Vector<double> x) => SimulateLateralBurn(x[0]);
+        Vector<double> GradFunc(Vector<double> x)
         {
-            logger.Log("Lateral velocity already negligible.");
-            return;
+            const double epsilon = 0.1; // Perturbation for numerical gradient
+            var grad = (SimulateLateralBurn(x[0] + epsilon) - SimulateLateralBurn(x[0] - epsilon)) / (2 * epsilon);
+            return new DenseVector([grad]);
         }
 
-        logger.Log($"Lateral velocity: {lateralSpeed:F1} m/s. Burning to kill...");
+        var opt = ObjectiveFunction.Gradient(EvalFunc, GradFunc);
 
-        // Point retrograde relative to surface and burn
-        var autopilot = vessel.AutoPilot;
-        autopilot.ReferenceFrame = vessel.SurfaceVelocityReferenceFrame;
-        autopilot.TargetDirection = new Tuple<double, double, double>(0, -1, 0); // Retrograde
-        autopilot.Engage();
+        var minimiser = new BfgsMinimizer(1e-5, 1e-5, 1e-5);
+        var result = minimiser.FindMinimum(opt, initialGuess);
 
-        // Wait for the vessel to align
-        await WaitForAlignment(autopilot, 5.0, cancellationToken);
+        return result.MinimizingPoint[0];
+    }
 
-        // Burn until horizontal speed is negligible
-        var control = vessel.Control;
-        control.Throttle = 1.0f;
+    private double SimulateLateralBurn(double burnUt)
+    {
+        var ship = context.ActiveVessel;
+        var orbit = ship.Orbit;
+        var body = orbit.Body;
+        var rf = body.NonRotatingReferenceFrame;
 
-        while (true)
-        {
-            cancellationToken.ThrowIfCancellationRequested();
+        var r = orbit.PositionAt(burnUt, body.NonRotatingReferenceFrame).ToVector3D();
+        var v = ship.VelocityAt(burnUt).ToVector3D();
 
-            var vel = vessel.Velocity(bodyRef);
-            var pos = vessel.Position(bodyRef);
-            var r = Math.Sqrt(pos.Item1 * pos.Item1 + pos.Item2 * pos.Item2 + pos.Item3 * pos.Item3);
-            var ux = pos.Item1 / r;
-            var uy = pos.Item2 / r;
-            var uz = pos.Item3 / r;
+        var initialState = new SimulationState(burnUt, r, v);
+        var parameters = new SimulationParameters(ship);
 
-            var vRad = vel.Item1 * ux + vel.Item2 * uy + vel.Item3 * uz;
-            var lx = vel.Item1 - vRad * ux;
-            var ly = vel.Item2 - vRad * uy;
-            var lz = vel.Item3 - vRad * uz;
-            var hSpeed = Math.Sqrt(lx * lx + ly * ly + lz * lz);
+        var simulator = new BurnSimulator(TimeSpan.FromMilliseconds(50), 
+            initialState, 
+            parameters,
+            state => CalculateRemainingBurn(state, body));
+        var endState = simulator.Run();
+        
+        // Return the distance between the stopping point and the intended landing site in meters
+        var lat = body.LatitudeAtPosition(endState.ShipPosition.ToTuple(), rf);
+        var lng = body.LongitudeAtPositionAt(endState.UT, endState.ShipPosition.ToTuple(), rf);
+        var surfacePos = body.SurfacePosition(lat, lng, rf).ToVector3D();
+        var intendedLandingSite = body.SurfacePosition(_lat, _lng, rf).ToVector3D();
+        
+        return Math.Abs((intendedLandingSite - surfacePos).Length);
+    }
 
-            if (hSpeed < 2.0)
-            {
-                // Throttle down proportionally for precision
-                control.Throttle = (float)Math.Max(0.05, hSpeed / 10.0);
-            }
-
-            if (hSpeed < 0.5)
-                break;
-
-            await Task.Delay(ControlLoopInterval, CancellationToken.None);
-        }
-
-        control.Throttle = 0.0f;
-        autopilot.Disengage();
-
-        logger.Log("Lateral velocity eliminated. Entering free-fall toward surface.");
+    private Vector3D CalculateRemainingBurn(SimulationState state, CelestialBody body)
+    {
+        var surfaceVelocity = body.SurfaceVelocityBelowAt(state.UT, state.ShipPosition.ToTuple()).ToVector3D();
+        return state.ShipVelocity - surfaceVelocity;
     }
 
     /// <summary>
@@ -712,40 +692,6 @@ public class SuicideBurnLandingManoeuvre(ManoeuvreLogger logger, ManoeuvreContex
         }
 
         return Math.Max(0, totalDistance);
-    }
-
-    /// <summary>
-    /// Calculates the time until the vessel passes over a given longitude, accounting
-    /// for both the vessel's orbital motion and the body's rotation.
-    /// </summary>
-    private double CalculateEtaToLongitude(Vessel vessel, CelestialBody body, double targetLng)
-    {
-        var bodyRef = body.NonRotatingReferenceFrame;
-        var flight = vessel.Flight(bodyRef);
-
-        var currentLng = flight.Longitude;
-        var angularDiff = NormalizeLongitude(targetLng - currentLng);
-
-        if (angularDiff < 0)
-            angularDiff += 360.0;
-
-        // The vessel's angular velocity over the surface is its orbital angular velocity
-        // minus the body's rotational angular velocity
-        var orbitalPeriod = vessel.Orbit.Period;
-        var orbitalAngularVelocity = 360.0 / orbitalPeriod; // degrees per second
-
-        var bodyRotationPeriod = body.RotationalPeriod;
-        var bodyAngularVelocity = 360.0 / bodyRotationPeriod; // degrees per second
-
-        var relativeAngularVelocity = orbitalAngularVelocity - bodyAngularVelocity;
-
-        if (relativeAngularVelocity <= 0)
-        {
-            // The body rotates faster than the vessel orbits (unlikely but handle it)
-            relativeAngularVelocity = orbitalAngularVelocity;
-        }
-
-        return angularDiff / relativeAngularVelocity;
     }
 
     /// <summary>
