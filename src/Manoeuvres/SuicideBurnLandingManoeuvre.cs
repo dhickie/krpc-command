@@ -376,7 +376,7 @@ public class SuicideBurnLandingManoeuvre(ManoeuvreLogger logger, ManoeuvreContex
         // the final distance to the landing site.
         
         // Calculate when to perform the burn
-        var burnUt = CalculateLateralBurnUt();
+        var burnUt = CalculateLateralBurnUt(cancellationToken);
 
         // Perform the burn
         Vector3D GetTarget(Vector3D velocity)
@@ -398,15 +398,16 @@ public class SuicideBurnLandingManoeuvre(ManoeuvreLogger logger, ManoeuvreContex
         await ap.Engage(cancellationToken);
     }
 
-    private double CalculateLateralBurnUt()
+    private double CalculateLateralBurnUt(CancellationToken cancellationToken)
     {
         // Use the flyover time as the initial guess
         var initialGuess = new DenseVector([_flyoverUt]);
-        double EvalFunc(Vector<double> x) => SimulateLateralBurn(x[0]);
+        double EvalFunc(Vector<double> x) => SimulateLateralBurn(x[0], cancellationToken);
         Vector<double> GradFunc(Vector<double> x)
         {
             const double epsilon = 0.1; // Perturbation for numerical gradient
-            var grad = (SimulateLateralBurn(x[0] + epsilon) - SimulateLateralBurn(x[0] - epsilon)) / (2 * epsilon);
+            var grad = 
+                (SimulateLateralBurn(x[0] + epsilon, cancellationToken) - SimulateLateralBurn(x[0] - epsilon, cancellationToken)) / (2 * epsilon);
             return new DenseVector([grad]);
         }
 
@@ -418,7 +419,7 @@ public class SuicideBurnLandingManoeuvre(ManoeuvreLogger logger, ManoeuvreContex
         return result.MinimizingPoint[0];
     }
 
-    private double SimulateLateralBurn(double burnUt)
+    private double SimulateLateralBurn(double burnUt, CancellationToken cancellationToken)
     {
         var ship = context.ActiveVessel;
         var orbit = ship.Orbit;
@@ -435,7 +436,7 @@ public class SuicideBurnLandingManoeuvre(ManoeuvreLogger logger, ManoeuvreContex
             initialState, 
             parameters,
             state => CalculateRemainingBurn(state, body));
-        var endState = simulator.Run();
+        var endState = simulator.Run(cancellationToken);
         
         // Return the distance between the stopping point and the intended landing site in meters
         var lat = body.LatitudeAtPosition(endState.ShipPosition.ToTuple(), rf);

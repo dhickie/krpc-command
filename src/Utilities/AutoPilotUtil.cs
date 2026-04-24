@@ -13,6 +13,8 @@ namespace KrpcCommand.Utilities;
 /// <param name="connection">The kRPC connection</param>
 public class AutoPilotUtil(Connection connection)
 {
+    public static double CompletionTolerance = 0.01;
+    
     private readonly TimeSpan _controlLoop = TimeSpan.FromMilliseconds(10);
     
     private readonly Vessel _ship = connection.SpaceCenter().ActiveVessel;
@@ -85,19 +87,19 @@ public class AutoPilotUtil(Connection connection)
                 // TODO do a better job of warping to near the burn start if its ages away
                 var start = sw.Elapsed;
                 var utNew = _ut.Get();
-                if (utNew > utPrev)
+                if (utNew > utPrev && utNew > _burnStart)
                 {
                     // Only take action if we're in a different physics tick from the previous iteration
                     // Decide whether the burn is finished
                     var remainingBurn = _remainingBurn!(_v.Get().ToVector3D());
-                    if (remainingBurn < 0.1)
+                    if (remainingBurn < CompletionTolerance)
                     {
                         break;
                     }
 
                     // Set course and throttle
                     ap.TargetDirection = _target(_v.Get().ToVector3D()).ToTuple();
-                    _ship.Control.Throttle = CalculateThrottle(remainingBurn);
+                    _ship.Control.Throttle = CalculateThrottle(remainingBurn, _maxThrust!.Get(), _mass!.Get());
                 }
 
                 utPrev = utNew;
@@ -112,16 +114,17 @@ public class AutoPilotUtil(Connection connection)
         }
     }
 
-    private float CalculateThrottle(double remainingBurn)
+    /// <summary>
+    /// Calculates the throttle that should be applied during a burn, so that it doesn't overshoot between physics ticks
+    /// </summary>
+    /// <param name="remainingBurn">The amount of deltaV remaining in the burn in m/s</param>
+    /// <param name="maxThrust">The maximum thrust of the vessel in Newtons</param>
+    /// <param name="mass">The mass of the vessel in kg</param>
+    /// <returns>The throttle that should be used, as a value between 0 and 1</returns>
+    public static float CalculateThrottle(double remainingBurn, double maxThrust, double mass)
     {
-        // If we haven't hit burn start yet, then don't burn
-        if (_ut!.Get() < _burnStart)
-        {
-            return 0;
-        }
-        
         // Work out how long it would take to hit 0 on the remaining burn given the ship's current thrust and mass
-        var maxAccel = _maxThrust!.Get() / _mass!.Get();;
+        var maxAccel = maxThrust / mass;
         var timeToZero = remainingBurn / maxAccel;
         
         // It would take one tick to receive the next update, another to send the command to adjust the throttle,
@@ -132,7 +135,7 @@ public class AutoPilotUtil(Connection connection)
         var tickTimeMs = TimeSpan.FromSeconds(1) / tickHz;
         var frameBuffer = 10;
         var bufferTime = tickTimeMs * frameBuffer;
-        var minThrottle = 0.02;
+        var minThrottle = 0.01;
 
         if (bufferTime.TotalSeconds < timeToZero)
         {
@@ -141,8 +144,8 @@ public class AutoPilotUtil(Connection connection)
         
         // Aim to hit zero bufferTime into the future
         var targetAccel = remainingBurn / bufferTime.TotalSeconds;
-        var targetThrust = targetAccel * _mass.Get();
-        var targetThrottle = targetThrust / _maxThrust.Get();
+        var targetThrust = targetAccel * mass;
+        var targetThrottle = targetThrust / maxThrust;
         
         return (float)Math.Max(targetThrottle, minThrottle);
     }
