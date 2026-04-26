@@ -65,7 +65,7 @@ public class BurnSimulator(
             // Check whether we're done
             var state = new SimulationState(tNext, xNext, vNext);
             var remainingBurn = _remainingBurnCalculator(state);
-            if (remainingBurn.Length < AutoPilotUtil.CompletionTolerance)
+            if (remainingBurn.Length < AutoBurnUtil.CompletionTolerance)
             {
                 break;
             }
@@ -87,7 +87,8 @@ public class BurnSimulator(
         var maxThrust = _simulationParameters.Thrust;
         var state = new SimulationState(ut, pos, vel);
         var remainingBurn = _remainingBurnCalculator(state);
-        var throttle = AutoPilotUtil.CalculateThrottle(remainingBurn.Length, maxThrust, mass);
+        var throttle = 
+            AutoBurnUtil.CalculateVelocityBurnThrottle(remainingBurn.Length, maxThrust, mass);
         var aThrust = ((throttle * maxThrust) / mass) * remainingBurn.Normalize();
         return (aThrust, throttle);
     }

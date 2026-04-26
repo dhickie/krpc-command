@@ -9,7 +9,6 @@ using MathNet.Numerics.Optimization;
 using MathNet.Numerics.RootFinding;
 using MathNet.Spatial.Euclidean;
 using MathNet.Spatial.Units;
-using AutoPilot = KRPC.Client.Services.SpaceCenter.AutoPilot;
 
 namespace KrpcCommand.Manoeuvres;
 
@@ -95,13 +94,9 @@ public class SuicideBurnLandingManoeuvre(ManoeuvreLogger logger, ManoeuvreContex
         // Phase 3: Kill lateral velocity above the landing site
         await KillLateralVelocityAboveSite(cancellationToken);
         cancellationToken.ThrowIfCancellationRequested();
-
-        // Phase 4: Orient for the burn and wait until it's time
-        await WaitForSuicideBurn(body, cancellationToken);
-        cancellationToken.ThrowIfCancellationRequested();
-
-        // Phase 5: Execute the suicide burn
-        await PerformSuicideBurn(body, cancellationToken);
+        
+        // Phase 4: Perform the suicide burn
+        await PerformSuicideBurn(cancellationToken);
 
         logger.Log("Landing complete.");
         var flight = vessel.Flight(body.NonRotatingReferenceFrame);
@@ -390,7 +385,7 @@ public class SuicideBurnLandingManoeuvre(ManoeuvreLogger logger, ManoeuvreContex
             return GetTarget(velocity).Length;
         }
 
-        var ap = new AutoPilotUtil(context.Connection);
+        var ap = new VelocityAutoBurn(context.Connection);
         ap.LockTarget(GetTarget, context.ActiveVessel.SurfaceReferenceFrame);
         ap.SetRemainingBurn(GetRemainingBurn);
         ap.BurnAt(burnUt);
@@ -445,77 +440,19 @@ public class SuicideBurnLandingManoeuvre(ManoeuvreLogger logger, ManoeuvreContex
         var intendedLandingSite = body.SurfacePosition(_lat, _lng, rf).ToVector3D();
         
         return Math.Abs((intendedLandingSite - surfacePos).Length);
-    }
 
-    private Vector3D CalculateRemainingBurn(SimulationState state, CelestialBody body)
-    {
-        var surfaceVelocity = body.SurfaceVelocityBelowAt(state.UT, state.ShipPosition.ToTuple()).ToVector3D();
-        return state.ShipVelocity - surfaceVelocity;
-    }
-
-    /// <summary>
-    /// Orients the vessel for retrograde burn and waits until the calculated stopping
-    /// distance equals the current altitude — the point at which the burn must begin.
-    /// </summary>
-    private async Task WaitForSuicideBurn(CelestialBody body, CancellationToken cancellationToken)
-    {
-        var vessel = context.ActiveVessel;
-
-        logger.Log("Orienting surface retrograde for suicide burn...");
-
-        // Point surface retrograde
-        var autopilot = vessel.AutoPilot;
-        autopilot.ReferenceFrame = vessel.SurfaceVelocityReferenceFrame;
-        autopilot.TargetDirection = new Tuple<double, double, double>(0, -1, 0);
-        autopilot.Engage();
-
-        await WaitForAlignment(autopilot, 5.0, cancellationToken);
-
-        logger.Log("Aligned. Waiting for suicide burn start...");
-
-        // Continuously compute required throttle and wait until it reaches 1.0
-        var bodyRef = body.NonRotatingReferenceFrame;
-        while (true)
+        Vector3D CalculateRemainingBurn(SimulationState state, CelestialBody body)
         {
-            cancellationToken.ThrowIfCancellationRequested();
-
-            var requiredThrottle = CalculateRequiredThrottle(vessel, body, bodyRef);
-
-            if (requiredThrottle >= 0.95)
-            {
-                logger.Log("Suicide burn start point reached!");
-                break;
-            }
-
-            // Warp during the waiting period if we're high up, otherwise just wait
-            var flight = vessel.Flight(bodyRef);
-            var altitude = flight.SurfaceAltitude;
-            if (altitude > 50000 && requiredThrottle < 0.1)
-            {
-                // Use physics warp for faster descent
-                context.SpaceCenter.PhysicsWarpFactor = 3;
-            }
-            else if (altitude > 10000 && requiredThrottle < 0.3)
-            {
-                context.SpaceCenter.PhysicsWarpFactor = 2;
-            }
-            else
-            {
-                context.SpaceCenter.PhysicsWarpFactor = 0;
-            }
-
-            await Task.Delay(ControlLoopInterval, CancellationToken.None);
+            var surfaceVelocity = body.SurfaceVelocityBelowAt(state.UT, state.ShipPosition.ToTuple()).ToVector3D();
+            return state.ShipVelocity - surfaceVelocity;
         }
-
-        // Ensure no warp during the burn
-        context.SpaceCenter.PhysicsWarpFactor = 0;
     }
 
     /// <summary>
     /// Executes the suicide burn. Continuously adjusts throttle based on the required
     /// deceleration to hit zero velocity at the surface. Deploys landing gear at low altitude.
     /// </summary>
-    private async Task PerformSuicideBurn(CelestialBody body, CancellationToken cancellationToken)
+    private async Task PerformSuicideBurn(CancellationToken cancellationToken)
     {
         var vessel = context.ActiveVessel;
         var control = vessel.Control;
@@ -597,135 +534,33 @@ public class SuicideBurnLandingManoeuvre(ManoeuvreLogger logger, ManoeuvreContex
     }
 
     /// <summary>
-    /// Calculates the throttle fraction (0-1) required to bring the vessel to a stop at the
-    /// surface. A value of 1 or greater means full throttle is needed immediately.
-    /// This accounts for fuel consumption during the burn using the Tsiolkovsky equation.
+    /// Calculates where the ship would come to a stop relative to the surface by simulating the suicide burn
+    /// starting now. This takes into account the reduction of mass due to burning fuel and the increase in
+    /// gravitational acceleration as the ship approaches the body, along with any precision issues in previous
+    /// burns that led to the surface velocity and the ship's lateral velocity drifting apart
     /// </summary>
-    private double CalculateRequiredThrottle(Vessel vessel, CelestialBody body, ReferenceFrame bodyRef)
+    private Vector3D CalculateCurrentStoppingPoint(CancellationToken cancellationToken)
     {
-        var flight = vessel.Flight(bodyRef);
-        var altitude = flight.SurfaceAltitude;
-        var speed = flight.Speed;
-        var verticalSpeed = flight.VerticalSpeed;
+        var ut = context.UT;
+        var ship = context.ActiveVessel;
+        var body = ship.Orbit.Body;
+        var rf = body.NonRotatingReferenceFrame;
 
-        // If we're barely moving or already very close, return high throttle to enter burn phase
-        if (altitude < 100 && speed < 5)
-            return 1.0;
+        var simulationParams = new SimulationParameters(ship);
+        var initialState = new SimulationState(ut, ship.Position(rf).ToVector3D(), ship.Velocity(rf).ToVector3D());
+        var simulator = new BurnSimulator(TimeSpan.FromMilliseconds(1000 / 60), 
+            initialState, 
+            simulationParams, 
+            RemainingBurn);
+        var finalState = simulator.Run(cancellationToken);
 
-        var mass = vessel.Mass;
-        var maxThrust = vessel.AvailableThrust;
+        return finalState.ShipPosition;
 
-        if (maxThrust <= 0)
-            return 1.0; // No thrust available, signal immediate action needed
-
-        var gravity = body.GravitationalParameter / Math.Pow(body.EquatorialRadius + altitude, 2);
-        var isp = vessel.VacuumSpecificImpulse;
-
-        // Calculate stopping distance using the rocket equation with gravity
-        // The deceleration available is: a(t) = (maxThrust / m(t)) - g
-        // where m(t) = m0 - (maxThrust / (isp * g0)) * t  (mass decreases as fuel burns)
-        //
-        // Using the Tsiolkovsky equation, the delta-v to stop is equal to current speed.
-        // The stopping distance with variable mass and constant gravity is:
-        //
-        // We integrate numerically for accuracy.
-        var stoppingDistance = CalculateStoppingDistance(speed, mass, maxThrust, isp, gravity);
-
-        // The throttle required is the ratio of stopping distance to current altitude
-        // We use altitude as the distance to surface (simplified - assumes vertical descent)
-        // For non-vertical descent, project onto the velocity vector
-        var effectiveAltitude = altitude;
-
-        // If we have significant horizontal velocity, use the total distance along the velocity vector
-        if (speed > 1.0 && verticalSpeed < -0.5)
+        Vector3D RemainingBurn(SimulationState state)
         {
-            // Ratio of downward speed to total speed gives us the vertical component
-            var verticalFraction = Math.Abs(verticalSpeed) / speed;
-            if (verticalFraction > 0.01)
-            {
-                effectiveAltitude = altitude / verticalFraction;
-            }
+            var surfaceVelocity = body.SurfaceVelocityBelowAt(state.UT, state.ShipPosition.ToTuple()).ToVector3D();
+            var delta = state.ShipVelocity - surfaceVelocity;
+            return -delta;
         }
-
-        if (effectiveAltitude <= 0)
-            return 1.0;
-
-        return stoppingDistance / effectiveAltitude;
-    }
-
-    /// <summary>
-    /// Numerically integrates the stopping distance accounting for fuel mass loss during the burn.
-    /// Uses small time steps to simulate the deceleration with decreasing mass.
-    /// </summary>
-    private static double CalculateStoppingDistance(double speed, double mass, double maxThrust, double isp, double gravity)
-    {
-        var g0 = 9.80665;
-        var fuelFlowRate = maxThrust / (isp * g0); // kg/s
-        var dt = 0.1; // Time step in seconds
-        var remainingSpeed = speed;
-        var totalDistance = 0.0;
-        var currentMass = mass;
-
-        while (remainingSpeed > 0.1 && currentMass > 0)
-        {
-            var currentAccel = (maxThrust / currentMass) - gravity;
-
-            if (currentAccel <= 0)
-            {
-                // Cannot decelerate against gravity - return a very large distance
-                return double.MaxValue;
-            }
-
-            var speedReduction = currentAccel * dt;
-            if (speedReduction > remainingSpeed)
-            {
-                // Partial time step for the final bit
-                var partialDt = remainingSpeed / currentAccel;
-                totalDistance += remainingSpeed * partialDt - 0.5 * currentAccel * partialDt * partialDt;
-                remainingSpeed = 0;
-            }
-            else
-            {
-                totalDistance += remainingSpeed * dt - 0.5 * currentAccel * dt * dt;
-                remainingSpeed -= speedReduction;
-                currentMass -= fuelFlowRate * dt;
-            }
-        }
-
-        return Math.Max(0, totalDistance);
-    }
-
-    /// <summary>
-    /// Waits until the autopilot is aligned within the specified error tolerance.
-    /// </summary>
-    private static async Task WaitForAlignment(AutoPilot autopilot, double toleranceDegrees, CancellationToken cancellationToken)
-    {
-        while (autopilot.Error > toleranceDegrees)
-        {
-            cancellationToken.ThrowIfCancellationRequested();
-            await Task.Delay(100, CancellationToken.None);
-        }
-    }
-
-    /// <summary>
-    /// Waits until time warp has completed (warp rate back to 1x).
-    /// </summary>
-    private async Task WaitForWarpComplete(CancellationToken cancellationToken)
-    {
-        while (context.SpaceCenter.WarpRate > 1)
-        {
-            cancellationToken.ThrowIfCancellationRequested();
-            await Task.Delay(500, CancellationToken.None);
-        }
-    }
-
-    /// <summary>
-    /// Normalizes a longitude value to the range [-180, 180].
-    /// </summary>
-    private static double NormalizeLongitude(double lng)
-    {
-        while (lng > 180) lng -= 360;
-        while (lng < -180) lng += 360;
-        return lng;
     }
 }
