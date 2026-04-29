@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <PackageReference Include="KRPC.Client" Version="0.5.4" NoWarn="NU1701" />
+    <PackageReference Include="MathNet.Spatial" Version="0.6.0" />
   </ItemGroup>
 
 </Project>
