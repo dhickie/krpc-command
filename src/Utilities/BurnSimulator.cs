@@ -1,4 +1,5 @@
 using KrpcCommand.Models;
+using KrpcCommand.Utilities.AutoBurn;
 using MathNet.Spatial.Euclidean;
 
 namespace KrpcCommand.Utilities;

@@ -3,6 +3,7 @@ using KrpcCommand.Extensions;
 using KrpcCommand.Manoeuvres.Parameters;
 using KrpcCommand.Models;
 using KrpcCommand.Utilities;
+using KrpcCommand.Utilities.AutoBurn;
 using MathNet.Numerics.LinearAlgebra;
 using MathNet.Numerics.LinearAlgebra.Double;
 using MathNet.Numerics.Optimization;
@@ -39,15 +40,6 @@ public class SuicideBurnLandingManoeuvre(ManoeuvreLogger logger, ManoeuvreContex
     // Altitude at which to deploy landing gear (meters)
     private const double GearDeployAltitude = 500.0;
 
-    // Altitude at which to cut engines and let the vessel settle (meters)
-    private const double TouchdownAltitude = 8.0;
-
-    // Target vertical speed for final descent (m/s, negative = downward)
-    private const double TouchdownSpeed = -1.0;
-
-    // Polling interval for the control loops (ms)
-    private const int ControlLoopInterval = 50;
-
     // Manoeuvre variables that are useful to have across functions
     // ReSharper disable once InconsistentNaming
     private double _lat => _targetLatitude.Value;
@@ -77,7 +69,6 @@ public class SuicideBurnLandingManoeuvre(ManoeuvreLogger logger, ManoeuvreContex
         logger.Log($"Surface gravity (sea level): {body.SurfaceGravity:F2} m/s²");
 
         var targetSurfaceHeight = body.SurfaceHeight(targetLat, targetLng);
-        var targetRadius = body.EquatorialRadius + targetSurfaceHeight;
         logger.Log($"Target surface elevation: {targetSurfaceHeight:F0} m");
 
         // Phase 1: Perform a deorbit burn that adjusts the ship's trajectory so that it passes a short distance above
@@ -259,14 +250,7 @@ public class SuicideBurnLandingManoeuvre(ManoeuvreLogger logger, ManoeuvreContex
 
         // Use Brent's method to search over the bracket to find the exact velocity that keeps the ship's radial
         // velocity at zero after the deorbit burn
-        Func<double, double> func = t =>
-        {
-            lambertParams.TimeOfFlight = t;
-            var (v1, v2) = SolveLambert(lambertParams);
-            var radialVelocity = v1.DotProduct(lambertParams.DeorbitBurnPosition.Normalize());
-            return radialVelocity;
-        };
-        var root = Brent.FindRoot(func, tMin, tMax, 1, 100);
+        var root = Brent.FindRoot(Func, tMin, tMax, 1);
         _flyoverUt = burnUt + root; // Store the flyover time & position for the correction burn later
         _flyoverPosition = body.PositionAtAltitudeAt(
             _flyoverUt,
@@ -277,6 +261,14 @@ public class SuicideBurnLandingManoeuvre(ManoeuvreLogger logger, ManoeuvreContex
 
         lambertParams.TimeOfFlight = root;
         return SolveLambert(lambertParams).v1;
+
+        double Func(double t)
+        {
+            lambertParams.TimeOfFlight = t;
+            var (v1, _) = SolveLambert(lambertParams);
+            var radialVelocity = v1.DotProduct(lambertParams.DeorbitBurnPosition.Normalize());
+            return radialVelocity;
+        }
     }
 
     private (double tMin, double tMax) FindRootSearchBracket(DeorbitLambertProblemParams parameters)
@@ -373,6 +365,15 @@ public class SuicideBurnLandingManoeuvre(ManoeuvreLogger logger, ManoeuvreContex
         // Calculate when to perform the burn
         var burnUt = CalculateLateralBurnUt(cancellationToken);
 
+        var rf = context.ActiveVessel.SurfaceReferenceFrame;
+        var ap = new VelocityAutoBurn(context.Connection);
+        ap.LockTarget(GetTarget, rf);
+        ap.SetRemainingBurn(GetRemainingBurn, rf);
+        ap.BurnAt(burnUt);
+        
+        await ap.Engage(cancellationToken);
+        return;
+
         // Perform the burn
         Vector3D GetTarget(Vector3D velocity)
         {
@@ -384,13 +385,6 @@ public class SuicideBurnLandingManoeuvre(ManoeuvreLogger logger, ManoeuvreContex
         {
             return GetTarget(velocity).Length;
         }
-
-        var ap = new VelocityAutoBurn(context.Connection);
-        ap.LockTarget(GetTarget, context.ActiveVessel.SurfaceReferenceFrame);
-        ap.SetRemainingBurn(GetRemainingBurn);
-        ap.BurnAt(burnUt);
-        
-        await ap.Engage(cancellationToken);
     }
 
     private double CalculateLateralBurnUt(CancellationToken cancellationToken)
@@ -441,105 +435,120 @@ public class SuicideBurnLandingManoeuvre(ManoeuvreLogger logger, ManoeuvreContex
         
         return Math.Abs((intendedLandingSite - surfacePos).Length);
 
-        Vector3D CalculateRemainingBurn(SimulationState state, CelestialBody body)
+        Vector3D CalculateRemainingBurn(SimulationState state, CelestialBody b)
         {
-            var surfaceVelocity = body.SurfaceVelocityBelowAt(state.UT, state.ShipPosition.ToTuple()).ToVector3D();
+            var surfaceVelocity = b.SurfaceVelocityBelowAt(state.UT, state.ShipPosition.ToTuple()).ToVector3D();
             return state.ShipVelocity - surfaceVelocity;
         }
     }
 
-    /// <summary>
-    /// Executes the suicide burn. Continuously adjusts throttle based on the required
-    /// deceleration to hit zero velocity at the surface. Deploys landing gear at low altitude.
-    /// </summary>
     private async Task PerformSuicideBurn(CancellationToken cancellationToken)
     {
-        var vessel = context.ActiveVessel;
-        var control = vessel.Control;
-        var bodyRef = body.NonRotatingReferenceFrame;
-
-        logger.Log("Executing suicide burn...");
-
-        // Keep steering surface retrograde
-        var autopilot = vessel.AutoPilot;
-        autopilot.ReferenceFrame = vessel.SurfaceVelocityReferenceFrame;
-        autopilot.TargetDirection = new Tuple<double, double, double>(0, -1, 0);
-        autopilot.Engage();
-
-        var gearDeployed = false;
-        control.Throttle = 1.0f;
-
+        var ship = context.ActiveVessel;
+        var body = ship.Orbit.Body;
+        var surfRf = ship.SurfaceReferenceFrame;
+        var bodyRf = body.NonRotatingReferenceFrame;
+        var surfVelRf = ship.SurfaceVelocityReferenceFrame;
+        
+        // Point the ship in the surface retrograde direction and wait for it to turn
+        var ap = ship.AutoPilot;
+        ap.ReferenceFrame = ship.SurfaceVelocityReferenceFrame;
+        ap.TargetDirection = new Tuple<double, double, double>(0, -1, 0);
+        ap.Engage();
+        ap.Wait();
+        
+        // Figure out which part will hit the surface first, and how far below the ship's CoM it is
+        var bottomPart = ship.FindPart(Comparator);
+        var vertices = bottomPart.BoundingBox(ship.ReferenceFrame);
+        var bottomVertexPos = 
+            vertices.Item1.Item2 < vertices.Item2.Item2 ? vertices.Item1 : vertices.Item2; // Y axis points to top/front of ship
+        var comHeight = bottomVertexPos.Item2;
+        
+        // Set up the burn, ready to go as soon as we need it
+        var burn = new PositionAutoBurn(context.Connection);
+        burn.LockTarget(v => -v, surfRf);
+        burn.SetTargetBody(body);
+        burn.SetRemainingDistance(RemainingDistance, bodyRf);
+        burn.SetRemainingVelocity(RemainingVelocity, surfVelRf);
+        burn.AddPositionHook(ShouldLowerLegs, LowerLegs, bodyRf);
+        
+        // Wait until we need to start the burn
+        var altPrev = 0d;
         while (true)
         {
-            cancellationToken.ThrowIfCancellationRequested();
-
-            var flight = vessel.Flight(bodyRef);
-            var altitude = flight.SurfaceAltitude;
-            var verticalSpeed = flight.VerticalSpeed;
-
-            // Deploy landing gear at low altitude
-            if (!gearDeployed && altitude < GearDeployAltitude)
+            var alt = CalculateCurrentStoppingHeight(cancellationToken);
+            
+            // If we're already going to stop below the surface, then obviously start burning now
+            if (alt < comHeight)
             {
-                logger.Log("Deploying landing gear.");
-                control.Gear = true;
-                control.Legs = true;
-                gearDeployed = true;
+                break;
             }
-
-            // Calculate required throttle to stop at the surface
-            var requiredThrottle = CalculateRequiredThrottle(vessel, body, bodyRef);
-
-            // Near touchdown, switch to a gentler descent
-            if (altitude < TouchdownAltitude * 3 && Math.Abs(verticalSpeed) < 5.0)
+            
+            // If we think by the time we manage to calculate the stopping altitude again we may have already
+            // overshot, then start burning now
+            // TODO maybe make this a bit more sophisticated
+            if (alt - (altPrev - alt) < comHeight)
             {
-                // Final descent - maintain a gentle touchdown speed
-                var gravAccel = body.SurfaceGravity;
-                var maxAccel = vessel.AvailableThrust / vessel.Mass;
-                if (maxAccel > 0)
-                {
-                    // Throttle to hover minus a slight descent rate
-                    var desiredAccel = gravAccel + (verticalSpeed - TouchdownSpeed) * 0.5;
-                    control.Throttle = (float)Math.Clamp(desiredAccel / maxAccel, 0, 1);
-                }
-            }
-            else
-            {
-                control.Throttle = (float)Math.Clamp(requiredThrottle, 0.01, 1.0);
-            }
-
-            // Check if we've landed
-            if (altitude < TouchdownAltitude && Math.Abs(verticalSpeed) < 2.0)
-            {
-                control.Throttle = 0.0f;
-                logger.Log("Touchdown!");
                 break;
             }
 
-            // Safety: if we're moving upward unexpectedly during the burn, cut throttle
-            if (verticalSpeed > 5.0 && altitude < 1000)
-            {
-                control.Throttle = 0.0f;
-            }
+            altPrev = alt;
+        }
+        
+        // Perform the suicide burn
+        await burn.Engage(cancellationToken);
 
-            await Task.Delay(ControlLoopInterval, CancellationToken.None);
+        bool ShouldLowerLegs(Vector3D pos)
+        {
+            var x = pos.ToTuple();
+            var alt = body.AltitudeAtPosition(x, bodyRf);
+            var surfAlt = body.SurfaceAltitudeAtPosition(x, bodyRf);
+            return alt - surfAlt < GearDeployAltitude;
         }
 
-        control.Throttle = 0.0f;
-        autopilot.Disengage();
+        void LowerLegs(Vessel s)
+        {
+            s.Control.Legs = true;
+        }
 
-        // Stabilize with SAS
-        control.SAS = true;
+        double RemainingDistance(Vector3D pos)
+        {
+            var surfaceAlt = body.SurfaceAltitudeAtPosition(pos.ToTuple(), bodyRf);
+            var lowestPointAlt = pos.Length - comHeight;
+            return lowestPointAlt - surfaceAlt;
+        }
 
-        logger.Log("Engines cut. Landing complete.");
+        double RemainingVelocity(Vector3D v)
+        {
+            return ship.Velocity(surfVelRf).ToVector3D().Length;
+        }
+        
+        Part Comparator(Part p1, Part p2)
+        {
+            var p1LowestVertex = GetLowestVertex(p1);
+            var p2LowestVertex = GetLowestVertex(p2);
+
+            return p1LowestVertex.X < p2LowestVertex.X ? p1 : p2;
+        }
+
+        Vector3D GetLowestVertex(Part p)
+        {
+            var bounds = p.BoundingBox(surfRf);
+            if (bounds.Item1.Item1 < bounds.Item2.Item1)
+                return bounds.Item1.ToVector3D();
+            
+            return bounds.Item2.ToVector3D();
+        }
     }
 
     /// <summary>
-    /// Calculates where the ship would come to a stop relative to the surface by simulating the suicide burn
-    /// starting now. This takes into account the reduction of mass due to burning fuel and the increase in
+    /// Calculates what the height of the ship would be above the surface when it reaches 0 velocity relative to the
+    /// surface by simulating the suicide burn starting now.
+    /// This takes into account the reduction of mass due to burning fuel and the increase in
     /// gravitational acceleration as the ship approaches the body, along with any precision issues in previous
-    /// burns that led to the surface velocity and the ship's lateral velocity drifting apart
+    /// burns that led to the surface velocity and the ship's lateral velocity drifting apart.
     /// </summary>
-    private Vector3D CalculateCurrentStoppingPoint(CancellationToken cancellationToken)
+    private double CalculateCurrentStoppingHeight(CancellationToken cancellationToken)
     {
         var ut = context.UT;
         var ship = context.ActiveVessel;
@@ -554,7 +563,7 @@ public class SuicideBurnLandingManoeuvre(ManoeuvreLogger logger, ManoeuvreContex
             RemainingBurn);
         var finalState = simulator.Run(cancellationToken);
 
-        return finalState.ShipPosition;
+        return body.SurfaceAltitudeAtPosition(finalState.ShipPosition.ToTuple(), rf);
 
         Vector3D RemainingBurn(SimulationState state)
         {

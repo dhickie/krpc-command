@@ -142,4 +142,22 @@ public static class BodyExtensions
         
         return (speed * direction).ToTuple();
     }
+    
+    /// <summary>
+    /// Returns the altitude of the surface directly below the provided position.
+    /// </summary>
+    /// <param name="body">The body to get the altitude for</param>
+    /// <param name="position">The position below which to get the altitude</param>
+    /// <param name="referenceFrame">The reference frame the provided position is in</param>
+    /// <returns>The altitude in meters</returns>
+    public static double SurfaceAltitudeAtPosition(this CelestialBody body, 
+        Tuple<double, double, double> position, 
+        ReferenceFrame referenceFrame)
+    {
+        var lat = body.LatitudeAtPosition(position, referenceFrame);
+        var lng = body.LongitudeAtPosition(position, referenceFrame);
+        var alt = body.SurfaceHeight(lat, lng);
+
+        return alt;
+    }
 }

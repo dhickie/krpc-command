@@ -4,7 +4,7 @@ using KRPC.Client.Services.SpaceCenter;
 using KrpcCommand.Extensions;
 using MathNet.Spatial.Euclidean;
 
-namespace KrpcCommand.Utilities;
+namespace KrpcCommand.Utilities.AutoBurn;
 
 /// <summary>
 /// AutoBurn is a base class for types of automated burn that use the active vessel's autopilot to achieve a particular
@@ -20,10 +20,11 @@ public abstract class AutoBurn(Connection connection)
     private Func<Vector3D, Vector3D>? _target; // Where to point based on current velocity
     private ReferenceFrame? _referenceFrame; // What reference frame the target vector is in
     private double _burnStart; // When to start the burn
+    private readonly List<PositionBurnStateHook> _posHooks = [];
     
     // Telemetry
-    protected Stream<double>? UT;
-    protected Stream<Tuple<double, double, double>>? V;
+    private Stream<double>? _ut;
+    private Stream<Tuple<double, double, double>>? _v;
     protected Stream<float>? Mass;
     protected Stream<float>? MaxThrust;
 
@@ -48,25 +49,34 @@ public abstract class AutoBurn(Connection connection)
     }
 
     /// <summary>
+    /// Adds a hook that is executed when the ship's position vector in the provided reference frame fulfils
+    /// a certain condition.
+    /// </summary>
+    /// <param name="condition">The condition function that decides whether the hook should fire</param>
+    /// <param name="action">The action to perform on the ship when the hook fires</param>
+    /// <param name="referenceFrame">The reference frame that the position vector should be in</param>
+    public void AddPositionHook(Func<Vector3D, bool> condition, Action<Vessel> action, ReferenceFrame referenceFrame)
+    {
+        _posHooks.Add(new PositionBurnStateHook(condition, action, referenceFrame));
+    }
+
+    /// <summary>
     /// Engages the autopilot until the burn is complete.
     /// </summary>
     /// <param name="cancellationToken">A cancellation token to cancel the burn early</param>
     /// <returns>A task that can be awaited to wait until the burn is complete</returns>
     public async Task Engage(CancellationToken cancellationToken)
     {
-        ValidateBaseProperties();
-        ValidateProperties();
-        SetupBaseTelemetry();
-        SetupTelemetry();
-        ValidateBaseStreams();
-        ValidateStreams();
+        ValidatePropertiesInternal();
+        SetupTelemetryInternal();
+        ValidateStreamsInternal();
         
         var ap = _ship.AutoPilot;
         ap.ReferenceFrame = _referenceFrame;
-        ap.TargetDirection = _target!(V!.Get().ToVector3D()).ToTuple();
+        ap.TargetDirection = _target!(_v!.Get().ToVector3D()).ToTuple();
         ap.Engage();
 
-        var utPrev = UT!.Get();
+        var utPrev = _ut!.Get();
         var sw = new Stopwatch();
         sw.Start();
         try
@@ -77,10 +87,16 @@ public abstract class AutoBurn(Connection connection)
 
                 // TODO do a better job of warping to near the burn start if its ages away
                 var start = sw.Elapsed;
-                var utNew = UT.Get();
+                var utNew = _ut.Get();
                 if (utNew > utPrev && utNew > _burnStart)
                 {
                     // Only take action if we're in a different physics tick from the previous iteration
+                    // Fire any position hooks that need it
+                    foreach (var hook in _posHooks.Where(hook => hook.ShouldFire()))
+                    {
+                        hook.Fire(_ship);
+                    }
+                    
                     // Decide whether the burn is finished
                     if (IsBurnComplete())
                     {
@@ -88,7 +104,7 @@ public abstract class AutoBurn(Connection connection)
                     }
 
                     // Set course and throttle
-                    ap.TargetDirection = _target(V.Get().ToVector3D()).ToTuple();
+                    ap.TargetDirection = _target(_v.Get().ToVector3D()).ToTuple();
                     _ship.Control.Throttle = CalculateThrottle();
                 }
 
@@ -100,8 +116,7 @@ public abstract class AutoBurn(Connection connection)
         finally
         {
             ap.Disengage();
-            TearDownBaseTelemetry();
-            TearDownTelemetry();
+            TearDownTelemetryInternal();
         }
     }
 
@@ -137,42 +152,72 @@ public abstract class AutoBurn(Connection connection)
     /// </summary>
     protected abstract void ValidateStreams();
     
-    private void SetupBaseTelemetry()
+    private void SetupTelemetryInternal()
     {
         var spaceCentre = connection.SpaceCenter();
-        UT = connection.AddStream(() => spaceCentre.UT);
-        V = connection.AddStream(() => _ship.Velocity(_referenceFrame));
+        _ut = connection.AddStream(() => spaceCentre.UT);
+        _v = connection.AddStream(() => _ship.Velocity(_referenceFrame));
         Mass = connection.AddStream(() => _ship.Mass);
         MaxThrust = connection.AddStream(() => _ship.MaxThrust);
+
+        foreach (var hook in _posHooks)
+        {
+            hook.SetupStream(connection);
+        }
+        
+        SetupTelemetry();
     }
 
-    private void TearDownBaseTelemetry()
+    private void TearDownTelemetryInternal()
     {
-        UT!.Remove();
-        V!.Remove();
-        Mass!.Remove();
-        MaxThrust!.Remove();
+        try
+        {
+            _ut!.Remove();
+            _v!.Remove();
+            Mass!.Remove();
+            MaxThrust!.Remove();
+
+            foreach (var hook in _posHooks)
+            {
+                hook.TeardownStream();
+            }
+
+            TearDownTelemetry();
+        }
+        catch
+        {
+            // TODO Log the exception
+        }
     }
     
-    private void ValidateBaseProperties()
+    private void ValidatePropertiesInternal()
     {
         // Constructor properties
         if (_target == null)
             Throw("Target function");
         if (_referenceFrame == null)
-            Throw("Reference frame");
+            Throw("Target reference frame");
+        
+        ValidateProperties();
     }
 
-    private void ValidateBaseStreams()
+    private void ValidateStreamsInternal()
     {
-        if (UT == null)
+        if (_ut == null)
             Throw("UT stream");
-        if (V == null)
+        if (_v == null)
             Throw("Ship velocity stream");
         if (Mass == null)
             Throw("Ship mass stream");
         if (MaxThrust == null)
             Throw("Max thrust stream");
+
+        foreach (var hook in _posHooks)
+        {
+            hook.ValidateStream();
+        }
+        
+        ValidateStreams();
     }
 
     protected static void Throw(string propertyName)

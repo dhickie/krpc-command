@@ -1,4 +1,4 @@
-namespace KrpcCommand.Utilities;
+namespace KrpcCommand.Utilities.AutoBurn;
 
 public static class AutoBurnUtil
 {
@@ -41,5 +41,26 @@ public static class AutoBurnUtil
         var targetThrottle = targetThrust / maxThrust;
         
         return (float)Math.Max(targetThrottle, minThrottle);
+    }
+
+    public static float CalculatePositionBurnThrottle(double maxThrust, 
+        double mass, 
+        double remainingDistance,
+        double relativeVelocity,
+        double bodyMu)
+    {
+        // We use basic constant acceleration to calculate the required throttle.
+        // This is less accurate the larger the remaining distance. We could use the Tsiolkovsky rocket equation
+        // to be more accurate, but while it account mass loss from fuel, it doesn't account for gravity increasing
+        // as we approach gravitational bodies so would overshoot if pre-calculating the burn start.
+        // For super accurate suicide burns, users of this will need to run numerical integration to work out when to
+        // start the burn, in which case this will still work. If they don't do numerical integration, then this
+        // also works, but it's just less efficient.
+        var thrustAccel = maxThrust / mass;
+        var gravAccel = bodyMu / Math.Pow(remainingDistance, 2);
+        var netAccel = thrustAccel - gravAccel;
+
+        var requiredAccel = Math.Pow(relativeVelocity, 2) / (2 * remainingDistance);
+        return (float)Math.Min(requiredAccel / netAccel, 1);
     }
 }

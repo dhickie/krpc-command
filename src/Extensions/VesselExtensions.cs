@@ -79,4 +79,29 @@ public static class VesselExtensions
         var vHat = (Math.Cos(psi) * pHat) + (Math.Sin(psi) * qHat);
         return (v * vHat).ToTuple();
     }
+
+    /// <summary>
+    /// Finds a particular part on the vessel by comparing them using the provided comparator function.
+    /// </summary>
+    /// <param name="vessel">The vessel to find the part on</param>
+    /// <param name="comparator">The function to use to compare parts and decide which to select</param>
+    /// <returns>The part that best fulfills the provided comparator</returns>
+    /// <exception cref="ArgumentException">Thrown if the ship contains no parts</exception>
+    public static Part FindPart(this Vessel vessel, Func<Part, Part, Part> comparator)
+    {
+        var parts = vessel.Parts.All;
+
+        if (parts.Count == 0)
+        {
+            throw new ArgumentException("Vessel contains no parts");
+        }
+
+        var foundPart = parts[0];
+        for (var i = 1; i < parts.Count; i++)
+        {
+            foundPart = comparator(foundPart, parts[i]);
+        }
+        
+        return foundPart;
+    }
 }
