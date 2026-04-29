@@ -68,9 +68,6 @@ public class SuicideBurnLandingManoeuvre(ManoeuvreLogger logger, ManoeuvreContex
         logger.Log($"Target: {targetLat:F4}°, {targetLng:F4}° on {body.Name}");
         logger.Log($"Surface gravity (sea level): {body.SurfaceGravity:F2} m/s²");
 
-        var targetSurfaceHeight = body.SurfaceHeight(targetLat, targetLng);
-        logger.Log($"Target surface elevation: {targetSurfaceHeight:F0} m");
-
         // Phase 1: Perform a deorbit burn that adjusts the ship's trajectory so that it passes a short distance above
         // the target landing site. The exact altitude at which it passes over the landing site will differ depending
         // on the ship's initial altitude when the burn begins
@@ -100,6 +97,7 @@ public class SuicideBurnLandingManoeuvre(ManoeuvreLogger logger, ManoeuvreContex
         var body = ship.Orbit.Body;
 
         // Calculate the UT at which we will perform the deorbit burn
+        logger.Log("Calculating deorbit burn...");
         var burnUt = CalculateDeorbitUt();
         _deorbitBurnUt = burnUt;
 
@@ -118,6 +116,7 @@ public class SuicideBurnLandingManoeuvre(ManoeuvreLogger logger, ManoeuvreContex
         NodeUtil.CreateNodeFromTargetVelocity(ship, burnUt, postBurnVelocity);
 
         // Perform the burn
+        logger.Log("Executing deorbit burn...");
         await context.MechJeb.NodeExecutor.ExecuteNodeAsync(cancellationToken);
     }
 
@@ -130,6 +129,7 @@ public class SuicideBurnLandingManoeuvre(ManoeuvreLogger logger, ManoeuvreContex
         var body = orbit.Body;
 
         // Calculate the parameters for the Lambert solve
+        logger.Log("Calculating deorbit correction burn...");
         var tof = (_flyoverUt - _deorbitBurnUt) / 2;
         var burnUt = tof + _deorbitBurnUt;
         var burnPosition = orbit.PositionAt(burnUt, body.NonRotatingReferenceFrame).ToVector3D();
@@ -151,6 +151,7 @@ public class SuicideBurnLandingManoeuvre(ManoeuvreLogger logger, ManoeuvreContex
         }
 
         // Create and execute the node
+        logger.Log($"Executing correction burn...");
         NodeUtil.CreateNodeFromTargetVelocity(ship, burnUt, burnPosition);
         await context.MechJeb.NodeExecutor.ExecuteNodeAsync(cancellationToken);
     }
@@ -363,8 +364,10 @@ public class SuicideBurnLandingManoeuvre(ManoeuvreLogger logger, ManoeuvreContex
         // the final distance to the landing site.
         
         // Calculate when to perform the burn
+        logger.Log("Calculating lateral kill burn...");
         var burnUt = CalculateLateralBurnUt(cancellationToken);
 
+        logger.Log("Executing lateral kill burn...");
         var rf = context.ActiveVessel.SurfaceReferenceFrame;
         var ap = new VelocityAutoBurn(context.Connection);
         ap.LockTarget(GetTarget, rf);
@@ -451,6 +454,7 @@ public class SuicideBurnLandingManoeuvre(ManoeuvreLogger logger, ManoeuvreContex
         var surfVelRf = ship.SurfaceVelocityReferenceFrame;
         
         // Point the ship in the surface retrograde direction and wait for it to turn
+        logger.Log("Aligning ship for landing burn...");
         var ap = ship.AutoPilot;
         ap.ReferenceFrame = ship.SurfaceVelocityReferenceFrame;
         ap.TargetDirection = new Tuple<double, double, double>(0, -1, 0);
@@ -473,6 +477,7 @@ public class SuicideBurnLandingManoeuvre(ManoeuvreLogger logger, ManoeuvreContex
         burn.AddPositionHook(ShouldLowerLegs, LowerLegs, bodyRf);
         
         // Wait until we need to start the burn
+        logger.Log("Waiting for landing burn start...");
         var altPrev = 0d;
         while (true)
         {
@@ -496,6 +501,7 @@ public class SuicideBurnLandingManoeuvre(ManoeuvreLogger logger, ManoeuvreContex
         }
         
         // Perform the suicide burn
+        logger.Log("Performing landing burn...");
         await burn.Engage(cancellationToken);
 
         bool ShouldLowerLegs(Vector3D pos)
