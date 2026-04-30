@@ -1,4 +1,5 @@
 using kRPC.Client.Boost.Extensions;
+using kRPC.Client.Boost.Measurements;
 using KRPC.Client.Services.SpaceCenter;
 using MathNet.Spatial.Euclidean;
 using MathNet.Spatial.Units;
@@ -18,16 +19,16 @@ public class AutoPilot
         Wrapped = autoPilot;
     }
 
-    public Tuple<Angle, Angle, Angle> AttenuationAngle
+    public Attitude<Angle> AttenuationAngle
     {
         get
         {
             var aa = Wrapped.AttenuationAngle;
-            return new Tuple<Angle, Angle, Angle>(
+            return new Attitude<Angle>(
                 Angle.FromDegrees(aa.Item1), Angle.FromDegrees(aa.Item2), Angle.FromDegrees(aa.Item3));
         }
         set => Wrapped.AttenuationAngle = 
-            new Tuple<double, double, double>(value.Item1.Degrees, value.Item2.Degrees, value.Item3.Degrees);
+            new Tuple<double, double, double>(value.Pitch.Degrees, value.Roll.Degrees, value.Yaw.Degrees);
     }
 
     public bool AutoTune
@@ -48,10 +49,14 @@ public class AutoPilot
     public Angle HeadingError
         => Angle.FromDegrees(Wrapped.HeadingError);
 
-    public Tuple<double, double, double> Overshoot
+    public Attitude<double> Overshoot
     {
-        get => Wrapped.Overshoot;
-        set => Wrapped.Overshoot = value;
+        get
+        {
+            var o = Wrapped.Overshoot;
+            return new Attitude<double>(o.Item1, o.Item2, o.Item3);
+        }
+        set => Wrapped.Overshoot = new Tuple<double, double, double>(value.Pitch, value.Roll, value.Yaw);
     }
 
     public Angle PitchError
