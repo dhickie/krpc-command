@@ -1,4 +1,6 @@
+using kRPC.Client.Boost.Extensions;
 using KRPC.Client.Services.SpaceCenter;
+using MathNet.Spatial.Euclidean;
 using BaseDockingPort = KRPC.Client.Services.SpaceCenter.DockingPort;
 
 namespace kRPC.Client.Boost.Entities.VesselParts;
@@ -60,14 +62,14 @@ public class DockingPort
     public DockingPortState State
         => Wrapped.State;
 
-    public Tuple<double, double, double> Direction(ReferenceFrame referenceFrame)
-        => Wrapped.Direction(referenceFrame.Wrapped);
+    public UnitVector3D Direction(ReferenceFrame referenceFrame)
+        => Wrapped.Direction(referenceFrame.Wrapped).ToUnitVector3D();
 
-    public Tuple<double, double, double> Position(ReferenceFrame referenceFrame)
-        => Wrapped.Position(referenceFrame.Wrapped);
+    public Vector3D Position(ReferenceFrame referenceFrame)
+        => Wrapped.Position(referenceFrame.Wrapped).ToVector3D();
 
-    public Tuple<double, double, double, double> Rotation(ReferenceFrame referenceFrame)
-        => Wrapped.Rotation(referenceFrame.Wrapped);
+    public Quaternion Rotation(ReferenceFrame referenceFrame)
+        => Wrapped.Rotation(referenceFrame.Wrapped).ToQuaternion();
 
     public Vessel Undock()
         => new Vessel(Wrapped.Undock());

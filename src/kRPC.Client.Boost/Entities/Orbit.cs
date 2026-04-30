@@ -1,8 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using KRPC.Client;
-using KRPC.Client.Services.SpaceCenter;
+using kRPC.Client.Boost.Extensions;
+using MathNet.Spatial.Euclidean;
 using BaseOrbit = KRPC.Client.Services.SpaceCenter.Orbit;
 
 namespace kRPC.Client.Boost.Entities;
@@ -106,8 +104,8 @@ public class Orbit
     public double OrbitalSpeedAt(double time)
         => Wrapped.OrbitalSpeedAt(time);
 
-    public Tuple<double, double, double> PositionAt(double ut, ReferenceFrame referenceFrame)
-        => Wrapped.PositionAt(ut, referenceFrame.Wrapped);
+    public Vector3D PositionAt(double ut, ReferenceFrame referenceFrame)
+        => Wrapped.PositionAt(ut, referenceFrame.Wrapped).ToVector3D();
 
     public double RadiusAt(double ut)
         => Wrapped.RadiusAt(ut);
@@ -136,9 +134,9 @@ public class Orbit
     public double UTAtTrueAnomaly(double trueAnomaly)
         => Wrapped.UTAtTrueAnomaly(trueAnomaly);
 
-    public static Tuple<double, double, double> ReferencePlaneDirection(IConnection connection, ReferenceFrame referenceFrame)
-        => BaseOrbit.ReferencePlaneDirection(connection, referenceFrame.Wrapped);
+    public static Vector3D ReferencePlaneDirection(IConnection connection, ReferenceFrame referenceFrame)
+        => BaseOrbit.ReferencePlaneDirection(connection, referenceFrame.Wrapped).ToVector3D();
 
-    public static Tuple<double, double, double> ReferencePlaneNormal(IConnection connection, ReferenceFrame referenceFrame)
-        => BaseOrbit.ReferencePlaneNormal(connection, referenceFrame.Wrapped);
+    public static Vector3D ReferencePlaneNormal(IConnection connection, ReferenceFrame referenceFrame)
+        => BaseOrbit.ReferencePlaneNormal(connection, referenceFrame.Wrapped).ToVector3D();
 }

@@ -1,3 +1,5 @@
+using kRPC.Client.Boost.Extensions;
+using MathNet.Spatial.Euclidean;
 using BaseThruster = KRPC.Client.Services.SpaceCenter.Thruster;
 
 namespace kRPC.Client.Boost.Entities.VesselParts;
@@ -14,8 +16,8 @@ public class Thruster
         Wrapped = thruster;
     }
 
-    public Tuple<double, double, double> GimbalAngle
-        => Wrapped.GimbalAngle;
+    public Vector3D GimbalAngle
+        => Wrapped.GimbalAngle.ToVector3D();
 
     public bool Gimballed
         => Wrapped.Gimballed;
@@ -26,18 +28,18 @@ public class Thruster
     public ReferenceFrame ThrustReferenceFrame
         => new ReferenceFrame(Wrapped.ThrustReferenceFrame);
 
-    public Tuple<double, double, double> GimbalPosition(ReferenceFrame referenceFrame)
-        => Wrapped.GimbalPosition(referenceFrame.Wrapped);
+    public Vector3D GimbalPosition(ReferenceFrame referenceFrame)
+        => Wrapped.GimbalPosition(referenceFrame.Wrapped).ToVector3D();
 
-    public Tuple<double, double, double> InitialThrustDirection(ReferenceFrame referenceFrame)
-        => Wrapped.InitialThrustDirection(referenceFrame.Wrapped);
+    public Vector3D InitialThrustDirection(ReferenceFrame referenceFrame)
+        => Wrapped.InitialThrustDirection(referenceFrame.Wrapped).ToVector3D();
 
-    public Tuple<double, double, double> InitialThrustPosition(ReferenceFrame referenceFrame)
-        => Wrapped.InitialThrustPosition(referenceFrame.Wrapped);
+    public Vector3D InitialThrustPosition(ReferenceFrame referenceFrame)
+        => Wrapped.InitialThrustPosition(referenceFrame.Wrapped).ToVector3D();
 
-    public Tuple<double, double, double> ThrustDirection(ReferenceFrame referenceFrame)
-        => Wrapped.ThrustDirection(referenceFrame.Wrapped);
+    public Vector3D ThrustDirection(ReferenceFrame referenceFrame)
+        => Wrapped.ThrustDirection(referenceFrame.Wrapped).ToVector3D();
 
-    public Tuple<double, double, double> ThrustPosition(ReferenceFrame referenceFrame)
-        => Wrapped.ThrustPosition(referenceFrame.Wrapped);
+    public Vector3D ThrustPosition(ReferenceFrame referenceFrame)
+        => Wrapped.ThrustPosition(referenceFrame.Wrapped).ToVector3D();
 }

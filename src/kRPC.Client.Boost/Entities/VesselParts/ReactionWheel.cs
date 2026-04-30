@@ -1,3 +1,5 @@
+using kRPC.Client.Boost.Extensions;
+using MathNet.Spatial.Euclidean;
 using BaseReactionWheel = KRPC.Client.Services.SpaceCenter.ReactionWheel;
 
 namespace kRPC.Client.Boost.Entities.VesselParts;
@@ -20,14 +22,14 @@ public class ReactionWheel
         set => Wrapped.Active = value;
     }
 
-    public Tuple<Tuple<double, double, double>, Tuple<double, double, double>> AvailableTorque
-        => Wrapped.AvailableTorque;
+    public Tuple<Vector3D, Vector3D> AvailableTorque
+        => Wrapped.AvailableTorque.ToTupleVector3D();
 
     public bool Broken
         => Wrapped.Broken;
 
-    public Tuple<Tuple<double, double, double>, Tuple<double, double, double>> MaxTorque
-        => Wrapped.MaxTorque;
+    public Tuple<Vector3D, Vector3D> MaxTorque
+        => Wrapped.MaxTorque.ToTupleVector3D();
 
     public Part Part
         => new Part(Wrapped.Part);

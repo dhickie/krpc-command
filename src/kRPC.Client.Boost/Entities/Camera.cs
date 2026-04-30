@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using KRPC.Client;
 using KRPC.Client.Services.SpaceCenter;
 using BaseCamera = KRPC.Client.Services.SpaceCenter.Camera;
 

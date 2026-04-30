@@ -1,8 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using KRPC.Client;
+using kRPC.Client.Boost.Extensions;
 using KRPC.Client.Services.SpaceCenter;
+using MathNet.Spatial.Euclidean;
 using BaseVessel = KRPC.Client.Services.SpaceCenter.Vessel;
 using Parts = kRPC.Client.Boost.Entities.VesselParts.Parts;
 using Resources = kRPC.Client.Boost.Entities.VesselParts.Resources;
@@ -24,29 +22,29 @@ public class Vessel
     public AutoPilot AutoPilot
         => new AutoPilot(Wrapped.AutoPilot);
 
-    public Tuple<Tuple<double, double, double>, Tuple<double, double, double>> AvailableControlSurfaceTorque
-        => Wrapped.AvailableControlSurfaceTorque;
+    public Tuple<Vector3D, Vector3D> AvailableControlSurfaceTorque
+        => Wrapped.AvailableControlSurfaceTorque.ToTupleVector3D();
 
-    public Tuple<Tuple<double, double, double>, Tuple<double, double, double>> AvailableEngineTorque
-        => Wrapped.AvailableEngineTorque;
+    public Tuple<Vector3D, Vector3D> AvailableEngineTorque
+        => Wrapped.AvailableEngineTorque.ToTupleVector3D();
 
-    public Tuple<Tuple<double, double, double>, Tuple<double, double, double>> AvailableOtherTorque
-        => Wrapped.AvailableOtherTorque;
+    public Tuple<Vector3D, Vector3D> AvailableOtherTorque
+        => Wrapped.AvailableOtherTorque.ToTupleVector3D();
 
-    public Tuple<Tuple<double, double, double>, Tuple<double, double, double>> AvailableRCSForce
-        => Wrapped.AvailableRCSForce;
+    public Tuple<Vector3D, Vector3D> AvailableRCSForce
+        => Wrapped.AvailableRCSForce.ToTupleVector3D();
 
-    public Tuple<Tuple<double, double, double>, Tuple<double, double, double>> AvailableRCSTorque
-        => Wrapped.AvailableRCSTorque;
+    public Tuple<Vector3D, Vector3D> AvailableRCSTorque
+        => Wrapped.AvailableRCSTorque.ToTupleVector3D();
 
-    public Tuple<Tuple<double, double, double>, Tuple<double, double, double>> AvailableReactionWheelTorque
-        => Wrapped.AvailableReactionWheelTorque;
+    public Tuple<Vector3D, Vector3D> AvailableReactionWheelTorque
+        => Wrapped.AvailableReactionWheelTorque.ToTupleVector3D();
 
     public float AvailableThrust
         => Wrapped.AvailableThrust;
 
-    public Tuple<Tuple<double, double, double>, Tuple<double, double, double>> AvailableTorque
-        => Wrapped.AvailableTorque;
+    public Tuple<Vector3D, Vector3D> AvailableTorque
+        => Wrapped.AvailableTorque.ToTupleVector3D();
 
     public string Biome
         => Wrapped.Biome;
@@ -87,8 +85,8 @@ public class Vessel
     public float MaxVacuumThrust
         => Wrapped.MaxVacuumThrust;
 
-    public Tuple<double, double, double> MomentOfInertia
-        => Wrapped.MomentOfInertia;
+    public Vector3D MomentOfInertia
+        => Wrapped.MomentOfInertia.ToVector3D();
 
     public string Name
     {
@@ -138,17 +136,17 @@ public class Vessel
     public float VacuumSpecificImpulse
         => Wrapped.VacuumSpecificImpulse;
 
-    public Tuple<double, double, double> AngularVelocity(ReferenceFrame referenceFrame)
-        => Wrapped.AngularVelocity(referenceFrame.Wrapped);
+    public Vector3D AngularVelocity(ReferenceFrame referenceFrame)
+        => Wrapped.AngularVelocity(referenceFrame.Wrapped).ToVector3D();
 
     public float AvailableThrustAt(double pressure)
         => Wrapped.AvailableThrustAt(pressure);
 
-    public Tuple<Tuple<double, double, double>, Tuple<double, double, double>> BoundingBox(ReferenceFrame referenceFrame)
-        => Wrapped.BoundingBox(referenceFrame.Wrapped);
+    public Tuple<Vector3D, Vector3D> BoundingBox(ReferenceFrame referenceFrame)
+        => Wrapped.BoundingBox(referenceFrame.Wrapped).ToTupleVector3D();
 
-    public Tuple<double, double, double> Direction(ReferenceFrame referenceFrame)
-        => Wrapped.Direction(referenceFrame.Wrapped);
+    public Vector3D Direction(ReferenceFrame referenceFrame)
+        => Wrapped.Direction(referenceFrame.Wrapped).ToVector3D();
 
     public Flight Flight(ReferenceFrame referenceFrame = null)
         => new Flight(Wrapped.Flight(referenceFrame?.Wrapped));
@@ -156,8 +154,8 @@ public class Vessel
     public float MaxThrustAt(double pressure)
         => Wrapped.MaxThrustAt(pressure);
 
-    public Tuple<double, double, double> Position(ReferenceFrame referenceFrame)
-        => Wrapped.Position(referenceFrame.Wrapped);
+    public Vector3D Position(ReferenceFrame referenceFrame)
+        => Wrapped.Position(referenceFrame.Wrapped).ToVector3D();
 
     public void Recover()
         => Wrapped.Recover();
@@ -165,12 +163,12 @@ public class Vessel
     public Resources ResourcesInDecoupleStage(int stage, bool cumulative = true)
         => new Resources(Wrapped.ResourcesInDecoupleStage(stage, cumulative));
 
-    public Tuple<double, double, double, double> Rotation(ReferenceFrame referenceFrame)
-        => Wrapped.Rotation(referenceFrame.Wrapped);
+    public Quaternion Rotation(ReferenceFrame referenceFrame)
+        => Wrapped.Rotation(referenceFrame.Wrapped).ToQuaternion();
 
     public float SpecificImpulseAt(double pressure)
         => Wrapped.SpecificImpulseAt(pressure);
 
-    public Tuple<double, double, double> Velocity(ReferenceFrame referenceFrame)
-        => Wrapped.Velocity(referenceFrame.Wrapped);
+    public Vector3D Velocity(ReferenceFrame referenceFrame)
+        => Wrapped.Velocity(referenceFrame.Wrapped).ToVector3D();
 }

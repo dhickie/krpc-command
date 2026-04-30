@@ -1,5 +1,7 @@
 using kRPC.Client.Boost.Entities;
 using kRPC.Client.Boost.Entities.VesselParts;
+using kRPC.Client.Boost.Extensions;
+using MathNet.Spatial.Euclidean;
 using BaseService = KRPC.Client.Services.SpaceCenter.Service;
 using GameMode = KRPC.Client.Services.SpaceCenter.GameMode;
 using MapFilterType = KRPC.Client.Services.SpaceCenter.MapFilterType;
@@ -26,7 +28,7 @@ public class SpaceCenter
     }
 
     public AlarmManager AlarmManager
-        => new AlarmManager(Service.AlarmManager);
+        => new(Service.AlarmManager);
 
     public IDictionary<string, CelestialBody> Bodies
         => Service.Bodies.ToDictionary(pair => pair.Key, pair => new CelestialBody(pair.Value));
@@ -166,11 +168,11 @@ public class SpaceCenter
     public void Quicksave()
         => Service.Quicksave();
 
-    public double RaycastDistance(Tuple<double, double, double> position, Tuple<double, double, double> direction, ReferenceFrame referenceFrame)
-        => Service.RaycastDistance(position, direction, referenceFrame.Wrapped);
+    public double RaycastDistance(Vector3D position, Vector3D direction, ReferenceFrame referenceFrame)
+        => Service.RaycastDistance(position.ToTuple(), direction.ToTuple(), referenceFrame.Wrapped);
 
-    public Part RaycastPart(Tuple<double, double, double> position, Tuple<double, double, double> direction, ReferenceFrame referenceFrame)
-        => new Part(Service.RaycastPart(position, direction, referenceFrame.Wrapped));
+    public Part RaycastPart(Vector3D position, Vector3D direction, ReferenceFrame referenceFrame)
+        => new Part(Service.RaycastPart(position.ToTuple(), direction.ToTuple(), referenceFrame.Wrapped));
 
     public void RevertToLaunch()
         => Service.RevertToLaunch();
@@ -184,17 +186,17 @@ public class SpaceCenter
     public void TransferCrew(CrewMember crewMember, Part targetPart)
         => Service.TransferCrew(crewMember.Wrapped, targetPart.Wrapped);
 
-    public Tuple<double, double, double> TransformDirection(Tuple<double, double, double> direction, ReferenceFrame from, ReferenceFrame to)
-        => Service.TransformDirection(direction, from.Wrapped, to.Wrapped);
+    public Vector3D TransformDirection(Vector3D direction, ReferenceFrame from, ReferenceFrame to)
+        => Service.TransformDirection(direction.ToTuple(), from.Wrapped, to.Wrapped).ToVector3D();
 
-    public Tuple<double, double, double> TransformPosition(Tuple<double, double, double> position, ReferenceFrame from, ReferenceFrame to)
-        => Service.TransformPosition(position, from.Wrapped, to.Wrapped);
+    public Vector3D TransformPosition(Vector3D position, ReferenceFrame from, ReferenceFrame to)
+        => Service.TransformPosition(position.ToTuple(), from.Wrapped, to.Wrapped).ToVector3D();
 
-    public Tuple<double, double, double, double> TransformRotation(Tuple<double, double, double, double> rotation, ReferenceFrame from, ReferenceFrame to)
-        => Service.TransformRotation(rotation, from.Wrapped, to.Wrapped);
+    public Quaternion TransformRotation(Quaternion rotation, ReferenceFrame from, ReferenceFrame to)
+        => Service.TransformRotation(rotation.ToTuple(), from.Wrapped, to.Wrapped).ToQuaternion();
 
-    public Tuple<double, double, double> TransformVelocity(Tuple<double, double, double> position, Tuple<double, double, double> velocity, ReferenceFrame from, ReferenceFrame to)
-        => Service.TransformVelocity(position, velocity, from.Wrapped, to.Wrapped);
+    public Vector3D TransformVelocity(Vector3D position, Vector3D velocity, ReferenceFrame from, ReferenceFrame to)
+        => Service.TransformVelocity(position.ToTuple(), velocity.ToTuple(), from.Wrapped, to.Wrapped).ToVector3D();
 
     public void WarpTo(double ut, float maxRailsRate = 100000f, float maxPhysicsRate = 2f)
         => Service.WarpTo(ut, maxRailsRate, maxPhysicsRate);

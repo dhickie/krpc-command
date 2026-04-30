@@ -1,4 +1,6 @@
+using kRPC.Client.Boost.Extensions;
 using KRPC.Client.Services.SpaceCenter;
+using MathNet.Spatial.Euclidean;
 using BasePart = KRPC.Client.Services.SpaceCenter.Part;
 
 namespace kRPC.Client.Boost.Entities.VesselParts;
@@ -89,10 +91,10 @@ public class Part
         set => Wrapped.Glow = value;
     }
 
-    public Tuple<double, double, double> HighlightColor
+    public Vector3D HighlightColor
     {
-        get => Wrapped.HighlightColor;
-        set => Wrapped.HighlightColor = value;
+        get => Wrapped.HighlightColor.ToVector3D();
+        set => Wrapped.HighlightColor = value.ToTuple();
     }
 
     public bool Highlighted
@@ -137,8 +139,8 @@ public class Part
     public IList<Module> Modules
         => Wrapped.Modules.Select(item => new Module(item)).ToList();
 
-    public Tuple<double, double, double> MomentOfInertia
-        => Wrapped.MomentOfInertia;
+    public Vector3D MomentOfInertia
+        => Wrapped.MomentOfInertia.ToVector3D();
 
     public string Name
         => Wrapped.Name;
@@ -243,32 +245,32 @@ public class Part
         => Wrapped.Title;
 
     public Vessel Vessel
-        => new Vessel(Wrapped.Vessel);
+        => new(Wrapped.Vessel);
 
     public Wheel Wheel
-        => new Wheel(Wrapped.Wheel);
+        => new(Wrapped.Wheel);
 
-    public Force AddForce(Tuple<double, double, double> force, Tuple<double, double, double> position, ReferenceFrame referenceFrame)
-        => new Force(Wrapped.AddForce(force, position, referenceFrame.Wrapped));
+    public Force AddForce(Vector3D force, Vector3D position, ReferenceFrame referenceFrame)
+        => new(Wrapped.AddForce(force.ToTuple(), position.ToTuple(), referenceFrame.Wrapped));
 
-    public Tuple<Tuple<double, double, double>, Tuple<double, double, double>> BoundingBox(ReferenceFrame referenceFrame)
-        => Wrapped.BoundingBox(referenceFrame.Wrapped);
+    public Tuple<Vector3D, Vector3D> BoundingBox(ReferenceFrame referenceFrame)
+        => Wrapped.BoundingBox(referenceFrame.Wrapped).ToTupleVector3D();
 
-    public Tuple<double, double, double> CenterOfMass(ReferenceFrame referenceFrame)
-        => Wrapped.CenterOfMass(referenceFrame.Wrapped);
+    public Vector3D CenterOfMass(ReferenceFrame referenceFrame)
+        => Wrapped.CenterOfMass(referenceFrame.Wrapped).ToVector3D();
 
-    public Tuple<double, double, double> Direction(ReferenceFrame referenceFrame)
-        => Wrapped.Direction(referenceFrame.Wrapped);
+    public Vector3D Direction(ReferenceFrame referenceFrame)
+        => Wrapped.Direction(referenceFrame.Wrapped).ToVector3D();
 
-    public void InstantaneousForce(Tuple<double, double, double> force, Tuple<double, double, double> position, ReferenceFrame referenceFrame)
-        => Wrapped.InstantaneousForce(force, position, referenceFrame.Wrapped);
+    public void InstantaneousForce(Vector3D force, Vector3D position, ReferenceFrame referenceFrame)
+        => Wrapped.InstantaneousForce(force.ToTuple(), position.ToTuple(), referenceFrame.Wrapped);
 
-    public Tuple<double, double, double> Position(ReferenceFrame referenceFrame)
-        => Wrapped.Position(referenceFrame.Wrapped);
+    public Vector3D Position(ReferenceFrame referenceFrame)
+        => Wrapped.Position(referenceFrame.Wrapped).ToVector3D();
 
-    public Tuple<double, double, double, double> Rotation(ReferenceFrame referenceFrame)
-        => Wrapped.Rotation(referenceFrame.Wrapped);
+    public Quaternion Rotation(ReferenceFrame referenceFrame)
+        => Wrapped.Rotation(referenceFrame.Wrapped).ToQuaternion();
 
-    public Tuple<double, double, double> Velocity(ReferenceFrame referenceFrame)
-        => Wrapped.Velocity(referenceFrame.Wrapped);
+    public Vector3D Velocity(ReferenceFrame referenceFrame)
+        => Wrapped.Velocity(referenceFrame.Wrapped).ToVector3D();
 }
