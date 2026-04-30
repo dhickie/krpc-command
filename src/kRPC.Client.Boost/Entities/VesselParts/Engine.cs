@@ -1,5 +1,6 @@
 using kRPC.Client.Boost.Extensions;
 using MathNet.Spatial.Euclidean;
+using MathNet.Spatial.Units;
 using BaseEngine = KRPC.Client.Services.SpaceCenter.Engine;
 
 namespace kRPC.Client.Boost.Entities.VesselParts;
@@ -52,8 +53,8 @@ public class Engine
         set => Wrapped.GimbalLocked = value;
     }
 
-    public float GimbalRange
-        => Wrapped.GimbalRange;
+    public Angle GimbalRange
+        => Angle.FromDegrees(Wrapped.GimbalRange);
 
     public bool Gimballed
         => Wrapped.Gimballed;

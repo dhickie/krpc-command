@@ -1,3 +1,4 @@
+using MathNet.Spatial.Units;
 using BaseRoboticHinge = KRPC.Client.Services.SpaceCenter.RoboticHinge;
 
 namespace kRPC.Client.Boost.Entities.VesselParts;
@@ -14,8 +15,8 @@ public class RoboticHinge
         Wrapped = roboticHinge;
     }
 
-    public float CurrentAngle
-        => Wrapped.CurrentAngle;
+    public Angle CurrentAngle
+        => Angle.FromDegrees(Wrapped.CurrentAngle);
 
     public float Damping
     {
@@ -38,16 +39,16 @@ public class RoboticHinge
     public Part Part
         => new Part(Wrapped.Part);
 
-    public float Rate
+    public Angle Rate
     {
-        get => Wrapped.Rate;
-        set => Wrapped.Rate = value;
+        get => Angle.FromDegrees(Wrapped.Rate);
+        set => Wrapped.Rate = (float)value.Degrees;
     }
 
-    public float TargetAngle
+    public Angle TargetAngle
     {
-        get => Wrapped.TargetAngle;
-        set => Wrapped.TargetAngle = value;
+        get => Angle.FromDegrees(Wrapped.TargetAngle);
+        set => Wrapped.TargetAngle = (float)value.Degrees;
     }
 
     public void MoveHome()

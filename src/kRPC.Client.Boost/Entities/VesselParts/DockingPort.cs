@@ -1,6 +1,7 @@
 using kRPC.Client.Boost.Extensions;
 using KRPC.Client.Services.SpaceCenter;
 using MathNet.Spatial.Euclidean;
+using MathNet.Spatial.Units;
 using BaseDockingPort = KRPC.Client.Services.SpaceCenter.DockingPort;
 
 namespace kRPC.Client.Boost.Entities.VesselParts;
@@ -47,10 +48,10 @@ public class DockingPort
         set => Wrapped.RotationLocked = value;
     }
 
-    public float RotationTarget
+    public Angle RotationTarget
     {
-        get => Wrapped.RotationTarget;
-        set => Wrapped.RotationTarget = value;
+        get => Angle.FromDegrees(Wrapped.RotationTarget);
+        set => Wrapped.RotationTarget = (float)value.Degrees;
     }
 
     public bool Shielded

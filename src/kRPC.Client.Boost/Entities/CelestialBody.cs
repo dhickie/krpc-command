@@ -1,5 +1,6 @@
 using kRPC.Client.Boost.Extensions;
 using MathNet.Spatial.Euclidean;
+using MathNet.Spatial.Units;
 using BaseCelestialBody = KRPC.Client.Services.SpaceCenter.CelestialBody;
 
 namespace kRPC.Client.Boost.Entities;
@@ -64,14 +65,14 @@ public class CelestialBody
     public ReferenceFrame ReferenceFrame
         => new ReferenceFrame(Wrapped.ReferenceFrame);
 
-    public double RotationAngle
-        => Wrapped.RotationAngle;
+    public Angle RotationAngle
+        => Angle.FromRadians(Wrapped.RotationAngle);
 
     public double RotationalPeriod
         => Wrapped.RotationalPeriod;
 
-    public double RotationalSpeed
-        => Wrapped.RotationalSpeed;
+    public Angle RotationalSpeed
+        => Angle.FromRadians(Wrapped.RotationalSpeed);
 
     public IList<CelestialBody> Satellites
         => Wrapped.Satellites.Select(item => new CelestialBody(item)).ToList();

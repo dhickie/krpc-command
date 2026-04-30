@@ -1,5 +1,6 @@
 using kRPC.Client.Boost.Extensions;
 using MathNet.Spatial.Euclidean;
+using MathNet.Spatial.Units;
 using BaseThruster = KRPC.Client.Services.SpaceCenter.Thruster;
 
 namespace kRPC.Client.Boost.Entities.VesselParts;
@@ -16,8 +17,15 @@ public class Thruster
         Wrapped = thruster;
     }
 
-    public Vector3D GimbalAngle
-        => Wrapped.GimbalAngle.ToVector3D();
+    public Tuple<Angle, Angle, Angle> GimbalAngle
+    {
+        get
+        {
+            var ga= Wrapped.GimbalAngle;
+            return new Tuple<Angle, Angle, Angle>(
+                Angle.FromDegrees(ga.Item1), Angle.FromDegrees(ga.Item2), Angle.FromDegrees(ga.Item3));
+        }
+    }
 
     public bool Gimballed
         => Wrapped.Gimballed;

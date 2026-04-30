@@ -1,4 +1,5 @@
 using KRPC.Client.Services.SpaceCenter;
+using MathNet.Spatial.Units;
 using BaseWheel = KRPC.Client.Services.SpaceCenter.Wheel;
 
 namespace kRPC.Client.Boost.Entities.VesselParts;
@@ -102,10 +103,10 @@ public class Wheel
     public bool Steerable
         => Wrapped.Steerable;
 
-    public float SteeringAngleLimit
+    public Angle SteeringAngleLimit
     {
-        get => Wrapped.SteeringAngleLimit;
-        set => Wrapped.SteeringAngleLimit = value;
+        get => Angle.FromDegrees(Wrapped.SteeringAngleLimit);
+        set => Wrapped.SteeringAngleLimit = (float)value.Degrees;
     }
 
     public bool SteeringEnabled

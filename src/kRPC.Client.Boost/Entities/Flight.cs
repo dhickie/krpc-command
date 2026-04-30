@@ -1,5 +1,6 @@
 using kRPC.Client.Boost.Extensions;
 using MathNet.Spatial.Euclidean;
+using MathNet.Spatial.Units;
 using BaseFlight = KRPC.Client.Services.SpaceCenter.Flight;
 
 namespace kRPC.Client.Boost.Entities;
@@ -19,8 +20,8 @@ public class Flight
     public Vector3D AerodynamicForce
         => Wrapped.AerodynamicForce.ToVector3D();
 
-    public float AngleOfAttack
-        => Wrapped.AngleOfAttack;
+    public Angle AngleOfAttack
+        => Angle.FromDegrees(Wrapped.AngleOfAttack);
 
     public Vector3D AntiNormal
         => Wrapped.AntiNormal.ToVector3D();
@@ -88,8 +89,8 @@ public class Flight
     public Vector3D Normal
         => Wrapped.Normal.ToVector3D();
 
-    public float Pitch
-        => Wrapped.Pitch;
+    public Angle Pitch
+        => Angle.FromDegrees(Wrapped.Pitch);
 
     public Vector3D Prograde
         => Wrapped.Prograde.ToVector3D();
@@ -103,14 +104,14 @@ public class Flight
     public float ReynoldsNumber
         => Wrapped.ReynoldsNumber;
 
-    public float Roll
-        => Wrapped.Roll;
+    public Angle Roll
+        => Angle.FromDegrees(Wrapped.Roll);
 
     public Quaternion Rotation
         => Wrapped.Rotation.ToQuaternion();
 
-    public float SideslipAngle
-        => Wrapped.SideslipAngle;
+    public Angle SideslipAngle
+        => Angle.FromDegrees(Wrapped.SideslipAngle);
 
     public double Speed
         => Wrapped.Speed;
