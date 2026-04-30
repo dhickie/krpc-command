@@ -1,8 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using KRPC.Client;
-using KRPC.Client.Services.SpaceCenter;
+using kRPC.Client.Boost.Extensions;
+using MathNet.Spatial.Euclidean;
+using MathNet.Spatial.Units;
 using BaseCelestialBody = KRPC.Client.Services.SpaceCenter.CelestialBody;
 
 namespace kRPC.Client.Boost.Entities;
@@ -67,14 +65,14 @@ public class CelestialBody
     public ReferenceFrame ReferenceFrame
         => new ReferenceFrame(Wrapped.ReferenceFrame);
 
-    public double RotationAngle
-        => Wrapped.RotationAngle;
+    public Angle RotationAngle
+        => Angle.FromRadians(Wrapped.RotationAngle);
 
     public double RotationalPeriod
         => Wrapped.RotationalPeriod;
 
-    public double RotationalSpeed
-        => Wrapped.RotationalSpeed;
+    public Angle RotationalSpeed
+        => Angle.FromRadians(Wrapped.RotationalSpeed);
 
     public IList<CelestialBody> Satellites
         => Wrapped.Satellites.Select(item => new CelestialBody(item)).ToList();
@@ -88,21 +86,20 @@ public class CelestialBody
     public double SurfaceGravity
         => Wrapped.SurfaceGravity;
 
-    public double AltitudeAtPosition(Tuple<double, double, double> position, ReferenceFrame referenceFrame)
-        => Wrapped.AltitudeAtPosition(position, referenceFrame.Wrapped);
+    public double AltitudeAtPosition(Vector3D position, ReferenceFrame referenceFrame)
+        => Wrapped.AltitudeAtPosition(position.ToTuple(), referenceFrame.Wrapped);
 
-    public Tuple<double, double, double> AngularVelocity(ReferenceFrame referenceFrame)
-        => Wrapped.AngularVelocity(referenceFrame.Wrapped);
+    public Vector3D AngularVelocity(ReferenceFrame referenceFrame)
+        => Wrapped.AngularVelocity(referenceFrame.Wrapped).ToVector3D();
 
-    public double AtmosphericDensityAtPosition(Tuple<double, double, double> position, ReferenceFrame referenceFrame)
-        => Wrapped.AtmosphericDensityAtPosition(position, referenceFrame.Wrapped);
+    public double AtmosphericDensityAtPosition(Vector3D position, ReferenceFrame referenceFrame)
+        => Wrapped.AtmosphericDensityAtPosition(position.ToTuple(), referenceFrame.Wrapped);
 
     public double BedrockHeight(double latitude, double longitude)
         => Wrapped.BedrockHeight(latitude, longitude);
 
-    public Tuple<double, double, double> BedrockPosition(double latitude, double longitude,
-        ReferenceFrame referenceFrame)
-        => Wrapped.BedrockPosition(latitude, longitude, referenceFrame.Wrapped);
+    public Vector3D BedrockPosition(double latitude, double longitude, ReferenceFrame referenceFrame)
+        => Wrapped.BedrockPosition(latitude, longitude, referenceFrame.Wrapped).ToVector3D();
 
     public string BiomeAt(double latitude, double longitude)
         => Wrapped.BiomeAt(latitude, longitude);
@@ -110,39 +107,39 @@ public class CelestialBody
     public double DensityAt(double altitude)
         => Wrapped.DensityAt(altitude);
 
-    public Tuple<double, double, double> Direction(ReferenceFrame referenceFrame)
-        => Wrapped.Direction(referenceFrame.Wrapped);
+    public Vector3D Direction(ReferenceFrame referenceFrame)
+        => Wrapped.Direction(referenceFrame.Wrapped).ToVector3D();
 
-    public double LatitudeAtPosition(Tuple<double, double, double> position, ReferenceFrame referenceFrame)
-        => Wrapped.LatitudeAtPosition(position, referenceFrame.Wrapped);
+    public double LatitudeAtPosition(Vector3D position, ReferenceFrame referenceFrame)
+        => Wrapped.LatitudeAtPosition(position.ToTuple(), referenceFrame.Wrapped);
 
-    public double LongitudeAtPosition(Tuple<double, double, double> position, ReferenceFrame referenceFrame)
-        => Wrapped.LongitudeAtPosition(position, referenceFrame.Wrapped);
+    public double LongitudeAtPosition(Vector3D position, ReferenceFrame referenceFrame)
+        => Wrapped.LongitudeAtPosition(position.ToTuple(), referenceFrame.Wrapped);
 
-    public Tuple<double, double, double> MSLPosition(double latitude, double longitude, ReferenceFrame referenceFrame)
-        => Wrapped.MSLPosition(latitude, longitude, referenceFrame.Wrapped);
+    public Vector3D MSLPosition(double latitude, double longitude, ReferenceFrame referenceFrame)
+        => Wrapped.MSLPosition(latitude, longitude, referenceFrame.Wrapped).ToVector3D();
 
-    public Tuple<double, double, double> Position(ReferenceFrame referenceFrame)
-        => Wrapped.Position(referenceFrame.Wrapped);
+    public Vector3D Position(ReferenceFrame referenceFrame)
+        => Wrapped.Position(referenceFrame.Wrapped).ToVector3D();
 
-    public Tuple<double, double, double> PositionAtAltitude(double latitude, double longitude, double altitude, ReferenceFrame referenceFrame)
-        => Wrapped.PositionAtAltitude(latitude, longitude, altitude, referenceFrame.Wrapped);
+    public Vector3D PositionAtAltitude(double latitude, double longitude, double altitude, ReferenceFrame referenceFrame)
+        => Wrapped.PositionAtAltitude(latitude, longitude, altitude, referenceFrame.Wrapped).ToVector3D();
 
     public double PressureAt(double altitude)
         => Wrapped.PressureAt(altitude);
 
-    public Tuple<double, double, double, double> Rotation(ReferenceFrame referenceFrame)
-        => Wrapped.Rotation(referenceFrame.Wrapped);
+    public Quaternion Rotation(ReferenceFrame referenceFrame)
+        => Wrapped.Rotation(referenceFrame.Wrapped).ToQuaternion();
 
     public double SurfaceHeight(double latitude, double longitude)
         => Wrapped.SurfaceHeight(latitude, longitude);
 
-    public Tuple<double, double, double> SurfacePosition(double latitude, double longitude, ReferenceFrame referenceFrame)
-        => Wrapped.SurfacePosition(latitude, longitude, referenceFrame.Wrapped);
+    public Vector3D SurfacePosition(double latitude, double longitude, ReferenceFrame referenceFrame)
+        => Wrapped.SurfacePosition(latitude, longitude, referenceFrame.Wrapped).ToVector3D();
 
-    public double TemperatureAt(Tuple<double, double, double> position, ReferenceFrame referenceFrame)
-        => Wrapped.TemperatureAt(position, referenceFrame.Wrapped);
+    public double TemperatureAt(Vector3D position, ReferenceFrame referenceFrame)
+        => Wrapped.TemperatureAt(position.ToTuple(), referenceFrame.Wrapped);
 
-    public Tuple<double, double, double> Velocity(ReferenceFrame referenceFrame)
-        => Wrapped.Velocity(referenceFrame.Wrapped);
+    public Vector3D Velocity(ReferenceFrame referenceFrame)
+        => Wrapped.Velocity(referenceFrame.Wrapped).ToVector3D();
 }

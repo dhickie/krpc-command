@@ -1,8 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using KRPC.Client;
-using KRPC.Client.Services.SpaceCenter;
 using BaseContractManager = KRPC.Client.Services.SpaceCenter.ContractManager;
 
 namespace kRPC.Client.Boost.Entities;

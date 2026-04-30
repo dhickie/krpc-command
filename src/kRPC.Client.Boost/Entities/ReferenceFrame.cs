@@ -1,8 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using KRPC.Client;
-using KRPC.Client.Services.SpaceCenter;
+using kRPC.Client.Boost.Extensions;
+using MathNet.Spatial.Euclidean;
 using BaseReferenceFrame = KRPC.Client.Services.SpaceCenter.ReferenceFrame;
 
 namespace kRPC.Client.Boost.Entities;
@@ -22,6 +20,6 @@ public class ReferenceFrame
     public static ReferenceFrame CreateHybrid(IConnection connection, ReferenceFrame position, ReferenceFrame rotation = null, ReferenceFrame velocity = null, ReferenceFrame angularVelocity = null)
         => new ReferenceFrame(BaseReferenceFrame.CreateHybrid(connection, position.Wrapped, rotation?.Wrapped, velocity?.Wrapped, angularVelocity?.Wrapped));
 
-    public static ReferenceFrame CreateRelative(IConnection connection, ReferenceFrame referenceFrame, Tuple<double, double, double> position = null, Tuple<double, double, double, double> rotation = null, Tuple<double, double, double> velocity = null, Tuple<double, double, double> angularVelocity = null)
-        => new ReferenceFrame(BaseReferenceFrame.CreateRelative(connection, referenceFrame.Wrapped, position, rotation, velocity, angularVelocity));
+    public static ReferenceFrame CreateRelative(IConnection connection, ReferenceFrame referenceFrame, Vector3D? position = null, Quaternion? rotation = null, Vector3D? velocity = null, Vector3D? angularVelocity = null)
+        => new ReferenceFrame(BaseReferenceFrame.CreateRelative(connection, referenceFrame.Wrapped, position?.ToTuple(), rotation?.ToTuple(), velocity?.ToTuple(), angularVelocity?.ToTuple()));
 }

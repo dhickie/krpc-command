@@ -1,8 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using KRPC.Client;
+using kRPC.Client.Boost.Extensions;
+using kRPC.Client.Boost.Measurements;
 using KRPC.Client.Services.SpaceCenter;
+using MathNet.Spatial.Euclidean;
+using MathNet.Spatial.Units;
 using BaseAutoPilot = KRPC.Client.Services.SpaceCenter.AutoPilot;
 
 namespace kRPC.Client.Boost.Entities;
@@ -19,10 +19,16 @@ public class AutoPilot
         Wrapped = autoPilot;
     }
 
-    public Tuple<double, double, double> AttenuationAngle
+    public Attitude<Angle> AttenuationAngle
     {
-        get => Wrapped.AttenuationAngle;
-        set => Wrapped.AttenuationAngle = value;
+        get
+        {
+            var aa = Wrapped.AttenuationAngle;
+            return new Attitude<Angle>(
+                Angle.FromDegrees(aa.Item1), Angle.FromDegrees(aa.Item2), Angle.FromDegrees(aa.Item3));
+        }
+        set => Wrapped.AttenuationAngle = 
+            new Tuple<double, double, double>(value.Pitch.Degrees, value.Roll.Degrees, value.Yaw.Degrees);
     }
 
     public bool AutoTune
@@ -31,26 +37,30 @@ public class AutoPilot
         set => Wrapped.AutoTune = value;
     }
 
-    public Tuple<double, double, double> DecelerationTime
+    public Vector3D DecelerationTime
     {
-        get => Wrapped.DecelerationTime;
-        set => Wrapped.DecelerationTime = value;
+        get => Wrapped.DecelerationTime.ToVector3D();
+        set => Wrapped.DecelerationTime = value.ToTuple();
     }
 
     public float Error
         => Wrapped.Error;
 
-    public float HeadingError
-        => Wrapped.HeadingError;
+    public Angle HeadingError
+        => Angle.FromDegrees(Wrapped.HeadingError);
 
-    public Tuple<double, double, double> Overshoot
+    public Attitude<double> Overshoot
     {
-        get => Wrapped.Overshoot;
-        set => Wrapped.Overshoot = value;
+        get
+        {
+            var o = Wrapped.Overshoot;
+            return new Attitude<double>(o.Item1, o.Item2, o.Item3);
+        }
+        set => Wrapped.Overshoot = new Tuple<double, double, double>(value.Pitch, value.Roll, value.Yaw);
     }
 
-    public float PitchError
-        => Wrapped.PitchError;
+    public Angle PitchError
+        => Angle.FromDegrees(Wrapped.PitchError);
 
     public Tuple<double, double, double> PitchPIDGains
     {
@@ -64,8 +74,8 @@ public class AutoPilot
         set => Wrapped.ReferenceFrame = value.Wrapped;
     }
 
-    public float RollError
-        => Wrapped.RollError;
+    public Angle RollError
+        => Angle.FromDegrees(Wrapped.RollError);
 
     public Tuple<double, double, double> RollPIDGains
     {
@@ -73,10 +83,10 @@ public class AutoPilot
         set => Wrapped.RollPIDGains = value;
     }
 
-    public double RollThreshold
+    public Angle RollThreshold
     {
-        get => Wrapped.RollThreshold;
-        set => Wrapped.RollThreshold = value;
+        get => Angle.FromDegrees(Wrapped.RollThreshold);
+        set => Wrapped.RollThreshold = value.Degrees;
     }
 
     public bool SAS
@@ -91,40 +101,40 @@ public class AutoPilot
         set => Wrapped.SASMode = value;
     }
 
-    public Tuple<double, double, double> StoppingTime
+    public Vector3D StoppingTime
     {
-        get => Wrapped.StoppingTime;
-        set => Wrapped.StoppingTime = value;
+        get => Wrapped.StoppingTime.ToVector3D();
+        set => Wrapped.StoppingTime = value.ToTuple();
     }
 
-    public Tuple<double, double, double> TargetDirection
+    public Vector3D TargetDirection
     {
-        get => Wrapped.TargetDirection;
-        set => Wrapped.TargetDirection = value;
+        get => Wrapped.TargetDirection.ToVector3D();
+        set => Wrapped.TargetDirection = value.ToTuple();
     }
 
-    public float TargetHeading
+    public Angle TargetHeading
     {
-        get => Wrapped.TargetHeading;
-        set => Wrapped.TargetHeading = value;
+        get => Angle.FromDegrees(Wrapped.TargetHeading);
+        set => Wrapped.TargetHeading = (float)value.Degrees;
     }
 
-    public float TargetPitch
+    public Angle TargetPitch
     {
-        get => Wrapped.TargetPitch;
-        set => Wrapped.TargetPitch = value;
+        get => Angle.FromDegrees(Wrapped.TargetPitch);
+        set => Wrapped.TargetPitch = (float)value.Degrees;
     }
 
-    public float TargetRoll
+    public Angle TargetRoll
     {
-        get => Wrapped.TargetRoll;
-        set => Wrapped.TargetRoll = value;
+        get => Angle.FromDegrees(Wrapped.TargetRoll);
+        set => Wrapped.TargetRoll = (float)value.Degrees;
     }
 
-    public Tuple<double, double, double> TimeToPeak
+    public Vector3D TimeToPeak
     {
-        get => Wrapped.TimeToPeak;
-        set => Wrapped.TimeToPeak = value;
+        get => Wrapped.TimeToPeak.ToVector3D();
+        set => Wrapped.TimeToPeak = value.ToTuple();
     }
 
     public Tuple<double, double, double> YawPIDGains
@@ -139,8 +149,8 @@ public class AutoPilot
     public void Engage()
         => Wrapped.Engage();
 
-    public void TargetPitchAndHeading(float pitch, float heading)
-        => Wrapped.TargetPitchAndHeading(pitch, heading);
+    public void TargetPitchAndHeading(Angle pitch, Angle heading)
+        => Wrapped.TargetPitchAndHeading((float)pitch.Degrees, (float)heading.Degrees);
 
     public void Wait()
         => Wrapped.Wait();

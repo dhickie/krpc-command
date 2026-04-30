@@ -1,3 +1,5 @@
+using kRPC.Client.Boost.Extensions;
+using MathNet.Spatial.Euclidean;
 using BaseForce = KRPC.Client.Services.SpaceCenter.Force;
 
 namespace kRPC.Client.Boost.Entities.VesselParts;
@@ -14,19 +16,19 @@ public class Force
         Wrapped = force;
     }
 
-    public Tuple<double, double, double> ForceVector
+    public Vector3D ForceVector
     {
-        get => Wrapped.ForceVector;
-        set => Wrapped.ForceVector = value;
+        get => Wrapped.ForceVector.ToVector3D();
+        set => Wrapped.ForceVector = value.ToTuple();
     }
 
     public Part Part
         => new Part(Wrapped.Part);
 
-    public Tuple<double, double, double> Position
+    public Vector3D Position
     {
-        get => Wrapped.Position;
-        set => Wrapped.Position = value;
+        get => Wrapped.Position.ToVector3D();
+        set => Wrapped.Position = value.ToTuple();
     }
 
     public ReferenceFrame ReferenceFrame

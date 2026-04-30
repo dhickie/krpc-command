@@ -1,8 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using KRPC.Client;
 using KRPC.Client.Services.SpaceCenter;
+using MathNet.Spatial.Units;
 using BaseCamera = KRPC.Client.Services.SpaceCenter.Camera;
 
 namespace kRPC.Client.Boost.Entities;
@@ -46,23 +43,23 @@ public class Camera
         set => Wrapped.FocussedVessel = value.Wrapped;
     }
 
-    public float Heading
+    public Angle Heading
     {
-        get => Wrapped.Heading;
-        set => Wrapped.Heading = value;
+        get => Angle.FromDegrees(Wrapped.Heading);
+        set => Wrapped.Heading = (float)value.Degrees;
     }
 
     public float MaxDistance
         => Wrapped.MaxDistance;
 
-    public float MaxPitch
-        => Wrapped.MaxPitch;
+    public Angle MaxPitch
+        => Angle.FromDegrees(Wrapped.MaxPitch);
 
     public float MinDistance
         => Wrapped.MinDistance;
 
-    public float MinPitch
-        => Wrapped.MinPitch;
+    public Angle MinPitch
+        => Angle.FromDegrees(Wrapped.MinPitch);
 
     public CameraMode Mode
     {
@@ -70,9 +67,9 @@ public class Camera
         set => Wrapped.Mode = value;
     }
 
-    public float Pitch
+    public Angle Pitch
     {
-        get => Wrapped.Pitch;
-        set => Wrapped.Pitch = value;
+        get => Angle.FromDegrees(Wrapped.Pitch);
+        set => Wrapped.Pitch = (float)value.Degrees;
     }
 }

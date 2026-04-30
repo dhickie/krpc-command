@@ -1,8 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using KRPC.Client;
-using KRPC.Client.Services.SpaceCenter;
+using kRPC.Client.Boost.Extensions;
+using MathNet.Spatial.Euclidean;
 using BaseNode = KRPC.Client.Services.SpaceCenter.Node;
 
 namespace kRPC.Client.Boost.Entities;
@@ -64,17 +61,17 @@ public class Node
         set => Wrapped.UT = value;
     }
 
-    public Tuple<double, double, double> BurnVector(ReferenceFrame referenceFrame = null)
-        => Wrapped.BurnVector(referenceFrame?.Wrapped);
+    public Vector3D BurnVector(ReferenceFrame referenceFrame = null)
+        => Wrapped.BurnVector(referenceFrame?.Wrapped).ToVector3D();
 
-    public Tuple<double, double, double> Direction(ReferenceFrame referenceFrame)
-        => Wrapped.Direction(referenceFrame.Wrapped);
+    public Vector3D Direction(ReferenceFrame referenceFrame)
+        => Wrapped.Direction(referenceFrame.Wrapped).ToVector3D();
 
-    public Tuple<double, double, double> Position(ReferenceFrame referenceFrame)
-        => Wrapped.Position(referenceFrame.Wrapped);
+    public Vector3D Position(ReferenceFrame referenceFrame)
+        => Wrapped.Position(referenceFrame.Wrapped).ToVector3D();
 
-    public Tuple<double, double, double> RemainingBurnVector(ReferenceFrame referenceFrame = null)
-        => Wrapped.RemainingBurnVector(referenceFrame?.Wrapped);
+    public Vector3D RemainingBurnVector(ReferenceFrame referenceFrame = null)
+        => Wrapped.RemainingBurnVector(referenceFrame?.Wrapped).ToVector3D();
 
     public void Remove()
         => Wrapped.Remove();

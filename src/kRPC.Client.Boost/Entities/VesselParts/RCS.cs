@@ -1,3 +1,5 @@
+using kRPC.Client.Boost.Extensions;
+using MathNet.Spatial.Euclidean;
 using BaseRCS = KRPC.Client.Services.SpaceCenter.RCS;
 
 namespace kRPC.Client.Boost.Entities.VesselParts;
@@ -17,14 +19,14 @@ public class RCS
     public bool Active
         => Wrapped.Active;
 
-    public Tuple<Tuple<double, double, double>, Tuple<double, double, double>> AvailableForce
-        => Wrapped.AvailableForce;
+    public Tuple<Vector3D, Vector3D> AvailableForce
+        => Wrapped.AvailableForce.ToTupleVector3D();
 
     public float AvailableThrust
         => Wrapped.AvailableThrust;
 
-    public Tuple<Tuple<double, double, double>, Tuple<double, double, double>> AvailableTorque
-        => Wrapped.AvailableTorque;
+    public Tuple<Vector3D, Vector3D> AvailableTorque
+        => Wrapped.AvailableTorque.ToTupleVector3D();
 
     public bool Enabled
     {

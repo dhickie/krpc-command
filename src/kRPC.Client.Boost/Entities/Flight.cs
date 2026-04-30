@@ -1,8 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using KRPC.Client;
-using KRPC.Client.Services.SpaceCenter;
+using kRPC.Client.Boost.Extensions;
+using MathNet.Spatial.Euclidean;
+using MathNet.Spatial.Units;
 using BaseFlight = KRPC.Client.Services.SpaceCenter.Flight;
 
 namespace kRPC.Client.Boost.Entities;
@@ -19,17 +17,17 @@ public class Flight
         Wrapped = flight;
     }
 
-    public Tuple<double, double, double> AerodynamicForce
-        => Wrapped.AerodynamicForce;
+    public Vector3D AerodynamicForce
+        => Wrapped.AerodynamicForce.ToVector3D();
 
-    public float AngleOfAttack
-        => Wrapped.AngleOfAttack;
+    public Angle AngleOfAttack
+        => Angle.FromDegrees(Wrapped.AngleOfAttack);
 
-    public Tuple<double, double, double> AntiNormal
-        => Wrapped.AntiNormal;
+    public Vector3D AntiNormal
+        => Wrapped.AntiNormal.ToVector3D();
 
-    public Tuple<double, double, double> AntiRadial
-        => Wrapped.AntiRadial;
+    public Vector3D AntiRadial
+        => Wrapped.AntiRadial.ToVector3D();
 
     public float AtmosphereDensity
         => Wrapped.AtmosphereDensity;
@@ -40,14 +38,14 @@ public class Flight
     public double BedrockAltitude
         => Wrapped.BedrockAltitude;
 
-    public Tuple<double, double, double> CenterOfMass
-        => Wrapped.CenterOfMass;
+    public Vector3D CenterOfMass
+        => Wrapped.CenterOfMass.ToVector3D();
 
-    public Tuple<double, double, double> Direction
-        => Wrapped.Direction;
+    public Vector3D Direction
+        => Wrapped.Direction.ToVector3D();
 
-    public Tuple<double, double, double> Drag
-        => Wrapped.Drag;
+    public Vector3D Drag
+        => Wrapped.Drag.ToVector3D();
 
     public float DragCoefficient
         => Wrapped.DragCoefficient;
@@ -73,8 +71,8 @@ public class Flight
     public double Latitude
         => Wrapped.Latitude;
 
-    public Tuple<double, double, double> Lift
-        => Wrapped.Lift;
+    public Vector3D Lift
+        => Wrapped.Lift.ToVector3D();
 
     public float LiftCoefficient
         => Wrapped.LiftCoefficient;
@@ -88,32 +86,32 @@ public class Flight
     public double MeanAltitude
         => Wrapped.MeanAltitude;
 
-    public Tuple<double, double, double> Normal
-        => Wrapped.Normal;
+    public Vector3D Normal
+        => Wrapped.Normal.ToVector3D();
 
-    public float Pitch
-        => Wrapped.Pitch;
+    public Angle Pitch
+        => Angle.FromDegrees(Wrapped.Pitch);
 
-    public Tuple<double, double, double> Prograde
-        => Wrapped.Prograde;
+    public Vector3D Prograde
+        => Wrapped.Prograde.ToVector3D();
 
-    public Tuple<double, double, double> Radial
-        => Wrapped.Radial;
+    public Vector3D Radial
+        => Wrapped.Radial.ToVector3D();
 
-    public Tuple<double, double, double> Retrograde
-        => Wrapped.Retrograde;
+    public Vector3D Retrograde
+        => Wrapped.Retrograde.ToVector3D();
 
     public float ReynoldsNumber
         => Wrapped.ReynoldsNumber;
 
-    public float Roll
-        => Wrapped.Roll;
+    public Angle Roll
+        => Angle.FromDegrees(Wrapped.Roll);
 
-    public Tuple<double, double, double, double> Rotation
-        => Wrapped.Rotation;
+    public Quaternion Rotation
+        => Wrapped.Rotation.ToQuaternion();
 
-    public float SideslipAngle
-        => Wrapped.SideslipAngle;
+    public Angle SideslipAngle
+        => Angle.FromDegrees(Wrapped.SideslipAngle);
 
     public double Speed
         => Wrapped.Speed;
@@ -148,12 +146,12 @@ public class Flight
     public float TrueAirSpeed
         => Wrapped.TrueAirSpeed;
 
-    public Tuple<double, double, double> Velocity
-        => Wrapped.Velocity;
+    public Vector3D Velocity
+        => Wrapped.Velocity.ToVector3D();
 
     public double VerticalSpeed
         => Wrapped.VerticalSpeed;
 
-    public Tuple<double, double, double> SimulateAerodynamicForceAt(CelestialBody body, Tuple<double, double, double> position, Tuple<double, double, double> velocity)
-        => Wrapped.SimulateAerodynamicForceAt(body.Wrapped, position, velocity);
+    public Vector3D SimulateAerodynamicForceAt(CelestialBody body, Vector3D position, Vector3D velocity)
+        => Wrapped.SimulateAerodynamicForceAt(body.Wrapped, position.ToTuple(), velocity.ToTuple()).ToVector3D();
 }

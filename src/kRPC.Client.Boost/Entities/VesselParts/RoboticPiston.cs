@@ -1,3 +1,4 @@
+using MathNet.Spatial.Units;
 using BaseRoboticPiston = KRPC.Client.Services.SpaceCenter.RoboticPiston;
 
 namespace kRPC.Client.Boost.Entities.VesselParts;
@@ -38,10 +39,10 @@ public class RoboticPiston
     public Part Part
         => new Part(Wrapped.Part);
 
-    public float Rate
+    public Angle Rate
     {
-        get => Wrapped.Rate;
-        set => Wrapped.Rate = value;
+        get => Angle.FromDegrees(Wrapped.Rate);
+        set => Wrapped.Rate = (float)value.Degrees;
     }
 
     public float TargetExtension
