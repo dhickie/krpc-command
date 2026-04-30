@@ -7,34 +7,40 @@ namespace kRPC.Client.Boost.Entities.VesselParts;
 /// </summary>
 public class Light
 {
-    internal BaseLight Internal { get; }
+    internal readonly BaseLight Wrapped;
 
     internal Light(BaseLight light)
     {
-        Internal = light;
+        Wrapped = light;
     }
+
     public bool Active
     {
-        get => Internal.Active;
-        set => Internal.Active = value;
+        get => Wrapped.Active;
+        set => Wrapped.Active = value;
     }
+
     public bool Blink
     {
-        get => Internal.Blink;
-        set => Internal.Blink = value;
+        get => Wrapped.Blink;
+        set => Wrapped.Blink = value;
     }
+
     public float BlinkRate
     {
-        get => Internal.BlinkRate;
-        set => Internal.BlinkRate = value;
+        get => Wrapped.BlinkRate;
+        set => Wrapped.BlinkRate = value;
     }
+
     public Tuple<float, float, float> Color
     {
-        get => Internal.Color;
-        set => Internal.Color = value;
+        get => Wrapped.Color;
+        set => Wrapped.Color = value;
     }
+
     public Part Part
-        => new Part(Internal.Part);
+        => new Part(Wrapped.Part);
+
     public float PowerUsage
-        => Internal.PowerUsage;
+        => Wrapped.PowerUsage;
 }

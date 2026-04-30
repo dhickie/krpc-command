@@ -7,30 +7,40 @@ namespace kRPC.Client.Boost.Entities.VesselParts;
 /// </summary>
 public class Propellant
 {
-    internal BasePropellant Internal { get; }
+    internal readonly BasePropellant Wrapped;
 
     internal Propellant(BasePropellant propellant)
     {
-        Internal = propellant;
+        Wrapped = propellant;
     }
+
     public double CurrentAmount
-        => Internal.CurrentAmount;
+        => Wrapped.CurrentAmount;
+
     public double CurrentRequirement
-        => Internal.CurrentRequirement;
+        => Wrapped.CurrentRequirement;
+
     public bool DrawStackGauge
-        => Internal.DrawStackGauge;
+        => Wrapped.DrawStackGauge;
+
     public bool IgnoreForIsp
-        => Internal.IgnoreForIsp;
+        => Wrapped.IgnoreForIsp;
+
     public bool IgnoreForThrustCurve
-        => Internal.IgnoreForThrustCurve;
+        => Wrapped.IgnoreForThrustCurve;
+
     public bool IsDeprived
-        => Internal.IsDeprived;
+        => Wrapped.IsDeprived;
+
     public string Name
-        => Internal.Name;
+        => Wrapped.Name;
+
     public float Ratio
-        => Internal.Ratio;
+        => Wrapped.Ratio;
+
     public double TotalResourceAvailable
-        => Internal.TotalResourceAvailable;
+        => Wrapped.TotalResourceAvailable;
+
     public double TotalResourceCapacity
-        => Internal.TotalResourceCapacity;
+        => Wrapped.TotalResourceCapacity;
 }

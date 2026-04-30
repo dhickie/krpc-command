@@ -8,36 +8,46 @@ namespace kRPC.Client.Boost.Entities.VesselParts;
 /// </summary>
 public class ResourceDrain
 {
-    internal BaseResourceDrain Internal { get; }
+    internal readonly BaseResourceDrain Wrapped;
 
     internal ResourceDrain(BaseResourceDrain resourceDrain)
     {
-        Internal = resourceDrain;
+        Wrapped = resourceDrain;
     }
+
     public IList<Resource> AvailableResources
-        => Internal.AvailableResources.Select(item => new Resource(item)).ToList();
+        => Wrapped.AvailableResources.Select(item => new Resource(item)).ToList();
+
     public DrainMode DrainMode
     {
-        get => Internal.DrainMode;
-        set => Internal.DrainMode = value;
+        get => Wrapped.DrainMode;
+        set => Wrapped.DrainMode = value;
     }
+
     public float MaxRate
-        => Internal.MaxRate;
+        => Wrapped.MaxRate;
+
     public float MinRate
-        => Internal.MinRate;
+        => Wrapped.MinRate;
+
     public Part Part
-        => new Part(Internal.Part);
+        => new Part(Wrapped.Part);
+
     public float Rate
     {
-        get => Internal.Rate;
-        set => Internal.Rate = value;
+        get => Wrapped.Rate;
+        set => Wrapped.Rate = value;
     }
+
     public bool CheckResource(Resource resource)
-        => Internal.CheckResource(resource.Internal);
+        => Wrapped.CheckResource(resource.Wrapped);
+
     public void SetResource(Resource resource, bool enabled)
-        => Internal.SetResource(resource.Internal, enabled);
+        => Wrapped.SetResource(resource.Wrapped, enabled);
+
     public void Start()
-        => Internal.Start();
+        => Wrapped.Start();
+
     public void Stop()
-        => Internal.Stop();
+        => Wrapped.Stop();
 }

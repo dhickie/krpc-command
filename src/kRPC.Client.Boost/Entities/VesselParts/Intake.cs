@@ -7,23 +7,28 @@ namespace kRPC.Client.Boost.Entities.VesselParts;
 /// </summary>
 public class Intake
 {
-    internal BaseIntake Internal { get; }
+    internal readonly BaseIntake Wrapped;
 
     internal Intake(BaseIntake intake)
     {
-        Internal = intake;
+        Wrapped = intake;
     }
+
     public float Area
-        => Internal.Area;
+        => Wrapped.Area;
+
     public float Flow
-        => Internal.Flow;
+        => Wrapped.Flow;
+
     public bool Open
     {
-        get => Internal.Open;
-        set => Internal.Open = value;
+        get => Wrapped.Open;
+        set => Wrapped.Open = value;
     }
+
     public Part Part
-        => new Part(Internal.Part);
+        => new Part(Wrapped.Part);
+
     public float Speed
-        => Internal.Speed;
+        => Wrapped.Speed;
 }

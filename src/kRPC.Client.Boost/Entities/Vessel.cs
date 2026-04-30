@@ -14,114 +14,163 @@ namespace kRPC.Client.Boost.Entities;
 /// </summary>
 public class Vessel
 {
-    internal BaseVessel Internal { get; }
+    internal readonly BaseVessel Wrapped;
 
     internal Vessel(BaseVessel vessel)
     {
-        Internal = vessel;
+        Wrapped = vessel;
     }
+
     public AutoPilot AutoPilot
-        => new AutoPilot(Internal.AutoPilot);
+        => new AutoPilot(Wrapped.AutoPilot);
+
     public Tuple<Tuple<double, double, double>, Tuple<double, double, double>> AvailableControlSurfaceTorque
-        => Internal.AvailableControlSurfaceTorque;
+        => Wrapped.AvailableControlSurfaceTorque;
+
     public Tuple<Tuple<double, double, double>, Tuple<double, double, double>> AvailableEngineTorque
-        => Internal.AvailableEngineTorque;
+        => Wrapped.AvailableEngineTorque;
+
     public Tuple<Tuple<double, double, double>, Tuple<double, double, double>> AvailableOtherTorque
-        => Internal.AvailableOtherTorque;
+        => Wrapped.AvailableOtherTorque;
+
     public Tuple<Tuple<double, double, double>, Tuple<double, double, double>> AvailableRCSForce
-        => Internal.AvailableRCSForce;
+        => Wrapped.AvailableRCSForce;
+
     public Tuple<Tuple<double, double, double>, Tuple<double, double, double>> AvailableRCSTorque
-        => Internal.AvailableRCSTorque;
+        => Wrapped.AvailableRCSTorque;
+
     public Tuple<Tuple<double, double, double>, Tuple<double, double, double>> AvailableReactionWheelTorque
-        => Internal.AvailableReactionWheelTorque;
+        => Wrapped.AvailableReactionWheelTorque;
+
     public float AvailableThrust
-        => Internal.AvailableThrust;
+        => Wrapped.AvailableThrust;
+
     public Tuple<Tuple<double, double, double>, Tuple<double, double, double>> AvailableTorque
-        => Internal.AvailableTorque;
+        => Wrapped.AvailableTorque;
+
     public string Biome
-        => Internal.Biome;
+        => Wrapped.Biome;
+
     public Comms Comms
-        => new Comms(Internal.Comms);
+        => new Comms(Wrapped.Comms);
+
     public Control Control
-        => new Control(Internal.Control);
+        => new Control(Wrapped.Control);
+
     public IList<CrewMember> Crew
-        => Internal.Crew.Select(item => new CrewMember(item)).ToList();
+        => Wrapped.Crew.Select(item => new CrewMember(item)).ToList();
+
     public int CrewCapacity
-        => Internal.CrewCapacity;
+        => Wrapped.CrewCapacity;
+
     public int CrewCount
-        => Internal.CrewCount;
+        => Wrapped.CrewCount;
+
     public float DryMass
-        => Internal.DryMass;
+        => Wrapped.DryMass;
+
     public IList<double> InertiaTensor
-        => Internal.InertiaTensor;
+        => Wrapped.InertiaTensor;
+
     public float KerbinSeaLevelSpecificImpulse
-        => Internal.KerbinSeaLevelSpecificImpulse;
+        => Wrapped.KerbinSeaLevelSpecificImpulse;
+
     public double MET
-        => Internal.MET;
+        => Wrapped.MET;
+
     public float Mass
-        => Internal.Mass;
+        => Wrapped.Mass;
+
     public float MaxThrust
-        => Internal.MaxThrust;
+        => Wrapped.MaxThrust;
+
     public float MaxVacuumThrust
-        => Internal.MaxVacuumThrust;
+        => Wrapped.MaxVacuumThrust;
+
     public Tuple<double, double, double> MomentOfInertia
-        => Internal.MomentOfInertia;
+        => Wrapped.MomentOfInertia;
+
     public string Name
     {
-        get => Internal.Name;
-        set => Internal.Name = value;
+        get => Wrapped.Name;
+        set => Wrapped.Name = value;
     }
+
     public Orbit Orbit
-        => new Orbit(Internal.Orbit);
+        => new Orbit(Wrapped.Orbit);
+
     public ReferenceFrame OrbitalReferenceFrame
-        => new ReferenceFrame(Internal.OrbitalReferenceFrame);
+        => new ReferenceFrame(Wrapped.OrbitalReferenceFrame);
+
     public Parts Parts
-        => new Parts(Internal.Parts);
+        => new Parts(Wrapped.Parts);
+
     public bool Recoverable
-        => Internal.Recoverable;
+        => Wrapped.Recoverable;
+
     public ReferenceFrame ReferenceFrame
-        => new ReferenceFrame(Internal.ReferenceFrame);
+        => new ReferenceFrame(Wrapped.ReferenceFrame);
+
     public Resources Resources
-        => new Resources(Internal.Resources);
+        => new Resources(Wrapped.Resources);
+
     public VesselSituation Situation
-        => Internal.Situation;
+        => Wrapped.Situation;
+
     public float SpecificImpulse
-        => Internal.SpecificImpulse;
+        => Wrapped.SpecificImpulse;
+
     public ReferenceFrame SurfaceReferenceFrame
-        => new ReferenceFrame(Internal.SurfaceReferenceFrame);
+        => new ReferenceFrame(Wrapped.SurfaceReferenceFrame);
+
     public ReferenceFrame SurfaceVelocityReferenceFrame
-        => new ReferenceFrame(Internal.SurfaceVelocityReferenceFrame);
+        => new ReferenceFrame(Wrapped.SurfaceVelocityReferenceFrame);
+
     public float Thrust
-        => Internal.Thrust;
+        => Wrapped.Thrust;
+
     public VesselType Type
     {
-        get => Internal.Type;
-        set => Internal.Type = value;
+        get => Wrapped.Type;
+        set => Wrapped.Type = value;
     }
+
     public float VacuumSpecificImpulse
-        => Internal.VacuumSpecificImpulse;
+        => Wrapped.VacuumSpecificImpulse;
+
     public Tuple<double, double, double> AngularVelocity(ReferenceFrame referenceFrame)
-        => Internal.AngularVelocity(referenceFrame.Internal);
+        => Wrapped.AngularVelocity(referenceFrame.Wrapped);
+
     public float AvailableThrustAt(double pressure)
-        => Internal.AvailableThrustAt(pressure);
+        => Wrapped.AvailableThrustAt(pressure);
+
     public Tuple<Tuple<double, double, double>, Tuple<double, double, double>> BoundingBox(ReferenceFrame referenceFrame)
-        => Internal.BoundingBox(referenceFrame.Internal);
+        => Wrapped.BoundingBox(referenceFrame.Wrapped);
+
     public Tuple<double, double, double> Direction(ReferenceFrame referenceFrame)
-        => Internal.Direction(referenceFrame.Internal);
+        => Wrapped.Direction(referenceFrame.Wrapped);
+
     public Flight Flight(ReferenceFrame referenceFrame = null)
-        => new Flight(Internal.Flight(referenceFrame?.Internal));
+        => new Flight(Wrapped.Flight(referenceFrame?.Wrapped));
+
     public float MaxThrustAt(double pressure)
-        => Internal.MaxThrustAt(pressure);
+        => Wrapped.MaxThrustAt(pressure);
+
     public Tuple<double, double, double> Position(ReferenceFrame referenceFrame)
-        => Internal.Position(referenceFrame.Internal);
+        => Wrapped.Position(referenceFrame.Wrapped);
+
     public void Recover()
-        => Internal.Recover();
+        => Wrapped.Recover();
+
     public Resources ResourcesInDecoupleStage(int stage, bool cumulative = true)
-        => new Resources(Internal.ResourcesInDecoupleStage(stage, cumulative));
+        => new Resources(Wrapped.ResourcesInDecoupleStage(stage, cumulative));
+
     public Tuple<double, double, double, double> Rotation(ReferenceFrame referenceFrame)
-        => Internal.Rotation(referenceFrame.Internal);
+        => Wrapped.Rotation(referenceFrame.Wrapped);
+
     public float SpecificImpulseAt(double pressure)
-        => Internal.SpecificImpulseAt(pressure);
+        => Wrapped.SpecificImpulseAt(pressure);
+
     public Tuple<double, double, double> Velocity(ReferenceFrame referenceFrame)
-        => Internal.Velocity(referenceFrame.Internal);
+        => Wrapped.Velocity(referenceFrame.Wrapped);
 }

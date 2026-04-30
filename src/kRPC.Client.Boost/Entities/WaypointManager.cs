@@ -12,20 +12,25 @@ namespace kRPC.Client.Boost.Entities;
 /// </summary>
 public class WaypointManager
 {
-    internal BaseWaypointManager Internal { get; }
+    internal readonly BaseWaypointManager Wrapped;
 
     internal WaypointManager(BaseWaypointManager waypointManager)
     {
-        Internal = waypointManager;
+        Wrapped = waypointManager;
     }
+
     public IDictionary<string, int> Colors
-        => Internal.Colors;
+        => Wrapped.Colors;
+
     public IList<string> Icons
-        => Internal.Icons;
+        => Wrapped.Icons;
+
     public IList<Waypoint> Waypoints
-        => Internal.Waypoints.Select(item => new Waypoint(item)).ToList();
+        => Wrapped.Waypoints.Select(item => new Waypoint(item)).ToList();
+
     public Waypoint AddWaypoint(double latitude, double longitude, CelestialBody body, string name)
-        => new Waypoint(Internal.AddWaypoint(latitude, longitude, body.Internal, name));
+        => new(Wrapped.AddWaypoint(latitude, longitude, body.Wrapped, name));
+
     public Waypoint AddWaypointAtAltitude(double latitude, double longitude, double altitude, CelestialBody body, string name)
-        => new Waypoint(Internal.AddWaypointAtAltitude(latitude, longitude, altitude, body.Internal, name));
+        => new(Wrapped.AddWaypointAtAltitude(latitude, longitude, altitude, body.Wrapped, name));
 }

@@ -8,16 +8,19 @@ namespace kRPC.Client.Boost.Entities.VesselParts;
 /// </summary>
 public class ResourceTransfer
 {
-    internal BaseResourceTransfer Internal { get; }
+    internal readonly BaseResourceTransfer Wrapped;
 
     internal ResourceTransfer(BaseResourceTransfer resourceTransfer)
     {
-        Internal = resourceTransfer;
+        Wrapped = resourceTransfer;
     }
+
     public float Amount
-        => Internal.Amount;
+        => Wrapped.Amount;
+
     public bool Complete
-        => Internal.Complete;
+        => Wrapped.Complete;
+
     public static ResourceTransfer Start(IConnection connection, Part fromPart, Part toPart, string resource, float maxAmount)
-        => new ResourceTransfer(BaseResourceTransfer.Start(connection, fromPart.Internal, toPart.Internal, resource, maxAmount));
+        => new ResourceTransfer(BaseResourceTransfer.Start(connection, fromPart.Wrapped, toPart.Wrapped, resource, maxAmount));
 }

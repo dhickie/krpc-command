@@ -12,69 +12,85 @@ namespace kRPC.Client.Boost.Entities;
 /// </summary>
 public class Waypoint
 {
-    internal BaseWaypoint Internal { get; }
+    internal readonly BaseWaypoint Wrapped;
 
     internal Waypoint(BaseWaypoint waypoint)
     {
-        Internal = waypoint;
+        Wrapped = waypoint;
     }
+
     public double BedrockAltitude
     {
-        get => Internal.BedrockAltitude;
-        set => Internal.BedrockAltitude = value;
+        get => Wrapped.BedrockAltitude;
+        set => Wrapped.BedrockAltitude = value;
     }
+
     public CelestialBody Body
     {
-        get => new CelestialBody(Internal.Body);
-        set => Internal.Body = value.Internal;
+        get => new CelestialBody(Wrapped.Body);
+        set => Wrapped.Body = value.Wrapped;
     }
+
     public bool Clustered
-        => Internal.Clustered;
+        => Wrapped.Clustered;
+
     public int Color
     {
-        get => Internal.Color;
-        set => Internal.Color = value;
+        get => Wrapped.Color;
+        set => Wrapped.Color = value;
     }
+
     public Contract Contract
-        => new Contract(Internal.Contract);
+        => new Contract(Wrapped.Contract);
+
     public bool Grounded
-        => Internal.Grounded;
+        => Wrapped.Grounded;
+
     public bool HasContract
-        => Internal.HasContract;
+        => Wrapped.HasContract;
+
     public string Icon
     {
-        get => Internal.Icon;
-        set => Internal.Icon = value;
+        get => Wrapped.Icon;
+        set => Wrapped.Icon = value;
     }
+
     public int Index
-        => Internal.Index;
+        => Wrapped.Index;
+
     public double Latitude
     {
-        get => Internal.Latitude;
-        set => Internal.Latitude = value;
+        get => Wrapped.Latitude;
+        set => Wrapped.Latitude = value;
     }
+
     public double Longitude
     {
-        get => Internal.Longitude;
-        set => Internal.Longitude = value;
+        get => Wrapped.Longitude;
+        set => Wrapped.Longitude = value;
     }
+
     public double MeanAltitude
     {
-        get => Internal.MeanAltitude;
-        set => Internal.MeanAltitude = value;
+        get => Wrapped.MeanAltitude;
+        set => Wrapped.MeanAltitude = value;
     }
+
     public string Name
     {
-        get => Internal.Name;
-        set => Internal.Name = value;
+        get => Wrapped.Name;
+        set => Wrapped.Name = value;
     }
+
     public bool NearSurface
-        => Internal.NearSurface;
+        => Wrapped.NearSurface;
+
     public double SurfaceAltitude
     {
-        get => Internal.SurfaceAltitude;
-        set => Internal.SurfaceAltitude = value;
+        get => Wrapped.SurfaceAltitude;
+        set => Wrapped.SurfaceAltitude = value;
     }
+
     public void Remove()
-        => Internal.Remove();
+        => Wrapped.Remove();
 }

@@ -12,22 +12,28 @@ namespace kRPC.Client.Boost.Entities;
 /// </summary>
 public class Comms
 {
-    internal BaseComms Internal { get; }
+    internal readonly BaseComms Wrapped;
 
     internal Comms(BaseComms comms)
     {
-        Internal = comms;
+        Wrapped = comms;
     }
+
     public bool CanCommunicate
-        => Internal.CanCommunicate;
+        => Wrapped.CanCommunicate;
+
     public bool CanTransmitScience
-        => Internal.CanTransmitScience;
+        => Wrapped.CanTransmitScience;
+
     public IList<CommLink> ControlPath
-        => Internal.ControlPath.Select(item => new CommLink(item)).ToList();
+        => Wrapped.ControlPath.Select(item => new CommLink(item)).ToList();
+
     public double Power
-        => Internal.Power;
+        => Wrapped.Power;
+
     public double SignalDelay
-        => Internal.SignalDelay;
+        => Wrapped.SignalDelay;
+
     public double SignalStrength
-        => Internal.SignalStrength;
+        => Wrapped.SignalStrength;
 }

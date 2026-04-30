@@ -8,27 +8,34 @@ namespace kRPC.Client.Boost.Entities.VesselParts;
 /// </summary>
 public class Resource
 {
-    internal BaseResource Internal { get; }
+    internal readonly BaseResource Wrapped;
 
     internal Resource(BaseResource resource)
     {
-        Internal = resource;
+        Wrapped = resource;
     }
+
     public float Amount
-        => Internal.Amount;
+        => Wrapped.Amount;
+
     public float Density
-        => Internal.Density;
+        => Wrapped.Density;
+
     public bool Enabled
     {
-        get => Internal.Enabled;
-        set => Internal.Enabled = value;
+        get => Wrapped.Enabled;
+        set => Wrapped.Enabled = value;
     }
+
     public ResourceFlowMode FlowMode
-        => Internal.FlowMode;
+        => Wrapped.FlowMode;
+
     public float Max
-        => Internal.Max;
+        => Wrapped.Max;
+
     public string Name
-        => Internal.Name;
+        => Wrapped.Name;
+
     public Part Part
-        => new Part(Internal.Part);
+        => new Part(Wrapped.Part);
 }

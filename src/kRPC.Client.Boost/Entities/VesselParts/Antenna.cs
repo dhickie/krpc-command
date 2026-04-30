@@ -8,58 +8,58 @@ namespace kRPC.Client.Boost.Entities.VesselParts;
 /// </summary>
 public class Antenna
 {
-    internal BaseAntenna Internal { get; }
+    internal readonly BaseAntenna Wrapped;
 
     internal Antenna(BaseAntenna antenna)
     {
-        Internal = antenna;
+        Wrapped = antenna;
     }
 
     public bool AllowPartial
     {
-        get => Internal.AllowPartial;
-        set => Internal.AllowPartial = value;
+        get => Wrapped.AllowPartial;
+        set => Wrapped.AllowPartial = value;
     }
 
     public bool CanTransmit
-        => Internal.CanTransmit;
+        => Wrapped.CanTransmit;
 
     public bool Combinable
-        => Internal.Combinable;
+        => Wrapped.Combinable;
 
     public double CombinableExponent
-        => Internal.CombinableExponent;
+        => Wrapped.CombinableExponent;
 
     public bool Deployable
-        => Internal.Deployable;
+        => Wrapped.Deployable;
 
     public bool Deployed
     {
-        get => Internal.Deployed;
-        set => Internal.Deployed = value;
+        get => Wrapped.Deployed;
+        set => Wrapped.Deployed = value;
     }
 
     public float PacketInterval
-        => Internal.PacketInterval;
+        => Wrapped.PacketInterval;
 
     public double PacketResourceCost
-        => Internal.PacketResourceCost;
+        => Wrapped.PacketResourceCost;
 
     public float PacketSize
-        => Internal.PacketSize;
+        => Wrapped.PacketSize;
 
     public Part Part
-        => new(Internal.Part);
+        => new(Wrapped.Part);
 
     public double Power
-        => Internal.Power;
+        => Wrapped.Power;
 
     public AntennaState State
-        => Internal.State;
+        => Wrapped.State;
 
     public void Cancel()
-        => Internal.Cancel();
+        => Wrapped.Cancel();
 
     public void Transmit()
-        => Internal.Transmit();
+        => Wrapped.Transmit();
 }

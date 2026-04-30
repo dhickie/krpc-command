@@ -8,51 +8,67 @@ namespace kRPC.Client.Boost.Entities.VesselParts;
 /// </summary>
 public class DockingPort
 {
-    internal BaseDockingPort Internal { get; }
+    internal readonly BaseDockingPort Wrapped;
 
     internal DockingPort(BaseDockingPort dockingPort)
     {
-        Internal = dockingPort;
+        Wrapped = dockingPort;
     }
+
     public bool CanRotate
-        => Internal.CanRotate;
+        => Wrapped.CanRotate;
+
     public Part DockedPart
-        => new Part(Internal.DockedPart);
+        => new Part(Wrapped.DockedPart);
+
     public bool HasShield
-        => Internal.HasShield;
+        => Wrapped.HasShield;
+
     public float MaximumRotation
-        => Internal.MaximumRotation;
+        => Wrapped.MaximumRotation;
+
     public float MinimumRotation
-        => Internal.MinimumRotation;
+        => Wrapped.MinimumRotation;
+
     public Part Part
-        => new Part(Internal.Part);
+        => new Part(Wrapped.Part);
+
     public float ReengageDistance
-        => Internal.ReengageDistance;
+        => Wrapped.ReengageDistance;
+
     public ReferenceFrame ReferenceFrame
-        => new ReferenceFrame(Internal.ReferenceFrame);
+        => new ReferenceFrame(Wrapped.ReferenceFrame);
+
     public bool RotationLocked
     {
-        get => Internal.RotationLocked;
-        set => Internal.RotationLocked = value;
+        get => Wrapped.RotationLocked;
+        set => Wrapped.RotationLocked = value;
     }
+
     public float RotationTarget
     {
-        get => Internal.RotationTarget;
-        set => Internal.RotationTarget = value;
+        get => Wrapped.RotationTarget;
+        set => Wrapped.RotationTarget = value;
     }
+
     public bool Shielded
     {
-        get => Internal.Shielded;
-        set => Internal.Shielded = value;
+        get => Wrapped.Shielded;
+        set => Wrapped.Shielded = value;
     }
+
     public DockingPortState State
-        => Internal.State;
+        => Wrapped.State;
+
     public Tuple<double, double, double> Direction(ReferenceFrame referenceFrame)
-        => Internal.Direction(referenceFrame.Internal);
+        => Wrapped.Direction(referenceFrame.Wrapped);
+
     public Tuple<double, double, double> Position(ReferenceFrame referenceFrame)
-        => Internal.Position(referenceFrame.Internal);
+        => Wrapped.Position(referenceFrame.Wrapped);
+
     public Tuple<double, double, double, double> Rotation(ReferenceFrame referenceFrame)
-        => Internal.Rotation(referenceFrame.Internal);
+        => Wrapped.Rotation(referenceFrame.Wrapped);
+
     public Vessel Undock()
-        => new Vessel(Internal.Undock());
+        => new Vessel(Wrapped.Undock());
 }

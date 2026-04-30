@@ -8,34 +8,43 @@ namespace kRPC.Client.Boost.Entities.VesselParts;
 /// </summary>
 public class Parachute
 {
-    internal BaseParachute Internal { get; }
+    internal readonly BaseParachute Wrapped;
 
     internal Parachute(BaseParachute parachute)
     {
-        Internal = parachute;
+        Wrapped = parachute;
     }
+
     public bool Armed
-        => Internal.Armed;
+        => Wrapped.Armed;
+
     public float DeployAltitude
     {
-        get => Internal.DeployAltitude;
-        set => Internal.DeployAltitude = value;
+        get => Wrapped.DeployAltitude;
+        set => Wrapped.DeployAltitude = value;
     }
+
     public float DeployMinPressure
     {
-        get => Internal.DeployMinPressure;
-        set => Internal.DeployMinPressure = value;
+        get => Wrapped.DeployMinPressure;
+        set => Wrapped.DeployMinPressure = value;
     }
+
     public bool Deployed
-        => Internal.Deployed;
+        => Wrapped.Deployed;
+
     public Part Part
-        => new Part(Internal.Part);
+        => new Part(Wrapped.Part);
+
     public ParachuteState State
-        => Internal.State;
+        => Wrapped.State;
+
     public void Arm()
-        => Internal.Arm();
+        => Wrapped.Arm();
+
     public void Cut()
-        => Internal.Cut();
+        => Wrapped.Cut();
+
     public void Deploy()
-        => Internal.Deploy();
+        => Wrapped.Deploy();
 }

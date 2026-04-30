@@ -7,24 +7,31 @@ namespace kRPC.Client.Boost.Entities.VesselParts;
 /// </summary>
 public class Decoupler
 {
-    internal BaseDecoupler Internal { get; }
+    internal readonly BaseDecoupler Wrapped;
 
     internal Decoupler(BaseDecoupler decoupler)
     {
-        Internal = decoupler;
+        Wrapped = decoupler;
     }
+
     public Part AttachedPart
-        => new Part(Internal.AttachedPart);
+        => new Part(Wrapped.AttachedPart);
+
     public bool Decoupled
-        => Internal.Decoupled;
+        => Wrapped.Decoupled;
+
     public float Impulse
-        => Internal.Impulse;
+        => Wrapped.Impulse;
+
     public bool IsOmniDecoupler
-        => Internal.IsOmniDecoupler;
+        => Wrapped.IsOmniDecoupler;
+
     public Part Part
-        => new Part(Internal.Part);
+        => new Part(Wrapped.Part);
+
     public bool Staged
-        => Internal.Staged;
+        => Wrapped.Staged;
+
     public Vessel Decouple()
-        => new Vessel(Internal.Decouple());
+        => new Vessel(Wrapped.Decouple());
 }

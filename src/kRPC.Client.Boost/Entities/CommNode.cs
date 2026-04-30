@@ -12,20 +12,25 @@ namespace kRPC.Client.Boost.Entities;
 /// </summary>
 public class CommNode
 {
-    internal BaseCommNode Internal { get; }
+    internal readonly BaseCommNode Wrapped;
 
     internal CommNode(BaseCommNode commNode)
     {
-        Internal = commNode;
+        Wrapped = commNode;
     }
+
     public bool IsControlPoint
-        => Internal.IsControlPoint;
+        => Wrapped.IsControlPoint;
+
     public bool IsHome
-        => Internal.IsHome;
+        => Wrapped.IsHome;
+
     public bool IsVessel
-        => Internal.IsVessel;
+        => Wrapped.IsVessel;
+
     public string Name
-        => Internal.Name;
+        => Wrapped.Name;
+
     public Vessel Vessel
-        => new Vessel(Internal.Vessel);
+        => new Vessel(Wrapped.Vessel);
 }

@@ -7,23 +7,28 @@ namespace kRPC.Client.Boost.Entities.VesselParts;
 /// </summary>
 public class ReactionWheel
 {
-    internal BaseReactionWheel Internal { get; }
+    internal readonly BaseReactionWheel Wrapped;
 
     internal ReactionWheel(BaseReactionWheel reactionWheel)
     {
-        Internal = reactionWheel;
+        Wrapped = reactionWheel;
     }
+
     public bool Active
     {
-        get => Internal.Active;
-        set => Internal.Active = value;
+        get => Wrapped.Active;
+        set => Wrapped.Active = value;
     }
+
     public Tuple<Tuple<double, double, double>, Tuple<double, double, double>> AvailableTorque
-        => Internal.AvailableTorque;
+        => Wrapped.AvailableTorque;
+
     public bool Broken
-        => Internal.Broken;
+        => Wrapped.Broken;
+
     public Tuple<Tuple<double, double, double>, Tuple<double, double, double>> MaxTorque
-        => Internal.MaxTorque;
+        => Wrapped.MaxTorque;
+
     public Part Part
-        => new Part(Internal.Part);
+        => new Part(Wrapped.Part);
 }

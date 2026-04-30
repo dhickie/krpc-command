@@ -7,19 +7,22 @@ namespace kRPC.Client.Boost.Entities.VesselParts;
 /// </summary>
 public class Sensor
 {
-    internal BaseSensor Internal { get; }
+    internal readonly BaseSensor Wrapped;
 
     internal Sensor(BaseSensor sensor)
     {
-        Internal = sensor;
+        Wrapped = sensor;
     }
+
     public bool Active
     {
-        get => Internal.Active;
-        set => Internal.Active = value;
+        get => Wrapped.Active;
+        set => Wrapped.Active = value;
     }
+
     public Part Part
-        => new Part(Internal.Part);
+        => new Part(Wrapped.Part);
+
     public string Value
-        => Internal.Value;
+        => Wrapped.Value;
 }

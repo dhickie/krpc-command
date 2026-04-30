@@ -7,41 +7,49 @@ namespace kRPC.Client.Boost.Entities.VesselParts;
 /// </summary>
 public class RoboticRotation
 {
-    internal BaseRoboticRotation Internal { get; }
+    internal readonly BaseRoboticRotation Wrapped;
 
     internal RoboticRotation(BaseRoboticRotation roboticRotation)
     {
-        Internal = roboticRotation;
+        Wrapped = roboticRotation;
     }
+
     public float CurrentAngle
-        => Internal.CurrentAngle;
+        => Wrapped.CurrentAngle;
+
     public float Damping
     {
-        get => Internal.Damping;
-        set => Internal.Damping = value;
+        get => Wrapped.Damping;
+        set => Wrapped.Damping = value;
     }
+
     public bool Locked
     {
-        get => Internal.Locked;
-        set => Internal.Locked = value;
+        get => Wrapped.Locked;
+        set => Wrapped.Locked = value;
     }
+
     public bool MotorEngaged
     {
-        get => Internal.MotorEngaged;
-        set => Internal.MotorEngaged = value;
+        get => Wrapped.MotorEngaged;
+        set => Wrapped.MotorEngaged = value;
     }
+
     public Part Part
-        => new Part(Internal.Part);
+        => new Part(Wrapped.Part);
+
     public float Rate
     {
-        get => Internal.Rate;
-        set => Internal.Rate = value;
+        get => Wrapped.Rate;
+        set => Wrapped.Rate = value;
     }
+
     public float TargetAngle
     {
-        get => Internal.TargetAngle;
-        set => Internal.TargetAngle = value;
+        get => Wrapped.TargetAngle;
+        set => Wrapped.TargetAngle = value;
     }
+
     public void MoveHome()
-        => Internal.MoveHome();
+        => Wrapped.MoveHome();
 }

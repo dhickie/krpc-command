@@ -7,29 +7,34 @@ namespace kRPC.Client.Boost.Entities.VesselParts;
 /// </summary>
 public class Force
 {
-    internal BaseForce Internal { get; }
+    internal readonly BaseForce Wrapped;
 
     internal Force(BaseForce force)
     {
-        Internal = force;
+        Wrapped = force;
     }
+
     public Tuple<double, double, double> ForceVector
     {
-        get => Internal.ForceVector;
-        set => Internal.ForceVector = value;
+        get => Wrapped.ForceVector;
+        set => Wrapped.ForceVector = value;
     }
+
     public Part Part
-        => new Part(Internal.Part);
+        => new Part(Wrapped.Part);
+
     public Tuple<double, double, double> Position
     {
-        get => Internal.Position;
-        set => Internal.Position = value;
+        get => Wrapped.Position;
+        set => Wrapped.Position = value;
     }
+
     public ReferenceFrame ReferenceFrame
     {
-        get => new ReferenceFrame(Internal.ReferenceFrame);
-        set => Internal.ReferenceFrame = value.Internal;
+        get => new ReferenceFrame(Wrapped.ReferenceFrame);
+        set => Wrapped.ReferenceFrame = value.Wrapped;
     }
+
     public void Remove()
-        => Internal.Remove();
+        => Wrapped.Remove();
 }

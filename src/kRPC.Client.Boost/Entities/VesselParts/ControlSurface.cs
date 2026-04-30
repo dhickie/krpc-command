@@ -7,46 +7,55 @@ namespace kRPC.Client.Boost.Entities.VesselParts;
 /// </summary>
 public class ControlSurface
 {
-    internal BaseControlSurface Internal { get; }
+    internal readonly BaseControlSurface Wrapped;
 
     internal ControlSurface(BaseControlSurface controlSurface)
     {
-        Internal = controlSurface;
+        Wrapped = controlSurface;
     }
+
     public float AuthorityLimiter
     {
-        get => Internal.AuthorityLimiter;
-        set => Internal.AuthorityLimiter = value;
+        get => Wrapped.AuthorityLimiter;
+        set => Wrapped.AuthorityLimiter = value;
     }
+
     public Tuple<Tuple<double, double, double>, Tuple<double, double, double>> AvailableTorque
-        => Internal.AvailableTorque;
+        => Wrapped.AvailableTorque;
+
     public bool Deployed
     {
-        get => Internal.Deployed;
-        set => Internal.Deployed = value;
+        get => Wrapped.Deployed;
+        set => Wrapped.Deployed = value;
     }
+
     public bool Inverted
     {
-        get => Internal.Inverted;
-        set => Internal.Inverted = value;
+        get => Wrapped.Inverted;
+        set => Wrapped.Inverted = value;
     }
+
     public Part Part
-        => new Part(Internal.Part);
+        => new Part(Wrapped.Part);
+
     public bool PitchEnabled
     {
-        get => Internal.PitchEnabled;
-        set => Internal.PitchEnabled = value;
+        get => Wrapped.PitchEnabled;
+        set => Wrapped.PitchEnabled = value;
     }
+
     public bool RollEnabled
     {
-        get => Internal.RollEnabled;
-        set => Internal.RollEnabled = value;
+        get => Wrapped.RollEnabled;
+        set => Wrapped.RollEnabled = value;
     }
+
     public float SurfaceArea
-        => Internal.SurfaceArea;
+        => Wrapped.SurfaceArea;
+
     public bool YawEnabled
     {
-        get => Internal.YawEnabled;
-        set => Internal.YawEnabled = value;
+        get => Wrapped.YawEnabled;
+        set => Wrapped.YawEnabled = value;
     }
 }

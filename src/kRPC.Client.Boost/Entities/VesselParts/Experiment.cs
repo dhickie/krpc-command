@@ -7,40 +7,55 @@ namespace kRPC.Client.Boost.Entities.VesselParts;
 /// </summary>
 public class Experiment
 {
-    internal BaseExperiment Internal { get; }
+    internal readonly BaseExperiment Wrapped;
 
     internal Experiment(BaseExperiment experiment)
     {
-        Internal = experiment;
+        Wrapped = experiment;
     }
+
     public bool Available
-        => Internal.Available;
+        => Wrapped.Available;
+
     public string Biome
-        => Internal.Biome;
+        => Wrapped.Biome;
+
     public IList<ScienceData> Data
-        => Internal.Data.Select(item => new ScienceData(item)).ToList();
+        => Wrapped.Data.Select(item => new ScienceData(item)).ToList();
+
     public bool Deployed
-        => Internal.Deployed;
+        => Wrapped.Deployed;
+
     public bool HasData
-        => Internal.HasData;
+        => Wrapped.HasData;
+
     public bool Inoperable
-        => Internal.Inoperable;
+        => Wrapped.Inoperable;
+
     public string Name
-        => Internal.Name;
+        => Wrapped.Name;
+
     public Part Part
-        => new Part(Internal.Part);
+        => new Part(Wrapped.Part);
+
     public bool Rerunnable
-        => Internal.Rerunnable;
+        => Wrapped.Rerunnable;
+
     public ScienceSubject ScienceSubject
-        => new ScienceSubject(Internal.ScienceSubject);
+        => new ScienceSubject(Wrapped.ScienceSubject);
+
     public string Title
-        => Internal.Title;
+        => Wrapped.Title;
+
     public void Dump()
-        => Internal.Dump();
+        => Wrapped.Dump();
+
     public void Reset()
-        => Internal.Reset();
+        => Wrapped.Reset();
+
     public void Run()
-        => Internal.Run();
+        => Wrapped.Run();
+
     public void Transmit()
-        => Internal.Transmit();
+        => Wrapped.Transmit();
 }

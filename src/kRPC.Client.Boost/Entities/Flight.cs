@@ -12,102 +12,148 @@ namespace kRPC.Client.Boost.Entities;
 /// </summary>
 public class Flight
 {
-    internal BaseFlight Internal { get; }
+    internal readonly BaseFlight Wrapped;
 
     internal Flight(BaseFlight flight)
     {
-        Internal = flight;
+        Wrapped = flight;
     }
+
     public Tuple<double, double, double> AerodynamicForce
-        => Internal.AerodynamicForce;
+        => Wrapped.AerodynamicForce;
+
     public float AngleOfAttack
-        => Internal.AngleOfAttack;
+        => Wrapped.AngleOfAttack;
+
     public Tuple<double, double, double> AntiNormal
-        => Internal.AntiNormal;
+        => Wrapped.AntiNormal;
+
     public Tuple<double, double, double> AntiRadial
-        => Internal.AntiRadial;
+        => Wrapped.AntiRadial;
+
     public float AtmosphereDensity
-        => Internal.AtmosphereDensity;
+        => Wrapped.AtmosphereDensity;
+
     public float BallisticCoefficient
-        => Internal.BallisticCoefficient;
+        => Wrapped.BallisticCoefficient;
+
     public double BedrockAltitude
-        => Internal.BedrockAltitude;
+        => Wrapped.BedrockAltitude;
+
     public Tuple<double, double, double> CenterOfMass
-        => Internal.CenterOfMass;
+        => Wrapped.CenterOfMass;
+
     public Tuple<double, double, double> Direction
-        => Internal.Direction;
+        => Wrapped.Direction;
+
     public Tuple<double, double, double> Drag
-        => Internal.Drag;
+        => Wrapped.Drag;
+
     public float DragCoefficient
-        => Internal.DragCoefficient;
+        => Wrapped.DragCoefficient;
+
     public float DynamicPressure
-        => Internal.DynamicPressure;
+        => Wrapped.DynamicPressure;
+
     public double Elevation
-        => Internal.Elevation;
+        => Wrapped.Elevation;
+
     public float EquivalentAirSpeed
-        => Internal.EquivalentAirSpeed;
+        => Wrapped.EquivalentAirSpeed;
+
     public float GForce
-        => Internal.GForce;
+        => Wrapped.GForce;
+
     public float Heading
-        => Internal.Heading;
+        => Wrapped.Heading;
+
     public double HorizontalSpeed
-        => Internal.HorizontalSpeed;
+        => Wrapped.HorizontalSpeed;
+
     public double Latitude
-        => Internal.Latitude;
+        => Wrapped.Latitude;
+
     public Tuple<double, double, double> Lift
-        => Internal.Lift;
+        => Wrapped.Lift;
+
     public float LiftCoefficient
-        => Internal.LiftCoefficient;
+        => Wrapped.LiftCoefficient;
+
     public double Longitude
-        => Internal.Longitude;
+        => Wrapped.Longitude;
+
     public float Mach
-        => Internal.Mach;
+        => Wrapped.Mach;
+
     public double MeanAltitude
-        => Internal.MeanAltitude;
+        => Wrapped.MeanAltitude;
+
     public Tuple<double, double, double> Normal
-        => Internal.Normal;
+        => Wrapped.Normal;
+
     public float Pitch
-        => Internal.Pitch;
+        => Wrapped.Pitch;
+
     public Tuple<double, double, double> Prograde
-        => Internal.Prograde;
+        => Wrapped.Prograde;
+
     public Tuple<double, double, double> Radial
-        => Internal.Radial;
+        => Wrapped.Radial;
+
     public Tuple<double, double, double> Retrograde
-        => Internal.Retrograde;
+        => Wrapped.Retrograde;
+
     public float ReynoldsNumber
-        => Internal.ReynoldsNumber;
+        => Wrapped.ReynoldsNumber;
+
     public float Roll
-        => Internal.Roll;
+        => Wrapped.Roll;
+
     public Tuple<double, double, double, double> Rotation
-        => Internal.Rotation;
+        => Wrapped.Rotation;
+
     public float SideslipAngle
-        => Internal.SideslipAngle;
+        => Wrapped.SideslipAngle;
+
     public double Speed
-        => Internal.Speed;
+        => Wrapped.Speed;
+
     public float SpeedOfSound
-        => Internal.SpeedOfSound;
+        => Wrapped.SpeedOfSound;
+
     public float StallFraction
-        => Internal.StallFraction;
+        => Wrapped.StallFraction;
+
     public float StaticAirTemperature
-        => Internal.StaticAirTemperature;
+        => Wrapped.StaticAirTemperature;
+
     public float StaticPressure
-        => Internal.StaticPressure;
+        => Wrapped.StaticPressure;
+
     public float StaticPressureAtMSL
-        => Internal.StaticPressureAtMSL;
+        => Wrapped.StaticPressureAtMSL;
+
     public double SurfaceAltitude
-        => Internal.SurfaceAltitude;
+        => Wrapped.SurfaceAltitude;
+
     public float TerminalVelocity
-        => Internal.TerminalVelocity;
+        => Wrapped.TerminalVelocity;
+
     public float ThrustSpecificFuelConsumption
-        => Internal.ThrustSpecificFuelConsumption;
+        => Wrapped.ThrustSpecificFuelConsumption;
+
     public float TotalAirTemperature
-        => Internal.TotalAirTemperature;
+        => Wrapped.TotalAirTemperature;
+
     public float TrueAirSpeed
-        => Internal.TrueAirSpeed;
+        => Wrapped.TrueAirSpeed;
+
     public Tuple<double, double, double> Velocity
-        => Internal.Velocity;
+        => Wrapped.Velocity;
+
     public double VerticalSpeed
-        => Internal.VerticalSpeed;
+        => Wrapped.VerticalSpeed;
+
     public Tuple<double, double, double> SimulateAerodynamicForceAt(CelestialBody body, Tuple<double, double, double> position, Tuple<double, double, double> velocity)
-        => Internal.SimulateAerodynamicForceAt(body.Internal, position, velocity);
+        => Wrapped.SimulateAerodynamicForceAt(body.Wrapped, position, velocity);
 }

@@ -7,100 +7,133 @@ namespace kRPC.Client.Boost.Entities.VesselParts;
 /// </summary>
 public class Engine
 {
-    internal BaseEngine Internal { get; }
+    internal readonly BaseEngine Wrapped;
 
     internal Engine(BaseEngine engine)
     {
-        Internal = engine;
+        Wrapped = engine;
     }
+
     public bool Active
     {
-        get => Internal.Active;
-        set => Internal.Active = value;
+        get => Wrapped.Active;
+        set => Wrapped.Active = value;
     }
+
     public bool AutoModeSwitch
     {
-        get => Internal.AutoModeSwitch;
-        set => Internal.AutoModeSwitch = value;
+        get => Wrapped.AutoModeSwitch;
+        set => Wrapped.AutoModeSwitch = value;
     }
+
     public float AvailableThrust
-        => Internal.AvailableThrust;
+        => Wrapped.AvailableThrust;
+
     public Tuple<Tuple<double, double, double>, Tuple<double, double, double>> AvailableTorque
-        => Internal.AvailableTorque;
+        => Wrapped.AvailableTorque;
+
     public bool CanRestart
-        => Internal.CanRestart;
+        => Wrapped.CanRestart;
+
     public bool CanShutdown
-        => Internal.CanShutdown;
+        => Wrapped.CanShutdown;
+
     public float GimbalLimit
     {
-        get => Internal.GimbalLimit;
-        set => Internal.GimbalLimit = value;
+        get => Wrapped.GimbalLimit;
+        set => Wrapped.GimbalLimit = value;
     }
+
     public bool GimbalLocked
     {
-        get => Internal.GimbalLocked;
-        set => Internal.GimbalLocked = value;
+        get => Wrapped.GimbalLocked;
+        set => Wrapped.GimbalLocked = value;
     }
+
     public float GimbalRange
-        => Internal.GimbalRange;
+        => Wrapped.GimbalRange;
+
     public bool Gimballed
-        => Internal.Gimballed;
+        => Wrapped.Gimballed;
+
     public bool HasFuel
-        => Internal.HasFuel;
+        => Wrapped.HasFuel;
+
     public bool HasModes
-        => Internal.HasModes;
+        => Wrapped.HasModes;
+
     public bool IndependentThrottle
     {
-        get => Internal.IndependentThrottle;
-        set => Internal.IndependentThrottle = value;
+        get => Wrapped.IndependentThrottle;
+        set => Wrapped.IndependentThrottle = value;
     }
+
     public float KerbinSeaLevelSpecificImpulse
-        => Internal.KerbinSeaLevelSpecificImpulse;
+        => Wrapped.KerbinSeaLevelSpecificImpulse;
+
     public float MaxThrust
-        => Internal.MaxThrust;
+        => Wrapped.MaxThrust;
+
     public float MaxVacuumThrust
-        => Internal.MaxVacuumThrust;
+        => Wrapped.MaxVacuumThrust;
+
     public string Mode
     {
-        get => Internal.Mode;
-        set => Internal.Mode = value;
+        get => Wrapped.Mode;
+        set => Wrapped.Mode = value;
     }
+
     public IDictionary<string, Engine> Modes
-        => Internal.Modes.ToDictionary(pair => pair.Key, pair => new Engine(pair.Value));
+        => Wrapped.Modes.ToDictionary(pair => pair.Key, pair => new Engine(pair.Value));
+
     public Part Part
-        => new Part(Internal.Part);
+        => new Part(Wrapped.Part);
+
     public IList<string> PropellantNames
-        => Internal.PropellantNames;
+        => Wrapped.PropellantNames;
+
     public IDictionary<string, float> PropellantRatios
-        => Internal.PropellantRatios;
+        => Wrapped.PropellantRatios;
+
     public IList<Propellant> Propellants
-        => Internal.Propellants.Select(item => new Propellant(item)).ToList();
+        => Wrapped.Propellants.Select(item => new Propellant(item)).ToList();
+
     public float SpecificImpulse
-        => Internal.SpecificImpulse;
+        => Wrapped.SpecificImpulse;
+
     public float Throttle
     {
-        get => Internal.Throttle;
-        set => Internal.Throttle = value;
+        get => Wrapped.Throttle;
+        set => Wrapped.Throttle = value;
     }
+
     public bool ThrottleLocked
-        => Internal.ThrottleLocked;
+        => Wrapped.ThrottleLocked;
+
     public float Thrust
-        => Internal.Thrust;
+        => Wrapped.Thrust;
+
     public float ThrustLimit
     {
-        get => Internal.ThrustLimit;
-        set => Internal.ThrustLimit = value;
+        get => Wrapped.ThrustLimit;
+        set => Wrapped.ThrustLimit = value;
     }
+
     public IList<Thruster> Thrusters
-        => Internal.Thrusters.Select(item => new Thruster(item)).ToList();
+        => Wrapped.Thrusters.Select(item => new Thruster(item)).ToList();
+
     public float VacuumSpecificImpulse
-        => Internal.VacuumSpecificImpulse;
+        => Wrapped.VacuumSpecificImpulse;
+
     public float AvailableThrustAt(double pressure)
-        => Internal.AvailableThrustAt(pressure);
+        => Wrapped.AvailableThrustAt(pressure);
+
     public float MaxThrustAt(double pressure)
-        => Internal.MaxThrustAt(pressure);
+        => Wrapped.MaxThrustAt(pressure);
+
     public float SpecificImpulseAt(double pressure)
-        => Internal.SpecificImpulseAt(pressure);
+        => Wrapped.SpecificImpulseAt(pressure);
+
     public void ToggleMode()
-        => Internal.ToggleMode();
+        => Wrapped.ToggleMode();
 }

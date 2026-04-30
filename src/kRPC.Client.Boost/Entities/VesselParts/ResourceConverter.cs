@@ -8,36 +8,49 @@ namespace kRPC.Client.Boost.Entities.VesselParts;
 /// </summary>
 public class ResourceConverter
 {
-    internal BaseResourceConverter Internal { get; }
+    internal readonly BaseResourceConverter Wrapped;
 
     internal ResourceConverter(BaseResourceConverter resourceConverter)
     {
-        Internal = resourceConverter;
+        Wrapped = resourceConverter;
     }
+
     public float CoreTemperature
-        => Internal.CoreTemperature;
+        => Wrapped.CoreTemperature;
+
     public int Count
-        => Internal.Count;
+        => Wrapped.Count;
+
     public float OptimumCoreTemperature
-        => Internal.OptimumCoreTemperature;
+        => Wrapped.OptimumCoreTemperature;
+
     public Part Part
-        => new Part(Internal.Part);
+        => new Part(Wrapped.Part);
+
     public float ThermalEfficiency
-        => Internal.ThermalEfficiency;
+        => Wrapped.ThermalEfficiency;
+
     public bool Active(int index)
-        => Internal.Active(index);
+        => Wrapped.Active(index);
+
     public IList<string> Inputs(int index)
-        => Internal.Inputs(index);
+        => Wrapped.Inputs(index);
+
     public string Name(int index)
-        => Internal.Name(index);
+        => Wrapped.Name(index);
+
     public IList<string> Outputs(int index)
-        => Internal.Outputs(index);
+        => Wrapped.Outputs(index);
+
     public void Start(int index)
-        => Internal.Start(index);
+        => Wrapped.Start(index);
+
     public ResourceConverterState State(int index)
-        => Internal.State(index);
+        => Wrapped.State(index);
+
     public string StatusInfo(int index)
-        => Internal.StatusInfo(index);
+        => Wrapped.StatusInfo(index);
+
     public void Stop(int index)
-        => Internal.Stop(index);
+        => Wrapped.Stop(index);
 }

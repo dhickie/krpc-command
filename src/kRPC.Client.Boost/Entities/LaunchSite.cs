@@ -12,16 +12,19 @@ namespace kRPC.Client.Boost.Entities;
 /// </summary>
 public class LaunchSite
 {
-    internal BaseLaunchSite Internal { get; }
+    internal readonly BaseLaunchSite Wrapped;
 
     internal LaunchSite(BaseLaunchSite launchSite)
     {
-        Internal = launchSite;
+        Wrapped = launchSite;
     }
+
     public CelestialBody Body
-        => new CelestialBody(Internal.Body);
+        => new CelestialBody(Wrapped.Body);
+
     public EditorFacility EditorFacility
-        => Internal.EditorFacility;
+        => Wrapped.EditorFacility;
+
     public string Name
-        => Internal.Name;
+        => Wrapped.Name;
 }

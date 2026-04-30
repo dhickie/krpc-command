@@ -12,55 +12,70 @@ namespace kRPC.Client.Boost.Entities;
 /// </summary>
 public class Node
 {
-    internal BaseNode Internal { get; }
+    internal readonly BaseNode Wrapped;
 
     internal Node(BaseNode node)
     {
-        Internal = node;
+        Wrapped = node;
     }
+
     public double DeltaV
     {
-        get => Internal.DeltaV;
-        set => Internal.DeltaV = value;
+        get => Wrapped.DeltaV;
+        set => Wrapped.DeltaV = value;
     }
+
     public double Normal
     {
-        get => Internal.Normal;
-        set => Internal.Normal = value;
+        get => Wrapped.Normal;
+        set => Wrapped.Normal = value;
     }
+
     public Orbit Orbit
-        => new Orbit(Internal.Orbit);
+        => new Orbit(Wrapped.Orbit);
+
     public ReferenceFrame OrbitalReferenceFrame
-        => new ReferenceFrame(Internal.OrbitalReferenceFrame);
+        => new ReferenceFrame(Wrapped.OrbitalReferenceFrame);
+
     public double Prograde
     {
-        get => Internal.Prograde;
-        set => Internal.Prograde = value;
+        get => Wrapped.Prograde;
+        set => Wrapped.Prograde = value;
     }
+
     public double Radial
     {
-        get => Internal.Radial;
-        set => Internal.Radial = value;
+        get => Wrapped.Radial;
+        set => Wrapped.Radial = value;
     }
+
     public ReferenceFrame ReferenceFrame
-        => new ReferenceFrame(Internal.ReferenceFrame);
+        => new ReferenceFrame(Wrapped.ReferenceFrame);
+
     public double RemainingDeltaV
-        => Internal.RemainingDeltaV;
+        => Wrapped.RemainingDeltaV;
+
     public double TimeTo
-        => Internal.TimeTo;
+        => Wrapped.TimeTo;
+
     public double UT
     {
-        get => Internal.UT;
-        set => Internal.UT = value;
+        get => Wrapped.UT;
+        set => Wrapped.UT = value;
     }
+
     public Tuple<double, double, double> BurnVector(ReferenceFrame referenceFrame = null)
-        => Internal.BurnVector(referenceFrame?.Internal);
+        => Wrapped.BurnVector(referenceFrame?.Wrapped);
+
     public Tuple<double, double, double> Direction(ReferenceFrame referenceFrame)
-        => Internal.Direction(referenceFrame.Internal);
+        => Wrapped.Direction(referenceFrame.Wrapped);
+
     public Tuple<double, double, double> Position(ReferenceFrame referenceFrame)
-        => Internal.Position(referenceFrame.Internal);
+        => Wrapped.Position(referenceFrame.Wrapped);
+
     public Tuple<double, double, double> RemainingBurnVector(ReferenceFrame referenceFrame = null)
-        => Internal.RemainingBurnVector(referenceFrame?.Internal);
+        => Wrapped.RemainingBurnVector(referenceFrame?.Wrapped);
+
     public void Remove()
-        => Internal.Remove();
+        => Wrapped.Remove();
 }

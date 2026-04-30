@@ -12,32 +12,43 @@ namespace kRPC.Client.Boost.Entities;
 /// </summary>
 public class ContractParameter
 {
-    internal BaseContractParameter Internal { get; }
+    internal readonly BaseContractParameter Wrapped;
 
     internal ContractParameter(BaseContractParameter contractParameter)
     {
-        Internal = contractParameter;
+        Wrapped = contractParameter;
     }
+
     public IList<ContractParameter> Children
-        => Internal.Children.Select(item => new ContractParameter(item)).ToList();
+        => Wrapped.Children.Select(item => new ContractParameter(item)).ToList();
+
     public bool Completed
-        => Internal.Completed;
+        => Wrapped.Completed;
+
     public bool Failed
-        => Internal.Failed;
+        => Wrapped.Failed;
+
     public double FundsCompletion
-        => Internal.FundsCompletion;
+        => Wrapped.FundsCompletion;
+
     public double FundsFailure
-        => Internal.FundsFailure;
+        => Wrapped.FundsFailure;
+
     public string Notes
-        => Internal.Notes;
+        => Wrapped.Notes;
+
     public bool Optional
-        => Internal.Optional;
+        => Wrapped.Optional;
+
     public double ReputationCompletion
-        => Internal.ReputationCompletion;
+        => Wrapped.ReputationCompletion;
+
     public double ReputationFailure
-        => Internal.ReputationFailure;
+        => Wrapped.ReputationFailure;
+
     public double ScienceCompletion
-        => Internal.ScienceCompletion;
+        => Wrapped.ScienceCompletion;
+
     public string Title
-        => Internal.Title;
+        => Wrapped.Title;
 }

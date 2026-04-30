@@ -7,28 +7,37 @@ namespace kRPC.Client.Boost.Entities.VesselParts;
 /// </summary>
 public class Thruster
 {
-    internal BaseThruster Internal { get; }
+    internal readonly BaseThruster Wrapped;
 
     internal Thruster(BaseThruster thruster)
     {
-        Internal = thruster;
+        Wrapped = thruster;
     }
+
     public Tuple<double, double, double> GimbalAngle
-        => Internal.GimbalAngle;
+        => Wrapped.GimbalAngle;
+
     public bool Gimballed
-        => Internal.Gimballed;
+        => Wrapped.Gimballed;
+
     public Part Part
-        => new Part(Internal.Part);
+        => new Part(Wrapped.Part);
+
     public ReferenceFrame ThrustReferenceFrame
-        => new ReferenceFrame(Internal.ThrustReferenceFrame);
+        => new ReferenceFrame(Wrapped.ThrustReferenceFrame);
+
     public Tuple<double, double, double> GimbalPosition(ReferenceFrame referenceFrame)
-        => Internal.GimbalPosition(referenceFrame.Internal);
+        => Wrapped.GimbalPosition(referenceFrame.Wrapped);
+
     public Tuple<double, double, double> InitialThrustDirection(ReferenceFrame referenceFrame)
-        => Internal.InitialThrustDirection(referenceFrame.Internal);
+        => Wrapped.InitialThrustDirection(referenceFrame.Wrapped);
+
     public Tuple<double, double, double> InitialThrustPosition(ReferenceFrame referenceFrame)
-        => Internal.InitialThrustPosition(referenceFrame.Internal);
+        => Wrapped.InitialThrustPosition(referenceFrame.Wrapped);
+
     public Tuple<double, double, double> ThrustDirection(ReferenceFrame referenceFrame)
-        => Internal.ThrustDirection(referenceFrame.Internal);
+        => Wrapped.ThrustDirection(referenceFrame.Wrapped);
+
     public Tuple<double, double, double> ThrustPosition(ReferenceFrame referenceFrame)
-        => Internal.ThrustPosition(referenceFrame.Internal);
+        => Wrapped.ThrustPosition(referenceFrame.Wrapped);
 }

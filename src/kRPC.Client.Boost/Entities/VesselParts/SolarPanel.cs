@@ -8,25 +8,31 @@ namespace kRPC.Client.Boost.Entities.VesselParts;
 /// </summary>
 public class SolarPanel
 {
-    internal BaseSolarPanel Internal { get; }
+    internal readonly BaseSolarPanel Wrapped;
 
     internal SolarPanel(BaseSolarPanel solarPanel)
     {
-        Internal = solarPanel;
+        Wrapped = solarPanel;
     }
+
     public bool Deployable
-        => Internal.Deployable;
+        => Wrapped.Deployable;
+
     public bool Deployed
     {
-        get => Internal.Deployed;
-        set => Internal.Deployed = value;
+        get => Wrapped.Deployed;
+        set => Wrapped.Deployed = value;
     }
+
     public float EnergyFlow
-        => Internal.EnergyFlow;
+        => Wrapped.EnergyFlow;
+
     public Part Part
-        => new Part(Internal.Part);
+        => new Part(Wrapped.Part);
+
     public SolarPanelState State
-        => Internal.State;
+        => Wrapped.State;
+
     public float SunExposure
-        => Internal.SunExposure;
+        => Wrapped.SunExposure;
 }

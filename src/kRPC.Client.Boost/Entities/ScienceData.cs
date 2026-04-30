@@ -12,16 +12,19 @@ namespace kRPC.Client.Boost.Entities;
 /// </summary>
 public class ScienceData
 {
-    internal BaseScienceData Internal { get; }
+    internal readonly BaseScienceData Wrapped;
 
     internal ScienceData(BaseScienceData scienceData)
     {
-        Internal = scienceData;
+        Wrapped = scienceData;
     }
+
     public float DataAmount
-        => Internal.DataAmount;
+        => Wrapped.DataAmount;
+
     public float ScienceValue
-        => Internal.ScienceValue;
+        => Wrapped.ScienceValue;
+
     public float TransmitValue
-        => Internal.TransmitValue;
+        => Wrapped.TransmitValue;
 }

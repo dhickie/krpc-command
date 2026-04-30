@@ -10,10 +10,10 @@ namespace kRPC.Client.Boost;
 /// </summary>
 public class KrpcConnection(string name, IPAddress ip, int rpcPort, int streamPort)
 {
-    private readonly Connection _connection = new(name, ip, rpcPort, streamPort);
+    internal readonly Connection Connection = new(name, ip, rpcPort, streamPort);
     
     /// <summary>
     /// Gets the boosted SpaceCenter service wrapper.
     /// </summary>
-    public SpaceCenter SpaceCenter => new(_connection.SpaceCenter());
+    public SpaceCenter SpaceCenter => new(Connection.SpaceCenter());
 }

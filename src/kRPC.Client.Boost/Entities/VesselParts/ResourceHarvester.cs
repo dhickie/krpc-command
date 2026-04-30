@@ -8,32 +8,40 @@ namespace kRPC.Client.Boost.Entities.VesselParts;
 /// </summary>
 public class ResourceHarvester
 {
-    internal BaseResourceHarvester Internal { get; }
+    internal readonly BaseResourceHarvester Wrapped;
 
     internal ResourceHarvester(BaseResourceHarvester resourceHarvester)
     {
-        Internal = resourceHarvester;
+        Wrapped = resourceHarvester;
     }
+
     public bool Active
     {
-        get => Internal.Active;
-        set => Internal.Active = value;
+        get => Wrapped.Active;
+        set => Wrapped.Active = value;
     }
+
     public float CoreTemperature
-        => Internal.CoreTemperature;
+        => Wrapped.CoreTemperature;
+
     public bool Deployed
     {
-        get => Internal.Deployed;
-        set => Internal.Deployed = value;
+        get => Wrapped.Deployed;
+        set => Wrapped.Deployed = value;
     }
+
     public float ExtractionRate
-        => Internal.ExtractionRate;
+        => Wrapped.ExtractionRate;
+
     public float OptimumCoreTemperature
-        => Internal.OptimumCoreTemperature;
+        => Wrapped.OptimumCoreTemperature;
+
     public Part Part
-        => new Part(Internal.Part);
+        => new Part(Wrapped.Part);
+
     public ResourceHarvesterState State
-        => Internal.State;
+        => Wrapped.State;
+
     public float ThermalEfficiency
-        => Internal.ThermalEfficiency;
+        => Wrapped.ThermalEfficiency;
 }

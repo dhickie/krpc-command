@@ -7,22 +7,28 @@ namespace kRPC.Client.Boost.Entities.VesselParts;
 /// </summary>
 public class RoboticController
 {
-    internal BaseRoboticController Internal { get; }
+    internal readonly BaseRoboticController Wrapped;
 
     internal RoboticController(BaseRoboticController roboticController)
     {
-        Internal = roboticController;
+        Wrapped = roboticController;
     }
+
     public Part Part
-        => new Part(Internal.Part);
+        => new Part(Wrapped.Part);
+
     public bool AddAxis(Module module, string fieldName)
-        => Internal.AddAxis(module.Internal, fieldName);
+        => Wrapped.AddAxis(module.Wrapped, fieldName);
+
     public bool AddKeyFrame(Module module, string fieldName, float time, float value)
-        => Internal.AddKeyFrame(module.Internal, fieldName, time, value);
+        => Wrapped.AddKeyFrame(module.Wrapped, fieldName, time, value);
+
     public IList<IList<string>> Axes()
-        => Internal.Axes();
+        => Wrapped.Axes();
+
     public bool ClearAxis(Module module, string fieldName)
-        => Internal.ClearAxis(module.Internal, fieldName);
+        => Wrapped.ClearAxis(module.Wrapped, fieldName);
+
     public bool HasPart(Part part)
-        => Internal.HasPart(part.Internal);
+        => Wrapped.HasPart(part.Wrapped);
 }

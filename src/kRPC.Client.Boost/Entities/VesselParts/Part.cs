@@ -8,186 +8,267 @@ namespace kRPC.Client.Boost.Entities.VesselParts;
 /// </summary>
 public class Part
 {
-    internal BasePart Internal { get; }
+    internal readonly BasePart Wrapped;
 
     internal Part(BasePart part)
     {
-        Internal = part;
+        Wrapped = part;
     }
+
     public Antenna Antenna
-        => new Antenna(Internal.Antenna);
+        => new Antenna(Wrapped.Antenna);
+
     public AutoStrutMode AutoStrutMode
-        => Internal.AutoStrutMode;
+        => Wrapped.AutoStrutMode;
+
     public uint AvailableSeats
-        => Internal.AvailableSeats;
+        => Wrapped.AvailableSeats;
+
     public bool AxiallyAttached
-        => Internal.AxiallyAttached;
+        => Wrapped.AxiallyAttached;
+
     public CargoBay CargoBay
-        => new CargoBay(Internal.CargoBay);
+        => new CargoBay(Wrapped.CargoBay);
+
     public ReferenceFrame CenterOfMassReferenceFrame
-        => new ReferenceFrame(Internal.CenterOfMassReferenceFrame);
+        => new ReferenceFrame(Wrapped.CenterOfMassReferenceFrame);
+
     public IList<Part> Children
-        => Internal.Children.Select(item => new Part(item)).ToList();
+        => Wrapped.Children.Select(item => new Part(item)).ToList();
+
     public ControlSurface ControlSurface
-        => new ControlSurface(Internal.ControlSurface);
+        => new ControlSurface(Wrapped.ControlSurface);
+
     public double Cost
-        => Internal.Cost;
+        => Wrapped.Cost;
+
     public bool Crossfeed
-        => Internal.Crossfeed;
+        => Wrapped.Crossfeed;
+
     public int DecoupleStage
-        => Internal.DecoupleStage;
+        => Wrapped.DecoupleStage;
+
     public Decoupler Decoupler
-        => new Decoupler(Internal.Decoupler);
+        => new Decoupler(Wrapped.Decoupler);
+
     public DockingPort DockingPort
-        => new DockingPort(Internal.DockingPort);
+        => new DockingPort(Wrapped.DockingPort);
+
     public double DryMass
-        => Internal.DryMass;
+        => Wrapped.DryMass;
+
     public float DynamicPressure
-        => Internal.DynamicPressure;
+        => Wrapped.DynamicPressure;
+
     public Engine Engine
-        => new Engine(Internal.Engine);
+        => new Engine(Wrapped.Engine);
+
     public Experiment Experiment
-        => new Experiment(Internal.Experiment);
+        => new Experiment(Wrapped.Experiment);
+
     public IList<Experiment> Experiments
-        => Internal.Experiments.Select(item => new Experiment(item)).ToList();
+        => Wrapped.Experiments.Select(item => new Experiment(item)).ToList();
+
     public Fairing Fairing
-        => new Fairing(Internal.Fairing);
+        => new Fairing(Wrapped.Fairing);
+
     public string FlagURL
     {
-        get => Internal.FlagURL;
-        set => Internal.FlagURL = value;
+        get => Wrapped.FlagURL;
+        set => Wrapped.FlagURL = value;
     }
+
     public IList<Part> FuelLinesFrom
-        => Internal.FuelLinesFrom.Select(item => new Part(item)).ToList();
+        => Wrapped.FuelLinesFrom.Select(item => new Part(item)).ToList();
+
     public IList<Part> FuelLinesTo
-        => Internal.FuelLinesTo.Select(item => new Part(item)).ToList();
+        => Wrapped.FuelLinesTo.Select(item => new Part(item)).ToList();
+
     public bool Glow
     {
-        set => Internal.Glow = value;
+        set => Wrapped.Glow = value;
     }
+
     public Tuple<double, double, double> HighlightColor
     {
-        get => Internal.HighlightColor;
-        set => Internal.HighlightColor = value;
+        get => Wrapped.HighlightColor;
+        set => Wrapped.HighlightColor = value;
     }
+
     public bool Highlighted
     {
-        get => Internal.Highlighted;
-        set => Internal.Highlighted = value;
+        get => Wrapped.Highlighted;
+        set => Wrapped.Highlighted = value;
     }
+
     public double ImpactTolerance
-        => Internal.ImpactTolerance;
+        => Wrapped.ImpactTolerance;
+
     public IList<double> InertiaTensor
-        => Internal.InertiaTensor;
+        => Wrapped.InertiaTensor;
+
     public Intake Intake
-        => new Intake(Internal.Intake);
+        => new Intake(Wrapped.Intake);
+
     public bool IsFuelLine
-        => Internal.IsFuelLine;
+        => Wrapped.IsFuelLine;
+
     public LaunchClamp LaunchClamp
-        => new LaunchClamp(Internal.LaunchClamp);
+        => new LaunchClamp(Wrapped.LaunchClamp);
+
     public Leg Leg
-        => new Leg(Internal.Leg);
+        => new Leg(Wrapped.Leg);
+
     public Light Light
-        => new Light(Internal.Light);
+        => new Light(Wrapped.Light);
+
     public double Mass
-        => Internal.Mass;
+        => Wrapped.Mass;
+
     public bool Massless
-        => Internal.Massless;
+        => Wrapped.Massless;
+
     public double MaxSkinTemperature
-        => Internal.MaxSkinTemperature;
+        => Wrapped.MaxSkinTemperature;
+
     public double MaxTemperature
-        => Internal.MaxTemperature;
+        => Wrapped.MaxTemperature;
+
     public IList<Module> Modules
-        => Internal.Modules.Select(item => new Module(item)).ToList();
+        => Wrapped.Modules.Select(item => new Module(item)).ToList();
+
     public Tuple<double, double, double> MomentOfInertia
-        => Internal.MomentOfInertia;
+        => Wrapped.MomentOfInertia;
+
     public string Name
-        => Internal.Name;
+        => Wrapped.Name;
+
     public Parachute Parachute
-        => new Parachute(Internal.Parachute);
+        => new Parachute(Wrapped.Parachute);
+
     public Part Parent
-        => new Part(Internal.Parent);
+        => new Part(Wrapped.Parent);
+
     public RCS RCS
-        => new RCS(Internal.RCS);
+        => new RCS(Wrapped.RCS);
+
     public bool RadiallyAttached
-        => Internal.RadiallyAttached;
+        => Wrapped.RadiallyAttached;
+
     public Radiator Radiator
-        => new Radiator(Internal.Radiator);
+        => new Radiator(Wrapped.Radiator);
+
     public ReactionWheel ReactionWheel
-        => new ReactionWheel(Internal.ReactionWheel);
+        => new ReactionWheel(Wrapped.ReactionWheel);
+
     public ReferenceFrame ReferenceFrame
-        => new ReferenceFrame(Internal.ReferenceFrame);
+        => new ReferenceFrame(Wrapped.ReferenceFrame);
+
     public ResourceConverter ResourceConverter
-        => new ResourceConverter(Internal.ResourceConverter);
+        => new ResourceConverter(Wrapped.ResourceConverter);
+
     public ResourceDrain ResourceDrain
-        => new ResourceDrain(Internal.ResourceDrain);
+        => new ResourceDrain(Wrapped.ResourceDrain);
+
     public ResourceHarvester ResourceHarvester
-        => new ResourceHarvester(Internal.ResourceHarvester);
+        => new ResourceHarvester(Wrapped.ResourceHarvester);
+
     public Resources Resources
-        => new Resources(Internal.Resources);
+        => new Resources(Wrapped.Resources);
+
     public RoboticController RoboticController
-        => new RoboticController(Internal.RoboticController);
+        => new RoboticController(Wrapped.RoboticController);
+
     public RoboticHinge RoboticHinge
-        => new RoboticHinge(Internal.RoboticHinge);
+        => new RoboticHinge(Wrapped.RoboticHinge);
+
     public RoboticPiston RoboticPiston
-        => new RoboticPiston(Internal.RoboticPiston);
+        => new RoboticPiston(Wrapped.RoboticPiston);
+
     public RoboticRotation RoboticRotation
-        => new RoboticRotation(Internal.RoboticRotation);
+        => new RoboticRotation(Wrapped.RoboticRotation);
+
     public RoboticRotor RoboticRotor
-        => new RoboticRotor(Internal.RoboticRotor);
+        => new RoboticRotor(Wrapped.RoboticRotor);
+
     public Sensor Sensor
-        => new Sensor(Internal.Sensor);
+        => new Sensor(Wrapped.Sensor);
+
     public bool Shielded
-        => Internal.Shielded;
+        => Wrapped.Shielded;
+
     public double SkinTemperature
-        => Internal.SkinTemperature;
+        => Wrapped.SkinTemperature;
+
     public SolarPanel SolarPanel
-        => new SolarPanel(Internal.SolarPanel);
+        => new SolarPanel(Wrapped.SolarPanel);
+
     public int Stage
-        => Internal.Stage;
+        => Wrapped.Stage;
+
     public string Tag
     {
-        get => Internal.Tag;
-        set => Internal.Tag = value;
+        get => Wrapped.Tag;
+        set => Wrapped.Tag = value;
     }
+
     public double Temperature
-        => Internal.Temperature;
+        => Wrapped.Temperature;
+
     public float ThermalConductionFlux
-        => Internal.ThermalConductionFlux;
+        => Wrapped.ThermalConductionFlux;
+
     public float ThermalConvectionFlux
-        => Internal.ThermalConvectionFlux;
+        => Wrapped.ThermalConvectionFlux;
+
     public float ThermalInternalFlux
-        => Internal.ThermalInternalFlux;
+        => Wrapped.ThermalInternalFlux;
+
     public float ThermalMass
-        => Internal.ThermalMass;
+        => Wrapped.ThermalMass;
+
     public float ThermalRadiationFlux
-        => Internal.ThermalRadiationFlux;
+        => Wrapped.ThermalRadiationFlux;
+
     public float ThermalResourceMass
-        => Internal.ThermalResourceMass;
+        => Wrapped.ThermalResourceMass;
+
     public float ThermalSkinMass
-        => Internal.ThermalSkinMass;
+        => Wrapped.ThermalSkinMass;
+
     public float ThermalSkinToInternalFlux
-        => Internal.ThermalSkinToInternalFlux;
+        => Wrapped.ThermalSkinToInternalFlux;
+
     public string Title
-        => Internal.Title;
+        => Wrapped.Title;
+
     public Vessel Vessel
-        => new Vessel(Internal.Vessel);
+        => new Vessel(Wrapped.Vessel);
+
     public Wheel Wheel
-        => new Wheel(Internal.Wheel);
+        => new Wheel(Wrapped.Wheel);
+
     public Force AddForce(Tuple<double, double, double> force, Tuple<double, double, double> position, ReferenceFrame referenceFrame)
-        => new Force(Internal.AddForce(force, position, referenceFrame.Internal));
+        => new Force(Wrapped.AddForce(force, position, referenceFrame.Wrapped));
+
     public Tuple<Tuple<double, double, double>, Tuple<double, double, double>> BoundingBox(ReferenceFrame referenceFrame)
-        => Internal.BoundingBox(referenceFrame.Internal);
+        => Wrapped.BoundingBox(referenceFrame.Wrapped);
+
     public Tuple<double, double, double> CenterOfMass(ReferenceFrame referenceFrame)
-        => Internal.CenterOfMass(referenceFrame.Internal);
+        => Wrapped.CenterOfMass(referenceFrame.Wrapped);
+
     public Tuple<double, double, double> Direction(ReferenceFrame referenceFrame)
-        => Internal.Direction(referenceFrame.Internal);
+        => Wrapped.Direction(referenceFrame.Wrapped);
+
     public void InstantaneousForce(Tuple<double, double, double> force, Tuple<double, double, double> position, ReferenceFrame referenceFrame)
-        => Internal.InstantaneousForce(force, position, referenceFrame.Internal);
+        => Wrapped.InstantaneousForce(force, position, referenceFrame.Wrapped);
+
     public Tuple<double, double, double> Position(ReferenceFrame referenceFrame)
-        => Internal.Position(referenceFrame.Internal);
+        => Wrapped.Position(referenceFrame.Wrapped);
+
     public Tuple<double, double, double, double> Rotation(ReferenceFrame referenceFrame)
-        => Internal.Rotation(referenceFrame.Internal);
+        => Wrapped.Rotation(referenceFrame.Wrapped);
+
     public Tuple<double, double, double> Velocity(ReferenceFrame referenceFrame)
-        => Internal.Velocity(referenceFrame.Internal);
+        => Wrapped.Velocity(referenceFrame.Wrapped);
 }

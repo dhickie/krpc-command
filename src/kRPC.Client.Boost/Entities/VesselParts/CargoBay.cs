@@ -8,19 +8,22 @@ namespace kRPC.Client.Boost.Entities.VesselParts;
 /// </summary>
 public class CargoBay
 {
-    internal BaseCargoBay Internal { get; }
+    internal readonly BaseCargoBay Wrapped;
 
     internal CargoBay(BaseCargoBay cargoBay)
     {
-        Internal = cargoBay;
+        Wrapped = cargoBay;
     }
+
     public bool Open
     {
-        get => Internal.Open;
-        set => Internal.Open = value;
+        get => Wrapped.Open;
+        set => Wrapped.Open = value;
     }
+
     public Part Part
-        => new Part(Internal.Part);
+        => new(Wrapped.Part);
+
     public CargoBayState State
-        => Internal.State;
+        => Wrapped.State;
 }

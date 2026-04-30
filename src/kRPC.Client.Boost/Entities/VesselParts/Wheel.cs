@@ -8,115 +8,148 @@ namespace kRPC.Client.Boost.Entities.VesselParts;
 /// </summary>
 public class Wheel
 {
-    internal BaseWheel Internal { get; }
+    internal readonly BaseWheel Wrapped;
 
     internal Wheel(BaseWheel wheel)
     {
-        Internal = wheel;
+        Wrapped = wheel;
     }
+
     public bool AutoFrictionControl
     {
-        get => Internal.AutoFrictionControl;
-        set => Internal.AutoFrictionControl = value;
+        get => Wrapped.AutoFrictionControl;
+        set => Wrapped.AutoFrictionControl = value;
     }
+
     public float Brakes
     {
-        get => Internal.Brakes;
-        set => Internal.Brakes = value;
+        get => Wrapped.Brakes;
+        set => Wrapped.Brakes = value;
     }
+
     public bool Broken
-        => Internal.Broken;
+        => Wrapped.Broken;
+
     public float Deflection
-        => Internal.Deflection;
+        => Wrapped.Deflection;
+
     public bool Deployable
-        => Internal.Deployable;
+        => Wrapped.Deployable;
+
     public bool Deployed
     {
-        get => Internal.Deployed;
-        set => Internal.Deployed = value;
+        get => Wrapped.Deployed;
+        set => Wrapped.Deployed = value;
     }
+
     public float DriveLimiter
     {
-        get => Internal.DriveLimiter;
-        set => Internal.DriveLimiter = value;
+        get => Wrapped.DriveLimiter;
+        set => Wrapped.DriveLimiter = value;
     }
+
     public bool Grounded
-        => Internal.Grounded;
+        => Wrapped.Grounded;
+
     public bool HasBrakes
-        => Internal.HasBrakes;
+        => Wrapped.HasBrakes;
+
     public bool HasSuspension
-        => Internal.HasSuspension;
+        => Wrapped.HasSuspension;
+
     public float ManualFrictionControl
     {
-        get => Internal.ManualFrictionControl;
-        set => Internal.ManualFrictionControl = value;
+        get => Wrapped.ManualFrictionControl;
+        set => Wrapped.ManualFrictionControl = value;
     }
+
     public bool MotorEnabled
     {
-        get => Internal.MotorEnabled;
-        set => Internal.MotorEnabled = value;
+        get => Wrapped.MotorEnabled;
+        set => Wrapped.MotorEnabled = value;
     }
+
     public bool MotorInverted
     {
-        get => Internal.MotorInverted;
-        set => Internal.MotorInverted = value;
+        get => Wrapped.MotorInverted;
+        set => Wrapped.MotorInverted = value;
     }
+
     public float MotorOutput
-        => Internal.MotorOutput;
+        => Wrapped.MotorOutput;
+
     public MotorState MotorState
-        => Internal.MotorState;
+        => Wrapped.MotorState;
+
     public Part Part
-        => new Part(Internal.Part);
+        => new Part(Wrapped.Part);
+
     public bool Powered
-        => Internal.Powered;
+        => Wrapped.Powered;
+
     public float Radius
-        => Internal.Radius;
+        => Wrapped.Radius;
+
     public bool Repairable
-        => Internal.Repairable;
+        => Wrapped.Repairable;
+
     public float Slip
-        => Internal.Slip;
+        => Wrapped.Slip;
+
     public WheelState State
-        => Internal.State;
+        => Wrapped.State;
+
     public bool Steerable
-        => Internal.Steerable;
+        => Wrapped.Steerable;
+
     public float SteeringAngleLimit
     {
-        get => Internal.SteeringAngleLimit;
-        set => Internal.SteeringAngleLimit = value;
+        get => Wrapped.SteeringAngleLimit;
+        set => Wrapped.SteeringAngleLimit = value;
     }
+
     public bool SteeringEnabled
     {
-        get => Internal.SteeringEnabled;
-        set => Internal.SteeringEnabled = value;
+        get => Wrapped.SteeringEnabled;
+        set => Wrapped.SteeringEnabled = value;
     }
+
     public bool SteeringInverted
     {
-        get => Internal.SteeringInverted;
-        set => Internal.SteeringInverted = value;
+        get => Wrapped.SteeringInverted;
+        set => Wrapped.SteeringInverted = value;
     }
+
     public float SteeringResponseTime
     {
-        get => Internal.SteeringResponseTime;
-        set => Internal.SteeringResponseTime = value;
+        get => Wrapped.SteeringResponseTime;
+        set => Wrapped.SteeringResponseTime = value;
     }
+
     public float Stress
-        => Internal.Stress;
+        => Wrapped.Stress;
+
     public float StressPercentage
-        => Internal.StressPercentage;
+        => Wrapped.StressPercentage;
+
     public float StressTolerance
-        => Internal.StressTolerance;
+        => Wrapped.StressTolerance;
+
     public float SuspensionDamperStrength
-        => Internal.SuspensionDamperStrength;
+        => Wrapped.SuspensionDamperStrength;
+
     public float SuspensionSpringStrength
-        => Internal.SuspensionSpringStrength;
+        => Wrapped.SuspensionSpringStrength;
+
     public float TractionControl
     {
-        get => Internal.TractionControl;
-        set => Internal.TractionControl = value;
+        get => Wrapped.TractionControl;
+        set => Wrapped.TractionControl = value;
     }
+
     public bool TractionControlEnabled
     {
-        get => Internal.TractionControlEnabled;
-        set => Internal.TractionControlEnabled = value;
+        get => Wrapped.TractionControlEnabled;
+        set => Wrapped.TractionControlEnabled = value;
     }
 }

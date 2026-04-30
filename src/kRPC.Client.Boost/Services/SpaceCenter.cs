@@ -1,41 +1,9 @@
-using System.Collections.Generic;
-using System.Linq;
-using KRPC.Client;
 using kRPC.Client.Boost.Entities;
 using kRPC.Client.Boost.Entities.VesselParts;
 using BaseService = KRPC.Client.Services.SpaceCenter.Service;
-using AntennaState = KRPC.Client.Services.SpaceCenter.AntennaState;
-using AutoStrutMode = KRPC.Client.Services.SpaceCenter.AutoStrutMode;
-using CameraMode = KRPC.Client.Services.SpaceCenter.CameraMode;
-using CargoBayState = KRPC.Client.Services.SpaceCenter.CargoBayState;
-using CommLinkType = KRPC.Client.Services.SpaceCenter.CommLinkType;
-using ContractState = KRPC.Client.Services.SpaceCenter.ContractState;
-using ControlInputMode = KRPC.Client.Services.SpaceCenter.ControlInputMode;
-using ControlSource = KRPC.Client.Services.SpaceCenter.ControlSource;
-using ControlState = KRPC.Client.Services.SpaceCenter.ControlState;
-using CrewMemberGender = KRPC.Client.Services.SpaceCenter.CrewMemberGender;
-using CrewMemberType = KRPC.Client.Services.SpaceCenter.CrewMemberType;
-using DockingPortState = KRPC.Client.Services.SpaceCenter.DockingPortState;
-using DrainMode = KRPC.Client.Services.SpaceCenter.DrainMode;
-using EditorFacility = KRPC.Client.Services.SpaceCenter.EditorFacility;
 using GameMode = KRPC.Client.Services.SpaceCenter.GameMode;
-using LegState = KRPC.Client.Services.SpaceCenter.LegState;
 using MapFilterType = KRPC.Client.Services.SpaceCenter.MapFilterType;
-using MotorState = KRPC.Client.Services.SpaceCenter.MotorState;
-using ParachuteState = KRPC.Client.Services.SpaceCenter.ParachuteState;
-using RadiatorState = KRPC.Client.Services.SpaceCenter.RadiatorState;
-using ResourceConverterState = KRPC.Client.Services.SpaceCenter.ResourceConverterState;
-using ResourceFlowMode = KRPC.Client.Services.SpaceCenter.ResourceFlowMode;
-using ResourceHarvesterState = KRPC.Client.Services.SpaceCenter.ResourceHarvesterState;
-using RosterStatus = KRPC.Client.Services.SpaceCenter.RosterStatus;
-using SASMode = KRPC.Client.Services.SpaceCenter.SASMode;
-using SolarPanelState = KRPC.Client.Services.SpaceCenter.SolarPanelState;
-using SpeedMode = KRPC.Client.Services.SpaceCenter.SpeedMode;
-using SuitType = KRPC.Client.Services.SpaceCenter.SuitType;
-using VesselSituation = KRPC.Client.Services.SpaceCenter.VesselSituation;
-using VesselType = KRPC.Client.Services.SpaceCenter.VesselType;
 using WarpMode = KRPC.Client.Services.SpaceCenter.WarpMode;
-using WheelState = KRPC.Client.Services.SpaceCenter.WheelState;
 
 namespace kRPC.Client.Boost.Services;
 
@@ -44,139 +12,190 @@ namespace kRPC.Client.Boost.Services;
 /// </summary>
 public class SpaceCenter
 {
-    private readonly BaseService _service;
+    internal readonly BaseService Service;
 
     internal SpaceCenter(BaseService service)
     {
-        _service = service;
+        Service = service;
     }
+
     public Vessel ActiveVessel
     {
-        get => new Vessel(_service.ActiveVessel);
-        set => _service.ActiveVessel = value.Internal;
+        get => new Vessel(Service.ActiveVessel);
+        set => Service.ActiveVessel = value.Wrapped;
     }
+
     public AlarmManager AlarmManager
-        => new AlarmManager(_service.AlarmManager);
+        => new AlarmManager(Service.AlarmManager);
+
     public IDictionary<string, CelestialBody> Bodies
-        => _service.Bodies.ToDictionary(pair => pair.Key, pair => new CelestialBody(pair.Value));
+        => Service.Bodies.ToDictionary(pair => pair.Key, pair => new CelestialBody(pair.Value));
+
     public Camera Camera
-        => new Camera(_service.Camera);
+        => new Camera(Service.Camera);
+
     public ContractManager ContractManager
-        => new ContractManager(_service.ContractManager);
+        => new ContractManager(Service.ContractManager);
+
     public bool FARAvailable
-        => _service.FARAvailable;
+        => Service.FARAvailable;
+
     public double Funds
-        => _service.Funds;
+        => Service.Funds;
+
     public double G
-        => _service.G;
+        => Service.G;
+
     public GameMode GameMode
-        => _service.GameMode;
+        => Service.GameMode;
+
     public IList<LaunchSite> LaunchSites
-        => _service.LaunchSites.Select(item => new LaunchSite(item)).ToList();
+        => Service.LaunchSites.Select(item => new LaunchSite(item)).ToList();
+
     public MapFilterType MapFilter
     {
-        get => _service.MapFilter;
-        set => _service.MapFilter = value;
+        get => Service.MapFilter;
+        set => Service.MapFilter = value;
     }
+
     public int MaximumRailsWarpFactor
-        => _service.MaximumRailsWarpFactor;
+        => Service.MaximumRailsWarpFactor;
+
     public bool Navball
     {
-        get => _service.Navball;
-        set => _service.Navball = value;
+        get => Service.Navball;
+        set => Service.Navball = value;
     }
+
     public int PhysicsWarpFactor
     {
-        get => _service.PhysicsWarpFactor;
-        set => _service.PhysicsWarpFactor = value;
+        get => Service.PhysicsWarpFactor;
+        set => Service.PhysicsWarpFactor = value;
     }
+
     public int RailsWarpFactor
     {
-        get => _service.RailsWarpFactor;
-        set => _service.RailsWarpFactor = value;
+        get => Service.RailsWarpFactor;
+        set => Service.RailsWarpFactor = value;
     }
+
     public float Reputation
-        => _service.Reputation;
+        => Service.Reputation;
+
     public float Science
-        => _service.Science;
+        => Service.Science;
+
     public CelestialBody TargetBody
     {
-        get => new CelestialBody(_service.TargetBody);
-        set => _service.TargetBody = value.Internal;
+        get => new CelestialBody(Service.TargetBody);
+        set => Service.TargetBody = value.Wrapped;
     }
+
     public DockingPort TargetDockingPort
     {
-        get => new DockingPort(_service.TargetDockingPort);
-        set => _service.TargetDockingPort = value.Internal;
+        get => new DockingPort(Service.TargetDockingPort);
+        set => Service.TargetDockingPort = value.Wrapped;
     }
+
     public Vessel TargetVessel
     {
-        get => new Vessel(_service.TargetVessel);
-        set => _service.TargetVessel = value.Internal;
+        get => new Vessel(Service.TargetVessel);
+        set => Service.TargetVessel = value.Wrapped;
     }
+
     public bool UIVisible
     {
-        get => _service.UIVisible;
-        set => _service.UIVisible = value;
+        get => Service.UIVisible;
+        set => Service.UIVisible = value;
     }
+
     public double UT
-        => _service.UT;
+        => Service.UT;
+
     public IList<Vessel> Vessels
-        => _service.Vessels.Select(item => new Vessel(item)).ToList();
+        => Service.Vessels.Select(item => new Vessel(item)).ToList();
+
     public float WarpFactor
-        => _service.WarpFactor;
+        => Service.WarpFactor;
+
     public WarpMode WarpMode
-        => _service.WarpMode;
+        => Service.WarpMode;
+
     public float WarpRate
-        => _service.WarpRate;
+        => Service.WarpRate;
+
     public WaypointManager WaypointManager
-        => new WaypointManager(_service.WaypointManager);
+        => new WaypointManager(Service.WaypointManager);
+
     public bool CanRailsWarpAt(int factor = 1)
-        => _service.CanRailsWarpAt(factor);
+        => Service.CanRailsWarpAt(factor);
+
     public bool CanRevertToLaunch()
-        => _service.CanRevertToLaunch();
+        => Service.CanRevertToLaunch();
+
     public void ClearTarget()
-        => _service.ClearTarget();
+        => Service.ClearTarget();
+
     public void CreateKerbal(string name, string job, bool male)
-        => _service.CreateKerbal(name, job, male);
+        => Service.CreateKerbal(name, job, male);
+
     public CrewMember GetKerbal(string name)
-        => new CrewMember(_service.GetKerbal(name));
+        => new CrewMember(Service.GetKerbal(name));
+
     public void LaunchVessel(string craftDirectory, string name, string launchSite, bool recover = true, IList<string> crew = null, string flagUrl = "")
-        => _service.LaunchVessel(craftDirectory, name, launchSite, recover, crew, flagUrl);
+        => Service.LaunchVessel(craftDirectory, name, launchSite, recover, crew, flagUrl);
+
     public void LaunchVesselFromSPH(string name, bool recover = true)
-        => _service.LaunchVesselFromSPH(name, recover);
+        => Service.LaunchVesselFromSPH(name, recover);
+
     public void LaunchVesselFromVAB(string name, bool recover = true)
-        => _service.LaunchVesselFromVAB(name, recover);
+        => Service.LaunchVesselFromVAB(name, recover);
+
     public IList<string> LaunchableVessels(string craftDirectory)
-        => _service.LaunchableVessels(craftDirectory);
+        => Service.LaunchableVessels(craftDirectory);
+
     public void Load(string name)
-        => _service.Load(name);
+        => Service.Load(name);
+
     public void LoadSpaceCenter()
-        => _service.LoadSpaceCenter();
+        => Service.LoadSpaceCenter();
+
     public void Quickload()
-        => _service.Quickload();
+        => Service.Quickload();
+
     public void Quicksave()
-        => _service.Quicksave();
+        => Service.Quicksave();
+
     public double RaycastDistance(Tuple<double, double, double> position, Tuple<double, double, double> direction, ReferenceFrame referenceFrame)
-        => _service.RaycastDistance(position, direction, referenceFrame.Internal);
+        => Service.RaycastDistance(position, direction, referenceFrame.Wrapped);
+
     public Part RaycastPart(Tuple<double, double, double> position, Tuple<double, double, double> direction, ReferenceFrame referenceFrame)
-        => new Part(_service.RaycastPart(position, direction, referenceFrame.Internal));
+        => new Part(Service.RaycastPart(position, direction, referenceFrame.Wrapped));
+
     public void RevertToLaunch()
-        => _service.RevertToLaunch();
+        => Service.RevertToLaunch();
+
     public void Save(string name)
-        => _service.Save(name);
+        => Service.Save(name);
+
     public void Screenshot(string filePath, int scale = 1)
-        => _service.Screenshot(filePath, scale);
+        => Service.Screenshot(filePath, scale);
+
     public void TransferCrew(CrewMember crewMember, Part targetPart)
-        => _service.TransferCrew(crewMember.Internal, targetPart.Internal);
+        => Service.TransferCrew(crewMember.Wrapped, targetPart.Wrapped);
+
     public Tuple<double, double, double> TransformDirection(Tuple<double, double, double> direction, ReferenceFrame from, ReferenceFrame to)
-        => _service.TransformDirection(direction, from.Internal, to.Internal);
+        => Service.TransformDirection(direction, from.Wrapped, to.Wrapped);
+
     public Tuple<double, double, double> TransformPosition(Tuple<double, double, double> position, ReferenceFrame from, ReferenceFrame to)
-        => _service.TransformPosition(position, from.Internal, to.Internal);
+        => Service.TransformPosition(position, from.Wrapped, to.Wrapped);
+
     public Tuple<double, double, double, double> TransformRotation(Tuple<double, double, double, double> rotation, ReferenceFrame from, ReferenceFrame to)
-        => _service.TransformRotation(rotation, from.Internal, to.Internal);
+        => Service.TransformRotation(rotation, from.Wrapped, to.Wrapped);
+
     public Tuple<double, double, double> TransformVelocity(Tuple<double, double, double> position, Tuple<double, double, double> velocity, ReferenceFrame from, ReferenceFrame to)
-        => _service.TransformVelocity(position, velocity, from.Internal, to.Internal);
+        => Service.TransformVelocity(position, velocity, from.Wrapped, to.Wrapped);
+
     public void WarpTo(double ut, float maxRailsRate = 100000f, float maxPhysicsRate = 2f)
-        => _service.WarpTo(ut, maxRailsRate, maxPhysicsRate);
+        => Service.WarpTo(ut, maxRailsRate, maxPhysicsRate);
 }

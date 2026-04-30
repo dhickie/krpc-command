@@ -8,21 +8,25 @@ namespace kRPC.Client.Boost.Entities.VesselParts;
 /// </summary>
 public class Radiator
 {
-    internal BaseRadiator Internal { get; }
+    internal readonly BaseRadiator Wrapped;
 
     internal Radiator(BaseRadiator radiator)
     {
-        Internal = radiator;
+        Wrapped = radiator;
     }
+
     public bool Deployable
-        => Internal.Deployable;
+        => Wrapped.Deployable;
+
     public bool Deployed
     {
-        get => Internal.Deployed;
-        set => Internal.Deployed = value;
+        get => Wrapped.Deployed;
+        set => Wrapped.Deployed = value;
     }
+
     public Part Part
-        => new Part(Internal.Part);
+        => new Part(Wrapped.Part);
+
     public RadiatorState State
-        => Internal.State;
+        => Wrapped.State;
 }

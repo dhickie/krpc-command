@@ -12,55 +12,67 @@ namespace kRPC.Client.Boost.Entities;
 /// </summary>
 public class Camera
 {
-    internal BaseCamera Internal { get; }
+    internal readonly BaseCamera Wrapped;
 
     internal Camera(BaseCamera camera)
     {
-        Internal = camera;
+        Wrapped = camera;
     }
+
     public float DefaultDistance
-        => Internal.DefaultDistance;
+        => Wrapped.DefaultDistance;
+
     public float Distance
     {
-        get => Internal.Distance;
-        set => Internal.Distance = value;
+        get => Wrapped.Distance;
+        set => Wrapped.Distance = value;
     }
+
     public CelestialBody FocussedBody
     {
-        get => new CelestialBody(Internal.FocussedBody);
-        set => Internal.FocussedBody = value.Internal;
+        get => new CelestialBody(Wrapped.FocussedBody);
+        set => Wrapped.FocussedBody = value.Wrapped;
     }
+
     public Node FocussedNode
     {
-        get => new Node(Internal.FocussedNode);
-        set => Internal.FocussedNode = value.Internal;
+        get => new Node(Wrapped.FocussedNode);
+        set => Wrapped.FocussedNode = value.Wrapped;
     }
+
     public Vessel FocussedVessel
     {
-        get => new Vessel(Internal.FocussedVessel);
-        set => Internal.FocussedVessel = value.Internal;
+        get => new Vessel(Wrapped.FocussedVessel);
+        set => Wrapped.FocussedVessel = value.Wrapped;
     }
+
     public float Heading
     {
-        get => Internal.Heading;
-        set => Internal.Heading = value;
+        get => Wrapped.Heading;
+        set => Wrapped.Heading = value;
     }
+
     public float MaxDistance
-        => Internal.MaxDistance;
+        => Wrapped.MaxDistance;
+
     public float MaxPitch
-        => Internal.MaxPitch;
+        => Wrapped.MaxPitch;
+
     public float MinDistance
-        => Internal.MinDistance;
+        => Wrapped.MinDistance;
+
     public float MinPitch
-        => Internal.MinPitch;
+        => Wrapped.MinPitch;
+
     public CameraMode Mode
     {
-        get => Internal.Mode;
-        set => Internal.Mode = value;
+        get => Wrapped.Mode;
+        set => Wrapped.Mode = value;
     }
+
     public float Pitch
     {
-        get => Internal.Pitch;
-        set => Internal.Pitch = value;
+        get => Wrapped.Pitch;
+        set => Wrapped.Pitch = value;
     }
 }

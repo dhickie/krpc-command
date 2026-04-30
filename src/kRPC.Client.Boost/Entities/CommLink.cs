@@ -12,18 +12,22 @@ namespace kRPC.Client.Boost.Entities;
 /// </summary>
 public class CommLink
 {
-    internal BaseCommLink Internal { get; }
+    internal readonly BaseCommLink Wrapped;
 
     internal CommLink(BaseCommLink commLink)
     {
-        Internal = commLink;
+        Wrapped = commLink;
     }
+
     public CommNode End
-        => new CommNode(Internal.End);
+        => new CommNode(Wrapped.End);
+
     public double SignalStrength
-        => Internal.SignalStrength;
+        => Wrapped.SignalStrength;
+
     public CommNode Start
-        => new CommNode(Internal.Start);
+        => new CommNode(Wrapped.Start);
+
     public CommLinkType Type
-        => Internal.Type;
+        => Wrapped.Type;
 }

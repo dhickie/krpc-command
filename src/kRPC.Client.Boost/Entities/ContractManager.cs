@@ -12,22 +12,28 @@ namespace kRPC.Client.Boost.Entities;
 /// </summary>
 public class ContractManager
 {
-    internal BaseContractManager Internal { get; }
+    internal readonly BaseContractManager Wrapped;
 
     internal ContractManager(BaseContractManager contractManager)
     {
-        Internal = contractManager;
+        Wrapped = contractManager;
     }
+
     public IList<Contract> ActiveContracts
-        => Internal.ActiveContracts.Select(item => new Contract(item)).ToList();
+        => Wrapped.ActiveContracts.Select(item => new Contract(item)).ToList();
+
     public IList<Contract> AllContracts
-        => Internal.AllContracts.Select(item => new Contract(item)).ToList();
+        => Wrapped.AllContracts.Select(item => new Contract(item)).ToList();
+
     public IList<Contract> CompletedContracts
-        => Internal.CompletedContracts.Select(item => new Contract(item)).ToList();
+        => Wrapped.CompletedContracts.Select(item => new Contract(item)).ToList();
+
     public IList<Contract> FailedContracts
-        => Internal.FailedContracts.Select(item => new Contract(item)).ToList();
+        => Wrapped.FailedContracts.Select(item => new Contract(item)).ToList();
+
     public IList<Contract> OfferedContracts
-        => Internal.OfferedContracts.Select(item => new Contract(item)).ToList();
+        => Wrapped.OfferedContracts.Select(item => new Contract(item)).ToList();
+
     public ISet<string> Types
-        => Internal.Types;
+        => Wrapped.Types;
 }

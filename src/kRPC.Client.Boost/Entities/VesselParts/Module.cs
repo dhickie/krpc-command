@@ -7,70 +7,100 @@ namespace kRPC.Client.Boost.Entities.VesselParts;
 /// </summary>
 public class Module
 {
-    internal BaseModule Internal { get; }
+    internal readonly BaseModule Wrapped;
 
     internal Module(BaseModule module)
     {
-        Internal = module;
+        Wrapped = module;
     }
+
     public IList<string> Actions
-        => Internal.Actions;
+        => Wrapped.Actions;
+
     public IList<string> ActionsById
-        => Internal.ActionsById;
+        => Wrapped.ActionsById;
+
     public IList<string> Events
-        => Internal.Events;
+        => Wrapped.Events;
+
     public IList<string> EventsById
-        => Internal.EventsById;
+        => Wrapped.EventsById;
+
     public IDictionary<string, string> Fields
-        => Internal.Fields;
+        => Wrapped.Fields;
+
     public IDictionary<string, string> FieldsById
-        => Internal.FieldsById;
+        => Wrapped.FieldsById;
+
     public string Name
-        => Internal.Name;
+        => Wrapped.Name;
+
     public Part Part
-        => new Part(Internal.Part);
+        => new Part(Wrapped.Part);
+
     public string GetField(string name)
-        => Internal.GetField(name);
+        => Wrapped.GetField(name);
+
     public string GetFieldById(string id)
-        => Internal.GetFieldById(id);
+        => Wrapped.GetFieldById(id);
+
     public bool HasAction(string name)
-        => Internal.HasAction(name);
+        => Wrapped.HasAction(name);
+
     public bool HasActionWithId(string id)
-        => Internal.HasActionWithId(id);
+        => Wrapped.HasActionWithId(id);
+
     public bool HasEvent(string name)
-        => Internal.HasEvent(name);
+        => Wrapped.HasEvent(name);
+
     public bool HasEventWithId(string id)
-        => Internal.HasEventWithId(id);
+        => Wrapped.HasEventWithId(id);
+
     public bool HasField(string name)
-        => Internal.HasField(name);
+        => Wrapped.HasField(name);
+
     public bool HasFieldWithId(string id)
-        => Internal.HasFieldWithId(id);
+        => Wrapped.HasFieldWithId(id);
+
     public void ResetField(string name)
-        => Internal.ResetField(name);
+        => Wrapped.ResetField(name);
+
     public void ResetFieldById(string id)
-        => Internal.ResetFieldById(id);
+        => Wrapped.ResetFieldById(id);
+
     public void SetAction(string name, bool value = true)
-        => Internal.SetAction(name, value);
+        => Wrapped.SetAction(name, value);
+
     public void SetActionById(string id, bool value = true)
-        => Internal.SetActionById(id, value);
+        => Wrapped.SetActionById(id, value);
+
     public void SetFieldBool(string name, bool value)
-        => Internal.SetFieldBool(name, value);
+        => Wrapped.SetFieldBool(name, value);
+
     public void SetFieldBoolById(string id, bool value)
-        => Internal.SetFieldBoolById(id, value);
+        => Wrapped.SetFieldBoolById(id, value);
+
     public void SetFieldFloat(string name, float value)
-        => Internal.SetFieldFloat(name, value);
+        => Wrapped.SetFieldFloat(name, value);
+
     public void SetFieldFloatById(string id, float value)
-        => Internal.SetFieldFloatById(id, value);
+        => Wrapped.SetFieldFloatById(id, value);
+
     public void SetFieldInt(string name, int value)
-        => Internal.SetFieldInt(name, value);
+        => Wrapped.SetFieldInt(name, value);
+
     public void SetFieldIntById(string id, int value)
-        => Internal.SetFieldIntById(id, value);
+        => Wrapped.SetFieldIntById(id, value);
+
     public void SetFieldString(string name, string value)
-        => Internal.SetFieldString(name, value);
+        => Wrapped.SetFieldString(name, value);
+
     public void SetFieldStringById(string id, string value)
-        => Internal.SetFieldStringById(id, value);
+        => Wrapped.SetFieldStringById(id, value);
+
     public void TriggerEvent(string name)
-        => Internal.TriggerEvent(name);
+        => Wrapped.TriggerEvent(name);
+
     public void TriggerEventById(string id)
-        => Internal.TriggerEventById(id);
+        => Wrapped.TriggerEventById(id);
 }

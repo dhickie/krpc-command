@@ -7,78 +7,100 @@ namespace kRPC.Client.Boost.Entities.VesselParts;
 /// </summary>
 public class RCS
 {
-    internal BaseRCS Internal { get; }
+    internal readonly BaseRCS Wrapped;
 
     internal RCS(BaseRCS rCS)
     {
-        Internal = rCS;
+        Wrapped = rCS;
     }
+
     public bool Active
-        => Internal.Active;
+        => Wrapped.Active;
+
     public Tuple<Tuple<double, double, double>, Tuple<double, double, double>> AvailableForce
-        => Internal.AvailableForce;
+        => Wrapped.AvailableForce;
+
     public float AvailableThrust
-        => Internal.AvailableThrust;
+        => Wrapped.AvailableThrust;
+
     public Tuple<Tuple<double, double, double>, Tuple<double, double, double>> AvailableTorque
-        => Internal.AvailableTorque;
+        => Wrapped.AvailableTorque;
+
     public bool Enabled
     {
-        get => Internal.Enabled;
-        set => Internal.Enabled = value;
+        get => Wrapped.Enabled;
+        set => Wrapped.Enabled = value;
     }
+
     public bool ForwardEnabled
     {
-        get => Internal.ForwardEnabled;
-        set => Internal.ForwardEnabled = value;
+        get => Wrapped.ForwardEnabled;
+        set => Wrapped.ForwardEnabled = value;
     }
+
     public bool HasFuel
-        => Internal.HasFuel;
+        => Wrapped.HasFuel;
+
     public float KerbinSeaLevelSpecificImpulse
-        => Internal.KerbinSeaLevelSpecificImpulse;
+        => Wrapped.KerbinSeaLevelSpecificImpulse;
+
     public float MaxThrust
-        => Internal.MaxThrust;
+        => Wrapped.MaxThrust;
+
     public float MaxVacuumThrust
-        => Internal.MaxVacuumThrust;
+        => Wrapped.MaxVacuumThrust;
+
     public Part Part
-        => new Part(Internal.Part);
+        => new Part(Wrapped.Part);
+
     public bool PitchEnabled
     {
-        get => Internal.PitchEnabled;
-        set => Internal.PitchEnabled = value;
+        get => Wrapped.PitchEnabled;
+        set => Wrapped.PitchEnabled = value;
     }
+
     public IDictionary<string, float> PropellantRatios
-        => Internal.PropellantRatios;
+        => Wrapped.PropellantRatios;
+
     public IList<string> Propellants
-        => Internal.Propellants;
+        => Wrapped.Propellants;
+
     public bool RightEnabled
     {
-        get => Internal.RightEnabled;
-        set => Internal.RightEnabled = value;
+        get => Wrapped.RightEnabled;
+        set => Wrapped.RightEnabled = value;
     }
+
     public bool RollEnabled
     {
-        get => Internal.RollEnabled;
-        set => Internal.RollEnabled = value;
+        get => Wrapped.RollEnabled;
+        set => Wrapped.RollEnabled = value;
     }
+
     public float SpecificImpulse
-        => Internal.SpecificImpulse;
+        => Wrapped.SpecificImpulse;
+
     public float ThrustLimit
     {
-        get => Internal.ThrustLimit;
-        set => Internal.ThrustLimit = value;
+        get => Wrapped.ThrustLimit;
+        set => Wrapped.ThrustLimit = value;
     }
+
     public IList<Thruster> Thrusters
-        => Internal.Thrusters.Select(item => new Thruster(item)).ToList();
+        => Wrapped.Thrusters.Select(item => new Thruster(item)).ToList();
+
     public bool UpEnabled
     {
-        get => Internal.UpEnabled;
-        set => Internal.UpEnabled = value;
+        get => Wrapped.UpEnabled;
+        set => Wrapped.UpEnabled = value;
     }
+
     public float VacuumSpecificImpulse
-        => Internal.VacuumSpecificImpulse;
+        => Wrapped.VacuumSpecificImpulse;
+
     public bool YawEnabled
     {
-        get => Internal.YawEnabled;
-        set => Internal.YawEnabled = value;
+        get => Wrapped.YawEnabled;
+        set => Wrapped.YawEnabled = value;
     }
 }

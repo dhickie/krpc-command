@@ -12,92 +12,133 @@ namespace kRPC.Client.Boost.Entities;
 /// </summary>
 public class Orbit
 {
-    internal BaseOrbit Internal { get; }
+    internal readonly BaseOrbit Wrapped;
 
     internal Orbit(BaseOrbit orbit)
     {
-        Internal = orbit;
+        Wrapped = orbit;
     }
+
     public double Apoapsis
-        => Internal.Apoapsis;
+        => Wrapped.Apoapsis;
+
     public double ApoapsisAltitude
-        => Internal.ApoapsisAltitude;
+        => Wrapped.ApoapsisAltitude;
+
     public double ArgumentOfPeriapsis
-        => Internal.ArgumentOfPeriapsis;
+        => Wrapped.ArgumentOfPeriapsis;
+
     public CelestialBody Body
-        => new CelestialBody(Internal.Body);
+        => new CelestialBody(Wrapped.Body);
+
     public double EccentricAnomaly
-        => Internal.EccentricAnomaly;
+        => Wrapped.EccentricAnomaly;
+
     public double Eccentricity
-        => Internal.Eccentricity;
+        => Wrapped.Eccentricity;
+
     public double Epoch
-        => Internal.Epoch;
+        => Wrapped.Epoch;
+
     public double Inclination
-        => Internal.Inclination;
+        => Wrapped.Inclination;
+
     public double LongitudeOfAscendingNode
-        => Internal.LongitudeOfAscendingNode;
+        => Wrapped.LongitudeOfAscendingNode;
+
     public double MeanAnomaly
-        => Internal.MeanAnomaly;
+        => Wrapped.MeanAnomaly;
+
     public double MeanAnomalyAtEpoch
-        => Internal.MeanAnomalyAtEpoch;
+        => Wrapped.MeanAnomalyAtEpoch;
+
     public Orbit NextOrbit
-        => new Orbit(Internal.NextOrbit);
+        => new Orbit(Wrapped.NextOrbit);
+
     public double OrbitalSpeed
-        => Internal.OrbitalSpeed;
+        => Wrapped.OrbitalSpeed;
+
     public double Periapsis
-        => Internal.Periapsis;
+        => Wrapped.Periapsis;
+
     public double PeriapsisAltitude
-        => Internal.PeriapsisAltitude;
+        => Wrapped.PeriapsisAltitude;
+
     public double Period
-        => Internal.Period;
+        => Wrapped.Period;
+
     public double Radius
-        => Internal.Radius;
+        => Wrapped.Radius;
+
     public double SemiMajorAxis
-        => Internal.SemiMajorAxis;
+        => Wrapped.SemiMajorAxis;
+
     public double SemiMinorAxis
-        => Internal.SemiMinorAxis;
+        => Wrapped.SemiMinorAxis;
+
     public double Speed
-        => Internal.Speed;
+        => Wrapped.Speed;
+
     public double TimeToApoapsis
-        => Internal.TimeToApoapsis;
+        => Wrapped.TimeToApoapsis;
+
     public double TimeToPeriapsis
-        => Internal.TimeToPeriapsis;
+        => Wrapped.TimeToPeriapsis;
+
     public double TimeToSOIChange
-        => Internal.TimeToSOIChange;
+        => Wrapped.TimeToSOIChange;
+
     public double TrueAnomaly
-        => Internal.TrueAnomaly;
+        => Wrapped.TrueAnomaly;
+
     public double DistanceAtClosestApproach(Orbit target)
-        => Internal.DistanceAtClosestApproach(target.Internal);
+        => Wrapped.DistanceAtClosestApproach(target.Wrapped);
+
     public double EccentricAnomalyAtUT(double ut)
-        => Internal.EccentricAnomalyAtUT(ut);
+        => Wrapped.EccentricAnomalyAtUT(ut);
+
     public IList<IList<double>> ListClosestApproaches(Orbit target, int orbits)
-        => Internal.ListClosestApproaches(target.Internal, orbits);
+        => Wrapped.ListClosestApproaches(target.Wrapped, orbits);
+
     public double MeanAnomalyAtUT(double ut)
-        => Internal.MeanAnomalyAtUT(ut);
+        => Wrapped.MeanAnomalyAtUT(ut);
+
     public double OrbitalSpeedAt(double time)
-        => Internal.OrbitalSpeedAt(time);
+        => Wrapped.OrbitalSpeedAt(time);
+
     public Tuple<double, double, double> PositionAt(double ut, ReferenceFrame referenceFrame)
-        => Internal.PositionAt(ut, referenceFrame.Internal);
+        => Wrapped.PositionAt(ut, referenceFrame.Wrapped);
+
     public double RadiusAt(double ut)
-        => Internal.RadiusAt(ut);
+        => Wrapped.RadiusAt(ut);
+
     public double RadiusAtTrueAnomaly(double trueAnomaly)
-        => Internal.RadiusAtTrueAnomaly(trueAnomaly);
+        => Wrapped.RadiusAtTrueAnomaly(trueAnomaly);
+
     public double RelativeInclination(Orbit target)
-        => Internal.RelativeInclination(target.Internal);
+        => Wrapped.RelativeInclination(target.Wrapped);
+
     public double TimeOfClosestApproach(Orbit target)
-        => Internal.TimeOfClosestApproach(target.Internal);
+        => Wrapped.TimeOfClosestApproach(target.Wrapped);
+
     public double TrueAnomalyAtAN(Orbit target)
-        => Internal.TrueAnomalyAtAN(target.Internal);
+        => Wrapped.TrueAnomalyAtAN(target.Wrapped);
+
     public double TrueAnomalyAtDN(Orbit target)
-        => Internal.TrueAnomalyAtDN(target.Internal);
+        => Wrapped.TrueAnomalyAtDN(target.Wrapped);
+
     public double TrueAnomalyAtRadius(double radius)
-        => Internal.TrueAnomalyAtRadius(radius);
+        => Wrapped.TrueAnomalyAtRadius(radius);
+
     public double TrueAnomalyAtUT(double ut)
-        => Internal.TrueAnomalyAtUT(ut);
+        => Wrapped.TrueAnomalyAtUT(ut);
+
     public double UTAtTrueAnomaly(double trueAnomaly)
-        => Internal.UTAtTrueAnomaly(trueAnomaly);
+        => Wrapped.UTAtTrueAnomaly(trueAnomaly);
+
     public static Tuple<double, double, double> ReferencePlaneDirection(IConnection connection, ReferenceFrame referenceFrame)
-        => BaseOrbit.ReferencePlaneDirection(connection, referenceFrame.Internal);
+        => BaseOrbit.ReferencePlaneDirection(connection, referenceFrame.Wrapped);
+
     public static Tuple<double, double, double> ReferencePlaneNormal(IConnection connection, ReferenceFrame referenceFrame)
-        => BaseOrbit.ReferencePlaneNormal(connection, referenceFrame.Internal);
+        => BaseOrbit.ReferencePlaneNormal(connection, referenceFrame.Wrapped);
 }

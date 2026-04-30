@@ -12,58 +12,82 @@ namespace kRPC.Client.Boost.Entities;
 /// </summary>
 public class Contract
 {
-    internal BaseContract Internal { get; }
+    internal readonly BaseContract Wrapped;
 
     internal Contract(BaseContract contract)
     {
-        Internal = contract;
+        Wrapped = contract;
     }
+
     public bool Active
-        => Internal.Active;
+        => Wrapped.Active;
+
     public bool CanBeCanceled
-        => Internal.CanBeCanceled;
+        => Wrapped.CanBeCanceled;
+
     public bool CanBeDeclined
-        => Internal.CanBeDeclined;
+        => Wrapped.CanBeDeclined;
+
     public bool CanBeFailed
-        => Internal.CanBeFailed;
+        => Wrapped.CanBeFailed;
+
     public string Description
-        => Internal.Description;
+        => Wrapped.Description;
+
     public bool Failed
-        => Internal.Failed;
+        => Wrapped.Failed;
+
     public double FundsAdvance
-        => Internal.FundsAdvance;
+        => Wrapped.FundsAdvance;
+
     public double FundsCompletion
-        => Internal.FundsCompletion;
+        => Wrapped.FundsCompletion;
+
     public double FundsFailure
-        => Internal.FundsFailure;
+        => Wrapped.FundsFailure;
+
     public IList<string> Keywords
-        => Internal.Keywords;
+        => Wrapped.Keywords;
+
     public string Notes
-        => Internal.Notes;
+        => Wrapped.Notes;
+
     public IList<ContractParameter> Parameters
-        => Internal.Parameters.Select(item => new ContractParameter(item)).ToList();
+        => Wrapped.Parameters.Select(item => new ContractParameter(item)).ToList();
+
     public bool Read
-        => Internal.Read;
+        => Wrapped.Read;
+
     public double ReputationCompletion
-        => Internal.ReputationCompletion;
+        => Wrapped.ReputationCompletion;
+
     public double ReputationFailure
-        => Internal.ReputationFailure;
+        => Wrapped.ReputationFailure;
+
     public double ScienceCompletion
-        => Internal.ScienceCompletion;
+        => Wrapped.ScienceCompletion;
+
     public bool Seen
-        => Internal.Seen;
+        => Wrapped.Seen;
+
     public ContractState State
-        => Internal.State;
+        => Wrapped.State;
+
     public string Synopsis
-        => Internal.Synopsis;
+        => Wrapped.Synopsis;
+
     public string Title
-        => Internal.Title;
+        => Wrapped.Title;
+
     public string Type
-        => Internal.Type;
+        => Wrapped.Type;
+
     public void Accept()
-        => Internal.Accept();
+        => Wrapped.Accept();
+
     public void Cancel()
-        => Internal.Cancel();
+        => Wrapped.Cancel();
+
     public void Decline()
-        => Internal.Decline();
+        => Wrapped.Decline();
 }

@@ -8,23 +8,28 @@ namespace kRPC.Client.Boost.Entities.VesselParts;
 /// </summary>
 public class Leg
 {
-    internal BaseLeg Internal { get; }
+    internal readonly BaseLeg Wrapped;
 
     internal Leg(BaseLeg leg)
     {
-        Internal = leg;
+        Wrapped = leg;
     }
+
     public bool Deployable
-        => Internal.Deployable;
+        => Wrapped.Deployable;
+
     public bool Deployed
     {
-        get => Internal.Deployed;
-        set => Internal.Deployed = value;
+        get => Wrapped.Deployed;
+        set => Wrapped.Deployed = value;
     }
+
     public bool IsGrounded
-        => Internal.IsGrounded;
+        => Wrapped.IsGrounded;
+
     public Part Part
-        => new Part(Internal.Part);
+        => new Part(Wrapped.Part);
+
     public LegState State
-        => Internal.State;
+        => Wrapped.State;
 }

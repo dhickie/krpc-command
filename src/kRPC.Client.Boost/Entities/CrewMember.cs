@@ -12,61 +12,76 @@ namespace kRPC.Client.Boost.Entities;
 /// </summary>
 public class CrewMember
 {
-    internal BaseCrewMember Internal { get; }
+    internal readonly BaseCrewMember Wrapped;
 
     internal CrewMember(BaseCrewMember crewMember)
     {
-        Internal = crewMember;
+        Wrapped = crewMember;
     }
+
     public bool Badass
     {
-        get => Internal.Badass;
-        set => Internal.Badass = value;
+        get => Wrapped.Badass;
+        set => Wrapped.Badass = value;
     }
+
     public IList<int> CareerLogFlights
-        => Internal.CareerLogFlights;
+        => Wrapped.CareerLogFlights;
+
     public IList<string> CareerLogTargets
-        => Internal.CareerLogTargets;
+        => Wrapped.CareerLogTargets;
+
     public IList<string> CareerLogTypes
-        => Internal.CareerLogTypes;
+        => Wrapped.CareerLogTypes;
+
     public float Courage
     {
-        get => Internal.Courage;
-        set => Internal.Courage = value;
+        get => Wrapped.Courage;
+        set => Wrapped.Courage = value;
     }
+
     public float Experience
     {
-        get => Internal.Experience;
-        set => Internal.Experience = value;
+        get => Wrapped.Experience;
+        set => Wrapped.Experience = value;
     }
+
     public CrewMemberGender Gender
-        => Internal.Gender;
+        => Wrapped.Gender;
+
     public string Name
     {
-        get => Internal.Name;
-        set => Internal.Name = value;
+        get => Wrapped.Name;
+        set => Wrapped.Name = value;
     }
+
     public bool OnMission
-        => Internal.OnMission;
+        => Wrapped.OnMission;
+
     public RosterStatus RosterStatus
-        => Internal.RosterStatus;
+        => Wrapped.RosterStatus;
+
     public float Stupidity
     {
-        get => Internal.Stupidity;
-        set => Internal.Stupidity = value;
+        get => Wrapped.Stupidity;
+        set => Wrapped.Stupidity = value;
     }
+
     public SuitType SuitType
     {
-        get => Internal.SuitType;
-        set => Internal.SuitType = value;
+        get => Wrapped.SuitType;
+        set => Wrapped.SuitType = value;
     }
+
     public string Trait
-        => Internal.Trait;
+        => Wrapped.Trait;
+
     public CrewMemberType Type
-        => Internal.Type;
+        => Wrapped.Type;
+
     public bool Veteran
     {
-        get => Internal.Veteran;
-        set => Internal.Veteran = value;
+        get => Wrapped.Veteran;
+        set => Wrapped.Veteran = value;
     }
 }

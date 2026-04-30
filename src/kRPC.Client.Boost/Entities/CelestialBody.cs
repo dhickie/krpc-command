@@ -12,94 +12,137 @@ namespace kRPC.Client.Boost.Entities;
 /// </summary>
 public class CelestialBody
 {
-    internal BaseCelestialBody Internal { get; }
+    internal readonly BaseCelestialBody Wrapped;
 
     internal CelestialBody(BaseCelestialBody celestialBody)
     {
-        Internal = celestialBody;
+        Wrapped = celestialBody;
     }
+
     public double AtmosphereDepth
-        => Internal.AtmosphereDepth;
+        => Wrapped.AtmosphereDepth;
+
     public ISet<string> Biomes
-        => Internal.Biomes;
+        => Wrapped.Biomes;
+
     public double EquatorialRadius
-        => Internal.EquatorialRadius;
+        => Wrapped.EquatorialRadius;
+
     public float FlyingHighAltitudeThreshold
-        => Internal.FlyingHighAltitudeThreshold;
+        => Wrapped.FlyingHighAltitudeThreshold;
+
     public double GravitationalParameter
-        => Internal.GravitationalParameter;
+        => Wrapped.GravitationalParameter;
+
     public bool HasAtmosphere
-        => Internal.HasAtmosphere;
+        => Wrapped.HasAtmosphere;
+
     public bool HasAtmosphericOxygen
-        => Internal.HasAtmosphericOxygen;
+        => Wrapped.HasAtmosphericOxygen;
+
     public bool HasSolidSurface
-        => Internal.HasSolidSurface;
+        => Wrapped.HasSolidSurface;
+
     public double InitialRotation
-        => Internal.InitialRotation;
+        => Wrapped.InitialRotation;
+
     public bool IsStar
-        => Internal.IsStar;
+        => Wrapped.IsStar;
+
     public double Mass
-        => Internal.Mass;
+        => Wrapped.Mass;
+
     public string Name
-        => Internal.Name;
+        => Wrapped.Name;
+
     public ReferenceFrame NonRotatingReferenceFrame
-        => new ReferenceFrame(Internal.NonRotatingReferenceFrame);
+        => new ReferenceFrame(Wrapped.NonRotatingReferenceFrame);
+
     public Orbit Orbit
-        => new Orbit(Internal.Orbit);
+        => new Orbit(Wrapped.Orbit);
+
     public ReferenceFrame OrbitalReferenceFrame
-        => new ReferenceFrame(Internal.OrbitalReferenceFrame);
+        => new ReferenceFrame(Wrapped.OrbitalReferenceFrame);
+
     public ReferenceFrame ReferenceFrame
-        => new ReferenceFrame(Internal.ReferenceFrame);
+        => new ReferenceFrame(Wrapped.ReferenceFrame);
+
     public double RotationAngle
-        => Internal.RotationAngle;
+        => Wrapped.RotationAngle;
+
     public double RotationalPeriod
-        => Internal.RotationalPeriod;
+        => Wrapped.RotationalPeriod;
+
     public double RotationalSpeed
-        => Internal.RotationalSpeed;
+        => Wrapped.RotationalSpeed;
+
     public IList<CelestialBody> Satellites
-        => Internal.Satellites.Select(item => new CelestialBody(item)).ToList();
+        => Wrapped.Satellites.Select(item => new CelestialBody(item)).ToList();
+
     public float SpaceHighAltitudeThreshold
-        => Internal.SpaceHighAltitudeThreshold;
+        => Wrapped.SpaceHighAltitudeThreshold;
+
     public double SphereOfInfluence
-        => Internal.SphereOfInfluence;
+        => Wrapped.SphereOfInfluence;
+
     public double SurfaceGravity
-        => Internal.SurfaceGravity;
+        => Wrapped.SurfaceGravity;
+
     public double AltitudeAtPosition(Tuple<double, double, double> position, ReferenceFrame referenceFrame)
-        => Internal.AltitudeAtPosition(position, referenceFrame.Internal);
+        => Wrapped.AltitudeAtPosition(position, referenceFrame.Wrapped);
+
     public Tuple<double, double, double> AngularVelocity(ReferenceFrame referenceFrame)
-        => Internal.AngularVelocity(referenceFrame.Internal);
+        => Wrapped.AngularVelocity(referenceFrame.Wrapped);
+
     public double AtmosphericDensityAtPosition(Tuple<double, double, double> position, ReferenceFrame referenceFrame)
-        => Internal.AtmosphericDensityAtPosition(position, referenceFrame.Internal);
+        => Wrapped.AtmosphericDensityAtPosition(position, referenceFrame.Wrapped);
+
     public double BedrockHeight(double latitude, double longitude)
-        => Internal.BedrockHeight(latitude, longitude);
-    public Tuple<double, double, double> BedrockPosition(double latitude, double longitude, ReferenceFrame referenceFrame)
-        => Internal.BedrockPosition(latitude, longitude, referenceFrame.Internal);
+        => Wrapped.BedrockHeight(latitude, longitude);
+
+    public Tuple<double, double, double> BedrockPosition(double latitude, double longitude,
+        ReferenceFrame referenceFrame)
+        => Wrapped.BedrockPosition(latitude, longitude, referenceFrame.Wrapped);
+
     public string BiomeAt(double latitude, double longitude)
-        => Internal.BiomeAt(latitude, longitude);
+        => Wrapped.BiomeAt(latitude, longitude);
+
     public double DensityAt(double altitude)
-        => Internal.DensityAt(altitude);
+        => Wrapped.DensityAt(altitude);
+
     public Tuple<double, double, double> Direction(ReferenceFrame referenceFrame)
-        => Internal.Direction(referenceFrame.Internal);
+        => Wrapped.Direction(referenceFrame.Wrapped);
+
     public double LatitudeAtPosition(Tuple<double, double, double> position, ReferenceFrame referenceFrame)
-        => Internal.LatitudeAtPosition(position, referenceFrame.Internal);
+        => Wrapped.LatitudeAtPosition(position, referenceFrame.Wrapped);
+
     public double LongitudeAtPosition(Tuple<double, double, double> position, ReferenceFrame referenceFrame)
-        => Internal.LongitudeAtPosition(position, referenceFrame.Internal);
+        => Wrapped.LongitudeAtPosition(position, referenceFrame.Wrapped);
+
     public Tuple<double, double, double> MSLPosition(double latitude, double longitude, ReferenceFrame referenceFrame)
-        => Internal.MSLPosition(latitude, longitude, referenceFrame.Internal);
+        => Wrapped.MSLPosition(latitude, longitude, referenceFrame.Wrapped);
+
     public Tuple<double, double, double> Position(ReferenceFrame referenceFrame)
-        => Internal.Position(referenceFrame.Internal);
+        => Wrapped.Position(referenceFrame.Wrapped);
+
     public Tuple<double, double, double> PositionAtAltitude(double latitude, double longitude, double altitude, ReferenceFrame referenceFrame)
-        => Internal.PositionAtAltitude(latitude, longitude, altitude, referenceFrame.Internal);
+        => Wrapped.PositionAtAltitude(latitude, longitude, altitude, referenceFrame.Wrapped);
+
     public double PressureAt(double altitude)
-        => Internal.PressureAt(altitude);
+        => Wrapped.PressureAt(altitude);
+
     public Tuple<double, double, double, double> Rotation(ReferenceFrame referenceFrame)
-        => Internal.Rotation(referenceFrame.Internal);
+        => Wrapped.Rotation(referenceFrame.Wrapped);
+
     public double SurfaceHeight(double latitude, double longitude)
-        => Internal.SurfaceHeight(latitude, longitude);
+        => Wrapped.SurfaceHeight(latitude, longitude);
+
     public Tuple<double, double, double> SurfacePosition(double latitude, double longitude, ReferenceFrame referenceFrame)
-        => Internal.SurfacePosition(latitude, longitude, referenceFrame.Internal);
+        => Wrapped.SurfacePosition(latitude, longitude, referenceFrame.Wrapped);
+
     public double TemperatureAt(Tuple<double, double, double> position, ReferenceFrame referenceFrame)
-        => Internal.TemperatureAt(position, referenceFrame.Internal);
+        => Wrapped.TemperatureAt(position, referenceFrame.Wrapped);
+
     public Tuple<double, double, double> Velocity(ReferenceFrame referenceFrame)
-        => Internal.Velocity(referenceFrame.Internal);
+        => Wrapped.Velocity(referenceFrame.Wrapped);
 }

@@ -7,16 +7,19 @@ namespace kRPC.Client.Boost.Entities.VesselParts;
 /// </summary>
 public class Fairing
 {
-    internal BaseFairing Internal { get; }
+    internal readonly BaseFairing Wrapped;
 
     internal Fairing(BaseFairing fairing)
     {
-        Internal = fairing;
+        Wrapped = fairing;
     }
+
     public bool Jettisoned
-        => Internal.Jettisoned;
+        => Wrapped.Jettisoned;
+
     public Part Part
-        => new Part(Internal.Part);
+        => new Part(Wrapped.Part);
+
     public void Jettison()
-        => Internal.Jettison();
+        => Wrapped.Jettison();
 }

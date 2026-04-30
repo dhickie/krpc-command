@@ -12,26 +12,34 @@ namespace kRPC.Client.Boost.Entities;
 /// </summary>
 public class Alarm
 {
-    internal BaseAlarm Internal { get; }
+    internal readonly BaseAlarm Wrapped;
 
     internal Alarm(BaseAlarm alarm)
     {
-        Internal = alarm;
+        Wrapped = alarm;
     }
+
     public string Description
-        => Internal.Description;
+        => Wrapped.Description;
+
     public double EventOffset
-        => Internal.EventOffset;
+        => Wrapped.EventOffset;
+
     public uint ID
-        => Internal.ID;
+        => Wrapped.ID;
+
     public double Time
-        => Internal.Time;
+        => Wrapped.Time;
+
     public double TimeUntil
-        => Internal.TimeUntil;
+        => Wrapped.TimeUntil;
+
     public string Title
-        => Internal.Title;
+        => Wrapped.Title;
+
     public string Type
-        => Internal.Type;
+        => Wrapped.Type;
+
     public Vessel Vessel
-        => new Vessel(Internal.Vessel);
+        => new Vessel(Wrapped.Vessel);
 }

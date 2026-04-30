@@ -12,111 +12,136 @@ namespace kRPC.Client.Boost.Entities;
 /// </summary>
 public class AutoPilot
 {
-    internal BaseAutoPilot Internal { get; }
+    internal readonly BaseAutoPilot Wrapped;
 
     internal AutoPilot(BaseAutoPilot autoPilot)
     {
-        Internal = autoPilot;
+        Wrapped = autoPilot;
     }
+
     public Tuple<double, double, double> AttenuationAngle
     {
-        get => Internal.AttenuationAngle;
-        set => Internal.AttenuationAngle = value;
+        get => Wrapped.AttenuationAngle;
+        set => Wrapped.AttenuationAngle = value;
     }
+
     public bool AutoTune
     {
-        get => Internal.AutoTune;
-        set => Internal.AutoTune = value;
+        get => Wrapped.AutoTune;
+        set => Wrapped.AutoTune = value;
     }
+
     public Tuple<double, double, double> DecelerationTime
     {
-        get => Internal.DecelerationTime;
-        set => Internal.DecelerationTime = value;
+        get => Wrapped.DecelerationTime;
+        set => Wrapped.DecelerationTime = value;
     }
+
     public float Error
-        => Internal.Error;
+        => Wrapped.Error;
+
     public float HeadingError
-        => Internal.HeadingError;
+        => Wrapped.HeadingError;
+
     public Tuple<double, double, double> Overshoot
     {
-        get => Internal.Overshoot;
-        set => Internal.Overshoot = value;
+        get => Wrapped.Overshoot;
+        set => Wrapped.Overshoot = value;
     }
+
     public float PitchError
-        => Internal.PitchError;
+        => Wrapped.PitchError;
+
     public Tuple<double, double, double> PitchPIDGains
     {
-        get => Internal.PitchPIDGains;
-        set => Internal.PitchPIDGains = value;
+        get => Wrapped.PitchPIDGains;
+        set => Wrapped.PitchPIDGains = value;
     }
+
     public ReferenceFrame ReferenceFrame
     {
-        get => new ReferenceFrame(Internal.ReferenceFrame);
-        set => Internal.ReferenceFrame = value.Internal;
+        get => new ReferenceFrame(Wrapped.ReferenceFrame);
+        set => Wrapped.ReferenceFrame = value.Wrapped;
     }
+
     public float RollError
-        => Internal.RollError;
+        => Wrapped.RollError;
+
     public Tuple<double, double, double> RollPIDGains
     {
-        get => Internal.RollPIDGains;
-        set => Internal.RollPIDGains = value;
+        get => Wrapped.RollPIDGains;
+        set => Wrapped.RollPIDGains = value;
     }
+
     public double RollThreshold
     {
-        get => Internal.RollThreshold;
-        set => Internal.RollThreshold = value;
+        get => Wrapped.RollThreshold;
+        set => Wrapped.RollThreshold = value;
     }
+
     public bool SAS
     {
-        get => Internal.SAS;
-        set => Internal.SAS = value;
+        get => Wrapped.SAS;
+        set => Wrapped.SAS = value;
     }
+
     public SASMode SASMode
     {
-        get => Internal.SASMode;
-        set => Internal.SASMode = value;
+        get => Wrapped.SASMode;
+        set => Wrapped.SASMode = value;
     }
+
     public Tuple<double, double, double> StoppingTime
     {
-        get => Internal.StoppingTime;
-        set => Internal.StoppingTime = value;
+        get => Wrapped.StoppingTime;
+        set => Wrapped.StoppingTime = value;
     }
+
     public Tuple<double, double, double> TargetDirection
     {
-        get => Internal.TargetDirection;
-        set => Internal.TargetDirection = value;
+        get => Wrapped.TargetDirection;
+        set => Wrapped.TargetDirection = value;
     }
+
     public float TargetHeading
     {
-        get => Internal.TargetHeading;
-        set => Internal.TargetHeading = value;
+        get => Wrapped.TargetHeading;
+        set => Wrapped.TargetHeading = value;
     }
+
     public float TargetPitch
     {
-        get => Internal.TargetPitch;
-        set => Internal.TargetPitch = value;
+        get => Wrapped.TargetPitch;
+        set => Wrapped.TargetPitch = value;
     }
+
     public float TargetRoll
     {
-        get => Internal.TargetRoll;
-        set => Internal.TargetRoll = value;
+        get => Wrapped.TargetRoll;
+        set => Wrapped.TargetRoll = value;
     }
+
     public Tuple<double, double, double> TimeToPeak
     {
-        get => Internal.TimeToPeak;
-        set => Internal.TimeToPeak = value;
+        get => Wrapped.TimeToPeak;
+        set => Wrapped.TimeToPeak = value;
     }
+
     public Tuple<double, double, double> YawPIDGains
     {
-        get => Internal.YawPIDGains;
-        set => Internal.YawPIDGains = value;
+        get => Wrapped.YawPIDGains;
+        set => Wrapped.YawPIDGains = value;
     }
+
     public void Disengage()
-        => Internal.Disengage();
+        => Wrapped.Disengage();
+
     public void Engage()
-        => Internal.Engage();
+        => Wrapped.Engage();
+
     public void TargetPitchAndHeading(float pitch, float heading)
-        => Internal.TargetPitchAndHeading(pitch, heading);
+        => Wrapped.TargetPitchAndHeading(pitch, heading);
+
     public void Wait()
-        => Internal.Wait();
+        => Wrapped.Wait();
 }

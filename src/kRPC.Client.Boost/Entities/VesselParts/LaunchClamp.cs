@@ -7,14 +7,16 @@ namespace kRPC.Client.Boost.Entities.VesselParts;
 /// </summary>
 public class LaunchClamp
 {
-    internal BaseLaunchClamp Internal { get; }
+    internal readonly BaseLaunchClamp Wrapped;
 
     internal LaunchClamp(BaseLaunchClamp launchClamp)
     {
-        Internal = launchClamp;
+        Wrapped = launchClamp;
     }
+
     public Part Part
-        => new Part(Internal.Part);
+        => new Part(Wrapped.Part);
+
     public void Release()
-        => Internal.Release();
+        => Wrapped.Release();
 }
