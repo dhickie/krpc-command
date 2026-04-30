@@ -6,7 +6,7 @@ public class Vessel
 {
     private BaseVessel _vessel;
     
-    private Vessel(BaseVessel vessel)
+    internal Vessel(BaseVessel vessel)
     {
         _vessel = vessel;
     }
