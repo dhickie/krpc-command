@@ -6,6 +6,12 @@ using KRPC.Client;
 
 namespace kRPC.Client.Boost.Streams;
 
+/// <summary>
+/// StreamManager is responsible for ensuring that we only keep a single stream for a particular piece of data,
+/// and don't make unnecessary calls out to the server if we know we already have a stream available.
+/// It also automatically determines when a stream can be removed from the server, and is fully threadsafe while
+/// maintaining optimum performance.
+/// </summary>
 [SuppressMessage("ReSharper", "InconsistentlySynchronizedField")]
 internal static class StreamManager
 {
@@ -23,6 +29,10 @@ internal static class StreamManager
     private static readonly ConcurrentDictionary<string, object> Locks = new();
     private static readonly ConcurrentDictionary<string, StreamRegistration> Streams = new();
 
+    /// <summary>
+    /// Initialises the StreamManager's internal state and starts the compaction thread.
+    /// </summary>
+    /// <param name="connection">The kRPC connection.</param>
     public static void Initialise(Connection connection)
     {
         if (_initialised)
@@ -44,6 +54,13 @@ internal static class StreamManager
         }
     }
     
+    /// <summary>
+    /// Adds a subscription to the stream with the provided key, using the provided expression if the stream
+    /// doesn't yet exist.
+    /// </summary>
+    /// <param name="key">The key to subscribe to</param>
+    /// <param name="expression">The expression to use to initialise the stream if it doesn't exist yet</param>
+    /// <typeparam name="T">The data type returned by the stream</typeparam>
     public static void AddSubscription<T>(string key, LambdaExpression expression) where T : class
     {
         ValidateState();
@@ -62,6 +79,13 @@ internal static class StreamManager
         }
     }
 
+    /// <summary>
+    /// Adds a subscription to the stream with the provided key, using the provided expression if the stream
+    /// doesn't yet exist.
+    /// </summary>
+    /// <param name="key">The key to subscribe to</param>
+    /// <param name="expression">The expression to use to initialise the stream if it doesn't exist yet</param>
+    /// <typeparam name="T">The data type returned by the stream</typeparam>
     public static void AddSubscription<T>(string key, Expression<Func<T>> expression) where T : class
     {
         ValidateState();
@@ -75,6 +99,56 @@ internal static class StreamManager
         {
             CompactionLock.ExitReadLock();
         }
+    }
+    
+    /// <summary>
+    /// Removes a subscription to the stream with the provided key.
+    /// </summary>
+    /// <param name="key">The key to remove a subscription for</param>
+    public static void RemoveSubscription(string key)
+    {
+        ValidateState();
+
+        CompactionLock.EnterReadLock();
+        try
+        {
+            RemoveSubscriptionImpl(key);
+        }
+        finally
+        {
+            CompactionLock.ExitReadLock();
+        }
+    }
+    
+    /// <summary>
+    /// Tries to get the value of the stream with the provided key.
+    /// </summary>
+    /// <param name="key">The key of the stream to get the value for</param>
+    /// <param name="value">The value of the stream</param>
+    /// <typeparam name="T">The datatype returned by the stream</typeparam>
+    /// <returns>Whether the value was successfully retrieved</returns>
+    public static bool TryGet<T>(string key, out T value) where T : class
+    {
+        ValidateState();
+        
+        if (Streams.TryGetValue(key, out var streamRegistration))
+        {
+            try
+            {
+                return streamRegistration.TryGet(out value);
+            }
+            catch
+            {
+                // The get can fail if there's a server side issue or if the stream has been closed elsewhere.
+                // If this happens, just return false.
+                // TODO Add logging
+                value = null;
+                return false;
+            }
+        }
+
+        value = null;
+        return false;
     }
 
     private static void AddSubscriptionImpl<T>(string key, 
@@ -110,21 +184,6 @@ internal static class StreamManager
         }
     }
 
-    public static void RemoveSubscription(string key)
-    {
-        ValidateState();
-
-        CompactionLock.EnterReadLock();
-        try
-        {
-            RemoveSubscriptionImpl(key);
-        }
-        finally
-        {
-            CompactionLock.ExitReadLock();
-        }
-    }
-
     private static void RemoveSubscriptionImpl(string key)
     {
         // If there's no lock for the registration, then there can't be any stream to remove the subscription from
@@ -143,30 +202,6 @@ internal static class StreamManager
             // The stream doesn't have any more subscribers - remove it
             streamRegistration.TearDown();
         }
-    }
-
-    public static bool TryGet<T>(string key, out T value) where T : class
-    {
-        ValidateState();
-        
-        if (Streams.TryGetValue(key, out var streamRegistration))
-        {
-            try
-            {
-                return streamRegistration.TryGet(out value);
-            }
-            catch
-            {
-                // The get can fail if there's a server side issue or if the stream has been closed elsewhere.
-                // If this happens, just return false.
-                // TODO Add logging
-                value = null;
-                return false;
-            }
-        }
-
-        value = null;
-        return false;
     }
 
     private static void ValidateState()
@@ -198,6 +233,15 @@ internal static class StreamManager
         }
     }
 
+    /// <summary>
+    /// We can't remove entries from the lock dictionary while subscriptions are being added/removed without creating
+    /// a race condition. If we did nothing, the size of the dictionaries would grow indefinitely, so instead we
+    /// perform compaction by periodically "stopping the world" by obtaining the write lock, scan through and remove
+    /// any entries that don't have any subscriptions, and then release the lock.
+    /// If the size of the dictionaries is still at or above the current size limit, we bump the limit up. This keeps
+    /// the size the smallest it can be, and makes it quicker to perform these compaction cycles.
+    /// </summary>
+    /// <exception cref="Exception">Thrown if we fail to remove an entry from either dictionary. In theory, this should never happen.</exception>
     private static void CompactDictionaries()
     {
         if (Locks.Count <= _currentMaxDictionarySize)
@@ -245,136 +289,4 @@ internal static class StreamManager
             CompactionLock.ExitWriteLock();
         }
     }
-}
-
-[SuppressMessage("ReSharper", "InconsistentlySynchronizedField")]
-internal sealed class StreamRegistration<T> : StreamRegistration
-{
-    private bool _initialised;
-    private readonly ReaderWriterLockSlim _initLock = new();
-    private readonly Connection _connection;
-    private readonly Expression<Func<T>> _expression;
-    private readonly LambdaExpression _lambdaExpression;
-    private Stream<T> _stream;
-    
-    public StreamRegistration(Connection connection, Expression<Func<T>> expression) : base(typeof(T))
-    {
-        _connection = connection;
-        _expression = expression;
-        
-        InitialiseStream();
-    }
-    
-    public StreamRegistration(Connection connection, LambdaExpression expression) : base(typeof(T))
-    {
-        _connection = connection;
-        _lambdaExpression = expression;
-        
-        InitialiseStream();
-    }
-
-    public override void InitialiseStream()
-    {
-        if (_initialised)
-            return;
-
-        _initLock.EnterWriteLock();
-        try
-        {
-            if (_initialised)
-                return;
-
-            _stream = _expression != null
-                ? _connection.AddStream(_expression)
-                : _connection.AddStream<T>(_lambdaExpression);
-            _initialised = true;
-        }
-        finally
-        {
-            _initLock.ExitWriteLock();
-        }
-    }
-    
-    protected override bool TryGetImpl<TOut>(out TOut value) where TOut : class
-    {
-        _initLock.EnterReadLock();
-        try
-        {
-            if (!_initialised)
-            {
-                value = null;
-                return false;
-            }
-
-            value = _stream.Get() as TOut;
-            return true;
-        }
-        finally
-        {
-            _initLock.ExitReadLock();
-        }
-    }
-
-    public override void TearDown()
-    {
-        if (!_initialised)
-            return;
-
-        _initLock.EnterWriteLock();
-        try
-        {
-            if (!_initialised)
-                return;
-
-            _stream.Remove();
-            _stream = null;
-            _initialised = false;
-        }
-        finally
-        {
-            _initLock.ExitWriteLock();
-        }
-    }
-}
-
-internal abstract class StreamRegistration(Type dataType)
-{
-    public int Subscribers = 1;
-
-    // Returns true if this is the first subscriber
-    public bool AddSubscriber()
-    {
-        Subscribers++;
-        return Subscribers == 1;
-    }
-
-    // Returns true if the stream still has more subscribers, otherwise false
-    public bool RemoveSubscriber()
-    {
-        if (Subscribers == 0)
-        {
-            throw new InvalidOperationException("Cannot remove a stream subscriber from a stream with no subscribers");
-        }
-        
-        Subscribers--;
-        return Subscribers != 0;
-    }
-
-    public bool TryGet<T>(out T value) where T : class
-    {
-        var requestedType = typeof(T);
-        if (requestedType != dataType)
-        {
-            throw new ArgumentException(
-                $"Attempt to get stream value of type {requestedType.Name} from stream containing data type {dataType.Name}");
-        }
-
-        return TryGetImpl(out value);
-    }
-    
-    protected abstract bool TryGetImpl<T>(out T value) where T : class;
-
-    public abstract void TearDown();
-    
-    public abstract void InitialiseStream();
 }
