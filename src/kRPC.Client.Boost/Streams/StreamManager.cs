@@ -53,31 +53,6 @@ internal static class StreamManager
             _initialised = true;
         }
     }
-    
-    /// <summary>
-    /// Adds a subscription to the stream with the provided key, using the provided expression if the stream
-    /// doesn't yet exist.
-    /// </summary>
-    /// <param name="key">The key to subscribe to</param>
-    /// <param name="expression">The expression to use to initialise the stream if it doesn't exist yet</param>
-    /// <typeparam name="T">The data type returned by the stream</typeparam>
-    public static void AddSubscription<T>(string key, LambdaExpression expression) where T : class
-    {
-        ValidateState();
-
-        // Any number of threads can enter in read mode, unless compaction is in progress and has a write lock or 
-        // is about to start and is waiting to obtain a write lock.
-        // We only want to "stop the world" when compacting the lock and stream dictionaries.
-        CompactionLock.EnterReadLock();
-        try
-        {
-            AddSubscriptionImpl<T>(key, null, expression);
-        }
-        finally
-        {
-            CompactionLock.ExitReadLock();
-        }
-    }
 
     /// <summary>
     /// Adds a subscription to the stream with the provided key, using the provided expression if the stream
@@ -90,10 +65,13 @@ internal static class StreamManager
     {
         ValidateState();
 
+        // Any number of threads can enter in read mode, unless compaction is in progress and has a write lock or 
+        // is about to start and is waiting to obtain a write lock.
+        // We only want to "stop the world" when compacting the lock and stream dictionaries.
         CompactionLock.EnterReadLock();
         try
         {
-            AddSubscriptionImpl(key, expression, null);
+            AddSubscriptionImpl(key, expression);
         }
         finally
         {
@@ -152,8 +130,7 @@ internal static class StreamManager
     }
 
     private static void AddSubscriptionImpl<T>(string key, 
-        Expression<Func<T>> expression, 
-        LambdaExpression lambdaExpression) where T : class
+        Expression<Func<T>> expression) where T : class
     {
         // Lock the registration to prevent multiple threads adding or removing
         // subscribers at the same time
@@ -172,9 +149,7 @@ internal static class StreamManager
             else
             {
                 // Create a new stream
-                var registration = expression != null 
-                    ? new StreamRegistration<T>(_connection, expression) 
-                    : new StreamRegistration<T>(_connection, lambdaExpression);
+                var registration = new StreamRegistration<T>(_connection, expression);
                 if (!Streams.TryAdd(key, registration))
                 {
                     // TODO add a more specific exception type

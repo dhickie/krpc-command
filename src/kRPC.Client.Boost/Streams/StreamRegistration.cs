@@ -17,7 +17,6 @@ internal sealed class StreamRegistration<T> : StreamRegistration
     private readonly ReaderWriterLockSlim _initLock = new();
     private readonly Connection _connection;
     private readonly Expression<Func<T>> _expression;
-    private readonly LambdaExpression _lambdaExpression;
     private Stream<T> _stream;
     
     /// <summary>
@@ -29,19 +28,6 @@ internal sealed class StreamRegistration<T> : StreamRegistration
     {
         _connection = connection;
         _expression = expression;
-        
-        InitialiseStream();
-    }
-    
-    /// <summary>
-    /// Register a stream with the provided expression.
-    /// </summary>
-    /// <param name="connection">The kRPC connection.</param>
-    /// <param name="expression">The expression to register</param>
-    public StreamRegistration(Connection connection, LambdaExpression expression) : base(typeof(T))
-    {
-        _connection = connection;
-        _lambdaExpression = expression;
         
         InitialiseStream();
     }
@@ -58,9 +44,7 @@ internal sealed class StreamRegistration<T> : StreamRegistration
             if (_initialised)
                 return;
 
-            _stream = _expression != null
-                ? _connection.AddStream(_expression)
-                : _connection.AddStream<T>(_lambdaExpression);
+            _connection.AddStream(_expression);
             _initialised = true;
         }
         finally
