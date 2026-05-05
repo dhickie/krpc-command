@@ -70,7 +70,7 @@ public class AutoPilot
 
     public ReferenceFrame ReferenceFrame
     {
-        get => new ReferenceFrame(Wrapped.ReferenceFrame);
+        get => new(Wrapped.ReferenceFrame);
         set => Wrapped.ReferenceFrame = value.Wrapped;
     }
 
