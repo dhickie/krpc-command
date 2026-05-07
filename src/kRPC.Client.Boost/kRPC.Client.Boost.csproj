@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Google.Protobuf" Version="3.34.1" />
     <PackageReference Include="KRPC.Client" Version="0.5.4" />
     <PackageReference Include="MathNet.Spatial" Version="0.6.0" />
   </ItemGroup>

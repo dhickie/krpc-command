@@ -1,0 +1,316 @@
+using System.Linq.Expressions;
+using System.Net;
+using System.Net.Sockets;
+using Google.Protobuf;
+using KRPC.Client;
+using KRPC.Schema.KRPC;
+using RequestType = KRPC.Schema.KRPC.ConnectionRequest.Types.Type;
+using Exception = System.Exception;
+
+namespace kRPC.Client.Boost.Connection;
+
+/// <summary>
+/// A connection to the kRPC server. All interaction with kRPC is performed via an instance of this class.
+/// </summary>
+internal class Connection : IDisposable
+{
+    private readonly object _connectionLock = new();
+    private bool _disposed;
+    
+    private readonly TcpClient _rpcClient;
+    private readonly NetworkStream _rpcStream;
+    private readonly CodedOutputStream _codedRpcStream;
+    
+    private readonly TcpClient _streamClient;
+    private readonly NetworkStream _streamStream;
+    private readonly CodedOutputStream _codedStreamStream;
+    
+    private const int BufferInitialSize = 1 * 1024 * 1024;
+    private const int BufferIncreaseSize = 512 * 1024;
+    private byte[] _responseBuffer = new byte [BufferInitialSize];
+    
+    private ByteString _clientId;
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="name"></param>
+    /// <param name="address"></param>
+    /// <param name="rpcPort"></param>
+    /// <param name="streamPort"></param>
+    /// <exception cref="KRPC.Client.ConnectionException"></exception>
+    public Connection(string name = "", IPAddress address = null, int rpcPort = 50000, int streamPort = 50001)
+    {
+        ArgumentOutOfRangeException.ThrowIfNegativeOrZero(rpcPort);
+        ArgumentOutOfRangeException.ThrowIfNegativeOrZero(streamPort);
+
+        address ??= IPAddress.Loopback;
+
+        // Initialise the TCP connections
+        _rpcClient = new TcpClient();
+        _rpcClient.Connect(address, rpcPort);
+        _rpcStream = _rpcClient.GetStream();
+        _codedRpcStream = new CodedOutputStream(_rpcStream, true);
+        
+        _streamClient = new TcpClient();
+        _streamClient.Connect(address, streamPort);
+        _streamStream = _streamClient.GetStream();
+        _codedStreamStream = new CodedOutputStream(_streamStream, true);
+        
+        // Connect to the RPC and Stream servers
+        Connect(RequestType.Rpc, name);
+        Connect(RequestType.Stream);
+        
+        // TODO setup the stream manager
+    }
+
+    /// <summary>
+    /// Finalize the connection.
+    /// </summary>
+    ~Connection ()
+    {
+        Dispose(false);
+    }
+
+    /// <summary>
+    /// Dispose the connection.
+    /// </summary>
+    public void Dispose ()
+    {
+        Dispose (true);
+        GC.SuppressFinalize (this);
+    }
+
+    /// <summary>
+    /// Dispose the connection.
+    /// </summary>
+    protected virtual void Dispose (bool disposing)
+    {
+        if (_disposed) 
+            return;
+        
+        if (disposing) 
+        {
+            _rpcClient.Close ();
+            _streamClient.Close ();
+        }
+        _disposed = true;
+    }
+
+    private void CheckDisposed ()
+    {
+        if (_disposed)
+            throw new ObjectDisposedException (GetType ().Name);
+    }
+    
+    private void Connect(RequestType type, string clientName = null)
+    {
+        var request = new ConnectionRequest
+        {
+            Type = type
+        };
+
+        CodedOutputStream stream;
+        if (type == RequestType.Rpc)
+        {
+            request.ClientName = clientName ?? throw new ArgumentNullException(nameof(clientName));
+            stream = _codedRpcStream;
+        }
+        else if (type == RequestType.Stream)
+        {
+            request.ClientIdentifier = 
+                _clientId ?? throw new Exception("Unable to connect to stream server - no client ID available");
+            stream = _codedRpcStream;
+        }
+        else
+        {
+            throw new ArgumentOutOfRangeException(nameof(type));
+        }
+
+        ConnectionResponse response;
+        lock (_connectionLock)
+        {
+            // Request
+            stream.WriteLength(request.CalculateSize());
+            request.WriteTo(_codedRpcStream);
+            _codedRpcStream.Flush();
+
+            // Response
+            var size = ReadMessageData(_rpcStream, ref _responseBuffer);
+            response = ConnectionResponse.Parser.ParseFrom(new CodedInputStream(_responseBuffer, 0, size));
+        }
+
+        // Check we're successfully connected
+        if (response.Status != ConnectionResponse.Types.Status.Ok)
+            throw new ConnectionException(response.Message);
+        
+        _clientId = response.ClientIdentifier;
+    }
+
+    /// <summary>
+    /// Create a new stream from the given lambda expression.
+    /// Returns a stream object that can be used to obtain the latest value of the stream.
+    /// </summary>
+    public Stream<TResult> AddStream<TResult> (Expression<Func<TResult>> expression)
+    {
+        CheckDisposed ();
+        // TODO Add streaming functionality to connection
+        throw new NotImplementedException();
+    }
+
+    /// <summary>
+    /// Invoke a remote procedure.
+    /// Should not be called directly. This interface is used by service client stubs.
+    /// </summary>
+    public ByteString Invoke (string service, string procedure, IList<ByteString> arguments = null)
+    {
+        CheckDisposed ();
+        return Invoke (GetCall (service, procedure, arguments));
+    }
+
+    private ByteString Invoke (ProcedureCall call)
+    {
+        var request = new Request ();
+        request.Calls.Add (call);
+        Response response;
+
+        lock (_connectionLock) 
+        {
+            // Send request to server
+            _codedRpcStream.WriteLength (request.CalculateSize ());
+            request.WriteTo (_codedRpcStream);
+            _codedRpcStream.Flush ();
+            
+            // Receive response
+            var size = ReadMessageData (_rpcStream, ref _responseBuffer);
+            response = Response.Parser.ParseFrom (new CodedInputStream (_responseBuffer, 0, size));
+        }
+
+        if (response.Error != null)
+            throw GetException(response.Error);
+        
+        return response.Results[0].Error != null 
+            ? throw GetException (response.Results [0].Error) 
+            : response.Results[0].Value;
+    }
+
+    private static ProcedureCall GetCall(string service, string procedure, IEnumerable<object> arguments = null)
+    {
+        var call = new ProcedureCall
+        {
+            Service = service,
+            Procedure = procedure
+        };
+        
+        if (arguments != null) 
+        {
+            uint position = 0;
+            foreach (var value in arguments) 
+            {
+                var argument = new Argument
+                {
+                    Position = position,
+                    Value = value
+                };
+                call.Arguments.Add (argument);
+                position++;
+            }
+        }
+        return call;
+    }
+
+    /// <summary>
+    /// Return the procedure call message for a remote procedure call.
+    /// </summary>
+    private static ProcedureCall GetCall (LambdaExpression expression)
+    {
+        if (ReferenceEquals (expression, null))
+            throw new ArgumentNullException (nameof (expression));
+
+        var body = expression.Body;
+
+        if (body is MethodCallExpression methodCallExpression)
+            return GetCall (methodCallExpression);
+
+        throw new ArgumentException ("Invalid expression. Must consist of a method call only.");
+    }
+
+    private static ProcedureCall GetCall (MethodCallExpression expression)
+    {
+        // TODO Implement fetching the correct procedure from a MethodCallExpression
+        throw new NotImplementedException();
+    }
+
+    /// <summary>
+    /// Read the data from a message from the given stream into the given buffer.
+    /// May reallocate the buffer if it is too small to receive the message.
+    /// Returns the length of the message in bytes.
+    /// If a stopEvent is specified, this method will return 0 if the event is triggered.
+    /// </summary>
+    private static int ReadMessageData (System.IO.Stream stream, ref byte[] buffer, EventWaitHandle stopEvent = null)
+    {
+        var stop = stopEvent != null && stopEvent.WaitOne (0);
+        var bufferSize = 0;
+        var messageSize = 0;
+
+        // Read the offset and size of the message data
+        while (!stop) 
+        {
+            bufferSize += stream.Read (buffer, bufferSize, 1);
+            stop |= stopEvent != null && stopEvent.WaitOne (0);
+            try 
+            {
+                var codedStream = new CodedInputStream (buffer, 0, bufferSize);
+                messageSize = (int)codedStream.ReadUInt32 ();
+                stop |= stopEvent != null && stopEvent.WaitOne (0);
+                break;
+            } 
+            catch (InvalidProtocolBufferException) 
+            {
+            }
+        }
+        
+        if (stop)
+            return 0;
+
+        // Read the response data
+        bufferSize = 0;
+        while (!stop && bufferSize < messageSize) 
+        {
+            // Increase the size of the buffer if the remaining space is low
+            if (buffer.Length - bufferSize < BufferIncreaseSize) 
+            {
+                var newBuffer = new byte [buffer.Length + BufferIncreaseSize];
+                Array.Copy (buffer, newBuffer, bufferSize);
+                buffer = newBuffer;
+            }
+            bufferSize += stream.Read (buffer, bufferSize, messageSize - bufferSize);
+            stop |= stopEvent != null && stopEvent.WaitOne (0);
+        }
+        
+        return stop ? 0 : messageSize;
+    }
+
+    private Exception GetException (Error error)
+    {
+        var message = error.Description;
+        if (error.StackTrace.Length > 0) 
+        {
+            var newline = Environment.NewLine;
+            message += newline + "Server stack trace: " + newline + error.StackTrace;
+        }
+
+        if (error.Service.Length <= 0 || error.Name.Length <= 0) 
+            return new RPCException(message);
+        
+        var key = error.Service + "." + error.Name;
+        return key switch
+        {
+            "KRPC.InvalidOperationException" => new InvalidOperationException(message),
+            "KRPC.ArgumentException" => new ArgumentException(string.Empty, message),
+            "KRPC.ArgumentNullException" => new ArgumentNullException(string.Empty, message),
+            "KRPC.ArgumentOutOfRangeException" => new ArgumentOutOfRangeException(string.Empty, message),
+            _ => new RPCException(message)
+        };
+    }
+}
