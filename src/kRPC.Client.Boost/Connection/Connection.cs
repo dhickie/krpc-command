@@ -1,5 +1,5 @@
+using System.Collections.Concurrent;
 using System.Linq.Expressions;
-using System.Net;
 using System.Net.Sockets;
 using Google.Protobuf;
 using kRPC.Client.Boost.Connection.Schema;
@@ -14,8 +14,11 @@ namespace kRPC.Client.Boost.Connection;
 /// </summary>
 internal class Connection : IDisposable
 {
-    private IConnection _connection;
-    
+    private readonly IConnection _connection;
+    private readonly BlockingCollection<ProcedureRequest> _requestQueue;
+    private readonly ConcurrentDictionary<string, ProcedureResult> _responses;
+
+    private readonly Thread _pollingThread;
     private readonly object _connectionLock = new();
     private bool _disposed;
     
@@ -33,45 +36,61 @@ internal class Connection : IDisposable
 
     private readonly ByteString _clientId;
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="connection"></param>
-    /// <param name="name"></param>
-    /// <param name="address"></param>
-    /// <param name="rpcPort"></param>
-    /// <param name="streamPort"></param>
-    /// <exception cref="KRPC.Client.ConnectionException"></exception>
-    public Connection(IConnection connection, string name = "", IPAddress? address = null, int rpcPort = 50000, int streamPort = 50001)
+    public Connection(IConnection connection, 
+        ConnectionConfig config, 
+        BlockingCollection<ProcedureRequest> requestQueue, 
+        ConcurrentDictionary<string, ProcedureResult> responses)
     {
-        ArgumentOutOfRangeException.ThrowIfNegativeOrZero(rpcPort);
-        ArgumentOutOfRangeException.ThrowIfNegativeOrZero(streamPort);
+        ArgumentOutOfRangeException.ThrowIfNegativeOrZero(config.RpcPort);
+        ArgumentOutOfRangeException.ThrowIfNegativeOrZero(config.StreamPort);
 
-        address ??= IPAddress.Loopback;
         _connection = connection;
+        _requestQueue = requestQueue;
+        _responses = responses;
 
         // Initialise the TCP connections
         _rpcClient = new TcpClient();
-        _rpcClient.Connect(address, rpcPort);
+        _rpcClient.Connect(config.Address, config.RpcPort);
         _rpcStream = _rpcClient.GetStream();
         _codedRpcStream = new CodedOutputStream(_rpcStream, true);
         
         _streamClient = new TcpClient();
-        _streamClient.Connect(address, streamPort);
+        _streamClient.Connect(config.Address, config.StreamPort);
         _streamStream = _streamClient.GetStream();
         _codedStreamStream = new CodedOutputStream(_streamStream, true);
         
         // Connect to the RPC and Stream servers
-        _clientId = Connect(RequestType.Rpc, name);
+        _clientId = Connect(RequestType.Rpc, config.Name);
         Connect(RequestType.Stream);
         
         // TODO setup the stream manager
+        
+        // Start the polling thread
+        _pollingThread = new Thread(() =>
+        {
+            Thread.CurrentThread.IsBackground = true;
+            PollForRequests();
+        });
+        _pollingThread.Start();
+    }
+
+    private void PollForRequests()
+    {
+        while (true)
+        {
+            var request = _requestQueue.Take();
+            if (!_responses.TryGetValue(request.RequestId, out var response))
+                continue; // TODO Log a warning here, and move on
+            
+            var result = Invoke(request.ResultType, request.Service, request.Procedure, request.Arguments);
+            response.SetResult(result);
+        }
     }
 
     /// <summary>
     /// Finalize the connection.
     /// </summary>
-    ~Connection ()
+    ~Connection()
     {
         Dispose(false);
     }
@@ -79,7 +98,7 @@ internal class Connection : IDisposable
     /// <summary>
     /// Dispose the connection.
     /// </summary>
-    public void Dispose ()
+    public void Dispose()
     {
         Dispose (true);
         GC.SuppressFinalize (this);
@@ -88,20 +107,20 @@ internal class Connection : IDisposable
     /// <summary>
     /// Dispose the connection.
     /// </summary>
-    protected virtual void Dispose (bool disposing)
+    protected virtual void Dispose(bool disposing)
     {
-        if (_disposed) 
+        if (_disposed)
             return;
         
-        if (disposing) 
+        if (disposing)
         {
-            _rpcClient.Close ();
-            _streamClient.Close ();
+            _rpcClient.Close();
+            _streamClient.Close();
         }
         _disposed = true;
     }
 
-    private void CheckDisposed ()
+    private void CheckDisposed()
     {
         ObjectDisposedException.ThrowIf(_disposed, this);
     }
@@ -157,22 +176,22 @@ internal class Connection : IDisposable
     /// Invoke a remote procedure.
     /// Should not be called directly. This interface is used by service client stubs.
     /// </summary>
-    public T Invoke<T> (string service, string procedure, IList<object>? arguments = null)
+    private object Invoke(System.Type resultType, string service, string procedure, IList<object>? arguments = null)
     {
-        CheckDisposed ();
-        return Invoke<T> (GetCall (service, procedure, arguments));
+        CheckDisposed();
+        return Invoke(resultType, GetCall(service, procedure, arguments));
     }
 
-    private T Invoke<T> (ProcedureCall call)
+    private object Invoke(System.Type resultType, ProcedureCall call)
     {
-        var request = new Request ();
-        request.Calls.Add (call);
+        var request = new Request();
+        request.Calls.Add(call);
         Response response;
 
         lock (_connectionLock) 
         {
             // Send request to server
-            _codedRpcStream.WriteLength (request.CalculateSize ());
+            _codedRpcStream.WriteLength(request.CalculateSize());
             request.WriteTo (_codedRpcStream);
             _codedRpcStream.Flush ();
             
@@ -182,7 +201,7 @@ internal class Connection : IDisposable
         }
 
         AssertSuccess(response);
-        return (T)Codec.Decode(response.Results[0].Value, typeof(T), _connection);
+        return Codec.Decode(response.Results[0].Value, resultType, _connection);
     }
 
     private static ProcedureCall GetCall(string service, string procedure, IEnumerable<object>? arguments = null)
