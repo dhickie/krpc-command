@@ -2,10 +2,9 @@ using System.Linq.Expressions;
 using System.Net;
 using System.Net.Sockets;
 using Google.Protobuf;
-using Google.Protobuf.Collections;
-using KRPC.Client;
-using KRPC.Schema.KRPC;
-using RequestType = KRPC.Schema.KRPC.ConnectionRequest.Types.Type;
+using kRPC.Client.Boost.Connection.Schema;
+using kRPC.Client.Boost.Exceptions;
+using RequestType = kRPC.Client.Boost.Connection.Schema.ConnectionRequest.Types.Type;
 using Exception = System.Exception;
 
 namespace kRPC.Client.Boost.Connection;
@@ -146,22 +145,19 @@ internal class Connection : IDisposable
             : response.ClientIdentifier;
     }
 
-    /// <summary>
-    /// Create a new stream from the given lambda expression.
-    /// Returns a stream object that can be used to obtain the latest value of the stream.
-    /// </summary>
-    public Stream<TResult> AddStream<TResult> (Expression<Func<TResult>> expression)
-    {
-        CheckDisposed ();
-        // TODO Add streaming functionality to connection
-        throw new NotImplementedException();
-    }
+    // TODO Add streaming functionality to connection
+    //public Stream<TResult> AddStream<TResult> (Expression<Func<TResult>> expression)
+    //{
+    //    CheckDisposed ();
+    //    
+    //    throw new NotImplementedException();
+    //}
 
     /// <summary>
     /// Invoke a remote procedure.
     /// Should not be called directly. This interface is used by service client stubs.
     /// </summary>
-    public T Invoke<T> (string service, string procedure, IList<ByteString>? arguments = null)
+    public T Invoke<T> (string service, string procedure, IList<object>? arguments = null)
     {
         CheckDisposed ();
         return Invoke<T> (GetCall (service, procedure, arguments));
@@ -308,7 +304,7 @@ internal class Connection : IDisposable
         }
 
         if (error.Service.Length <= 0 || error.Name.Length <= 0) 
-            return new RPCException(message);
+            return new RemoteException(message);
         
         var key = error.Service + "." + error.Name;
         return key switch
@@ -317,7 +313,7 @@ internal class Connection : IDisposable
             "KRPC.ArgumentException" => new ArgumentException(string.Empty, message),
             "KRPC.ArgumentNullException" => new ArgumentNullException(string.Empty, message),
             "KRPC.ArgumentOutOfRangeException" => new ArgumentOutOfRangeException(string.Empty, message),
-            _ => new RPCException(message)
+            _ => new RemoteException(message)
         };
     }
 }
