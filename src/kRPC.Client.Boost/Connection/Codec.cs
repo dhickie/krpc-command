@@ -9,17 +9,85 @@ namespace kRPC.Client.Boost.Connection
     /// <summary>
     /// Methods for encoding and decoding messages for kRPCs protocolo bufers over TCP/IP protocol.
     /// </summary>
-    internal static class Encoder
+    internal static class Codec
     {
         /// <summary>
         /// Encode an object of the given type using the protocol buffer encoding scheme.
         /// Should not be called directly. This interface is used by service client stubs.
         /// </summary>
-        public static ByteString Encode (object value, Type type)
+        public static ByteString Encode (object value)
         {
             using var buffer = new MemoryStream ();
             var stream = new CodedOutputStream (buffer, true);
-            return EncodeObject (value, type, buffer, stream);
+            return EncodeObject (value, value.GetType(), buffer, stream);
+        }
+        
+        /// <summary>
+        /// Decode a value of the given type.
+        /// </summary>
+        public static object Decode (ByteString value, Type type, IConnection client)
+        {
+            if (ReferenceEquals (type, null))
+                throw new CodecException($"{nameof(type)} should not be null");
+            
+            var stream = value.CreateCodedInput ();
+            if (type.IsEnum)
+                return stream.ReadSInt32 ();
+            switch (Type.GetTypeCode(type))
+            {
+                case TypeCode.Double:
+                    return stream.ReadDouble();
+                case TypeCode.Single:
+                    return stream.ReadFloat();
+                case TypeCode.Int32:
+                    return stream.ReadSInt32();
+                case TypeCode.Int64:
+                    return stream.ReadSInt64();
+                case TypeCode.UInt32:
+                    return stream.ReadUInt32();
+                case TypeCode.UInt64:
+                    return stream.ReadUInt64();
+                case TypeCode.Boolean:
+                    return stream.ReadBool();
+                case TypeCode.String:
+                    return stream.ReadString();
+            }
+
+            if (type == typeof(byte[]))
+                return stream.ReadBytes().ToByteArray();
+            
+            if (IsAClassType(type))
+            {
+                if (client == null)
+                    throw new ArgumentException("Client not passed when decoding remote object");
+
+                throw new NotImplementedException();
+                //var id = stream.ReadUInt64(); TODO sort this out when we have a base class for remote types
+                //return id == 0 ? null : (RemoteObject)Activator.CreateInstance(type, client, id);
+            }
+
+            if (IsATupleType(type))
+                return DecodeTuple(stream, type, client);
+            if (IsAListType(type))
+                return DecodeList(stream, type, client);
+            if (IsASetType(type))
+                return DecodeSet(stream, type, client);
+            if (IsADictionaryType(type))
+                return DecodeDictionary(stream, type, client);
+            if (IsAMessageType(type))
+            {
+                var message = (IMessage)(Activator.CreateInstance(type)
+                    ?? throw new CodecException("Unable to determine message type"));
+                message.MergeFrom(stream);
+                return message;
+            }
+
+            //if (type != typeof(Event)) TODO sort this when we have a base class for remote types
+            //    throw new ArgumentException(type + " is not a serializable type");
+            
+            var @event = new Schema.Event();
+            @event.MergeFrom(stream);
+            return null; // return new Event((Connection)client, @event); TODO sort this - presumably needs an event type to exist in the public API
         }
 
         private static ByteString EncodeObject (object? value, Type type, MemoryStream buffer, CodedOutputStream stream)
@@ -164,74 +232,18 @@ namespace kRPC.Client.Boost.Connection
             }
             encodedDictionary.WriteTo (stream);
         }
-
-        /// <summary>
-        /// Decode a value of the given type.
-        /// Should not be called directly. This interface is used by service client stubs.
-        /// </summary>
-        public static object Decode (ByteString value, Type type, IConnection client)
+        
+        private static bool IsATupleType (Type type)
         {
-            if (ReferenceEquals (type, null))
-                throw new CodecException($"{nameof(type)} should not be null");
-            
-            var stream = value.CreateCodedInput ();
-            if (type.IsEnum)
-                return stream.ReadSInt32 ();
-            switch (Type.GetTypeCode(type))
-            {
-                case TypeCode.Double:
-                    return stream.ReadDouble();
-                case TypeCode.Single:
-                    return stream.ReadFloat();
-                case TypeCode.Int32:
-                    return stream.ReadSInt32();
-                case TypeCode.Int64:
-                    return stream.ReadSInt64();
-                case TypeCode.UInt32:
-                    return stream.ReadUInt32();
-                case TypeCode.UInt64:
-                    return stream.ReadUInt64();
-                case TypeCode.Boolean:
-                    return stream.ReadBool();
-                case TypeCode.String:
-                    return stream.ReadString();
-            }
-
-            if (type == typeof(byte[]))
-                return stream.ReadBytes().ToByteArray();
-            
-            if (IsAClassType(type))
-            {
-                if (client == null)
-                    throw new ArgumentException("Client not passed when decoding remote object");
-
-                throw new NotImplementedException();
-                //var id = stream.ReadUInt64(); TODO sort this out when we have a base class for remote types
-                //return id == 0 ? null : (RemoteObject)Activator.CreateInstance(type, client, id);
-            }
-
-            if (IsATupleType(type))
-                return DecodeTuple(stream, type, client);
-            if (IsAListType(type))
-                return DecodeList(stream, type, client);
-            if (IsASetType(type))
-                return DecodeSet(stream, type, client);
-            if (IsADictionaryType(type))
-                return DecodeDictionary(stream, type, client);
-            if (IsAMessageType(type))
-            {
-                var message = (IMessage)(Activator.CreateInstance(type)
-                    ?? throw new CodecException("Unable to determine message type"));
-                message.MergeFrom(stream);
-                return message;
-            }
-
-            //if (type != typeof(Event)) TODO sort this when we have a base class for remote types
-            //    throw new ArgumentException(type + " is not a serializable type");
-            
-            var @event = new Schema.Event();
-            @event.MergeFrom(stream);
-            return null; // return new Event((Connection)client, @event); TODO sort this - presumably needs an event type to exist in the public API
+            return
+                IsAGenericType (type, typeof(Tuple<>)) ||
+                IsAGenericType (type, typeof(Tuple<,>)) ||
+                IsAGenericType (type, typeof(Tuple<,,>)) ||
+                IsAGenericType (type, typeof(Tuple<,,,>)) ||
+                IsAGenericType (type, typeof(Tuple<,,,,>)) ||
+                IsAGenericType (type, typeof(Tuple<,,,,,>)) ||
+                IsAGenericType (type, typeof(Tuple<,,,,,,>)) ||
+                IsAGenericType (type, typeof(Tuple<,,,,,,,>));
         }
 
         private static object DecodeTuple (CodedInputStream stream, Type type, IConnection client)
@@ -253,6 +265,11 @@ namespace kRPC.Client.Boost.Connection
             var tuple = constructor.Invoke(values);
             return tuple;
         }
+        
+        private static bool IsAListType (Type type)
+        {
+            return IsAGenericType (type, typeof(IList<>));
+        }
 
         private static object DecodeList (CodedInputStream stream, Type type, IConnection client)
         {
@@ -266,6 +283,11 @@ namespace kRPC.Client.Boost.Connection
             foreach (var item in encodedList.Items)
                 list.Add (Decode (item, itemType, client));
             return list;
+        }
+        
+        private static bool IsASetType (Type type)
+        {
+            return IsAGenericType (type, typeof(ISet<>));
         }
 
         private static object DecodeSet (CodedInputStream stream, Type type, IConnection client)
@@ -285,8 +307,13 @@ namespace kRPC.Client.Boost.Connection
             
             return set;
         }
+        
+        private static bool IsADictionaryType (Type type)
+        {
+            return IsAGenericType (type, typeof(IDictionary<,>));
+        }
 
-        static object DecodeDictionary (CodedInputStream stream, Type type, IConnection client)
+        private static object DecodeDictionary (CodedInputStream stream, Type type, IConnection client)
         {
             var encodedDictionary = ParseEncodedStream(Schema.Dictionary.Parser, stream);
             var constructor = GetGenericConstructor(type, typeof(Dictionary<,>), true);
@@ -324,39 +351,6 @@ namespace kRPC.Client.Boost.Connection
         {
             // TODO need to implement this by determining what the base class of remote objects is going to be
             throw new NotImplementedException();
-        }
-
-        private static bool IsATupleType (Type type)
-        {
-            return
-                IsAGenericType (type, typeof(Tuple<>)) ||
-                IsAGenericType (type, typeof(Tuple<,>)) ||
-                IsAGenericType (type, typeof(Tuple<,,>)) ||
-                IsAGenericType (type, typeof(Tuple<,,,>)) ||
-                IsAGenericType (type, typeof(Tuple<,,,,>)) ||
-                IsAGenericType (type, typeof(Tuple<,,,,,>)) ||
-                IsAGenericType (type, typeof(Tuple<,,,,,,>)) ||
-                IsAGenericType (type, typeof(Tuple<,,,,,,,>));
-        }
-
-        private static bool IsACollectionType (Type type)
-        {
-            return IsATupleType (type) || IsAListType (type) || IsASetType (type) || IsADictionaryType (type);
-        }
-
-        private static bool IsAListType (Type type)
-        {
-            return IsAGenericType (type, typeof(IList<>));
-        }
-
-        private static bool IsASetType (Type type)
-        {
-            return IsAGenericType (type, typeof(ISet<>));
-        }
-
-        private static bool IsADictionaryType (Type type)
-        {
-            return IsAGenericType (type, typeof(IDictionary<,>));
         }
 
         private static bool IsAMessageType (Type type)

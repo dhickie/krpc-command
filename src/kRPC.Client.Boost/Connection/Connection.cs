@@ -2,6 +2,7 @@ using System.Linq.Expressions;
 using System.Net;
 using System.Net.Sockets;
 using Google.Protobuf;
+using Google.Protobuf.Collections;
 using KRPC.Client;
 using KRPC.Schema.KRPC;
 using RequestType = KRPC.Schema.KRPC.ConnectionRequest.Types.Type;
@@ -14,6 +15,8 @@ namespace kRPC.Client.Boost.Connection;
 /// </summary>
 internal class Connection : IDisposable
 {
+    private IConnection _connection;
+    
     private readonly object _connectionLock = new();
     private bool _disposed;
     
@@ -28,23 +31,25 @@ internal class Connection : IDisposable
     private const int BufferInitialSize = 1 * 1024 * 1024;
     private const int BufferIncreaseSize = 512 * 1024;
     private byte[] _responseBuffer = new byte [BufferInitialSize];
-    
-    private ByteString _clientId;
+
+    private readonly ByteString _clientId;
 
     /// <summary>
     /// 
     /// </summary>
+    /// <param name="connection"></param>
     /// <param name="name"></param>
     /// <param name="address"></param>
     /// <param name="rpcPort"></param>
     /// <param name="streamPort"></param>
     /// <exception cref="KRPC.Client.ConnectionException"></exception>
-    public Connection(string name = "", IPAddress address = null, int rpcPort = 50000, int streamPort = 50001)
+    public Connection(IConnection connection, string name = "", IPAddress? address = null, int rpcPort = 50000, int streamPort = 50001)
     {
         ArgumentOutOfRangeException.ThrowIfNegativeOrZero(rpcPort);
         ArgumentOutOfRangeException.ThrowIfNegativeOrZero(streamPort);
 
         address ??= IPAddress.Loopback;
+        _connection = connection;
 
         // Initialise the TCP connections
         _rpcClient = new TcpClient();
@@ -58,7 +63,7 @@ internal class Connection : IDisposable
         _codedStreamStream = new CodedOutputStream(_streamStream, true);
         
         // Connect to the RPC and Stream servers
-        Connect(RequestType.Rpc, name);
+        _clientId = Connect(RequestType.Rpc, name);
         Connect(RequestType.Stream);
         
         // TODO setup the stream manager
@@ -99,39 +104,34 @@ internal class Connection : IDisposable
 
     private void CheckDisposed ()
     {
-        if (_disposed)
-            throw new ObjectDisposedException (GetType ().Name);
+        ObjectDisposedException.ThrowIf(_disposed, this);
     }
     
-    private void Connect(RequestType type, string clientName = null)
+    private ByteString Connect(RequestType type, string? clientName = null)
     {
         var request = new ConnectionRequest
         {
             Type = type
         };
 
-        CodedOutputStream stream;
-        if (type == RequestType.Rpc)
+        switch (type)
         {
-            request.ClientName = clientName ?? throw new ArgumentNullException(nameof(clientName));
-            stream = _codedRpcStream;
-        }
-        else if (type == RequestType.Stream)
-        {
-            request.ClientIdentifier = 
-                _clientId ?? throw new Exception("Unable to connect to stream server - no client ID available");
-            stream = _codedRpcStream;
-        }
-        else
-        {
-            throw new ArgumentOutOfRangeException(nameof(type));
+            case RequestType.Rpc:
+                request.ClientName = clientName ?? throw new ArgumentNullException(nameof(clientName));
+                break;
+            case RequestType.Stream:
+                request.ClientIdentifier = 
+                    _clientId ?? throw new Exception("Unable to connect to stream server - no client ID available");
+                break;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(type));
         }
 
         ConnectionResponse response;
         lock (_connectionLock)
         {
             // Request
-            stream.WriteLength(request.CalculateSize());
+            _codedRpcStream.WriteLength(request.CalculateSize());
             request.WriteTo(_codedRpcStream);
             _codedRpcStream.Flush();
 
@@ -141,10 +141,9 @@ internal class Connection : IDisposable
         }
 
         // Check we're successfully connected
-        if (response.Status != ConnectionResponse.Types.Status.Ok)
-            throw new ConnectionException(response.Message);
-        
-        _clientId = response.ClientIdentifier;
+        return response.Status != ConnectionResponse.Types.Status.Ok 
+            ? throw new ConnectionException(response.Message) 
+            : response.ClientIdentifier;
     }
 
     /// <summary>
@@ -162,13 +161,13 @@ internal class Connection : IDisposable
     /// Invoke a remote procedure.
     /// Should not be called directly. This interface is used by service client stubs.
     /// </summary>
-    public ByteString Invoke (string service, string procedure, IList<ByteString> arguments = null)
+    public T Invoke<T> (string service, string procedure, IList<ByteString>? arguments = null)
     {
         CheckDisposed ();
-        return Invoke (GetCall (service, procedure, arguments));
+        return Invoke<T> (GetCall (service, procedure, arguments));
     }
 
-    private ByteString Invoke (ProcedureCall call)
+    private T Invoke<T> (ProcedureCall call)
     {
         var request = new Request ();
         request.Calls.Add (call);
@@ -186,36 +185,34 @@ internal class Connection : IDisposable
             response = Response.Parser.ParseFrom (new CodedInputStream (_responseBuffer, 0, size));
         }
 
-        if (response.Error != null)
-            throw GetException(response.Error);
-        
-        return response.Results[0].Error != null 
-            ? throw GetException (response.Results [0].Error) 
-            : response.Results[0].Value;
+        AssertSuccess(response);
+        return (T)Codec.Decode(response.Results[0].Value, typeof(T), _connection);
     }
 
-    private static ProcedureCall GetCall(string service, string procedure, IEnumerable<object> arguments = null)
+    private static ProcedureCall GetCall(string service, string procedure, IEnumerable<object>? arguments = null)
     {
         var call = new ProcedureCall
         {
             Service = service,
             Procedure = procedure
         };
+
+        if (arguments == null)
+            return call;
         
-        if (arguments != null) 
+        uint position = 0;
+        foreach (var value in arguments)
         {
-            uint position = 0;
-            foreach (var value in arguments) 
+            var encodedValue = Codec.Encode(value);
+            var argument = new Argument
             {
-                var argument = new Argument
-                {
-                    Position = position,
-                    Value = value
-                };
-                call.Arguments.Add (argument);
-                position++;
-            }
+                Position = position,
+                Value = encodedValue
+            };
+            call.Arguments.Add (argument);
+            position++;
         }
+
         return call;
     }
 
@@ -237,7 +234,7 @@ internal class Connection : IDisposable
 
     private static ProcedureCall GetCall (MethodCallExpression expression)
     {
-        // TODO Implement fetching the correct procedure from a MethodCallExpression
+        // TODO Implement fetching the correct procedure from a MethodCallExpression when we have attributes on procedures
         throw new NotImplementedException();
     }
 
@@ -247,7 +244,7 @@ internal class Connection : IDisposable
     /// Returns the length of the message in bytes.
     /// If a stopEvent is specified, this method will return 0 if the event is triggered.
     /// </summary>
-    private static int ReadMessageData (System.IO.Stream stream, ref byte[] buffer, EventWaitHandle stopEvent = null)
+    private static int ReadMessageData (System.IO.Stream stream, ref byte[] buffer, EventWaitHandle? stopEvent = null)
     {
         var stop = stopEvent != null && stopEvent.WaitOne (0);
         var bufferSize = 0;
@@ -267,6 +264,7 @@ internal class Connection : IDisposable
             } 
             catch (InvalidProtocolBufferException) 
             {
+                // TODO At least log some som info if this happens
             }
         }
         
@@ -290,8 +288,17 @@ internal class Connection : IDisposable
         
         return stop ? 0 : messageSize;
     }
+    
+    private static void AssertSuccess(Response response)
+    {
+        if (response.Error != null)
+            throw GetException (response.Error);
+        
+        if (response.Results[0].Error != null)
+            throw GetException (response.Results[0].Error);
+    }
 
-    private Exception GetException (Error error)
+    private static Exception GetException (Error error)
     {
         var message = error.Description;
         if (error.StackTrace.Length > 0) 
