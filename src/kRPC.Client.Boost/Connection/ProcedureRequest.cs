@@ -7,10 +7,10 @@ namespace kRPC.Client.Boost.Connection;
 /// <param name="service">The service the procedure exists on</param>
 /// <param name="procedure">The name of the procedure to execute</param>
 /// <param name="arguments">A list of arguments required by the procedure, in the order they're required</param>
-internal class ProcedureRequest(Type resultType, string service, string procedure, object[]? arguments = null)
+internal class ProcedureRequest(string service, string procedure, object[]? arguments = null, Type? resultType = null)
 {
     public readonly string RequestId = Guid.NewGuid().ToString();
-    public readonly Type ResultType = resultType;
+    public readonly Type? ResultType = resultType;
     public readonly string Service = service;
     public readonly string Procedure = procedure;
     public readonly object[] Arguments = arguments ?? [];

@@ -20,33 +20,54 @@ public class ConnectionMultiplexer : IConnection
             _connections[0] = new Connection(this, config, _requests, _results);
         }
     }
+
+    public void Invoke(string service, string procedure, object[]? arguments = null)
+    {
+        var result = AddToQueue(service, procedure, arguments);
+        result.WaitForCompletion();
+    }
     
     public TResponse Invoke<TResponse>(string service, string procedure, object[]? arguments = null)
     {
         var result = AddToQueue<TResponse>(service, procedure, arguments);
-        
-        // Wait for the response
         return result.WaitForResult();
+    }
+
+    public async Task InvokeAsync(string service, string procedure, object[]? arguments = null)
+    {
+        var result = AddToQueue(service, procedure, arguments);
+        await result.WaitForCompletionAsync();
     }
 
     public async Task<TResponse> InvokeAsync<TResponse>(string service, string procedure, object[]? arguments = null)
     {
         var result = AddToQueue<TResponse>(service, procedure, arguments);
-        
-        // Wait for the response
         return await result.WaitForResultAsync();
     }
 
     private ProcedureResult<T> AddToQueue<T>(string service, string procedure, object[]? arguments = null)
     {
         // Set up the request and result object
-        var request = new ProcedureRequest(typeof(T), service, procedure, arguments);
+        var request = new ProcedureRequest(service, procedure, arguments, typeof(T));
         var result = new ProcedureResult<T>();
 
         if (!_results.TryAdd(request.RequestId, result))
             throw new ProcedureException("Duplicate key in response dictionary");
         
         // Add the request to the queue
+        _requests.Add(request);
+
+        return result;
+    }
+
+    private ProcedureResult AddToQueue(string service, string procedure, object[]? arguments = null)
+    {
+        var request = new ProcedureRequest(service, procedure, arguments);
+        var result = new ProcedureResult();
+        
+        if (!_results.TryAdd(request.RequestId, result))
+            throw new ProcedureException("Duplicate key in response dictionary");
+        
         _requests.Add(request);
 
         return result;

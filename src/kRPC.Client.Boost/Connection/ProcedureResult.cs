@@ -27,8 +27,21 @@ internal sealed class ProcedureResult<T>() : ProcedureResult(typeof(T))
     {
         return await WaitForResultAsync<T>();
     }
+
+    /// <summary>
+    /// Gets the result object for the procedure. Will throw an InvalidOperationException if the procedure isn't
+    /// yet complete.
+    /// Use <c>WaitForResult</c>/<c>WaitForResultAsync</c> to both wait for the procedure to complete
+    /// and return the result object, or call <c>WaitForCompletion</c>/<c>WaitForCompletionAsync</c> before calling
+    /// this method.
+    /// </summary>
+    /// <returns>The result of the procedure</returns>
+    public T GetResult()
+    {
+        return GetResult<T>();
+    }
     
-    protected override void SetResultImpl(object result)
+    protected override void MarkCompleteImpl(object result)
     {
         _result = (T)result;
     }
@@ -39,13 +52,28 @@ internal sealed class ProcedureResult<T>() : ProcedureResult(typeof(T))
     }
 }
 
-/// <summary>
-/// Represents the pending or complete result of a procedure that returns the provided type.
-/// </summary>
-/// <param name="resultType">The type of the result</param>
-internal abstract class ProcedureResult(Type resultType)
+internal class ProcedureResult
 {
+    private Exception? _error;
+    private readonly Type? _resultType;
     private readonly SemaphoreSlim _resultLock = new(0, 1);
+
+    /// <summary>
+    /// Creates a pending procedure result for a procedure that doesn't return a result object.
+    /// </summary>
+    public ProcedureResult()
+    {
+        _resultType = null;
+    }
+
+    /// <summary>
+    /// Creates a pending procedure result for a procedure that returns a result object of the provided type.
+    /// </summary>
+    /// <param name="resultType">The type of the result object returned by the procedure</param>
+    protected ProcedureResult(Type resultType)
+    {
+        _resultType = resultType;
+    }
     
     /// <summary>
     /// Sets the result of the procedure and notifies threads waiting for the result.
@@ -54,35 +82,90 @@ internal abstract class ProcedureResult(Type resultType)
     /// <exception cref="ArgumentException">
     ///     Thrown if the provided result does not match the type of the result for this procedure
     /// </exception>
-    public void SetResult(object result)
+    public void MarkComplete(object? result = null)
     {
-        if (result.GetType() != resultType)
-            throw new ArgumentException($"Result type {result.GetType().Name} does not match the specified type for this procedure");
+        if (_resultType != null && result == null)
+            throw new ArgumentException("Non null result must be provided for procedures that return a result object");
+        
+        if (_resultType == null && result != null)
+            throw new ArgumentException($"Can't set the result of a procedure that doesn't return a result object");
 
-        SetResultImpl(result); // Set the result
+        if (result != null)
+        {
+            if (result.GetType() != _resultType)
+                throw new ArgumentException($"Result type {result.GetType().Name} does not match the specified type for this procedure");
+            
+            MarkCompleteImpl(result); // Set the result
+        }
+        
         _resultLock.Release(); // Let other threads know the result is ready
+    }
+
+    /// <summary>
+    /// Sets the error for an unsuccessful procedure, and notifies other threads that the procedure has completed.
+    /// </summary>
+    /// <param name="error">The exception that was thrown while trying to perform the operation</param>
+    public void MarkFaulted(Exception error)
+    {
+        _error = error;
+        _resultLock.Release();
+    }
+
+    /// <summary>
+    /// Waits synchronously for the procedure to complete.
+    /// </summary>
+    public void WaitForCompletion()
+    {
+        _resultLock.Wait();
+
+        if (_error != null)
+            throw _error;
+    }
+
+    /// <summary>
+    /// Waits asynchronously for the procedure to complete.
+    /// </summary>
+    public async Task WaitForCompletionAsync()
+    {
+        await _resultLock.WaitAsync();
+        
+        if (_error != null)
+            throw _error;
     }
 
     protected T WaitForResult<T>()
     {
-        _resultLock.Wait();
+        if (_resultType == null)
+            throw new InvalidOperationException("Can't wait for a result object from a procedure that doesn't return a result object");
+        
+        WaitForCompletion();
         return GetResult<T>();
     }
     
     protected async Task<T> WaitForResultAsync<T>()
     {
-        await _resultLock.WaitAsync();
+        await WaitForCompletionAsync();
         return GetResult<T>();
     }
 
-    protected abstract void SetResultImpl(object result);
-    
-    protected abstract object GetResultImpl();
-    
-    private T GetResult<T>()
+    protected virtual void MarkCompleteImpl(object result)
     {
-        return typeof(T) != resultType 
-            ? throw new ArgumentException($"Result type {typeof(T).Name} does not match the specified type for this procedure") 
-            : (T)GetResultImpl();
+        throw new NotImplementedException("Can't set the result of a procedure that doesn't return a result object");
+    }
+
+    protected virtual object GetResultImpl()
+    {
+        throw new NotImplementedException("Can't get the result of a procedure that doesn't have a return object");
+    }
+    
+    protected T GetResult<T>()
+    {
+        if (_resultLock.CurrentCount == 0)
+            throw new InvalidOperationException("Can't get the result of a procedure that hasn't completed yet");
+
+        if (typeof(T) != _resultType)
+            throw new ArgumentException($"Result type {typeof(T).Name} does not match the specified type for this procedure");
+            
+        return (T)GetResultImpl();
     }
 }

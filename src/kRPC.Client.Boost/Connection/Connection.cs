@@ -81,9 +81,25 @@ internal class Connection : IDisposable
             var request = _requestQueue.Take();
             if (!_responses.TryGetValue(request.RequestId, out var response))
                 continue; // TODO Log a warning here, and move on
-            
-            var result = Invoke(request.ResultType, request.Service, request.Procedure, request.Arguments);
-            response.SetResult(result);
+
+            try
+            {
+                if (request.ResultType != null)
+                {
+                    var result = Invoke(request.ResultType, request.Service, request.Procedure, request.Arguments);
+                    response.MarkComplete(result);
+                }
+                else
+                {
+                    Invoke(request.Service, request.Procedure, request.Arguments);
+                    response.MarkComplete();
+                }
+            }
+            catch (Exception e)
+            {
+                // TODO Log an error here
+                response.MarkFaulted(e);
+            }
         }
     }
 
@@ -179,10 +195,17 @@ internal class Connection : IDisposable
     private object Invoke(System.Type resultType, string service, string procedure, IList<object>? arguments = null)
     {
         CheckDisposed();
-        return Invoke(resultType, GetCall(service, procedure, arguments));
+        var result = Invoke(GetCall(service, procedure, arguments));
+        return Codec.Decode(result, resultType, _connection);
     }
 
-    private object Invoke(System.Type resultType, ProcedureCall call)
+    private void Invoke(string service, string procedure, IEnumerable<object>? arguments = null)
+    {
+        CheckDisposed();
+        Invoke(GetCall(service, procedure, arguments));
+    }
+
+    private ByteString Invoke(ProcedureCall call)
     {
         var request = new Request();
         request.Calls.Add(call);
@@ -201,7 +224,7 @@ internal class Connection : IDisposable
         }
 
         AssertSuccess(response);
-        return Codec.Decode(response.Results[0].Value, resultType, _connection);
+        return response.Results[0].Value;
     }
 
     private static ProcedureCall GetCall(string service, string procedure, IEnumerable<object>? arguments = null)
