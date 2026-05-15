@@ -3,12 +3,21 @@ using kRPC.Client.Boost.Exceptions;
 
 namespace kRPC.Client.Boost.Connection;
 
-public class ConnectionMultiplexer : IConnection
+public class ConnectionMultiplexer : IConnection, IDisposable
 {
-    private Connection[] _connections;
-    private BlockingCollection<ProcedureRequest> _requests;
-    private ConcurrentDictionary<string, ProcedureResult> _results;
+    private readonly Connection[] _connections;
+    private readonly BlockingCollection<ProcedureRequest> _requests;
+    private readonly ConcurrentDictionary<string, ProcedureResult> _results;
+
+    private readonly CancellationTokenSource _disposalTokenSource = new();
+    private bool _disposed;
     
+    /// <summary>
+    /// Creates a connection multiplexer that manages one or more connections to a kRPC server.
+    /// All interaction with kRPC starts with an instance of this class.
+    /// </summary>
+    /// <param name="numConnections">The number of simultaneous connections to create</param>
+    /// <param name="config">The configuration for the connection(s)</param>
     public ConnectionMultiplexer(int numConnections, ConnectionConfig config)
     {
         _requests = new BlockingCollection<ProcedureRequest>();
@@ -21,28 +30,91 @@ public class ConnectionMultiplexer : IConnection
         }
     }
 
-    public void Invoke(string service, string procedure, object[]? arguments = null)
+    /// <summary>
+    /// Finalises all connections to the kRPC server.
+    /// </summary>
+    ~ConnectionMultiplexer()
     {
+        Dispose(false);
+    }
+
+    /// <summary>
+    /// Disposes all connections to the kRPC server.
+    /// </summary>
+    public void Dispose()
+    {
+        Dispose(true);
+        GC.SuppressFinalize(this);
+    }
+
+    protected virtual void Dispose(bool disposing)
+    {
+        if (disposing)
+        {
+            foreach (var connection in _connections)
+            {
+                connection.Dispose();
+            }
+        }
+
+        _disposed = true;
+        _disposalTokenSource.Cancel();
+    }
+
+    /// <summary>
+    /// Synchronously invokes a procedure that doesn't have a result object.
+    /// </summary>
+    /// <param name="service">The service the procedure is part of</param>
+    /// <param name="procedure">The procedure to invoke</param>
+    /// <param name="arguments">The arguments to the procedure</param>
+    internal void Invoke(string service, string procedure, object[]? arguments = null)
+    {
+        CheckDisposed();
         var result = AddToQueue(service, procedure, arguments);
-        result.WaitForCompletion();
+        result.WaitForCompletion(_disposalTokenSource.Token);
     }
     
-    public TResponse Invoke<TResponse>(string service, string procedure, object[]? arguments = null)
+    /// <summary>
+    /// Synchronously invokes a procedure that returns a result object.
+    /// </summary>
+    /// <param name="service">The service the procedure is part of</param>
+    /// <param name="procedure">The procedure to invoke</param>
+    /// <param name="arguments">The arguments to the procedure</param>
+    /// <typeparam name="TResponse">The type of the response object</typeparam>
+    /// <returns>The result object from the procedure.</returns>
+    internal TResponse Invoke<TResponse>(string service, string procedure, object[]? arguments = null)
     {
+        CheckDisposed();
         var result = AddToQueue<TResponse>(service, procedure, arguments);
-        return result.WaitForResult();
+        return result.WaitForResult(_disposalTokenSource.Token);
     }
 
-    public async Task InvokeAsync(string service, string procedure, object[]? arguments = null)
+    /// <summary>
+    /// Asynchronously invokes a procedure that doesn't have a result object.
+    /// </summary>
+    /// <param name="service">The service the procedure is part of</param>
+    /// <param name="procedure">The procedure to invoke</param>
+    /// <param name="arguments">The arguments to the procedure</param>
+    internal async Task InvokeAsync(string service, string procedure, object[]? arguments = null)
     {
+        CheckDisposed();
         var result = AddToQueue(service, procedure, arguments);
-        await result.WaitForCompletionAsync();
+        await result.WaitForCompletionAsync(_disposalTokenSource.Token);
     }
 
-    public async Task<TResponse> InvokeAsync<TResponse>(string service, string procedure, object[]? arguments = null)
+    /// <summary>
+    /// Asynchronously invokes a procedure that returns a result object.
+    /// </summary>
+    /// <param name="service">The service the procedure is part of</param>
+    /// <param name="procedure">The procedure to invoke</param>
+    /// <param name="arguments">The arguments to the procedure</param>
+    /// <typeparam name="TResponse">The type of the response object</typeparam>
+    /// <returns>The result object from the procedure.</returns>
+    internal async Task<TResponse> InvokeAsync<TResponse>(string service, string procedure, object[]? arguments = null)
     {
+        CheckDisposed();
         var result = AddToQueue<TResponse>(service, procedure, arguments);
-        return await result.WaitForResultAsync();
+        return await result.WaitForResultAsync(_disposalTokenSource.Token);
     }
 
     private ProcedureResult<T> AddToQueue<T>(string service, string procedure, object[]? arguments = null)
@@ -71,5 +143,10 @@ public class ConnectionMultiplexer : IConnection
         _requests.Add(request);
 
         return result;
+    }
+
+    private void CheckDisposed()
+    {
+        ObjectDisposedException.ThrowIf(_disposed, this);
     }
 }

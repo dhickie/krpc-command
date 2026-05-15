@@ -13,19 +13,21 @@ internal sealed class ProcedureResult<T>() : ProcedureResult(typeof(T))
     /// <summary>
     /// Waits synchronously for the result of the procedure to become available.
     /// </summary>
+    /// <param name="ct">The cancellation token for the wait operation</param>
     /// <returns>The result of the procedure</returns>
-    public T WaitForResult()
+    public T WaitForResult(CancellationToken ct)
     {
-        return WaitForResult<T>();
+        return WaitForResult<T>(ct);
     }
 
     /// <summary>
     /// Waits asynchronously for the result of the procedure to become available.
     /// </summary>
+    /// <param name="ct">The cancellation token for the wait operation</param>
     /// <returns>The result of the procedure</returns>
-    public async Task<T> WaitForResultAsync()
+    public async Task<T> WaitForResultAsync(CancellationToken ct)
     {
-        return await WaitForResultAsync<T>();
+        return await WaitForResultAsync<T>(ct);
     }
 
     /// <summary>
@@ -114,9 +116,10 @@ internal class ProcedureResult
     /// <summary>
     /// Waits synchronously for the procedure to complete.
     /// </summary>
-    public void WaitForCompletion()
+    /// <param name="ct">The cancellation token for the wait operation</param>
+    public void WaitForCompletion(CancellationToken ct)
     {
-        _resultLock.Wait();
+        _resultLock.Wait(ct);
 
         if (_error != null)
             throw _error;
@@ -125,26 +128,27 @@ internal class ProcedureResult
     /// <summary>
     /// Waits asynchronously for the procedure to complete.
     /// </summary>
-    public async Task WaitForCompletionAsync()
+    /// <param name="ct">The cancellation token for the wait operation</param>
+    public async Task WaitForCompletionAsync(CancellationToken ct)
     {
-        await _resultLock.WaitAsync();
+        await _resultLock.WaitAsync(ct);
         
         if (_error != null)
             throw _error;
     }
 
-    protected T WaitForResult<T>()
+    protected T WaitForResult<T>(CancellationToken ct)
     {
         if (_resultType == null)
             throw new InvalidOperationException("Can't wait for a result object from a procedure that doesn't return a result object");
         
-        WaitForCompletion();
+        WaitForCompletion(ct);
         return GetResult<T>();
     }
     
-    protected async Task<T> WaitForResultAsync<T>()
+    protected async Task<T> WaitForResultAsync<T>(CancellationToken ct)
     {
-        await WaitForCompletionAsync();
+        await WaitForCompletionAsync(ct);
         return GetResult<T>();
     }
 

@@ -21,6 +21,7 @@ internal class Connection : IDisposable
     private readonly Thread _pollingThread;
     private readonly object _connectionLock = new();
     private bool _disposed;
+    private readonly ReaderWriterLockSlim _disposeLock = new();
     
     private readonly TcpClient _rpcClient;
     private readonly NetworkStream _rpcStream;
@@ -82,8 +83,13 @@ internal class Connection : IDisposable
             if (!_responses.TryGetValue(request.RequestId, out var response))
                 continue; // TODO Log a warning here, and move on
 
+            _disposeLock.EnterReadLock();
             try
             {
+                // Kill the thread if the connection has been disposed
+                if (_disposed)
+                    break;
+                
                 if (request.ResultType != null)
                 {
                     var result = Invoke(request.ResultType, request.Service, request.Procedure, request.Arguments);
@@ -99,6 +105,10 @@ internal class Connection : IDisposable
             {
                 // TODO Log an error here
                 response.MarkFaulted(e);
+            }
+            finally
+            {
+                _disposeLock.ExitReadLock();
             }
         }
     }
@@ -123,22 +133,26 @@ internal class Connection : IDisposable
     /// <summary>
     /// Dispose the connection.
     /// </summary>
-    protected virtual void Dispose(bool disposing)
+    private void Dispose(bool disposing)
     {
-        if (_disposed)
-            return;
-        
-        if (disposing)
+        _disposeLock.EnterWriteLock();
+        try
         {
-            _rpcClient.Close();
-            _streamClient.Close();
-        }
-        _disposed = true;
-    }
+            if (_disposed)
+                return;
 
-    private void CheckDisposed()
-    {
-        ObjectDisposedException.ThrowIf(_disposed, this);
+            if (disposing)
+            {
+                _rpcClient.Close();
+                _streamClient.Close();
+            }
+
+            _disposed = true;
+        }
+        finally
+        {
+            _disposeLock.ExitWriteLock();
+        }
     }
     
     private ByteString Connect(RequestType type, string? clientName = null)
@@ -194,14 +208,12 @@ internal class Connection : IDisposable
     /// </summary>
     private object Invoke(System.Type resultType, string service, string procedure, IList<object>? arguments = null)
     {
-        CheckDisposed();
         var result = Invoke(GetCall(service, procedure, arguments));
         return Codec.Decode(result, resultType, _connection);
     }
 
     private void Invoke(string service, string procedure, IEnumerable<object>? arguments = null)
     {
-        CheckDisposed();
         Invoke(GetCall(service, procedure, arguments));
     }
 
