@@ -33,7 +33,7 @@ internal class Connection : IDisposable
     
     private const int BufferInitialSize = 1 * 1024 * 1024;
     private const int BufferIncreaseSize = 512 * 1024;
-    private byte[] _responseBuffer = new byte [BufferInitialSize];
+    private byte[] _responseBuffer = new byte[BufferInitialSize];
 
     private readonly ByteString _clientId;
 
@@ -126,8 +126,8 @@ internal class Connection : IDisposable
     /// </summary>
     public void Dispose()
     {
-        Dispose (true);
-        GC.SuppressFinalize (this);
+        Dispose(true);
+        GC.SuppressFinalize(this);
     }
 
     /// <summary>
@@ -197,7 +197,7 @@ internal class Connection : IDisposable
     // TODO Add streaming functionality to connection
     //public Stream<TResult> AddStream<TResult> (Expression<Func<TResult>> expression)
     //{
-    //    CheckDisposed ();
+    //    CheckDisposed();
     //    
     //    throw new NotImplementedException();
     //}
@@ -227,12 +227,12 @@ internal class Connection : IDisposable
         {
             // Send request to server
             _codedRpcStream.WriteLength(request.CalculateSize());
-            request.WriteTo (_codedRpcStream);
-            _codedRpcStream.Flush ();
+            request.WriteTo(_codedRpcStream);
+            _codedRpcStream.Flush();
             
             // Receive response
-            var size = ReadMessageData (_rpcStream, ref _responseBuffer);
-            response = Response.Parser.ParseFrom (new CodedInputStream (_responseBuffer, 0, size));
+            var size = ReadMessageData(_rpcStream, ref _responseBuffer);
+            response = Response.Parser.ParseFrom(new CodedInputStream(_responseBuffer, 0, size));
         }
 
         AssertSuccess(response);
@@ -259,7 +259,7 @@ internal class Connection : IDisposable
                 Position = position,
                 Value = encodedValue
             };
-            call.Arguments.Add (argument);
+            call.Arguments.Add(argument);
             position++;
         }
 
@@ -269,20 +269,20 @@ internal class Connection : IDisposable
     /// <summary>
     /// Return the procedure call message for a remote procedure call.
     /// </summary>
-    private static ProcedureCall GetCall (LambdaExpression expression)
+    private static ProcedureCall GetCall(LambdaExpression expression)
     {
-        if (ReferenceEquals (expression, null))
-            throw new ArgumentNullException (nameof (expression));
+        if (ReferenceEquals(expression, null))
+            throw new ArgumentNullException(nameof(expression));
 
         var body = expression.Body;
 
         if (body is MethodCallExpression methodCallExpression)
-            return GetCall (methodCallExpression);
+            return GetCall(methodCallExpression);
 
-        throw new ArgumentException ("Invalid expression. Must consist of a method call only.");
+        throw new ArgumentException("Invalid expression. Must consist of a method call only.");
     }
 
-    private static ProcedureCall GetCall (MethodCallExpression expression)
+    private static ProcedureCall GetCall(MethodCallExpression expression)
     {
         // TODO Implement fetching the correct procedure from a MethodCallExpression when we have attributes on procedures
         throw new NotImplementedException();
@@ -294,22 +294,22 @@ internal class Connection : IDisposable
     /// Returns the length of the message in bytes.
     /// If a stopEvent is specified, this method will return 0 if the event is triggered.
     /// </summary>
-    private static int ReadMessageData (System.IO.Stream stream, ref byte[] buffer, EventWaitHandle? stopEvent = null)
+    private static int ReadMessageData(System.IO.Stream stream, ref byte[] buffer, EventWaitHandle? stopEvent = null)
     {
-        var stop = stopEvent != null && stopEvent.WaitOne (0);
+        var stop = stopEvent != null && stopEvent.WaitOne(0);
         var bufferSize = 0;
         var messageSize = 0;
 
         // Read the offset and size of the message data
         while (!stop) 
         {
-            bufferSize += stream.Read (buffer, bufferSize, 1);
-            stop |= stopEvent != null && stopEvent.WaitOne (0);
+            bufferSize += stream.Read(buffer, bufferSize, 1);
+            stop |= stopEvent != null && stopEvent.WaitOne(0);
             try 
             {
-                var codedStream = new CodedInputStream (buffer, 0, bufferSize);
-                messageSize = (int)codedStream.ReadUInt32 ();
-                stop |= stopEvent != null && stopEvent.WaitOne (0);
+                var codedStream = new CodedInputStream(buffer, 0, bufferSize);
+                messageSize = (int)codedStream.ReadUInt32();
+                stop |= stopEvent != null && stopEvent.WaitOne(0);
                 break;
             } 
             catch (InvalidProtocolBufferException) 
@@ -328,12 +328,12 @@ internal class Connection : IDisposable
             // Increase the size of the buffer if the remaining space is low
             if (buffer.Length - bufferSize < BufferIncreaseSize) 
             {
-                var newBuffer = new byte [buffer.Length + BufferIncreaseSize];
-                Array.Copy (buffer, newBuffer, bufferSize);
+                var newBuffer = new byte[buffer.Length + BufferIncreaseSize];
+                Array.Copy(buffer, newBuffer, bufferSize);
                 buffer = newBuffer;
             }
-            bufferSize += stream.Read (buffer, bufferSize, messageSize - bufferSize);
-            stop |= stopEvent != null && stopEvent.WaitOne (0);
+            bufferSize += stream.Read(buffer, bufferSize, messageSize - bufferSize);
+            stop |= stopEvent != null && stopEvent.WaitOne(0);
         }
         
         return stop ? 0 : messageSize;
@@ -342,13 +342,13 @@ internal class Connection : IDisposable
     private static void AssertSuccess(Response response)
     {
         if (response.Error != null)
-            throw GetException (response.Error);
+            throw GetException(response.Error);
         
         if (response.Results[0].Error != null)
-            throw GetException (response.Results[0].Error);
+            throw GetException(response.Results[0].Error);
     }
 
-    private static Exception GetException (Error error)
+    private static Exception GetException(Error error)
     {
         var message = error.Description;
         if (error.StackTrace.Length > 0) 
