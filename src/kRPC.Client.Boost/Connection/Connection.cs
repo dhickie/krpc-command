@@ -22,6 +22,7 @@ internal class Connection : IDisposable
     private readonly object _connectionLock = new();
     private bool _disposed;
     private readonly ReaderWriterLockSlim _disposeLock = new();
+    private readonly CancellationTokenSource _disposeTokenSource = new();
     
     private readonly TcpClient _rpcClient;
     private readonly NetworkStream _rpcStream;
@@ -79,7 +80,7 @@ internal class Connection : IDisposable
     {
         while (true)
         {
-            var request = _requestQueue.Take();
+            var request = _requestQueue.Take(_disposeTokenSource.Token);
             if (!_responses.TryGetValue(request.RequestId, out var response))
                 continue; // TODO Log a warning here, and move on
 
@@ -148,6 +149,7 @@ internal class Connection : IDisposable
             }
 
             _disposed = true;
+            _disposeTokenSource.Cancel();
         }
         finally
         {
