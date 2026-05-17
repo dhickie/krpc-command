@@ -2,7 +2,7 @@ using System.Collections.Concurrent;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq.Expressions;
-using KRPC.Client;
+using kRPC.Client.Boost.Connection;
 
 namespace kRPC.Client.Boost.Streams;
 
@@ -23,17 +23,18 @@ internal static class StreamManager
 
     private static bool _initialised;
     private static readonly object InitLock = new();
-    private static Connection _connection;
+    private static ConnectionMultiplexer? _connection;
     private static Thread _compactionThread;
     private static readonly ReaderWriterLockSlim CompactionLock = new();
     private static readonly ConcurrentDictionary<string, object> Locks = new();
-    private static readonly ConcurrentDictionary<string, StreamRegistration> Streams = new();
+    private static readonly ConcurrentDictionary<string, LocalStream> Streams = new();
+    private static readonly ConcurrentDictionary<long, string> IdMap = new();
 
     /// <summary>
     /// Initialises the StreamManager's internal state and starts the compaction thread.
     /// </summary>
     /// <param name="connection">The kRPC connection.</param>
-    public static void Initialise(Connection connection)
+    public static void Initialise(ConnectionMultiplexer connection)
     {
         if (_initialised)
             return;
@@ -105,7 +106,7 @@ internal static class StreamManager
     /// <param name="value">The value of the stream</param>
     /// <typeparam name="T">The datatype returned by the stream</typeparam>
     /// <returns>Whether the value was successfully retrieved</returns>
-    public static bool TryGet<T>(string key, out T value) where T : class
+    public static bool TryGet<T>(string key, out T? value) where T : class
     {
         ValidateState();
         
@@ -129,6 +130,19 @@ internal static class StreamManager
         return false;
     }
 
+    public static void SetValue<T>(long remoteId, T value) where T : class
+    {
+        ValidateState();
+
+        if (!IdMap.TryGetValue(remoteId, out var key))
+            return; // TODO log something here
+
+        if (!Streams.TryGetValue(key, out var stream))
+            return; // TODO log something here
+        
+        stream.TrySet(value); // TODO log something if the set fails
+    }
+
     private static void AddSubscriptionImpl<T>(string key, 
         Expression<Func<T>> expression) where T : class
     {
@@ -137,20 +151,23 @@ internal static class StreamManager
         var registrationLock = Locks.GetOrAdd(key, new object());
         lock (registrationLock)
         {
-            if (Streams.TryGetValue(key, out var streamRegistration))
+            if (Streams.TryGetValue(key, out var stream))
             {
                 // Increment the subscriber count
-                if (streamRegistration.AddSubscriber())
+                if (stream.AddSubscriber())
                 {
                     // This is the first subscriber - re-initialise the stream
-                    streamRegistration.InitialiseStream();
+                    stream.InitialiseStream();
+                    IdMap[stream.RemoteId!.Value] = key;
                 }
             }
             else
             {
                 // Create a new stream
-                var registration = new StreamRegistration<T>(_connection, expression);
-                if (!Streams.TryAdd(key, registration))
+                var newStream = new LocalStream<T>(_connection!, expression);
+                IdMap[newStream.RemoteId!.Value] = key;
+                
+                if (!Streams.TryAdd(key, newStream))
                 {
                     // TODO add a more specific exception type
                     throw new Exception("Unable to add new stream registration, this should never happen");
@@ -168,14 +185,15 @@ internal static class StreamManager
         
         lock (registrationLock)
         {
-            if (!Streams.TryGetValue(key, out var streamRegistration))
+            if (!Streams.TryGetValue(key, out var stream))
                 return;
 
-            if (streamRegistration.RemoveSubscriber())
+            if (stream.RemoveSubscriber())
                 return;
             
             // The stream doesn't have any more subscribers - remove it
-            streamRegistration.TearDown();
+            IdMap.TryRemove(stream.RemoteId!.Value, out _);
+            stream.TearDown();
         }
     }
 

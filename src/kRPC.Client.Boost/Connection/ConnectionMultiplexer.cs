@@ -1,5 +1,6 @@
 using System.Collections.Concurrent;
 using kRPC.Client.Boost.Exceptions;
+using kRPC.Client.Boost.Streams;
 
 namespace kRPC.Client.Boost.Connection;
 
@@ -28,6 +29,8 @@ public class ConnectionMultiplexer : IConnection, IDisposable
         {
             _connections[0] = new Connection(this, config, _requests, _results);
         }
+        
+        StreamManager.Initialise(this);
     }
 
     /// <summary>
@@ -60,6 +63,8 @@ public class ConnectionMultiplexer : IConnection, IDisposable
         _disposed = true;
         _disposalTokenSource.Cancel();
     }
+
+    public Services.KRPC.KRPC KRPC => new(this);
 
     /// <summary>
     /// Synchronously invokes a procedure that doesn't have a result object.

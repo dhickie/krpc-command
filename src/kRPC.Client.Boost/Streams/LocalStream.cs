@@ -1,35 +1,34 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Linq.Expressions;
-using KRPC.Client;
+using kRPC.Client.Boost.Connection;
+using kRPC.Client.Boost.Services.KRPC.RemoteObjects;
 
 namespace kRPC.Client.Boost.Streams;
 
 /// <summary>
-/// StreamRegistration represents a stream from the server that can be used by multiple subscribers. It can be
-/// town down, removing the stream from the server, and then re-initialised without re-providing the expression
+/// LocalStream encapsulates the local state of a server side stream that can be used by multiple subscribers.
+/// It can be torn down, removing the stream from the server, and then re-initialised without re-providing the expression
 /// that retrieves the desired data.
 /// </summary>
 /// <typeparam name="T">The datatype that's contained in the stream</typeparam>
 [SuppressMessage("ReSharper", "InconsistentlySynchronizedField")]
-internal sealed class StreamRegistration<T> : StreamRegistration
+internal sealed class LocalStream<T> : LocalStream where T : class
 {
     private bool _initialised;
     private readonly ReaderWriterLockSlim _initLock = new();
-    private readonly Connection _connection;
+    private readonly ConnectionMultiplexer _connection;
     private readonly Expression<Func<T>> _expression;
-    private Stream<T> _stream;
+    private T? _value;
     
     /// <summary>
     /// Register a stream with the provided expression.
     /// </summary>
     /// <param name="connection">The kRPC connection.</param>
     /// <param name="expression">The expression to register</param>
-    public StreamRegistration(Connection connection, Expression<Func<T>> expression) : base(typeof(T))
+    public LocalStream(ConnectionMultiplexer connection, Expression<Func<T>> expression) : base(typeof(T))
     {
         _connection = connection;
         _expression = expression;
-        
-        InitialiseStream();
     }
 
     /// <inheritdoc/>
@@ -44,7 +43,7 @@ internal sealed class StreamRegistration<T> : StreamRegistration
             if (_initialised)
                 return;
 
-            _connection.AddStream(_expression);
+            RemoteStream = _connection.KRPC.AddStream(_expression, true);
             _initialised = true;
         }
         finally
@@ -65,8 +64,8 @@ internal sealed class StreamRegistration<T> : StreamRegistration
             if (!_initialised)
                 return;
 
-            _stream.Remove();
-            _stream = null;
+            RemoteStream?.Remove();
+            RemoteStream = null;
             _initialised = false;
         }
         finally
@@ -75,7 +74,7 @@ internal sealed class StreamRegistration<T> : StreamRegistration
         }
     }
     
-    protected override bool TryGetImpl<TOut>(out TOut value) where TOut : class
+    protected override bool TryGetImpl<TOut>(out TOut? value) where TOut : class
     {
         _initLock.EnterReadLock();
         try
@@ -86,7 +85,24 @@ internal sealed class StreamRegistration<T> : StreamRegistration
                 return false;
             }
 
-            value = _stream.Get() as TOut;
+            value = Volatile.Read(ref _value) as TOut;
+            return true;
+        }
+        finally
+        {
+            _initLock.ExitReadLock();
+        }
+    }
+    
+    protected override bool TrySetImpl<TValue>(TValue value) where TValue : class
+    {
+        _initLock.EnterReadLock();
+        try
+        {
+            if (!_initialised)
+                return false;
+
+            Volatile.Write(ref _value, value as T);
             return true;
         }
         finally
@@ -96,8 +112,10 @@ internal sealed class StreamRegistration<T> : StreamRegistration
     }
 }
 
-internal abstract class StreamRegistration(Type dataType)
+internal abstract class LocalStream(Type dataType)
 {
+    protected RemoteStream? RemoteStream;
+    public long? RemoteId => RemoteStream?.Id;
     public int Subscribers = 1;
 
     /// <summary>
@@ -133,7 +151,7 @@ internal abstract class StreamRegistration(Type dataType)
     /// <typeparam name="T">The datatype of the stream.</typeparam>
     /// <returns>Whether the value was successfully obtained.</returns>
     /// <exception cref="ArgumentException">Thrown if the provided data type doesn't match the actual type in the stream</exception>
-    public bool TryGet<T>(out T value) where T : class
+    public bool TryGet<T>(out T? value) where T : class
     {
         var requestedType = typeof(T);
         if (requestedType != dataType)
@@ -143,6 +161,28 @@ internal abstract class StreamRegistration(Type dataType)
         }
 
         return TryGetImpl(out value);
+    }
+
+    /// <summary>
+    /// Tries to set the current value of the data contained in the stream.
+    /// This should only be called by the stream manager after receiving an update from the server.
+    /// </summary>
+    /// <param name="value">The value to set for the stream</param>
+    /// <typeparam name="T">The type of the value being set</typeparam>
+    /// <returns>Whether the value was successfully set</returns>
+    /// <exception cref="ArgumentException">
+    ///     Thrown if the type of the provided value doesn't match the data type contained in the stream.
+    /// </exception>
+    public bool TrySet<T>(T value) where T : class
+    {
+        var providedType = typeof(T);
+        if (providedType != dataType)
+        {
+            throw new ArgumentException(
+                $"Attempt to set stream value of type {providedType.Name} on a stream containing data type {dataType.Name}");
+        }
+
+        return TrySetImpl(value);
     }
     
     /// <summary>
@@ -155,5 +195,7 @@ internal abstract class StreamRegistration(Type dataType)
     /// </summary>
     public abstract void InitialiseStream();
     
-    protected abstract bool TryGetImpl<T>(out T value) where T : class;
+    protected abstract bool TryGetImpl<T>(out T? value) where T : class;
+
+    protected abstract bool TrySetImpl<T>(T value) where T : class;
 }
