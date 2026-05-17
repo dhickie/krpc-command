@@ -168,10 +168,10 @@ internal static class StreamManager
         
         lock (registrationLock)
         {
-            if (!Streams.TryGetValue(key, out var streamRegistration)) 
+            if (!Streams.TryGetValue(key, out var streamRegistration))
                 return;
 
-            if (streamRegistration.RemoveSubscriber()) 
+            if (streamRegistration.RemoveSubscriber())
                 return;
             
             // The stream doesn't have any more subscribers - remove it
