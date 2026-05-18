@@ -29,6 +29,8 @@ internal sealed class LocalStream<T> : LocalStream where T : class
     {
         _connection = connection;
         _expression = expression;
+        
+        InitialiseStream();
     }
 
     /// <inheritdoc/>
@@ -43,7 +45,7 @@ internal sealed class LocalStream<T> : LocalStream where T : class
             if (_initialised)
                 return;
 
-            RemoteStream = _connection.KRPC.AddStream(_expression, true);
+            RemoteStream = _connection.AddStream(_expression, true);
             _initialised = true;
         }
         finally
@@ -94,7 +96,7 @@ internal sealed class LocalStream<T> : LocalStream where T : class
         }
     }
     
-    protected override bool TrySetImpl<TValue>(TValue value) where TValue : class
+    protected override bool TrySetImpl(object value)
     {
         _initLock.EnterReadLock();
         try
@@ -115,7 +117,7 @@ internal sealed class LocalStream<T> : LocalStream where T : class
 internal abstract class LocalStream(Type dataType)
 {
     protected RemoteStream? RemoteStream;
-    public long? RemoteId => RemoteStream?.Id;
+    public ulong? RemoteId => RemoteStream?.Id;
     public int Subscribers = 1;
 
     /// <summary>
@@ -173,13 +175,13 @@ internal abstract class LocalStream(Type dataType)
     /// <exception cref="ArgumentException">
     ///     Thrown if the type of the provided value doesn't match the data type contained in the stream.
     /// </exception>
-    public bool TrySet<T>(T value) where T : class
+    public bool TrySet(object value)
     {
-        var providedType = typeof(T);
-        if (providedType != dataType)
+        var valueType = value.GetType();
+        if (valueType != dataType)
         {
             throw new ArgumentException(
-                $"Attempt to set stream value of type {providedType.Name} on a stream containing data type {dataType.Name}");
+                $"Attempt to set stream value of type {valueType.Name} on a stream containing data type {dataType.Name}");
         }
 
         return TrySetImpl(value);
@@ -197,5 +199,5 @@ internal abstract class LocalStream(Type dataType)
     
     protected abstract bool TryGetImpl<T>(out T? value) where T : class;
 
-    protected abstract bool TrySetImpl<T>(T value) where T : class;
+    protected abstract bool TrySetImpl(object value);
 }

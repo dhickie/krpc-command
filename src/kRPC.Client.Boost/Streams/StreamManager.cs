@@ -28,7 +28,7 @@ internal static class StreamManager
     private static readonly ReaderWriterLockSlim CompactionLock = new();
     private static readonly ConcurrentDictionary<string, object> Locks = new();
     private static readonly ConcurrentDictionary<string, LocalStream> Streams = new();
-    private static readonly ConcurrentDictionary<long, string> IdMap = new();
+    private static readonly ConcurrentDictionary<ulong, string> IdMap = new();
 
     /// <summary>
     /// Initialises the StreamManager's internal state and starts the compaction thread.
@@ -130,7 +130,7 @@ internal static class StreamManager
         return false;
     }
 
-    public static void SetValue<T>(long remoteId, T value) where T : class
+    public static void SetValue(ulong remoteId, object value)
     {
         ValidateState();
 
@@ -159,7 +159,7 @@ internal static class StreamManager
                     // This is the first subscriber - re-initialise the stream
                     stream.InitialiseStream();
                     IdMap[stream.RemoteId!.Value] = key;
-                }
+                } 
             }
             else
             {

@@ -1,24 +1,20 @@
-using System.Collections.Concurrent;
 using System.Linq.Expressions;
 using System.Net.Sockets;
 using Google.Protobuf;
 using kRPC.Client.Boost.Connection.Schema;
 using kRPC.Client.Boost.Exceptions;
-using RequestType = kRPC.Client.Boost.Connection.Schema.ConnectionRequest.Types.Type;
 using Exception = System.Exception;
+using RequestType = kRPC.Client.Boost.Connection.Schema.ConnectionRequest.Types.Type;
 
 namespace kRPC.Client.Boost.Connection;
 
 /// <summary>
-/// A connection to the kRPC server. All interaction with kRPC is performed via an instance of this class.
+/// Represents a connection to the server. Manages the low level kRPC protocol.
 /// </summary>
-internal class Connection : IDisposable
+internal abstract class Connection : IDisposable
 {
     private readonly IConnection _connection;
-    private readonly BlockingCollection<ProcedureRequest> _requestQueue;
-    private readonly ConcurrentDictionary<string, ProcedureResult> _responses;
 
-    private readonly Thread _pollingThread;
     private readonly object _connectionLock = new();
     private bool _disposed;
     private readonly ReaderWriterLockSlim _disposeLock = new();
@@ -28,90 +24,29 @@ internal class Connection : IDisposable
     private readonly NetworkStream _rpcStream;
     private readonly CodedOutputStream _codedRpcStream;
     
-    private readonly TcpClient _streamClient;
-    private readonly NetworkStream _streamStream;
-    private readonly CodedOutputStream _codedStreamStream;
-    
-    private const int BufferInitialSize = 1 * 1024 * 1024;
+    protected const int BufferInitialSize = 1 * 1024 * 1024;
     private const int BufferIncreaseSize = 512 * 1024;
     private byte[] _responseBuffer = new byte[BufferInitialSize];
 
     private readonly ByteString _clientId;
 
-    public Connection(IConnection connection, 
-        ConnectionConfig config, 
-        BlockingCollection<ProcedureRequest> requestQueue, 
-        ConcurrentDictionary<string, ProcedureResult> responses)
+    /// <summary>
+    /// Create a new connection to the server.
+    /// </summary>
+    /// <param name="connection">The top level connection object, for passing to decoded remote objects</param>
+    /// <param name="config">The configuration of the connection</param>
+    protected Connection(IConnection connection, ConnectionConfig config)
     {
         ArgumentOutOfRangeException.ThrowIfNegativeOrZero(config.RpcPort);
-        ArgumentOutOfRangeException.ThrowIfNegativeOrZero(config.StreamPort);
 
         _connection = connection;
-        _requestQueue = requestQueue;
-        _responses = responses;
 
-        // Initialise the TCP connections
+        // Initialise the RCP connection
         _rpcClient = new TcpClient();
         _rpcClient.Connect(config.Address, config.RpcPort);
         _rpcStream = _rpcClient.GetStream();
         _codedRpcStream = new CodedOutputStream(_rpcStream, true);
-        
-        _streamClient = new TcpClient();
-        _streamClient.Connect(config.Address, config.StreamPort);
-        _streamStream = _streamClient.GetStream();
-        _codedStreamStream = new CodedOutputStream(_streamStream, true);
-        
-        // Connect to the RPC and Stream servers
-        _clientId = Connect(RequestType.Rpc, config.Name);
-        Connect(RequestType.Stream);
-        
-        // TODO setup the stream manager
-        
-        // Start the polling thread
-        _pollingThread = new Thread(() =>
-        {
-            Thread.CurrentThread.IsBackground = true;
-            PollForRequests();
-        });
-        _pollingThread.Start();
-    }
-
-    private void PollForRequests()
-    {
-        while (true)
-        {
-            var request = _requestQueue.Take(_disposeTokenSource.Token);
-            if (!_responses.TryGetValue(request.RequestId, out var response))
-                continue; // TODO Log a warning here, and move on
-
-            _disposeLock.EnterReadLock();
-            try
-            {
-                // Kill the thread if the connection has been disposed
-                if (_disposed)
-                    break;
-                
-                if (request.ResultType != null)
-                {
-                    var result = Invoke(request.ResultType, request.Service, request.Procedure, request.Arguments);
-                    response.MarkComplete(result);
-                }
-                else
-                {
-                    Invoke(request.Service, request.Procedure, request.Arguments);
-                    response.MarkComplete();
-                }
-            }
-            catch (Exception e)
-            {
-                // TODO Log an error here
-                response.MarkFaulted(e);
-            }
-            finally
-            {
-                _disposeLock.ExitReadLock();
-            }
-        }
+        _clientId = Connect(_codedRpcStream, _rpcStream, ref _responseBuffer, RequestType.Rpc, config.Name);
     }
 
     /// <summary>
@@ -145,7 +80,6 @@ internal class Connection : IDisposable
             if (disposing)
             {
                 _rpcClient.Close();
-                _streamClient.Close();
             }
 
             _disposed = true;
@@ -157,7 +91,23 @@ internal class Connection : IDisposable
         }
     }
     
-    private ByteString Connect(RequestType type, string? clientName = null)
+    /// <summary>
+    /// Connects to the kRPC server.
+    /// </summary>
+    /// <param name="codedStream">The coded stream used by the TCP connection</param>
+    /// <param name="networkStream">The raw network stream used by the TCP connection</param>
+    /// <param name="buffer">The byte buffer for reading from the TCP connection</param>
+    /// <param name="type">Whether this is connecting to the RPC or Stream server</param>
+    /// <param name="clientName">The name of the client</param>
+    /// <returns></returns>
+    /// <exception cref="ArgumentNullException">Thrown when trying to create an RPC connection with no client name</exception>
+    /// <exception cref="ArgumentOutOfRangeException">Thrown if passed an unexpected RequestType</exception>
+    /// <exception cref="ConnectionException">Thrown if the client is unable to connect with the server</exception>
+    protected ByteString Connect(CodedOutputStream codedStream, 
+        System.IO.Stream networkStream,
+        ref byte[] buffer,
+        RequestType type, 
+        string? clientName = null)
     {
         var request = new ConnectionRequest
         {
@@ -171,24 +121,20 @@ internal class Connection : IDisposable
                 break;
             case RequestType.Stream:
                 request.ClientIdentifier = 
-                    _clientId ?? throw new Exception("Unable to connect to stream server - no client ID available");
+                    _clientId ?? throw new ConnectionException("No client ID available when connecting to the stream server");
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(type));
         }
 
-        ConnectionResponse response;
-        lock (_connectionLock)
-        {
-            // Request
-            _codedRpcStream.WriteLength(request.CalculateSize());
-            request.WriteTo(_codedRpcStream);
-            _codedRpcStream.Flush();
+        // Request
+        codedStream.WriteLength(request.CalculateSize());
+        request.WriteTo(codedStream);
+        codedStream.Flush();
 
-            // Response
-            var size = ReadMessageData(_rpcStream, ref _responseBuffer);
-            response = ConnectionResponse.Parser.ParseFrom(new CodedInputStream(_responseBuffer, 0, size));
-        }
+        // Response
+        var size = ReadMessageData(networkStream, ref buffer);
+        var response = ConnectionResponse.Parser.ParseFrom(new CodedInputStream(buffer, 0, size));
 
         // Check we're successfully connected
         return response.Status != ConnectionResponse.Types.Status.Ok 
@@ -196,27 +142,84 @@ internal class Connection : IDisposable
             : response.ClientIdentifier;
     }
 
-    // TODO Add streaming functionality to connection
-    //public Stream<TResult> AddStream<TResult> (Expression<Func<TResult>> expression)
-    //{
-    //    CheckDisposed();
-    //    
-    //    throw new NotImplementedException();
-    //}
-
     /// <summary>
-    /// Invoke a remote procedure.
-    /// Should not be called directly. This interface is used by service client stubs.
+    /// Invokes an RPC on the server that returns a result object.
     /// </summary>
-    private object Invoke(System.Type resultType, string service, string procedure, IList<object>? arguments = null)
+    /// <param name="resultType">The type of result returned by the procedure</param>
+    /// <param name="service">The service the procedure is in</param>
+    /// <param name="procedure">The name of the procedure</param>
+    /// <param name="arguments">Arguments to the procedure</param>
+    /// <returns>The result object</returns>
+    protected object Invoke(System.Type resultType, string service, string procedure, IList<object>? arguments = null)
     {
         var result = Invoke(GetCall(service, procedure, arguments));
         return Codec.Decode(result, resultType, _connection);
     }
 
-    private void Invoke(string service, string procedure, IEnumerable<object>? arguments = null)
+    /// <summary>
+    /// Invokes an RPC on the server that does not return a result object.
+    /// </summary>
+    /// <param name="service">The service the procedure is in</param>
+    /// <param name="procedure">The name of the procedure</param>
+    /// <param name="arguments">Arguments to the procedure</param>
+    protected void Invoke(string service, string procedure, IEnumerable<object>? arguments = null)
     {
         Invoke(GetCall(service, procedure, arguments));
+    }
+    
+    /// <summary>
+    /// Read the data for a message from a stream.
+    /// Continues to read until an entire message has been received.
+    /// May reallocate the buffer if it is too small to receive the message.
+    /// </summary>
+    /// <param name="stream">The stream to read the message from</param>
+    /// <param name="buffer">The byte buffer to read the message into</param>
+    /// <param name="cancellationToken">The cancellation token for the operation</param>
+    /// <returns>The size of the read message in bytes, or 0 if the cancellation token is canceled</returns>
+    protected static int ReadMessageData(System.IO.Stream stream, ref byte[] buffer, CancellationToken? cancellationToken = null)
+    {
+        var bufferSize = 0;
+        var messageSize = 0;
+
+        // Read the offset and size of the message data
+        while (!Stop()) 
+        {
+            bufferSize += stream.Read(buffer, bufferSize, 1);
+            try 
+            {
+                var codedStream = new CodedInputStream(buffer, 0, bufferSize);
+                messageSize = (int)codedStream.ReadUInt32();
+                break;
+            } 
+            catch (InvalidProtocolBufferException) 
+            {
+                // TODO At least log some some info if this happens
+            }
+        }
+        
+        if (Stop())
+            return 0;
+
+        // Read the response data
+        bufferSize = 0;
+        while (!Stop() && bufferSize < messageSize) 
+        {
+            // Increase the size of the buffer if the remaining space is low
+            if (buffer.Length - bufferSize < BufferIncreaseSize) 
+            {
+                var newBuffer = new byte[buffer.Length + BufferIncreaseSize];
+                Array.Copy(buffer, newBuffer, bufferSize);
+                buffer = newBuffer;
+            }
+            bufferSize += stream.Read(buffer, bufferSize, messageSize - bufferSize);
+        }
+        
+        return Stop() ? 0 : messageSize;
+
+        bool Stop()
+        {
+            return cancellationToken?.IsCancellationRequested ?? false;
+        }
     }
 
     private ByteString Invoke(ProcedureCall call)
@@ -288,57 +291,6 @@ internal class Connection : IDisposable
     {
         // TODO Implement fetching the correct procedure from a MethodCallExpression when we have attributes on procedures
         throw new NotImplementedException();
-    }
-
-    /// <summary>
-    /// Read the data from a message from the given stream into the given buffer.
-    /// May reallocate the buffer if it is too small to receive the message.
-    /// Returns the length of the message in bytes.
-    /// If a stopEvent is specified, this method will return 0 if the event is triggered.
-    /// </summary>
-    private static int ReadMessageData(System.IO.Stream stream, ref byte[] buffer, EventWaitHandle? stopEvent = null)
-    {
-        var stop = stopEvent != null && stopEvent.WaitOne(0);
-        var bufferSize = 0;
-        var messageSize = 0;
-
-        // Read the offset and size of the message data
-        while (!stop) 
-        {
-            bufferSize += stream.Read(buffer, bufferSize, 1);
-            stop |= stopEvent != null && stopEvent.WaitOne(0);
-            try 
-            {
-                var codedStream = new CodedInputStream(buffer, 0, bufferSize);
-                messageSize = (int)codedStream.ReadUInt32();
-                stop |= stopEvent != null && stopEvent.WaitOne(0);
-                break;
-            } 
-            catch (InvalidProtocolBufferException) 
-            {
-                // TODO At least log some som info if this happens
-            }
-        }
-        
-        if (stop)
-            return 0;
-
-        // Read the response data
-        bufferSize = 0;
-        while (!stop && bufferSize < messageSize) 
-        {
-            // Increase the size of the buffer if the remaining space is low
-            if (buffer.Length - bufferSize < BufferIncreaseSize) 
-            {
-                var newBuffer = new byte[buffer.Length + BufferIncreaseSize];
-                Array.Copy(buffer, newBuffer, bufferSize);
-                buffer = newBuffer;
-            }
-            bufferSize += stream.Read(buffer, bufferSize, messageSize - bufferSize);
-            stop |= stopEvent != null && stopEvent.WaitOne(0);
-        }
-        
-        return stop ? 0 : messageSize;
     }
     
     private static void AssertSuccess(Response response)

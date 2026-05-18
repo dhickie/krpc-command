@@ -1,13 +1,18 @@
 using System.Collections.Concurrent;
+using System.Linq.Expressions;
+using kRPC.Client.Boost.Connection.Requests;
 using kRPC.Client.Boost.Exceptions;
+using kRPC.Client.Boost.Services.KRPC.RemoteObjects;
 using kRPC.Client.Boost.Streams;
 
 namespace kRPC.Client.Boost.Connection;
 
 public class ConnectionMultiplexer : IConnection, IDisposable
 {
-    private readonly Connection[] _connections;
-    private readonly BlockingCollection<ProcedureRequest> _requests;
+    private readonly StreamConnection _streamConnection;
+    private readonly RpcConnection[] _rpcConnections;
+    private readonly BlockingCollection<StreamRequest> _streamRequests;
+    private readonly BlockingCollection<ProcedureRequest> _rpcRequests;
     private readonly ConcurrentDictionary<string, ProcedureResult> _results;
 
     private readonly CancellationTokenSource _disposalTokenSource = new();
@@ -17,17 +22,24 @@ public class ConnectionMultiplexer : IConnection, IDisposable
     /// Creates a connection multiplexer that manages one or more connections to a kRPC server.
     /// All interaction with kRPC starts with an instance of this class.
     /// </summary>
-    /// <param name="numConnections">The number of simultaneous connections to create</param>
+    /// <param name="numRpcConnections">The number of simultaneous RPC connections to create</param>
     /// <param name="config">The configuration for the connection(s)</param>
-    public ConnectionMultiplexer(int numConnections, ConnectionConfig config)
+    public ConnectionMultiplexer(int numRpcConnections, ConnectionConfig config)
     {
-        _requests = new BlockingCollection<ProcedureRequest>();
+        _streamRequests = new BlockingCollection<StreamRequest>();
+        _rpcRequests = new BlockingCollection<ProcedureRequest>();
         _results = new ConcurrentDictionary<string, ProcedureResult>();
         
-        _connections = new Connection[numConnections];
-        for (var i = 0; i < numConnections; i++)
+        // Create the stream connection - we intentionally keep a single stream connection to ensure that all stream
+        // requests are passed through the same TCP connection, which the server has associated with the streaming
+        // TCP connection
+        _streamConnection = new StreamConnection(this, config, _streamRequests, _results);
+        
+        // Create the RPC connections
+        _rpcConnections = new RpcConnection[numRpcConnections];
+        for (var i = 0; i < numRpcConnections; i++)
         {
-            _connections[0] = new Connection(this, config, _requests, _results);
+            _rpcConnections[0] = new RpcConnection(this, config, _rpcRequests, _results);
         }
         
         StreamManager.Initialise(this);
@@ -54,17 +66,68 @@ public class ConnectionMultiplexer : IConnection, IDisposable
     {
         if (disposing)
         {
-            foreach (var connection in _connections)
+            foreach (var connection in _rpcConnections)
             {
                 connection.Dispose();
             }
+            
+            _streamConnection.Dispose();
         }
 
         _disposed = true;
         _disposalTokenSource.Cancel();
     }
 
+    /// <summary>
+    /// Returns an object providing access to the KRPC service.
+    /// </summary>
     public Services.KRPC.KRPC KRPC => new(this);
+
+    /// <summary>
+    /// Synchronously adds a new stream to the server.
+    /// </summary>
+    /// <param name="expression">The expression for the stream</param>
+    /// <param name="start">Whether to start the stream immediately</param>
+    /// <typeparam name="T">The type of the data updated by the stream</typeparam>
+    /// <returns>The remote stream object</returns>
+    internal RemoteStream AddStream<T>(Expression<Func<T>> expression, bool start)
+    {
+        var result = AddNewStreamRequestToQueue(expression, start);
+        return result.WaitForResult(_disposalTokenSource.Token);
+    }
+    
+    /// <summary>
+    /// Asynchronously adds a new stream to the server.
+    /// </summary>
+    /// <param name="expression">The expression for the stream</param>
+    /// <param name="start">Whether to start the stream immediately</param>
+    /// <typeparam name="T">The type of the data updated by the stream</typeparam>
+    /// <returns>The remote stream object</returns>
+    internal async Task<RemoteStream> AddStreamAsync<T>(Expression<Func<T>> expression, bool start)
+    {
+        var result = AddNewStreamRequestToQueue(expression, start);
+        return await result.WaitForResultAsync(_disposalTokenSource.Token);
+    }
+
+    /// <summary>
+    /// Synchronously removes a stream from the server.
+    /// </summary>
+    /// <param name="streamId">The ID of the stream to remove</param>
+    internal void RemoveStream(ulong streamId)
+    {
+        var result = AddRemoveStreamRequestToQueue(streamId);
+        result.WaitForCompletion(_disposalTokenSource.Token);
+    }
+
+    /// <summary>
+    /// Asynchronously removes a stream from the server.
+    /// </summary>
+    /// <param name="streamId">The ID of the stream to remove</param>
+    internal async Task RemoveStreamAsync(ulong streamId)
+    {
+        var result = AddRemoveStreamRequestToQueue(streamId);
+        await result.WaitForCompletionAsync(_disposalTokenSource.Token);
+    }
 
     /// <summary>
     /// Synchronously invokes a procedure that doesn't have a result object.
@@ -75,7 +138,7 @@ public class ConnectionMultiplexer : IConnection, IDisposable
     internal void Invoke(string service, string procedure, object[]? arguments = null)
     {
         CheckDisposed();
-        var result = AddToQueue(service, procedure, arguments);
+        var result = AddRpcRequestToQueue(service, procedure, arguments);
         result.WaitForCompletion(_disposalTokenSource.Token);
     }
     
@@ -90,7 +153,7 @@ public class ConnectionMultiplexer : IConnection, IDisposable
     internal TResponse Invoke<TResponse>(string service, string procedure, object[]? arguments = null)
     {
         CheckDisposed();
-        var result = AddToQueue<TResponse>(service, procedure, arguments);
+        var result = AddRpcRequestToQueue<TResponse>(service, procedure, arguments);
         return result.WaitForResult(_disposalTokenSource.Token);
     }
 
@@ -103,7 +166,7 @@ public class ConnectionMultiplexer : IConnection, IDisposable
     internal async Task InvokeAsync(string service, string procedure, object[]? arguments = null)
     {
         CheckDisposed();
-        var result = AddToQueue(service, procedure, arguments);
+        var result = AddRpcRequestToQueue(service, procedure, arguments);
         await result.WaitForCompletionAsync(_disposalTokenSource.Token);
     }
 
@@ -118,26 +181,26 @@ public class ConnectionMultiplexer : IConnection, IDisposable
     internal async Task<TResponse> InvokeAsync<TResponse>(string service, string procedure, object[]? arguments = null)
     {
         CheckDisposed();
-        var result = AddToQueue<TResponse>(service, procedure, arguments);
+        var result = AddRpcRequestToQueue<TResponse>(service, procedure, arguments);
         return await result.WaitForResultAsync(_disposalTokenSource.Token);
     }
 
-    private ProcedureResult<T> AddToQueue<T>(string service, string procedure, object[]? arguments = null)
+    private ProcedureResult<T> AddRpcRequestToQueue<T>(string service, string procedure, object[]? arguments = null)
     {
         // Set up the request and result object
-        var request = new ProcedureRequest(service, procedure, arguments, typeof(T));
+        var request = new ReturningProcedureRequest(typeof(T), service, procedure, arguments);
         var result = new ProcedureResult<T>();
 
         if (!_results.TryAdd(request.RequestId, result))
             throw new ProcedureException("Duplicate key in response dictionary");
         
         // Add the request to the queue
-        _requests.Add(request);
+        _rpcRequests.Add(request);
 
         return result;
     }
 
-    private ProcedureResult AddToQueue(string service, string procedure, object[]? arguments = null)
+    private ProcedureResult AddRpcRequestToQueue(string service, string procedure, object[]? arguments = null)
     {
         var request = new ProcedureRequest(service, procedure, arguments);
         var result = new ProcedureResult();
@@ -145,7 +208,38 @@ public class ConnectionMultiplexer : IConnection, IDisposable
         if (!_results.TryAdd(request.RequestId, result))
             throw new ProcedureException("Duplicate key in response dictionary");
         
-        _requests.Add(request);
+        _rpcRequests.Add(request);
+
+        return result;
+    }
+
+    private ProcedureResult<RemoteStream> AddNewStreamRequestToQueue<T>(Expression<Func<T>> expression, bool start)
+    {
+        var request = new AddStreamRequest(typeof(T), expression, start);
+        var result = new ProcedureResult<RemoteStream>();
+        
+        if (!_results.TryAdd(request.RequestId, result))
+            throw new ProcedureException("Duplicate key in response dictionary");
+        
+        _streamRequests.Add(request);
+
+        return result;
+    }
+
+    private ProcedureResult AddRemoveStreamRequestToQueue(ulong streamId)
+    {
+        var request = new RemoveStreamRequest(streamId);
+        return AddExistingStreamRequestToQueue(request);
+    }
+    
+    private ProcedureResult AddExistingStreamRequestToQueue(ExistingStreamRequest request)
+    {
+        var result = new ProcedureResult();
+        
+        if (!_results.TryAdd(request.RequestId, result))
+            throw new ProcedureException("Duplicate key in response dictionary");
+        
+        _streamRequests.Add(request);
 
         return result;
     }
