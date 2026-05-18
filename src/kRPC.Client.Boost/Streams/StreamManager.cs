@@ -159,7 +159,7 @@ internal static class StreamManager
                     // This is the first subscriber - re-initialise the stream
                     stream.InitialiseStream();
                     IdMap[stream.RemoteId!.Value] = key;
-                } 
+                }
             }
             else
             {

@@ -88,7 +88,8 @@ internal sealed class LocalStream<T> : LocalStream where T : class
             }
 
             value = Volatile.Read(ref _value) as TOut;
-            return true;
+
+            return value != null;
         }
         finally
         {
