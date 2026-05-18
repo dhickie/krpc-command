@@ -11,7 +11,7 @@ namespace kRPC.Client.Boost.Connection;
 /// A multiplexer that distributes requests among multiple connections to the kRPC server.
 /// This is the point of entry for clients wishing to interact with the server.
 /// </summary>
-public class ConnectionMultiplexer : IConnection, IDisposable
+public class ConnectionMultiplexer : IDisposable
 {
     private readonly StreamConnection _streamConnection;
     private readonly RpcConnection[] _rpcConnections;

@@ -25,7 +25,7 @@ namespace kRPC.Client.Boost.Connection
         /// <summary>
         /// Decode a value of the given type.
         /// </summary>
-        public static object Decode(ByteString value, Type type, IConnection client)
+        public static object Decode(ByteString value, Type type, ConnectionMultiplexer client)
         {
             if (ReferenceEquals(type, null))
                 throw new CodecException($"{nameof(type)} should not be null");
@@ -246,7 +246,7 @@ namespace kRPC.Client.Boost.Connection
                 IsAGenericType(type, typeof(Tuple<,,,,,,,>));
         }
 
-        private static object DecodeTuple(CodedInputStream stream, Type type, IConnection client)
+        private static object DecodeTuple(CodedInputStream stream, Type type, ConnectionMultiplexer client)
         {
             var encodedTuple = ParseEncodedStream(Schema.Tuple.Parser, stream);
             var genericArgs = type.GetGenericArguments();
@@ -271,7 +271,7 @@ namespace kRPC.Client.Boost.Connection
             return IsAGenericType(type, typeof(IList<>));
         }
 
-        private static object DecodeList(CodedInputStream stream, Type type, IConnection client)
+        private static object DecodeList(CodedInputStream stream, Type type, ConnectionMultiplexer client)
         {
             var constructor = GetGenericConstructor(type, typeof(List<>), true);
             var encodedList = ParseEncodedStream(Schema.List.Parser, stream);
@@ -290,7 +290,7 @@ namespace kRPC.Client.Boost.Connection
             return IsAGenericType(type, typeof(ISet<>));
         }
 
-        private static object DecodeSet(CodedInputStream stream, Type type, IConnection client)
+        private static object DecodeSet(CodedInputStream stream, Type type, ConnectionMultiplexer client)
         {
             var encodedSet = ParseEncodedStream(Schema.Set.Parser, stream);
             var constructor = GetGenericConstructor(type, typeof(HashSet<>), true);
@@ -313,7 +313,7 @@ namespace kRPC.Client.Boost.Connection
             return IsAGenericType(type, typeof(IDictionary<,>));
         }
 
-        private static object DecodeDictionary(CodedInputStream stream, Type type, IConnection client)
+        private static object DecodeDictionary(CodedInputStream stream, Type type, ConnectionMultiplexer client)
         {
             var encodedDictionary = ParseEncodedStream(Schema.Dictionary.Parser, stream);
             var constructor = GetGenericConstructor(type, typeof(Dictionary<,>), true);

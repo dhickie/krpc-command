@@ -13,7 +13,7 @@ namespace kRPC.Client.Boost.Connection;
 /// </summary>
 internal abstract class Connection : IDisposable
 {
-    private readonly IConnection _connection;
+    private readonly ConnectionMultiplexer _connection;
 
     private readonly object _connectionLock = new();
     private bool _disposed;
@@ -35,7 +35,7 @@ internal abstract class Connection : IDisposable
     /// </summary>
     /// <param name="connection">The top level connection object, for passing to decoded remote objects</param>
     /// <param name="config">The configuration of the connection</param>
-    protected Connection(IConnection connection, ConnectionConfig config)
+    protected Connection(ConnectionMultiplexer connection, ConnectionConfig config)
     {
         ArgumentOutOfRangeException.ThrowIfNegativeOrZero(config.RpcPort);
 

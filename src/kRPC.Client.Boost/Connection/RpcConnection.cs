@@ -15,7 +15,7 @@ internal class RpcConnection : PollingConnection<ProcedureRequest>
     /// <param name="config">The configuration for the connection</param>
     /// <param name="requestQueue">The queue of pending RPCs to invoke</param>
     /// <param name="responses">The collection of response objects</param>
-    public RpcConnection(IConnection connection, 
+    public RpcConnection(ConnectionMultiplexer connection, 
         ConnectionConfig config, 
         BlockingCollection<ProcedureRequest> requestQueue, 
         ConcurrentDictionary<string, ProcedureResult> responses)

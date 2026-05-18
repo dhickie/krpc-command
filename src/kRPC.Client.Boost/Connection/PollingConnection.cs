@@ -26,7 +26,7 @@ internal abstract class PollingConnection<TRequest> : Connection, IDisposable wh
     /// <param name="config">The configuration for the connection</param>
     /// <param name="requestQueue">The queue of requests for processing</param>
     /// <param name="responses">The collection of responses to pending requests</param>
-    protected PollingConnection(IConnection connection, 
+    protected PollingConnection(ConnectionMultiplexer connection, 
         ConnectionConfig config, 
         BlockingCollection<TRequest> requestQueue, 
         ConcurrentDictionary<string, ProcedureResult> responses)

@@ -16,7 +16,7 @@ namespace kRPC.Client.Boost.Connection;
 /// </summary>
 internal class StreamConnection : PollingConnection<StreamRequest>, IDisposable
 {
-    private readonly IConnection _connection;
+    private readonly ConnectionMultiplexer _connection;
     private readonly Thread _streamThread;
     
     private readonly TcpClient _streamClient;
@@ -37,7 +37,7 @@ internal class StreamConnection : PollingConnection<StreamRequest>, IDisposable
     /// <param name="config">The configuration for the connection</param>
     /// <param name="requestQueue">The queue of pending stream requests</param>
     /// <param name="responses">The collection of response objects</param>
-    public StreamConnection(IConnection connection,
+    public StreamConnection(ConnectionMultiplexer connection,
         ConnectionConfig config,
         BlockingCollection<StreamRequest> requestQueue,
         ConcurrentDictionary<string, ProcedureResult> responses)
