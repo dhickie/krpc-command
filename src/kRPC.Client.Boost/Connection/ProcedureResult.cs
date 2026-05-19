@@ -154,12 +154,12 @@ internal class ProcedureResult
 
     protected virtual void MarkCompleteImpl(object result)
     {
-        throw new NotImplementedException("Can't set the result of a procedure that doesn't return a result object");
+        throw new InvalidOperationException("Can't set the result of a procedure that doesn't return a result object");
     }
 
     protected virtual object GetResultImpl()
     {
-        throw new NotImplementedException("Can't get the result of a procedure that doesn't have a return object");
+        throw new InvalidOperationException("Can't get the result of a procedure that doesn't have a return object");
     }
     
     protected T GetResult<T>()
