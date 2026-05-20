@@ -2,7 +2,8 @@ using kRPC.Client.Boost.Extensions;
 using KRPC.Client.Services.SpaceCenter;
 using MathNet.Spatial.Euclidean;
 using MathNet.Spatial.Units;
-using BaseDockingPort = KRPC.Client.Services.SpaceCenter.DockingPort;
+using BaseDockingPort = kRPC.Client.Boost.Services.SpaceCenter.DockingPort;
+using DockingPortState = kRPC.Client.Boost.Services.SpaceCenter.DockingPortState;
 
 namespace kRPC.Client.Boost.Entities.VesselParts;
 

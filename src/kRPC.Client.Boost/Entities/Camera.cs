@@ -1,6 +1,7 @@
 using KRPC.Client.Services.SpaceCenter;
 using MathNet.Spatial.Units;
-using BaseCamera = KRPC.Client.Services.SpaceCenter.Camera;
+using BaseCamera = kRPC.Client.Boost.Services.SpaceCenter.Camera;
+using CameraMode = kRPC.Client.Boost.Services.SpaceCenter.CameraMode;
 
 namespace kRPC.Client.Boost.Entities;
 

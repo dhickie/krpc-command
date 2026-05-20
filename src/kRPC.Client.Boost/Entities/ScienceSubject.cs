@@ -1,4 +1,4 @@
-using BaseScienceSubject = KRPC.Client.Services.SpaceCenter.ScienceSubject;
+using BaseScienceSubject = kRPC.Client.Boost.Services.SpaceCenter.ScienceSubject;
 
 namespace kRPC.Client.Boost.Entities;
 

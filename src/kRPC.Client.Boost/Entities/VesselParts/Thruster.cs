@@ -1,7 +1,7 @@
 using kRPC.Client.Boost.Extensions;
 using MathNet.Spatial.Euclidean;
 using MathNet.Spatial.Units;
-using BaseThruster = KRPC.Client.Services.SpaceCenter.Thruster;
+using BaseThruster = kRPC.Client.Boost.Services.SpaceCenter.Thruster;
 
 namespace kRPC.Client.Boost.Entities.VesselParts;
 

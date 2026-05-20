@@ -1,4 +1,4 @@
-using BaseCommNode = KRPC.Client.Services.SpaceCenter.CommNode;
+using BaseCommNode = kRPC.Client.Boost.Services.SpaceCenter.CommNode;
 
 namespace kRPC.Client.Boost.Entities;
 

@@ -1,5 +1,6 @@
 using KRPC.Client.Services.SpaceCenter;
-using BaseResourceHarvester = KRPC.Client.Services.SpaceCenter.ResourceHarvester;
+using BaseResourceHarvester = kRPC.Client.Boost.Services.SpaceCenter.ResourceHarvester;
+using ResourceHarvesterState = kRPC.Client.Boost.Services.SpaceCenter.ResourceHarvesterState;
 
 namespace kRPC.Client.Boost.Entities.VesselParts;
 

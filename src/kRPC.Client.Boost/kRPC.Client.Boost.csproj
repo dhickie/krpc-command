@@ -4,6 +4,7 @@
     <TargetFramework>net10.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <RootNamespace>kRPC.Client.Boost</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

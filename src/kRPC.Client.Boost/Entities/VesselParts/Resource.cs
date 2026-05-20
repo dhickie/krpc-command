@@ -1,5 +1,6 @@
 using KRPC.Client.Services.SpaceCenter;
-using BaseResource = KRPC.Client.Services.SpaceCenter.Resource;
+using BaseResource = kRPC.Client.Boost.Services.SpaceCenter.Resource;
+using ResourceFlowMode = kRPC.Client.Boost.Services.SpaceCenter.ResourceFlowMode;
 
 namespace kRPC.Client.Boost.Entities.VesselParts;
 

@@ -1,6 +1,6 @@
 using kRPC.Client.Boost.Extensions;
 using MathNet.Spatial.Euclidean;
-using BaseRCS = KRPC.Client.Services.SpaceCenter.RCS;
+using BaseRCS = kRPC.Client.Boost.Services.SpaceCenter.RCS;
 
 namespace kRPC.Client.Boost.Entities.VesselParts;
 

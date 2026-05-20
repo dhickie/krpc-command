@@ -1,5 +1,10 @@
 using KRPC.Client.Services.SpaceCenter;
-using BaseControl = KRPC.Client.Services.SpaceCenter.Control;
+using BaseControl = kRPC.Client.Boost.Services.SpaceCenter.Control;
+using ControlInputMode = kRPC.Client.Boost.Services.SpaceCenter.ControlInputMode;
+using ControlSource = kRPC.Client.Boost.Services.SpaceCenter.ControlSource;
+using ControlState = kRPC.Client.Boost.Services.SpaceCenter.ControlState;
+using SASMode = kRPC.Client.Boost.Services.SpaceCenter.SASMode;
+using SpeedMode = kRPC.Client.Boost.Services.SpaceCenter.SpeedMode;
 
 namespace kRPC.Client.Boost.Entities;
 

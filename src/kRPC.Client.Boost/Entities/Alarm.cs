@@ -1,4 +1,4 @@
-using BaseAlarm = KRPC.Client.Services.SpaceCenter.Alarm;
+using BaseAlarm = kRPC.Client.Boost.Services.SpaceCenter.Alarm;
 
 namespace kRPC.Client.Boost.Entities;
 

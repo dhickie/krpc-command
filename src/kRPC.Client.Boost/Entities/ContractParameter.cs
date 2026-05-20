@@ -1,4 +1,4 @@
-using BaseContractParameter = KRPC.Client.Services.SpaceCenter.ContractParameter;
+using BaseContractParameter = kRPC.Client.Boost.Services.SpaceCenter.ContractParameter;
 
 namespace kRPC.Client.Boost.Entities;
 

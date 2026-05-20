@@ -1,0 +1,161 @@
+using Google.Protobuf;
+
+namespace kRPC.Client.Boost.Services.SpaceCenter;
+
+/// <summary>
+/// A robotic hinge. Obtained by calling <see cref="M:SpaceCenter.Part.RoboticHinge" />.
+/// </summary>
+public class RoboticHinge : global::KRPC.Client.RemoteObject
+{
+    /// <summary>
+    /// Construct an instance of this remote object. Should not be called directly. This interface is intended for internal decoding.
+    /// </summary>
+    public RoboticHinge (global::KRPC.Client.IConnection connection, UInt64 id) : base (connection, id)
+    {
+    }
+
+    /// <summary>
+    /// Move hinge to it's built position.
+    /// </summary>
+    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "RoboticHinge_MoveHome")]
+    public void MoveHome ()
+    {
+        var _args = new ByteString[] {
+            global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.RoboticHinge))
+        };
+        connection.Invoke ("SpaceCenter", "RoboticHinge_MoveHome", _args);
+    }
+
+    /// <summary>
+    /// Current angle.
+    /// </summary>
+    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "RoboticHinge_get_CurrentAngle")]
+    public float CurrentAngle {
+        get {
+            var _args = new ByteString[] {
+                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.RoboticHinge))
+            };
+            ByteString _data = connection.Invoke ("SpaceCenter", "RoboticHinge_get_CurrentAngle", _args);
+            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+        }
+    }
+
+    /// <summary>
+    /// Damping percentage.
+    /// </summary>
+    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "RoboticHinge_get_Damping")]
+    public float Damping {
+        get {
+            var _args = new ByteString[] {
+                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.RoboticHinge))
+            };
+            ByteString _data = connection.Invoke ("SpaceCenter", "RoboticHinge_get_Damping", _args);
+            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+        }
+        set {
+            var _args = new ByteString[] {
+                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.RoboticHinge)),
+                global::KRPC.Client.Encoder.Encode (value, typeof(float))
+            };
+            connection.Invoke ("SpaceCenter", "RoboticHinge_set_Damping", _args);
+        }
+    }
+
+    /// <summary>
+    /// Lock movement.
+    /// </summary>
+    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "RoboticHinge_get_Locked")]
+    public bool Locked {
+        get {
+            var _args = new ByteString[] {
+                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.RoboticHinge))
+            };
+            ByteString _data = connection.Invoke ("SpaceCenter", "RoboticHinge_get_Locked", _args);
+            return (bool)global::KRPC.Client.Encoder.Decode (_data, typeof(bool), connection);
+        }
+        set {
+            var _args = new ByteString[] {
+                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.RoboticHinge)),
+                global::KRPC.Client.Encoder.Encode (value, typeof(bool))
+            };
+            connection.Invoke ("SpaceCenter", "RoboticHinge_set_Locked", _args);
+        }
+    }
+
+    /// <summary>
+    /// Whether the motor is engaged.
+    /// </summary>
+    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "RoboticHinge_get_MotorEngaged")]
+    public bool MotorEngaged {
+        get {
+            var _args = new ByteString[] {
+                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.RoboticHinge))
+            };
+            ByteString _data = connection.Invoke ("SpaceCenter", "RoboticHinge_get_MotorEngaged", _args);
+            return (bool)global::KRPC.Client.Encoder.Decode (_data, typeof(bool), connection);
+        }
+        set {
+            var _args = new ByteString[] {
+                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.RoboticHinge)),
+                global::KRPC.Client.Encoder.Encode (value, typeof(bool))
+            };
+            connection.Invoke ("SpaceCenter", "RoboticHinge_set_MotorEngaged", _args);
+        }
+    }
+
+    /// <summary>
+    /// The part object for this robotic hinge.
+    /// </summary>
+    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "RoboticHinge_get_Part")]
+    public global::kRPC.Client.Boost.Services.SpaceCenter.Part Part {
+        get {
+            var _args = new ByteString[] {
+                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.RoboticHinge))
+            };
+            ByteString _data = connection.Invoke ("SpaceCenter", "RoboticHinge_get_Part", _args);
+            return (global::kRPC.Client.Boost.Services.SpaceCenter.Part)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Part), connection);
+        }
+    }
+
+    /// <summary>
+    /// Target movement rate in degrees per second.
+    /// </summary>
+    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "RoboticHinge_get_Rate")]
+    public float Rate {
+        get {
+            var _args = new ByteString[] {
+                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.RoboticHinge))
+            };
+            ByteString _data = connection.Invoke ("SpaceCenter", "RoboticHinge_get_Rate", _args);
+            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+        }
+        set {
+            var _args = new ByteString[] {
+                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.RoboticHinge)),
+                global::KRPC.Client.Encoder.Encode (value, typeof(float))
+            };
+            connection.Invoke ("SpaceCenter", "RoboticHinge_set_Rate", _args);
+        }
+    }
+
+    /// <summary>
+    /// Target angle.
+    /// </summary>
+    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "RoboticHinge_get_TargetAngle")]
+    public float TargetAngle {
+        get {
+            var _args = new ByteString[] {
+                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.RoboticHinge))
+            };
+            ByteString _data = connection.Invoke ("SpaceCenter", "RoboticHinge_get_TargetAngle", _args);
+            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+        }
+        set {
+            var _args = new ByteString[] {
+                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.RoboticHinge)),
+                global::KRPC.Client.Encoder.Encode (value, typeof(float))
+            };
+            connection.Invoke ("SpaceCenter", "RoboticHinge_set_TargetAngle", _args);
+        }
+    }
+}

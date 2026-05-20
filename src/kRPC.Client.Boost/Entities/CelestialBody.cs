@@ -1,7 +1,7 @@
 using kRPC.Client.Boost.Extensions;
 using MathNet.Spatial.Euclidean;
 using MathNet.Spatial.Units;
-using BaseCelestialBody = KRPC.Client.Services.SpaceCenter.CelestialBody;
+using BaseCelestialBody = kRPC.Client.Boost.Services.SpaceCenter.CelestialBody;
 
 namespace kRPC.Client.Boost.Entities;
 

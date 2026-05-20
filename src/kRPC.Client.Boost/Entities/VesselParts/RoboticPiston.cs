@@ -1,5 +1,5 @@
 using MathNet.Spatial.Units;
-using BaseRoboticPiston = KRPC.Client.Services.SpaceCenter.RoboticPiston;
+using BaseRoboticPiston = kRPC.Client.Boost.Services.SpaceCenter.RoboticPiston;
 
 namespace kRPC.Client.Boost.Entities.VesselParts;
 

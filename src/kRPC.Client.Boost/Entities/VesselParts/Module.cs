@@ -1,4 +1,4 @@
-using BaseModule = KRPC.Client.Services.SpaceCenter.Module;
+using BaseModule = kRPC.Client.Boost.Services.SpaceCenter.Module;
 
 namespace kRPC.Client.Boost.Entities.VesselParts;
 

@@ -1,4 +1,4 @@
-using BaseExperiment = KRPC.Client.Services.SpaceCenter.Experiment;
+using BaseExperiment = kRPC.Client.Boost.Services.SpaceCenter.Experiment;
 
 namespace kRPC.Client.Boost.Entities.VesselParts;
 

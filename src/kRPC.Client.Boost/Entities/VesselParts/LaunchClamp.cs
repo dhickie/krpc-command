@@ -1,4 +1,4 @@
-using BaseLaunchClamp = KRPC.Client.Services.SpaceCenter.LaunchClamp;
+using BaseLaunchClamp = kRPC.Client.Boost.Services.SpaceCenter.LaunchClamp;
 
 namespace kRPC.Client.Boost.Entities.VesselParts;
 

@@ -1,5 +1,5 @@
 using MathNet.Spatial.Units;
-using BaseRoboticHinge = KRPC.Client.Services.SpaceCenter.RoboticHinge;
+using BaseRoboticHinge = kRPC.Client.Boost.Services.SpaceCenter.RoboticHinge;
 
 namespace kRPC.Client.Boost.Entities.VesselParts;
 

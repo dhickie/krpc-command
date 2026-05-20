@@ -1,5 +1,5 @@
 using KRPC.Client;
-using BaseResourceTransfer = KRPC.Client.Services.SpaceCenter.ResourceTransfer;
+using BaseResourceTransfer = kRPC.Client.Boost.Services.SpaceCenter.ResourceTransfer;
 
 namespace kRPC.Client.Boost.Entities.VesselParts;
 

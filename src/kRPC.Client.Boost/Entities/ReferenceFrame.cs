@@ -1,7 +1,7 @@
 using KRPC.Client;
 using kRPC.Client.Boost.Extensions;
 using MathNet.Spatial.Euclidean;
-using BaseReferenceFrame = KRPC.Client.Services.SpaceCenter.ReferenceFrame;
+using BaseReferenceFrame = kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame;
 
 namespace kRPC.Client.Boost.Entities;
 

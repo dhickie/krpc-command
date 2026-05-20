@@ -1,5 +1,6 @@
 using KRPC.Client.Services.SpaceCenter;
-using BaseContract = KRPC.Client.Services.SpaceCenter.Contract;
+using BaseContract = kRPC.Client.Boost.Services.SpaceCenter.Contract;
+using ContractState = kRPC.Client.Boost.Services.SpaceCenter.ContractState;
 
 namespace kRPC.Client.Boost.Entities;
 

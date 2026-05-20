@@ -1,5 +1,5 @@
 using MathNet.Spatial.Units;
-using BaseRoboticRotation = KRPC.Client.Services.SpaceCenter.RoboticRotation;
+using BaseRoboticRotation = kRPC.Client.Boost.Services.SpaceCenter.RoboticRotation;
 
 namespace kRPC.Client.Boost.Entities.VesselParts;
 

@@ -3,7 +3,8 @@ using kRPC.Client.Boost.Measurements;
 using KRPC.Client.Services.SpaceCenter;
 using MathNet.Spatial.Euclidean;
 using MathNet.Spatial.Units;
-using BaseAutoPilot = KRPC.Client.Services.SpaceCenter.AutoPilot;
+using BaseAutoPilot = kRPC.Client.Boost.Services.SpaceCenter.AutoPilot;
+using SASMode = kRPC.Client.Boost.Services.SpaceCenter.SASMode;
 
 namespace kRPC.Client.Boost.Entities;
 

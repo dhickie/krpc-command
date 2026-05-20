@@ -1,5 +1,6 @@
 using KRPC.Client.Services.SpaceCenter;
-using BaseRadiator = KRPC.Client.Services.SpaceCenter.Radiator;
+using BaseRadiator = kRPC.Client.Boost.Services.SpaceCenter.Radiator;
+using RadiatorState = kRPC.Client.Boost.Services.SpaceCenter.RadiatorState;
 
 namespace kRPC.Client.Boost.Entities.VesselParts;
 

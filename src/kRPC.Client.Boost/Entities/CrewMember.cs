@@ -1,5 +1,9 @@
 using KRPC.Client.Services.SpaceCenter;
-using BaseCrewMember = KRPC.Client.Services.SpaceCenter.CrewMember;
+using BaseCrewMember = kRPC.Client.Boost.Services.SpaceCenter.CrewMember;
+using CrewMemberGender = kRPC.Client.Boost.Services.SpaceCenter.CrewMemberGender;
+using CrewMemberType = kRPC.Client.Boost.Services.SpaceCenter.CrewMemberType;
+using RosterStatus = kRPC.Client.Boost.Services.SpaceCenter.RosterStatus;
+using SuitType = kRPC.Client.Boost.Services.SpaceCenter.SuitType;
 
 namespace kRPC.Client.Boost.Entities;
 

@@ -1,4 +1,4 @@
-using BaseDecoupler = KRPC.Client.Services.SpaceCenter.Decoupler;
+using BaseDecoupler = kRPC.Client.Boost.Services.SpaceCenter.Decoupler;
 
 namespace kRPC.Client.Boost.Entities.VesselParts;
 

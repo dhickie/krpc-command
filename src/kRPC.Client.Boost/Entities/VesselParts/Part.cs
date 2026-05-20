@@ -1,7 +1,8 @@
 using kRPC.Client.Boost.Extensions;
 using KRPC.Client.Services.SpaceCenter;
 using MathNet.Spatial.Euclidean;
-using BasePart = KRPC.Client.Services.SpaceCenter.Part;
+using AutoStrutMode = kRPC.Client.Boost.Services.SpaceCenter.AutoStrutMode;
+using BasePart = kRPC.Client.Boost.Services.SpaceCenter.Part;
 
 namespace kRPC.Client.Boost.Entities.VesselParts;
 

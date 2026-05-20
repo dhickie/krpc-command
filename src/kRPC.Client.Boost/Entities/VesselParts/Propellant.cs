@@ -1,4 +1,4 @@
-using BasePropellant = KRPC.Client.Services.SpaceCenter.Propellant;
+using BasePropellant = kRPC.Client.Boost.Services.SpaceCenter.Propellant;
 
 namespace kRPC.Client.Boost.Entities.VesselParts;
 

@@ -1,5 +1,6 @@
 using KRPC.Client.Services.SpaceCenter;
-using BaseResourceConverter = KRPC.Client.Services.SpaceCenter.ResourceConverter;
+using BaseResourceConverter = kRPC.Client.Boost.Services.SpaceCenter.ResourceConverter;
+using ResourceConverterState = kRPC.Client.Boost.Services.SpaceCenter.ResourceConverterState;
 
 namespace kRPC.Client.Boost.Entities.VesselParts;
 

@@ -1,4 +1,4 @@
-using BaseSensor = KRPC.Client.Services.SpaceCenter.Sensor;
+using BaseSensor = kRPC.Client.Boost.Services.SpaceCenter.Sensor;
 
 namespace kRPC.Client.Boost.Entities.VesselParts;
 

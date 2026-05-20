@@ -1,4 +1,4 @@
-using BaseLight = KRPC.Client.Services.SpaceCenter.Light;
+using BaseLight = kRPC.Client.Boost.Services.SpaceCenter.Light;
 
 namespace kRPC.Client.Boost.Entities.VesselParts;
 

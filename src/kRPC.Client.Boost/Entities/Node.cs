@@ -1,6 +1,6 @@
 using kRPC.Client.Boost.Extensions;
 using MathNet.Spatial.Euclidean;
-using BaseNode = KRPC.Client.Services.SpaceCenter.Node;
+using BaseNode = kRPC.Client.Boost.Services.SpaceCenter.Node;
 
 namespace kRPC.Client.Boost.Entities;
 

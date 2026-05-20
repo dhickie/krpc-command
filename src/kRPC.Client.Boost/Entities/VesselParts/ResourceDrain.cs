@@ -1,5 +1,6 @@
 using KRPC.Client.Services.SpaceCenter;
-using BaseResourceDrain = KRPC.Client.Services.SpaceCenter.ResourceDrain;
+using BaseResourceDrain = kRPC.Client.Boost.Services.SpaceCenter.ResourceDrain;
+using DrainMode = kRPC.Client.Boost.Services.SpaceCenter.DrainMode;
 
 namespace kRPC.Client.Boost.Entities.VesselParts;
 

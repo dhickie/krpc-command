@@ -1,6 +1,6 @@
 using kRPC.Client.Boost.Extensions;
 using MathNet.Spatial.Euclidean;
-using BaseReactionWheel = KRPC.Client.Services.SpaceCenter.ReactionWheel;
+using BaseReactionWheel = kRPC.Client.Boost.Services.SpaceCenter.ReactionWheel;
 
 namespace kRPC.Client.Boost.Entities.VesselParts;
 

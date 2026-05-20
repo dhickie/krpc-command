@@ -1,4 +1,4 @@
-using BaseContractManager = KRPC.Client.Services.SpaceCenter.ContractManager;
+using BaseContractManager = kRPC.Client.Boost.Services.SpaceCenter.ContractManager;
 
 namespace kRPC.Client.Boost.Entities;
 

@@ -1,4 +1,4 @@
-using BaseIntake = KRPC.Client.Services.SpaceCenter.Intake;
+using BaseIntake = kRPC.Client.Boost.Services.SpaceCenter.Intake;
 
 namespace kRPC.Client.Boost.Entities.VesselParts;
 

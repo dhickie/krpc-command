@@ -1,4 +1,4 @@
-using BaseWaypointManager = KRPC.Client.Services.SpaceCenter.WaypointManager;
+using BaseWaypointManager = kRPC.Client.Boost.Services.SpaceCenter.WaypointManager;
 
 namespace kRPC.Client.Boost.Entities;
 

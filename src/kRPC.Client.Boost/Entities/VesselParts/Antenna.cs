@@ -1,5 +1,6 @@
 using KRPC.Client.Services.SpaceCenter;
-using BaseAntenna = KRPC.Client.Services.SpaceCenter.Antenna;
+using AntennaState = kRPC.Client.Boost.Services.SpaceCenter.AntennaState;
+using BaseAntenna = kRPC.Client.Boost.Services.SpaceCenter.Antenna;
 
 namespace kRPC.Client.Boost.Entities.VesselParts;
 

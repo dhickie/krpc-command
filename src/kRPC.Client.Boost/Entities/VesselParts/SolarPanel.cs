@@ -1,5 +1,6 @@
 using KRPC.Client.Services.SpaceCenter;
-using BaseSolarPanel = KRPC.Client.Services.SpaceCenter.SolarPanel;
+using BaseSolarPanel = kRPC.Client.Boost.Services.SpaceCenter.SolarPanel;
+using SolarPanelState = kRPC.Client.Boost.Services.SpaceCenter.SolarPanelState;
 
 namespace kRPC.Client.Boost.Entities.VesselParts;
 

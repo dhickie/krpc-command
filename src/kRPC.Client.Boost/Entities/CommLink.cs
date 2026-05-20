@@ -1,5 +1,6 @@
 using KRPC.Client.Services.SpaceCenter;
-using BaseCommLink = KRPC.Client.Services.SpaceCenter.CommLink;
+using BaseCommLink = kRPC.Client.Boost.Services.SpaceCenter.CommLink;
+using CommLinkType = kRPC.Client.Boost.Services.SpaceCenter.CommLinkType;
 
 namespace kRPC.Client.Boost.Entities;
 

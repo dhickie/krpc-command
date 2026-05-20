@@ -1,5 +1,6 @@
 using KRPC.Client.Services.SpaceCenter;
-using BaseLaunchSite = KRPC.Client.Services.SpaceCenter.LaunchSite;
+using BaseLaunchSite = kRPC.Client.Boost.Services.SpaceCenter.LaunchSite;
+using EditorFacility = kRPC.Client.Boost.Services.SpaceCenter.EditorFacility;
 
 namespace kRPC.Client.Boost.Entities;
 

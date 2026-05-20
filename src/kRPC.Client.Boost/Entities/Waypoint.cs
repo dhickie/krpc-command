@@ -1,4 +1,4 @@
-using BaseWaypoint = KRPC.Client.Services.SpaceCenter.Waypoint;
+using BaseWaypoint = kRPC.Client.Boost.Services.SpaceCenter.Waypoint;
 
 namespace kRPC.Client.Boost.Entities;
 

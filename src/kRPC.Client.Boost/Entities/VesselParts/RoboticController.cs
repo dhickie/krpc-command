@@ -1,4 +1,4 @@
-using BaseRoboticController = KRPC.Client.Services.SpaceCenter.RoboticController;
+using BaseRoboticController = kRPC.Client.Boost.Services.SpaceCenter.RoboticController;
 
 namespace kRPC.Client.Boost.Entities.VesselParts;
 

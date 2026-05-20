@@ -1,9 +1,11 @@
 using kRPC.Client.Boost.Extensions;
 using KRPC.Client.Services.SpaceCenter;
 using MathNet.Spatial.Euclidean;
-using BaseVessel = KRPC.Client.Services.SpaceCenter.Vessel;
+using BaseVessel = kRPC.Client.Boost.Services.SpaceCenter.Vessel;
 using Parts = kRPC.Client.Boost.Entities.VesselParts.Parts;
 using Resources = kRPC.Client.Boost.Entities.VesselParts.Resources;
+using VesselSituation = kRPC.Client.Boost.Services.SpaceCenter.VesselSituation;
+using VesselType = kRPC.Client.Boost.Services.SpaceCenter.VesselType;
 
 namespace kRPC.Client.Boost.Entities;
 

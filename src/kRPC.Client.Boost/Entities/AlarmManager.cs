@@ -1,4 +1,4 @@
-using BaseAlarmManager = KRPC.Client.Services.SpaceCenter.AlarmManager;
+using BaseAlarmManager = kRPC.Client.Boost.Services.SpaceCenter.AlarmManager;
 
 namespace kRPC.Client.Boost.Entities;
 

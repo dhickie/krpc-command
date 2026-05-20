@@ -2,7 +2,7 @@ using KRPC.Client;
 using kRPC.Client.Boost.Extensions;
 using MathNet.Spatial.Euclidean;
 using MathNet.Spatial.Units;
-using BaseOrbit = KRPC.Client.Services.SpaceCenter.Orbit;
+using BaseOrbit = kRPC.Client.Boost.Services.SpaceCenter.Orbit;
 
 namespace kRPC.Client.Boost.Entities;
 

@@ -1,4 +1,4 @@
-using BaseFairing = KRPC.Client.Services.SpaceCenter.Fairing;
+using BaseFairing = kRPC.Client.Boost.Services.SpaceCenter.Fairing;
 
 namespace kRPC.Client.Boost.Entities.VesselParts;
 

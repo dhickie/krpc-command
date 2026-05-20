@@ -1,6 +1,8 @@
 using KRPC.Client.Services.SpaceCenter;
 using MathNet.Spatial.Units;
-using BaseWheel = KRPC.Client.Services.SpaceCenter.Wheel;
+using BaseWheel = kRPC.Client.Boost.Services.SpaceCenter.Wheel;
+using MotorState = kRPC.Client.Boost.Services.SpaceCenter.MotorState;
+using WheelState = kRPC.Client.Boost.Services.SpaceCenter.WheelState;
 
 namespace kRPC.Client.Boost.Entities.VesselParts;
 

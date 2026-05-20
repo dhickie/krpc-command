@@ -1,7 +1,7 @@
 using kRPC.Client.Boost.Extensions;
 using MathNet.Spatial.Euclidean;
 using MathNet.Spatial.Units;
-using BaseFlight = KRPC.Client.Services.SpaceCenter.Flight;
+using BaseFlight = kRPC.Client.Boost.Services.SpaceCenter.Flight;
 
 namespace kRPC.Client.Boost.Entities;
 

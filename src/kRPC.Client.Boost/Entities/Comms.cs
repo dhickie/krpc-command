@@ -1,4 +1,4 @@
-using BaseComms = KRPC.Client.Services.SpaceCenter.Comms;
+using BaseComms = kRPC.Client.Boost.Services.SpaceCenter.Comms;
 
 namespace kRPC.Client.Boost.Entities;
 

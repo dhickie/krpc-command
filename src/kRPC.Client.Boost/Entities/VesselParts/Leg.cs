@@ -1,5 +1,6 @@
 using KRPC.Client.Services.SpaceCenter;
-using BaseLeg = KRPC.Client.Services.SpaceCenter.Leg;
+using BaseLeg = kRPC.Client.Boost.Services.SpaceCenter.Leg;
+using LegState = kRPC.Client.Boost.Services.SpaceCenter.LegState;
 
 namespace kRPC.Client.Boost.Entities.VesselParts;
 

@@ -1,5 +1,6 @@
 using KRPC.Client.Services.SpaceCenter;
-using BaseCargoBay = KRPC.Client.Services.SpaceCenter.CargoBay;
+using BaseCargoBay = kRPC.Client.Boost.Services.SpaceCenter.CargoBay;
+using CargoBayState = kRPC.Client.Boost.Services.SpaceCenter.CargoBayState;
 
 namespace kRPC.Client.Boost.Entities.VesselParts;
 

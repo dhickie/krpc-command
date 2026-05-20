@@ -1,6 +1,6 @@
 using kRPC.Client.Boost.Extensions;
 using MathNet.Spatial.Euclidean;
-using BaseForce = KRPC.Client.Services.SpaceCenter.Force;
+using BaseForce = kRPC.Client.Boost.Services.SpaceCenter.Force;
 
 namespace kRPC.Client.Boost.Entities.VesselParts;
 

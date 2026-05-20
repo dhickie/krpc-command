@@ -1,5 +1,6 @@
 using KRPC.Client.Services.SpaceCenter;
-using BaseParachute = KRPC.Client.Services.SpaceCenter.Parachute;
+using BaseParachute = kRPC.Client.Boost.Services.SpaceCenter.Parachute;
+using ParachuteState = kRPC.Client.Boost.Services.SpaceCenter.ParachuteState;
 
 namespace kRPC.Client.Boost.Entities.VesselParts;
 
