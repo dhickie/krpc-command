@@ -58,7 +58,8 @@ internal class ProcedureResult
 {
     private Exception? _error;
     private readonly Type? _resultType;
-    private readonly SemaphoreSlim _resultLock = new(0, 1);
+    private readonly TaskCompletionSource _completionTcs = new(); // Used for waiting asynchronously
+    private readonly ManualResetEventSlim _completionEvent = new(); // Used for waiting synchronously
 
     /// <summary>
     /// Creates a pending procedure result for a procedure that doesn't return a result object.
@@ -100,7 +101,8 @@ internal class ProcedureResult
             MarkCompleteImpl(result); // Set the result
         }
         
-        _resultLock.Release(); // Let other threads know the result is ready
+        _completionEvent.Set(); // Let other threads know the result is ready
+        _completionTcs.SetResult();
     }
 
     /// <summary>
@@ -110,7 +112,8 @@ internal class ProcedureResult
     public void MarkFaulted(Exception error)
     {
         _error = error;
-        _resultLock.Release();
+        _completionEvent.Set();
+        _completionTcs.SetException(error);
     }
 
     /// <summary>
@@ -119,7 +122,7 @@ internal class ProcedureResult
     /// <param name="ct">The cancellation token for the wait operation</param>
     public void WaitForCompletion(CancellationToken ct)
     {
-        _resultLock.Wait(ct);
+        _completionEvent.Wait(ct);
 
         if (_error != null)
             throw _error;
@@ -131,10 +134,8 @@ internal class ProcedureResult
     /// <param name="ct">The cancellation token for the wait operation</param>
     public async Task WaitForCompletionAsync(CancellationToken ct)
     {
-        await _resultLock.WaitAsync(ct);
-        
-        if (_error != null)
-            throw _error;
+        ct.Register(() => _completionTcs.TrySetCanceled());
+        await _completionTcs.Task;
     }
 
     protected T WaitForResult<T>(CancellationToken ct)
@@ -164,7 +165,7 @@ internal class ProcedureResult
     
     protected T GetResult<T>()
     {
-        if (_resultLock.CurrentCount == 0)
+        if (!_completionTcs.Task.IsCompleted)
             throw new InvalidOperationException("Can't get the result of a procedure that hasn't completed yet");
 
         if (typeof(T) != _resultType)
