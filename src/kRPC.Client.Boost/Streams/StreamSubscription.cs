@@ -23,7 +23,7 @@ public sealed class StreamSubscription : IDisposable
     public StreamSubscription(params LambdaExpression[] expressions)
     {
         if (expressions.Any(e => !IsValidExpressionType(e)))
-            throw new ArgumentException("Expressions must be a LambdaExpression or Expression<Func<T>>");
+            throw new ArgumentException("Expressions must be an Expression<Func<T>> that calls a single function with no chaining and no parameters");
 
         foreach (var expression in expressions)
         {
@@ -44,25 +44,28 @@ public sealed class StreamSubscription : IDisposable
         }
     }
 
-    private bool IsValidExpressionType(Expression expression)
+    private bool IsValidExpressionType(LambdaExpression expression)
     {
-        if (expression is not LambdaExpression le)
-            return false;
-        
-        return le.Type.IsGenericType &&
-               le.Type.GetGenericTypeDefinition() == typeof(Func<>) &&
-               le.Parameters.Count == 0;
+        return expression.Type.IsGenericType &&
+               expression.Type.GetGenericTypeDefinition() == typeof(Func<>) &&
+               expression.Parameters.Count == 0 &&
+               expression.Body.GetType() == typeof(MethodCallExpression);
     }
     
     private void AddSubscription(LambdaExpression expression)
     {
+        var methodCallExpression = expression.Body as MethodCallExpression;
+        var returnType = methodCallExpression!.Method.ReturnType;
+        var addMethod = _addSubscription.MakeGenericMethod(returnType);
+        
         var key = GetStreamKey(expression);
         _managedKeys.Add(key);
-        _addSubscription.Invoke(null, [key, expression]);
+        addMethod.Invoke(null, [key, expression]);
     }
 
     private string GetStreamKey(LambdaExpression expression)
     {
+        // TODO implement this when we have attributes indicating procedure names
         throw new NotImplementedException();
     }
 }

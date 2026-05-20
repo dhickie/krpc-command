@@ -2,6 +2,8 @@ using System.Collections;
 using System.Reflection;
 using Google.Protobuf;
 using kRPC.Client.Boost.Exceptions;
+using kRPC.Client.Boost.Services;
+using kRPC.Client.Boost.Services.KRPC.RemoteObjects;
 using Type = System.Type;
 
 namespace kRPC.Client.Boost.Connection
@@ -25,7 +27,7 @@ namespace kRPC.Client.Boost.Connection
         /// <summary>
         /// Decode a value of the given type.
         /// </summary>
-        public static object Decode(ByteString value, Type type, IConnection client)
+        public static object Decode(ByteString value, Type type, ConnectionMultiplexer client)
         {
             if (ReferenceEquals(type, null))
                 throw new CodecException($"{nameof(type)} should not be null");
@@ -61,9 +63,11 @@ namespace kRPC.Client.Boost.Connection
                 if (client == null)
                     throw new ArgumentException("Client not passed when decoding remote object");
 
-                throw new NotImplementedException();
-                //var id = stream.ReadUInt64(); TODO sort this out when we have a base class for remote types
-                //return id == 0 ? null : (RemoteObject)Activator.CreateInstance(type, client, id);
+                var id = stream.ReadUInt64();
+                var instance = id != 0
+                    ? Activator.CreateInstance(type, id, client)
+                    : null;
+                return instance ?? throw new CodecException($"Failed to create remote object of type {type.Name}");
             }
 
             if (IsATupleType(type))
@@ -82,7 +86,7 @@ namespace kRPC.Client.Boost.Connection
                 return message;
             }
 
-            //if (type != typeof(Event)) TODO sort this when we have a base class for remote types
+            //if (type != typeof(Event)) TODO sort this when we have an event type
             //    throw new ArgumentException(type + " is not a serializable type");
             
             var @event = new Schema.Event();
@@ -97,8 +101,8 @@ namespace kRPC.Client.Boost.Connection
                 throw new CodecException("Value of type " + value.GetType() + " cannot be encoded to type " + type);
             switch (value)
             {
-                //case null when !type.IsSubclassOf(typeof(RemoteObject)) && !IsACollectionType(type):
-                //    throw new ArgumentException("null cannot be encoded to type " + type); TODO sort this out when we have a base class for remote objects
+                case null when !IsAClassType(type) && !IsACollectionType(type):
+                    throw new ArgumentException($"Null cannot be encoded to type {type}");
                 case null:
                     stream.WriteUInt64(0);
                     break;
@@ -135,8 +139,8 @@ namespace kRPC.Client.Boost.Connection
                         default:
                             if (type == typeof(byte[]))
                                 stream.WriteBytes(ByteString.CopyFrom((byte[])value));
-                            //else if (IsAClassType(type))
-                                // stream.WriteUInt64(((RemoteObject)value).id); TODO fix this once we have a base type for remote objects
+                            else if (IsAClassType(type))
+                                stream.WriteUInt64(((RemoteObject)value).Id);
                             else if (IsATupleType(type))
                                 WriteTuple(value, type, buffer);
                             else if (IsAListType(type))
@@ -233,6 +237,11 @@ namespace kRPC.Client.Boost.Connection
             encodedDictionary.WriteTo(stream);
         }
         
+        private static bool IsACollectionType(Type type)
+        {
+            return IsATupleType(type) || IsAListType(type) || IsASetType(type) || IsADictionaryType(type);
+        }
+        
         private static bool IsATupleType(Type type)
         {
             return
@@ -246,7 +255,7 @@ namespace kRPC.Client.Boost.Connection
                 IsAGenericType(type, typeof(Tuple<,,,,,,,>));
         }
 
-        private static object DecodeTuple(CodedInputStream stream, Type type, IConnection client)
+        private static object DecodeTuple(CodedInputStream stream, Type type, ConnectionMultiplexer client)
         {
             var encodedTuple = ParseEncodedStream(Schema.Tuple.Parser, stream);
             var genericArgs = type.GetGenericArguments();
@@ -271,7 +280,7 @@ namespace kRPC.Client.Boost.Connection
             return IsAGenericType(type, typeof(IList<>));
         }
 
-        private static object DecodeList(CodedInputStream stream, Type type, IConnection client)
+        private static object DecodeList(CodedInputStream stream, Type type, ConnectionMultiplexer client)
         {
             var constructor = GetGenericConstructor(type, typeof(List<>), true);
             var encodedList = ParseEncodedStream(Schema.List.Parser, stream);
@@ -290,7 +299,7 @@ namespace kRPC.Client.Boost.Connection
             return IsAGenericType(type, typeof(ISet<>));
         }
 
-        private static object DecodeSet(CodedInputStream stream, Type type, IConnection client)
+        private static object DecodeSet(CodedInputStream stream, Type type, ConnectionMultiplexer client)
         {
             var encodedSet = ParseEncodedStream(Schema.Set.Parser, stream);
             var constructor = GetGenericConstructor(type, typeof(HashSet<>), true);
@@ -313,7 +322,7 @@ namespace kRPC.Client.Boost.Connection
             return IsAGenericType(type, typeof(IDictionary<,>));
         }
 
-        private static object DecodeDictionary(CodedInputStream stream, Type type, IConnection client)
+        private static object DecodeDictionary(CodedInputStream stream, Type type, ConnectionMultiplexer client)
         {
             var encodedDictionary = ParseEncodedStream(Schema.Dictionary.Parser, stream);
             var constructor = GetGenericConstructor(type, typeof(Dictionary<,>), true);
@@ -349,8 +358,7 @@ namespace kRPC.Client.Boost.Connection
 
         private static bool IsAClassType(Type type)
         {
-            // TODO need to implement this by determining what the base class of remote objects is going to be
-            throw new NotImplementedException();
+            return type.IsSubclassOf(typeof(RemoteObject));
         }
 
         private static bool IsAMessageType(Type type)
