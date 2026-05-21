@@ -81,6 +81,7 @@ public class Force : RemoteObject
     /// Sets the force vector, in Newtons.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Force_set_ForceVector")]
     public void SetForceVector(Vector3D value)
     {
         var args = new object[]
@@ -96,6 +97,7 @@ public class Force : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Force_set_ForceVector")]
     public async Task SetForceVectorAsync(Vector3D value)
     {
         var args = new object[]
@@ -166,6 +168,7 @@ public class Force : RemoteObject
     /// Sets the position at which the force acts, in reference frame <see cref="T:SpaceCenter.ReferenceFrame" />.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Force_set_Position")]
     public void SetPosition(Vector3D value)
     {
         var args = new object[]
@@ -181,6 +184,7 @@ public class Force : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Force_set_Position")]
     public async Task SetPositionAsync(Vector3D value)
     {
         var args = new object[]
@@ -222,6 +226,7 @@ public class Force : RemoteObject
     /// Sets the reference frame of the force vector and position.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Force_set_ReferenceFrame")]
     public void SetReferenceFrame(ReferenceFrame value)
     {
         var args = new object[]
@@ -237,6 +242,7 @@ public class Force : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Force_set_ReferenceFrame")]
     public async Task SetReferenceFrameAsync(ReferenceFrame value)
     {
         var args = new object[]

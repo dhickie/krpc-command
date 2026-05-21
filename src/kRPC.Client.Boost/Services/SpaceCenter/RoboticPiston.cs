@@ -103,6 +103,7 @@ public class RoboticPiston : RemoteObject
     /// Sets the damping percentage.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "RoboticPiston_set_Damping")]
     public void SetDamping(float value)
     {
         var args = new object[]
@@ -118,6 +119,7 @@ public class RoboticPiston : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "RoboticPiston_set_Damping")]
     public async Task SetDampingAsync(float value)
     {
         var args = new object[]
@@ -159,6 +161,7 @@ public class RoboticPiston : RemoteObject
     /// Sets whether movement is locked.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "RoboticPiston_set_Locked")]
     public void SetLocked(bool value)
     {
         var args = new object[]
@@ -174,6 +177,7 @@ public class RoboticPiston : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "RoboticPiston_set_Locked")]
     public async Task SetLockedAsync(bool value)
     {
         var args = new object[]
@@ -215,6 +219,7 @@ public class RoboticPiston : RemoteObject
     /// Sets whether the motor is engaged.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "RoboticPiston_set_MotorEngaged")]
     public void SetMotorEngaged(bool value)
     {
         var args = new object[]
@@ -230,6 +235,7 @@ public class RoboticPiston : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "RoboticPiston_set_MotorEngaged")]
     public async Task SetMotorEngagedAsync(bool value)
     {
         var args = new object[]
@@ -300,6 +306,7 @@ public class RoboticPiston : RemoteObject
     /// Sets the target movement rate as an angle per second.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "RoboticPiston_set_Rate")]
     public void SetRate(Angle value)
     {
         var args = new object[]
@@ -315,6 +322,7 @@ public class RoboticPiston : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "RoboticPiston_set_Rate")]
     public async Task SetRateAsync(Angle value)
     {
         var args = new object[]
@@ -356,6 +364,7 @@ public class RoboticPiston : RemoteObject
     /// Sets the target extension of the piston.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "RoboticPiston_set_TargetExtension")]
     public void SetTargetExtension(float value)
     {
         var args = new object[]
@@ -371,6 +380,7 @@ public class RoboticPiston : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "RoboticPiston_set_TargetExtension")]
     public async Task SetTargetExtensionAsync(float value)
     {
         var args = new object[]

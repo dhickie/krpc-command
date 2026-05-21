@@ -48,6 +48,7 @@ public class Sensor : RemoteObject
     /// Sets whether the sensor is active.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Sensor_set_Active")]
     public void SetActive(bool value)
     {
         var args = new object[]
@@ -63,6 +64,7 @@ public class Sensor : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Sensor_set_Active")]
     public async Task SetActiveAsync(bool value)
     {
         var args = new object[]

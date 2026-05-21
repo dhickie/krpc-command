@@ -49,6 +49,7 @@ public class Light : RemoteObject
     /// Sets whether the light is switched on.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Light_set_Active")]
     public void SetActive(bool value)
     {
         var args = new object[]
@@ -64,6 +65,7 @@ public class Light : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Light_set_Active")]
     public async Task SetActiveAsync(bool value)
     {
         var args = new object[]
@@ -105,6 +107,7 @@ public class Light : RemoteObject
     /// Sets whether blinking is enabled.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Light_set_Blink")]
     public void SetBlink(bool value)
     {
         var args = new object[]
@@ -120,6 +123,7 @@ public class Light : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Light_set_Blink")]
     public async Task SetBlinkAsync(bool value)
     {
         var args = new object[]
@@ -161,6 +165,7 @@ public class Light : RemoteObject
     /// Sets the blink rate of the light.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Light_set_BlinkRate")]
     public void SetBlinkRate(float value)
     {
         var args = new object[]
@@ -176,6 +181,7 @@ public class Light : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Light_set_BlinkRate")]
     public async Task SetBlinkRateAsync(float value)
     {
         var args = new object[]
@@ -217,6 +223,7 @@ public class Light : RemoteObject
     /// Sets the color of the light, as an RGB triple.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Light_set_Color")]
     public void SetColor(Tuple<float,float,float> value)
     {
         var args = new object[]
@@ -232,6 +239,7 @@ public class Light : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Light_set_Color")]
     public async Task SetColorAsync(Tuple<float,float,float> value)
     {
         var args = new object[]

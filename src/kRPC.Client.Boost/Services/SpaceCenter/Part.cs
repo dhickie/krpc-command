@@ -939,6 +939,7 @@ public class Part : RemoteObject
     /// Sets the asset URL for the part's flag.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Part_set_FlagURL")]
     public void SetFlagURL(string value)
     {
         var args = new object[]
@@ -954,6 +955,7 @@ public class Part : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Part_set_FlagURL")]
     public async Task SetFlagURLAsync(string value)
     {
         var args = new object[]
@@ -1025,6 +1027,7 @@ public class Part : RemoteObject
     /// <summary>
     /// Whether the part is glowing.
     /// </summary>
+    [Rpc("SpaceCenter", "Part_set_Glow")]
     public void SetGlow(bool value)
     {
         var args = new object[]
@@ -1039,6 +1042,7 @@ public class Part : RemoteObject
     /// Whether the part is glowing.
     /// Executes asynchronously.
     /// </summary>
+    [Rpc("SpaceCenter", "Part_set_Glow")]
     public async Task SetGlowAsync(bool value)
     {
         var args = new object[]
@@ -1080,6 +1084,7 @@ public class Part : RemoteObject
     /// Sets the color used to highlight the part, as an RGB triple.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Part_set_HighlightColor")]
     public void SetHighlightColor(Tuple<double,double,double> value)
     {
         var args = new object[]
@@ -1095,6 +1100,7 @@ public class Part : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Part_set_HighlightColor")]
     public async Task SetHighlightColorAsync(Tuple<double,double,double> value)
     {
         var args = new object[]
@@ -1136,6 +1142,7 @@ public class Part : RemoteObject
     /// Sets whether the part is highlighted.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Part_set_Highlighted")]
     public void SetHighlighted(bool value)
     {
         var args = new object[]
@@ -1151,6 +1158,7 @@ public class Part : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Part_set_Highlighted")]
     public async Task SetHighlightedAsync(bool value)
     {
         var args = new object[]
@@ -2206,6 +2214,7 @@ public class Part : RemoteObject
     /// in-game user interface.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Part_set_Tag")]
     public void SetTag(string value)
     {
         var args = new object[]
@@ -2222,6 +2231,7 @@ public class Part : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Part_set_Tag")]
     public async Task SetTagAsync(string value)
     {
         var args = new object[]

@@ -387,6 +387,7 @@ public class Parts : RemoteObject
     /// Sets the part from which the vessel is controlled.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Parts_set_Controlling")]
     public void SetControlling(Part value)
     {
         var args = new object[]
@@ -402,6 +403,7 @@ public class Parts : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Parts_set_Controlling")]
     public async Task SetControllingAsync(Part value)
     {
         var args = new object[]

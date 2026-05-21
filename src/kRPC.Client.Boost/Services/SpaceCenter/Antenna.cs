@@ -102,6 +102,7 @@ public class Antenna : RemoteObject
     /// Sets whether partial data transmission is permitted.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Antenna_set_AllowPartial")]
     public void SetAllowPartial(bool value)
     {
         var args = new object[]
@@ -117,6 +118,7 @@ public class Antenna : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Antenna_set_AllowPartial")]
     public async Task SetAllowPartialAsync(bool value)
     {
         var args = new object[]
@@ -276,6 +278,7 @@ public class Antenna : RemoteObject
     /// Sets whether the antenna is deployed.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Antenna_set_Deployed")]
     public void SetDeployed(bool value)
     {
         var args = new object[]
@@ -291,6 +294,7 @@ public class Antenna : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Antenna_set_Deployed")]
     public async Task SetDeployedAsync(bool value)
     {
         var args = new object[]

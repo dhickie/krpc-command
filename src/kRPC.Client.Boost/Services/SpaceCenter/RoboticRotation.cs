@@ -105,6 +105,7 @@ public class RoboticRotation : RemoteObject
     /// Sets the damping percentage.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "RoboticRotation_set_Damping")]
     public void SetDamping(float value)
     {
         var args = new object[]
@@ -120,6 +121,7 @@ public class RoboticRotation : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "RoboticRotation_set_Damping")]
     public async Task SetDampingAsync(float value)
     {
         var args = new object[]
@@ -161,6 +163,7 @@ public class RoboticRotation : RemoteObject
     /// Sets whether movement is locked.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "RoboticRotation_set_Locked")]
     public void SetLocked(bool value)
     {
         var args = new object[]
@@ -176,6 +179,7 @@ public class RoboticRotation : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "RoboticRotation_set_Locked")]
     public async Task SetLockedAsync(bool value)
     {
         var args = new object[]
@@ -217,6 +221,7 @@ public class RoboticRotation : RemoteObject
     /// Sets whether the motor is engaged.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "RoboticRotation_set_MotorEngaged")]
     public void SetMotorEngaged(bool value)
     {
         var args = new object[]
@@ -232,6 +237,7 @@ public class RoboticRotation : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "RoboticRotation_set_MotorEngaged")]
     public async Task SetMotorEngagedAsync(bool value)
     {
         var args = new object[]
@@ -302,6 +308,7 @@ public class RoboticRotation : RemoteObject
     /// Sets the target movement rate as an angle per second.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "RoboticRotation_set_Rate")]
     public void SetRate(Angle value)
     {
         var args = new object[]
@@ -317,6 +324,7 @@ public class RoboticRotation : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "RoboticRotation_set_Rate")]
     public async Task SetRateAsync(Angle value)
     {
         var args = new object[]
@@ -360,6 +368,7 @@ public class RoboticRotation : RemoteObject
     /// Sets the target angle.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "RoboticRotation_set_TargetAngle")]
     public void SetTargetAngle(Angle value)
     {
         var args = new object[]
@@ -375,6 +384,7 @@ public class RoboticRotation : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "RoboticRotation_set_TargetAngle")]
     public async Task SetTargetAngleAsync(Angle value)
     {
         var args = new object[]

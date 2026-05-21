@@ -78,6 +78,7 @@ public class Radiator : RemoteObject
     /// If the radiator is not deployable, this is always <c>true</c>.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Radiator_set_Deployed")]
     public void SetDeployed(bool value)
     {
         var args = new object[]
@@ -94,6 +95,7 @@ public class Radiator : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Radiator_set_Deployed")]
     public async Task SetDeployedAsync(bool value)
     {
         var args = new object[]

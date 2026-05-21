@@ -913,6 +913,7 @@ public class SpaceCenterService
     /// Sets the currently active vessel.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "set_ActiveVessel")]
     public void SetActiveVessel(Vessel value)
     {
         var args = new object[]
@@ -927,6 +928,7 @@ public class SpaceCenterService
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "set_ActiveVessel")]
     public async Task SetActiveVesselAsync(Vessel value)
     {
         var args = new object[]
@@ -1134,6 +1136,7 @@ public class SpaceCenterService
     /// Sets the visible objects in map mode.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "set_MapFilter")]
     public void SetMapFilter(MapFilterType value)
     {
         var args = new object[]
@@ -1148,6 +1151,7 @@ public class SpaceCenterService
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "set_MapFilter")]
     public async Task SetMapFilterAsync(MapFilterType value)
     {
         var args = new object[]
@@ -1205,6 +1209,7 @@ public class SpaceCenterService
     /// Sets whether the navball is visible.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "set_Navball")]
     public void SetNavball(bool value)
     {
         var args = new object[]
@@ -1219,6 +1224,7 @@ public class SpaceCenterService
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "set_Navball")]
     public async Task SetNavballAsync(bool value)
     {
         var args = new object[]
@@ -1254,6 +1260,7 @@ public class SpaceCenterService
     /// no time warp. Returns 0 if regular "on-rails" time warp is active.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "set_PhysicsWarpFactor")]
     public void SetPhysicsWarpFactor(int value)
     {
         var args = new object[]
@@ -1269,6 +1276,7 @@ public class SpaceCenterService
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "set_PhysicsWarpFactor")]
     public async Task SetPhysicsWarpFactorAsync(int value)
     {
         var args = new object[]
@@ -1322,6 +1330,7 @@ public class SpaceCenterService
     /// the KSP wiki</a> for details.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "set_RailsWarpFactor")]
     public void SetRailsWarpFactor(int value)
     {
         var args = new object[]
@@ -1343,6 +1352,7 @@ public class SpaceCenterService
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "set_RailsWarpFactor")]
     public async Task SetRailsWarpFactorAsync(int value)
     {
         var args = new object[]
@@ -1413,6 +1423,7 @@ public class SpaceCenterService
     /// Sets the currently targeted celestial body.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "set_TargetBody")]
     public void SetTargetBody(CelestialBody value)
     {
         var args = new object[]
@@ -1427,6 +1438,7 @@ public class SpaceCenterService
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "set_TargetBody")]
     public async Task SetTargetBodyAsync(CelestialBody value)
     {
         var args = new object[]
@@ -1459,6 +1471,7 @@ public class SpaceCenterService
     /// Sets the currently targeted docking port.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "set_TargetDockingPort")]
     public void SetTargetDockingPort(DockingPort value)
     {
         var args = new object[]
@@ -1473,6 +1486,7 @@ public class SpaceCenterService
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "set_TargetDockingPort")]
     public async Task SetTargetDockingPortAsync(DockingPort value)
     {
         var args = new object[]
@@ -1505,6 +1519,7 @@ public class SpaceCenterService
     /// Sets the currently targeted vessel.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "set_TargetVessel")]
     public void SetTargetVessel(Vessel value)
     {
         var args = new object[]
@@ -1519,6 +1534,7 @@ public class SpaceCenterService
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "set_TargetVessel")]
     public async Task SetTargetVesselAsync(Vessel value)
     {
         var args = new object[]
@@ -1551,6 +1567,7 @@ public class SpaceCenterService
     /// Sets whether the UI is visible.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "set_UIVisible")]
     public void SetUIVisible(bool value)
     {
         var args = new object[]
@@ -1565,6 +1582,7 @@ public class SpaceCenterService
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "set_UIVisible")]
     public async Task SetUIVisibleAsync(bool value)
     {
         var args = new object[]

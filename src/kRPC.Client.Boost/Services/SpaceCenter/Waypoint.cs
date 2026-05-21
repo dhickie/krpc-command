@@ -79,6 +79,7 @@ public class Waypoint : RemoteObject
     /// When over water, this is the altitude above the sea floor.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Waypoint_set_BedrockAltitude")]
     public void SetBedrockAltitude(double value)
     {
         var args = new object[]
@@ -95,6 +96,7 @@ public class Waypoint : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Waypoint_set_BedrockAltitude")]
     public async Task SetBedrockAltitudeAsync(double value)
     {
         var args = new object[]
@@ -136,6 +138,7 @@ public class Waypoint : RemoteObject
     /// Sets the celestial body the waypoint is attached to.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Waypoint_set_Body")]
     public void SetBody(CelestialBody value)
     {
         var args = new object[]
@@ -151,6 +154,7 @@ public class Waypoint : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Waypoint_set_Body")]
     public async Task SetBodyAsync(CelestialBody value)
     {
         var args = new object[]
@@ -225,6 +229,7 @@ public class Waypoint : RemoteObject
     /// Sets the seed of the icon color. See <see cref="M:SpaceCenter.WaypointManager.GetColors" /> for example colors.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Waypoint_set_Color")]
     public void SetColor(int value)
     {
         var args = new object[]
@@ -240,6 +245,7 @@ public class Waypoint : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Waypoint_set_Color")]
     public async Task SetColorAsync(int value)
     {
         var args = new object[]
@@ -362,6 +368,7 @@ public class Waypoint : RemoteObject
     /// Sets the icon of the waypoint.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Waypoint_set_Icon")]
     public void SetIcon(string value)
     {
         var args = new object[]
@@ -377,6 +384,7 @@ public class Waypoint : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Waypoint_set_Icon")]
     public async Task SetIconAsync(string value)
     {
         var args = new object[]
@@ -455,6 +463,7 @@ public class Waypoint : RemoteObject
     /// Sets the latitude of the waypoint.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Waypoint_set_Latitude")]
     public void SetLatitude(Angle value)
     {
         var args = new object[]
@@ -470,6 +479,7 @@ public class Waypoint : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Waypoint_set_Latitude")]
     public async Task SetLatitudeAsync(Angle value)
     {
         var args = new object[]
@@ -513,6 +523,7 @@ public class Waypoint : RemoteObject
     /// Sets the longitude of the waypoint.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Waypoint_set_Longitude")]
     public void SetLongitude(Angle value)
     {
         var args = new object[]
@@ -528,6 +539,7 @@ public class Waypoint : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Waypoint_set_Longitude")]
     public async Task SetLongitudeAsync(Angle value)
     {
         var args = new object[]
@@ -569,6 +581,7 @@ public class Waypoint : RemoteObject
     /// Sets the altitude of the waypoint above sea level, in meters.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Waypoint_set_MeanAltitude")]
     public void SetMeanAltitude(double value)
     {
         var args = new object[]
@@ -584,6 +597,7 @@ public class Waypoint : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Waypoint_set_MeanAltitude")]
     public async Task SetMeanAltitudeAsync(double value)
     {
         var args = new object[]
@@ -625,6 +639,7 @@ public class Waypoint : RemoteObject
     /// Sets the name of the waypoint as it appears on the map and the contract.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Waypoint_set_Name")]
     public void SetName(string value)
     {
         var args = new object[]
@@ -640,6 +655,7 @@ public class Waypoint : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Waypoint_set_Name")]
     public async Task SetNameAsync(string value)
     {
         var args = new object[]
@@ -711,6 +727,7 @@ public class Waypoint : RemoteObject
     /// whichever is closer, in meters.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Waypoint_set_SurfaceAltitude")]
     public void SetSurfaceAltitude(double value)
     {
         var args = new object[]
@@ -727,6 +744,7 @@ public class Waypoint : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Waypoint_set_SurfaceAltitude")]
     public async Task SetSurfaceAltitudeAsync(double value)
     {
         var args = new object[]

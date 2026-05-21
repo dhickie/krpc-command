@@ -163,6 +163,7 @@ public class Parachute : RemoteObject
     /// Only applicable to stock parachutes.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Parachute_set_DeployAltitude")]
     public void SetDeployAltitude(float value)
     {
         var args = new object[]
@@ -179,6 +180,7 @@ public class Parachute : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Parachute_set_DeployAltitude")]
     public async Task SetDeployAltitudeAsync(float value)
     {
         var args = new object[]
@@ -223,6 +225,7 @@ public class Parachute : RemoteObject
     /// Only applicable to stock parachutes.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Parachute_set_DeployMinPressure")]
     public void SetDeployMinPressure(float value)
     {
         var args = new object[]
@@ -239,6 +242,7 @@ public class Parachute : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Parachute_set_DeployMinPressure")]
     public async Task SetDeployMinPressureAsync(float value)
     {
         var args = new object[]

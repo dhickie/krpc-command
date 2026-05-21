@@ -183,6 +183,7 @@ public class RCS : RemoteObject
     /// Sets whether the RCS thrusters are enabled.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "RCS_set_Enabled")]
     public void SetEnabled(bool value)
     {
         var args = new object[]
@@ -198,6 +199,7 @@ public class RCS : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "RCS_set_Enabled")]
     public async Task SetEnabledAsync(bool value)
     {
         var args = new object[]
@@ -239,6 +241,7 @@ public class RCS : RemoteObject
     /// Sets whether the RCS thruster will fire when pitch control input is given.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "RCS_set_ForwardEnabled")]
     public void SetForwardEnabled(bool value)
     {
         var args = new object[]
@@ -254,6 +257,7 @@ public class RCS : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "RCS_set_ForwardEnabled")]
     public async Task SetForwardEnabledAsync(bool value)
     {
         var args = new object[]
@@ -438,6 +442,7 @@ public class RCS : RemoteObject
     /// Sets whether the RCS thruster will fire when pitch control input is given.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "RCS_set_PitchEnabled")]
     public void SetPitchEnabled(bool value)
     {
         var args = new object[]
@@ -453,6 +458,7 @@ public class RCS : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "RCS_set_PitchEnabled")]
     public async Task SetPitchEnabledAsync(bool value)
     {
         var args = new object[]
@@ -550,6 +556,7 @@ public class RCS : RemoteObject
     /// Sets whether the RCS thruster will fire when roll control input is given.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "RCS_set_RightEnabled")]
     public void SetRightEnabled(bool value)
     {
         var args = new object[]
@@ -565,6 +572,7 @@ public class RCS : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "RCS_set_RightEnabled")]
     public async Task SetRightEnabledAsync(bool value)
     {
         var args = new object[]
@@ -606,6 +614,7 @@ public class RCS : RemoteObject
     /// Sets whether the RCS thruster will fire when roll control input is given.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "RCS_set_RollEnabled")]
     public void SetRollEnabled(bool value)
     {
         var args = new object[]
@@ -621,6 +630,7 @@ public class RCS : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "RCS_set_RollEnabled")]
     public async Task SetRollEnabledAsync(bool value)
     {
         var args = new object[]
@@ -691,6 +701,7 @@ public class RCS : RemoteObject
     /// Sets the thrust limiter of the thruster. A value between 0 and 1.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "RCS_set_ThrustLimit")]
     public void SetThrustLimit(float value)
     {
         var args = new object[]
@@ -706,6 +717,7 @@ public class RCS : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "RCS_set_ThrustLimit")]
     public async Task SetThrustLimitAsync(float value)
     {
         var args = new object[]
@@ -774,6 +786,7 @@ public class RCS : RemoteObject
     /// Sets whether the RCS thruster will fire when yaw control input is given.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "RCS_set_UpEnabled")]
     public void SetUpEnabled(bool value)
     {
         var args = new object[]
@@ -789,6 +802,7 @@ public class RCS : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "RCS_set_UpEnabled")]
     public async Task SetUpEnabledAsync(bool value)
     {
         var args = new object[]
@@ -857,6 +871,7 @@ public class RCS : RemoteObject
     /// Sets whether the RCS thruster will fire when yaw control input is given.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "RCS_set_YawEnabled")]
     public void SetYawEnabled(bool value)
     {
         var args = new object[]
@@ -872,6 +887,7 @@ public class RCS : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "RCS_set_YawEnabled")]
     public async Task SetYawEnabledAsync(bool value)
     {
         var args = new object[]

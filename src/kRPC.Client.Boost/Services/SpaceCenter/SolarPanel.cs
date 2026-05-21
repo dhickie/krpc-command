@@ -75,6 +75,7 @@ public class SolarPanel : RemoteObject
     /// Sets whether the solar panel is extended.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "SolarPanel_set_Deployed")]
     public void SetDeployed(bool value)
     {
         var args = new object[]
@@ -90,6 +91,7 @@ public class SolarPanel : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "SolarPanel_set_Deployed")]
     public async Task SetDeployedAsync(bool value)
     {
         var args = new object[]

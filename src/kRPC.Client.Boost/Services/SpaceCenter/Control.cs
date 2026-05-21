@@ -288,6 +288,7 @@ public class Control : RemoteObject
     /// Sets the state of the abort action group.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Control_set_Abort")]
     public void SetAbort(bool value)
     {
         var args = new object[]
@@ -303,6 +304,7 @@ public class Control : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Control_set_Abort")]
     public async Task SetAbortAsync(bool value)
     {
         var args = new object[]
@@ -347,6 +349,7 @@ public class Control : RemoteObject
     /// See <see cref="M:SpaceCenter.Antenna.GetDeployed" />.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Control_set_Antennas")]
     public void SetAntennas(bool value)
     {
         var args = new object[]
@@ -363,6 +366,7 @@ public class Control : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Control_set_Antennas")]
     public async Task SetAntennasAsync(bool value)
     {
         var args = new object[]
@@ -404,6 +408,7 @@ public class Control : RemoteObject
     /// Sets the state of the wheel brakes.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Control_set_Brakes")]
     public void SetBrakes(bool value)
     {
         var args = new object[]
@@ -419,6 +424,7 @@ public class Control : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Control_set_Brakes")]
     public async Task SetBrakesAsync(bool value)
     {
         var args = new object[]
@@ -463,6 +469,7 @@ public class Control : RemoteObject
     /// See <see cref="M:SpaceCenter.CargoBay.GetOpen" />.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Control_set_CargoBays")]
     public void SetCargoBays(bool value)
     {
         var args = new object[]
@@ -479,6 +486,7 @@ public class Control : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Control_set_CargoBays")]
     public async Task SetCargoBaysAsync(bool value)
     {
         var args = new object[]
@@ -552,6 +560,7 @@ public class Control : RemoteObject
     /// A value between -1 and 1.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Control_set_CustomAxis01")]
     public void SetCustomAxis01(float value)
     {
         var args = new object[]
@@ -568,6 +577,7 @@ public class Control : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Control_set_CustomAxis01")]
     public async Task SetCustomAxis01Async(float value)
     {
         var args = new object[]
@@ -612,6 +622,7 @@ public class Control : RemoteObject
     /// A value between -1 and 1.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Control_set_CustomAxis02")]
     public void SetCustomAxis02(float value)
     {
         var args = new object[]
@@ -628,6 +639,7 @@ public class Control : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Control_set_CustomAxis02")]
     public async Task SetCustomAxis02Async(float value)
     {
         var args = new object[]
@@ -672,6 +684,7 @@ public class Control : RemoteObject
     /// A value between -1 and 1.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Control_set_CustomAxis03")]
     public void SetCustomAxis03(float value)
     {
         var args = new object[]
@@ -688,6 +701,7 @@ public class Control : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Control_set_CustomAxis03")]
     public async Task SetCustomAxis03Async(float value)
     {
         var args = new object[]
@@ -732,6 +746,7 @@ public class Control : RemoteObject
     /// A value between -1 and 1.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Control_set_CustomAxis04")]
     public void SetCustomAxis04(float value)
     {
         var args = new object[]
@@ -748,6 +763,7 @@ public class Control : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Control_set_CustomAxis04")]
     public async Task SetCustomAxis04Async(float value)
     {
         var args = new object[]
@@ -795,6 +811,7 @@ public class Control : RemoteObject
     /// Equivalent to the h and n keys.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Control_set_Forward")]
     public void SetForward(float value)
     {
         var args = new object[]
@@ -812,6 +829,7 @@ public class Control : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Control_set_Forward")]
     public async Task SetForwardAsync(float value)
     {
         var args = new object[]
@@ -853,6 +871,7 @@ public class Control : RemoteObject
     /// Sets the state of the landing gear/legs.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Control_set_Gear")]
     public void SetGear(bool value)
     {
         var args = new object[]
@@ -868,6 +887,7 @@ public class Control : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Control_set_Gear")]
     public async Task SetGearAsync(bool value)
     {
         var args = new object[]
@@ -924,6 +944,7 @@ public class Control : RemoteObject
     /// they are set.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Control_set_InputMode")]
     public void SetInputMode(ControlInputMode value)
     {
         var args = new object[]
@@ -944,6 +965,7 @@ public class Control : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Control_set_InputMode")]
     public async Task SetInputModeAsync(ControlInputMode value)
     {
         var args = new object[]
@@ -988,6 +1010,7 @@ public class Control : RemoteObject
     /// See <see cref="M:SpaceCenter.Intake.GetOpen" />.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Control_set_Intakes")]
     public void SetIntakes(bool value)
     {
         var args = new object[]
@@ -1004,6 +1027,7 @@ public class Control : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Control_set_Intakes")]
     public async Task SetIntakesAsync(bool value)
     {
         var args = new object[]
@@ -1051,6 +1075,7 @@ public class Control : RemoteObject
     /// See <see cref="M:SpaceCenter.Leg.GetDeployed" />.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Control_set_Legs")]
     public void SetLegs(bool value)
     {
         var args = new object[]
@@ -1068,6 +1093,7 @@ public class Control : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Control_set_Legs")]
     public async Task SetLegsAsync(bool value)
     {
         var args = new object[]
@@ -1109,6 +1135,7 @@ public class Control : RemoteObject
     /// Sets the state of the lights.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Control_set_Lights")]
     public void SetLights(bool value)
     {
         var args = new object[]
@@ -1124,6 +1151,7 @@ public class Control : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Control_set_Lights")]
     public async Task SetLightsAsync(bool value)
     {
         var args = new object[]
@@ -1198,6 +1226,7 @@ public class Control : RemoteObject
     /// See <see cref="M:SpaceCenter.Parachute.GetDeployed" />.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Control_set_Parachutes")]
     public void SetParachutes(bool value)
     {
         var args = new object[]
@@ -1215,6 +1244,7 @@ public class Control : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Control_set_Parachutes")]
     public async Task SetParachutesAsync(bool value)
     {
         var args = new object[]
@@ -1262,6 +1292,7 @@ public class Control : RemoteObject
     /// Equivalent to the w and s keys.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Control_set_Pitch")]
     public void SetPitch(float value)
     {
         var args = new object[]
@@ -1279,6 +1310,7 @@ public class Control : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Control_set_Pitch")]
     public async Task SetPitchAsync(float value)
     {
         var args = new object[]
@@ -1320,6 +1352,7 @@ public class Control : RemoteObject
     /// Sets the state of RCS.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Control_set_RCS")]
     public void SetRCS(bool value)
     {
         var args = new object[]
@@ -1335,6 +1368,7 @@ public class Control : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Control_set_RCS")]
     public async Task SetRCSAsync(bool value)
     {
         var args = new object[]
@@ -1379,6 +1413,7 @@ public class Control : RemoteObject
     /// See <see cref="M:SpaceCenter.Radiator.GetDeployed" />.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Control_set_Radiators")]
     public void SetRadiators(bool value)
     {
         var args = new object[]
@@ -1395,6 +1430,7 @@ public class Control : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Control_set_Radiators")]
     public async Task SetRadiatorsAsync(bool value)
     {
         var args = new object[]
@@ -1439,6 +1475,7 @@ public class Control : RemoteObject
     /// See <see cref="M:SpaceCenter.ReactionWheel.GetActive" />.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Control_set_ReactionWheels")]
     public void SetReactionWheels(bool value)
     {
         var args = new object[]
@@ -1455,6 +1492,7 @@ public class Control : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Control_set_ReactionWheels")]
     public async Task SetReactionWheelsAsync(bool value)
     {
         var args = new object[]
@@ -1499,6 +1537,7 @@ public class Control : RemoteObject
     /// See <see cref="M:SpaceCenter.ResourceHarvester.GetDeployed" />.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Control_set_ResourceHarvesters")]
     public void SetResourceHarvesters(bool value)
     {
         var args = new object[]
@@ -1515,6 +1554,7 @@ public class Control : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Control_set_ResourceHarvesters")]
     public async Task SetResourceHarvestersAsync(bool value)
     {
         var args = new object[]
@@ -1559,6 +1599,7 @@ public class Control : RemoteObject
     /// See <see cref="M:SpaceCenter.ResourceHarvester.GetActive" />.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Control_set_ResourceHarvestersActive")]
     public void SetResourceHarvestersActive(bool value)
     {
         var args = new object[]
@@ -1575,6 +1616,7 @@ public class Control : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Control_set_ResourceHarvestersActive")]
     public async Task SetResourceHarvestersActiveAsync(bool value)
     {
         var args = new object[]
@@ -1622,6 +1664,7 @@ public class Control : RemoteObject
     /// Equivalent to the j and l keys.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Control_set_Right")]
     public void SetRight(float value)
     {
         var args = new object[]
@@ -1639,6 +1682,7 @@ public class Control : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Control_set_Right")]
     public async Task SetRightAsync(float value)
     {
         var args = new object[]
@@ -1686,6 +1730,7 @@ public class Control : RemoteObject
     /// Equivalent to the q and e keys.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Control_set_Roll")]
     public void SetRoll(float value)
     {
         var args = new object[]
@@ -1703,6 +1748,7 @@ public class Control : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Control_set_Roll")]
     public async Task SetRollAsync(float value)
     {
         var args = new object[]
@@ -1746,6 +1792,7 @@ public class Control : RemoteObject
     /// Sets the state of SAS.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Control_set_SAS")]
     public void SetSAS(bool value)
     {
         var args = new object[]
@@ -1761,6 +1808,7 @@ public class Control : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Control_set_SAS")]
     public async Task SetSASAsync(bool value)
     {
         var args = new object[]
@@ -1810,6 +1858,7 @@ public class Control : RemoteObject
     /// the left of the navball that appear when SAS is enabled.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Control_set_SASMode")]
     public void SetSASMode(SASMode value)
     {
         var args = new object[]
@@ -1827,6 +1876,7 @@ public class Control : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Control_set_SASMode")]
     public async Task SetSASModeAsync(SASMode value)
     {
         var args = new object[]
@@ -1871,6 +1921,7 @@ public class Control : RemoteObject
     /// See <see cref="M:SpaceCenter.SolarPanel.GetDeployed" />.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Control_set_SolarPanels")]
     public void SetSolarPanels(bool value)
     {
         var args = new object[]
@@ -1887,6 +1938,7 @@ public class Control : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Control_set_SolarPanels")]
     public async Task SetSolarPanelsAsync(bool value)
     {
         var args = new object[]
@@ -1958,6 +2010,7 @@ public class Control : RemoteObject
     /// This is the mode displayed next to the speed at the top of the navball.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Control_set_SpeedMode")]
     public void SetSpeedMode(SpeedMode value)
     {
         var args = new object[]
@@ -1974,6 +2027,7 @@ public class Control : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Control_set_SpeedMode")]
     public async Task SetSpeedModeAsync(SpeedMode value)
     {
         var args = new object[]
@@ -2021,6 +2075,7 @@ public class Control : RemoteObject
     /// Sets whether staging is locked on the vessel.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Control_set_StageLock")]
     public void SetStageLock(bool value)
     {
         var args = new object[]
@@ -2036,6 +2091,7 @@ public class Control : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Control_set_StageLock")]
     public async Task SetStageLockAsync(bool value)
     {
         var args = new object[]
@@ -2104,6 +2160,7 @@ public class Control : RemoteObject
     /// Sets the state of the throttle. A value between 0 and 1.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Control_set_Throttle")]
     public void SetThrottle(float value)
     {
         var args = new object[]
@@ -2119,6 +2176,7 @@ public class Control : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Control_set_Throttle")]
     public async Task SetThrottleAsync(float value)
     {
         var args = new object[]
@@ -2166,6 +2224,7 @@ public class Control : RemoteObject
     /// Equivalent to the i and k keys.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Control_set_Up")]
     public void SetUp(float value)
     {
         var args = new object[]
@@ -2183,6 +2242,7 @@ public class Control : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Control_set_Up")]
     public async Task SetUpAsync(float value)
     {
         var args = new object[]
@@ -2230,6 +2290,7 @@ public class Control : RemoteObject
     /// A value of 1 steers to the left, and a value of -1 steers to the right.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Control_set_WheelSteering")]
     public void SetWheelSteering(float value)
     {
         var args = new object[]
@@ -2247,6 +2308,7 @@ public class Control : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Control_set_WheelSteering")]
     public async Task SetWheelSteeringAsync(float value)
     {
         var args = new object[]
@@ -2297,6 +2359,7 @@ public class Control : RemoteObject
     /// the wheels backwards.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Control_set_WheelThrottle")]
     public void SetWheelThrottle(float value)
     {
         var args = new object[]
@@ -2315,6 +2378,7 @@ public class Control : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Control_set_WheelThrottle")]
     public async Task SetWheelThrottleAsync(float value)
     {
         var args = new object[]
@@ -2362,6 +2426,7 @@ public class Control : RemoteObject
     /// See <see cref="M:SpaceCenter.Wheel.GetDeployed" />.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Control_set_Wheels")]
     public void SetWheels(bool value)
     {
         var args = new object[]
@@ -2379,6 +2444,7 @@ public class Control : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Control_set_Wheels")]
     public async Task SetWheelsAsync(bool value)
     {
         var args = new object[]
@@ -2426,6 +2492,7 @@ public class Control : RemoteObject
     /// Equivalent to the a and d keys.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Control_set_Yaw")]
     public void SetYaw(float value)
     {
         var args = new object[]
@@ -2443,6 +2510,7 @@ public class Control : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Control_set_Yaw")]
     public async Task SetYawAsync(float value)
     {
         var args = new object[]

@@ -243,6 +243,7 @@ public class Node : RemoteObject
     /// Sets the delta-v of the maneuver node, in meters per second.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Node_set_DeltaV")]
     public void SetDeltaV(double value)
     {
         var args = new object[]
@@ -258,6 +259,7 @@ public class Node : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Node_set_DeltaV")]
     public async Task SetDeltaVAsync(double value)
     {
         var args = new object[]
@@ -302,6 +304,7 @@ public class Node : RemoteObject
     /// in meters per second.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Node_set_Normal")]
     public void SetNormal(double value)
     {
         var args = new object[]
@@ -318,6 +321,7 @@ public class Node : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Node_set_Normal")]
     public async Task SetNormalAsync(double value)
     {
         var args = new object[]
@@ -428,6 +432,7 @@ public class Node : RemoteObject
     /// in meters per second.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Node_set_Prograde")]
     public void SetPrograde(double value)
     {
         var args = new object[]
@@ -444,6 +449,7 @@ public class Node : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Node_set_Prograde")]
     public async Task SetProgradeAsync(double value)
     {
         var args = new object[]
@@ -488,6 +494,7 @@ public class Node : RemoteObject
     /// in meters per second.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Node_set_Radial")]
     public void SetRadial(double value)
     {
         var args = new object[]
@@ -504,6 +511,7 @@ public class Node : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Node_set_Radial")]
     public async Task SetRadialAsync(double value)
     {
         var args = new object[]
@@ -630,6 +638,7 @@ public class Node : RemoteObject
     /// Sets the universal time at which the maneuver will occur, in seconds.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Node_set_UT")]
     public void SetUT(double value)
     {
         var args = new object[]
@@ -645,6 +654,7 @@ public class Node : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Node_set_UT")]
     public async Task SetUTAsync(double value)
     {
         var args = new object[]

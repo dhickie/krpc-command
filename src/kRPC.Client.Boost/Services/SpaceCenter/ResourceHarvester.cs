@@ -48,6 +48,7 @@ public class ResourceHarvester : RemoteObject
     /// Sets whether the harvester is actively drilling.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "ResourceHarvester_set_Active")]
     public void SetActive(bool value)
     {
         var args = new object[]
@@ -63,6 +64,7 @@ public class ResourceHarvester : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "ResourceHarvester_set_Active")]
     public async Task SetActiveAsync(bool value)
     {
         var args = new object[]
@@ -131,6 +133,7 @@ public class ResourceHarvester : RemoteObject
     /// Sets whether the harvester is deployed.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "ResourceHarvester_set_Deployed")]
     public void SetDeployed(bool value)
     {
         var args = new object[]
@@ -146,6 +149,7 @@ public class ResourceHarvester : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "ResourceHarvester_set_Deployed")]
     public async Task SetDeployedAsync(bool value)
     {
         var args = new object[]

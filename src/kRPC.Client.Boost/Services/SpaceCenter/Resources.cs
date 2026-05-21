@@ -268,6 +268,7 @@ public class Resources : RemoteObject
     /// Sets whether all resources are enabled.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Resources_set_Enabled")]
     public void SetEnabled(bool value)
     {
         var args = new object[]
@@ -283,6 +284,7 @@ public class Resources : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Resources_set_Enabled")]
     public async Task SetEnabledAsync(bool value)
     {
         var args = new object[]

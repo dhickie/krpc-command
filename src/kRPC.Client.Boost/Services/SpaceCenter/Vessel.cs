@@ -1188,6 +1188,7 @@ public class Vessel : RemoteObject
     /// Sets the name of the vessel.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Vessel_set_Name")]
     public void SetName(string value)
     {
         var args = new object[]
@@ -1203,6 +1204,7 @@ public class Vessel : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Vessel_set_Name")]
     public async Task SetNameAsync(string value)
     {
         var args = new object[]
@@ -1595,6 +1597,7 @@ public class Vessel : RemoteObject
     /// Sets the type of the vessel.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Vessel_set_Type")]
     public void SetType(VesselType value)
     {
         var args = new object[]
@@ -1610,6 +1613,7 @@ public class Vessel : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Vessel_set_Type")]
     public async Task SetTypeAsync(VesselType value)
     {
         var args = new object[]

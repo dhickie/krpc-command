@@ -49,6 +49,7 @@ public class CrewMember : RemoteObject
     /// Sets whether the crew member is a badass.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "CrewMember_set_Badass")]
     public void SetBadass(bool value)
     {
         var args = new object[]
@@ -64,6 +65,7 @@ public class CrewMember : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "CrewMember_set_Badass")]
     public async Task SetBadassAsync(bool value)
     {
         var args = new object[]
@@ -186,6 +188,7 @@ public class CrewMember : RemoteObject
     /// Sets the crew members courage.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "CrewMember_set_Courage")]
     public void SetCourage(float value)
     {
         var args = new object[]
@@ -201,6 +204,7 @@ public class CrewMember : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "CrewMember_set_Courage")]
     public async Task SetCourageAsync(float value)
     {
         var args = new object[]
@@ -242,6 +246,7 @@ public class CrewMember : RemoteObject
     /// Sets the crew members experience.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "CrewMember_set_Experience")]
     public void SetExperience(float value)
     {
         var args = new object[]
@@ -257,6 +262,7 @@ public class CrewMember : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "CrewMember_set_Experience")]
     public async Task SetExperienceAsync(float value)
     {
         var args = new object[]
@@ -325,6 +331,7 @@ public class CrewMember : RemoteObject
     /// Sets the crew members name.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "CrewMember_set_Name")]
     public void SetName(string value)
     {
         var args = new object[]
@@ -340,6 +347,7 @@ public class CrewMember : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "CrewMember_set_Name")]
     public async Task SetNameAsync(string value)
     {
         var args = new object[]
@@ -435,6 +443,7 @@ public class CrewMember : RemoteObject
     /// Sets the crew members stupidity.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "CrewMember_set_Stupidity")]
     public void SetStupidity(float value)
     {
         var args = new object[]
@@ -450,6 +459,7 @@ public class CrewMember : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "CrewMember_set_Stupidity")]
     public async Task SetStupidityAsync(float value)
     {
         var args = new object[]
@@ -491,6 +501,7 @@ public class CrewMember : RemoteObject
     /// Sets the crew member's suit type.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "CrewMember_set_SuitType")]
     public void SetSuitType(SuitType value)
     {
         var args = new object[]
@@ -506,6 +517,7 @@ public class CrewMember : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "CrewMember_set_SuitType")]
     public async Task SetSuitTypeAsync(SuitType value)
     {
         var args = new object[]
@@ -601,6 +613,7 @@ public class CrewMember : RemoteObject
     /// Sets whether the crew member is a veteran.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "CrewMember_set_Veteran")]
     public void SetVeteran(bool value)
     {
         var args = new object[]
@@ -616,6 +629,7 @@ public class CrewMember : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "CrewMember_set_Veteran")]
     public async Task SetVeteranAsync(bool value)
     {
         var args = new object[]

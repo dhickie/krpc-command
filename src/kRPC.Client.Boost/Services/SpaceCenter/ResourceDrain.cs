@@ -190,6 +190,7 @@ public class ResourceDrain : RemoteObject
     /// Sets the drain mode.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "ResourceDrain_set_DrainMode")]
     public void SetDrainMode(DrainMode value)
     {
         var args = new object[]
@@ -205,6 +206,7 @@ public class ResourceDrain : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "ResourceDrain_set_DrainMode")]
     public async Task SetDrainModeAsync(DrainMode value)
     {
         var args = new object[]
@@ -327,6 +329,7 @@ public class ResourceDrain : RemoteObject
     /// Sets the current drain rate.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "ResourceDrain_set_Rate")]
     public void SetRate(float value)
     {
         var args = new object[]
@@ -342,6 +345,7 @@ public class ResourceDrain : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "ResourceDrain_set_Rate")]
     public async Task SetRateAsync(float value)
     {
         var args = new object[]

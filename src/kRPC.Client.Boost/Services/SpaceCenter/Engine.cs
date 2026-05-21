@@ -192,6 +192,7 @@ public class Engine : RemoteObject
     /// depending on <see cref="M:SpaceCenter.Engine.GetCanShutdown" /> and <see cref="M:SpaceCenter.Engine.GetCanRestart" />.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Engine_set_Active")]
     public void SetActive(bool value)
     {
         var args = new object[]
@@ -208,6 +209,7 @@ public class Engine : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Engine_set_Active")]
     public async Task SetActiveAsync(bool value)
     {
         var args = new object[]
@@ -249,6 +251,7 @@ public class Engine : RemoteObject
     /// Sets whether the engine will automatically switch modes.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Engine_set_AutoModeSwitch")]
     public void SetAutoModeSwitch(bool value)
     {
         var args = new object[]
@@ -264,6 +267,7 @@ public class Engine : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Engine_set_AutoModeSwitch")]
     public async Task SetAutoModeSwitchAsync(bool value)
     {
         var args = new object[]
@@ -436,6 +440,7 @@ public class Engine : RemoteObject
     /// Returns 0 if the gimbal is locked.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Engine_set_GimbalLimit")]
     public void SetGimbalLimit(float value)
     {
         var args = new object[]
@@ -452,6 +457,7 @@ public class Engine : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Engine_set_GimbalLimit")]
     public async Task SetGimbalLimitAsync(float value)
     {
         var args = new object[]
@@ -496,6 +502,7 @@ public class Engine : RemoteObject
     /// no effect if the engine is not gimballed.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Engine_set_GimbalLocked")]
     public void SetGimbalLocked(bool value)
     {
         var args = new object[]
@@ -512,6 +519,7 @@ public class Engine : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Engine_set_GimbalLocked")]
     public async Task SetGimbalLockedAsync(bool value)
     {
         var args = new object[]
@@ -665,6 +673,7 @@ public class Engine : RemoteObject
     /// Sets whether the independent throttle is enabled for the engine.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Engine_set_IndependentThrottle")]
     public void SetIndependentThrottle(bool value)
     {
         var args = new object[]
@@ -680,6 +689,7 @@ public class Engine : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Engine_set_IndependentThrottle")]
     public async Task SetIndependentThrottleAsync(bool value)
     {
         var args = new object[]
@@ -810,6 +820,7 @@ public class Engine : RemoteObject
     /// Sets the name of the current engine mode.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Engine_set_Mode")]
     public void SetMode(string value)
     {
         var args = new object[]
@@ -825,6 +836,7 @@ public class Engine : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Engine_set_Mode")]
     public async Task SetModeAsync(string value)
     {
         var args = new object[]
@@ -1060,6 +1072,7 @@ public class Engine : RemoteObject
     /// (see <see cref="M:SpaceCenter.Engine.GetIndependentThrottle" />), can be used to set the throttle percentage.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Engine_set_Throttle")]
     public void SetThrottle(float value)
     {
         var args = new object[]
@@ -1081,6 +1094,7 @@ public class Engine : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Engine_set_Throttle")]
     public async Task SetThrottleAsync(float value)
     {
         var args = new object[]
@@ -1186,6 +1200,7 @@ public class Engine : RemoteObject
     /// rocket booster cannot be changed in flight.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Engine_set_ThrustLimit")]
     public void SetThrustLimit(float value)
     {
         var args = new object[]
@@ -1203,6 +1218,7 @@ public class Engine : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Engine_set_ThrustLimit")]
     public async Task SetThrustLimitAsync(float value)
     {
         var args = new object[]

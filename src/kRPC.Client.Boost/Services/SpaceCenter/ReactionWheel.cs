@@ -50,6 +50,7 @@ public class ReactionWheel : RemoteObject
     /// Sets whether the reaction wheel is active.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "ReactionWheel_set_Active")]
     public void SetActive(bool value)
     {
         var args = new object[]
@@ -65,6 +66,7 @@ public class ReactionWheel : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "ReactionWheel_set_Active")]
     public async Task SetActiveAsync(bool value)
     {
         var args = new object[]

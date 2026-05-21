@@ -80,6 +80,7 @@ public class Camera : RemoteObject
     /// A value between <see cref="M:SpaceCenter.Camera.GetMinDistance" /> and <see cref="M:SpaceCenter.Camera.GetMaxDistance" />.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Camera_set_Distance")]
     public void SetDistance(float value)
     {
         var args = new object[]
@@ -96,6 +97,7 @@ public class Camera : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Camera_set_Distance")]
     public async Task SetDistanceAsync(float value)
     {
         var args = new object[]
@@ -143,6 +145,7 @@ public class Camera : RemoteObject
     /// Returns an error is the camera is not in map mode.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Camera_set_FocussedBody")]
     public void SetFocussedBody(CelestialBody value)
     {
         var args = new object[]
@@ -160,6 +163,7 @@ public class Camera : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Camera_set_FocussedBody")]
     public async Task SetFocussedBodyAsync(CelestialBody value)
     {
         var args = new object[]
@@ -207,6 +211,7 @@ public class Camera : RemoteObject
     /// Returns an error is the camera is not in map mode.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Camera_set_FocussedNode")]
     public void SetFocussedNode(Node value)
     {
         var args = new object[]
@@ -224,6 +229,7 @@ public class Camera : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Camera_set_FocussedNode")]
     public async Task SetFocussedNodeAsync(Node value)
     {
         var args = new object[]
@@ -271,6 +277,7 @@ public class Camera : RemoteObject
     /// Returns an error is the camera is not in map mode.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Camera_set_FocussedVessel")]
     public void SetFocussedVessel(Vessel value)
     {
         var args = new object[]
@@ -288,6 +295,7 @@ public class Camera : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Camera_set_FocussedVessel")]
     public async Task SetFocussedVesselAsync(Vessel value)
     {
         var args = new object[]
@@ -331,6 +339,7 @@ public class Camera : RemoteObject
     /// Sets the heading of the camera.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Camera_set_Heading")]
     public void SetHeading(Angle value)
     {
         var args = new object[]
@@ -346,6 +355,7 @@ public class Camera : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Camera_set_Heading")]
     public async Task SetHeadingAsync(Angle value)
     {
         var args = new object[]
@@ -499,6 +509,7 @@ public class Camera : RemoteObject
     /// Sets the current mode of the camera.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Camera_set_Mode")]
     public void SetMode(CameraMode value)
     {
         var args = new object[]
@@ -514,6 +525,7 @@ public class Camera : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Camera_set_Mode")]
     public async Task SetModeAsync(CameraMode value)
     {
         var args = new object[]
@@ -560,6 +572,7 @@ public class Camera : RemoteObject
     /// A value between <see cref="M:SpaceCenter.Camera.GetMinPitch" /> and <see cref="M:SpaceCenter.Camera.GetMaxPitch" />
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Camera_set_Pitch")]
     public void SetPitch(Angle value)
     {
         var args = new object[]
@@ -576,6 +589,7 @@ public class Camera : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Camera_set_Pitch")]
     public async Task SetPitchAsync(Angle value)
     {
         var args = new object[]

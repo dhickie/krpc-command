@@ -51,6 +51,7 @@ public class Wheel : RemoteObject
     /// Sets whether automatic friction control is enabled.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Wheel_set_AutoFrictionControl")]
     public void SetAutoFrictionControl(bool value)
     {
         var args = new object[]
@@ -66,6 +67,7 @@ public class Wheel : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Wheel_set_AutoFrictionControl")]
     public async Task SetAutoFrictionControlAsync(bool value)
     {
         var args = new object[]
@@ -107,6 +109,7 @@ public class Wheel : RemoteObject
     /// Sets the braking force, as a percentage of maximum, when the brakes are applied.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Wheel_set_Brakes")]
     public void SetBrakes(float value)
     {
         var args = new object[]
@@ -122,6 +125,7 @@ public class Wheel : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Wheel_set_Brakes")]
     public async Task SetBrakesAsync(float value)
     {
         var args = new object[]
@@ -244,6 +248,7 @@ public class Wheel : RemoteObject
     /// Sets whether the wheel is deployed.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Wheel_set_Deployed")]
     public void SetDeployed(bool value)
     {
         var args = new object[]
@@ -259,6 +264,7 @@ public class Wheel : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Wheel_set_Deployed")]
     public async Task SetDeployedAsync(bool value)
     {
         var args = new object[]
@@ -306,6 +312,7 @@ public class Wheel : RemoteObject
     /// A value between 0 and 100 inclusive.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Wheel_set_DriveLimiter")]
     public void SetDriveLimiter(float value)
     {
         var args = new object[]
@@ -323,6 +330,7 @@ public class Wheel : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Wheel_set_DriveLimiter")]
     public async Task SetDriveLimiterAsync(float value)
     {
         var args = new object[]
@@ -448,6 +456,7 @@ public class Wheel : RemoteObject
     /// A value between 0 and 5 inclusive.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Wheel_set_ManualFrictionControl")]
     public void SetManualFrictionControl(float value)
     {
         var args = new object[]
@@ -464,6 +473,7 @@ public class Wheel : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Wheel_set_ManualFrictionControl")]
     public async Task SetManualFrictionControlAsync(float value)
     {
         var args = new object[]
@@ -505,6 +515,7 @@ public class Wheel : RemoteObject
     /// Sets whether the motor is enabled.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Wheel_set_MotorEnabled")]
     public void SetMotorEnabled(bool value)
     {
         var args = new object[]
@@ -520,6 +531,7 @@ public class Wheel : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Wheel_set_MotorEnabled")]
     public async Task SetMotorEnabledAsync(bool value)
     {
         var args = new object[]
@@ -561,6 +573,7 @@ public class Wheel : RemoteObject
     /// Sets whether the direction of the motor is inverted.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Wheel_set_MotorInverted")]
     public void SetMotorInverted(bool value)
     {
         var args = new object[]
@@ -576,6 +589,7 @@ public class Wheel : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Wheel_set_MotorInverted")]
     public async Task SetMotorInvertedAsync(bool value)
     {
         var args = new object[]
@@ -862,6 +876,7 @@ public class Wheel : RemoteObject
     /// Sets the steering angle limit.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Wheel_set_SteeringAngleLimit")]
     public void SetSteeringAngleLimit(Angle value)
     {
         var args = new object[]
@@ -877,6 +892,7 @@ public class Wheel : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Wheel_set_SteeringAngleLimit")]
     public async Task SetSteeringAngleLimitAsync(Angle value)
     {
         var args = new object[]
@@ -918,6 +934,7 @@ public class Wheel : RemoteObject
     /// Sets whether the wheel steering is enabled.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Wheel_set_SteeringEnabled")]
     public void SetSteeringEnabled(bool value)
     {
         var args = new object[]
@@ -933,6 +950,7 @@ public class Wheel : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Wheel_set_SteeringEnabled")]
     public async Task SetSteeringEnabledAsync(bool value)
     {
         var args = new object[]
@@ -974,6 +992,7 @@ public class Wheel : RemoteObject
     /// Sets whether the wheel steering is inverted.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Wheel_set_SteeringInverted")]
     public void SetSteeringInverted(bool value)
     {
         var args = new object[]
@@ -989,6 +1008,7 @@ public class Wheel : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Wheel_set_SteeringInverted")]
     public async Task SetSteeringInvertedAsync(bool value)
     {
         var args = new object[]
@@ -1030,6 +1050,7 @@ public class Wheel : RemoteObject
     /// Sets the steering response time.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Wheel_set_SteeringResponseTime")]
     public void SetSteeringResponseTime(float value)
     {
         var args = new object[]
@@ -1045,6 +1066,7 @@ public class Wheel : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Wheel_set_SteeringResponseTime")]
     public async Task SetSteeringResponseTimeAsync(float value)
     {
         var args = new object[]
@@ -1227,6 +1249,7 @@ public class Wheel : RemoteObject
     /// A value between 0 and 5 inclusive.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Wheel_set_TractionControl")]
     public void SetTractionControl(float value)
     {
         var args = new object[]
@@ -1244,6 +1267,7 @@ public class Wheel : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Wheel_set_TractionControl")]
     public async Task SetTractionControlAsync(float value)
     {
         var args = new object[]
@@ -1288,6 +1312,7 @@ public class Wheel : RemoteObject
     /// A wheel only has traction control if it is powered.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Wheel_set_TractionControlEnabled")]
     public void SetTractionControlEnabled(bool value)
     {
         var args = new object[]
@@ -1304,6 +1329,7 @@ public class Wheel : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Wheel_set_TractionControlEnabled")]
     public async Task SetTractionControlEnabledAsync(bool value)
     {
         var args = new object[]

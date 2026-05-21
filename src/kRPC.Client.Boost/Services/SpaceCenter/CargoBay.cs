@@ -48,6 +48,7 @@ public class CargoBay : RemoteObject
     /// Sets whether the cargo bay is open.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "CargoBay_set_Open")]
     public void SetOpen(bool value)
     {
         var args = new object[]
@@ -63,6 +64,7 @@ public class CargoBay : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "CargoBay_set_Open")]
     public async Task SetOpenAsync(bool value)
     {
         var args = new object[]

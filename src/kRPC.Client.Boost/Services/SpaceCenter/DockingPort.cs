@@ -440,6 +440,7 @@ public class DockingPort : RemoteObject
     /// Sets whether rotation is locked. When locked, allows auto-strut to work across the joint.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "DockingPort_set_RotationLocked")]
     public void SetRotationLocked(bool value)
     {
         var args = new object[]
@@ -455,6 +456,7 @@ public class DockingPort : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "DockingPort_set_RotationLocked")]
     public async Task SetRotationLockedAsync(bool value)
     {
         var args = new object[]
@@ -498,6 +500,7 @@ public class DockingPort : RemoteObject
     /// Sets the rotation target angle.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "DockingPort_set_RotationTarget")]
     public void SetRotationTarget(Angle value)
     {
         var args = new object[]
@@ -513,6 +516,7 @@ public class DockingPort : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "DockingPort_set_RotationTarget")]
     public async Task SetRotationTargetAsync(Angle value)
     {
         var args = new object[]
@@ -569,6 +573,7 @@ public class DockingPort : RemoteObject
     /// port does not have a shield, setting this attribute has no effect.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "DockingPort_set_Shielded")]
     public void SetShielded(bool value)
     {
         var args = new object[]
@@ -589,6 +594,7 @@ public class DockingPort : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "DockingPort_set_Shielded")]
     public async Task SetShieldedAsync(bool value)
     {
         var args = new object[]

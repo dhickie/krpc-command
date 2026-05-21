@@ -189,6 +189,7 @@ public class AutoPilot : RemoteObject
     /// Defaults to 1° for each axis.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "AutoPilot_set_AttenuationAngle")]
     public void SetAttenuationAngle(Tuple<Angle,Angle,Angle> value)
     {
         var args = new object[]
@@ -208,6 +209,7 @@ public class AutoPilot : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "AutoPilot_set_AttenuationAngle")]
     public async Task SetAttenuationAngleAsync(Tuple<Angle,Angle,Angle> value)
     {
         var args = new object[]
@@ -255,6 +257,7 @@ public class AutoPilot : RemoteObject
     /// See <see cref="M:SpaceCenter.AutoPilot.GetTimeToPeak" /> and <see cref="M:SpaceCenter.AutoPilot.GetOvershoot" />.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "AutoPilot_set_AutoTune")]
     public void SetAutoTune(bool value)
     {
         var args = new object[]
@@ -272,6 +275,7 @@ public class AutoPilot : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "AutoPilot_set_AutoTune")]
     public async Task SetAutoTuneAsync(bool value)
     {
         var args = new object[]
@@ -322,6 +326,7 @@ public class AutoPilot : RemoteObject
     /// Defaults to 5 seconds for each axis.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "AutoPilot_set_DecelerationTime")]
     public void SetDecelerationTime(Tuple<double,double,double> value)
     {
         var args = new object[]
@@ -340,6 +345,7 @@ public class AutoPilot : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "AutoPilot_set_DecelerationTime")]
     public async Task SetDecelerationTimeAsync(Tuple<double,double,double> value)
     {
         var args = new object[]
@@ -380,7 +386,7 @@ public class AutoPilot : RemoteObject
             this
         };
         var result = await Connection.InvokeAsync<float>("SpaceCenter", "AutoPilot_get_Error", args);
-        return Angle.FromDegrees((double)result);
+        return Angle.FromDegrees(result);
     }
 
     /// <summary>
@@ -451,6 +457,7 @@ public class AutoPilot : RemoteObject
     /// Defaults to 0.01 for each axis.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "AutoPilot_set_Overshoot")]
     public void SetOvershoot(Tuple<double,double,double> value)
     {
         var args = new object[]
@@ -468,6 +475,7 @@ public class AutoPilot : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "AutoPilot_set_Overshoot")]
     public async Task SetOvershootAsync(Tuple<double,double,double> value)
     {
         var args = new object[]
@@ -548,6 +556,7 @@ public class AutoPilot : RemoteObject
     /// Sets gains for the pitch PID controller.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "AutoPilot_set_PitchPIDGains")]
     public void SetPitchPIDGains(Tuple<double,double,double> value)
     {
         var args = new object[]
@@ -563,6 +572,7 @@ public class AutoPilot : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "AutoPilot_set_PitchPIDGains")]
     public async Task SetPitchPIDGainsAsync(Tuple<double,double,double> value)
     {
         var args = new object[]
@@ -614,6 +624,7 @@ public class AutoPilot : RemoteObject
     /// Sets the reference frame for the target direction (<see cref="M:SpaceCenter.AutoPilot.GetTargetDirection" />).
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "AutoPilot_set_ReferenceFrame")]
     public void SetReferenceFrame(ReferenceFrame value)
     {
         var args = new object[]
@@ -629,6 +640,7 @@ public class AutoPilot : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "AutoPilot_set_ReferenceFrame")]
     public async Task SetReferenceFrameAsync(ReferenceFrame value)
     {
         var args = new object[]
@@ -709,6 +721,7 @@ public class AutoPilot : RemoteObject
     /// Sets gains for the roll PID controller.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "AutoPilot_set_RollPIDGains")]
     public void SetRollPIDGains(Tuple<double,double,double> value)
     {
         var args = new object[]
@@ -724,6 +737,7 @@ public class AutoPilot : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "AutoPilot_set_RollPIDGains")]
     public async Task SetRollPIDGainsAsync(Tuple<double,double,double> value)
     {
         var args = new object[]
@@ -770,6 +784,7 @@ public class AutoPilot : RemoteObject
     /// Defaults to 5 degrees.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "AutoPilot_set_RollThreshold")]
     public void SetRollThreshold(Angle value)
     {
         var args = new object[]
@@ -786,6 +801,7 @@ public class AutoPilot : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "AutoPilot_set_RollThreshold")]
     public async Task SetRollThresholdAsync(Angle value)
     {
         var args = new object[]
@@ -829,6 +845,7 @@ public class AutoPilot : RemoteObject
     /// Sets the state of SAS.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "AutoPilot_set_SAS")]
     public void SetSAS(bool value)
     {
         var args = new object[]
@@ -844,6 +861,7 @@ public class AutoPilot : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "AutoPilot_set_SAS")]
     public async Task SetSASAsync(bool value)
     {
         var args = new object[]
@@ -893,6 +911,7 @@ public class AutoPilot : RemoteObject
     /// when SAS is enabled.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "AutoPilot_set_SASMode")]
     public void SetSASMode(SASMode value)
     {
         var args = new object[]
@@ -910,6 +929,7 @@ public class AutoPilot : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "AutoPilot_set_SASMode")]
     public async Task SetSASModeAsync(SASMode value)
     {
         var args = new object[]
@@ -960,6 +980,7 @@ public class AutoPilot : RemoteObject
     /// and yaw axes. Defaults to 0.5 seconds for each axis.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "AutoPilot_set_StoppingTime")]
     public void SetStoppingTime(Tuple<double,double,double> value)
     {
         var args = new object[]
@@ -978,6 +999,7 @@ public class AutoPilot : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "AutoPilot_set_StoppingTime")]
     public async Task SetStoppingTimeAsync(Tuple<double,double,double> value)
     {
         var args = new object[]
@@ -1022,6 +1044,7 @@ public class AutoPilot : RemoteObject
     /// This is in the reference frame specified by <see cref="T:SpaceCenter.ReferenceFrame" />.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "AutoPilot_set_TargetDirection")]
     public void SetTargetDirection(Vector3D value)
     {
         var args = new object[]
@@ -1038,6 +1061,7 @@ public class AutoPilot : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "AutoPilot_set_TargetDirection")]
     public async Task SetTargetDirectionAsync(Vector3D value)
     {
         var args = new object[]
@@ -1081,6 +1105,7 @@ public class AutoPilot : RemoteObject
     /// Sets the target heading, between 0° and 360°.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "AutoPilot_set_TargetHeading")]
     public void SetTargetHeading(Angle value)
     {
         var args = new object[]
@@ -1096,6 +1121,7 @@ public class AutoPilot : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "AutoPilot_set_TargetHeading")]
     public async Task SetTargetHeadingAsync(Angle value)
     {
         var args = new object[]
@@ -1139,6 +1165,7 @@ public class AutoPilot : RemoteObject
     /// Sets the target pitch, between -90° and +90°.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "AutoPilot_set_TargetPitch")]
     public void SetTargetPitch(Angle value)
     {
         var args = new object[]
@@ -1154,6 +1181,7 @@ public class AutoPilot : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "AutoPilot_set_TargetPitch")]
     public async Task SetTargetPitchAsync(Angle value)
     {
         var args = new object[]
@@ -1197,6 +1225,7 @@ public class AutoPilot : RemoteObject
     /// Sets the target roll. <c>NaN</c> if no target roll is set.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "AutoPilot_set_TargetRoll")]
     public void SetTargetRoll(Angle value)
     {
         var args = new object[]
@@ -1212,6 +1241,7 @@ public class AutoPilot : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "AutoPilot_set_TargetRoll")]
     public async Task SetTargetRollAsync(Angle value)
     {
         var args = new object[]
@@ -1259,6 +1289,7 @@ public class AutoPilot : RemoteObject
     /// Defaults to 3 seconds for each axis.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "AutoPilot_set_TimeToPeak")]
     public void SetTimeToPeak(Tuple<double,double,double> value)
     {
         var args = new object[]
@@ -1276,6 +1307,7 @@ public class AutoPilot : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "AutoPilot_set_TimeToPeak")]
     public async Task SetTimeToPeakAsync(Tuple<double,double,double> value)
     {
         var args = new object[]
@@ -1325,6 +1357,7 @@ public class AutoPilot : RemoteObject
     /// Sets gains for the yaw PID controller.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "AutoPilot_set_YawPIDGains")]
     public void SetYawPIDGains(Tuple<double,double,double> value)
     {
         var args = new object[]
@@ -1340,6 +1373,7 @@ public class AutoPilot : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "AutoPilot_set_YawPIDGains")]
     public async Task SetYawPIDGainsAsync(Tuple<double,double,double> value)
     {
         var args = new object[]

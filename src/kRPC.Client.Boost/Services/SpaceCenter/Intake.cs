@@ -102,6 +102,7 @@ public class Intake : RemoteObject
     /// Sets whether the intake is open.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Intake_set_Open")]
     public void SetOpen(bool value)
     {
         var args = new object[]
@@ -117,6 +118,7 @@ public class Intake : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Intake_set_Open")]
     public async Task SetOpenAsync(bool value)
     {
         var args = new object[]

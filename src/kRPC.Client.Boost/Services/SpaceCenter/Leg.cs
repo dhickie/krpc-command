@@ -83,6 +83,7 @@ public class Leg : RemoteObject
     /// Sets whether the landing leg is deployed.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Leg_set_Deployed")]
     public void SetDeployed(bool value)
     {
         var args = new object[]
@@ -98,6 +99,7 @@ public class Leg : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "Leg_set_Deployed")]
     public async Task SetDeployedAsync(bool value)
     {
         var args = new object[]

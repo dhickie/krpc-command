@@ -53,6 +53,7 @@ public class ControlSurface : RemoteObject
     /// control surface will move.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "ControlSurface_set_AuthorityLimiter")]
     public void SetAuthorityLimiter(float value)
     {
         var args = new object[]
@@ -69,6 +70,7 @@ public class ControlSurface : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "ControlSurface_set_AuthorityLimiter")]
     public async Task SetAuthorityLimiterAsync(float value)
     {
         var args = new object[]
@@ -141,6 +143,7 @@ public class ControlSurface : RemoteObject
     /// Sets whether the control surface has been fully deployed.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "ControlSurface_set_Deployed")]
     public void SetDeployed(bool value)
     {
         var args = new object[]
@@ -156,6 +159,7 @@ public class ControlSurface : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "ControlSurface_set_Deployed")]
     public async Task SetDeployedAsync(bool value)
     {
         var args = new object[]
@@ -197,6 +201,7 @@ public class ControlSurface : RemoteObject
     /// Sets whether the control surface movement is inverted.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "ControlSurface_set_Inverted")]
     public void SetInverted(bool value)
     {
         var args = new object[]
@@ -212,6 +217,7 @@ public class ControlSurface : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "ControlSurface_set_Inverted")]
     public async Task SetInvertedAsync(bool value)
     {
         var args = new object[]
@@ -280,6 +286,7 @@ public class ControlSurface : RemoteObject
     /// Sets whether the control surface has pitch control enabled.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "ControlSurface_set_PitchEnabled")]
     public void SetPitchEnabled(bool value)
     {
         var args = new object[]
@@ -295,6 +302,7 @@ public class ControlSurface : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "ControlSurface_set_PitchEnabled")]
     public async Task SetPitchEnabledAsync(bool value)
     {
         var args = new object[]
@@ -336,6 +344,7 @@ public class ControlSurface : RemoteObject
     /// Sets whether the control surface has roll control enabled.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "ControlSurface_set_RollEnabled")]
     public void SetRollEnabled(bool value)
     {
         var args = new object[]
@@ -351,6 +360,7 @@ public class ControlSurface : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "ControlSurface_set_RollEnabled")]
     public async Task SetRollEnabledAsync(bool value)
     {
         var args = new object[]
@@ -419,6 +429,7 @@ public class ControlSurface : RemoteObject
     /// Sets whether the control surface has yaw control enabled.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "ControlSurface_set_YawEnabled")]
     public void SetYawEnabled(bool value)
     {
         var args = new object[]
@@ -434,6 +445,7 @@ public class ControlSurface : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [Rpc("SpaceCenter", "ControlSurface_set_YawEnabled")]
     public async Task SetYawEnabledAsync(bool value)
     {
         var args = new object[]
