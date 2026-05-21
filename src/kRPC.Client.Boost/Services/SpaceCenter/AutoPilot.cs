@@ -369,7 +369,7 @@ public class AutoPilot : RemoteObject
             this
         };
         var result = Connection.Invoke<float>("SpaceCenter", "AutoPilot_get_Error", args);
-        return Angle.FromDegrees((double)result);
+        return Angle.FromDegrees(result);
     }
 
     /// <summary>
@@ -401,7 +401,7 @@ public class AutoPilot : RemoteObject
             this
         };
         var result = Connection.Invoke<float>("SpaceCenter", "AutoPilot_get_HeadingError", args);
-        return Angle.FromDegrees((double)result);
+        return Angle.FromDegrees(result);
     }
 
     /// <summary>
@@ -417,7 +417,7 @@ public class AutoPilot : RemoteObject
             this
         };
         var result = await Connection.InvokeAsync<float>("SpaceCenter", "AutoPilot_get_HeadingError", args);
-        return Angle.FromDegrees((double)result);
+        return Angle.FromDegrees(result);
     }
 
     /// <summary>
@@ -498,7 +498,7 @@ public class AutoPilot : RemoteObject
             this
         };
         var result = Connection.Invoke<float>("SpaceCenter", "AutoPilot_get_PitchError", args);
-        return Angle.FromDegrees((double)result);
+        return Angle.FromDegrees(result);
     }
 
     /// <summary>
@@ -514,7 +514,7 @@ public class AutoPilot : RemoteObject
             this
         };
         var result = await Connection.InvokeAsync<float>("SpaceCenter", "AutoPilot_get_PitchError", args);
-        return Angle.FromDegrees((double)result);
+        return Angle.FromDegrees(result);
     }
 
     /// <summary>
@@ -663,7 +663,7 @@ public class AutoPilot : RemoteObject
             this
         };
         var result = Connection.Invoke<float>("SpaceCenter", "AutoPilot_get_RollError", args);
-        return Angle.FromDegrees((double)result);
+        return Angle.FromDegrees(result);
     }
 
     /// <summary>
@@ -679,7 +679,7 @@ public class AutoPilot : RemoteObject
             this
         };
         var result = await Connection.InvokeAsync<float>("SpaceCenter", "AutoPilot_get_RollError", args);
-        return Angle.FromDegrees((double)result);
+        return Angle.FromDegrees(result);
     }
 
     /// <summary>
@@ -1083,7 +1083,7 @@ public class AutoPilot : RemoteObject
             this
         };
         var result = Connection.Invoke<float>("SpaceCenter", "AutoPilot_get_TargetHeading", args);
-        return Angle.FromDegrees((double)result);
+        return Angle.FromDegrees(result);
     }
 
     /// <summary>
@@ -1098,7 +1098,7 @@ public class AutoPilot : RemoteObject
             this
         };
         var result = await Connection.InvokeAsync<float>("SpaceCenter", "AutoPilot_get_TargetHeading", args);
-        return Angle.FromDegrees((double)result);
+        return Angle.FromDegrees(result);
     }
 
     /// <summary>
@@ -1143,7 +1143,7 @@ public class AutoPilot : RemoteObject
             this
         };
         var result = Connection.Invoke<float>("SpaceCenter", "AutoPilot_get_TargetPitch", args);
-        return Angle.FromDegrees((double)result);
+        return Angle.FromDegrees(result);
     }
 
     /// <summary>
@@ -1158,7 +1158,7 @@ public class AutoPilot : RemoteObject
             this
         };
         var result = await Connection.InvokeAsync<float>("SpaceCenter", "AutoPilot_get_TargetPitch", args);
-        return Angle.FromDegrees((double)result);
+        return Angle.FromDegrees(result);
     }
 
     /// <summary>
@@ -1203,7 +1203,7 @@ public class AutoPilot : RemoteObject
             this
         };
         var result = Connection.Invoke<float>("SpaceCenter", "AutoPilot_get_TargetRoll", args);
-        return Angle.FromDegrees((double)result);
+        return Angle.FromDegrees(result);
     }
 
     /// <summary>
@@ -1218,7 +1218,7 @@ public class AutoPilot : RemoteObject
             this
         };
         var result = await Connection.InvokeAsync<float>("SpaceCenter", "AutoPilot_get_TargetRoll", args);
-        return Angle.FromDegrees((double)result);
+        return Angle.FromDegrees(result);
     }
 
     /// <summary>

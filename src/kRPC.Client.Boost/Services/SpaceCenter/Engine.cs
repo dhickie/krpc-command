@@ -542,7 +542,7 @@ public class Engine : RemoteObject
             this
         };
         var result = Connection.Invoke<float>("SpaceCenter", "Engine_get_GimbalRange", args);
-        return Angle.FromDegrees((double)result);
+        return Angle.FromDegrees(result);
     }
 
     /// <summary>
@@ -558,7 +558,7 @@ public class Engine : RemoteObject
             this
         };
         var result = await Connection.InvokeAsync<float>("SpaceCenter", "Engine_get_GimbalRange", args);
-        return Angle.FromDegrees((double)result);
+        return Angle.FromDegrees(result);
     }
 
     /// <summary>

@@ -317,7 +317,7 @@ public class Camera : RemoteObject
             this
         };
         var result = Connection.Invoke<float>("SpaceCenter", "Camera_get_Heading", args);
-        return Angle.FromDegrees((double)result);
+        return Angle.FromDegrees(result);
     }
 
     /// <summary>
@@ -332,7 +332,7 @@ public class Camera : RemoteObject
             this
         };
         var result = await Connection.InvokeAsync<float>("SpaceCenter", "Camera_get_Heading", args);
-        return Angle.FromDegrees((double)result);
+        return Angle.FromDegrees(result);
     }
 
     /// <summary>
@@ -404,7 +404,7 @@ public class Camera : RemoteObject
             this
         };
         var result = Connection.Invoke<float>("SpaceCenter", "Camera_get_MaxPitch", args);
-        return Angle.FromDegrees((double)result);
+        return Angle.FromDegrees(result);
     }
 
     /// <summary>
@@ -419,7 +419,7 @@ public class Camera : RemoteObject
             this
         };
         var result = await Connection.InvokeAsync<float>("SpaceCenter", "Camera_get_MaxPitch", args);
-        return Angle.FromDegrees((double)result);
+        return Angle.FromDegrees(result);
     }
 
     /// <summary>
@@ -460,7 +460,7 @@ public class Camera : RemoteObject
             this
         };
         var result = Connection.Invoke<float>("SpaceCenter", "Camera_get_MinPitch", args);
-        return Angle.FromDegrees((double)result);
+        return Angle.FromDegrees(result);
     }
 
     /// <summary>
@@ -475,7 +475,7 @@ public class Camera : RemoteObject
             this
         };
         var result = await Connection.InvokeAsync<float>("SpaceCenter", "Camera_get_MinPitch", args);
-        return Angle.FromDegrees((double)result);
+        return Angle.FromDegrees(result);
     }
 
     /// <summary>
@@ -548,7 +548,7 @@ public class Camera : RemoteObject
             this
         };
         var result = Connection.Invoke<float>("SpaceCenter", "Camera_get_Pitch", args);
-        return Angle.FromDegrees((double)result);
+        return Angle.FromDegrees(result);
     }
 
     /// <summary>
@@ -564,7 +564,7 @@ public class Camera : RemoteObject
             this
         };
         var result = await Connection.InvokeAsync<float>("SpaceCenter", "Camera_get_Pitch", args);
-        return Angle.FromDegrees((double)result);
+        return Angle.FromDegrees(result);
     }
 
     /// <summary>

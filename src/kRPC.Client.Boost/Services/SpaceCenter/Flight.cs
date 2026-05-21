@@ -111,7 +111,7 @@ public class Flight : RemoteObject
             this
         };
         var result = Connection.Invoke<float>("SpaceCenter", "Flight_get_AngleOfAttack", args);
-        return Angle.FromDegrees((double)result);
+        return Angle.FromDegrees(result);
     }
 
     /// <summary>
@@ -126,7 +126,7 @@ public class Flight : RemoteObject
             this
         };
         var result = await Connection.InvokeAsync<float>("SpaceCenter", "Flight_get_AngleOfAttack", args);
-        return Angle.FromDegrees((double)result);
+        return Angle.FromDegrees(result);
     }
 
     /// <summary>
@@ -538,7 +538,7 @@ public class Flight : RemoteObject
             this
         };
         var result = Connection.Invoke<float>("SpaceCenter", "Flight_get_Heading", args);
-        return Angle.FromDegrees((double)result);
+        return Angle.FromDegrees(result);
     }
 
     /// <summary>
@@ -554,7 +554,7 @@ public class Flight : RemoteObject
             this
         };
         var result = await Connection.InvokeAsync<float>("SpaceCenter", "Flight_get_Heading", args);
-        return Angle.FromDegrees((double)result);
+        return Angle.FromDegrees(result);
     }
 
     /// <summary>
@@ -811,7 +811,7 @@ public class Flight : RemoteObject
             this
         };
         var result = Connection.Invoke<float>("SpaceCenter", "Flight_get_Pitch", args);
-        return Angle.FromDegrees((double)result);
+        return Angle.FromDegrees(result);
     }
 
     /// <summary>
@@ -827,7 +827,7 @@ public class Flight : RemoteObject
             this
         };
         var result = await Connection.InvokeAsync<float>("SpaceCenter", "Flight_get_Pitch", args);
-        return Angle.FromDegrees((double)result);
+        return Angle.FromDegrees(result);
     }
 
     /// <summary>
@@ -968,7 +968,7 @@ public class Flight : RemoteObject
             this
         };
         var result = Connection.Invoke<float>("SpaceCenter", "Flight_get_Roll", args);
-        return Angle.FromDegrees((double)result);
+        return Angle.FromDegrees(result);
     }
 
     /// <summary>
@@ -984,7 +984,7 @@ public class Flight : RemoteObject
             this
         };
         var result = await Connection.InvokeAsync<float>("SpaceCenter", "Flight_get_Roll", args);
-        return Angle.FromDegrees((double)result);
+        return Angle.FromDegrees(result);
     }
 
     /// <summary>
@@ -1027,7 +1027,7 @@ public class Flight : RemoteObject
             this
         };
         var result = Connection.Invoke<float>("SpaceCenter", "Flight_get_SideslipAngle", args);
-        return Angle.FromDegrees((double)result);
+        return Angle.FromDegrees(result);
     }
 
     /// <summary>
@@ -1042,7 +1042,7 @@ public class Flight : RemoteObject
             this
         };
         var result = await Connection.InvokeAsync<float>("SpaceCenter", "Flight_get_SideslipAngle", args);
-        return Angle.FromDegrees((double)result);
+        return Angle.FromDegrees(result);
     }
 
     /// <summary>

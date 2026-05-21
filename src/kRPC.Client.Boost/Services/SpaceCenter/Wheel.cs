@@ -854,7 +854,7 @@ public class Wheel : RemoteObject
             this
         };
         var result = Connection.Invoke<float>("SpaceCenter", "Wheel_get_SteeringAngleLimit", args);
-        return Angle.FromDegrees((double)result);
+        return Angle.FromDegrees(result);
     }
 
     /// <summary>
@@ -869,7 +869,7 @@ public class Wheel : RemoteObject
             this
         };
         var result = await Connection.InvokeAsync<float>("SpaceCenter", "Wheel_get_SteeringAngleLimit", args);
-        return Angle.FromDegrees((double)result);
+        return Angle.FromDegrees(result);
     }
 
     /// <summary>

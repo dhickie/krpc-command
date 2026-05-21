@@ -284,7 +284,7 @@ public class RoboticPiston : RemoteObject
             this
         };
         var result = Connection.Invoke<float>("SpaceCenter", "RoboticPiston_get_Rate", args);
-        return Angle.FromDegrees((double)result);
+        return Angle.FromDegrees(result);
     }
 
     /// <summary>
@@ -299,7 +299,7 @@ public class RoboticPiston : RemoteObject
             this
         };
         var result = await Connection.InvokeAsync<float>("SpaceCenter", "RoboticPiston_get_Rate", args);
-        return Angle.FromDegrees((double)result);
+        return Angle.FromDegrees(result);
     }
 
     /// <summary>

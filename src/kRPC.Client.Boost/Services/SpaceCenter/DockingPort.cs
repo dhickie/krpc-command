@@ -259,7 +259,7 @@ public class DockingPort : RemoteObject
             this
         };
         var result = Connection.Invoke<float>("SpaceCenter", "DockingPort_get_MaximumRotation", args);
-        return Angle.FromDegrees((double)result);
+        return Angle.FromDegrees(result);
     }
 
     /// <summary>
@@ -274,7 +274,7 @@ public class DockingPort : RemoteObject
             this
         };
         var result = await Connection.InvokeAsync<float>("SpaceCenter", "DockingPort_get_MaximumRotation", args);
-        return Angle.FromDegrees((double)result);
+        return Angle.FromDegrees(result);
     }
 
     /// <summary>
@@ -288,7 +288,7 @@ public class DockingPort : RemoteObject
             this
         };
         var result = Connection.Invoke<float>("SpaceCenter", "DockingPort_get_MinimumRotation", args);
-        return Angle.FromDegrees((double)result);
+        return Angle.FromDegrees(result);
     }
 
     /// <summary>
@@ -303,7 +303,7 @@ public class DockingPort : RemoteObject
             this
         };
         var result = await Connection.InvokeAsync<float>("SpaceCenter", "DockingPort_get_MinimumRotation", args);
-        return Angle.FromDegrees((double)result);
+        return Angle.FromDegrees(result);
     }
 
     /// <summary>
@@ -478,7 +478,7 @@ public class DockingPort : RemoteObject
             this
         };
         var result = Connection.Invoke<float>("SpaceCenter", "DockingPort_get_RotationTarget", args);
-        return Angle.FromDegrees((double)result);
+        return Angle.FromDegrees(result);
     }
 
     /// <summary>
@@ -493,7 +493,7 @@ public class DockingPort : RemoteObject
             this
         };
         var result = await Connection.InvokeAsync<float>("SpaceCenter", "DockingPort_get_RotationTarget", args);
-        return Angle.FromDegrees((double)result);
+        return Angle.FromDegrees(result);
     }
 
     /// <summary>

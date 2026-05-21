@@ -56,7 +56,7 @@ public class RoboticRotation : RemoteObject
             this
         };
         var result = Connection.Invoke<float>("SpaceCenter", "RoboticRotation_get_CurrentAngle", args);
-        return Angle.FromDegrees((double)result);
+        return Angle.FromDegrees(result);
     }
 
     /// <summary>
@@ -71,7 +71,7 @@ public class RoboticRotation : RemoteObject
             this
         };
         var result = await Connection.InvokeAsync<float>("SpaceCenter", "RoboticRotation_get_CurrentAngle", args);
-        return Angle.FromDegrees((double)result);
+        return Angle.FromDegrees(result);
     }
 
     /// <summary>
@@ -286,7 +286,7 @@ public class RoboticRotation : RemoteObject
             this
         };
         var result = Connection.Invoke<float>("SpaceCenter", "RoboticRotation_get_Rate", args);
-        return Angle.FromDegrees((double)result);
+        return Angle.FromDegrees(result);
     }
 
     /// <summary>
@@ -301,7 +301,7 @@ public class RoboticRotation : RemoteObject
             this
         };
         var result = await Connection.InvokeAsync<float>("SpaceCenter", "RoboticRotation_get_Rate", args);
-        return Angle.FromDegrees((double)result);
+        return Angle.FromDegrees(result);
     }
 
     /// <summary>
@@ -346,7 +346,7 @@ public class RoboticRotation : RemoteObject
             this
         };
         var result = Connection.Invoke<float>("SpaceCenter", "RoboticRotation_get_TargetAngle", args);
-        return Angle.FromDegrees((double)result);
+        return Angle.FromDegrees(result);
     }
 
     /// <summary>
@@ -361,7 +361,7 @@ public class RoboticRotation : RemoteObject
             this
         };
         var result = await Connection.InvokeAsync<float>("SpaceCenter", "RoboticRotation_get_TargetAngle", args);
-        return Angle.FromDegrees((double)result);
+        return Angle.FromDegrees(result);
     }
 
     /// <summary>
