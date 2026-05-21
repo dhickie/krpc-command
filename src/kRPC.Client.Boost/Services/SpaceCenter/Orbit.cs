@@ -265,17 +265,14 @@ public class Orbit : RemoteObject
     /// <returns>The direction as a unit vector.</returns>
     /// <param name="referenceFrame">The reference frame that the returned
     /// direction is in.</param>
-    /// <param name="connection">A connection object.</param>
     [Rpc("SpaceCenter", "Orbit_static_ReferencePlaneDirection")]
-    public static Tuple<double,double,double> ReferencePlaneDirection(ConnectionMultiplexer connection, ReferenceFrame referenceFrame)
+    public Tuple<double,double,double> ReferencePlaneDirection(ReferenceFrame referenceFrame)
     {
-        if (connection == null)
-            throw new ArgumentNullException(nameof(connection));
         var args = new object[]
         {
             referenceFrame
         };
-        return connection.Invoke<Tuple<double,double,double>>("SpaceCenter", "Orbit_static_ReferencePlaneDirection", args);
+        return Connection.Invoke<Tuple<double,double,double>>("SpaceCenter", "Orbit_static_ReferencePlaneDirection", args);
     }
 
     /// <summary>
@@ -286,17 +283,14 @@ public class Orbit : RemoteObject
     /// <returns>The direction as a unit vector.</returns>
     /// <param name="referenceFrame">The reference frame that the returned
     /// direction is in.</param>
-    /// <param name="connection">A connection object.</param>
     [Rpc("SpaceCenter", "Orbit_static_ReferencePlaneNormal")]
-    public static Tuple<double,double,double> ReferencePlaneNormal(ConnectionMultiplexer connection, ReferenceFrame referenceFrame)
+    public Tuple<double,double,double> ReferencePlaneNormal(ReferenceFrame referenceFrame)
     {
-        if (connection == null)
-            throw new ArgumentNullException(nameof(connection));
         var args = new object[]
         {
             referenceFrame
         };
-        return connection.Invoke<Tuple<double,double,double>>("SpaceCenter", "Orbit_static_ReferencePlaneNormal", args);
+        return Connection.Invoke<Tuple<double,double,double>>("SpaceCenter", "Orbit_static_ReferencePlaneNormal", args);
     }
 
     /// <summary>

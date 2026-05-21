@@ -84,34 +84,28 @@ public class Resources : RemoteObject
     /// Returns the density of a resource, in <math>kg/l</math>.
     /// </summary>
     /// <param name="name">The name of the resource.</param>
-    /// <param name="connection">A connection object.</param>
     [Rpc("SpaceCenter", "Resources_static_Density")]
-    public static float Density(ConnectionMultiplexer connection, string name)
+    public float Density(string name)
     {
-        if (connection == null)
-            throw new ArgumentNullException(nameof(connection));
         var args = new object[]
         {
             name
         };
-        return connection.Invoke<float>("SpaceCenter", "Resources_static_Density", args);
+        return Connection.Invoke<float>("SpaceCenter", "Resources_static_Density", args);
     }
 
     /// <summary>
     /// Returns the flow mode of a resource.
     /// </summary>
     /// <param name="name">The name of the resource.</param>
-    /// <param name="connection">A connection object.</param>
     [Rpc("SpaceCenter", "Resources_static_FlowMode")]
-    public static ResourceFlowMode FlowMode(ConnectionMultiplexer connection, string name)
+    public ResourceFlowMode FlowMode(string name)
     {
-        if (connection == null)
-            throw new ArgumentNullException(nameof(connection));
         var args = new object[]
         {
             name
         };
-        return connection.Invoke<ResourceFlowMode>("SpaceCenter", "Resources_static_FlowMode", args);
+        return Connection.Invoke<ResourceFlowMode>("SpaceCenter", "Resources_static_FlowMode", args);
     }
 
     /// <summary>

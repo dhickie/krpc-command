@@ -29,12 +29,9 @@ public class ResourceTransfer : RemoteObject
     /// <param name="toPart">The part to transfer from.</param>
     /// <param name="resource">The name of the resource to transfer.</param>
     /// <param name="maxAmount">The maximum amount of resource to transfer.</param>
-    /// <param name="connection">A connection object.</param>
     [Rpc("SpaceCenter", "ResourceTransfer_static_Start")]
-    public static ResourceTransfer Start(ConnectionMultiplexer connection, Part fromPart, Part toPart, string resource, float maxAmount)
+    public ResourceTransfer Start(Part fromPart, Part toPart, string resource, float maxAmount)
     {
-        if (connection == null)
-            throw new ArgumentNullException(nameof(connection));
         var args = new object[]
         {
             fromPart,
@@ -42,7 +39,7 @@ public class ResourceTransfer : RemoteObject
             resource,
             maxAmount
         };
-        return connection.Invoke<ResourceTransfer>("SpaceCenter", "ResourceTransfer_static_Start", args);
+        return Connection.Invoke<ResourceTransfer>("SpaceCenter", "ResourceTransfer_static_Start", args);
     }
 
     /// <summary>

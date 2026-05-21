@@ -38,12 +38,9 @@ public class ReferenceFrame : RemoteObject
     /// reference frames are optional. If omitted, they are set to the
     /// <paramref name="position" /> reference frame.
     /// </remarks>
-    /// <param name="connection">A connection object.</param>
     [Rpc("SpaceCenter", "ReferenceFrame_static_CreateHybrid")]
-    public static ReferenceFrame CreateHybrid(ConnectionMultiplexer connection, ReferenceFrame position, ReferenceFrame rotation = null, ReferenceFrame velocity = null, ReferenceFrame angularVelocity = null)
+    public ReferenceFrame CreateHybrid(ReferenceFrame position, ReferenceFrame rotation = null, ReferenceFrame velocity = null, ReferenceFrame angularVelocity = null)
     {
-        if (connection == null)
-            throw new ArgumentNullException(nameof(connection));
         var args = new object[]
         {
             position,
@@ -51,7 +48,7 @@ public class ReferenceFrame : RemoteObject
             velocity,
             angularVelocity
         };
-        return connection.Invoke<ReferenceFrame>("SpaceCenter", "ReferenceFrame_static_CreateHybrid", args);
+        return Connection.Invoke<ReferenceFrame>("SpaceCenter", "ReferenceFrame_static_CreateHybrid", args);
     }
 
     /// <summary>
@@ -72,12 +69,9 @@ public class ReferenceFrame : RemoteObject
     /// as a vector. This vector points in the direction of the axis of rotation,
     /// and its magnitude is the speed of the rotation in radians per second.
     /// Defaults to <math>(0, 0, 0)</math>.</param>
-    /// <param name="connection">A connection object.</param>
     [Rpc("SpaceCenter", "ReferenceFrame_static_CreateRelative")]
-    public static ReferenceFrame CreateRelative(ConnectionMultiplexer connection, ReferenceFrame referenceFrame, Tuple<double,double,double> position = null, Tuple<double,double,double,double> rotation = null, Tuple<double,double,double> velocity = null, Tuple<double,double,double> angularVelocity = null)
+    public ReferenceFrame CreateRelative(ReferenceFrame referenceFrame, Tuple<double,double,double> position = null, Tuple<double,double,double,double> rotation = null, Tuple<double,double,double> velocity = null, Tuple<double,double,double> angularVelocity = null)
     {
-        if (connection == null)
-            throw new ArgumentNullException(nameof(connection));
         var args = new object[]
         {
             referenceFrame,
@@ -86,6 +80,6 @@ public class ReferenceFrame : RemoteObject
             velocity ?? new Tuple<double,double,double>(0.0, 0.0, 0.0),
             angularVelocity ?? new Tuple<double,double,double>(0.0, 0.0, 0.0)
         };
-        return connection.Invoke<ReferenceFrame>("SpaceCenter", "ReferenceFrame_static_CreateRelative", args);
+        return Connection.Invoke<ReferenceFrame>("SpaceCenter", "ReferenceFrame_static_CreateRelative", args);
     }
 }
