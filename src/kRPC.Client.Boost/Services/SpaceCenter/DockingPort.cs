@@ -3,6 +3,7 @@ using kRPC.Client.Boost.Services;
 using System;
 using kRPC.Client.Boost.Attributes;
 using MathNet.Spatial.Euclidean;
+using MathNet.Spatial.Units;
 using System.Threading.Tasks;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
@@ -248,57 +249,61 @@ public class DockingPort : RemoteObject
     }
 
     /// <summary>
-    /// Gets the maximum rotation angle in degrees.
+    /// Gets the maximum rotation angle.
     /// </summary>
     [Rpc("SpaceCenter", "DockingPort_get_MaximumRotation")]
-    public float GetMaximumRotation()
+    public Angle GetMaximumRotation()
     {
         var args = new object[]
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "DockingPort_get_MaximumRotation", args);
+        var result = Connection.Invoke<float>("SpaceCenter", "DockingPort_get_MaximumRotation", args);
+        return Angle.FromDegrees((double)result);
     }
 
     /// <summary>
-    /// Gets the maximum rotation angle in degrees.
+    /// Gets the maximum rotation angle.
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "DockingPort_get_MaximumRotation")]
-    public async Task<float> GetMaximumRotationAsync()
+    public async Task<Angle> GetMaximumRotationAsync()
     {
         var args = new object[]
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "DockingPort_get_MaximumRotation", args);
+        var result = await Connection.InvokeAsync<float>("SpaceCenter", "DockingPort_get_MaximumRotation", args);
+        return Angle.FromDegrees((double)result);
     }
 
     /// <summary>
-    /// Gets the minimum rotation angle in degrees.
+    /// Gets the minimum rotation angle.
     /// </summary>
     [Rpc("SpaceCenter", "DockingPort_get_MinimumRotation")]
-    public float GetMinimumRotation()
+    public Angle GetMinimumRotation()
     {
         var args = new object[]
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "DockingPort_get_MinimumRotation", args);
+        var result = Connection.Invoke<float>("SpaceCenter", "DockingPort_get_MinimumRotation", args);
+        return Angle.FromDegrees((double)result);
     }
 
     /// <summary>
-    /// Gets the minimum rotation angle in degrees.
+    /// Gets the minimum rotation angle.
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "DockingPort_get_MinimumRotation")]
-    public async Task<float> GetMinimumRotationAsync()
+    public async Task<Angle> GetMinimumRotationAsync()
     {
         var args = new object[]
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "DockingPort_get_MinimumRotation", args);
+        var result = await Connection.InvokeAsync<float>("SpaceCenter", "DockingPort_get_MinimumRotation", args);
+        return Angle.FromDegrees((double)result);
     }
 
     /// <summary>
@@ -461,57 +466,59 @@ public class DockingPort : RemoteObject
     }
 
     /// <summary>
-    /// Rotation target angle in degrees.
+    /// Gets the rotation target angle.
     /// </summary>
     [Rpc("SpaceCenter", "DockingPort_get_RotationTarget")]
-    public float GetRotationTarget()
+    public Angle GetRotationTarget()
     {
         var args = new object[]
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "DockingPort_get_RotationTarget", args);
+        var result = Connection.Invoke<float>("SpaceCenter", "DockingPort_get_RotationTarget", args);
+        return Angle.FromDegrees((double)result);
     }
 
     /// <summary>
-    /// Rotation target angle in degrees.
+    /// Gets the rotation target angle.
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "DockingPort_get_RotationTarget")]
-    public async Task<float> GetRotationTargetAsync()
+    public async Task<Angle> GetRotationTargetAsync()
     {
         var args = new object[]
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "DockingPort_get_RotationTarget", args);
+        var result = await Connection.InvokeAsync<float>("SpaceCenter", "DockingPort_get_RotationTarget", args);
+        return Angle.FromDegrees((double)result);
     }
 
     /// <summary>
-    /// Sets rotation target angle in degrees.
+    /// Sets the rotation target angle.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    public void SetRotationTarget(float value)
+    public void SetRotationTarget(Angle value)
     {
         var args = new object[]
         {
             this,
-            value
+            (float)value.Degrees
         };
         Connection.Invoke("SpaceCenter", "DockingPort_set_RotationTarget", args);
     }
 
     /// <summary>
-    /// Sets rotation target angle in degrees.
+    /// Sets the rotation target angle.
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    public async Task SetRotationTargetAsync(float value)
+    public async Task SetRotationTargetAsync(Angle value)
     {
         var args = new object[]
         {
             this,
-            value
+            (float)value.Degrees
         };
         await Connection.InvokeAsync("SpaceCenter", "DockingPort_set_RotationTarget", args);
     }

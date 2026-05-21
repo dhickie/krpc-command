@@ -1,6 +1,7 @@
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
 using kRPC.Client.Boost.Attributes;
+using MathNet.Spatial.Units;
 using System.Threading.Tasks;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
@@ -298,57 +299,59 @@ public class Camera : RemoteObject
     }
 
     /// <summary>
-    /// Gets the heading of the camera, in degrees.
+    /// Gets the heading of the camera.
     /// </summary>
     [Rpc("SpaceCenter", "Camera_get_Heading")]
-    public float GetHeading()
+    public Angle GetHeading()
     {
         var args = new object[]
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "Camera_get_Heading", args);
+        var result = Connection.Invoke<float>("SpaceCenter", "Camera_get_Heading", args);
+        return Angle.FromDegrees((double)result);
     }
 
     /// <summary>
-    /// Gets the heading of the camera, in degrees.
+    /// Gets the heading of the camera.
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Camera_get_Heading")]
-    public async Task<float> GetHeadingAsync()
+    public async Task<Angle> GetHeadingAsync()
     {
         var args = new object[]
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "Camera_get_Heading", args);
+        var result = await Connection.InvokeAsync<float>("SpaceCenter", "Camera_get_Heading", args);
+        return Angle.FromDegrees((double)result);
     }
 
     /// <summary>
-    /// Sets the heading of the camera, in degrees.
+    /// Sets the heading of the camera.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    public void SetHeading(float value)
+    public void SetHeading(Angle value)
     {
         var args = new object[]
         {
             this,
-            value
+            (float)value.Degrees
         };
         Connection.Invoke("SpaceCenter", "Camera_set_Heading", args);
     }
 
     /// <summary>
-    /// Sets the heading of the camera, in degrees.
+    /// Sets the heading of the camera.
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    public async Task SetHeadingAsync(float value)
+    public async Task SetHeadingAsync(Angle value)
     {
         var args = new object[]
         {
             this,
-            value
+            (float)value.Degrees
         };
         await Connection.InvokeAsync("SpaceCenter", "Camera_set_Heading", args);
     }
@@ -384,13 +387,14 @@ public class Camera : RemoteObject
     /// Gets the maximum pitch of the camera.
     /// </summary>
     [Rpc("SpaceCenter", "Camera_get_MaxPitch")]
-    public float GetMaxPitch()
+    public Angle GetMaxPitch()
     {
         var args = new object[]
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "Camera_get_MaxPitch", args);
+        var result = Connection.Invoke<float>("SpaceCenter", "Camera_get_MaxPitch", args);
+        return Angle.FromDegrees((double)result);
     }
 
     /// <summary>
@@ -398,13 +402,14 @@ public class Camera : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Camera_get_MaxPitch")]
-    public async Task<float> GetMaxPitchAsync()
+    public async Task<Angle> GetMaxPitchAsync()
     {
         var args = new object[]
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "Camera_get_MaxPitch", args);
+        var result = await Connection.InvokeAsync<float>("SpaceCenter", "Camera_get_MaxPitch", args);
+        return Angle.FromDegrees((double)result);
     }
 
     /// <summary>
@@ -438,13 +443,14 @@ public class Camera : RemoteObject
     /// Gets the minimum pitch of the camera.
     /// </summary>
     [Rpc("SpaceCenter", "Camera_get_MinPitch")]
-    public float GetMinPitch()
+    public Angle GetMinPitch()
     {
         var args = new object[]
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "Camera_get_MinPitch", args);
+        var result = Connection.Invoke<float>("SpaceCenter", "Camera_get_MinPitch", args);
+        return Angle.FromDegrees((double)result);
     }
 
     /// <summary>
@@ -452,13 +458,14 @@ public class Camera : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Camera_get_MinPitch")]
-    public async Task<float> GetMinPitchAsync()
+    public async Task<Angle> GetMinPitchAsync()
     {
         var args = new object[]
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "Camera_get_MinPitch", args);
+        var result = await Connection.InvokeAsync<float>("SpaceCenter", "Camera_get_MinPitch", args);
+        return Angle.FromDegrees((double)result);
     }
 
     /// <summary>
@@ -518,61 +525,63 @@ public class Camera : RemoteObject
     }
 
     /// <summary>
-    /// Gets the pitch of the camera, in degrees.
+    /// Gets the pitch of the camera.
     /// A value between <see cref="M:SpaceCenter.Camera.GetMinPitch" /> and <see cref="M:SpaceCenter.Camera.GetMaxPitch" />
     /// </summary>
     [Rpc("SpaceCenter", "Camera_get_Pitch")]
-    public float GetPitch()
+    public Angle GetPitch()
     {
         var args = new object[]
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "Camera_get_Pitch", args);
+        var result = Connection.Invoke<float>("SpaceCenter", "Camera_get_Pitch", args);
+        return Angle.FromDegrees((double)result);
     }
 
     /// <summary>
-    /// Gets the pitch of the camera, in degrees.
+    /// Gets the pitch of the camera.
     /// A value between <see cref="M:SpaceCenter.Camera.GetMinPitch" /> and <see cref="M:SpaceCenter.Camera.GetMaxPitch" />
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Camera_get_Pitch")]
-    public async Task<float> GetPitchAsync()
+    public async Task<Angle> GetPitchAsync()
     {
         var args = new object[]
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "Camera_get_Pitch", args);
+        var result = await Connection.InvokeAsync<float>("SpaceCenter", "Camera_get_Pitch", args);
+        return Angle.FromDegrees((double)result);
     }
 
     /// <summary>
-    /// Sets the pitch of the camera, in degrees.
+    /// Sets the pitch of the camera.
     /// A value between <see cref="M:SpaceCenter.Camera.GetMinPitch" /> and <see cref="M:SpaceCenter.Camera.GetMaxPitch" />
     /// </summary>
     /// <param name="value">The value to set.</param>
-    public void SetPitch(float value)
+    public void SetPitch(Angle value)
     {
         var args = new object[]
         {
             this,
-            value
+            (float)value.Degrees
         };
         Connection.Invoke("SpaceCenter", "Camera_set_Pitch", args);
     }
 
     /// <summary>
-    /// Sets the pitch of the camera, in degrees.
+    /// Sets the pitch of the camera.
     /// A value between <see cref="M:SpaceCenter.Camera.GetMinPitch" /> and <see cref="M:SpaceCenter.Camera.GetMaxPitch" />
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    public async Task SetPitchAsync(float value)
+    public async Task SetPitchAsync(Angle value)
     {
         var args = new object[]
         {
             this,
-            value
+            (float)value.Degrees
         };
         await Connection.InvokeAsync("SpaceCenter", "Camera_set_Pitch", args);
     }

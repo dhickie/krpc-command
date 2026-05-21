@@ -643,7 +643,7 @@ public class Contract : RemoteObject
     /// Type of the contract.
     /// </summary>
     [Rpc("SpaceCenter", "Contract_get_Type")]
-    public string GetType()
+    public string GetContractType()
     {
         var args = new object[]
         {
@@ -657,7 +657,7 @@ public class Contract : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Contract_get_Type")]
-    public async Task<string> GetTypeAsync()
+    public async Task<string> GetContractTypeAsync()
     {
         var args = new object[]
         {

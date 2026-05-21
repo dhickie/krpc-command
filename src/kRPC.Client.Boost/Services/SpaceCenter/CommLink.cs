@@ -102,7 +102,7 @@ public class CommLink : RemoteObject
     /// Gets the type of link.
     /// </summary>
     [Rpc("SpaceCenter", "CommLink_get_Type")]
-    public CommLinkType GetType()
+    public CommLinkType GetComLinkType()
     {
         var args = new object[]
         {
@@ -116,7 +116,7 @@ public class CommLink : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "CommLink_get_Type")]
-    public async Task<CommLinkType> GetTypeAsync()
+    public async Task<CommLinkType> GetComLinkTypeAsync()
     {
         var args = new object[]
         {

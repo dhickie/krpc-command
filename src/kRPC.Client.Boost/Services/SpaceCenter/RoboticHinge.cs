@@ -1,6 +1,7 @@
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
 using kRPC.Client.Boost.Attributes;
+using MathNet.Spatial.Units;
 using System.Threading.Tasks;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
@@ -48,13 +49,14 @@ public class RoboticHinge : RemoteObject
     /// Gets the current angle.
     /// </summary>
     [Rpc("SpaceCenter", "RoboticHinge_get_CurrentAngle")]
-    public float GetCurrentAngle()
+    public Angle GetCurrentAngle()
     {
         var args = new object[]
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "RoboticHinge_get_CurrentAngle", args);
+        var result = Connection.Invoke<float>("SpaceCenter", "RoboticHinge_get_CurrentAngle", args);
+        return Angle.FromDegrees((double)result);
     }
 
     /// <summary>
@@ -62,13 +64,14 @@ public class RoboticHinge : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "RoboticHinge_get_CurrentAngle")]
-    public async Task<float> GetCurrentAngleAsync()
+    public async Task<Angle> GetCurrentAngleAsync()
     {
         var args = new object[]
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "RoboticHinge_get_CurrentAngle", args);
+        var result = await Connection.InvokeAsync<float>("SpaceCenter", "RoboticHinge_get_CurrentAngle", args);
+        return Angle.FromDegrees((double)result);
     }
 
     /// <summary>
@@ -267,57 +270,59 @@ public class RoboticHinge : RemoteObject
     }
 
     /// <summary>
-    /// Target movement rate in degrees per second.
+    /// Gets the target movement rate as an angle per second.
     /// </summary>
     [Rpc("SpaceCenter", "RoboticHinge_get_Rate")]
-    public float GetRate()
+    public Angle GetRate()
     {
         var args = new object[]
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "RoboticHinge_get_Rate", args);
+        var result = Connection.Invoke<float>("SpaceCenter", "RoboticHinge_get_Rate", args);
+        return Angle.FromDegrees((double)result);
     }
 
     /// <summary>
-    /// Target movement rate in degrees per second.
+    /// Gets the target movement rate as an angle per second.
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "RoboticHinge_get_Rate")]
-    public async Task<float> GetRateAsync()
+    public async Task<Angle> GetRateAsync()
     {
         var args = new object[]
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "RoboticHinge_get_Rate", args);
+        var result = await Connection.InvokeAsync<float>("SpaceCenter", "RoboticHinge_get_Rate", args);
+        return Angle.FromDegrees((double)result);
     }
 
     /// <summary>
-    /// Sets the target movement rate in degrees per second.
+    /// Sets the target movement rate as an angle per second.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    public void SetRate(float value)
+    public void SetRate(Angle value)
     {
         var args = new object[]
         {
             this,
-            value
+            (float)value.Degrees
         };
         Connection.Invoke("SpaceCenter", "RoboticHinge_set_Rate", args);
     }
 
     /// <summary>
-    /// Sets the target movement rate in degrees per second.
+    /// Sets the target movement rate as an angle per second.
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    public async Task SetRateAsync(float value)
+    public async Task SetRateAsync(Angle value)
     {
         var args = new object[]
         {
             this,
-            value
+            (float)value.Degrees
         };
         await Connection.InvokeAsync("SpaceCenter", "RoboticHinge_set_Rate", args);
     }
@@ -326,13 +331,14 @@ public class RoboticHinge : RemoteObject
     /// Target angle.
     /// </summary>
     [Rpc("SpaceCenter", "RoboticHinge_get_TargetAngle")]
-    public float GetTargetAngle()
+    public Angle GetTargetAngle()
     {
         var args = new object[]
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "RoboticHinge_get_TargetAngle", args);
+        var result = Connection.Invoke<float>("SpaceCenter", "RoboticHinge_get_TargetAngle", args);
+        return Angle.FromDegrees((double)result);
     }
 
     /// <summary>
@@ -340,25 +346,26 @@ public class RoboticHinge : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "RoboticHinge_get_TargetAngle")]
-    public async Task<float> GetTargetAngleAsync()
+    public async Task<Angle> GetTargetAngleAsync()
     {
         var args = new object[]
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "RoboticHinge_get_TargetAngle", args);
+        var result = await Connection.InvokeAsync<float>("SpaceCenter", "RoboticHinge_get_TargetAngle", args);
+        return Angle.FromDegrees((double)result);
     }
 
     /// <summary>
     /// Sets the target angle.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    public void SetTargetAngle(float value)
+    public void SetTargetAngle(Angle value)
     {
         var args = new object[]
         {
             this,
-            value
+            (float)value.Degrees
         };
         Connection.Invoke("SpaceCenter", "RoboticHinge_set_TargetAngle", args);
     }
@@ -368,12 +375,12 @@ public class RoboticHinge : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    public async Task SetTargetAngleAsync(float value)
+    public async Task SetTargetAngleAsync(Angle value)
     {
         var args = new object[]
         {
             this,
-            value
+            (float)value.Degrees
         };
         await Connection.InvokeAsync("SpaceCenter", "RoboticHinge_set_TargetAngle", args);
     }

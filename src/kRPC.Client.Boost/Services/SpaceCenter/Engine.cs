@@ -3,6 +3,7 @@ using kRPC.Client.Boost.Services;
 using System;
 using kRPC.Client.Boost.Attributes;
 using MathNet.Spatial.Euclidean;
+using MathNet.Spatial.Units;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -522,32 +523,34 @@ public class Engine : RemoteObject
     }
 
     /// <summary>
-    /// Gets the range over which the gimbal can move, in degrees.
+    /// Gets the range over which the gimbal can move.
     /// Returns 0 if the engine is not gimballed.
     /// </summary>
     [Rpc("SpaceCenter", "Engine_get_GimbalRange")]
-    public float GetGimbalRange()
+    public Angle GetGimbalRange()
     {
         var args = new object[]
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "Engine_get_GimbalRange", args);
+        var result = Connection.Invoke<float>("SpaceCenter", "Engine_get_GimbalRange", args);
+        return Angle.FromDegrees((double)result);
     }
 
     /// <summary>
-    /// Gets the range over which the gimbal can move, in degrees.
+    /// Gets the range over which the gimbal can move.
     /// Returns 0 if the engine is not gimballed.
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Engine_get_GimbalRange")]
-    public async Task<float> GetGimbalRangeAsync()
+    public async Task<Angle> GetGimbalRangeAsync()
     {
         var args = new object[]
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "Engine_get_GimbalRange", args);
+        var result = await Connection.InvokeAsync<float>("SpaceCenter", "Engine_get_GimbalRange", args);
+        return Angle.FromDegrees((double)result);
     }
 
     /// <summary>

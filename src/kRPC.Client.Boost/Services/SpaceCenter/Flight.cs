@@ -101,32 +101,32 @@ public class Flight : RemoteObject
     }
 
     /// <summary>
-    /// Gets the pitch angle between the orientation of the vessel and its velocity vector,
-    /// in degrees.
+    /// Gets the pitch angle between the orientation of the vessel and its velocity vector.
     /// </summary>
     [Rpc("SpaceCenter", "Flight_get_AngleOfAttack")]
-    public float GetAngleOfAttack()
+    public Angle GetAngleOfAttack()
     {
         var args = new object[]
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "Flight_get_AngleOfAttack", args);
+        var result = Connection.Invoke<float>("SpaceCenter", "Flight_get_AngleOfAttack", args);
+        return Angle.FromDegrees((double)result);
     }
 
     /// <summary>
-    /// Gets the pitch angle between the orientation of the vessel and its velocity vector,
-    /// in degrees.
+    /// Gets the pitch angle between the orientation of the vessel and its velocity vector.
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Flight_get_AngleOfAttack")]
-    public async Task<float> GetAngleOfAttackAsync()
+    public async Task<Angle> GetAngleOfAttackAsync()
     {
         var args = new object[]
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "Flight_get_AngleOfAttack", args);
+        var result = await Connection.InvokeAsync<float>("SpaceCenter", "Flight_get_AngleOfAttack", args);
+        return Angle.FromDegrees((double)result);
     }
 
     /// <summary>
@@ -527,32 +527,34 @@ public class Flight : RemoteObject
     }
 
     /// <summary>
-    /// Gets the heading of the vessel (its angle relative to north), in degrees.
+    /// Gets the heading of the vessel (its angle relative to north).
     /// A value between 0° and 360°.
     /// </summary>
     [Rpc("SpaceCenter", "Flight_get_Heading")]
-    public float GetHeading()
+    public Angle GetHeading()
     {
         var args = new object[]
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "Flight_get_Heading", args);
+        var result = Connection.Invoke<float>("SpaceCenter", "Flight_get_Heading", args);
+        return Angle.FromDegrees((double)result);
     }
 
     /// <summary>
-    /// Gets the heading of the vessel (its angle relative to north), in degrees.
+    /// Gets the heading of the vessel (its angle relative to north).
     /// A value between 0° and 360°.
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Flight_get_Heading")]
-    public async Task<float> GetHeadingAsync()
+    public async Task<Angle> GetHeadingAsync()
     {
         var args = new object[]
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "Flight_get_Heading", args);
+        var result = await Connection.InvokeAsync<float>("SpaceCenter", "Flight_get_Heading", args);
+        return Angle.FromDegrees((double)result);
     }
 
     /// <summary>
@@ -798,32 +800,34 @@ public class Flight : RemoteObject
     }
 
     /// <summary>
-    /// Gets the pitch of the vessel relative to the horizon, in degrees.
+    /// Gets the pitch of the vessel relative to the horizon.
     /// A value between -90° and +90°.
     /// </summary>
     [Rpc("SpaceCenter", "Flight_get_Pitch")]
-    public float GetPitch()
+    public Angle GetPitch()
     {
         var args = new object[]
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "Flight_get_Pitch", args);
+        var result = Connection.Invoke<float>("SpaceCenter", "Flight_get_Pitch", args);
+        return Angle.FromDegrees((double)result);
     }
 
     /// <summary>
-    /// Gets the pitch of the vessel relative to the horizon, in degrees.
+    /// Gets the pitch of the vessel relative to the horizon.
     /// A value between -90° and +90°.
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Flight_get_Pitch")]
-    public async Task<float> GetPitchAsync()
+    public async Task<Angle> GetPitchAsync()
     {
         var args = new object[]
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "Flight_get_Pitch", args);
+        var result = await Connection.InvokeAsync<float>("SpaceCenter", "Flight_get_Pitch", args);
+        return Angle.FromDegrees((double)result);
     }
 
     /// <summary>
@@ -953,32 +957,34 @@ public class Flight : RemoteObject
     }
 
     /// <summary>
-    /// Gets the roll of the vessel relative to the horizon, in degrees.
+    /// Gets the roll of the vessel relative to the horizon.
     /// A value between -180° and +180°.
     /// </summary>
     [Rpc("SpaceCenter", "Flight_get_Roll")]
-    public float GetRoll()
+    public Angle GetRoll()
     {
         var args = new object[]
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "Flight_get_Roll", args);
+        var result = Connection.Invoke<float>("SpaceCenter", "Flight_get_Roll", args);
+        return Angle.FromDegrees((double)result);
     }
 
     /// <summary>
-    /// Gets the roll of the vessel relative to the horizon, in degrees.
+    /// Gets the roll of the vessel relative to the horizon.
     /// A value between -180° and +180°.
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Flight_get_Roll")]
-    public async Task<float> GetRollAsync()
+    public async Task<Angle> GetRollAsync()
     {
         var args = new object[]
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "Flight_get_Roll", args);
+        var result = await Connection.InvokeAsync<float>("SpaceCenter", "Flight_get_Roll", args);
+        return Angle.FromDegrees((double)result);
     }
 
     /// <summary>
@@ -1011,30 +1017,32 @@ public class Flight : RemoteObject
     }
 
     /// <summary>
-    /// Gets the yaw angle between the orientation of the vessel and its velocity vector, in degrees.
+    /// Gets the yaw angle between the orientation of the vessel and its velocity vector.
     /// </summary>
     [Rpc("SpaceCenter", "Flight_get_SideslipAngle")]
-    public float GetSideslipAngle()
+    public Angle GetSideslipAngle()
     {
         var args = new object[]
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "Flight_get_SideslipAngle", args);
+        var result = Connection.Invoke<float>("SpaceCenter", "Flight_get_SideslipAngle", args);
+        return Angle.FromDegrees((double)result);
     }
 
     /// <summary>
-    /// Gets the yaw angle between the orientation of the vessel and its velocity vector, in degrees.
+    /// Gets the yaw angle between the orientation of the vessel and its velocity vector.
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Flight_get_SideslipAngle")]
-    public async Task<float> GetSideslipAngleAsync()
+    public async Task<Angle> GetSideslipAngleAsync()
     {
         var args = new object[]
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "Flight_get_SideslipAngle", args);
+        var result = await Connection.InvokeAsync<float>("SpaceCenter", "Flight_get_SideslipAngle", args);
+        return Angle.FromDegrees((double)result);
     }
 
     /// <summary>

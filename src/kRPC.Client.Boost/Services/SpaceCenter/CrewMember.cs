@@ -547,7 +547,7 @@ public class CrewMember : RemoteObject
     /// Gets the type of crew member.
     /// </summary>
     [Rpc("SpaceCenter", "CrewMember_get_Type")]
-    public CrewMemberType GetType()
+    public CrewMemberType GetCrewMemberType()
     {
         var args = new object[]
         {
@@ -561,7 +561,7 @@ public class CrewMember : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "CrewMember_get_Type")]
-    public async Task<CrewMemberType> GetTypeAsync()
+    public async Task<CrewMemberType> GetCrewMemberTypeAsync()
     {
         var args = new object[]
         {

@@ -1,6 +1,7 @@
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
 using kRPC.Client.Boost.Attributes;
+using MathNet.Spatial.Units;
 using System.Threading.Tasks;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
@@ -267,57 +268,59 @@ public class RoboticPiston : RemoteObject
     }
 
     /// <summary>
-    /// Target movement rate in degrees per second.
+    /// Gets the target movement rate as an angle per second.
     /// </summary>
     [Rpc("SpaceCenter", "RoboticPiston_get_Rate")]
-    public float GetRate()
+    public Angle GetRate()
     {
         var args = new object[]
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "RoboticPiston_get_Rate", args);
+        var result = Connection.Invoke<float>("SpaceCenter", "RoboticPiston_get_Rate", args);
+        return Angle.FromDegrees((double)result);
     }
 
     /// <summary>
-    /// Target movement rate in degrees per second.
+    /// Gets the target movement rate as an angle per second.
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "RoboticPiston_get_Rate")]
-    public async Task<float> GetRateAsync()
+    public async Task<Angle> GetRateAsync()
     {
         var args = new object[]
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "RoboticPiston_get_Rate", args);
+        var result = await Connection.InvokeAsync<float>("SpaceCenter", "RoboticPiston_get_Rate", args);
+        return Angle.FromDegrees((double)result);
     }
 
     /// <summary>
-    /// Sets the target movement rate in degrees per second.
+    /// Sets the target movement rate as an angle per second.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    public void SetRate(float value)
+    public void SetRate(Angle value)
     {
         var args = new object[]
         {
             this,
-            value
+            (float)value.Degrees
         };
         Connection.Invoke("SpaceCenter", "RoboticPiston_set_Rate", args);
     }
 
     /// <summary>
-    /// Sets the target movement rate in degrees per second.
+    /// Sets the target movement rate as an angle per second.
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    public async Task SetRateAsync(float value)
+    public async Task SetRateAsync(Angle value)
     {
         var args = new object[]
         {
             this,
-            value
+            (float)value.Degrees
         };
         await Connection.InvokeAsync("SpaceCenter", "RoboticPiston_set_Rate", args);
     }

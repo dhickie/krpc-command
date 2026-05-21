@@ -1,6 +1,7 @@
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
 using kRPC.Client.Boost.Attributes;
+using MathNet.Spatial.Units;
 using System.Threading.Tasks;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
@@ -832,13 +833,14 @@ public class Wheel : RemoteObject
     /// Gets the steering angle limit.
     /// </summary>
     [Rpc("SpaceCenter", "Wheel_get_SteeringAngleLimit")]
-    public float GetSteeringAngleLimit()
+    public Angle GetSteeringAngleLimit()
     {
         var args = new object[]
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "Wheel_get_SteeringAngleLimit", args);
+        var result = Connection.Invoke<float>("SpaceCenter", "Wheel_get_SteeringAngleLimit", args);
+        return Angle.FromDegrees((double)result);
     }
 
     /// <summary>
@@ -846,25 +848,26 @@ public class Wheel : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Wheel_get_SteeringAngleLimit")]
-    public async Task<float> GetSteeringAngleLimitAsync()
+    public async Task<Angle> GetSteeringAngleLimitAsync()
     {
         var args = new object[]
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "Wheel_get_SteeringAngleLimit", args);
+        var result = await Connection.InvokeAsync<float>("SpaceCenter", "Wheel_get_SteeringAngleLimit", args);
+        return Angle.FromDegrees((double)result);
     }
 
     /// <summary>
     /// Sets the steering angle limit.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    public void SetSteeringAngleLimit(float value)
+    public void SetSteeringAngleLimit(Angle value)
     {
         var args = new object[]
         {
             this,
-            value
+            (float)value.Degrees
         };
         Connection.Invoke("SpaceCenter", "Wheel_set_SteeringAngleLimit", args);
     }
@@ -874,12 +877,12 @@ public class Wheel : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    public async Task SetSteeringAngleLimitAsync(float value)
+    public async Task SetSteeringAngleLimitAsync(Angle value)
     {
         var args = new object[]
         {
             this,
-            value
+            (float)value.Degrees
         };
         await Connection.InvokeAsync("SpaceCenter", "Wheel_set_SteeringAngleLimit", args);
     }

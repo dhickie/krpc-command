@@ -83,16 +83,16 @@ public class AutoPilot : RemoteObject
     /// <summary>
     /// Set target pitch and heading angles.
     /// </summary>
-    /// <param name="pitch">Target pitch angle, in degrees between -90° and +90°.</param>
-    /// <param name="heading">Target heading angle, in degrees between 0° and 360°.</param>
+    /// <param name="pitch">Target pitch angle, between -90° and +90°.</param>
+    /// <param name="heading">Target heading angle, between 0° and 360°.</param>
     [Rpc("SpaceCenter", "AutoPilot_TargetPitchAndHeading")]
-    public void TargetPitchAndHeading(float pitch, float heading)
+    public void TargetPitchAndHeading(Angle pitch, Angle heading)
     {
         var args = new object[]
         {
             this,
-            pitch,
-            heading
+            (float)pitch.Degrees,
+            (float)heading.Degrees
         };
         Connection.Invoke("SpaceCenter", "AutoPilot_TargetPitchAndHeading", args);
     }
@@ -101,16 +101,16 @@ public class AutoPilot : RemoteObject
     /// Set target pitch and heading angles.
     /// Executes asynchronously.
     /// </summary>
-    /// <param name="pitch">Target pitch angle, in degrees between -90° and +90°.</param>
-    /// <param name="heading">Target heading angle, in degrees between 0° and 360°.</param>
+    /// <param name="pitch">Target pitch angle, between -90° and +90°.</param>
+    /// <param name="heading">Target heading angle, between 0° and 360°.</param>
     [Rpc("SpaceCenter", "AutoPilot_TargetPitchAndHeading")]
-    public async Task TargetPitchAndHeadingAsync(float pitch, float heading)
+    public async Task TargetPitchAndHeadingAsync(Angle pitch, Angle heading)
     {
         var args = new object[]
         {
             this,
-            pitch,
-            heading
+            (float)pitch.Degrees,
+            (float)heading.Degrees
         };
         await Connection.InvokeAsync("SpaceCenter", "AutoPilot_TargetPitchAndHeading", args);
     }
@@ -351,63 +351,67 @@ public class AutoPilot : RemoteObject
     }
 
     /// <summary>
-    /// Gets the error, in degrees, between the direction the ship has been asked
+    /// Gets the error between the direction the ship has been asked
     /// to point in and the direction it is pointing in. Throws an exception if the auto-pilot
     /// has not been engaged and SAS is not enabled or is in stability assist mode.
     /// </summary>
     [Rpc("SpaceCenter", "AutoPilot_get_Error")]
-    public float GetError()
+    public Angle GetError()
     {
         var args = new object[]
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "AutoPilot_get_Error", args);
+        var result = Connection.Invoke<float>("SpaceCenter", "AutoPilot_get_Error", args);
+        return Angle.FromDegrees((double)result);
     }
 
     /// <summary>
-    /// Gets the error, in degrees, between the direction the ship has been asked
+    /// Gets the error between the direction the ship has been asked
     /// to point in and the direction it is pointing in. Throws an exception if the auto-pilot
     /// has not been engaged and SAS is not enabled or is in stability assist mode.
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "AutoPilot_get_Error")]
-    public async Task<float> GetErrorAsync()
+    public async Task<Angle> GetErrorAsync()
     {
         var args = new object[]
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "AutoPilot_get_Error", args);
+        var result = await Connection.InvokeAsync<float>("SpaceCenter", "AutoPilot_get_Error", args);
+        return Angle.FromDegrees((double)result);
     }
 
     /// <summary>
-    /// Gets the error, in degrees, between the vessels current and target heading.
+    /// Gets the error between the vessels current and target heading.
     /// Throws an exception if the auto-pilot has not been engaged.
     /// </summary>
     [Rpc("SpaceCenter", "AutoPilot_get_HeadingError")]
-    public float GetHeadingError()
+    public Angle GetHeadingError()
     {
         var args = new object[]
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "AutoPilot_get_HeadingError", args);
+        var result = Connection.Invoke<float>("SpaceCenter", "AutoPilot_get_HeadingError", args);
+        return Angle.FromDegrees((double)result);
     }
 
     /// <summary>
-    /// Gets the error, in degrees, between the vessels current and target heading.
+    /// Gets the error between the vessels current and target heading.
     /// Throws an exception if the auto-pilot has not been engaged.
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "AutoPilot_get_HeadingError")]
-    public async Task<float> GetHeadingErrorAsync()
+    public async Task<Angle> GetHeadingErrorAsync()
     {
         var args = new object[]
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "AutoPilot_get_HeadingError", args);
+        var result = await Connection.InvokeAsync<float>("SpaceCenter", "AutoPilot_get_HeadingError", args);
+        return Angle.FromDegrees((double)result);
     }
 
     /// <summary>
@@ -475,32 +479,34 @@ public class AutoPilot : RemoteObject
     }
 
     /// <summary>
-    /// Gets the error, in degrees, between the vessels current and target pitch.
+    /// Gets the error between the vessels current and target pitch.
     /// Throws an exception if the auto-pilot has not been engaged.
     /// </summary>
     [Rpc("SpaceCenter", "AutoPilot_get_PitchError")]
-    public float GetPitchError()
+    public Angle GetPitchError()
     {
         var args = new object[]
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "AutoPilot_get_PitchError", args);
+        var result = Connection.Invoke<float>("SpaceCenter", "AutoPilot_get_PitchError", args);
+        return Angle.FromDegrees((double)result);
     }
 
     /// <summary>
-    /// Gets the error, in degrees, between the vessels current and target pitch.
+    /// Gets the error between the vessels current and target pitch.
     /// Throws an exception if the auto-pilot has not been engaged.
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "AutoPilot_get_PitchError")]
-    public async Task<float> GetPitchErrorAsync()
+    public async Task<Angle> GetPitchErrorAsync()
     {
         var args = new object[]
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "AutoPilot_get_PitchError", args);
+        var result = await Connection.InvokeAsync<float>("SpaceCenter", "AutoPilot_get_PitchError", args);
+        return Angle.FromDegrees((double)result);
     }
 
     /// <summary>
@@ -634,32 +640,34 @@ public class AutoPilot : RemoteObject
     }
 
     /// <summary>
-    /// Gets the error, in degrees, between the vessels current and target roll.
+    /// Gets the error between the vessels current and target roll.
     /// Throws an exception if the auto-pilot has not been engaged or no target roll is set.
     /// </summary>
     [Rpc("SpaceCenter", "AutoPilot_get_RollError")]
-    public float GetRollError()
+    public Angle GetRollError()
     {
         var args = new object[]
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "AutoPilot_get_RollError", args);
+        var result = Connection.Invoke<float>("SpaceCenter", "AutoPilot_get_RollError", args);
+        return Angle.FromDegrees((double)result);
     }
 
     /// <summary>
-    /// Gets the error, in degrees, between the vessels current and target roll.
+    /// Gets the error between the vessels current and target roll.
     /// Throws an exception if the auto-pilot has not been engaged or no target roll is set.
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "AutoPilot_get_RollError")]
-    public async Task<float> GetRollErrorAsync()
+    public async Task<Angle> GetRollErrorAsync()
     {
         var args = new object[]
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "AutoPilot_get_RollError", args);
+        var result = await Connection.InvokeAsync<float>("SpaceCenter", "AutoPilot_get_RollError", args);
+        return Angle.FromDegrees((double)result);
     }
 
     /// <summary>
@@ -1041,169 +1049,175 @@ public class AutoPilot : RemoteObject
     }
 
     /// <summary>
-    /// Gets the target heading, in degrees, between 0° and 360°.
+    /// Gets the target heading, between 0° and 360°.
     /// </summary>
     [Rpc("SpaceCenter", "AutoPilot_get_TargetHeading")]
-    public float GetTargetHeading()
+    public Angle GetTargetHeading()
     {
         var args = new object[]
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "AutoPilot_get_TargetHeading", args);
+        var result = Connection.Invoke<float>("SpaceCenter", "AutoPilot_get_TargetHeading", args);
+        return Angle.FromDegrees((double)result);
     }
 
     /// <summary>
-    /// Gets the target heading, in degrees, between 0° and 360°.
+    /// Gets the target heading, between 0° and 360°.
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "AutoPilot_get_TargetHeading")]
-    public async Task<float> GetTargetHeadingAsync()
+    public async Task<Angle> GetTargetHeadingAsync()
     {
         var args = new object[]
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "AutoPilot_get_TargetHeading", args);
+        var result = await Connection.InvokeAsync<float>("SpaceCenter", "AutoPilot_get_TargetHeading", args);
+        return Angle.FromDegrees((double)result);
     }
 
     /// <summary>
-    /// Sets the target heading, in degrees, between 0° and 360°.
+    /// Sets the target heading, between 0° and 360°.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    public void SetTargetHeading(float value)
+    public void SetTargetHeading(Angle value)
     {
         var args = new object[]
         {
             this,
-            value
+            (float)value.Degrees
         };
         Connection.Invoke("SpaceCenter", "AutoPilot_set_TargetHeading", args);
     }
 
     /// <summary>
-    /// Sets the target heading, in degrees, between 0° and 360°.
+    /// Sets the target heading, between 0° and 360°.
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    public async Task SetTargetHeadingAsync(float value)
+    public async Task SetTargetHeadingAsync(Angle value)
     {
         var args = new object[]
         {
             this,
-            value
+            (float)value.Degrees
         };
         await Connection.InvokeAsync("SpaceCenter", "AutoPilot_set_TargetHeading", args);
     }
 
     /// <summary>
-    /// Gets the target pitch, in degrees, between -90° and +90°.
+    /// Gets the target pitch, between -90° and +90°.
     /// </summary>
     [Rpc("SpaceCenter", "AutoPilot_get_TargetPitch")]
-    public float GetTargetPitch()
+    public Angle GetTargetPitch()
     {
         var args = new object[]
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "AutoPilot_get_TargetPitch", args);
+        var result = Connection.Invoke<float>("SpaceCenter", "AutoPilot_get_TargetPitch", args);
+        return Angle.FromDegrees((double)result);
     }
 
     /// <summary>
-    /// Gets the target pitch, in degrees, between -90° and +90°.
+    /// Gets the target pitch, between -90° and +90°.
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "AutoPilot_get_TargetPitch")]
-    public async Task<float> GetTargetPitchAsync()
+    public async Task<Angle> GetTargetPitchAsync()
     {
         var args = new object[]
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "AutoPilot_get_TargetPitch", args);
+        var result = await Connection.InvokeAsync<float>("SpaceCenter", "AutoPilot_get_TargetPitch", args);
+        return Angle.FromDegrees((double)result);
     }
 
     /// <summary>
-    /// Sets the target pitch, in degrees, between -90° and +90°.
+    /// Sets the target pitch, between -90° and +90°.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    public void SetTargetPitch(float value)
+    public void SetTargetPitch(Angle value)
     {
         var args = new object[]
         {
             this,
-            value
+            (float)value.Degrees
         };
         Connection.Invoke("SpaceCenter", "AutoPilot_set_TargetPitch", args);
     }
 
     /// <summary>
-    /// Sets the target pitch, in degrees, between -90° and +90°.
+    /// Sets the target pitch, between -90° and +90°.
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    public async Task SetTargetPitchAsync(float value)
+    public async Task SetTargetPitchAsync(Angle value)
     {
         var args = new object[]
         {
             this,
-            value
+            (float)value.Degrees
         };
         await Connection.InvokeAsync("SpaceCenter", "AutoPilot_set_TargetPitch", args);
     }
 
     /// <summary>
-    /// Gets the target roll, in degrees. <c>NaN</c> if no target roll is set.
+    /// Gets the target roll. <c>NaN</c> if no target roll is set.
     /// </summary>
     [Rpc("SpaceCenter", "AutoPilot_get_TargetRoll")]
-    public float GetTargetRoll()
+    public Angle GetTargetRoll()
     {
         var args = new object[]
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "AutoPilot_get_TargetRoll", args);
+        var result = Connection.Invoke<float>("SpaceCenter", "AutoPilot_get_TargetRoll", args);
+        return Angle.FromDegrees((double)result);
     }
 
     /// <summary>
-    /// Gets the target roll, in degrees. <c>NaN</c> if no target roll is set.
+    /// Gets the target roll. <c>NaN</c> if no target roll is set.
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "AutoPilot_get_TargetRoll")]
-    public async Task<float> GetTargetRollAsync()
+    public async Task<Angle> GetTargetRollAsync()
     {
         var args = new object[]
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "AutoPilot_get_TargetRoll", args);
+        var result = await Connection.InvokeAsync<float>("SpaceCenter", "AutoPilot_get_TargetRoll", args);
+        return Angle.FromDegrees((double)result);
     }
 
     /// <summary>
-    /// Sets the target roll, in degrees. <c>NaN</c> if no target roll is set.
+    /// Sets the target roll. <c>NaN</c> if no target roll is set.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    public void SetTargetRoll(float value)
+    public void SetTargetRoll(Angle value)
     {
         var args = new object[]
         {
             this,
-            value
+            (float)value.Degrees
         };
         Connection.Invoke("SpaceCenter", "AutoPilot_set_TargetRoll", args);
     }
 
     /// <summary>
-    /// Sets the target roll, in degrees. <c>NaN</c> if no target roll is set.
+    /// Sets the target roll. <c>NaN</c> if no target roll is set.
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    public async Task SetTargetRollAsync(float value)
+    public async Task SetTargetRollAsync(Angle value)
     {
         var args = new object[]
         {
             this,
-            value
+            (float)value.Degrees
         };
         await Connection.InvokeAsync("SpaceCenter", "AutoPilot_set_TargetRoll", args);
     }

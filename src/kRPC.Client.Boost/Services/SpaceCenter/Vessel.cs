@@ -1568,7 +1568,7 @@ public class Vessel : RemoteObject
     /// Gets the type of the vessel.
     /// </summary>
     [Rpc("SpaceCenter", "Vessel_get_Type")]
-    public VesselType GetType()
+    public VesselType GetVesselType()
     {
         var args = new object[]
         {
@@ -1582,7 +1582,7 @@ public class Vessel : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Vessel_get_Type")]
-    public async Task<VesselType> GetTypeAsync()
+    public async Task<VesselType> GetVesselTypeAsync()
     {
         var args = new object[]
         {
