@@ -69,78 +69,72 @@ public class Experiment : RemoteObject
     /// Determines if the experiment is available given the current conditions.
     /// </summary>
     [Rpc ("SpaceCenter", "Experiment_get_Available")]
-    public bool Available {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<bool> ("SpaceCenter", "Experiment_get_Available", args);
-        }
+    public bool GetAvailable ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<bool> ("SpaceCenter", "Experiment_get_Available", args);
     }
 
     /// <summary>
     /// The name of the biome the experiment is currently in.
     /// </summary>
     [Rpc ("SpaceCenter", "Experiment_get_Biome")]
-    public string Biome {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<string> ("SpaceCenter", "Experiment_get_Biome", args);
-        }
+    public string GetBiome ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<string> ("SpaceCenter", "Experiment_get_Biome", args);
     }
 
     /// <summary>
     /// The data contained in this experiment.
     /// </summary>
     [Rpc ("SpaceCenter", "Experiment_get_Data")]
-    public IList<ScienceData> Data {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<IList<ScienceData>> ("SpaceCenter", "Experiment_get_Data", args);
-        }
+    public IList<ScienceData> GetData ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<IList<ScienceData>> ("SpaceCenter", "Experiment_get_Data", args);
     }
 
     /// <summary>
     /// Whether the experiment has been deployed.
     /// </summary>
     [Rpc ("SpaceCenter", "Experiment_get_Deployed")]
-    public bool Deployed {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<bool> ("SpaceCenter", "Experiment_get_Deployed", args);
-        }
+    public bool GetDeployed ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<bool> ("SpaceCenter", "Experiment_get_Deployed", args);
     }
 
     /// <summary>
     /// Whether the experiment contains data.
     /// </summary>
     [Rpc ("SpaceCenter", "Experiment_get_HasData")]
-    public bool HasData {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<bool> ("SpaceCenter", "Experiment_get_HasData", args);
-        }
+    public bool GetHasData ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<bool> ("SpaceCenter", "Experiment_get_HasData", args);
     }
 
     /// <summary>
     /// Whether the experiment is inoperable.
     /// </summary>
     [Rpc ("SpaceCenter", "Experiment_get_Inoperable")]
-    public bool Inoperable {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<bool> ("SpaceCenter", "Experiment_get_Inoperable", args);
-        }
+    public bool GetInoperable ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<bool> ("SpaceCenter", "Experiment_get_Inoperable", args);
     }
 
     /// <summary>
@@ -148,39 +142,36 @@ public class Experiment : RemoteObject
     /// <a href="https://wiki.kerbalspaceprogram.com/wiki/CFG_File_Documentation">part cfg files</a>.
     /// </summary>
     [Rpc ("SpaceCenter", "Experiment_get_Name")]
-    public string Name {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<string> ("SpaceCenter", "Experiment_get_Name", args);
-        }
+    public string GetName ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<string> ("SpaceCenter", "Experiment_get_Name", args);
     }
 
     /// <summary>
     /// The part object for this experiment.
     /// </summary>
     [Rpc ("SpaceCenter", "Experiment_get_Part")]
-    public Part Part {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<Part> ("SpaceCenter", "Experiment_get_Part", args);
-        }
+    public Part GetPart ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<Part> ("SpaceCenter", "Experiment_get_Part", args);
     }
 
     /// <summary>
     /// Whether the experiment can be re-run.
     /// </summary>
     [Rpc ("SpaceCenter", "Experiment_get_Rerunnable")]
-    public bool Rerunnable {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<bool> ("SpaceCenter", "Experiment_get_Rerunnable", args);
-        }
+    public bool GetRerunnable ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<bool> ("SpaceCenter", "Experiment_get_Rerunnable", args);
     }
 
     /// <summary>
@@ -188,25 +179,23 @@ public class Experiment : RemoteObject
     /// conditions. Returns <c>null</c> if the experiment is unavailable.
     /// </summary>
     [Rpc ("SpaceCenter", "Experiment_get_ScienceSubject")]
-    public ScienceSubject ScienceSubject {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<ScienceSubject> ("SpaceCenter", "Experiment_get_ScienceSubject", args);
-        }
+    public ScienceSubject GetScienceSubject ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<ScienceSubject> ("SpaceCenter", "Experiment_get_ScienceSubject", args);
     }
 
     /// <summary>
     /// Title of the experiment, as shown on the in-game UI.
     /// </summary>
     [Rpc ("SpaceCenter", "Experiment_get_Title")]
-    public string Title {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<string> ("SpaceCenter", "Experiment_get_Title", args);
-        }
+    public string GetTitle ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<string> ("SpaceCenter", "Experiment_get_Title", args);
     }
 }

@@ -20,51 +20,47 @@ public class CommLink : RemoteObject
     /// Start point of the link.
     /// </summary>
     [Rpc ("SpaceCenter", "CommLink_get_End")]
-    public CommNode End {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<CommNode> ("SpaceCenter", "CommLink_get_End", args);
-        }
+    public CommNode GetEnd ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<CommNode> ("SpaceCenter", "CommLink_get_End", args);
     }
 
     /// <summary>
     /// Signal strength of the link.
     /// </summary>
     [Rpc ("SpaceCenter", "CommLink_get_SignalStrength")]
-    public double SignalStrength {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<double> ("SpaceCenter", "CommLink_get_SignalStrength", args);
-        }
+    public double GetSignalStrength ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<double> ("SpaceCenter", "CommLink_get_SignalStrength", args);
     }
 
     /// <summary>
     /// Start point of the link.
     /// </summary>
     [Rpc ("SpaceCenter", "CommLink_get_Start")]
-    public CommNode Start {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<CommNode> ("SpaceCenter", "CommLink_get_Start", args);
-        }
+    public CommNode GetStart ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<CommNode> ("SpaceCenter", "CommLink_get_Start", args);
     }
 
     /// <summary>
     /// The type of link.
     /// </summary>
     [Rpc ("SpaceCenter", "CommLink_get_Type")]
-    public CommLinkType Type {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<CommLinkType> ("SpaceCenter", "CommLink_get_Type", args);
-        }
+    public CommLinkType GetType ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<CommLinkType> ("SpaceCenter", "CommLink_get_Type", args);
     }
 }

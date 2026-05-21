@@ -20,26 +20,24 @@ public class Alarm : RemoteObject
     /// Description of the alarm.
     /// </summary>
     [Rpc ("SpaceCenter", "Alarm_get_Description")]
-    public string Description {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<string> ("SpaceCenter", "Alarm_get_Description", args);
-        }
+    public string GetDescription ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<string> ("SpaceCenter", "Alarm_get_Description", args);
     }
 
     /// <summary>
     /// Seconds between the alarm going off and the event it references.
     /// </summary>
     [Rpc ("SpaceCenter", "Alarm_get_EventOffset")]
-    public double EventOffset {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<double> ("SpaceCenter", "Alarm_get_EventOffset", args);
-        }
+    public double GetEventOffset ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<double> ("SpaceCenter", "Alarm_get_EventOffset", args);
     }
 
     /// <summary>
@@ -48,77 +46,71 @@ public class Alarm : RemoteObject
     /// This id will remain constant between the old and new alarms.
     /// </summary>
     [Rpc ("SpaceCenter", "Alarm_get_ID")]
-    public uint ID {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<uint> ("SpaceCenter", "Alarm_get_ID", args);
-        }
+    public uint GetID ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<uint> ("SpaceCenter", "Alarm_get_ID", args);
     }
 
     /// <summary>
     /// Time the alarm will trigger.
     /// </summary>
     [Rpc ("SpaceCenter", "Alarm_get_Time")]
-    public double Time {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<double> ("SpaceCenter", "Alarm_get_Time", args);
-        }
+    public double GetTime ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<double> ("SpaceCenter", "Alarm_get_Time", args);
     }
 
     /// <summary>
     /// Time until the alarm triggers.
     /// </summary>
     [Rpc ("SpaceCenter", "Alarm_get_TimeUntil")]
-    public double TimeUntil {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<double> ("SpaceCenter", "Alarm_get_TimeUntil", args);
-        }
+    public double GetTimeUntil ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<double> ("SpaceCenter", "Alarm_get_TimeUntil", args);
     }
 
     /// <summary>
     /// Title of the alarm
     /// </summary>
     [Rpc ("SpaceCenter", "Alarm_get_Title")]
-    public string Title {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<string> ("SpaceCenter", "Alarm_get_Title", args);
-        }
+    public string GetTitle ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<string> ("SpaceCenter", "Alarm_get_Title", args);
     }
 
     /// <summary>
     /// Type of alarm
     /// </summary>
     [Rpc ("SpaceCenter", "Alarm_get_Type")]
-    public string Type {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<string> ("SpaceCenter", "Alarm_get_Type", args);
-        }
+    public string GetType ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<string> ("SpaceCenter", "Alarm_get_Type", args);
     }
 
     /// <summary>
     /// Vessel the alarm references. <c>null</c> if it does not reference a vessel.
     /// </summary>
     [Rpc ("SpaceCenter", "Alarm_get_Vessel")]
-    public Vessel Vessel {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<Vessel> ("SpaceCenter", "Alarm_get_Vessel", args);
-        }
+    public Vessel GetVessel ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<Vessel> ("SpaceCenter", "Alarm_get_Vessel", args);
     }
 }

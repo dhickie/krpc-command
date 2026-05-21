@@ -32,125 +32,148 @@ public class RoboticHinge : RemoteObject
     /// Current angle.
     /// </summary>
     [Rpc ("SpaceCenter", "RoboticHinge_get_CurrentAngle")]
-    public float CurrentAngle {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<float> ("SpaceCenter", "RoboticHinge_get_CurrentAngle", args);
-        }
+    public float GetCurrentAngle ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<float> ("SpaceCenter", "RoboticHinge_get_CurrentAngle", args);
     }
 
     /// <summary>
     /// Damping percentage.
     /// </summary>
     [Rpc ("SpaceCenter", "RoboticHinge_get_Damping")]
-    public float Damping {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<float> ("SpaceCenter", "RoboticHinge_get_Damping", args);
-        }
-        set {
-            var args = new object[] {
-                this,
-                value
-            };
-            Connection.Invoke ("SpaceCenter", "RoboticHinge_set_Damping", args);
-        }
+    public float GetDamping ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<float> ("SpaceCenter", "RoboticHinge_get_Damping", args);
+    }
+
+    /// <summary>
+    /// Sets the Damping value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public void SetDamping (float value)
+    {
+        var args = new object[] {
+            this,
+            value
+        };
+        Connection.Invoke ("SpaceCenter", "RoboticHinge_set_Damping", args);
     }
 
     /// <summary>
     /// Lock movement.
     /// </summary>
     [Rpc ("SpaceCenter", "RoboticHinge_get_Locked")]
-    public bool Locked {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<bool> ("SpaceCenter", "RoboticHinge_get_Locked", args);
-        }
-        set {
-            var args = new object[] {
-                this,
-                value
-            };
-            Connection.Invoke ("SpaceCenter", "RoboticHinge_set_Locked", args);
-        }
+    public bool GetLocked ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<bool> ("SpaceCenter", "RoboticHinge_get_Locked", args);
+    }
+
+    /// <summary>
+    /// Sets the Locked value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public void SetLocked (bool value)
+    {
+        var args = new object[] {
+            this,
+            value
+        };
+        Connection.Invoke ("SpaceCenter", "RoboticHinge_set_Locked", args);
     }
 
     /// <summary>
     /// Whether the motor is engaged.
     /// </summary>
     [Rpc ("SpaceCenter", "RoboticHinge_get_MotorEngaged")]
-    public bool MotorEngaged {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<bool> ("SpaceCenter", "RoboticHinge_get_MotorEngaged", args);
-        }
-        set {
-            var args = new object[] {
-                this,
-                value
-            };
-            Connection.Invoke ("SpaceCenter", "RoboticHinge_set_MotorEngaged", args);
-        }
+    public bool GetMotorEngaged ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<bool> ("SpaceCenter", "RoboticHinge_get_MotorEngaged", args);
+    }
+
+    /// <summary>
+    /// Sets the MotorEngaged value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public void SetMotorEngaged (bool value)
+    {
+        var args = new object[] {
+            this,
+            value
+        };
+        Connection.Invoke ("SpaceCenter", "RoboticHinge_set_MotorEngaged", args);
     }
 
     /// <summary>
     /// The part object for this robotic hinge.
     /// </summary>
     [Rpc ("SpaceCenter", "RoboticHinge_get_Part")]
-    public Part Part {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<Part> ("SpaceCenter", "RoboticHinge_get_Part", args);
-        }
+    public Part GetPart ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<Part> ("SpaceCenter", "RoboticHinge_get_Part", args);
     }
 
     /// <summary>
     /// Target movement rate in degrees per second.
     /// </summary>
     [Rpc ("SpaceCenter", "RoboticHinge_get_Rate")]
-    public float Rate {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<float> ("SpaceCenter", "RoboticHinge_get_Rate", args);
-        }
-        set {
-            var args = new object[] {
-                this,
-                value
-            };
-            Connection.Invoke ("SpaceCenter", "RoboticHinge_set_Rate", args);
-        }
+    public float GetRate ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<float> ("SpaceCenter", "RoboticHinge_get_Rate", args);
+    }
+
+    /// <summary>
+    /// Sets the Rate value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public void SetRate (float value)
+    {
+        var args = new object[] {
+            this,
+            value
+        };
+        Connection.Invoke ("SpaceCenter", "RoboticHinge_set_Rate", args);
     }
 
     /// <summary>
     /// Target angle.
     /// </summary>
     [Rpc ("SpaceCenter", "RoboticHinge_get_TargetAngle")]
-    public float TargetAngle {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<float> ("SpaceCenter", "RoboticHinge_get_TargetAngle", args);
-        }
-        set {
-            var args = new object[] {
-                this,
-                value
-            };
-            Connection.Invoke ("SpaceCenter", "RoboticHinge_set_TargetAngle", args);
-        }
+    public float GetTargetAngle ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<float> ("SpaceCenter", "RoboticHinge_get_TargetAngle", args);
+    }
+
+    /// <summary>
+    /// Sets the TargetAngle value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public void SetTargetAngle (float value)
+    {
+        var args = new object[] {
+            this,
+            value
+        };
+        Connection.Invoke ("SpaceCenter", "RoboticHinge_set_TargetAngle", args);
     }
 }

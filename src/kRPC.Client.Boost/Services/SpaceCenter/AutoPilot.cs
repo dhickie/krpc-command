@@ -84,20 +84,25 @@ public class AutoPilot : RemoteObject
     /// Defaults to 1° for each axis.
     /// </summary>
     [Rpc ("SpaceCenter", "AutoPilot_get_AttenuationAngle")]
-    public Tuple<double,double,double> AttenuationAngle {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "AutoPilot_get_AttenuationAngle", args);
-        }
-        set {
-            var args = new object[] {
-                this,
-                value
-            };
-            Connection.Invoke ("SpaceCenter", "AutoPilot_set_AttenuationAngle", args);
-        }
+    public Tuple<double,double,double> GetAttenuationAngle ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "AutoPilot_get_AttenuationAngle", args);
+    }
+
+    /// <summary>
+    /// Sets the AttenuationAngle value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public void SetAttenuationAngle (Tuple<double,double,double> value)
+    {
+        var args = new object[] {
+            this,
+            value
+        };
+        Connection.Invoke ("SpaceCenter", "AutoPilot_set_AttenuationAngle", args);
     }
 
     /// <summary>
@@ -106,20 +111,25 @@ public class AutoPilot : RemoteObject
     /// See <see cref="M:SpaceCenter.AutoPilot.TimeToPeak" /> and <see cref="M:SpaceCenter.AutoPilot.Overshoot" />.
     /// </summary>
     [Rpc ("SpaceCenter", "AutoPilot_get_AutoTune")]
-    public bool AutoTune {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<bool> ("SpaceCenter", "AutoPilot_get_AutoTune", args);
-        }
-        set {
-            var args = new object[] {
-                this,
-                value
-            };
-            Connection.Invoke ("SpaceCenter", "AutoPilot_set_AutoTune", args);
-        }
+    public bool GetAutoTune ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<bool> ("SpaceCenter", "AutoPilot_get_AutoTune", args);
+    }
+
+    /// <summary>
+    /// Sets the AutoTune value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public void SetAutoTune (bool value)
+    {
+        var args = new object[] {
+            this,
+            value
+        };
+        Connection.Invoke ("SpaceCenter", "AutoPilot_set_AutoTune", args);
     }
 
     /// <summary>
@@ -129,20 +139,25 @@ public class AutoPilot : RemoteObject
     /// Defaults to 5 seconds for each axis.
     /// </summary>
     [Rpc ("SpaceCenter", "AutoPilot_get_DecelerationTime")]
-    public Tuple<double,double,double> DecelerationTime {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "AutoPilot_get_DecelerationTime", args);
-        }
-        set {
-            var args = new object[] {
-                this,
-                value
-            };
-            Connection.Invoke ("SpaceCenter", "AutoPilot_set_DecelerationTime", args);
-        }
+    public Tuple<double,double,double> GetDecelerationTime ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "AutoPilot_get_DecelerationTime", args);
+    }
+
+    /// <summary>
+    /// Sets the DecelerationTime value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public void SetDecelerationTime (Tuple<double,double,double> value)
+    {
+        var args = new object[] {
+            this,
+            value
+        };
+        Connection.Invoke ("SpaceCenter", "AutoPilot_set_DecelerationTime", args);
     }
 
     /// <summary>
@@ -151,13 +166,12 @@ public class AutoPilot : RemoteObject
     /// has not been engaged and SAS is not enabled or is in stability assist mode.
     /// </summary>
     [Rpc ("SpaceCenter", "AutoPilot_get_Error")]
-    public float Error {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<float> ("SpaceCenter", "AutoPilot_get_Error", args);
-        }
+    public float GetError ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<float> ("SpaceCenter", "AutoPilot_get_Error", args);
     }
 
     /// <summary>
@@ -165,13 +179,12 @@ public class AutoPilot : RemoteObject
     /// Throws an exception if the auto-pilot has not been engaged.
     /// </summary>
     [Rpc ("SpaceCenter", "AutoPilot_get_HeadingError")]
-    public float HeadingError {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<float> ("SpaceCenter", "AutoPilot_get_HeadingError", args);
-        }
+    public float GetHeadingError ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<float> ("SpaceCenter", "AutoPilot_get_HeadingError", args);
     }
 
     /// <summary>
@@ -180,20 +193,25 @@ public class AutoPilot : RemoteObject
     /// Defaults to 0.01 for each axis.
     /// </summary>
     [Rpc ("SpaceCenter", "AutoPilot_get_Overshoot")]
-    public Tuple<double,double,double> Overshoot {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "AutoPilot_get_Overshoot", args);
-        }
-        set {
-            var args = new object[] {
-                this,
-                value
-            };
-            Connection.Invoke ("SpaceCenter", "AutoPilot_set_Overshoot", args);
-        }
+    public Tuple<double,double,double> GetOvershoot ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "AutoPilot_get_Overshoot", args);
+    }
+
+    /// <summary>
+    /// Sets the Overshoot value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public void SetOvershoot (Tuple<double,double,double> value)
+    {
+        var args = new object[] {
+            this,
+            value
+        };
+        Connection.Invoke ("SpaceCenter", "AutoPilot_set_Overshoot", args);
     }
 
     /// <summary>
@@ -201,13 +219,12 @@ public class AutoPilot : RemoteObject
     /// Throws an exception if the auto-pilot has not been engaged.
     /// </summary>
     [Rpc ("SpaceCenter", "AutoPilot_get_PitchError")]
-    public float PitchError {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<float> ("SpaceCenter", "AutoPilot_get_PitchError", args);
-        }
+    public float GetPitchError ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<float> ("SpaceCenter", "AutoPilot_get_PitchError", args);
     }
 
     /// <summary>
@@ -218,20 +235,25 @@ public class AutoPilot : RemoteObject
     /// which will overwrite any manual changes.
     /// </remarks>
     [Rpc ("SpaceCenter", "AutoPilot_get_PitchPIDGains")]
-    public Tuple<double,double,double> PitchPIDGains {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "AutoPilot_get_PitchPIDGains", args);
-        }
-        set {
-            var args = new object[] {
-                this,
-                value
-            };
-            Connection.Invoke ("SpaceCenter", "AutoPilot_set_PitchPIDGains", args);
-        }
+    public Tuple<double,double,double> GetPitchPIDGains ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "AutoPilot_get_PitchPIDGains", args);
+    }
+
+    /// <summary>
+    /// Sets the PitchPIDGains value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public void SetPitchPIDGains (Tuple<double,double,double> value)
+    {
+        var args = new object[] {
+            this,
+            value
+        };
+        Connection.Invoke ("SpaceCenter", "AutoPilot_set_PitchPIDGains", args);
     }
 
     /// <summary>
@@ -243,20 +265,25 @@ public class AutoPilot : RemoteObject
     /// reference frame.
     /// </remarks>
     [Rpc ("SpaceCenter", "AutoPilot_get_ReferenceFrame")]
-    public ReferenceFrame ReferenceFrame {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<ReferenceFrame> ("SpaceCenter", "AutoPilot_get_ReferenceFrame", args);
-        }
-        set {
-            var args = new object[] {
-                this,
-                value
-            };
-            Connection.Invoke ("SpaceCenter", "AutoPilot_set_ReferenceFrame", args);
-        }
+    public ReferenceFrame GetReferenceFrame ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<ReferenceFrame> ("SpaceCenter", "AutoPilot_get_ReferenceFrame", args);
+    }
+
+    /// <summary>
+    /// Sets the ReferenceFrame value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public void SetReferenceFrame (ReferenceFrame value)
+    {
+        var args = new object[] {
+            this,
+            value
+        };
+        Connection.Invoke ("SpaceCenter", "AutoPilot_set_ReferenceFrame", args);
     }
 
     /// <summary>
@@ -264,13 +291,12 @@ public class AutoPilot : RemoteObject
     /// Throws an exception if the auto-pilot has not been engaged or no target roll is set.
     /// </summary>
     [Rpc ("SpaceCenter", "AutoPilot_get_RollError")]
-    public float RollError {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<float> ("SpaceCenter", "AutoPilot_get_RollError", args);
-        }
+    public float GetRollError ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<float> ("SpaceCenter", "AutoPilot_get_RollError", args);
     }
 
     /// <summary>
@@ -281,20 +307,25 @@ public class AutoPilot : RemoteObject
     /// which will overwrite any manual changes.
     /// </remarks>
     [Rpc ("SpaceCenter", "AutoPilot_get_RollPIDGains")]
-    public Tuple<double,double,double> RollPIDGains {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "AutoPilot_get_RollPIDGains", args);
-        }
-        set {
-            var args = new object[] {
-                this,
-                value
-            };
-            Connection.Invoke ("SpaceCenter", "AutoPilot_set_RollPIDGains", args);
-        }
+    public Tuple<double,double,double> GetRollPIDGains ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "AutoPilot_get_RollPIDGains", args);
+    }
+
+    /// <summary>
+    /// Sets the RollPIDGains value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public void SetRollPIDGains (Tuple<double,double,double> value)
+    {
+        var args = new object[] {
+            this,
+            value
+        };
+        Connection.Invoke ("SpaceCenter", "AutoPilot_set_RollPIDGains", args);
     }
 
     /// <summary>
@@ -302,20 +333,25 @@ public class AutoPilot : RemoteObject
     /// Defaults to 5 degrees.
     /// </summary>
     [Rpc ("SpaceCenter", "AutoPilot_get_RollThreshold")]
-    public double RollThreshold {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<double> ("SpaceCenter", "AutoPilot_get_RollThreshold", args);
-        }
-        set {
-            var args = new object[] {
-                this,
-                value
-            };
-            Connection.Invoke ("SpaceCenter", "AutoPilot_set_RollThreshold", args);
-        }
+    public double GetRollThreshold ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<double> ("SpaceCenter", "AutoPilot_get_RollThreshold", args);
+    }
+
+    /// <summary>
+    /// Sets the RollThreshold value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public void SetRollThreshold (double value)
+    {
+        var args = new object[] {
+            this,
+            value
+        };
+        Connection.Invoke ("SpaceCenter", "AutoPilot_set_RollThreshold", args);
     }
 
     /// <summary>
@@ -323,20 +359,25 @@ public class AutoPilot : RemoteObject
     /// </summary>
     /// <remarks>Equivalent to <see cref="M:SpaceCenter.Control.SAS" /></remarks>
     [Rpc ("SpaceCenter", "AutoPilot_get_SAS")]
-    public bool SAS {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<bool> ("SpaceCenter", "AutoPilot_get_SAS", args);
-        }
-        set {
-            var args = new object[] {
-                this,
-                value
-            };
-            Connection.Invoke ("SpaceCenter", "AutoPilot_set_SAS", args);
-        }
+    public bool GetSAS ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<bool> ("SpaceCenter", "AutoPilot_get_SAS", args);
+    }
+
+    /// <summary>
+    /// Sets the SAS value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public void SetSAS (bool value)
+    {
+        var args = new object[] {
+            this,
+            value
+        };
+        Connection.Invoke ("SpaceCenter", "AutoPilot_set_SAS", args);
     }
 
     /// <summary>
@@ -346,20 +387,25 @@ public class AutoPilot : RemoteObject
     /// </summary>
     /// <remarks>Equivalent to <see cref="M:SpaceCenter.Control.SASMode" /></remarks>
     [Rpc ("SpaceCenter", "AutoPilot_get_SASMode")]
-    public SASMode SASMode {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<SASMode> ("SpaceCenter", "AutoPilot_get_SASMode", args);
-        }
-        set {
-            var args = new object[] {
-                this,
-                value
-            };
-            Connection.Invoke ("SpaceCenter", "AutoPilot_set_SASMode", args);
-        }
+    public SASMode GetSASMode ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<SASMode> ("SpaceCenter", "AutoPilot_get_SASMode", args);
+    }
+
+    /// <summary>
+    /// Sets the SASMode value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public void SetSASMode (SASMode value)
+    {
+        var args = new object[] {
+            this,
+            value
+        };
+        Connection.Invoke ("SpaceCenter", "AutoPilot_set_SASMode", args);
     }
 
     /// <summary>
@@ -369,20 +415,25 @@ public class AutoPilot : RemoteObject
     /// and yaw axes. Defaults to 0.5 seconds for each axis.
     /// </summary>
     [Rpc ("SpaceCenter", "AutoPilot_get_StoppingTime")]
-    public Tuple<double,double,double> StoppingTime {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "AutoPilot_get_StoppingTime", args);
-        }
-        set {
-            var args = new object[] {
-                this,
-                value
-            };
-            Connection.Invoke ("SpaceCenter", "AutoPilot_set_StoppingTime", args);
-        }
+    public Tuple<double,double,double> GetStoppingTime ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "AutoPilot_get_StoppingTime", args);
+    }
+
+    /// <summary>
+    /// Sets the StoppingTime value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public void SetStoppingTime (Tuple<double,double,double> value)
+    {
+        var args = new object[] {
+            this,
+            value
+        };
+        Connection.Invoke ("SpaceCenter", "AutoPilot_set_StoppingTime", args);
     }
 
     /// <summary>
@@ -390,80 +441,100 @@ public class AutoPilot : RemoteObject
     /// This is in the reference frame specified by <see cref="T:SpaceCenter.ReferenceFrame" />.
     /// </summary>
     [Rpc ("SpaceCenter", "AutoPilot_get_TargetDirection")]
-    public Tuple<double,double,double> TargetDirection {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "AutoPilot_get_TargetDirection", args);
-        }
-        set {
-            var args = new object[] {
-                this,
-                value
-            };
-            Connection.Invoke ("SpaceCenter", "AutoPilot_set_TargetDirection", args);
-        }
+    public Tuple<double,double,double> GetTargetDirection ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "AutoPilot_get_TargetDirection", args);
+    }
+
+    /// <summary>
+    /// Sets the TargetDirection value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public void SetTargetDirection (Tuple<double,double,double> value)
+    {
+        var args = new object[] {
+            this,
+            value
+        };
+        Connection.Invoke ("SpaceCenter", "AutoPilot_set_TargetDirection", args);
     }
 
     /// <summary>
     /// The target heading, in degrees, between 0° and 360°.
     /// </summary>
     [Rpc ("SpaceCenter", "AutoPilot_get_TargetHeading")]
-    public float TargetHeading {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<float> ("SpaceCenter", "AutoPilot_get_TargetHeading", args);
-        }
-        set {
-            var args = new object[] {
-                this,
-                value
-            };
-            Connection.Invoke ("SpaceCenter", "AutoPilot_set_TargetHeading", args);
-        }
+    public float GetTargetHeading ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<float> ("SpaceCenter", "AutoPilot_get_TargetHeading", args);
+    }
+
+    /// <summary>
+    /// Sets the TargetHeading value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public void SetTargetHeading (float value)
+    {
+        var args = new object[] {
+            this,
+            value
+        };
+        Connection.Invoke ("SpaceCenter", "AutoPilot_set_TargetHeading", args);
     }
 
     /// <summary>
     /// The target pitch, in degrees, between -90° and +90°.
     /// </summary>
     [Rpc ("SpaceCenter", "AutoPilot_get_TargetPitch")]
-    public float TargetPitch {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<float> ("SpaceCenter", "AutoPilot_get_TargetPitch", args);
-        }
-        set {
-            var args = new object[] {
-                this,
-                value
-            };
-            Connection.Invoke ("SpaceCenter", "AutoPilot_set_TargetPitch", args);
-        }
+    public float GetTargetPitch ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<float> ("SpaceCenter", "AutoPilot_get_TargetPitch", args);
+    }
+
+    /// <summary>
+    /// Sets the TargetPitch value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public void SetTargetPitch (float value)
+    {
+        var args = new object[] {
+            this,
+            value
+        };
+        Connection.Invoke ("SpaceCenter", "AutoPilot_set_TargetPitch", args);
     }
 
     /// <summary>
     /// The target roll, in degrees. <c>NaN</c> if no target roll is set.
     /// </summary>
     [Rpc ("SpaceCenter", "AutoPilot_get_TargetRoll")]
-    public float TargetRoll {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<float> ("SpaceCenter", "AutoPilot_get_TargetRoll", args);
-        }
-        set {
-            var args = new object[] {
-                this,
-                value
-            };
-            Connection.Invoke ("SpaceCenter", "AutoPilot_set_TargetRoll", args);
-        }
+    public float GetTargetRoll ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<float> ("SpaceCenter", "AutoPilot_get_TargetRoll", args);
+    }
+
+    /// <summary>
+    /// Sets the TargetRoll value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public void SetTargetRoll (float value)
+    {
+        var args = new object[] {
+            this,
+            value
+        };
+        Connection.Invoke ("SpaceCenter", "AutoPilot_set_TargetRoll", args);
     }
 
     /// <summary>
@@ -472,20 +543,25 @@ public class AutoPilot : RemoteObject
     /// Defaults to 3 seconds for each axis.
     /// </summary>
     [Rpc ("SpaceCenter", "AutoPilot_get_TimeToPeak")]
-    public Tuple<double,double,double> TimeToPeak {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "AutoPilot_get_TimeToPeak", args);
-        }
-        set {
-            var args = new object[] {
-                this,
-                value
-            };
-            Connection.Invoke ("SpaceCenter", "AutoPilot_set_TimeToPeak", args);
-        }
+    public Tuple<double,double,double> GetTimeToPeak ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "AutoPilot_get_TimeToPeak", args);
+    }
+
+    /// <summary>
+    /// Sets the TimeToPeak value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public void SetTimeToPeak (Tuple<double,double,double> value)
+    {
+        var args = new object[] {
+            this,
+            value
+        };
+        Connection.Invoke ("SpaceCenter", "AutoPilot_set_TimeToPeak", args);
     }
 
     /// <summary>
@@ -496,19 +572,24 @@ public class AutoPilot : RemoteObject
     /// which will overwrite any manual changes.
     /// </remarks>
     [Rpc ("SpaceCenter", "AutoPilot_get_YawPIDGains")]
-    public Tuple<double,double,double> YawPIDGains {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "AutoPilot_get_YawPIDGains", args);
-        }
-        set {
-            var args = new object[] {
-                this,
-                value
-            };
-            Connection.Invoke ("SpaceCenter", "AutoPilot_set_YawPIDGains", args);
-        }
+    public Tuple<double,double,double> GetYawPIDGains ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "AutoPilot_get_YawPIDGains", args);
+    }
+
+    /// <summary>
+    /// Sets the YawPIDGains value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public void SetYawPIDGains (Tuple<double,double,double> value)
+    {
+        var args = new object[] {
+            this,
+            value
+        };
+        Connection.Invoke ("SpaceCenter", "AutoPilot_set_YawPIDGains", args);
     }
 }

@@ -117,39 +117,36 @@ public class Thruster : RemoteObject
     /// The current gimbal angle in the pitch, roll and yaw axes, in degrees.
     /// </summary>
     [Rpc ("SpaceCenter", "Thruster_get_GimbalAngle")]
-    public Tuple<double,double,double> GimbalAngle {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Thruster_get_GimbalAngle", args);
-        }
+    public Tuple<double,double,double> GetGimbalAngle ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Thruster_get_GimbalAngle", args);
     }
 
     /// <summary>
     /// Whether the thruster is gimballed.
     /// </summary>
     [Rpc ("SpaceCenter", "Thruster_get_Gimballed")]
-    public bool Gimballed {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<bool> ("SpaceCenter", "Thruster_get_Gimballed", args);
-        }
+    public bool GetGimballed ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<bool> ("SpaceCenter", "Thruster_get_Gimballed", args);
     }
 
     /// <summary>
     /// The <see cref="T:SpaceCenter.Part" /> that contains this thruster.
     /// </summary>
     [Rpc ("SpaceCenter", "Thruster_get_Part")]
-    public Part Part {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<Part> ("SpaceCenter", "Thruster_get_Part", args);
-        }
+    public Part GetPart ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<Part> ("SpaceCenter", "Thruster_get_Part", args);
     }
 
     /// <summary>
@@ -164,12 +161,11 @@ public class Thruster : RemoteObject
     /// </description></item><item><description>The y-axis points along the thrust direction.</description></item><item><description>The x-axis and z-axis are perpendicular to the thrust direction.
     /// </description></item></list></summary>
     [Rpc ("SpaceCenter", "Thruster_get_ThrustReferenceFrame")]
-    public ReferenceFrame ThrustReferenceFrame {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<ReferenceFrame> ("SpaceCenter", "Thruster_get_ThrustReferenceFrame", args);
-        }
+    public ReferenceFrame GetThrustReferenceFrame ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<ReferenceFrame> ("SpaceCenter", "Thruster_get_ThrustReferenceFrame", args);
     }
 }

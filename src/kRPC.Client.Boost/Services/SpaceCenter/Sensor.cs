@@ -20,45 +20,48 @@ public class Sensor : RemoteObject
     /// Whether the sensor is active.
     /// </summary>
     [Rpc ("SpaceCenter", "Sensor_get_Active")]
-    public bool Active {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<bool> ("SpaceCenter", "Sensor_get_Active", args);
-        }
-        set {
-            var args = new object[] {
-                this,
-                value
-            };
-            Connection.Invoke ("SpaceCenter", "Sensor_set_Active", args);
-        }
+    public bool GetActive ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<bool> ("SpaceCenter", "Sensor_get_Active", args);
+    }
+
+    /// <summary>
+    /// Sets the Active value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public void SetActive (bool value)
+    {
+        var args = new object[] {
+            this,
+            value
+        };
+        Connection.Invoke ("SpaceCenter", "Sensor_set_Active", args);
     }
 
     /// <summary>
     /// The part object for this sensor.
     /// </summary>
     [Rpc ("SpaceCenter", "Sensor_get_Part")]
-    public Part Part {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<Part> ("SpaceCenter", "Sensor_get_Part", args);
-        }
+    public Part GetPart ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<Part> ("SpaceCenter", "Sensor_get_Part", args);
     }
 
     /// <summary>
     /// The current value of the sensor.
     /// </summary>
     [Rpc ("SpaceCenter", "Sensor_get_Value")]
-    public string Value {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<string> ("SpaceCenter", "Sensor_get_Value", args);
-        }
+    public string GetValue ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<string> ("SpaceCenter", "Sensor_get_Value", args);
     }
 }

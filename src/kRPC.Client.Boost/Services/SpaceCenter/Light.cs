@@ -21,105 +21,123 @@ public class Light : RemoteObject
     /// Whether the light is switched on.
     /// </summary>
     [Rpc ("SpaceCenter", "Light_get_Active")]
-    public bool Active {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<bool> ("SpaceCenter", "Light_get_Active", args);
-        }
-        set {
-            var args = new object[] {
-                this,
-                value
-            };
-            Connection.Invoke ("SpaceCenter", "Light_set_Active", args);
-        }
+    public bool GetActive ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<bool> ("SpaceCenter", "Light_get_Active", args);
+    }
+
+    /// <summary>
+    /// Sets the Active value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public void SetActive (bool value)
+    {
+        var args = new object[] {
+            this,
+            value
+        };
+        Connection.Invoke ("SpaceCenter", "Light_set_Active", args);
     }
 
     /// <summary>
     /// Whether blinking is enabled.
     /// </summary>
     [Rpc ("SpaceCenter", "Light_get_Blink")]
-    public bool Blink {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<bool> ("SpaceCenter", "Light_get_Blink", args);
-        }
-        set {
-            var args = new object[] {
-                this,
-                value
-            };
-            Connection.Invoke ("SpaceCenter", "Light_set_Blink", args);
-        }
+    public bool GetBlink ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<bool> ("SpaceCenter", "Light_get_Blink", args);
+    }
+
+    /// <summary>
+    /// Sets the Blink value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public void SetBlink (bool value)
+    {
+        var args = new object[] {
+            this,
+            value
+        };
+        Connection.Invoke ("SpaceCenter", "Light_set_Blink", args);
     }
 
     /// <summary>
     /// The blink rate of the light.
     /// </summary>
     [Rpc ("SpaceCenter", "Light_get_BlinkRate")]
-    public float BlinkRate {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<float> ("SpaceCenter", "Light_get_BlinkRate", args);
-        }
-        set {
-            var args = new object[] {
-                this,
-                value
-            };
-            Connection.Invoke ("SpaceCenter", "Light_set_BlinkRate", args);
-        }
+    public float GetBlinkRate ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<float> ("SpaceCenter", "Light_get_BlinkRate", args);
+    }
+
+    /// <summary>
+    /// Sets the BlinkRate value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public void SetBlinkRate (float value)
+    {
+        var args = new object[] {
+            this,
+            value
+        };
+        Connection.Invoke ("SpaceCenter", "Light_set_BlinkRate", args);
     }
 
     /// <summary>
     /// The color of the light, as an RGB triple.
     /// </summary>
     [Rpc ("SpaceCenter", "Light_get_Color")]
-    public Tuple<float,float,float> Color {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<Tuple<float,float,float>> ("SpaceCenter", "Light_get_Color", args);
-        }
-        set {
-            var args = new object[] {
-                this,
-                value
-            };
-            Connection.Invoke ("SpaceCenter", "Light_set_Color", args);
-        }
+    public Tuple<float,float,float> GetColor ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<Tuple<float,float,float>> ("SpaceCenter", "Light_get_Color", args);
+    }
+
+    /// <summary>
+    /// Sets the Color value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public void SetColor (Tuple<float,float,float> value)
+    {
+        var args = new object[] {
+            this,
+            value
+        };
+        Connection.Invoke ("SpaceCenter", "Light_set_Color", args);
     }
 
     /// <summary>
     /// The part object for this light.
     /// </summary>
     [Rpc ("SpaceCenter", "Light_get_Part")]
-    public Part Part {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<Part> ("SpaceCenter", "Light_get_Part", args);
-        }
+    public Part GetPart ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<Part> ("SpaceCenter", "Light_get_Part", args);
     }
 
     /// <summary>
     /// The current power usage, in units of charge per second.
     /// </summary>
     [Rpc ("SpaceCenter", "Light_get_PowerUsage")]
-    public float PowerUsage {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<float> ("SpaceCenter", "Light_get_PowerUsage", args);
-        }
+    public float GetPowerUsage ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<float> ("SpaceCenter", "Light_get_PowerUsage", args);
     }
 }

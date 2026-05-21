@@ -58,13 +58,12 @@ public class Parachute : RemoteObject
     /// Whether the parachute has been armed or deployed.
     /// </summary>
     [Rpc ("SpaceCenter", "Parachute_get_Armed")]
-    public bool Armed {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<bool> ("SpaceCenter", "Parachute_get_Armed", args);
-        }
+    public bool GetArmed ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<bool> ("SpaceCenter", "Parachute_get_Armed", args);
     }
 
     /// <summary>
@@ -72,20 +71,25 @@ public class Parachute : RemoteObject
     /// Only applicable to stock parachutes.
     /// </summary>
     [Rpc ("SpaceCenter", "Parachute_get_DeployAltitude")]
-    public float DeployAltitude {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<float> ("SpaceCenter", "Parachute_get_DeployAltitude", args);
-        }
-        set {
-            var args = new object[] {
-                this,
-                value
-            };
-            Connection.Invoke ("SpaceCenter", "Parachute_set_DeployAltitude", args);
-        }
+    public float GetDeployAltitude ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<float> ("SpaceCenter", "Parachute_get_DeployAltitude", args);
+    }
+
+    /// <summary>
+    /// Sets the DeployAltitude value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public void SetDeployAltitude (float value)
+    {
+        var args = new object[] {
+            this,
+            value
+        };
+        Connection.Invoke ("SpaceCenter", "Parachute_set_DeployAltitude", args);
     }
 
     /// <summary>
@@ -93,58 +97,60 @@ public class Parachute : RemoteObject
     /// Only applicable to stock parachutes.
     /// </summary>
     [Rpc ("SpaceCenter", "Parachute_get_DeployMinPressure")]
-    public float DeployMinPressure {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<float> ("SpaceCenter", "Parachute_get_DeployMinPressure", args);
-        }
-        set {
-            var args = new object[] {
-                this,
-                value
-            };
-            Connection.Invoke ("SpaceCenter", "Parachute_set_DeployMinPressure", args);
-        }
+    public float GetDeployMinPressure ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<float> ("SpaceCenter", "Parachute_get_DeployMinPressure", args);
+    }
+
+    /// <summary>
+    /// Sets the DeployMinPressure value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public void SetDeployMinPressure (float value)
+    {
+        var args = new object[] {
+            this,
+            value
+        };
+        Connection.Invoke ("SpaceCenter", "Parachute_set_DeployMinPressure", args);
     }
 
     /// <summary>
     /// Whether the parachute has been deployed.
     /// </summary>
     [Rpc ("SpaceCenter", "Parachute_get_Deployed")]
-    public bool Deployed {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<bool> ("SpaceCenter", "Parachute_get_Deployed", args);
-        }
+    public bool GetDeployed ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<bool> ("SpaceCenter", "Parachute_get_Deployed", args);
     }
 
     /// <summary>
     /// The part object for this parachute.
     /// </summary>
     [Rpc ("SpaceCenter", "Parachute_get_Part")]
-    public Part Part {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<Part> ("SpaceCenter", "Parachute_get_Part", args);
-        }
+    public Part GetPart ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<Part> ("SpaceCenter", "Parachute_get_Part", args);
     }
 
     /// <summary>
     /// The current state of the parachute.
     /// </summary>
     [Rpc ("SpaceCenter", "Parachute_get_State")]
-    public ParachuteState State {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<ParachuteState> ("SpaceCenter", "Parachute_get_State", args);
-        }
+    public ParachuteState GetState ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<ParachuteState> ("SpaceCenter", "Parachute_get_State", args);
     }
 }

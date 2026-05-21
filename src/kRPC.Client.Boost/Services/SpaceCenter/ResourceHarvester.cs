@@ -20,117 +20,121 @@ public class ResourceHarvester : RemoteObject
     /// Whether the harvester is actively drilling.
     /// </summary>
     [Rpc ("SpaceCenter", "ResourceHarvester_get_Active")]
-    public bool Active {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<bool> ("SpaceCenter", "ResourceHarvester_get_Active", args);
-        }
-        set {
-            var args = new object[] {
-                this,
-                value
-            };
-            Connection.Invoke ("SpaceCenter", "ResourceHarvester_set_Active", args);
-        }
+    public bool GetActive ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<bool> ("SpaceCenter", "ResourceHarvester_get_Active", args);
+    }
+
+    /// <summary>
+    /// Sets the Active value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public void SetActive (bool value)
+    {
+        var args = new object[] {
+            this,
+            value
+        };
+        Connection.Invoke ("SpaceCenter", "ResourceHarvester_set_Active", args);
     }
 
     /// <summary>
     /// The core temperature of the drill, in Kelvin.
     /// </summary>
     [Rpc ("SpaceCenter", "ResourceHarvester_get_CoreTemperature")]
-    public float CoreTemperature {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<float> ("SpaceCenter", "ResourceHarvester_get_CoreTemperature", args);
-        }
+    public float GetCoreTemperature ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<float> ("SpaceCenter", "ResourceHarvester_get_CoreTemperature", args);
     }
 
     /// <summary>
     /// Whether the harvester is deployed.
     /// </summary>
     [Rpc ("SpaceCenter", "ResourceHarvester_get_Deployed")]
-    public bool Deployed {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<bool> ("SpaceCenter", "ResourceHarvester_get_Deployed", args);
-        }
-        set {
-            var args = new object[] {
-                this,
-                value
-            };
-            Connection.Invoke ("SpaceCenter", "ResourceHarvester_set_Deployed", args);
-        }
+    public bool GetDeployed ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<bool> ("SpaceCenter", "ResourceHarvester_get_Deployed", args);
+    }
+
+    /// <summary>
+    /// Sets the Deployed value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public void SetDeployed (bool value)
+    {
+        var args = new object[] {
+            this,
+            value
+        };
+        Connection.Invoke ("SpaceCenter", "ResourceHarvester_set_Deployed", args);
     }
 
     /// <summary>
     /// The rate at which the drill is extracting ore, in units per second.
     /// </summary>
     [Rpc ("SpaceCenter", "ResourceHarvester_get_ExtractionRate")]
-    public float ExtractionRate {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<float> ("SpaceCenter", "ResourceHarvester_get_ExtractionRate", args);
-        }
+    public float GetExtractionRate ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<float> ("SpaceCenter", "ResourceHarvester_get_ExtractionRate", args);
     }
 
     /// <summary>
     /// The core temperature at which the drill will operate with peak efficiency, in Kelvin.
     /// </summary>
     [Rpc ("SpaceCenter", "ResourceHarvester_get_OptimumCoreTemperature")]
-    public float OptimumCoreTemperature {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<float> ("SpaceCenter", "ResourceHarvester_get_OptimumCoreTemperature", args);
-        }
+    public float GetOptimumCoreTemperature ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<float> ("SpaceCenter", "ResourceHarvester_get_OptimumCoreTemperature", args);
     }
 
     /// <summary>
     /// The part object for this harvester.
     /// </summary>
     [Rpc ("SpaceCenter", "ResourceHarvester_get_Part")]
-    public Part Part {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<Part> ("SpaceCenter", "ResourceHarvester_get_Part", args);
-        }
+    public Part GetPart ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<Part> ("SpaceCenter", "ResourceHarvester_get_Part", args);
     }
 
     /// <summary>
     /// The state of the harvester.
     /// </summary>
     [Rpc ("SpaceCenter", "ResourceHarvester_get_State")]
-    public ResourceHarvesterState State {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<ResourceHarvesterState> ("SpaceCenter", "ResourceHarvester_get_State", args);
-        }
+    public ResourceHarvesterState GetState ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<ResourceHarvesterState> ("SpaceCenter", "ResourceHarvester_get_State", args);
     }
 
     /// <summary>
     /// The thermal efficiency of the drill, as a percentage of its maximum.
     /// </summary>
     [Rpc ("SpaceCenter", "ResourceHarvester_get_ThermalEfficiency")]
-    public float ThermalEfficiency {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<float> ("SpaceCenter", "ResourceHarvester_get_ThermalEfficiency", args);
-        }
+    public float GetThermalEfficiency ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<float> ("SpaceCenter", "ResourceHarvester_get_ThermalEfficiency", args);
     }
 }

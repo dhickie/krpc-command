@@ -72,91 +72,97 @@ public class ResourceDrain : RemoteObject
     /// List of available resources.
     /// </summary>
     [Rpc ("SpaceCenter", "ResourceDrain_get_AvailableResources")]
-    public IList<Resource> AvailableResources {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<IList<Resource>> ("SpaceCenter", "ResourceDrain_get_AvailableResources", args);
-        }
+    public IList<Resource> GetAvailableResources ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<IList<Resource>> ("SpaceCenter", "ResourceDrain_get_AvailableResources", args);
     }
 
     /// <summary>
     /// The drain mode.
     /// </summary>
     [Rpc ("SpaceCenter", "ResourceDrain_get_DrainMode")]
-    public DrainMode DrainMode {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<DrainMode> ("SpaceCenter", "ResourceDrain_get_DrainMode", args);
-        }
-        set {
-            var args = new object[] {
-                this,
-                value
-            };
-            Connection.Invoke ("SpaceCenter", "ResourceDrain_set_DrainMode", args);
-        }
+    public DrainMode GetDrainMode ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<DrainMode> ("SpaceCenter", "ResourceDrain_get_DrainMode", args);
+    }
+
+    /// <summary>
+    /// Sets the DrainMode value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public void SetDrainMode (DrainMode value)
+    {
+        var args = new object[] {
+            this,
+            value
+        };
+        Connection.Invoke ("SpaceCenter", "ResourceDrain_set_DrainMode", args);
     }
 
     /// <summary>
     /// Maximum possible drain rate.
     /// </summary>
     [Rpc ("SpaceCenter", "ResourceDrain_get_MaxRate")]
-    public float MaxRate {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<float> ("SpaceCenter", "ResourceDrain_get_MaxRate", args);
-        }
+    public float GetMaxRate ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<float> ("SpaceCenter", "ResourceDrain_get_MaxRate", args);
     }
 
     /// <summary>
     /// Minimum possible drain rate
     /// </summary>
     [Rpc ("SpaceCenter", "ResourceDrain_get_MinRate")]
-    public float MinRate {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<float> ("SpaceCenter", "ResourceDrain_get_MinRate", args);
-        }
+    public float GetMinRate ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<float> ("SpaceCenter", "ResourceDrain_get_MinRate", args);
     }
 
     /// <summary>
     /// The part object for this resource drain.
     /// </summary>
     [Rpc ("SpaceCenter", "ResourceDrain_get_Part")]
-    public Part Part {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<Part> ("SpaceCenter", "ResourceDrain_get_Part", args);
-        }
+    public Part GetPart ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<Part> ("SpaceCenter", "ResourceDrain_get_Part", args);
     }
 
     /// <summary>
     /// Current drain rate.
     /// </summary>
     [Rpc ("SpaceCenter", "ResourceDrain_get_Rate")]
-    public float Rate {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<float> ("SpaceCenter", "ResourceDrain_get_Rate", args);
-        }
-        set {
-            var args = new object[] {
-                this,
-                value
-            };
-            Connection.Invoke ("SpaceCenter", "ResourceDrain_set_Rate", args);
-        }
+    public float GetRate ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<float> ("SpaceCenter", "ResourceDrain_get_Rate", args);
+    }
+
+    /// <summary>
+    /// Sets the Rate value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public void SetRate (float value)
+    {
+        var args = new object[] {
+            this,
+            value
+        };
+        Connection.Invoke ("SpaceCenter", "ResourceDrain_set_Rate", args);
     }
 }

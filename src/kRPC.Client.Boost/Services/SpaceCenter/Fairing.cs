@@ -33,25 +33,23 @@ public class Fairing : RemoteObject
     /// Whether the fairing has been jettisoned.
     /// </summary>
     [Rpc ("SpaceCenter", "Fairing_get_Jettisoned")]
-    public bool Jettisoned {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<bool> ("SpaceCenter", "Fairing_get_Jettisoned", args);
-        }
+    public bool GetJettisoned ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<bool> ("SpaceCenter", "Fairing_get_Jettisoned", args);
     }
 
     /// <summary>
     /// The part object for this fairing.
     /// </summary>
     [Rpc ("SpaceCenter", "Fairing_get_Part")]
-    public Part Part {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<Part> ("SpaceCenter", "Fairing_get_Part", args);
-        }
+    public Part GetPart ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<Part> ("SpaceCenter", "Fairing_get_Part", args);
     }
 }

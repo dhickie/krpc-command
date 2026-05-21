@@ -70,38 +70,35 @@ public class WaypointManager : RemoteObject
     /// Any other integers may be used as seed.
     /// </summary>
     [Rpc ("SpaceCenter", "WaypointManager_get_Colors")]
-    public IDictionary<string,int> Colors {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<IDictionary<string,int>> ("SpaceCenter", "WaypointManager_get_Colors", args);
-        }
+    public IDictionary<string,int> GetColors ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<IDictionary<string,int>> ("SpaceCenter", "WaypointManager_get_Colors", args);
     }
 
     /// <summary>
     /// Returns all available icons (from "GameData/Squad/Contracts/Icons/").
     /// </summary>
     [Rpc ("SpaceCenter", "WaypointManager_get_Icons")]
-    public IList<string> Icons {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<IList<string>> ("SpaceCenter", "WaypointManager_get_Icons", args);
-        }
+    public IList<string> GetIcons ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<IList<string>> ("SpaceCenter", "WaypointManager_get_Icons", args);
     }
 
     /// <summary>
     /// A list of all existing waypoints.
     /// </summary>
     [Rpc ("SpaceCenter", "WaypointManager_get_Waypoints")]
-    public IList<Waypoint> Waypoints {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<IList<Waypoint>> ("SpaceCenter", "WaypointManager_get_Waypoints", args);
-        }
+    public IList<Waypoint> GetWaypoints ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<IList<Waypoint>> ("SpaceCenter", "WaypointManager_get_Waypoints", args);
     }
 }

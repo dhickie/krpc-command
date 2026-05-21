@@ -93,12 +93,11 @@ public class RoboticController : RemoteObject
     /// The part object for this controller.
     /// </summary>
     [Rpc ("SpaceCenter", "RoboticController_get_Part")]
-    public Part Part {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<Part> ("SpaceCenter", "RoboticController_get_Part", args);
-        }
+    public Part GetPart ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<Part> ("SpaceCenter", "RoboticController_get_Part", args);
     }
 }

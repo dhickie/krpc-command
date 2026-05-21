@@ -49,13 +49,12 @@ public class Flight : RemoteObject
     /// <returns>A vector pointing in the direction that the force acts,
     /// with its magnitude equal to the strength of the force in Newtons.</returns>
     [Rpc ("SpaceCenter", "Flight_get_AerodynamicForce")]
-    public Tuple<double,double,double> AerodynamicForce {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Flight_get_AerodynamicForce", args);
-        }
+    public Tuple<double,double,double> GetAerodynamicForce ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Flight_get_AerodynamicForce", args);
     }
 
     /// <summary>
@@ -63,13 +62,12 @@ public class Flight : RemoteObject
     /// in degrees.
     /// </summary>
     [Rpc ("SpaceCenter", "Flight_get_AngleOfAttack")]
-    public float AngleOfAttack {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<float> ("SpaceCenter", "Flight_get_AngleOfAttack", args);
-        }
+    public float GetAngleOfAttack ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<float> ("SpaceCenter", "Flight_get_AngleOfAttack", args);
     }
 
     /// <summary>
@@ -78,13 +76,12 @@ public class Flight : RemoteObject
     /// </summary>
     /// <returns>The direction as a unit vector.</returns>
     [Rpc ("SpaceCenter", "Flight_get_AntiNormal")]
-    public Tuple<double,double,double> AntiNormal {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Flight_get_AntiNormal", args);
-        }
+    public Tuple<double,double,double> GetAntiNormal ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Flight_get_AntiNormal", args);
     }
 
     /// <summary>
@@ -93,26 +90,24 @@ public class Flight : RemoteObject
     /// </summary>
     /// <returns>The direction as a unit vector.</returns>
     [Rpc ("SpaceCenter", "Flight_get_AntiRadial")]
-    public Tuple<double,double,double> AntiRadial {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Flight_get_AntiRadial", args);
-        }
+    public Tuple<double,double,double> GetAntiRadial ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Flight_get_AntiRadial", args);
     }
 
     /// <summary>
     /// The current density of the atmosphere around the vessel, in <math>kg/m^3</math>.
     /// </summary>
     [Rpc ("SpaceCenter", "Flight_get_AtmosphereDensity")]
-    public float AtmosphereDensity {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<float> ("SpaceCenter", "Flight_get_AtmosphereDensity", args);
-        }
+    public float GetAtmosphereDensity ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<float> ("SpaceCenter", "Flight_get_AtmosphereDensity", args);
     }
 
     /// <summary>
@@ -122,13 +117,12 @@ public class Flight : RemoteObject
     /// Requires <a href="https://forum.kerbalspaceprogram.com/index.php?/topic/19321-130-ferram-aerospace-research-v0159-liebe-82117/">Ferram Aerospace Research</a>.
     /// </remarks>
     [Rpc ("SpaceCenter", "Flight_get_BallisticCoefficient")]
-    public float BallisticCoefficient {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<float> ("SpaceCenter", "Flight_get_BallisticCoefficient", args);
-        }
+    public float GetBallisticCoefficient ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<float> ("SpaceCenter", "Flight_get_BallisticCoefficient", args);
     }
 
     /// <summary>
@@ -136,13 +130,12 @@ public class Flight : RemoteObject
     /// Measured from the center of mass of the vessel.
     /// </summary>
     [Rpc ("SpaceCenter", "Flight_get_BedrockAltitude")]
-    public double BedrockAltitude {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<double> ("SpaceCenter", "Flight_get_BedrockAltitude", args);
-        }
+    public double GetBedrockAltitude ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<double> ("SpaceCenter", "Flight_get_BedrockAltitude", args);
     }
 
     /// <summary>
@@ -150,13 +143,12 @@ public class Flight : RemoteObject
     /// in the reference frame <see cref="T:SpaceCenter.ReferenceFrame" /></summary>
     /// <returns>The position as a vector.</returns>
     [Rpc ("SpaceCenter", "Flight_get_CenterOfMass")]
-    public Tuple<double,double,double> CenterOfMass {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Flight_get_CenterOfMass", args);
-        }
+    public Tuple<double,double,double> GetCenterOfMass ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Flight_get_CenterOfMass", args);
     }
 
     /// <summary>
@@ -165,13 +157,12 @@ public class Flight : RemoteObject
     /// </summary>
     /// <returns>The direction as a unit vector.</returns>
     [Rpc ("SpaceCenter", "Flight_get_Direction")]
-    public Tuple<double,double,double> Direction {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Flight_get_Direction", args);
-        }
+    public Tuple<double,double,double> GetDirection ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Flight_get_Direction", args);
     }
 
     /// <summary>
@@ -180,13 +171,12 @@ public class Flight : RemoteObject
     /// <returns>A vector pointing in the direction of the force, with its magnitude
     /// equal to the strength of the force in Newtons.</returns>
     [Rpc ("SpaceCenter", "Flight_get_Drag")]
-    public Tuple<double,double,double> Drag {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Flight_get_Drag", args);
-        }
+    public Tuple<double,double,double> GetDrag ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Flight_get_Drag", args);
     }
 
     /// <summary>
@@ -197,13 +187,12 @@ public class Flight : RemoteObject
     /// Requires <a href="https://forum.kerbalspaceprogram.com/index.php?/topic/19321-130-ferram-aerospace-research-v0159-liebe-82117/">Ferram Aerospace Research</a>.
     /// </remarks>
     [Rpc ("SpaceCenter", "Flight_get_DragCoefficient")]
-    public float DragCoefficient {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<float> ("SpaceCenter", "Flight_get_DragCoefficient", args);
-        }
+    public float GetDragCoefficient ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<float> ("SpaceCenter", "Flight_get_DragCoefficient", args);
     }
 
     /// <summary>
@@ -213,13 +202,12 @@ public class Flight : RemoteObject
     /// It is commonly denoted <math>Q</math>.
     /// </summary>
     [Rpc ("SpaceCenter", "Flight_get_DynamicPressure")]
-    public float DynamicPressure {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<float> ("SpaceCenter", "Flight_get_DynamicPressure", args);
-        }
+    public float GetDynamicPressure ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<float> ("SpaceCenter", "Flight_get_DynamicPressure", args);
     }
 
     /// <summary>
@@ -227,13 +215,12 @@ public class Flight : RemoteObject
     /// and is negative when the vessel is over the sea.
     /// </summary>
     [Rpc ("SpaceCenter", "Flight_get_Elevation")]
-    public double Elevation {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<double> ("SpaceCenter", "Flight_get_Elevation", args);
-        }
+    public double GetElevation ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<double> ("SpaceCenter", "Flight_get_Elevation", args);
     }
 
     /// <summary>
@@ -241,26 +228,24 @@ public class Flight : RemoteObject
     /// of the vessel, in meters per second.
     /// </summary>
     [Rpc ("SpaceCenter", "Flight_get_EquivalentAirSpeed")]
-    public float EquivalentAirSpeed {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<float> ("SpaceCenter", "Flight_get_EquivalentAirSpeed", args);
-        }
+    public float GetEquivalentAirSpeed ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<float> ("SpaceCenter", "Flight_get_EquivalentAirSpeed", args);
     }
 
     /// <summary>
     /// The current G force acting on the vessel in <math>g</math>.
     /// </summary>
     [Rpc ("SpaceCenter", "Flight_get_GForce")]
-    public float GForce {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<float> ("SpaceCenter", "Flight_get_GForce", args);
-        }
+    public float GetGForce ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<float> ("SpaceCenter", "Flight_get_GForce", args);
     }
 
     /// <summary>
@@ -268,13 +253,12 @@ public class Flight : RemoteObject
     /// A value between 0° and 360°.
     /// </summary>
     [Rpc ("SpaceCenter", "Flight_get_Heading")]
-    public float Heading {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<float> ("SpaceCenter", "Flight_get_Heading", args);
-        }
+    public float GetHeading ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<float> ("SpaceCenter", "Flight_get_Heading", args);
     }
 
     /// <summary>
@@ -282,26 +266,24 @@ public class Flight : RemoteObject
     /// in the reference frame <see cref="T:SpaceCenter.ReferenceFrame" />.
     /// </summary>
     [Rpc ("SpaceCenter", "Flight_get_HorizontalSpeed")]
-    public double HorizontalSpeed {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<double> ("SpaceCenter", "Flight_get_HorizontalSpeed", args);
-        }
+    public double GetHorizontalSpeed ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<double> ("SpaceCenter", "Flight_get_HorizontalSpeed", args);
     }
 
     /// <summary>
     /// The <a href="https://en.wikipedia.org/wiki/Latitude">latitude</a> of the vessel for the body being orbited, in degrees.
     /// </summary>
     [Rpc ("SpaceCenter", "Flight_get_Latitude")]
-    public double Latitude {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<double> ("SpaceCenter", "Flight_get_Latitude", args);
-        }
+    public double GetLatitude ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<double> ("SpaceCenter", "Flight_get_Latitude", args);
     }
 
     /// <summary>
@@ -311,13 +293,12 @@ public class Flight : RemoteObject
     /// <returns>A vector pointing in the direction that the force acts,
     /// with its magnitude equal to the strength of the force in Newtons.</returns>
     [Rpc ("SpaceCenter", "Flight_get_Lift")]
-    public Tuple<double,double,double> Lift {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Flight_get_Lift", args);
-        }
+    public Tuple<double,double,double> GetLift ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Flight_get_Lift", args);
     }
 
     /// <summary>
@@ -328,39 +309,36 @@ public class Flight : RemoteObject
     /// Requires <a href="https://forum.kerbalspaceprogram.com/index.php?/topic/19321-130-ferram-aerospace-research-v0159-liebe-82117/">Ferram Aerospace Research</a>.
     /// </remarks>
     [Rpc ("SpaceCenter", "Flight_get_LiftCoefficient")]
-    public float LiftCoefficient {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<float> ("SpaceCenter", "Flight_get_LiftCoefficient", args);
-        }
+    public float GetLiftCoefficient ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<float> ("SpaceCenter", "Flight_get_LiftCoefficient", args);
     }
 
     /// <summary>
     /// The <a href="https://en.wikipedia.org/wiki/Longitude">longitude</a> of the vessel for the body being orbited, in degrees.
     /// </summary>
     [Rpc ("SpaceCenter", "Flight_get_Longitude")]
-    public double Longitude {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<double> ("SpaceCenter", "Flight_get_Longitude", args);
-        }
+    public double GetLongitude ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<double> ("SpaceCenter", "Flight_get_Longitude", args);
     }
 
     /// <summary>
     /// The speed of the vessel, in multiples of the speed of sound.
     /// </summary>
     [Rpc ("SpaceCenter", "Flight_get_Mach")]
-    public float Mach {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<float> ("SpaceCenter", "Flight_get_Mach", args);
-        }
+    public float GetMach ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<float> ("SpaceCenter", "Flight_get_Mach", args);
     }
 
     /// <summary>
@@ -368,13 +346,12 @@ public class Flight : RemoteObject
     /// Measured from the center of mass of the vessel.
     /// </summary>
     [Rpc ("SpaceCenter", "Flight_get_MeanAltitude")]
-    public double MeanAltitude {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<double> ("SpaceCenter", "Flight_get_MeanAltitude", args);
-        }
+    public double GetMeanAltitude ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<double> ("SpaceCenter", "Flight_get_MeanAltitude", args);
     }
 
     /// <summary>
@@ -383,13 +360,12 @@ public class Flight : RemoteObject
     /// </summary>
     /// <returns>The direction as a unit vector.</returns>
     [Rpc ("SpaceCenter", "Flight_get_Normal")]
-    public Tuple<double,double,double> Normal {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Flight_get_Normal", args);
-        }
+    public Tuple<double,double,double> GetNormal ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Flight_get_Normal", args);
     }
 
     /// <summary>
@@ -397,13 +373,12 @@ public class Flight : RemoteObject
     /// A value between -90° and +90°.
     /// </summary>
     [Rpc ("SpaceCenter", "Flight_get_Pitch")]
-    public float Pitch {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<float> ("SpaceCenter", "Flight_get_Pitch", args);
-        }
+    public float GetPitch ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<float> ("SpaceCenter", "Flight_get_Pitch", args);
     }
 
     /// <summary>
@@ -412,13 +387,12 @@ public class Flight : RemoteObject
     /// </summary>
     /// <returns>The direction as a unit vector.</returns>
     [Rpc ("SpaceCenter", "Flight_get_Prograde")]
-    public Tuple<double,double,double> Prograde {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Flight_get_Prograde", args);
-        }
+    public Tuple<double,double,double> GetPrograde ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Flight_get_Prograde", args);
     }
 
     /// <summary>
@@ -427,13 +401,12 @@ public class Flight : RemoteObject
     /// </summary>
     /// <returns>The direction as a unit vector.</returns>
     [Rpc ("SpaceCenter", "Flight_get_Radial")]
-    public Tuple<double,double,double> Radial {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Flight_get_Radial", args);
-        }
+    public Tuple<double,double,double> GetRadial ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Flight_get_Radial", args);
     }
 
     /// <summary>
@@ -442,13 +415,12 @@ public class Flight : RemoteObject
     /// </summary>
     /// <returns>The direction as a unit vector.</returns>
     [Rpc ("SpaceCenter", "Flight_get_Retrograde")]
-    public Tuple<double,double,double> Retrograde {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Flight_get_Retrograde", args);
-        }
+    public Tuple<double,double,double> GetRetrograde ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Flight_get_Retrograde", args);
     }
 
     /// <summary>
@@ -458,13 +430,12 @@ public class Flight : RemoteObject
     /// Requires <a href="https://forum.kerbalspaceprogram.com/index.php?/topic/19321-130-ferram-aerospace-research-v0159-liebe-82117/">Ferram Aerospace Research</a>.
     /// </remarks>
     [Rpc ("SpaceCenter", "Flight_get_ReynoldsNumber")]
-    public float ReynoldsNumber {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<float> ("SpaceCenter", "Flight_get_ReynoldsNumber", args);
-        }
+    public float GetReynoldsNumber ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<float> ("SpaceCenter", "Flight_get_ReynoldsNumber", args);
     }
 
     /// <summary>
@@ -472,39 +443,36 @@ public class Flight : RemoteObject
     /// A value between -180° and +180°.
     /// </summary>
     [Rpc ("SpaceCenter", "Flight_get_Roll")]
-    public float Roll {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<float> ("SpaceCenter", "Flight_get_Roll", args);
-        }
+    public float GetRoll ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<float> ("SpaceCenter", "Flight_get_Roll", args);
     }
 
     /// <summary>
     /// The rotation of the vessel, in the reference frame <see cref="T:SpaceCenter.ReferenceFrame" /></summary>
     /// <returns>The rotation as a quaternion of the form <math>(x, y, z, w)</math>.</returns>
     [Rpc ("SpaceCenter", "Flight_get_Rotation")]
-    public Tuple<double,double,double,double> Rotation {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<Tuple<double,double,double,double>> ("SpaceCenter", "Flight_get_Rotation", args);
-        }
+    public Tuple<double,double,double,double> GetRotation ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<Tuple<double,double,double,double>> ("SpaceCenter", "Flight_get_Rotation", args);
     }
 
     /// <summary>
     /// The yaw angle between the orientation of the vessel and its velocity vector, in degrees.
     /// </summary>
     [Rpc ("SpaceCenter", "Flight_get_SideslipAngle")]
-    public float SideslipAngle {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<float> ("SpaceCenter", "Flight_get_SideslipAngle", args);
-        }
+    public float GetSideslipAngle ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<float> ("SpaceCenter", "Flight_get_SideslipAngle", args);
     }
 
     /// <summary>
@@ -512,26 +480,24 @@ public class Flight : RemoteObject
     /// in the reference frame <see cref="T:SpaceCenter.ReferenceFrame" />.
     /// </summary>
     [Rpc ("SpaceCenter", "Flight_get_Speed")]
-    public double Speed {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<double> ("SpaceCenter", "Flight_get_Speed", args);
-        }
+    public double GetSpeed ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<double> ("SpaceCenter", "Flight_get_Speed", args);
     }
 
     /// <summary>
     /// The speed of sound, in the atmosphere around the vessel, in <math>m/s</math>.
     /// </summary>
     [Rpc ("SpaceCenter", "Flight_get_SpeedOfSound")]
-    public float SpeedOfSound {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<float> ("SpaceCenter", "Flight_get_SpeedOfSound", args);
-        }
+    public float GetSpeedOfSound ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<float> ("SpaceCenter", "Flight_get_SpeedOfSound", args);
     }
 
     /// <summary>
@@ -542,13 +508,12 @@ public class Flight : RemoteObject
     /// Requires <a href="https://forum.kerbalspaceprogram.com/index.php?/topic/19321-130-ferram-aerospace-research-v0159-liebe-82117/">Ferram Aerospace Research</a>.
     /// </remarks>
     [Rpc ("SpaceCenter", "Flight_get_StallFraction")]
-    public float StallFraction {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<float> ("SpaceCenter", "Flight_get_StallFraction", args);
-        }
+    public float GetStallFraction ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<float> ("SpaceCenter", "Flight_get_StallFraction", args);
     }
 
     /// <summary>
@@ -556,39 +521,36 @@ public class Flight : RemoteObject
     /// temperature</a> of the atmosphere around the vessel, in Kelvin.
     /// </summary>
     [Rpc ("SpaceCenter", "Flight_get_StaticAirTemperature")]
-    public float StaticAirTemperature {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<float> ("SpaceCenter", "Flight_get_StaticAirTemperature", args);
-        }
+    public float GetStaticAirTemperature ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<float> ("SpaceCenter", "Flight_get_StaticAirTemperature", args);
     }
 
     /// <summary>
     /// The static atmospheric pressure acting on the vessel, in Pascals.
     /// </summary>
     [Rpc ("SpaceCenter", "Flight_get_StaticPressure")]
-    public float StaticPressure {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<float> ("SpaceCenter", "Flight_get_StaticPressure", args);
-        }
+    public float GetStaticPressure ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<float> ("SpaceCenter", "Flight_get_StaticPressure", args);
     }
 
     /// <summary>
     /// The static atmospheric pressure at mean sea level, in Pascals.
     /// </summary>
     [Rpc ("SpaceCenter", "Flight_get_StaticPressureAtMSL")]
-    public float StaticPressureAtMSL {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<float> ("SpaceCenter", "Flight_get_StaticPressureAtMSL", args);
-        }
+    public float GetStaticPressureAtMSL ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<float> ("SpaceCenter", "Flight_get_StaticPressureAtMSL", args);
     }
 
     /// <summary>
@@ -596,13 +558,12 @@ public class Flight : RemoteObject
     /// Measured from the center of mass of the vessel.
     /// </summary>
     [Rpc ("SpaceCenter", "Flight_get_SurfaceAltitude")]
-    public double SurfaceAltitude {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<double> ("SpaceCenter", "Flight_get_SurfaceAltitude", args);
-        }
+    public double GetSurfaceAltitude ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<double> ("SpaceCenter", "Flight_get_SurfaceAltitude", args);
     }
 
     /// <summary>
@@ -610,13 +571,12 @@ public class Flight : RemoteObject
     /// This is the speed at which the drag forces cancel out the force of gravity.
     /// </summary>
     [Rpc ("SpaceCenter", "Flight_get_TerminalVelocity")]
-    public float TerminalVelocity {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<float> ("SpaceCenter", "Flight_get_TerminalVelocity", args);
-        }
+    public float GetTerminalVelocity ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<float> ("SpaceCenter", "Flight_get_TerminalVelocity", args);
     }
 
     /// <summary>
@@ -629,13 +589,12 @@ public class Flight : RemoteObject
     /// Requires <a href="https://forum.kerbalspaceprogram.com/index.php?/topic/19321-130-ferram-aerospace-research-v0159-liebe-82117/">Ferram Aerospace Research</a>.
     /// </remarks>
     [Rpc ("SpaceCenter", "Flight_get_ThrustSpecificFuelConsumption")]
-    public float ThrustSpecificFuelConsumption {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<float> ("SpaceCenter", "Flight_get_ThrustSpecificFuelConsumption", args);
-        }
+    public float GetThrustSpecificFuelConsumption ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<float> ("SpaceCenter", "Flight_get_ThrustSpecificFuelConsumption", args);
     }
 
     /// <summary>
@@ -644,13 +603,12 @@ public class Flight : RemoteObject
     /// This includes the <see cref="M:SpaceCenter.Flight.StaticAirTemperature" /> and the vessel's kinetic energy.
     /// </summary>
     [Rpc ("SpaceCenter", "Flight_get_TotalAirTemperature")]
-    public float TotalAirTemperature {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<float> ("SpaceCenter", "Flight_get_TotalAirTemperature", args);
-        }
+    public float GetTotalAirTemperature ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<float> ("SpaceCenter", "Flight_get_TotalAirTemperature", args);
     }
 
     /// <summary>
@@ -658,13 +616,12 @@ public class Flight : RemoteObject
     /// of the vessel, in meters per second.
     /// </summary>
     [Rpc ("SpaceCenter", "Flight_get_TrueAirSpeed")]
-    public float TrueAirSpeed {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<float> ("SpaceCenter", "Flight_get_TrueAirSpeed", args);
-        }
+    public float GetTrueAirSpeed ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<float> ("SpaceCenter", "Flight_get_TrueAirSpeed", args);
     }
 
     /// <summary>
@@ -673,13 +630,12 @@ public class Flight : RemoteObject
     /// <returns>The velocity as a vector. The vector points in the direction of travel,
     /// and its magnitude is the speed of the vessel in meters per second.</returns>
     [Rpc ("SpaceCenter", "Flight_get_Velocity")]
-    public Tuple<double,double,double> Velocity {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Flight_get_Velocity", args);
-        }
+    public Tuple<double,double,double> GetVelocity ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Flight_get_Velocity", args);
     }
 
     /// <summary>
@@ -687,12 +643,11 @@ public class Flight : RemoteObject
     /// in the reference frame <see cref="T:SpaceCenter.ReferenceFrame" />.
     /// </summary>
     [Rpc ("SpaceCenter", "Flight_get_VerticalSpeed")]
-    public double VerticalSpeed {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<double> ("SpaceCenter", "Flight_get_VerticalSpeed", args);
-        }
+    public double GetVerticalSpeed ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<double> ("SpaceCenter", "Flight_get_VerticalSpeed", args);
     }
 }

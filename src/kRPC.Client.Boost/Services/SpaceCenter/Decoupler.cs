@@ -37,77 +37,71 @@ public class Decoupler : RemoteObject
     /// The part attached to this decoupler's explosive node.
     /// </summary>
     [Rpc ("SpaceCenter", "Decoupler_get_AttachedPart")]
-    public Part AttachedPart {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<Part> ("SpaceCenter", "Decoupler_get_AttachedPart", args);
-        }
+    public Part GetAttachedPart ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<Part> ("SpaceCenter", "Decoupler_get_AttachedPart", args);
     }
 
     /// <summary>
     /// Whether the decoupler has fired.
     /// </summary>
     [Rpc ("SpaceCenter", "Decoupler_get_Decoupled")]
-    public bool Decoupled {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<bool> ("SpaceCenter", "Decoupler_get_Decoupled", args);
-        }
+    public bool GetDecoupled ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<bool> ("SpaceCenter", "Decoupler_get_Decoupled", args);
     }
 
     /// <summary>
     /// The impulse that the decoupler imparts when it is fired, in Newton seconds.
     /// </summary>
     [Rpc ("SpaceCenter", "Decoupler_get_Impulse")]
-    public float Impulse {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<float> ("SpaceCenter", "Decoupler_get_Impulse", args);
-        }
+    public float GetImpulse ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<float> ("SpaceCenter", "Decoupler_get_Impulse", args);
     }
 
     /// <summary>
     /// Whether the decoupler is an omni-decoupler (e.g. stack separator)
     /// </summary>
     [Rpc ("SpaceCenter", "Decoupler_get_IsOmniDecoupler")]
-    public bool IsOmniDecoupler {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<bool> ("SpaceCenter", "Decoupler_get_IsOmniDecoupler", args);
-        }
+    public bool GetIsOmniDecoupler ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<bool> ("SpaceCenter", "Decoupler_get_IsOmniDecoupler", args);
     }
 
     /// <summary>
     /// The part object for this decoupler.
     /// </summary>
     [Rpc ("SpaceCenter", "Decoupler_get_Part")]
-    public Part Part {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<Part> ("SpaceCenter", "Decoupler_get_Part", args);
-        }
+    public Part GetPart ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<Part> ("SpaceCenter", "Decoupler_get_Part", args);
     }
 
     /// <summary>
     /// Whether the decoupler is enabled in the staging sequence.
     /// </summary>
     [Rpc ("SpaceCenter", "Decoupler_get_Staged")]
-    public bool Staged {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<bool> ("SpaceCenter", "Decoupler_get_Staged", args);
-        }
+    public bool GetStaged ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<bool> ("SpaceCenter", "Decoupler_get_Staged", args);
     }
 }

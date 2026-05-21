@@ -20,13 +20,12 @@ public class Leg : RemoteObject
     /// Whether the leg is deployable.
     /// </summary>
     [Rpc ("SpaceCenter", "Leg_get_Deployable")]
-    public bool Deployable {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<bool> ("SpaceCenter", "Leg_get_Deployable", args);
-        }
+    public bool GetDeployable ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<bool> ("SpaceCenter", "Leg_get_Deployable", args);
     }
 
     /// <summary>
@@ -37,58 +36,60 @@ public class Leg : RemoteObject
     /// Returns an error if you try to deploy fixed landing gear.
     /// </remarks>
     [Rpc ("SpaceCenter", "Leg_get_Deployed")]
-    public bool Deployed {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<bool> ("SpaceCenter", "Leg_get_Deployed", args);
-        }
-        set {
-            var args = new object[] {
-                this,
-                value
-            };
-            Connection.Invoke ("SpaceCenter", "Leg_set_Deployed", args);
-        }
+    public bool GetDeployed ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<bool> ("SpaceCenter", "Leg_get_Deployed", args);
+    }
+
+    /// <summary>
+    /// Sets the Deployed value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public void SetDeployed (bool value)
+    {
+        var args = new object[] {
+            this,
+            value
+        };
+        Connection.Invoke ("SpaceCenter", "Leg_set_Deployed", args);
     }
 
     /// <summary>
     /// Returns whether the leg is touching the ground.
     /// </summary>
     [Rpc ("SpaceCenter", "Leg_get_IsGrounded")]
-    public bool IsGrounded {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<bool> ("SpaceCenter", "Leg_get_IsGrounded", args);
-        }
+    public bool GetIsGrounded ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<bool> ("SpaceCenter", "Leg_get_IsGrounded", args);
     }
 
     /// <summary>
     /// The part object for this landing leg.
     /// </summary>
     [Rpc ("SpaceCenter", "Leg_get_Part")]
-    public Part Part {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<Part> ("SpaceCenter", "Leg_get_Part", args);
-        }
+    public Part GetPart ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<Part> ("SpaceCenter", "Leg_get_Part", args);
     }
 
     /// <summary>
     /// The current state of the landing leg.
     /// </summary>
     [Rpc ("SpaceCenter", "Leg_get_State")]
-    public LegState State {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<LegState> ("SpaceCenter", "Leg_get_State", args);
-        }
+    public LegState GetState ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<LegState> ("SpaceCenter", "Leg_get_State", args);
     }
 }

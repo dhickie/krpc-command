@@ -20,26 +20,24 @@ public class ScienceSubject : RemoteObject
     /// Multiply science value by this to determine data amount in mits.
     /// </summary>
     [Rpc ("SpaceCenter", "ScienceSubject_get_DataScale")]
-    public float DataScale {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<float> ("SpaceCenter", "ScienceSubject_get_DataScale", args);
-        }
+    public float GetDataScale ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<float> ("SpaceCenter", "ScienceSubject_get_DataScale", args);
     }
 
     /// <summary>
     /// Whether the experiment has been completed.
     /// </summary>
     [Rpc ("SpaceCenter", "ScienceSubject_get_IsComplete")]
-    public bool IsComplete {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<bool> ("SpaceCenter", "ScienceSubject_get_IsComplete", args);
-        }
+    public bool GetIsComplete ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<bool> ("SpaceCenter", "ScienceSubject_get_IsComplete", args);
     }
 
     /// <summary>
@@ -47,26 +45,24 @@ public class ScienceSubject : RemoteObject
     /// transmission/recovery.
     /// </summary>
     [Rpc ("SpaceCenter", "ScienceSubject_get_Science")]
-    public float Science {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<float> ("SpaceCenter", "ScienceSubject_get_Science", args);
-        }
+    public float GetScience ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<float> ("SpaceCenter", "ScienceSubject_get_Science", args);
     }
 
     /// <summary>
     /// Total science allowable for this subject.
     /// </summary>
     [Rpc ("SpaceCenter", "ScienceSubject_get_ScienceCap")]
-    public float ScienceCap {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<float> ("SpaceCenter", "ScienceSubject_get_ScienceCap", args);
-        }
+    public float GetScienceCap ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<float> ("SpaceCenter", "ScienceSubject_get_ScienceCap", args);
     }
 
     /// <summary>
@@ -74,38 +70,35 @@ public class ScienceSubject : RemoteObject
     /// experiments.
     /// </summary>
     [Rpc ("SpaceCenter", "ScienceSubject_get_ScientificValue")]
-    public float ScientificValue {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<float> ("SpaceCenter", "ScienceSubject_get_ScientificValue", args);
-        }
+    public float GetScientificValue ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<float> ("SpaceCenter", "ScienceSubject_get_ScientificValue", args);
     }
 
     /// <summary>
     /// Multiplier for specific Celestial Body/Experiment Situation combination.
     /// </summary>
     [Rpc ("SpaceCenter", "ScienceSubject_get_SubjectValue")]
-    public float SubjectValue {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<float> ("SpaceCenter", "ScienceSubject_get_SubjectValue", args);
-        }
+    public float GetSubjectValue ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<float> ("SpaceCenter", "ScienceSubject_get_SubjectValue", args);
     }
 
     /// <summary>
     /// Title of science subject, displayed in science archives
     /// </summary>
     [Rpc ("SpaceCenter", "ScienceSubject_get_Title")]
-    public string Title {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<string> ("SpaceCenter", "ScienceSubject_get_Title", args);
-        }
+    public string GetTitle ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<string> ("SpaceCenter", "ScienceSubject_get_Title", args);
     }
 }

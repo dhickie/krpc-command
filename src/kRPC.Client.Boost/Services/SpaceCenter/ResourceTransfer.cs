@@ -48,25 +48,23 @@ public class ResourceTransfer : RemoteObject
     /// The amount of the resource that has been transferred.
     /// </summary>
     [Rpc ("SpaceCenter", "ResourceTransfer_get_Amount")]
-    public float Amount {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<float> ("SpaceCenter", "ResourceTransfer_get_Amount", args);
-        }
+    public float GetAmount ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<float> ("SpaceCenter", "ResourceTransfer_get_Amount", args);
     }
 
     /// <summary>
     /// Whether the transfer has completed.
     /// </summary>
     [Rpc ("SpaceCenter", "ResourceTransfer_get_Complete")]
-    public bool Complete {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<bool> ("SpaceCenter", "ResourceTransfer_get_Complete", args);
-        }
+    public bool GetComplete ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<bool> ("SpaceCenter", "ResourceTransfer_get_Complete", args);
     }
 }

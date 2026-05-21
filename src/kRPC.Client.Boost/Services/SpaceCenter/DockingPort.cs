@@ -87,13 +87,12 @@ public class DockingPort : RemoteObject
     /// Whether the docking port can be commanded to rotate while docked.
     /// </summary>
     [Rpc ("SpaceCenter", "DockingPort_get_CanRotate")]
-    public bool CanRotate {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<bool> ("SpaceCenter", "DockingPort_get_CanRotate", args);
-        }
+    public bool GetCanRotate ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<bool> ("SpaceCenter", "DockingPort_get_CanRotate", args);
     }
 
     /// <summary>
@@ -101,65 +100,60 @@ public class DockingPort : RemoteObject
     /// docking port is not docked to anything.
     /// </summary>
     [Rpc ("SpaceCenter", "DockingPort_get_DockedPart")]
-    public Part DockedPart {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<Part> ("SpaceCenter", "DockingPort_get_DockedPart", args);
-        }
+    public Part GetDockedPart ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<Part> ("SpaceCenter", "DockingPort_get_DockedPart", args);
     }
 
     /// <summary>
     /// Whether the docking port has a shield.
     /// </summary>
     [Rpc ("SpaceCenter", "DockingPort_get_HasShield")]
-    public bool HasShield {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<bool> ("SpaceCenter", "DockingPort_get_HasShield", args);
-        }
+    public bool GetHasShield ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<bool> ("SpaceCenter", "DockingPort_get_HasShield", args);
     }
 
     /// <summary>
     /// Maximum rotation angle in degrees.
     /// </summary>
     [Rpc ("SpaceCenter", "DockingPort_get_MaximumRotation")]
-    public float MaximumRotation {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<float> ("SpaceCenter", "DockingPort_get_MaximumRotation", args);
-        }
+    public float GetMaximumRotation ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<float> ("SpaceCenter", "DockingPort_get_MaximumRotation", args);
     }
 
     /// <summary>
     /// Minimum rotation angle in degrees.
     /// </summary>
     [Rpc ("SpaceCenter", "DockingPort_get_MinimumRotation")]
-    public float MinimumRotation {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<float> ("SpaceCenter", "DockingPort_get_MinimumRotation", args);
-        }
+    public float GetMinimumRotation ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<float> ("SpaceCenter", "DockingPort_get_MinimumRotation", args);
     }
 
     /// <summary>
     /// The part object for this docking port.
     /// </summary>
     [Rpc ("SpaceCenter", "DockingPort_get_Part")]
-    public Part Part {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<Part> ("SpaceCenter", "DockingPort_get_Part", args);
-        }
+    public Part GetPart ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<Part> ("SpaceCenter", "DockingPort_get_Part", args);
     }
 
     /// <summary>
@@ -167,13 +161,12 @@ public class DockingPort : RemoteObject
     /// becomes ready to dock with another port, in meters.
     /// </summary>
     [Rpc ("SpaceCenter", "DockingPort_get_ReengageDistance")]
-    public float ReengageDistance {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<float> ("SpaceCenter", "DockingPort_get_ReengageDistance", args);
-        }
+    public float GetReengageDistance ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<float> ("SpaceCenter", "DockingPort_get_ReengageDistance", args);
     }
 
     /// <summary>
@@ -189,53 +182,62 @@ public class DockingPort : RemoteObject
     /// for the part, returned by <see cref="M:SpaceCenter.Part.ReferenceFrame" />.
     /// </remarks>
     [Rpc ("SpaceCenter", "DockingPort_get_ReferenceFrame")]
-    public ReferenceFrame ReferenceFrame {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<ReferenceFrame> ("SpaceCenter", "DockingPort_get_ReferenceFrame", args);
-        }
+    public ReferenceFrame GetReferenceFrame ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<ReferenceFrame> ("SpaceCenter", "DockingPort_get_ReferenceFrame", args);
     }
 
     /// <summary>
     /// Lock rotation. When locked, allows auto-strut to work across the joint.
     /// </summary>
     [Rpc ("SpaceCenter", "DockingPort_get_RotationLocked")]
-    public bool RotationLocked {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<bool> ("SpaceCenter", "DockingPort_get_RotationLocked", args);
-        }
-        set {
-            var args = new object[] {
-                this,
-                value
-            };
-            Connection.Invoke ("SpaceCenter", "DockingPort_set_RotationLocked", args);
-        }
+    public bool GetRotationLocked ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<bool> ("SpaceCenter", "DockingPort_get_RotationLocked", args);
+    }
+
+    /// <summary>
+    /// Sets the RotationLocked value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public void SetRotationLocked (bool value)
+    {
+        var args = new object[] {
+            this,
+            value
+        };
+        Connection.Invoke ("SpaceCenter", "DockingPort_set_RotationLocked", args);
     }
 
     /// <summary>
     /// Rotation target angle in degrees.
     /// </summary>
     [Rpc ("SpaceCenter", "DockingPort_get_RotationTarget")]
-    public float RotationTarget {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<float> ("SpaceCenter", "DockingPort_get_RotationTarget", args);
-        }
-        set {
-            var args = new object[] {
-                this,
-                value
-            };
-            Connection.Invoke ("SpaceCenter", "DockingPort_set_RotationTarget", args);
-        }
+    public float GetRotationTarget ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<float> ("SpaceCenter", "DockingPort_get_RotationTarget", args);
+    }
+
+    /// <summary>
+    /// Sets the RotationTarget value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public void SetRotationTarget (float value)
+    {
+        var args = new object[] {
+            this,
+            value
+        };
+        Connection.Invoke ("SpaceCenter", "DockingPort_set_RotationTarget", args);
     }
 
     /// <summary>
@@ -247,32 +249,36 @@ public class DockingPort : RemoteObject
     /// port does not have a shield, setting this attribute has no effect.
     /// </summary>
     [Rpc ("SpaceCenter", "DockingPort_get_Shielded")]
-    public bool Shielded {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<bool> ("SpaceCenter", "DockingPort_get_Shielded", args);
-        }
-        set {
-            var args = new object[] {
-                this,
-                value
-            };
-            Connection.Invoke ("SpaceCenter", "DockingPort_set_Shielded", args);
-        }
+    public bool GetShielded ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<bool> ("SpaceCenter", "DockingPort_get_Shielded", args);
+    }
+
+    /// <summary>
+    /// Sets the Shielded value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public void SetShielded (bool value)
+    {
+        var args = new object[] {
+            this,
+            value
+        };
+        Connection.Invoke ("SpaceCenter", "DockingPort_set_Shielded", args);
     }
 
     /// <summary>
     /// The current state of the docking port.
     /// </summary>
     [Rpc ("SpaceCenter", "DockingPort_get_State")]
-    public DockingPortState State {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<DockingPortState> ("SpaceCenter", "DockingPort_get_State", args);
-        }
+    public DockingPortState GetState ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<DockingPortState> ("SpaceCenter", "DockingPort_get_State", args);
     }
 }

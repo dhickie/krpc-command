@@ -21,20 +21,25 @@ public class ReactionWheel : RemoteObject
     /// Whether the reaction wheel is active.
     /// </summary>
     [Rpc ("SpaceCenter", "ReactionWheel_get_Active")]
-    public bool Active {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<bool> ("SpaceCenter", "ReactionWheel_get_Active", args);
-        }
-        set {
-            var args = new object[] {
-                this,
-                value
-            };
-            Connection.Invoke ("SpaceCenter", "ReactionWheel_set_Active", args);
-        }
+    public bool GetActive ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<bool> ("SpaceCenter", "ReactionWheel_get_Active", args);
+    }
+
+    /// <summary>
+    /// Sets the Active value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public void SetActive (bool value)
+    {
+        var args = new object[] {
+            this,
+            value
+        };
+        Connection.Invoke ("SpaceCenter", "ReactionWheel_set_Active", args);
     }
 
     /// <summary>
@@ -44,26 +49,24 @@ public class ReactionWheel : RemoteObject
     /// Returns zero if the reaction wheel is inactive or broken.
     /// </summary>
     [Rpc ("SpaceCenter", "ReactionWheel_get_AvailableTorque")]
-    public Tuple<Tuple<double,double,double>,Tuple<double,double,double>> AvailableTorque {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<Tuple<Tuple<double,double,double>,Tuple<double,double,double>>> ("SpaceCenter", "ReactionWheel_get_AvailableTorque", args);
-        }
+    public Tuple<Tuple<double,double,double>,Tuple<double,double,double>> GetAvailableTorque ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<Tuple<Tuple<double,double,double>,Tuple<double,double,double>>> ("SpaceCenter", "ReactionWheel_get_AvailableTorque", args);
     }
 
     /// <summary>
     /// Whether the reaction wheel is broken.
     /// </summary>
     [Rpc ("SpaceCenter", "ReactionWheel_get_Broken")]
-    public bool Broken {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<bool> ("SpaceCenter", "ReactionWheel_get_Broken", args);
-        }
+    public bool GetBroken ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<bool> ("SpaceCenter", "ReactionWheel_get_Broken", args);
     }
 
     /// <summary>
@@ -72,25 +75,23 @@ public class ReactionWheel : RemoteObject
     /// These axes correspond to the coordinate axes of the <see cref="M:SpaceCenter.Vessel.ReferenceFrame" />.
     /// </summary>
     [Rpc ("SpaceCenter", "ReactionWheel_get_MaxTorque")]
-    public Tuple<Tuple<double,double,double>,Tuple<double,double,double>> MaxTorque {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<Tuple<Tuple<double,double,double>,Tuple<double,double,double>>> ("SpaceCenter", "ReactionWheel_get_MaxTorque", args);
-        }
+    public Tuple<Tuple<double,double,double>,Tuple<double,double,double>> GetMaxTorque ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<Tuple<Tuple<double,double,double>,Tuple<double,double,double>>> ("SpaceCenter", "ReactionWheel_get_MaxTorque", args);
     }
 
     /// <summary>
     /// The part object for this reaction wheel.
     /// </summary>
     [Rpc ("SpaceCenter", "ReactionWheel_get_Part")]
-    public Part Part {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<Part> ("SpaceCenter", "ReactionWheel_get_Part", args);
-        }
+    public Part GetPart ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<Part> ("SpaceCenter", "ReactionWheel_get_Part", args);
     }
 }

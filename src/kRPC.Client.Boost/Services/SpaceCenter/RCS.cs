@@ -25,13 +25,12 @@ public class RCS : RemoteObject
     /// (<see cref="M:SpaceCenter.RCS.Enabled" />) or it is covered by a fairing (<see cref="M:SpaceCenter.Part.Shielded" />).
     /// </summary>
     [Rpc ("SpaceCenter", "RCS_get_Active")]
-    public bool Active {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<bool> ("SpaceCenter", "RCS_get_Active", args);
-        }
+    public bool GetActive ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<bool> ("SpaceCenter", "RCS_get_Active", args);
     }
 
     /// <summary>
@@ -41,13 +40,12 @@ public class RCS : RemoteObject
     /// Returns zero if RCS is disabled.
     /// </summary>
     [Rpc ("SpaceCenter", "RCS_get_AvailableForce")]
-    public Tuple<Tuple<double,double,double>,Tuple<double,double,double>> AvailableForce {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<Tuple<Tuple<double,double,double>,Tuple<double,double,double>>> ("SpaceCenter", "RCS_get_AvailableForce", args);
-        }
+    public Tuple<Tuple<double,double,double>,Tuple<double,double,double>> GetAvailableForce ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<Tuple<Tuple<double,double,double>,Tuple<double,double,double>>> ("SpaceCenter", "RCS_get_AvailableForce", args);
     }
 
     /// <summary>
@@ -57,13 +55,12 @@ public class RCS : RemoteObject
     /// into account.
     /// </summary>
     [Rpc ("SpaceCenter", "RCS_get_AvailableThrust")]
-    public float AvailableThrust {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<float> ("SpaceCenter", "RCS_get_AvailableThrust", args);
-        }
+    public float GetAvailableThrust ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<float> ("SpaceCenter", "RCS_get_AvailableThrust", args);
     }
 
     /// <summary>
@@ -73,79 +70,86 @@ public class RCS : RemoteObject
     /// Returns zero if RCS is disable.
     /// </summary>
     [Rpc ("SpaceCenter", "RCS_get_AvailableTorque")]
-    public Tuple<Tuple<double,double,double>,Tuple<double,double,double>> AvailableTorque {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<Tuple<Tuple<double,double,double>,Tuple<double,double,double>>> ("SpaceCenter", "RCS_get_AvailableTorque", args);
-        }
+    public Tuple<Tuple<double,double,double>,Tuple<double,double,double>> GetAvailableTorque ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<Tuple<Tuple<double,double,double>,Tuple<double,double,double>>> ("SpaceCenter", "RCS_get_AvailableTorque", args);
     }
 
     /// <summary>
     /// Whether the RCS thrusters are enabled.
     /// </summary>
     [Rpc ("SpaceCenter", "RCS_get_Enabled")]
-    public bool Enabled {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<bool> ("SpaceCenter", "RCS_get_Enabled", args);
-        }
-        set {
-            var args = new object[] {
-                this,
-                value
-            };
-            Connection.Invoke ("SpaceCenter", "RCS_set_Enabled", args);
-        }
+    public bool GetEnabled ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<bool> ("SpaceCenter", "RCS_get_Enabled", args);
+    }
+
+    /// <summary>
+    /// Sets the Enabled value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public void SetEnabled (bool value)
+    {
+        var args = new object[] {
+            this,
+            value
+        };
+        Connection.Invoke ("SpaceCenter", "RCS_set_Enabled", args);
     }
 
     /// <summary>
     /// Whether the RCS thruster will fire when pitch control input is given.
     /// </summary>
     [Rpc ("SpaceCenter", "RCS_get_ForwardEnabled")]
-    public bool ForwardEnabled {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<bool> ("SpaceCenter", "RCS_get_ForwardEnabled", args);
-        }
-        set {
-            var args = new object[] {
-                this,
-                value
-            };
-            Connection.Invoke ("SpaceCenter", "RCS_set_ForwardEnabled", args);
-        }
+    public bool GetForwardEnabled ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<bool> ("SpaceCenter", "RCS_get_ForwardEnabled", args);
+    }
+
+    /// <summary>
+    /// Sets the ForwardEnabled value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public void SetForwardEnabled (bool value)
+    {
+        var args = new object[] {
+            this,
+            value
+        };
+        Connection.Invoke ("SpaceCenter", "RCS_set_ForwardEnabled", args);
     }
 
     /// <summary>
     /// Whether the RCS has fuel available.
     /// </summary>
     [Rpc ("SpaceCenter", "RCS_get_HasFuel")]
-    public bool HasFuel {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<bool> ("SpaceCenter", "RCS_get_HasFuel", args);
-        }
+    public bool GetHasFuel ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<bool> ("SpaceCenter", "RCS_get_HasFuel", args);
     }
 
     /// <summary>
     /// The specific impulse of the RCS at sea level on Kerbin, in seconds.
     /// </summary>
     [Rpc ("SpaceCenter", "RCS_get_KerbinSeaLevelSpecificImpulse")]
-    public float KerbinSeaLevelSpecificImpulse {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<float> ("SpaceCenter", "RCS_get_KerbinSeaLevelSpecificImpulse", args);
-        }
+    public float GetKerbinSeaLevelSpecificImpulse ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<float> ("SpaceCenter", "RCS_get_KerbinSeaLevelSpecificImpulse", args);
     }
 
     /// <summary>
@@ -155,13 +159,12 @@ public class RCS : RemoteObject
     /// into account.
     /// </summary>
     [Rpc ("SpaceCenter", "RCS_get_MaxThrust")]
-    public float MaxThrust {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<float> ("SpaceCenter", "RCS_get_MaxThrust", args);
-        }
+    public float GetMaxThrust ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<float> ("SpaceCenter", "RCS_get_MaxThrust", args);
     }
 
     /// <summary>
@@ -169,46 +172,49 @@ public class RCS : RemoteObject
     /// in a vacuum, in Newtons.
     /// </summary>
     [Rpc ("SpaceCenter", "RCS_get_MaxVacuumThrust")]
-    public float MaxVacuumThrust {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<float> ("SpaceCenter", "RCS_get_MaxVacuumThrust", args);
-        }
+    public float GetMaxVacuumThrust ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<float> ("SpaceCenter", "RCS_get_MaxVacuumThrust", args);
     }
 
     /// <summary>
     /// The part object for this RCS.
     /// </summary>
     [Rpc ("SpaceCenter", "RCS_get_Part")]
-    public Part Part {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<Part> ("SpaceCenter", "RCS_get_Part", args);
-        }
+    public Part GetPart ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<Part> ("SpaceCenter", "RCS_get_Part", args);
     }
 
     /// <summary>
     /// Whether the RCS thruster will fire when pitch control input is given.
     /// </summary>
     [Rpc ("SpaceCenter", "RCS_get_PitchEnabled")]
-    public bool PitchEnabled {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<bool> ("SpaceCenter", "RCS_get_PitchEnabled", args);
-        }
-        set {
-            var args = new object[] {
-                this,
-                value
-            };
-            Connection.Invoke ("SpaceCenter", "RCS_set_PitchEnabled", args);
-        }
+    public bool GetPitchEnabled ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<bool> ("SpaceCenter", "RCS_get_PitchEnabled", args);
+    }
+
+    /// <summary>
+    /// Sets the PitchEnabled value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public void SetPitchEnabled (bool value)
+    {
+        var args = new object[] {
+            this,
+            value
+        };
+        Connection.Invoke ("SpaceCenter", "RCS_set_PitchEnabled", args);
     }
 
     /// <summary>
@@ -216,66 +222,74 @@ public class RCS : RemoteObject
     /// to the ratios at which they are consumed by the RCS.
     /// </summary>
     [Rpc ("SpaceCenter", "RCS_get_PropellantRatios")]
-    public IDictionary<string,float> PropellantRatios {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<IDictionary<string,float>> ("SpaceCenter", "RCS_get_PropellantRatios", args);
-        }
+    public IDictionary<string,float> GetPropellantRatios ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<IDictionary<string,float>> ("SpaceCenter", "RCS_get_PropellantRatios", args);
     }
 
     /// <summary>
     /// The names of resources that the RCS consumes.
     /// </summary>
     [Rpc ("SpaceCenter", "RCS_get_Propellants")]
-    public IList<string> Propellants {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<IList<string>> ("SpaceCenter", "RCS_get_Propellants", args);
-        }
+    public IList<string> GetPropellants ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<IList<string>> ("SpaceCenter", "RCS_get_Propellants", args);
     }
 
     /// <summary>
     /// Whether the RCS thruster will fire when roll control input is given.
     /// </summary>
     [Rpc ("SpaceCenter", "RCS_get_RightEnabled")]
-    public bool RightEnabled {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<bool> ("SpaceCenter", "RCS_get_RightEnabled", args);
-        }
-        set {
-            var args = new object[] {
-                this,
-                value
-            };
-            Connection.Invoke ("SpaceCenter", "RCS_set_RightEnabled", args);
-        }
+    public bool GetRightEnabled ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<bool> ("SpaceCenter", "RCS_get_RightEnabled", args);
+    }
+
+    /// <summary>
+    /// Sets the RightEnabled value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public void SetRightEnabled (bool value)
+    {
+        var args = new object[] {
+            this,
+            value
+        };
+        Connection.Invoke ("SpaceCenter", "RCS_set_RightEnabled", args);
     }
 
     /// <summary>
     /// Whether the RCS thruster will fire when roll control input is given.
     /// </summary>
     [Rpc ("SpaceCenter", "RCS_get_RollEnabled")]
-    public bool RollEnabled {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<bool> ("SpaceCenter", "RCS_get_RollEnabled", args);
-        }
-        set {
-            var args = new object[] {
-                this,
-                value
-            };
-            Connection.Invoke ("SpaceCenter", "RCS_set_RollEnabled", args);
-        }
+    public bool GetRollEnabled ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<bool> ("SpaceCenter", "RCS_get_RollEnabled", args);
+    }
+
+    /// <summary>
+    /// Sets the RollEnabled value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public void SetRollEnabled (bool value)
+    {
+        var args = new object[] {
+            this,
+            value
+        };
+        Connection.Invoke ("SpaceCenter", "RCS_set_RollEnabled", args);
     }
 
     /// <summary>
@@ -283,98 +297,110 @@ public class RCS : RemoteObject
     /// if the RCS is not active.
     /// </summary>
     [Rpc ("SpaceCenter", "RCS_get_SpecificImpulse")]
-    public float SpecificImpulse {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<float> ("SpaceCenter", "RCS_get_SpecificImpulse", args);
-        }
+    public float GetSpecificImpulse ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<float> ("SpaceCenter", "RCS_get_SpecificImpulse", args);
     }
 
     /// <summary>
     /// The thrust limiter of the thruster. A value between 0 and 1.
     /// </summary>
     [Rpc ("SpaceCenter", "RCS_get_ThrustLimit")]
-    public float ThrustLimit {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<float> ("SpaceCenter", "RCS_get_ThrustLimit", args);
-        }
-        set {
-            var args = new object[] {
-                this,
-                value
-            };
-            Connection.Invoke ("SpaceCenter", "RCS_set_ThrustLimit", args);
-        }
+    public float GetThrustLimit ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<float> ("SpaceCenter", "RCS_get_ThrustLimit", args);
+    }
+
+    /// <summary>
+    /// Sets the ThrustLimit value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public void SetThrustLimit (float value)
+    {
+        var args = new object[] {
+            this,
+            value
+        };
+        Connection.Invoke ("SpaceCenter", "RCS_set_ThrustLimit", args);
     }
 
     /// <summary>
     /// A list of thrusters, one of each nozzel in the RCS part.
     /// </summary>
     [Rpc ("SpaceCenter", "RCS_get_Thrusters")]
-    public IList<Thruster> Thrusters {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<IList<Thruster>> ("SpaceCenter", "RCS_get_Thrusters", args);
-        }
+    public IList<Thruster> GetThrusters ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<IList<Thruster>> ("SpaceCenter", "RCS_get_Thrusters", args);
     }
 
     /// <summary>
     /// Whether the RCS thruster will fire when yaw control input is given.
     /// </summary>
     [Rpc ("SpaceCenter", "RCS_get_UpEnabled")]
-    public bool UpEnabled {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<bool> ("SpaceCenter", "RCS_get_UpEnabled", args);
-        }
-        set {
-            var args = new object[] {
-                this,
-                value
-            };
-            Connection.Invoke ("SpaceCenter", "RCS_set_UpEnabled", args);
-        }
+    public bool GetUpEnabled ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<bool> ("SpaceCenter", "RCS_get_UpEnabled", args);
+    }
+
+    /// <summary>
+    /// Sets the UpEnabled value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public void SetUpEnabled (bool value)
+    {
+        var args = new object[] {
+            this,
+            value
+        };
+        Connection.Invoke ("SpaceCenter", "RCS_set_UpEnabled", args);
     }
 
     /// <summary>
     /// The vacuum specific impulse of the RCS, in seconds.
     /// </summary>
     [Rpc ("SpaceCenter", "RCS_get_VacuumSpecificImpulse")]
-    public float VacuumSpecificImpulse {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<float> ("SpaceCenter", "RCS_get_VacuumSpecificImpulse", args);
-        }
+    public float GetVacuumSpecificImpulse ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<float> ("SpaceCenter", "RCS_get_VacuumSpecificImpulse", args);
     }
 
     /// <summary>
     /// Whether the RCS thruster will fire when yaw control input is given.
     /// </summary>
     [Rpc ("SpaceCenter", "RCS_get_YawEnabled")]
-    public bool YawEnabled {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<bool> ("SpaceCenter", "RCS_get_YawEnabled", args);
-        }
-        set {
-            var args = new object[] {
-                this,
-                value
-            };
-            Connection.Invoke ("SpaceCenter", "RCS_set_YawEnabled", args);
-        }
+    public bool GetYawEnabled ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<bool> ("SpaceCenter", "RCS_get_YawEnabled", args);
+    }
+
+    /// <summary>
+    /// Sets the YawEnabled value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public void SetYawEnabled (bool value)
+    {
+        var args = new object[] {
+            this,
+            value
+        };
+        Connection.Invoke ("SpaceCenter", "RCS_set_YawEnabled", args);
     }
 }

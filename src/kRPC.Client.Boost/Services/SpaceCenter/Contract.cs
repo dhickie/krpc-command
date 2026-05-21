@@ -57,272 +57,251 @@ public class Contract : RemoteObject
     /// Whether the contract is active.
     /// </summary>
     [Rpc ("SpaceCenter", "Contract_get_Active")]
-    public bool Active {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<bool> ("SpaceCenter", "Contract_get_Active", args);
-        }
+    public bool GetActive ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<bool> ("SpaceCenter", "Contract_get_Active", args);
     }
 
     /// <summary>
     /// Whether the contract can be canceled.
     /// </summary>
     [Rpc ("SpaceCenter", "Contract_get_CanBeCanceled")]
-    public bool CanBeCanceled {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<bool> ("SpaceCenter", "Contract_get_CanBeCanceled", args);
-        }
+    public bool GetCanBeCanceled ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<bool> ("SpaceCenter", "Contract_get_CanBeCanceled", args);
     }
 
     /// <summary>
     /// Whether the contract can be declined.
     /// </summary>
     [Rpc ("SpaceCenter", "Contract_get_CanBeDeclined")]
-    public bool CanBeDeclined {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<bool> ("SpaceCenter", "Contract_get_CanBeDeclined", args);
-        }
+    public bool GetCanBeDeclined ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<bool> ("SpaceCenter", "Contract_get_CanBeDeclined", args);
     }
 
     /// <summary>
     /// Whether the contract can be failed.
     /// </summary>
     [Rpc ("SpaceCenter", "Contract_get_CanBeFailed")]
-    public bool CanBeFailed {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<bool> ("SpaceCenter", "Contract_get_CanBeFailed", args);
-        }
+    public bool GetCanBeFailed ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<bool> ("SpaceCenter", "Contract_get_CanBeFailed", args);
     }
 
     /// <summary>
     /// Description of the contract.
     /// </summary>
     [Rpc ("SpaceCenter", "Contract_get_Description")]
-    public string Description {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<string> ("SpaceCenter", "Contract_get_Description", args);
-        }
+    public string GetDescription ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<string> ("SpaceCenter", "Contract_get_Description", args);
     }
 
     /// <summary>
     /// Whether the contract has been failed.
     /// </summary>
     [Rpc ("SpaceCenter", "Contract_get_Failed")]
-    public bool Failed {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<bool> ("SpaceCenter", "Contract_get_Failed", args);
-        }
+    public bool GetFailed ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<bool> ("SpaceCenter", "Contract_get_Failed", args);
     }
 
     /// <summary>
     /// Funds received when accepting the contract.
     /// </summary>
     [Rpc ("SpaceCenter", "Contract_get_FundsAdvance")]
-    public double FundsAdvance {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<double> ("SpaceCenter", "Contract_get_FundsAdvance", args);
-        }
+    public double GetFundsAdvance ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<double> ("SpaceCenter", "Contract_get_FundsAdvance", args);
     }
 
     /// <summary>
     /// Funds received on completion of the contract.
     /// </summary>
     [Rpc ("SpaceCenter", "Contract_get_FundsCompletion")]
-    public double FundsCompletion {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<double> ("SpaceCenter", "Contract_get_FundsCompletion", args);
-        }
+    public double GetFundsCompletion ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<double> ("SpaceCenter", "Contract_get_FundsCompletion", args);
     }
 
     /// <summary>
     /// Funds lost if the contract is failed.
     /// </summary>
     [Rpc ("SpaceCenter", "Contract_get_FundsFailure")]
-    public double FundsFailure {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<double> ("SpaceCenter", "Contract_get_FundsFailure", args);
-        }
+    public double GetFundsFailure ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<double> ("SpaceCenter", "Contract_get_FundsFailure", args);
     }
 
     /// <summary>
     /// Keywords for the contract.
     /// </summary>
     [Rpc ("SpaceCenter", "Contract_get_Keywords")]
-    public IList<string> Keywords {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<IList<string>> ("SpaceCenter", "Contract_get_Keywords", args);
-        }
+    public IList<string> GetKeywords ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<IList<string>> ("SpaceCenter", "Contract_get_Keywords", args);
     }
 
     /// <summary>
     /// Notes for the contract.
     /// </summary>
     [Rpc ("SpaceCenter", "Contract_get_Notes")]
-    public string Notes {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<string> ("SpaceCenter", "Contract_get_Notes", args);
-        }
+    public string GetNotes ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<string> ("SpaceCenter", "Contract_get_Notes", args);
     }
 
     /// <summary>
     /// Parameters for the contract.
     /// </summary>
     [Rpc ("SpaceCenter", "Contract_get_Parameters")]
-    public IList<ContractParameter> Parameters {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<IList<ContractParameter>> ("SpaceCenter", "Contract_get_Parameters", args);
-        }
+    public IList<ContractParameter> GetParameters ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<IList<ContractParameter>> ("SpaceCenter", "Contract_get_Parameters", args);
     }
 
     /// <summary>
     /// Whether the contract has been read.
     /// </summary>
     [Rpc ("SpaceCenter", "Contract_get_Read")]
-    public bool Read {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<bool> ("SpaceCenter", "Contract_get_Read", args);
-        }
+    public bool GetRead ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<bool> ("SpaceCenter", "Contract_get_Read", args);
     }
 
     /// <summary>
     /// Reputation gained on completion of the contract.
     /// </summary>
     [Rpc ("SpaceCenter", "Contract_get_ReputationCompletion")]
-    public double ReputationCompletion {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<double> ("SpaceCenter", "Contract_get_ReputationCompletion", args);
-        }
+    public double GetReputationCompletion ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<double> ("SpaceCenter", "Contract_get_ReputationCompletion", args);
     }
 
     /// <summary>
     /// Reputation lost if the contract is failed.
     /// </summary>
     [Rpc ("SpaceCenter", "Contract_get_ReputationFailure")]
-    public double ReputationFailure {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<double> ("SpaceCenter", "Contract_get_ReputationFailure", args);
-        }
+    public double GetReputationFailure ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<double> ("SpaceCenter", "Contract_get_ReputationFailure", args);
     }
 
     /// <summary>
     /// Science gained on completion of the contract.
     /// </summary>
     [Rpc ("SpaceCenter", "Contract_get_ScienceCompletion")]
-    public double ScienceCompletion {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<double> ("SpaceCenter", "Contract_get_ScienceCompletion", args);
-        }
+    public double GetScienceCompletion ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<double> ("SpaceCenter", "Contract_get_ScienceCompletion", args);
     }
 
     /// <summary>
     /// Whether the contract has been seen.
     /// </summary>
     [Rpc ("SpaceCenter", "Contract_get_Seen")]
-    public bool Seen {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<bool> ("SpaceCenter", "Contract_get_Seen", args);
-        }
+    public bool GetSeen ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<bool> ("SpaceCenter", "Contract_get_Seen", args);
     }
 
     /// <summary>
     /// State of the contract.
     /// </summary>
     [Rpc ("SpaceCenter", "Contract_get_State")]
-    public ContractState State {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<ContractState> ("SpaceCenter", "Contract_get_State", args);
-        }
+    public ContractState GetState ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<ContractState> ("SpaceCenter", "Contract_get_State", args);
     }
 
     /// <summary>
     /// Synopsis for the contract.
     /// </summary>
     [Rpc ("SpaceCenter", "Contract_get_Synopsis")]
-    public string Synopsis {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<string> ("SpaceCenter", "Contract_get_Synopsis", args);
-        }
+    public string GetSynopsis ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<string> ("SpaceCenter", "Contract_get_Synopsis", args);
     }
 
     /// <summary>
     /// Title of the contract.
     /// </summary>
     [Rpc ("SpaceCenter", "Contract_get_Title")]
-    public string Title {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<string> ("SpaceCenter", "Contract_get_Title", args);
-        }
+    public string GetTitle ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<string> ("SpaceCenter", "Contract_get_Title", args);
     }
 
     /// <summary>
     /// Type of the contract.
     /// </summary>
     [Rpc ("SpaceCenter", "Contract_get_Type")]
-    public string Type {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<string> ("SpaceCenter", "Contract_get_Type", args);
-        }
+    public string GetType ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<string> ("SpaceCenter", "Contract_get_Type", args);
     }
 }

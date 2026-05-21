@@ -21,13 +21,12 @@ public class Camera : RemoteObject
     /// Default distance from the camera to the subject, in meters.
     /// </summary>
     [Rpc ("SpaceCenter", "Camera_get_DefaultDistance")]
-    public float DefaultDistance {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<float> ("SpaceCenter", "Camera_get_DefaultDistance", args);
-        }
+    public float GetDefaultDistance ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<float> ("SpaceCenter", "Camera_get_DefaultDistance", args);
     }
 
     /// <summary>
@@ -35,20 +34,25 @@ public class Camera : RemoteObject
     /// A value between <see cref="M:SpaceCenter.Camera.MinDistance" /> and <see cref="M:SpaceCenter.Camera.MaxDistance" />.
     /// </summary>
     [Rpc ("SpaceCenter", "Camera_get_Distance")]
-    public float Distance {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<float> ("SpaceCenter", "Camera_get_Distance", args);
-        }
-        set {
-            var args = new object[] {
-                this,
-                value
-            };
-            Connection.Invoke ("SpaceCenter", "Camera_set_Distance", args);
-        }
+    public float GetDistance ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<float> ("SpaceCenter", "Camera_get_Distance", args);
+    }
+
+    /// <summary>
+    /// Sets the Distance value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public void SetDistance (float value)
+    {
+        var args = new object[] {
+            this,
+            value
+        };
+        Connection.Invoke ("SpaceCenter", "Camera_set_Distance", args);
     }
 
     /// <summary>
@@ -57,20 +61,25 @@ public class Camera : RemoteObject
     /// Returns an error is the camera is not in map mode.
     /// </summary>
     [Rpc ("SpaceCenter", "Camera_get_FocussedBody")]
-    public CelestialBody FocussedBody {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<CelestialBody> ("SpaceCenter", "Camera_get_FocussedBody", args);
-        }
-        set {
-            var args = new object[] {
-                this,
-                value
-            };
-            Connection.Invoke ("SpaceCenter", "Camera_set_FocussedBody", args);
-        }
+    public CelestialBody GetFocussedBody ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<CelestialBody> ("SpaceCenter", "Camera_get_FocussedBody", args);
+    }
+
+    /// <summary>
+    /// Sets the FocussedBody value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public void SetFocussedBody (CelestialBody value)
+    {
+        var args = new object[] {
+            this,
+            value
+        };
+        Connection.Invoke ("SpaceCenter", "Camera_set_FocussedBody", args);
     }
 
     /// <summary>
@@ -79,20 +88,25 @@ public class Camera : RemoteObject
     /// Returns an error is the camera is not in map mode.
     /// </summary>
     [Rpc ("SpaceCenter", "Camera_get_FocussedNode")]
-    public Node FocussedNode {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<Node> ("SpaceCenter", "Camera_get_FocussedNode", args);
-        }
-        set {
-            var args = new object[] {
-                this,
-                value
-            };
-            Connection.Invoke ("SpaceCenter", "Camera_set_FocussedNode", args);
-        }
+    public Node GetFocussedNode ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<Node> ("SpaceCenter", "Camera_get_FocussedNode", args);
+    }
+
+    /// <summary>
+    /// Sets the FocussedNode value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public void SetFocussedNode (Node value)
+    {
+        var args = new object[] {
+            this,
+            value
+        };
+        Connection.Invoke ("SpaceCenter", "Camera_set_FocussedNode", args);
     }
 
     /// <summary>
@@ -101,131 +115,147 @@ public class Camera : RemoteObject
     /// Returns an error is the camera is not in map mode.
     /// </summary>
     [Rpc ("SpaceCenter", "Camera_get_FocussedVessel")]
-    public Vessel FocussedVessel {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<Vessel> ("SpaceCenter", "Camera_get_FocussedVessel", args);
-        }
-        set {
-            var args = new object[] {
-                this,
-                value
-            };
-            Connection.Invoke ("SpaceCenter", "Camera_set_FocussedVessel", args);
-        }
+    public Vessel GetFocussedVessel ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<Vessel> ("SpaceCenter", "Camera_get_FocussedVessel", args);
+    }
+
+    /// <summary>
+    /// Sets the FocussedVessel value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public void SetFocussedVessel (Vessel value)
+    {
+        var args = new object[] {
+            this,
+            value
+        };
+        Connection.Invoke ("SpaceCenter", "Camera_set_FocussedVessel", args);
     }
 
     /// <summary>
     /// The heading of the camera, in degrees.
     /// </summary>
     [Rpc ("SpaceCenter", "Camera_get_Heading")]
-    public float Heading {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<float> ("SpaceCenter", "Camera_get_Heading", args);
-        }
-        set {
-            var args = new object[] {
-                this,
-                value
-            };
-            Connection.Invoke ("SpaceCenter", "Camera_set_Heading", args);
-        }
+    public float GetHeading ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<float> ("SpaceCenter", "Camera_get_Heading", args);
+    }
+
+    /// <summary>
+    /// Sets the Heading value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public void SetHeading (float value)
+    {
+        var args = new object[] {
+            this,
+            value
+        };
+        Connection.Invoke ("SpaceCenter", "Camera_set_Heading", args);
     }
 
     /// <summary>
     /// Maximum distance from the camera to the subject, in meters.
     /// </summary>
     [Rpc ("SpaceCenter", "Camera_get_MaxDistance")]
-    public float MaxDistance {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<float> ("SpaceCenter", "Camera_get_MaxDistance", args);
-        }
+    public float GetMaxDistance ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<float> ("SpaceCenter", "Camera_get_MaxDistance", args);
     }
 
     /// <summary>
     /// The maximum pitch of the camera.
     /// </summary>
     [Rpc ("SpaceCenter", "Camera_get_MaxPitch")]
-    public float MaxPitch {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<float> ("SpaceCenter", "Camera_get_MaxPitch", args);
-        }
+    public float GetMaxPitch ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<float> ("SpaceCenter", "Camera_get_MaxPitch", args);
     }
 
     /// <summary>
     /// Minimum distance from the camera to the subject, in meters.
     /// </summary>
     [Rpc ("SpaceCenter", "Camera_get_MinDistance")]
-    public float MinDistance {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<float> ("SpaceCenter", "Camera_get_MinDistance", args);
-        }
+    public float GetMinDistance ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<float> ("SpaceCenter", "Camera_get_MinDistance", args);
     }
 
     /// <summary>
     /// The minimum pitch of the camera.
     /// </summary>
     [Rpc ("SpaceCenter", "Camera_get_MinPitch")]
-    public float MinPitch {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<float> ("SpaceCenter", "Camera_get_MinPitch", args);
-        }
+    public float GetMinPitch ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<float> ("SpaceCenter", "Camera_get_MinPitch", args);
     }
 
     /// <summary>
     /// The current mode of the camera.
     /// </summary>
     [Rpc ("SpaceCenter", "Camera_get_Mode")]
-    public CameraMode Mode {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<CameraMode> ("SpaceCenter", "Camera_get_Mode", args);
-        }
-        set {
-            var args = new object[] {
-                this,
-                value
-            };
-            Connection.Invoke ("SpaceCenter", "Camera_set_Mode", args);
-        }
+    public CameraMode GetMode ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<CameraMode> ("SpaceCenter", "Camera_get_Mode", args);
+    }
+
+    /// <summary>
+    /// Sets the Mode value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public void SetMode (CameraMode value)
+    {
+        var args = new object[] {
+            this,
+            value
+        };
+        Connection.Invoke ("SpaceCenter", "Camera_set_Mode", args);
     }
 
     /// <summary>
     /// The pitch of the camera, in degrees.
     /// A value between <see cref="M:SpaceCenter.Camera.MinPitch" /> and <see cref="M:SpaceCenter.Camera.MaxPitch" /></summary>
     [Rpc ("SpaceCenter", "Camera_get_Pitch")]
-    public float Pitch {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<float> ("SpaceCenter", "Camera_get_Pitch", args);
-        }
-        set {
-            var args = new object[] {
-                this,
-                value
-            };
-            Connection.Invoke ("SpaceCenter", "Camera_set_Pitch", args);
-        }
+    public float GetPitch ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<float> ("SpaceCenter", "Camera_get_Pitch", args);
+    }
+
+    /// <summary>
+    /// Sets the Pitch value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public void SetPitch (float value)
+    {
+        var args = new object[] {
+            this,
+            value
+        };
+        Connection.Invoke ("SpaceCenter", "Camera_set_Pitch", args);
     }
 }

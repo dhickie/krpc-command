@@ -20,125 +20,148 @@ public class RoboticRotor : RemoteObject
     /// Current RPM.
     /// </summary>
     [Rpc ("SpaceCenter", "RoboticRotor_get_CurrentRPM")]
-    public float CurrentRPM {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<float> ("SpaceCenter", "RoboticRotor_get_CurrentRPM", args);
-        }
+    public float GetCurrentRPM ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<float> ("SpaceCenter", "RoboticRotor_get_CurrentRPM", args);
     }
 
     /// <summary>
     /// Whether the rotor direction is inverted.
     /// </summary>
     [Rpc ("SpaceCenter", "RoboticRotor_get_Inverted")]
-    public bool Inverted {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<bool> ("SpaceCenter", "RoboticRotor_get_Inverted", args);
-        }
-        set {
-            var args = new object[] {
-                this,
-                value
-            };
-            Connection.Invoke ("SpaceCenter", "RoboticRotor_set_Inverted", args);
-        }
+    public bool GetInverted ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<bool> ("SpaceCenter", "RoboticRotor_get_Inverted", args);
+    }
+
+    /// <summary>
+    /// Sets the Inverted value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public void SetInverted (bool value)
+    {
+        var args = new object[] {
+            this,
+            value
+        };
+        Connection.Invoke ("SpaceCenter", "RoboticRotor_set_Inverted", args);
     }
 
     /// <summary>
     /// Lock movement.
     /// </summary>
     [Rpc ("SpaceCenter", "RoboticRotor_get_Locked")]
-    public bool Locked {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<bool> ("SpaceCenter", "RoboticRotor_get_Locked", args);
-        }
-        set {
-            var args = new object[] {
-                this,
-                value
-            };
-            Connection.Invoke ("SpaceCenter", "RoboticRotor_set_Locked", args);
-        }
+    public bool GetLocked ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<bool> ("SpaceCenter", "RoboticRotor_get_Locked", args);
+    }
+
+    /// <summary>
+    /// Sets the Locked value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public void SetLocked (bool value)
+    {
+        var args = new object[] {
+            this,
+            value
+        };
+        Connection.Invoke ("SpaceCenter", "RoboticRotor_set_Locked", args);
     }
 
     /// <summary>
     /// Whether the motor is engaged.
     /// </summary>
     [Rpc ("SpaceCenter", "RoboticRotor_get_MotorEngaged")]
-    public bool MotorEngaged {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<bool> ("SpaceCenter", "RoboticRotor_get_MotorEngaged", args);
-        }
-        set {
-            var args = new object[] {
-                this,
-                value
-            };
-            Connection.Invoke ("SpaceCenter", "RoboticRotor_set_MotorEngaged", args);
-        }
+    public bool GetMotorEngaged ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<bool> ("SpaceCenter", "RoboticRotor_get_MotorEngaged", args);
+    }
+
+    /// <summary>
+    /// Sets the MotorEngaged value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public void SetMotorEngaged (bool value)
+    {
+        var args = new object[] {
+            this,
+            value
+        };
+        Connection.Invoke ("SpaceCenter", "RoboticRotor_set_MotorEngaged", args);
     }
 
     /// <summary>
     /// The part object for this robotic rotor.
     /// </summary>
     [Rpc ("SpaceCenter", "RoboticRotor_get_Part")]
-    public Part Part {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<Part> ("SpaceCenter", "RoboticRotor_get_Part", args);
-        }
+    public Part GetPart ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<Part> ("SpaceCenter", "RoboticRotor_get_Part", args);
     }
 
     /// <summary>
     /// Target RPM.
     /// </summary>
     [Rpc ("SpaceCenter", "RoboticRotor_get_TargetRPM")]
-    public float TargetRPM {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<float> ("SpaceCenter", "RoboticRotor_get_TargetRPM", args);
-        }
-        set {
-            var args = new object[] {
-                this,
-                value
-            };
-            Connection.Invoke ("SpaceCenter", "RoboticRotor_set_TargetRPM", args);
-        }
+    public float GetTargetRPM ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<float> ("SpaceCenter", "RoboticRotor_get_TargetRPM", args);
+    }
+
+    /// <summary>
+    /// Sets the TargetRPM value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public void SetTargetRPM (float value)
+    {
+        var args = new object[] {
+            this,
+            value
+        };
+        Connection.Invoke ("SpaceCenter", "RoboticRotor_set_TargetRPM", args);
     }
 
     /// <summary>
     /// Torque limit percentage.
     /// </summary>
     [Rpc ("SpaceCenter", "RoboticRotor_get_TorqueLimit")]
-    public float TorqueLimit {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<float> ("SpaceCenter", "RoboticRotor_get_TorqueLimit", args);
-        }
-        set {
-            var args = new object[] {
-                this,
-                value
-            };
-            Connection.Invoke ("SpaceCenter", "RoboticRotor_set_TorqueLimit", args);
-        }
+    public float GetTorqueLimit ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<float> ("SpaceCenter", "RoboticRotor_get_TorqueLimit", args);
+    }
+
+    /// <summary>
+    /// Sets the TorqueLimit value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public void SetTorqueLimit (float value)
+    {
+        var args = new object[] {
+            this,
+            value
+        };
+        Connection.Invoke ("SpaceCenter", "RoboticRotor_set_TorqueLimit", args);
     }
 }

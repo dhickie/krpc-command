@@ -22,77 +22,71 @@ public class ContractManager : RemoteObject
     /// A list of all active contracts.
     /// </summary>
     [Rpc ("SpaceCenter", "ContractManager_get_ActiveContracts")]
-    public IList<Contract> ActiveContracts {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<IList<Contract>> ("SpaceCenter", "ContractManager_get_ActiveContracts", args);
-        }
+    public IList<Contract> GetActiveContracts ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<IList<Contract>> ("SpaceCenter", "ContractManager_get_ActiveContracts", args);
     }
 
     /// <summary>
     /// A list of all contracts.
     /// </summary>
     [Rpc ("SpaceCenter", "ContractManager_get_AllContracts")]
-    public IList<Contract> AllContracts {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<IList<Contract>> ("SpaceCenter", "ContractManager_get_AllContracts", args);
-        }
+    public IList<Contract> GetAllContracts ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<IList<Contract>> ("SpaceCenter", "ContractManager_get_AllContracts", args);
     }
 
     /// <summary>
     /// A list of all completed contracts.
     /// </summary>
     [Rpc ("SpaceCenter", "ContractManager_get_CompletedContracts")]
-    public IList<Contract> CompletedContracts {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<IList<Contract>> ("SpaceCenter", "ContractManager_get_CompletedContracts", args);
-        }
+    public IList<Contract> GetCompletedContracts ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<IList<Contract>> ("SpaceCenter", "ContractManager_get_CompletedContracts", args);
     }
 
     /// <summary>
     /// A list of all failed contracts.
     /// </summary>
     [Rpc ("SpaceCenter", "ContractManager_get_FailedContracts")]
-    public IList<Contract> FailedContracts {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<IList<Contract>> ("SpaceCenter", "ContractManager_get_FailedContracts", args);
-        }
+    public IList<Contract> GetFailedContracts ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<IList<Contract>> ("SpaceCenter", "ContractManager_get_FailedContracts", args);
     }
 
     /// <summary>
     /// A list of all offered, but unaccepted, contracts.
     /// </summary>
     [Rpc ("SpaceCenter", "ContractManager_get_OfferedContracts")]
-    public IList<Contract> OfferedContracts {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<IList<Contract>> ("SpaceCenter", "ContractManager_get_OfferedContracts", args);
-        }
+    public IList<Contract> GetOfferedContracts ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<IList<Contract>> ("SpaceCenter", "ContractManager_get_OfferedContracts", args);
     }
 
     /// <summary>
     /// A list of all contract types.
     /// </summary>
     [Rpc ("SpaceCenter", "ContractManager_get_Types")]
-    public ISet<string> Types {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<ISet<string>> ("SpaceCenter", "ContractManager_get_Types", args);
-        }
+    public ISet<string> GetTypes ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<ISet<string>> ("SpaceCenter", "ContractManager_get_Types", args);
     }
 }

@@ -20,33 +20,37 @@ public class SolarPanel : RemoteObject
     /// Whether the solar panel is deployable.
     /// </summary>
     [Rpc ("SpaceCenter", "SolarPanel_get_Deployable")]
-    public bool Deployable {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<bool> ("SpaceCenter", "SolarPanel_get_Deployable", args);
-        }
+    public bool GetDeployable ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<bool> ("SpaceCenter", "SolarPanel_get_Deployable", args);
     }
 
     /// <summary>
     /// Whether the solar panel is extended.
     /// </summary>
     [Rpc ("SpaceCenter", "SolarPanel_get_Deployed")]
-    public bool Deployed {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<bool> ("SpaceCenter", "SolarPanel_get_Deployed", args);
-        }
-        set {
-            var args = new object[] {
-                this,
-                value
-            };
-            Connection.Invoke ("SpaceCenter", "SolarPanel_set_Deployed", args);
-        }
+    public bool GetDeployed ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<bool> ("SpaceCenter", "SolarPanel_get_Deployed", args);
+    }
+
+    /// <summary>
+    /// Sets the Deployed value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public void SetDeployed (bool value)
+    {
+        var args = new object[] {
+            this,
+            value
+        };
+        Connection.Invoke ("SpaceCenter", "SolarPanel_set_Deployed", args);
     }
 
     /// <summary>
@@ -54,39 +58,36 @@ public class SolarPanel : RemoteObject
     /// units of charge per second.
     /// </summary>
     [Rpc ("SpaceCenter", "SolarPanel_get_EnergyFlow")]
-    public float EnergyFlow {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<float> ("SpaceCenter", "SolarPanel_get_EnergyFlow", args);
-        }
+    public float GetEnergyFlow ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<float> ("SpaceCenter", "SolarPanel_get_EnergyFlow", args);
     }
 
     /// <summary>
     /// The part object for this solar panel.
     /// </summary>
     [Rpc ("SpaceCenter", "SolarPanel_get_Part")]
-    public Part Part {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<Part> ("SpaceCenter", "SolarPanel_get_Part", args);
-        }
+    public Part GetPart ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<Part> ("SpaceCenter", "SolarPanel_get_Part", args);
     }
 
     /// <summary>
     /// The current state of the solar panel.
     /// </summary>
     [Rpc ("SpaceCenter", "SolarPanel_get_State")]
-    public SolarPanelState State {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<SolarPanelState> ("SpaceCenter", "SolarPanel_get_State", args);
-        }
+    public SolarPanelState GetState ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<SolarPanelState> ("SpaceCenter", "SolarPanel_get_State", args);
     }
 
     /// <summary>
@@ -94,12 +95,11 @@ public class SolarPanel : RemoteObject
     /// as a percentage. A value between 0 and 1.
     /// </summary>
     [Rpc ("SpaceCenter", "SolarPanel_get_SunExposure")]
-    public float SunExposure {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<float> ("SpaceCenter", "SolarPanel_get_SunExposure", args);
-        }
+    public float GetSunExposure ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<float> ("SpaceCenter", "SolarPanel_get_SunExposure", args);
     }
 }

@@ -20,39 +20,36 @@ public class Propellant : RemoteObject
     /// The current amount of propellant.
     /// </summary>
     [Rpc ("SpaceCenter", "Propellant_get_CurrentAmount")]
-    public double CurrentAmount {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<double> ("SpaceCenter", "Propellant_get_CurrentAmount", args);
-        }
+    public double GetCurrentAmount ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<double> ("SpaceCenter", "Propellant_get_CurrentAmount", args);
     }
 
     /// <summary>
     /// The required amount of propellant.
     /// </summary>
     [Rpc ("SpaceCenter", "Propellant_get_CurrentRequirement")]
-    public double CurrentRequirement {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<double> ("SpaceCenter", "Propellant_get_CurrentRequirement", args);
-        }
+    public double GetCurrentRequirement ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<double> ("SpaceCenter", "Propellant_get_CurrentRequirement", args);
     }
 
     /// <summary>
     /// If this propellant has a stack gauge or not.
     /// </summary>
     [Rpc ("SpaceCenter", "Propellant_get_DrawStackGauge")]
-    public bool DrawStackGauge {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<bool> ("SpaceCenter", "Propellant_get_DrawStackGauge", args);
-        }
+    public bool GetDrawStackGauge ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<bool> ("SpaceCenter", "Propellant_get_DrawStackGauge", args);
     }
 
     /// <summary>
@@ -60,65 +57,60 @@ public class Propellant : RemoteObject
     /// given specific impulse.
     /// </summary>
     [Rpc ("SpaceCenter", "Propellant_get_IgnoreForIsp")]
-    public bool IgnoreForIsp {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<bool> ("SpaceCenter", "Propellant_get_IgnoreForIsp", args);
-        }
+    public bool GetIgnoreForIsp ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<bool> ("SpaceCenter", "Propellant_get_IgnoreForIsp", args);
     }
 
     /// <summary>
     /// If this propellant should be ignored for thrust curve calculations.
     /// </summary>
     [Rpc ("SpaceCenter", "Propellant_get_IgnoreForThrustCurve")]
-    public bool IgnoreForThrustCurve {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<bool> ("SpaceCenter", "Propellant_get_IgnoreForThrustCurve", args);
-        }
+    public bool GetIgnoreForThrustCurve ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<bool> ("SpaceCenter", "Propellant_get_IgnoreForThrustCurve", args);
     }
 
     /// <summary>
     /// If this propellant is deprived.
     /// </summary>
     [Rpc ("SpaceCenter", "Propellant_get_IsDeprived")]
-    public bool IsDeprived {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<bool> ("SpaceCenter", "Propellant_get_IsDeprived", args);
-        }
+    public bool GetIsDeprived ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<bool> ("SpaceCenter", "Propellant_get_IsDeprived", args);
     }
 
     /// <summary>
     /// The name of the propellant.
     /// </summary>
     [Rpc ("SpaceCenter", "Propellant_get_Name")]
-    public string Name {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<string> ("SpaceCenter", "Propellant_get_Name", args);
-        }
+    public string GetName ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<string> ("SpaceCenter", "Propellant_get_Name", args);
     }
 
     /// <summary>
     /// The propellant ratio.
     /// </summary>
     [Rpc ("SpaceCenter", "Propellant_get_Ratio")]
-    public float Ratio {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<float> ("SpaceCenter", "Propellant_get_Ratio", args);
-        }
+    public float GetRatio ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<float> ("SpaceCenter", "Propellant_get_Ratio", args);
     }
 
     /// <summary>
@@ -126,13 +118,12 @@ public class Propellant : RemoteObject
     /// resource flow rules.
     /// </summary>
     [Rpc ("SpaceCenter", "Propellant_get_TotalResourceAvailable")]
-    public double TotalResourceAvailable {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<double> ("SpaceCenter", "Propellant_get_TotalResourceAvailable", args);
-        }
+    public double GetTotalResourceAvailable ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<double> ("SpaceCenter", "Propellant_get_TotalResourceAvailable", args);
     }
 
     /// <summary>
@@ -140,12 +131,11 @@ public class Propellant : RemoteObject
     /// restricted by resource flow rules.
     /// </summary>
     [Rpc ("SpaceCenter", "Propellant_get_TotalResourceCapacity")]
-    public double TotalResourceCapacity {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<double> ("SpaceCenter", "Propellant_get_TotalResourceCapacity", args);
-        }
+    public double GetTotalResourceCapacity ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<double> ("SpaceCenter", "Propellant_get_TotalResourceCapacity", args);
     }
 }

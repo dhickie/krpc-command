@@ -22,77 +22,71 @@ public class Comms : RemoteObject
     /// Whether the vessel can communicate with KSC.
     /// </summary>
     [Rpc ("SpaceCenter", "Comms_get_CanCommunicate")]
-    public bool CanCommunicate {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<bool> ("SpaceCenter", "Comms_get_CanCommunicate", args);
-        }
+    public bool GetCanCommunicate ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<bool> ("SpaceCenter", "Comms_get_CanCommunicate", args);
     }
 
     /// <summary>
     /// Whether the vessel can transmit science data to KSC.
     /// </summary>
     [Rpc ("SpaceCenter", "Comms_get_CanTransmitScience")]
-    public bool CanTransmitScience {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<bool> ("SpaceCenter", "Comms_get_CanTransmitScience", args);
-        }
+    public bool GetCanTransmitScience ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<bool> ("SpaceCenter", "Comms_get_CanTransmitScience", args);
     }
 
     /// <summary>
     /// The communication path used to control the vessel.
     /// </summary>
     [Rpc ("SpaceCenter", "Comms_get_ControlPath")]
-    public IList<CommLink> ControlPath {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<IList<CommLink>> ("SpaceCenter", "Comms_get_ControlPath", args);
-        }
+    public IList<CommLink> GetControlPath ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<IList<CommLink>> ("SpaceCenter", "Comms_get_ControlPath", args);
     }
 
     /// <summary>
     /// The combined power of all active antennae on the vessel.
     /// </summary>
     [Rpc ("SpaceCenter", "Comms_get_Power")]
-    public double Power {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<double> ("SpaceCenter", "Comms_get_Power", args);
-        }
+    public double GetPower ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<double> ("SpaceCenter", "Comms_get_Power", args);
     }
 
     /// <summary>
     /// Signal delay to KSC in seconds.
     /// </summary>
     [Rpc ("SpaceCenter", "Comms_get_SignalDelay")]
-    public double SignalDelay {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<double> ("SpaceCenter", "Comms_get_SignalDelay", args);
-        }
+    public double GetSignalDelay ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<double> ("SpaceCenter", "Comms_get_SignalDelay", args);
     }
 
     /// <summary>
     /// Signal strength to KSC.
     /// </summary>
     [Rpc ("SpaceCenter", "Comms_get_SignalStrength")]
-    public double SignalStrength {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<double> ("SpaceCenter", "Comms_get_SignalStrength", args);
-        }
+    public double GetSignalStrength ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<double> ("SpaceCenter", "Comms_get_SignalStrength", args);
     }
 }

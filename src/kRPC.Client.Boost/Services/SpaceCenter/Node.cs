@@ -110,20 +110,25 @@ public class Node : RemoteObject
     /// Does not change when executing the maneuver node. See <see cref="M:SpaceCenter.Node.RemainingDeltaV" />.
     /// </remarks>
     [Rpc ("SpaceCenter", "Node_get_DeltaV")]
-    public double DeltaV {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<double> ("SpaceCenter", "Node_get_DeltaV", args);
-        }
-        set {
-            var args = new object[] {
-                this,
-                value
-            };
-            Connection.Invoke ("SpaceCenter", "Node_set_DeltaV", args);
-        }
+    public double GetDeltaV ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<double> ("SpaceCenter", "Node_get_DeltaV", args);
+    }
+
+    /// <summary>
+    /// Sets the DeltaV value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public void SetDeltaV (double value)
+    {
+        var args = new object[] {
+            this,
+            value
+        };
+        Connection.Invoke ("SpaceCenter", "Node_set_DeltaV", args);
     }
 
     /// <summary>
@@ -131,33 +136,37 @@ public class Node : RemoteObject
     /// in meters per second.
     /// </summary>
     [Rpc ("SpaceCenter", "Node_get_Normal")]
-    public double Normal {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<double> ("SpaceCenter", "Node_get_Normal", args);
-        }
-        set {
-            var args = new object[] {
-                this,
-                value
-            };
-            Connection.Invoke ("SpaceCenter", "Node_set_Normal", args);
-        }
+    public double GetNormal ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<double> ("SpaceCenter", "Node_get_Normal", args);
+    }
+
+    /// <summary>
+    /// Sets the Normal value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public void SetNormal (double value)
+    {
+        var args = new object[] {
+            this,
+            value
+        };
+        Connection.Invoke ("SpaceCenter", "Node_set_Normal", args);
     }
 
     /// <summary>
     /// The orbit that results from executing the maneuver node.
     /// </summary>
     [Rpc ("SpaceCenter", "Node_get_Orbit")]
-    public Orbit Orbit {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<Orbit> ("SpaceCenter", "Node_get_Orbit", args);
-        }
+    public Orbit GetOrbit ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<Orbit> ("SpaceCenter", "Node_get_Orbit", args);
     }
 
     /// <summary>
@@ -169,13 +178,12 @@ public class Node : RemoteObject
     /// orbit, at the position of the maneuver node.</description></item><item><description>The z-axis points in the orbital normal direction of the original orbit,
     /// at the position of the maneuver node.</description></item></list></summary>
     [Rpc ("SpaceCenter", "Node_get_OrbitalReferenceFrame")]
-    public ReferenceFrame OrbitalReferenceFrame {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<ReferenceFrame> ("SpaceCenter", "Node_get_OrbitalReferenceFrame", args);
-        }
+    public ReferenceFrame GetOrbitalReferenceFrame ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<ReferenceFrame> ("SpaceCenter", "Node_get_OrbitalReferenceFrame", args);
     }
 
     /// <summary>
@@ -183,20 +191,25 @@ public class Node : RemoteObject
     /// in meters per second.
     /// </summary>
     [Rpc ("SpaceCenter", "Node_get_Prograde")]
-    public double Prograde {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<double> ("SpaceCenter", "Node_get_Prograde", args);
-        }
-        set {
-            var args = new object[] {
-                this,
-                value
-            };
-            Connection.Invoke ("SpaceCenter", "Node_set_Prograde", args);
-        }
+    public double GetPrograde ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<double> ("SpaceCenter", "Node_get_Prograde", args);
+    }
+
+    /// <summary>
+    /// Sets the Prograde value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public void SetPrograde (double value)
+    {
+        var args = new object[] {
+            this,
+            value
+        };
+        Connection.Invoke ("SpaceCenter", "Node_set_Prograde", args);
     }
 
     /// <summary>
@@ -204,33 +217,37 @@ public class Node : RemoteObject
     /// in meters per second.
     /// </summary>
     [Rpc ("SpaceCenter", "Node_get_Radial")]
-    public double Radial {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<double> ("SpaceCenter", "Node_get_Radial", args);
-        }
-        set {
-            var args = new object[] {
-                this,
-                value
-            };
-            Connection.Invoke ("SpaceCenter", "Node_set_Radial", args);
-        }
+    public double GetRadial ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<double> ("SpaceCenter", "Node_get_Radial", args);
+    }
+
+    /// <summary>
+    /// Sets the Radial value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public void SetRadial (double value)
+    {
+        var args = new object[] {
+            this,
+            value
+        };
+        Connection.Invoke ("SpaceCenter", "Node_set_Radial", args);
     }
 
     /// <summary>
     /// The reference frame that is fixed relative to the maneuver node's burn.
     /// <list type="bullet"><item><description>The origin is at the position of the maneuver node.</description></item><item><description>The y-axis points in the direction of the burn.</description></item><item><description>The x-axis and z-axis point in arbitrary but fixed directions.</description></item></list></summary>
     [Rpc ("SpaceCenter", "Node_get_ReferenceFrame")]
-    public ReferenceFrame ReferenceFrame {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<ReferenceFrame> ("SpaceCenter", "Node_get_ReferenceFrame", args);
-        }
+    public ReferenceFrame GetReferenceFrame ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<ReferenceFrame> ("SpaceCenter", "Node_get_ReferenceFrame", args);
     }
 
     /// <summary>
@@ -238,45 +255,48 @@ public class Node : RemoteObject
     /// node is executed. This is equivalent to the delta-v reported in-game.
     /// </summary>
     [Rpc ("SpaceCenter", "Node_get_RemainingDeltaV")]
-    public double RemainingDeltaV {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<double> ("SpaceCenter", "Node_get_RemainingDeltaV", args);
-        }
+    public double GetRemainingDeltaV ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<double> ("SpaceCenter", "Node_get_RemainingDeltaV", args);
     }
 
     /// <summary>
     /// The time until the maneuver node will be encountered, in seconds.
     /// </summary>
     [Rpc ("SpaceCenter", "Node_get_TimeTo")]
-    public double TimeTo {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<double> ("SpaceCenter", "Node_get_TimeTo", args);
-        }
+    public double GetTimeTo ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<double> ("SpaceCenter", "Node_get_TimeTo", args);
     }
 
     /// <summary>
     /// The universal time at which the maneuver will occur, in seconds.
     /// </summary>
     [Rpc ("SpaceCenter", "Node_get_UT")]
-    public double UT {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<double> ("SpaceCenter", "Node_get_UT", args);
-        }
-        set {
-            var args = new object[] {
-                this,
-                value
-            };
-            Connection.Invoke ("SpaceCenter", "Node_set_UT", args);
-        }
+    public double GetUT ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<double> ("SpaceCenter", "Node_get_UT", args);
+    }
+
+    /// <summary>
+    /// Sets the UT value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public void SetUT (double value)
+    {
+        var args = new object[] {
+            this,
+            value
+        };
+        Connection.Invoke ("SpaceCenter", "Node_set_UT", args);
     }
 }

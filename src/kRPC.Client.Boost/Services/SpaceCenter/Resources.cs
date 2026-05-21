@@ -112,13 +112,12 @@ public class Resources : RemoteObject
     /// All the individual resources that can be stored.
     /// </summary>
     [Rpc ("SpaceCenter", "Resources_get_All")]
-    public IList<Resource> All {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<IList<Resource>> ("SpaceCenter", "Resources_get_All", args);
-        }
+    public IList<Resource> GetAll ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<IList<Resource>> ("SpaceCenter", "Resources_get_All", args);
     }
 
     /// <summary>
@@ -129,32 +128,36 @@ public class Resources : RemoteObject
     /// If any of the resources are not enabled, this is <c>false</c>.
     /// </remarks>
     [Rpc ("SpaceCenter", "Resources_get_Enabled")]
-    public bool Enabled {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<bool> ("SpaceCenter", "Resources_get_Enabled", args);
-        }
-        set {
-            var args = new object[] {
-                this,
-                value
-            };
-            Connection.Invoke ("SpaceCenter", "Resources_set_Enabled", args);
-        }
+    public bool GetEnabled ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<bool> ("SpaceCenter", "Resources_get_Enabled", args);
+    }
+
+    /// <summary>
+    /// Sets the Enabled value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public void SetEnabled (bool value)
+    {
+        var args = new object[] {
+            this,
+            value
+        };
+        Connection.Invoke ("SpaceCenter", "Resources_set_Enabled", args);
     }
 
     /// <summary>
     /// A list of resource names that can be stored.
     /// </summary>
     [Rpc ("SpaceCenter", "Resources_get_Names")]
-    public IList<string> Names {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<IList<string>> ("SpaceCenter", "Resources_get_Names", args);
-        }
+    public IList<string> GetNames ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<IList<string>> ("SpaceCenter", "Resources_get_Names", args);
     }
 }

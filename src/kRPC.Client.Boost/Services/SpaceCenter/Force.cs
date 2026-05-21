@@ -35,33 +35,37 @@ public class Force : RemoteObject
     /// <returns>A vector pointing in the direction that the force acts,
     /// with its magnitude equal to the strength of the force in Newtons.</returns>
     [Rpc ("SpaceCenter", "Force_get_ForceVector")]
-    public Tuple<double,double,double> ForceVector {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Force_get_ForceVector", args);
-        }
-        set {
-            var args = new object[] {
-                this,
-                value
-            };
-            Connection.Invoke ("SpaceCenter", "Force_set_ForceVector", args);
-        }
+    public Tuple<double,double,double> GetForceVector ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Force_get_ForceVector", args);
+    }
+
+    /// <summary>
+    /// Sets the ForceVector value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public void SetForceVector (Tuple<double,double,double> value)
+    {
+        var args = new object[] {
+            this,
+            value
+        };
+        Connection.Invoke ("SpaceCenter", "Force_set_ForceVector", args);
     }
 
     /// <summary>
     /// The part that this force is applied to.
     /// </summary>
     [Rpc ("SpaceCenter", "Force_get_Part")]
-    public Part Part {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<Part> ("SpaceCenter", "Force_get_Part", args);
-        }
+    public Part GetPart ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<Part> ("SpaceCenter", "Force_get_Part", args);
     }
 
     /// <summary>
@@ -69,39 +73,49 @@ public class Force : RemoteObject
     /// </summary>
     /// <returns>The position as a vector.</returns>
     [Rpc ("SpaceCenter", "Force_get_Position")]
-    public Tuple<double,double,double> Position {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Force_get_Position", args);
-        }
-        set {
-            var args = new object[] {
-                this,
-                value
-            };
-            Connection.Invoke ("SpaceCenter", "Force_set_Position", args);
-        }
+    public Tuple<double,double,double> GetPosition ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Force_get_Position", args);
+    }
+
+    /// <summary>
+    /// Sets the Position value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public void SetPosition (Tuple<double,double,double> value)
+    {
+        var args = new object[] {
+            this,
+            value
+        };
+        Connection.Invoke ("SpaceCenter", "Force_set_Position", args);
     }
 
     /// <summary>
     /// The reference frame of the force vector and position.
     /// </summary>
     [Rpc ("SpaceCenter", "Force_get_ReferenceFrame")]
-    public ReferenceFrame ReferenceFrame {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<ReferenceFrame> ("SpaceCenter", "Force_get_ReferenceFrame", args);
-        }
-        set {
-            var args = new object[] {
-                this,
-                value
-            };
-            Connection.Invoke ("SpaceCenter", "Force_set_ReferenceFrame", args);
-        }
+    public ReferenceFrame GetReferenceFrame ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<ReferenceFrame> ("SpaceCenter", "Force_get_ReferenceFrame", args);
+    }
+
+    /// <summary>
+    /// Sets the ReferenceFrame value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public void SetReferenceFrame (ReferenceFrame value)
+    {
+        var args = new object[] {
+            this,
+            value
+        };
+        Connection.Invoke ("SpaceCenter", "Force_set_ReferenceFrame", args);
     }
 }

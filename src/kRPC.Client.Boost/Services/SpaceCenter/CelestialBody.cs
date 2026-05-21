@@ -357,39 +357,36 @@ public class CelestialBody : RemoteObject
     /// The depth of the atmosphere, in meters.
     /// </summary>
     [Rpc ("SpaceCenter", "CelestialBody_get_AtmosphereDepth")]
-    public double AtmosphereDepth {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<double> ("SpaceCenter", "CelestialBody_get_AtmosphereDepth", args);
-        }
+    public double GetAtmosphereDepth ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<double> ("SpaceCenter", "CelestialBody_get_AtmosphereDepth", args);
     }
 
     /// <summary>
     /// The biomes present on this body.
     /// </summary>
     [Rpc ("SpaceCenter", "CelestialBody_get_Biomes")]
-    public ISet<string> Biomes {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<ISet<string>> ("SpaceCenter", "CelestialBody_get_Biomes", args);
-        }
+    public ISet<string> GetBiomes ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<ISet<string>> ("SpaceCenter", "CelestialBody_get_Biomes", args);
     }
 
     /// <summary>
     /// The equatorial radius of the body, in meters.
     /// </summary>
     [Rpc ("SpaceCenter", "CelestialBody_get_EquatorialRadius")]
-    public double EquatorialRadius {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<double> ("SpaceCenter", "CelestialBody_get_EquatorialRadius", args);
-        }
+    public double GetEquatorialRadius ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<double> ("SpaceCenter", "CelestialBody_get_EquatorialRadius", args);
     }
 
     /// <summary>
@@ -397,13 +394,12 @@ public class CelestialBody : RemoteObject
     /// flying "high" when doing science.
     /// </summary>
     [Rpc ("SpaceCenter", "CelestialBody_get_FlyingHighAltitudeThreshold")]
-    public float FlyingHighAltitudeThreshold {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<float> ("SpaceCenter", "CelestialBody_get_FlyingHighAltitudeThreshold", args);
-        }
+    public float GetFlyingHighAltitudeThreshold ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<float> ("SpaceCenter", "CelestialBody_get_FlyingHighAltitudeThreshold", args);
     }
 
     /// <summary>
@@ -411,102 +407,94 @@ public class CelestialBody : RemoteObject
     /// gravitational parameter</a> of the body in <math>m^3s^{-2}</math>.
     /// </summary>
     [Rpc ("SpaceCenter", "CelestialBody_get_GravitationalParameter")]
-    public double GravitationalParameter {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<double> ("SpaceCenter", "CelestialBody_get_GravitationalParameter", args);
-        }
+    public double GetGravitationalParameter ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<double> ("SpaceCenter", "CelestialBody_get_GravitationalParameter", args);
     }
 
     /// <summary><c>true</c> if the body has an atmosphere.
     /// </summary>
     [Rpc ("SpaceCenter", "CelestialBody_get_HasAtmosphere")]
-    public bool HasAtmosphere {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<bool> ("SpaceCenter", "CelestialBody_get_HasAtmosphere", args);
-        }
+    public bool GetHasAtmosphere ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<bool> ("SpaceCenter", "CelestialBody_get_HasAtmosphere", args);
     }
 
     /// <summary><c>true</c> if there is oxygen in the atmosphere, required for air-breathing engines.
     /// </summary>
     [Rpc ("SpaceCenter", "CelestialBody_get_HasAtmosphericOxygen")]
-    public bool HasAtmosphericOxygen {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<bool> ("SpaceCenter", "CelestialBody_get_HasAtmosphericOxygen", args);
-        }
+    public bool GetHasAtmosphericOxygen ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<bool> ("SpaceCenter", "CelestialBody_get_HasAtmosphericOxygen", args);
     }
 
     /// <summary>
     /// Whether or not the body has a solid surface.
     /// </summary>
     [Rpc ("SpaceCenter", "CelestialBody_get_HasSolidSurface")]
-    public bool HasSolidSurface {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<bool> ("SpaceCenter", "CelestialBody_get_HasSolidSurface", args);
-        }
+    public bool GetHasSolidSurface ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<bool> ("SpaceCenter", "CelestialBody_get_HasSolidSurface", args);
     }
 
     /// <summary>
     /// The initial rotation angle of the body (at UT 0), in radians.
     /// A value between 0 and <math>2\pi</math></summary>
     [Rpc ("SpaceCenter", "CelestialBody_get_InitialRotation")]
-    public double InitialRotation {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<double> ("SpaceCenter", "CelestialBody_get_InitialRotation", args);
-        }
+    public double GetInitialRotation ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<double> ("SpaceCenter", "CelestialBody_get_InitialRotation", args);
     }
 
     /// <summary>
     /// Whether or not the body is a star.
     /// </summary>
     [Rpc ("SpaceCenter", "CelestialBody_get_IsStar")]
-    public bool IsStar {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<bool> ("SpaceCenter", "CelestialBody_get_IsStar", args);
-        }
+    public bool GetIsStar ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<bool> ("SpaceCenter", "CelestialBody_get_IsStar", args);
     }
 
     /// <summary>
     /// The mass of the body, in kilograms.
     /// </summary>
     [Rpc ("SpaceCenter", "CelestialBody_get_Mass")]
-    public double Mass {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<double> ("SpaceCenter", "CelestialBody_get_Mass", args);
-        }
+    public double GetMass ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<double> ("SpaceCenter", "CelestialBody_get_Mass", args);
     }
 
     /// <summary>
     /// The name of the body.
     /// </summary>
     [Rpc ("SpaceCenter", "CelestialBody_get_Name")]
-    public string Name {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<string> ("SpaceCenter", "CelestialBody_get_Name", args);
-        }
+    public string GetName ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<string> ("SpaceCenter", "CelestialBody_get_Name", args);
     }
 
     /// <summary>
@@ -517,26 +505,24 @@ public class CelestialBody : RemoteObject
     /// the north pole.</description></item><item><description>The z-axis points in an arbitrary direction through the
     /// equator.</description></item></list></summary>
     [Rpc ("SpaceCenter", "CelestialBody_get_NonRotatingReferenceFrame")]
-    public ReferenceFrame NonRotatingReferenceFrame {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<ReferenceFrame> ("SpaceCenter", "CelestialBody_get_NonRotatingReferenceFrame", args);
-        }
+    public ReferenceFrame GetNonRotatingReferenceFrame ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<ReferenceFrame> ("SpaceCenter", "CelestialBody_get_NonRotatingReferenceFrame", args);
     }
 
     /// <summary>
     /// The orbit of the body.
     /// </summary>
     [Rpc ("SpaceCenter", "CelestialBody_get_Orbit")]
-    public Orbit Orbit {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<Orbit> ("SpaceCenter", "CelestialBody_get_Orbit", args);
-        }
+    public Orbit GetOrbit ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<Orbit> ("SpaceCenter", "CelestialBody_get_Orbit", args);
     }
 
     /// <summary>
@@ -549,13 +535,12 @@ public class CelestialBody : RemoteObject
     /// </description></item><item><description>The z-axis points in the orbital normal direction.
     /// </description></item></list></summary>
     [Rpc ("SpaceCenter", "CelestialBody_get_OrbitalReferenceFrame")]
-    public ReferenceFrame OrbitalReferenceFrame {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<ReferenceFrame> ("SpaceCenter", "CelestialBody_get_OrbitalReferenceFrame", args);
-        }
+    public ReferenceFrame GetOrbitalReferenceFrame ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<ReferenceFrame> ("SpaceCenter", "CelestialBody_get_OrbitalReferenceFrame", args);
     }
 
     /// <summary>
@@ -567,65 +552,60 @@ public class CelestialBody : RemoteObject
     /// towards the north pole.</description></item><item><description>The z-axis points from the center of the body
     /// towards the equator at 90°E longitude.</description></item></list></summary>
     [Rpc ("SpaceCenter", "CelestialBody_get_ReferenceFrame")]
-    public ReferenceFrame ReferenceFrame {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<ReferenceFrame> ("SpaceCenter", "CelestialBody_get_ReferenceFrame", args);
-        }
+    public ReferenceFrame GetReferenceFrame ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<ReferenceFrame> ("SpaceCenter", "CelestialBody_get_ReferenceFrame", args);
     }
 
     /// <summary>
     /// The current rotation angle of the body, in radians.
     /// A value between 0 and <math>2\pi</math></summary>
     [Rpc ("SpaceCenter", "CelestialBody_get_RotationAngle")]
-    public double RotationAngle {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<double> ("SpaceCenter", "CelestialBody_get_RotationAngle", args);
-        }
+    public double GetRotationAngle ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<double> ("SpaceCenter", "CelestialBody_get_RotationAngle", args);
     }
 
     /// <summary>
     /// The sidereal rotational period of the body, in seconds.
     /// </summary>
     [Rpc ("SpaceCenter", "CelestialBody_get_RotationalPeriod")]
-    public double RotationalPeriod {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<double> ("SpaceCenter", "CelestialBody_get_RotationalPeriod", args);
-        }
+    public double GetRotationalPeriod ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<double> ("SpaceCenter", "CelestialBody_get_RotationalPeriod", args);
     }
 
     /// <summary>
     /// The rotational speed of the body, in radians per second.
     /// </summary>
     [Rpc ("SpaceCenter", "CelestialBody_get_RotationalSpeed")]
-    public double RotationalSpeed {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<double> ("SpaceCenter", "CelestialBody_get_RotationalSpeed", args);
-        }
+    public double GetRotationalSpeed ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<double> ("SpaceCenter", "CelestialBody_get_RotationalSpeed", args);
     }
 
     /// <summary>
     /// A list of celestial bodies that are in orbit around this celestial body.
     /// </summary>
     [Rpc ("SpaceCenter", "CelestialBody_get_Satellites")]
-    public IList<CelestialBody> Satellites {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<IList<CelestialBody>> ("SpaceCenter", "CelestialBody_get_Satellites", args);
-        }
+    public IList<CelestialBody> GetSatellites ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<IList<CelestialBody>> ("SpaceCenter", "CelestialBody_get_Satellites", args);
     }
 
     /// <summary>
@@ -633,26 +613,24 @@ public class CelestialBody : RemoteObject
     /// in "high" space when doing science.
     /// </summary>
     [Rpc ("SpaceCenter", "CelestialBody_get_SpaceHighAltitudeThreshold")]
-    public float SpaceHighAltitudeThreshold {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<float> ("SpaceCenter", "CelestialBody_get_SpaceHighAltitudeThreshold", args);
-        }
+    public float GetSpaceHighAltitudeThreshold ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<float> ("SpaceCenter", "CelestialBody_get_SpaceHighAltitudeThreshold", args);
     }
 
     /// <summary>
     /// The radius of the sphere of influence of the body, in meters.
     /// </summary>
     [Rpc ("SpaceCenter", "CelestialBody_get_SphereOfInfluence")]
-    public double SphereOfInfluence {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<double> ("SpaceCenter", "CelestialBody_get_SphereOfInfluence", args);
-        }
+    public double GetSphereOfInfluence ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<double> ("SpaceCenter", "CelestialBody_get_SphereOfInfluence", args);
     }
 
     /// <summary>
@@ -660,12 +638,11 @@ public class CelestialBody : RemoteObject
     /// in <math>m/s^2</math>.
     /// </summary>
     [Rpc ("SpaceCenter", "CelestialBody_get_SurfaceGravity")]
-    public double SurfaceGravity {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<double> ("SpaceCenter", "CelestialBody_get_SurfaceGravity", args);
-        }
+    public double GetSurfaceGravity ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<double> ("SpaceCenter", "CelestialBody_get_SurfaceGravity", args);
     }
 }

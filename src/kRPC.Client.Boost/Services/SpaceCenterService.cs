@@ -427,26 +427,30 @@ public class SpaceCenterService
     /// The currently active vessel.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "get_ActiveVessel")]
-    public Vessel ActiveVessel {
-        get {
-            return _connection.Invoke<Vessel> ("SpaceCenter", "get_ActiveVessel");
-        }
-        set {
-            var _args = new object[] {
-                value
-            };
-            _connection.Invoke ("SpaceCenter", "set_ActiveVessel", _args);
-        }
+    public Vessel GetActiveVessel ()
+    {
+        return _connection.Invoke<Vessel> ("SpaceCenter", "get_ActiveVessel");
+    }
+
+    /// <summary>
+    /// Sets the ActiveVessel value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public void SetActiveVessel (Vessel value)
+    {
+        var _args = new object[] {
+            value
+        };
+        _connection.Invoke ("SpaceCenter", "set_ActiveVessel", _args);
     }
 
     /// <summary>
     /// The alarm manager.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "get_AlarmManager")]
-    public AlarmManager AlarmManager {
-        get {
-            return _connection.Invoke<AlarmManager> ("SpaceCenter", "get_AlarmManager");
-        }
+    public AlarmManager GetAlarmManager ()
+    {
+        return _connection.Invoke<AlarmManager> ("SpaceCenter", "get_AlarmManager");
     }
 
     /// <summary>
@@ -454,50 +458,45 @@ public class SpaceCenterService
     /// keyed by the name of the body.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "get_Bodies")]
-    public IDictionary<string,CelestialBody> Bodies {
-        get {
-            return _connection.Invoke<IDictionary<string,CelestialBody>> ("SpaceCenter", "get_Bodies");
-        }
+    public IDictionary<string,CelestialBody> GetBodies ()
+    {
+        return _connection.Invoke<IDictionary<string,CelestialBody>> ("SpaceCenter", "get_Bodies");
     }
 
     /// <summary>
     /// An object that can be used to control the camera.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "get_Camera")]
-    public Camera Camera {
-        get {
-            return _connection.Invoke<Camera> ("SpaceCenter", "get_Camera");
-        }
+    public Camera GetCamera ()
+    {
+        return _connection.Invoke<Camera> ("SpaceCenter", "get_Camera");
     }
 
     /// <summary>
     /// The contract manager.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "get_ContractManager")]
-    public ContractManager ContractManager {
-        get {
-            return _connection.Invoke<ContractManager> ("SpaceCenter", "get_ContractManager");
-        }
+    public ContractManager GetContractManager ()
+    {
+        return _connection.Invoke<ContractManager> ("SpaceCenter", "get_ContractManager");
     }
 
     /// <summary>
     /// Whether <a href="https://forum.kerbalspaceprogram.com/index.php?/topic/19321-130-ferram-aerospace-research-v0159-liebe-82117/">Ferram Aerospace Research</a> is installed.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "get_FARAvailable")]
-    public bool FARAvailable {
-        get {
-            return _connection.Invoke<bool> ("SpaceCenter", "get_FARAvailable");
-        }
+    public bool GetFARAvailable ()
+    {
+        return _connection.Invoke<bool> ("SpaceCenter", "get_FARAvailable");
     }
 
     /// <summary>
     /// The current amount of funds.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "get_Funds")]
-    public double Funds {
-        get {
-            return _connection.Invoke<double> ("SpaceCenter", "get_Funds");
-        }
+    public double GetFunds ()
+    {
+        return _connection.Invoke<double> ("SpaceCenter", "get_Funds");
     }
 
     /// <summary>
@@ -505,46 +504,48 @@ public class SpaceCenterService
     /// gravitational constant</a> G in <math>N(m/kg)^2</math>.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "get_G")]
-    public double G {
-        get {
-            return _connection.Invoke<double> ("SpaceCenter", "get_G");
-        }
+    public double GetG ()
+    {
+        return _connection.Invoke<double> ("SpaceCenter", "get_G");
     }
 
     /// <summary>
     /// The current mode the game is in.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "get_GameMode")]
-    public GameMode GameMode {
-        get {
-            return _connection.Invoke<GameMode> ("SpaceCenter", "get_GameMode");
-        }
+    public GameMode GetGameMode ()
+    {
+        return _connection.Invoke<GameMode> ("SpaceCenter", "get_GameMode");
     }
 
     /// <summary>
     /// A list of available launch sites.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "get_LaunchSites")]
-    public IList<LaunchSite> LaunchSites {
-        get {
-            return _connection.Invoke<IList<LaunchSite>> ("SpaceCenter", "get_LaunchSites");
-        }
+    public IList<LaunchSite> GetLaunchSites ()
+    {
+        return _connection.Invoke<IList<LaunchSite>> ("SpaceCenter", "get_LaunchSites");
     }
 
     /// <summary>
     /// The visible objects in map mode.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "get_MapFilter")]
-    public MapFilterType MapFilter {
-        get {
-            return _connection.Invoke<MapFilterType> ("SpaceCenter", "get_MapFilter");
-        }
-        set {
-            var _args = new object[] {
-                value
-            };
-            _connection.Invoke ("SpaceCenter", "set_MapFilter", _args);
-        }
+    public MapFilterType GetMapFilter ()
+    {
+        return _connection.Invoke<MapFilterType> ("SpaceCenter", "get_MapFilter");
+    }
+
+    /// <summary>
+    /// Sets the MapFilter value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public void SetMapFilter (MapFilterType value)
+    {
+        var _args = new object[] {
+            value
+        };
+        _connection.Invoke ("SpaceCenter", "set_MapFilter", _args);
     }
 
     /// <summary>
@@ -554,26 +555,30 @@ public class SpaceCenterService
     /// for details.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "get_MaximumRailsWarpFactor")]
-    public int MaximumRailsWarpFactor {
-        get {
-            return _connection.Invoke<int> ("SpaceCenter", "get_MaximumRailsWarpFactor");
-        }
+    public int GetMaximumRailsWarpFactor ()
+    {
+        return _connection.Invoke<int> ("SpaceCenter", "get_MaximumRailsWarpFactor");
     }
 
     /// <summary>
     /// Whether the navball is visible.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "get_Navball")]
-    public bool Navball {
-        get {
-            return _connection.Invoke<bool> ("SpaceCenter", "get_Navball");
-        }
-        set {
-            var _args = new object[] {
-                value
-            };
-            _connection.Invoke ("SpaceCenter", "set_Navball", _args);
-        }
+    public bool GetNavball ()
+    {
+        return _connection.Invoke<bool> ("SpaceCenter", "get_Navball");
+    }
+
+    /// <summary>
+    /// Sets the Navball value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public void SetNavball (bool value)
+    {
+        var _args = new object[] {
+            value
+        };
+        _connection.Invoke ("SpaceCenter", "set_Navball", _args);
     }
 
     /// <summary>
@@ -581,16 +586,21 @@ public class SpaceCenterService
     /// no time warp. Returns 0 if regular "on-rails" time warp is active.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "get_PhysicsWarpFactor")]
-    public int PhysicsWarpFactor {
-        get {
-            return _connection.Invoke<int> ("SpaceCenter", "get_PhysicsWarpFactor");
-        }
-        set {
-            var _args = new object[] {
-                value
-            };
-            _connection.Invoke ("SpaceCenter", "set_PhysicsWarpFactor", _args);
-        }
+    public int GetPhysicsWarpFactor ()
+    {
+        return _connection.Invoke<int> ("SpaceCenter", "get_PhysicsWarpFactor");
+    }
+
+    /// <summary>
+    /// Sets the PhysicsWarpFactor value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public void SetPhysicsWarpFactor (int value)
+    {
+        var _args = new object[] {
+            value
+        };
+        _connection.Invoke ("SpaceCenter", "set_PhysicsWarpFactor", _args);
     }
 
     /// <summary>
@@ -604,120 +614,141 @@ public class SpaceCenterService
     /// the KSP wiki</a> for details.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "get_RailsWarpFactor")]
-    public int RailsWarpFactor {
-        get {
-            return _connection.Invoke<int> ("SpaceCenter", "get_RailsWarpFactor");
-        }
-        set {
-            var _args = new object[] {
-                value
-            };
-            _connection.Invoke ("SpaceCenter", "set_RailsWarpFactor", _args);
-        }
+    public int GetRailsWarpFactor ()
+    {
+        return _connection.Invoke<int> ("SpaceCenter", "get_RailsWarpFactor");
+    }
+
+    /// <summary>
+    /// Sets the RailsWarpFactor value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public void SetRailsWarpFactor (int value)
+    {
+        var _args = new object[] {
+            value
+        };
+        _connection.Invoke ("SpaceCenter", "set_RailsWarpFactor", _args);
     }
 
     /// <summary>
     /// The current amount of reputation.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "get_Reputation")]
-    public float Reputation {
-        get {
-            return _connection.Invoke<float> ("SpaceCenter", "get_Reputation");
-        }
+    public float GetReputation ()
+    {
+        return _connection.Invoke<float> ("SpaceCenter", "get_Reputation");
     }
 
     /// <summary>
     /// The current amount of science.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "get_Science")]
-    public float Science {
-        get {
-            return _connection.Invoke<float> ("SpaceCenter", "get_Science");
-        }
+    public float GetScience ()
+    {
+        return _connection.Invoke<float> ("SpaceCenter", "get_Science");
     }
 
     /// <summary>
     /// The currently targeted celestial body.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "get_TargetBody")]
-    public CelestialBody TargetBody {
-        get {
-            return _connection.Invoke<CelestialBody> ("SpaceCenter", "get_TargetBody");
-        }
-        set {
-            var _args = new object[] {
-                value
-            };
-            _connection.Invoke ("SpaceCenter", "set_TargetBody", _args);
-        }
+    public CelestialBody GetTargetBody ()
+    {
+        return _connection.Invoke<CelestialBody> ("SpaceCenter", "get_TargetBody");
+    }
+
+    /// <summary>
+    /// Sets the TargetBody value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public void SetTargetBody (CelestialBody value)
+    {
+        var _args = new object[] {
+            value
+        };
+        _connection.Invoke ("SpaceCenter", "set_TargetBody", _args);
     }
 
     /// <summary>
     /// The currently targeted docking port.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "get_TargetDockingPort")]
-    public DockingPort TargetDockingPort {
-        get {
-            return _connection.Invoke<DockingPort> ("SpaceCenter", "get_TargetDockingPort");
-        }
-        set {
-            var _args = new object[] {
-                value
-            };
-            _connection.Invoke ("SpaceCenter", "set_TargetDockingPort", _args);
-        }
+    public DockingPort GetTargetDockingPort ()
+    {
+        return _connection.Invoke<DockingPort> ("SpaceCenter", "get_TargetDockingPort");
+    }
+
+    /// <summary>
+    /// Sets the TargetDockingPort value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public void SetTargetDockingPort (DockingPort value)
+    {
+        var _args = new object[] {
+            value
+        };
+        _connection.Invoke ("SpaceCenter", "set_TargetDockingPort", _args);
     }
 
     /// <summary>
     /// The currently targeted vessel.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "get_TargetVessel")]
-    public Vessel TargetVessel {
-        get {
-            return _connection.Invoke<Vessel> ("SpaceCenter", "get_TargetVessel");
-        }
-        set {
-            var _args = new object[] {
-                value
-            };
-            _connection.Invoke ("SpaceCenter", "set_TargetVessel", _args);
-        }
+    public Vessel GetTargetVessel ()
+    {
+        return _connection.Invoke<Vessel> ("SpaceCenter", "get_TargetVessel");
+    }
+
+    /// <summary>
+    /// Sets the TargetVessel value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public void SetTargetVessel (Vessel value)
+    {
+        var _args = new object[] {
+            value
+        };
+        _connection.Invoke ("SpaceCenter", "set_TargetVessel", _args);
     }
 
     /// <summary>
     /// Whether the UI is visible.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "get_UIVisible")]
-    public bool UIVisible {
-        get {
-            return _connection.Invoke<bool> ("SpaceCenter", "get_UIVisible");
-        }
-        set {
-            var _args = new object[] {
-                value
-            };
-            _connection.Invoke ("SpaceCenter", "set_UIVisible", _args);
-        }
+    public bool GetUIVisible ()
+    {
+        return _connection.Invoke<bool> ("SpaceCenter", "get_UIVisible");
+    }
+
+    /// <summary>
+    /// Sets the UIVisible value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public void SetUIVisible (bool value)
+    {
+        var _args = new object[] {
+            value
+        };
+        _connection.Invoke ("SpaceCenter", "set_UIVisible", _args);
     }
 
     /// <summary>
     /// The current universal time in seconds.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "get_UT")]
-    public double UT {
-        get {
-            return _connection.Invoke<double> ("SpaceCenter", "get_UT");
-        }
+    public double GetUT ()
+    {
+        return _connection.Invoke<double> ("SpaceCenter", "get_UT");
     }
 
     /// <summary>
     /// A list of all the vessels in the game.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "get_Vessels")]
-    public IList<Vessel> Vessels {
-        get {
-            return _connection.Invoke<IList<Vessel>> ("SpaceCenter", "get_Vessels");
-        }
+    public IList<Vessel> GetVessels ()
+    {
+        return _connection.Invoke<IList<Vessel>> ("SpaceCenter", "get_Vessels");
     }
 
     /// <summary>
@@ -728,10 +759,9 @@ public class SpaceCenterService
     /// <see cref="M:SpaceCenter.PhysicsWarpFactor" />.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "get_WarpFactor")]
-    public float WarpFactor {
-        get {
-            return _connection.Invoke<float> ("SpaceCenter", "get_WarpFactor");
-        }
+    public float GetWarpFactor ()
+    {
+        return _connection.Invoke<float> ("SpaceCenter", "get_WarpFactor");
     }
 
     /// <summary>
@@ -740,10 +770,9 @@ public class SpaceCenterService
     /// is active, or <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.WarpMode.Physics" /> if physical time warp is active.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "get_WarpMode")]
-    public WarpMode WarpMode {
-        get {
-            return _connection.Invoke<WarpMode> ("SpaceCenter", "get_WarpMode");
-        }
+    public WarpMode GetWarpMode ()
+    {
+        return _connection.Invoke<WarpMode> ("SpaceCenter", "get_WarpMode");
     }
 
     /// <summary>
@@ -753,19 +782,17 @@ public class SpaceCenterService
     /// active.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "get_WarpRate")]
-    public float WarpRate {
-        get {
-            return _connection.Invoke<float> ("SpaceCenter", "get_WarpRate");
-        }
+    public float GetWarpRate ()
+    {
+        return _connection.Invoke<float> ("SpaceCenter", "get_WarpRate");
     }
 
     /// <summary>
     /// The waypoint manager.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "get_WaypointManager")]
-    public WaypointManager WaypointManager {
-        get {
-            return _connection.Invoke<WaypointManager> ("SpaceCenter", "get_WaypointManager");
-        }
+    public WaypointManager GetWaypointManager ()
+    {
+        return _connection.Invoke<WaypointManager> ("SpaceCenter", "get_WaypointManager");
     }
 }

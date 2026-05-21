@@ -134,64 +134,59 @@ public class ResourceConverter : RemoteObject
     /// The core temperature of the converter, in Kelvin.
     /// </summary>
     [Rpc ("SpaceCenter", "ResourceConverter_get_CoreTemperature")]
-    public float CoreTemperature {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<float> ("SpaceCenter", "ResourceConverter_get_CoreTemperature", args);
-        }
+    public float GetCoreTemperature ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<float> ("SpaceCenter", "ResourceConverter_get_CoreTemperature", args);
     }
 
     /// <summary>
     /// The number of converters in the part.
     /// </summary>
     [Rpc ("SpaceCenter", "ResourceConverter_get_Count")]
-    public int Count {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<int> ("SpaceCenter", "ResourceConverter_get_Count", args);
-        }
+    public int GetCount ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<int> ("SpaceCenter", "ResourceConverter_get_Count", args);
     }
 
     /// <summary>
     /// The core temperature at which the converter will operate with peak efficiency, in Kelvin.
     /// </summary>
     [Rpc ("SpaceCenter", "ResourceConverter_get_OptimumCoreTemperature")]
-    public float OptimumCoreTemperature {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<float> ("SpaceCenter", "ResourceConverter_get_OptimumCoreTemperature", args);
-        }
+    public float GetOptimumCoreTemperature ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<float> ("SpaceCenter", "ResourceConverter_get_OptimumCoreTemperature", args);
     }
 
     /// <summary>
     /// The part object for this converter.
     /// </summary>
     [Rpc ("SpaceCenter", "ResourceConverter_get_Part")]
-    public Part Part {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<Part> ("SpaceCenter", "ResourceConverter_get_Part", args);
-        }
+    public Part GetPart ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<Part> ("SpaceCenter", "ResourceConverter_get_Part", args);
     }
 
     /// <summary>
     /// The thermal efficiency of the converter, as a percentage of its maximum.
     /// </summary>
     [Rpc ("SpaceCenter", "ResourceConverter_get_ThermalEfficiency")]
-    public float ThermalEfficiency {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<float> ("SpaceCenter", "ResourceConverter_get_ThermalEfficiency", args);
-        }
+    public float GetThermalEfficiency ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<float> ("SpaceCenter", "ResourceConverter_get_ThermalEfficiency", args);
     }
 }

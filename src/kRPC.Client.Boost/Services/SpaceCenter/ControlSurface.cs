@@ -22,20 +22,25 @@ public class ControlSurface : RemoteObject
     /// control surface will move.
     /// </summary>
     [Rpc ("SpaceCenter", "ControlSurface_get_AuthorityLimiter")]
-    public float AuthorityLimiter {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<float> ("SpaceCenter", "ControlSurface_get_AuthorityLimiter", args);
-        }
-        set {
-            var args = new object[] {
-                this,
-                value
-            };
-            Connection.Invoke ("SpaceCenter", "ControlSurface_set_AuthorityLimiter", args);
-        }
+    public float GetAuthorityLimiter ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<float> ("SpaceCenter", "ControlSurface_get_AuthorityLimiter", args);
+    }
+
+    /// <summary>
+    /// Sets the AuthorityLimiter value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public void SetAuthorityLimiter (float value)
+    {
+        var args = new object[] {
+            this,
+            value
+        };
+        Connection.Invoke ("SpaceCenter", "ControlSurface_set_AuthorityLimiter", args);
     }
 
     /// <summary>
@@ -44,138 +49,160 @@ public class ControlSurface : RemoteObject
     /// correspond to the coordinate axes of the <see cref="M:SpaceCenter.Vessel.ReferenceFrame" />.
     /// </summary>
     [Rpc ("SpaceCenter", "ControlSurface_get_AvailableTorque")]
-    public Tuple<Tuple<double,double,double>,Tuple<double,double,double>> AvailableTorque {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<Tuple<Tuple<double,double,double>,Tuple<double,double,double>>> ("SpaceCenter", "ControlSurface_get_AvailableTorque", args);
-        }
+    public Tuple<Tuple<double,double,double>,Tuple<double,double,double>> GetAvailableTorque ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<Tuple<Tuple<double,double,double>,Tuple<double,double,double>>> ("SpaceCenter", "ControlSurface_get_AvailableTorque", args);
     }
 
     /// <summary>
     /// Whether the control surface has been fully deployed.
     /// </summary>
     [Rpc ("SpaceCenter", "ControlSurface_get_Deployed")]
-    public bool Deployed {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<bool> ("SpaceCenter", "ControlSurface_get_Deployed", args);
-        }
-        set {
-            var args = new object[] {
-                this,
-                value
-            };
-            Connection.Invoke ("SpaceCenter", "ControlSurface_set_Deployed", args);
-        }
+    public bool GetDeployed ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<bool> ("SpaceCenter", "ControlSurface_get_Deployed", args);
+    }
+
+    /// <summary>
+    /// Sets the Deployed value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public void SetDeployed (bool value)
+    {
+        var args = new object[] {
+            this,
+            value
+        };
+        Connection.Invoke ("SpaceCenter", "ControlSurface_set_Deployed", args);
     }
 
     /// <summary>
     /// Whether the control surface movement is inverted.
     /// </summary>
     [Rpc ("SpaceCenter", "ControlSurface_get_Inverted")]
-    public bool Inverted {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<bool> ("SpaceCenter", "ControlSurface_get_Inverted", args);
-        }
-        set {
-            var args = new object[] {
-                this,
-                value
-            };
-            Connection.Invoke ("SpaceCenter", "ControlSurface_set_Inverted", args);
-        }
+    public bool GetInverted ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<bool> ("SpaceCenter", "ControlSurface_get_Inverted", args);
+    }
+
+    /// <summary>
+    /// Sets the Inverted value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public void SetInverted (bool value)
+    {
+        var args = new object[] {
+            this,
+            value
+        };
+        Connection.Invoke ("SpaceCenter", "ControlSurface_set_Inverted", args);
     }
 
     /// <summary>
     /// The part object for this control surface.
     /// </summary>
     [Rpc ("SpaceCenter", "ControlSurface_get_Part")]
-    public Part Part {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<Part> ("SpaceCenter", "ControlSurface_get_Part", args);
-        }
+    public Part GetPart ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<Part> ("SpaceCenter", "ControlSurface_get_Part", args);
     }
 
     /// <summary>
     /// Whether the control surface has pitch control enabled.
     /// </summary>
     [Rpc ("SpaceCenter", "ControlSurface_get_PitchEnabled")]
-    public bool PitchEnabled {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<bool> ("SpaceCenter", "ControlSurface_get_PitchEnabled", args);
-        }
-        set {
-            var args = new object[] {
-                this,
-                value
-            };
-            Connection.Invoke ("SpaceCenter", "ControlSurface_set_PitchEnabled", args);
-        }
+    public bool GetPitchEnabled ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<bool> ("SpaceCenter", "ControlSurface_get_PitchEnabled", args);
+    }
+
+    /// <summary>
+    /// Sets the PitchEnabled value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public void SetPitchEnabled (bool value)
+    {
+        var args = new object[] {
+            this,
+            value
+        };
+        Connection.Invoke ("SpaceCenter", "ControlSurface_set_PitchEnabled", args);
     }
 
     /// <summary>
     /// Whether the control surface has roll control enabled.
     /// </summary>
     [Rpc ("SpaceCenter", "ControlSurface_get_RollEnabled")]
-    public bool RollEnabled {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<bool> ("SpaceCenter", "ControlSurface_get_RollEnabled", args);
-        }
-        set {
-            var args = new object[] {
-                this,
-                value
-            };
-            Connection.Invoke ("SpaceCenter", "ControlSurface_set_RollEnabled", args);
-        }
+    public bool GetRollEnabled ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<bool> ("SpaceCenter", "ControlSurface_get_RollEnabled", args);
+    }
+
+    /// <summary>
+    /// Sets the RollEnabled value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public void SetRollEnabled (bool value)
+    {
+        var args = new object[] {
+            this,
+            value
+        };
+        Connection.Invoke ("SpaceCenter", "ControlSurface_set_RollEnabled", args);
     }
 
     /// <summary>
     /// Surface area of the control surface in <math>m^2</math>.
     /// </summary>
     [Rpc ("SpaceCenter", "ControlSurface_get_SurfaceArea")]
-    public float SurfaceArea {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<float> ("SpaceCenter", "ControlSurface_get_SurfaceArea", args);
-        }
+    public float GetSurfaceArea ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<float> ("SpaceCenter", "ControlSurface_get_SurfaceArea", args);
     }
 
     /// <summary>
     /// Whether the control surface has yaw control enabled.
     /// </summary>
     [Rpc ("SpaceCenter", "ControlSurface_get_YawEnabled")]
-    public bool YawEnabled {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<bool> ("SpaceCenter", "ControlSurface_get_YawEnabled", args);
-        }
-        set {
-            var args = new object[] {
-                this,
-                value
-            };
-            Connection.Invoke ("SpaceCenter", "ControlSurface_set_YawEnabled", args);
-        }
+    public bool GetYawEnabled ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<bool> ("SpaceCenter", "ControlSurface_get_YawEnabled", args);
+    }
+
+    /// <summary>
+    /// Sets the YawEnabled value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public void SetYawEnabled (bool value)
+    {
+        var args = new object[] {
+            this,
+            value
+        };
+        Connection.Invoke ("SpaceCenter", "ControlSurface_set_YawEnabled", args);
     }
 }

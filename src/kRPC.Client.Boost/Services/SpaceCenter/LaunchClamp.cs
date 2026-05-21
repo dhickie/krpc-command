@@ -32,12 +32,11 @@ public class LaunchClamp : RemoteObject
     /// The part object for this launch clamp.
     /// </summary>
     [Rpc ("SpaceCenter", "LaunchClamp_get_Part")]
-    public Part Part {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<Part> ("SpaceCenter", "LaunchClamp_get_Part", args);
-        }
+    public Part GetPart ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<Part> ("SpaceCenter", "LaunchClamp_get_Part", args);
     }
 }

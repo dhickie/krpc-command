@@ -122,13 +122,12 @@ public class Parts : RemoteObject
     /// A list of all of the vessels parts.
     /// </summary>
     [Rpc ("SpaceCenter", "Parts_get_All")]
-    public IList<Part> All {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<IList<Part>> ("SpaceCenter", "Parts_get_All", args);
-        }
+    public IList<Part> GetAll ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<IList<Part>> ("SpaceCenter", "Parts_get_All", args);
     }
 
     /// <summary>
@@ -139,85 +138,85 @@ public class Parts : RemoteObject
     /// To interact with RemoteTech antennas, use the RemoteTech service APIs.
     /// </remarks>
     [Rpc ("SpaceCenter", "Parts_get_Antennas")]
-    public IList<Antenna> Antennas {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<IList<Antenna>> ("SpaceCenter", "Parts_get_Antennas", args);
-        }
+    public IList<Antenna> GetAntennas ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<IList<Antenna>> ("SpaceCenter", "Parts_get_Antennas", args);
     }
 
     /// <summary>
     /// A list of all cargo bays in the vessel.
     /// </summary>
     [Rpc ("SpaceCenter", "Parts_get_CargoBays")]
-    public IList<CargoBay> CargoBays {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<IList<CargoBay>> ("SpaceCenter", "Parts_get_CargoBays", args);
-        }
+    public IList<CargoBay> GetCargoBays ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<IList<CargoBay>> ("SpaceCenter", "Parts_get_CargoBays", args);
     }
 
     /// <summary>
     /// A list of all control surfaces in the vessel.
     /// </summary>
     [Rpc ("SpaceCenter", "Parts_get_ControlSurfaces")]
-    public IList<ControlSurface> ControlSurfaces {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<IList<ControlSurface>> ("SpaceCenter", "Parts_get_ControlSurfaces", args);
-        }
+    public IList<ControlSurface> GetControlSurfaces ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<IList<ControlSurface>> ("SpaceCenter", "Parts_get_ControlSurfaces", args);
     }
 
     /// <summary>
     /// The part from which the vessel is controlled.
     /// </summary>
     [Rpc ("SpaceCenter", "Parts_get_Controlling")]
-    public Part Controlling {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<Part> ("SpaceCenter", "Parts_get_Controlling", args);
-        }
-        set {
-            var args = new object[] {
-                this,
-                value
-            };
-            Connection.Invoke ("SpaceCenter", "Parts_set_Controlling", args);
-        }
+    public Part GetControlling ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<Part> ("SpaceCenter", "Parts_get_Controlling", args);
+    }
+
+    /// <summary>
+    /// Sets the Controlling value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public void SetControlling (Part value)
+    {
+        var args = new object[] {
+            this,
+            value
+        };
+        Connection.Invoke ("SpaceCenter", "Parts_set_Controlling", args);
     }
 
     /// <summary>
     /// A list of all decouplers in the vessel.
     /// </summary>
     [Rpc ("SpaceCenter", "Parts_get_Decouplers")]
-    public IList<Decoupler> Decouplers {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<IList<Decoupler>> ("SpaceCenter", "Parts_get_Decouplers", args);
-        }
+    public IList<Decoupler> GetDecouplers ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<IList<Decoupler>> ("SpaceCenter", "Parts_get_Decouplers", args);
     }
 
     /// <summary>
     /// A list of all docking ports in the vessel.
     /// </summary>
     [Rpc ("SpaceCenter", "Parts_get_DockingPorts")]
-    public IList<DockingPort> DockingPorts {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<IList<DockingPort>> ("SpaceCenter", "Parts_get_DockingPorts", args);
-        }
+    public IList<DockingPort> GetDockingPorts ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<IList<DockingPort>> ("SpaceCenter", "Parts_get_DockingPorts", args);
     }
 
     /// <summary>
@@ -229,285 +228,263 @@ public class Parts : RemoteObject
     /// RCS thrusters.
     /// </remarks>
     [Rpc ("SpaceCenter", "Parts_get_Engines")]
-    public IList<Engine> Engines {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<IList<Engine>> ("SpaceCenter", "Parts_get_Engines", args);
-        }
+    public IList<Engine> GetEngines ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<IList<Engine>> ("SpaceCenter", "Parts_get_Engines", args);
     }
 
     /// <summary>
     /// A list of all science experiments in the vessel.
     /// </summary>
     [Rpc ("SpaceCenter", "Parts_get_Experiments")]
-    public IList<Experiment> Experiments {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<IList<Experiment>> ("SpaceCenter", "Parts_get_Experiments", args);
-        }
+    public IList<Experiment> GetExperiments ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<IList<Experiment>> ("SpaceCenter", "Parts_get_Experiments", args);
     }
 
     /// <summary>
     /// A list of all fairings in the vessel.
     /// </summary>
     [Rpc ("SpaceCenter", "Parts_get_Fairings")]
-    public IList<Fairing> Fairings {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<IList<Fairing>> ("SpaceCenter", "Parts_get_Fairings", args);
-        }
+    public IList<Fairing> GetFairings ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<IList<Fairing>> ("SpaceCenter", "Parts_get_Fairings", args);
     }
 
     /// <summary>
     /// A list of all intakes in the vessel.
     /// </summary>
     [Rpc ("SpaceCenter", "Parts_get_Intakes")]
-    public IList<Intake> Intakes {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<IList<Intake>> ("SpaceCenter", "Parts_get_Intakes", args);
-        }
+    public IList<Intake> GetIntakes ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<IList<Intake>> ("SpaceCenter", "Parts_get_Intakes", args);
     }
 
     /// <summary>
     /// A list of all launch clamps attached to the vessel.
     /// </summary>
     [Rpc ("SpaceCenter", "Parts_get_LaunchClamps")]
-    public IList<LaunchClamp> LaunchClamps {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<IList<LaunchClamp>> ("SpaceCenter", "Parts_get_LaunchClamps", args);
-        }
+    public IList<LaunchClamp> GetLaunchClamps ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<IList<LaunchClamp>> ("SpaceCenter", "Parts_get_LaunchClamps", args);
     }
 
     /// <summary>
     /// A list of all landing legs attached to the vessel.
     /// </summary>
     [Rpc ("SpaceCenter", "Parts_get_Legs")]
-    public IList<Leg> Legs {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<IList<Leg>> ("SpaceCenter", "Parts_get_Legs", args);
-        }
+    public IList<Leg> GetLegs ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<IList<Leg>> ("SpaceCenter", "Parts_get_Legs", args);
     }
 
     /// <summary>
     /// A list of all lights in the vessel.
     /// </summary>
     [Rpc ("SpaceCenter", "Parts_get_Lights")]
-    public IList<Light> Lights {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<IList<Light>> ("SpaceCenter", "Parts_get_Lights", args);
-        }
+    public IList<Light> GetLights ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<IList<Light>> ("SpaceCenter", "Parts_get_Lights", args);
     }
 
     /// <summary>
     /// A list of all parachutes in the vessel.
     /// </summary>
     [Rpc ("SpaceCenter", "Parts_get_Parachutes")]
-    public IList<Parachute> Parachutes {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<IList<Parachute>> ("SpaceCenter", "Parts_get_Parachutes", args);
-        }
+    public IList<Parachute> GetParachutes ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<IList<Parachute>> ("SpaceCenter", "Parts_get_Parachutes", args);
     }
 
     /// <summary>
     /// A list of all RCS blocks/thrusters in the vessel.
     /// </summary>
     [Rpc ("SpaceCenter", "Parts_get_RCS")]
-    public IList<RCS> RCS {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<IList<RCS>> ("SpaceCenter", "Parts_get_RCS", args);
-        }
+    public IList<RCS> GetRCS ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<IList<RCS>> ("SpaceCenter", "Parts_get_RCS", args);
     }
 
     /// <summary>
     /// A list of all radiators in the vessel.
     /// </summary>
     [Rpc ("SpaceCenter", "Parts_get_Radiators")]
-    public IList<Radiator> Radiators {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<IList<Radiator>> ("SpaceCenter", "Parts_get_Radiators", args);
-        }
+    public IList<Radiator> GetRadiators ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<IList<Radiator>> ("SpaceCenter", "Parts_get_Radiators", args);
     }
 
     /// <summary>
     /// A list of all reaction wheels in the vessel.
     /// </summary>
     [Rpc ("SpaceCenter", "Parts_get_ReactionWheels")]
-    public IList<ReactionWheel> ReactionWheels {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<IList<ReactionWheel>> ("SpaceCenter", "Parts_get_ReactionWheels", args);
-        }
+    public IList<ReactionWheel> GetReactionWheels ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<IList<ReactionWheel>> ("SpaceCenter", "Parts_get_ReactionWheels", args);
     }
 
     /// <summary>
     /// A list of all resource converters in the vessel.
     /// </summary>
     [Rpc ("SpaceCenter", "Parts_get_ResourceConverters")]
-    public IList<ResourceConverter> ResourceConverters {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<IList<ResourceConverter>> ("SpaceCenter", "Parts_get_ResourceConverters", args);
-        }
+    public IList<ResourceConverter> GetResourceConverters ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<IList<ResourceConverter>> ("SpaceCenter", "Parts_get_ResourceConverters", args);
     }
 
     /// <summary>
     /// A list of all resource drains in the vessel.
     /// </summary>
     [Rpc ("SpaceCenter", "Parts_get_ResourceDrains")]
-    public IList<ResourceDrain> ResourceDrains {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<IList<ResourceDrain>> ("SpaceCenter", "Parts_get_ResourceDrains", args);
-        }
+    public IList<ResourceDrain> GetResourceDrains ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<IList<ResourceDrain>> ("SpaceCenter", "Parts_get_ResourceDrains", args);
     }
 
     /// <summary>
     /// A list of all resource harvesters in the vessel.
     /// </summary>
     [Rpc ("SpaceCenter", "Parts_get_ResourceHarvesters")]
-    public IList<ResourceHarvester> ResourceHarvesters {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<IList<ResourceHarvester>> ("SpaceCenter", "Parts_get_ResourceHarvesters", args);
-        }
+    public IList<ResourceHarvester> GetResourceHarvesters ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<IList<ResourceHarvester>> ("SpaceCenter", "Parts_get_ResourceHarvesters", args);
     }
 
     /// <summary>
     /// A list of all robotic hinges in the vessel.
     /// </summary>
     [Rpc ("SpaceCenter", "Parts_get_RoboticHinges")]
-    public IList<RoboticHinge> RoboticHinges {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<IList<RoboticHinge>> ("SpaceCenter", "Parts_get_RoboticHinges", args);
-        }
+    public IList<RoboticHinge> GetRoboticHinges ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<IList<RoboticHinge>> ("SpaceCenter", "Parts_get_RoboticHinges", args);
     }
 
     /// <summary>
     /// A list of all robotic pistons in the vessel.
     /// </summary>
     [Rpc ("SpaceCenter", "Parts_get_RoboticPistons")]
-    public IList<RoboticPiston> RoboticPistons {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<IList<RoboticPiston>> ("SpaceCenter", "Parts_get_RoboticPistons", args);
-        }
+    public IList<RoboticPiston> GetRoboticPistons ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<IList<RoboticPiston>> ("SpaceCenter", "Parts_get_RoboticPistons", args);
     }
 
     /// <summary>
     /// A list of all robotic rotations in the vessel.
     /// </summary>
     [Rpc ("SpaceCenter", "Parts_get_RoboticRotations")]
-    public IList<RoboticRotation> RoboticRotations {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<IList<RoboticRotation>> ("SpaceCenter", "Parts_get_RoboticRotations", args);
-        }
+    public IList<RoboticRotation> GetRoboticRotations ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<IList<RoboticRotation>> ("SpaceCenter", "Parts_get_RoboticRotations", args);
     }
 
     /// <summary>
     /// A list of all robotic rotors in the vessel.
     /// </summary>
     [Rpc ("SpaceCenter", "Parts_get_RoboticRotors")]
-    public IList<RoboticRotor> RoboticRotors {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<IList<RoboticRotor>> ("SpaceCenter", "Parts_get_RoboticRotors", args);
-        }
+    public IList<RoboticRotor> GetRoboticRotors ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<IList<RoboticRotor>> ("SpaceCenter", "Parts_get_RoboticRotors", args);
     }
 
     /// <summary>
     /// The vessels root part.
     /// </summary>
     [Rpc ("SpaceCenter", "Parts_get_Root")]
-    public Part Root {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<Part> ("SpaceCenter", "Parts_get_Root", args);
-        }
+    public Part GetRoot ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<Part> ("SpaceCenter", "Parts_get_Root", args);
     }
 
     /// <summary>
     /// A list of all sensors in the vessel.
     /// </summary>
     [Rpc ("SpaceCenter", "Parts_get_Sensors")]
-    public IList<Sensor> Sensors {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<IList<Sensor>> ("SpaceCenter", "Parts_get_Sensors", args);
-        }
+    public IList<Sensor> GetSensors ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<IList<Sensor>> ("SpaceCenter", "Parts_get_Sensors", args);
     }
 
     /// <summary>
     /// A list of all solar panels in the vessel.
     /// </summary>
     [Rpc ("SpaceCenter", "Parts_get_SolarPanels")]
-    public IList<SolarPanel> SolarPanels {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<IList<SolarPanel>> ("SpaceCenter", "Parts_get_SolarPanels", args);
-        }
+    public IList<SolarPanel> GetSolarPanels ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<IList<SolarPanel>> ("SpaceCenter", "Parts_get_SolarPanels", args);
     }
 
     /// <summary>
     /// A list of all wheels in the vessel.
     /// </summary>
     [Rpc ("SpaceCenter", "Parts_get_Wheels")]
-    public IList<Wheel> Wheels {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<IList<Wheel>> ("SpaceCenter", "Parts_get_Wheels", args);
-        }
+    public IList<Wheel> GetWheels ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<IList<Wheel>> ("SpaceCenter", "Parts_get_Wheels", args);
     }
 }

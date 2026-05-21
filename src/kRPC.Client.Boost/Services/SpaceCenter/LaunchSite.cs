@@ -21,38 +21,35 @@ public class LaunchSite : RemoteObject
     /// The celestial body the launch site is on.
     /// </summary>
     [Rpc ("SpaceCenter", "LaunchSite_get_Body")]
-    public CelestialBody Body {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<CelestialBody> ("SpaceCenter", "LaunchSite_get_Body", args);
-        }
+    public CelestialBody GetBody ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<CelestialBody> ("SpaceCenter", "LaunchSite_get_Body", args);
     }
 
     /// <summary>
     /// Which editor is normally used for this launch site.
     /// </summary>
     [Rpc ("SpaceCenter", "LaunchSite_get_EditorFacility")]
-    public EditorFacility EditorFacility {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<EditorFacility> ("SpaceCenter", "LaunchSite_get_EditorFacility", args);
-        }
+    public EditorFacility GetEditorFacility ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<EditorFacility> ("SpaceCenter", "LaunchSite_get_EditorFacility", args);
     }
 
     /// <summary>
     /// The name of the launch site.
     /// </summary>
     [Rpc ("SpaceCenter", "LaunchSite_get_Name")]
-    public string Name {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<string> ("SpaceCenter", "LaunchSite_get_Name", args);
-        }
+    public string GetName ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<string> ("SpaceCenter", "LaunchSite_get_Name", args);
     }
 }

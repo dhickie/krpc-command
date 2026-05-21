@@ -157,12 +157,11 @@ public class AlarmManager : RemoteObject
     /// A list of all alarms.
     /// </summary>
     [Rpc ("SpaceCenter", "AlarmManager_get_Alarms")]
-    public IList<Alarm> Alarms {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<IList<Alarm>> ("SpaceCenter", "AlarmManager_get_Alarms", args);
-        }
+    public IList<Alarm> GetAlarms ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<IList<Alarm>> ("SpaceCenter", "AlarmManager_get_Alarms", args);
     }
 }

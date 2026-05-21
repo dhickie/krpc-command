@@ -22,99 +22,111 @@ public class Wheel : RemoteObject
     /// Whether automatic friction control is enabled.
     /// </summary>
     [Rpc ("SpaceCenter", "Wheel_get_AutoFrictionControl")]
-    public bool AutoFrictionControl {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<bool> ("SpaceCenter", "Wheel_get_AutoFrictionControl", args);
-        }
-        set {
-            var args = new object[] {
-                this,
-                value
-            };
-            Connection.Invoke ("SpaceCenter", "Wheel_set_AutoFrictionControl", args);
-        }
+    public bool GetAutoFrictionControl ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<bool> ("SpaceCenter", "Wheel_get_AutoFrictionControl", args);
+    }
+
+    /// <summary>
+    /// Sets the AutoFrictionControl value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public void SetAutoFrictionControl (bool value)
+    {
+        var args = new object[] {
+            this,
+            value
+        };
+        Connection.Invoke ("SpaceCenter", "Wheel_set_AutoFrictionControl", args);
     }
 
     /// <summary>
     /// The braking force, as a percentage of maximum, when the brakes are applied.
     /// </summary>
     [Rpc ("SpaceCenter", "Wheel_get_Brakes")]
-    public float Brakes {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<float> ("SpaceCenter", "Wheel_get_Brakes", args);
-        }
-        set {
-            var args = new object[] {
-                this,
-                value
-            };
-            Connection.Invoke ("SpaceCenter", "Wheel_set_Brakes", args);
-        }
+    public float GetBrakes ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<float> ("SpaceCenter", "Wheel_get_Brakes", args);
+    }
+
+    /// <summary>
+    /// Sets the Brakes value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public void SetBrakes (float value)
+    {
+        var args = new object[] {
+            this,
+            value
+        };
+        Connection.Invoke ("SpaceCenter", "Wheel_set_Brakes", args);
     }
 
     /// <summary>
     /// Whether the wheel is broken.
     /// </summary>
     [Rpc ("SpaceCenter", "Wheel_get_Broken")]
-    public bool Broken {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<bool> ("SpaceCenter", "Wheel_get_Broken", args);
-        }
+    public bool GetBroken ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<bool> ("SpaceCenter", "Wheel_get_Broken", args);
     }
 
     /// <summary>
     /// Current deflection of the wheel.
     /// </summary>
     [Rpc ("SpaceCenter", "Wheel_get_Deflection")]
-    public float Deflection {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<float> ("SpaceCenter", "Wheel_get_Deflection", args);
-        }
+    public float GetDeflection ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<float> ("SpaceCenter", "Wheel_get_Deflection", args);
     }
 
     /// <summary>
     /// Whether the wheel is deployable.
     /// </summary>
     [Rpc ("SpaceCenter", "Wheel_get_Deployable")]
-    public bool Deployable {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<bool> ("SpaceCenter", "Wheel_get_Deployable", args);
-        }
+    public bool GetDeployable ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<bool> ("SpaceCenter", "Wheel_get_Deployable", args);
     }
 
     /// <summary>
     /// Whether the wheel is deployed.
     /// </summary>
     [Rpc ("SpaceCenter", "Wheel_get_Deployed")]
-    public bool Deployed {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<bool> ("SpaceCenter", "Wheel_get_Deployed", args);
-        }
-        set {
-            var args = new object[] {
-                this,
-                value
-            };
-            Connection.Invoke ("SpaceCenter", "Wheel_set_Deployed", args);
-        }
+    public bool GetDeployed ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<bool> ("SpaceCenter", "Wheel_get_Deployed", args);
+    }
+
+    /// <summary>
+    /// Sets the Deployed value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public void SetDeployed (bool value)
+    {
+        var args = new object[] {
+            this,
+            value
+        };
+        Connection.Invoke ("SpaceCenter", "Wheel_set_Deployed", args);
     }
 
     /// <summary>
@@ -123,59 +135,61 @@ public class Wheel : RemoteObject
     /// A value between 0 and 100 inclusive.
     /// </summary>
     [Rpc ("SpaceCenter", "Wheel_get_DriveLimiter")]
-    public float DriveLimiter {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<float> ("SpaceCenter", "Wheel_get_DriveLimiter", args);
-        }
-        set {
-            var args = new object[] {
-                this,
-                value
-            };
-            Connection.Invoke ("SpaceCenter", "Wheel_set_DriveLimiter", args);
-        }
+    public float GetDriveLimiter ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<float> ("SpaceCenter", "Wheel_get_DriveLimiter", args);
+    }
+
+    /// <summary>
+    /// Sets the DriveLimiter value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public void SetDriveLimiter (float value)
+    {
+        var args = new object[] {
+            this,
+            value
+        };
+        Connection.Invoke ("SpaceCenter", "Wheel_set_DriveLimiter", args);
     }
 
     /// <summary>
     /// Whether the wheel is touching the ground.
     /// </summary>
     [Rpc ("SpaceCenter", "Wheel_get_Grounded")]
-    public bool Grounded {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<bool> ("SpaceCenter", "Wheel_get_Grounded", args);
-        }
+    public bool GetGrounded ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<bool> ("SpaceCenter", "Wheel_get_Grounded", args);
     }
 
     /// <summary>
     /// Whether the wheel has brakes.
     /// </summary>
     [Rpc ("SpaceCenter", "Wheel_get_HasBrakes")]
-    public bool HasBrakes {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<bool> ("SpaceCenter", "Wheel_get_HasBrakes", args);
-        }
+    public bool GetHasBrakes ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<bool> ("SpaceCenter", "Wheel_get_HasBrakes", args);
     }
 
     /// <summary>
     /// Whether the wheel has suspension.
     /// </summary>
     [Rpc ("SpaceCenter", "Wheel_get_HasSuspension")]
-    public bool HasSuspension {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<bool> ("SpaceCenter", "Wheel_get_HasSuspension", args);
-        }
+    public bool GetHasSuspension ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<bool> ("SpaceCenter", "Wheel_get_HasSuspension", args);
     }
 
     /// <summary>
@@ -183,322 +197,343 @@ public class Wheel : RemoteObject
     /// A value between 0 and 5 inclusive.
     /// </summary>
     [Rpc ("SpaceCenter", "Wheel_get_ManualFrictionControl")]
-    public float ManualFrictionControl {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<float> ("SpaceCenter", "Wheel_get_ManualFrictionControl", args);
-        }
-        set {
-            var args = new object[] {
-                this,
-                value
-            };
-            Connection.Invoke ("SpaceCenter", "Wheel_set_ManualFrictionControl", args);
-        }
+    public float GetManualFrictionControl ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<float> ("SpaceCenter", "Wheel_get_ManualFrictionControl", args);
+    }
+
+    /// <summary>
+    /// Sets the ManualFrictionControl value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public void SetManualFrictionControl (float value)
+    {
+        var args = new object[] {
+            this,
+            value
+        };
+        Connection.Invoke ("SpaceCenter", "Wheel_set_ManualFrictionControl", args);
     }
 
     /// <summary>
     /// Whether the motor is enabled.
     /// </summary>
     [Rpc ("SpaceCenter", "Wheel_get_MotorEnabled")]
-    public bool MotorEnabled {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<bool> ("SpaceCenter", "Wheel_get_MotorEnabled", args);
-        }
-        set {
-            var args = new object[] {
-                this,
-                value
-            };
-            Connection.Invoke ("SpaceCenter", "Wheel_set_MotorEnabled", args);
-        }
+    public bool GetMotorEnabled ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<bool> ("SpaceCenter", "Wheel_get_MotorEnabled", args);
+    }
+
+    /// <summary>
+    /// Sets the MotorEnabled value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public void SetMotorEnabled (bool value)
+    {
+        var args = new object[] {
+            this,
+            value
+        };
+        Connection.Invoke ("SpaceCenter", "Wheel_set_MotorEnabled", args);
     }
 
     /// <summary>
     /// Whether the direction of the motor is inverted.
     /// </summary>
     [Rpc ("SpaceCenter", "Wheel_get_MotorInverted")]
-    public bool MotorInverted {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<bool> ("SpaceCenter", "Wheel_get_MotorInverted", args);
-        }
-        set {
-            var args = new object[] {
-                this,
-                value
-            };
-            Connection.Invoke ("SpaceCenter", "Wheel_set_MotorInverted", args);
-        }
+    public bool GetMotorInverted ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<bool> ("SpaceCenter", "Wheel_get_MotorInverted", args);
+    }
+
+    /// <summary>
+    /// Sets the MotorInverted value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public void SetMotorInverted (bool value)
+    {
+        var args = new object[] {
+            this,
+            value
+        };
+        Connection.Invoke ("SpaceCenter", "Wheel_set_MotorInverted", args);
     }
 
     /// <summary>
     /// The output of the motor. This is the torque currently being generated, in Newton meters.
     /// </summary>
     [Rpc ("SpaceCenter", "Wheel_get_MotorOutput")]
-    public float MotorOutput {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<float> ("SpaceCenter", "Wheel_get_MotorOutput", args);
-        }
+    public float GetMotorOutput ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<float> ("SpaceCenter", "Wheel_get_MotorOutput", args);
     }
 
     /// <summary>
     /// Whether the direction of the motor is inverted.
     /// </summary>
     [Rpc ("SpaceCenter", "Wheel_get_MotorState")]
-    public MotorState MotorState {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<MotorState> ("SpaceCenter", "Wheel_get_MotorState", args);
-        }
+    public MotorState GetMotorState ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<MotorState> ("SpaceCenter", "Wheel_get_MotorState", args);
     }
 
     /// <summary>
     /// The part object for this wheel.
     /// </summary>
     [Rpc ("SpaceCenter", "Wheel_get_Part")]
-    public Part Part {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<Part> ("SpaceCenter", "Wheel_get_Part", args);
-        }
+    public Part GetPart ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<Part> ("SpaceCenter", "Wheel_get_Part", args);
     }
 
     /// <summary>
     /// Whether the wheel is powered by a motor.
     /// </summary>
     [Rpc ("SpaceCenter", "Wheel_get_Powered")]
-    public bool Powered {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<bool> ("SpaceCenter", "Wheel_get_Powered", args);
-        }
+    public bool GetPowered ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<bool> ("SpaceCenter", "Wheel_get_Powered", args);
     }
 
     /// <summary>
     /// Radius of the wheel, in meters.
     /// </summary>
     [Rpc ("SpaceCenter", "Wheel_get_Radius")]
-    public float Radius {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<float> ("SpaceCenter", "Wheel_get_Radius", args);
-        }
+    public float GetRadius ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<float> ("SpaceCenter", "Wheel_get_Radius", args);
     }
 
     /// <summary>
     /// Whether the wheel is repairable.
     /// </summary>
     [Rpc ("SpaceCenter", "Wheel_get_Repairable")]
-    public bool Repairable {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<bool> ("SpaceCenter", "Wheel_get_Repairable", args);
-        }
+    public bool GetRepairable ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<bool> ("SpaceCenter", "Wheel_get_Repairable", args);
     }
 
     /// <summary>
     /// Current slip of the wheel.
     /// </summary>
     [Rpc ("SpaceCenter", "Wheel_get_Slip")]
-    public float Slip {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<float> ("SpaceCenter", "Wheel_get_Slip", args);
-        }
+    public float GetSlip ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<float> ("SpaceCenter", "Wheel_get_Slip", args);
     }
 
     /// <summary>
     /// The current state of the wheel.
     /// </summary>
     [Rpc ("SpaceCenter", "Wheel_get_State")]
-    public WheelState State {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<WheelState> ("SpaceCenter", "Wheel_get_State", args);
-        }
+    public WheelState GetState ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<WheelState> ("SpaceCenter", "Wheel_get_State", args);
     }
 
     /// <summary>
     /// Whether the wheel has steering.
     /// </summary>
     [Rpc ("SpaceCenter", "Wheel_get_Steerable")]
-    public bool Steerable {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<bool> ("SpaceCenter", "Wheel_get_Steerable", args);
-        }
+    public bool GetSteerable ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<bool> ("SpaceCenter", "Wheel_get_Steerable", args);
     }
 
     /// <summary>
     /// The steering angle limit.
     /// </summary>
     [Rpc ("SpaceCenter", "Wheel_get_SteeringAngleLimit")]
-    public float SteeringAngleLimit {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<float> ("SpaceCenter", "Wheel_get_SteeringAngleLimit", args);
-        }
-        set {
-            var args = new object[] {
-                this,
-                value
-            };
-            Connection.Invoke ("SpaceCenter", "Wheel_set_SteeringAngleLimit", args);
-        }
+    public float GetSteeringAngleLimit ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<float> ("SpaceCenter", "Wheel_get_SteeringAngleLimit", args);
+    }
+
+    /// <summary>
+    /// Sets the SteeringAngleLimit value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public void SetSteeringAngleLimit (float value)
+    {
+        var args = new object[] {
+            this,
+            value
+        };
+        Connection.Invoke ("SpaceCenter", "Wheel_set_SteeringAngleLimit", args);
     }
 
     /// <summary>
     /// Whether the wheel steering is enabled.
     /// </summary>
     [Rpc ("SpaceCenter", "Wheel_get_SteeringEnabled")]
-    public bool SteeringEnabled {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<bool> ("SpaceCenter", "Wheel_get_SteeringEnabled", args);
-        }
-        set {
-            var args = new object[] {
-                this,
-                value
-            };
-            Connection.Invoke ("SpaceCenter", "Wheel_set_SteeringEnabled", args);
-        }
+    public bool GetSteeringEnabled ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<bool> ("SpaceCenter", "Wheel_get_SteeringEnabled", args);
+    }
+
+    /// <summary>
+    /// Sets the SteeringEnabled value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public void SetSteeringEnabled (bool value)
+    {
+        var args = new object[] {
+            this,
+            value
+        };
+        Connection.Invoke ("SpaceCenter", "Wheel_set_SteeringEnabled", args);
     }
 
     /// <summary>
     /// Whether the wheel steering is inverted.
     /// </summary>
     [Rpc ("SpaceCenter", "Wheel_get_SteeringInverted")]
-    public bool SteeringInverted {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<bool> ("SpaceCenter", "Wheel_get_SteeringInverted", args);
-        }
-        set {
-            var args = new object[] {
-                this,
-                value
-            };
-            Connection.Invoke ("SpaceCenter", "Wheel_set_SteeringInverted", args);
-        }
+    public bool GetSteeringInverted ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<bool> ("SpaceCenter", "Wheel_get_SteeringInverted", args);
+    }
+
+    /// <summary>
+    /// Sets the SteeringInverted value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public void SetSteeringInverted (bool value)
+    {
+        var args = new object[] {
+            this,
+            value
+        };
+        Connection.Invoke ("SpaceCenter", "Wheel_set_SteeringInverted", args);
     }
 
     /// <summary>
     /// Steering response time.
     /// </summary>
     [Rpc ("SpaceCenter", "Wheel_get_SteeringResponseTime")]
-    public float SteeringResponseTime {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<float> ("SpaceCenter", "Wheel_get_SteeringResponseTime", args);
-        }
-        set {
-            var args = new object[] {
-                this,
-                value
-            };
-            Connection.Invoke ("SpaceCenter", "Wheel_set_SteeringResponseTime", args);
-        }
+    public float GetSteeringResponseTime ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<float> ("SpaceCenter", "Wheel_get_SteeringResponseTime", args);
+    }
+
+    /// <summary>
+    /// Sets the SteeringResponseTime value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public void SetSteeringResponseTime (float value)
+    {
+        var args = new object[] {
+            this,
+            value
+        };
+        Connection.Invoke ("SpaceCenter", "Wheel_set_SteeringResponseTime", args);
     }
 
     /// <summary>
     /// Current stress on the wheel.
     /// </summary>
     [Rpc ("SpaceCenter", "Wheel_get_Stress")]
-    public float Stress {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<float> ("SpaceCenter", "Wheel_get_Stress", args);
-        }
+    public float GetStress ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<float> ("SpaceCenter", "Wheel_get_Stress", args);
     }
 
     /// <summary>
     /// Current stress on the wheel as a percentage of its stress tolerance.
     /// </summary>
     [Rpc ("SpaceCenter", "Wheel_get_StressPercentage")]
-    public float StressPercentage {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<float> ("SpaceCenter", "Wheel_get_StressPercentage", args);
-        }
+    public float GetStressPercentage ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<float> ("SpaceCenter", "Wheel_get_StressPercentage", args);
     }
 
     /// <summary>
     /// Stress tolerance of the wheel.
     /// </summary>
     [Rpc ("SpaceCenter", "Wheel_get_StressTolerance")]
-    public float StressTolerance {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<float> ("SpaceCenter", "Wheel_get_StressTolerance", args);
-        }
+    public float GetStressTolerance ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<float> ("SpaceCenter", "Wheel_get_StressTolerance", args);
     }
 
     /// <summary>
     /// Suspension damper strength, as set in the editor.
     /// </summary>
     [Rpc ("SpaceCenter", "Wheel_get_SuspensionDamperStrength")]
-    public float SuspensionDamperStrength {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<float> ("SpaceCenter", "Wheel_get_SuspensionDamperStrength", args);
-        }
+    public float GetSuspensionDamperStrength ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<float> ("SpaceCenter", "Wheel_get_SuspensionDamperStrength", args);
     }
 
     /// <summary>
     /// Suspension spring strength, as set in the editor.
     /// </summary>
     [Rpc ("SpaceCenter", "Wheel_get_SuspensionSpringStrength")]
-    public float SuspensionSpringStrength {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<float> ("SpaceCenter", "Wheel_get_SuspensionSpringStrength", args);
-        }
+    public float GetSuspensionSpringStrength ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<float> ("SpaceCenter", "Wheel_get_SuspensionSpringStrength", args);
     }
 
     /// <summary>
@@ -507,20 +542,25 @@ public class Wheel : RemoteObject
     /// A value between 0 and 5 inclusive.
     /// </summary>
     [Rpc ("SpaceCenter", "Wheel_get_TractionControl")]
-    public float TractionControl {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<float> ("SpaceCenter", "Wheel_get_TractionControl", args);
-        }
-        set {
-            var args = new object[] {
-                this,
-                value
-            };
-            Connection.Invoke ("SpaceCenter", "Wheel_set_TractionControl", args);
-        }
+    public float GetTractionControl ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<float> ("SpaceCenter", "Wheel_get_TractionControl", args);
+    }
+
+    /// <summary>
+    /// Sets the TractionControl value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public void SetTractionControl (float value)
+    {
+        var args = new object[] {
+            this,
+            value
+        };
+        Connection.Invoke ("SpaceCenter", "Wheel_set_TractionControl", args);
     }
 
     /// <summary>
@@ -528,19 +568,24 @@ public class Wheel : RemoteObject
     /// A wheel only has traction control if it is powered.
     /// </summary>
     [Rpc ("SpaceCenter", "Wheel_get_TractionControlEnabled")]
-    public bool TractionControlEnabled {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<bool> ("SpaceCenter", "Wheel_get_TractionControlEnabled", args);
-        }
-        set {
-            var args = new object[] {
-                this,
-                value
-            };
-            Connection.Invoke ("SpaceCenter", "Wheel_set_TractionControlEnabled", args);
-        }
+    public bool GetTractionControlEnabled ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<bool> ("SpaceCenter", "Wheel_get_TractionControlEnabled", args);
+    }
+
+    /// <summary>
+    /// Sets the TractionControlEnabled value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public void SetTractionControlEnabled (bool value)
+    {
+        var args = new object[] {
+            this,
+            value
+        };
+        Connection.Invoke ("SpaceCenter", "Wheel_set_TractionControlEnabled", args);
     }
 }

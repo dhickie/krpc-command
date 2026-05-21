@@ -198,6 +198,10 @@ public class Module : RemoteObject
     /// <param name="name">Name of the field.</param>
     /// <param name="value">Value to set.</param>
     [Rpc ("SpaceCenter", "Module_SetFieldBool")]
+    /// <summary>
+    /// Sets the FieldBool value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
     public void SetFieldBool (string name, bool value)
     {
         var args = new object[] {
@@ -214,6 +218,10 @@ public class Module : RemoteObject
     /// <param name="id">Identifier of the field.</param>
     /// <param name="value">Value to set.</param>
     [Rpc ("SpaceCenter", "Module_SetFieldBoolById")]
+    /// <summary>
+    /// Sets the FieldBoolById value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
     public void SetFieldBoolById (string id, bool value)
     {
         var args = new object[] {
@@ -230,6 +238,10 @@ public class Module : RemoteObject
     /// <param name="name">Name of the field.</param>
     /// <param name="value">Value to set.</param>
     [Rpc ("SpaceCenter", "Module_SetFieldFloat")]
+    /// <summary>
+    /// Sets the FieldFloat value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
     public void SetFieldFloat (string name, float value)
     {
         var args = new object[] {
@@ -246,6 +258,10 @@ public class Module : RemoteObject
     /// <param name="id">Identifier of the field.</param>
     /// <param name="value">Value to set.</param>
     [Rpc ("SpaceCenter", "Module_SetFieldFloatById")]
+    /// <summary>
+    /// Sets the FieldFloatById value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
     public void SetFieldFloatById (string id, float value)
     {
         var args = new object[] {
@@ -262,6 +278,10 @@ public class Module : RemoteObject
     /// <param name="name">Name of the field.</param>
     /// <param name="value">Value to set.</param>
     [Rpc ("SpaceCenter", "Module_SetFieldInt")]
+    /// <summary>
+    /// Sets the FieldInt value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
     public void SetFieldInt (string name, int value)
     {
         var args = new object[] {
@@ -278,6 +298,10 @@ public class Module : RemoteObject
     /// <param name="id">Identifier of the field.</param>
     /// <param name="value">Value to set.</param>
     [Rpc ("SpaceCenter", "Module_SetFieldIntById")]
+    /// <summary>
+    /// Sets the FieldIntById value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
     public void SetFieldIntById (string id, int value)
     {
         var args = new object[] {
@@ -294,6 +318,10 @@ public class Module : RemoteObject
     /// <param name="name">Name of the field.</param>
     /// <param name="value">Value to set.</param>
     [Rpc ("SpaceCenter", "Module_SetFieldString")]
+    /// <summary>
+    /// Sets the FieldString value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
     public void SetFieldString (string name, string value)
     {
         var args = new object[] {
@@ -310,6 +338,10 @@ public class Module : RemoteObject
     /// <param name="id">Identifier of the field.</param>
     /// <param name="value">Value to set.</param>
     [Rpc ("SpaceCenter", "Module_SetFieldStringById")]
+    /// <summary>
+    /// Sets the FieldStringById value.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
     public void SetFieldStringById (string id, string value)
     {
         var args = new object[] {
@@ -355,13 +387,12 @@ public class Module : RemoteObject
     /// be assigned to action groups in the in-game editor.
     /// </summary>
     [Rpc ("SpaceCenter", "Module_get_Actions")]
-    public IList<string> Actions {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<IList<string>> ("SpaceCenter", "Module_get_Actions", args);
-        }
+    public IList<string> GetActions ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<IList<string>> ("SpaceCenter", "Module_get_Actions", args);
     }
 
     /// <summary>
@@ -369,13 +400,12 @@ public class Module : RemoteObject
     /// that can be assigned to action groups in the in-game editor.
     /// </summary>
     [Rpc ("SpaceCenter", "Module_get_ActionsById")]
-    public IList<string> ActionsById {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<IList<string>> ("SpaceCenter", "Module_get_ActionsById", args);
-        }
+    public IList<string> GetActionsById ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<IList<string>> ("SpaceCenter", "Module_get_ActionsById", args);
     }
 
     /// <summary>
@@ -383,13 +413,12 @@ public class Module : RemoteObject
     /// visible in the right-click menu of the part.
     /// </summary>
     [Rpc ("SpaceCenter", "Module_get_Events")]
-    public IList<string> Events {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<IList<string>> ("SpaceCenter", "Module_get_Events", args);
-        }
+    public IList<string> GetEvents ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<IList<string>> ("SpaceCenter", "Module_get_Events", args);
     }
 
     /// <summary>
@@ -397,13 +426,12 @@ public class Module : RemoteObject
     /// visible in the right-click menu of the part.
     /// </summary>
     [Rpc ("SpaceCenter", "Module_get_EventsById")]
-    public IList<string> EventsById {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<IList<string>> ("SpaceCenter", "Module_get_EventsById", args);
-        }
+    public IList<string> GetEventsById ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<IList<string>> ("SpaceCenter", "Module_get_EventsById", args);
     }
 
     /// <summary>
@@ -415,13 +443,12 @@ public class Module : RemoteObject
     /// In that case, use <see cref="M:SpaceCenter.Module.FieldsById" /> to get the fields by identifier.
     /// </remarks>
     [Rpc ("SpaceCenter", "Module_get_Fields")]
-    public IDictionary<string,string> Fields {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<IDictionary<string,string>> ("SpaceCenter", "Module_get_Fields", args);
-        }
+    public IDictionary<string,string> GetFields ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<IDictionary<string,string>> ("SpaceCenter", "Module_get_Fields", args);
     }
 
     /// <summary>
@@ -429,38 +456,35 @@ public class Module : RemoteObject
     /// These are the values visible in the right-click menu of the part.
     /// </summary>
     [Rpc ("SpaceCenter", "Module_get_FieldsById")]
-    public IDictionary<string,string> FieldsById {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<IDictionary<string,string>> ("SpaceCenter", "Module_get_FieldsById", args);
-        }
+    public IDictionary<string,string> GetFieldsById ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<IDictionary<string,string>> ("SpaceCenter", "Module_get_FieldsById", args);
     }
 
     /// <summary>
     /// Name of the PartModule. For example, "ModuleEngines".
     /// </summary>
     [Rpc ("SpaceCenter", "Module_get_Name")]
-    public string Name {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<string> ("SpaceCenter", "Module_get_Name", args);
-        }
+    public string GetName ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<string> ("SpaceCenter", "Module_get_Name", args);
     }
 
     /// <summary>
     /// The part that contains this module.
     /// </summary>
     [Rpc ("SpaceCenter", "Module_get_Part")]
-    public Part Part {
-        get {
-            var args = new object[] {
-                this
-            };
-            return Connection.Invoke<Part> ("SpaceCenter", "Module_get_Part", args);
-        }
+    public Part GetPart ()
+    {
+        var args = new object[] {
+            this
+        };
+        return Connection.Invoke<Part> ("SpaceCenter", "Module_get_Part", args);
     }
 }
