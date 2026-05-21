@@ -100,7 +100,7 @@ public class Alarm : RemoteObject
     /// Type of alarm
     /// </summary>
     [Rpc("SpaceCenter", "Alarm_get_Type")]
-    public string GetType()
+    public string GetAlarmType()
     {
         var args = new object[]
         {
