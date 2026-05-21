@@ -947,7 +947,7 @@ public class Orbit : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Orbit>("SpaceCenter", "Orbit_get_NextOrbit", args);
+        return Connection.Invoke<Orbit?>("SpaceCenter", "Orbit_get_NextOrbit", args);
     }
 
     /// <summary>
@@ -962,7 +962,7 @@ public class Orbit : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Orbit>("SpaceCenter", "Orbit_get_NextOrbit", args);
+        return await Connection.InvokeAsync<Orbit?>("SpaceCenter", "Orbit_get_NextOrbit", args);
     }
 
     /// <summary>

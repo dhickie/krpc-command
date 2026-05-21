@@ -203,7 +203,7 @@ public class DockingPort : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Part>("SpaceCenter", "DockingPort_get_DockedPart", args);
+        return Connection.Invoke<Part?>("SpaceCenter", "DockingPort_get_DockedPart", args);
     }
 
     /// <summary>
@@ -218,7 +218,7 @@ public class DockingPort : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Part>("SpaceCenter", "DockingPort_get_DockedPart", args);
+        return await Connection.InvokeAsync<Part?>("SpaceCenter", "DockingPort_get_DockedPart", args);
     }
 
     /// <summary>

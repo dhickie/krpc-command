@@ -220,7 +220,7 @@ public class Alarm : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Vessel>("SpaceCenter", "Alarm_get_Vessel", args);
+        return Connection.Invoke<Vessel?>("SpaceCenter", "Alarm_get_Vessel", args);
     }
 
     /// <summary>
@@ -234,6 +234,6 @@ public class Alarm : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Vessel>("SpaceCenter", "Alarm_get_Vessel", args);
+        return await Connection.InvokeAsync<Vessel?>("SpaceCenter", "Alarm_get_Vessel", args);
     }
 }

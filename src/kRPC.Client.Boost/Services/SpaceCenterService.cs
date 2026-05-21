@@ -144,7 +144,7 @@ public class SpaceCenterService
         {
             name
         };
-        return _connection.Invoke<CrewMember>("SpaceCenter", "GetKerbal", args);
+        return _connection.Invoke<CrewMember?>("SpaceCenter", "GetKerbal", args);
     }
 
     /// <summary>
@@ -160,7 +160,7 @@ public class SpaceCenterService
         {
             name
         };
-        return await _connection.InvokeAsync<CrewMember>("SpaceCenter", "GetKerbal", args);
+        return await _connection.InvokeAsync<CrewMember?>("SpaceCenter", "GetKerbal", args);
     }
 
     /// <summary>
@@ -511,7 +511,7 @@ public class SpaceCenterService
             direction,
             referenceFrame
         };
-        return _connection.Invoke<Part>("SpaceCenter", "RaycastPart", args);
+        return _connection.Invoke<Part?>("SpaceCenter", "RaycastPart", args);
     }
 
     /// <summary>
@@ -532,7 +532,7 @@ public class SpaceCenterService
             direction,
             referenceFrame
         };
-        return await _connection.InvokeAsync<Part>("SpaceCenter", "RaycastPart", args);
+        return await _connection.InvokeAsync<Part?>("SpaceCenter", "RaycastPart", args);
     }
 
     /// <summary>

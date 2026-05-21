@@ -361,7 +361,7 @@ public class Part : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Antenna>("SpaceCenter", "Part_get_Antenna", args);
+        return Connection.Invoke<Antenna?>("SpaceCenter", "Part_get_Antenna", args);
     }
 
     /// <summary>
@@ -379,7 +379,7 @@ public class Part : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Antenna>("SpaceCenter", "Part_get_Antenna", args);
+        return await Connection.InvokeAsync<Antenna?>("SpaceCenter", "Part_get_Antenna", args);
     }
 
     /// <summary>
@@ -475,7 +475,7 @@ public class Part : RemoteObject
         {
             this
         };
-        return Connection.Invoke<CargoBay>("SpaceCenter", "Part_get_CargoBay", args);
+        return Connection.Invoke<CargoBay?>("SpaceCenter", "Part_get_CargoBay", args);
     }
 
     /// <summary>
@@ -489,7 +489,7 @@ public class Part : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<CargoBay>("SpaceCenter", "Part_get_CargoBay", args);
+        return await Connection.InvokeAsync<CargoBay?>("SpaceCenter", "Part_get_CargoBay", args);
     }
 
     /// <summary>
@@ -579,7 +579,7 @@ public class Part : RemoteObject
         {
             this
         };
-        return Connection.Invoke<ControlSurface>("SpaceCenter", "Part_get_ControlSurface", args);
+        return Connection.Invoke<ControlSurface?>("SpaceCenter", "Part_get_ControlSurface", args);
     }
 
     /// <summary>
@@ -594,7 +594,7 @@ public class Part : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<ControlSurface>("SpaceCenter", "Part_get_ControlSurface", args);
+        return await Connection.InvokeAsync<ControlSurface?>("SpaceCenter", "Part_get_ControlSurface", args);
     }
 
     /// <summary>
@@ -690,7 +690,7 @@ public class Part : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Decoupler>("SpaceCenter", "Part_get_Decoupler", args);
+        return Connection.Invoke<Decoupler?>("SpaceCenter", "Part_get_Decoupler", args);
     }
 
     /// <summary>
@@ -704,7 +704,7 @@ public class Part : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Decoupler>("SpaceCenter", "Part_get_Decoupler", args);
+        return await Connection.InvokeAsync<Decoupler?>("SpaceCenter", "Part_get_Decoupler", args);
     }
 
     /// <summary>
@@ -717,7 +717,7 @@ public class Part : RemoteObject
         {
             this
         };
-        return Connection.Invoke<DockingPort>("SpaceCenter", "Part_get_DockingPort", args);
+        return Connection.Invoke<DockingPort?>("SpaceCenter", "Part_get_DockingPort", args);
     }
 
     /// <summary>
@@ -731,7 +731,7 @@ public class Part : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<DockingPort>("SpaceCenter", "Part_get_DockingPort", args);
+        return await Connection.InvokeAsync<DockingPort?>("SpaceCenter", "Part_get_DockingPort", args);
     }
 
     /// <summary>
@@ -800,7 +800,7 @@ public class Part : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Engine>("SpaceCenter", "Part_get_Engine", args);
+        return Connection.Invoke<Engine?>("SpaceCenter", "Part_get_Engine", args);
     }
 
     /// <summary>
@@ -814,7 +814,7 @@ public class Part : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Engine>("SpaceCenter", "Part_get_Engine", args);
+        return await Connection.InvokeAsync<Engine?>("SpaceCenter", "Part_get_Engine", args);
     }
 
     /// <summary>
@@ -832,7 +832,7 @@ public class Part : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Experiment>("SpaceCenter", "Part_get_Experiment", args);
+        return Connection.Invoke<Experiment?>("SpaceCenter", "Part_get_Experiment", args);
     }
 
     /// <summary>
@@ -851,7 +851,7 @@ public class Part : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Experiment>("SpaceCenter", "Part_get_Experiment", args);
+        return await Connection.InvokeAsync<Experiment?>("SpaceCenter", "Part_get_Experiment", args);
     }
 
     /// <summary>
@@ -891,7 +891,7 @@ public class Part : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Fairing>("SpaceCenter", "Part_get_Fairing", args);
+        return Connection.Invoke<Fairing?>("SpaceCenter", "Part_get_Fairing", args);
     }
 
     /// <summary>
@@ -905,7 +905,7 @@ public class Part : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Fairing>("SpaceCenter", "Part_get_Fairing", args);
+        return await Connection.InvokeAsync<Fairing?>("SpaceCenter", "Part_get_Fairing", args);
     }
 
     /// <summary>
@@ -1242,7 +1242,7 @@ public class Part : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Intake>("SpaceCenter", "Part_get_Intake", args);
+        return Connection.Invoke<Intake?>("SpaceCenter", "Part_get_Intake", args);
     }
 
     /// <summary>
@@ -1261,7 +1261,7 @@ public class Part : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Intake>("SpaceCenter", "Part_get_Intake", args);
+        return await Connection.InvokeAsync<Intake?>("SpaceCenter", "Part_get_Intake", args);
     }
 
     /// <summary>
@@ -1301,7 +1301,7 @@ public class Part : RemoteObject
         {
             this
         };
-        return Connection.Invoke<LaunchClamp>("SpaceCenter", "Part_get_LaunchClamp", args);
+        return Connection.Invoke<LaunchClamp?>("SpaceCenter", "Part_get_LaunchClamp", args);
     }
 
     /// <summary>
@@ -1315,7 +1315,7 @@ public class Part : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<LaunchClamp>("SpaceCenter", "Part_get_LaunchClamp", args);
+        return await Connection.InvokeAsync<LaunchClamp?>("SpaceCenter", "Part_get_LaunchClamp", args);
     }
 
     /// <summary>
@@ -1328,7 +1328,7 @@ public class Part : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Leg>("SpaceCenter", "Part_get_Leg", args);
+        return Connection.Invoke<Leg?>("SpaceCenter", "Part_get_Leg", args);
     }
 
     /// <summary>
@@ -1342,7 +1342,7 @@ public class Part : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Leg>("SpaceCenter", "Part_get_Leg", args);
+        return await Connection.InvokeAsync<Leg?>("SpaceCenter", "Part_get_Leg", args);
     }
 
     /// <summary>
@@ -1355,7 +1355,7 @@ public class Part : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Light>("SpaceCenter", "Part_get_Light", args);
+        return Connection.Invoke<Light?>("SpaceCenter", "Part_get_Light", args);
     }
 
     /// <summary>
@@ -1369,7 +1369,7 @@ public class Part : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Light>("SpaceCenter", "Part_get_Light", args);
+        return await Connection.InvokeAsync<Light?>("SpaceCenter", "Part_get_Light", args);
     }
 
     /// <summary>
@@ -1581,7 +1581,7 @@ public class Part : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Parachute>("SpaceCenter", "Part_get_Parachute", args);
+        return Connection.Invoke<Parachute?>("SpaceCenter", "Part_get_Parachute", args);
     }
 
     /// <summary>
@@ -1595,7 +1595,7 @@ public class Part : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Parachute>("SpaceCenter", "Part_get_Parachute", args);
+        return await Connection.InvokeAsync<Parachute?>("SpaceCenter", "Part_get_Parachute", args);
     }
 
     /// <summary>
@@ -1610,7 +1610,7 @@ public class Part : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Part>("SpaceCenter", "Part_get_Parent", args);
+        return Connection.Invoke<Part?>("SpaceCenter", "Part_get_Parent", args);
     }
 
     /// <summary>
@@ -1626,7 +1626,7 @@ public class Part : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Part>("SpaceCenter", "Part_get_Parent", args);
+        return await Connection.InvokeAsync<Part?>("SpaceCenter", "Part_get_Parent", args);
     }
 
     /// <summary>
@@ -1639,7 +1639,7 @@ public class Part : RemoteObject
         {
             this
         };
-        return Connection.Invoke<RCS>("SpaceCenter", "Part_get_RCS", args);
+        return Connection.Invoke<RCS?>("SpaceCenter", "Part_get_RCS", args);
     }
 
     /// <summary>
@@ -1653,7 +1653,7 @@ public class Part : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<RCS>("SpaceCenter", "Part_get_RCS", args);
+        return await Connection.InvokeAsync<RCS?>("SpaceCenter", "Part_get_RCS", args);
     }
 
     /// <summary>
@@ -1695,7 +1695,7 @@ public class Part : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Radiator>("SpaceCenter", "Part_get_Radiator", args);
+        return Connection.Invoke<Radiator?>("SpaceCenter", "Part_get_Radiator", args);
     }
 
     /// <summary>
@@ -1709,7 +1709,7 @@ public class Part : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Radiator>("SpaceCenter", "Part_get_Radiator", args);
+        return await Connection.InvokeAsync<Radiator?>("SpaceCenter", "Part_get_Radiator", args);
     }
 
     /// <summary>
@@ -1722,7 +1722,7 @@ public class Part : RemoteObject
         {
             this
         };
-        return Connection.Invoke<ReactionWheel>("SpaceCenter", "Part_get_ReactionWheel", args);
+        return Connection.Invoke<ReactionWheel?>("SpaceCenter", "Part_get_ReactionWheel", args);
     }
 
     /// <summary>
@@ -1736,7 +1736,7 @@ public class Part : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<ReactionWheel>("SpaceCenter", "Part_get_ReactionWheel", args);
+        return await Connection.InvokeAsync<ReactionWheel?>("SpaceCenter", "Part_get_ReactionWheel", args);
     }
 
     /// <summary>
@@ -1795,7 +1795,7 @@ public class Part : RemoteObject
         {
             this
         };
-        return Connection.Invoke<ResourceConverter>("SpaceCenter", "Part_get_ResourceConverter", args);
+        return Connection.Invoke<ResourceConverter?>("SpaceCenter", "Part_get_ResourceConverter", args);
     }
 
     /// <summary>
@@ -1810,7 +1810,7 @@ public class Part : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<ResourceConverter>("SpaceCenter", "Part_get_ResourceConverter", args);
+        return await Connection.InvokeAsync<ResourceConverter?>("SpaceCenter", "Part_get_ResourceConverter", args);
     }
 
     /// <summary>
@@ -1823,7 +1823,7 @@ public class Part : RemoteObject
         {
             this
         };
-        return Connection.Invoke<ResourceDrain>("SpaceCenter", "Part_get_ResourceDrain", args);
+        return Connection.Invoke<ResourceDrain?>("SpaceCenter", "Part_get_ResourceDrain", args);
     }
 
     /// <summary>
@@ -1837,7 +1837,7 @@ public class Part : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<ResourceDrain>("SpaceCenter", "Part_get_ResourceDrain", args);
+        return await Connection.InvokeAsync<ResourceDrain?>("SpaceCenter", "Part_get_ResourceDrain", args);
     }
 
     /// <summary>
@@ -1851,7 +1851,7 @@ public class Part : RemoteObject
         {
             this
         };
-        return Connection.Invoke<ResourceHarvester>("SpaceCenter", "Part_get_ResourceHarvester", args);
+        return Connection.Invoke<ResourceHarvester?>("SpaceCenter", "Part_get_ResourceHarvester", args);
     }
 
     /// <summary>
@@ -1866,7 +1866,7 @@ public class Part : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<ResourceHarvester>("SpaceCenter", "Part_get_ResourceHarvester", args);
+        return await Connection.InvokeAsync<ResourceHarvester?>("SpaceCenter", "Part_get_ResourceHarvester", args);
     }
 
     /// <summary>
@@ -1907,7 +1907,7 @@ public class Part : RemoteObject
         {
             this
         };
-        return Connection.Invoke<RoboticController>("SpaceCenter", "Part_get_RoboticController", args);
+        return Connection.Invoke<RoboticController?>("SpaceCenter", "Part_get_RoboticController", args);
     }
 
     /// <summary>
@@ -1922,7 +1922,7 @@ public class Part : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<RoboticController>("SpaceCenter", "Part_get_RoboticController", args);
+        return await Connection.InvokeAsync<RoboticController?>("SpaceCenter", "Part_get_RoboticController", args);
     }
 
     /// <summary>
@@ -1935,7 +1935,7 @@ public class Part : RemoteObject
         {
             this
         };
-        return Connection.Invoke<RoboticHinge>("SpaceCenter", "Part_get_RoboticHinge", args);
+        return Connection.Invoke<RoboticHinge?>("SpaceCenter", "Part_get_RoboticHinge", args);
     }
 
     /// <summary>
@@ -1949,7 +1949,7 @@ public class Part : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<RoboticHinge>("SpaceCenter", "Part_get_RoboticHinge", args);
+        return await Connection.InvokeAsync<RoboticHinge?>("SpaceCenter", "Part_get_RoboticHinge", args);
     }
 
     /// <summary>
@@ -1962,7 +1962,7 @@ public class Part : RemoteObject
         {
             this
         };
-        return Connection.Invoke<RoboticPiston>("SpaceCenter", "Part_get_RoboticPiston", args);
+        return Connection.Invoke<RoboticPiston?>("SpaceCenter", "Part_get_RoboticPiston", args);
     }
 
     /// <summary>
@@ -1976,7 +1976,7 @@ public class Part : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<RoboticPiston>("SpaceCenter", "Part_get_RoboticPiston", args);
+        return await Connection.InvokeAsync<RoboticPiston?>("SpaceCenter", "Part_get_RoboticPiston", args);
     }
 
     /// <summary>
@@ -1989,7 +1989,7 @@ public class Part : RemoteObject
         {
             this
         };
-        return Connection.Invoke<RoboticRotation>("SpaceCenter", "Part_get_RoboticRotation", args);
+        return Connection.Invoke<RoboticRotation?>("SpaceCenter", "Part_get_RoboticRotation", args);
     }
 
     /// <summary>
@@ -2003,7 +2003,7 @@ public class Part : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<RoboticRotation>("SpaceCenter", "Part_get_RoboticRotation", args);
+        return await Connection.InvokeAsync<RoboticRotation?>("SpaceCenter", "Part_get_RoboticRotation", args);
     }
 
     /// <summary>
@@ -2016,7 +2016,7 @@ public class Part : RemoteObject
         {
             this
         };
-        return Connection.Invoke<RoboticRotor>("SpaceCenter", "Part_get_RoboticRotor", args);
+        return Connection.Invoke<RoboticRotor?>("SpaceCenter", "Part_get_RoboticRotor", args);
     }
 
     /// <summary>
@@ -2030,7 +2030,7 @@ public class Part : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<RoboticRotor>("SpaceCenter", "Part_get_RoboticRotor", args);
+        return await Connection.InvokeAsync<RoboticRotor?>("SpaceCenter", "Part_get_RoboticRotor", args);
     }
 
     /// <summary>
@@ -2043,7 +2043,7 @@ public class Part : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Sensor>("SpaceCenter", "Part_get_Sensor", args);
+        return Connection.Invoke<Sensor?>("SpaceCenter", "Part_get_Sensor", args);
     }
 
     /// <summary>
@@ -2057,7 +2057,7 @@ public class Part : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Sensor>("SpaceCenter", "Part_get_Sensor", args);
+        return await Connection.InvokeAsync<Sensor?>("SpaceCenter", "Part_get_Sensor", args);
     }
 
     /// <summary>
@@ -2124,7 +2124,7 @@ public class Part : RemoteObject
         {
             this
         };
-        return Connection.Invoke<SolarPanel>("SpaceCenter", "Part_get_SolarPanel", args);
+        return Connection.Invoke<SolarPanel?>("SpaceCenter", "Part_get_SolarPanel", args);
     }
 
     /// <summary>
@@ -2138,7 +2138,7 @@ public class Part : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<SolarPanel>("SpaceCenter", "Part_get_SolarPanel", args);
+        return await Connection.InvokeAsync<SolarPanel?>("SpaceCenter", "Part_get_SolarPanel", args);
     }
 
     /// <summary>
@@ -2587,7 +2587,7 @@ public class Part : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Wheel>("SpaceCenter", "Part_get_Wheel", args);
+        return Connection.Invoke<Wheel?>("SpaceCenter", "Part_get_Wheel", args);
     }
 
     /// <summary>
@@ -2601,6 +2601,6 @@ public class Part : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Wheel>("SpaceCenter", "Part_get_Wheel", args);
+        return await Connection.InvokeAsync<Wheel?>("SpaceCenter", "Part_get_Wheel", args);
     }
 }

@@ -382,7 +382,7 @@ public class Experiment : RemoteObject
         {
             this
         };
-        return Connection.Invoke<ScienceSubject>("SpaceCenter", "Experiment_get_ScienceSubject", args);
+        return Connection.Invoke<ScienceSubject?>("SpaceCenter", "Experiment_get_ScienceSubject", args);
     }
 
     /// <summary>
@@ -397,7 +397,7 @@ public class Experiment : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<ScienceSubject>("SpaceCenter", "Experiment_get_ScienceSubject", args);
+        return await Connection.InvokeAsync<ScienceSubject?>("SpaceCenter", "Experiment_get_ScienceSubject", args);
     }
 
     /// <summary>

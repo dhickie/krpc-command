@@ -120,7 +120,7 @@ public class Camera : RemoteObject
         {
             this
         };
-        return Connection.Invoke<CelestialBody>("SpaceCenter", "Camera_get_FocussedBody", args);
+        return Connection.Invoke<CelestialBody?>("SpaceCenter", "Camera_get_FocussedBody", args);
     }
 
     /// <summary>
@@ -136,7 +136,7 @@ public class Camera : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<CelestialBody>("SpaceCenter", "Camera_get_FocussedBody", args);
+        return await Connection.InvokeAsync<CelestialBody?>("SpaceCenter", "Camera_get_FocussedBody", args);
     }
 
     /// <summary>
@@ -186,7 +186,7 @@ public class Camera : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Node>("SpaceCenter", "Camera_get_FocussedNode", args);
+        return Connection.Invoke<Node?>("SpaceCenter", "Camera_get_FocussedNode", args);
     }
 
     /// <summary>
@@ -202,7 +202,7 @@ public class Camera : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Node>("SpaceCenter", "Camera_get_FocussedNode", args);
+        return await Connection.InvokeAsync<Node?>("SpaceCenter", "Camera_get_FocussedNode", args);
     }
 
     /// <summary>
@@ -252,7 +252,7 @@ public class Camera : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Vessel>("SpaceCenter", "Camera_get_FocussedVessel", args);
+        return Connection.Invoke<Vessel?>("SpaceCenter", "Camera_get_FocussedVessel", args);
     }
 
     /// <summary>
@@ -268,7 +268,7 @@ public class Camera : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Vessel>("SpaceCenter", "Camera_get_FocussedVessel", args);
+        return await Connection.InvokeAsync<Vessel?>("SpaceCenter", "Camera_get_FocussedVessel", args);
     }
 
     /// <summary>
