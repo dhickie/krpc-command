@@ -7,7 +7,7 @@ namespace kRPC.Client.Boost.Services.SpaceCenter;
 
 /// <summary>
 /// Used to interact with CommNet for a given vessel.
-/// Obtained by calling <see cref="M:SpaceCenter.Vessel.Comms" />.
+/// Obtained by calling <see cref="M:SpaceCenter.Vessel.GetComms" />.
 /// </summary>
 public class Comms : RemoteObject
 {
@@ -19,7 +19,7 @@ public class Comms : RemoteObject
     }
 
     /// <summary>
-    /// Whether the vessel can communicate with KSC.
+    /// Gets whether the vessel can communicate with KSC.
     /// </summary>
     [Rpc ("SpaceCenter", "Comms_get_CanCommunicate")]
     public bool GetCanCommunicate ()
@@ -31,7 +31,7 @@ public class Comms : RemoteObject
     }
 
     /// <summary>
-    /// Whether the vessel can transmit science data to KSC.
+    /// Gets whether the vessel can transmit science data to KSC.
     /// </summary>
     [Rpc ("SpaceCenter", "Comms_get_CanTransmitScience")]
     public bool GetCanTransmitScience ()
@@ -43,7 +43,7 @@ public class Comms : RemoteObject
     }
 
     /// <summary>
-    /// The communication path used to control the vessel.
+    /// Gets the communication path used to control the vessel.
     /// </summary>
     [Rpc ("SpaceCenter", "Comms_get_ControlPath")]
     public IList<CommLink> GetControlPath ()
@@ -55,7 +55,7 @@ public class Comms : RemoteObject
     }
 
     /// <summary>
-    /// The combined power of all active antennae on the vessel.
+    /// Gets the combined power of all active antennae on the vessel.
     /// </summary>
     [Rpc ("SpaceCenter", "Comms_get_Power")]
     public double GetPower ()

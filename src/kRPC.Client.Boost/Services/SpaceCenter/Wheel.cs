@@ -6,7 +6,7 @@ namespace kRPC.Client.Boost.Services.SpaceCenter;
 
 /// <summary>
 /// A wheel. Includes landing gear and rover wheels.
-/// Obtained by calling <see cref="M:SpaceCenter.Part.Wheel" />.
+/// Obtained by calling <see cref="M:SpaceCenter.Part.GetWheel" />.
 /// Can be used to control the motors, steering and deployment of wheels, among other things.
 /// </summary>
 public class Wheel : RemoteObject
@@ -19,7 +19,7 @@ public class Wheel : RemoteObject
     }
 
     /// <summary>
-    /// Whether automatic friction control is enabled.
+    /// Gets whether automatic friction control is enabled.
     /// </summary>
     [Rpc ("SpaceCenter", "Wheel_get_AutoFrictionControl")]
     public bool GetAutoFrictionControl ()
@@ -31,7 +31,7 @@ public class Wheel : RemoteObject
     }
 
     /// <summary>
-    /// Sets the AutoFrictionControl value.
+    /// Sets whether automatic friction control is enabled.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetAutoFrictionControl (bool value)
@@ -44,7 +44,7 @@ public class Wheel : RemoteObject
     }
 
     /// <summary>
-    /// The braking force, as a percentage of maximum, when the brakes are applied.
+    /// Gets the braking force, as a percentage of maximum, when the brakes are applied.
     /// </summary>
     [Rpc ("SpaceCenter", "Wheel_get_Brakes")]
     public float GetBrakes ()
@@ -56,7 +56,7 @@ public class Wheel : RemoteObject
     }
 
     /// <summary>
-    /// Sets the Brakes value.
+    /// Sets the braking force, as a percentage of maximum, when the brakes are applied.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetBrakes (float value)
@@ -69,7 +69,7 @@ public class Wheel : RemoteObject
     }
 
     /// <summary>
-    /// Whether the wheel is broken.
+    /// Gets whether the wheel is broken.
     /// </summary>
     [Rpc ("SpaceCenter", "Wheel_get_Broken")]
     public bool GetBroken ()
@@ -81,7 +81,7 @@ public class Wheel : RemoteObject
     }
 
     /// <summary>
-    /// Current deflection of the wheel.
+    /// Gets the current deflection of the wheel.
     /// </summary>
     [Rpc ("SpaceCenter", "Wheel_get_Deflection")]
     public float GetDeflection ()
@@ -93,7 +93,7 @@ public class Wheel : RemoteObject
     }
 
     /// <summary>
-    /// Whether the wheel is deployable.
+    /// Gets whether the wheel is deployable.
     /// </summary>
     [Rpc ("SpaceCenter", "Wheel_get_Deployable")]
     public bool GetDeployable ()
@@ -105,7 +105,7 @@ public class Wheel : RemoteObject
     }
 
     /// <summary>
-    /// Whether the wheel is deployed.
+    /// Gets whether the wheel is deployed.
     /// </summary>
     [Rpc ("SpaceCenter", "Wheel_get_Deployed")]
     public bool GetDeployed ()
@@ -117,7 +117,7 @@ public class Wheel : RemoteObject
     }
 
     /// <summary>
-    /// Sets the Deployed value.
+    /// Sets whether the wheel is deployed.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetDeployed (bool value)
@@ -144,7 +144,9 @@ public class Wheel : RemoteObject
     }
 
     /// <summary>
-    /// Sets the DriveLimiter value.
+    /// Sets the manual motor limiter.
+    /// Only takes effect if the wheel has automatic traction control disabled.
+    /// A value between 0 and 100 inclusive.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetDriveLimiter (float value)
@@ -157,7 +159,7 @@ public class Wheel : RemoteObject
     }
 
     /// <summary>
-    /// Whether the wheel is touching the ground.
+    /// Gets whether the wheel is touching the ground.
     /// </summary>
     [Rpc ("SpaceCenter", "Wheel_get_Grounded")]
     public bool GetGrounded ()
@@ -169,7 +171,7 @@ public class Wheel : RemoteObject
     }
 
     /// <summary>
-    /// Whether the wheel has brakes.
+    /// Gets whether the wheel has brakes.
     /// </summary>
     [Rpc ("SpaceCenter", "Wheel_get_HasBrakes")]
     public bool GetHasBrakes ()
@@ -181,7 +183,7 @@ public class Wheel : RemoteObject
     }
 
     /// <summary>
-    /// Whether the wheel has suspension.
+    /// Gets whether the wheel has suspension.
     /// </summary>
     [Rpc ("SpaceCenter", "Wheel_get_HasSuspension")]
     public bool GetHasSuspension ()
@@ -206,7 +208,8 @@ public class Wheel : RemoteObject
     }
 
     /// <summary>
-    /// Sets the ManualFrictionControl value.
+    /// Sets the manual friction control value. Only has an effect if automatic friction control is disabled.
+    /// A value between 0 and 5 inclusive.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetManualFrictionControl (float value)
@@ -219,7 +222,7 @@ public class Wheel : RemoteObject
     }
 
     /// <summary>
-    /// Whether the motor is enabled.
+    /// Gets whether the motor is enabled.
     /// </summary>
     [Rpc ("SpaceCenter", "Wheel_get_MotorEnabled")]
     public bool GetMotorEnabled ()
@@ -231,7 +234,7 @@ public class Wheel : RemoteObject
     }
 
     /// <summary>
-    /// Sets the MotorEnabled value.
+    /// Sets whether the motor is enabled.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetMotorEnabled (bool value)
@@ -244,7 +247,7 @@ public class Wheel : RemoteObject
     }
 
     /// <summary>
-    /// Whether the direction of the motor is inverted.
+    /// Gets whether the direction of the motor is inverted.
     /// </summary>
     [Rpc ("SpaceCenter", "Wheel_get_MotorInverted")]
     public bool GetMotorInverted ()
@@ -256,7 +259,7 @@ public class Wheel : RemoteObject
     }
 
     /// <summary>
-    /// Sets the MotorInverted value.
+    /// Sets whether the direction of the motor is inverted.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetMotorInverted (bool value)
@@ -269,7 +272,7 @@ public class Wheel : RemoteObject
     }
 
     /// <summary>
-    /// The output of the motor. This is the torque currently being generated, in Newton meters.
+    /// Gets the output of the motor. This is the torque currently being generated, in Newton meters.
     /// </summary>
     [Rpc ("SpaceCenter", "Wheel_get_MotorOutput")]
     public float GetMotorOutput ()
@@ -281,7 +284,7 @@ public class Wheel : RemoteObject
     }
 
     /// <summary>
-    /// Whether the direction of the motor is inverted.
+    /// Gets whether the direction of the motor is inverted.
     /// </summary>
     [Rpc ("SpaceCenter", "Wheel_get_MotorState")]
     public MotorState GetMotorState ()
@@ -293,7 +296,7 @@ public class Wheel : RemoteObject
     }
 
     /// <summary>
-    /// The part object for this wheel.
+    /// Gets the part object for this wheel.
     /// </summary>
     [Rpc ("SpaceCenter", "Wheel_get_Part")]
     public Part GetPart ()
@@ -305,7 +308,7 @@ public class Wheel : RemoteObject
     }
 
     /// <summary>
-    /// Whether the wheel is powered by a motor.
+    /// Gets whether the wheel is powered by a motor.
     /// </summary>
     [Rpc ("SpaceCenter", "Wheel_get_Powered")]
     public bool GetPowered ()
@@ -329,7 +332,7 @@ public class Wheel : RemoteObject
     }
 
     /// <summary>
-    /// Whether the wheel is repairable.
+    /// Gets whether the wheel is repairable.
     /// </summary>
     [Rpc ("SpaceCenter", "Wheel_get_Repairable")]
     public bool GetRepairable ()
@@ -341,7 +344,7 @@ public class Wheel : RemoteObject
     }
 
     /// <summary>
-    /// Current slip of the wheel.
+    /// Gets the current slip of the wheel.
     /// </summary>
     [Rpc ("SpaceCenter", "Wheel_get_Slip")]
     public float GetSlip ()
@@ -353,7 +356,7 @@ public class Wheel : RemoteObject
     }
 
     /// <summary>
-    /// The current state of the wheel.
+    /// Gets the current state of the wheel.
     /// </summary>
     [Rpc ("SpaceCenter", "Wheel_get_State")]
     public WheelState GetState ()
@@ -365,7 +368,7 @@ public class Wheel : RemoteObject
     }
 
     /// <summary>
-    /// Whether the wheel has steering.
+    /// Gets whether the wheel has steering.
     /// </summary>
     [Rpc ("SpaceCenter", "Wheel_get_Steerable")]
     public bool GetSteerable ()
@@ -377,7 +380,7 @@ public class Wheel : RemoteObject
     }
 
     /// <summary>
-    /// The steering angle limit.
+    /// Gets the steering angle limit.
     /// </summary>
     [Rpc ("SpaceCenter", "Wheel_get_SteeringAngleLimit")]
     public float GetSteeringAngleLimit ()
@@ -389,7 +392,7 @@ public class Wheel : RemoteObject
     }
 
     /// <summary>
-    /// Sets the SteeringAngleLimit value.
+    /// Sets the steering angle limit.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetSteeringAngleLimit (float value)
@@ -402,7 +405,7 @@ public class Wheel : RemoteObject
     }
 
     /// <summary>
-    /// Whether the wheel steering is enabled.
+    /// Gets whether the wheel steering is enabled.
     /// </summary>
     [Rpc ("SpaceCenter", "Wheel_get_SteeringEnabled")]
     public bool GetSteeringEnabled ()
@@ -414,7 +417,7 @@ public class Wheel : RemoteObject
     }
 
     /// <summary>
-    /// Sets the SteeringEnabled value.
+    /// Sets whether the wheel steering is enabled.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetSteeringEnabled (bool value)
@@ -427,7 +430,7 @@ public class Wheel : RemoteObject
     }
 
     /// <summary>
-    /// Whether the wheel steering is inverted.
+    /// Gets whether the wheel steering is inverted.
     /// </summary>
     [Rpc ("SpaceCenter", "Wheel_get_SteeringInverted")]
     public bool GetSteeringInverted ()
@@ -439,7 +442,7 @@ public class Wheel : RemoteObject
     }
 
     /// <summary>
-    /// Sets the SteeringInverted value.
+    /// Sets whether the wheel steering is inverted.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetSteeringInverted (bool value)
@@ -464,7 +467,7 @@ public class Wheel : RemoteObject
     }
 
     /// <summary>
-    /// Sets the SteeringResponseTime value.
+    /// Sets the steering response time.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetSteeringResponseTime (float value)
@@ -477,7 +480,7 @@ public class Wheel : RemoteObject
     }
 
     /// <summary>
-    /// Current stress on the wheel.
+    /// Gets the current stress on the wheel.
     /// </summary>
     [Rpc ("SpaceCenter", "Wheel_get_Stress")]
     public float GetStress ()
@@ -489,7 +492,7 @@ public class Wheel : RemoteObject
     }
 
     /// <summary>
-    /// Current stress on the wheel as a percentage of its stress tolerance.
+    /// Gets the current stress on the wheel as a percentage of its stress tolerance.
     /// </summary>
     [Rpc ("SpaceCenter", "Wheel_get_StressPercentage")]
     public float GetStressPercentage ()
@@ -551,7 +554,9 @@ public class Wheel : RemoteObject
     }
 
     /// <summary>
-    /// Sets the TractionControl value.
+    /// Sets the traction control value.
+    /// Only takes effect if the wheel has automatic traction control enabled.
+    /// A value between 0 and 5 inclusive.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetTractionControl (float value)
@@ -564,7 +569,7 @@ public class Wheel : RemoteObject
     }
 
     /// <summary>
-    /// Whether automatic traction control is enabled.
+    /// Gets whether automatic traction control is enabled.
     /// A wheel only has traction control if it is powered.
     /// </summary>
     [Rpc ("SpaceCenter", "Wheel_get_TractionControlEnabled")]
@@ -577,7 +582,8 @@ public class Wheel : RemoteObject
     }
 
     /// <summary>
-    /// Sets the TractionControlEnabled value.
+    /// Sets whether automatic traction control is enabled.
+    /// A wheel only has traction control if it is powered.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetTractionControlEnabled (bool value)

@@ -1,7 +1,7 @@
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
 /// <summary>
-/// The state of a cargo bay. See <see cref="M:SpaceCenter.CargoBay.State" />.
+/// The state of a cargo bay. See <see cref="M:SpaceCenter.CargoBay.GetState" />.
 /// </summary>
 [Serializable]
 public enum CargoBayState

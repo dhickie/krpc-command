@@ -6,7 +6,7 @@ using System.Collections.Generic;
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
 /// <summary>
-/// A resource converter. Obtained by calling <see cref="M:SpaceCenter.Part.ResourceConverter" />.
+/// A resource converter. Obtained by calling <see cref="M:SpaceCenter.Part.GetResourceConverter" />.
 /// </summary>
 public class ResourceConverter : RemoteObject
 {
@@ -131,7 +131,7 @@ public class ResourceConverter : RemoteObject
     }
 
     /// <summary>
-    /// The core temperature of the converter, in Kelvin.
+    /// Gets the core temperature of the converter, in Kelvin.
     /// </summary>
     [Rpc ("SpaceCenter", "ResourceConverter_get_CoreTemperature")]
     public float GetCoreTemperature ()
@@ -143,7 +143,7 @@ public class ResourceConverter : RemoteObject
     }
 
     /// <summary>
-    /// The number of converters in the part.
+    /// Gets the number of converters in the part.
     /// </summary>
     [Rpc ("SpaceCenter", "ResourceConverter_get_Count")]
     public int GetCount ()
@@ -155,7 +155,7 @@ public class ResourceConverter : RemoteObject
     }
 
     /// <summary>
-    /// The core temperature at which the converter will operate with peak efficiency, in Kelvin.
+    /// Gets the core temperature at which the converter will operate with peak efficiency, in Kelvin.
     /// </summary>
     [Rpc ("SpaceCenter", "ResourceConverter_get_OptimumCoreTemperature")]
     public float GetOptimumCoreTemperature ()
@@ -167,7 +167,7 @@ public class ResourceConverter : RemoteObject
     }
 
     /// <summary>
-    /// The part object for this converter.
+    /// Gets the part object for this converter.
     /// </summary>
     [Rpc ("SpaceCenter", "ResourceConverter_get_Part")]
     public Part GetPart ()
@@ -179,7 +179,7 @@ public class ResourceConverter : RemoteObject
     }
 
     /// <summary>
-    /// The thermal efficiency of the converter, as a percentage of its maximum.
+    /// Gets the thermal efficiency of the converter, as a percentage of its maximum.
     /// </summary>
     [Rpc ("SpaceCenter", "ResourceConverter_get_ThermalEfficiency")]
     public float GetThermalEfficiency ()

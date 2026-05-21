@@ -18,7 +18,7 @@ public class LaunchSite : RemoteObject
     }
 
     /// <summary>
-    /// The celestial body the launch site is on.
+    /// Gets the celestial body the launch site is on.
     /// </summary>
     [Rpc ("SpaceCenter", "LaunchSite_get_Body")]
     public CelestialBody GetBody ()
@@ -42,7 +42,7 @@ public class LaunchSite : RemoteObject
     }
 
     /// <summary>
-    /// The name of the launch site.
+    /// Gets the name of the launch site.
     /// </summary>
     [Rpc ("SpaceCenter", "LaunchSite_get_Name")]
     public string GetName ()

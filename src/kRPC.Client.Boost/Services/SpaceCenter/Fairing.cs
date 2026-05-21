@@ -5,7 +5,7 @@ using kRPC.Client.Boost.Attributes;
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
 /// <summary>
-/// A fairing. Obtained by calling <see cref="M:SpaceCenter.Part.Fairing" />.
+/// A fairing. Obtained by calling <see cref="M:SpaceCenter.Part.GetFairing" />.
 /// Supports both stock fairings, and those from the ProceduralFairings mod.
 /// </summary>
 public class Fairing : RemoteObject
@@ -30,7 +30,7 @@ public class Fairing : RemoteObject
     }
 
     /// <summary>
-    /// Whether the fairing has been jettisoned.
+    /// Gets whether the fairing has been jettisoned.
     /// </summary>
     [Rpc ("SpaceCenter", "Fairing_get_Jettisoned")]
     public bool GetJettisoned ()
@@ -42,7 +42,7 @@ public class Fairing : RemoteObject
     }
 
     /// <summary>
-    /// The part object for this fairing.
+    /// Gets the part object for this fairing.
     /// </summary>
     [Rpc ("SpaceCenter", "Fairing_get_Part")]
     public Part GetPart ()

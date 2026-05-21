@@ -5,7 +5,7 @@ using kRPC.Client.Boost.Attributes;
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
 /// <summary>
-/// A launch clamp. Obtained by calling <see cref="M:SpaceCenter.Part.LaunchClamp" />.
+/// A launch clamp. Obtained by calling <see cref="M:SpaceCenter.Part.GetLaunchClamp" />.
 /// </summary>
 public class LaunchClamp : RemoteObject
 {
@@ -29,7 +29,7 @@ public class LaunchClamp : RemoteObject
     }
 
     /// <summary>
-    /// The part object for this launch clamp.
+    /// Gets the part object for this launch clamp.
     /// </summary>
     [Rpc ("SpaceCenter", "LaunchClamp_get_Part")]
     public Part GetPart ()

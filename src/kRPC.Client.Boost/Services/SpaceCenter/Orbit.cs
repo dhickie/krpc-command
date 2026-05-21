@@ -9,8 +9,8 @@ namespace kRPC.Client.Boost.Services.SpaceCenter;
 
 /// <summary>
 /// Describes an orbit. For example, the orbit of a vessel, obtained by calling
-/// <see cref="M:SpaceCenter.Vessel.Orbit" />, or a celestial body, obtained by calling
-/// <see cref="M:SpaceCenter.CelestialBody.Orbit" />.
+/// <see cref="M:SpaceCenter.Vessel.GetOrbit" />, or a celestial body, obtained by calling
+/// <see cref="M:SpaceCenter.CelestialBody.GetOrbit" />.
 /// </summary>
 public class Orbit : RemoteObject
 {
@@ -288,7 +288,7 @@ public class Orbit : RemoteObject
     /// </summary>
     /// <remarks>
     /// For the apoapsis altitude reported on the in-game map view,
-    /// use <see cref="M:SpaceCenter.Orbit.ApoapsisAltitude" />.
+    /// use <see cref="M:SpaceCenter.Orbit.GetApoapsisAltitude" />.
     /// </remarks>
     [Rpc ("SpaceCenter", "Orbit_get_Apoapsis")]
     public double GetApoapsis ()
@@ -300,10 +300,10 @@ public class Orbit : RemoteObject
     }
 
     /// <summary>
-    /// The apoapsis of the orbit, in meters, above the sea level of the body being orbited.
+    /// Gets the apoapsis of the orbit, in meters, above the sea level of the body being orbited.
     /// </summary>
     /// <remarks>
-    /// This is equal to <see cref="M:SpaceCenter.Orbit.Apoapsis" /> minus the equatorial radius of the body.
+    /// This is equal to <see cref="M:SpaceCenter.Orbit.GetApoapsis" /> minus the equatorial radius of the body.
     /// </remarks>
     [Rpc ("SpaceCenter", "Orbit_get_ApoapsisAltitude")]
     public double GetApoapsisAltitude ()
@@ -315,7 +315,7 @@ public class Orbit : RemoteObject
     }
 
     /// <summary>
-    /// The <a href="https://en.wikipedia.org/wiki/Argument_of_periapsis">argument of
+    /// Gets the <a href="https://en.wikipedia.org/wiki/Argument_of_periapsis">argument of
     /// periapsis</a>, in radians.
     /// </summary>
     [Rpc ("SpaceCenter", "Orbit_get_ArgumentOfPeriapsis")]
@@ -328,7 +328,7 @@ public class Orbit : RemoteObject
     }
 
     /// <summary>
-    /// The celestial body (e.g. planet or moon) around which the object is orbiting.
+    /// Gets the celestial body (e.g. planet or moon) around which the object is orbiting.
     /// </summary>
     [Rpc ("SpaceCenter", "Orbit_get_Body")]
     public CelestialBody GetBody ()
@@ -340,7 +340,7 @@ public class Orbit : RemoteObject
     }
 
     /// <summary>
-    /// The <a href="https://en.wikipedia.org/wiki/Eccentric_anomaly">eccentric anomaly</a>.
+    /// Gets the <a href="https://en.wikipedia.org/wiki/Eccentric_anomaly">eccentric anomaly</a>.
     /// </summary>
     [Rpc ("SpaceCenter", "Orbit_get_EccentricAnomaly")]
     public double GetEccentricAnomaly ()
@@ -352,7 +352,7 @@ public class Orbit : RemoteObject
     }
 
     /// <summary>
-    /// The <a href="https://en.wikipedia.org/wiki/Orbital_eccentricity">eccentricity</a>
+    /// Gets the <a href="https://en.wikipedia.org/wiki/Orbital_eccentricity">eccentricity</a>
     /// of the orbit.
     /// </summary>
     [Rpc ("SpaceCenter", "Orbit_get_Eccentricity")]
@@ -365,7 +365,7 @@ public class Orbit : RemoteObject
     }
 
     /// <summary>
-    /// The time since the epoch (the point at which the
+    /// Gets the time since the epoch (the point at which the
     /// <a href="https://en.wikipedia.org/wiki/Mean_anomaly">mean anomaly at epoch</a>
     /// was measured, in seconds.
     /// </summary>
@@ -379,7 +379,7 @@ public class Orbit : RemoteObject
     }
 
     /// <summary>
-    /// The <a href="https://en.wikipedia.org/wiki/Orbital_inclination">inclination</a>
+    /// Gets the <a href="https://en.wikipedia.org/wiki/Orbital_inclination">inclination</a>
     /// of the orbit,
     /// in radians.
     /// </summary>
@@ -393,7 +393,7 @@ public class Orbit : RemoteObject
     }
 
     /// <summary>
-    /// The <a href="https://en.wikipedia.org/wiki/Longitude_of_the_ascending_node">longitude of
+    /// Gets the <a href="https://en.wikipedia.org/wiki/Longitude_of_the_ascending_node">longitude of
     /// the ascending node</a>, in radians.
     /// </summary>
     [Rpc ("SpaceCenter", "Orbit_get_LongitudeOfAscendingNode")]
@@ -406,7 +406,7 @@ public class Orbit : RemoteObject
     }
 
     /// <summary>
-    /// The <a href="https://en.wikipedia.org/wiki/Mean_anomaly">mean anomaly</a>.
+    /// Gets the <a href="https://en.wikipedia.org/wiki/Mean_anomaly">mean anomaly</a>.
     /// </summary>
     [Rpc ("SpaceCenter", "Orbit_get_MeanAnomaly")]
     public double GetMeanAnomaly ()
@@ -418,7 +418,7 @@ public class Orbit : RemoteObject
     }
 
     /// <summary>
-    /// The <a href="https://en.wikipedia.org/wiki/Mean_anomaly">mean anomaly at epoch</a>.
+    /// Gets the <a href="https://en.wikipedia.org/wiki/Mean_anomaly">mean anomaly at epoch</a>.
     /// </summary>
     [Rpc ("SpaceCenter", "Orbit_get_MeanAnomalyAtEpoch")]
     public double GetMeanAnomalyAtEpoch ()
@@ -443,7 +443,7 @@ public class Orbit : RemoteObject
     }
 
     /// <summary>
-    /// The current orbital speed in meters per second.
+    /// Gets the current orbital speed in meters per second.
     /// </summary>
     [Rpc ("SpaceCenter", "Orbit_get_OrbitalSpeed")]
     public double GetOrbitalSpeed ()
@@ -455,12 +455,12 @@ public class Orbit : RemoteObject
     }
 
     /// <summary>
-    /// The periapsis of the orbit, in meters, from the center of mass
+    /// Gets the periapsis of the orbit, in meters, from the center of mass
     /// of the body being orbited.
     /// </summary>
     /// <remarks>
     /// For the periapsis altitude reported on the in-game map view,
-    /// use <see cref="M:SpaceCenter.Orbit.PeriapsisAltitude" />.
+    /// use <see cref="M:SpaceCenter.Orbit.GetPeriapsisAltitude" />.
     /// </remarks>
     [Rpc ("SpaceCenter", "Orbit_get_Periapsis")]
     public double GetPeriapsis ()
@@ -472,10 +472,10 @@ public class Orbit : RemoteObject
     }
 
     /// <summary>
-    /// The periapsis of the orbit, in meters, above the sea level of the body being orbited.
+    /// Gets the periapsis of the orbit, in meters, above the sea level of the body being orbited.
     /// </summary>
     /// <remarks>
-    /// This is equal to <see cref="M:SpaceCenter.Orbit.Periapsis" /> minus the equatorial radius of the body.
+    /// This is equal to <see cref="M:SpaceCenter.Orbit.GetPeriapsis" /> minus the equatorial radius of the body.
     /// </remarks>
     [Rpc ("SpaceCenter", "Orbit_get_PeriapsisAltitude")]
     public double GetPeriapsisAltitude ()
@@ -487,7 +487,7 @@ public class Orbit : RemoteObject
     }
 
     /// <summary>
-    /// The orbital period, in seconds.
+    /// Gets the orbital period, in seconds.
     /// </summary>
     [Rpc ("SpaceCenter", "Orbit_get_Period")]
     public double GetPeriod ()
@@ -499,7 +499,7 @@ public class Orbit : RemoteObject
     }
 
     /// <summary>
-    /// The current radius of the orbit, in meters. This is the distance between the center
+    /// Gets the current radius of the orbit, in meters. This is the distance between the center
     /// of mass of the object in orbit, and the center of mass of the body around which it
     /// is orbiting.
     /// </summary>
@@ -516,7 +516,7 @@ public class Orbit : RemoteObject
     }
 
     /// <summary>
-    /// The semi-major axis of the orbit, in meters.
+    /// Gets the semi-major axis of the orbit, in meters.
     /// </summary>
     [Rpc ("SpaceCenter", "Orbit_get_SemiMajorAxis")]
     public double GetSemiMajorAxis ()
@@ -528,7 +528,7 @@ public class Orbit : RemoteObject
     }
 
     /// <summary>
-    /// The semi-minor axis of the orbit, in meters.
+    /// Gets the semi-minor axis of the orbit, in meters.
     /// </summary>
     [Rpc ("SpaceCenter", "Orbit_get_SemiMinorAxis")]
     public double GetSemiMinorAxis ()
@@ -540,7 +540,7 @@ public class Orbit : RemoteObject
     }
 
     /// <summary>
-    /// The current orbital speed of the object in meters per second.
+    /// Gets the current orbital speed of the object in meters per second.
     /// </summary>
     /// <remarks>
     /// This value will change over time if the orbit is elliptical.
@@ -555,7 +555,7 @@ public class Orbit : RemoteObject
     }
 
     /// <summary>
-    /// The time until the object reaches apoapsis, in seconds.
+    /// Gets the time until the object reaches apoapsis, in seconds.
     /// </summary>
     [Rpc ("SpaceCenter", "Orbit_get_TimeToApoapsis")]
     public double GetTimeToApoapsis ()
@@ -567,7 +567,7 @@ public class Orbit : RemoteObject
     }
 
     /// <summary>
-    /// The time until the object reaches periapsis, in seconds.
+    /// Gets the time until the object reaches periapsis, in seconds.
     /// </summary>
     [Rpc ("SpaceCenter", "Orbit_get_TimeToPeriapsis")]
     public double GetTimeToPeriapsis ()
@@ -579,7 +579,7 @@ public class Orbit : RemoteObject
     }
 
     /// <summary>
-    /// The time until the object changes sphere of influence, in seconds. Returns <c>NaN</c>
+    /// Gets the time until the object changes sphere of influence, in seconds. Returns <c>NaN</c>
     /// if the object is not going to change sphere of influence.
     /// </summary>
     [Rpc ("SpaceCenter", "Orbit_get_TimeToSOIChange")]
@@ -592,7 +592,7 @@ public class Orbit : RemoteObject
     }
 
     /// <summary>
-    /// The <a href="https://en.wikipedia.org/wiki/True_anomaly">true anomaly</a>.
+    /// Gets the <a href="https://en.wikipedia.org/wiki/True_anomaly">true anomaly</a>.
     /// </summary>
     [Rpc ("SpaceCenter", "Orbit_get_TrueAnomaly")]
     public double GetTrueAnomaly ()

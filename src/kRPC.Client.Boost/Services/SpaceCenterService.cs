@@ -424,7 +424,7 @@ public class SpaceCenterService
     }
 
     /// <summary>
-    /// The currently active vessel.
+    /// Gets the currently active vessel.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "get_ActiveVessel")]
     public Vessel GetActiveVessel ()
@@ -433,7 +433,7 @@ public class SpaceCenterService
     }
 
     /// <summary>
-    /// Sets the ActiveVessel value.
+    /// Sets the currently active vessel.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetActiveVessel (Vessel value)
@@ -445,7 +445,7 @@ public class SpaceCenterService
     }
 
     /// <summary>
-    /// The alarm manager.
+    /// Gets the alarm manager.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "get_AlarmManager")]
     public AlarmManager GetAlarmManager ()
@@ -454,7 +454,7 @@ public class SpaceCenterService
     }
 
     /// <summary>
-    /// A dictionary of all celestial bodies (planets, moons, etc.) in the game,
+    /// Gets a dictionary of all celestial bodies (planets, moons, etc.) in the game,
     /// keyed by the name of the body.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "get_Bodies")]
@@ -464,7 +464,7 @@ public class SpaceCenterService
     }
 
     /// <summary>
-    /// An object that can be used to control the camera.
+    /// Gets an object that can be used to control the camera.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "get_Camera")]
     public Camera GetCamera ()
@@ -473,7 +473,7 @@ public class SpaceCenterService
     }
 
     /// <summary>
-    /// The contract manager.
+    /// Gets the contract manager.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "get_ContractManager")]
     public ContractManager GetContractManager ()
@@ -482,7 +482,7 @@ public class SpaceCenterService
     }
 
     /// <summary>
-    /// Whether <a href="https://forum.kerbalspaceprogram.com/index.php?/topic/19321-130-ferram-aerospace-research-v0159-liebe-82117/">Ferram Aerospace Research</a> is installed.
+    /// Gets whether <a href="https://forum.kerbalspaceprogram.com/index.php?/topic/19321-130-ferram-aerospace-research-v0159-liebe-82117/">Ferram Aerospace Research</a> is installed.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "get_FARAvailable")]
     public bool GetFARAvailable ()
@@ -491,7 +491,7 @@ public class SpaceCenterService
     }
 
     /// <summary>
-    /// The current amount of funds.
+    /// Gets the current amount of funds.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "get_Funds")]
     public double GetFunds ()
@@ -500,7 +500,7 @@ public class SpaceCenterService
     }
 
     /// <summary>
-    /// The value of the <a href="https://en.wikipedia.org/wiki/Gravitational_constant">
+    /// Gets the value of the <a href="https://en.wikipedia.org/wiki/Gravitational_constant">
     /// gravitational constant</a> G in <math>N(m/kg)^2</math>.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "get_G")]
@@ -510,7 +510,7 @@ public class SpaceCenterService
     }
 
     /// <summary>
-    /// The current mode the game is in.
+    /// Gets the current mode the game is in.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "get_GameMode")]
     public GameMode GetGameMode ()
@@ -519,7 +519,7 @@ public class SpaceCenterService
     }
 
     /// <summary>
-    /// A list of available launch sites.
+    /// Gets a list of available launch sites.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "get_LaunchSites")]
     public IList<LaunchSite> GetLaunchSites ()
@@ -528,7 +528,7 @@ public class SpaceCenterService
     }
 
     /// <summary>
-    /// The visible objects in map mode.
+    /// Gets the visible objects in map mode.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "get_MapFilter")]
     public MapFilterType GetMapFilter ()
@@ -537,7 +537,7 @@ public class SpaceCenterService
     }
 
     /// <summary>
-    /// Sets the MapFilter value.
+    /// Sets the visible objects in map mode.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetMapFilter (MapFilterType value)
@@ -549,7 +549,7 @@ public class SpaceCenterService
     }
 
     /// <summary>
-    /// The current maximum regular "on-rails" warp factor that can be set.
+    /// Gets the current maximum regular "on-rails" warp factor that can be set.
     /// A value between 0 and 7 inclusive. See
     /// <a href="https://wiki.kerbalspaceprogram.com/wiki/Time_warp">the KSP wiki</a>
     /// for details.
@@ -561,7 +561,7 @@ public class SpaceCenterService
     }
 
     /// <summary>
-    /// Whether the navball is visible.
+    /// Gets whether the navball is visible.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "get_Navball")]
     public bool GetNavball ()
@@ -570,7 +570,7 @@ public class SpaceCenterService
     }
 
     /// <summary>
-    /// Sets the Navball value.
+    /// Sets whether the navball is visible.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetNavball (bool value)
@@ -582,7 +582,7 @@ public class SpaceCenterService
     }
 
     /// <summary>
-    /// The physical time warp rate. A value between 0 and 3 inclusive. 0 means
+    /// Gets the physical time warp rate. A value between 0 and 3 inclusive. 0 means
     /// no time warp. Returns 0 if regular "on-rails" time warp is active.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "get_PhysicsWarpFactor")]
@@ -592,7 +592,8 @@ public class SpaceCenterService
     }
 
     /// <summary>
-    /// Sets the PhysicsWarpFactor value.
+    /// Sets the physical time warp rate. A value between 0 and 3 inclusive. 0 means
+    /// no time warp. Returns 0 if regular "on-rails" time warp is active.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetPhysicsWarpFactor (int value)
@@ -604,7 +605,7 @@ public class SpaceCenterService
     }
 
     /// <summary>
-    /// The time warp rate, using regular "on-rails" time warp. A value between
+    /// Gets the time warp rate, using regular "on-rails" time warp. A value between
     /// 0 and 7 inclusive. 0 means no time warp. Returns 0 if physical time warp
     /// is active.
     ///
@@ -620,7 +621,14 @@ public class SpaceCenterService
     }
 
     /// <summary>
-    /// Sets the RailsWarpFactor value.
+    /// Sets the time warp rate, using regular "on-rails" time warp. A value between
+    /// 0 and 7 inclusive. 0 means no time warp. Returns 0 if physical time warp
+    /// is active.
+    ///
+    /// If requested time warp factor cannot be set, it will be set to the next
+    /// lowest possible value. For example, if the vessel is too close to a
+    /// planet. See <a href="https://wiki.kerbalspaceprogram.com/wiki/Time_warp">
+    /// the KSP wiki</a> for details.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetRailsWarpFactor (int value)
@@ -632,7 +640,7 @@ public class SpaceCenterService
     }
 
     /// <summary>
-    /// The current amount of reputation.
+    /// Gets the current amount of reputation.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "get_Reputation")]
     public float GetReputation ()
@@ -641,7 +649,7 @@ public class SpaceCenterService
     }
 
     /// <summary>
-    /// The current amount of science.
+    /// Gets the current amount of science.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "get_Science")]
     public float GetScience ()
@@ -650,7 +658,7 @@ public class SpaceCenterService
     }
 
     /// <summary>
-    /// The currently targeted celestial body.
+    /// Gets the currently targeted celestial body.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "get_TargetBody")]
     public CelestialBody GetTargetBody ()
@@ -659,7 +667,7 @@ public class SpaceCenterService
     }
 
     /// <summary>
-    /// Sets the TargetBody value.
+    /// Sets the currently targeted celestial body.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetTargetBody (CelestialBody value)
@@ -671,7 +679,7 @@ public class SpaceCenterService
     }
 
     /// <summary>
-    /// The currently targeted docking port.
+    /// Gets the currently targeted docking port.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "get_TargetDockingPort")]
     public DockingPort GetTargetDockingPort ()
@@ -680,7 +688,7 @@ public class SpaceCenterService
     }
 
     /// <summary>
-    /// Sets the TargetDockingPort value.
+    /// Sets the currently targeted docking port.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetTargetDockingPort (DockingPort value)
@@ -692,7 +700,7 @@ public class SpaceCenterService
     }
 
     /// <summary>
-    /// The currently targeted vessel.
+    /// Gets the currently targeted vessel.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "get_TargetVessel")]
     public Vessel GetTargetVessel ()
@@ -701,7 +709,7 @@ public class SpaceCenterService
     }
 
     /// <summary>
-    /// Sets the TargetVessel value.
+    /// Sets the currently targeted vessel.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetTargetVessel (Vessel value)
@@ -713,7 +721,7 @@ public class SpaceCenterService
     }
 
     /// <summary>
-    /// Whether the UI is visible.
+    /// Gets whether the UI is visible.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "get_UIVisible")]
     public bool GetUIVisible ()
@@ -722,7 +730,7 @@ public class SpaceCenterService
     }
 
     /// <summary>
-    /// Sets the UIVisible value.
+    /// Sets whether the UI is visible.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetUIVisible (bool value)
@@ -734,7 +742,7 @@ public class SpaceCenterService
     }
 
     /// <summary>
-    /// The current universal time in seconds.
+    /// Gets the current universal time in seconds.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "get_UT")]
     public double GetUT ()
@@ -743,7 +751,7 @@ public class SpaceCenterService
     }
 
     /// <summary>
-    /// A list of all the vessels in the game.
+    /// Gets a list of all the vessels in the game.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "get_Vessels")]
     public IList<Vessel> GetVessels ()
@@ -752,11 +760,11 @@ public class SpaceCenterService
     }
 
     /// <summary>
-    /// The current warp factor. This is the index of the rate at which time
+    /// Gets the current warp factor. This is the index of the rate at which time
     /// is passing for either regular "on-rails" or physical time warp. Returns 0
     /// if time warp is not active. When in on-rails time warp, this is equal to
-    /// <see cref="M:SpaceCenter.RailsWarpFactor" />, and in physics time warp, this is equal to
-    /// <see cref="M:SpaceCenter.PhysicsWarpFactor" />.
+    /// <see cref="M:SpaceCenter.GetRailsWarpFactor" />, and in physics time warp, this is equal to
+    /// <see cref="M:SpaceCenter.GetPhysicsWarpFactor" />.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "get_WarpFactor")]
     public float GetWarpFactor ()
@@ -765,7 +773,7 @@ public class SpaceCenterService
     }
 
     /// <summary>
-    /// The current time warp mode. Returns <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.WarpMode.None" /> if time
+    /// Gets the current time warp mode. Returns <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.WarpMode.None" /> if time
     /// warp is not active, <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.WarpMode.Rails" /> if regular "on-rails" time warp
     /// is active, or <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.WarpMode.Physics" /> if physical time warp is active.
     /// </summary>
@@ -776,7 +784,7 @@ public class SpaceCenterService
     }
 
     /// <summary>
-    /// The current warp rate. This is the rate at which time is passing for
+    /// Gets the current warp rate. This is the rate at which time is passing for
     /// either on-rails or physical time warp. For example, a value of 10 means
     /// time is passing 10x faster than normal. Returns 1 if time warp is not
     /// active.
@@ -788,7 +796,7 @@ public class SpaceCenterService
     }
 
     /// <summary>
-    /// The waypoint manager.
+    /// Gets the waypoint manager.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "get_WaypointManager")]
     public WaypointManager GetWaypointManager ()

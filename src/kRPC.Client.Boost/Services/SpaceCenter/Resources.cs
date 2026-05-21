@@ -8,9 +8,9 @@ namespace kRPC.Client.Boost.Services.SpaceCenter;
 
 /// <summary>
 /// Represents the collection of resources stored in a vessel, stage or part.
-/// Created by calling <see cref="M:SpaceCenter.Vessel.Resources" />,
+/// Created by calling <see cref="M:SpaceCenter.Vessel.GetResources" />,
 /// <see cref="M:SpaceCenter.Vessel.ResourcesInDecoupleStage" /> or
-/// <see cref="M:SpaceCenter.Part.Resources" />.
+/// <see cref="M:SpaceCenter.Part.GetResources" />.
 /// </summary>
 public class Resources : RemoteObject
 {
@@ -109,7 +109,7 @@ public class Resources : RemoteObject
     }
 
     /// <summary>
-    /// All the individual resources that can be stored.
+    /// Gets all the individual resources that can be stored.
     /// </summary>
     [Rpc ("SpaceCenter", "Resources_get_All")]
     public IList<Resource> GetAll ()
@@ -121,7 +121,7 @@ public class Resources : RemoteObject
     }
 
     /// <summary>
-    /// Whether use of all the resources are enabled.
+    /// Gets whether all resources are enabled.
     /// </summary>
     /// <remarks>
     /// This is <c>true</c> if all of the resources are enabled.
@@ -137,7 +137,7 @@ public class Resources : RemoteObject
     }
 
     /// <summary>
-    /// Sets the Enabled value.
+    /// Sets whether all resources are enabled.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetEnabled (bool value)
@@ -150,7 +150,7 @@ public class Resources : RemoteObject
     }
 
     /// <summary>
-    /// A list of resource names that can be stored.
+    /// Gets a list of resource names that can be stored.
     /// </summary>
     [Rpc ("SpaceCenter", "Resources_get_Names")]
     public IList<string> GetNames ()

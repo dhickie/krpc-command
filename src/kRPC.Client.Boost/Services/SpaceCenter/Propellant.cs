@@ -5,7 +5,7 @@ using kRPC.Client.Boost.Attributes;
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
 /// <summary>
-/// A propellant for an engine. Obtains by calling <see cref="M:SpaceCenter.Engine.Propellants" />.
+/// A propellant for an engine. Obtains by calling <see cref="M:SpaceCenter.Engine.GetPropellants" />.
 /// </summary>
 public class Propellant : RemoteObject
 {
@@ -17,7 +17,7 @@ public class Propellant : RemoteObject
     }
 
     /// <summary>
-    /// The current amount of propellant.
+    /// Gets the current amount of propellant.
     /// </summary>
     [Rpc ("SpaceCenter", "Propellant_get_CurrentAmount")]
     public double GetCurrentAmount ()
@@ -29,7 +29,7 @@ public class Propellant : RemoteObject
     }
 
     /// <summary>
-    /// The required amount of propellant.
+    /// Gets the required amount of propellant.
     /// </summary>
     [Rpc ("SpaceCenter", "Propellant_get_CurrentRequirement")]
     public double GetCurrentRequirement ()
@@ -90,7 +90,7 @@ public class Propellant : RemoteObject
     }
 
     /// <summary>
-    /// The name of the propellant.
+    /// Gets the name of the propellant.
     /// </summary>
     [Rpc ("SpaceCenter", "Propellant_get_Name")]
     public string GetName ()
@@ -102,7 +102,7 @@ public class Propellant : RemoteObject
     }
 
     /// <summary>
-    /// The propellant ratio.
+    /// Gets the propellant ratio.
     /// </summary>
     [Rpc ("SpaceCenter", "Propellant_get_Ratio")]
     public float GetRatio ()
@@ -114,7 +114,7 @@ public class Propellant : RemoteObject
     }
 
     /// <summary>
-    /// The total amount of the underlying resource currently reachable given
+    /// Gets the total amount of the underlying resource currently reachable given
     /// resource flow rules.
     /// </summary>
     [Rpc ("SpaceCenter", "Propellant_get_TotalResourceAvailable")]
@@ -127,7 +127,7 @@ public class Propellant : RemoteObject
     }
 
     /// <summary>
-    /// The total vehicle capacity for the underlying propellant resource,
+    /// Gets the total vehicle capacity for the underlying propellant resource,
     /// restricted by resource flow rules.
     /// </summary>
     [Rpc ("SpaceCenter", "Propellant_get_TotalResourceCapacity")]

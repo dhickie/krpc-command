@@ -2,7 +2,7 @@ namespace kRPC.Client.Boost.Services.SpaceCenter;
 
 /// <summary>
 /// The type of a crew member.
-/// See <see cref="M:SpaceCenter.CrewMember.Type" />.
+/// See <see cref="M:SpaceCenter.CrewMember.GetType" />.
 /// </summary>
 [Serializable]
 public enum CrewMemberType

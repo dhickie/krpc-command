@@ -1,7 +1,7 @@
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
 /// <summary>
-/// See <see cref="M:SpaceCenter.Control.InputMode" />.
+/// See <see cref="M:SpaceCenter.Control.GetInputMode" />.
 /// </summary>
 [Serializable]
 public enum ControlInputMode

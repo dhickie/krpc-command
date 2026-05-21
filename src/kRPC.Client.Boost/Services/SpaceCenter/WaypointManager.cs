@@ -8,7 +8,7 @@ namespace kRPC.Client.Boost.Services.SpaceCenter;
 /// <summary>
 /// Waypoints are the location markers you can see on the map view showing you where contracts are targeted for.
 /// With this structure, you can obtain coordinate data for the locations of these waypoints.
-/// Obtained by calling <see cref="M:SpaceCenter.WaypointManager" />.
+/// Obtained by calling <see cref="M:SpaceCenter.GetWaypointManager" />.
 /// </summary>
 public class WaypointManager : RemoteObject
 {
@@ -66,7 +66,7 @@ public class WaypointManager : RemoteObject
     }
 
     /// <summary>
-    /// An example map of known color - seed pairs.
+    /// Gets an example map of known color - seed pairs.
     /// Any other integers may be used as seed.
     /// </summary>
     [Rpc ("SpaceCenter", "WaypointManager_get_Colors")]
@@ -91,7 +91,7 @@ public class WaypointManager : RemoteObject
     }
 
     /// <summary>
-    /// A list of all existing waypoints.
+    /// Gets a list of all existing waypoints.
     /// </summary>
     [Rpc ("SpaceCenter", "WaypointManager_get_Waypoints")]
     public IList<Waypoint> GetWaypoints ()

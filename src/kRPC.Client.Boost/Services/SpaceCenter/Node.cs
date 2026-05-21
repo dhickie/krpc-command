@@ -21,7 +21,7 @@ public class Node : RemoteObject
     /// Returns the burn vector for the maneuver node.
     /// </summary>
     /// <param name="referenceFrame">The reference frame that the returned vector is in.
-    /// Defaults to <see cref="M:SpaceCenter.Vessel.OrbitalReferenceFrame" />.</param>
+    /// Defaults to <see cref="M:SpaceCenter.Vessel.GetOrbitalReferenceFrame" />.</param>
     /// <returns>A vector whose direction is the direction of the maneuver node burn, and
     /// magnitude is the delta-v of the burn in meters per second.
     /// </returns>
@@ -74,7 +74,7 @@ public class Node : RemoteObject
     /// Returns the remaining burn vector for the maneuver node.
     /// </summary>
     /// <param name="referenceFrame">The reference frame that the returned vector is in.
-    /// Defaults to <see cref="M:SpaceCenter.Vessel.OrbitalReferenceFrame" />.</param>
+    /// Defaults to <see cref="M:SpaceCenter.Vessel.GetOrbitalReferenceFrame" />.</param>
     /// <returns>A vector whose direction is the direction of the maneuver node burn, and
     /// magnitude is the delta-v of the burn in meters per second.
     /// </returns>
@@ -104,10 +104,10 @@ public class Node : RemoteObject
     }
 
     /// <summary>
-    /// The delta-v of the maneuver node, in meters per second.
+    /// Gets the delta-v of the maneuver node, in meters per second.
     /// </summary>
     /// <remarks>
-    /// Does not change when executing the maneuver node. See <see cref="M:SpaceCenter.Node.RemainingDeltaV" />.
+    /// Does not change when executing the maneuver node. See <see cref="M:SpaceCenter.Node.GetRemainingDeltaV" />.
     /// </remarks>
     [Rpc ("SpaceCenter", "Node_get_DeltaV")]
     public double GetDeltaV ()
@@ -119,7 +119,7 @@ public class Node : RemoteObject
     }
 
     /// <summary>
-    /// Sets the DeltaV value.
+    /// Sets the delta-v of the maneuver node, in meters per second.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetDeltaV (double value)
@@ -132,7 +132,7 @@ public class Node : RemoteObject
     }
 
     /// <summary>
-    /// The magnitude of the maneuver nodes delta-v in the normal direction,
+    /// Gets the magnitude of the maneuver nodes delta-v in the normal direction,
     /// in meters per second.
     /// </summary>
     [Rpc ("SpaceCenter", "Node_get_Normal")]
@@ -145,7 +145,8 @@ public class Node : RemoteObject
     }
 
     /// <summary>
-    /// Sets the Normal value.
+    /// Sets the magnitude of the maneuver nodes delta-v in the normal direction,
+    /// in meters per second.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetNormal (double value)
@@ -158,7 +159,7 @@ public class Node : RemoteObject
     }
 
     /// <summary>
-    /// The orbit that results from executing the maneuver node.
+    /// Gets the orbit that results from executing the maneuver node.
     /// </summary>
     [Rpc ("SpaceCenter", "Node_get_Orbit")]
     public Orbit GetOrbit ()
@@ -170,13 +171,14 @@ public class Node : RemoteObject
     }
 
     /// <summary>
-    /// The reference frame that is fixed relative to the maneuver node, and
+    /// Gets the reference frame that is fixed relative to the maneuver node, and
     /// orientated with the orbital prograde/normal/radial directions of the
     /// original orbit at the maneuver node's position.
     /// <list type="bullet"><item><description>The origin is at the position of the maneuver node.</description></item><item><description>The x-axis points in the orbital anti-radial direction of the original
     /// orbit, at the position of the maneuver node.</description></item><item><description>The y-axis points in the orbital prograde direction of the original
     /// orbit, at the position of the maneuver node.</description></item><item><description>The z-axis points in the orbital normal direction of the original orbit,
-    /// at the position of the maneuver node.</description></item></list></summary>
+    /// at the position of the maneuver node.</description></item></list>
+    /// </summary>
     [Rpc ("SpaceCenter", "Node_get_OrbitalReferenceFrame")]
     public ReferenceFrame GetOrbitalReferenceFrame ()
     {
@@ -187,7 +189,7 @@ public class Node : RemoteObject
     }
 
     /// <summary>
-    /// The magnitude of the maneuver nodes delta-v in the prograde direction,
+    /// Gets the magnitude of the maneuver nodes delta-v in the prograde direction,
     /// in meters per second.
     /// </summary>
     [Rpc ("SpaceCenter", "Node_get_Prograde")]
@@ -200,7 +202,8 @@ public class Node : RemoteObject
     }
 
     /// <summary>
-    /// Sets the Prograde value.
+    /// Sets the magnitude of the maneuver nodes delta-v in the prograde direction,
+    /// in meters per second.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetPrograde (double value)
@@ -213,7 +216,7 @@ public class Node : RemoteObject
     }
 
     /// <summary>
-    /// The magnitude of the maneuver nodes delta-v in the radial direction,
+    /// Gets the magnitude of the maneuver nodes delta-v in the radial direction,
     /// in meters per second.
     /// </summary>
     [Rpc ("SpaceCenter", "Node_get_Radial")]
@@ -226,7 +229,8 @@ public class Node : RemoteObject
     }
 
     /// <summary>
-    /// Sets the Radial value.
+    /// Sets the magnitude of the maneuver nodes delta-v in the radial direction,
+    /// in meters per second.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetRadial (double value)
@@ -239,8 +243,9 @@ public class Node : RemoteObject
     }
 
     /// <summary>
-    /// The reference frame that is fixed relative to the maneuver node's burn.
-    /// <list type="bullet"><item><description>The origin is at the position of the maneuver node.</description></item><item><description>The y-axis points in the direction of the burn.</description></item><item><description>The x-axis and z-axis point in arbitrary but fixed directions.</description></item></list></summary>
+    /// Gets the reference frame that is fixed relative to the maneuver node's burn.
+    /// <list type="bullet"><item><description>The origin is at the position of the maneuver node.</description></item><item><description>The y-axis points in the direction of the burn.</description></item><item><description>The x-axis and z-axis point in arbitrary but fixed directions.</description></item></list>
+    /// </summary>
     [Rpc ("SpaceCenter", "Node_get_ReferenceFrame")]
     public ReferenceFrame GetReferenceFrame ()
     {
@@ -264,7 +269,7 @@ public class Node : RemoteObject
     }
 
     /// <summary>
-    /// The time until the maneuver node will be encountered, in seconds.
+    /// Gets the time until the maneuver node will be encountered, in seconds.
     /// </summary>
     [Rpc ("SpaceCenter", "Node_get_TimeTo")]
     public double GetTimeTo ()
@@ -276,7 +281,7 @@ public class Node : RemoteObject
     }
 
     /// <summary>
-    /// The universal time at which the maneuver will occur, in seconds.
+    /// Gets the universal time at which the maneuver will occur, in seconds.
     /// </summary>
     [Rpc ("SpaceCenter", "Node_get_UT")]
     public double GetUT ()
@@ -288,7 +293,7 @@ public class Node : RemoteObject
     }
 
     /// <summary>
-    /// Sets the UT value.
+    /// Sets the universal time at which the maneuver will occur, in seconds.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetUT (double value)

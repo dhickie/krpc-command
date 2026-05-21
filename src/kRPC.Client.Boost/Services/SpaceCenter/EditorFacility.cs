@@ -2,7 +2,7 @@ namespace kRPC.Client.Boost.Services.SpaceCenter;
 
 /// <summary>
 /// Editor facility.
-/// See <see cref="M:SpaceCenter.LaunchSite.EditorFacility" />.
+/// See <see cref="M:SpaceCenter.LaunchSite.GetEditorFacility" />.
 /// </summary>
 [Serializable]
 public enum EditorFacility

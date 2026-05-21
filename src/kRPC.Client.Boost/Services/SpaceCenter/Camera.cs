@@ -6,7 +6,7 @@ namespace kRPC.Client.Boost.Services.SpaceCenter;
 
 /// <summary>
 /// Controls the game's camera.
-/// Obtained by calling <see cref="M:SpaceCenter.Camera" />.
+/// Obtained by calling <see cref="M:SpaceCenter.GetCamera" />.
 /// </summary>
 public class Camera : RemoteObject
 {
@@ -30,8 +30,8 @@ public class Camera : RemoteObject
     }
 
     /// <summary>
-    /// The distance from the camera to the subject, in meters.
-    /// A value between <see cref="M:SpaceCenter.Camera.MinDistance" /> and <see cref="M:SpaceCenter.Camera.MaxDistance" />.
+    /// Gets the distance from the camera to the subject, in meters.
+    /// A value between <see cref="M:SpaceCenter.Camera.GetMinDistance" /> and <see cref="M:SpaceCenter.Camera.GetMaxDistance" />.
     /// </summary>
     [Rpc ("SpaceCenter", "Camera_get_Distance")]
     public float GetDistance ()
@@ -43,7 +43,8 @@ public class Camera : RemoteObject
     }
 
     /// <summary>
-    /// Sets the Distance value.
+    /// Sets the distance from the camera to the subject, in meters.
+    /// A value between <see cref="M:SpaceCenter.Camera.GetMinDistance" /> and <see cref="M:SpaceCenter.Camera.GetMaxDistance" />.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetDistance (float value)
@@ -70,7 +71,9 @@ public class Camera : RemoteObject
     }
 
     /// <summary>
-    /// Sets the FocussedBody value.
+    /// Sets in map mode, the celestial body that the camera is focussed on.
+    /// Returns <c>null</c> if the camera is not focussed on a celestial body.
+    /// Returns an error is the camera is not in map mode.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetFocussedBody (CelestialBody value)
@@ -97,7 +100,9 @@ public class Camera : RemoteObject
     }
 
     /// <summary>
-    /// Sets the FocussedNode value.
+    /// Sets in map mode, the maneuver node that the camera is focussed on.
+    /// Returns <c>null</c> if the camera is not focussed on a maneuver node.
+    /// Returns an error is the camera is not in map mode.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetFocussedNode (Node value)
@@ -124,7 +129,9 @@ public class Camera : RemoteObject
     }
 
     /// <summary>
-    /// Sets the FocussedVessel value.
+    /// Sets in map mode, the vessel that the camera is focussed on.
+    /// Returns <c>null</c> if the camera is not focussed on a vessel.
+    /// Returns an error is the camera is not in map mode.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetFocussedVessel (Vessel value)
@@ -137,7 +144,7 @@ public class Camera : RemoteObject
     }
 
     /// <summary>
-    /// The heading of the camera, in degrees.
+    /// Gets the heading of the camera, in degrees.
     /// </summary>
     [Rpc ("SpaceCenter", "Camera_get_Heading")]
     public float GetHeading ()
@@ -149,7 +156,7 @@ public class Camera : RemoteObject
     }
 
     /// <summary>
-    /// Sets the Heading value.
+    /// Sets the heading of the camera, in degrees.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetHeading (float value)
@@ -162,7 +169,7 @@ public class Camera : RemoteObject
     }
 
     /// <summary>
-    /// Maximum distance from the camera to the subject, in meters.
+    /// Gets the maximum distance from the camera to the subject, in meters.
     /// </summary>
     [Rpc ("SpaceCenter", "Camera_get_MaxDistance")]
     public float GetMaxDistance ()
@@ -174,7 +181,7 @@ public class Camera : RemoteObject
     }
 
     /// <summary>
-    /// The maximum pitch of the camera.
+    /// Gets the maximum pitch of the camera.
     /// </summary>
     [Rpc ("SpaceCenter", "Camera_get_MaxPitch")]
     public float GetMaxPitch ()
@@ -186,7 +193,7 @@ public class Camera : RemoteObject
     }
 
     /// <summary>
-    /// Minimum distance from the camera to the subject, in meters.
+    /// Gets the minimum distance from the camera to the subject, in meters.
     /// </summary>
     [Rpc ("SpaceCenter", "Camera_get_MinDistance")]
     public float GetMinDistance ()
@@ -198,7 +205,7 @@ public class Camera : RemoteObject
     }
 
     /// <summary>
-    /// The minimum pitch of the camera.
+    /// Gets the minimum pitch of the camera.
     /// </summary>
     [Rpc ("SpaceCenter", "Camera_get_MinPitch")]
     public float GetMinPitch ()
@@ -210,7 +217,7 @@ public class Camera : RemoteObject
     }
 
     /// <summary>
-    /// The current mode of the camera.
+    /// Gets the current mode of the camera.
     /// </summary>
     [Rpc ("SpaceCenter", "Camera_get_Mode")]
     public CameraMode GetMode ()
@@ -222,7 +229,7 @@ public class Camera : RemoteObject
     }
 
     /// <summary>
-    /// Sets the Mode value.
+    /// Sets the current mode of the camera.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetMode (CameraMode value)
@@ -235,8 +242,9 @@ public class Camera : RemoteObject
     }
 
     /// <summary>
-    /// The pitch of the camera, in degrees.
-    /// A value between <see cref="M:SpaceCenter.Camera.MinPitch" /> and <see cref="M:SpaceCenter.Camera.MaxPitch" /></summary>
+    /// Gets the pitch of the camera, in degrees.
+    /// A value between <see cref="M:SpaceCenter.Camera.GetMinPitch" /> and <see cref="M:SpaceCenter.Camera.GetMaxPitch" />
+    /// </summary>
     [Rpc ("SpaceCenter", "Camera_get_Pitch")]
     public float GetPitch ()
     {
@@ -247,7 +255,8 @@ public class Camera : RemoteObject
     }
 
     /// <summary>
-    /// Sets the Pitch value.
+    /// Sets the pitch of the camera, in degrees.
+    /// A value between <see cref="M:SpaceCenter.Camera.GetMinPitch" /> and <see cref="M:SpaceCenter.Camera.GetMaxPitch" />
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetPitch (float value)

@@ -198,10 +198,6 @@ public class Module : RemoteObject
     /// <param name="name">Name of the field.</param>
     /// <param name="value">Value to set.</param>
     [Rpc ("SpaceCenter", "Module_SetFieldBool")]
-    /// <summary>
-    /// Sets the FieldBool value.
-    /// </summary>
-    /// <param name="value">The value to set.</param>
     public void SetFieldBool (string name, bool value)
     {
         var args = new object[] {
@@ -218,10 +214,6 @@ public class Module : RemoteObject
     /// <param name="id">Identifier of the field.</param>
     /// <param name="value">Value to set.</param>
     [Rpc ("SpaceCenter", "Module_SetFieldBoolById")]
-    /// <summary>
-    /// Sets the FieldBoolById value.
-    /// </summary>
-    /// <param name="value">The value to set.</param>
     public void SetFieldBoolById (string id, bool value)
     {
         var args = new object[] {
@@ -238,10 +230,6 @@ public class Module : RemoteObject
     /// <param name="name">Name of the field.</param>
     /// <param name="value">Value to set.</param>
     [Rpc ("SpaceCenter", "Module_SetFieldFloat")]
-    /// <summary>
-    /// Sets the FieldFloat value.
-    /// </summary>
-    /// <param name="value">The value to set.</param>
     public void SetFieldFloat (string name, float value)
     {
         var args = new object[] {
@@ -258,10 +246,6 @@ public class Module : RemoteObject
     /// <param name="id">Identifier of the field.</param>
     /// <param name="value">Value to set.</param>
     [Rpc ("SpaceCenter", "Module_SetFieldFloatById")]
-    /// <summary>
-    /// Sets the FieldFloatById value.
-    /// </summary>
-    /// <param name="value">The value to set.</param>
     public void SetFieldFloatById (string id, float value)
     {
         var args = new object[] {
@@ -278,10 +262,6 @@ public class Module : RemoteObject
     /// <param name="name">Name of the field.</param>
     /// <param name="value">Value to set.</param>
     [Rpc ("SpaceCenter", "Module_SetFieldInt")]
-    /// <summary>
-    /// Sets the FieldInt value.
-    /// </summary>
-    /// <param name="value">The value to set.</param>
     public void SetFieldInt (string name, int value)
     {
         var args = new object[] {
@@ -298,10 +278,6 @@ public class Module : RemoteObject
     /// <param name="id">Identifier of the field.</param>
     /// <param name="value">Value to set.</param>
     [Rpc ("SpaceCenter", "Module_SetFieldIntById")]
-    /// <summary>
-    /// Sets the FieldIntById value.
-    /// </summary>
-    /// <param name="value">The value to set.</param>
     public void SetFieldIntById (string id, int value)
     {
         var args = new object[] {
@@ -318,10 +294,6 @@ public class Module : RemoteObject
     /// <param name="name">Name of the field.</param>
     /// <param name="value">Value to set.</param>
     [Rpc ("SpaceCenter", "Module_SetFieldString")]
-    /// <summary>
-    /// Sets the FieldString value.
-    /// </summary>
-    /// <param name="value">The value to set.</param>
     public void SetFieldString (string name, string value)
     {
         var args = new object[] {
@@ -338,10 +310,6 @@ public class Module : RemoteObject
     /// <param name="id">Identifier of the field.</param>
     /// <param name="value">Value to set.</param>
     [Rpc ("SpaceCenter", "Module_SetFieldStringById")]
-    /// <summary>
-    /// Sets the FieldStringById value.
-    /// </summary>
-    /// <param name="value">The value to set.</param>
     public void SetFieldStringById (string id, string value)
     {
         var args = new object[] {
@@ -383,7 +351,7 @@ public class Module : RemoteObject
     }
 
     /// <summary>
-    /// A list of all the names of the modules actions. These are the parts actions that can
+    /// Gets a list of all the names of the modules actions. These are the parts actions that can
     /// be assigned to action groups in the in-game editor.
     /// </summary>
     [Rpc ("SpaceCenter", "Module_get_Actions")]
@@ -396,7 +364,7 @@ public class Module : RemoteObject
     }
 
     /// <summary>
-    /// A list of all the identifiers of the modules actions. These are the parts actions
+    /// Gets a list of all the identifiers of the modules actions. These are the parts actions
     /// that can be assigned to action groups in the in-game editor.
     /// </summary>
     [Rpc ("SpaceCenter", "Module_get_ActionsById")]
@@ -409,7 +377,7 @@ public class Module : RemoteObject
     }
 
     /// <summary>
-    /// A list of the names of all of the modules events. Events are the clickable buttons
+    /// Gets a list of the names of all of the modules events. Events are the clickable buttons
     /// visible in the right-click menu of the part.
     /// </summary>
     [Rpc ("SpaceCenter", "Module_get_Events")]
@@ -422,7 +390,7 @@ public class Module : RemoteObject
     }
 
     /// <summary>
-    /// A list of the identifiers of all of the modules events. Events are the clickable buttons
+    /// Gets a list of the identifiers of all of the modules events. Events are the clickable buttons
     /// visible in the right-click menu of the part.
     /// </summary>
     [Rpc ("SpaceCenter", "Module_get_EventsById")]
@@ -435,12 +403,12 @@ public class Module : RemoteObject
     }
 
     /// <summary>
-    /// The modules field names and their associated values, as a dictionary.
+    /// Gets the modules field names and their associated values, as a dictionary.
     /// These are the values visible in the right-click menu of the part.
     /// </summary>
     /// <remarks>
     /// Throws an exception if there is more than one field with the same name.
-    /// In that case, use <see cref="M:SpaceCenter.Module.FieldsById" /> to get the fields by identifier.
+    /// In that case, use <see cref="M:SpaceCenter.Module.GetFieldsById" /> to get the fields by identifier.
     /// </remarks>
     [Rpc ("SpaceCenter", "Module_get_Fields")]
     public IDictionary<string,string> GetFields ()
@@ -452,7 +420,7 @@ public class Module : RemoteObject
     }
 
     /// <summary>
-    /// The modules field identifiers and their associated values, as a dictionary.
+    /// Gets the modules field identifiers and their associated values, as a dictionary.
     /// These are the values visible in the right-click menu of the part.
     /// </summary>
     [Rpc ("SpaceCenter", "Module_get_FieldsById")]
@@ -477,7 +445,7 @@ public class Module : RemoteObject
     }
 
     /// <summary>
-    /// The part that contains this module.
+    /// Gets the part that contains this module.
     /// </summary>
     [Rpc ("SpaceCenter", "Module_get_Part")]
     public Part GetPart ()

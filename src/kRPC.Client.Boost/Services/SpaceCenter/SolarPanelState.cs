@@ -1,7 +1,7 @@
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
 /// <summary>
-/// The state of a solar panel. See <see cref="M:SpaceCenter.SolarPanel.State" />.
+/// The state of a solar panel. See <see cref="M:SpaceCenter.SolarPanel.GetState" />.
 /// </summary>
 [Serializable]
 public enum SolarPanelState

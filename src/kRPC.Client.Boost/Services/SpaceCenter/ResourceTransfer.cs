@@ -22,8 +22,8 @@ public class ResourceTransfer : RemoteObject
     /// at most <paramref name="maxAmount" /> units of the resource, depending on how much of
     /// the resource is available in the source part and how much storage is available in the
     /// destination part.
-    /// Use <see cref="M:SpaceCenter.ResourceTransfer.Complete" /> to check if the transfer is complete.
-    /// Use <see cref="M:SpaceCenter.ResourceTransfer.Amount" /> to see how much of the resource has been transferred.
+    /// Use <see cref="M:SpaceCenter.ResourceTransfer.GetComplete" /> to check if the transfer is complete.
+    /// Use <see cref="M:SpaceCenter.ResourceTransfer.GetAmount" /> to see how much of the resource has been transferred.
     /// </summary>
     /// <param name="fromPart">The part to transfer to.</param>
     /// <param name="toPart">The part to transfer from.</param>
@@ -45,7 +45,7 @@ public class ResourceTransfer : RemoteObject
     }
 
     /// <summary>
-    /// The amount of the resource that has been transferred.
+    /// Gets the amount of the resource that has been transferred.
     /// </summary>
     [Rpc ("SpaceCenter", "ResourceTransfer_get_Amount")]
     public float GetAmount ()
@@ -57,7 +57,7 @@ public class ResourceTransfer : RemoteObject
     }
 
     /// <summary>
-    /// Whether the transfer has completed.
+    /// Gets whether the transfer has completed.
     /// </summary>
     [Rpc ("SpaceCenter", "ResourceTransfer_get_Complete")]
     public bool GetComplete ()

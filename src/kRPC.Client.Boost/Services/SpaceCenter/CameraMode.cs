@@ -1,7 +1,7 @@
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
 /// <summary>
-/// See <see cref="M:SpaceCenter.Camera.Mode" />.
+/// See <see cref="M:SpaceCenter.Camera.GetMode" />.
 /// </summary>
 [Serializable]
 public enum CameraMode

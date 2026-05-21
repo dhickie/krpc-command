@@ -6,7 +6,7 @@ using kRPC.Client.Boost.Attributes;
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
 /// <summary>
-/// A light. Obtained by calling <see cref="M:SpaceCenter.Part.Light" />.
+/// A light. Obtained by calling <see cref="M:SpaceCenter.Part.GetLight" />.
 /// </summary>
 public class Light : RemoteObject
 {
@@ -18,7 +18,7 @@ public class Light : RemoteObject
     }
 
     /// <summary>
-    /// Whether the light is switched on.
+    /// Gets whether the light is switched on.
     /// </summary>
     [Rpc ("SpaceCenter", "Light_get_Active")]
     public bool GetActive ()
@@ -30,7 +30,7 @@ public class Light : RemoteObject
     }
 
     /// <summary>
-    /// Sets the Active value.
+    /// Sets whether the light is switched on.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetActive (bool value)
@@ -43,7 +43,7 @@ public class Light : RemoteObject
     }
 
     /// <summary>
-    /// Whether blinking is enabled.
+    /// Gets whether blinking is enabled.
     /// </summary>
     [Rpc ("SpaceCenter", "Light_get_Blink")]
     public bool GetBlink ()
@@ -55,7 +55,7 @@ public class Light : RemoteObject
     }
 
     /// <summary>
-    /// Sets the Blink value.
+    /// Sets whether blinking is enabled.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetBlink (bool value)
@@ -68,7 +68,7 @@ public class Light : RemoteObject
     }
 
     /// <summary>
-    /// The blink rate of the light.
+    /// Gets the blink rate of the light.
     /// </summary>
     [Rpc ("SpaceCenter", "Light_get_BlinkRate")]
     public float GetBlinkRate ()
@@ -80,7 +80,7 @@ public class Light : RemoteObject
     }
 
     /// <summary>
-    /// Sets the BlinkRate value.
+    /// Sets the blink rate of the light.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetBlinkRate (float value)
@@ -93,7 +93,7 @@ public class Light : RemoteObject
     }
 
     /// <summary>
-    /// The color of the light, as an RGB triple.
+    /// Gets the color of the light, as an RGB triple.
     /// </summary>
     [Rpc ("SpaceCenter", "Light_get_Color")]
     public Tuple<float,float,float> GetColor ()
@@ -105,7 +105,7 @@ public class Light : RemoteObject
     }
 
     /// <summary>
-    /// Sets the Color value.
+    /// Sets the color of the light, as an RGB triple.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetColor (Tuple<float,float,float> value)
@@ -118,7 +118,7 @@ public class Light : RemoteObject
     }
 
     /// <summary>
-    /// The part object for this light.
+    /// Gets the part object for this light.
     /// </summary>
     [Rpc ("SpaceCenter", "Light_get_Part")]
     public Part GetPart ()
@@ -130,7 +130,7 @@ public class Light : RemoteObject
     }
 
     /// <summary>
-    /// The current power usage, in units of charge per second.
+    /// Gets the current power usage, in units of charge per second.
     /// </summary>
     [Rpc ("SpaceCenter", "Light_get_PowerUsage")]
     public float GetPowerUsage ()

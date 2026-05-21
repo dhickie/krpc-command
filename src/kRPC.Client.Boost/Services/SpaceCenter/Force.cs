@@ -30,7 +30,7 @@ public class Force : RemoteObject
     }
 
     /// <summary>
-    /// The force vector, in Newtons.
+    /// Gets the force vector, in Newtons.
     /// </summary>
     /// <returns>A vector pointing in the direction that the force acts,
     /// with its magnitude equal to the strength of the force in Newtons.</returns>
@@ -44,7 +44,7 @@ public class Force : RemoteObject
     }
 
     /// <summary>
-    /// Sets the ForceVector value.
+    /// Sets the force vector, in Newtons.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetForceVector (Tuple<double,double,double> value)
@@ -57,7 +57,7 @@ public class Force : RemoteObject
     }
 
     /// <summary>
-    /// The part that this force is applied to.
+    /// Gets the part that this force is applied to.
     /// </summary>
     [Rpc ("SpaceCenter", "Force_get_Part")]
     public Part GetPart ()
@@ -69,7 +69,7 @@ public class Force : RemoteObject
     }
 
     /// <summary>
-    /// The position at which the force acts, in reference frame <see cref="T:SpaceCenter.ReferenceFrame" />.
+    /// Gets the position at which the force acts, in reference frame <see cref="T:SpaceCenter.ReferenceFrame" />.
     /// </summary>
     /// <returns>The position as a vector.</returns>
     [Rpc ("SpaceCenter", "Force_get_Position")]
@@ -82,7 +82,7 @@ public class Force : RemoteObject
     }
 
     /// <summary>
-    /// Sets the Position value.
+    /// Sets the position at which the force acts, in reference frame <see cref="T:SpaceCenter.ReferenceFrame" />.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetPosition (Tuple<double,double,double> value)
@@ -95,7 +95,7 @@ public class Force : RemoteObject
     }
 
     /// <summary>
-    /// The reference frame of the force vector and position.
+    /// Gets the reference frame of the force vector and position.
     /// </summary>
     [Rpc ("SpaceCenter", "Force_get_ReferenceFrame")]
     public ReferenceFrame GetReferenceFrame ()
@@ -107,7 +107,7 @@ public class Force : RemoteObject
     }
 
     /// <summary>
-    /// Sets the ReferenceFrame value.
+    /// Sets the reference frame of the force vector and position.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetReferenceFrame (ReferenceFrame value)

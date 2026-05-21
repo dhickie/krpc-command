@@ -6,7 +6,7 @@ using System.Collections.Generic;
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
 /// <summary>
-/// A robotic controller. Obtained by calling <see cref="M:SpaceCenter.Part.RoboticController" />.
+/// A robotic controller. Obtained by calling <see cref="M:SpaceCenter.Part.GetRoboticController" />.
 /// </summary>
 public class RoboticController : RemoteObject
 {
@@ -90,7 +90,7 @@ public class RoboticController : RemoteObject
     }
 
     /// <summary>
-    /// The part object for this controller.
+    /// Gets the part object for this controller.
     /// </summary>
     [Rpc ("SpaceCenter", "RoboticController_get_Part")]
     public Part GetPart ()

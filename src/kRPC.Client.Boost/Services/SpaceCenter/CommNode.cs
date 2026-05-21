@@ -17,7 +17,7 @@ public class CommNode : RemoteObject
     }
 
     /// <summary>
-    /// Whether the communication node is a control point, for example a manned vessel.
+    /// Gets whether the communication node is a control point, for example a manned vessel.
     /// </summary>
     [Rpc ("SpaceCenter", "CommNode_get_IsControlPoint")]
     public bool GetIsControlPoint ()
@@ -29,7 +29,7 @@ public class CommNode : RemoteObject
     }
 
     /// <summary>
-    /// Whether the communication node is on Kerbin.
+    /// Gets whether the communication node is on Kerbin.
     /// </summary>
     [Rpc ("SpaceCenter", "CommNode_get_IsHome")]
     public bool GetIsHome ()
@@ -41,7 +41,7 @@ public class CommNode : RemoteObject
     }
 
     /// <summary>
-    /// Whether the communication node is a vessel.
+    /// Gets whether the communication node is a vessel.
     /// </summary>
     [Rpc ("SpaceCenter", "CommNode_get_IsVessel")]
     public bool GetIsVessel ()
@@ -65,7 +65,7 @@ public class CommNode : RemoteObject
     }
 
     /// <summary>
-    /// The vessel for this communication node.
+    /// Gets the vessel for this communication node.
     /// </summary>
     [Rpc ("SpaceCenter", "CommNode_get_Vessel")]
     public Vessel GetVessel ()

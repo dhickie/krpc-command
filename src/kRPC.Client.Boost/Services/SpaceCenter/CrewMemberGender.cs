@@ -2,7 +2,7 @@ namespace kRPC.Client.Boost.Services.SpaceCenter;
 
 /// <summary>
 /// A crew member's gender.
-/// See <see cref="M:SpaceCenter.CrewMember.Gender" />.
+/// See <see cref="M:SpaceCenter.CrewMember.GetGender" />.
 /// </summary>
 [Serializable]
 public enum CrewMemberGender

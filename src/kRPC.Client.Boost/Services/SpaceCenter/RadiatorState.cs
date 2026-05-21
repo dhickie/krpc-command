@@ -1,7 +1,7 @@
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
 /// <summary>
-/// The state of a radiator. <see cref="M:SpaceCenter.Radiator.State" /></summary>
+/// The state of a radiator. <see cref="M:SpaceCenter.Radiator.GetState" /></summary>
 [Serializable]
 public enum RadiatorState
 {

@@ -6,7 +6,7 @@ using kRPC.Client.Boost.Attributes;
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
 /// <summary>
-/// An aerodynamic control surface. Obtained by calling <see cref="M:SpaceCenter.Part.ControlSurface" />.
+/// An aerodynamic control surface. Obtained by calling <see cref="M:SpaceCenter.Part.GetControlSurface" />.
 /// </summary>
 public class ControlSurface : RemoteObject
 {
@@ -18,7 +18,7 @@ public class ControlSurface : RemoteObject
     }
 
     /// <summary>
-    /// The authority limiter for the control surface, which controls how far the
+    /// Gets the authority limiter for the control surface, which controls how far the
     /// control surface will move.
     /// </summary>
     [Rpc ("SpaceCenter", "ControlSurface_get_AuthorityLimiter")]
@@ -31,7 +31,8 @@ public class ControlSurface : RemoteObject
     }
 
     /// <summary>
-    /// Sets the AuthorityLimiter value.
+    /// Sets the authority limiter for the control surface, which controls how far the
+    /// control surface will move.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetAuthorityLimiter (float value)
@@ -44,9 +45,9 @@ public class ControlSurface : RemoteObject
     }
 
     /// <summary>
-    /// The available torque, in Newton meters, that can be produced by this control surface,
+    /// Gets the available torque, in Newton meters, that can be produced by this control surface,
     /// in the positive and negative pitch, roll and yaw axes of the vessel. These axes
-    /// correspond to the coordinate axes of the <see cref="M:SpaceCenter.Vessel.ReferenceFrame" />.
+    /// correspond to the coordinate axes of the <see cref="M:SpaceCenter.Vessel.GetReferenceFrame" />.
     /// </summary>
     [Rpc ("SpaceCenter", "ControlSurface_get_AvailableTorque")]
     public Tuple<Tuple<double,double,double>,Tuple<double,double,double>> GetAvailableTorque ()
@@ -58,7 +59,7 @@ public class ControlSurface : RemoteObject
     }
 
     /// <summary>
-    /// Whether the control surface has been fully deployed.
+    /// Gets whether the control surface has been fully deployed.
     /// </summary>
     [Rpc ("SpaceCenter", "ControlSurface_get_Deployed")]
     public bool GetDeployed ()
@@ -70,7 +71,7 @@ public class ControlSurface : RemoteObject
     }
 
     /// <summary>
-    /// Sets the Deployed value.
+    /// Sets whether the control surface has been fully deployed.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetDeployed (bool value)
@@ -83,7 +84,7 @@ public class ControlSurface : RemoteObject
     }
 
     /// <summary>
-    /// Whether the control surface movement is inverted.
+    /// Gets whether the control surface movement is inverted.
     /// </summary>
     [Rpc ("SpaceCenter", "ControlSurface_get_Inverted")]
     public bool GetInverted ()
@@ -95,7 +96,7 @@ public class ControlSurface : RemoteObject
     }
 
     /// <summary>
-    /// Sets the Inverted value.
+    /// Sets whether the control surface movement is inverted.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetInverted (bool value)
@@ -108,7 +109,7 @@ public class ControlSurface : RemoteObject
     }
 
     /// <summary>
-    /// The part object for this control surface.
+    /// Gets the part object for this control surface.
     /// </summary>
     [Rpc ("SpaceCenter", "ControlSurface_get_Part")]
     public Part GetPart ()
@@ -120,7 +121,7 @@ public class ControlSurface : RemoteObject
     }
 
     /// <summary>
-    /// Whether the control surface has pitch control enabled.
+    /// Gets whether the control surface has pitch control enabled.
     /// </summary>
     [Rpc ("SpaceCenter", "ControlSurface_get_PitchEnabled")]
     public bool GetPitchEnabled ()
@@ -132,7 +133,7 @@ public class ControlSurface : RemoteObject
     }
 
     /// <summary>
-    /// Sets the PitchEnabled value.
+    /// Sets whether the control surface has pitch control enabled.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetPitchEnabled (bool value)
@@ -145,7 +146,7 @@ public class ControlSurface : RemoteObject
     }
 
     /// <summary>
-    /// Whether the control surface has roll control enabled.
+    /// Gets whether the control surface has roll control enabled.
     /// </summary>
     [Rpc ("SpaceCenter", "ControlSurface_get_RollEnabled")]
     public bool GetRollEnabled ()
@@ -157,7 +158,7 @@ public class ControlSurface : RemoteObject
     }
 
     /// <summary>
-    /// Sets the RollEnabled value.
+    /// Sets whether the control surface has roll control enabled.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetRollEnabled (bool value)
@@ -182,7 +183,7 @@ public class ControlSurface : RemoteObject
     }
 
     /// <summary>
-    /// Whether the control surface has yaw control enabled.
+    /// Gets whether the control surface has yaw control enabled.
     /// </summary>
     [Rpc ("SpaceCenter", "ControlSurface_get_YawEnabled")]
     public bool GetYawEnabled ()
@@ -194,7 +195,7 @@ public class ControlSurface : RemoteObject
     }
 
     /// <summary>
-    /// Sets the YawEnabled value.
+    /// Sets whether the control surface has yaw control enabled.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetYawEnabled (bool value)

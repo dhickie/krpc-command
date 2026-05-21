@@ -5,7 +5,7 @@ using kRPC.Client.Boost.Attributes;
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
 /// <summary>
-/// A parachute. Obtained by calling <see cref="M:SpaceCenter.Part.Parachute" />.
+/// A parachute. Obtained by calling <see cref="M:SpaceCenter.Part.GetParachute" />.
 /// </summary>
 public class Parachute : RemoteObject
 {
@@ -55,7 +55,7 @@ public class Parachute : RemoteObject
     }
 
     /// <summary>
-    /// Whether the parachute has been armed or deployed.
+    /// Gets whether the parachute has been armed or deployed.
     /// </summary>
     [Rpc ("SpaceCenter", "Parachute_get_Armed")]
     public bool GetArmed ()
@@ -67,7 +67,7 @@ public class Parachute : RemoteObject
     }
 
     /// <summary>
-    /// The altitude at which the parachute will full deploy, in meters.
+    /// Gets the altitude at which the parachute will full deploy, in meters.
     /// Only applicable to stock parachutes.
     /// </summary>
     [Rpc ("SpaceCenter", "Parachute_get_DeployAltitude")]
@@ -80,7 +80,8 @@ public class Parachute : RemoteObject
     }
 
     /// <summary>
-    /// Sets the DeployAltitude value.
+    /// Sets the altitude at which the parachute will full deploy, in meters.
+    /// Only applicable to stock parachutes.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetDeployAltitude (float value)
@@ -93,7 +94,7 @@ public class Parachute : RemoteObject
     }
 
     /// <summary>
-    /// The minimum pressure at which the parachute will semi-deploy, in atmospheres.
+    /// Gets the minimum pressure at which the parachute will semi-deploy, in atmospheres.
     /// Only applicable to stock parachutes.
     /// </summary>
     [Rpc ("SpaceCenter", "Parachute_get_DeployMinPressure")]
@@ -106,7 +107,8 @@ public class Parachute : RemoteObject
     }
 
     /// <summary>
-    /// Sets the DeployMinPressure value.
+    /// Sets the minimum pressure at which the parachute will semi-deploy, in atmospheres.
+    /// Only applicable to stock parachutes.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetDeployMinPressure (float value)
@@ -119,7 +121,7 @@ public class Parachute : RemoteObject
     }
 
     /// <summary>
-    /// Whether the parachute has been deployed.
+    /// Gets whether the parachute has been deployed.
     /// </summary>
     [Rpc ("SpaceCenter", "Parachute_get_Deployed")]
     public bool GetDeployed ()
@@ -131,7 +133,7 @@ public class Parachute : RemoteObject
     }
 
     /// <summary>
-    /// The part object for this parachute.
+    /// Gets the part object for this parachute.
     /// </summary>
     [Rpc ("SpaceCenter", "Parachute_get_Part")]
     public Part GetPart ()
@@ -143,7 +145,7 @@ public class Parachute : RemoteObject
     }
 
     /// <summary>
-    /// The current state of the parachute.
+    /// Gets the current state of the parachute.
     /// </summary>
     [Rpc ("SpaceCenter", "Parachute_get_State")]
     public ParachuteState GetState ()

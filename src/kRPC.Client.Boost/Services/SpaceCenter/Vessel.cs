@@ -9,7 +9,7 @@ namespace kRPC.Client.Boost.Services.SpaceCenter;
 /// <summary>
 /// These objects are used to interact with vessels in KSP. This includes getting
 /// orbital and flight data, manipulating control inputs and managing resources.
-/// Created using <see cref="M:SpaceCenter.ActiveVessel" /> or <see cref="M:SpaceCenter.Vessels" />.
+/// Created using <see cref="M:SpaceCenter.GetActiveVessel" /> or <see cref="M:SpaceCenter.GetVessels" />.
 /// </summary>
 public class Vessel : RemoteObject
 {
@@ -94,7 +94,7 @@ public class Vessel : RemoteObject
     /// </summary>
     /// <param name="referenceFrame">
     /// Reference frame. Defaults to the vessel's surface reference frame
-    /// (<see cref="M:SpaceCenter.Vessel.SurfaceReferenceFrame" />).
+    /// (<see cref="M:SpaceCenter.Vessel.GetSurfaceReferenceFrame" />).
     /// </param>
     [Rpc ("SpaceCenter", "Vessel_Flight")]
     public Flight Flight (ReferenceFrame referenceFrame = null)
@@ -220,7 +220,7 @@ public class Vessel : RemoteObject
     }
 
     /// <summary>
-    /// An <see cref="T:SpaceCenter.AutoPilot" /> object, that can be used to perform
+    /// Gets an <see cref="T:SpaceCenter.AutoPilot" /> object, that can be used to perform
     /// simple auto-piloting of the vessel.
     /// </summary>
     [Rpc ("SpaceCenter", "Vessel_get_AutoPilot")]
@@ -233,7 +233,7 @@ public class Vessel : RemoteObject
     }
 
     /// <summary>
-    /// The maximum torque that the aerodynamic control surfaces can generate.
+    /// Gets the maximum torque that the aerodynamic control surfaces can generate.
     /// Returns the torques in <math>N.m</math> around each of the coordinate axes of the
     /// vessels reference frame (<see cref="T:SpaceCenter.ReferenceFrame" />).
     /// These axes are equivalent to the pitch, roll and yaw axes of the vessel.
@@ -248,7 +248,7 @@ public class Vessel : RemoteObject
     }
 
     /// <summary>
-    /// The maximum torque that the currently active and gimballed engines can generate.
+    /// Gets the maximum torque that the currently active and gimballed engines can generate.
     /// Returns the torques in <math>N.m</math> around each of the coordinate axes of the
     /// vessels reference frame (<see cref="T:SpaceCenter.ReferenceFrame" />).
     /// These axes are equivalent to the pitch, roll and yaw axes of the vessel.
@@ -263,7 +263,7 @@ public class Vessel : RemoteObject
     }
 
     /// <summary>
-    /// The maximum torque that parts (excluding reaction wheels, gimballed engines,
+    /// Gets the maximum torque that parts (excluding reaction wheels, gimballed engines,
     /// RCS and control surfaces) can generate.
     /// Returns the torques in <math>N.m</math> around each of the coordinate axes of the
     /// vessels reference frame (<see cref="T:SpaceCenter.ReferenceFrame" />).
@@ -279,7 +279,7 @@ public class Vessel : RemoteObject
     }
 
     /// <summary>
-    /// The maximum force that the currently active RCS thrusters can generate.
+    /// Gets the maximum force that the currently active RCS thrusters can generate.
     /// Returns the forces in <math>N</math> along each of the coordinate axes of the
     /// vessels reference frame (<see cref="T:SpaceCenter.ReferenceFrame" />).
     /// These axes are equivalent to the right, forward and bottom directions of the vessel.
@@ -294,7 +294,7 @@ public class Vessel : RemoteObject
     }
 
     /// <summary>
-    /// The maximum torque that the currently active RCS thrusters can generate.
+    /// Gets the maximum torque that the currently active RCS thrusters can generate.
     /// Returns the torques in <math>N.m</math> around each of the coordinate axes of the
     /// vessels reference frame (<see cref="T:SpaceCenter.ReferenceFrame" />).
     /// These axes are equivalent to the pitch, roll and yaw axes of the vessel.
@@ -309,7 +309,7 @@ public class Vessel : RemoteObject
     }
 
     /// <summary>
-    /// The maximum torque that the currently active and powered reaction wheels can generate.
+    /// Gets the maximum torque that the currently active and powered reaction wheels can generate.
     /// Returns the torques in <math>N.m</math> around each of the coordinate axes of the
     /// vessels reference frame (<see cref="T:SpaceCenter.ReferenceFrame" />).
     /// These axes are equivalent to the pitch, roll and yaw axes of the vessel.
@@ -326,7 +326,7 @@ public class Vessel : RemoteObject
     /// <summary>
     /// Gets the total available thrust that can be produced by the vessel's
     /// active engines, in Newtons. This is computed by summing
-    /// <see cref="M:SpaceCenter.Engine.AvailableThrust" /> for every active engine in the vessel.
+    /// <see cref="M:SpaceCenter.Engine.GetAvailableThrust" /> for every active engine in the vessel.
     /// </summary>
     [Rpc ("SpaceCenter", "Vessel_get_AvailableThrust")]
     public float GetAvailableThrust ()
@@ -338,7 +338,7 @@ public class Vessel : RemoteObject
     }
 
     /// <summary>
-    /// The maximum torque that the vessel generates. Includes contributions from
+    /// Gets the maximum torque that the vessel generates. Includes contributions from
     /// reaction wheels, RCS, gimballed engines and aerodynamic control surfaces.
     /// Returns the torques in <math>N.m</math> around each of the coordinate axes of the
     /// vessels reference frame (<see cref="T:SpaceCenter.ReferenceFrame" />).
@@ -354,7 +354,7 @@ public class Vessel : RemoteObject
     }
 
     /// <summary>
-    /// The name of the biome the vessel is currently in.
+    /// Gets the name of the biome the vessel is currently in.
     /// </summary>
     [Rpc ("SpaceCenter", "Vessel_get_Biome")]
     public string GetBiome ()
@@ -393,7 +393,7 @@ public class Vessel : RemoteObject
     }
 
     /// <summary>
-    /// The crew in the vessel.
+    /// Gets the crew in the vessel.
     /// </summary>
     [Rpc ("SpaceCenter", "Vessel_get_Crew")]
     public IList<CrewMember> GetCrew ()
@@ -405,7 +405,7 @@ public class Vessel : RemoteObject
     }
 
     /// <summary>
-    /// The number of crew that can occupy the vessel.
+    /// Gets the number of crew that can occupy the vessel.
     /// </summary>
     [Rpc ("SpaceCenter", "Vessel_get_CrewCapacity")]
     public int GetCrewCapacity ()
@@ -417,7 +417,7 @@ public class Vessel : RemoteObject
     }
 
     /// <summary>
-    /// The number of crew that are occupying the vessel.
+    /// Gets the number of crew that are occupying the vessel.
     /// </summary>
     [Rpc ("SpaceCenter", "Vessel_get_CrewCount")]
     public int GetCrewCount ()
@@ -429,7 +429,7 @@ public class Vessel : RemoteObject
     }
 
     /// <summary>
-    /// The total mass of the vessel, excluding resources, in kg.
+    /// Gets the total mass of the vessel, excluding resources, in kg.
     /// </summary>
     [Rpc ("SpaceCenter", "Vessel_get_DryMass")]
     public float GetDryMass ()
@@ -441,7 +441,7 @@ public class Vessel : RemoteObject
     }
 
     /// <summary>
-    /// The inertia tensor of the vessel around its center of mass,
+    /// Gets the inertia tensor of the vessel around its center of mass,
     /// in the vessels reference frame (<see cref="T:SpaceCenter.ReferenceFrame" />).
     /// Returns the 3x3 matrix as a list of elements, in row-major order.
     /// </summary>
@@ -455,7 +455,7 @@ public class Vessel : RemoteObject
     }
 
     /// <summary>
-    /// The combined specific impulse of all active engines at sea level on Kerbin, in seconds.
+    /// Gets the combined specific impulse of all active engines at sea level on Kerbin, in seconds.
     /// This is computed using the formula
     /// <a href="https://wiki.kerbalspaceprogram.com/wiki/Specific_impulse#Multiple_engines">described here</a>.
     /// </summary>
@@ -469,7 +469,7 @@ public class Vessel : RemoteObject
     }
 
     /// <summary>
-    /// The mission elapsed time in seconds.
+    /// Gets the mission elapsed time in seconds.
     /// </summary>
     [Rpc ("SpaceCenter", "Vessel_get_MET")]
     public double GetMET ()
@@ -481,7 +481,7 @@ public class Vessel : RemoteObject
     }
 
     /// <summary>
-    /// The total mass of the vessel, including resources, in kg.
+    /// Gets the total mass of the vessel, including resources, in kg.
     /// </summary>
     [Rpc ("SpaceCenter", "Vessel_get_Mass")]
     public float GetMass ()
@@ -493,9 +493,9 @@ public class Vessel : RemoteObject
     }
 
     /// <summary>
-    /// The total maximum thrust that can be produced by the vessel's active
+    /// Gets the total maximum thrust that can be produced by the vessel's active
     /// engines, in Newtons. This is computed by summing
-    /// <see cref="M:SpaceCenter.Engine.MaxThrust" /> for every active engine.
+    /// <see cref="M:SpaceCenter.Engine.GetMaxThrust" /> for every active engine.
     /// </summary>
     [Rpc ("SpaceCenter", "Vessel_get_MaxThrust")]
     public float GetMaxThrust ()
@@ -507,9 +507,9 @@ public class Vessel : RemoteObject
     }
 
     /// <summary>
-    /// The total maximum thrust that can be produced by the vessel's active
+    /// Gets the total maximum thrust that can be produced by the vessel's active
     /// engines when the vessel is in a vacuum, in Newtons. This is computed by
-    /// summing <see cref="M:SpaceCenter.Engine.MaxVacuumThrust" /> for every active engine.
+    /// summing <see cref="M:SpaceCenter.Engine.GetMaxVacuumThrust" /> for every active engine.
     /// </summary>
     [Rpc ("SpaceCenter", "Vessel_get_MaxVacuumThrust")]
     public float GetMaxVacuumThrust ()
@@ -521,7 +521,7 @@ public class Vessel : RemoteObject
     }
 
     /// <summary>
-    /// The moment of inertia of the vessel around its center of mass in <math>kg.m^2</math>.
+    /// Gets the moment of inertia of the vessel around its center of mass in <math>kg.m^2</math>.
     /// The inertia values in the returned 3-tuple are around the
     /// pitch, roll and yaw directions respectively.
     /// This corresponds to the vessels reference frame (<see cref="T:SpaceCenter.ReferenceFrame" />).
@@ -536,7 +536,7 @@ public class Vessel : RemoteObject
     }
 
     /// <summary>
-    /// The name of the vessel.
+    /// Gets the name of the vessel.
     /// </summary>
     [Rpc ("SpaceCenter", "Vessel_get_Name")]
     public string GetName ()
@@ -548,7 +548,7 @@ public class Vessel : RemoteObject
     }
 
     /// <summary>
-    /// Sets the Name value.
+    /// Sets the name of the vessel.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetName (string value)
@@ -561,7 +561,7 @@ public class Vessel : RemoteObject
     }
 
     /// <summary>
-    /// The current orbit of the vessel.
+    /// Gets the current orbit of the vessel.
     /// </summary>
     [Rpc ("SpaceCenter", "Vessel_get_Orbit")]
     public Orbit GetOrbit ()
@@ -573,9 +573,10 @@ public class Vessel : RemoteObject
     }
 
     /// <summary>
-    /// The reference frame that is fixed relative to the vessel,
+    /// Gets the reference frame that is fixed relative to the vessel,
     /// and orientated with the vessels orbital prograde/normal/radial directions.
-    /// <list type="bullet"><item><description>The origin is at the center of mass of the vessel.</description></item><item><description>The axes rotate with the orbital prograde/normal/radial directions.</description></item><item><description>The x-axis points in the orbital anti-radial direction.</description></item><item><description>The y-axis points in the orbital prograde direction.</description></item><item><description>The z-axis points in the orbital normal direction.</description></item></list></summary>
+    /// <list type="bullet"><item><description>The origin is at the center of mass of the vessel.</description></item><item><description>The axes rotate with the orbital prograde/normal/radial directions.</description></item><item><description>The x-axis points in the orbital anti-radial direction.</description></item><item><description>The y-axis points in the orbital prograde direction.</description></item><item><description>The z-axis points in the orbital normal direction.</description></item></list>
+    /// </summary>
     /// <remarks>
     /// Be careful not to confuse this with 'orbit' mode on the navball.
     /// </remarks>
@@ -589,7 +590,7 @@ public class Vessel : RemoteObject
     }
 
     /// <summary>
-    /// A <see cref="T:SpaceCenter.Parts" /> object, that can used to interact with the parts that make up this vessel.
+    /// Gets a <see cref="T:SpaceCenter.Parts" /> object, that can used to interact with the parts that make up this vessel.
     /// </summary>
     [Rpc ("SpaceCenter", "Vessel_get_Parts")]
     public Parts GetParts ()
@@ -601,7 +602,7 @@ public class Vessel : RemoteObject
     }
 
     /// <summary>
-    /// Whether the vessel is recoverable.
+    /// Gets whether the vessel is recoverable.
     /// </summary>
     [Rpc ("SpaceCenter", "Vessel_get_Recoverable")]
     public bool GetRecoverable ()
@@ -613,9 +614,10 @@ public class Vessel : RemoteObject
     }
 
     /// <summary>
-    /// The reference frame that is fixed relative to the vessel,
+    /// Gets the reference frame that is fixed relative to the vessel,
     /// and orientated with the vessel.
-    /// <list type="bullet"><item><description>The origin is at the center of mass of the vessel.</description></item><item><description>The axes rotate with the vessel.</description></item><item><description>The x-axis points out to the right of the vessel.</description></item><item><description>The y-axis points in the forward direction of the vessel.</description></item><item><description>The z-axis points out of the bottom off the vessel.</description></item></list></summary>
+    /// <list type="bullet"><item><description>The origin is at the center of mass of the vessel.</description></item><item><description>The axes rotate with the vessel.</description></item><item><description>The x-axis points out to the right of the vessel.</description></item><item><description>The y-axis points in the forward direction of the vessel.</description></item><item><description>The z-axis points out of the bottom off the vessel.</description></item></list>
+    /// </summary>
     [Rpc ("SpaceCenter", "Vessel_get_ReferenceFrame")]
     public ReferenceFrame GetReferenceFrame ()
     {
@@ -626,7 +628,7 @@ public class Vessel : RemoteObject
     }
 
     /// <summary>
-    /// A <see cref="T:SpaceCenter.Resources" /> object, that can used to get information
+    /// Gets a <see cref="T:SpaceCenter.Resources" /> object, that can used to get information
     /// about resources stored in the vessel.
     /// </summary>
     [Rpc ("SpaceCenter", "Vessel_get_Resources")]
@@ -639,7 +641,7 @@ public class Vessel : RemoteObject
     }
 
     /// <summary>
-    /// The situation the vessel is in.
+    /// Gets the situation the vessel is in.
     /// </summary>
     [Rpc ("SpaceCenter", "Vessel_get_Situation")]
     public VesselSituation GetSituation ()
@@ -651,7 +653,7 @@ public class Vessel : RemoteObject
     }
 
     /// <summary>
-    /// The combined specific impulse of all active engines, in seconds. This is computed using the formula
+    /// Gets the combined specific impulse of all active engines, in seconds. This is computed using the formula
     /// <a href="https://wiki.kerbalspaceprogram.com/wiki/Specific_impulse#Multiple_engines">described here</a>.
     /// </summary>
     [Rpc ("SpaceCenter", "Vessel_get_SpecificImpulse")]
@@ -664,7 +666,7 @@ public class Vessel : RemoteObject
     }
 
     /// <summary>
-    /// The reference frame that is fixed relative to the vessel,
+    /// Gets the reference frame that is fixed relative to the vessel,
     /// and orientated with the surface of the body being orbited.
     /// <list type="bullet"><item><description>The origin is at the center of mass of the vessel.</description></item><item><description>The axes rotate with the north and up directions on the surface of the body.</description></item><item><description>The x-axis points in the <a href="https://en.wikipedia.org/wiki/Zenith">zenith</a>
     /// direction (upwards, normal to the body being orbited, from the center of the body towards the center of
@@ -672,7 +674,8 @@ public class Vessel : RemoteObject
     /// <a href="https://en.wikipedia.org/wiki/Horizon">astronomical horizon</a> (north, and tangential to the
     /// surface of the body -- the direction in which a compass would point when on the surface).</description></item><item><description>The z-axis points eastwards towards the
     /// <a href="https://en.wikipedia.org/wiki/Horizon">astronomical horizon</a> (east, and tangential to the
-    /// surface of the body -- east on a compass when on the surface).</description></item></list></summary>
+    /// surface of the body -- east on a compass when on the surface).</description></item></list>
+    /// </summary>
     /// <remarks>
     /// Be careful not to confuse this with 'surface' mode on the navball.
     /// </remarks>
@@ -686,12 +689,13 @@ public class Vessel : RemoteObject
     }
 
     /// <summary>
-    /// The reference frame that is fixed relative to the vessel,
+    /// Gets the reference frame that is fixed relative to the vessel,
     /// and orientated with the velocity vector of the vessel relative
     /// to the surface of the body being orbited.
     /// <list type="bullet"><item><description>The origin is at the center of mass of the vessel.</description></item><item><description>The axes rotate with the vessel's velocity vector.</description></item><item><description>The y-axis points in the direction of the vessel's velocity vector,
     /// relative to the surface of the body being orbited.</description></item><item><description>The z-axis is in the plane of the
-    /// <a href="https://en.wikipedia.org/wiki/Horizon">astronomical horizon</a>.</description></item><item><description>The x-axis is orthogonal to the other two axes.</description></item></list></summary>
+    /// <a href="https://en.wikipedia.org/wiki/Horizon">astronomical horizon</a>.</description></item><item><description>The x-axis is orthogonal to the other two axes.</description></item></list>
+    /// </summary>
     [Rpc ("SpaceCenter", "Vessel_get_SurfaceVelocityReferenceFrame")]
     public ReferenceFrame GetSurfaceVelocityReferenceFrame ()
     {
@@ -702,8 +706,8 @@ public class Vessel : RemoteObject
     }
 
     /// <summary>
-    /// The total thrust currently being produced by the vessel's engines, in
-    /// Newtons. This is computed by summing <see cref="M:SpaceCenter.Engine.Thrust" /> for
+    /// Gets the total thrust currently being produced by the vessel's engines, in
+    /// Newtons. This is computed by summing <see cref="M:SpaceCenter.Engine.GetThrust" /> for
     /// every engine in the vessel.
     /// </summary>
     [Rpc ("SpaceCenter", "Vessel_get_Thrust")]
@@ -716,7 +720,7 @@ public class Vessel : RemoteObject
     }
 
     /// <summary>
-    /// The type of the vessel.
+    /// Gets the type of the vessel.
     /// </summary>
     [Rpc ("SpaceCenter", "Vessel_get_Type")]
     public VesselType GetType ()
@@ -728,7 +732,7 @@ public class Vessel : RemoteObject
     }
 
     /// <summary>
-    /// Sets the Type value.
+    /// Sets the type of the vessel.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetType (VesselType value)
@@ -741,7 +745,7 @@ public class Vessel : RemoteObject
     }
 
     /// <summary>
-    /// The combined vacuum specific impulse of all active engines, in seconds. This is computed using the formula
+    /// Gets the combined vacuum specific impulse of all active engines, in seconds. This is computed using the formula
     /// <a href="https://wiki.kerbalspaceprogram.com/wiki/Specific_impulse#Multiple_engines">described here</a>.
     /// </summary>
     [Rpc ("SpaceCenter", "Vessel_get_VacuumSpecificImpulse")]

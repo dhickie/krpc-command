@@ -6,7 +6,7 @@ using System.Collections.Generic;
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
 /// <summary>
-/// A contract parameter. See <see cref="M:SpaceCenter.Contract.Parameters" />.
+/// A contract parameter. See <see cref="M:SpaceCenter.Contract.GetParameters" />.
 /// </summary>
 public class ContractParameter : RemoteObject
 {
@@ -30,7 +30,7 @@ public class ContractParameter : RemoteObject
     }
 
     /// <summary>
-    /// Whether the parameter has been completed.
+    /// Gets whether the parameter has been completed.
     /// </summary>
     [Rpc ("SpaceCenter", "ContractParameter_get_Completed")]
     public bool GetCompleted ()
@@ -42,7 +42,7 @@ public class ContractParameter : RemoteObject
     }
 
     /// <summary>
-    /// Whether the parameter has been failed.
+    /// Gets whether the parameter has been failed.
     /// </summary>
     [Rpc ("SpaceCenter", "ContractParameter_get_Failed")]
     public bool GetFailed ()
@@ -90,7 +90,7 @@ public class ContractParameter : RemoteObject
     }
 
     /// <summary>
-    /// Whether the contract parameter is optional.
+    /// Gets whether the contract parameter is optional.
     /// </summary>
     [Rpc ("SpaceCenter", "ContractParameter_get_Optional")]
     public bool GetOptional ()

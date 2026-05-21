@@ -9,10 +9,10 @@ namespace kRPC.Client.Boost.Services.SpaceCenter;
 /// <summary>
 /// An engine, including ones of various types.
 /// For example liquid fuelled gimballed engines, solid rocket boosters and jet engines.
-/// Obtained by calling <see cref="M:SpaceCenter.Part.Engine" />.
+/// Obtained by calling <see cref="M:SpaceCenter.Part.GetEngine" />.
 /// </summary>
 /// <remarks>
-/// For RCS thrusters <see cref="M:SpaceCenter.Part.RCS" />.
+/// For RCS thrusters <see cref="M:SpaceCenter.Part.GetRCS" />.
 /// </remarks>
 public class Engine : RemoteObject
 {
@@ -84,8 +84,8 @@ public class Engine : RemoteObject
     }
 
     /// <summary>
-    /// Whether the engine is active. Setting this attribute may have no effect,
-    /// depending on <see cref="M:SpaceCenter.Engine.CanShutdown" /> and <see cref="M:SpaceCenter.Engine.CanRestart" />.
+    /// Gets whether the engine is active. Setting this attribute may have no effect,
+    /// depending on <see cref="M:SpaceCenter.Engine.GetCanShutdown" /> and <see cref="M:SpaceCenter.Engine.GetCanRestart" />.
     /// </summary>
     [Rpc ("SpaceCenter", "Engine_get_Active")]
     public bool GetActive ()
@@ -97,7 +97,8 @@ public class Engine : RemoteObject
     }
 
     /// <summary>
-    /// Sets the Active value.
+    /// Sets whether the engine is active. Setting this attribute may have no effect,
+    /// depending on <see cref="M:SpaceCenter.Engine.GetCanShutdown" /> and <see cref="M:SpaceCenter.Engine.GetCanRestart" />.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetActive (bool value)
@@ -110,7 +111,7 @@ public class Engine : RemoteObject
     }
 
     /// <summary>
-    /// Whether the engine will automatically switch modes.
+    /// Gets whether the engine will automatically switch modes.
     /// </summary>
     [Rpc ("SpaceCenter", "Engine_get_AutoModeSwitch")]
     public bool GetAutoModeSwitch ()
@@ -122,7 +123,7 @@ public class Engine : RemoteObject
     }
 
     /// <summary>
-    /// Sets the AutoModeSwitch value.
+    /// Sets whether the engine will automatically switch modes.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetAutoModeSwitch (bool value)
@@ -135,10 +136,10 @@ public class Engine : RemoteObject
     }
 
     /// <summary>
-    /// The amount of thrust, in Newtons, that would be produced by the engine
+    /// Gets the amount of thrust, in Newtons, that would be produced by the engine
     /// when activated and with its throttle set to 100%.
     /// Returns zero if the engine does not have any fuel.
-    /// Takes the engine's current <see cref="M:SpaceCenter.Engine.ThrustLimit" /> and atmospheric conditions
+    /// Takes the engine's current <see cref="M:SpaceCenter.Engine.GetThrustLimit" /> and atmospheric conditions
     /// into account.
     /// </summary>
     [Rpc ("SpaceCenter", "Engine_get_AvailableThrust")]
@@ -151,9 +152,9 @@ public class Engine : RemoteObject
     }
 
     /// <summary>
-    /// The available torque, in Newton meters, that can be produced by this engine,
+    /// Gets the available torque, in Newton meters, that can be produced by this engine,
     /// in the positive and negative pitch, roll and yaw axes of the vessel. These axes
-    /// correspond to the coordinate axes of the <see cref="M:SpaceCenter.Vessel.ReferenceFrame" />.
+    /// correspond to the coordinate axes of the <see cref="M:SpaceCenter.Vessel.GetReferenceFrame" />.
     /// Returns zero if the engine is inactive, or not gimballed.
     /// </summary>
     [Rpc ("SpaceCenter", "Engine_get_AvailableTorque")]
@@ -166,7 +167,7 @@ public class Engine : RemoteObject
     }
 
     /// <summary>
-    /// Whether the engine can be restarted once shutdown. If the engine cannot be shutdown,
+    /// Gets whether the engine can be restarted once shutdown. If the engine cannot be shutdown,
     /// returns <c>false</c>. For example, this is <c>true</c> for liquid fueled rockets
     /// and <c>false</c> for solid rocket boosters.
     /// </summary>
@@ -180,7 +181,7 @@ public class Engine : RemoteObject
     }
 
     /// <summary>
-    /// Whether the engine can be shutdown once activated. For example, this is
+    /// Gets whether the engine can be shutdown once activated. For example, this is
     /// <c>true</c> for liquid fueled rockets and <c>false</c> for solid rocket boosters.
     /// </summary>
     [Rpc ("SpaceCenter", "Engine_get_CanShutdown")]
@@ -193,7 +194,7 @@ public class Engine : RemoteObject
     }
 
     /// <summary>
-    /// The gimbal limiter of the engine. A value between 0 and 1.
+    /// Gets the gimbal limiter of the engine. A value between 0 and 1.
     /// Returns 0 if the gimbal is locked.
     /// </summary>
     [Rpc ("SpaceCenter", "Engine_get_GimbalLimit")]
@@ -206,7 +207,8 @@ public class Engine : RemoteObject
     }
 
     /// <summary>
-    /// Sets the GimbalLimit value.
+    /// Sets the gimbal limiter of the engine. A value between 0 and 1.
+    /// Returns 0 if the gimbal is locked.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetGimbalLimit (float value)
@@ -219,7 +221,7 @@ public class Engine : RemoteObject
     }
 
     /// <summary>
-    /// Whether the engines gimbal is locked in place. Setting this attribute has
+    /// Gets whether the engines gimbal is locked in place. Setting this attribute has
     /// no effect if the engine is not gimballed.
     /// </summary>
     [Rpc ("SpaceCenter", "Engine_get_GimbalLocked")]
@@ -232,7 +234,8 @@ public class Engine : RemoteObject
     }
 
     /// <summary>
-    /// Sets the GimbalLocked value.
+    /// Sets whether the engines gimbal is locked in place. Setting this attribute has
+    /// no effect if the engine is not gimballed.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetGimbalLocked (bool value)
@@ -245,7 +248,7 @@ public class Engine : RemoteObject
     }
 
     /// <summary>
-    /// The range over which the gimbal can move, in degrees.
+    /// Gets the range over which the gimbal can move, in degrees.
     /// Returns 0 if the engine is not gimballed.
     /// </summary>
     [Rpc ("SpaceCenter", "Engine_get_GimbalRange")]
@@ -258,7 +261,7 @@ public class Engine : RemoteObject
     }
 
     /// <summary>
-    /// Whether the engine is gimballed.
+    /// Gets whether the engine is gimballed.
     /// </summary>
     [Rpc ("SpaceCenter", "Engine_get_Gimballed")]
     public bool GetGimballed ()
@@ -270,7 +273,7 @@ public class Engine : RemoteObject
     }
 
     /// <summary>
-    /// Whether the engine has any fuel available.
+    /// Gets whether the engine has any fuel available.
     /// </summary>
     [Rpc ("SpaceCenter", "Engine_get_HasFuel")]
     public bool GetHasFuel ()
@@ -282,7 +285,7 @@ public class Engine : RemoteObject
     }
 
     /// <summary>
-    /// Whether the engine has multiple modes of operation.
+    /// Gets whether the engine has multiple modes of operation.
     /// </summary>
     [Rpc ("SpaceCenter", "Engine_get_HasModes")]
     public bool GetHasModes ()
@@ -294,7 +297,7 @@ public class Engine : RemoteObject
     }
 
     /// <summary>
-    /// Whether the independent throttle is enabled for the engine.
+    /// Gets whether the independent throttle is enabled for the engine.
     /// </summary>
     [Rpc ("SpaceCenter", "Engine_get_IndependentThrottle")]
     public bool GetIndependentThrottle ()
@@ -306,7 +309,7 @@ public class Engine : RemoteObject
     }
 
     /// <summary>
-    /// Sets the IndependentThrottle value.
+    /// Sets whether the independent throttle is enabled for the engine.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetIndependentThrottle (bool value)
@@ -319,7 +322,7 @@ public class Engine : RemoteObject
     }
 
     /// <summary>
-    /// The specific impulse of the engine at sea level on Kerbin, in seconds.
+    /// Gets the specific impulse of the engine at sea level on Kerbin, in seconds.
     /// </summary>
     [Rpc ("SpaceCenter", "Engine_get_KerbinSeaLevelSpecificImpulse")]
     public float GetKerbinSeaLevelSpecificImpulse ()
@@ -331,7 +334,7 @@ public class Engine : RemoteObject
     }
 
     /// <summary>
-    /// The amount of thrust, in Newtons, that would be produced by the engine
+    /// Gets the amount of thrust, in Newtons, that would be produced by the engine
     /// when activated and fueled, with its throttle and throttle limiter set to 100%.
     /// </summary>
     [Rpc ("SpaceCenter", "Engine_get_MaxThrust")]
@@ -344,9 +347,9 @@ public class Engine : RemoteObject
     }
 
     /// <summary>
-    /// The maximum amount of thrust that can be produced by the engine in a
+    /// Gets the maximum amount of thrust that can be produced by the engine in a
     /// vacuum, in Newtons. This is the amount of thrust produced by the engine
-    /// when activated, <see cref="M:SpaceCenter.Engine.ThrustLimit" /> is set to 100%, the main
+    /// when activated, <see cref="M:SpaceCenter.Engine.GetThrustLimit" /> is set to 100%, the main
     /// vessel's throttle is set to 100% and the engine is in a vacuum.
     /// </summary>
     [Rpc ("SpaceCenter", "Engine_get_MaxVacuumThrust")]
@@ -359,7 +362,7 @@ public class Engine : RemoteObject
     }
 
     /// <summary>
-    /// The name of the current engine mode.
+    /// Gets the name of the current engine mode.
     /// </summary>
     [Rpc ("SpaceCenter", "Engine_get_Mode")]
     public string GetMode ()
@@ -371,7 +374,7 @@ public class Engine : RemoteObject
     }
 
     /// <summary>
-    /// Sets the Mode value.
+    /// Sets the name of the current engine mode.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetMode (string value)
@@ -384,7 +387,7 @@ public class Engine : RemoteObject
     }
 
     /// <summary>
-    /// The available modes for the engine.
+    /// Gets the available modes for the engine.
     /// A dictionary mapping mode names to <see cref="T:SpaceCenter.Engine" /> objects.
     /// </summary>
     [Rpc ("SpaceCenter", "Engine_get_Modes")]
@@ -397,7 +400,7 @@ public class Engine : RemoteObject
     }
 
     /// <summary>
-    /// The part object for this engine.
+    /// Gets the part object for this engine.
     /// </summary>
     [Rpc ("SpaceCenter", "Engine_get_Part")]
     public Part GetPart ()
@@ -409,7 +412,7 @@ public class Engine : RemoteObject
     }
 
     /// <summary>
-    /// The names of the propellants that the engine consumes.
+    /// Gets the names of the propellants that the engine consumes.
     /// </summary>
     [Rpc ("SpaceCenter", "Engine_get_PropellantNames")]
     public IList<string> GetPropellantNames ()
@@ -421,7 +424,7 @@ public class Engine : RemoteObject
     }
 
     /// <summary>
-    /// The ratio of resources that the engine consumes. A dictionary mapping resource names
+    /// Gets the ratio of resources that the engine consumes. A dictionary mapping resource names
     /// to the ratio at which they are consumed by the engine.
     /// </summary>
     /// <remarks>
@@ -438,7 +441,7 @@ public class Engine : RemoteObject
     }
 
     /// <summary>
-    /// The propellants that the engine consumes.
+    /// Gets the propellants that the engine consumes.
     /// </summary>
     [Rpc ("SpaceCenter", "Engine_get_Propellants")]
     public IList<Propellant> GetPropellants ()
@@ -450,7 +453,7 @@ public class Engine : RemoteObject
     }
 
     /// <summary>
-    /// The current specific impulse of the engine, in seconds. Returns zero
+    /// Gets the current specific impulse of the engine, in seconds. Returns zero
     /// if the engine is not active.
     /// </summary>
     [Rpc ("SpaceCenter", "Engine_get_SpecificImpulse")]
@@ -463,13 +466,13 @@ public class Engine : RemoteObject
     }
 
     /// <summary>
-    /// The current throttle setting for the engine. A value between 0 and 1.
+    /// Gets the current throttle setting for the engine. A value between 0 and 1.
     /// This is not necessarily the same as the vessel's main throttle
     /// setting, as some engines take time to adjust their throttle
     /// (such as jet engines), or independent throttle may be enabled.
     ///
     /// When the engine's independent throttle is enabled
-    /// (see <see cref="M:SpaceCenter.Engine.IndependentThrottle" />), can be used to set the throttle percentage.
+    /// (see <see cref="M:SpaceCenter.Engine.GetIndependentThrottle" />), can be used to set the throttle percentage.
     /// </summary>
     [Rpc ("SpaceCenter", "Engine_get_Throttle")]
     public float GetThrottle ()
@@ -481,7 +484,13 @@ public class Engine : RemoteObject
     }
 
     /// <summary>
-    /// Sets the Throttle value.
+    /// Sets the current throttle setting for the engine. A value between 0 and 1.
+    /// This is not necessarily the same as the vessel's main throttle
+    /// setting, as some engines take time to adjust their throttle
+    /// (such as jet engines), or independent throttle may be enabled.
+    ///
+    /// When the engine's independent throttle is enabled
+    /// (see <see cref="M:SpaceCenter.Engine.GetIndependentThrottle" />), can be used to set the throttle percentage.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetThrottle (float value)
@@ -494,7 +503,7 @@ public class Engine : RemoteObject
     }
 
     /// <summary>
-    /// Whether the <see cref="M:SpaceCenter.Control.Throttle" /> affects the engine. For example,
+    /// Gets whether the <see cref="M:SpaceCenter.Control.GetThrottle" /> affects the engine. For example,
     /// this is <c>true</c> for liquid fueled rockets, and <c>false</c> for solid rocket
     /// boosters.
     /// </summary>
@@ -508,7 +517,7 @@ public class Engine : RemoteObject
     }
 
     /// <summary>
-    /// The current amount of thrust being produced by the engine, in Newtons.
+    /// Gets the current amount of thrust being produced by the engine, in Newtons.
     /// </summary>
     [Rpc ("SpaceCenter", "Engine_get_Thrust")]
     public float GetThrust ()
@@ -520,7 +529,7 @@ public class Engine : RemoteObject
     }
 
     /// <summary>
-    /// The thrust limiter of the engine. A value between 0 and 1. Setting this
+    /// Gets the thrust limiter of the engine. A value between 0 and 1. Setting this
     /// attribute may have no effect, for example the thrust limit for a solid
     /// rocket booster cannot be changed in flight.
     /// </summary>
@@ -534,7 +543,9 @@ public class Engine : RemoteObject
     }
 
     /// <summary>
-    /// Sets the ThrustLimit value.
+    /// Sets the thrust limiter of the engine. A value between 0 and 1. Setting this
+    /// attribute may have no effect, for example the thrust limit for a solid
+    /// rocket booster cannot be changed in flight.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetThrustLimit (float value)
@@ -547,13 +558,13 @@ public class Engine : RemoteObject
     }
 
     /// <summary>
-    /// The components of the engine that generate thrust.
+    /// Gets the components of the engine that generate thrust.
     /// </summary>
     /// <remarks>
     /// For example, this corresponds to the rocket nozzel on a solid rocket booster,
     /// or the individual nozzels on a RAPIER engine.
-    /// The overall thrust produced by the engine, as reported by <see cref="M:SpaceCenter.Engine.AvailableThrust" />,
-    /// <see cref="M:SpaceCenter.Engine.MaxThrust" /> and others, is the sum of the thrust generated by each thruster.
+    /// The overall thrust produced by the engine, as reported by <see cref="M:SpaceCenter.Engine.GetAvailableThrust" />,
+    /// <see cref="M:SpaceCenter.Engine.GetMaxThrust" /> and others, is the sum of the thrust generated by each thruster.
     /// </remarks>
     [Rpc ("SpaceCenter", "Engine_get_Thrusters")]
     public IList<Thruster> GetThrusters ()
@@ -565,7 +576,7 @@ public class Engine : RemoteObject
     }
 
     /// <summary>
-    /// The vacuum specific impulse of the engine, in seconds.
+    /// Gets the vacuum specific impulse of the engine, in seconds.
     /// </summary>
     [Rpc ("SpaceCenter", "Engine_get_VacuumSpecificImpulse")]
     public float GetVacuumSpecificImpulse ()

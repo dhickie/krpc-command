@@ -6,7 +6,7 @@ using System.Collections.Generic;
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
 /// <summary>
-/// Obtained by calling <see cref="M:SpaceCenter.Part.Experiment" />.
+/// Obtained by calling <see cref="M:SpaceCenter.Part.GetExperiment" />.
 /// </summary>
 public class Experiment : RemoteObject
 {
@@ -78,7 +78,7 @@ public class Experiment : RemoteObject
     }
 
     /// <summary>
-    /// The name of the biome the experiment is currently in.
+    /// Gets the name of the biome the experiment is currently in.
     /// </summary>
     [Rpc ("SpaceCenter", "Experiment_get_Biome")]
     public string GetBiome ()
@@ -90,7 +90,7 @@ public class Experiment : RemoteObject
     }
 
     /// <summary>
-    /// The data contained in this experiment.
+    /// Gets the data contained in this experiment.
     /// </summary>
     [Rpc ("SpaceCenter", "Experiment_get_Data")]
     public IList<ScienceData> GetData ()
@@ -102,7 +102,7 @@ public class Experiment : RemoteObject
     }
 
     /// <summary>
-    /// Whether the experiment has been deployed.
+    /// Gets whether the experiment has been deployed.
     /// </summary>
     [Rpc ("SpaceCenter", "Experiment_get_Deployed")]
     public bool GetDeployed ()
@@ -114,7 +114,7 @@ public class Experiment : RemoteObject
     }
 
     /// <summary>
-    /// Whether the experiment contains data.
+    /// Gets whether the experiment contains data.
     /// </summary>
     [Rpc ("SpaceCenter", "Experiment_get_HasData")]
     public bool GetHasData ()
@@ -126,7 +126,7 @@ public class Experiment : RemoteObject
     }
 
     /// <summary>
-    /// Whether the experiment is inoperable.
+    /// Gets whether the experiment is inoperable.
     /// </summary>
     [Rpc ("SpaceCenter", "Experiment_get_Inoperable")]
     public bool GetInoperable ()
@@ -151,7 +151,7 @@ public class Experiment : RemoteObject
     }
 
     /// <summary>
-    /// The part object for this experiment.
+    /// Gets the part object for this experiment.
     /// </summary>
     [Rpc ("SpaceCenter", "Experiment_get_Part")]
     public Part GetPart ()
@@ -163,7 +163,7 @@ public class Experiment : RemoteObject
     }
 
     /// <summary>
-    /// Whether the experiment can be re-run.
+    /// Gets whether the experiment can be re-run.
     /// </summary>
     [Rpc ("SpaceCenter", "Experiment_get_Rerunnable")]
     public bool GetRerunnable ()

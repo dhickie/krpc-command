@@ -1,7 +1,7 @@
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
 /// <summary>
-/// The state of an antenna. See <see cref="M:SpaceCenter.Antenna.State" />.
+/// The state of an antenna. See <see cref="M:SpaceCenter.Antenna.GetState" />.
 /// </summary>
 [Serializable]
 public enum AntennaState

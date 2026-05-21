@@ -2,7 +2,7 @@ namespace kRPC.Client.Boost.Services.SpaceCenter;
 
 /// <summary>
 /// The situation a vessel is in.
-/// See <see cref="M:SpaceCenter.Vessel.Situation" />.
+/// See <see cref="M:SpaceCenter.Vessel.GetSituation" />.
 /// </summary>
 [Serializable]
 public enum VesselSituation

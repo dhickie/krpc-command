@@ -6,7 +6,7 @@ using kRPC.Client.Boost.Attributes;
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
 /// <summary>
-/// A docking port. Obtained by calling <see cref="M:SpaceCenter.Part.DockingPort" /></summary>
+/// A docking port. Obtained by calling <see cref="M:SpaceCenter.Part.GetDockingPort" /></summary>
 public class DockingPort : RemoteObject
 {
     /// <summary>
@@ -72,7 +72,7 @@ public class DockingPort : RemoteObject
     /// <remarks>
     /// When called, the active vessel may change. It is therefore possible that,
     /// after calling this function, the object(s) returned by previous call(s) to
-    /// <see cref="M:SpaceCenter.ActiveVessel" /> no longer refer to the active vessel.
+    /// <see cref="M:SpaceCenter.GetActiveVessel" /> no longer refer to the active vessel.
     /// </remarks>
     [Rpc ("SpaceCenter", "DockingPort_Undock")]
     public Vessel Undock ()
@@ -84,7 +84,7 @@ public class DockingPort : RemoteObject
     }
 
     /// <summary>
-    /// Whether the docking port can be commanded to rotate while docked.
+    /// Gets whether the docking port can be commanded to rotate while docked.
     /// </summary>
     [Rpc ("SpaceCenter", "DockingPort_get_CanRotate")]
     public bool GetCanRotate ()
@@ -96,7 +96,7 @@ public class DockingPort : RemoteObject
     }
 
     /// <summary>
-    /// The part that this docking port is docked to. Returns <c>null</c> if this
+    /// Gets the part that this docking port is docked to. Returns <c>null</c> if this
     /// docking port is not docked to anything.
     /// </summary>
     [Rpc ("SpaceCenter", "DockingPort_get_DockedPart")]
@@ -109,7 +109,7 @@ public class DockingPort : RemoteObject
     }
 
     /// <summary>
-    /// Whether the docking port has a shield.
+    /// Gets whether the docking port has a shield.
     /// </summary>
     [Rpc ("SpaceCenter", "DockingPort_get_HasShield")]
     public bool GetHasShield ()
@@ -121,7 +121,7 @@ public class DockingPort : RemoteObject
     }
 
     /// <summary>
-    /// Maximum rotation angle in degrees.
+    /// Gets the maximum rotation angle in degrees.
     /// </summary>
     [Rpc ("SpaceCenter", "DockingPort_get_MaximumRotation")]
     public float GetMaximumRotation ()
@@ -133,7 +133,7 @@ public class DockingPort : RemoteObject
     }
 
     /// <summary>
-    /// Minimum rotation angle in degrees.
+    /// Gets the minimum rotation angle in degrees.
     /// </summary>
     [Rpc ("SpaceCenter", "DockingPort_get_MinimumRotation")]
     public float GetMinimumRotation ()
@@ -145,7 +145,7 @@ public class DockingPort : RemoteObject
     }
 
     /// <summary>
-    /// The part object for this docking port.
+    /// Gets the part object for this docking port.
     /// </summary>
     [Rpc ("SpaceCenter", "DockingPort_get_Part")]
     public Part GetPart ()
@@ -157,7 +157,7 @@ public class DockingPort : RemoteObject
     }
 
     /// <summary>
-    /// The distance a docking port must move away when it undocks before it
+    /// Gets the distance a docking port must move away when it undocks before it
     /// becomes ready to dock with another port, in meters.
     /// </summary>
     [Rpc ("SpaceCenter", "DockingPort_get_ReengageDistance")]
@@ -170,16 +170,17 @@ public class DockingPort : RemoteObject
     }
 
     /// <summary>
-    /// The reference frame that is fixed relative to this docking port, and
+    /// Gets the reference frame that is fixed relative to this docking port, and
     /// oriented with the port.
     /// <list type="bullet"><item><description>The origin is at the position of the docking port.
     /// </description></item><item><description>The axes rotate with the docking port.</description></item><item><description>The x-axis points out to the right side of the docking port.
     /// </description></item><item><description>The y-axis points in the direction the docking port is facing.
     /// </description></item><item><description>The z-axis points out of the bottom off the docking port.
-    /// </description></item></list></summary>
+    /// </description></item></list>
+    /// </summary>
     /// <remarks>
     /// This reference frame is not necessarily equivalent to the reference frame
-    /// for the part, returned by <see cref="M:SpaceCenter.Part.ReferenceFrame" />.
+    /// for the part, returned by <see cref="M:SpaceCenter.Part.GetReferenceFrame" />.
     /// </remarks>
     [Rpc ("SpaceCenter", "DockingPort_get_ReferenceFrame")]
     public ReferenceFrame GetReferenceFrame ()
@@ -203,7 +204,7 @@ public class DockingPort : RemoteObject
     }
 
     /// <summary>
-    /// Sets the RotationLocked value.
+    /// Sets whether rotation is locked. When locked, allows auto-strut to work across the joint.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetRotationLocked (bool value)
@@ -228,7 +229,7 @@ public class DockingPort : RemoteObject
     }
 
     /// <summary>
-    /// Sets the RotationTarget value.
+    /// Sets rotation target angle in degrees.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetRotationTarget (float value)
@@ -241,7 +242,7 @@ public class DockingPort : RemoteObject
     }
 
     /// <summary>
-    /// The state of the docking ports shield, if it has one.
+    /// Gets the state of the docking ports shield, if it has one.
     ///
     /// Returns <c>true</c> if the docking port has a shield, and the shield is
     /// closed. Otherwise returns <c>false</c>. When set to <c>true</c>, the shield is
@@ -258,7 +259,12 @@ public class DockingPort : RemoteObject
     }
 
     /// <summary>
-    /// Sets the Shielded value.
+    /// Sets the state of the docking ports shield, if it has one.
+    ///
+    /// Returns <c>true</c> if the docking port has a shield, and the shield is
+    /// closed. Otherwise returns <c>false</c>. When set to <c>true</c>, the shield is
+    /// closed, and when set to <c>false</c> the shield is opened. If the docking
+    /// port does not have a shield, setting this attribute has no effect.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetShielded (bool value)
@@ -271,7 +277,7 @@ public class DockingPort : RemoteObject
     }
 
     /// <summary>
-    /// The current state of the docking port.
+    /// Gets the current state of the docking port.
     /// </summary>
     [Rpc ("SpaceCenter", "DockingPort_get_State")]
     public DockingPortState GetState ()

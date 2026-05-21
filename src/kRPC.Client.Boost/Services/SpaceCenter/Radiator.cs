@@ -5,7 +5,7 @@ using kRPC.Client.Boost.Attributes;
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
 /// <summary>
-/// A radiator. Obtained by calling <see cref="M:SpaceCenter.Part.Radiator" />.
+/// A radiator. Obtained by calling <see cref="M:SpaceCenter.Part.GetRadiator" />.
 /// </summary>
 public class Radiator : RemoteObject
 {
@@ -17,7 +17,7 @@ public class Radiator : RemoteObject
     }
 
     /// <summary>
-    /// Whether the radiator is deployable.
+    /// Gets whether the radiator is deployable.
     /// </summary>
     [Rpc ("SpaceCenter", "Radiator_get_Deployable")]
     public bool GetDeployable ()
@@ -29,7 +29,7 @@ public class Radiator : RemoteObject
     }
 
     /// <summary>
-    /// For a deployable radiator, <c>true</c> if the radiator is extended.
+    /// Returns <c>true</c> if a deployable radiator is extended.
     /// If the radiator is not deployable, this is always <c>true</c>.
     /// </summary>
     [Rpc ("SpaceCenter", "Radiator_get_Deployed")]
@@ -42,7 +42,8 @@ public class Radiator : RemoteObject
     }
 
     /// <summary>
-    /// Sets the Deployed value.
+    /// Sets whether a deployable radiator is extended.
+    /// If the radiator is not deployable, this is always <c>true</c>.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetDeployed (bool value)
@@ -55,7 +56,7 @@ public class Radiator : RemoteObject
     }
 
     /// <summary>
-    /// The part object for this radiator.
+    /// Gets the part object for this radiator.
     /// </summary>
     [Rpc ("SpaceCenter", "Radiator_get_Part")]
     public Part GetPart ()
@@ -67,7 +68,7 @@ public class Radiator : RemoteObject
     }
 
     /// <summary>
-    /// The current state of the radiator.
+    /// Gets the current state of the radiator.
     /// </summary>
     /// <remarks>
     /// A fixed radiator is always <see cref="M:SpaceCenter.RadiatorState.Extended" />.

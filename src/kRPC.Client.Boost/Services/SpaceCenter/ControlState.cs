@@ -2,7 +2,7 @@ namespace kRPC.Client.Boost.Services.SpaceCenter;
 
 /// <summary>
 /// The control state of a vessel.
-/// See <see cref="M:SpaceCenter.Control.State" />.
+/// See <see cref="M:SpaceCenter.Control.GetState" />.
 /// </summary>
 [Serializable]
 public enum ControlState

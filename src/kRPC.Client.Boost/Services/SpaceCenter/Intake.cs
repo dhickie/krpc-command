@@ -5,7 +5,7 @@ using kRPC.Client.Boost.Attributes;
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
 /// <summary>
-/// An air intake. Obtained by calling <see cref="M:SpaceCenter.Part.Intake" />.
+/// An air intake. Obtained by calling <see cref="M:SpaceCenter.Part.GetIntake" />.
 /// </summary>
 public class Intake : RemoteObject
 {
@@ -17,7 +17,7 @@ public class Intake : RemoteObject
     }
 
     /// <summary>
-    /// The area of the intake's opening, in square meters.
+    /// Gets the area of the intake's opening, in square meters.
     /// </summary>
     [Rpc ("SpaceCenter", "Intake_get_Area")]
     public float GetArea ()
@@ -29,7 +29,7 @@ public class Intake : RemoteObject
     }
 
     /// <summary>
-    /// The rate of flow into the intake, in units of resource per second.
+    /// Gets the rate of flow into the intake, in units of resource per second.
     /// </summary>
     [Rpc ("SpaceCenter", "Intake_get_Flow")]
     public float GetFlow ()
@@ -41,7 +41,7 @@ public class Intake : RemoteObject
     }
 
     /// <summary>
-    /// Whether the intake is open.
+    /// Gets whether the intake is open.
     /// </summary>
     [Rpc ("SpaceCenter", "Intake_get_Open")]
     public bool GetOpen ()
@@ -53,7 +53,7 @@ public class Intake : RemoteObject
     }
 
     /// <summary>
-    /// Sets the Open value.
+    /// Sets whether the intake is open.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetOpen (bool value)
@@ -66,7 +66,7 @@ public class Intake : RemoteObject
     }
 
     /// <summary>
-    /// The part object for this intake.
+    /// Gets the part object for this intake.
     /// </summary>
     [Rpc ("SpaceCenter", "Intake_get_Part")]
     public Part GetPart ()

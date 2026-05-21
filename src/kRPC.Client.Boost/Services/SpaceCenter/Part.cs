@@ -171,7 +171,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// An <see cref="T:SpaceCenter.Antenna" /> if the part is an antenna, otherwise <c>null</c>.
+    /// Gets an <see cref="T:SpaceCenter.Antenna" /> if the part is an antenna, otherwise <c>null</c>.
     /// </summary>
     /// <remarks>
     /// If RemoteTech is installed, this will always return <c>null</c>.
@@ -211,7 +211,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// Whether the part is axially attached to its parent, i.e. on the top
+    /// Gets whether the part is axially attached to its parent, i.e. on the top
     /// or bottom of its parent. If the part has no parent, returns <c>false</c>.
     /// </summary>
     [Rpc ("SpaceCenter", "Part_get_AxiallyAttached")]
@@ -224,7 +224,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// A <see cref="T:SpaceCenter.CargoBay" /> if the part is a cargo bay, otherwise <c>null</c>.
+    /// Gets a <see cref="T:SpaceCenter.CargoBay" /> if the part is a cargo bay, otherwise <c>null</c>.
     /// </summary>
     [Rpc ("SpaceCenter", "Part_get_CargoBay")]
     public CargoBay GetCargoBay ()
@@ -236,15 +236,16 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// The reference frame that is fixed relative to this part, and centered on its
+    /// Gets the reference frame that is fixed relative to this part, and centered on its
     /// center of mass.
     /// <list type="bullet"><item><description>The origin is at the center of mass of the part, as returned by
     /// <see cref="M:SpaceCenter.Part.CenterOfMass" />.</description></item><item><description>The axes rotate with the part.</description></item><item><description>The x, y and z axis directions depend on the design of the part.
-    /// </description></item></list></summary>
+    /// </description></item></list>
+    /// </summary>
     /// <remarks>
     /// For docking port parts, this reference frame is not necessarily equivalent to the
     /// reference frame for the docking port, returned by
-    /// <see cref="M:SpaceCenter.DockingPort.ReferenceFrame" />.
+    /// <see cref="M:SpaceCenter.DockingPort.GetReferenceFrame" />.
     /// </remarks>
     [Rpc ("SpaceCenter", "Part_get_CenterOfMassReferenceFrame")]
     public ReferenceFrame GetCenterOfMassReferenceFrame ()
@@ -256,8 +257,8 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// The parts children. Returns an empty list if the part has no children.
-    /// This, in combination with <see cref="M:SpaceCenter.Part.Parent" />, can be used to traverse the vessels
+    /// Gets the parts children. Returns an empty list if the part has no children.
+    /// This, in combination with <see cref="M:SpaceCenter.Part.GetParent" />, can be used to traverse the vessels
     /// parts tree.
     /// </summary>
     [Rpc ("SpaceCenter", "Part_get_Children")]
@@ -270,7 +271,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// A <see cref="T:SpaceCenter.ControlSurface" /> if the part is an aerodynamic control surface,
+    /// Gets a <see cref="T:SpaceCenter.ControlSurface" /> if the part is an aerodynamic control surface,
     /// otherwise <c>null</c>.
     /// </summary>
     [Rpc ("SpaceCenter", "Part_get_ControlSurface")]
@@ -283,7 +284,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// The cost of the part, in units of funds.
+    /// Gets the cost of the part, in units of funds.
     /// </summary>
     [Rpc ("SpaceCenter", "Part_get_Cost")]
     public double GetCost ()
@@ -295,7 +296,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// Whether this part is crossfeed capable.
+    /// Gets whether this part is crossfeed capable.
     /// </summary>
     [Rpc ("SpaceCenter", "Part_get_Crossfeed")]
     public bool GetCrossfeed ()
@@ -307,7 +308,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// The stage in which this part will be decoupled. Returns -1 if the part is never
+    /// Gets the stage in which this part will be decoupled. Returns -1 if the part is never
     /// decoupled from the vessel.
     /// </summary>
     [Rpc ("SpaceCenter", "Part_get_DecoupleStage")]
@@ -320,7 +321,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// A <see cref="T:SpaceCenter.Decoupler" /> if the part is a decoupler, otherwise <c>null</c>.
+    /// Gets a <see cref="T:SpaceCenter.Decoupler" /> if the part is a decoupler, otherwise <c>null</c>.
     /// </summary>
     [Rpc ("SpaceCenter", "Part_get_Decoupler")]
     public Decoupler GetDecoupler ()
@@ -332,7 +333,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// A <see cref="T:SpaceCenter.DockingPort" /> if the part is a docking port, otherwise <c>null</c>.
+    /// Gets a <see cref="T:SpaceCenter.DockingPort" /> if the part is a docking port, otherwise <c>null</c>.
     /// </summary>
     [Rpc ("SpaceCenter", "Part_get_DockingPort")]
     public DockingPort GetDockingPort ()
@@ -344,7 +345,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// The mass of the part, not including any resources it contains, in kilograms.
+    /// Gets the mass of the part, not including any resources it contains, in kilograms.
     /// Returns zero if the part is massless.
     /// </summary>
     [Rpc ("SpaceCenter", "Part_get_DryMass")]
@@ -357,7 +358,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// The dynamic pressure acting on the part, in Pascals.
+    /// Gets the dynamic pressure acting on the part, in Pascals.
     /// </summary>
     [Rpc ("SpaceCenter", "Part_get_DynamicPressure")]
     public float GetDynamicPressure ()
@@ -369,7 +370,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// An <see cref="T:SpaceCenter.Engine" /> if the part is an engine, otherwise <c>null</c>.
+    /// Gets an <see cref="T:SpaceCenter.Engine" /> if the part is an engine, otherwise <c>null</c>.
     /// </summary>
     [Rpc ("SpaceCenter", "Part_get_Engine")]
     public Engine GetEngine ()
@@ -381,12 +382,12 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// An <see cref="T:SpaceCenter.Experiment" /> if the part contains a
+    /// Gets an <see cref="T:SpaceCenter.Experiment" /> if the part contains a
     /// single science experiment, otherwise <c>null</c>.
     /// </summary>
     /// <remarks>
     /// Throws an exception if the part contains more than one experiment.
-    /// In that case, use <see cref="M:SpaceCenter.Part.Experiments" /> to get the list of experiments in the part.
+    /// In that case, use <see cref="M:SpaceCenter.Part.GetExperiments" /> to get the list of experiments in the part.
     /// </remarks>
     [Rpc ("SpaceCenter", "Part_get_Experiment")]
     public Experiment GetExperiment ()
@@ -398,7 +399,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// A list of <see cref="T:SpaceCenter.Experiment" /> objects that the part contains.
+    /// Gets a list of <see cref="T:SpaceCenter.Experiment" /> objects that the part contains.
     /// </summary>
     [Rpc ("SpaceCenter", "Part_get_Experiments")]
     public IList<Experiment> GetExperiments ()
@@ -410,7 +411,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// A <see cref="T:SpaceCenter.Fairing" /> if the part is a fairing, otherwise <c>null</c>.
+    /// Gets a <see cref="T:SpaceCenter.Fairing" /> if the part is a fairing, otherwise <c>null</c>.
     /// </summary>
     [Rpc ("SpaceCenter", "Part_get_Fairing")]
     public Fairing GetFairing ()
@@ -422,7 +423,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// The asset URL for the part's flag.
+    /// Gets the asset URL for the part's flag.
     /// </summary>
     [Rpc ("SpaceCenter", "Part_get_FlagURL")]
     public string GetFlagURL ()
@@ -434,7 +435,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// Sets the FlagURL value.
+    /// Sets the asset URL for the part's flag.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetFlagURL (string value)
@@ -447,7 +448,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// The parts that are connected to this part via fuel lines, where the direction of the
+    /// Gets the parts that are connected to this part via fuel lines, where the direction of the
     /// fuel line is into this part.
     /// </summary>
     [Rpc ("SpaceCenter", "Part_get_FuelLinesFrom")]
@@ -460,7 +461,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// The parts that are connected to this part via fuel lines, where the direction of the
+    /// Gets the parts that are connected to this part via fuel lines, where the direction of the
     /// fuel line is out of this part.
     /// </summary>
     [Rpc ("SpaceCenter", "Part_get_FuelLinesTo")]
@@ -485,7 +486,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// The color used to highlight the part, as an RGB triple.
+    /// Gets the color used to highlight the part, as an RGB triple.
     /// </summary>
     [Rpc ("SpaceCenter", "Part_get_HighlightColor")]
     public Tuple<double,double,double> GetHighlightColor ()
@@ -497,7 +498,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// Sets the HighlightColor value.
+    /// Sets the color used to highlight the part, as an RGB triple.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetHighlightColor (Tuple<double,double,double> value)
@@ -510,7 +511,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// Whether the part is highlighted.
+    /// Gets whether the part is highlighted.
     /// </summary>
     [Rpc ("SpaceCenter", "Part_get_Highlighted")]
     public bool GetHighlighted ()
@@ -522,7 +523,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// Sets the Highlighted value.
+    /// Sets whether the part is highlighted.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetHighlighted (bool value)
@@ -535,7 +536,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// The impact tolerance of the part, in meters per second.
+    /// Gets the impact tolerance of the part, in meters per second.
     /// </summary>
     [Rpc ("SpaceCenter", "Part_get_ImpactTolerance")]
     public double GetImpactTolerance ()
@@ -547,7 +548,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// The inertia tensor of the part in the parts reference frame
+    /// Gets the inertia tensor of the part in the parts reference frame
     /// (<see cref="T:SpaceCenter.ReferenceFrame" />).
     /// Returns the 3x3 matrix as a list of elements, in row-major order.
     /// </summary>
@@ -561,7 +562,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// An <see cref="T:SpaceCenter.Intake" /> if the part is an intake, otherwise <c>null</c>.
+    /// Gets an <see cref="T:SpaceCenter.Intake" /> if the part is an intake, otherwise <c>null</c>.
     /// </summary>
     /// <remarks>
     /// This includes any part that generates thrust. This covers many different types
@@ -578,7 +579,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// Whether this part is a fuel line.
+    /// Gets whether this part is a fuel line.
     /// </summary>
     [Rpc ("SpaceCenter", "Part_get_IsFuelLine")]
     public bool GetIsFuelLine ()
@@ -590,7 +591,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// A <see cref="T:SpaceCenter.LaunchClamp" /> if the part is a launch clamp, otherwise <c>null</c>.
+    /// Gets a <see cref="T:SpaceCenter.LaunchClamp" /> if the part is a launch clamp, otherwise <c>null</c>.
     /// </summary>
     [Rpc ("SpaceCenter", "Part_get_LaunchClamp")]
     public LaunchClamp GetLaunchClamp ()
@@ -602,7 +603,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// A <see cref="T:SpaceCenter.Leg" /> if the part is a landing leg, otherwise <c>null</c>.
+    /// Gets a <see cref="T:SpaceCenter.Leg" /> if the part is a landing leg, otherwise <c>null</c>.
     /// </summary>
     [Rpc ("SpaceCenter", "Part_get_Leg")]
     public Leg GetLeg ()
@@ -614,7 +615,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// A <see cref="T:SpaceCenter.Light" /> if the part is a light, otherwise <c>null</c>.
+    /// Gets a <see cref="T:SpaceCenter.Light" /> if the part is a light, otherwise <c>null</c>.
     /// </summary>
     [Rpc ("SpaceCenter", "Part_get_Light")]
     public Light GetLight ()
@@ -626,7 +627,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// The current mass of the part, including resources it contains, in kilograms.
+    /// Gets the current mass of the part, including resources it contains, in kilograms.
     /// Returns zero if the part is massless.
     /// </summary>
     [Rpc ("SpaceCenter", "Part_get_Mass")]
@@ -639,7 +640,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// Whether the part is
+    /// Gets whether the part is
     /// <a href="https://wiki.kerbalspaceprogram.com/wiki/Massless_part">massless</a>.
     /// </summary>
     [Rpc ("SpaceCenter", "Part_get_Massless")]
@@ -652,7 +653,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// Maximum temperature that the skin of the part can survive, in Kelvin.
+    /// Gets the maximum temperature that the skin of the part can survive, in Kelvin.
     /// </summary>
     [Rpc ("SpaceCenter", "Part_get_MaxSkinTemperature")]
     public double GetMaxSkinTemperature ()
@@ -664,7 +665,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// Maximum temperature that the part can survive, in Kelvin.
+    /// Gets the maximum temperature that the part can survive, in Kelvin.
     /// </summary>
     [Rpc ("SpaceCenter", "Part_get_MaxTemperature")]
     public double GetMaxTemperature ()
@@ -676,7 +677,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// The modules for this part.
+    /// Gets the modules for this part.
     /// </summary>
     [Rpc ("SpaceCenter", "Part_get_Modules")]
     public IList<Module> GetModules ()
@@ -688,7 +689,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// The moment of inertia of the part in <math>kg.m^2</math> around its center of mass
+    /// Gets the moment of inertia of the part in <math>kg.m^2</math> around its center of mass
     /// in the parts reference frame (<see cref="T:SpaceCenter.ReferenceFrame" />).
     /// </summary>
     [Rpc ("SpaceCenter", "Part_get_MomentOfInertia")]
@@ -715,7 +716,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// A <see cref="T:SpaceCenter.Parachute" /> if the part is a parachute, otherwise <c>null</c>.
+    /// Gets a <see cref="T:SpaceCenter.Parachute" /> if the part is a parachute, otherwise <c>null</c>.
     /// </summary>
     [Rpc ("SpaceCenter", "Part_get_Parachute")]
     public Parachute GetParachute ()
@@ -727,8 +728,8 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// The parts parent. Returns <c>null</c> if the part does not have a parent.
-    /// This, in combination with <see cref="M:SpaceCenter.Part.Children" />, can be used to traverse the vessels
+    /// Gets the parts parent. Returns <c>null</c> if the part does not have a parent.
+    /// This, in combination with <see cref="M:SpaceCenter.Part.GetChildren" />, can be used to traverse the vessels
     /// parts tree.
     /// </summary>
     [Rpc ("SpaceCenter", "Part_get_Parent")]
@@ -741,7 +742,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// A <see cref="T:SpaceCenter.RCS" /> if the part is an RCS block/thruster, otherwise <c>null</c>.
+    /// Gets a <see cref="T:SpaceCenter.RCS" /> if the part is an RCS block/thruster, otherwise <c>null</c>.
     /// </summary>
     [Rpc ("SpaceCenter", "Part_get_RCS")]
     public RCS GetRCS ()
@@ -753,7 +754,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// Whether the part is radially attached to its parent, i.e. on the side of its parent.
+    /// Gets whether the part is radially attached to its parent, i.e. on the side of its parent.
     /// If the part has no parent, returns <c>false</c>.
     /// </summary>
     [Rpc ("SpaceCenter", "Part_get_RadiallyAttached")]
@@ -766,7 +767,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// A <see cref="T:SpaceCenter.Radiator" /> if the part is a radiator, otherwise <c>null</c>.
+    /// Gets a <see cref="T:SpaceCenter.Radiator" /> if the part is a radiator, otherwise <c>null</c>.
     /// </summary>
     [Rpc ("SpaceCenter", "Part_get_Radiator")]
     public Radiator GetRadiator ()
@@ -778,7 +779,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// A <see cref="T:SpaceCenter.ReactionWheel" /> if the part is a reaction wheel, otherwise <c>null</c>.
+    /// Gets a <see cref="T:SpaceCenter.ReactionWheel" /> if the part is a reaction wheel, otherwise <c>null</c>.
     /// </summary>
     [Rpc ("SpaceCenter", "Part_get_ReactionWheel")]
     public ReactionWheel GetReactionWheel ()
@@ -790,15 +791,16 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// The reference frame that is fixed relative to this part, and centered on a fixed
+    /// Gets the reference frame that is fixed relative to this part, and centered on a fixed
     /// position within the part, defined by the parts model.
     /// <list type="bullet"><item><description>The origin is at the position of the part, as returned by
     /// <see cref="M:SpaceCenter.Part.Position" />.</description></item><item><description>The axes rotate with the part.</description></item><item><description>The x, y and z axis directions depend on the design of the part.
-    /// </description></item></list></summary>
+    /// </description></item></list>
+    /// </summary>
     /// <remarks>
     /// For docking port parts, this reference frame is not necessarily equivalent to the
     /// reference frame for the docking port, returned by
-    /// <see cref="M:SpaceCenter.DockingPort.ReferenceFrame" />.
+    /// <see cref="M:SpaceCenter.DockingPort.GetReferenceFrame" />.
     /// </remarks>
     [Rpc ("SpaceCenter", "Part_get_ReferenceFrame")]
     public ReferenceFrame GetReferenceFrame ()
@@ -810,7 +812,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// A <see cref="T:SpaceCenter.ResourceConverter" /> if the part is a resource converter,
+    /// Gets a <see cref="T:SpaceCenter.ResourceConverter" /> if the part is a resource converter,
     /// otherwise <c>null</c>.
     /// </summary>
     [Rpc ("SpaceCenter", "Part_get_ResourceConverter")]
@@ -823,7 +825,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// A <see cref="T:SpaceCenter.ResourceDrain" /> if the part is a resource drain, otherwise <c>null</c>.
+    /// Gets a <see cref="T:SpaceCenter.ResourceDrain" /> if the part is a resource drain, otherwise <c>null</c>.
     /// </summary>
     [Rpc ("SpaceCenter", "Part_get_ResourceDrain")]
     public ResourceDrain GetResourceDrain ()
@@ -835,7 +837,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// A <see cref="T:SpaceCenter.ResourceHarvester" /> if the part is a resource harvester,
+    /// Gets a <see cref="T:SpaceCenter.ResourceHarvester" /> if the part is a resource harvester,
     /// otherwise <c>null</c>.
     /// </summary>
     [Rpc ("SpaceCenter", "Part_get_ResourceHarvester")]
@@ -848,7 +850,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// A <see cref="T:SpaceCenter.Resources" /> object for the part.
+    /// Gets a <see cref="T:SpaceCenter.Resources" /> object for the part.
     /// </summary>
     [Rpc ("SpaceCenter", "Part_get_Resources")]
     public Resources GetResources ()
@@ -860,7 +862,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// A <see cref="T:SpaceCenter.RoboticController" /> if the part is a robotic controller,
+    /// Gets a <see cref="T:SpaceCenter.RoboticController" /> if the part is a robotic controller,
     /// otherwise <c>null</c>.
     /// </summary>
     [Rpc ("SpaceCenter", "Part_get_RoboticController")]
@@ -873,7 +875,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// A <see cref="T:SpaceCenter.RoboticHinge" /> if the part is a robotic hinge, otherwise <c>null</c>.
+    /// Gets a <see cref="T:SpaceCenter.RoboticHinge" /> if the part is a robotic hinge, otherwise <c>null</c>.
     /// </summary>
     [Rpc ("SpaceCenter", "Part_get_RoboticHinge")]
     public RoboticHinge GetRoboticHinge ()
@@ -885,7 +887,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// A <see cref="T:SpaceCenter.RoboticPiston" /> if the part is a robotic piston, otherwise <c>null</c>.
+    /// Gets a <see cref="T:SpaceCenter.RoboticPiston" /> if the part is a robotic piston, otherwise <c>null</c>.
     /// </summary>
     [Rpc ("SpaceCenter", "Part_get_RoboticPiston")]
     public RoboticPiston GetRoboticPiston ()
@@ -897,7 +899,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// A <see cref="T:SpaceCenter.RoboticRotation" /> if the part is a robotic rotation servo, otherwise <c>null</c>.
+    /// Gets a <see cref="T:SpaceCenter.RoboticRotation" /> if the part is a robotic rotation servo, otherwise <c>null</c>.
     /// </summary>
     [Rpc ("SpaceCenter", "Part_get_RoboticRotation")]
     public RoboticRotation GetRoboticRotation ()
@@ -909,7 +911,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// A <see cref="T:SpaceCenter.RoboticRotor" /> if the part is a robotic rotor, otherwise <c>null</c>.
+    /// Gets a <see cref="T:SpaceCenter.RoboticRotor" /> if the part is a robotic rotor, otherwise <c>null</c>.
     /// </summary>
     [Rpc ("SpaceCenter", "Part_get_RoboticRotor")]
     public RoboticRotor GetRoboticRotor ()
@@ -921,7 +923,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// A <see cref="T:SpaceCenter.Sensor" /> if the part is a sensor, otherwise <c>null</c>.
+    /// Gets a <see cref="T:SpaceCenter.Sensor" /> if the part is a sensor, otherwise <c>null</c>.
     /// </summary>
     [Rpc ("SpaceCenter", "Part_get_Sensor")]
     public Sensor GetSensor ()
@@ -933,7 +935,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// Whether the part is shielded from the exterior of the vessel, for example by a fairing.
+    /// Gets whether the part is shielded from the exterior of the vessel, for example by a fairing.
     /// </summary>
     [Rpc ("SpaceCenter", "Part_get_Shielded")]
     public bool GetShielded ()
@@ -957,7 +959,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// A <see cref="T:SpaceCenter.SolarPanel" /> if the part is a solar panel, otherwise <c>null</c>.
+    /// Gets a <see cref="T:SpaceCenter.SolarPanel" /> if the part is a solar panel, otherwise <c>null</c>.
     /// </summary>
     [Rpc ("SpaceCenter", "Part_get_SolarPanel")]
     public SolarPanel GetSolarPanel ()
@@ -969,7 +971,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// The stage in which this part will be activated. Returns -1 if the part is not
+    /// Gets the stage in which this part will be activated. Returns -1 if the part is not
     /// activated by staging.
     /// </summary>
     [Rpc ("SpaceCenter", "Part_get_Stage")]
@@ -982,7 +984,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// The name tag for the part. Can be set to a custom string using the
+    /// Gets the name tag for the part. Can be set to a custom string using the
     /// in-game user interface.
     /// </summary>
     /// <remarks>
@@ -1000,7 +1002,8 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// Sets the Tag value.
+    /// Sets the name tag for the part. Can be set to a custom string using the
+    /// in-game user interface.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetTag (string value)
@@ -1025,7 +1028,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// The rate at which heat energy is conducting into or out of the part via contact with
+    /// Gets the rate at which heat energy is conducting into or out of the part via contact with
     /// other parts. Measured in energy per unit time, or power, in Watts.
     /// A positive value means the part is gaining heat energy, and negative means it is
     /// losing heat energy.
@@ -1040,7 +1043,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// The rate at which heat energy is convecting into or out of the part from the
+    /// Gets the rate at which heat energy is convecting into or out of the part from the
     /// surrounding atmosphere. Measured in energy per unit time, or power, in Watts.
     /// A positive value means the part is gaining heat energy, and negative means it is
     /// losing heat energy.
@@ -1055,7 +1058,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// The rate at which heat energy is begin generated by the part.
+    /// Gets the rate at which heat energy is begin generated by the part.
     /// For example, some engines generate heat by combusting fuel.
     /// Measured in energy per unit time, or power, in Watts.
     /// A positive value means the part is gaining heat energy, and negative means it is losing
@@ -1071,7 +1074,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// A measure of how much energy it takes to increase the internal temperature of the part,
+    /// Gets a measure of how much energy it takes to increase the internal temperature of the part,
     /// in Joules per Kelvin.
     /// </summary>
     [Rpc ("SpaceCenter", "Part_get_ThermalMass")]
@@ -1084,7 +1087,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// The rate at which heat energy is radiating into or out of the part from the surrounding
+    /// Gets the rate at which heat energy is radiating into or out of the part from the surrounding
     /// environment. Measured in energy per unit time, or power, in Watts.
     /// A positive value means the part is gaining heat energy, and negative means it is
     /// losing heat energy.
@@ -1099,7 +1102,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// A measure of how much energy it takes to increase the temperature of the resources
+    /// Gets a measure of how much energy it takes to increase the temperature of the resources
     /// contained in the part, in Joules per Kelvin.
     /// </summary>
     [Rpc ("SpaceCenter", "Part_get_ThermalResourceMass")]
@@ -1112,7 +1115,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// A measure of how much energy it takes to increase the skin temperature of the part,
+    /// Gets a measure of how much energy it takes to increase the skin temperature of the part,
     /// in Joules per Kelvin.
     /// </summary>
     [Rpc ("SpaceCenter", "Part_get_ThermalSkinMass")]
@@ -1125,7 +1128,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// The rate at which heat energy is transferring between the part's skin and its internals.
+    /// Gets the rate at which heat energy is transferring between the part's skin and its internals.
     /// Measured in energy per unit time, or power, in Watts.
     /// A positive value means the part's internals are gaining heat energy,
     /// and negative means its skin is gaining heat energy.
@@ -1152,7 +1155,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// The vessel that contains this part.
+    /// Gets the vessel that contains this part.
     /// </summary>
     [Rpc ("SpaceCenter", "Part_get_Vessel")]
     public Vessel GetVessel ()
@@ -1164,7 +1167,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// A <see cref="T:SpaceCenter.Wheel" /> if the part is a wheel, otherwise <c>null</c>.
+    /// Gets a <see cref="T:SpaceCenter.Wheel" /> if the part is a wheel, otherwise <c>null</c>.
     /// </summary>
     [Rpc ("SpaceCenter", "Part_get_Wheel")]
     public Wheel GetWheel ()

@@ -7,7 +7,7 @@ namespace kRPC.Client.Boost.Services.SpaceCenter;
 
 /// <summary>
 /// Provides basic auto-piloting utilities for a vessel.
-/// Created by calling <see cref="M:SpaceCenter.Vessel.AutoPilot" />.
+/// Created by calling <see cref="M:SpaceCenter.Vessel.GetAutoPilot" />.
 /// </summary>
 /// <remarks>
 /// If a client engages the auto-pilot and then closes its connection to the server,
@@ -77,7 +77,7 @@ public class AutoPilot : RemoteObject
     }
 
     /// <summary>
-    /// The angle at which the autopilot considers the vessel to be pointing
+    /// Gets the angle at which the autopilot considers the vessel to be pointing
     /// close to the target.
     /// This determines the midpoint of the target velocity attenuation function.
     /// A vector of three angles, in degrees, one for each of the pitch, roll and yaw axes.
@@ -93,7 +93,11 @@ public class AutoPilot : RemoteObject
     }
 
     /// <summary>
-    /// Sets the AttenuationAngle value.
+    /// Sets the angle at which the autopilot considers the vessel to be pointing
+    /// close to the target.
+    /// This determines the midpoint of the target velocity attenuation function.
+    /// A vector of three angles, in degrees, one for each of the pitch, roll and yaw axes.
+    /// Defaults to 1° for each axis.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetAttenuationAngle (Tuple<double,double,double> value)
@@ -106,9 +110,9 @@ public class AutoPilot : RemoteObject
     }
 
     /// <summary>
-    /// Whether the rotation rate controllers PID parameters should be automatically tuned
+    /// Gets whether the rotation rate controllers PID parameters should be automatically tuned
     /// using the vessels moment of inertia and available torque. Defaults to <c>true</c>.
-    /// See <see cref="M:SpaceCenter.AutoPilot.TimeToPeak" /> and <see cref="M:SpaceCenter.AutoPilot.Overshoot" />.
+    /// See <see cref="M:SpaceCenter.AutoPilot.GetTimeToPeak" /> and <see cref="M:SpaceCenter.AutoPilot.GetOvershoot" />.
     /// </summary>
     [Rpc ("SpaceCenter", "AutoPilot_get_AutoTune")]
     public bool GetAutoTune ()
@@ -120,7 +124,9 @@ public class AutoPilot : RemoteObject
     }
 
     /// <summary>
-    /// Sets the AutoTune value.
+    /// Sets whether the rotation rate controllers PID parameters should be automatically tuned
+    /// using the vessels moment of inertia and available torque. Defaults to <c>true</c>.
+    /// See <see cref="M:SpaceCenter.AutoPilot.GetTimeToPeak" /> and <see cref="M:SpaceCenter.AutoPilot.GetOvershoot" />.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetAutoTune (bool value)
@@ -133,7 +139,7 @@ public class AutoPilot : RemoteObject
     }
 
     /// <summary>
-    /// The time the vessel should take to come to a stop pointing in the target direction.
+    /// Gets the time the vessel should take to come to a stop pointing in the target direction.
     /// This determines the angular acceleration used to decelerate the vessel.
     /// A vector of three times, in seconds, one for each of the pitch, roll and yaw axes.
     /// Defaults to 5 seconds for each axis.
@@ -148,7 +154,10 @@ public class AutoPilot : RemoteObject
     }
 
     /// <summary>
-    /// Sets the DecelerationTime value.
+    /// Sets the time the vessel should take to come to a stop pointing in the target direction.
+    /// This determines the angular acceleration used to decelerate the vessel.
+    /// A vector of three times, in seconds, one for each of the pitch, roll and yaw axes.
+    /// Defaults to 5 seconds for each axis.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetDecelerationTime (Tuple<double,double,double> value)
@@ -161,7 +170,7 @@ public class AutoPilot : RemoteObject
     }
 
     /// <summary>
-    /// The error, in degrees, between the direction the ship has been asked
+    /// Gets the error, in degrees, between the direction the ship has been asked
     /// to point in and the direction it is pointing in. Throws an exception if the auto-pilot
     /// has not been engaged and SAS is not enabled or is in stability assist mode.
     /// </summary>
@@ -175,7 +184,7 @@ public class AutoPilot : RemoteObject
     }
 
     /// <summary>
-    /// The error, in degrees, between the vessels current and target heading.
+    /// Gets the error, in degrees, between the vessels current and target heading.
     /// Throws an exception if the auto-pilot has not been engaged.
     /// </summary>
     [Rpc ("SpaceCenter", "AutoPilot_get_HeadingError")]
@@ -188,7 +197,7 @@ public class AutoPilot : RemoteObject
     }
 
     /// <summary>
-    /// The target overshoot percentage used to autotune the PID controllers.
+    /// Gets the target overshoot percentage used to autotune the PID controllers.
     /// A vector of three values, between 0 and 1, for each of the pitch, roll and yaw axes.
     /// Defaults to 0.01 for each axis.
     /// </summary>
@@ -202,7 +211,9 @@ public class AutoPilot : RemoteObject
     }
 
     /// <summary>
-    /// Sets the Overshoot value.
+    /// Sets the target overshoot percentage used to autotune the PID controllers.
+    /// A vector of three values, between 0 and 1, for each of the pitch, roll and yaw axes.
+    /// Defaults to 0.01 for each axis.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetOvershoot (Tuple<double,double,double> value)
@@ -215,7 +226,7 @@ public class AutoPilot : RemoteObject
     }
 
     /// <summary>
-    /// The error, in degrees, between the vessels current and target pitch.
+    /// Gets the error, in degrees, between the vessels current and target pitch.
     /// Throws an exception if the auto-pilot has not been engaged.
     /// </summary>
     [Rpc ("SpaceCenter", "AutoPilot_get_PitchError")]
@@ -231,7 +242,7 @@ public class AutoPilot : RemoteObject
     /// Gains for the pitch PID controller.
     /// </summary>
     /// <remarks>
-    /// When <see cref="M:SpaceCenter.AutoPilot.AutoTune" /> is true, these values are updated automatically,
+    /// When <see cref="M:SpaceCenter.AutoPilot.GetAutoTune" /> is true, these values are updated automatically,
     /// which will overwrite any manual changes.
     /// </remarks>
     [Rpc ("SpaceCenter", "AutoPilot_get_PitchPIDGains")]
@@ -244,7 +255,7 @@ public class AutoPilot : RemoteObject
     }
 
     /// <summary>
-    /// Sets the PitchPIDGains value.
+    /// Sets gains for the pitch PID controller.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetPitchPIDGains (Tuple<double,double,double> value)
@@ -257,7 +268,7 @@ public class AutoPilot : RemoteObject
     }
 
     /// <summary>
-    /// The reference frame for the target direction (<see cref="M:SpaceCenter.AutoPilot.TargetDirection" />).
+    /// Gets the reference frame for the target direction (<see cref="M:SpaceCenter.AutoPilot.GetTargetDirection" />).
     /// </summary>
     /// <remarks>
     /// An error will be thrown if this property is set to a reference frame that rotates with
@@ -274,7 +285,7 @@ public class AutoPilot : RemoteObject
     }
 
     /// <summary>
-    /// Sets the ReferenceFrame value.
+    /// Sets the reference frame for the target direction (<see cref="M:SpaceCenter.AutoPilot.GetTargetDirection" />).
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetReferenceFrame (ReferenceFrame value)
@@ -287,7 +298,7 @@ public class AutoPilot : RemoteObject
     }
 
     /// <summary>
-    /// The error, in degrees, between the vessels current and target roll.
+    /// Gets the error, in degrees, between the vessels current and target roll.
     /// Throws an exception if the auto-pilot has not been engaged or no target roll is set.
     /// </summary>
     [Rpc ("SpaceCenter", "AutoPilot_get_RollError")]
@@ -303,7 +314,7 @@ public class AutoPilot : RemoteObject
     /// Gains for the roll PID controller.
     /// </summary>
     /// <remarks>
-    /// When <see cref="M:SpaceCenter.AutoPilot.AutoTune" /> is true, these values are updated automatically,
+    /// When <see cref="M:SpaceCenter.AutoPilot.GetAutoTune" /> is true, these values are updated automatically,
     /// which will overwrite any manual changes.
     /// </remarks>
     [Rpc ("SpaceCenter", "AutoPilot_get_RollPIDGains")]
@@ -316,7 +327,7 @@ public class AutoPilot : RemoteObject
     }
 
     /// <summary>
-    /// Sets the RollPIDGains value.
+    /// Sets gains for the roll PID controller.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetRollPIDGains (Tuple<double,double,double> value)
@@ -329,7 +340,7 @@ public class AutoPilot : RemoteObject
     }
 
     /// <summary>
-    /// The threshold at which the autopilot will try to match the target roll angle, if any.
+    /// Gets the threshold at which the autopilot will try to match the target roll angle, if any.
     /// Defaults to 5 degrees.
     /// </summary>
     [Rpc ("SpaceCenter", "AutoPilot_get_RollThreshold")]
@@ -342,7 +353,8 @@ public class AutoPilot : RemoteObject
     }
 
     /// <summary>
-    /// Sets the RollThreshold value.
+    /// Sets the threshold at which the autopilot will try to match the target roll angle, if any.
+    /// Defaults to 5 degrees.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetRollThreshold (double value)
@@ -355,9 +367,9 @@ public class AutoPilot : RemoteObject
     }
 
     /// <summary>
-    /// The state of SAS.
+    /// Gets the state of SAS.
     /// </summary>
-    /// <remarks>Equivalent to <see cref="M:SpaceCenter.Control.SAS" /></remarks>
+    /// <remarks>Equivalent to <see cref="M:SpaceCenter.Control.GetSAS" /></remarks>
     [Rpc ("SpaceCenter", "AutoPilot_get_SAS")]
     public bool GetSAS ()
     {
@@ -368,7 +380,7 @@ public class AutoPilot : RemoteObject
     }
 
     /// <summary>
-    /// Sets the SAS value.
+    /// Sets the state of SAS.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetSAS (bool value)
@@ -381,11 +393,11 @@ public class AutoPilot : RemoteObject
     }
 
     /// <summary>
-    /// The current <see cref="T:SpaceCenter.SASMode" />.
+    /// Gets the current <see cref="T:SpaceCenter.SASMode" />.
     /// These modes are equivalent to the mode buttons to the left of the navball that appear
     /// when SAS is enabled.
     /// </summary>
-    /// <remarks>Equivalent to <see cref="M:SpaceCenter.Control.SASMode" /></remarks>
+    /// <remarks>Equivalent to <see cref="M:SpaceCenter.Control.GetSASMode" /></remarks>
     [Rpc ("SpaceCenter", "AutoPilot_get_SASMode")]
     public SASMode GetSASMode ()
     {
@@ -396,7 +408,9 @@ public class AutoPilot : RemoteObject
     }
 
     /// <summary>
-    /// Sets the SASMode value.
+    /// Sets the current <see cref="T:SpaceCenter.SASMode" />.
+    /// These modes are equivalent to the mode buttons to the left of the navball that appear
+    /// when SAS is enabled.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetSASMode (SASMode value)
@@ -409,7 +423,7 @@ public class AutoPilot : RemoteObject
     }
 
     /// <summary>
-    /// The maximum amount of time that the vessel should need to come to a complete stop.
+    /// Gets the maximum amount of time that the vessel should need to come to a complete stop.
     /// This determines the maximum angular velocity of the vessel.
     /// A vector of three stopping times, in seconds, one for each of the pitch, roll
     /// and yaw axes. Defaults to 0.5 seconds for each axis.
@@ -424,7 +438,10 @@ public class AutoPilot : RemoteObject
     }
 
     /// <summary>
-    /// Sets the StoppingTime value.
+    /// Sets the maximum amount of time that the vessel should need to come to a complete stop.
+    /// This determines the maximum angular velocity of the vessel.
+    /// A vector of three stopping times, in seconds, one for each of the pitch, roll
+    /// and yaw axes. Defaults to 0.5 seconds for each axis.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetStoppingTime (Tuple<double,double,double> value)
@@ -450,7 +467,8 @@ public class AutoPilot : RemoteObject
     }
 
     /// <summary>
-    /// Sets the TargetDirection value.
+    /// Sets direction vector corresponding to the target pitch and heading.
+    /// This is in the reference frame specified by <see cref="T:SpaceCenter.ReferenceFrame" />.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetTargetDirection (Tuple<double,double,double> value)
@@ -463,7 +481,7 @@ public class AutoPilot : RemoteObject
     }
 
     /// <summary>
-    /// The target heading, in degrees, between 0° and 360°.
+    /// Gets the target heading, in degrees, between 0° and 360°.
     /// </summary>
     [Rpc ("SpaceCenter", "AutoPilot_get_TargetHeading")]
     public float GetTargetHeading ()
@@ -475,7 +493,7 @@ public class AutoPilot : RemoteObject
     }
 
     /// <summary>
-    /// Sets the TargetHeading value.
+    /// Sets the target heading, in degrees, between 0° and 360°.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetTargetHeading (float value)
@@ -488,7 +506,7 @@ public class AutoPilot : RemoteObject
     }
 
     /// <summary>
-    /// The target pitch, in degrees, between -90° and +90°.
+    /// Gets the target pitch, in degrees, between -90° and +90°.
     /// </summary>
     [Rpc ("SpaceCenter", "AutoPilot_get_TargetPitch")]
     public float GetTargetPitch ()
@@ -500,7 +518,7 @@ public class AutoPilot : RemoteObject
     }
 
     /// <summary>
-    /// Sets the TargetPitch value.
+    /// Sets the target pitch, in degrees, between -90° and +90°.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetTargetPitch (float value)
@@ -513,7 +531,7 @@ public class AutoPilot : RemoteObject
     }
 
     /// <summary>
-    /// The target roll, in degrees. <c>NaN</c> if no target roll is set.
+    /// Gets the target roll, in degrees. <c>NaN</c> if no target roll is set.
     /// </summary>
     [Rpc ("SpaceCenter", "AutoPilot_get_TargetRoll")]
     public float GetTargetRoll ()
@@ -525,7 +543,7 @@ public class AutoPilot : RemoteObject
     }
 
     /// <summary>
-    /// Sets the TargetRoll value.
+    /// Sets the target roll, in degrees. <c>NaN</c> if no target roll is set.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetTargetRoll (float value)
@@ -538,7 +556,7 @@ public class AutoPilot : RemoteObject
     }
 
     /// <summary>
-    /// The target time to peak used to autotune the PID controllers.
+    /// Gets the target time to peak used to autotune the PID controllers.
     /// A vector of three times, in seconds, for each of the pitch, roll and yaw axes.
     /// Defaults to 3 seconds for each axis.
     /// </summary>
@@ -552,7 +570,9 @@ public class AutoPilot : RemoteObject
     }
 
     /// <summary>
-    /// Sets the TimeToPeak value.
+    /// Sets the target time to peak used to autotune the PID controllers.
+    /// A vector of three times, in seconds, for each of the pitch, roll and yaw axes.
+    /// Defaults to 3 seconds for each axis.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetTimeToPeak (Tuple<double,double,double> value)
@@ -568,7 +588,7 @@ public class AutoPilot : RemoteObject
     /// Gains for the yaw PID controller.
     /// </summary>
     /// <remarks>
-    /// When <see cref="M:SpaceCenter.AutoPilot.AutoTune" /> is true, these values are updated automatically,
+    /// When <see cref="M:SpaceCenter.AutoPilot.GetAutoTune" /> is true, these values are updated automatically,
     /// which will overwrite any manual changes.
     /// </remarks>
     [Rpc ("SpaceCenter", "AutoPilot_get_YawPIDGains")]
@@ -581,7 +601,7 @@ public class AutoPilot : RemoteObject
     }
 
     /// <summary>
-    /// Sets the YawPIDGains value.
+    /// Sets gains for the yaw PID controller.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetYawPIDGains (Tuple<double,double,double> value)

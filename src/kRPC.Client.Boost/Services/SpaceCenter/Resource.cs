@@ -18,7 +18,7 @@ public class Resource : RemoteObject
     }
 
     /// <summary>
-    /// The amount of the resource that is currently stored in the part.
+    /// Gets the amount of the resource that is currently stored in the part.
     /// </summary>
     [Rpc ("SpaceCenter", "Resource_get_Amount")]
     public float GetAmount ()
@@ -30,7 +30,7 @@ public class Resource : RemoteObject
     }
 
     /// <summary>
-    /// The density of the resource, in <math>kg/l</math>.
+    /// Gets the density of the resource, in <math>kg/l</math>.
     /// </summary>
     [Rpc ("SpaceCenter", "Resource_get_Density")]
     public float GetDensity ()
@@ -42,7 +42,7 @@ public class Resource : RemoteObject
     }
 
     /// <summary>
-    /// Whether use of this resource is enabled.
+    /// Gets whether use of this resource is enabled.
     /// </summary>
     [Rpc ("SpaceCenter", "Resource_get_Enabled")]
     public bool GetEnabled ()
@@ -54,7 +54,7 @@ public class Resource : RemoteObject
     }
 
     /// <summary>
-    /// Sets the Enabled value.
+    /// Sets whether use of this resource is enabled.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetEnabled (bool value)
@@ -67,7 +67,7 @@ public class Resource : RemoteObject
     }
 
     /// <summary>
-    /// The flow mode of the resource.
+    /// Gets the flow mode of the resource.
     /// </summary>
     [Rpc ("SpaceCenter", "Resource_get_FlowMode")]
     public ResourceFlowMode GetFlowMode ()
@@ -79,7 +79,7 @@ public class Resource : RemoteObject
     }
 
     /// <summary>
-    /// The total amount of the resource that can be stored in the part.
+    /// Gets the total amount of the resource that can be stored in the part.
     /// </summary>
     [Rpc ("SpaceCenter", "Resource_get_Max")]
     public float GetMax ()
@@ -91,7 +91,7 @@ public class Resource : RemoteObject
     }
 
     /// <summary>
-    /// The name of the resource.
+    /// Gets the name of the resource.
     /// </summary>
     [Rpc ("SpaceCenter", "Resource_get_Name")]
     public string GetName ()
@@ -103,7 +103,7 @@ public class Resource : RemoteObject
     }
 
     /// <summary>
-    /// The part containing the resource.
+    /// Gets the part containing the resource.
     /// </summary>
     [Rpc ("SpaceCenter", "Resource_get_Part")]
     public Part GetPart ()

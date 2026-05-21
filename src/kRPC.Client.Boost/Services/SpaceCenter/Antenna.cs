@@ -5,7 +5,7 @@ using kRPC.Client.Boost.Attributes;
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
 /// <summary>
-/// An antenna. Obtained by calling <see cref="M:SpaceCenter.Part.Antenna" />.
+/// An antenna. Obtained by calling <see cref="M:SpaceCenter.Part.GetAntenna" />.
 /// </summary>
 public class Antenna : RemoteObject
 {
@@ -41,7 +41,7 @@ public class Antenna : RemoteObject
     }
 
     /// <summary>
-    /// Whether partial data transmission is permitted.
+    /// Gets whether partial data transmission is permitted.
     /// </summary>
     [Rpc ("SpaceCenter", "Antenna_get_AllowPartial")]
     public bool GetAllowPartial ()
@@ -53,7 +53,7 @@ public class Antenna : RemoteObject
     }
 
     /// <summary>
-    /// Sets the AllowPartial value.
+    /// Sets whether partial data transmission is permitted.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetAllowPartial (bool value)
@@ -66,7 +66,7 @@ public class Antenna : RemoteObject
     }
 
     /// <summary>
-    /// Whether data can be transmitted by this antenna.
+    /// Gets whether data can be transmitted by this antenna.
     /// </summary>
     [Rpc ("SpaceCenter", "Antenna_get_CanTransmit")]
     public bool GetCanTransmit ()
@@ -78,7 +78,7 @@ public class Antenna : RemoteObject
     }
 
     /// <summary>
-    /// Whether the antenna can be combined with other antennae on the vessel
+    /// Gets whether the antenna can be combined with other antennae on the vessel
     /// to boost the power.
     /// </summary>
     [Rpc ("SpaceCenter", "Antenna_get_Combinable")]
@@ -103,7 +103,7 @@ public class Antenna : RemoteObject
     }
 
     /// <summary>
-    /// Whether the antenna is deployable.
+    /// Gets whether the antenna is deployable.
     /// </summary>
     [Rpc ("SpaceCenter", "Antenna_get_Deployable")]
     public bool GetDeployable ()
@@ -115,7 +115,7 @@ public class Antenna : RemoteObject
     }
 
     /// <summary>
-    /// Whether the antenna is deployed.
+    /// Gets whether the antenna is deployed.
     /// </summary>
     /// <remarks>
     /// Fixed antennas are always deployed.
@@ -131,7 +131,7 @@ public class Antenna : RemoteObject
     }
 
     /// <summary>
-    /// Sets the Deployed value.
+    /// Sets whether the antenna is deployed.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetDeployed (bool value)
@@ -180,7 +180,7 @@ public class Antenna : RemoteObject
     }
 
     /// <summary>
-    /// The part object for this antenna.
+    /// Gets the part object for this antenna.
     /// </summary>
     [Rpc ("SpaceCenter", "Antenna_get_Part")]
     public Part GetPart ()
@@ -192,7 +192,7 @@ public class Antenna : RemoteObject
     }
 
     /// <summary>
-    /// The power of the antenna.
+    /// Gets the power of the antenna.
     /// </summary>
     [Rpc ("SpaceCenter", "Antenna_get_Power")]
     public double GetPower ()
@@ -204,7 +204,7 @@ public class Antenna : RemoteObject
     }
 
     /// <summary>
-    /// The current state of the antenna.
+    /// Gets the current state of the antenna.
     /// </summary>
     [Rpc ("SpaceCenter", "Antenna_get_State")]
     public AntennaState GetState ()

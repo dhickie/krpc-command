@@ -8,7 +8,7 @@ namespace kRPC.Client.Boost.Services.SpaceCenter;
 
 /// <summary>
 /// Represents a celestial body (such as a planet or moon).
-/// See <see cref="M:SpaceCenter.Bodies" />.
+/// See <see cref="M:SpaceCenter.GetBodies" />.
 /// </summary>
 public class CelestialBody : RemoteObject
 {
@@ -354,7 +354,7 @@ public class CelestialBody : RemoteObject
     }
 
     /// <summary>
-    /// The depth of the atmosphere, in meters.
+    /// Gets the depth of the atmosphere, in meters.
     /// </summary>
     [Rpc ("SpaceCenter", "CelestialBody_get_AtmosphereDepth")]
     public double GetAtmosphereDepth ()
@@ -366,7 +366,7 @@ public class CelestialBody : RemoteObject
     }
 
     /// <summary>
-    /// The biomes present on this body.
+    /// Gets the biomes present on this body.
     /// </summary>
     [Rpc ("SpaceCenter", "CelestialBody_get_Biomes")]
     public ISet<string> GetBiomes ()
@@ -378,7 +378,7 @@ public class CelestialBody : RemoteObject
     }
 
     /// <summary>
-    /// The equatorial radius of the body, in meters.
+    /// Gets the equatorial radius of the body, in meters.
     /// </summary>
     [Rpc ("SpaceCenter", "CelestialBody_get_EquatorialRadius")]
     public double GetEquatorialRadius ()
@@ -390,7 +390,7 @@ public class CelestialBody : RemoteObject
     }
 
     /// <summary>
-    /// The altitude, in meters, above which a vessel is considered to be
+    /// Gets the altitude, in meters, above which a vessel is considered to be
     /// flying "high" when doing science.
     /// </summary>
     [Rpc ("SpaceCenter", "CelestialBody_get_FlyingHighAltitudeThreshold")]
@@ -403,7 +403,7 @@ public class CelestialBody : RemoteObject
     }
 
     /// <summary>
-    /// The <a href="https://en.wikipedia.org/wiki/Standard_gravitational_parameter">standard
+    /// Gets the <a href="https://en.wikipedia.org/wiki/Standard_gravitational_parameter">standard
     /// gravitational parameter</a> of the body in <math>m^3s^{-2}</math>.
     /// </summary>
     [Rpc ("SpaceCenter", "CelestialBody_get_GravitationalParameter")]
@@ -415,7 +415,8 @@ public class CelestialBody : RemoteObject
         return Connection.Invoke<double> ("SpaceCenter", "CelestialBody_get_GravitationalParameter", args);
     }
 
-    /// <summary><c>true</c> if the body has an atmosphere.
+    /// <summary>
+    /// Returns <c>true</c> if the body has an atmosphere.
     /// </summary>
     [Rpc ("SpaceCenter", "CelestialBody_get_HasAtmosphere")]
     public bool GetHasAtmosphere ()
@@ -426,7 +427,8 @@ public class CelestialBody : RemoteObject
         return Connection.Invoke<bool> ("SpaceCenter", "CelestialBody_get_HasAtmosphere", args);
     }
 
-    /// <summary><c>true</c> if there is oxygen in the atmosphere, required for air-breathing engines.
+    /// <summary>
+    /// Returns <c>true</c> if there is oxygen in the atmosphere, required for air-breathing engines.
     /// </summary>
     [Rpc ("SpaceCenter", "CelestialBody_get_HasAtmosphericOxygen")]
     public bool GetHasAtmosphericOxygen ()
@@ -438,7 +440,7 @@ public class CelestialBody : RemoteObject
     }
 
     /// <summary>
-    /// Whether or not the body has a solid surface.
+    /// Gets whether or not the body has a solid surface.
     /// </summary>
     [Rpc ("SpaceCenter", "CelestialBody_get_HasSolidSurface")]
     public bool GetHasSolidSurface ()
@@ -450,8 +452,9 @@ public class CelestialBody : RemoteObject
     }
 
     /// <summary>
-    /// The initial rotation angle of the body (at UT 0), in radians.
-    /// A value between 0 and <math>2\pi</math></summary>
+    /// Gets the initial rotation angle of the body (at UT 0), in radians.
+    /// A value between 0 and <math>2\pi</math>
+    /// </summary>
     [Rpc ("SpaceCenter", "CelestialBody_get_InitialRotation")]
     public double GetInitialRotation ()
     {
@@ -462,7 +465,7 @@ public class CelestialBody : RemoteObject
     }
 
     /// <summary>
-    /// Whether or not the body is a star.
+    /// Gets whether or not the body is a star.
     /// </summary>
     [Rpc ("SpaceCenter", "CelestialBody_get_IsStar")]
     public bool GetIsStar ()
@@ -474,7 +477,7 @@ public class CelestialBody : RemoteObject
     }
 
     /// <summary>
-    /// The mass of the body, in kilograms.
+    /// Gets the mass of the body, in kilograms.
     /// </summary>
     [Rpc ("SpaceCenter", "CelestialBody_get_Mass")]
     public double GetMass ()
@@ -486,7 +489,7 @@ public class CelestialBody : RemoteObject
     }
 
     /// <summary>
-    /// The name of the body.
+    /// Gets the name of the body.
     /// </summary>
     [Rpc ("SpaceCenter", "CelestialBody_get_Name")]
     public string GetName ()
@@ -498,12 +501,13 @@ public class CelestialBody : RemoteObject
     }
 
     /// <summary>
-    /// The reference frame that is fixed relative to this celestial body, and
+    /// Gets the reference frame that is fixed relative to this celestial body, and
     /// orientated in a fixed direction (it does not rotate with the body).
     /// <list type="bullet"><item><description>The origin is at the center of the body.</description></item><item><description>The axes do not rotate.</description></item><item><description>The x-axis points in an arbitrary direction through the
     /// equator.</description></item><item><description>The y-axis points from the center of the body towards
     /// the north pole.</description></item><item><description>The z-axis points in an arbitrary direction through the
-    /// equator.</description></item></list></summary>
+    /// equator.</description></item></list>
+    /// </summary>
     [Rpc ("SpaceCenter", "CelestialBody_get_NonRotatingReferenceFrame")]
     public ReferenceFrame GetNonRotatingReferenceFrame ()
     {
@@ -514,7 +518,7 @@ public class CelestialBody : RemoteObject
     }
 
     /// <summary>
-    /// The orbit of the body.
+    /// Gets the orbit of the body.
     /// </summary>
     [Rpc ("SpaceCenter", "CelestialBody_get_Orbit")]
     public Orbit GetOrbit ()
@@ -526,14 +530,15 @@ public class CelestialBody : RemoteObject
     }
 
     /// <summary>
-    /// The reference frame that is fixed relative to this celestial body, but
+    /// Gets the reference frame that is fixed relative to this celestial body, but
     /// orientated with the body's orbital prograde/normal/radial directions.
     /// <list type="bullet"><item><description>The origin is at the center of the body.
     /// </description></item><item><description>The axes rotate with the orbital prograde/normal/radial
     /// directions.</description></item><item><description>The x-axis points in the orbital anti-radial direction.
     /// </description></item><item><description>The y-axis points in the orbital prograde direction.
     /// </description></item><item><description>The z-axis points in the orbital normal direction.
-    /// </description></item></list></summary>
+    /// </description></item></list>
+    /// </summary>
     [Rpc ("SpaceCenter", "CelestialBody_get_OrbitalReferenceFrame")]
     public ReferenceFrame GetOrbitalReferenceFrame ()
     {
@@ -544,13 +549,14 @@ public class CelestialBody : RemoteObject
     }
 
     /// <summary>
-    /// The reference frame that is fixed relative to the celestial body.
+    /// Gets the reference frame that is fixed relative to the celestial body.
     /// <list type="bullet"><item><description>The origin is at the center of the body.
     /// </description></item><item><description>The axes rotate with the body.</description></item><item><description>The x-axis points from the center of the body
     /// towards the intersection of the prime meridian and equator (the
     /// position at 0° longitude, 0° latitude).</description></item><item><description>The y-axis points from the center of the body
     /// towards the north pole.</description></item><item><description>The z-axis points from the center of the body
-    /// towards the equator at 90°E longitude.</description></item></list></summary>
+    /// towards the equator at 90°E longitude.</description></item></list>
+    /// </summary>
     [Rpc ("SpaceCenter", "CelestialBody_get_ReferenceFrame")]
     public ReferenceFrame GetReferenceFrame ()
     {
@@ -561,8 +567,9 @@ public class CelestialBody : RemoteObject
     }
 
     /// <summary>
-    /// The current rotation angle of the body, in radians.
-    /// A value between 0 and <math>2\pi</math></summary>
+    /// Gets the current rotation angle of the body, in radians.
+    /// A value between 0 and <math>2\pi</math>
+    /// </summary>
     [Rpc ("SpaceCenter", "CelestialBody_get_RotationAngle")]
     public double GetRotationAngle ()
     {
@@ -573,7 +580,7 @@ public class CelestialBody : RemoteObject
     }
 
     /// <summary>
-    /// The sidereal rotational period of the body, in seconds.
+    /// Gets the sidereal rotational period of the body, in seconds.
     /// </summary>
     [Rpc ("SpaceCenter", "CelestialBody_get_RotationalPeriod")]
     public double GetRotationalPeriod ()
@@ -585,7 +592,7 @@ public class CelestialBody : RemoteObject
     }
 
     /// <summary>
-    /// The rotational speed of the body, in radians per second.
+    /// Gets the rotational speed of the body, in radians per second.
     /// </summary>
     [Rpc ("SpaceCenter", "CelestialBody_get_RotationalSpeed")]
     public double GetRotationalSpeed ()
@@ -597,7 +604,7 @@ public class CelestialBody : RemoteObject
     }
 
     /// <summary>
-    /// A list of celestial bodies that are in orbit around this celestial body.
+    /// Gets a list of celestial bodies that are in orbit around this celestial body.
     /// </summary>
     [Rpc ("SpaceCenter", "CelestialBody_get_Satellites")]
     public IList<CelestialBody> GetSatellites ()
@@ -609,7 +616,7 @@ public class CelestialBody : RemoteObject
     }
 
     /// <summary>
-    /// The altitude, in meters, above which a vessel is considered to be
+    /// Gets the altitude, in meters, above which a vessel is considered to be
     /// in "high" space when doing science.
     /// </summary>
     [Rpc ("SpaceCenter", "CelestialBody_get_SpaceHighAltitudeThreshold")]
@@ -622,7 +629,7 @@ public class CelestialBody : RemoteObject
     }
 
     /// <summary>
-    /// The radius of the sphere of influence of the body, in meters.
+    /// Gets the radius of the sphere of influence of the body, in meters.
     /// </summary>
     [Rpc ("SpaceCenter", "CelestialBody_get_SphereOfInfluence")]
     public double GetSphereOfInfluence ()
@@ -634,7 +641,7 @@ public class CelestialBody : RemoteObject
     }
 
     /// <summary>
-    /// The acceleration due to gravity at sea level (mean altitude) on the body,
+    /// Gets the acceleration due to gravity at sea level (mean altitude) on the body,
     /// in <math>m/s^2</math>.
     /// </summary>
     [Rpc ("SpaceCenter", "CelestialBody_get_SurfaceGravity")]

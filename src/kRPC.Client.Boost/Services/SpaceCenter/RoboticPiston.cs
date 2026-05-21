@@ -5,7 +5,7 @@ using kRPC.Client.Boost.Attributes;
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
 /// <summary>
-/// A robotic piston part. Obtained by calling <see cref="M:SpaceCenter.Part.RoboticPiston" />.
+/// A robotic piston part. Obtained by calling <see cref="M:SpaceCenter.Part.GetRoboticPiston" />.
 /// </summary>
 public class RoboticPiston : RemoteObject
 {
@@ -29,7 +29,7 @@ public class RoboticPiston : RemoteObject
     }
 
     /// <summary>
-    /// Current extension of the piston.
+    /// Gets the current extension of the piston.
     /// </summary>
     [Rpc ("SpaceCenter", "RoboticPiston_get_CurrentExtension")]
     public float GetCurrentExtension ()
@@ -53,7 +53,7 @@ public class RoboticPiston : RemoteObject
     }
 
     /// <summary>
-    /// Sets the Damping value.
+    /// Sets the damping percentage.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetDamping (float value)
@@ -78,7 +78,7 @@ public class RoboticPiston : RemoteObject
     }
 
     /// <summary>
-    /// Sets the Locked value.
+    /// Sets whether movement is locked.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetLocked (bool value)
@@ -91,7 +91,7 @@ public class RoboticPiston : RemoteObject
     }
 
     /// <summary>
-    /// Whether the motor is engaged.
+    /// Gets whether the motor is engaged.
     /// </summary>
     [Rpc ("SpaceCenter", "RoboticPiston_get_MotorEngaged")]
     public bool GetMotorEngaged ()
@@ -103,7 +103,7 @@ public class RoboticPiston : RemoteObject
     }
 
     /// <summary>
-    /// Sets the MotorEngaged value.
+    /// Sets whether the motor is engaged.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetMotorEngaged (bool value)
@@ -116,7 +116,7 @@ public class RoboticPiston : RemoteObject
     }
 
     /// <summary>
-    /// The part object for this robotic piston.
+    /// Gets the part object for this robotic piston.
     /// </summary>
     [Rpc ("SpaceCenter", "RoboticPiston_get_Part")]
     public Part GetPart ()
@@ -140,7 +140,7 @@ public class RoboticPiston : RemoteObject
     }
 
     /// <summary>
-    /// Sets the Rate value.
+    /// Sets the target movement rate in degrees per second.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetRate (float value)
@@ -165,7 +165,7 @@ public class RoboticPiston : RemoteObject
     }
 
     /// <summary>
-    /// Sets the TargetExtension value.
+    /// Sets the target extension of the piston.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetTargetExtension (float value)

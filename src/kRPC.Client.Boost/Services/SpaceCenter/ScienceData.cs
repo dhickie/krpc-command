@@ -5,7 +5,7 @@ using kRPC.Client.Boost.Attributes;
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
 /// <summary>
-/// Obtained by calling <see cref="M:SpaceCenter.Experiment.Data" />.
+/// Obtained by calling <see cref="M:SpaceCenter.Experiment.GetData" />.
 /// </summary>
 public class ScienceData : RemoteObject
 {

@@ -5,7 +5,7 @@ using kRPC.Client.Boost.Attributes;
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
 /// <summary>
-/// Obtained by calling <see cref="M:SpaceCenter.Experiment.ScienceSubject" />.
+/// Obtained by calling <see cref="M:SpaceCenter.Experiment.GetScienceSubject" />.
 /// </summary>
 public class ScienceSubject : RemoteObject
 {
@@ -29,7 +29,7 @@ public class ScienceSubject : RemoteObject
     }
 
     /// <summary>
-    /// Whether the experiment has been completed.
+    /// Gets whether the experiment has been completed.
     /// </summary>
     [Rpc ("SpaceCenter", "ScienceSubject_get_IsComplete")]
     public bool GetIsComplete ()
@@ -54,7 +54,7 @@ public class ScienceSubject : RemoteObject
     }
 
     /// <summary>
-    /// Total science allowable for this subject.
+    /// Gets the total science allowable for this subject.
     /// </summary>
     [Rpc ("SpaceCenter", "ScienceSubject_get_ScienceCap")]
     public float GetScienceCap ()

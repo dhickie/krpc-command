@@ -7,7 +7,7 @@ namespace kRPC.Client.Boost.Services.SpaceCenter;
 
 /// <summary>
 /// The component of an <see cref="T:SpaceCenter.Engine" /> or <see cref="T:SpaceCenter.RCS" /> part that generates thrust.
-/// Can obtained by calling <see cref="M:SpaceCenter.Engine.Thrusters" /> or <see cref="M:SpaceCenter.RCS.Thrusters" />.
+/// Can obtained by calling <see cref="M:SpaceCenter.Engine.GetThrusters" /> or <see cref="M:SpaceCenter.RCS.GetThrusters" />.
 /// </summary>
 /// <remarks>
 /// Engines can consist of multiple thrusters.
@@ -114,7 +114,7 @@ public class Thruster : RemoteObject
     }
 
     /// <summary>
-    /// The current gimbal angle in the pitch, roll and yaw axes, in degrees.
+    /// Gets the current gimbal angle in the pitch, roll and yaw axes, in degrees.
     /// </summary>
     [Rpc ("SpaceCenter", "Thruster_get_GimbalAngle")]
     public Tuple<double,double,double> GetGimbalAngle ()
@@ -126,7 +126,7 @@ public class Thruster : RemoteObject
     }
 
     /// <summary>
-    /// Whether the thruster is gimballed.
+    /// Gets whether the thruster is gimballed.
     /// </summary>
     [Rpc ("SpaceCenter", "Thruster_get_Gimballed")]
     public bool GetGimballed ()
@@ -138,7 +138,7 @@ public class Thruster : RemoteObject
     }
 
     /// <summary>
-    /// The <see cref="T:SpaceCenter.Part" /> that contains this thruster.
+    /// Gets the <see cref="T:SpaceCenter.Part" /> that contains this thruster.
     /// </summary>
     [Rpc ("SpaceCenter", "Thruster_get_Part")]
     public Part GetPart ()
@@ -150,7 +150,7 @@ public class Thruster : RemoteObject
     }
 
     /// <summary>
-    /// A reference frame that is fixed relative to the thruster and orientated with
+    /// Gets a reference frame that is fixed relative to the thruster and orientated with
     /// its thrust direction (<see cref="M:SpaceCenter.Thruster.ThrustDirection" />).
     /// For gimballed engines, this takes into account the current rotation of the gimbal.
     /// <list type="bullet"><item><description>
@@ -159,7 +159,8 @@ public class Thruster : RemoteObject
     /// The axes rotate with the thrust direction.
     /// This is the direction in which the thruster expels propellant, including any gimballing.
     /// </description></item><item><description>The y-axis points along the thrust direction.</description></item><item><description>The x-axis and z-axis are perpendicular to the thrust direction.
-    /// </description></item></list></summary>
+    /// </description></item></list>
+    /// </summary>
     [Rpc ("SpaceCenter", "Thruster_get_ThrustReferenceFrame")]
     public ReferenceFrame GetThrustReferenceFrame ()
     {

@@ -7,7 +7,7 @@ namespace kRPC.Client.Boost.Services.SpaceCenter;
 
 /// <summary>
 /// Contracts manager.
-/// Obtained by calling <see cref="M:SpaceCenter.ContractManager" />.
+/// Obtained by calling <see cref="M:SpaceCenter.GetContractManager" />.
 /// </summary>
 public class ContractManager : RemoteObject
 {
@@ -19,7 +19,7 @@ public class ContractManager : RemoteObject
     }
 
     /// <summary>
-    /// A list of all active contracts.
+    /// Gets a list of all active contracts.
     /// </summary>
     [Rpc ("SpaceCenter", "ContractManager_get_ActiveContracts")]
     public IList<Contract> GetActiveContracts ()
@@ -31,7 +31,7 @@ public class ContractManager : RemoteObject
     }
 
     /// <summary>
-    /// A list of all contracts.
+    /// Gets a list of all contracts.
     /// </summary>
     [Rpc ("SpaceCenter", "ContractManager_get_AllContracts")]
     public IList<Contract> GetAllContracts ()
@@ -43,7 +43,7 @@ public class ContractManager : RemoteObject
     }
 
     /// <summary>
-    /// A list of all completed contracts.
+    /// Gets a list of all completed contracts.
     /// </summary>
     [Rpc ("SpaceCenter", "ContractManager_get_CompletedContracts")]
     public IList<Contract> GetCompletedContracts ()
@@ -55,7 +55,7 @@ public class ContractManager : RemoteObject
     }
 
     /// <summary>
-    /// A list of all failed contracts.
+    /// Gets a list of all failed contracts.
     /// </summary>
     [Rpc ("SpaceCenter", "ContractManager_get_FailedContracts")]
     public IList<Contract> GetFailedContracts ()
@@ -67,7 +67,7 @@ public class ContractManager : RemoteObject
     }
 
     /// <summary>
-    /// A list of all offered, but unaccepted, contracts.
+    /// Gets a list of all offered, but unaccepted, contracts.
     /// </summary>
     [Rpc ("SpaceCenter", "ContractManager_get_OfferedContracts")]
     public IList<Contract> GetOfferedContracts ()
@@ -79,7 +79,7 @@ public class ContractManager : RemoteObject
     }
 
     /// <summary>
-    /// A list of all contract types.
+    /// Gets a list of all contract types.
     /// </summary>
     [Rpc ("SpaceCenter", "ContractManager_get_Types")]
     public ISet<string> GetTypes ()

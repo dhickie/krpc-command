@@ -5,7 +5,7 @@ using kRPC.Client.Boost.Attributes;
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
 /// <summary>
-/// A robotic rotor. Obtained by calling <see cref="M:SpaceCenter.Part.RoboticRotor" />.
+/// A robotic rotor. Obtained by calling <see cref="M:SpaceCenter.Part.GetRoboticRotor" />.
 /// </summary>
 public class RoboticRotor : RemoteObject
 {
@@ -17,7 +17,7 @@ public class RoboticRotor : RemoteObject
     }
 
     /// <summary>
-    /// Current RPM.
+    /// Gets the current RPM.
     /// </summary>
     [Rpc ("SpaceCenter", "RoboticRotor_get_CurrentRPM")]
     public float GetCurrentRPM ()
@@ -29,7 +29,7 @@ public class RoboticRotor : RemoteObject
     }
 
     /// <summary>
-    /// Whether the rotor direction is inverted.
+    /// Gets whether the rotor direction is inverted.
     /// </summary>
     [Rpc ("SpaceCenter", "RoboticRotor_get_Inverted")]
     public bool GetInverted ()
@@ -41,7 +41,7 @@ public class RoboticRotor : RemoteObject
     }
 
     /// <summary>
-    /// Sets the Inverted value.
+    /// Sets whether the rotor direction is inverted.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetInverted (bool value)
@@ -66,7 +66,7 @@ public class RoboticRotor : RemoteObject
     }
 
     /// <summary>
-    /// Sets the Locked value.
+    /// Sets whether movement is locked.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetLocked (bool value)
@@ -79,7 +79,7 @@ public class RoboticRotor : RemoteObject
     }
 
     /// <summary>
-    /// Whether the motor is engaged.
+    /// Gets whether the motor is engaged.
     /// </summary>
     [Rpc ("SpaceCenter", "RoboticRotor_get_MotorEngaged")]
     public bool GetMotorEngaged ()
@@ -91,7 +91,7 @@ public class RoboticRotor : RemoteObject
     }
 
     /// <summary>
-    /// Sets the MotorEngaged value.
+    /// Sets whether the motor is engaged.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetMotorEngaged (bool value)
@@ -104,7 +104,7 @@ public class RoboticRotor : RemoteObject
     }
 
     /// <summary>
-    /// The part object for this robotic rotor.
+    /// Gets the part object for this robotic rotor.
     /// </summary>
     [Rpc ("SpaceCenter", "RoboticRotor_get_Part")]
     public Part GetPart ()
@@ -128,7 +128,7 @@ public class RoboticRotor : RemoteObject
     }
 
     /// <summary>
-    /// Sets the TargetRPM value.
+    /// Sets the target RPM.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetTargetRPM (float value)
@@ -153,7 +153,7 @@ public class RoboticRotor : RemoteObject
     }
 
     /// <summary>
-    /// Sets the TorqueLimit value.
+    /// Sets the torque limit percentage.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetTorqueLimit (float value)

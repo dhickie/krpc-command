@@ -5,7 +5,7 @@ using kRPC.Client.Boost.Attributes;
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
 /// <summary>
-/// A cargo bay. Obtained by calling <see cref="M:SpaceCenter.Part.CargoBay" />.
+/// A cargo bay. Obtained by calling <see cref="M:SpaceCenter.Part.GetCargoBay" />.
 /// </summary>
 public class CargoBay : RemoteObject
 {
@@ -17,7 +17,7 @@ public class CargoBay : RemoteObject
     }
 
     /// <summary>
-    /// Whether the cargo bay is open.
+    /// Gets whether the cargo bay is open.
     /// </summary>
     [Rpc ("SpaceCenter", "CargoBay_get_Open")]
     public bool GetOpen ()
@@ -29,7 +29,7 @@ public class CargoBay : RemoteObject
     }
 
     /// <summary>
-    /// Sets the Open value.
+    /// Sets whether the cargo bay is open.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetOpen (bool value)
@@ -42,7 +42,7 @@ public class CargoBay : RemoteObject
     }
 
     /// <summary>
-    /// The part object for this cargo bay.
+    /// Gets the part object for this cargo bay.
     /// </summary>
     [Rpc ("SpaceCenter", "CargoBay_get_Part")]
     public Part GetPart ()
@@ -54,7 +54,7 @@ public class CargoBay : RemoteObject
     }
 
     /// <summary>
-    /// The state of the cargo bay.
+    /// Gets the state of the cargo bay.
     /// </summary>
     [Rpc ("SpaceCenter", "CargoBay_get_State")]
     public CargoBayState GetState ()

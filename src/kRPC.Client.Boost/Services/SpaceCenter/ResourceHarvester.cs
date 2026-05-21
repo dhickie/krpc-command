@@ -5,7 +5,7 @@ using kRPC.Client.Boost.Attributes;
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
 /// <summary>
-/// A resource harvester (drill). Obtained by calling <see cref="M:SpaceCenter.Part.ResourceHarvester" />.
+/// A resource harvester (drill). Obtained by calling <see cref="M:SpaceCenter.Part.GetResourceHarvester" />.
 /// </summary>
 public class ResourceHarvester : RemoteObject
 {
@@ -17,7 +17,7 @@ public class ResourceHarvester : RemoteObject
     }
 
     /// <summary>
-    /// Whether the harvester is actively drilling.
+    /// Gets whether the harvester is actively drilling.
     /// </summary>
     [Rpc ("SpaceCenter", "ResourceHarvester_get_Active")]
     public bool GetActive ()
@@ -29,7 +29,7 @@ public class ResourceHarvester : RemoteObject
     }
 
     /// <summary>
-    /// Sets the Active value.
+    /// Sets whether the harvester is actively drilling.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetActive (bool value)
@@ -42,7 +42,7 @@ public class ResourceHarvester : RemoteObject
     }
 
     /// <summary>
-    /// The core temperature of the drill, in Kelvin.
+    /// Gets the core temperature of the drill, in Kelvin.
     /// </summary>
     [Rpc ("SpaceCenter", "ResourceHarvester_get_CoreTemperature")]
     public float GetCoreTemperature ()
@@ -54,7 +54,7 @@ public class ResourceHarvester : RemoteObject
     }
 
     /// <summary>
-    /// Whether the harvester is deployed.
+    /// Gets whether the harvester is deployed.
     /// </summary>
     [Rpc ("SpaceCenter", "ResourceHarvester_get_Deployed")]
     public bool GetDeployed ()
@@ -66,7 +66,7 @@ public class ResourceHarvester : RemoteObject
     }
 
     /// <summary>
-    /// Sets the Deployed value.
+    /// Sets whether the harvester is deployed.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetDeployed (bool value)
@@ -79,7 +79,7 @@ public class ResourceHarvester : RemoteObject
     }
 
     /// <summary>
-    /// The rate at which the drill is extracting ore, in units per second.
+    /// Gets the rate at which the drill is extracting ore, in units per second.
     /// </summary>
     [Rpc ("SpaceCenter", "ResourceHarvester_get_ExtractionRate")]
     public float GetExtractionRate ()
@@ -91,7 +91,7 @@ public class ResourceHarvester : RemoteObject
     }
 
     /// <summary>
-    /// The core temperature at which the drill will operate with peak efficiency, in Kelvin.
+    /// Gets the core temperature at which the drill will operate with peak efficiency, in Kelvin.
     /// </summary>
     [Rpc ("SpaceCenter", "ResourceHarvester_get_OptimumCoreTemperature")]
     public float GetOptimumCoreTemperature ()
@@ -103,7 +103,7 @@ public class ResourceHarvester : RemoteObject
     }
 
     /// <summary>
-    /// The part object for this harvester.
+    /// Gets the part object for this harvester.
     /// </summary>
     [Rpc ("SpaceCenter", "ResourceHarvester_get_Part")]
     public Part GetPart ()
@@ -115,7 +115,7 @@ public class ResourceHarvester : RemoteObject
     }
 
     /// <summary>
-    /// The state of the harvester.
+    /// Gets the state of the harvester.
     /// </summary>
     [Rpc ("SpaceCenter", "ResourceHarvester_get_State")]
     public ResourceHarvesterState GetState ()
@@ -127,7 +127,7 @@ public class ResourceHarvester : RemoteObject
     }
 
     /// <summary>
-    /// The thermal efficiency of the drill, as a percentage of its maximum.
+    /// Gets the thermal efficiency of the drill, as a percentage of its maximum.
     /// </summary>
     [Rpc ("SpaceCenter", "ResourceHarvester_get_ThermalEfficiency")]
     public float GetThermalEfficiency ()

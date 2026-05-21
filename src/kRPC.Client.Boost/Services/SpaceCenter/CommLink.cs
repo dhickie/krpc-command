@@ -53,7 +53,7 @@ public class CommLink : RemoteObject
     }
 
     /// <summary>
-    /// The type of link.
+    /// Gets the type of link.
     /// </summary>
     [Rpc ("SpaceCenter", "CommLink_get_Type")]
     public CommLinkType GetType ()

@@ -5,7 +5,7 @@ using kRPC.Client.Boost.Attributes;
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
 /// <summary>
-/// A decoupler. Obtained by calling <see cref="M:SpaceCenter.Part.Decoupler" /></summary>
+/// A decoupler. Obtained by calling <see cref="M:SpaceCenter.Part.GetDecoupler" /></summary>
 public class Decoupler : RemoteObject
 {
     /// <summary>
@@ -22,7 +22,7 @@ public class Decoupler : RemoteObject
     /// <remarks>
     /// When called, the active vessel may change. It is therefore possible that,
     /// after calling this function, the object(s) returned by previous call(s) to
-    /// <see cref="M:SpaceCenter.ActiveVessel" /> no longer refer to the active vessel.
+    /// <see cref="M:SpaceCenter.GetActiveVessel" /> no longer refer to the active vessel.
     /// </remarks>
     [Rpc ("SpaceCenter", "Decoupler_Decouple")]
     public Vessel Decouple ()
@@ -34,7 +34,7 @@ public class Decoupler : RemoteObject
     }
 
     /// <summary>
-    /// The part attached to this decoupler's explosive node.
+    /// Gets the part attached to this decoupler's explosive node.
     /// </summary>
     [Rpc ("SpaceCenter", "Decoupler_get_AttachedPart")]
     public Part GetAttachedPart ()
@@ -46,7 +46,7 @@ public class Decoupler : RemoteObject
     }
 
     /// <summary>
-    /// Whether the decoupler has fired.
+    /// Gets whether the decoupler has fired.
     /// </summary>
     [Rpc ("SpaceCenter", "Decoupler_get_Decoupled")]
     public bool GetDecoupled ()
@@ -58,7 +58,7 @@ public class Decoupler : RemoteObject
     }
 
     /// <summary>
-    /// The impulse that the decoupler imparts when it is fired, in Newton seconds.
+    /// Gets the impulse that the decoupler imparts when it is fired, in Newton seconds.
     /// </summary>
     [Rpc ("SpaceCenter", "Decoupler_get_Impulse")]
     public float GetImpulse ()
@@ -70,7 +70,7 @@ public class Decoupler : RemoteObject
     }
 
     /// <summary>
-    /// Whether the decoupler is an omni-decoupler (e.g. stack separator)
+    /// Gets whether the decoupler is an omni-decoupler (e.g. stack separator)
     /// </summary>
     [Rpc ("SpaceCenter", "Decoupler_get_IsOmniDecoupler")]
     public bool GetIsOmniDecoupler ()
@@ -82,7 +82,7 @@ public class Decoupler : RemoteObject
     }
 
     /// <summary>
-    /// The part object for this decoupler.
+    /// Gets the part object for this decoupler.
     /// </summary>
     [Rpc ("SpaceCenter", "Decoupler_get_Part")]
     public Part GetPart ()
@@ -94,7 +94,7 @@ public class Decoupler : RemoteObject
     }
 
     /// <summary>
-    /// Whether the decoupler is enabled in the staging sequence.
+    /// Gets whether the decoupler is enabled in the staging sequence.
     /// </summary>
     [Rpc ("SpaceCenter", "Decoupler_get_Staged")]
     public bool GetStaged ()

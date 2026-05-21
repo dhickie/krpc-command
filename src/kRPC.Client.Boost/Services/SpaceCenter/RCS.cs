@@ -7,7 +7,7 @@ using System.Collections.Generic;
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
 /// <summary>
-/// An RCS block or thruster. Obtained by calling <see cref="M:SpaceCenter.Part.RCS" />.
+/// An RCS block or thruster. Obtained by calling <see cref="M:SpaceCenter.Part.GetRCS" />.
 /// </summary>
 public class RCS : RemoteObject
 {
@@ -19,10 +19,10 @@ public class RCS : RemoteObject
     }
 
     /// <summary>
-    /// Whether the RCS thrusters are active.
+    /// Gets whether the RCS thrusters are active.
     /// An RCS thruster is inactive if the RCS action group is disabled
-    /// (<see cref="M:SpaceCenter.Control.RCS" />), the RCS thruster itself is not enabled
-    /// (<see cref="M:SpaceCenter.RCS.Enabled" />) or it is covered by a fairing (<see cref="M:SpaceCenter.Part.Shielded" />).
+    /// (<see cref="M:SpaceCenter.Control.GetRCS" />), the RCS thruster itself is not enabled
+    /// (<see cref="M:SpaceCenter.RCS.GetEnabled" />) or it is covered by a fairing (<see cref="M:SpaceCenter.Part.GetShielded" />).
     /// </summary>
     [Rpc ("SpaceCenter", "RCS_get_Active")]
     public bool GetActive ()
@@ -34,9 +34,9 @@ public class RCS : RemoteObject
     }
 
     /// <summary>
-    /// The available force, in Newtons, that can be produced by this RCS,
+    /// Gets the available force, in Newtons, that can be produced by this RCS,
     /// in the positive and negative x, y and z axes of the vessel. These axes
-    /// correspond to the coordinate axes of the <see cref="M:SpaceCenter.Vessel.ReferenceFrame" />.
+    /// correspond to the coordinate axes of the <see cref="M:SpaceCenter.Vessel.GetReferenceFrame" />.
     /// Returns zero if RCS is disabled.
     /// </summary>
     [Rpc ("SpaceCenter", "RCS_get_AvailableForce")]
@@ -49,9 +49,9 @@ public class RCS : RemoteObject
     }
 
     /// <summary>
-    /// The amount of thrust, in Newtons, that would be produced by the thruster when activated.
+    /// Gets the amount of thrust, in Newtons, that would be produced by the thruster when activated.
     /// Returns zero if the thruster does not have any fuel.
-    /// Takes the thrusters current <see cref="M:SpaceCenter.RCS.ThrustLimit" /> and atmospheric conditions
+    /// Takes the thrusters current <see cref="M:SpaceCenter.RCS.GetThrustLimit" /> and atmospheric conditions
     /// into account.
     /// </summary>
     [Rpc ("SpaceCenter", "RCS_get_AvailableThrust")]
@@ -64,9 +64,9 @@ public class RCS : RemoteObject
     }
 
     /// <summary>
-    /// The available torque, in Newton meters, that can be produced by this RCS,
+    /// Gets the available torque, in Newton meters, that can be produced by this RCS,
     /// in the positive and negative pitch, roll and yaw axes of the vessel. These axes
-    /// correspond to the coordinate axes of the <see cref="M:SpaceCenter.Vessel.ReferenceFrame" />.
+    /// correspond to the coordinate axes of the <see cref="M:SpaceCenter.Vessel.GetReferenceFrame" />.
     /// Returns zero if RCS is disable.
     /// </summary>
     [Rpc ("SpaceCenter", "RCS_get_AvailableTorque")]
@@ -79,7 +79,7 @@ public class RCS : RemoteObject
     }
 
     /// <summary>
-    /// Whether the RCS thrusters are enabled.
+    /// Gets whether the RCS thrusters are enabled.
     /// </summary>
     [Rpc ("SpaceCenter", "RCS_get_Enabled")]
     public bool GetEnabled ()
@@ -91,7 +91,7 @@ public class RCS : RemoteObject
     }
 
     /// <summary>
-    /// Sets the Enabled value.
+    /// Sets whether the RCS thrusters are enabled.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetEnabled (bool value)
@@ -104,7 +104,7 @@ public class RCS : RemoteObject
     }
 
     /// <summary>
-    /// Whether the RCS thruster will fire when pitch control input is given.
+    /// Gets whether the RCS thruster will fire when pitch control input is given.
     /// </summary>
     [Rpc ("SpaceCenter", "RCS_get_ForwardEnabled")]
     public bool GetForwardEnabled ()
@@ -116,7 +116,7 @@ public class RCS : RemoteObject
     }
 
     /// <summary>
-    /// Sets the ForwardEnabled value.
+    /// Sets whether the RCS thruster will fire when pitch control input is given.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetForwardEnabled (bool value)
@@ -129,7 +129,7 @@ public class RCS : RemoteObject
     }
 
     /// <summary>
-    /// Whether the RCS has fuel available.
+    /// Gets whether the RCS has fuel available.
     /// </summary>
     [Rpc ("SpaceCenter", "RCS_get_HasFuel")]
     public bool GetHasFuel ()
@@ -141,7 +141,7 @@ public class RCS : RemoteObject
     }
 
     /// <summary>
-    /// The specific impulse of the RCS at sea level on Kerbin, in seconds.
+    /// Gets the specific impulse of the RCS at sea level on Kerbin, in seconds.
     /// </summary>
     [Rpc ("SpaceCenter", "RCS_get_KerbinSeaLevelSpecificImpulse")]
     public float GetKerbinSeaLevelSpecificImpulse ()
@@ -153,9 +153,9 @@ public class RCS : RemoteObject
     }
 
     /// <summary>
-    /// The maximum amount of thrust that can be produced by the RCS thrusters when active,
+    /// Gets the maximum amount of thrust that can be produced by the RCS thrusters when active,
     /// in Newtons.
-    /// Takes the thrusters current <see cref="M:SpaceCenter.RCS.ThrustLimit" /> and atmospheric conditions
+    /// Takes the thrusters current <see cref="M:SpaceCenter.RCS.GetThrustLimit" /> and atmospheric conditions
     /// into account.
     /// </summary>
     [Rpc ("SpaceCenter", "RCS_get_MaxThrust")]
@@ -168,7 +168,7 @@ public class RCS : RemoteObject
     }
 
     /// <summary>
-    /// The maximum amount of thrust that can be produced by the RCS thrusters when active
+    /// Gets the maximum amount of thrust that can be produced by the RCS thrusters when active
     /// in a vacuum, in Newtons.
     /// </summary>
     [Rpc ("SpaceCenter", "RCS_get_MaxVacuumThrust")]
@@ -181,7 +181,7 @@ public class RCS : RemoteObject
     }
 
     /// <summary>
-    /// The part object for this RCS.
+    /// Gets the part object for this RCS.
     /// </summary>
     [Rpc ("SpaceCenter", "RCS_get_Part")]
     public Part GetPart ()
@@ -193,7 +193,7 @@ public class RCS : RemoteObject
     }
 
     /// <summary>
-    /// Whether the RCS thruster will fire when pitch control input is given.
+    /// Gets whether the RCS thruster will fire when pitch control input is given.
     /// </summary>
     [Rpc ("SpaceCenter", "RCS_get_PitchEnabled")]
     public bool GetPitchEnabled ()
@@ -205,7 +205,7 @@ public class RCS : RemoteObject
     }
 
     /// <summary>
-    /// Sets the PitchEnabled value.
+    /// Sets whether the RCS thruster will fire when pitch control input is given.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetPitchEnabled (bool value)
@@ -218,7 +218,7 @@ public class RCS : RemoteObject
     }
 
     /// <summary>
-    /// The ratios of resources that the RCS consumes. A dictionary mapping resource names
+    /// Gets the ratios of resources that the RCS consumes. A dictionary mapping resource names
     /// to the ratios at which they are consumed by the RCS.
     /// </summary>
     [Rpc ("SpaceCenter", "RCS_get_PropellantRatios")]
@@ -231,7 +231,7 @@ public class RCS : RemoteObject
     }
 
     /// <summary>
-    /// The names of resources that the RCS consumes.
+    /// Gets the names of resources that the RCS consumes.
     /// </summary>
     [Rpc ("SpaceCenter", "RCS_get_Propellants")]
     public IList<string> GetPropellants ()
@@ -243,7 +243,7 @@ public class RCS : RemoteObject
     }
 
     /// <summary>
-    /// Whether the RCS thruster will fire when roll control input is given.
+    /// Gets whether the RCS thruster will fire when roll control input is given.
     /// </summary>
     [Rpc ("SpaceCenter", "RCS_get_RightEnabled")]
     public bool GetRightEnabled ()
@@ -255,7 +255,7 @@ public class RCS : RemoteObject
     }
 
     /// <summary>
-    /// Sets the RightEnabled value.
+    /// Sets whether the RCS thruster will fire when roll control input is given.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetRightEnabled (bool value)
@@ -268,7 +268,7 @@ public class RCS : RemoteObject
     }
 
     /// <summary>
-    /// Whether the RCS thruster will fire when roll control input is given.
+    /// Gets whether the RCS thruster will fire when roll control input is given.
     /// </summary>
     [Rpc ("SpaceCenter", "RCS_get_RollEnabled")]
     public bool GetRollEnabled ()
@@ -280,7 +280,7 @@ public class RCS : RemoteObject
     }
 
     /// <summary>
-    /// Sets the RollEnabled value.
+    /// Sets whether the RCS thruster will fire when roll control input is given.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetRollEnabled (bool value)
@@ -293,7 +293,7 @@ public class RCS : RemoteObject
     }
 
     /// <summary>
-    /// The current specific impulse of the RCS, in seconds. Returns zero
+    /// Gets the current specific impulse of the RCS, in seconds. Returns zero
     /// if the RCS is not active.
     /// </summary>
     [Rpc ("SpaceCenter", "RCS_get_SpecificImpulse")]
@@ -306,7 +306,7 @@ public class RCS : RemoteObject
     }
 
     /// <summary>
-    /// The thrust limiter of the thruster. A value between 0 and 1.
+    /// Gets the thrust limiter of the thruster. A value between 0 and 1.
     /// </summary>
     [Rpc ("SpaceCenter", "RCS_get_ThrustLimit")]
     public float GetThrustLimit ()
@@ -318,7 +318,7 @@ public class RCS : RemoteObject
     }
 
     /// <summary>
-    /// Sets the ThrustLimit value.
+    /// Sets the thrust limiter of the thruster. A value between 0 and 1.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetThrustLimit (float value)
@@ -331,7 +331,7 @@ public class RCS : RemoteObject
     }
 
     /// <summary>
-    /// A list of thrusters, one of each nozzel in the RCS part.
+    /// Gets a list of thrusters, one of each nozzel in the RCS part.
     /// </summary>
     [Rpc ("SpaceCenter", "RCS_get_Thrusters")]
     public IList<Thruster> GetThrusters ()
@@ -343,7 +343,7 @@ public class RCS : RemoteObject
     }
 
     /// <summary>
-    /// Whether the RCS thruster will fire when yaw control input is given.
+    /// Gets whether the RCS thruster will fire when yaw control input is given.
     /// </summary>
     [Rpc ("SpaceCenter", "RCS_get_UpEnabled")]
     public bool GetUpEnabled ()
@@ -355,7 +355,7 @@ public class RCS : RemoteObject
     }
 
     /// <summary>
-    /// Sets the UpEnabled value.
+    /// Sets whether the RCS thruster will fire when yaw control input is given.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetUpEnabled (bool value)
@@ -368,7 +368,7 @@ public class RCS : RemoteObject
     }
 
     /// <summary>
-    /// The vacuum specific impulse of the RCS, in seconds.
+    /// Gets the vacuum specific impulse of the RCS, in seconds.
     /// </summary>
     [Rpc ("SpaceCenter", "RCS_get_VacuumSpecificImpulse")]
     public float GetVacuumSpecificImpulse ()
@@ -380,7 +380,7 @@ public class RCS : RemoteObject
     }
 
     /// <summary>
-    /// Whether the RCS thruster will fire when yaw control input is given.
+    /// Gets whether the RCS thruster will fire when yaw control input is given.
     /// </summary>
     [Rpc ("SpaceCenter", "RCS_get_YawEnabled")]
     public bool GetYawEnabled ()
@@ -392,7 +392,7 @@ public class RCS : RemoteObject
     }
 
     /// <summary>
-    /// Sets the YawEnabled value.
+    /// Sets whether the RCS thruster will fire when yaw control input is given.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetYawEnabled (bool value)

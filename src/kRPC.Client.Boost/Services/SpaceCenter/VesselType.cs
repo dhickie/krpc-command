@@ -2,7 +2,7 @@ namespace kRPC.Client.Boost.Services.SpaceCenter;
 
 /// <summary>
 /// The type of a vessel.
-/// See <see cref="M:SpaceCenter.Vessel.Type" />.
+/// See <see cref="M:SpaceCenter.Vessel.GetType" />.
 /// </summary>
 [Serializable]
 public enum VesselType

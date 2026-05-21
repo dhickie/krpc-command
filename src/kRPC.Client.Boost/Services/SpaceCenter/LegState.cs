@@ -1,7 +1,7 @@
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
 /// <summary>
-/// The state of a landing leg. See <see cref="M:SpaceCenter.Leg.State" />.
+/// The state of a landing leg. See <see cref="M:SpaceCenter.Leg.GetState" />.
 /// </summary>
 [Serializable]
 public enum LegState

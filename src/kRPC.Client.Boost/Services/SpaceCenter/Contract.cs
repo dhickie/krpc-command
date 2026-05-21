@@ -6,7 +6,7 @@ using System.Collections.Generic;
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
 /// <summary>
-/// A contract. Can be accessed using <see cref="M:SpaceCenter.ContractManager" />.
+/// A contract. Can be accessed using <see cref="M:SpaceCenter.GetContractManager" />.
 /// </summary>
 public class Contract : RemoteObject
 {
@@ -54,7 +54,7 @@ public class Contract : RemoteObject
     }
 
     /// <summary>
-    /// Whether the contract is active.
+    /// Gets whether the contract is active.
     /// </summary>
     [Rpc ("SpaceCenter", "Contract_get_Active")]
     public bool GetActive ()
@@ -66,7 +66,7 @@ public class Contract : RemoteObject
     }
 
     /// <summary>
-    /// Whether the contract can be canceled.
+    /// Gets whether the contract can be canceled.
     /// </summary>
     [Rpc ("SpaceCenter", "Contract_get_CanBeCanceled")]
     public bool GetCanBeCanceled ()
@@ -78,7 +78,7 @@ public class Contract : RemoteObject
     }
 
     /// <summary>
-    /// Whether the contract can be declined.
+    /// Gets whether the contract can be declined.
     /// </summary>
     [Rpc ("SpaceCenter", "Contract_get_CanBeDeclined")]
     public bool GetCanBeDeclined ()
@@ -90,7 +90,7 @@ public class Contract : RemoteObject
     }
 
     /// <summary>
-    /// Whether the contract can be failed.
+    /// Gets whether the contract can be failed.
     /// </summary>
     [Rpc ("SpaceCenter", "Contract_get_CanBeFailed")]
     public bool GetCanBeFailed ()
@@ -114,7 +114,7 @@ public class Contract : RemoteObject
     }
 
     /// <summary>
-    /// Whether the contract has been failed.
+    /// Gets whether the contract has been failed.
     /// </summary>
     [Rpc ("SpaceCenter", "Contract_get_Failed")]
     public bool GetFailed ()
@@ -198,7 +198,7 @@ public class Contract : RemoteObject
     }
 
     /// <summary>
-    /// Whether the contract has been read.
+    /// Gets whether the contract has been read.
     /// </summary>
     [Rpc ("SpaceCenter", "Contract_get_Read")]
     public bool GetRead ()
@@ -246,7 +246,7 @@ public class Contract : RemoteObject
     }
 
     /// <summary>
-    /// Whether the contract has been seen.
+    /// Gets whether the contract has been seen.
     /// </summary>
     [Rpc ("SpaceCenter", "Contract_get_Seen")]
     public bool GetSeen ()

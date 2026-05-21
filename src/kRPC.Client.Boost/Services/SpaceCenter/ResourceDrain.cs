@@ -6,7 +6,7 @@ using System.Collections.Generic;
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
 /// <summary>
-/// A resource drain. Obtained by calling <see cref="M:SpaceCenter.Part.ResourceDrain" />.
+/// A resource drain. Obtained by calling <see cref="M:SpaceCenter.Part.GetResourceDrain" />.
 /// </summary>
 public class ResourceDrain : RemoteObject
 {
@@ -69,7 +69,7 @@ public class ResourceDrain : RemoteObject
     }
 
     /// <summary>
-    /// List of available resources.
+    /// Gets the list of available resources.
     /// </summary>
     [Rpc ("SpaceCenter", "ResourceDrain_get_AvailableResources")]
     public IList<Resource> GetAvailableResources ()
@@ -81,7 +81,7 @@ public class ResourceDrain : RemoteObject
     }
 
     /// <summary>
-    /// The drain mode.
+    /// Gets the drain mode.
     /// </summary>
     [Rpc ("SpaceCenter", "ResourceDrain_get_DrainMode")]
     public DrainMode GetDrainMode ()
@@ -93,7 +93,7 @@ public class ResourceDrain : RemoteObject
     }
 
     /// <summary>
-    /// Sets the DrainMode value.
+    /// Sets the drain mode.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetDrainMode (DrainMode value)
@@ -106,7 +106,7 @@ public class ResourceDrain : RemoteObject
     }
 
     /// <summary>
-    /// Maximum possible drain rate.
+    /// Gets the maximum possible drain rate.
     /// </summary>
     [Rpc ("SpaceCenter", "ResourceDrain_get_MaxRate")]
     public float GetMaxRate ()
@@ -118,7 +118,7 @@ public class ResourceDrain : RemoteObject
     }
 
     /// <summary>
-    /// Minimum possible drain rate
+    /// Gets the minimum possible drain rate
     /// </summary>
     [Rpc ("SpaceCenter", "ResourceDrain_get_MinRate")]
     public float GetMinRate ()
@@ -130,7 +130,7 @@ public class ResourceDrain : RemoteObject
     }
 
     /// <summary>
-    /// The part object for this resource drain.
+    /// Gets the part object for this resource drain.
     /// </summary>
     [Rpc ("SpaceCenter", "ResourceDrain_get_Part")]
     public Part GetPart ()
@@ -142,7 +142,7 @@ public class ResourceDrain : RemoteObject
     }
 
     /// <summary>
-    /// Current drain rate.
+    /// Gets the current drain rate.
     /// </summary>
     [Rpc ("SpaceCenter", "ResourceDrain_get_Rate")]
     public float GetRate ()
@@ -154,7 +154,7 @@ public class ResourceDrain : RemoteObject
     }
 
     /// <summary>
-    /// Sets the Rate value.
+    /// Sets the current drain rate.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetRate (float value)

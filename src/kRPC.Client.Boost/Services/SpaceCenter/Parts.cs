@@ -7,7 +7,7 @@ namespace kRPC.Client.Boost.Services.SpaceCenter;
 
 /// <summary>
 /// Instances of this class are used to interact with the parts of a vessel.
-/// An instance can be obtained by calling <see cref="M:SpaceCenter.Vessel.Parts" />.
+/// An instance can be obtained by calling <see cref="M:SpaceCenter.Vessel.GetParts" />.
 /// </summary>
 public class Parts : RemoteObject
 {
@@ -48,7 +48,7 @@ public class Parts : RemoteObject
 
     /// <summary>
     /// A list of modules (combined across all parts in the vessel) whose
-    /// <see cref="M:SpaceCenter.Module.Name" /> is <paramref name="moduleName" />.
+    /// <see cref="M:SpaceCenter.Module.GetName" /> is <paramref name="moduleName" />.
     /// </summary>
     /// <param name="moduleName"></param>
     [Rpc ("SpaceCenter", "Parts_ModulesWithName")]
@@ -63,7 +63,7 @@ public class Parts : RemoteObject
 
     /// <summary>
     /// A list of all parts that contain a <see cref="T:SpaceCenter.Module" /> whose
-    /// <see cref="M:SpaceCenter.Module.Name" /> is <paramref name="moduleName" />.
+    /// <see cref="M:SpaceCenter.Module.GetName" /> is <paramref name="moduleName" />.
     /// </summary>
     /// <param name="moduleName"></param>
     [Rpc ("SpaceCenter", "Parts_WithModule")]
@@ -77,7 +77,7 @@ public class Parts : RemoteObject
     }
 
     /// <summary>
-    /// A list of parts whose <see cref="M:SpaceCenter.Part.Name" /> is <paramref name="name" />.
+    /// A list of parts whose <see cref="M:SpaceCenter.Part.GetName" /> is <paramref name="name" />.
     /// </summary>
     /// <param name="name"></param>
     [Rpc ("SpaceCenter", "Parts_WithName")]
@@ -91,7 +91,7 @@ public class Parts : RemoteObject
     }
 
     /// <summary>
-    /// A list of all parts whose <see cref="M:SpaceCenter.Part.Tag" /> is <paramref name="tag" />.
+    /// A list of all parts whose <see cref="M:SpaceCenter.Part.GetTag" /> is <paramref name="tag" />.
     /// </summary>
     /// <param name="tag"></param>
     [Rpc ("SpaceCenter", "Parts_WithTag")]
@@ -105,7 +105,7 @@ public class Parts : RemoteObject
     }
 
     /// <summary>
-    /// A list of all parts whose <see cref="M:SpaceCenter.Part.Title" /> is <paramref name="title" />.
+    /// A list of all parts whose <see cref="M:SpaceCenter.Part.GetTitle" /> is <paramref name="title" />.
     /// </summary>
     /// <param name="title"></param>
     [Rpc ("SpaceCenter", "Parts_WithTitle")]
@@ -119,7 +119,7 @@ public class Parts : RemoteObject
     }
 
     /// <summary>
-    /// A list of all of the vessels parts.
+    /// Gets a list of all of the vessels parts.
     /// </summary>
     [Rpc ("SpaceCenter", "Parts_get_All")]
     public IList<Part> GetAll ()
@@ -131,7 +131,7 @@ public class Parts : RemoteObject
     }
 
     /// <summary>
-    /// A list of all antennas in the vessel.
+    /// Gets a list of all antennas in the vessel.
     /// </summary>
     /// <remarks>
     /// If RemoteTech is installed, this will always return an empty list.
@@ -147,7 +147,7 @@ public class Parts : RemoteObject
     }
 
     /// <summary>
-    /// A list of all cargo bays in the vessel.
+    /// Gets a list of all cargo bays in the vessel.
     /// </summary>
     [Rpc ("SpaceCenter", "Parts_get_CargoBays")]
     public IList<CargoBay> GetCargoBays ()
@@ -159,7 +159,7 @@ public class Parts : RemoteObject
     }
 
     /// <summary>
-    /// A list of all control surfaces in the vessel.
+    /// Gets a list of all control surfaces in the vessel.
     /// </summary>
     [Rpc ("SpaceCenter", "Parts_get_ControlSurfaces")]
     public IList<ControlSurface> GetControlSurfaces ()
@@ -171,7 +171,7 @@ public class Parts : RemoteObject
     }
 
     /// <summary>
-    /// The part from which the vessel is controlled.
+    /// Gets the part from which the vessel is controlled.
     /// </summary>
     [Rpc ("SpaceCenter", "Parts_get_Controlling")]
     public Part GetControlling ()
@@ -183,7 +183,7 @@ public class Parts : RemoteObject
     }
 
     /// <summary>
-    /// Sets the Controlling value.
+    /// Sets the part from which the vessel is controlled.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetControlling (Part value)
@@ -196,7 +196,7 @@ public class Parts : RemoteObject
     }
 
     /// <summary>
-    /// A list of all decouplers in the vessel.
+    /// Gets a list of all decouplers in the vessel.
     /// </summary>
     [Rpc ("SpaceCenter", "Parts_get_Decouplers")]
     public IList<Decoupler> GetDecouplers ()
@@ -208,7 +208,7 @@ public class Parts : RemoteObject
     }
 
     /// <summary>
-    /// A list of all docking ports in the vessel.
+    /// Gets a list of all docking ports in the vessel.
     /// </summary>
     [Rpc ("SpaceCenter", "Parts_get_DockingPorts")]
     public IList<DockingPort> GetDockingPorts ()
@@ -220,7 +220,7 @@ public class Parts : RemoteObject
     }
 
     /// <summary>
-    /// A list of all engines in the vessel.
+    /// Gets a list of all engines in the vessel.
     /// </summary>
     /// <remarks>
     /// This includes any part that generates thrust. This covers many different types
@@ -237,7 +237,7 @@ public class Parts : RemoteObject
     }
 
     /// <summary>
-    /// A list of all science experiments in the vessel.
+    /// Gets a list of all science experiments in the vessel.
     /// </summary>
     [Rpc ("SpaceCenter", "Parts_get_Experiments")]
     public IList<Experiment> GetExperiments ()
@@ -249,7 +249,7 @@ public class Parts : RemoteObject
     }
 
     /// <summary>
-    /// A list of all fairings in the vessel.
+    /// Gets a list of all fairings in the vessel.
     /// </summary>
     [Rpc ("SpaceCenter", "Parts_get_Fairings")]
     public IList<Fairing> GetFairings ()
@@ -261,7 +261,7 @@ public class Parts : RemoteObject
     }
 
     /// <summary>
-    /// A list of all intakes in the vessel.
+    /// Gets a list of all intakes in the vessel.
     /// </summary>
     [Rpc ("SpaceCenter", "Parts_get_Intakes")]
     public IList<Intake> GetIntakes ()
@@ -273,7 +273,7 @@ public class Parts : RemoteObject
     }
 
     /// <summary>
-    /// A list of all launch clamps attached to the vessel.
+    /// Gets a list of all launch clamps attached to the vessel.
     /// </summary>
     [Rpc ("SpaceCenter", "Parts_get_LaunchClamps")]
     public IList<LaunchClamp> GetLaunchClamps ()
@@ -285,7 +285,7 @@ public class Parts : RemoteObject
     }
 
     /// <summary>
-    /// A list of all landing legs attached to the vessel.
+    /// Gets a list of all landing legs attached to the vessel.
     /// </summary>
     [Rpc ("SpaceCenter", "Parts_get_Legs")]
     public IList<Leg> GetLegs ()
@@ -297,7 +297,7 @@ public class Parts : RemoteObject
     }
 
     /// <summary>
-    /// A list of all lights in the vessel.
+    /// Gets a list of all lights in the vessel.
     /// </summary>
     [Rpc ("SpaceCenter", "Parts_get_Lights")]
     public IList<Light> GetLights ()
@@ -309,7 +309,7 @@ public class Parts : RemoteObject
     }
 
     /// <summary>
-    /// A list of all parachutes in the vessel.
+    /// Gets a list of all parachutes in the vessel.
     /// </summary>
     [Rpc ("SpaceCenter", "Parts_get_Parachutes")]
     public IList<Parachute> GetParachutes ()
@@ -321,7 +321,7 @@ public class Parts : RemoteObject
     }
 
     /// <summary>
-    /// A list of all RCS blocks/thrusters in the vessel.
+    /// Gets a list of all RCS blocks/thrusters in the vessel.
     /// </summary>
     [Rpc ("SpaceCenter", "Parts_get_RCS")]
     public IList<RCS> GetRCS ()
@@ -333,7 +333,7 @@ public class Parts : RemoteObject
     }
 
     /// <summary>
-    /// A list of all radiators in the vessel.
+    /// Gets a list of all radiators in the vessel.
     /// </summary>
     [Rpc ("SpaceCenter", "Parts_get_Radiators")]
     public IList<Radiator> GetRadiators ()
@@ -345,7 +345,7 @@ public class Parts : RemoteObject
     }
 
     /// <summary>
-    /// A list of all reaction wheels in the vessel.
+    /// Gets a list of all reaction wheels in the vessel.
     /// </summary>
     [Rpc ("SpaceCenter", "Parts_get_ReactionWheels")]
     public IList<ReactionWheel> GetReactionWheels ()
@@ -357,7 +357,7 @@ public class Parts : RemoteObject
     }
 
     /// <summary>
-    /// A list of all resource converters in the vessel.
+    /// Gets a list of all resource converters in the vessel.
     /// </summary>
     [Rpc ("SpaceCenter", "Parts_get_ResourceConverters")]
     public IList<ResourceConverter> GetResourceConverters ()
@@ -369,7 +369,7 @@ public class Parts : RemoteObject
     }
 
     /// <summary>
-    /// A list of all resource drains in the vessel.
+    /// Gets a list of all resource drains in the vessel.
     /// </summary>
     [Rpc ("SpaceCenter", "Parts_get_ResourceDrains")]
     public IList<ResourceDrain> GetResourceDrains ()
@@ -381,7 +381,7 @@ public class Parts : RemoteObject
     }
 
     /// <summary>
-    /// A list of all resource harvesters in the vessel.
+    /// Gets a list of all resource harvesters in the vessel.
     /// </summary>
     [Rpc ("SpaceCenter", "Parts_get_ResourceHarvesters")]
     public IList<ResourceHarvester> GetResourceHarvesters ()
@@ -393,7 +393,7 @@ public class Parts : RemoteObject
     }
 
     /// <summary>
-    /// A list of all robotic hinges in the vessel.
+    /// Gets a list of all robotic hinges in the vessel.
     /// </summary>
     [Rpc ("SpaceCenter", "Parts_get_RoboticHinges")]
     public IList<RoboticHinge> GetRoboticHinges ()
@@ -405,7 +405,7 @@ public class Parts : RemoteObject
     }
 
     /// <summary>
-    /// A list of all robotic pistons in the vessel.
+    /// Gets a list of all robotic pistons in the vessel.
     /// </summary>
     [Rpc ("SpaceCenter", "Parts_get_RoboticPistons")]
     public IList<RoboticPiston> GetRoboticPistons ()
@@ -417,7 +417,7 @@ public class Parts : RemoteObject
     }
 
     /// <summary>
-    /// A list of all robotic rotations in the vessel.
+    /// Gets a list of all robotic rotations in the vessel.
     /// </summary>
     [Rpc ("SpaceCenter", "Parts_get_RoboticRotations")]
     public IList<RoboticRotation> GetRoboticRotations ()
@@ -429,7 +429,7 @@ public class Parts : RemoteObject
     }
 
     /// <summary>
-    /// A list of all robotic rotors in the vessel.
+    /// Gets a list of all robotic rotors in the vessel.
     /// </summary>
     [Rpc ("SpaceCenter", "Parts_get_RoboticRotors")]
     public IList<RoboticRotor> GetRoboticRotors ()
@@ -441,7 +441,7 @@ public class Parts : RemoteObject
     }
 
     /// <summary>
-    /// The vessels root part.
+    /// Gets the vessels root part.
     /// </summary>
     [Rpc ("SpaceCenter", "Parts_get_Root")]
     public Part GetRoot ()
@@ -453,7 +453,7 @@ public class Parts : RemoteObject
     }
 
     /// <summary>
-    /// A list of all sensors in the vessel.
+    /// Gets a list of all sensors in the vessel.
     /// </summary>
     [Rpc ("SpaceCenter", "Parts_get_Sensors")]
     public IList<Sensor> GetSensors ()
@@ -465,7 +465,7 @@ public class Parts : RemoteObject
     }
 
     /// <summary>
-    /// A list of all solar panels in the vessel.
+    /// Gets a list of all solar panels in the vessel.
     /// </summary>
     [Rpc ("SpaceCenter", "Parts_get_SolarPanels")]
     public IList<SolarPanel> GetSolarPanels ()
@@ -477,7 +477,7 @@ public class Parts : RemoteObject
     }
 
     /// <summary>
-    /// A list of all wheels in the vessel.
+    /// Gets a list of all wheels in the vessel.
     /// </summary>
     [Rpc ("SpaceCenter", "Parts_get_Wheels")]
     public IList<Wheel> GetWheels ()

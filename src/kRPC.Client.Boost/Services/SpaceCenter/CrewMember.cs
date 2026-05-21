@@ -6,7 +6,7 @@ using System.Collections.Generic;
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
 /// <summary>
-/// Represents crew in a vessel. Can be obtained using <see cref="M:SpaceCenter.Vessel.Crew" />.
+/// Represents crew in a vessel. Can be obtained using <see cref="M:SpaceCenter.Vessel.GetCrew" />.
 /// </summary>
 public class CrewMember : RemoteObject
 {
@@ -18,7 +18,7 @@ public class CrewMember : RemoteObject
     }
 
     /// <summary>
-    /// Whether the crew member is a badass.
+    /// Gets whether the crew member is a badass.
     /// </summary>
     [Rpc ("SpaceCenter", "CrewMember_get_Badass")]
     public bool GetBadass ()
@@ -30,7 +30,7 @@ public class CrewMember : RemoteObject
     }
 
     /// <summary>
-    /// Sets the Badass value.
+    /// Sets whether the crew member is a badass.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetBadass (bool value)
@@ -43,7 +43,7 @@ public class CrewMember : RemoteObject
     }
 
     /// <summary>
-    /// The flight IDs for each entry in the career flight log.
+    /// Gets the flight IDs for each entry in the career flight log.
     /// </summary>
     [Rpc ("SpaceCenter", "CrewMember_get_CareerLogFlights")]
     public IList<int> GetCareerLogFlights ()
@@ -55,7 +55,7 @@ public class CrewMember : RemoteObject
     }
 
     /// <summary>
-    /// The body name for each entry in the career flight log.
+    /// Gets the body name for each entry in the career flight log.
     /// </summary>
     [Rpc ("SpaceCenter", "CrewMember_get_CareerLogTargets")]
     public IList<string> GetCareerLogTargets ()
@@ -67,7 +67,7 @@ public class CrewMember : RemoteObject
     }
 
     /// <summary>
-    /// The type for each entry in the career flight log.
+    /// Gets the type for each entry in the career flight log.
     /// </summary>
     [Rpc ("SpaceCenter", "CrewMember_get_CareerLogTypes")]
     public IList<string> GetCareerLogTypes ()
@@ -79,7 +79,7 @@ public class CrewMember : RemoteObject
     }
 
     /// <summary>
-    /// The crew members courage.
+    /// Gets the crew members courage.
     /// </summary>
     [Rpc ("SpaceCenter", "CrewMember_get_Courage")]
     public float GetCourage ()
@@ -91,7 +91,7 @@ public class CrewMember : RemoteObject
     }
 
     /// <summary>
-    /// Sets the Courage value.
+    /// Sets the crew members courage.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetCourage (float value)
@@ -104,7 +104,7 @@ public class CrewMember : RemoteObject
     }
 
     /// <summary>
-    /// The crew members experience.
+    /// Gets the crew members experience.
     /// </summary>
     [Rpc ("SpaceCenter", "CrewMember_get_Experience")]
     public float GetExperience ()
@@ -116,7 +116,7 @@ public class CrewMember : RemoteObject
     }
 
     /// <summary>
-    /// Sets the Experience value.
+    /// Sets the crew members experience.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetExperience (float value)
@@ -129,7 +129,7 @@ public class CrewMember : RemoteObject
     }
 
     /// <summary>
-    /// The crew member's gender.
+    /// Gets the crew member's gender.
     /// </summary>
     [Rpc ("SpaceCenter", "CrewMember_get_Gender")]
     public CrewMemberGender GetGender ()
@@ -141,7 +141,7 @@ public class CrewMember : RemoteObject
     }
 
     /// <summary>
-    /// The crew members name.
+    /// Gets the crew members name.
     /// </summary>
     [Rpc ("SpaceCenter", "CrewMember_get_Name")]
     public string GetName ()
@@ -153,7 +153,7 @@ public class CrewMember : RemoteObject
     }
 
     /// <summary>
-    /// Sets the Name value.
+    /// Sets the crew members name.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetName (string value)
@@ -166,7 +166,7 @@ public class CrewMember : RemoteObject
     }
 
     /// <summary>
-    /// Whether the crew member is on a mission.
+    /// Gets whether the crew member is on a mission.
     /// </summary>
     [Rpc ("SpaceCenter", "CrewMember_get_OnMission")]
     public bool GetOnMission ()
@@ -178,7 +178,7 @@ public class CrewMember : RemoteObject
     }
 
     /// <summary>
-    /// The crew member's current roster status.
+    /// Gets the crew member's current roster status.
     /// </summary>
     [Rpc ("SpaceCenter", "CrewMember_get_RosterStatus")]
     public RosterStatus GetRosterStatus ()
@@ -190,7 +190,7 @@ public class CrewMember : RemoteObject
     }
 
     /// <summary>
-    /// The crew members stupidity.
+    /// Gets the crew members stupidity.
     /// </summary>
     [Rpc ("SpaceCenter", "CrewMember_get_Stupidity")]
     public float GetStupidity ()
@@ -202,7 +202,7 @@ public class CrewMember : RemoteObject
     }
 
     /// <summary>
-    /// Sets the Stupidity value.
+    /// Sets the crew members stupidity.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetStupidity (float value)
@@ -215,7 +215,7 @@ public class CrewMember : RemoteObject
     }
 
     /// <summary>
-    /// The crew member's suit type.
+    /// Gets the crew member's suit type.
     /// </summary>
     [Rpc ("SpaceCenter", "CrewMember_get_SuitType")]
     public SuitType GetSuitType ()
@@ -227,7 +227,7 @@ public class CrewMember : RemoteObject
     }
 
     /// <summary>
-    /// Sets the SuitType value.
+    /// Sets the crew member's suit type.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetSuitType (SuitType value)
@@ -240,7 +240,7 @@ public class CrewMember : RemoteObject
     }
 
     /// <summary>
-    /// The crew member's job.
+    /// Gets the crew member's job.
     /// </summary>
     [Rpc ("SpaceCenter", "CrewMember_get_Trait")]
     public string GetTrait ()
@@ -252,7 +252,7 @@ public class CrewMember : RemoteObject
     }
 
     /// <summary>
-    /// The type of crew member.
+    /// Gets the type of crew member.
     /// </summary>
     [Rpc ("SpaceCenter", "CrewMember_get_Type")]
     public CrewMemberType GetType ()
@@ -264,7 +264,7 @@ public class CrewMember : RemoteObject
     }
 
     /// <summary>
-    /// Whether the crew member is a veteran.
+    /// Gets whether the crew member is a veteran.
     /// </summary>
     [Rpc ("SpaceCenter", "CrewMember_get_Veteran")]
     public bool GetVeteran ()
@@ -276,7 +276,7 @@ public class CrewMember : RemoteObject
     }
 
     /// <summary>
-    /// Sets the Veteran value.
+    /// Sets whether the crew member is a veteran.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetVeteran (bool value)

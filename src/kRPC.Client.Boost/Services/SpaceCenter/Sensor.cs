@@ -5,7 +5,7 @@ using kRPC.Client.Boost.Attributes;
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
 /// <summary>
-/// A sensor, such as a thermometer. Obtained by calling <see cref="M:SpaceCenter.Part.Sensor" />.
+/// A sensor, such as a thermometer. Obtained by calling <see cref="M:SpaceCenter.Part.GetSensor" />.
 /// </summary>
 public class Sensor : RemoteObject
 {
@@ -17,7 +17,7 @@ public class Sensor : RemoteObject
     }
 
     /// <summary>
-    /// Whether the sensor is active.
+    /// Gets whether the sensor is active.
     /// </summary>
     [Rpc ("SpaceCenter", "Sensor_get_Active")]
     public bool GetActive ()
@@ -29,7 +29,7 @@ public class Sensor : RemoteObject
     }
 
     /// <summary>
-    /// Sets the Active value.
+    /// Sets whether the sensor is active.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetActive (bool value)
@@ -42,7 +42,7 @@ public class Sensor : RemoteObject
     }
 
     /// <summary>
-    /// The part object for this sensor.
+    /// Gets the part object for this sensor.
     /// </summary>
     [Rpc ("SpaceCenter", "Sensor_get_Part")]
     public Part GetPart ()
@@ -54,7 +54,7 @@ public class Sensor : RemoteObject
     }
 
     /// <summary>
-    /// The current value of the sensor.
+    /// Gets the current value of the sensor.
     /// </summary>
     [Rpc ("SpaceCenter", "Sensor_get_Value")]
     public string GetValue ()

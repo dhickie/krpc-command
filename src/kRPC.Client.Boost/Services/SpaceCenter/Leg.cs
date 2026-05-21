@@ -5,7 +5,7 @@ using kRPC.Client.Boost.Attributes;
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
 /// <summary>
-/// A landing leg. Obtained by calling <see cref="M:SpaceCenter.Part.Leg" />.
+/// A landing leg. Obtained by calling <see cref="M:SpaceCenter.Part.GetLeg" />.
 /// </summary>
 public class Leg : RemoteObject
 {
@@ -17,7 +17,7 @@ public class Leg : RemoteObject
     }
 
     /// <summary>
-    /// Whether the leg is deployable.
+    /// Gets whether the leg is deployable.
     /// </summary>
     [Rpc ("SpaceCenter", "Leg_get_Deployable")]
     public bool GetDeployable ()
@@ -29,7 +29,7 @@ public class Leg : RemoteObject
     }
 
     /// <summary>
-    /// Whether the landing leg is deployed.
+    /// Gets whether the landing leg is deployed.
     /// </summary>
     /// <remarks>
     /// Fixed landing legs are always deployed.
@@ -45,7 +45,7 @@ public class Leg : RemoteObject
     }
 
     /// <summary>
-    /// Sets the Deployed value.
+    /// Sets whether the landing leg is deployed.
     /// </summary>
     /// <param name="value">The value to set.</param>
     public void SetDeployed (bool value)
@@ -70,7 +70,7 @@ public class Leg : RemoteObject
     }
 
     /// <summary>
-    /// The part object for this landing leg.
+    /// Gets the part object for this landing leg.
     /// </summary>
     [Rpc ("SpaceCenter", "Leg_get_Part")]
     public Part GetPart ()
@@ -82,7 +82,7 @@ public class Leg : RemoteObject
     }
 
     /// <summary>
-    /// The current state of the landing leg.
+    /// Gets the current state of the landing leg.
     /// </summary>
     [Rpc ("SpaceCenter", "Leg_get_State")]
     public LegState GetState ()

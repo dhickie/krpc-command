@@ -5,7 +5,7 @@ using kRPC.Client.Boost.Attributes;
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
 /// <summary>
-/// An alarm. Can be accessed using <see cref="M:SpaceCenter.AlarmManager" />.
+/// An alarm. Can be accessed using <see cref="M:SpaceCenter.GetAlarmManager" />.
 /// </summary>
 public class Alarm : RemoteObject
 {
