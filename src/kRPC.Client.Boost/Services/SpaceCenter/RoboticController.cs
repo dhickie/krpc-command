@@ -24,12 +24,12 @@ public class RoboticController : RemoteObject
     [RpcAttribute ("SpaceCenter", "RoboticController_AddAxis")]
     public bool AddAxis (Module module, string fieldName)
     {
-        var _args = new object[] {
+        var args = new object[] {
             this,
             module,
             fieldName
         };
-        return Connection.Invoke<bool> ("SpaceCenter", "RoboticController_AddAxis", _args);
+        return Connection.Invoke<bool> ("SpaceCenter", "RoboticController_AddAxis", args);
     }
 
     /// <summary>
@@ -39,14 +39,14 @@ public class RoboticController : RemoteObject
     [RpcAttribute ("SpaceCenter", "RoboticController_AddKeyFrame")]
     public bool AddKeyFrame (Module module, string fieldName, float time, float value)
     {
-        var _args = new object[] {
+        var args = new object[] {
             this,
             module,
             fieldName,
             time,
             value
         };
-        return Connection.Invoke<bool> ("SpaceCenter", "RoboticController_AddKeyFrame", _args);
+        return Connection.Invoke<bool> ("SpaceCenter", "RoboticController_AddKeyFrame", args);
     }
 
     /// <summary>
@@ -55,10 +55,10 @@ public class RoboticController : RemoteObject
     [RpcAttribute ("SpaceCenter", "RoboticController_Axes")]
     public IList<IList<string>> Axes ()
     {
-        var _args = new object[] {
+        var args = new object[] {
             this
         };
-        return Connection.Invoke<IList<IList<string>>> ("SpaceCenter", "RoboticController_Axes", _args);
+        return Connection.Invoke<IList<IList<string>>> ("SpaceCenter", "RoboticController_Axes", args);
     }
 
     /// <summary>
@@ -68,12 +68,12 @@ public class RoboticController : RemoteObject
     [RpcAttribute ("SpaceCenter", "RoboticController_ClearAxis")]
     public bool ClearAxis (Module module, string fieldName)
     {
-        var _args = new object[] {
+        var args = new object[] {
             this,
             module,
             fieldName
         };
-        return Connection.Invoke<bool> ("SpaceCenter", "RoboticController_ClearAxis", _args);
+        return Connection.Invoke<bool> ("SpaceCenter", "RoboticController_ClearAxis", args);
     }
 
     /// <summary>
@@ -82,11 +82,11 @@ public class RoboticController : RemoteObject
     [RpcAttribute ("SpaceCenter", "RoboticController_HasPart")]
     public bool HasPart (Part part)
     {
-        var _args = new object[] {
+        var args = new object[] {
             this,
             part
         };
-        return Connection.Invoke<bool> ("SpaceCenter", "RoboticController_HasPart", _args);
+        return Connection.Invoke<bool> ("SpaceCenter", "RoboticController_HasPart", args);
     }
 
     /// <summary>
@@ -95,10 +95,10 @@ public class RoboticController : RemoteObject
     [RpcAttribute ("SpaceCenter", "RoboticController_get_Part")]
     public Part Part {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<Part> ("SpaceCenter", "RoboticController_get_Part", _args);
+            return Connection.Invoke<Part> ("SpaceCenter", "RoboticController_get_Part", args);
         }
     }
 }

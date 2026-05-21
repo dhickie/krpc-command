@@ -27,10 +27,10 @@ public class Decoupler : RemoteObject
     [RpcAttribute ("SpaceCenter", "Decoupler_Decouple")]
     public Vessel Decouple ()
     {
-        var _args = new object[] {
+        var args = new object[] {
             this
         };
-        return Connection.Invoke<Vessel> ("SpaceCenter", "Decoupler_Decouple", _args);
+        return Connection.Invoke<Vessel> ("SpaceCenter", "Decoupler_Decouple", args);
     }
 
     /// <summary>
@@ -39,10 +39,10 @@ public class Decoupler : RemoteObject
     [RpcAttribute ("SpaceCenter", "Decoupler_get_AttachedPart")]
     public Part AttachedPart {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<Part> ("SpaceCenter", "Decoupler_get_AttachedPart", _args);
+            return Connection.Invoke<Part> ("SpaceCenter", "Decoupler_get_AttachedPart", args);
         }
     }
 
@@ -52,10 +52,10 @@ public class Decoupler : RemoteObject
     [RpcAttribute ("SpaceCenter", "Decoupler_get_Decoupled")]
     public bool Decoupled {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "Decoupler_get_Decoupled", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "Decoupler_get_Decoupled", args);
         }
     }
 
@@ -65,10 +65,10 @@ public class Decoupler : RemoteObject
     [RpcAttribute ("SpaceCenter", "Decoupler_get_Impulse")]
     public float Impulse {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "Decoupler_get_Impulse", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "Decoupler_get_Impulse", args);
         }
     }
 
@@ -78,10 +78,10 @@ public class Decoupler : RemoteObject
     [RpcAttribute ("SpaceCenter", "Decoupler_get_IsOmniDecoupler")]
     public bool IsOmniDecoupler {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "Decoupler_get_IsOmniDecoupler", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "Decoupler_get_IsOmniDecoupler", args);
         }
     }
 
@@ -91,10 +91,10 @@ public class Decoupler : RemoteObject
     [RpcAttribute ("SpaceCenter", "Decoupler_get_Part")]
     public Part Part {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<Part> ("SpaceCenter", "Decoupler_get_Part", _args);
+            return Connection.Invoke<Part> ("SpaceCenter", "Decoupler_get_Part", args);
         }
     }
 
@@ -104,10 +104,10 @@ public class Decoupler : RemoteObject
     [RpcAttribute ("SpaceCenter", "Decoupler_get_Staged")]
     public bool Staged {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "Decoupler_get_Staged", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "Decoupler_get_Staged", args);
         }
     }
 }

@@ -23,10 +23,10 @@ public class Resource : RemoteObject
     [RpcAttribute ("SpaceCenter", "Resource_get_Amount")]
     public float Amount {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "Resource_get_Amount", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "Resource_get_Amount", args);
         }
     }
 
@@ -36,10 +36,10 @@ public class Resource : RemoteObject
     [RpcAttribute ("SpaceCenter", "Resource_get_Density")]
     public float Density {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "Resource_get_Density", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "Resource_get_Density", args);
         }
     }
 
@@ -49,17 +49,17 @@ public class Resource : RemoteObject
     [RpcAttribute ("SpaceCenter", "Resource_get_Enabled")]
     public bool Enabled {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "Resource_get_Enabled", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "Resource_get_Enabled", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "Resource_set_Enabled", _args);
+            Connection.Invoke ("SpaceCenter", "Resource_set_Enabled", args);
         }
     }
 
@@ -69,10 +69,10 @@ public class Resource : RemoteObject
     [RpcAttribute ("SpaceCenter", "Resource_get_FlowMode")]
     public ResourceFlowMode FlowMode {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<ResourceFlowMode> ("SpaceCenter", "Resource_get_FlowMode", _args);
+            return Connection.Invoke<ResourceFlowMode> ("SpaceCenter", "Resource_get_FlowMode", args);
         }
     }
 
@@ -82,10 +82,10 @@ public class Resource : RemoteObject
     [RpcAttribute ("SpaceCenter", "Resource_get_Max")]
     public float Max {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "Resource_get_Max", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "Resource_get_Max", args);
         }
     }
 
@@ -95,10 +95,10 @@ public class Resource : RemoteObject
     [RpcAttribute ("SpaceCenter", "Resource_get_Name")]
     public string Name {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<string> ("SpaceCenter", "Resource_get_Name", _args);
+            return Connection.Invoke<string> ("SpaceCenter", "Resource_get_Name", args);
         }
     }
 
@@ -108,10 +108,10 @@ public class Resource : RemoteObject
     [RpcAttribute ("SpaceCenter", "Resource_get_Part")]
     public Part Part {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<Part> ("SpaceCenter", "Resource_get_Part", _args);
+            return Connection.Invoke<Part> ("SpaceCenter", "Resource_get_Part", args);
         }
     }
 }

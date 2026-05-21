@@ -33,11 +33,11 @@ public class Engine : RemoteObject
     [RpcAttribute ("SpaceCenter", "Engine_AvailableThrustAt")]
     public float AvailableThrustAt (double pressure)
     {
-        var _args = new object[] {
+        var args = new object[] {
             this,
             pressure
         };
-        return Connection.Invoke<float> ("SpaceCenter", "Engine_AvailableThrustAt", _args);
+        return Connection.Invoke<float> ("SpaceCenter", "Engine_AvailableThrustAt", args);
     }
 
     /// <summary>
@@ -49,11 +49,11 @@ public class Engine : RemoteObject
     [RpcAttribute ("SpaceCenter", "Engine_MaxThrustAt")]
     public float MaxThrustAt (double pressure)
     {
-        var _args = new object[] {
+        var args = new object[] {
             this,
             pressure
         };
-        return Connection.Invoke<float> ("SpaceCenter", "Engine_MaxThrustAt", _args);
+        return Connection.Invoke<float> ("SpaceCenter", "Engine_MaxThrustAt", args);
     }
 
     /// <summary>
@@ -64,11 +64,11 @@ public class Engine : RemoteObject
     [RpcAttribute ("SpaceCenter", "Engine_SpecificImpulseAt")]
     public float SpecificImpulseAt (double pressure)
     {
-        var _args = new object[] {
+        var args = new object[] {
             this,
             pressure
         };
-        return Connection.Invoke<float> ("SpaceCenter", "Engine_SpecificImpulseAt", _args);
+        return Connection.Invoke<float> ("SpaceCenter", "Engine_SpecificImpulseAt", args);
     }
 
     /// <summary>
@@ -77,10 +77,10 @@ public class Engine : RemoteObject
     [RpcAttribute ("SpaceCenter", "Engine_ToggleMode")]
     public void ToggleMode ()
     {
-        var _args = new object[] {
+        var args = new object[] {
             this
         };
-        Connection.Invoke ("SpaceCenter", "Engine_ToggleMode", _args);
+        Connection.Invoke ("SpaceCenter", "Engine_ToggleMode", args);
     }
 
     /// <summary>
@@ -90,17 +90,17 @@ public class Engine : RemoteObject
     [RpcAttribute ("SpaceCenter", "Engine_get_Active")]
     public bool Active {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "Engine_get_Active", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "Engine_get_Active", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "Engine_set_Active", _args);
+            Connection.Invoke ("SpaceCenter", "Engine_set_Active", args);
         }
     }
 
@@ -110,17 +110,17 @@ public class Engine : RemoteObject
     [RpcAttribute ("SpaceCenter", "Engine_get_AutoModeSwitch")]
     public bool AutoModeSwitch {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "Engine_get_AutoModeSwitch", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "Engine_get_AutoModeSwitch", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "Engine_set_AutoModeSwitch", _args);
+            Connection.Invoke ("SpaceCenter", "Engine_set_AutoModeSwitch", args);
         }
     }
 
@@ -134,10 +134,10 @@ public class Engine : RemoteObject
     [RpcAttribute ("SpaceCenter", "Engine_get_AvailableThrust")]
     public float AvailableThrust {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "Engine_get_AvailableThrust", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "Engine_get_AvailableThrust", args);
         }
     }
 
@@ -150,10 +150,10 @@ public class Engine : RemoteObject
     [RpcAttribute ("SpaceCenter", "Engine_get_AvailableTorque")]
     public Tuple<Tuple<double,double,double>,Tuple<double,double,double>> AvailableTorque {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<Tuple<Tuple<double,double,double>,Tuple<double,double,double>>> ("SpaceCenter", "Engine_get_AvailableTorque", _args);
+            return Connection.Invoke<Tuple<Tuple<double,double,double>,Tuple<double,double,double>>> ("SpaceCenter", "Engine_get_AvailableTorque", args);
         }
     }
 
@@ -165,10 +165,10 @@ public class Engine : RemoteObject
     [RpcAttribute ("SpaceCenter", "Engine_get_CanRestart")]
     public bool CanRestart {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "Engine_get_CanRestart", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "Engine_get_CanRestart", args);
         }
     }
 
@@ -179,10 +179,10 @@ public class Engine : RemoteObject
     [RpcAttribute ("SpaceCenter", "Engine_get_CanShutdown")]
     public bool CanShutdown {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "Engine_get_CanShutdown", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "Engine_get_CanShutdown", args);
         }
     }
 
@@ -193,17 +193,17 @@ public class Engine : RemoteObject
     [RpcAttribute ("SpaceCenter", "Engine_get_GimbalLimit")]
     public float GimbalLimit {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "Engine_get_GimbalLimit", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "Engine_get_GimbalLimit", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "Engine_set_GimbalLimit", _args);
+            Connection.Invoke ("SpaceCenter", "Engine_set_GimbalLimit", args);
         }
     }
 
@@ -214,17 +214,17 @@ public class Engine : RemoteObject
     [RpcAttribute ("SpaceCenter", "Engine_get_GimbalLocked")]
     public bool GimbalLocked {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "Engine_get_GimbalLocked", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "Engine_get_GimbalLocked", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "Engine_set_GimbalLocked", _args);
+            Connection.Invoke ("SpaceCenter", "Engine_set_GimbalLocked", args);
         }
     }
 
@@ -235,10 +235,10 @@ public class Engine : RemoteObject
     [RpcAttribute ("SpaceCenter", "Engine_get_GimbalRange")]
     public float GimbalRange {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "Engine_get_GimbalRange", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "Engine_get_GimbalRange", args);
         }
     }
 
@@ -248,10 +248,10 @@ public class Engine : RemoteObject
     [RpcAttribute ("SpaceCenter", "Engine_get_Gimballed")]
     public bool Gimballed {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "Engine_get_Gimballed", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "Engine_get_Gimballed", args);
         }
     }
 
@@ -261,10 +261,10 @@ public class Engine : RemoteObject
     [RpcAttribute ("SpaceCenter", "Engine_get_HasFuel")]
     public bool HasFuel {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "Engine_get_HasFuel", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "Engine_get_HasFuel", args);
         }
     }
 
@@ -274,10 +274,10 @@ public class Engine : RemoteObject
     [RpcAttribute ("SpaceCenter", "Engine_get_HasModes")]
     public bool HasModes {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "Engine_get_HasModes", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "Engine_get_HasModes", args);
         }
     }
 
@@ -287,17 +287,17 @@ public class Engine : RemoteObject
     [RpcAttribute ("SpaceCenter", "Engine_get_IndependentThrottle")]
     public bool IndependentThrottle {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "Engine_get_IndependentThrottle", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "Engine_get_IndependentThrottle", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "Engine_set_IndependentThrottle", _args);
+            Connection.Invoke ("SpaceCenter", "Engine_set_IndependentThrottle", args);
         }
     }
 
@@ -307,10 +307,10 @@ public class Engine : RemoteObject
     [RpcAttribute ("SpaceCenter", "Engine_get_KerbinSeaLevelSpecificImpulse")]
     public float KerbinSeaLevelSpecificImpulse {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "Engine_get_KerbinSeaLevelSpecificImpulse", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "Engine_get_KerbinSeaLevelSpecificImpulse", args);
         }
     }
 
@@ -321,10 +321,10 @@ public class Engine : RemoteObject
     [RpcAttribute ("SpaceCenter", "Engine_get_MaxThrust")]
     public float MaxThrust {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "Engine_get_MaxThrust", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "Engine_get_MaxThrust", args);
         }
     }
 
@@ -337,10 +337,10 @@ public class Engine : RemoteObject
     [RpcAttribute ("SpaceCenter", "Engine_get_MaxVacuumThrust")]
     public float MaxVacuumThrust {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "Engine_get_MaxVacuumThrust", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "Engine_get_MaxVacuumThrust", args);
         }
     }
 
@@ -350,17 +350,17 @@ public class Engine : RemoteObject
     [RpcAttribute ("SpaceCenter", "Engine_get_Mode")]
     public string Mode {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<string> ("SpaceCenter", "Engine_get_Mode", _args);
+            return Connection.Invoke<string> ("SpaceCenter", "Engine_get_Mode", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "Engine_set_Mode", _args);
+            Connection.Invoke ("SpaceCenter", "Engine_set_Mode", args);
         }
     }
 
@@ -371,10 +371,10 @@ public class Engine : RemoteObject
     [RpcAttribute ("SpaceCenter", "Engine_get_Modes")]
     public IDictionary<string,Engine> Modes {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<IDictionary<string,Engine>> ("SpaceCenter", "Engine_get_Modes", _args);
+            return Connection.Invoke<IDictionary<string,Engine>> ("SpaceCenter", "Engine_get_Modes", args);
         }
     }
 
@@ -384,10 +384,10 @@ public class Engine : RemoteObject
     [RpcAttribute ("SpaceCenter", "Engine_get_Part")]
     public Part Part {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<Part> ("SpaceCenter", "Engine_get_Part", _args);
+            return Connection.Invoke<Part> ("SpaceCenter", "Engine_get_Part", args);
         }
     }
 
@@ -397,10 +397,10 @@ public class Engine : RemoteObject
     [RpcAttribute ("SpaceCenter", "Engine_get_PropellantNames")]
     public IList<string> PropellantNames {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<IList<string>> ("SpaceCenter", "Engine_get_PropellantNames", _args);
+            return Connection.Invoke<IList<string>> ("SpaceCenter", "Engine_get_PropellantNames", args);
         }
     }
 
@@ -415,10 +415,10 @@ public class Engine : RemoteObject
     [RpcAttribute ("SpaceCenter", "Engine_get_PropellantRatios")]
     public IDictionary<string,float> PropellantRatios {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<IDictionary<string,float>> ("SpaceCenter", "Engine_get_PropellantRatios", _args);
+            return Connection.Invoke<IDictionary<string,float>> ("SpaceCenter", "Engine_get_PropellantRatios", args);
         }
     }
 
@@ -428,10 +428,10 @@ public class Engine : RemoteObject
     [RpcAttribute ("SpaceCenter", "Engine_get_Propellants")]
     public IList<Propellant> Propellants {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<IList<Propellant>> ("SpaceCenter", "Engine_get_Propellants", _args);
+            return Connection.Invoke<IList<Propellant>> ("SpaceCenter", "Engine_get_Propellants", args);
         }
     }
 
@@ -442,10 +442,10 @@ public class Engine : RemoteObject
     [RpcAttribute ("SpaceCenter", "Engine_get_SpecificImpulse")]
     public float SpecificImpulse {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "Engine_get_SpecificImpulse", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "Engine_get_SpecificImpulse", args);
         }
     }
 
@@ -461,17 +461,17 @@ public class Engine : RemoteObject
     [RpcAttribute ("SpaceCenter", "Engine_get_Throttle")]
     public float Throttle {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "Engine_get_Throttle", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "Engine_get_Throttle", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "Engine_set_Throttle", _args);
+            Connection.Invoke ("SpaceCenter", "Engine_set_Throttle", args);
         }
     }
 
@@ -483,10 +483,10 @@ public class Engine : RemoteObject
     [RpcAttribute ("SpaceCenter", "Engine_get_ThrottleLocked")]
     public bool ThrottleLocked {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "Engine_get_ThrottleLocked", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "Engine_get_ThrottleLocked", args);
         }
     }
 
@@ -496,10 +496,10 @@ public class Engine : RemoteObject
     [RpcAttribute ("SpaceCenter", "Engine_get_Thrust")]
     public float Thrust {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "Engine_get_Thrust", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "Engine_get_Thrust", args);
         }
     }
 
@@ -511,17 +511,17 @@ public class Engine : RemoteObject
     [RpcAttribute ("SpaceCenter", "Engine_get_ThrustLimit")]
     public float ThrustLimit {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "Engine_get_ThrustLimit", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "Engine_get_ThrustLimit", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "Engine_set_ThrustLimit", _args);
+            Connection.Invoke ("SpaceCenter", "Engine_set_ThrustLimit", args);
         }
     }
 
@@ -537,10 +537,10 @@ public class Engine : RemoteObject
     [RpcAttribute ("SpaceCenter", "Engine_get_Thrusters")]
     public IList<Thruster> Thrusters {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<IList<Thruster>> ("SpaceCenter", "Engine_get_Thrusters", _args);
+            return Connection.Invoke<IList<Thruster>> ("SpaceCenter", "Engine_get_Thrusters", args);
         }
     }
 
@@ -550,10 +550,10 @@ public class Engine : RemoteObject
     [RpcAttribute ("SpaceCenter", "Engine_get_VacuumSpecificImpulse")]
     public float VacuumSpecificImpulse {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "Engine_get_VacuumSpecificImpulse", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "Engine_get_VacuumSpecificImpulse", args);
         }
     }
 }

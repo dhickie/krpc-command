@@ -31,12 +31,12 @@ public class AlarmManager : RemoteObject
     {
         if (connection == null)
             throw new ArgumentNullException (nameof (connection));
-        var _args = new object[] {
+        var args = new object[] {
             time,
             title,
             description
         };
-        return connection.Invoke<Alarm> ("SpaceCenter", "AlarmManager_static_AddAlarm", _args);
+        return connection.Invoke<Alarm> ("SpaceCenter", "AlarmManager_static_AddAlarm", args);
     }
 
     /// <summary>
@@ -52,13 +52,13 @@ public class AlarmManager : RemoteObject
     {
         if (connection == null)
             throw new ArgumentNullException (nameof (connection));
-        var _args = new object[] {
+        var args = new object[] {
             vessel,
             offset,
             title,
             description
         };
-        return connection.Invoke<Alarm> ("SpaceCenter", "AlarmManager_static_AddApoapsisAlarm", _args);
+        return connection.Invoke<Alarm> ("SpaceCenter", "AlarmManager_static_AddApoapsisAlarm", args);
     }
 
     /// <summary>
@@ -76,7 +76,7 @@ public class AlarmManager : RemoteObject
     {
         if (connection == null)
             throw new ArgumentNullException (nameof (connection));
-        var _args = new object[] {
+        var args = new object[] {
             vessel,
             node,
             offset,
@@ -84,7 +84,7 @@ public class AlarmManager : RemoteObject
             title,
             description
         };
-        return connection.Invoke<Alarm> ("SpaceCenter", "AlarmManager_static_AddManeuverNodeAlarm", _args);
+        return connection.Invoke<Alarm> ("SpaceCenter", "AlarmManager_static_AddManeuverNodeAlarm", args);
     }
 
     /// <summary>
@@ -100,13 +100,13 @@ public class AlarmManager : RemoteObject
     {
         if (connection == null)
             throw new ArgumentNullException (nameof (connection));
-        var _args = new object[] {
+        var args = new object[] {
             vessel,
             offset,
             title,
             description
         };
-        return connection.Invoke<Alarm> ("SpaceCenter", "AlarmManager_static_AddPeriapsisAlarm", _args);
+        return connection.Invoke<Alarm> ("SpaceCenter", "AlarmManager_static_AddPeriapsisAlarm", args);
     }
 
     /// <summary>
@@ -122,13 +122,13 @@ public class AlarmManager : RemoteObject
     {
         if (connection == null)
             throw new ArgumentNullException (nameof (connection));
-        var _args = new object[] {
+        var args = new object[] {
             vessel,
             offset,
             title,
             description
         };
-        return connection.Invoke<Alarm> ("SpaceCenter", "AlarmManager_static_AddSOIAlarm", _args);
+        return connection.Invoke<Alarm> ("SpaceCenter", "AlarmManager_static_AddSOIAlarm", args);
     }
 
     /// <summary>
@@ -144,13 +144,13 @@ public class AlarmManager : RemoteObject
     {
         if (connection == null)
             throw new ArgumentNullException (nameof (connection));
-        var _args = new object[] {
+        var args = new object[] {
             time,
             vessel,
             title,
             description
         };
-        return connection.Invoke<Alarm> ("SpaceCenter", "AlarmManager_static_AddVesselAlarm", _args);
+        return connection.Invoke<Alarm> ("SpaceCenter", "AlarmManager_static_AddVesselAlarm", args);
     }
 
     /// <summary>
@@ -159,10 +159,10 @@ public class AlarmManager : RemoteObject
     [RpcAttribute ("SpaceCenter", "AlarmManager_get_Alarms")]
     public IList<Alarm> Alarms {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<IList<Alarm>> ("SpaceCenter", "AlarmManager_get_Alarms", _args);
+            return Connection.Invoke<IList<Alarm>> ("SpaceCenter", "AlarmManager_get_Alarms", args);
         }
     }
 }

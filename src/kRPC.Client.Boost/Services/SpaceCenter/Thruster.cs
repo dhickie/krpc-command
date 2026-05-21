@@ -32,11 +32,11 @@ public class Thruster : RemoteObject
     [RpcAttribute ("SpaceCenter", "Thruster_GimbalPosition")]
     public Tuple<double,double,double> GimbalPosition (ReferenceFrame referenceFrame)
     {
-        var _args = new object[] {
+        var args = new object[] {
             this,
             referenceFrame
         };
-        return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Thruster_GimbalPosition", _args);
+        return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Thruster_GimbalPosition", args);
     }
 
     /// <summary>
@@ -50,11 +50,11 @@ public class Thruster : RemoteObject
     [RpcAttribute ("SpaceCenter", "Thruster_InitialThrustDirection")]
     public Tuple<double,double,double> InitialThrustDirection (ReferenceFrame referenceFrame)
     {
-        var _args = new object[] {
+        var args = new object[] {
             this,
             referenceFrame
         };
-        return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Thruster_InitialThrustDirection", _args);
+        return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Thruster_InitialThrustDirection", args);
     }
 
     /// <summary>
@@ -71,11 +71,11 @@ public class Thruster : RemoteObject
     [RpcAttribute ("SpaceCenter", "Thruster_InitialThrustPosition")]
     public Tuple<double,double,double> InitialThrustPosition (ReferenceFrame referenceFrame)
     {
-        var _args = new object[] {
+        var args = new object[] {
             this,
             referenceFrame
         };
-        return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Thruster_InitialThrustPosition", _args);
+        return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Thruster_InitialThrustPosition", args);
     }
 
     /// <summary>
@@ -89,11 +89,11 @@ public class Thruster : RemoteObject
     [RpcAttribute ("SpaceCenter", "Thruster_ThrustDirection")]
     public Tuple<double,double,double> ThrustDirection (ReferenceFrame referenceFrame)
     {
-        var _args = new object[] {
+        var args = new object[] {
             this,
             referenceFrame
         };
-        return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Thruster_ThrustDirection", _args);
+        return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Thruster_ThrustDirection", args);
     }
 
     /// <summary>
@@ -106,11 +106,11 @@ public class Thruster : RemoteObject
     [RpcAttribute ("SpaceCenter", "Thruster_ThrustPosition")]
     public Tuple<double,double,double> ThrustPosition (ReferenceFrame referenceFrame)
     {
-        var _args = new object[] {
+        var args = new object[] {
             this,
             referenceFrame
         };
-        return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Thruster_ThrustPosition", _args);
+        return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Thruster_ThrustPosition", args);
     }
 
     /// <summary>
@@ -119,10 +119,10 @@ public class Thruster : RemoteObject
     [RpcAttribute ("SpaceCenter", "Thruster_get_GimbalAngle")]
     public Tuple<double,double,double> GimbalAngle {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Thruster_get_GimbalAngle", _args);
+            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Thruster_get_GimbalAngle", args);
         }
     }
 
@@ -132,10 +132,10 @@ public class Thruster : RemoteObject
     [RpcAttribute ("SpaceCenter", "Thruster_get_Gimballed")]
     public bool Gimballed {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "Thruster_get_Gimballed", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "Thruster_get_Gimballed", args);
         }
     }
 
@@ -145,10 +145,10 @@ public class Thruster : RemoteObject
     [RpcAttribute ("SpaceCenter", "Thruster_get_Part")]
     public Part Part {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<Part> ("SpaceCenter", "Thruster_get_Part", _args);
+            return Connection.Invoke<Part> ("SpaceCenter", "Thruster_get_Part", args);
         }
     }
 
@@ -166,10 +166,10 @@ public class Thruster : RemoteObject
     [RpcAttribute ("SpaceCenter", "Thruster_get_ThrustReferenceFrame")]
     public ReferenceFrame ThrustReferenceFrame {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<ReferenceFrame> ("SpaceCenter", "Thruster_get_ThrustReferenceFrame", _args);
+            return Connection.Invoke<ReferenceFrame> ("SpaceCenter", "Thruster_get_ThrustReferenceFrame", args);
         }
     }
 }

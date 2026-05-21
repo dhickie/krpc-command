@@ -22,17 +22,17 @@ public class CargoBay : RemoteObject
     [RpcAttribute ("SpaceCenter", "CargoBay_get_Open")]
     public bool Open {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "CargoBay_get_Open", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "CargoBay_get_Open", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "CargoBay_set_Open", _args);
+            Connection.Invoke ("SpaceCenter", "CargoBay_set_Open", args);
         }
     }
 
@@ -42,10 +42,10 @@ public class CargoBay : RemoteObject
     [RpcAttribute ("SpaceCenter", "CargoBay_get_Part")]
     public Part Part {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<Part> ("SpaceCenter", "CargoBay_get_Part", _args);
+            return Connection.Invoke<Part> ("SpaceCenter", "CargoBay_get_Part", args);
         }
     }
 
@@ -55,10 +55,10 @@ public class CargoBay : RemoteObject
     [RpcAttribute ("SpaceCenter", "CargoBay_get_State")]
     public CargoBayState State {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<CargoBayState> ("SpaceCenter", "CargoBay_get_State", _args);
+            return Connection.Invoke<CargoBayState> ("SpaceCenter", "CargoBay_get_State", args);
         }
     }
 }

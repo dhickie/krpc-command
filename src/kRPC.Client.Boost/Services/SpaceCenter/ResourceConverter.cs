@@ -24,11 +24,11 @@ public class ResourceConverter : RemoteObject
     [RpcAttribute ("SpaceCenter", "ResourceConverter_Active")]
     public bool Active (int index)
     {
-        var _args = new object[] {
+        var args = new object[] {
             this,
             index
         };
-        return Connection.Invoke<bool> ("SpaceCenter", "ResourceConverter_Active", _args);
+        return Connection.Invoke<bool> ("SpaceCenter", "ResourceConverter_Active", args);
     }
 
     /// <summary>
@@ -38,11 +38,11 @@ public class ResourceConverter : RemoteObject
     [RpcAttribute ("SpaceCenter", "ResourceConverter_Inputs")]
     public IList<string> Inputs (int index)
     {
-        var _args = new object[] {
+        var args = new object[] {
             this,
             index
         };
-        return Connection.Invoke<IList<string>> ("SpaceCenter", "ResourceConverter_Inputs", _args);
+        return Connection.Invoke<IList<string>> ("SpaceCenter", "ResourceConverter_Inputs", args);
     }
 
     /// <summary>
@@ -52,11 +52,11 @@ public class ResourceConverter : RemoteObject
     [RpcAttribute ("SpaceCenter", "ResourceConverter_Name")]
     public string Name (int index)
     {
-        var _args = new object[] {
+        var args = new object[] {
             this,
             index
         };
-        return Connection.Invoke<string> ("SpaceCenter", "ResourceConverter_Name", _args);
+        return Connection.Invoke<string> ("SpaceCenter", "ResourceConverter_Name", args);
     }
 
     /// <summary>
@@ -66,11 +66,11 @@ public class ResourceConverter : RemoteObject
     [RpcAttribute ("SpaceCenter", "ResourceConverter_Outputs")]
     public IList<string> Outputs (int index)
     {
-        var _args = new object[] {
+        var args = new object[] {
             this,
             index
         };
-        return Connection.Invoke<IList<string>> ("SpaceCenter", "ResourceConverter_Outputs", _args);
+        return Connection.Invoke<IList<string>> ("SpaceCenter", "ResourceConverter_Outputs", args);
     }
 
     /// <summary>
@@ -80,11 +80,11 @@ public class ResourceConverter : RemoteObject
     [RpcAttribute ("SpaceCenter", "ResourceConverter_Start")]
     public void Start (int index)
     {
-        var _args = new object[] {
+        var args = new object[] {
             this,
             index
         };
-        Connection.Invoke ("SpaceCenter", "ResourceConverter_Start", _args);
+        Connection.Invoke ("SpaceCenter", "ResourceConverter_Start", args);
     }
 
     /// <summary>
@@ -94,11 +94,11 @@ public class ResourceConverter : RemoteObject
     [RpcAttribute ("SpaceCenter", "ResourceConverter_State")]
     public ResourceConverterState State (int index)
     {
-        var _args = new object[] {
+        var args = new object[] {
             this,
             index
         };
-        return Connection.Invoke<ResourceConverterState> ("SpaceCenter", "ResourceConverter_State", _args);
+        return Connection.Invoke<ResourceConverterState> ("SpaceCenter", "ResourceConverter_State", args);
     }
 
     /// <summary>
@@ -109,11 +109,11 @@ public class ResourceConverter : RemoteObject
     [RpcAttribute ("SpaceCenter", "ResourceConverter_StatusInfo")]
     public string StatusInfo (int index)
     {
-        var _args = new object[] {
+        var args = new object[] {
             this,
             index
         };
-        return Connection.Invoke<string> ("SpaceCenter", "ResourceConverter_StatusInfo", _args);
+        return Connection.Invoke<string> ("SpaceCenter", "ResourceConverter_StatusInfo", args);
     }
 
     /// <summary>
@@ -123,11 +123,11 @@ public class ResourceConverter : RemoteObject
     [RpcAttribute ("SpaceCenter", "ResourceConverter_Stop")]
     public void Stop (int index)
     {
-        var _args = new object[] {
+        var args = new object[] {
             this,
             index
         };
-        Connection.Invoke ("SpaceCenter", "ResourceConverter_Stop", _args);
+        Connection.Invoke ("SpaceCenter", "ResourceConverter_Stop", args);
     }
 
     /// <summary>
@@ -136,10 +136,10 @@ public class ResourceConverter : RemoteObject
     [RpcAttribute ("SpaceCenter", "ResourceConverter_get_CoreTemperature")]
     public float CoreTemperature {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "ResourceConverter_get_CoreTemperature", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "ResourceConverter_get_CoreTemperature", args);
         }
     }
 
@@ -149,10 +149,10 @@ public class ResourceConverter : RemoteObject
     [RpcAttribute ("SpaceCenter", "ResourceConverter_get_Count")]
     public int Count {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<int> ("SpaceCenter", "ResourceConverter_get_Count", _args);
+            return Connection.Invoke<int> ("SpaceCenter", "ResourceConverter_get_Count", args);
         }
     }
 
@@ -162,10 +162,10 @@ public class ResourceConverter : RemoteObject
     [RpcAttribute ("SpaceCenter", "ResourceConverter_get_OptimumCoreTemperature")]
     public float OptimumCoreTemperature {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "ResourceConverter_get_OptimumCoreTemperature", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "ResourceConverter_get_OptimumCoreTemperature", args);
         }
     }
 
@@ -175,10 +175,10 @@ public class ResourceConverter : RemoteObject
     [RpcAttribute ("SpaceCenter", "ResourceConverter_get_Part")]
     public Part Part {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<Part> ("SpaceCenter", "ResourceConverter_get_Part", _args);
+            return Connection.Invoke<Part> ("SpaceCenter", "ResourceConverter_get_Part", args);
         }
     }
 
@@ -188,10 +188,10 @@ public class ResourceConverter : RemoteObject
     [RpcAttribute ("SpaceCenter", "ResourceConverter_get_ThermalEfficiency")]
     public float ThermalEfficiency {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "ResourceConverter_get_ThermalEfficiency", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "ResourceConverter_get_ThermalEfficiency", args);
         }
     }
 }

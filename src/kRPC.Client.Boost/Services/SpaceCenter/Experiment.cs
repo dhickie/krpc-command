@@ -23,10 +23,10 @@ public class Experiment : RemoteObject
     [RpcAttribute ("SpaceCenter", "Experiment_Dump")]
     public void Dump ()
     {
-        var _args = new object[] {
+        var args = new object[] {
             this
         };
-        Connection.Invoke ("SpaceCenter", "Experiment_Dump", _args);
+        Connection.Invoke ("SpaceCenter", "Experiment_Dump", args);
     }
 
     /// <summary>
@@ -35,10 +35,10 @@ public class Experiment : RemoteObject
     [RpcAttribute ("SpaceCenter", "Experiment_Reset")]
     public void Reset ()
     {
-        var _args = new object[] {
+        var args = new object[] {
             this
         };
-        Connection.Invoke ("SpaceCenter", "Experiment_Reset", _args);
+        Connection.Invoke ("SpaceCenter", "Experiment_Reset", args);
     }
 
     /// <summary>
@@ -47,10 +47,10 @@ public class Experiment : RemoteObject
     [RpcAttribute ("SpaceCenter", "Experiment_Run")]
     public void Run ()
     {
-        var _args = new object[] {
+        var args = new object[] {
             this
         };
-        Connection.Invoke ("SpaceCenter", "Experiment_Run", _args);
+        Connection.Invoke ("SpaceCenter", "Experiment_Run", args);
     }
 
     /// <summary>
@@ -59,10 +59,10 @@ public class Experiment : RemoteObject
     [RpcAttribute ("SpaceCenter", "Experiment_Transmit")]
     public void Transmit ()
     {
-        var _args = new object[] {
+        var args = new object[] {
             this
         };
-        Connection.Invoke ("SpaceCenter", "Experiment_Transmit", _args);
+        Connection.Invoke ("SpaceCenter", "Experiment_Transmit", args);
     }
 
     /// <summary>
@@ -71,10 +71,10 @@ public class Experiment : RemoteObject
     [RpcAttribute ("SpaceCenter", "Experiment_get_Available")]
     public bool Available {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "Experiment_get_Available", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "Experiment_get_Available", args);
         }
     }
 
@@ -84,10 +84,10 @@ public class Experiment : RemoteObject
     [RpcAttribute ("SpaceCenter", "Experiment_get_Biome")]
     public string Biome {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<string> ("SpaceCenter", "Experiment_get_Biome", _args);
+            return Connection.Invoke<string> ("SpaceCenter", "Experiment_get_Biome", args);
         }
     }
 
@@ -97,10 +97,10 @@ public class Experiment : RemoteObject
     [RpcAttribute ("SpaceCenter", "Experiment_get_Data")]
     public IList<ScienceData> Data {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<IList<ScienceData>> ("SpaceCenter", "Experiment_get_Data", _args);
+            return Connection.Invoke<IList<ScienceData>> ("SpaceCenter", "Experiment_get_Data", args);
         }
     }
 
@@ -110,10 +110,10 @@ public class Experiment : RemoteObject
     [RpcAttribute ("SpaceCenter", "Experiment_get_Deployed")]
     public bool Deployed {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "Experiment_get_Deployed", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "Experiment_get_Deployed", args);
         }
     }
 
@@ -123,10 +123,10 @@ public class Experiment : RemoteObject
     [RpcAttribute ("SpaceCenter", "Experiment_get_HasData")]
     public bool HasData {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "Experiment_get_HasData", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "Experiment_get_HasData", args);
         }
     }
 
@@ -136,10 +136,10 @@ public class Experiment : RemoteObject
     [RpcAttribute ("SpaceCenter", "Experiment_get_Inoperable")]
     public bool Inoperable {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "Experiment_get_Inoperable", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "Experiment_get_Inoperable", args);
         }
     }
 
@@ -150,10 +150,10 @@ public class Experiment : RemoteObject
     [RpcAttribute ("SpaceCenter", "Experiment_get_Name")]
     public string Name {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<string> ("SpaceCenter", "Experiment_get_Name", _args);
+            return Connection.Invoke<string> ("SpaceCenter", "Experiment_get_Name", args);
         }
     }
 
@@ -163,10 +163,10 @@ public class Experiment : RemoteObject
     [RpcAttribute ("SpaceCenter", "Experiment_get_Part")]
     public Part Part {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<Part> ("SpaceCenter", "Experiment_get_Part", _args);
+            return Connection.Invoke<Part> ("SpaceCenter", "Experiment_get_Part", args);
         }
     }
 
@@ -176,10 +176,10 @@ public class Experiment : RemoteObject
     [RpcAttribute ("SpaceCenter", "Experiment_get_Rerunnable")]
     public bool Rerunnable {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "Experiment_get_Rerunnable", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "Experiment_get_Rerunnable", args);
         }
     }
 
@@ -190,10 +190,10 @@ public class Experiment : RemoteObject
     [RpcAttribute ("SpaceCenter", "Experiment_get_ScienceSubject")]
     public ScienceSubject ScienceSubject {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<ScienceSubject> ("SpaceCenter", "Experiment_get_ScienceSubject", _args);
+            return Connection.Invoke<ScienceSubject> ("SpaceCenter", "Experiment_get_ScienceSubject", args);
         }
     }
 
@@ -203,10 +203,10 @@ public class Experiment : RemoteObject
     [RpcAttribute ("SpaceCenter", "Experiment_get_Title")]
     public string Title {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<string> ("SpaceCenter", "Experiment_get_Title", _args);
+            return Connection.Invoke<string> ("SpaceCenter", "Experiment_get_Title", args);
         }
     }
 }

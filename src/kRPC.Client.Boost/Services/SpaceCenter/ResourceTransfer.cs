@@ -35,13 +35,13 @@ public class ResourceTransfer : RemoteObject
     {
         if (connection == null)
             throw new ArgumentNullException (nameof (connection));
-        var _args = new object[] {
+        var args = new object[] {
             fromPart,
             toPart,
             resource,
             maxAmount
         };
-        return connection.Invoke<ResourceTransfer> ("SpaceCenter", "ResourceTransfer_static_Start", _args);
+        return connection.Invoke<ResourceTransfer> ("SpaceCenter", "ResourceTransfer_static_Start", args);
     }
 
     /// <summary>
@@ -50,10 +50,10 @@ public class ResourceTransfer : RemoteObject
     [RpcAttribute ("SpaceCenter", "ResourceTransfer_get_Amount")]
     public float Amount {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "ResourceTransfer_get_Amount", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "ResourceTransfer_get_Amount", args);
         }
     }
 
@@ -63,10 +63,10 @@ public class ResourceTransfer : RemoteObject
     [RpcAttribute ("SpaceCenter", "ResourceTransfer_get_Complete")]
     public bool Complete {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "ResourceTransfer_get_Complete", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "ResourceTransfer_get_Complete", args);
         }
     }
 }

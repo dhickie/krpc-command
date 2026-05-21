@@ -23,10 +23,10 @@ public class Force : RemoteObject
     [RpcAttribute ("SpaceCenter", "Force_Remove")]
     public void Remove ()
     {
-        var _args = new object[] {
+        var args = new object[] {
             this
         };
-        Connection.Invoke ("SpaceCenter", "Force_Remove", _args);
+        Connection.Invoke ("SpaceCenter", "Force_Remove", args);
     }
 
     /// <summary>
@@ -37,17 +37,17 @@ public class Force : RemoteObject
     [RpcAttribute ("SpaceCenter", "Force_get_ForceVector")]
     public Tuple<double,double,double> ForceVector {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Force_get_ForceVector", _args);
+            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Force_get_ForceVector", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "Force_set_ForceVector", _args);
+            Connection.Invoke ("SpaceCenter", "Force_set_ForceVector", args);
         }
     }
 
@@ -57,10 +57,10 @@ public class Force : RemoteObject
     [RpcAttribute ("SpaceCenter", "Force_get_Part")]
     public Part Part {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<Part> ("SpaceCenter", "Force_get_Part", _args);
+            return Connection.Invoke<Part> ("SpaceCenter", "Force_get_Part", args);
         }
     }
 
@@ -71,17 +71,17 @@ public class Force : RemoteObject
     [RpcAttribute ("SpaceCenter", "Force_get_Position")]
     public Tuple<double,double,double> Position {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Force_get_Position", _args);
+            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Force_get_Position", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "Force_set_Position", _args);
+            Connection.Invoke ("SpaceCenter", "Force_set_Position", args);
         }
     }
 
@@ -91,17 +91,17 @@ public class Force : RemoteObject
     [RpcAttribute ("SpaceCenter", "Force_get_ReferenceFrame")]
     public ReferenceFrame ReferenceFrame {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<ReferenceFrame> ("SpaceCenter", "Force_get_ReferenceFrame", _args);
+            return Connection.Invoke<ReferenceFrame> ("SpaceCenter", "Force_get_ReferenceFrame", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "Force_set_ReferenceFrame", _args);
+            Connection.Invoke ("SpaceCenter", "Force_set_ReferenceFrame", args);
         }
     }
 }

@@ -31,11 +31,11 @@ public class Node : RemoteObject
     [RpcAttribute ("SpaceCenter", "Node_BurnVector")]
     public Tuple<double,double,double> BurnVector (ReferenceFrame referenceFrame = null)
     {
-        var _args = new object[] {
+        var args = new object[] {
             this,
             referenceFrame
         };
-        return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Node_BurnVector", _args);
+        return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Node_BurnVector", args);
     }
 
     /// <summary>
@@ -47,11 +47,11 @@ public class Node : RemoteObject
     [RpcAttribute ("SpaceCenter", "Node_Direction")]
     public Tuple<double,double,double> Direction (ReferenceFrame referenceFrame)
     {
-        var _args = new object[] {
+        var args = new object[] {
             this,
             referenceFrame
         };
-        return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Node_Direction", _args);
+        return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Node_Direction", args);
     }
 
     /// <summary>
@@ -63,11 +63,11 @@ public class Node : RemoteObject
     [RpcAttribute ("SpaceCenter", "Node_Position")]
     public Tuple<double,double,double> Position (ReferenceFrame referenceFrame)
     {
-        var _args = new object[] {
+        var args = new object[] {
             this,
             referenceFrame
         };
-        return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Node_Position", _args);
+        return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Node_Position", args);
     }
 
     /// <summary>
@@ -84,11 +84,11 @@ public class Node : RemoteObject
     [RpcAttribute ("SpaceCenter", "Node_RemainingBurnVector")]
     public Tuple<double,double,double> RemainingBurnVector (ReferenceFrame referenceFrame = null)
     {
-        var _args = new object[] {
+        var args = new object[] {
             this,
             referenceFrame
         };
-        return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Node_RemainingBurnVector", _args);
+        return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Node_RemainingBurnVector", args);
     }
 
     /// <summary>
@@ -97,10 +97,10 @@ public class Node : RemoteObject
     [RpcAttribute ("SpaceCenter", "Node_Remove")]
     public void Remove ()
     {
-        var _args = new object[] {
+        var args = new object[] {
             this
         };
-        Connection.Invoke ("SpaceCenter", "Node_Remove", _args);
+        Connection.Invoke ("SpaceCenter", "Node_Remove", args);
     }
 
     /// <summary>
@@ -112,17 +112,17 @@ public class Node : RemoteObject
     [RpcAttribute ("SpaceCenter", "Node_get_DeltaV")]
     public double DeltaV {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<double> ("SpaceCenter", "Node_get_DeltaV", _args);
+            return Connection.Invoke<double> ("SpaceCenter", "Node_get_DeltaV", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "Node_set_DeltaV", _args);
+            Connection.Invoke ("SpaceCenter", "Node_set_DeltaV", args);
         }
     }
 
@@ -133,17 +133,17 @@ public class Node : RemoteObject
     [RpcAttribute ("SpaceCenter", "Node_get_Normal")]
     public double Normal {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<double> ("SpaceCenter", "Node_get_Normal", _args);
+            return Connection.Invoke<double> ("SpaceCenter", "Node_get_Normal", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "Node_set_Normal", _args);
+            Connection.Invoke ("SpaceCenter", "Node_set_Normal", args);
         }
     }
 
@@ -153,10 +153,10 @@ public class Node : RemoteObject
     [RpcAttribute ("SpaceCenter", "Node_get_Orbit")]
     public Orbit Orbit {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<Orbit> ("SpaceCenter", "Node_get_Orbit", _args);
+            return Connection.Invoke<Orbit> ("SpaceCenter", "Node_get_Orbit", args);
         }
     }
 
@@ -171,10 +171,10 @@ public class Node : RemoteObject
     [RpcAttribute ("SpaceCenter", "Node_get_OrbitalReferenceFrame")]
     public ReferenceFrame OrbitalReferenceFrame {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<ReferenceFrame> ("SpaceCenter", "Node_get_OrbitalReferenceFrame", _args);
+            return Connection.Invoke<ReferenceFrame> ("SpaceCenter", "Node_get_OrbitalReferenceFrame", args);
         }
     }
 
@@ -185,17 +185,17 @@ public class Node : RemoteObject
     [RpcAttribute ("SpaceCenter", "Node_get_Prograde")]
     public double Prograde {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<double> ("SpaceCenter", "Node_get_Prograde", _args);
+            return Connection.Invoke<double> ("SpaceCenter", "Node_get_Prograde", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "Node_set_Prograde", _args);
+            Connection.Invoke ("SpaceCenter", "Node_set_Prograde", args);
         }
     }
 
@@ -206,17 +206,17 @@ public class Node : RemoteObject
     [RpcAttribute ("SpaceCenter", "Node_get_Radial")]
     public double Radial {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<double> ("SpaceCenter", "Node_get_Radial", _args);
+            return Connection.Invoke<double> ("SpaceCenter", "Node_get_Radial", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "Node_set_Radial", _args);
+            Connection.Invoke ("SpaceCenter", "Node_set_Radial", args);
         }
     }
 
@@ -226,10 +226,10 @@ public class Node : RemoteObject
     [RpcAttribute ("SpaceCenter", "Node_get_ReferenceFrame")]
     public ReferenceFrame ReferenceFrame {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<ReferenceFrame> ("SpaceCenter", "Node_get_ReferenceFrame", _args);
+            return Connection.Invoke<ReferenceFrame> ("SpaceCenter", "Node_get_ReferenceFrame", args);
         }
     }
 
@@ -240,10 +240,10 @@ public class Node : RemoteObject
     [RpcAttribute ("SpaceCenter", "Node_get_RemainingDeltaV")]
     public double RemainingDeltaV {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<double> ("SpaceCenter", "Node_get_RemainingDeltaV", _args);
+            return Connection.Invoke<double> ("SpaceCenter", "Node_get_RemainingDeltaV", args);
         }
     }
 
@@ -253,10 +253,10 @@ public class Node : RemoteObject
     [RpcAttribute ("SpaceCenter", "Node_get_TimeTo")]
     public double TimeTo {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<double> ("SpaceCenter", "Node_get_TimeTo", _args);
+            return Connection.Invoke<double> ("SpaceCenter", "Node_get_TimeTo", args);
         }
     }
 
@@ -266,17 +266,17 @@ public class Node : RemoteObject
     [RpcAttribute ("SpaceCenter", "Node_get_UT")]
     public double UT {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<double> ("SpaceCenter", "Node_get_UT", _args);
+            return Connection.Invoke<double> ("SpaceCenter", "Node_get_UT", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "Node_set_UT", _args);
+            Connection.Invoke ("SpaceCenter", "Node_set_UT", args);
         }
     }
 }

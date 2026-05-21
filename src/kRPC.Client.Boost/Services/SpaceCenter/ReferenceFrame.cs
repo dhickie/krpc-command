@@ -44,13 +44,13 @@ public class ReferenceFrame : RemoteObject
     {
         if (connection == null)
             throw new ArgumentNullException (nameof (connection));
-        var _args = new object[] {
+        var args = new object[] {
             position,
             rotation,
             velocity,
             angularVelocity
         };
-        return connection.Invoke<ReferenceFrame> ("SpaceCenter", "ReferenceFrame_static_CreateHybrid", _args);
+        return connection.Invoke<ReferenceFrame> ("SpaceCenter", "ReferenceFrame_static_CreateHybrid", args);
     }
 
     /// <summary>
@@ -77,13 +77,13 @@ public class ReferenceFrame : RemoteObject
     {
         if (connection == null)
             throw new ArgumentNullException (nameof (connection));
-        var _args = new object[] {
+        var args = new object[] {
             referenceFrame,
             position ?? new Tuple<double,double,double> (0.0, 0.0, 0.0),
             rotation ?? new Tuple<double,double,double,double> (0.0, 0.0, 0.0, 1.0),
             velocity ?? new Tuple<double,double,double> (0.0, 0.0, 0.0),
             angularVelocity ?? new Tuple<double,double,double> (0.0, 0.0, 0.0)
         };
-        return connection.Invoke<ReferenceFrame> ("SpaceCenter", "ReferenceFrame_static_CreateRelative", _args);
+        return connection.Invoke<ReferenceFrame> ("SpaceCenter", "ReferenceFrame_static_CreateRelative", args);
     }
 }

@@ -23,10 +23,10 @@ public class Fairing : RemoteObject
     [RpcAttribute ("SpaceCenter", "Fairing_Jettison")]
     public void Jettison ()
     {
-        var _args = new object[] {
+        var args = new object[] {
             this
         };
-        Connection.Invoke ("SpaceCenter", "Fairing_Jettison", _args);
+        Connection.Invoke ("SpaceCenter", "Fairing_Jettison", args);
     }
 
     /// <summary>
@@ -35,10 +35,10 @@ public class Fairing : RemoteObject
     [RpcAttribute ("SpaceCenter", "Fairing_get_Jettisoned")]
     public bool Jettisoned {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "Fairing_get_Jettisoned", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "Fairing_get_Jettisoned", args);
         }
     }
 
@@ -48,10 +48,10 @@ public class Fairing : RemoteObject
     [RpcAttribute ("SpaceCenter", "Fairing_get_Part")]
     public Part Part {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<Part> ("SpaceCenter", "Fairing_get_Part", _args);
+            return Connection.Invoke<Part> ("SpaceCenter", "Fairing_get_Part", args);
         }
     }
 }

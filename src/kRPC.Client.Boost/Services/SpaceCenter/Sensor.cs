@@ -22,17 +22,17 @@ public class Sensor : RemoteObject
     [RpcAttribute ("SpaceCenter", "Sensor_get_Active")]
     public bool Active {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "Sensor_get_Active", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "Sensor_get_Active", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "Sensor_set_Active", _args);
+            Connection.Invoke ("SpaceCenter", "Sensor_set_Active", args);
         }
     }
 
@@ -42,10 +42,10 @@ public class Sensor : RemoteObject
     [RpcAttribute ("SpaceCenter", "Sensor_get_Part")]
     public Part Part {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<Part> ("SpaceCenter", "Sensor_get_Part", _args);
+            return Connection.Invoke<Part> ("SpaceCenter", "Sensor_get_Part", args);
         }
     }
 
@@ -55,10 +55,10 @@ public class Sensor : RemoteObject
     [RpcAttribute ("SpaceCenter", "Sensor_get_Value")]
     public string Value {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<string> ("SpaceCenter", "Sensor_get_Value", _args);
+            return Connection.Invoke<string> ("SpaceCenter", "Sensor_get_Value", args);
         }
     }
 }

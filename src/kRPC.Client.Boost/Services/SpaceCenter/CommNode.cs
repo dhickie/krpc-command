@@ -22,10 +22,10 @@ public class CommNode : RemoteObject
     [RpcAttribute ("SpaceCenter", "CommNode_get_IsControlPoint")]
     public bool IsControlPoint {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "CommNode_get_IsControlPoint", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "CommNode_get_IsControlPoint", args);
         }
     }
 
@@ -35,10 +35,10 @@ public class CommNode : RemoteObject
     [RpcAttribute ("SpaceCenter", "CommNode_get_IsHome")]
     public bool IsHome {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "CommNode_get_IsHome", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "CommNode_get_IsHome", args);
         }
     }
 
@@ -48,10 +48,10 @@ public class CommNode : RemoteObject
     [RpcAttribute ("SpaceCenter", "CommNode_get_IsVessel")]
     public bool IsVessel {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "CommNode_get_IsVessel", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "CommNode_get_IsVessel", args);
         }
     }
 
@@ -61,10 +61,10 @@ public class CommNode : RemoteObject
     [RpcAttribute ("SpaceCenter", "CommNode_get_Name")]
     public string Name {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<string> ("SpaceCenter", "CommNode_get_Name", _args);
+            return Connection.Invoke<string> ("SpaceCenter", "CommNode_get_Name", args);
         }
     }
 
@@ -74,10 +74,10 @@ public class CommNode : RemoteObject
     [RpcAttribute ("SpaceCenter", "CommNode_get_Vessel")]
     public Vessel Vessel {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<Vessel> ("SpaceCenter", "CommNode_get_Vessel", _args);
+            return Connection.Invoke<Vessel> ("SpaceCenter", "CommNode_get_Vessel", args);
         }
     }
 }

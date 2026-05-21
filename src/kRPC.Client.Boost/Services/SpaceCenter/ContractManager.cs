@@ -24,10 +24,10 @@ public class ContractManager : RemoteObject
     [RpcAttribute ("SpaceCenter", "ContractManager_get_ActiveContracts")]
     public IList<Contract> ActiveContracts {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<IList<Contract>> ("SpaceCenter", "ContractManager_get_ActiveContracts", _args);
+            return Connection.Invoke<IList<Contract>> ("SpaceCenter", "ContractManager_get_ActiveContracts", args);
         }
     }
 
@@ -37,10 +37,10 @@ public class ContractManager : RemoteObject
     [RpcAttribute ("SpaceCenter", "ContractManager_get_AllContracts")]
     public IList<Contract> AllContracts {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<IList<Contract>> ("SpaceCenter", "ContractManager_get_AllContracts", _args);
+            return Connection.Invoke<IList<Contract>> ("SpaceCenter", "ContractManager_get_AllContracts", args);
         }
     }
 
@@ -50,10 +50,10 @@ public class ContractManager : RemoteObject
     [RpcAttribute ("SpaceCenter", "ContractManager_get_CompletedContracts")]
     public IList<Contract> CompletedContracts {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<IList<Contract>> ("SpaceCenter", "ContractManager_get_CompletedContracts", _args);
+            return Connection.Invoke<IList<Contract>> ("SpaceCenter", "ContractManager_get_CompletedContracts", args);
         }
     }
 
@@ -63,10 +63,10 @@ public class ContractManager : RemoteObject
     [RpcAttribute ("SpaceCenter", "ContractManager_get_FailedContracts")]
     public IList<Contract> FailedContracts {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<IList<Contract>> ("SpaceCenter", "ContractManager_get_FailedContracts", _args);
+            return Connection.Invoke<IList<Contract>> ("SpaceCenter", "ContractManager_get_FailedContracts", args);
         }
     }
 
@@ -76,10 +76,10 @@ public class ContractManager : RemoteObject
     [RpcAttribute ("SpaceCenter", "ContractManager_get_OfferedContracts")]
     public IList<Contract> OfferedContracts {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<IList<Contract>> ("SpaceCenter", "ContractManager_get_OfferedContracts", _args);
+            return Connection.Invoke<IList<Contract>> ("SpaceCenter", "ContractManager_get_OfferedContracts", args);
         }
     }
 
@@ -89,10 +89,10 @@ public class ContractManager : RemoteObject
     [RpcAttribute ("SpaceCenter", "ContractManager_get_Types")]
     public ISet<string> Types {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<ISet<string>> ("SpaceCenter", "ContractManager_get_Types", _args);
+            return Connection.Invoke<ISet<string>> ("SpaceCenter", "ContractManager_get_Types", args);
         }
     }
 }

@@ -31,14 +31,14 @@ public class WaypointManager : RemoteObject
     [RpcAttribute ("SpaceCenter", "WaypointManager_AddWaypoint")]
     public Waypoint AddWaypoint (double latitude, double longitude, CelestialBody body, string name)
     {
-        var _args = new object[] {
+        var args = new object[] {
             this,
             latitude,
             longitude,
             body,
             name
         };
-        return Connection.Invoke<Waypoint> ("SpaceCenter", "WaypointManager_AddWaypoint", _args);
+        return Connection.Invoke<Waypoint> ("SpaceCenter", "WaypointManager_AddWaypoint", args);
     }
 
     /// <summary>
@@ -54,7 +54,7 @@ public class WaypointManager : RemoteObject
     [RpcAttribute ("SpaceCenter", "WaypointManager_AddWaypointAtAltitude")]
     public Waypoint AddWaypointAtAltitude (double latitude, double longitude, double altitude, CelestialBody body, string name)
     {
-        var _args = new object[] {
+        var args = new object[] {
             this,
             latitude,
             longitude,
@@ -62,7 +62,7 @@ public class WaypointManager : RemoteObject
             body,
             name
         };
-        return Connection.Invoke<Waypoint> ("SpaceCenter", "WaypointManager_AddWaypointAtAltitude", _args);
+        return Connection.Invoke<Waypoint> ("SpaceCenter", "WaypointManager_AddWaypointAtAltitude", args);
     }
 
     /// <summary>
@@ -72,10 +72,10 @@ public class WaypointManager : RemoteObject
     [RpcAttribute ("SpaceCenter", "WaypointManager_get_Colors")]
     public IDictionary<string,int> Colors {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<IDictionary<string,int>> ("SpaceCenter", "WaypointManager_get_Colors", _args);
+            return Connection.Invoke<IDictionary<string,int>> ("SpaceCenter", "WaypointManager_get_Colors", args);
         }
     }
 
@@ -85,10 +85,10 @@ public class WaypointManager : RemoteObject
     [RpcAttribute ("SpaceCenter", "WaypointManager_get_Icons")]
     public IList<string> Icons {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<IList<string>> ("SpaceCenter", "WaypointManager_get_Icons", _args);
+            return Connection.Invoke<IList<string>> ("SpaceCenter", "WaypointManager_get_Icons", args);
         }
     }
 
@@ -98,10 +98,10 @@ public class WaypointManager : RemoteObject
     [RpcAttribute ("SpaceCenter", "WaypointManager_get_Waypoints")]
     public IList<Waypoint> Waypoints {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<IList<Waypoint>> ("SpaceCenter", "WaypointManager_get_Waypoints", _args);
+            return Connection.Invoke<IList<Waypoint>> ("SpaceCenter", "WaypointManager_get_Waypoints", args);
         }
     }
 }

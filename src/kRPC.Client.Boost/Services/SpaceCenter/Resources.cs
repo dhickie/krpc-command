@@ -28,11 +28,11 @@ public class Resources : RemoteObject
     [RpcAttribute ("SpaceCenter", "Resources_Amount")]
     public float Amount (string name)
     {
-        var _args = new object[] {
+        var args = new object[] {
             this,
             name
         };
-        return Connection.Invoke<float> ("SpaceCenter", "Resources_Amount", _args);
+        return Connection.Invoke<float> ("SpaceCenter", "Resources_Amount", args);
     }
 
     /// <summary>
@@ -42,11 +42,11 @@ public class Resources : RemoteObject
     [RpcAttribute ("SpaceCenter", "Resources_HasResource")]
     public bool HasResource (string name)
     {
-        var _args = new object[] {
+        var args = new object[] {
             this,
             name
         };
-        return Connection.Invoke<bool> ("SpaceCenter", "Resources_HasResource", _args);
+        return Connection.Invoke<bool> ("SpaceCenter", "Resources_HasResource", args);
     }
 
     /// <summary>
@@ -56,11 +56,11 @@ public class Resources : RemoteObject
     [RpcAttribute ("SpaceCenter", "Resources_Max")]
     public float Max (string name)
     {
-        var _args = new object[] {
+        var args = new object[] {
             this,
             name
         };
-        return Connection.Invoke<float> ("SpaceCenter", "Resources_Max", _args);
+        return Connection.Invoke<float> ("SpaceCenter", "Resources_Max", args);
     }
 
     /// <summary>
@@ -69,11 +69,11 @@ public class Resources : RemoteObject
     [RpcAttribute ("SpaceCenter", "Resources_WithResource")]
     public IList<Resource> WithResource (string name)
     {
-        var _args = new object[] {
+        var args = new object[] {
             this,
             name
         };
-        return Connection.Invoke<IList<Resource>> ("SpaceCenter", "Resources_WithResource", _args);
+        return Connection.Invoke<IList<Resource>> ("SpaceCenter", "Resources_WithResource", args);
     }
 
     /// <summary>
@@ -86,10 +86,10 @@ public class Resources : RemoteObject
     {
         if (connection == null)
             throw new ArgumentNullException (nameof (connection));
-        var _args = new object[] {
+        var args = new object[] {
             name
         };
-        return connection.Invoke<float> ("SpaceCenter", "Resources_static_Density", _args);
+        return connection.Invoke<float> ("SpaceCenter", "Resources_static_Density", args);
     }
 
     /// <summary>
@@ -102,10 +102,10 @@ public class Resources : RemoteObject
     {
         if (connection == null)
             throw new ArgumentNullException (nameof (connection));
-        var _args = new object[] {
+        var args = new object[] {
             name
         };
-        return connection.Invoke<ResourceFlowMode> ("SpaceCenter", "Resources_static_FlowMode", _args);
+        return connection.Invoke<ResourceFlowMode> ("SpaceCenter", "Resources_static_FlowMode", args);
     }
 
     /// <summary>
@@ -114,10 +114,10 @@ public class Resources : RemoteObject
     [RpcAttribute ("SpaceCenter", "Resources_get_All")]
     public IList<Resource> All {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<IList<Resource>> ("SpaceCenter", "Resources_get_All", _args);
+            return Connection.Invoke<IList<Resource>> ("SpaceCenter", "Resources_get_All", args);
         }
     }
 
@@ -131,17 +131,17 @@ public class Resources : RemoteObject
     [RpcAttribute ("SpaceCenter", "Resources_get_Enabled")]
     public bool Enabled {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "Resources_get_Enabled", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "Resources_get_Enabled", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "Resources_set_Enabled", _args);
+            Connection.Invoke ("SpaceCenter", "Resources_set_Enabled", args);
         }
     }
 
@@ -151,10 +151,10 @@ public class Resources : RemoteObject
     [RpcAttribute ("SpaceCenter", "Resources_get_Names")]
     public IList<string> Names {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<IList<string>> ("SpaceCenter", "Resources_get_Names", _args);
+            return Connection.Invoke<IList<string>> ("SpaceCenter", "Resources_get_Names", args);
         }
     }
 }

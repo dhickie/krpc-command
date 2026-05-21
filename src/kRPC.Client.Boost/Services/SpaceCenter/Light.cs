@@ -23,17 +23,17 @@ public class Light : RemoteObject
     [RpcAttribute ("SpaceCenter", "Light_get_Active")]
     public bool Active {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "Light_get_Active", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "Light_get_Active", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "Light_set_Active", _args);
+            Connection.Invoke ("SpaceCenter", "Light_set_Active", args);
         }
     }
 
@@ -43,17 +43,17 @@ public class Light : RemoteObject
     [RpcAttribute ("SpaceCenter", "Light_get_Blink")]
     public bool Blink {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "Light_get_Blink", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "Light_get_Blink", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "Light_set_Blink", _args);
+            Connection.Invoke ("SpaceCenter", "Light_set_Blink", args);
         }
     }
 
@@ -63,17 +63,17 @@ public class Light : RemoteObject
     [RpcAttribute ("SpaceCenter", "Light_get_BlinkRate")]
     public float BlinkRate {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "Light_get_BlinkRate", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "Light_get_BlinkRate", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "Light_set_BlinkRate", _args);
+            Connection.Invoke ("SpaceCenter", "Light_set_BlinkRate", args);
         }
     }
 
@@ -83,17 +83,17 @@ public class Light : RemoteObject
     [RpcAttribute ("SpaceCenter", "Light_get_Color")]
     public Tuple<float,float,float> Color {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<Tuple<float,float,float>> ("SpaceCenter", "Light_get_Color", _args);
+            return Connection.Invoke<Tuple<float,float,float>> ("SpaceCenter", "Light_get_Color", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "Light_set_Color", _args);
+            Connection.Invoke ("SpaceCenter", "Light_set_Color", args);
         }
     }
 
@@ -103,10 +103,10 @@ public class Light : RemoteObject
     [RpcAttribute ("SpaceCenter", "Light_get_Part")]
     public Part Part {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<Part> ("SpaceCenter", "Light_get_Part", _args);
+            return Connection.Invoke<Part> ("SpaceCenter", "Light_get_Part", args);
         }
     }
 
@@ -116,10 +116,10 @@ public class Light : RemoteObject
     [RpcAttribute ("SpaceCenter", "Light_get_PowerUsage")]
     public float PowerUsage {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "Light_get_PowerUsage", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "Light_get_PowerUsage", args);
         }
     }
 }

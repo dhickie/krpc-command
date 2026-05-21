@@ -24,17 +24,17 @@ public class Wheel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Wheel_get_AutoFrictionControl")]
     public bool AutoFrictionControl {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "Wheel_get_AutoFrictionControl", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "Wheel_get_AutoFrictionControl", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "Wheel_set_AutoFrictionControl", _args);
+            Connection.Invoke ("SpaceCenter", "Wheel_set_AutoFrictionControl", args);
         }
     }
 
@@ -44,17 +44,17 @@ public class Wheel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Wheel_get_Brakes")]
     public float Brakes {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "Wheel_get_Brakes", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "Wheel_get_Brakes", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "Wheel_set_Brakes", _args);
+            Connection.Invoke ("SpaceCenter", "Wheel_set_Brakes", args);
         }
     }
 
@@ -64,10 +64,10 @@ public class Wheel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Wheel_get_Broken")]
     public bool Broken {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "Wheel_get_Broken", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "Wheel_get_Broken", args);
         }
     }
 
@@ -77,10 +77,10 @@ public class Wheel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Wheel_get_Deflection")]
     public float Deflection {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "Wheel_get_Deflection", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "Wheel_get_Deflection", args);
         }
     }
 
@@ -90,10 +90,10 @@ public class Wheel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Wheel_get_Deployable")]
     public bool Deployable {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "Wheel_get_Deployable", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "Wheel_get_Deployable", args);
         }
     }
 
@@ -103,17 +103,17 @@ public class Wheel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Wheel_get_Deployed")]
     public bool Deployed {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "Wheel_get_Deployed", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "Wheel_get_Deployed", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "Wheel_set_Deployed", _args);
+            Connection.Invoke ("SpaceCenter", "Wheel_set_Deployed", args);
         }
     }
 
@@ -125,17 +125,17 @@ public class Wheel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Wheel_get_DriveLimiter")]
     public float DriveLimiter {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "Wheel_get_DriveLimiter", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "Wheel_get_DriveLimiter", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "Wheel_set_DriveLimiter", _args);
+            Connection.Invoke ("SpaceCenter", "Wheel_set_DriveLimiter", args);
         }
     }
 
@@ -145,10 +145,10 @@ public class Wheel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Wheel_get_Grounded")]
     public bool Grounded {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "Wheel_get_Grounded", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "Wheel_get_Grounded", args);
         }
     }
 
@@ -158,10 +158,10 @@ public class Wheel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Wheel_get_HasBrakes")]
     public bool HasBrakes {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "Wheel_get_HasBrakes", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "Wheel_get_HasBrakes", args);
         }
     }
 
@@ -171,10 +171,10 @@ public class Wheel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Wheel_get_HasSuspension")]
     public bool HasSuspension {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "Wheel_get_HasSuspension", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "Wheel_get_HasSuspension", args);
         }
     }
 
@@ -185,17 +185,17 @@ public class Wheel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Wheel_get_ManualFrictionControl")]
     public float ManualFrictionControl {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "Wheel_get_ManualFrictionControl", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "Wheel_get_ManualFrictionControl", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "Wheel_set_ManualFrictionControl", _args);
+            Connection.Invoke ("SpaceCenter", "Wheel_set_ManualFrictionControl", args);
         }
     }
 
@@ -205,17 +205,17 @@ public class Wheel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Wheel_get_MotorEnabled")]
     public bool MotorEnabled {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "Wheel_get_MotorEnabled", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "Wheel_get_MotorEnabled", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "Wheel_set_MotorEnabled", _args);
+            Connection.Invoke ("SpaceCenter", "Wheel_set_MotorEnabled", args);
         }
     }
 
@@ -225,17 +225,17 @@ public class Wheel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Wheel_get_MotorInverted")]
     public bool MotorInverted {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "Wheel_get_MotorInverted", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "Wheel_get_MotorInverted", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "Wheel_set_MotorInverted", _args);
+            Connection.Invoke ("SpaceCenter", "Wheel_set_MotorInverted", args);
         }
     }
 
@@ -245,10 +245,10 @@ public class Wheel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Wheel_get_MotorOutput")]
     public float MotorOutput {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "Wheel_get_MotorOutput", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "Wheel_get_MotorOutput", args);
         }
     }
 
@@ -258,10 +258,10 @@ public class Wheel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Wheel_get_MotorState")]
     public MotorState MotorState {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<MotorState> ("SpaceCenter", "Wheel_get_MotorState", _args);
+            return Connection.Invoke<MotorState> ("SpaceCenter", "Wheel_get_MotorState", args);
         }
     }
 
@@ -271,10 +271,10 @@ public class Wheel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Wheel_get_Part")]
     public Part Part {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<Part> ("SpaceCenter", "Wheel_get_Part", _args);
+            return Connection.Invoke<Part> ("SpaceCenter", "Wheel_get_Part", args);
         }
     }
 
@@ -284,10 +284,10 @@ public class Wheel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Wheel_get_Powered")]
     public bool Powered {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "Wheel_get_Powered", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "Wheel_get_Powered", args);
         }
     }
 
@@ -297,10 +297,10 @@ public class Wheel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Wheel_get_Radius")]
     public float Radius {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "Wheel_get_Radius", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "Wheel_get_Radius", args);
         }
     }
 
@@ -310,10 +310,10 @@ public class Wheel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Wheel_get_Repairable")]
     public bool Repairable {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "Wheel_get_Repairable", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "Wheel_get_Repairable", args);
         }
     }
 
@@ -323,10 +323,10 @@ public class Wheel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Wheel_get_Slip")]
     public float Slip {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "Wheel_get_Slip", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "Wheel_get_Slip", args);
         }
     }
 
@@ -336,10 +336,10 @@ public class Wheel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Wheel_get_State")]
     public WheelState State {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<WheelState> ("SpaceCenter", "Wheel_get_State", _args);
+            return Connection.Invoke<WheelState> ("SpaceCenter", "Wheel_get_State", args);
         }
     }
 
@@ -349,10 +349,10 @@ public class Wheel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Wheel_get_Steerable")]
     public bool Steerable {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "Wheel_get_Steerable", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "Wheel_get_Steerable", args);
         }
     }
 
@@ -362,17 +362,17 @@ public class Wheel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Wheel_get_SteeringAngleLimit")]
     public float SteeringAngleLimit {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "Wheel_get_SteeringAngleLimit", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "Wheel_get_SteeringAngleLimit", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "Wheel_set_SteeringAngleLimit", _args);
+            Connection.Invoke ("SpaceCenter", "Wheel_set_SteeringAngleLimit", args);
         }
     }
 
@@ -382,17 +382,17 @@ public class Wheel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Wheel_get_SteeringEnabled")]
     public bool SteeringEnabled {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "Wheel_get_SteeringEnabled", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "Wheel_get_SteeringEnabled", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "Wheel_set_SteeringEnabled", _args);
+            Connection.Invoke ("SpaceCenter", "Wheel_set_SteeringEnabled", args);
         }
     }
 
@@ -402,17 +402,17 @@ public class Wheel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Wheel_get_SteeringInverted")]
     public bool SteeringInverted {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "Wheel_get_SteeringInverted", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "Wheel_get_SteeringInverted", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "Wheel_set_SteeringInverted", _args);
+            Connection.Invoke ("SpaceCenter", "Wheel_set_SteeringInverted", args);
         }
     }
 
@@ -422,17 +422,17 @@ public class Wheel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Wheel_get_SteeringResponseTime")]
     public float SteeringResponseTime {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "Wheel_get_SteeringResponseTime", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "Wheel_get_SteeringResponseTime", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "Wheel_set_SteeringResponseTime", _args);
+            Connection.Invoke ("SpaceCenter", "Wheel_set_SteeringResponseTime", args);
         }
     }
 
@@ -442,10 +442,10 @@ public class Wheel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Wheel_get_Stress")]
     public float Stress {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "Wheel_get_Stress", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "Wheel_get_Stress", args);
         }
     }
 
@@ -455,10 +455,10 @@ public class Wheel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Wheel_get_StressPercentage")]
     public float StressPercentage {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "Wheel_get_StressPercentage", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "Wheel_get_StressPercentage", args);
         }
     }
 
@@ -468,10 +468,10 @@ public class Wheel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Wheel_get_StressTolerance")]
     public float StressTolerance {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "Wheel_get_StressTolerance", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "Wheel_get_StressTolerance", args);
         }
     }
 
@@ -481,10 +481,10 @@ public class Wheel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Wheel_get_SuspensionDamperStrength")]
     public float SuspensionDamperStrength {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "Wheel_get_SuspensionDamperStrength", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "Wheel_get_SuspensionDamperStrength", args);
         }
     }
 
@@ -494,10 +494,10 @@ public class Wheel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Wheel_get_SuspensionSpringStrength")]
     public float SuspensionSpringStrength {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "Wheel_get_SuspensionSpringStrength", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "Wheel_get_SuspensionSpringStrength", args);
         }
     }
 
@@ -509,17 +509,17 @@ public class Wheel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Wheel_get_TractionControl")]
     public float TractionControl {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "Wheel_get_TractionControl", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "Wheel_get_TractionControl", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "Wheel_set_TractionControl", _args);
+            Connection.Invoke ("SpaceCenter", "Wheel_set_TractionControl", args);
         }
     }
 
@@ -530,17 +530,17 @@ public class Wheel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Wheel_get_TractionControlEnabled")]
     public bool TractionControlEnabled {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "Wheel_get_TractionControlEnabled", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "Wheel_get_TractionControlEnabled", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "Wheel_set_TractionControlEnabled", _args);
+            Connection.Invoke ("SpaceCenter", "Wheel_set_TractionControlEnabled", args);
         }
     }
 }

@@ -22,10 +22,10 @@ public class Alarm : RemoteObject
     [RpcAttribute ("SpaceCenter", "Alarm_get_Description")]
     public string Description {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<string> ("SpaceCenter", "Alarm_get_Description", _args);
+            return Connection.Invoke<string> ("SpaceCenter", "Alarm_get_Description", args);
         }
     }
 
@@ -35,10 +35,10 @@ public class Alarm : RemoteObject
     [RpcAttribute ("SpaceCenter", "Alarm_get_EventOffset")]
     public double EventOffset {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<double> ("SpaceCenter", "Alarm_get_EventOffset", _args);
+            return Connection.Invoke<double> ("SpaceCenter", "Alarm_get_EventOffset", args);
         }
     }
 
@@ -50,10 +50,10 @@ public class Alarm : RemoteObject
     [RpcAttribute ("SpaceCenter", "Alarm_get_ID")]
     public uint ID {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<uint> ("SpaceCenter", "Alarm_get_ID", _args);
+            return Connection.Invoke<uint> ("SpaceCenter", "Alarm_get_ID", args);
         }
     }
 
@@ -63,10 +63,10 @@ public class Alarm : RemoteObject
     [RpcAttribute ("SpaceCenter", "Alarm_get_Time")]
     public double Time {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<double> ("SpaceCenter", "Alarm_get_Time", _args);
+            return Connection.Invoke<double> ("SpaceCenter", "Alarm_get_Time", args);
         }
     }
 
@@ -76,10 +76,10 @@ public class Alarm : RemoteObject
     [RpcAttribute ("SpaceCenter", "Alarm_get_TimeUntil")]
     public double TimeUntil {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<double> ("SpaceCenter", "Alarm_get_TimeUntil", _args);
+            return Connection.Invoke<double> ("SpaceCenter", "Alarm_get_TimeUntil", args);
         }
     }
 
@@ -89,10 +89,10 @@ public class Alarm : RemoteObject
     [RpcAttribute ("SpaceCenter", "Alarm_get_Title")]
     public string Title {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<string> ("SpaceCenter", "Alarm_get_Title", _args);
+            return Connection.Invoke<string> ("SpaceCenter", "Alarm_get_Title", args);
         }
     }
 
@@ -102,10 +102,10 @@ public class Alarm : RemoteObject
     [RpcAttribute ("SpaceCenter", "Alarm_get_Type")]
     public string Type {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<string> ("SpaceCenter", "Alarm_get_Type", _args);
+            return Connection.Invoke<string> ("SpaceCenter", "Alarm_get_Type", args);
         }
     }
 
@@ -115,10 +115,10 @@ public class Alarm : RemoteObject
     [RpcAttribute ("SpaceCenter", "Alarm_get_Vessel")]
     public Vessel Vessel {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<Vessel> ("SpaceCenter", "Alarm_get_Vessel", _args);
+            return Connection.Invoke<Vessel> ("SpaceCenter", "Alarm_get_Vessel", args);
         }
     }
 }

@@ -23,17 +23,17 @@ public class CrewMember : RemoteObject
     [RpcAttribute ("SpaceCenter", "CrewMember_get_Badass")]
     public bool Badass {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "CrewMember_get_Badass", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "CrewMember_get_Badass", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "CrewMember_set_Badass", _args);
+            Connection.Invoke ("SpaceCenter", "CrewMember_set_Badass", args);
         }
     }
 
@@ -43,10 +43,10 @@ public class CrewMember : RemoteObject
     [RpcAttribute ("SpaceCenter", "CrewMember_get_CareerLogFlights")]
     public IList<int> CareerLogFlights {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<IList<int>> ("SpaceCenter", "CrewMember_get_CareerLogFlights", _args);
+            return Connection.Invoke<IList<int>> ("SpaceCenter", "CrewMember_get_CareerLogFlights", args);
         }
     }
 
@@ -56,10 +56,10 @@ public class CrewMember : RemoteObject
     [RpcAttribute ("SpaceCenter", "CrewMember_get_CareerLogTargets")]
     public IList<string> CareerLogTargets {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<IList<string>> ("SpaceCenter", "CrewMember_get_CareerLogTargets", _args);
+            return Connection.Invoke<IList<string>> ("SpaceCenter", "CrewMember_get_CareerLogTargets", args);
         }
     }
 
@@ -69,10 +69,10 @@ public class CrewMember : RemoteObject
     [RpcAttribute ("SpaceCenter", "CrewMember_get_CareerLogTypes")]
     public IList<string> CareerLogTypes {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<IList<string>> ("SpaceCenter", "CrewMember_get_CareerLogTypes", _args);
+            return Connection.Invoke<IList<string>> ("SpaceCenter", "CrewMember_get_CareerLogTypes", args);
         }
     }
 
@@ -82,17 +82,17 @@ public class CrewMember : RemoteObject
     [RpcAttribute ("SpaceCenter", "CrewMember_get_Courage")]
     public float Courage {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "CrewMember_get_Courage", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "CrewMember_get_Courage", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "CrewMember_set_Courage", _args);
+            Connection.Invoke ("SpaceCenter", "CrewMember_set_Courage", args);
         }
     }
 
@@ -102,17 +102,17 @@ public class CrewMember : RemoteObject
     [RpcAttribute ("SpaceCenter", "CrewMember_get_Experience")]
     public float Experience {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "CrewMember_get_Experience", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "CrewMember_get_Experience", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "CrewMember_set_Experience", _args);
+            Connection.Invoke ("SpaceCenter", "CrewMember_set_Experience", args);
         }
     }
 
@@ -122,10 +122,10 @@ public class CrewMember : RemoteObject
     [RpcAttribute ("SpaceCenter", "CrewMember_get_Gender")]
     public CrewMemberGender Gender {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<CrewMemberGender> ("SpaceCenter", "CrewMember_get_Gender", _args);
+            return Connection.Invoke<CrewMemberGender> ("SpaceCenter", "CrewMember_get_Gender", args);
         }
     }
 
@@ -135,17 +135,17 @@ public class CrewMember : RemoteObject
     [RpcAttribute ("SpaceCenter", "CrewMember_get_Name")]
     public string Name {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<string> ("SpaceCenter", "CrewMember_get_Name", _args);
+            return Connection.Invoke<string> ("SpaceCenter", "CrewMember_get_Name", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "CrewMember_set_Name", _args);
+            Connection.Invoke ("SpaceCenter", "CrewMember_set_Name", args);
         }
     }
 
@@ -155,10 +155,10 @@ public class CrewMember : RemoteObject
     [RpcAttribute ("SpaceCenter", "CrewMember_get_OnMission")]
     public bool OnMission {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "CrewMember_get_OnMission", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "CrewMember_get_OnMission", args);
         }
     }
 
@@ -168,10 +168,10 @@ public class CrewMember : RemoteObject
     [RpcAttribute ("SpaceCenter", "CrewMember_get_RosterStatus")]
     public RosterStatus RosterStatus {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<RosterStatus> ("SpaceCenter", "CrewMember_get_RosterStatus", _args);
+            return Connection.Invoke<RosterStatus> ("SpaceCenter", "CrewMember_get_RosterStatus", args);
         }
     }
 
@@ -181,17 +181,17 @@ public class CrewMember : RemoteObject
     [RpcAttribute ("SpaceCenter", "CrewMember_get_Stupidity")]
     public float Stupidity {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "CrewMember_get_Stupidity", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "CrewMember_get_Stupidity", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "CrewMember_set_Stupidity", _args);
+            Connection.Invoke ("SpaceCenter", "CrewMember_set_Stupidity", args);
         }
     }
 
@@ -201,17 +201,17 @@ public class CrewMember : RemoteObject
     [RpcAttribute ("SpaceCenter", "CrewMember_get_SuitType")]
     public SuitType SuitType {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<SuitType> ("SpaceCenter", "CrewMember_get_SuitType", _args);
+            return Connection.Invoke<SuitType> ("SpaceCenter", "CrewMember_get_SuitType", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "CrewMember_set_SuitType", _args);
+            Connection.Invoke ("SpaceCenter", "CrewMember_set_SuitType", args);
         }
     }
 
@@ -221,10 +221,10 @@ public class CrewMember : RemoteObject
     [RpcAttribute ("SpaceCenter", "CrewMember_get_Trait")]
     public string Trait {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<string> ("SpaceCenter", "CrewMember_get_Trait", _args);
+            return Connection.Invoke<string> ("SpaceCenter", "CrewMember_get_Trait", args);
         }
     }
 
@@ -234,10 +234,10 @@ public class CrewMember : RemoteObject
     [RpcAttribute ("SpaceCenter", "CrewMember_get_Type")]
     public CrewMemberType Type {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<CrewMemberType> ("SpaceCenter", "CrewMember_get_Type", _args);
+            return Connection.Invoke<CrewMemberType> ("SpaceCenter", "CrewMember_get_Type", args);
         }
     }
 
@@ -247,17 +247,17 @@ public class CrewMember : RemoteObject
     [RpcAttribute ("SpaceCenter", "CrewMember_get_Veteran")]
     public bool Veteran {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "CrewMember_get_Veteran", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "CrewMember_get_Veteran", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "CrewMember_set_Veteran", _args);
+            Connection.Invoke ("SpaceCenter", "CrewMember_set_Veteran", args);
         }
     }
 }

@@ -22,10 +22,10 @@ public class RoboticRotor : RemoteObject
     [RpcAttribute ("SpaceCenter", "RoboticRotor_get_CurrentRPM")]
     public float CurrentRPM {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "RoboticRotor_get_CurrentRPM", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "RoboticRotor_get_CurrentRPM", args);
         }
     }
 
@@ -35,17 +35,17 @@ public class RoboticRotor : RemoteObject
     [RpcAttribute ("SpaceCenter", "RoboticRotor_get_Inverted")]
     public bool Inverted {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "RoboticRotor_get_Inverted", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "RoboticRotor_get_Inverted", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "RoboticRotor_set_Inverted", _args);
+            Connection.Invoke ("SpaceCenter", "RoboticRotor_set_Inverted", args);
         }
     }
 
@@ -55,17 +55,17 @@ public class RoboticRotor : RemoteObject
     [RpcAttribute ("SpaceCenter", "RoboticRotor_get_Locked")]
     public bool Locked {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "RoboticRotor_get_Locked", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "RoboticRotor_get_Locked", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "RoboticRotor_set_Locked", _args);
+            Connection.Invoke ("SpaceCenter", "RoboticRotor_set_Locked", args);
         }
     }
 
@@ -75,17 +75,17 @@ public class RoboticRotor : RemoteObject
     [RpcAttribute ("SpaceCenter", "RoboticRotor_get_MotorEngaged")]
     public bool MotorEngaged {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "RoboticRotor_get_MotorEngaged", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "RoboticRotor_get_MotorEngaged", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "RoboticRotor_set_MotorEngaged", _args);
+            Connection.Invoke ("SpaceCenter", "RoboticRotor_set_MotorEngaged", args);
         }
     }
 
@@ -95,10 +95,10 @@ public class RoboticRotor : RemoteObject
     [RpcAttribute ("SpaceCenter", "RoboticRotor_get_Part")]
     public Part Part {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<Part> ("SpaceCenter", "RoboticRotor_get_Part", _args);
+            return Connection.Invoke<Part> ("SpaceCenter", "RoboticRotor_get_Part", args);
         }
     }
 
@@ -108,17 +108,17 @@ public class RoboticRotor : RemoteObject
     [RpcAttribute ("SpaceCenter", "RoboticRotor_get_TargetRPM")]
     public float TargetRPM {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "RoboticRotor_get_TargetRPM", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "RoboticRotor_get_TargetRPM", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "RoboticRotor_set_TargetRPM", _args);
+            Connection.Invoke ("SpaceCenter", "RoboticRotor_set_TargetRPM", args);
         }
     }
 
@@ -128,17 +128,17 @@ public class RoboticRotor : RemoteObject
     [RpcAttribute ("SpaceCenter", "RoboticRotor_get_TorqueLimit")]
     public float TorqueLimit {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "RoboticRotor_get_TorqueLimit", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "RoboticRotor_get_TorqueLimit", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "RoboticRotor_set_TorqueLimit", _args);
+            Connection.Invoke ("SpaceCenter", "RoboticRotor_set_TorqueLimit", args);
         }
     }
 }

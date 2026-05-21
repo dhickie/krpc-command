@@ -22,10 +22,10 @@ public class Propellant : RemoteObject
     [RpcAttribute ("SpaceCenter", "Propellant_get_CurrentAmount")]
     public double CurrentAmount {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<double> ("SpaceCenter", "Propellant_get_CurrentAmount", _args);
+            return Connection.Invoke<double> ("SpaceCenter", "Propellant_get_CurrentAmount", args);
         }
     }
 
@@ -35,10 +35,10 @@ public class Propellant : RemoteObject
     [RpcAttribute ("SpaceCenter", "Propellant_get_CurrentRequirement")]
     public double CurrentRequirement {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<double> ("SpaceCenter", "Propellant_get_CurrentRequirement", _args);
+            return Connection.Invoke<double> ("SpaceCenter", "Propellant_get_CurrentRequirement", args);
         }
     }
 
@@ -48,10 +48,10 @@ public class Propellant : RemoteObject
     [RpcAttribute ("SpaceCenter", "Propellant_get_DrawStackGauge")]
     public bool DrawStackGauge {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "Propellant_get_DrawStackGauge", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "Propellant_get_DrawStackGauge", args);
         }
     }
 
@@ -62,10 +62,10 @@ public class Propellant : RemoteObject
     [RpcAttribute ("SpaceCenter", "Propellant_get_IgnoreForIsp")]
     public bool IgnoreForIsp {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "Propellant_get_IgnoreForIsp", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "Propellant_get_IgnoreForIsp", args);
         }
     }
 
@@ -75,10 +75,10 @@ public class Propellant : RemoteObject
     [RpcAttribute ("SpaceCenter", "Propellant_get_IgnoreForThrustCurve")]
     public bool IgnoreForThrustCurve {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "Propellant_get_IgnoreForThrustCurve", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "Propellant_get_IgnoreForThrustCurve", args);
         }
     }
 
@@ -88,10 +88,10 @@ public class Propellant : RemoteObject
     [RpcAttribute ("SpaceCenter", "Propellant_get_IsDeprived")]
     public bool IsDeprived {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "Propellant_get_IsDeprived", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "Propellant_get_IsDeprived", args);
         }
     }
 
@@ -101,10 +101,10 @@ public class Propellant : RemoteObject
     [RpcAttribute ("SpaceCenter", "Propellant_get_Name")]
     public string Name {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<string> ("SpaceCenter", "Propellant_get_Name", _args);
+            return Connection.Invoke<string> ("SpaceCenter", "Propellant_get_Name", args);
         }
     }
 
@@ -114,10 +114,10 @@ public class Propellant : RemoteObject
     [RpcAttribute ("SpaceCenter", "Propellant_get_Ratio")]
     public float Ratio {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "Propellant_get_Ratio", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "Propellant_get_Ratio", args);
         }
     }
 
@@ -128,10 +128,10 @@ public class Propellant : RemoteObject
     [RpcAttribute ("SpaceCenter", "Propellant_get_TotalResourceAvailable")]
     public double TotalResourceAvailable {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<double> ("SpaceCenter", "Propellant_get_TotalResourceAvailable", _args);
+            return Connection.Invoke<double> ("SpaceCenter", "Propellant_get_TotalResourceAvailable", args);
         }
     }
 
@@ -142,10 +142,10 @@ public class Propellant : RemoteObject
     [RpcAttribute ("SpaceCenter", "Propellant_get_TotalResourceCapacity")]
     public double TotalResourceCapacity {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<double> ("SpaceCenter", "Propellant_get_TotalResourceCapacity", _args);
+            return Connection.Invoke<double> ("SpaceCenter", "Propellant_get_TotalResourceCapacity", args);
         }
     }
 }

@@ -27,10 +27,10 @@ public class RCS : RemoteObject
     [RpcAttribute ("SpaceCenter", "RCS_get_Active")]
     public bool Active {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "RCS_get_Active", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "RCS_get_Active", args);
         }
     }
 
@@ -43,10 +43,10 @@ public class RCS : RemoteObject
     [RpcAttribute ("SpaceCenter", "RCS_get_AvailableForce")]
     public Tuple<Tuple<double,double,double>,Tuple<double,double,double>> AvailableForce {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<Tuple<Tuple<double,double,double>,Tuple<double,double,double>>> ("SpaceCenter", "RCS_get_AvailableForce", _args);
+            return Connection.Invoke<Tuple<Tuple<double,double,double>,Tuple<double,double,double>>> ("SpaceCenter", "RCS_get_AvailableForce", args);
         }
     }
 
@@ -59,10 +59,10 @@ public class RCS : RemoteObject
     [RpcAttribute ("SpaceCenter", "RCS_get_AvailableThrust")]
     public float AvailableThrust {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "RCS_get_AvailableThrust", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "RCS_get_AvailableThrust", args);
         }
     }
 
@@ -75,10 +75,10 @@ public class RCS : RemoteObject
     [RpcAttribute ("SpaceCenter", "RCS_get_AvailableTorque")]
     public Tuple<Tuple<double,double,double>,Tuple<double,double,double>> AvailableTorque {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<Tuple<Tuple<double,double,double>,Tuple<double,double,double>>> ("SpaceCenter", "RCS_get_AvailableTorque", _args);
+            return Connection.Invoke<Tuple<Tuple<double,double,double>,Tuple<double,double,double>>> ("SpaceCenter", "RCS_get_AvailableTorque", args);
         }
     }
 
@@ -88,17 +88,17 @@ public class RCS : RemoteObject
     [RpcAttribute ("SpaceCenter", "RCS_get_Enabled")]
     public bool Enabled {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "RCS_get_Enabled", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "RCS_get_Enabled", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "RCS_set_Enabled", _args);
+            Connection.Invoke ("SpaceCenter", "RCS_set_Enabled", args);
         }
     }
 
@@ -108,17 +108,17 @@ public class RCS : RemoteObject
     [RpcAttribute ("SpaceCenter", "RCS_get_ForwardEnabled")]
     public bool ForwardEnabled {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "RCS_get_ForwardEnabled", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "RCS_get_ForwardEnabled", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "RCS_set_ForwardEnabled", _args);
+            Connection.Invoke ("SpaceCenter", "RCS_set_ForwardEnabled", args);
         }
     }
 
@@ -128,10 +128,10 @@ public class RCS : RemoteObject
     [RpcAttribute ("SpaceCenter", "RCS_get_HasFuel")]
     public bool HasFuel {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "RCS_get_HasFuel", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "RCS_get_HasFuel", args);
         }
     }
 
@@ -141,10 +141,10 @@ public class RCS : RemoteObject
     [RpcAttribute ("SpaceCenter", "RCS_get_KerbinSeaLevelSpecificImpulse")]
     public float KerbinSeaLevelSpecificImpulse {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "RCS_get_KerbinSeaLevelSpecificImpulse", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "RCS_get_KerbinSeaLevelSpecificImpulse", args);
         }
     }
 
@@ -157,10 +157,10 @@ public class RCS : RemoteObject
     [RpcAttribute ("SpaceCenter", "RCS_get_MaxThrust")]
     public float MaxThrust {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "RCS_get_MaxThrust", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "RCS_get_MaxThrust", args);
         }
     }
 
@@ -171,10 +171,10 @@ public class RCS : RemoteObject
     [RpcAttribute ("SpaceCenter", "RCS_get_MaxVacuumThrust")]
     public float MaxVacuumThrust {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "RCS_get_MaxVacuumThrust", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "RCS_get_MaxVacuumThrust", args);
         }
     }
 
@@ -184,10 +184,10 @@ public class RCS : RemoteObject
     [RpcAttribute ("SpaceCenter", "RCS_get_Part")]
     public Part Part {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<Part> ("SpaceCenter", "RCS_get_Part", _args);
+            return Connection.Invoke<Part> ("SpaceCenter", "RCS_get_Part", args);
         }
     }
 
@@ -197,17 +197,17 @@ public class RCS : RemoteObject
     [RpcAttribute ("SpaceCenter", "RCS_get_PitchEnabled")]
     public bool PitchEnabled {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "RCS_get_PitchEnabled", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "RCS_get_PitchEnabled", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "RCS_set_PitchEnabled", _args);
+            Connection.Invoke ("SpaceCenter", "RCS_set_PitchEnabled", args);
         }
     }
 
@@ -218,10 +218,10 @@ public class RCS : RemoteObject
     [RpcAttribute ("SpaceCenter", "RCS_get_PropellantRatios")]
     public IDictionary<string,float> PropellantRatios {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<IDictionary<string,float>> ("SpaceCenter", "RCS_get_PropellantRatios", _args);
+            return Connection.Invoke<IDictionary<string,float>> ("SpaceCenter", "RCS_get_PropellantRatios", args);
         }
     }
 
@@ -231,10 +231,10 @@ public class RCS : RemoteObject
     [RpcAttribute ("SpaceCenter", "RCS_get_Propellants")]
     public IList<string> Propellants {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<IList<string>> ("SpaceCenter", "RCS_get_Propellants", _args);
+            return Connection.Invoke<IList<string>> ("SpaceCenter", "RCS_get_Propellants", args);
         }
     }
 
@@ -244,17 +244,17 @@ public class RCS : RemoteObject
     [RpcAttribute ("SpaceCenter", "RCS_get_RightEnabled")]
     public bool RightEnabled {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "RCS_get_RightEnabled", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "RCS_get_RightEnabled", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "RCS_set_RightEnabled", _args);
+            Connection.Invoke ("SpaceCenter", "RCS_set_RightEnabled", args);
         }
     }
 
@@ -264,17 +264,17 @@ public class RCS : RemoteObject
     [RpcAttribute ("SpaceCenter", "RCS_get_RollEnabled")]
     public bool RollEnabled {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "RCS_get_RollEnabled", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "RCS_get_RollEnabled", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "RCS_set_RollEnabled", _args);
+            Connection.Invoke ("SpaceCenter", "RCS_set_RollEnabled", args);
         }
     }
 
@@ -285,10 +285,10 @@ public class RCS : RemoteObject
     [RpcAttribute ("SpaceCenter", "RCS_get_SpecificImpulse")]
     public float SpecificImpulse {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "RCS_get_SpecificImpulse", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "RCS_get_SpecificImpulse", args);
         }
     }
 
@@ -298,17 +298,17 @@ public class RCS : RemoteObject
     [RpcAttribute ("SpaceCenter", "RCS_get_ThrustLimit")]
     public float ThrustLimit {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "RCS_get_ThrustLimit", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "RCS_get_ThrustLimit", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "RCS_set_ThrustLimit", _args);
+            Connection.Invoke ("SpaceCenter", "RCS_set_ThrustLimit", args);
         }
     }
 
@@ -318,10 +318,10 @@ public class RCS : RemoteObject
     [RpcAttribute ("SpaceCenter", "RCS_get_Thrusters")]
     public IList<Thruster> Thrusters {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<IList<Thruster>> ("SpaceCenter", "RCS_get_Thrusters", _args);
+            return Connection.Invoke<IList<Thruster>> ("SpaceCenter", "RCS_get_Thrusters", args);
         }
     }
 
@@ -331,17 +331,17 @@ public class RCS : RemoteObject
     [RpcAttribute ("SpaceCenter", "RCS_get_UpEnabled")]
     public bool UpEnabled {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "RCS_get_UpEnabled", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "RCS_get_UpEnabled", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "RCS_set_UpEnabled", _args);
+            Connection.Invoke ("SpaceCenter", "RCS_set_UpEnabled", args);
         }
     }
 
@@ -351,10 +351,10 @@ public class RCS : RemoteObject
     [RpcAttribute ("SpaceCenter", "RCS_get_VacuumSpecificImpulse")]
     public float VacuumSpecificImpulse {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "RCS_get_VacuumSpecificImpulse", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "RCS_get_VacuumSpecificImpulse", args);
         }
     }
 
@@ -364,17 +364,17 @@ public class RCS : RemoteObject
     [RpcAttribute ("SpaceCenter", "RCS_get_YawEnabled")]
     public bool YawEnabled {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "RCS_get_YawEnabled", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "RCS_get_YawEnabled", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "RCS_set_YawEnabled", _args);
+            Connection.Invoke ("SpaceCenter", "RCS_set_YawEnabled", args);
         }
     }
 }

@@ -24,10 +24,10 @@ public class Comms : RemoteObject
     [RpcAttribute ("SpaceCenter", "Comms_get_CanCommunicate")]
     public bool CanCommunicate {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "Comms_get_CanCommunicate", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "Comms_get_CanCommunicate", args);
         }
     }
 
@@ -37,10 +37,10 @@ public class Comms : RemoteObject
     [RpcAttribute ("SpaceCenter", "Comms_get_CanTransmitScience")]
     public bool CanTransmitScience {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "Comms_get_CanTransmitScience", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "Comms_get_CanTransmitScience", args);
         }
     }
 
@@ -50,10 +50,10 @@ public class Comms : RemoteObject
     [RpcAttribute ("SpaceCenter", "Comms_get_ControlPath")]
     public IList<CommLink> ControlPath {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<IList<CommLink>> ("SpaceCenter", "Comms_get_ControlPath", _args);
+            return Connection.Invoke<IList<CommLink>> ("SpaceCenter", "Comms_get_ControlPath", args);
         }
     }
 
@@ -63,10 +63,10 @@ public class Comms : RemoteObject
     [RpcAttribute ("SpaceCenter", "Comms_get_Power")]
     public double Power {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<double> ("SpaceCenter", "Comms_get_Power", _args);
+            return Connection.Invoke<double> ("SpaceCenter", "Comms_get_Power", args);
         }
     }
 
@@ -76,10 +76,10 @@ public class Comms : RemoteObject
     [RpcAttribute ("SpaceCenter", "Comms_get_SignalDelay")]
     public double SignalDelay {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<double> ("SpaceCenter", "Comms_get_SignalDelay", _args);
+            return Connection.Invoke<double> ("SpaceCenter", "Comms_get_SignalDelay", args);
         }
     }
 
@@ -89,10 +89,10 @@ public class Comms : RemoteObject
     [RpcAttribute ("SpaceCenter", "Comms_get_SignalStrength")]
     public double SignalStrength {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<double> ("SpaceCenter", "Comms_get_SignalStrength", _args);
+            return Connection.Invoke<double> ("SpaceCenter", "Comms_get_SignalStrength", args);
         }
     }
 }

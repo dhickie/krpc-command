@@ -25,11 +25,11 @@ public class Parts : RemoteObject
     [RpcAttribute ("SpaceCenter", "Parts_InDecoupleStage")]
     public IList<Part> InDecoupleStage (int stage)
     {
-        var _args = new object[] {
+        var args = new object[] {
             this,
             stage
         };
-        return Connection.Invoke<IList<Part>> ("SpaceCenter", "Parts_InDecoupleStage", _args);
+        return Connection.Invoke<IList<Part>> ("SpaceCenter", "Parts_InDecoupleStage", args);
     }
 
     /// <summary>
@@ -39,11 +39,11 @@ public class Parts : RemoteObject
     [RpcAttribute ("SpaceCenter", "Parts_InStage")]
     public IList<Part> InStage (int stage)
     {
-        var _args = new object[] {
+        var args = new object[] {
             this,
             stage
         };
-        return Connection.Invoke<IList<Part>> ("SpaceCenter", "Parts_InStage", _args);
+        return Connection.Invoke<IList<Part>> ("SpaceCenter", "Parts_InStage", args);
     }
 
     /// <summary>
@@ -54,11 +54,11 @@ public class Parts : RemoteObject
     [RpcAttribute ("SpaceCenter", "Parts_ModulesWithName")]
     public IList<Module> ModulesWithName (string moduleName)
     {
-        var _args = new object[] {
+        var args = new object[] {
             this,
             moduleName
         };
-        return Connection.Invoke<IList<Module>> ("SpaceCenter", "Parts_ModulesWithName", _args);
+        return Connection.Invoke<IList<Module>> ("SpaceCenter", "Parts_ModulesWithName", args);
     }
 
     /// <summary>
@@ -69,11 +69,11 @@ public class Parts : RemoteObject
     [RpcAttribute ("SpaceCenter", "Parts_WithModule")]
     public IList<Part> WithModule (string moduleName)
     {
-        var _args = new object[] {
+        var args = new object[] {
             this,
             moduleName
         };
-        return Connection.Invoke<IList<Part>> ("SpaceCenter", "Parts_WithModule", _args);
+        return Connection.Invoke<IList<Part>> ("SpaceCenter", "Parts_WithModule", args);
     }
 
     /// <summary>
@@ -83,11 +83,11 @@ public class Parts : RemoteObject
     [RpcAttribute ("SpaceCenter", "Parts_WithName")]
     public IList<Part> WithName (string name)
     {
-        var _args = new object[] {
+        var args = new object[] {
             this,
             name
         };
-        return Connection.Invoke<IList<Part>> ("SpaceCenter", "Parts_WithName", _args);
+        return Connection.Invoke<IList<Part>> ("SpaceCenter", "Parts_WithName", args);
     }
 
     /// <summary>
@@ -97,11 +97,11 @@ public class Parts : RemoteObject
     [RpcAttribute ("SpaceCenter", "Parts_WithTag")]
     public IList<Part> WithTag (string tag)
     {
-        var _args = new object[] {
+        var args = new object[] {
             this,
             tag
         };
-        return Connection.Invoke<IList<Part>> ("SpaceCenter", "Parts_WithTag", _args);
+        return Connection.Invoke<IList<Part>> ("SpaceCenter", "Parts_WithTag", args);
     }
 
     /// <summary>
@@ -111,11 +111,11 @@ public class Parts : RemoteObject
     [RpcAttribute ("SpaceCenter", "Parts_WithTitle")]
     public IList<Part> WithTitle (string title)
     {
-        var _args = new object[] {
+        var args = new object[] {
             this,
             title
         };
-        return Connection.Invoke<IList<Part>> ("SpaceCenter", "Parts_WithTitle", _args);
+        return Connection.Invoke<IList<Part>> ("SpaceCenter", "Parts_WithTitle", args);
     }
 
     /// <summary>
@@ -124,10 +124,10 @@ public class Parts : RemoteObject
     [RpcAttribute ("SpaceCenter", "Parts_get_All")]
     public IList<Part> All {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<IList<Part>> ("SpaceCenter", "Parts_get_All", _args);
+            return Connection.Invoke<IList<Part>> ("SpaceCenter", "Parts_get_All", args);
         }
     }
 
@@ -141,10 +141,10 @@ public class Parts : RemoteObject
     [RpcAttribute ("SpaceCenter", "Parts_get_Antennas")]
     public IList<Antenna> Antennas {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<IList<Antenna>> ("SpaceCenter", "Parts_get_Antennas", _args);
+            return Connection.Invoke<IList<Antenna>> ("SpaceCenter", "Parts_get_Antennas", args);
         }
     }
 
@@ -154,10 +154,10 @@ public class Parts : RemoteObject
     [RpcAttribute ("SpaceCenter", "Parts_get_CargoBays")]
     public IList<CargoBay> CargoBays {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<IList<CargoBay>> ("SpaceCenter", "Parts_get_CargoBays", _args);
+            return Connection.Invoke<IList<CargoBay>> ("SpaceCenter", "Parts_get_CargoBays", args);
         }
     }
 
@@ -167,10 +167,10 @@ public class Parts : RemoteObject
     [RpcAttribute ("SpaceCenter", "Parts_get_ControlSurfaces")]
     public IList<ControlSurface> ControlSurfaces {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<IList<ControlSurface>> ("SpaceCenter", "Parts_get_ControlSurfaces", _args);
+            return Connection.Invoke<IList<ControlSurface>> ("SpaceCenter", "Parts_get_ControlSurfaces", args);
         }
     }
 
@@ -180,17 +180,17 @@ public class Parts : RemoteObject
     [RpcAttribute ("SpaceCenter", "Parts_get_Controlling")]
     public Part Controlling {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<Part> ("SpaceCenter", "Parts_get_Controlling", _args);
+            return Connection.Invoke<Part> ("SpaceCenter", "Parts_get_Controlling", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "Parts_set_Controlling", _args);
+            Connection.Invoke ("SpaceCenter", "Parts_set_Controlling", args);
         }
     }
 
@@ -200,10 +200,10 @@ public class Parts : RemoteObject
     [RpcAttribute ("SpaceCenter", "Parts_get_Decouplers")]
     public IList<Decoupler> Decouplers {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<IList<Decoupler>> ("SpaceCenter", "Parts_get_Decouplers", _args);
+            return Connection.Invoke<IList<Decoupler>> ("SpaceCenter", "Parts_get_Decouplers", args);
         }
     }
 
@@ -213,10 +213,10 @@ public class Parts : RemoteObject
     [RpcAttribute ("SpaceCenter", "Parts_get_DockingPorts")]
     public IList<DockingPort> DockingPorts {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<IList<DockingPort>> ("SpaceCenter", "Parts_get_DockingPorts", _args);
+            return Connection.Invoke<IList<DockingPort>> ("SpaceCenter", "Parts_get_DockingPorts", args);
         }
     }
 
@@ -231,10 +231,10 @@ public class Parts : RemoteObject
     [RpcAttribute ("SpaceCenter", "Parts_get_Engines")]
     public IList<Engine> Engines {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<IList<Engine>> ("SpaceCenter", "Parts_get_Engines", _args);
+            return Connection.Invoke<IList<Engine>> ("SpaceCenter", "Parts_get_Engines", args);
         }
     }
 
@@ -244,10 +244,10 @@ public class Parts : RemoteObject
     [RpcAttribute ("SpaceCenter", "Parts_get_Experiments")]
     public IList<Experiment> Experiments {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<IList<Experiment>> ("SpaceCenter", "Parts_get_Experiments", _args);
+            return Connection.Invoke<IList<Experiment>> ("SpaceCenter", "Parts_get_Experiments", args);
         }
     }
 
@@ -257,10 +257,10 @@ public class Parts : RemoteObject
     [RpcAttribute ("SpaceCenter", "Parts_get_Fairings")]
     public IList<Fairing> Fairings {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<IList<Fairing>> ("SpaceCenter", "Parts_get_Fairings", _args);
+            return Connection.Invoke<IList<Fairing>> ("SpaceCenter", "Parts_get_Fairings", args);
         }
     }
 
@@ -270,10 +270,10 @@ public class Parts : RemoteObject
     [RpcAttribute ("SpaceCenter", "Parts_get_Intakes")]
     public IList<Intake> Intakes {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<IList<Intake>> ("SpaceCenter", "Parts_get_Intakes", _args);
+            return Connection.Invoke<IList<Intake>> ("SpaceCenter", "Parts_get_Intakes", args);
         }
     }
 
@@ -283,10 +283,10 @@ public class Parts : RemoteObject
     [RpcAttribute ("SpaceCenter", "Parts_get_LaunchClamps")]
     public IList<LaunchClamp> LaunchClamps {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<IList<LaunchClamp>> ("SpaceCenter", "Parts_get_LaunchClamps", _args);
+            return Connection.Invoke<IList<LaunchClamp>> ("SpaceCenter", "Parts_get_LaunchClamps", args);
         }
     }
 
@@ -296,10 +296,10 @@ public class Parts : RemoteObject
     [RpcAttribute ("SpaceCenter", "Parts_get_Legs")]
     public IList<Leg> Legs {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<IList<Leg>> ("SpaceCenter", "Parts_get_Legs", _args);
+            return Connection.Invoke<IList<Leg>> ("SpaceCenter", "Parts_get_Legs", args);
         }
     }
 
@@ -309,10 +309,10 @@ public class Parts : RemoteObject
     [RpcAttribute ("SpaceCenter", "Parts_get_Lights")]
     public IList<Light> Lights {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<IList<Light>> ("SpaceCenter", "Parts_get_Lights", _args);
+            return Connection.Invoke<IList<Light>> ("SpaceCenter", "Parts_get_Lights", args);
         }
     }
 
@@ -322,10 +322,10 @@ public class Parts : RemoteObject
     [RpcAttribute ("SpaceCenter", "Parts_get_Parachutes")]
     public IList<Parachute> Parachutes {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<IList<Parachute>> ("SpaceCenter", "Parts_get_Parachutes", _args);
+            return Connection.Invoke<IList<Parachute>> ("SpaceCenter", "Parts_get_Parachutes", args);
         }
     }
 
@@ -335,10 +335,10 @@ public class Parts : RemoteObject
     [RpcAttribute ("SpaceCenter", "Parts_get_RCS")]
     public IList<RCS> RCS {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<IList<RCS>> ("SpaceCenter", "Parts_get_RCS", _args);
+            return Connection.Invoke<IList<RCS>> ("SpaceCenter", "Parts_get_RCS", args);
         }
     }
 
@@ -348,10 +348,10 @@ public class Parts : RemoteObject
     [RpcAttribute ("SpaceCenter", "Parts_get_Radiators")]
     public IList<Radiator> Radiators {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<IList<Radiator>> ("SpaceCenter", "Parts_get_Radiators", _args);
+            return Connection.Invoke<IList<Radiator>> ("SpaceCenter", "Parts_get_Radiators", args);
         }
     }
 
@@ -361,10 +361,10 @@ public class Parts : RemoteObject
     [RpcAttribute ("SpaceCenter", "Parts_get_ReactionWheels")]
     public IList<ReactionWheel> ReactionWheels {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<IList<ReactionWheel>> ("SpaceCenter", "Parts_get_ReactionWheels", _args);
+            return Connection.Invoke<IList<ReactionWheel>> ("SpaceCenter", "Parts_get_ReactionWheels", args);
         }
     }
 
@@ -374,10 +374,10 @@ public class Parts : RemoteObject
     [RpcAttribute ("SpaceCenter", "Parts_get_ResourceConverters")]
     public IList<ResourceConverter> ResourceConverters {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<IList<ResourceConverter>> ("SpaceCenter", "Parts_get_ResourceConverters", _args);
+            return Connection.Invoke<IList<ResourceConverter>> ("SpaceCenter", "Parts_get_ResourceConverters", args);
         }
     }
 
@@ -387,10 +387,10 @@ public class Parts : RemoteObject
     [RpcAttribute ("SpaceCenter", "Parts_get_ResourceDrains")]
     public IList<ResourceDrain> ResourceDrains {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<IList<ResourceDrain>> ("SpaceCenter", "Parts_get_ResourceDrains", _args);
+            return Connection.Invoke<IList<ResourceDrain>> ("SpaceCenter", "Parts_get_ResourceDrains", args);
         }
     }
 
@@ -400,10 +400,10 @@ public class Parts : RemoteObject
     [RpcAttribute ("SpaceCenter", "Parts_get_ResourceHarvesters")]
     public IList<ResourceHarvester> ResourceHarvesters {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<IList<ResourceHarvester>> ("SpaceCenter", "Parts_get_ResourceHarvesters", _args);
+            return Connection.Invoke<IList<ResourceHarvester>> ("SpaceCenter", "Parts_get_ResourceHarvesters", args);
         }
     }
 
@@ -413,10 +413,10 @@ public class Parts : RemoteObject
     [RpcAttribute ("SpaceCenter", "Parts_get_RoboticHinges")]
     public IList<RoboticHinge> RoboticHinges {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<IList<RoboticHinge>> ("SpaceCenter", "Parts_get_RoboticHinges", _args);
+            return Connection.Invoke<IList<RoboticHinge>> ("SpaceCenter", "Parts_get_RoboticHinges", args);
         }
     }
 
@@ -426,10 +426,10 @@ public class Parts : RemoteObject
     [RpcAttribute ("SpaceCenter", "Parts_get_RoboticPistons")]
     public IList<RoboticPiston> RoboticPistons {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<IList<RoboticPiston>> ("SpaceCenter", "Parts_get_RoboticPistons", _args);
+            return Connection.Invoke<IList<RoboticPiston>> ("SpaceCenter", "Parts_get_RoboticPistons", args);
         }
     }
 
@@ -439,10 +439,10 @@ public class Parts : RemoteObject
     [RpcAttribute ("SpaceCenter", "Parts_get_RoboticRotations")]
     public IList<RoboticRotation> RoboticRotations {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<IList<RoboticRotation>> ("SpaceCenter", "Parts_get_RoboticRotations", _args);
+            return Connection.Invoke<IList<RoboticRotation>> ("SpaceCenter", "Parts_get_RoboticRotations", args);
         }
     }
 
@@ -452,10 +452,10 @@ public class Parts : RemoteObject
     [RpcAttribute ("SpaceCenter", "Parts_get_RoboticRotors")]
     public IList<RoboticRotor> RoboticRotors {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<IList<RoboticRotor>> ("SpaceCenter", "Parts_get_RoboticRotors", _args);
+            return Connection.Invoke<IList<RoboticRotor>> ("SpaceCenter", "Parts_get_RoboticRotors", args);
         }
     }
 
@@ -465,10 +465,10 @@ public class Parts : RemoteObject
     [RpcAttribute ("SpaceCenter", "Parts_get_Root")]
     public Part Root {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<Part> ("SpaceCenter", "Parts_get_Root", _args);
+            return Connection.Invoke<Part> ("SpaceCenter", "Parts_get_Root", args);
         }
     }
 
@@ -478,10 +478,10 @@ public class Parts : RemoteObject
     [RpcAttribute ("SpaceCenter", "Parts_get_Sensors")]
     public IList<Sensor> Sensors {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<IList<Sensor>> ("SpaceCenter", "Parts_get_Sensors", _args);
+            return Connection.Invoke<IList<Sensor>> ("SpaceCenter", "Parts_get_Sensors", args);
         }
     }
 
@@ -491,10 +491,10 @@ public class Parts : RemoteObject
     [RpcAttribute ("SpaceCenter", "Parts_get_SolarPanels")]
     public IList<SolarPanel> SolarPanels {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<IList<SolarPanel>> ("SpaceCenter", "Parts_get_SolarPanels", _args);
+            return Connection.Invoke<IList<SolarPanel>> ("SpaceCenter", "Parts_get_SolarPanels", args);
         }
     }
 
@@ -504,10 +504,10 @@ public class Parts : RemoteObject
     [RpcAttribute ("SpaceCenter", "Parts_get_Wheels")]
     public IList<Wheel> Wheels {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<IList<Wheel>> ("SpaceCenter", "Parts_get_Wheels", _args);
+            return Connection.Invoke<IList<Wheel>> ("SpaceCenter", "Parts_get_Wheels", args);
         }
     }
 }

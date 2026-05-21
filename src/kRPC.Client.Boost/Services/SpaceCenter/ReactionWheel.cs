@@ -23,17 +23,17 @@ public class ReactionWheel : RemoteObject
     [RpcAttribute ("SpaceCenter", "ReactionWheel_get_Active")]
     public bool Active {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "ReactionWheel_get_Active", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "ReactionWheel_get_Active", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "ReactionWheel_set_Active", _args);
+            Connection.Invoke ("SpaceCenter", "ReactionWheel_set_Active", args);
         }
     }
 
@@ -46,10 +46,10 @@ public class ReactionWheel : RemoteObject
     [RpcAttribute ("SpaceCenter", "ReactionWheel_get_AvailableTorque")]
     public Tuple<Tuple<double,double,double>,Tuple<double,double,double>> AvailableTorque {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<Tuple<Tuple<double,double,double>,Tuple<double,double,double>>> ("SpaceCenter", "ReactionWheel_get_AvailableTorque", _args);
+            return Connection.Invoke<Tuple<Tuple<double,double,double>,Tuple<double,double,double>>> ("SpaceCenter", "ReactionWheel_get_AvailableTorque", args);
         }
     }
 
@@ -59,10 +59,10 @@ public class ReactionWheel : RemoteObject
     [RpcAttribute ("SpaceCenter", "ReactionWheel_get_Broken")]
     public bool Broken {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "ReactionWheel_get_Broken", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "ReactionWheel_get_Broken", args);
         }
     }
 
@@ -74,10 +74,10 @@ public class ReactionWheel : RemoteObject
     [RpcAttribute ("SpaceCenter", "ReactionWheel_get_MaxTorque")]
     public Tuple<Tuple<double,double,double>,Tuple<double,double,double>> MaxTorque {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<Tuple<Tuple<double,double,double>,Tuple<double,double,double>>> ("SpaceCenter", "ReactionWheel_get_MaxTorque", _args);
+            return Connection.Invoke<Tuple<Tuple<double,double,double>,Tuple<double,double,double>>> ("SpaceCenter", "ReactionWheel_get_MaxTorque", args);
         }
     }
 
@@ -87,10 +87,10 @@ public class ReactionWheel : RemoteObject
     [RpcAttribute ("SpaceCenter", "ReactionWheel_get_Part")]
     public Part Part {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<Part> ("SpaceCenter", "ReactionWheel_get_Part", _args);
+            return Connection.Invoke<Part> ("SpaceCenter", "ReactionWheel_get_Part", args);
         }
     }
 }

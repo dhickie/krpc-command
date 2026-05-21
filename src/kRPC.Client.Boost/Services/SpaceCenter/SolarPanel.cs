@@ -22,10 +22,10 @@ public class SolarPanel : RemoteObject
     [RpcAttribute ("SpaceCenter", "SolarPanel_get_Deployable")]
     public bool Deployable {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "SolarPanel_get_Deployable", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "SolarPanel_get_Deployable", args);
         }
     }
 
@@ -35,17 +35,17 @@ public class SolarPanel : RemoteObject
     [RpcAttribute ("SpaceCenter", "SolarPanel_get_Deployed")]
     public bool Deployed {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "SolarPanel_get_Deployed", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "SolarPanel_get_Deployed", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "SolarPanel_set_Deployed", _args);
+            Connection.Invoke ("SpaceCenter", "SolarPanel_set_Deployed", args);
         }
     }
 
@@ -56,10 +56,10 @@ public class SolarPanel : RemoteObject
     [RpcAttribute ("SpaceCenter", "SolarPanel_get_EnergyFlow")]
     public float EnergyFlow {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "SolarPanel_get_EnergyFlow", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "SolarPanel_get_EnergyFlow", args);
         }
     }
 
@@ -69,10 +69,10 @@ public class SolarPanel : RemoteObject
     [RpcAttribute ("SpaceCenter", "SolarPanel_get_Part")]
     public Part Part {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<Part> ("SpaceCenter", "SolarPanel_get_Part", _args);
+            return Connection.Invoke<Part> ("SpaceCenter", "SolarPanel_get_Part", args);
         }
     }
 
@@ -82,10 +82,10 @@ public class SolarPanel : RemoteObject
     [RpcAttribute ("SpaceCenter", "SolarPanel_get_State")]
     public SolarPanelState State {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<SolarPanelState> ("SpaceCenter", "SolarPanel_get_State", _args);
+            return Connection.Invoke<SolarPanelState> ("SpaceCenter", "SolarPanel_get_State", args);
         }
     }
 
@@ -96,10 +96,10 @@ public class SolarPanel : RemoteObject
     [RpcAttribute ("SpaceCenter", "SolarPanel_get_SunExposure")]
     public float SunExposure {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "SolarPanel_get_SunExposure", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "SolarPanel_get_SunExposure", args);
         }
     }
 }

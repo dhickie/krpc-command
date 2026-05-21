@@ -23,11 +23,11 @@ public class ResourceDrain : RemoteObject
     [RpcAttribute ("SpaceCenter", "ResourceDrain_CheckResource")]
     public bool CheckResource (Resource resource)
     {
-        var _args = new object[] {
+        var args = new object[] {
             this,
             resource
         };
-        return Connection.Invoke<bool> ("SpaceCenter", "ResourceDrain_CheckResource", _args);
+        return Connection.Invoke<bool> ("SpaceCenter", "ResourceDrain_CheckResource", args);
     }
 
     /// <summary>
@@ -36,12 +36,12 @@ public class ResourceDrain : RemoteObject
     [RpcAttribute ("SpaceCenter", "ResourceDrain_SetResource")]
     public void SetResource (Resource resource, bool enabled)
     {
-        var _args = new object[] {
+        var args = new object[] {
             this,
             resource,
             enabled
         };
-        Connection.Invoke ("SpaceCenter", "ResourceDrain_SetResource", _args);
+        Connection.Invoke ("SpaceCenter", "ResourceDrain_SetResource", args);
     }
 
     /// <summary>
@@ -50,10 +50,10 @@ public class ResourceDrain : RemoteObject
     [RpcAttribute ("SpaceCenter", "ResourceDrain_Start")]
     public void Start ()
     {
-        var _args = new object[] {
+        var args = new object[] {
             this
         };
-        Connection.Invoke ("SpaceCenter", "ResourceDrain_Start", _args);
+        Connection.Invoke ("SpaceCenter", "ResourceDrain_Start", args);
     }
 
     /// <summary>
@@ -62,10 +62,10 @@ public class ResourceDrain : RemoteObject
     [RpcAttribute ("SpaceCenter", "ResourceDrain_Stop")]
     public void Stop ()
     {
-        var _args = new object[] {
+        var args = new object[] {
             this
         };
-        Connection.Invoke ("SpaceCenter", "ResourceDrain_Stop", _args);
+        Connection.Invoke ("SpaceCenter", "ResourceDrain_Stop", args);
     }
 
     /// <summary>
@@ -74,10 +74,10 @@ public class ResourceDrain : RemoteObject
     [RpcAttribute ("SpaceCenter", "ResourceDrain_get_AvailableResources")]
     public IList<Resource> AvailableResources {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<IList<Resource>> ("SpaceCenter", "ResourceDrain_get_AvailableResources", _args);
+            return Connection.Invoke<IList<Resource>> ("SpaceCenter", "ResourceDrain_get_AvailableResources", args);
         }
     }
 
@@ -87,17 +87,17 @@ public class ResourceDrain : RemoteObject
     [RpcAttribute ("SpaceCenter", "ResourceDrain_get_DrainMode")]
     public DrainMode DrainMode {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<DrainMode> ("SpaceCenter", "ResourceDrain_get_DrainMode", _args);
+            return Connection.Invoke<DrainMode> ("SpaceCenter", "ResourceDrain_get_DrainMode", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "ResourceDrain_set_DrainMode", _args);
+            Connection.Invoke ("SpaceCenter", "ResourceDrain_set_DrainMode", args);
         }
     }
 
@@ -107,10 +107,10 @@ public class ResourceDrain : RemoteObject
     [RpcAttribute ("SpaceCenter", "ResourceDrain_get_MaxRate")]
     public float MaxRate {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "ResourceDrain_get_MaxRate", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "ResourceDrain_get_MaxRate", args);
         }
     }
 
@@ -120,10 +120,10 @@ public class ResourceDrain : RemoteObject
     [RpcAttribute ("SpaceCenter", "ResourceDrain_get_MinRate")]
     public float MinRate {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "ResourceDrain_get_MinRate", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "ResourceDrain_get_MinRate", args);
         }
     }
 
@@ -133,10 +133,10 @@ public class ResourceDrain : RemoteObject
     [RpcAttribute ("SpaceCenter", "ResourceDrain_get_Part")]
     public Part Part {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<Part> ("SpaceCenter", "ResourceDrain_get_Part", _args);
+            return Connection.Invoke<Part> ("SpaceCenter", "ResourceDrain_get_Part", args);
         }
     }
 
@@ -146,17 +146,17 @@ public class ResourceDrain : RemoteObject
     [RpcAttribute ("SpaceCenter", "ResourceDrain_get_Rate")]
     public float Rate {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "ResourceDrain_get_Rate", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "ResourceDrain_get_Rate", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "ResourceDrain_set_Rate", _args);
+            Connection.Invoke ("SpaceCenter", "ResourceDrain_set_Rate", args);
         }
     }
 }

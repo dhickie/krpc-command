@@ -23,10 +23,10 @@ public class Camera : RemoteObject
     [RpcAttribute ("SpaceCenter", "Camera_get_DefaultDistance")]
     public float DefaultDistance {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "Camera_get_DefaultDistance", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "Camera_get_DefaultDistance", args);
         }
     }
 
@@ -37,17 +37,17 @@ public class Camera : RemoteObject
     [RpcAttribute ("SpaceCenter", "Camera_get_Distance")]
     public float Distance {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "Camera_get_Distance", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "Camera_get_Distance", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "Camera_set_Distance", _args);
+            Connection.Invoke ("SpaceCenter", "Camera_set_Distance", args);
         }
     }
 
@@ -59,17 +59,17 @@ public class Camera : RemoteObject
     [RpcAttribute ("SpaceCenter", "Camera_get_FocussedBody")]
     public CelestialBody FocussedBody {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<CelestialBody> ("SpaceCenter", "Camera_get_FocussedBody", _args);
+            return Connection.Invoke<CelestialBody> ("SpaceCenter", "Camera_get_FocussedBody", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "Camera_set_FocussedBody", _args);
+            Connection.Invoke ("SpaceCenter", "Camera_set_FocussedBody", args);
         }
     }
 
@@ -81,17 +81,17 @@ public class Camera : RemoteObject
     [RpcAttribute ("SpaceCenter", "Camera_get_FocussedNode")]
     public Node FocussedNode {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<Node> ("SpaceCenter", "Camera_get_FocussedNode", _args);
+            return Connection.Invoke<Node> ("SpaceCenter", "Camera_get_FocussedNode", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "Camera_set_FocussedNode", _args);
+            Connection.Invoke ("SpaceCenter", "Camera_set_FocussedNode", args);
         }
     }
 
@@ -103,17 +103,17 @@ public class Camera : RemoteObject
     [RpcAttribute ("SpaceCenter", "Camera_get_FocussedVessel")]
     public Vessel FocussedVessel {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<Vessel> ("SpaceCenter", "Camera_get_FocussedVessel", _args);
+            return Connection.Invoke<Vessel> ("SpaceCenter", "Camera_get_FocussedVessel", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "Camera_set_FocussedVessel", _args);
+            Connection.Invoke ("SpaceCenter", "Camera_set_FocussedVessel", args);
         }
     }
 
@@ -123,17 +123,17 @@ public class Camera : RemoteObject
     [RpcAttribute ("SpaceCenter", "Camera_get_Heading")]
     public float Heading {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "Camera_get_Heading", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "Camera_get_Heading", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "Camera_set_Heading", _args);
+            Connection.Invoke ("SpaceCenter", "Camera_set_Heading", args);
         }
     }
 
@@ -143,10 +143,10 @@ public class Camera : RemoteObject
     [RpcAttribute ("SpaceCenter", "Camera_get_MaxDistance")]
     public float MaxDistance {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "Camera_get_MaxDistance", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "Camera_get_MaxDistance", args);
         }
     }
 
@@ -156,10 +156,10 @@ public class Camera : RemoteObject
     [RpcAttribute ("SpaceCenter", "Camera_get_MaxPitch")]
     public float MaxPitch {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "Camera_get_MaxPitch", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "Camera_get_MaxPitch", args);
         }
     }
 
@@ -169,10 +169,10 @@ public class Camera : RemoteObject
     [RpcAttribute ("SpaceCenter", "Camera_get_MinDistance")]
     public float MinDistance {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "Camera_get_MinDistance", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "Camera_get_MinDistance", args);
         }
     }
 
@@ -182,10 +182,10 @@ public class Camera : RemoteObject
     [RpcAttribute ("SpaceCenter", "Camera_get_MinPitch")]
     public float MinPitch {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "Camera_get_MinPitch", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "Camera_get_MinPitch", args);
         }
     }
 
@@ -195,17 +195,17 @@ public class Camera : RemoteObject
     [RpcAttribute ("SpaceCenter", "Camera_get_Mode")]
     public CameraMode Mode {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<CameraMode> ("SpaceCenter", "Camera_get_Mode", _args);
+            return Connection.Invoke<CameraMode> ("SpaceCenter", "Camera_get_Mode", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "Camera_set_Mode", _args);
+            Connection.Invoke ("SpaceCenter", "Camera_set_Mode", args);
         }
     }
 
@@ -215,17 +215,17 @@ public class Camera : RemoteObject
     [RpcAttribute ("SpaceCenter", "Camera_get_Pitch")]
     public float Pitch {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "Camera_get_Pitch", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "Camera_get_Pitch", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "Camera_set_Pitch", _args);
+            Connection.Invoke ("SpaceCenter", "Camera_set_Pitch", args);
         }
     }
 }

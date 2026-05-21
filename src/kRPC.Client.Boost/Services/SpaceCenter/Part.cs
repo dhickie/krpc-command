@@ -31,13 +31,13 @@ public class Part : RemoteObject
     [RpcAttribute ("SpaceCenter", "Part_AddForce")]
     public Force AddForce (Tuple<double,double,double> force, Tuple<double,double,double> position, ReferenceFrame referenceFrame)
     {
-        var _args = new object[] {
+        var args = new object[] {
             this,
             force,
             position,
             referenceFrame
         };
-        return Connection.Invoke<Force> ("SpaceCenter", "Part_AddForce", _args);
+        return Connection.Invoke<Force> ("SpaceCenter", "Part_AddForce", args);
     }
 
     /// <summary>
@@ -55,11 +55,11 @@ public class Part : RemoteObject
     [RpcAttribute ("SpaceCenter", "Part_BoundingBox")]
     public Tuple<Tuple<double,double,double>,Tuple<double,double,double>> BoundingBox (ReferenceFrame referenceFrame)
     {
-        var _args = new object[] {
+        var args = new object[] {
             this,
             referenceFrame
         };
-        return Connection.Invoke<Tuple<Tuple<double,double,double>,Tuple<double,double,double>>> ("SpaceCenter", "Part_BoundingBox", _args);
+        return Connection.Invoke<Tuple<Tuple<double,double,double>,Tuple<double,double,double>>> ("SpaceCenter", "Part_BoundingBox", args);
     }
 
     /// <summary>
@@ -72,11 +72,11 @@ public class Part : RemoteObject
     [RpcAttribute ("SpaceCenter", "Part_CenterOfMass")]
     public Tuple<double,double,double> CenterOfMass (ReferenceFrame referenceFrame)
     {
-        var _args = new object[] {
+        var args = new object[] {
             this,
             referenceFrame
         };
-        return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Part_CenterOfMass", _args);
+        return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Part_CenterOfMass", args);
     }
 
     /// <summary>
@@ -88,11 +88,11 @@ public class Part : RemoteObject
     [RpcAttribute ("SpaceCenter", "Part_Direction")]
     public Tuple<double,double,double> Direction (ReferenceFrame referenceFrame)
     {
-        var _args = new object[] {
+        var args = new object[] {
             this,
             referenceFrame
         };
-        return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Part_Direction", _args);
+        return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Part_Direction", args);
     }
 
     /// <summary>
@@ -107,13 +107,13 @@ public class Part : RemoteObject
     [RpcAttribute ("SpaceCenter", "Part_InstantaneousForce")]
     public void InstantaneousForce (Tuple<double,double,double> force, Tuple<double,double,double> position, ReferenceFrame referenceFrame)
     {
-        var _args = new object[] {
+        var args = new object[] {
             this,
             force,
             position,
             referenceFrame
         };
-        Connection.Invoke ("SpaceCenter", "Part_InstantaneousForce", _args);
+        Connection.Invoke ("SpaceCenter", "Part_InstantaneousForce", args);
     }
 
     /// <summary>
@@ -130,11 +130,11 @@ public class Part : RemoteObject
     [RpcAttribute ("SpaceCenter", "Part_Position")]
     public Tuple<double,double,double> Position (ReferenceFrame referenceFrame)
     {
-        var _args = new object[] {
+        var args = new object[] {
             this,
             referenceFrame
         };
-        return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Part_Position", _args);
+        return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Part_Position", args);
     }
 
     /// <summary>
@@ -146,11 +146,11 @@ public class Part : RemoteObject
     [RpcAttribute ("SpaceCenter", "Part_Rotation")]
     public Tuple<double,double,double,double> Rotation (ReferenceFrame referenceFrame)
     {
-        var _args = new object[] {
+        var args = new object[] {
             this,
             referenceFrame
         };
-        return Connection.Invoke<Tuple<double,double,double,double>> ("SpaceCenter", "Part_Rotation", _args);
+        return Connection.Invoke<Tuple<double,double,double,double>> ("SpaceCenter", "Part_Rotation", args);
     }
 
     /// <summary>
@@ -163,11 +163,11 @@ public class Part : RemoteObject
     [RpcAttribute ("SpaceCenter", "Part_Velocity")]
     public Tuple<double,double,double> Velocity (ReferenceFrame referenceFrame)
     {
-        var _args = new object[] {
+        var args = new object[] {
             this,
             referenceFrame
         };
-        return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Part_Velocity", _args);
+        return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Part_Velocity", args);
     }
 
     /// <summary>
@@ -180,10 +180,10 @@ public class Part : RemoteObject
     [RpcAttribute ("SpaceCenter", "Part_get_Antenna")]
     public Antenna Antenna {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<Antenna> ("SpaceCenter", "Part_get_Antenna", _args);
+            return Connection.Invoke<Antenna> ("SpaceCenter", "Part_get_Antenna", args);
         }
     }
 
@@ -193,10 +193,10 @@ public class Part : RemoteObject
     [RpcAttribute ("SpaceCenter", "Part_get_AutoStrutMode")]
     public AutoStrutMode AutoStrutMode {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<AutoStrutMode> ("SpaceCenter", "Part_get_AutoStrutMode", _args);
+            return Connection.Invoke<AutoStrutMode> ("SpaceCenter", "Part_get_AutoStrutMode", args);
         }
     }
 
@@ -206,10 +206,10 @@ public class Part : RemoteObject
     [RpcAttribute ("SpaceCenter", "Part_get_AvailableSeats")]
     public uint AvailableSeats {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<uint> ("SpaceCenter", "Part_get_AvailableSeats", _args);
+            return Connection.Invoke<uint> ("SpaceCenter", "Part_get_AvailableSeats", args);
         }
     }
 
@@ -220,10 +220,10 @@ public class Part : RemoteObject
     [RpcAttribute ("SpaceCenter", "Part_get_AxiallyAttached")]
     public bool AxiallyAttached {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "Part_get_AxiallyAttached", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "Part_get_AxiallyAttached", args);
         }
     }
 
@@ -233,10 +233,10 @@ public class Part : RemoteObject
     [RpcAttribute ("SpaceCenter", "Part_get_CargoBay")]
     public CargoBay CargoBay {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<CargoBay> ("SpaceCenter", "Part_get_CargoBay", _args);
+            return Connection.Invoke<CargoBay> ("SpaceCenter", "Part_get_CargoBay", args);
         }
     }
 
@@ -254,10 +254,10 @@ public class Part : RemoteObject
     [RpcAttribute ("SpaceCenter", "Part_get_CenterOfMassReferenceFrame")]
     public ReferenceFrame CenterOfMassReferenceFrame {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<ReferenceFrame> ("SpaceCenter", "Part_get_CenterOfMassReferenceFrame", _args);
+            return Connection.Invoke<ReferenceFrame> ("SpaceCenter", "Part_get_CenterOfMassReferenceFrame", args);
         }
     }
 
@@ -269,10 +269,10 @@ public class Part : RemoteObject
     [RpcAttribute ("SpaceCenter", "Part_get_Children")]
     public IList<Part> Children {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<IList<Part>> ("SpaceCenter", "Part_get_Children", _args);
+            return Connection.Invoke<IList<Part>> ("SpaceCenter", "Part_get_Children", args);
         }
     }
 
@@ -283,10 +283,10 @@ public class Part : RemoteObject
     [RpcAttribute ("SpaceCenter", "Part_get_ControlSurface")]
     public ControlSurface ControlSurface {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<ControlSurface> ("SpaceCenter", "Part_get_ControlSurface", _args);
+            return Connection.Invoke<ControlSurface> ("SpaceCenter", "Part_get_ControlSurface", args);
         }
     }
 
@@ -296,10 +296,10 @@ public class Part : RemoteObject
     [RpcAttribute ("SpaceCenter", "Part_get_Cost")]
     public double Cost {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<double> ("SpaceCenter", "Part_get_Cost", _args);
+            return Connection.Invoke<double> ("SpaceCenter", "Part_get_Cost", args);
         }
     }
 
@@ -309,10 +309,10 @@ public class Part : RemoteObject
     [RpcAttribute ("SpaceCenter", "Part_get_Crossfeed")]
     public bool Crossfeed {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "Part_get_Crossfeed", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "Part_get_Crossfeed", args);
         }
     }
 
@@ -323,10 +323,10 @@ public class Part : RemoteObject
     [RpcAttribute ("SpaceCenter", "Part_get_DecoupleStage")]
     public int DecoupleStage {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<int> ("SpaceCenter", "Part_get_DecoupleStage", _args);
+            return Connection.Invoke<int> ("SpaceCenter", "Part_get_DecoupleStage", args);
         }
     }
 
@@ -336,10 +336,10 @@ public class Part : RemoteObject
     [RpcAttribute ("SpaceCenter", "Part_get_Decoupler")]
     public Decoupler Decoupler {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<Decoupler> ("SpaceCenter", "Part_get_Decoupler", _args);
+            return Connection.Invoke<Decoupler> ("SpaceCenter", "Part_get_Decoupler", args);
         }
     }
 
@@ -349,10 +349,10 @@ public class Part : RemoteObject
     [RpcAttribute ("SpaceCenter", "Part_get_DockingPort")]
     public DockingPort DockingPort {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<DockingPort> ("SpaceCenter", "Part_get_DockingPort", _args);
+            return Connection.Invoke<DockingPort> ("SpaceCenter", "Part_get_DockingPort", args);
         }
     }
 
@@ -363,10 +363,10 @@ public class Part : RemoteObject
     [RpcAttribute ("SpaceCenter", "Part_get_DryMass")]
     public double DryMass {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<double> ("SpaceCenter", "Part_get_DryMass", _args);
+            return Connection.Invoke<double> ("SpaceCenter", "Part_get_DryMass", args);
         }
     }
 
@@ -376,10 +376,10 @@ public class Part : RemoteObject
     [RpcAttribute ("SpaceCenter", "Part_get_DynamicPressure")]
     public float DynamicPressure {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "Part_get_DynamicPressure", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "Part_get_DynamicPressure", args);
         }
     }
 
@@ -389,10 +389,10 @@ public class Part : RemoteObject
     [RpcAttribute ("SpaceCenter", "Part_get_Engine")]
     public Engine Engine {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<Engine> ("SpaceCenter", "Part_get_Engine", _args);
+            return Connection.Invoke<Engine> ("SpaceCenter", "Part_get_Engine", args);
         }
     }
 
@@ -407,10 +407,10 @@ public class Part : RemoteObject
     [RpcAttribute ("SpaceCenter", "Part_get_Experiment")]
     public Experiment Experiment {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<Experiment> ("SpaceCenter", "Part_get_Experiment", _args);
+            return Connection.Invoke<Experiment> ("SpaceCenter", "Part_get_Experiment", args);
         }
     }
 
@@ -420,10 +420,10 @@ public class Part : RemoteObject
     [RpcAttribute ("SpaceCenter", "Part_get_Experiments")]
     public IList<Experiment> Experiments {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<IList<Experiment>> ("SpaceCenter", "Part_get_Experiments", _args);
+            return Connection.Invoke<IList<Experiment>> ("SpaceCenter", "Part_get_Experiments", args);
         }
     }
 
@@ -433,10 +433,10 @@ public class Part : RemoteObject
     [RpcAttribute ("SpaceCenter", "Part_get_Fairing")]
     public Fairing Fairing {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<Fairing> ("SpaceCenter", "Part_get_Fairing", _args);
+            return Connection.Invoke<Fairing> ("SpaceCenter", "Part_get_Fairing", args);
         }
     }
 
@@ -446,17 +446,17 @@ public class Part : RemoteObject
     [RpcAttribute ("SpaceCenter", "Part_get_FlagURL")]
     public string FlagURL {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<string> ("SpaceCenter", "Part_get_FlagURL", _args);
+            return Connection.Invoke<string> ("SpaceCenter", "Part_get_FlagURL", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "Part_set_FlagURL", _args);
+            Connection.Invoke ("SpaceCenter", "Part_set_FlagURL", args);
         }
     }
 
@@ -467,10 +467,10 @@ public class Part : RemoteObject
     [RpcAttribute ("SpaceCenter", "Part_get_FuelLinesFrom")]
     public IList<Part> FuelLinesFrom {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<IList<Part>> ("SpaceCenter", "Part_get_FuelLinesFrom", _args);
+            return Connection.Invoke<IList<Part>> ("SpaceCenter", "Part_get_FuelLinesFrom", args);
         }
     }
 
@@ -481,10 +481,10 @@ public class Part : RemoteObject
     [RpcAttribute ("SpaceCenter", "Part_get_FuelLinesTo")]
     public IList<Part> FuelLinesTo {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<IList<Part>> ("SpaceCenter", "Part_get_FuelLinesTo", _args);
+            return Connection.Invoke<IList<Part>> ("SpaceCenter", "Part_get_FuelLinesTo", args);
         }
     }
 
@@ -493,11 +493,11 @@ public class Part : RemoteObject
     /// </summary>
     public bool Glow {
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "Part_set_Glow", _args);
+            Connection.Invoke ("SpaceCenter", "Part_set_Glow", args);
         }
     }
 
@@ -507,17 +507,17 @@ public class Part : RemoteObject
     [RpcAttribute ("SpaceCenter", "Part_get_HighlightColor")]
     public Tuple<double,double,double> HighlightColor {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Part_get_HighlightColor", _args);
+            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Part_get_HighlightColor", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "Part_set_HighlightColor", _args);
+            Connection.Invoke ("SpaceCenter", "Part_set_HighlightColor", args);
         }
     }
 
@@ -527,17 +527,17 @@ public class Part : RemoteObject
     [RpcAttribute ("SpaceCenter", "Part_get_Highlighted")]
     public bool Highlighted {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "Part_get_Highlighted", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "Part_get_Highlighted", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "Part_set_Highlighted", _args);
+            Connection.Invoke ("SpaceCenter", "Part_set_Highlighted", args);
         }
     }
 
@@ -547,10 +547,10 @@ public class Part : RemoteObject
     [RpcAttribute ("SpaceCenter", "Part_get_ImpactTolerance")]
     public double ImpactTolerance {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<double> ("SpaceCenter", "Part_get_ImpactTolerance", _args);
+            return Connection.Invoke<double> ("SpaceCenter", "Part_get_ImpactTolerance", args);
         }
     }
 
@@ -562,10 +562,10 @@ public class Part : RemoteObject
     [RpcAttribute ("SpaceCenter", "Part_get_InertiaTensor")]
     public IList<double> InertiaTensor {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<IList<double>> ("SpaceCenter", "Part_get_InertiaTensor", _args);
+            return Connection.Invoke<IList<double>> ("SpaceCenter", "Part_get_InertiaTensor", args);
         }
     }
 
@@ -580,10 +580,10 @@ public class Part : RemoteObject
     [RpcAttribute ("SpaceCenter", "Part_get_Intake")]
     public Intake Intake {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<Intake> ("SpaceCenter", "Part_get_Intake", _args);
+            return Connection.Invoke<Intake> ("SpaceCenter", "Part_get_Intake", args);
         }
     }
 
@@ -593,10 +593,10 @@ public class Part : RemoteObject
     [RpcAttribute ("SpaceCenter", "Part_get_IsFuelLine")]
     public bool IsFuelLine {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "Part_get_IsFuelLine", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "Part_get_IsFuelLine", args);
         }
     }
 
@@ -606,10 +606,10 @@ public class Part : RemoteObject
     [RpcAttribute ("SpaceCenter", "Part_get_LaunchClamp")]
     public LaunchClamp LaunchClamp {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<LaunchClamp> ("SpaceCenter", "Part_get_LaunchClamp", _args);
+            return Connection.Invoke<LaunchClamp> ("SpaceCenter", "Part_get_LaunchClamp", args);
         }
     }
 
@@ -619,10 +619,10 @@ public class Part : RemoteObject
     [RpcAttribute ("SpaceCenter", "Part_get_Leg")]
     public Leg Leg {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<Leg> ("SpaceCenter", "Part_get_Leg", _args);
+            return Connection.Invoke<Leg> ("SpaceCenter", "Part_get_Leg", args);
         }
     }
 
@@ -632,10 +632,10 @@ public class Part : RemoteObject
     [RpcAttribute ("SpaceCenter", "Part_get_Light")]
     public Light Light {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<Light> ("SpaceCenter", "Part_get_Light", _args);
+            return Connection.Invoke<Light> ("SpaceCenter", "Part_get_Light", args);
         }
     }
 
@@ -646,10 +646,10 @@ public class Part : RemoteObject
     [RpcAttribute ("SpaceCenter", "Part_get_Mass")]
     public double Mass {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<double> ("SpaceCenter", "Part_get_Mass", _args);
+            return Connection.Invoke<double> ("SpaceCenter", "Part_get_Mass", args);
         }
     }
 
@@ -660,10 +660,10 @@ public class Part : RemoteObject
     [RpcAttribute ("SpaceCenter", "Part_get_Massless")]
     public bool Massless {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "Part_get_Massless", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "Part_get_Massless", args);
         }
     }
 
@@ -673,10 +673,10 @@ public class Part : RemoteObject
     [RpcAttribute ("SpaceCenter", "Part_get_MaxSkinTemperature")]
     public double MaxSkinTemperature {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<double> ("SpaceCenter", "Part_get_MaxSkinTemperature", _args);
+            return Connection.Invoke<double> ("SpaceCenter", "Part_get_MaxSkinTemperature", args);
         }
     }
 
@@ -686,10 +686,10 @@ public class Part : RemoteObject
     [RpcAttribute ("SpaceCenter", "Part_get_MaxTemperature")]
     public double MaxTemperature {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<double> ("SpaceCenter", "Part_get_MaxTemperature", _args);
+            return Connection.Invoke<double> ("SpaceCenter", "Part_get_MaxTemperature", args);
         }
     }
 
@@ -699,10 +699,10 @@ public class Part : RemoteObject
     [RpcAttribute ("SpaceCenter", "Part_get_Modules")]
     public IList<Module> Modules {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<IList<Module>> ("SpaceCenter", "Part_get_Modules", _args);
+            return Connection.Invoke<IList<Module>> ("SpaceCenter", "Part_get_Modules", args);
         }
     }
 
@@ -713,10 +713,10 @@ public class Part : RemoteObject
     [RpcAttribute ("SpaceCenter", "Part_get_MomentOfInertia")]
     public Tuple<double,double,double> MomentOfInertia {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Part_get_MomentOfInertia", _args);
+            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Part_get_MomentOfInertia", args);
         }
     }
 
@@ -728,10 +728,10 @@ public class Part : RemoteObject
     [RpcAttribute ("SpaceCenter", "Part_get_Name")]
     public string Name {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<string> ("SpaceCenter", "Part_get_Name", _args);
+            return Connection.Invoke<string> ("SpaceCenter", "Part_get_Name", args);
         }
     }
 
@@ -741,10 +741,10 @@ public class Part : RemoteObject
     [RpcAttribute ("SpaceCenter", "Part_get_Parachute")]
     public Parachute Parachute {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<Parachute> ("SpaceCenter", "Part_get_Parachute", _args);
+            return Connection.Invoke<Parachute> ("SpaceCenter", "Part_get_Parachute", args);
         }
     }
 
@@ -756,10 +756,10 @@ public class Part : RemoteObject
     [RpcAttribute ("SpaceCenter", "Part_get_Parent")]
     public Part Parent {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<Part> ("SpaceCenter", "Part_get_Parent", _args);
+            return Connection.Invoke<Part> ("SpaceCenter", "Part_get_Parent", args);
         }
     }
 
@@ -769,10 +769,10 @@ public class Part : RemoteObject
     [RpcAttribute ("SpaceCenter", "Part_get_RCS")]
     public RCS RCS {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<RCS> ("SpaceCenter", "Part_get_RCS", _args);
+            return Connection.Invoke<RCS> ("SpaceCenter", "Part_get_RCS", args);
         }
     }
 
@@ -783,10 +783,10 @@ public class Part : RemoteObject
     [RpcAttribute ("SpaceCenter", "Part_get_RadiallyAttached")]
     public bool RadiallyAttached {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "Part_get_RadiallyAttached", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "Part_get_RadiallyAttached", args);
         }
     }
 
@@ -796,10 +796,10 @@ public class Part : RemoteObject
     [RpcAttribute ("SpaceCenter", "Part_get_Radiator")]
     public Radiator Radiator {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<Radiator> ("SpaceCenter", "Part_get_Radiator", _args);
+            return Connection.Invoke<Radiator> ("SpaceCenter", "Part_get_Radiator", args);
         }
     }
 
@@ -809,10 +809,10 @@ public class Part : RemoteObject
     [RpcAttribute ("SpaceCenter", "Part_get_ReactionWheel")]
     public ReactionWheel ReactionWheel {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<ReactionWheel> ("SpaceCenter", "Part_get_ReactionWheel", _args);
+            return Connection.Invoke<ReactionWheel> ("SpaceCenter", "Part_get_ReactionWheel", args);
         }
     }
 
@@ -830,10 +830,10 @@ public class Part : RemoteObject
     [RpcAttribute ("SpaceCenter", "Part_get_ReferenceFrame")]
     public ReferenceFrame ReferenceFrame {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<ReferenceFrame> ("SpaceCenter", "Part_get_ReferenceFrame", _args);
+            return Connection.Invoke<ReferenceFrame> ("SpaceCenter", "Part_get_ReferenceFrame", args);
         }
     }
 
@@ -844,10 +844,10 @@ public class Part : RemoteObject
     [RpcAttribute ("SpaceCenter", "Part_get_ResourceConverter")]
     public ResourceConverter ResourceConverter {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<ResourceConverter> ("SpaceCenter", "Part_get_ResourceConverter", _args);
+            return Connection.Invoke<ResourceConverter> ("SpaceCenter", "Part_get_ResourceConverter", args);
         }
     }
 
@@ -857,10 +857,10 @@ public class Part : RemoteObject
     [RpcAttribute ("SpaceCenter", "Part_get_ResourceDrain")]
     public ResourceDrain ResourceDrain {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<ResourceDrain> ("SpaceCenter", "Part_get_ResourceDrain", _args);
+            return Connection.Invoke<ResourceDrain> ("SpaceCenter", "Part_get_ResourceDrain", args);
         }
     }
 
@@ -871,10 +871,10 @@ public class Part : RemoteObject
     [RpcAttribute ("SpaceCenter", "Part_get_ResourceHarvester")]
     public ResourceHarvester ResourceHarvester {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<ResourceHarvester> ("SpaceCenter", "Part_get_ResourceHarvester", _args);
+            return Connection.Invoke<ResourceHarvester> ("SpaceCenter", "Part_get_ResourceHarvester", args);
         }
     }
 
@@ -884,10 +884,10 @@ public class Part : RemoteObject
     [RpcAttribute ("SpaceCenter", "Part_get_Resources")]
     public Resources Resources {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<Resources> ("SpaceCenter", "Part_get_Resources", _args);
+            return Connection.Invoke<Resources> ("SpaceCenter", "Part_get_Resources", args);
         }
     }
 
@@ -898,10 +898,10 @@ public class Part : RemoteObject
     [RpcAttribute ("SpaceCenter", "Part_get_RoboticController")]
     public RoboticController RoboticController {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<RoboticController> ("SpaceCenter", "Part_get_RoboticController", _args);
+            return Connection.Invoke<RoboticController> ("SpaceCenter", "Part_get_RoboticController", args);
         }
     }
 
@@ -911,10 +911,10 @@ public class Part : RemoteObject
     [RpcAttribute ("SpaceCenter", "Part_get_RoboticHinge")]
     public RoboticHinge RoboticHinge {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<RoboticHinge> ("SpaceCenter", "Part_get_RoboticHinge", _args);
+            return Connection.Invoke<RoboticHinge> ("SpaceCenter", "Part_get_RoboticHinge", args);
         }
     }
 
@@ -924,10 +924,10 @@ public class Part : RemoteObject
     [RpcAttribute ("SpaceCenter", "Part_get_RoboticPiston")]
     public RoboticPiston RoboticPiston {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<RoboticPiston> ("SpaceCenter", "Part_get_RoboticPiston", _args);
+            return Connection.Invoke<RoboticPiston> ("SpaceCenter", "Part_get_RoboticPiston", args);
         }
     }
 
@@ -937,10 +937,10 @@ public class Part : RemoteObject
     [RpcAttribute ("SpaceCenter", "Part_get_RoboticRotation")]
     public RoboticRotation RoboticRotation {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<RoboticRotation> ("SpaceCenter", "Part_get_RoboticRotation", _args);
+            return Connection.Invoke<RoboticRotation> ("SpaceCenter", "Part_get_RoboticRotation", args);
         }
     }
 
@@ -950,10 +950,10 @@ public class Part : RemoteObject
     [RpcAttribute ("SpaceCenter", "Part_get_RoboticRotor")]
     public RoboticRotor RoboticRotor {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<RoboticRotor> ("SpaceCenter", "Part_get_RoboticRotor", _args);
+            return Connection.Invoke<RoboticRotor> ("SpaceCenter", "Part_get_RoboticRotor", args);
         }
     }
 
@@ -963,10 +963,10 @@ public class Part : RemoteObject
     [RpcAttribute ("SpaceCenter", "Part_get_Sensor")]
     public Sensor Sensor {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<Sensor> ("SpaceCenter", "Part_get_Sensor", _args);
+            return Connection.Invoke<Sensor> ("SpaceCenter", "Part_get_Sensor", args);
         }
     }
 
@@ -976,10 +976,10 @@ public class Part : RemoteObject
     [RpcAttribute ("SpaceCenter", "Part_get_Shielded")]
     public bool Shielded {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "Part_get_Shielded", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "Part_get_Shielded", args);
         }
     }
 
@@ -989,10 +989,10 @@ public class Part : RemoteObject
     [RpcAttribute ("SpaceCenter", "Part_get_SkinTemperature")]
     public double SkinTemperature {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<double> ("SpaceCenter", "Part_get_SkinTemperature", _args);
+            return Connection.Invoke<double> ("SpaceCenter", "Part_get_SkinTemperature", args);
         }
     }
 
@@ -1002,10 +1002,10 @@ public class Part : RemoteObject
     [RpcAttribute ("SpaceCenter", "Part_get_SolarPanel")]
     public SolarPanel SolarPanel {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<SolarPanel> ("SpaceCenter", "Part_get_SolarPanel", _args);
+            return Connection.Invoke<SolarPanel> ("SpaceCenter", "Part_get_SolarPanel", args);
         }
     }
 
@@ -1016,10 +1016,10 @@ public class Part : RemoteObject
     [RpcAttribute ("SpaceCenter", "Part_get_Stage")]
     public int Stage {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<int> ("SpaceCenter", "Part_get_Stage", _args);
+            return Connection.Invoke<int> ("SpaceCenter", "Part_get_Stage", args);
         }
     }
 
@@ -1035,17 +1035,17 @@ public class Part : RemoteObject
     [RpcAttribute ("SpaceCenter", "Part_get_Tag")]
     public string Tag {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<string> ("SpaceCenter", "Part_get_Tag", _args);
+            return Connection.Invoke<string> ("SpaceCenter", "Part_get_Tag", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "Part_set_Tag", _args);
+            Connection.Invoke ("SpaceCenter", "Part_set_Tag", args);
         }
     }
 
@@ -1055,10 +1055,10 @@ public class Part : RemoteObject
     [RpcAttribute ("SpaceCenter", "Part_get_Temperature")]
     public double Temperature {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<double> ("SpaceCenter", "Part_get_Temperature", _args);
+            return Connection.Invoke<double> ("SpaceCenter", "Part_get_Temperature", args);
         }
     }
 
@@ -1071,10 +1071,10 @@ public class Part : RemoteObject
     [RpcAttribute ("SpaceCenter", "Part_get_ThermalConductionFlux")]
     public float ThermalConductionFlux {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "Part_get_ThermalConductionFlux", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "Part_get_ThermalConductionFlux", args);
         }
     }
 
@@ -1087,10 +1087,10 @@ public class Part : RemoteObject
     [RpcAttribute ("SpaceCenter", "Part_get_ThermalConvectionFlux")]
     public float ThermalConvectionFlux {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "Part_get_ThermalConvectionFlux", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "Part_get_ThermalConvectionFlux", args);
         }
     }
 
@@ -1104,10 +1104,10 @@ public class Part : RemoteObject
     [RpcAttribute ("SpaceCenter", "Part_get_ThermalInternalFlux")]
     public float ThermalInternalFlux {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "Part_get_ThermalInternalFlux", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "Part_get_ThermalInternalFlux", args);
         }
     }
 
@@ -1118,10 +1118,10 @@ public class Part : RemoteObject
     [RpcAttribute ("SpaceCenter", "Part_get_ThermalMass")]
     public float ThermalMass {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "Part_get_ThermalMass", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "Part_get_ThermalMass", args);
         }
     }
 
@@ -1134,10 +1134,10 @@ public class Part : RemoteObject
     [RpcAttribute ("SpaceCenter", "Part_get_ThermalRadiationFlux")]
     public float ThermalRadiationFlux {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "Part_get_ThermalRadiationFlux", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "Part_get_ThermalRadiationFlux", args);
         }
     }
 
@@ -1148,10 +1148,10 @@ public class Part : RemoteObject
     [RpcAttribute ("SpaceCenter", "Part_get_ThermalResourceMass")]
     public float ThermalResourceMass {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "Part_get_ThermalResourceMass", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "Part_get_ThermalResourceMass", args);
         }
     }
 
@@ -1162,10 +1162,10 @@ public class Part : RemoteObject
     [RpcAttribute ("SpaceCenter", "Part_get_ThermalSkinMass")]
     public float ThermalSkinMass {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "Part_get_ThermalSkinMass", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "Part_get_ThermalSkinMass", args);
         }
     }
 
@@ -1178,10 +1178,10 @@ public class Part : RemoteObject
     [RpcAttribute ("SpaceCenter", "Part_get_ThermalSkinToInternalFlux")]
     public float ThermalSkinToInternalFlux {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "Part_get_ThermalSkinToInternalFlux", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "Part_get_ThermalSkinToInternalFlux", args);
         }
     }
 
@@ -1191,10 +1191,10 @@ public class Part : RemoteObject
     [RpcAttribute ("SpaceCenter", "Part_get_Title")]
     public string Title {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<string> ("SpaceCenter", "Part_get_Title", _args);
+            return Connection.Invoke<string> ("SpaceCenter", "Part_get_Title", args);
         }
     }
 
@@ -1204,10 +1204,10 @@ public class Part : RemoteObject
     [RpcAttribute ("SpaceCenter", "Part_get_Vessel")]
     public Vessel Vessel {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<Vessel> ("SpaceCenter", "Part_get_Vessel", _args);
+            return Connection.Invoke<Vessel> ("SpaceCenter", "Part_get_Vessel", args);
         }
     }
 
@@ -1217,10 +1217,10 @@ public class Part : RemoteObject
     [RpcAttribute ("SpaceCenter", "Part_get_Wheel")]
     public Wheel Wheel {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<Wheel> ("SpaceCenter", "Part_get_Wheel", _args);
+            return Connection.Invoke<Wheel> ("SpaceCenter", "Part_get_Wheel", args);
         }
     }
 }

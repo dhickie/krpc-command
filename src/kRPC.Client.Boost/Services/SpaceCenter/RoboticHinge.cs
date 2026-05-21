@@ -22,10 +22,10 @@ public class RoboticHinge : RemoteObject
     [RpcAttribute ("SpaceCenter", "RoboticHinge_MoveHome")]
     public void MoveHome ()
     {
-        var _args = new object[] {
+        var args = new object[] {
             this
         };
-        Connection.Invoke ("SpaceCenter", "RoboticHinge_MoveHome", _args);
+        Connection.Invoke ("SpaceCenter", "RoboticHinge_MoveHome", args);
     }
 
     /// <summary>
@@ -34,10 +34,10 @@ public class RoboticHinge : RemoteObject
     [RpcAttribute ("SpaceCenter", "RoboticHinge_get_CurrentAngle")]
     public float CurrentAngle {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "RoboticHinge_get_CurrentAngle", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "RoboticHinge_get_CurrentAngle", args);
         }
     }
 
@@ -47,17 +47,17 @@ public class RoboticHinge : RemoteObject
     [RpcAttribute ("SpaceCenter", "RoboticHinge_get_Damping")]
     public float Damping {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "RoboticHinge_get_Damping", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "RoboticHinge_get_Damping", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "RoboticHinge_set_Damping", _args);
+            Connection.Invoke ("SpaceCenter", "RoboticHinge_set_Damping", args);
         }
     }
 
@@ -67,17 +67,17 @@ public class RoboticHinge : RemoteObject
     [RpcAttribute ("SpaceCenter", "RoboticHinge_get_Locked")]
     public bool Locked {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "RoboticHinge_get_Locked", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "RoboticHinge_get_Locked", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "RoboticHinge_set_Locked", _args);
+            Connection.Invoke ("SpaceCenter", "RoboticHinge_set_Locked", args);
         }
     }
 
@@ -87,17 +87,17 @@ public class RoboticHinge : RemoteObject
     [RpcAttribute ("SpaceCenter", "RoboticHinge_get_MotorEngaged")]
     public bool MotorEngaged {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "RoboticHinge_get_MotorEngaged", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "RoboticHinge_get_MotorEngaged", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "RoboticHinge_set_MotorEngaged", _args);
+            Connection.Invoke ("SpaceCenter", "RoboticHinge_set_MotorEngaged", args);
         }
     }
 
@@ -107,10 +107,10 @@ public class RoboticHinge : RemoteObject
     [RpcAttribute ("SpaceCenter", "RoboticHinge_get_Part")]
     public Part Part {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<Part> ("SpaceCenter", "RoboticHinge_get_Part", _args);
+            return Connection.Invoke<Part> ("SpaceCenter", "RoboticHinge_get_Part", args);
         }
     }
 
@@ -120,17 +120,17 @@ public class RoboticHinge : RemoteObject
     [RpcAttribute ("SpaceCenter", "RoboticHinge_get_Rate")]
     public float Rate {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "RoboticHinge_get_Rate", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "RoboticHinge_get_Rate", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "RoboticHinge_set_Rate", _args);
+            Connection.Invoke ("SpaceCenter", "RoboticHinge_set_Rate", args);
         }
     }
 
@@ -140,17 +140,17 @@ public class RoboticHinge : RemoteObject
     [RpcAttribute ("SpaceCenter", "RoboticHinge_get_TargetAngle")]
     public float TargetAngle {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "RoboticHinge_get_TargetAngle", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "RoboticHinge_get_TargetAngle", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "RoboticHinge_set_TargetAngle", _args);
+            Connection.Invoke ("SpaceCenter", "RoboticHinge_set_TargetAngle", args);
         }
     }
 }

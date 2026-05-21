@@ -22,10 +22,10 @@ public class ScienceData : RemoteObject
     [RpcAttribute ("SpaceCenter", "ScienceData_get_DataAmount")]
     public float DataAmount {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "ScienceData_get_DataAmount", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "ScienceData_get_DataAmount", args);
         }
     }
 
@@ -35,10 +35,10 @@ public class ScienceData : RemoteObject
     [RpcAttribute ("SpaceCenter", "ScienceData_get_ScienceValue")]
     public float ScienceValue {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "ScienceData_get_ScienceValue", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "ScienceData_get_ScienceValue", args);
         }
     }
 
@@ -48,10 +48,10 @@ public class ScienceData : RemoteObject
     [RpcAttribute ("SpaceCenter", "ScienceData_get_TransmitValue")]
     public float TransmitValue {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "ScienceData_get_TransmitValue", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "ScienceData_get_TransmitValue", args);
         }
     }
 }

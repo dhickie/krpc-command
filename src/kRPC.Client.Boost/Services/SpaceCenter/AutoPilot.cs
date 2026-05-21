@@ -29,10 +29,10 @@ public class AutoPilot : RemoteObject
     [RpcAttribute ("SpaceCenter", "AutoPilot_Disengage")]
     public void Disengage ()
     {
-        var _args = new object[] {
+        var args = new object[] {
             this
         };
-        Connection.Invoke ("SpaceCenter", "AutoPilot_Disengage", _args);
+        Connection.Invoke ("SpaceCenter", "AutoPilot_Disengage", args);
     }
 
     /// <summary>
@@ -41,10 +41,10 @@ public class AutoPilot : RemoteObject
     [RpcAttribute ("SpaceCenter", "AutoPilot_Engage")]
     public void Engage ()
     {
-        var _args = new object[] {
+        var args = new object[] {
             this
         };
-        Connection.Invoke ("SpaceCenter", "AutoPilot_Engage", _args);
+        Connection.Invoke ("SpaceCenter", "AutoPilot_Engage", args);
     }
 
     /// <summary>
@@ -55,12 +55,12 @@ public class AutoPilot : RemoteObject
     [RpcAttribute ("SpaceCenter", "AutoPilot_TargetPitchAndHeading")]
     public void TargetPitchAndHeading (float pitch, float heading)
     {
-        var _args = new object[] {
+        var args = new object[] {
             this,
             pitch,
             heading
         };
-        Connection.Invoke ("SpaceCenter", "AutoPilot_TargetPitchAndHeading", _args);
+        Connection.Invoke ("SpaceCenter", "AutoPilot_TargetPitchAndHeading", args);
     }
 
     /// <summary>
@@ -70,10 +70,10 @@ public class AutoPilot : RemoteObject
     [RpcAttribute ("SpaceCenter", "AutoPilot_Wait")]
     public void Wait ()
     {
-        var _args = new object[] {
+        var args = new object[] {
             this
         };
-        Connection.Invoke ("SpaceCenter", "AutoPilot_Wait", _args);
+        Connection.Invoke ("SpaceCenter", "AutoPilot_Wait", args);
     }
 
     /// <summary>
@@ -86,17 +86,17 @@ public class AutoPilot : RemoteObject
     [RpcAttribute ("SpaceCenter", "AutoPilot_get_AttenuationAngle")]
     public Tuple<double,double,double> AttenuationAngle {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "AutoPilot_get_AttenuationAngle", _args);
+            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "AutoPilot_get_AttenuationAngle", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "AutoPilot_set_AttenuationAngle", _args);
+            Connection.Invoke ("SpaceCenter", "AutoPilot_set_AttenuationAngle", args);
         }
     }
 
@@ -108,17 +108,17 @@ public class AutoPilot : RemoteObject
     [RpcAttribute ("SpaceCenter", "AutoPilot_get_AutoTune")]
     public bool AutoTune {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "AutoPilot_get_AutoTune", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "AutoPilot_get_AutoTune", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "AutoPilot_set_AutoTune", _args);
+            Connection.Invoke ("SpaceCenter", "AutoPilot_set_AutoTune", args);
         }
     }
 
@@ -131,17 +131,17 @@ public class AutoPilot : RemoteObject
     [RpcAttribute ("SpaceCenter", "AutoPilot_get_DecelerationTime")]
     public Tuple<double,double,double> DecelerationTime {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "AutoPilot_get_DecelerationTime", _args);
+            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "AutoPilot_get_DecelerationTime", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "AutoPilot_set_DecelerationTime", _args);
+            Connection.Invoke ("SpaceCenter", "AutoPilot_set_DecelerationTime", args);
         }
     }
 
@@ -153,10 +153,10 @@ public class AutoPilot : RemoteObject
     [RpcAttribute ("SpaceCenter", "AutoPilot_get_Error")]
     public float Error {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "AutoPilot_get_Error", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "AutoPilot_get_Error", args);
         }
     }
 
@@ -167,10 +167,10 @@ public class AutoPilot : RemoteObject
     [RpcAttribute ("SpaceCenter", "AutoPilot_get_HeadingError")]
     public float HeadingError {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "AutoPilot_get_HeadingError", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "AutoPilot_get_HeadingError", args);
         }
     }
 
@@ -182,17 +182,17 @@ public class AutoPilot : RemoteObject
     [RpcAttribute ("SpaceCenter", "AutoPilot_get_Overshoot")]
     public Tuple<double,double,double> Overshoot {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "AutoPilot_get_Overshoot", _args);
+            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "AutoPilot_get_Overshoot", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "AutoPilot_set_Overshoot", _args);
+            Connection.Invoke ("SpaceCenter", "AutoPilot_set_Overshoot", args);
         }
     }
 
@@ -203,10 +203,10 @@ public class AutoPilot : RemoteObject
     [RpcAttribute ("SpaceCenter", "AutoPilot_get_PitchError")]
     public float PitchError {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "AutoPilot_get_PitchError", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "AutoPilot_get_PitchError", args);
         }
     }
 
@@ -220,17 +220,17 @@ public class AutoPilot : RemoteObject
     [RpcAttribute ("SpaceCenter", "AutoPilot_get_PitchPIDGains")]
     public Tuple<double,double,double> PitchPIDGains {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "AutoPilot_get_PitchPIDGains", _args);
+            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "AutoPilot_get_PitchPIDGains", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "AutoPilot_set_PitchPIDGains", _args);
+            Connection.Invoke ("SpaceCenter", "AutoPilot_set_PitchPIDGains", args);
         }
     }
 
@@ -245,17 +245,17 @@ public class AutoPilot : RemoteObject
     [RpcAttribute ("SpaceCenter", "AutoPilot_get_ReferenceFrame")]
     public ReferenceFrame ReferenceFrame {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<ReferenceFrame> ("SpaceCenter", "AutoPilot_get_ReferenceFrame", _args);
+            return Connection.Invoke<ReferenceFrame> ("SpaceCenter", "AutoPilot_get_ReferenceFrame", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "AutoPilot_set_ReferenceFrame", _args);
+            Connection.Invoke ("SpaceCenter", "AutoPilot_set_ReferenceFrame", args);
         }
     }
 
@@ -266,10 +266,10 @@ public class AutoPilot : RemoteObject
     [RpcAttribute ("SpaceCenter", "AutoPilot_get_RollError")]
     public float RollError {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "AutoPilot_get_RollError", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "AutoPilot_get_RollError", args);
         }
     }
 
@@ -283,17 +283,17 @@ public class AutoPilot : RemoteObject
     [RpcAttribute ("SpaceCenter", "AutoPilot_get_RollPIDGains")]
     public Tuple<double,double,double> RollPIDGains {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "AutoPilot_get_RollPIDGains", _args);
+            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "AutoPilot_get_RollPIDGains", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "AutoPilot_set_RollPIDGains", _args);
+            Connection.Invoke ("SpaceCenter", "AutoPilot_set_RollPIDGains", args);
         }
     }
 
@@ -304,17 +304,17 @@ public class AutoPilot : RemoteObject
     [RpcAttribute ("SpaceCenter", "AutoPilot_get_RollThreshold")]
     public double RollThreshold {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<double> ("SpaceCenter", "AutoPilot_get_RollThreshold", _args);
+            return Connection.Invoke<double> ("SpaceCenter", "AutoPilot_get_RollThreshold", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "AutoPilot_set_RollThreshold", _args);
+            Connection.Invoke ("SpaceCenter", "AutoPilot_set_RollThreshold", args);
         }
     }
 
@@ -325,17 +325,17 @@ public class AutoPilot : RemoteObject
     [RpcAttribute ("SpaceCenter", "AutoPilot_get_SAS")]
     public bool SAS {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "AutoPilot_get_SAS", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "AutoPilot_get_SAS", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "AutoPilot_set_SAS", _args);
+            Connection.Invoke ("SpaceCenter", "AutoPilot_set_SAS", args);
         }
     }
 
@@ -348,17 +348,17 @@ public class AutoPilot : RemoteObject
     [RpcAttribute ("SpaceCenter", "AutoPilot_get_SASMode")]
     public SASMode SASMode {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<SASMode> ("SpaceCenter", "AutoPilot_get_SASMode", _args);
+            return Connection.Invoke<SASMode> ("SpaceCenter", "AutoPilot_get_SASMode", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "AutoPilot_set_SASMode", _args);
+            Connection.Invoke ("SpaceCenter", "AutoPilot_set_SASMode", args);
         }
     }
 
@@ -371,17 +371,17 @@ public class AutoPilot : RemoteObject
     [RpcAttribute ("SpaceCenter", "AutoPilot_get_StoppingTime")]
     public Tuple<double,double,double> StoppingTime {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "AutoPilot_get_StoppingTime", _args);
+            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "AutoPilot_get_StoppingTime", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "AutoPilot_set_StoppingTime", _args);
+            Connection.Invoke ("SpaceCenter", "AutoPilot_set_StoppingTime", args);
         }
     }
 
@@ -392,17 +392,17 @@ public class AutoPilot : RemoteObject
     [RpcAttribute ("SpaceCenter", "AutoPilot_get_TargetDirection")]
     public Tuple<double,double,double> TargetDirection {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "AutoPilot_get_TargetDirection", _args);
+            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "AutoPilot_get_TargetDirection", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "AutoPilot_set_TargetDirection", _args);
+            Connection.Invoke ("SpaceCenter", "AutoPilot_set_TargetDirection", args);
         }
     }
 
@@ -412,17 +412,17 @@ public class AutoPilot : RemoteObject
     [RpcAttribute ("SpaceCenter", "AutoPilot_get_TargetHeading")]
     public float TargetHeading {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "AutoPilot_get_TargetHeading", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "AutoPilot_get_TargetHeading", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "AutoPilot_set_TargetHeading", _args);
+            Connection.Invoke ("SpaceCenter", "AutoPilot_set_TargetHeading", args);
         }
     }
 
@@ -432,17 +432,17 @@ public class AutoPilot : RemoteObject
     [RpcAttribute ("SpaceCenter", "AutoPilot_get_TargetPitch")]
     public float TargetPitch {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "AutoPilot_get_TargetPitch", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "AutoPilot_get_TargetPitch", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "AutoPilot_set_TargetPitch", _args);
+            Connection.Invoke ("SpaceCenter", "AutoPilot_set_TargetPitch", args);
         }
     }
 
@@ -452,17 +452,17 @@ public class AutoPilot : RemoteObject
     [RpcAttribute ("SpaceCenter", "AutoPilot_get_TargetRoll")]
     public float TargetRoll {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "AutoPilot_get_TargetRoll", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "AutoPilot_get_TargetRoll", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "AutoPilot_set_TargetRoll", _args);
+            Connection.Invoke ("SpaceCenter", "AutoPilot_set_TargetRoll", args);
         }
     }
 
@@ -474,17 +474,17 @@ public class AutoPilot : RemoteObject
     [RpcAttribute ("SpaceCenter", "AutoPilot_get_TimeToPeak")]
     public Tuple<double,double,double> TimeToPeak {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "AutoPilot_get_TimeToPeak", _args);
+            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "AutoPilot_get_TimeToPeak", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "AutoPilot_set_TimeToPeak", _args);
+            Connection.Invoke ("SpaceCenter", "AutoPilot_set_TimeToPeak", args);
         }
     }
 
@@ -498,17 +498,17 @@ public class AutoPilot : RemoteObject
     [RpcAttribute ("SpaceCenter", "AutoPilot_get_YawPIDGains")]
     public Tuple<double,double,double> YawPIDGains {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "AutoPilot_get_YawPIDGains", _args);
+            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "AutoPilot_get_YawPIDGains", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "AutoPilot_set_YawPIDGains", _args);
+            Connection.Invoke ("SpaceCenter", "AutoPilot_set_YawPIDGains", args);
         }
     }
 }

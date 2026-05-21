@@ -22,10 +22,10 @@ public class CommLink : RemoteObject
     [RpcAttribute ("SpaceCenter", "CommLink_get_End")]
     public CommNode End {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<CommNode> ("SpaceCenter", "CommLink_get_End", _args);
+            return Connection.Invoke<CommNode> ("SpaceCenter", "CommLink_get_End", args);
         }
     }
 
@@ -35,10 +35,10 @@ public class CommLink : RemoteObject
     [RpcAttribute ("SpaceCenter", "CommLink_get_SignalStrength")]
     public double SignalStrength {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<double> ("SpaceCenter", "CommLink_get_SignalStrength", _args);
+            return Connection.Invoke<double> ("SpaceCenter", "CommLink_get_SignalStrength", args);
         }
     }
 
@@ -48,10 +48,10 @@ public class CommLink : RemoteObject
     [RpcAttribute ("SpaceCenter", "CommLink_get_Start")]
     public CommNode Start {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<CommNode> ("SpaceCenter", "CommLink_get_Start", _args);
+            return Connection.Invoke<CommNode> ("SpaceCenter", "CommLink_get_Start", args);
         }
     }
 
@@ -61,10 +61,10 @@ public class CommLink : RemoteObject
     [RpcAttribute ("SpaceCenter", "CommLink_get_Type")]
     public CommLinkType Type {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<CommLinkType> ("SpaceCenter", "CommLink_get_Type", _args);
+            return Connection.Invoke<CommLinkType> ("SpaceCenter", "CommLink_get_Type", args);
         }
     }
 }

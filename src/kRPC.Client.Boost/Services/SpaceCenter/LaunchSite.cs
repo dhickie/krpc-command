@@ -23,10 +23,10 @@ public class LaunchSite : RemoteObject
     [RpcAttribute ("SpaceCenter", "LaunchSite_get_Body")]
     public CelestialBody Body {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<CelestialBody> ("SpaceCenter", "LaunchSite_get_Body", _args);
+            return Connection.Invoke<CelestialBody> ("SpaceCenter", "LaunchSite_get_Body", args);
         }
     }
 
@@ -36,10 +36,10 @@ public class LaunchSite : RemoteObject
     [RpcAttribute ("SpaceCenter", "LaunchSite_get_EditorFacility")]
     public EditorFacility EditorFacility {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<EditorFacility> ("SpaceCenter", "LaunchSite_get_EditorFacility", _args);
+            return Connection.Invoke<EditorFacility> ("SpaceCenter", "LaunchSite_get_EditorFacility", args);
         }
     }
 
@@ -49,10 +49,10 @@ public class LaunchSite : RemoteObject
     [RpcAttribute ("SpaceCenter", "LaunchSite_get_Name")]
     public string Name {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<string> ("SpaceCenter", "LaunchSite_get_Name", _args);
+            return Connection.Invoke<string> ("SpaceCenter", "LaunchSite_get_Name", args);
         }
     }
 }

@@ -22,10 +22,10 @@ public class LaunchClamp : RemoteObject
     [RpcAttribute ("SpaceCenter", "LaunchClamp_Release")]
     public void Release ()
     {
-        var _args = new object[] {
+        var args = new object[] {
             this
         };
-        Connection.Invoke ("SpaceCenter", "LaunchClamp_Release", _args);
+        Connection.Invoke ("SpaceCenter", "LaunchClamp_Release", args);
     }
 
     /// <summary>
@@ -34,10 +34,10 @@ public class LaunchClamp : RemoteObject
     [RpcAttribute ("SpaceCenter", "LaunchClamp_get_Part")]
     public Part Part {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<Part> ("SpaceCenter", "LaunchClamp_get_Part", _args);
+            return Connection.Invoke<Part> ("SpaceCenter", "LaunchClamp_get_Part", args);
         }
     }
 }

@@ -37,10 +37,10 @@ public class Control : RemoteObject
     [RpcAttribute ("SpaceCenter", "Control_ActivateNextStage")]
     public IList<Vessel> ActivateNextStage ()
     {
-        var _args = new object[] {
+        var args = new object[] {
             this
         };
-        return Connection.Invoke<IList<Vessel>> ("SpaceCenter", "Control_ActivateNextStage", _args);
+        return Connection.Invoke<IList<Vessel>> ("SpaceCenter", "Control_ActivateNextStage", args);
     }
 
     /// <summary>
@@ -56,14 +56,14 @@ public class Control : RemoteObject
     [RpcAttribute ("SpaceCenter", "Control_AddNode")]
     public Node AddNode (double ut, float prograde = 0.0f, float normal = 0.0f, float radial = 0.0f)
     {
-        var _args = new object[] {
+        var args = new object[] {
             this,
             ut,
             prograde,
             normal,
             radial
         };
-        return Connection.Invoke<Node> ("SpaceCenter", "Control_AddNode", _args);
+        return Connection.Invoke<Node> ("SpaceCenter", "Control_AddNode", args);
     }
 
     /// <summary>
@@ -76,11 +76,11 @@ public class Control : RemoteObject
     [RpcAttribute ("SpaceCenter", "Control_GetActionGroup")]
     public bool GetActionGroup (uint group)
     {
-        var _args = new object[] {
+        var args = new object[] {
             this,
             group
         };
-        return Connection.Invoke<bool> ("SpaceCenter", "Control_GetActionGroup", _args);
+        return Connection.Invoke<bool> ("SpaceCenter", "Control_GetActionGroup", args);
     }
 
     /// <summary>
@@ -89,10 +89,10 @@ public class Control : RemoteObject
     [RpcAttribute ("SpaceCenter", "Control_RemoveNodes")]
     public void RemoveNodes ()
     {
-        var _args = new object[] {
+        var args = new object[] {
             this
         };
-        Connection.Invoke ("SpaceCenter", "Control_RemoveNodes", _args);
+        Connection.Invoke ("SpaceCenter", "Control_RemoveNodes", args);
     }
 
     /// <summary>
@@ -106,12 +106,12 @@ public class Control : RemoteObject
     [RpcAttribute ("SpaceCenter", "Control_SetActionGroup")]
     public void SetActionGroup (uint group, bool state)
     {
-        var _args = new object[] {
+        var args = new object[] {
             this,
             group,
             state
         };
-        Connection.Invoke ("SpaceCenter", "Control_SetActionGroup", _args);
+        Connection.Invoke ("SpaceCenter", "Control_SetActionGroup", args);
     }
 
     /// <summary>
@@ -124,11 +124,11 @@ public class Control : RemoteObject
     [RpcAttribute ("SpaceCenter", "Control_ToggleActionGroup")]
     public void ToggleActionGroup (uint group)
     {
-        var _args = new object[] {
+        var args = new object[] {
             this,
             group
         };
-        Connection.Invoke ("SpaceCenter", "Control_ToggleActionGroup", _args);
+        Connection.Invoke ("SpaceCenter", "Control_ToggleActionGroup", args);
     }
 
     /// <summary>
@@ -137,17 +137,17 @@ public class Control : RemoteObject
     [RpcAttribute ("SpaceCenter", "Control_get_Abort")]
     public bool Abort {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "Control_get_Abort", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "Control_get_Abort", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "Control_set_Abort", _args);
+            Connection.Invoke ("SpaceCenter", "Control_set_Abort", args);
         }
     }
 
@@ -159,17 +159,17 @@ public class Control : RemoteObject
     [RpcAttribute ("SpaceCenter", "Control_get_Antennas")]
     public bool Antennas {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "Control_get_Antennas", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "Control_get_Antennas", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "Control_set_Antennas", _args);
+            Connection.Invoke ("SpaceCenter", "Control_set_Antennas", args);
         }
     }
 
@@ -179,17 +179,17 @@ public class Control : RemoteObject
     [RpcAttribute ("SpaceCenter", "Control_get_Brakes")]
     public bool Brakes {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "Control_get_Brakes", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "Control_get_Brakes", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "Control_set_Brakes", _args);
+            Connection.Invoke ("SpaceCenter", "Control_set_Brakes", args);
         }
     }
 
@@ -201,17 +201,17 @@ public class Control : RemoteObject
     [RpcAttribute ("SpaceCenter", "Control_get_CargoBays")]
     public bool CargoBays {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "Control_get_CargoBays", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "Control_get_CargoBays", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "Control_set_CargoBays", _args);
+            Connection.Invoke ("SpaceCenter", "Control_set_CargoBays", args);
         }
     }
 
@@ -222,10 +222,10 @@ public class Control : RemoteObject
     [RpcAttribute ("SpaceCenter", "Control_get_CurrentStage")]
     public int CurrentStage {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<int> ("SpaceCenter", "Control_get_CurrentStage", _args);
+            return Connection.Invoke<int> ("SpaceCenter", "Control_get_CurrentStage", args);
         }
     }
 
@@ -236,17 +236,17 @@ public class Control : RemoteObject
     [RpcAttribute ("SpaceCenter", "Control_get_CustomAxis01")]
     public float CustomAxis01 {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "Control_get_CustomAxis01", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "Control_get_CustomAxis01", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "Control_set_CustomAxis01", _args);
+            Connection.Invoke ("SpaceCenter", "Control_set_CustomAxis01", args);
         }
     }
 
@@ -257,17 +257,17 @@ public class Control : RemoteObject
     [RpcAttribute ("SpaceCenter", "Control_get_CustomAxis02")]
     public float CustomAxis02 {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "Control_get_CustomAxis02", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "Control_get_CustomAxis02", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "Control_set_CustomAxis02", _args);
+            Connection.Invoke ("SpaceCenter", "Control_set_CustomAxis02", args);
         }
     }
 
@@ -278,17 +278,17 @@ public class Control : RemoteObject
     [RpcAttribute ("SpaceCenter", "Control_get_CustomAxis03")]
     public float CustomAxis03 {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "Control_get_CustomAxis03", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "Control_get_CustomAxis03", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "Control_set_CustomAxis03", _args);
+            Connection.Invoke ("SpaceCenter", "Control_set_CustomAxis03", args);
         }
     }
 
@@ -299,17 +299,17 @@ public class Control : RemoteObject
     [RpcAttribute ("SpaceCenter", "Control_get_CustomAxis04")]
     public float CustomAxis04 {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "Control_get_CustomAxis04", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "Control_get_CustomAxis04", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "Control_set_CustomAxis04", _args);
+            Connection.Invoke ("SpaceCenter", "Control_set_CustomAxis04", args);
         }
     }
 
@@ -321,17 +321,17 @@ public class Control : RemoteObject
     [RpcAttribute ("SpaceCenter", "Control_get_Forward")]
     public float Forward {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "Control_get_Forward", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "Control_get_Forward", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "Control_set_Forward", _args);
+            Connection.Invoke ("SpaceCenter", "Control_set_Forward", args);
         }
     }
 
@@ -341,17 +341,17 @@ public class Control : RemoteObject
     [RpcAttribute ("SpaceCenter", "Control_get_Gear")]
     public bool Gear {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "Control_get_Gear", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "Control_get_Gear", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "Control_set_Gear", _args);
+            Connection.Invoke ("SpaceCenter", "Control_set_Gear", args);
         }
     }
 
@@ -366,17 +366,17 @@ public class Control : RemoteObject
     [RpcAttribute ("SpaceCenter", "Control_get_InputMode")]
     public ControlInputMode InputMode {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<ControlInputMode> ("SpaceCenter", "Control_get_InputMode", _args);
+            return Connection.Invoke<ControlInputMode> ("SpaceCenter", "Control_get_InputMode", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "Control_set_InputMode", _args);
+            Connection.Invoke ("SpaceCenter", "Control_set_InputMode", args);
         }
     }
 
@@ -388,17 +388,17 @@ public class Control : RemoteObject
     [RpcAttribute ("SpaceCenter", "Control_get_Intakes")]
     public bool Intakes {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "Control_get_Intakes", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "Control_get_Intakes", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "Control_set_Intakes", _args);
+            Connection.Invoke ("SpaceCenter", "Control_set_Intakes", args);
         }
     }
 
@@ -411,17 +411,17 @@ public class Control : RemoteObject
     [RpcAttribute ("SpaceCenter", "Control_get_Legs")]
     public bool Legs {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "Control_get_Legs", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "Control_get_Legs", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "Control_set_Legs", _args);
+            Connection.Invoke ("SpaceCenter", "Control_set_Legs", args);
         }
     }
 
@@ -431,17 +431,17 @@ public class Control : RemoteObject
     [RpcAttribute ("SpaceCenter", "Control_get_Lights")]
     public bool Lights {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "Control_get_Lights", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "Control_get_Lights", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "Control_set_Lights", _args);
+            Connection.Invoke ("SpaceCenter", "Control_set_Lights", args);
         }
     }
 
@@ -451,10 +451,10 @@ public class Control : RemoteObject
     [RpcAttribute ("SpaceCenter", "Control_get_Nodes")]
     public IList<Node> Nodes {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<IList<Node>> ("SpaceCenter", "Control_get_Nodes", _args);
+            return Connection.Invoke<IList<Node>> ("SpaceCenter", "Control_get_Nodes", args);
         }
     }
 
@@ -467,17 +467,17 @@ public class Control : RemoteObject
     [RpcAttribute ("SpaceCenter", "Control_get_Parachutes")]
     public bool Parachutes {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "Control_get_Parachutes", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "Control_get_Parachutes", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "Control_set_Parachutes", _args);
+            Connection.Invoke ("SpaceCenter", "Control_set_Parachutes", args);
         }
     }
 
@@ -489,17 +489,17 @@ public class Control : RemoteObject
     [RpcAttribute ("SpaceCenter", "Control_get_Pitch")]
     public float Pitch {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "Control_get_Pitch", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "Control_get_Pitch", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "Control_set_Pitch", _args);
+            Connection.Invoke ("SpaceCenter", "Control_set_Pitch", args);
         }
     }
 
@@ -509,17 +509,17 @@ public class Control : RemoteObject
     [RpcAttribute ("SpaceCenter", "Control_get_RCS")]
     public bool RCS {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "Control_get_RCS", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "Control_get_RCS", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "Control_set_RCS", _args);
+            Connection.Invoke ("SpaceCenter", "Control_set_RCS", args);
         }
     }
 
@@ -531,17 +531,17 @@ public class Control : RemoteObject
     [RpcAttribute ("SpaceCenter", "Control_get_Radiators")]
     public bool Radiators {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "Control_get_Radiators", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "Control_get_Radiators", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "Control_set_Radiators", _args);
+            Connection.Invoke ("SpaceCenter", "Control_set_Radiators", args);
         }
     }
 
@@ -553,17 +553,17 @@ public class Control : RemoteObject
     [RpcAttribute ("SpaceCenter", "Control_get_ReactionWheels")]
     public bool ReactionWheels {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "Control_get_ReactionWheels", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "Control_get_ReactionWheels", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "Control_set_ReactionWheels", _args);
+            Connection.Invoke ("SpaceCenter", "Control_set_ReactionWheels", args);
         }
     }
 
@@ -575,17 +575,17 @@ public class Control : RemoteObject
     [RpcAttribute ("SpaceCenter", "Control_get_ResourceHarvesters")]
     public bool ResourceHarvesters {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "Control_get_ResourceHarvesters", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "Control_get_ResourceHarvesters", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "Control_set_ResourceHarvesters", _args);
+            Connection.Invoke ("SpaceCenter", "Control_set_ResourceHarvesters", args);
         }
     }
 
@@ -597,17 +597,17 @@ public class Control : RemoteObject
     [RpcAttribute ("SpaceCenter", "Control_get_ResourceHarvestersActive")]
     public bool ResourceHarvestersActive {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "Control_get_ResourceHarvestersActive", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "Control_get_ResourceHarvestersActive", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "Control_set_ResourceHarvestersActive", _args);
+            Connection.Invoke ("SpaceCenter", "Control_set_ResourceHarvestersActive", args);
         }
     }
 
@@ -619,17 +619,17 @@ public class Control : RemoteObject
     [RpcAttribute ("SpaceCenter", "Control_get_Right")]
     public float Right {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "Control_get_Right", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "Control_get_Right", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "Control_set_Right", _args);
+            Connection.Invoke ("SpaceCenter", "Control_set_Right", args);
         }
     }
 
@@ -641,17 +641,17 @@ public class Control : RemoteObject
     [RpcAttribute ("SpaceCenter", "Control_get_Roll")]
     public float Roll {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "Control_get_Roll", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "Control_get_Roll", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "Control_set_Roll", _args);
+            Connection.Invoke ("SpaceCenter", "Control_set_Roll", args);
         }
     }
 
@@ -662,17 +662,17 @@ public class Control : RemoteObject
     [RpcAttribute ("SpaceCenter", "Control_get_SAS")]
     public bool SAS {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "Control_get_SAS", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "Control_get_SAS", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "Control_set_SAS", _args);
+            Connection.Invoke ("SpaceCenter", "Control_set_SAS", args);
         }
     }
 
@@ -685,17 +685,17 @@ public class Control : RemoteObject
     [RpcAttribute ("SpaceCenter", "Control_get_SASMode")]
     public SASMode SASMode {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<SASMode> ("SpaceCenter", "Control_get_SASMode", _args);
+            return Connection.Invoke<SASMode> ("SpaceCenter", "Control_get_SASMode", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "Control_set_SASMode", _args);
+            Connection.Invoke ("SpaceCenter", "Control_set_SASMode", args);
         }
     }
 
@@ -707,17 +707,17 @@ public class Control : RemoteObject
     [RpcAttribute ("SpaceCenter", "Control_get_SolarPanels")]
     public bool SolarPanels {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "Control_get_SolarPanels", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "Control_get_SolarPanels", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "Control_set_SolarPanels", _args);
+            Connection.Invoke ("SpaceCenter", "Control_set_SolarPanels", args);
         }
     }
 
@@ -727,10 +727,10 @@ public class Control : RemoteObject
     [RpcAttribute ("SpaceCenter", "Control_get_Source")]
     public ControlSource Source {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<ControlSource> ("SpaceCenter", "Control_get_Source", _args);
+            return Connection.Invoke<ControlSource> ("SpaceCenter", "Control_get_Source", args);
         }
     }
 
@@ -741,17 +741,17 @@ public class Control : RemoteObject
     [RpcAttribute ("SpaceCenter", "Control_get_SpeedMode")]
     public SpeedMode SpeedMode {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<SpeedMode> ("SpaceCenter", "Control_get_SpeedMode", _args);
+            return Connection.Invoke<SpeedMode> ("SpaceCenter", "Control_get_SpeedMode", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "Control_set_SpeedMode", _args);
+            Connection.Invoke ("SpaceCenter", "Control_set_SpeedMode", args);
         }
     }
 
@@ -764,17 +764,17 @@ public class Control : RemoteObject
     [RpcAttribute ("SpaceCenter", "Control_get_StageLock")]
     public bool StageLock {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "Control_get_StageLock", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "Control_get_StageLock", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "Control_set_StageLock", _args);
+            Connection.Invoke ("SpaceCenter", "Control_set_StageLock", args);
         }
     }
 
@@ -784,10 +784,10 @@ public class Control : RemoteObject
     [RpcAttribute ("SpaceCenter", "Control_get_State")]
     public ControlState State {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<ControlState> ("SpaceCenter", "Control_get_State", _args);
+            return Connection.Invoke<ControlState> ("SpaceCenter", "Control_get_State", args);
         }
     }
 
@@ -797,17 +797,17 @@ public class Control : RemoteObject
     [RpcAttribute ("SpaceCenter", "Control_get_Throttle")]
     public float Throttle {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "Control_get_Throttle", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "Control_get_Throttle", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "Control_set_Throttle", _args);
+            Connection.Invoke ("SpaceCenter", "Control_set_Throttle", args);
         }
     }
 
@@ -819,17 +819,17 @@ public class Control : RemoteObject
     [RpcAttribute ("SpaceCenter", "Control_get_Up")]
     public float Up {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "Control_get_Up", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "Control_get_Up", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "Control_set_Up", _args);
+            Connection.Invoke ("SpaceCenter", "Control_set_Up", args);
         }
     }
 
@@ -841,17 +841,17 @@ public class Control : RemoteObject
     [RpcAttribute ("SpaceCenter", "Control_get_WheelSteering")]
     public float WheelSteering {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "Control_get_WheelSteering", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "Control_get_WheelSteering", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "Control_set_WheelSteering", _args);
+            Connection.Invoke ("SpaceCenter", "Control_set_WheelSteering", args);
         }
     }
 
@@ -864,17 +864,17 @@ public class Control : RemoteObject
     [RpcAttribute ("SpaceCenter", "Control_get_WheelThrottle")]
     public float WheelThrottle {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "Control_get_WheelThrottle", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "Control_get_WheelThrottle", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "Control_set_WheelThrottle", _args);
+            Connection.Invoke ("SpaceCenter", "Control_set_WheelThrottle", args);
         }
     }
 
@@ -887,17 +887,17 @@ public class Control : RemoteObject
     [RpcAttribute ("SpaceCenter", "Control_get_Wheels")]
     public bool Wheels {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "Control_get_Wheels", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "Control_get_Wheels", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "Control_set_Wheels", _args);
+            Connection.Invoke ("SpaceCenter", "Control_set_Wheels", args);
         }
     }
 
@@ -909,17 +909,17 @@ public class Control : RemoteObject
     [RpcAttribute ("SpaceCenter", "Control_get_Yaw")]
     public float Yaw {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "Control_get_Yaw", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "Control_get_Yaw", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "Control_set_Yaw", _args);
+            Connection.Invoke ("SpaceCenter", "Control_set_Yaw", args);
         }
     }
 }

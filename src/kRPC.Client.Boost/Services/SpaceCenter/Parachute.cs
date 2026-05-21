@@ -23,10 +23,10 @@ public class Parachute : RemoteObject
     [RpcAttribute ("SpaceCenter", "Parachute_Arm")]
     public void Arm ()
     {
-        var _args = new object[] {
+        var args = new object[] {
             this
         };
-        Connection.Invoke ("SpaceCenter", "Parachute_Arm", _args);
+        Connection.Invoke ("SpaceCenter", "Parachute_Arm", args);
     }
 
     /// <summary>
@@ -35,10 +35,10 @@ public class Parachute : RemoteObject
     [RpcAttribute ("SpaceCenter", "Parachute_Cut")]
     public void Cut ()
     {
-        var _args = new object[] {
+        var args = new object[] {
             this
         };
-        Connection.Invoke ("SpaceCenter", "Parachute_Cut", _args);
+        Connection.Invoke ("SpaceCenter", "Parachute_Cut", args);
     }
 
     /// <summary>
@@ -48,10 +48,10 @@ public class Parachute : RemoteObject
     [RpcAttribute ("SpaceCenter", "Parachute_Deploy")]
     public void Deploy ()
     {
-        var _args = new object[] {
+        var args = new object[] {
             this
         };
-        Connection.Invoke ("SpaceCenter", "Parachute_Deploy", _args);
+        Connection.Invoke ("SpaceCenter", "Parachute_Deploy", args);
     }
 
     /// <summary>
@@ -60,10 +60,10 @@ public class Parachute : RemoteObject
     [RpcAttribute ("SpaceCenter", "Parachute_get_Armed")]
     public bool Armed {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "Parachute_get_Armed", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "Parachute_get_Armed", args);
         }
     }
 
@@ -74,17 +74,17 @@ public class Parachute : RemoteObject
     [RpcAttribute ("SpaceCenter", "Parachute_get_DeployAltitude")]
     public float DeployAltitude {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "Parachute_get_DeployAltitude", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "Parachute_get_DeployAltitude", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "Parachute_set_DeployAltitude", _args);
+            Connection.Invoke ("SpaceCenter", "Parachute_set_DeployAltitude", args);
         }
     }
 
@@ -95,17 +95,17 @@ public class Parachute : RemoteObject
     [RpcAttribute ("SpaceCenter", "Parachute_get_DeployMinPressure")]
     public float DeployMinPressure {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "Parachute_get_DeployMinPressure", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "Parachute_get_DeployMinPressure", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "Parachute_set_DeployMinPressure", _args);
+            Connection.Invoke ("SpaceCenter", "Parachute_set_DeployMinPressure", args);
         }
     }
 
@@ -115,10 +115,10 @@ public class Parachute : RemoteObject
     [RpcAttribute ("SpaceCenter", "Parachute_get_Deployed")]
     public bool Deployed {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "Parachute_get_Deployed", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "Parachute_get_Deployed", args);
         }
     }
 
@@ -128,10 +128,10 @@ public class Parachute : RemoteObject
     [RpcAttribute ("SpaceCenter", "Parachute_get_Part")]
     public Part Part {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<Part> ("SpaceCenter", "Parachute_get_Part", _args);
+            return Connection.Invoke<Part> ("SpaceCenter", "Parachute_get_Part", args);
         }
     }
 
@@ -141,10 +141,10 @@ public class Parachute : RemoteObject
     [RpcAttribute ("SpaceCenter", "Parachute_get_State")]
     public ParachuteState State {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<ParachuteState> ("SpaceCenter", "Parachute_get_State", _args);
+            return Connection.Invoke<ParachuteState> ("SpaceCenter", "Parachute_get_State", args);
         }
     }
 }

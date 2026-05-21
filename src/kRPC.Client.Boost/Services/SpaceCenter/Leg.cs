@@ -22,10 +22,10 @@ public class Leg : RemoteObject
     [RpcAttribute ("SpaceCenter", "Leg_get_Deployable")]
     public bool Deployable {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "Leg_get_Deployable", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "Leg_get_Deployable", args);
         }
     }
 
@@ -39,17 +39,17 @@ public class Leg : RemoteObject
     [RpcAttribute ("SpaceCenter", "Leg_get_Deployed")]
     public bool Deployed {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "Leg_get_Deployed", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "Leg_get_Deployed", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "Leg_set_Deployed", _args);
+            Connection.Invoke ("SpaceCenter", "Leg_set_Deployed", args);
         }
     }
 
@@ -59,10 +59,10 @@ public class Leg : RemoteObject
     [RpcAttribute ("SpaceCenter", "Leg_get_IsGrounded")]
     public bool IsGrounded {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "Leg_get_IsGrounded", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "Leg_get_IsGrounded", args);
         }
     }
 
@@ -72,10 +72,10 @@ public class Leg : RemoteObject
     [RpcAttribute ("SpaceCenter", "Leg_get_Part")]
     public Part Part {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<Part> ("SpaceCenter", "Leg_get_Part", _args);
+            return Connection.Invoke<Part> ("SpaceCenter", "Leg_get_Part", args);
         }
     }
 
@@ -85,10 +85,10 @@ public class Leg : RemoteObject
     [RpcAttribute ("SpaceCenter", "Leg_get_State")]
     public LegState State {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<LegState> ("SpaceCenter", "Leg_get_State", _args);
+            return Connection.Invoke<LegState> ("SpaceCenter", "Leg_get_State", args);
         }
     }
 }

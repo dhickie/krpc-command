@@ -33,13 +33,13 @@ public class Flight : RemoteObject
     [RpcAttribute ("SpaceCenter", "Flight_SimulateAerodynamicForceAt")]
     public Tuple<double,double,double> SimulateAerodynamicForceAt (CelestialBody body, Tuple<double,double,double> position, Tuple<double,double,double> velocity)
     {
-        var _args = new object[] {
+        var args = new object[] {
             this,
             body,
             position,
             velocity
         };
-        return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Flight_SimulateAerodynamicForceAt", _args);
+        return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Flight_SimulateAerodynamicForceAt", args);
     }
 
     /// <summary>
@@ -51,10 +51,10 @@ public class Flight : RemoteObject
     [RpcAttribute ("SpaceCenter", "Flight_get_AerodynamicForce")]
     public Tuple<double,double,double> AerodynamicForce {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Flight_get_AerodynamicForce", _args);
+            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Flight_get_AerodynamicForce", args);
         }
     }
 
@@ -65,10 +65,10 @@ public class Flight : RemoteObject
     [RpcAttribute ("SpaceCenter", "Flight_get_AngleOfAttack")]
     public float AngleOfAttack {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "Flight_get_AngleOfAttack", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "Flight_get_AngleOfAttack", args);
         }
     }
 
@@ -80,10 +80,10 @@ public class Flight : RemoteObject
     [RpcAttribute ("SpaceCenter", "Flight_get_AntiNormal")]
     public Tuple<double,double,double> AntiNormal {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Flight_get_AntiNormal", _args);
+            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Flight_get_AntiNormal", args);
         }
     }
 
@@ -95,10 +95,10 @@ public class Flight : RemoteObject
     [RpcAttribute ("SpaceCenter", "Flight_get_AntiRadial")]
     public Tuple<double,double,double> AntiRadial {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Flight_get_AntiRadial", _args);
+            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Flight_get_AntiRadial", args);
         }
     }
 
@@ -108,10 +108,10 @@ public class Flight : RemoteObject
     [RpcAttribute ("SpaceCenter", "Flight_get_AtmosphereDensity")]
     public float AtmosphereDensity {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "Flight_get_AtmosphereDensity", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "Flight_get_AtmosphereDensity", args);
         }
     }
 
@@ -124,10 +124,10 @@ public class Flight : RemoteObject
     [RpcAttribute ("SpaceCenter", "Flight_get_BallisticCoefficient")]
     public float BallisticCoefficient {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "Flight_get_BallisticCoefficient", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "Flight_get_BallisticCoefficient", args);
         }
     }
 
@@ -138,10 +138,10 @@ public class Flight : RemoteObject
     [RpcAttribute ("SpaceCenter", "Flight_get_BedrockAltitude")]
     public double BedrockAltitude {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<double> ("SpaceCenter", "Flight_get_BedrockAltitude", _args);
+            return Connection.Invoke<double> ("SpaceCenter", "Flight_get_BedrockAltitude", args);
         }
     }
 
@@ -152,10 +152,10 @@ public class Flight : RemoteObject
     [RpcAttribute ("SpaceCenter", "Flight_get_CenterOfMass")]
     public Tuple<double,double,double> CenterOfMass {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Flight_get_CenterOfMass", _args);
+            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Flight_get_CenterOfMass", args);
         }
     }
 
@@ -167,10 +167,10 @@ public class Flight : RemoteObject
     [RpcAttribute ("SpaceCenter", "Flight_get_Direction")]
     public Tuple<double,double,double> Direction {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Flight_get_Direction", _args);
+            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Flight_get_Direction", args);
         }
     }
 
@@ -182,10 +182,10 @@ public class Flight : RemoteObject
     [RpcAttribute ("SpaceCenter", "Flight_get_Drag")]
     public Tuple<double,double,double> Drag {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Flight_get_Drag", _args);
+            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Flight_get_Drag", args);
         }
     }
 
@@ -199,10 +199,10 @@ public class Flight : RemoteObject
     [RpcAttribute ("SpaceCenter", "Flight_get_DragCoefficient")]
     public float DragCoefficient {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "Flight_get_DragCoefficient", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "Flight_get_DragCoefficient", args);
         }
     }
 
@@ -215,10 +215,10 @@ public class Flight : RemoteObject
     [RpcAttribute ("SpaceCenter", "Flight_get_DynamicPressure")]
     public float DynamicPressure {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "Flight_get_DynamicPressure", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "Flight_get_DynamicPressure", args);
         }
     }
 
@@ -229,10 +229,10 @@ public class Flight : RemoteObject
     [RpcAttribute ("SpaceCenter", "Flight_get_Elevation")]
     public double Elevation {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<double> ("SpaceCenter", "Flight_get_Elevation", _args);
+            return Connection.Invoke<double> ("SpaceCenter", "Flight_get_Elevation", args);
         }
     }
 
@@ -243,10 +243,10 @@ public class Flight : RemoteObject
     [RpcAttribute ("SpaceCenter", "Flight_get_EquivalentAirSpeed")]
     public float EquivalentAirSpeed {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "Flight_get_EquivalentAirSpeed", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "Flight_get_EquivalentAirSpeed", args);
         }
     }
 
@@ -256,10 +256,10 @@ public class Flight : RemoteObject
     [RpcAttribute ("SpaceCenter", "Flight_get_GForce")]
     public float GForce {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "Flight_get_GForce", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "Flight_get_GForce", args);
         }
     }
 
@@ -270,10 +270,10 @@ public class Flight : RemoteObject
     [RpcAttribute ("SpaceCenter", "Flight_get_Heading")]
     public float Heading {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "Flight_get_Heading", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "Flight_get_Heading", args);
         }
     }
 
@@ -284,10 +284,10 @@ public class Flight : RemoteObject
     [RpcAttribute ("SpaceCenter", "Flight_get_HorizontalSpeed")]
     public double HorizontalSpeed {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<double> ("SpaceCenter", "Flight_get_HorizontalSpeed", _args);
+            return Connection.Invoke<double> ("SpaceCenter", "Flight_get_HorizontalSpeed", args);
         }
     }
 
@@ -297,10 +297,10 @@ public class Flight : RemoteObject
     [RpcAttribute ("SpaceCenter", "Flight_get_Latitude")]
     public double Latitude {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<double> ("SpaceCenter", "Flight_get_Latitude", _args);
+            return Connection.Invoke<double> ("SpaceCenter", "Flight_get_Latitude", args);
         }
     }
 
@@ -313,10 +313,10 @@ public class Flight : RemoteObject
     [RpcAttribute ("SpaceCenter", "Flight_get_Lift")]
     public Tuple<double,double,double> Lift {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Flight_get_Lift", _args);
+            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Flight_get_Lift", args);
         }
     }
 
@@ -330,10 +330,10 @@ public class Flight : RemoteObject
     [RpcAttribute ("SpaceCenter", "Flight_get_LiftCoefficient")]
     public float LiftCoefficient {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "Flight_get_LiftCoefficient", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "Flight_get_LiftCoefficient", args);
         }
     }
 
@@ -343,10 +343,10 @@ public class Flight : RemoteObject
     [RpcAttribute ("SpaceCenter", "Flight_get_Longitude")]
     public double Longitude {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<double> ("SpaceCenter", "Flight_get_Longitude", _args);
+            return Connection.Invoke<double> ("SpaceCenter", "Flight_get_Longitude", args);
         }
     }
 
@@ -356,10 +356,10 @@ public class Flight : RemoteObject
     [RpcAttribute ("SpaceCenter", "Flight_get_Mach")]
     public float Mach {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "Flight_get_Mach", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "Flight_get_Mach", args);
         }
     }
 
@@ -370,10 +370,10 @@ public class Flight : RemoteObject
     [RpcAttribute ("SpaceCenter", "Flight_get_MeanAltitude")]
     public double MeanAltitude {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<double> ("SpaceCenter", "Flight_get_MeanAltitude", _args);
+            return Connection.Invoke<double> ("SpaceCenter", "Flight_get_MeanAltitude", args);
         }
     }
 
@@ -385,10 +385,10 @@ public class Flight : RemoteObject
     [RpcAttribute ("SpaceCenter", "Flight_get_Normal")]
     public Tuple<double,double,double> Normal {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Flight_get_Normal", _args);
+            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Flight_get_Normal", args);
         }
     }
 
@@ -399,10 +399,10 @@ public class Flight : RemoteObject
     [RpcAttribute ("SpaceCenter", "Flight_get_Pitch")]
     public float Pitch {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "Flight_get_Pitch", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "Flight_get_Pitch", args);
         }
     }
 
@@ -414,10 +414,10 @@ public class Flight : RemoteObject
     [RpcAttribute ("SpaceCenter", "Flight_get_Prograde")]
     public Tuple<double,double,double> Prograde {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Flight_get_Prograde", _args);
+            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Flight_get_Prograde", args);
         }
     }
 
@@ -429,10 +429,10 @@ public class Flight : RemoteObject
     [RpcAttribute ("SpaceCenter", "Flight_get_Radial")]
     public Tuple<double,double,double> Radial {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Flight_get_Radial", _args);
+            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Flight_get_Radial", args);
         }
     }
 
@@ -444,10 +444,10 @@ public class Flight : RemoteObject
     [RpcAttribute ("SpaceCenter", "Flight_get_Retrograde")]
     public Tuple<double,double,double> Retrograde {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Flight_get_Retrograde", _args);
+            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Flight_get_Retrograde", args);
         }
     }
 
@@ -460,10 +460,10 @@ public class Flight : RemoteObject
     [RpcAttribute ("SpaceCenter", "Flight_get_ReynoldsNumber")]
     public float ReynoldsNumber {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "Flight_get_ReynoldsNumber", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "Flight_get_ReynoldsNumber", args);
         }
     }
 
@@ -474,10 +474,10 @@ public class Flight : RemoteObject
     [RpcAttribute ("SpaceCenter", "Flight_get_Roll")]
     public float Roll {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "Flight_get_Roll", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "Flight_get_Roll", args);
         }
     }
 
@@ -487,10 +487,10 @@ public class Flight : RemoteObject
     [RpcAttribute ("SpaceCenter", "Flight_get_Rotation")]
     public Tuple<double,double,double,double> Rotation {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<Tuple<double,double,double,double>> ("SpaceCenter", "Flight_get_Rotation", _args);
+            return Connection.Invoke<Tuple<double,double,double,double>> ("SpaceCenter", "Flight_get_Rotation", args);
         }
     }
 
@@ -500,10 +500,10 @@ public class Flight : RemoteObject
     [RpcAttribute ("SpaceCenter", "Flight_get_SideslipAngle")]
     public float SideslipAngle {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "Flight_get_SideslipAngle", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "Flight_get_SideslipAngle", args);
         }
     }
 
@@ -514,10 +514,10 @@ public class Flight : RemoteObject
     [RpcAttribute ("SpaceCenter", "Flight_get_Speed")]
     public double Speed {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<double> ("SpaceCenter", "Flight_get_Speed", _args);
+            return Connection.Invoke<double> ("SpaceCenter", "Flight_get_Speed", args);
         }
     }
 
@@ -527,10 +527,10 @@ public class Flight : RemoteObject
     [RpcAttribute ("SpaceCenter", "Flight_get_SpeedOfSound")]
     public float SpeedOfSound {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "Flight_get_SpeedOfSound", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "Flight_get_SpeedOfSound", args);
         }
     }
 
@@ -544,10 +544,10 @@ public class Flight : RemoteObject
     [RpcAttribute ("SpaceCenter", "Flight_get_StallFraction")]
     public float StallFraction {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "Flight_get_StallFraction", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "Flight_get_StallFraction", args);
         }
     }
 
@@ -558,10 +558,10 @@ public class Flight : RemoteObject
     [RpcAttribute ("SpaceCenter", "Flight_get_StaticAirTemperature")]
     public float StaticAirTemperature {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "Flight_get_StaticAirTemperature", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "Flight_get_StaticAirTemperature", args);
         }
     }
 
@@ -571,10 +571,10 @@ public class Flight : RemoteObject
     [RpcAttribute ("SpaceCenter", "Flight_get_StaticPressure")]
     public float StaticPressure {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "Flight_get_StaticPressure", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "Flight_get_StaticPressure", args);
         }
     }
 
@@ -584,10 +584,10 @@ public class Flight : RemoteObject
     [RpcAttribute ("SpaceCenter", "Flight_get_StaticPressureAtMSL")]
     public float StaticPressureAtMSL {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "Flight_get_StaticPressureAtMSL", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "Flight_get_StaticPressureAtMSL", args);
         }
     }
 
@@ -598,10 +598,10 @@ public class Flight : RemoteObject
     [RpcAttribute ("SpaceCenter", "Flight_get_SurfaceAltitude")]
     public double SurfaceAltitude {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<double> ("SpaceCenter", "Flight_get_SurfaceAltitude", _args);
+            return Connection.Invoke<double> ("SpaceCenter", "Flight_get_SurfaceAltitude", args);
         }
     }
 
@@ -612,10 +612,10 @@ public class Flight : RemoteObject
     [RpcAttribute ("SpaceCenter", "Flight_get_TerminalVelocity")]
     public float TerminalVelocity {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "Flight_get_TerminalVelocity", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "Flight_get_TerminalVelocity", args);
         }
     }
 
@@ -631,10 +631,10 @@ public class Flight : RemoteObject
     [RpcAttribute ("SpaceCenter", "Flight_get_ThrustSpecificFuelConsumption")]
     public float ThrustSpecificFuelConsumption {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "Flight_get_ThrustSpecificFuelConsumption", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "Flight_get_ThrustSpecificFuelConsumption", args);
         }
     }
 
@@ -646,10 +646,10 @@ public class Flight : RemoteObject
     [RpcAttribute ("SpaceCenter", "Flight_get_TotalAirTemperature")]
     public float TotalAirTemperature {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "Flight_get_TotalAirTemperature", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "Flight_get_TotalAirTemperature", args);
         }
     }
 
@@ -660,10 +660,10 @@ public class Flight : RemoteObject
     [RpcAttribute ("SpaceCenter", "Flight_get_TrueAirSpeed")]
     public float TrueAirSpeed {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "Flight_get_TrueAirSpeed", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "Flight_get_TrueAirSpeed", args);
         }
     }
 
@@ -675,10 +675,10 @@ public class Flight : RemoteObject
     [RpcAttribute ("SpaceCenter", "Flight_get_Velocity")]
     public Tuple<double,double,double> Velocity {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Flight_get_Velocity", _args);
+            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Flight_get_Velocity", args);
         }
     }
 
@@ -689,10 +689,10 @@ public class Flight : RemoteObject
     [RpcAttribute ("SpaceCenter", "Flight_get_VerticalSpeed")]
     public double VerticalSpeed {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<double> ("SpaceCenter", "Flight_get_VerticalSpeed", _args);
+            return Connection.Invoke<double> ("SpaceCenter", "Flight_get_VerticalSpeed", args);
         }
     }
 }

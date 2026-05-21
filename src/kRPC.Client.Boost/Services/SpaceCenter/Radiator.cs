@@ -22,10 +22,10 @@ public class Radiator : RemoteObject
     [RpcAttribute ("SpaceCenter", "Radiator_get_Deployable")]
     public bool Deployable {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "Radiator_get_Deployable", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "Radiator_get_Deployable", args);
         }
     }
 
@@ -36,17 +36,17 @@ public class Radiator : RemoteObject
     [RpcAttribute ("SpaceCenter", "Radiator_get_Deployed")]
     public bool Deployed {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "Radiator_get_Deployed", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "Radiator_get_Deployed", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "Radiator_set_Deployed", _args);
+            Connection.Invoke ("SpaceCenter", "Radiator_set_Deployed", args);
         }
     }
 
@@ -56,10 +56,10 @@ public class Radiator : RemoteObject
     [RpcAttribute ("SpaceCenter", "Radiator_get_Part")]
     public Part Part {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<Part> ("SpaceCenter", "Radiator_get_Part", _args);
+            return Connection.Invoke<Part> ("SpaceCenter", "Radiator_get_Part", args);
         }
     }
 
@@ -72,10 +72,10 @@ public class Radiator : RemoteObject
     [RpcAttribute ("SpaceCenter", "Radiator_get_State")]
     public RadiatorState State {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<RadiatorState> ("SpaceCenter", "Radiator_get_State", _args);
+            return Connection.Invoke<RadiatorState> ("SpaceCenter", "Radiator_get_State", args);
         }
     }
 }

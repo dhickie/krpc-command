@@ -22,10 +22,10 @@ public class Intake : RemoteObject
     [RpcAttribute ("SpaceCenter", "Intake_get_Area")]
     public float Area {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "Intake_get_Area", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "Intake_get_Area", args);
         }
     }
 
@@ -35,10 +35,10 @@ public class Intake : RemoteObject
     [RpcAttribute ("SpaceCenter", "Intake_get_Flow")]
     public float Flow {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "Intake_get_Flow", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "Intake_get_Flow", args);
         }
     }
 
@@ -48,17 +48,17 @@ public class Intake : RemoteObject
     [RpcAttribute ("SpaceCenter", "Intake_get_Open")]
     public bool Open {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "Intake_get_Open", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "Intake_get_Open", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "Intake_set_Open", _args);
+            Connection.Invoke ("SpaceCenter", "Intake_set_Open", args);
         }
     }
 
@@ -68,10 +68,10 @@ public class Intake : RemoteObject
     [RpcAttribute ("SpaceCenter", "Intake_get_Part")]
     public Part Part {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<Part> ("SpaceCenter", "Intake_get_Part", _args);
+            return Connection.Invoke<Part> ("SpaceCenter", "Intake_get_Part", args);
         }
     }
 
@@ -81,10 +81,10 @@ public class Intake : RemoteObject
     [RpcAttribute ("SpaceCenter", "Intake_get_Speed")]
     public float Speed {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "Intake_get_Speed", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "Intake_get_Speed", args);
         }
     }
 }

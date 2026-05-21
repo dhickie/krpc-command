@@ -31,11 +31,11 @@ public class Vessel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Vessel_AngularVelocity")]
     public Tuple<double,double,double> AngularVelocity (ReferenceFrame referenceFrame)
     {
-        var _args = new object[] {
+        var args = new object[] {
             this,
             referenceFrame
         };
-        return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Vessel_AngularVelocity", _args);
+        return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Vessel_AngularVelocity", args);
     }
 
     /// <summary>
@@ -48,11 +48,11 @@ public class Vessel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Vessel_AvailableThrustAt")]
     public float AvailableThrustAt (double pressure)
     {
-        var _args = new object[] {
+        var args = new object[] {
             this,
             pressure
         };
-        return Connection.Invoke<float> ("SpaceCenter", "Vessel_AvailableThrustAt", _args);
+        return Connection.Invoke<float> ("SpaceCenter", "Vessel_AvailableThrustAt", args);
     }
 
     /// <summary>
@@ -65,11 +65,11 @@ public class Vessel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Vessel_BoundingBox")]
     public Tuple<Tuple<double,double,double>,Tuple<double,double,double>> BoundingBox (ReferenceFrame referenceFrame)
     {
-        var _args = new object[] {
+        var args = new object[] {
             this,
             referenceFrame
         };
-        return Connection.Invoke<Tuple<Tuple<double,double,double>,Tuple<double,double,double>>> ("SpaceCenter", "Vessel_BoundingBox", _args);
+        return Connection.Invoke<Tuple<Tuple<double,double,double>,Tuple<double,double,double>>> ("SpaceCenter", "Vessel_BoundingBox", args);
     }
 
     /// <summary>
@@ -81,11 +81,11 @@ public class Vessel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Vessel_Direction")]
     public Tuple<double,double,double> Direction (ReferenceFrame referenceFrame)
     {
-        var _args = new object[] {
+        var args = new object[] {
             this,
             referenceFrame
         };
-        return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Vessel_Direction", _args);
+        return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Vessel_Direction", args);
     }
 
     /// <summary>
@@ -99,11 +99,11 @@ public class Vessel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Vessel_Flight")]
     public Flight Flight (ReferenceFrame referenceFrame = null)
     {
-        var _args = new object[] {
+        var args = new object[] {
             this,
             referenceFrame
         };
-        return Connection.Invoke<Flight> ("SpaceCenter", "Vessel_Flight", _args);
+        return Connection.Invoke<Flight> ("SpaceCenter", "Vessel_Flight", args);
     }
 
     /// <summary>
@@ -116,11 +116,11 @@ public class Vessel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Vessel_MaxThrustAt")]
     public float MaxThrustAt (double pressure)
     {
-        var _args = new object[] {
+        var args = new object[] {
             this,
             pressure
         };
-        return Connection.Invoke<float> ("SpaceCenter", "Vessel_MaxThrustAt", _args);
+        return Connection.Invoke<float> ("SpaceCenter", "Vessel_MaxThrustAt", args);
     }
 
     /// <summary>
@@ -132,11 +132,11 @@ public class Vessel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Vessel_Position")]
     public Tuple<double,double,double> Position (ReferenceFrame referenceFrame)
     {
-        var _args = new object[] {
+        var args = new object[] {
             this,
             referenceFrame
         };
-        return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Vessel_Position", _args);
+        return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Vessel_Position", args);
     }
 
     /// <summary>
@@ -145,10 +145,10 @@ public class Vessel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Vessel_Recover")]
     public void Recover ()
     {
-        var _args = new object[] {
+        var args = new object[] {
             this
         };
-        Connection.Invoke ("SpaceCenter", "Vessel_Recover", _args);
+        Connection.Invoke ("SpaceCenter", "Vessel_Recover", args);
     }
 
     /// <summary>
@@ -162,12 +162,12 @@ public class Vessel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Vessel_ResourcesInDecoupleStage")]
     public Resources ResourcesInDecoupleStage (int stage, bool cumulative = true)
     {
-        var _args = new object[] {
+        var args = new object[] {
             this,
             stage,
             cumulative
         };
-        return Connection.Invoke<Resources> ("SpaceCenter", "Vessel_ResourcesInDecoupleStage", _args);
+        return Connection.Invoke<Resources> ("SpaceCenter", "Vessel_ResourcesInDecoupleStage", args);
     }
 
     /// <summary>
@@ -179,11 +179,11 @@ public class Vessel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Vessel_Rotation")]
     public Tuple<double,double,double,double> Rotation (ReferenceFrame referenceFrame)
     {
-        var _args = new object[] {
+        var args = new object[] {
             this,
             referenceFrame
         };
-        return Connection.Invoke<Tuple<double,double,double,double>> ("SpaceCenter", "Vessel_Rotation", _args);
+        return Connection.Invoke<Tuple<double,double,double,double>> ("SpaceCenter", "Vessel_Rotation", args);
     }
 
     /// <summary>
@@ -195,11 +195,11 @@ public class Vessel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Vessel_SpecificImpulseAt")]
     public float SpecificImpulseAt (double pressure)
     {
-        var _args = new object[] {
+        var args = new object[] {
             this,
             pressure
         };
-        return Connection.Invoke<float> ("SpaceCenter", "Vessel_SpecificImpulseAt", _args);
+        return Connection.Invoke<float> ("SpaceCenter", "Vessel_SpecificImpulseAt", args);
     }
 
     /// <summary>
@@ -212,11 +212,11 @@ public class Vessel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Vessel_Velocity")]
     public Tuple<double,double,double> Velocity (ReferenceFrame referenceFrame)
     {
-        var _args = new object[] {
+        var args = new object[] {
             this,
             referenceFrame
         };
-        return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Vessel_Velocity", _args);
+        return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Vessel_Velocity", args);
     }
 
     /// <summary>
@@ -226,10 +226,10 @@ public class Vessel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Vessel_get_AutoPilot")]
     public AutoPilot AutoPilot {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<AutoPilot> ("SpaceCenter", "Vessel_get_AutoPilot", _args);
+            return Connection.Invoke<AutoPilot> ("SpaceCenter", "Vessel_get_AutoPilot", args);
         }
     }
 
@@ -242,10 +242,10 @@ public class Vessel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Vessel_get_AvailableControlSurfaceTorque")]
     public Tuple<Tuple<double,double,double>,Tuple<double,double,double>> AvailableControlSurfaceTorque {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<Tuple<Tuple<double,double,double>,Tuple<double,double,double>>> ("SpaceCenter", "Vessel_get_AvailableControlSurfaceTorque", _args);
+            return Connection.Invoke<Tuple<Tuple<double,double,double>,Tuple<double,double,double>>> ("SpaceCenter", "Vessel_get_AvailableControlSurfaceTorque", args);
         }
     }
 
@@ -258,10 +258,10 @@ public class Vessel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Vessel_get_AvailableEngineTorque")]
     public Tuple<Tuple<double,double,double>,Tuple<double,double,double>> AvailableEngineTorque {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<Tuple<Tuple<double,double,double>,Tuple<double,double,double>>> ("SpaceCenter", "Vessel_get_AvailableEngineTorque", _args);
+            return Connection.Invoke<Tuple<Tuple<double,double,double>,Tuple<double,double,double>>> ("SpaceCenter", "Vessel_get_AvailableEngineTorque", args);
         }
     }
 
@@ -275,10 +275,10 @@ public class Vessel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Vessel_get_AvailableOtherTorque")]
     public Tuple<Tuple<double,double,double>,Tuple<double,double,double>> AvailableOtherTorque {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<Tuple<Tuple<double,double,double>,Tuple<double,double,double>>> ("SpaceCenter", "Vessel_get_AvailableOtherTorque", _args);
+            return Connection.Invoke<Tuple<Tuple<double,double,double>,Tuple<double,double,double>>> ("SpaceCenter", "Vessel_get_AvailableOtherTorque", args);
         }
     }
 
@@ -291,10 +291,10 @@ public class Vessel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Vessel_get_AvailableRCSForce")]
     public Tuple<Tuple<double,double,double>,Tuple<double,double,double>> AvailableRCSForce {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<Tuple<Tuple<double,double,double>,Tuple<double,double,double>>> ("SpaceCenter", "Vessel_get_AvailableRCSForce", _args);
+            return Connection.Invoke<Tuple<Tuple<double,double,double>,Tuple<double,double,double>>> ("SpaceCenter", "Vessel_get_AvailableRCSForce", args);
         }
     }
 
@@ -307,10 +307,10 @@ public class Vessel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Vessel_get_AvailableRCSTorque")]
     public Tuple<Tuple<double,double,double>,Tuple<double,double,double>> AvailableRCSTorque {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<Tuple<Tuple<double,double,double>,Tuple<double,double,double>>> ("SpaceCenter", "Vessel_get_AvailableRCSTorque", _args);
+            return Connection.Invoke<Tuple<Tuple<double,double,double>,Tuple<double,double,double>>> ("SpaceCenter", "Vessel_get_AvailableRCSTorque", args);
         }
     }
 
@@ -323,10 +323,10 @@ public class Vessel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Vessel_get_AvailableReactionWheelTorque")]
     public Tuple<Tuple<double,double,double>,Tuple<double,double,double>> AvailableReactionWheelTorque {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<Tuple<Tuple<double,double,double>,Tuple<double,double,double>>> ("SpaceCenter", "Vessel_get_AvailableReactionWheelTorque", _args);
+            return Connection.Invoke<Tuple<Tuple<double,double,double>,Tuple<double,double,double>>> ("SpaceCenter", "Vessel_get_AvailableReactionWheelTorque", args);
         }
     }
 
@@ -338,10 +338,10 @@ public class Vessel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Vessel_get_AvailableThrust")]
     public float AvailableThrust {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "Vessel_get_AvailableThrust", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "Vessel_get_AvailableThrust", args);
         }
     }
 
@@ -355,10 +355,10 @@ public class Vessel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Vessel_get_AvailableTorque")]
     public Tuple<Tuple<double,double,double>,Tuple<double,double,double>> AvailableTorque {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<Tuple<Tuple<double,double,double>,Tuple<double,double,double>>> ("SpaceCenter", "Vessel_get_AvailableTorque", _args);
+            return Connection.Invoke<Tuple<Tuple<double,double,double>,Tuple<double,double,double>>> ("SpaceCenter", "Vessel_get_AvailableTorque", args);
         }
     }
 
@@ -368,10 +368,10 @@ public class Vessel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Vessel_get_Biome")]
     public string Biome {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<string> ("SpaceCenter", "Vessel_get_Biome", _args);
+            return Connection.Invoke<string> ("SpaceCenter", "Vessel_get_Biome", args);
         }
     }
 
@@ -382,10 +382,10 @@ public class Vessel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Vessel_get_Comms")]
     public Comms Comms {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<Comms> ("SpaceCenter", "Vessel_get_Comms", _args);
+            return Connection.Invoke<Comms> ("SpaceCenter", "Vessel_get_Comms", args);
         }
     }
 
@@ -397,10 +397,10 @@ public class Vessel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Vessel_get_Control")]
     public Control Control {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<Control> ("SpaceCenter", "Vessel_get_Control", _args);
+            return Connection.Invoke<Control> ("SpaceCenter", "Vessel_get_Control", args);
         }
     }
 
@@ -410,10 +410,10 @@ public class Vessel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Vessel_get_Crew")]
     public IList<CrewMember> Crew {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<IList<CrewMember>> ("SpaceCenter", "Vessel_get_Crew", _args);
+            return Connection.Invoke<IList<CrewMember>> ("SpaceCenter", "Vessel_get_Crew", args);
         }
     }
 
@@ -423,10 +423,10 @@ public class Vessel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Vessel_get_CrewCapacity")]
     public int CrewCapacity {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<int> ("SpaceCenter", "Vessel_get_CrewCapacity", _args);
+            return Connection.Invoke<int> ("SpaceCenter", "Vessel_get_CrewCapacity", args);
         }
     }
 
@@ -436,10 +436,10 @@ public class Vessel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Vessel_get_CrewCount")]
     public int CrewCount {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<int> ("SpaceCenter", "Vessel_get_CrewCount", _args);
+            return Connection.Invoke<int> ("SpaceCenter", "Vessel_get_CrewCount", args);
         }
     }
 
@@ -449,10 +449,10 @@ public class Vessel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Vessel_get_DryMass")]
     public float DryMass {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "Vessel_get_DryMass", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "Vessel_get_DryMass", args);
         }
     }
 
@@ -464,10 +464,10 @@ public class Vessel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Vessel_get_InertiaTensor")]
     public IList<double> InertiaTensor {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<IList<double>> ("SpaceCenter", "Vessel_get_InertiaTensor", _args);
+            return Connection.Invoke<IList<double>> ("SpaceCenter", "Vessel_get_InertiaTensor", args);
         }
     }
 
@@ -479,10 +479,10 @@ public class Vessel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Vessel_get_KerbinSeaLevelSpecificImpulse")]
     public float KerbinSeaLevelSpecificImpulse {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "Vessel_get_KerbinSeaLevelSpecificImpulse", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "Vessel_get_KerbinSeaLevelSpecificImpulse", args);
         }
     }
 
@@ -492,10 +492,10 @@ public class Vessel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Vessel_get_MET")]
     public double MET {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<double> ("SpaceCenter", "Vessel_get_MET", _args);
+            return Connection.Invoke<double> ("SpaceCenter", "Vessel_get_MET", args);
         }
     }
 
@@ -505,10 +505,10 @@ public class Vessel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Vessel_get_Mass")]
     public float Mass {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "Vessel_get_Mass", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "Vessel_get_Mass", args);
         }
     }
 
@@ -520,10 +520,10 @@ public class Vessel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Vessel_get_MaxThrust")]
     public float MaxThrust {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "Vessel_get_MaxThrust", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "Vessel_get_MaxThrust", args);
         }
     }
 
@@ -535,10 +535,10 @@ public class Vessel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Vessel_get_MaxVacuumThrust")]
     public float MaxVacuumThrust {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "Vessel_get_MaxVacuumThrust", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "Vessel_get_MaxVacuumThrust", args);
         }
     }
 
@@ -551,10 +551,10 @@ public class Vessel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Vessel_get_MomentOfInertia")]
     public Tuple<double,double,double> MomentOfInertia {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Vessel_get_MomentOfInertia", _args);
+            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Vessel_get_MomentOfInertia", args);
         }
     }
 
@@ -564,17 +564,17 @@ public class Vessel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Vessel_get_Name")]
     public string Name {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<string> ("SpaceCenter", "Vessel_get_Name", _args);
+            return Connection.Invoke<string> ("SpaceCenter", "Vessel_get_Name", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "Vessel_set_Name", _args);
+            Connection.Invoke ("SpaceCenter", "Vessel_set_Name", args);
         }
     }
 
@@ -584,10 +584,10 @@ public class Vessel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Vessel_get_Orbit")]
     public Orbit Orbit {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<Orbit> ("SpaceCenter", "Vessel_get_Orbit", _args);
+            return Connection.Invoke<Orbit> ("SpaceCenter", "Vessel_get_Orbit", args);
         }
     }
 
@@ -601,10 +601,10 @@ public class Vessel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Vessel_get_OrbitalReferenceFrame")]
     public ReferenceFrame OrbitalReferenceFrame {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<ReferenceFrame> ("SpaceCenter", "Vessel_get_OrbitalReferenceFrame", _args);
+            return Connection.Invoke<ReferenceFrame> ("SpaceCenter", "Vessel_get_OrbitalReferenceFrame", args);
         }
     }
 
@@ -614,10 +614,10 @@ public class Vessel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Vessel_get_Parts")]
     public Parts Parts {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<Parts> ("SpaceCenter", "Vessel_get_Parts", _args);
+            return Connection.Invoke<Parts> ("SpaceCenter", "Vessel_get_Parts", args);
         }
     }
 
@@ -627,10 +627,10 @@ public class Vessel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Vessel_get_Recoverable")]
     public bool Recoverable {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "Vessel_get_Recoverable", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "Vessel_get_Recoverable", args);
         }
     }
 
@@ -641,10 +641,10 @@ public class Vessel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Vessel_get_ReferenceFrame")]
     public ReferenceFrame ReferenceFrame {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<ReferenceFrame> ("SpaceCenter", "Vessel_get_ReferenceFrame", _args);
+            return Connection.Invoke<ReferenceFrame> ("SpaceCenter", "Vessel_get_ReferenceFrame", args);
         }
     }
 
@@ -655,10 +655,10 @@ public class Vessel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Vessel_get_Resources")]
     public Resources Resources {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<Resources> ("SpaceCenter", "Vessel_get_Resources", _args);
+            return Connection.Invoke<Resources> ("SpaceCenter", "Vessel_get_Resources", args);
         }
     }
 
@@ -668,10 +668,10 @@ public class Vessel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Vessel_get_Situation")]
     public VesselSituation Situation {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<VesselSituation> ("SpaceCenter", "Vessel_get_Situation", _args);
+            return Connection.Invoke<VesselSituation> ("SpaceCenter", "Vessel_get_Situation", args);
         }
     }
 
@@ -682,10 +682,10 @@ public class Vessel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Vessel_get_SpecificImpulse")]
     public float SpecificImpulse {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "Vessel_get_SpecificImpulse", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "Vessel_get_SpecificImpulse", args);
         }
     }
 
@@ -705,10 +705,10 @@ public class Vessel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Vessel_get_SurfaceReferenceFrame")]
     public ReferenceFrame SurfaceReferenceFrame {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<ReferenceFrame> ("SpaceCenter", "Vessel_get_SurfaceReferenceFrame", _args);
+            return Connection.Invoke<ReferenceFrame> ("SpaceCenter", "Vessel_get_SurfaceReferenceFrame", args);
         }
     }
 
@@ -722,10 +722,10 @@ public class Vessel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Vessel_get_SurfaceVelocityReferenceFrame")]
     public ReferenceFrame SurfaceVelocityReferenceFrame {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<ReferenceFrame> ("SpaceCenter", "Vessel_get_SurfaceVelocityReferenceFrame", _args);
+            return Connection.Invoke<ReferenceFrame> ("SpaceCenter", "Vessel_get_SurfaceVelocityReferenceFrame", args);
         }
     }
 
@@ -737,10 +737,10 @@ public class Vessel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Vessel_get_Thrust")]
     public float Thrust {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "Vessel_get_Thrust", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "Vessel_get_Thrust", args);
         }
     }
 
@@ -750,17 +750,17 @@ public class Vessel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Vessel_get_Type")]
     public VesselType Type {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<VesselType> ("SpaceCenter", "Vessel_get_Type", _args);
+            return Connection.Invoke<VesselType> ("SpaceCenter", "Vessel_get_Type", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "Vessel_set_Type", _args);
+            Connection.Invoke ("SpaceCenter", "Vessel_set_Type", args);
         }
     }
 
@@ -771,10 +771,10 @@ public class Vessel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Vessel_get_VacuumSpecificImpulse")]
     public float VacuumSpecificImpulse {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "Vessel_get_VacuumSpecificImpulse", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "Vessel_get_VacuumSpecificImpulse", args);
         }
     }
 }

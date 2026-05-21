@@ -22,17 +22,17 @@ public class ResourceHarvester : RemoteObject
     [RpcAttribute ("SpaceCenter", "ResourceHarvester_get_Active")]
     public bool Active {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "ResourceHarvester_get_Active", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "ResourceHarvester_get_Active", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "ResourceHarvester_set_Active", _args);
+            Connection.Invoke ("SpaceCenter", "ResourceHarvester_set_Active", args);
         }
     }
 
@@ -42,10 +42,10 @@ public class ResourceHarvester : RemoteObject
     [RpcAttribute ("SpaceCenter", "ResourceHarvester_get_CoreTemperature")]
     public float CoreTemperature {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "ResourceHarvester_get_CoreTemperature", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "ResourceHarvester_get_CoreTemperature", args);
         }
     }
 
@@ -55,17 +55,17 @@ public class ResourceHarvester : RemoteObject
     [RpcAttribute ("SpaceCenter", "ResourceHarvester_get_Deployed")]
     public bool Deployed {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "ResourceHarvester_get_Deployed", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "ResourceHarvester_get_Deployed", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "ResourceHarvester_set_Deployed", _args);
+            Connection.Invoke ("SpaceCenter", "ResourceHarvester_set_Deployed", args);
         }
     }
 
@@ -75,10 +75,10 @@ public class ResourceHarvester : RemoteObject
     [RpcAttribute ("SpaceCenter", "ResourceHarvester_get_ExtractionRate")]
     public float ExtractionRate {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "ResourceHarvester_get_ExtractionRate", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "ResourceHarvester_get_ExtractionRate", args);
         }
     }
 
@@ -88,10 +88,10 @@ public class ResourceHarvester : RemoteObject
     [RpcAttribute ("SpaceCenter", "ResourceHarvester_get_OptimumCoreTemperature")]
     public float OptimumCoreTemperature {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "ResourceHarvester_get_OptimumCoreTemperature", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "ResourceHarvester_get_OptimumCoreTemperature", args);
         }
     }
 
@@ -101,10 +101,10 @@ public class ResourceHarvester : RemoteObject
     [RpcAttribute ("SpaceCenter", "ResourceHarvester_get_Part")]
     public Part Part {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<Part> ("SpaceCenter", "ResourceHarvester_get_Part", _args);
+            return Connection.Invoke<Part> ("SpaceCenter", "ResourceHarvester_get_Part", args);
         }
     }
 
@@ -114,10 +114,10 @@ public class ResourceHarvester : RemoteObject
     [RpcAttribute ("SpaceCenter", "ResourceHarvester_get_State")]
     public ResourceHarvesterState State {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<ResourceHarvesterState> ("SpaceCenter", "ResourceHarvester_get_State", _args);
+            return Connection.Invoke<ResourceHarvesterState> ("SpaceCenter", "ResourceHarvester_get_State", args);
         }
     }
 
@@ -127,10 +127,10 @@ public class ResourceHarvester : RemoteObject
     [RpcAttribute ("SpaceCenter", "ResourceHarvester_get_ThermalEfficiency")]
     public float ThermalEfficiency {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "ResourceHarvester_get_ThermalEfficiency", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "ResourceHarvester_get_ThermalEfficiency", args);
         }
     }
 }

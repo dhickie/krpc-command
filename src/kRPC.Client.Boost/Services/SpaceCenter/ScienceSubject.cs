@@ -22,10 +22,10 @@ public class ScienceSubject : RemoteObject
     [RpcAttribute ("SpaceCenter", "ScienceSubject_get_DataScale")]
     public float DataScale {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "ScienceSubject_get_DataScale", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "ScienceSubject_get_DataScale", args);
         }
     }
 
@@ -35,10 +35,10 @@ public class ScienceSubject : RemoteObject
     [RpcAttribute ("SpaceCenter", "ScienceSubject_get_IsComplete")]
     public bool IsComplete {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "ScienceSubject_get_IsComplete", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "ScienceSubject_get_IsComplete", args);
         }
     }
 
@@ -49,10 +49,10 @@ public class ScienceSubject : RemoteObject
     [RpcAttribute ("SpaceCenter", "ScienceSubject_get_Science")]
     public float Science {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "ScienceSubject_get_Science", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "ScienceSubject_get_Science", args);
         }
     }
 
@@ -62,10 +62,10 @@ public class ScienceSubject : RemoteObject
     [RpcAttribute ("SpaceCenter", "ScienceSubject_get_ScienceCap")]
     public float ScienceCap {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "ScienceSubject_get_ScienceCap", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "ScienceSubject_get_ScienceCap", args);
         }
     }
 
@@ -76,10 +76,10 @@ public class ScienceSubject : RemoteObject
     [RpcAttribute ("SpaceCenter", "ScienceSubject_get_ScientificValue")]
     public float ScientificValue {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "ScienceSubject_get_ScientificValue", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "ScienceSubject_get_ScientificValue", args);
         }
     }
 
@@ -89,10 +89,10 @@ public class ScienceSubject : RemoteObject
     [RpcAttribute ("SpaceCenter", "ScienceSubject_get_SubjectValue")]
     public float SubjectValue {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "ScienceSubject_get_SubjectValue", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "ScienceSubject_get_SubjectValue", args);
         }
     }
 
@@ -102,10 +102,10 @@ public class ScienceSubject : RemoteObject
     [RpcAttribute ("SpaceCenter", "ScienceSubject_get_Title")]
     public string Title {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<string> ("SpaceCenter", "ScienceSubject_get_Title", _args);
+            return Connection.Invoke<string> ("SpaceCenter", "ScienceSubject_get_Title", args);
         }
     }
 }

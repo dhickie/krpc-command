@@ -24,17 +24,17 @@ public class ControlSurface : RemoteObject
     [RpcAttribute ("SpaceCenter", "ControlSurface_get_AuthorityLimiter")]
     public float AuthorityLimiter {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "ControlSurface_get_AuthorityLimiter", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "ControlSurface_get_AuthorityLimiter", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "ControlSurface_set_AuthorityLimiter", _args);
+            Connection.Invoke ("SpaceCenter", "ControlSurface_set_AuthorityLimiter", args);
         }
     }
 
@@ -46,10 +46,10 @@ public class ControlSurface : RemoteObject
     [RpcAttribute ("SpaceCenter", "ControlSurface_get_AvailableTorque")]
     public Tuple<Tuple<double,double,double>,Tuple<double,double,double>> AvailableTorque {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<Tuple<Tuple<double,double,double>,Tuple<double,double,double>>> ("SpaceCenter", "ControlSurface_get_AvailableTorque", _args);
+            return Connection.Invoke<Tuple<Tuple<double,double,double>,Tuple<double,double,double>>> ("SpaceCenter", "ControlSurface_get_AvailableTorque", args);
         }
     }
 
@@ -59,17 +59,17 @@ public class ControlSurface : RemoteObject
     [RpcAttribute ("SpaceCenter", "ControlSurface_get_Deployed")]
     public bool Deployed {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "ControlSurface_get_Deployed", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "ControlSurface_get_Deployed", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "ControlSurface_set_Deployed", _args);
+            Connection.Invoke ("SpaceCenter", "ControlSurface_set_Deployed", args);
         }
     }
 
@@ -79,17 +79,17 @@ public class ControlSurface : RemoteObject
     [RpcAttribute ("SpaceCenter", "ControlSurface_get_Inverted")]
     public bool Inverted {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "ControlSurface_get_Inverted", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "ControlSurface_get_Inverted", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "ControlSurface_set_Inverted", _args);
+            Connection.Invoke ("SpaceCenter", "ControlSurface_set_Inverted", args);
         }
     }
 
@@ -99,10 +99,10 @@ public class ControlSurface : RemoteObject
     [RpcAttribute ("SpaceCenter", "ControlSurface_get_Part")]
     public Part Part {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<Part> ("SpaceCenter", "ControlSurface_get_Part", _args);
+            return Connection.Invoke<Part> ("SpaceCenter", "ControlSurface_get_Part", args);
         }
     }
 
@@ -112,17 +112,17 @@ public class ControlSurface : RemoteObject
     [RpcAttribute ("SpaceCenter", "ControlSurface_get_PitchEnabled")]
     public bool PitchEnabled {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "ControlSurface_get_PitchEnabled", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "ControlSurface_get_PitchEnabled", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "ControlSurface_set_PitchEnabled", _args);
+            Connection.Invoke ("SpaceCenter", "ControlSurface_set_PitchEnabled", args);
         }
     }
 
@@ -132,17 +132,17 @@ public class ControlSurface : RemoteObject
     [RpcAttribute ("SpaceCenter", "ControlSurface_get_RollEnabled")]
     public bool RollEnabled {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "ControlSurface_get_RollEnabled", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "ControlSurface_get_RollEnabled", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "ControlSurface_set_RollEnabled", _args);
+            Connection.Invoke ("SpaceCenter", "ControlSurface_set_RollEnabled", args);
         }
     }
 
@@ -152,10 +152,10 @@ public class ControlSurface : RemoteObject
     [RpcAttribute ("SpaceCenter", "ControlSurface_get_SurfaceArea")]
     public float SurfaceArea {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<float> ("SpaceCenter", "ControlSurface_get_SurfaceArea", _args);
+            return Connection.Invoke<float> ("SpaceCenter", "ControlSurface_get_SurfaceArea", args);
         }
     }
 
@@ -165,17 +165,17 @@ public class ControlSurface : RemoteObject
     [RpcAttribute ("SpaceCenter", "ControlSurface_get_YawEnabled")]
     public bool YawEnabled {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "ControlSurface_get_YawEnabled", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "ControlSurface_get_YawEnabled", args);
         }
         set {
-            var _args = new object[] {
+            var args = new object[] {
                 this,
                 value
             };
-            Connection.Invoke ("SpaceCenter", "ControlSurface_set_YawEnabled", _args);
+            Connection.Invoke ("SpaceCenter", "ControlSurface_set_YawEnabled", args);
         }
     }
 }

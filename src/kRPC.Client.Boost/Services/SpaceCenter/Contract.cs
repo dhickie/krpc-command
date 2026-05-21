@@ -23,10 +23,10 @@ public class Contract : RemoteObject
     [RpcAttribute ("SpaceCenter", "Contract_Accept")]
     public void Accept ()
     {
-        var _args = new object[] {
+        var args = new object[] {
             this
         };
-        Connection.Invoke ("SpaceCenter", "Contract_Accept", _args);
+        Connection.Invoke ("SpaceCenter", "Contract_Accept", args);
     }
 
     /// <summary>
@@ -35,10 +35,10 @@ public class Contract : RemoteObject
     [RpcAttribute ("SpaceCenter", "Contract_Cancel")]
     public void Cancel ()
     {
-        var _args = new object[] {
+        var args = new object[] {
             this
         };
-        Connection.Invoke ("SpaceCenter", "Contract_Cancel", _args);
+        Connection.Invoke ("SpaceCenter", "Contract_Cancel", args);
     }
 
     /// <summary>
@@ -47,10 +47,10 @@ public class Contract : RemoteObject
     [RpcAttribute ("SpaceCenter", "Contract_Decline")]
     public void Decline ()
     {
-        var _args = new object[] {
+        var args = new object[] {
             this
         };
-        Connection.Invoke ("SpaceCenter", "Contract_Decline", _args);
+        Connection.Invoke ("SpaceCenter", "Contract_Decline", args);
     }
 
     /// <summary>
@@ -59,10 +59,10 @@ public class Contract : RemoteObject
     [RpcAttribute ("SpaceCenter", "Contract_get_Active")]
     public bool Active {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "Contract_get_Active", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "Contract_get_Active", args);
         }
     }
 
@@ -72,10 +72,10 @@ public class Contract : RemoteObject
     [RpcAttribute ("SpaceCenter", "Contract_get_CanBeCanceled")]
     public bool CanBeCanceled {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "Contract_get_CanBeCanceled", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "Contract_get_CanBeCanceled", args);
         }
     }
 
@@ -85,10 +85,10 @@ public class Contract : RemoteObject
     [RpcAttribute ("SpaceCenter", "Contract_get_CanBeDeclined")]
     public bool CanBeDeclined {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "Contract_get_CanBeDeclined", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "Contract_get_CanBeDeclined", args);
         }
     }
 
@@ -98,10 +98,10 @@ public class Contract : RemoteObject
     [RpcAttribute ("SpaceCenter", "Contract_get_CanBeFailed")]
     public bool CanBeFailed {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "Contract_get_CanBeFailed", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "Contract_get_CanBeFailed", args);
         }
     }
 
@@ -111,10 +111,10 @@ public class Contract : RemoteObject
     [RpcAttribute ("SpaceCenter", "Contract_get_Description")]
     public string Description {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<string> ("SpaceCenter", "Contract_get_Description", _args);
+            return Connection.Invoke<string> ("SpaceCenter", "Contract_get_Description", args);
         }
     }
 
@@ -124,10 +124,10 @@ public class Contract : RemoteObject
     [RpcAttribute ("SpaceCenter", "Contract_get_Failed")]
     public bool Failed {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "Contract_get_Failed", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "Contract_get_Failed", args);
         }
     }
 
@@ -137,10 +137,10 @@ public class Contract : RemoteObject
     [RpcAttribute ("SpaceCenter", "Contract_get_FundsAdvance")]
     public double FundsAdvance {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<double> ("SpaceCenter", "Contract_get_FundsAdvance", _args);
+            return Connection.Invoke<double> ("SpaceCenter", "Contract_get_FundsAdvance", args);
         }
     }
 
@@ -150,10 +150,10 @@ public class Contract : RemoteObject
     [RpcAttribute ("SpaceCenter", "Contract_get_FundsCompletion")]
     public double FundsCompletion {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<double> ("SpaceCenter", "Contract_get_FundsCompletion", _args);
+            return Connection.Invoke<double> ("SpaceCenter", "Contract_get_FundsCompletion", args);
         }
     }
 
@@ -163,10 +163,10 @@ public class Contract : RemoteObject
     [RpcAttribute ("SpaceCenter", "Contract_get_FundsFailure")]
     public double FundsFailure {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<double> ("SpaceCenter", "Contract_get_FundsFailure", _args);
+            return Connection.Invoke<double> ("SpaceCenter", "Contract_get_FundsFailure", args);
         }
     }
 
@@ -176,10 +176,10 @@ public class Contract : RemoteObject
     [RpcAttribute ("SpaceCenter", "Contract_get_Keywords")]
     public IList<string> Keywords {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<IList<string>> ("SpaceCenter", "Contract_get_Keywords", _args);
+            return Connection.Invoke<IList<string>> ("SpaceCenter", "Contract_get_Keywords", args);
         }
     }
 
@@ -189,10 +189,10 @@ public class Contract : RemoteObject
     [RpcAttribute ("SpaceCenter", "Contract_get_Notes")]
     public string Notes {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<string> ("SpaceCenter", "Contract_get_Notes", _args);
+            return Connection.Invoke<string> ("SpaceCenter", "Contract_get_Notes", args);
         }
     }
 
@@ -202,10 +202,10 @@ public class Contract : RemoteObject
     [RpcAttribute ("SpaceCenter", "Contract_get_Parameters")]
     public IList<ContractParameter> Parameters {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<IList<ContractParameter>> ("SpaceCenter", "Contract_get_Parameters", _args);
+            return Connection.Invoke<IList<ContractParameter>> ("SpaceCenter", "Contract_get_Parameters", args);
         }
     }
 
@@ -215,10 +215,10 @@ public class Contract : RemoteObject
     [RpcAttribute ("SpaceCenter", "Contract_get_Read")]
     public bool Read {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "Contract_get_Read", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "Contract_get_Read", args);
         }
     }
 
@@ -228,10 +228,10 @@ public class Contract : RemoteObject
     [RpcAttribute ("SpaceCenter", "Contract_get_ReputationCompletion")]
     public double ReputationCompletion {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<double> ("SpaceCenter", "Contract_get_ReputationCompletion", _args);
+            return Connection.Invoke<double> ("SpaceCenter", "Contract_get_ReputationCompletion", args);
         }
     }
 
@@ -241,10 +241,10 @@ public class Contract : RemoteObject
     [RpcAttribute ("SpaceCenter", "Contract_get_ReputationFailure")]
     public double ReputationFailure {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<double> ("SpaceCenter", "Contract_get_ReputationFailure", _args);
+            return Connection.Invoke<double> ("SpaceCenter", "Contract_get_ReputationFailure", args);
         }
     }
 
@@ -254,10 +254,10 @@ public class Contract : RemoteObject
     [RpcAttribute ("SpaceCenter", "Contract_get_ScienceCompletion")]
     public double ScienceCompletion {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<double> ("SpaceCenter", "Contract_get_ScienceCompletion", _args);
+            return Connection.Invoke<double> ("SpaceCenter", "Contract_get_ScienceCompletion", args);
         }
     }
 
@@ -267,10 +267,10 @@ public class Contract : RemoteObject
     [RpcAttribute ("SpaceCenter", "Contract_get_Seen")]
     public bool Seen {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<bool> ("SpaceCenter", "Contract_get_Seen", _args);
+            return Connection.Invoke<bool> ("SpaceCenter", "Contract_get_Seen", args);
         }
     }
 
@@ -280,10 +280,10 @@ public class Contract : RemoteObject
     [RpcAttribute ("SpaceCenter", "Contract_get_State")]
     public ContractState State {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<ContractState> ("SpaceCenter", "Contract_get_State", _args);
+            return Connection.Invoke<ContractState> ("SpaceCenter", "Contract_get_State", args);
         }
     }
 
@@ -293,10 +293,10 @@ public class Contract : RemoteObject
     [RpcAttribute ("SpaceCenter", "Contract_get_Synopsis")]
     public string Synopsis {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<string> ("SpaceCenter", "Contract_get_Synopsis", _args);
+            return Connection.Invoke<string> ("SpaceCenter", "Contract_get_Synopsis", args);
         }
     }
 
@@ -306,10 +306,10 @@ public class Contract : RemoteObject
     [RpcAttribute ("SpaceCenter", "Contract_get_Title")]
     public string Title {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<string> ("SpaceCenter", "Contract_get_Title", _args);
+            return Connection.Invoke<string> ("SpaceCenter", "Contract_get_Title", args);
         }
     }
 
@@ -319,10 +319,10 @@ public class Contract : RemoteObject
     [RpcAttribute ("SpaceCenter", "Contract_get_Type")]
     public string Type {
         get {
-            var _args = new object[] {
+            var args = new object[] {
                 this
             };
-            return Connection.Invoke<string> ("SpaceCenter", "Contract_get_Type", _args);
+            return Connection.Invoke<string> ("SpaceCenter", "Contract_get_Type", args);
         }
     }
 }
