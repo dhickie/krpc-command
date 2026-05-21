@@ -915,7 +915,7 @@ public class Orbit : RemoteObject
     /// orbit after the change. Otherwise returns <c>null</c>.
     /// </summary>
     [Rpc("SpaceCenter", "Orbit_get_NextOrbit")]
-    public Orbit GetNextOrbit()
+    public Orbit? GetNextOrbit()
     {
         var args = new object[]
         {
@@ -930,7 +930,7 @@ public class Orbit : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Orbit_get_NextOrbit")]
-    public async Task<Orbit> GetNextOrbitAsync()
+    public async Task<Orbit?> GetNextOrbitAsync()
     {
         var args = new object[]
         {

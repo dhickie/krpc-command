@@ -195,7 +195,7 @@ public class DockingPort : RemoteObject
     /// docking port is not docked to anything.
     /// </summary>
     [Rpc("SpaceCenter", "DockingPort_get_DockedPart")]
-    public Part GetDockedPart()
+    public Part? GetDockedPart()
     {
         var args = new object[]
         {
@@ -210,7 +210,7 @@ public class DockingPort : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "DockingPort_get_DockedPart")]
-    public async Task<Part> GetDockedPartAsync()
+    public async Task<Part?> GetDockedPartAsync()
     {
         var args = new object[]
         {

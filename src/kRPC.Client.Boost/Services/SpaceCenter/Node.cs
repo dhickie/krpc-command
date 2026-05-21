@@ -30,9 +30,9 @@ public class Node : RemoteObject
     /// Does not change when executing the maneuver node. See <see cref="M:SpaceCenter.Node.RemainingBurnVector" />.
     /// </remarks>
     [Rpc("SpaceCenter", "Node_BurnVector")]
-    public Tuple<double,double,double> BurnVector(ReferenceFrame referenceFrame = null)
+    public Tuple<double,double,double> BurnVector(ReferenceFrame? referenceFrame = null)
     {
-        var args = new object[]
+        var args = new object?[]
         {
             this,
             referenceFrame
@@ -53,9 +53,9 @@ public class Node : RemoteObject
     /// Does not change when executing the maneuver node. See <see cref="M:SpaceCenter.Node.RemainingBurnVector" />.
     /// </remarks>
     [Rpc("SpaceCenter", "Node_BurnVector")]
-    public async Task<Tuple<double,double,double>> BurnVectorAsync(ReferenceFrame referenceFrame = null)
+    public async Task<Tuple<double,double,double>> BurnVectorAsync(ReferenceFrame? referenceFrame = null)
     {
-        var args = new object[]
+        var args = new object?[]
         {
             this,
             referenceFrame
@@ -145,9 +145,9 @@ public class Node : RemoteObject
     /// Changes as the maneuver node is executed. See <see cref="M:SpaceCenter.Node.BurnVector" />.
     /// </remarks>
     [Rpc("SpaceCenter", "Node_RemainingBurnVector")]
-    public Tuple<double,double,double> RemainingBurnVector(ReferenceFrame referenceFrame = null)
+    public Tuple<double,double,double> RemainingBurnVector(ReferenceFrame? referenceFrame = null)
     {
-        var args = new object[]
+        var args = new object?[]
         {
             this,
             referenceFrame
@@ -168,9 +168,9 @@ public class Node : RemoteObject
     /// Changes as the maneuver node is executed. See <see cref="M:SpaceCenter.Node.BurnVector" />.
     /// </remarks>
     [Rpc("SpaceCenter", "Node_RemainingBurnVector")]
-    public async Task<Tuple<double,double,double>> RemainingBurnVectorAsync(ReferenceFrame referenceFrame = null)
+    public async Task<Tuple<double,double,double>> RemainingBurnVectorAsync(ReferenceFrame? referenceFrame = null)
     {
-        var args = new object[]
+        var args = new object?[]
         {
             this,
             referenceFrame

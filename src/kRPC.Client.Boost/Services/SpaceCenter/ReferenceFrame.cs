@@ -40,9 +40,9 @@ public class ReferenceFrame : RemoteObject
     /// <paramref name="position" /> reference frame.
     /// </remarks>
     [Rpc("SpaceCenter", "ReferenceFrame_static_CreateHybrid")]
-    public ReferenceFrame CreateHybrid(ReferenceFrame position, ReferenceFrame rotation = null, ReferenceFrame velocity = null, ReferenceFrame angularVelocity = null)
+    public ReferenceFrame CreateHybrid(ReferenceFrame position, ReferenceFrame? rotation = null, ReferenceFrame? velocity = null, ReferenceFrame? angularVelocity = null)
     {
-        var args = new object[]
+        var args = new object?[]
         {
             position,
             rotation,
@@ -69,9 +69,9 @@ public class ReferenceFrame : RemoteObject
     /// <paramref name="position" /> reference frame.
     /// </remarks>
     [Rpc("SpaceCenter", "ReferenceFrame_static_CreateHybrid")]
-    public async Task<ReferenceFrame> CreateHybridAsync(ReferenceFrame position, ReferenceFrame rotation = null, ReferenceFrame velocity = null, ReferenceFrame angularVelocity = null)
+    public async Task<ReferenceFrame> CreateHybridAsync(ReferenceFrame position, ReferenceFrame? rotation = null, ReferenceFrame? velocity = null, ReferenceFrame? angularVelocity = null)
     {
-        var args = new object[]
+        var args = new object?[]
         {
             position,
             rotation,
@@ -100,9 +100,9 @@ public class ReferenceFrame : RemoteObject
     /// and its magnitude is the speed of the rotation in radians per second.
     /// Defaults to <math>(0, 0, 0)</math>.</param>
     [Rpc("SpaceCenter", "ReferenceFrame_static_CreateRelative")]
-    public ReferenceFrame CreateRelative(ReferenceFrame referenceFrame, Tuple<double,double,double> position = null, Tuple<double,double,double,double> rotation = null, Tuple<double,double,double> velocity = null, Tuple<double,double,double> angularVelocity = null)
+    public ReferenceFrame CreateRelative(ReferenceFrame referenceFrame, Tuple<double,double,double>? position = null, Tuple<double,double,double,double>? rotation = null, Tuple<double,double,double>? velocity = null, Tuple<double,double,double>? angularVelocity = null)
     {
-        var args = new object[]
+        var args = new object?[]
         {
             referenceFrame,
             position ?? new Tuple<double,double,double>(0.0, 0.0, 0.0),
@@ -133,9 +133,9 @@ public class ReferenceFrame : RemoteObject
     /// and its magnitude is the speed of the rotation in radians per second.
     /// Defaults to <math>(0, 0, 0)</math>.</param>
     [Rpc("SpaceCenter", "ReferenceFrame_static_CreateRelative")]
-    public async Task<ReferenceFrame> CreateRelativeAsync(ReferenceFrame referenceFrame, Tuple<double,double,double> position = null, Tuple<double,double,double,double> rotation = null, Tuple<double,double,double> velocity = null, Tuple<double,double,double> angularVelocity = null)
+    public async Task<ReferenceFrame> CreateRelativeAsync(ReferenceFrame referenceFrame, Tuple<double,double,double>? position = null, Tuple<double,double,double,double>? rotation = null, Tuple<double,double,double>? velocity = null, Tuple<double,double,double>? angularVelocity = null)
     {
-        var args = new object[]
+        var args = new object?[]
         {
             referenceFrame,
             position ?? new Tuple<double,double,double>(0.0, 0.0, 0.0),

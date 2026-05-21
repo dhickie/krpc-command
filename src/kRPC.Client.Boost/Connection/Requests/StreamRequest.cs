@@ -5,7 +5,7 @@ namespace kRPC.Client.Boost.Connection.Requests;
 /// </summary>
 /// <param name="procedure">The procedure to perform</param>
 /// <param name="arguments">The arguments to the procedure</param>
-internal abstract class StreamRequest(string procedure, object[]? arguments = null) 
+internal abstract class StreamRequest(string procedure, object?[]? arguments = null) 
     : ProcedureRequest("KRPC", procedure, arguments)
 {
     

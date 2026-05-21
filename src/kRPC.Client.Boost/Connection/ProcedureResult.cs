@@ -1,5 +1,3 @@
-using kRPC.Client.Boost.Exceptions;
-
 namespace kRPC.Client.Boost.Connection;
 
 /// <summary>
@@ -15,7 +13,7 @@ internal sealed class ProcedureResult<T>() : ProcedureResult(typeof(T))
     /// </summary>
     /// <param name="ct">The cancellation token for the wait operation</param>
     /// <returns>The result of the procedure</returns>
-    public T WaitForResult(CancellationToken ct)
+    public T? WaitForResult(CancellationToken ct)
     {
         return WaitForResult<T>(ct);
     }
@@ -25,7 +23,7 @@ internal sealed class ProcedureResult<T>() : ProcedureResult(typeof(T))
     /// </summary>
     /// <param name="ct">The cancellation token for the wait operation</param>
     /// <returns>The result of the procedure</returns>
-    public async Task<T> WaitForResultAsync(CancellationToken ct)
+    public async Task<T?> WaitForResultAsync(CancellationToken ct)
     {
         return await WaitForResultAsync<T>(ct);
     }
@@ -38,19 +36,19 @@ internal sealed class ProcedureResult<T>() : ProcedureResult(typeof(T))
     /// this method.
     /// </summary>
     /// <returns>The result of the procedure</returns>
-    public T GetResult()
+    public T? GetResult()
     {
         return GetResult<T>();
     }
     
-    protected override void MarkCompleteImpl(object result)
+    protected override void MarkCompleteImpl(object? result)
     {
-        _result = (T)result;
+        _result = (T?)result;
     }
 
-    protected override object GetResultImpl()
+    protected override object? GetResultImpl()
     {
-        return _result ?? throw new ProcedureException("Attempt to get the result of unfinished procedure");
+        return _result;
     }
 }
 
@@ -87,15 +85,12 @@ internal class ProcedureResult
     /// </exception>
     public void MarkComplete(object? result = null)
     {
-        if (_resultType != null && result == null)
-            throw new ArgumentException("Non null result must be provided for procedures that return a result object");
-        
         if (_resultType == null && result != null)
             throw new ArgumentException($"Can't set the result of a procedure that doesn't return a result object");
 
-        if (result != null)
+        if (_resultType != null)
         {
-            if (result.GetType() != _resultType)
+            if (result != null && result.GetType() != _resultType)
                 throw new ArgumentException($"Result type {result.GetType().Name} does not match the specified type for this procedure");
             
             MarkCompleteImpl(result); // Set the result
@@ -138,7 +133,7 @@ internal class ProcedureResult
         await _completionTcs.Task;
     }
 
-    protected T WaitForResult<T>(CancellationToken ct)
+    protected T? WaitForResult<T>(CancellationToken ct)
     {
         if (_resultType == null)
             throw new InvalidOperationException("Can't wait for a result object from a procedure that doesn't return a result object");
@@ -147,23 +142,23 @@ internal class ProcedureResult
         return GetResult<T>();
     }
     
-    protected async Task<T> WaitForResultAsync<T>(CancellationToken ct)
+    protected async Task<T?> WaitForResultAsync<T>(CancellationToken ct)
     {
         await WaitForCompletionAsync(ct);
         return GetResult<T>();
     }
 
-    protected virtual void MarkCompleteImpl(object result)
+    protected virtual void MarkCompleteImpl(object? result)
     {
         throw new InvalidOperationException("Can't set the result of a procedure that doesn't return a result object");
     }
 
-    protected virtual object GetResultImpl()
+    protected virtual object? GetResultImpl()
     {
         throw new InvalidOperationException("Can't get the result of a procedure that doesn't have a return object");
     }
     
-    protected T GetResult<T>()
+    protected T? GetResult<T>()
     {
         if (!_completionTcs.Task.IsCompleted)
             throw new InvalidOperationException("Can't get the result of a procedure that hasn't completed yet");
@@ -171,6 +166,6 @@ internal class ProcedureResult
         if (typeof(T) != _resultType)
             throw new ArgumentException($"Result type {typeof(T).Name} does not match the specified type for this procedure");
             
-        return (T)GetResultImpl();
+        return (T?)GetResultImpl();
     }
 }

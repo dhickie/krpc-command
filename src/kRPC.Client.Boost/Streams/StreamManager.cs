@@ -24,7 +24,7 @@ internal static class StreamManager
     private static bool _initialised;
     private static readonly object InitLock = new();
     private static ConnectionMultiplexer? _connection;
-    private static Thread _compactionThread;
+    private static Thread? _compactionThread;
     private static readonly ReaderWriterLockSlim CompactionLock = new();
     private static readonly ConcurrentDictionary<string, object> Locks = new();
     private static readonly ConcurrentDictionary<string, LocalStream> Streams = new();
@@ -130,7 +130,7 @@ internal static class StreamManager
         return false;
     }
 
-    public static void SetValue(ulong remoteId, object value)
+    public static void SetValue(ulong remoteId, object? value)
     {
         ValidateState();
 

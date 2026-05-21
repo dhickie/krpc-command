@@ -214,7 +214,7 @@ public class Alarm : RemoteObject
     /// Vessel the alarm references. <c>null</c> if it does not reference a vessel.
     /// </summary>
     [Rpc("SpaceCenter", "Alarm_get_Vessel")]
-    public Vessel GetVessel()
+    public Vessel? GetVessel()
     {
         var args = new object[]
         {
@@ -228,7 +228,7 @@ public class Alarm : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Alarm_get_Vessel")]
-    public async Task<Vessel> GetVesselAsync()
+    public async Task<Vessel?> GetVesselAsync()
     {
         var args = new object[]
         {

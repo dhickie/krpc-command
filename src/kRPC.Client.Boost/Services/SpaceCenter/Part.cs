@@ -354,7 +354,7 @@ public class Part : RemoteObject
     /// To interact with RemoteTech antennas, use the RemoteTech service APIs.
     /// </remarks>
     [Rpc("SpaceCenter", "Part_get_Antenna")]
-    public Antenna GetAntenna()
+    public Antenna? GetAntenna()
     {
         var args = new object[]
         {
@@ -372,7 +372,7 @@ public class Part : RemoteObject
     /// To interact with RemoteTech antennas, use the RemoteTech service APIs.
     /// </remarks>
     [Rpc("SpaceCenter", "Part_get_Antenna")]
-    public async Task<Antenna> GetAntennaAsync()
+    public async Task<Antenna?> GetAntennaAsync()
     {
         var args = new object[]
         {
@@ -468,7 +468,7 @@ public class Part : RemoteObject
     /// Gets a <see cref="T:SpaceCenter.CargoBay" /> if the part is a cargo bay, otherwise <c>null</c>.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_CargoBay")]
-    public CargoBay GetCargoBay()
+    public CargoBay? GetCargoBay()
     {
         var args = new object[]
         {
@@ -482,7 +482,7 @@ public class Part : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_CargoBay")]
-    public async Task<CargoBay> GetCargoBayAsync()
+    public async Task<CargoBay?> GetCargoBayAsync()
     {
         var args = new object[]
         {
@@ -572,7 +572,7 @@ public class Part : RemoteObject
     /// otherwise <c>null</c>.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_ControlSurface")]
-    public ControlSurface GetControlSurface()
+    public ControlSurface? GetControlSurface()
     {
         var args = new object[]
         {
@@ -587,7 +587,7 @@ public class Part : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_ControlSurface")]
-    public async Task<ControlSurface> GetControlSurfaceAsync()
+    public async Task<ControlSurface?> GetControlSurfaceAsync()
     {
         var args = new object[]
         {
@@ -683,7 +683,7 @@ public class Part : RemoteObject
     /// Gets a <see cref="T:SpaceCenter.Decoupler" /> if the part is a decoupler, otherwise <c>null</c>.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_Decoupler")]
-    public Decoupler GetDecoupler()
+    public Decoupler? GetDecoupler()
     {
         var args = new object[]
         {
@@ -697,7 +697,7 @@ public class Part : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_Decoupler")]
-    public async Task<Decoupler> GetDecouplerAsync()
+    public async Task<Decoupler?> GetDecouplerAsync()
     {
         var args = new object[]
         {
@@ -710,7 +710,7 @@ public class Part : RemoteObject
     /// Gets a <see cref="T:SpaceCenter.DockingPort" /> if the part is a docking port, otherwise <c>null</c>.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_DockingPort")]
-    public DockingPort GetDockingPort()
+    public DockingPort? GetDockingPort()
     {
         var args = new object[]
         {
@@ -724,7 +724,7 @@ public class Part : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_DockingPort")]
-    public async Task<DockingPort> GetDockingPortAsync()
+    public async Task<DockingPort?> GetDockingPortAsync()
     {
         var args = new object[]
         {
@@ -793,7 +793,7 @@ public class Part : RemoteObject
     /// Gets an <see cref="T:SpaceCenter.Engine" /> if the part is an engine, otherwise <c>null</c>.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_Engine")]
-    public Engine GetEngine()
+    public Engine? GetEngine()
     {
         var args = new object[]
         {
@@ -807,7 +807,7 @@ public class Part : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_Engine")]
-    public async Task<Engine> GetEngineAsync()
+    public async Task<Engine?> GetEngineAsync()
     {
         var args = new object[]
         {
@@ -825,7 +825,7 @@ public class Part : RemoteObject
     /// In that case, use <see cref="M:SpaceCenter.Part.GetExperiments" /> to get the list of experiments in the part.
     /// </remarks>
     [Rpc("SpaceCenter", "Part_get_Experiment")]
-    public Experiment GetExperiment()
+    public Experiment? GetExperiment()
     {
         var args = new object[]
         {
@@ -844,7 +844,7 @@ public class Part : RemoteObject
     /// In that case, use <see cref="M:SpaceCenter.Part.GetExperiments" /> to get the list of experiments in the part.
     /// </remarks>
     [Rpc("SpaceCenter", "Part_get_Experiment")]
-    public async Task<Experiment> GetExperimentAsync()
+    public async Task<Experiment?> GetExperimentAsync()
     {
         var args = new object[]
         {
@@ -884,7 +884,7 @@ public class Part : RemoteObject
     /// Gets a <see cref="T:SpaceCenter.Fairing" /> if the part is a fairing, otherwise <c>null</c>.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_Fairing")]
-    public Fairing GetFairing()
+    public Fairing? GetFairing()
     {
         var args = new object[]
         {
@@ -898,7 +898,7 @@ public class Part : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_Fairing")]
-    public async Task<Fairing> GetFairingAsync()
+    public async Task<Fairing?> GetFairingAsync()
     {
         var args = new object[]
         {
@@ -1227,7 +1227,7 @@ public class Part : RemoteObject
     /// For RCS thrusters see <see cref="T:SpaceCenter.RCS" />.
     /// </remarks>
     [Rpc("SpaceCenter", "Part_get_Intake")]
-    public Intake GetIntake()
+    public Intake? GetIntake()
     {
         var args = new object[]
         {
@@ -1246,7 +1246,7 @@ public class Part : RemoteObject
     /// For RCS thrusters see <see cref="T:SpaceCenter.RCS" />.
     /// </remarks>
     [Rpc("SpaceCenter", "Part_get_Intake")]
-    public async Task<Intake> GetIntakeAsync()
+    public async Task<Intake?> GetIntakeAsync()
     {
         var args = new object[]
         {
@@ -1286,7 +1286,7 @@ public class Part : RemoteObject
     /// Gets a <see cref="T:SpaceCenter.LaunchClamp" /> if the part is a launch clamp, otherwise <c>null</c>.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_LaunchClamp")]
-    public LaunchClamp GetLaunchClamp()
+    public LaunchClamp? GetLaunchClamp()
     {
         var args = new object[]
         {
@@ -1300,7 +1300,7 @@ public class Part : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_LaunchClamp")]
-    public async Task<LaunchClamp> GetLaunchClampAsync()
+    public async Task<LaunchClamp?> GetLaunchClampAsync()
     {
         var args = new object[]
         {
@@ -1313,7 +1313,7 @@ public class Part : RemoteObject
     /// Gets a <see cref="T:SpaceCenter.Leg" /> if the part is a landing leg, otherwise <c>null</c>.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_Leg")]
-    public Leg GetLeg()
+    public Leg? GetLeg()
     {
         var args = new object[]
         {
@@ -1327,7 +1327,7 @@ public class Part : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_Leg")]
-    public async Task<Leg> GetLegAsync()
+    public async Task<Leg?> GetLegAsync()
     {
         var args = new object[]
         {
@@ -1340,7 +1340,7 @@ public class Part : RemoteObject
     /// Gets a <see cref="T:SpaceCenter.Light" /> if the part is a light, otherwise <c>null</c>.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_Light")]
-    public Light GetLight()
+    public Light? GetLight()
     {
         var args = new object[]
         {
@@ -1354,7 +1354,7 @@ public class Part : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_Light")]
-    public async Task<Light> GetLightAsync()
+    public async Task<Light?> GetLightAsync()
     {
         var args = new object[]
         {
@@ -1566,7 +1566,7 @@ public class Part : RemoteObject
     /// Gets a <see cref="T:SpaceCenter.Parachute" /> if the part is a parachute, otherwise <c>null</c>.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_Parachute")]
-    public Parachute GetParachute()
+    public Parachute? GetParachute()
     {
         var args = new object[]
         {
@@ -1580,7 +1580,7 @@ public class Part : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_Parachute")]
-    public async Task<Parachute> GetParachuteAsync()
+    public async Task<Parachute?> GetParachuteAsync()
     {
         var args = new object[]
         {
@@ -1595,7 +1595,7 @@ public class Part : RemoteObject
     /// parts tree.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_Parent")]
-    public Part GetParent()
+    public Part? GetParent()
     {
         var args = new object[]
         {
@@ -1611,7 +1611,7 @@ public class Part : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_Parent")]
-    public async Task<Part> GetParentAsync()
+    public async Task<Part?> GetParentAsync()
     {
         var args = new object[]
         {
@@ -1624,7 +1624,7 @@ public class Part : RemoteObject
     /// Gets a <see cref="T:SpaceCenter.RCS" /> if the part is an RCS block/thruster, otherwise <c>null</c>.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_RCS")]
-    public RCS GetRCS()
+    public RCS? GetRCS()
     {
         var args = new object[]
         {
@@ -1638,7 +1638,7 @@ public class Part : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_RCS")]
-    public async Task<RCS> GetRCSAsync()
+    public async Task<RCS?> GetRCSAsync()
     {
         var args = new object[]
         {
@@ -1680,7 +1680,7 @@ public class Part : RemoteObject
     /// Gets a <see cref="T:SpaceCenter.Radiator" /> if the part is a radiator, otherwise <c>null</c>.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_Radiator")]
-    public Radiator GetRadiator()
+    public Radiator? GetRadiator()
     {
         var args = new object[]
         {
@@ -1694,7 +1694,7 @@ public class Part : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_Radiator")]
-    public async Task<Radiator> GetRadiatorAsync()
+    public async Task<Radiator?> GetRadiatorAsync()
     {
         var args = new object[]
         {
@@ -1707,7 +1707,7 @@ public class Part : RemoteObject
     /// Gets a <see cref="T:SpaceCenter.ReactionWheel" /> if the part is a reaction wheel, otherwise <c>null</c>.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_ReactionWheel")]
-    public ReactionWheel GetReactionWheel()
+    public ReactionWheel? GetReactionWheel()
     {
         var args = new object[]
         {
@@ -1721,7 +1721,7 @@ public class Part : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_ReactionWheel")]
-    public async Task<ReactionWheel> GetReactionWheelAsync()
+    public async Task<ReactionWheel?> GetReactionWheelAsync()
     {
         var args = new object[]
         {
@@ -1780,7 +1780,7 @@ public class Part : RemoteObject
     /// otherwise <c>null</c>.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_ResourceConverter")]
-    public ResourceConverter GetResourceConverter()
+    public ResourceConverter? GetResourceConverter()
     {
         var args = new object[]
         {
@@ -1795,7 +1795,7 @@ public class Part : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_ResourceConverter")]
-    public async Task<ResourceConverter> GetResourceConverterAsync()
+    public async Task<ResourceConverter?> GetResourceConverterAsync()
     {
         var args = new object[]
         {
@@ -1808,7 +1808,7 @@ public class Part : RemoteObject
     /// Gets a <see cref="T:SpaceCenter.ResourceDrain" /> if the part is a resource drain, otherwise <c>null</c>.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_ResourceDrain")]
-    public ResourceDrain GetResourceDrain()
+    public ResourceDrain? GetResourceDrain()
     {
         var args = new object[]
         {
@@ -1822,7 +1822,7 @@ public class Part : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_ResourceDrain")]
-    public async Task<ResourceDrain> GetResourceDrainAsync()
+    public async Task<ResourceDrain?> GetResourceDrainAsync()
     {
         var args = new object[]
         {
@@ -1836,7 +1836,7 @@ public class Part : RemoteObject
     /// otherwise <c>null</c>.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_ResourceHarvester")]
-    public ResourceHarvester GetResourceHarvester()
+    public ResourceHarvester? GetResourceHarvester()
     {
         var args = new object[]
         {
@@ -1851,7 +1851,7 @@ public class Part : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_ResourceHarvester")]
-    public async Task<ResourceHarvester> GetResourceHarvesterAsync()
+    public async Task<ResourceHarvester?> GetResourceHarvesterAsync()
     {
         var args = new object[]
         {
@@ -1892,7 +1892,7 @@ public class Part : RemoteObject
     /// otherwise <c>null</c>.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_RoboticController")]
-    public RoboticController GetRoboticController()
+    public RoboticController? GetRoboticController()
     {
         var args = new object[]
         {
@@ -1907,7 +1907,7 @@ public class Part : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_RoboticController")]
-    public async Task<RoboticController> GetRoboticControllerAsync()
+    public async Task<RoboticController?> GetRoboticControllerAsync()
     {
         var args = new object[]
         {
@@ -1920,7 +1920,7 @@ public class Part : RemoteObject
     /// Gets a <see cref="T:SpaceCenter.RoboticHinge" /> if the part is a robotic hinge, otherwise <c>null</c>.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_RoboticHinge")]
-    public RoboticHinge GetRoboticHinge()
+    public RoboticHinge? GetRoboticHinge()
     {
         var args = new object[]
         {
@@ -1934,7 +1934,7 @@ public class Part : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_RoboticHinge")]
-    public async Task<RoboticHinge> GetRoboticHingeAsync()
+    public async Task<RoboticHinge?> GetRoboticHingeAsync()
     {
         var args = new object[]
         {
@@ -1947,7 +1947,7 @@ public class Part : RemoteObject
     /// Gets a <see cref="T:SpaceCenter.RoboticPiston" /> if the part is a robotic piston, otherwise <c>null</c>.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_RoboticPiston")]
-    public RoboticPiston GetRoboticPiston()
+    public RoboticPiston? GetRoboticPiston()
     {
         var args = new object[]
         {
@@ -1961,7 +1961,7 @@ public class Part : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_RoboticPiston")]
-    public async Task<RoboticPiston> GetRoboticPistonAsync()
+    public async Task<RoboticPiston?> GetRoboticPistonAsync()
     {
         var args = new object[]
         {
@@ -1974,7 +1974,7 @@ public class Part : RemoteObject
     /// Gets a <see cref="T:SpaceCenter.RoboticRotation" /> if the part is a robotic rotation servo, otherwise <c>null</c>.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_RoboticRotation")]
-    public RoboticRotation GetRoboticRotation()
+    public RoboticRotation? GetRoboticRotation()
     {
         var args = new object[]
         {
@@ -1988,7 +1988,7 @@ public class Part : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_RoboticRotation")]
-    public async Task<RoboticRotation> GetRoboticRotationAsync()
+    public async Task<RoboticRotation?> GetRoboticRotationAsync()
     {
         var args = new object[]
         {
@@ -2001,7 +2001,7 @@ public class Part : RemoteObject
     /// Gets a <see cref="T:SpaceCenter.RoboticRotor" /> if the part is a robotic rotor, otherwise <c>null</c>.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_RoboticRotor")]
-    public RoboticRotor GetRoboticRotor()
+    public RoboticRotor? GetRoboticRotor()
     {
         var args = new object[]
         {
@@ -2015,7 +2015,7 @@ public class Part : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_RoboticRotor")]
-    public async Task<RoboticRotor> GetRoboticRotorAsync()
+    public async Task<RoboticRotor?> GetRoboticRotorAsync()
     {
         var args = new object[]
         {
@@ -2028,7 +2028,7 @@ public class Part : RemoteObject
     /// Gets a <see cref="T:SpaceCenter.Sensor" /> if the part is a sensor, otherwise <c>null</c>.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_Sensor")]
-    public Sensor GetSensor()
+    public Sensor? GetSensor()
     {
         var args = new object[]
         {
@@ -2042,7 +2042,7 @@ public class Part : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_Sensor")]
-    public async Task<Sensor> GetSensorAsync()
+    public async Task<Sensor?> GetSensorAsync()
     {
         var args = new object[]
         {
@@ -2109,7 +2109,7 @@ public class Part : RemoteObject
     /// Gets a <see cref="T:SpaceCenter.SolarPanel" /> if the part is a solar panel, otherwise <c>null</c>.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_SolarPanel")]
-    public SolarPanel GetSolarPanel()
+    public SolarPanel? GetSolarPanel()
     {
         var args = new object[]
         {
@@ -2123,7 +2123,7 @@ public class Part : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_SolarPanel")]
-    public async Task<SolarPanel> GetSolarPanelAsync()
+    public async Task<SolarPanel?> GetSolarPanelAsync()
     {
         var args = new object[]
         {
@@ -2570,7 +2570,7 @@ public class Part : RemoteObject
     /// Gets a <see cref="T:SpaceCenter.Wheel" /> if the part is a wheel, otherwise <c>null</c>.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_Wheel")]
-    public Wheel GetWheel()
+    public Wheel? GetWheel()
     {
         var args = new object[]
         {
@@ -2584,7 +2584,7 @@ public class Part : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_Wheel")]
-    public async Task<Wheel> GetWheelAsync()
+    public async Task<Wheel?> GetWheelAsync()
     {
         var args = new object[]
         {

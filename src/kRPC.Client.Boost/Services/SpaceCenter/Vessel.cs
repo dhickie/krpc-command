@@ -178,9 +178,9 @@ public class Vessel : RemoteObject
     /// (<see cref="M:SpaceCenter.Vessel.GetSurfaceReferenceFrame" />).
     /// </param>
     [Rpc("SpaceCenter", "Vessel_Flight")]
-    public Flight Flight(ReferenceFrame referenceFrame = null)
+    public Flight Flight(ReferenceFrame? referenceFrame = null)
     {
-        var args = new object[]
+        var args = new object?[]
         {
             this,
             referenceFrame
@@ -198,9 +198,9 @@ public class Vessel : RemoteObject
     /// (<see cref="M:SpaceCenter.Vessel.GetSurfaceReferenceFrame" />).
     /// </param>
     [Rpc("SpaceCenter", "Vessel_Flight")]
-    public async Task<Flight> FlightAsync(ReferenceFrame referenceFrame = null)
+    public async Task<Flight> FlightAsync(ReferenceFrame? referenceFrame = null)
     {
-        var args = new object[]
+        var args = new object?[]
         {
             this,
             referenceFrame

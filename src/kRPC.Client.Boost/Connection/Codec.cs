@@ -17,17 +17,17 @@ namespace kRPC.Client.Boost.Connection
         /// Encode an object of the given type using the protocol buffer encoding scheme.
         /// Should not be called directly. This interface is used by service client stubs.
         /// </summary>
-        public static ByteString Encode(object value)
+        public static ByteString Encode(object? value)
         {
             using var buffer = new MemoryStream();
             var stream = new CodedOutputStream(buffer, true);
-            return EncodeObject(value, value.GetType(), buffer, stream);
+            return EncodeObject(value, value?.GetType(), buffer, stream);
         }
         
         /// <summary>
         /// Decode a value of the given type.
         /// </summary>
-        public static object Decode(ByteString value, Type type, ConnectionMultiplexer client)
+        public static object? Decode(ByteString value, Type type, ConnectionMultiplexer client)
         {
             if (ReferenceEquals(type, null))
                 throw new CodecException($"{nameof(type)} should not be null");
@@ -94,15 +94,21 @@ namespace kRPC.Client.Boost.Connection
             return null; // return new Event((Connection)client, @event); TODO sort this - presumably needs an event type to exist in the public API
         }
 
-        private static ByteString EncodeObject(object? value, Type type, MemoryStream buffer, CodedOutputStream stream)
+        private static ByteString EncodeObject(object? value, Type? type, MemoryStream buffer, CodedOutputStream stream)
         {
             buffer.SetLength(0);
-            if (value != null && !type.IsInstanceOfType(value))
+
+            if (value != null && type == null)
+                throw new CodecException("Encode passed a non null value for a null type");
+            
+            if (value != null && !type!.IsInstanceOfType(value))
                 throw new CodecException("Value of type " + value.GetType() + " cannot be encoded to type " + type);
+            
+            if (value == null && type != null && !IsAClassType(type) && !IsACollectionType(type))
+                throw new ArgumentException($"Null cannot be encoded to type {type}");
+            
             switch (value)
             {
-                case null when !IsAClassType(type) && !IsACollectionType(type):
-                    throw new ArgumentException($"Null cannot be encoded to type {type}");
                 case null:
                     stream.WriteUInt64(0);
                     break;
@@ -139,17 +145,17 @@ namespace kRPC.Client.Boost.Connection
                         default:
                             if (type == typeof(byte[]))
                                 stream.WriteBytes(ByteString.CopyFrom((byte[])value));
-                            else if (IsAClassType(type))
+                            else if (IsAClassType(type!))
                                 stream.WriteUInt64(((RemoteObject)value).Id);
-                            else if (IsATupleType(type))
-                                WriteTuple(value, type, buffer);
-                            else if (IsAListType(type))
-                                WriteList(value, type, buffer);
-                            else if (IsASetType(type))
-                                WriteSet(value, type, buffer);
-                            else if (IsADictionaryType(type))
-                                WriteDictionary(value, type, buffer);
-                            else if (IsAMessageType(type))
+                            else if (IsATupleType(type!))
+                                WriteTuple(value, type!, buffer);
+                            else if (IsAListType(type!))
+                                WriteList(value, type!, buffer);
+                            else if (IsASetType(type!))
+                                WriteSet(value, type!, buffer);
+                            else if (IsADictionaryType(type!))
+                                WriteDictionary(value, type!, buffer);
+                            else if (IsAMessageType(type!))
                                 ((IMessage)value).WriteTo(buffer);
                             else
                                 throw new ArgumentException(type + " is not a serializable type");
@@ -263,7 +269,7 @@ namespace kRPC.Client.Boost.Connection
             if (genericType == null)
                 throw new CodecException($"Unable to find tuple type with {genericArgs.Length} generic arguments");
             
-            var values = new object[genericArgs.Length];
+            var values = new object?[genericArgs.Length];
             for (var i = 0; i < genericArgs.Length; i++) 
             {
                 var item = encodedTuple.Items[i];
@@ -333,7 +339,7 @@ namespace kRPC.Client.Boost.Connection
             {
                 var key = Decode(entry.Key, type.GetGenericArguments()[0], client);
                 var value = Decode(entry.Value, type.GetGenericArguments()[1], client);
-                dictionary[key] = value;
+                dictionary[key ?? throw new CodecException("Dictionary keys cannot be null")] = value;
             }
             
             return dictionary;

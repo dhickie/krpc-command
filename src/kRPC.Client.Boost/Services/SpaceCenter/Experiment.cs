@@ -376,7 +376,7 @@ public class Experiment : RemoteObject
     /// conditions. Returns <c>null</c> if the experiment is unavailable.
     /// </summary>
     [Rpc("SpaceCenter", "Experiment_get_ScienceSubject")]
-    public ScienceSubject GetScienceSubject()
+    public ScienceSubject? GetScienceSubject()
     {
         var args = new object[]
         {
@@ -391,7 +391,7 @@ public class Experiment : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Experiment_get_ScienceSubject")]
-    public async Task<ScienceSubject> GetScienceSubjectAsync()
+    public async Task<ScienceSubject?> GetScienceSubjectAsync()
     {
         var args = new object[]
         {

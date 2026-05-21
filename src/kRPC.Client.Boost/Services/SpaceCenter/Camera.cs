@@ -111,7 +111,7 @@ public class Camera : RemoteObject
     /// Returns an error is the camera is not in map mode.
     /// </summary>
     [Rpc("SpaceCenter", "Camera_get_FocussedBody")]
-    public CelestialBody GetFocussedBody()
+    public CelestialBody? GetFocussedBody()
     {
         var args = new object[]
         {
@@ -127,7 +127,7 @@ public class Camera : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Camera_get_FocussedBody")]
-    public async Task<CelestialBody> GetFocussedBodyAsync()
+    public async Task<CelestialBody?> GetFocussedBodyAsync()
     {
         var args = new object[]
         {
@@ -175,7 +175,7 @@ public class Camera : RemoteObject
     /// Returns an error is the camera is not in map mode.
     /// </summary>
     [Rpc("SpaceCenter", "Camera_get_FocussedNode")]
-    public Node GetFocussedNode()
+    public Node? GetFocussedNode()
     {
         var args = new object[]
         {
@@ -191,7 +191,7 @@ public class Camera : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Camera_get_FocussedNode")]
-    public async Task<Node> GetFocussedNodeAsync()
+    public async Task<Node?> GetFocussedNodeAsync()
     {
         var args = new object[]
         {
@@ -239,7 +239,7 @@ public class Camera : RemoteObject
     /// Returns an error is the camera is not in map mode.
     /// </summary>
     [Rpc("SpaceCenter", "Camera_get_FocussedVessel")]
-    public Vessel GetFocussedVessel()
+    public Vessel? GetFocussedVessel()
     {
         var args = new object[]
         {
@@ -255,7 +255,7 @@ public class Camera : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Camera_get_FocussedVessel")]
-    public async Task<Vessel> GetFocussedVesselAsync()
+    public async Task<Vessel?> GetFocussedVesselAsync()
     {
         var args = new object[]
         {

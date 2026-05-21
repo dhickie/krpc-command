@@ -139,7 +139,7 @@ public class ConnectionMultiplexer : IDisposable
     /// <param name="service">The service the procedure is part of</param>
     /// <param name="procedure">The procedure to invoke</param>
     /// <param name="arguments">The arguments to the procedure</param>
-    internal void Invoke(string service, string procedure, object[]? arguments = null)
+    internal void Invoke(string service, string procedure, object?[]? arguments = null)
     {
         CheckDisposed();
         var result = AddRpcRequestToQueue(service, procedure, arguments);
@@ -154,7 +154,7 @@ public class ConnectionMultiplexer : IDisposable
     /// <param name="arguments">The arguments to the procedure</param>
     /// <typeparam name="TResponse">The type of the response object</typeparam>
     /// <returns>The result object from the procedure.</returns>
-    internal TResponse Invoke<TResponse>(string service, string procedure, object[]? arguments = null)
+    internal TResponse Invoke<TResponse>(string service, string procedure, object?[]? arguments = null)
     {
         CheckDisposed();
         var result = AddRpcRequestToQueue<TResponse>(service, procedure, arguments);
@@ -167,7 +167,7 @@ public class ConnectionMultiplexer : IDisposable
     /// <param name="service">The service the procedure is part of</param>
     /// <param name="procedure">The procedure to invoke</param>
     /// <param name="arguments">The arguments to the procedure</param>
-    internal async Task InvokeAsync(string service, string procedure, object[]? arguments = null)
+    internal async Task InvokeAsync(string service, string procedure, object?[]? arguments = null)
     {
         CheckDisposed();
         var result = AddRpcRequestToQueue(service, procedure, arguments);
@@ -182,14 +182,14 @@ public class ConnectionMultiplexer : IDisposable
     /// <param name="arguments">The arguments to the procedure</param>
     /// <typeparam name="TResponse">The type of the response object</typeparam>
     /// <returns>The result object from the procedure.</returns>
-    internal async Task<TResponse> InvokeAsync<TResponse>(string service, string procedure, object[]? arguments = null)
+    internal async Task<TResponse> InvokeAsync<TResponse>(string service, string procedure, object?[]? arguments = null)
     {
         CheckDisposed();
         var result = AddRpcRequestToQueue<TResponse>(service, procedure, arguments);
         return await result.WaitForResultAsync(_disposalTokenSource.Token);
     }
 
-    private ProcedureResult<T> AddRpcRequestToQueue<T>(string service, string procedure, object[]? arguments = null)
+    private ProcedureResult<T> AddRpcRequestToQueue<T>(string service, string procedure, object?[]? arguments = null)
     {
         // Set up the request and result object
         var request = new ReturningProcedureRequest(typeof(T), service, procedure, arguments);
@@ -204,7 +204,7 @@ public class ConnectionMultiplexer : IDisposable
         return result;
     }
 
-    private ProcedureResult AddRpcRequestToQueue(string service, string procedure, object[]? arguments = null)
+    private ProcedureResult AddRpcRequestToQueue(string service, string procedure, object?[]? arguments = null)
     {
         var request = new ProcedureRequest(service, procedure, arguments);
         var result = new ProcedureResult();

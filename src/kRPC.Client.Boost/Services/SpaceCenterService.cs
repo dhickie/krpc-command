@@ -137,7 +137,7 @@ public class SpaceCenterService
     /// <param name="name"></param>
     /// <returns><c>null</c> if no Kerbal with the given name exists.</returns>
     [Rpc("SpaceCenter", "GetKerbal")]
-    public CrewMember GetKerbal(string name)
+    public CrewMember? GetKerbal(string name)
     {
         var args = new object[]
         {
@@ -153,7 +153,7 @@ public class SpaceCenterService
     /// <param name="name"></param>
     /// <returns><c>null</c> if no Kerbal with the given name exists.</returns>
     [Rpc("SpaceCenter", "GetKerbal")]
-    public async Task<CrewMember> GetKerbalAsync(string name)
+    public async Task<CrewMember?> GetKerbalAsync(string name)
     {
         var args = new object[]
         {
@@ -180,9 +180,9 @@ public class SpaceCenterService
     /// Throws an exception if any of the games pre-flight checks fail.
     /// </remarks>
     [Rpc("SpaceCenter", "LaunchVessel")]
-    public void LaunchVessel(string craftDirectory, string name, string launchSite, bool recover = true, IList<string> crew = null, string flagUrl = "")
+    public void LaunchVessel(string craftDirectory, string name, string launchSite, bool recover = true, IList<string>? crew = null, string? flagUrl = "")
     {
-        var args = new object[]
+        var args = new object?[]
         {
             craftDirectory,
             name,
@@ -213,9 +213,9 @@ public class SpaceCenterService
     /// Throws an exception if any of the games pre-flight checks fail.
     /// </remarks>
     [Rpc("SpaceCenter", "LaunchVessel")]
-    public async Task LaunchVesselAsync(string craftDirectory, string name, string launchSite, bool recover = true, IList<string> crew = null, string flagUrl = "")
+    public async Task LaunchVesselAsync(string craftDirectory, string name, string launchSite, bool recover = true, IList<string>? crew = null, string? flagUrl = "")
     {
-        var args = new object[]
+        var args = new object?[]
         {
             craftDirectory,
             name,
@@ -502,7 +502,7 @@ public class SpaceCenterService
     /// <param name="referenceFrame">The reference frame that the position and direction are in.</param>
     /// <returns>The part that was hit or <c>null</c> if there was no hit.</returns>
     [Rpc("SpaceCenter", "RaycastPart")]
-    public Part RaycastPart(Tuple<double,double,double> position, Tuple<double,double,double> direction, ReferenceFrame referenceFrame)
+    public Part? RaycastPart(Tuple<double,double,double> position, Tuple<double,double,double> direction, ReferenceFrame referenceFrame)
     {
         var args = new object[]
         {
@@ -523,7 +523,7 @@ public class SpaceCenterService
     /// <param name="referenceFrame">The reference frame that the position and direction are in.</param>
     /// <returns>The part that was hit or <c>null</c> if there was no hit.</returns>
     [Rpc("SpaceCenter", "RaycastPart")]
-    public async Task<Part> RaycastPartAsync(Tuple<double,double,double> position, Tuple<double,double,double> direction, ReferenceFrame referenceFrame)
+    public async Task<Part?> RaycastPartAsync(Tuple<double,double,double> position, Tuple<double,double,double> direction, ReferenceFrame referenceFrame)
     {
         var args = new object[]
         {
