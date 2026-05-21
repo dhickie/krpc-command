@@ -3,6 +3,7 @@ using kRPC.Client.Boost.Services;
 using System;
 using kRPC.Client.Boost.Attributes;
 using MathNet.Spatial.Euclidean;
+using MathNet.Spatial.Units;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -137,16 +138,16 @@ public class CelestialBody : RemoteObject
     /// at the given position. When over water, this is the height
     /// of the sea-bed and is therefore  negative value.
     /// </summary>
-    /// <param name="latitude">Latitude in degrees.</param>
-    /// <param name="longitude">Longitude in degrees.</param>
+    /// <param name="latitude">Latitude.</param>
+    /// <param name="longitude">Longitude.</param>
     [Rpc("SpaceCenter", "CelestialBody_BedrockHeight")]
-    public double BedrockHeight(double latitude, double longitude)
+    public double BedrockHeight(Angle latitude, Angle longitude)
     {
         var args = new object[]
         {
             this,
-            latitude,
-            longitude
+            latitude.Degrees,
+            longitude.Degrees
         };
         return Connection.Invoke<double>("SpaceCenter", "CelestialBody_BedrockHeight", args);
     }
@@ -157,16 +158,16 @@ public class CelestialBody : RemoteObject
     /// of the sea-bed and is therefore  negative value.
     /// Executes asynchronously.
     /// </summary>
-    /// <param name="latitude">Latitude in degrees.</param>
-    /// <param name="longitude">Longitude in degrees.</param>
+    /// <param name="latitude">Latitude.</param>
+    /// <param name="longitude">Longitude.</param>
     [Rpc("SpaceCenter", "CelestialBody_BedrockHeight")]
-    public async Task<double> BedrockHeightAsync(double latitude, double longitude)
+    public async Task<double> BedrockHeightAsync(Angle latitude, Angle longitude)
     {
         var args = new object[]
         {
             this,
-            latitude,
-            longitude
+            latitude.Degrees,
+            longitude.Degrees
         };
         return await Connection.InvokeAsync<double>("SpaceCenter", "CelestialBody_BedrockHeight", args);
     }
@@ -176,17 +177,17 @@ public class CelestialBody : RemoteObject
     /// reference frame. When over water, this is the position at the bottom of the sea-bed.
     /// </summary>
     /// <returns>Position as a vector.</returns>
-    /// <param name="latitude">Latitude in degrees.</param>
-    /// <param name="longitude">Longitude in degrees.</param>
+    /// <param name="latitude">Latitude.</param>
+    /// <param name="longitude">Longitude.</param>
     /// <param name="referenceFrame">Reference frame for the returned position vector.</param>
     [Rpc("SpaceCenter", "CelestialBody_BedrockPosition")]
-    public Vector3D BedrockPosition(double latitude, double longitude, ReferenceFrame referenceFrame)
+    public Vector3D BedrockPosition(Angle latitude, Angle longitude, ReferenceFrame referenceFrame)
     {
         var args = new object[]
         {
             this,
-            latitude,
-            longitude,
+            latitude.Degrees,
+            longitude.Degrees,
             referenceFrame
         };
         return Connection.Invoke<Vector3D>("SpaceCenter", "CelestialBody_BedrockPosition", args);
@@ -198,49 +199,49 @@ public class CelestialBody : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <returns>Position as a vector.</returns>
-    /// <param name="latitude">Latitude in degrees.</param>
-    /// <param name="longitude">Longitude in degrees.</param>
+    /// <param name="latitude">Latitude.</param>
+    /// <param name="longitude">Longitude.</param>
     /// <param name="referenceFrame">Reference frame for the returned position vector.</param>
     [Rpc("SpaceCenter", "CelestialBody_BedrockPosition")]
-    public async Task<Vector3D> BedrockPositionAsync(double latitude, double longitude, ReferenceFrame referenceFrame)
+    public async Task<Vector3D> BedrockPositionAsync(Angle latitude, Angle longitude, ReferenceFrame referenceFrame)
     {
         var args = new object[]
         {
             this,
-            latitude,
-            longitude,
+            latitude.Degrees,
+            longitude.Degrees,
             referenceFrame
         };
         return await Connection.InvokeAsync<Vector3D>("SpaceCenter", "CelestialBody_BedrockPosition", args);
     }
 
     /// <summary>
-    /// The biome at the given latitude and longitude, in degrees.
+    /// The biome at the given latitude and longitude.
     /// </summary>
     [Rpc("SpaceCenter", "CelestialBody_BiomeAt")]
-    public string BiomeAt(double latitude, double longitude)
+    public string BiomeAt(Angle latitude, Angle longitude)
     {
         var args = new object[]
         {
             this,
-            latitude,
-            longitude
+            latitude.Degrees,
+            longitude.Degrees
         };
         return Connection.Invoke<string>("SpaceCenter", "CelestialBody_BiomeAt", args);
     }
 
     /// <summary>
-    /// The biome at the given latitude and longitude, in degrees.
+    /// The biome at the given latitude and longitude.
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "CelestialBody_BiomeAt")]
-    public async Task<string> BiomeAtAsync(double latitude, double longitude)
+    public async Task<string> BiomeAtAsync(Angle latitude, Angle longitude)
     {
         var args = new object[]
         {
             this,
-            latitude,
-            longitude
+            latitude.Degrees,
+            longitude.Degrees
         };
         return await Connection.InvokeAsync<string>("SpaceCenter", "CelestialBody_BiomeAt", args);
     }
@@ -333,7 +334,7 @@ public class CelestialBody : RemoteObject
     /// <param name="position">Position as a vector.</param>
     /// <param name="referenceFrame">Reference frame for the position vector.</param>
     [Rpc("SpaceCenter", "CelestialBody_LatitudeAtPosition")]
-    public double LatitudeAtPosition(Vector3D position, ReferenceFrame referenceFrame)
+    public Angle LatitudeAtPosition(Vector3D position, ReferenceFrame referenceFrame)
     {
         var args = new object[]
         {
@@ -341,7 +342,8 @@ public class CelestialBody : RemoteObject
             position,
             referenceFrame
         };
-        return Connection.Invoke<double>("SpaceCenter", "CelestialBody_LatitudeAtPosition", args);
+        var result = Connection.Invoke<double>("SpaceCenter", "CelestialBody_LatitudeAtPosition", args);
+        return Angle.FromDegrees(result);
     }
 
     /// <summary>
@@ -351,7 +353,7 @@ public class CelestialBody : RemoteObject
     /// <param name="position">Position as a vector.</param>
     /// <param name="referenceFrame">Reference frame for the position vector.</param>
     [Rpc("SpaceCenter", "CelestialBody_LatitudeAtPosition")]
-    public async Task<double> LatitudeAtPositionAsync(Vector3D position, ReferenceFrame referenceFrame)
+    public async Task<Angle> LatitudeAtPositionAsync(Vector3D position, ReferenceFrame referenceFrame)
     {
         var args = new object[]
         {
@@ -359,7 +361,8 @@ public class CelestialBody : RemoteObject
             position,
             referenceFrame
         };
-        return await Connection.InvokeAsync<double>("SpaceCenter", "CelestialBody_LatitudeAtPosition", args);
+        var result = await Connection.InvokeAsync<double>("SpaceCenter", "CelestialBody_LatitudeAtPosition", args);
+        return Angle.FromDegrees(result);
     }
 
     /// <summary>
@@ -368,7 +371,7 @@ public class CelestialBody : RemoteObject
     /// <param name="position">Position as a vector.</param>
     /// <param name="referenceFrame">Reference frame for the position vector.</param>
     [Rpc("SpaceCenter", "CelestialBody_LongitudeAtPosition")]
-    public double LongitudeAtPosition(Vector3D position, ReferenceFrame referenceFrame)
+    public Angle LongitudeAtPosition(Vector3D position, ReferenceFrame referenceFrame)
     {
         var args = new object[]
         {
@@ -376,7 +379,8 @@ public class CelestialBody : RemoteObject
             position,
             referenceFrame
         };
-        return Connection.Invoke<double>("SpaceCenter", "CelestialBody_LongitudeAtPosition", args);
+        var result = Connection.Invoke<double>("SpaceCenter", "CelestialBody_LongitudeAtPosition", args);
+        return Angle.FromDegrees(result);
     }
 
     /// <summary>
@@ -386,7 +390,7 @@ public class CelestialBody : RemoteObject
     /// <param name="position">Position as a vector.</param>
     /// <param name="referenceFrame">Reference frame for the position vector.</param>
     [Rpc("SpaceCenter", "CelestialBody_LongitudeAtPosition")]
-    public async Task<double> LongitudeAtPositionAsync(Vector3D position, ReferenceFrame referenceFrame)
+    public async Task<Angle> LongitudeAtPositionAsync(Vector3D position, ReferenceFrame referenceFrame)
     {
         var args = new object[]
         {
@@ -394,7 +398,8 @@ public class CelestialBody : RemoteObject
             position,
             referenceFrame
         };
-        return await Connection.InvokeAsync<double>("SpaceCenter", "CelestialBody_LongitudeAtPosition", args);
+        var result = await Connection.InvokeAsync<double>("SpaceCenter", "CelestialBody_LongitudeAtPosition", args);
+        return Angle.FromDegrees(result);
     }
 
     /// <summary>
@@ -402,17 +407,17 @@ public class CelestialBody : RemoteObject
     /// in the given reference frame.
     /// </summary>
     /// <returns>Position as a vector.</returns>
-    /// <param name="latitude">Latitude in degrees.</param>
-    /// <param name="longitude">Longitude in degrees.</param>
+    /// <param name="latitude">Latitude.</param>
+    /// <param name="longitude">Longitude.</param>
     /// <param name="referenceFrame">Reference frame for the returned position vector.</param>
     [Rpc("SpaceCenter", "CelestialBody_MSLPosition")]
-    public Vector3D MSLPosition(double latitude, double longitude, ReferenceFrame referenceFrame)
+    public Vector3D MSLPosition(Angle latitude, Angle longitude, ReferenceFrame referenceFrame)
     {
         var args = new object[]
         {
             this,
-            latitude,
-            longitude,
+            latitude.Degrees,
+            longitude.Degrees,
             referenceFrame
         };
         return Connection.Invoke<Vector3D>("SpaceCenter", "CelestialBody_MSLPosition", args);
@@ -424,17 +429,17 @@ public class CelestialBody : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <returns>Position as a vector.</returns>
-    /// <param name="latitude">Latitude in degrees.</param>
-    /// <param name="longitude">Longitude in degrees.</param>
+    /// <param name="latitude">Latitude.</param>
+    /// <param name="longitude">Longitude.</param>
     /// <param name="referenceFrame">Reference frame for the returned position vector.</param>
     [Rpc("SpaceCenter", "CelestialBody_MSLPosition")]
-    public async Task<Vector3D> MSLPositionAsync(double latitude, double longitude, ReferenceFrame referenceFrame)
+    public async Task<Vector3D> MSLPositionAsync(Angle latitude, Angle longitude, ReferenceFrame referenceFrame)
     {
         var args = new object[]
         {
             this,
-            latitude,
-            longitude,
+            latitude.Degrees,
+            longitude.Degrees,
             referenceFrame
         };
         return await Connection.InvokeAsync<Vector3D>("SpaceCenter", "CelestialBody_MSLPosition", args);
@@ -479,18 +484,18 @@ public class CelestialBody : RemoteObject
     /// The position at the given latitude, longitude and altitude, in the given reference frame.
     /// </summary>
     /// <returns>Position as a vector.</returns>
-    /// <param name="latitude">Latitude in degrees.</param>
-    /// <param name="longitude">Longitude in degrees.</param>
+    /// <param name="latitude">Latitude.</param>
+    /// <param name="longitude">Longitude.</param>
     /// <param name="altitude">Altitude in meters above sea level.</param>
     /// <param name="referenceFrame">Reference frame for the returned position vector.</param>
     [Rpc("SpaceCenter", "CelestialBody_PositionAtAltitude")]
-    public Vector3D PositionAtAltitude(double latitude, double longitude, double altitude, ReferenceFrame referenceFrame)
+    public Vector3D PositionAtAltitude(Angle latitude, Angle longitude, double altitude, ReferenceFrame referenceFrame)
     {
         var args = new object[]
         {
             this,
-            latitude,
-            longitude,
+            latitude.Degrees,
+            longitude.Degrees,
             altitude,
             referenceFrame
         };
@@ -502,18 +507,18 @@ public class CelestialBody : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <returns>Position as a vector.</returns>
-    /// <param name="latitude">Latitude in degrees.</param>
-    /// <param name="longitude">Longitude in degrees.</param>
+    /// <param name="latitude">Latitude.</param>
+    /// <param name="longitude">Longitude.</param>
     /// <param name="altitude">Altitude in meters above sea level.</param>
     /// <param name="referenceFrame">Reference frame for the returned position vector.</param>
     [Rpc("SpaceCenter", "CelestialBody_PositionAtAltitude")]
-    public async Task<Vector3D> PositionAtAltitudeAsync(double latitude, double longitude, double altitude, ReferenceFrame referenceFrame)
+    public async Task<Vector3D> PositionAtAltitudeAsync(Angle latitude, Angle longitude, double altitude, ReferenceFrame referenceFrame)
     {
         var args = new object[]
         {
             this,
-            latitude,
-            longitude,
+            latitude.Degrees,
+            longitude.Degrees,
             altitude,
             referenceFrame
         };
@@ -590,16 +595,16 @@ public class CelestialBody : RemoteObject
     /// The height of the surface relative to mean sea level, in meters,
     /// at the given position. When over water this is equal to 0.
     /// </summary>
-    /// <param name="latitude">Latitude in degrees.</param>
-    /// <param name="longitude">Longitude in degrees.</param>
+    /// <param name="latitude">Latitude.</param>
+    /// <param name="longitude">Longitude.</param>
     [Rpc("SpaceCenter", "CelestialBody_SurfaceHeight")]
-    public double SurfaceHeight(double latitude, double longitude)
+    public double SurfaceHeight(Angle latitude, Angle longitude)
     {
         var args = new object[]
         {
             this,
-            latitude,
-            longitude
+            latitude.Degrees,
+            longitude.Degrees
         };
         return Connection.Invoke<double>("SpaceCenter", "CelestialBody_SurfaceHeight", args);
     }
@@ -609,16 +614,16 @@ public class CelestialBody : RemoteObject
     /// at the given position. When over water this is equal to 0.
     /// Executes asynchronously.
     /// </summary>
-    /// <param name="latitude">Latitude in degrees.</param>
-    /// <param name="longitude">Longitude in degrees.</param>
+    /// <param name="latitude">Latitude.</param>
+    /// <param name="longitude">Longitude.</param>
     [Rpc("SpaceCenter", "CelestialBody_SurfaceHeight")]
-    public async Task<double> SurfaceHeightAsync(double latitude, double longitude)
+    public async Task<double> SurfaceHeightAsync(Angle latitude, Angle longitude)
     {
         var args = new object[]
         {
             this,
-            latitude,
-            longitude
+            latitude.Degrees,
+            longitude.Degrees
         };
         return await Connection.InvokeAsync<double>("SpaceCenter", "CelestialBody_SurfaceHeight", args);
     }
@@ -628,17 +633,17 @@ public class CelestialBody : RemoteObject
     /// reference frame. When over water, this is the position of the surface of the water.
     /// </summary>
     /// <returns>Position as a vector.</returns>
-    /// <param name="latitude">Latitude in degrees.</param>
-    /// <param name="longitude">Longitude in degrees.</param>
+    /// <param name="latitude">Latitude.</param>
+    /// <param name="longitude">Longitude.</param>
     /// <param name="referenceFrame">Reference frame for the returned position vector.</param>
     [Rpc("SpaceCenter", "CelestialBody_SurfacePosition")]
-    public Vector3D SurfacePosition(double latitude, double longitude, ReferenceFrame referenceFrame)
+    public Vector3D SurfacePosition(Angle latitude, Angle longitude, ReferenceFrame referenceFrame)
     {
         var args = new object[]
         {
             this,
-            latitude,
-            longitude,
+            latitude.Degrees,
+            longitude.Degrees,
             referenceFrame
         };
         return Connection.Invoke<Vector3D>("SpaceCenter", "CelestialBody_SurfacePosition", args);
@@ -650,17 +655,17 @@ public class CelestialBody : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <returns>Position as a vector.</returns>
-    /// <param name="latitude">Latitude in degrees.</param>
-    /// <param name="longitude">Longitude in degrees.</param>
+    /// <param name="latitude">Latitude.</param>
+    /// <param name="longitude">Longitude.</param>
     /// <param name="referenceFrame">Reference frame for the returned position vector.</param>
     [Rpc("SpaceCenter", "CelestialBody_SurfacePosition")]
-    public async Task<Vector3D> SurfacePositionAsync(double latitude, double longitude, ReferenceFrame referenceFrame)
+    public async Task<Vector3D> SurfacePositionAsync(Angle latitude, Angle longitude, ReferenceFrame referenceFrame)
     {
         var args = new object[]
         {
             this,
-            latitude,
-            longitude,
+            latitude.Degrees,
+            longitude.Degrees,
             referenceFrame
         };
         return await Connection.InvokeAsync<Vector3D>("SpaceCenter", "CelestialBody_SurfacePosition", args);
@@ -967,32 +972,34 @@ public class CelestialBody : RemoteObject
     }
 
     /// <summary>
-    /// Gets the initial rotation angle of the body (at UT 0), in radians.
+    /// Gets the initial rotation angle of the body (at UT 0).
     /// A value between 0 and <math>2\pi</math>
     /// </summary>
     [Rpc("SpaceCenter", "CelestialBody_get_InitialRotation")]
-    public double GetInitialRotation()
+    public Angle GetInitialRotation()
     {
         var args = new object[]
         {
             this
         };
-        return Connection.Invoke<double>("SpaceCenter", "CelestialBody_get_InitialRotation", args);
+        var result = Connection.Invoke<double>("SpaceCenter", "CelestialBody_get_InitialRotation", args);
+        return Angle.FromRadians(result);
     }
 
     /// <summary>
-    /// Gets the initial rotation angle of the body (at UT 0), in radians.
+    /// Gets the initial rotation angle of the body (at UT 0).
     /// A value between 0 and <math>2\pi</math>
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "CelestialBody_get_InitialRotation")]
-    public async Task<double> GetInitialRotationAsync()
+    public async Task<Angle> GetInitialRotationAsync()
     {
         var args = new object[]
         {
             this
         };
-        return await Connection.InvokeAsync<double>("SpaceCenter", "CelestialBody_get_InitialRotation", args);
+        var result = await Connection.InvokeAsync<double>("SpaceCenter", "CelestialBody_get_InitialRotation", args);
+        return Angle.FromRadians(result);
     }
 
     /// <summary>
@@ -1221,32 +1228,34 @@ public class CelestialBody : RemoteObject
     }
 
     /// <summary>
-    /// Gets the current rotation angle of the body, in radians.
+    /// Gets the current rotation angle of the body.
     /// A value between 0 and <math>2\pi</math>
     /// </summary>
     [Rpc("SpaceCenter", "CelestialBody_get_RotationAngle")]
-    public double GetRotationAngle()
+    public Angle GetRotationAngle()
     {
         var args = new object[]
         {
             this
         };
-        return Connection.Invoke<double>("SpaceCenter", "CelestialBody_get_RotationAngle", args);
+        var result = Connection.Invoke<double>("SpaceCenter", "CelestialBody_get_RotationAngle", args);
+        return Angle.FromRadians(result);
     }
 
     /// <summary>
-    /// Gets the current rotation angle of the body, in radians.
+    /// Gets the current rotation angle of the body.
     /// A value between 0 and <math>2\pi</math>
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "CelestialBody_get_RotationAngle")]
-    public async Task<double> GetRotationAngleAsync()
+    public async Task<Angle> GetRotationAngleAsync()
     {
         var args = new object[]
         {
             this
         };
-        return await Connection.InvokeAsync<double>("SpaceCenter", "CelestialBody_get_RotationAngle", args);
+        var result = await Connection.InvokeAsync<double>("SpaceCenter", "CelestialBody_get_RotationAngle", args);
+        return Angle.FromRadians(result);
     }
 
     /// <summary>
@@ -1277,30 +1286,32 @@ public class CelestialBody : RemoteObject
     }
 
     /// <summary>
-    /// Gets the rotational speed of the body, in radians per second.
+    /// Gets the rotational speed of the body as an angle per second.
     /// </summary>
     [Rpc("SpaceCenter", "CelestialBody_get_RotationalSpeed")]
-    public double GetRotationalSpeed()
+    public Angle GetRotationalSpeed()
     {
         var args = new object[]
         {
             this
         };
-        return Connection.Invoke<double>("SpaceCenter", "CelestialBody_get_RotationalSpeed", args);
+        var result = Connection.Invoke<double>("SpaceCenter", "CelestialBody_get_RotationalSpeed", args);
+        return Angle.FromRadians(result);
     }
 
     /// <summary>
-    /// Gets the rotational speed of the body, in radians per second.
+    /// Gets the rotational speed of the body as an angle per second.
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "CelestialBody_get_RotationalSpeed")]
-    public async Task<double> GetRotationalSpeedAsync()
+    public async Task<Angle> GetRotationalSpeedAsync()
     {
         var args = new object[]
         {
             this
         };
-        return await Connection.InvokeAsync<double>("SpaceCenter", "CelestialBody_get_RotationalSpeed", args);
+        var result = await Connection.InvokeAsync<double>("SpaceCenter", "CelestialBody_get_RotationalSpeed", args);
+        return Angle.FromRadians(result);
     }
 
     /// <summary>

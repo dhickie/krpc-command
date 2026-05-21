@@ -3,6 +3,7 @@ using kRPC.Client.Boost.Services;
 using System;
 using kRPC.Client.Boost.Attributes;
 using MathNet.Spatial.Euclidean;
+using MathNet.Spatial.Units;
 using System.Threading.Tasks;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
@@ -584,30 +585,32 @@ public class Flight : RemoteObject
     }
 
     /// <summary>
-    /// Gets the <a href="https://en.wikipedia.org/wiki/Latitude">latitude</a> of the vessel for the body being orbited, in degrees.
+    /// Gets the <a href="https://en.wikipedia.org/wiki/Latitude">latitude</a> of the vessel for the body being orbited.
     /// </summary>
     [Rpc("SpaceCenter", "Flight_get_Latitude")]
-    public double GetLatitude()
+    public Angle GetLatitude()
     {
         var args = new object[]
         {
             this
         };
-        return Connection.Invoke<double>("SpaceCenter", "Flight_get_Latitude", args);
+        var result = Connection.Invoke<double>("SpaceCenter", "Flight_get_Latitude", args);
+        return Angle.FromDegrees(result);
     }
 
     /// <summary>
-    /// Gets the <a href="https://en.wikipedia.org/wiki/Latitude">latitude</a> of the vessel for the body being orbited, in degrees.
+    /// Gets the <a href="https://en.wikipedia.org/wiki/Latitude">latitude</a> of the vessel for the body being orbited.
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Flight_get_Latitude")]
-    public async Task<double> GetLatitudeAsync()
+    public async Task<Angle> GetLatitudeAsync()
     {
         var args = new object[]
         {
             this
         };
-        return await Connection.InvokeAsync<double>("SpaceCenter", "Flight_get_Latitude", args);
+        var result = await Connection.InvokeAsync<double>("SpaceCenter", "Flight_get_Latitude", args);
+        return Angle.FromDegrees(result);
     }
 
     /// <summary>
@@ -679,30 +682,32 @@ public class Flight : RemoteObject
     }
 
     /// <summary>
-    /// Gets the <a href="https://en.wikipedia.org/wiki/Longitude">longitude</a> of the vessel for the body being orbited, in degrees.
+    /// Gets the <a href="https://en.wikipedia.org/wiki/Longitude">longitude</a> of the vessel for the body being orbited.
     /// </summary>
     [Rpc("SpaceCenter", "Flight_get_Longitude")]
-    public double GetLongitude()
+    public Angle GetLongitude()
     {
         var args = new object[]
         {
             this
         };
-        return Connection.Invoke<double>("SpaceCenter", "Flight_get_Longitude", args);
+        var result = Connection.Invoke<double>("SpaceCenter", "Flight_get_Longitude", args);
+        return Angle.FromDegrees(result);
     }
 
     /// <summary>
-    /// Gets the <a href="https://en.wikipedia.org/wiki/Longitude">longitude</a> of the vessel for the body being orbited, in degrees.
+    /// Gets the <a href="https://en.wikipedia.org/wiki/Longitude">longitude</a> of the vessel for the body being orbited.
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Flight_get_Longitude")]
-    public async Task<double> GetLongitudeAsync()
+    public async Task<Angle> GetLongitudeAsync()
     {
         var args = new object[]
         {
             this
         };
-        return await Connection.InvokeAsync<double>("SpaceCenter", "Flight_get_Longitude", args);
+        var result = await Connection.InvokeAsync<double>("SpaceCenter", "Flight_get_Longitude", args);
+        return Angle.FromDegrees(result);
     }
 
     /// <summary>

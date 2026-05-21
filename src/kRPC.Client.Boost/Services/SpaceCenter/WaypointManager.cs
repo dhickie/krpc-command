@@ -1,6 +1,7 @@
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
 using kRPC.Client.Boost.Attributes;
+using MathNet.Spatial.Units;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -30,13 +31,13 @@ public class WaypointManager : RemoteObject
     /// <param name="name">Name of the waypoint.</param>
     /// <returns></returns>
     [Rpc("SpaceCenter", "WaypointManager_AddWaypoint")]
-    public Waypoint AddWaypoint(double latitude, double longitude, CelestialBody body, string name)
+    public Waypoint AddWaypoint(Angle latitude, Angle longitude, CelestialBody body, string name)
     {
         var args = new object[]
         {
             this,
-            latitude,
-            longitude,
+            latitude.Degrees,
+            longitude.Degrees,
             body,
             name
         };
@@ -54,13 +55,13 @@ public class WaypointManager : RemoteObject
     /// <param name="name">Name of the waypoint.</param>
     /// <returns></returns>
     [Rpc("SpaceCenter", "WaypointManager_AddWaypoint")]
-    public async Task<Waypoint> AddWaypointAsync(double latitude, double longitude, CelestialBody body, string name)
+    public async Task<Waypoint> AddWaypointAsync(Angle latitude, Angle longitude, CelestialBody body, string name)
     {
         var args = new object[]
         {
             this,
-            latitude,
-            longitude,
+            latitude.Degrees,
+            longitude.Degrees,
             body,
             name
         };
@@ -78,13 +79,13 @@ public class WaypointManager : RemoteObject
     /// <param name="name">Name of the waypoint.</param>
     /// <returns></returns>
     [Rpc("SpaceCenter", "WaypointManager_AddWaypointAtAltitude")]
-    public Waypoint AddWaypointAtAltitude(double latitude, double longitude, double altitude, CelestialBody body, string name)
+    public Waypoint AddWaypointAtAltitude(Angle latitude, Angle longitude, double altitude, CelestialBody body, string name)
     {
         var args = new object[]
         {
             this,
-            latitude,
-            longitude,
+            latitude.Degrees,
+            longitude.Degrees,
             altitude,
             body,
             name
@@ -104,13 +105,13 @@ public class WaypointManager : RemoteObject
     /// <param name="name">Name of the waypoint.</param>
     /// <returns></returns>
     [Rpc("SpaceCenter", "WaypointManager_AddWaypointAtAltitude")]
-    public async Task<Waypoint> AddWaypointAtAltitudeAsync(double latitude, double longitude, double altitude, CelestialBody body, string name)
+    public async Task<Waypoint> AddWaypointAtAltitudeAsync(Angle latitude, Angle longitude, double altitude, CelestialBody body, string name)
     {
         var args = new object[]
         {
             this,
-            latitude,
-            longitude,
+            latitude.Degrees,
+            longitude.Degrees,
             altitude,
             body,
             name

@@ -4,6 +4,7 @@ using KRPC.Client;
 using System;
 using kRPC.Client.Boost.Attributes;
 using MathNet.Spatial.Euclidean;
+using MathNet.Spatial.Units;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -59,14 +60,15 @@ public class Orbit : RemoteObject
     /// </summary>
     /// <param name="ut">The universal time, in seconds.</param>
     [Rpc("SpaceCenter", "Orbit_EccentricAnomalyAtUT")]
-    public double EccentricAnomalyAtUT(double ut)
+    public Angle EccentricAnomalyAtUT(double ut)
     {
         var args = new object[]
         {
             this,
             ut
         };
-        return Connection.Invoke<double>("SpaceCenter", "Orbit_EccentricAnomalyAtUT", args);
+        var result = Connection.Invoke<double>("SpaceCenter", "Orbit_EccentricAnomalyAtUT", args);
+        return Angle.FromRadians(result);
     }
 
     /// <summary>
@@ -75,14 +77,15 @@ public class Orbit : RemoteObject
     /// </summary>
     /// <param name="ut">The universal time, in seconds.</param>
     [Rpc("SpaceCenter", "Orbit_EccentricAnomalyAtUT")]
-    public async Task<double> EccentricAnomalyAtUTAsync(double ut)
+    public async Task<Angle> EccentricAnomalyAtUTAsync(double ut)
     {
         var args = new object[]
         {
             this,
             ut
         };
-        return await Connection.InvokeAsync<double>("SpaceCenter", "Orbit_EccentricAnomalyAtUT", args);
+        var result = await Connection.InvokeAsync<double>("SpaceCenter", "Orbit_EccentricAnomalyAtUT", args);
+        return Angle.FromRadians(result);
     }
 
     /// <summary>
@@ -135,14 +138,15 @@ public class Orbit : RemoteObject
     /// </summary>
     /// <param name="ut">The universal time in seconds.</param>
     [Rpc("SpaceCenter", "Orbit_MeanAnomalyAtUT")]
-    public double MeanAnomalyAtUT(double ut)
+    public Angle MeanAnomalyAtUT(double ut)
     {
         var args = new object[]
         {
             this,
             ut
         };
-        return Connection.Invoke<double>("SpaceCenter", "Orbit_MeanAnomalyAtUT", args);
+        var result = Connection.Invoke<double>("SpaceCenter", "Orbit_MeanAnomalyAtUT", args);
+        return Angle.FromRadians(result);
     }
 
     /// <summary>
@@ -151,14 +155,15 @@ public class Orbit : RemoteObject
     /// </summary>
     /// <param name="ut">The universal time in seconds.</param>
     [Rpc("SpaceCenter", "Orbit_MeanAnomalyAtUT")]
-    public async Task<double> MeanAnomalyAtUTAsync(double ut)
+    public async Task<Angle> MeanAnomalyAtUTAsync(double ut)
     {
         var args = new object[]
         {
             this,
             ut
         };
-        return await Connection.InvokeAsync<double>("SpaceCenter", "Orbit_MeanAnomalyAtUT", args);
+        var result = await Connection.InvokeAsync<double>("SpaceCenter", "Orbit_MeanAnomalyAtUT", args);
+        return Angle.FromRadians(result);
     }
 
     /// <summary>
@@ -267,12 +272,12 @@ public class Orbit : RemoteObject
     /// </summary>
     /// <param name="trueAnomaly">The true anomaly.</param>
     [Rpc("SpaceCenter", "Orbit_RadiusAtTrueAnomaly")]
-    public double RadiusAtTrueAnomaly(double trueAnomaly)
+    public double RadiusAtTrueAnomaly(Angle trueAnomaly)
     {
         var args = new object[]
         {
             this,
-            trueAnomaly
+            trueAnomaly.Radians
         };
         return Connection.Invoke<double>("SpaceCenter", "Orbit_RadiusAtTrueAnomaly", args);
     }
@@ -283,45 +288,47 @@ public class Orbit : RemoteObject
     /// </summary>
     /// <param name="trueAnomaly">The true anomaly.</param>
     [Rpc("SpaceCenter", "Orbit_RadiusAtTrueAnomaly")]
-    public async Task<double> RadiusAtTrueAnomalyAsync(double trueAnomaly)
+    public async Task<double> RadiusAtTrueAnomalyAsync(Angle trueAnomaly)
     {
         var args = new object[]
         {
             this,
-            trueAnomaly
+            trueAnomaly.Radians
         };
         return await Connection.InvokeAsync<double>("SpaceCenter", "Orbit_RadiusAtTrueAnomaly", args);
     }
 
     /// <summary>
-    /// Relative inclination of this orbit and the target orbit, in radians.
+    /// Relative inclination of this orbit and the target orbit.
     /// </summary>
     /// <param name="target">Target orbit.</param>
     [Rpc("SpaceCenter", "Orbit_RelativeInclination")]
-    public double RelativeInclination(Orbit target)
+    public Angle RelativeInclination(Orbit target)
     {
         var args = new object[]
         {
             this,
             target
         };
-        return Connection.Invoke<double>("SpaceCenter", "Orbit_RelativeInclination", args);
+        var result = Connection.Invoke<double>("SpaceCenter", "Orbit_RelativeInclination", args);
+        return Angle.FromRadians(result);
     }
 
     /// <summary>
-    /// Relative inclination of this orbit and the target orbit, in radians.
+    /// Relative inclination of this orbit and the target orbit.
     /// Executes asynchronously.
     /// </summary>
     /// <param name="target">Target orbit.</param>
     [Rpc("SpaceCenter", "Orbit_RelativeInclination")]
-    public async Task<double> RelativeInclinationAsync(Orbit target)
+    public async Task<Angle> RelativeInclinationAsync(Orbit target)
     {
         var args = new object[]
         {
             this,
             target
         };
-        return await Connection.InvokeAsync<double>("SpaceCenter", "Orbit_RelativeInclination", args);
+        var result = await Connection.InvokeAsync<double>("SpaceCenter", "Orbit_RelativeInclination", args);
+        return Angle.FromRadians(result);
     }
 
     /// <summary>
@@ -362,14 +369,15 @@ public class Orbit : RemoteObject
     /// </summary>
     /// <param name="target">Target orbit.</param>
     [Rpc("SpaceCenter", "Orbit_TrueAnomalyAtAN")]
-    public double TrueAnomalyAtAN(Orbit target)
+    public Angle TrueAnomalyAtAN(Orbit target)
     {
         var args = new object[]
         {
             this,
             target
         };
-        return Connection.Invoke<double>("SpaceCenter", "Orbit_TrueAnomalyAtAN", args);
+        var result = Connection.Invoke<double>("SpaceCenter", "Orbit_TrueAnomalyAtAN", args);
+        return Angle.FromRadians(result);
     }
 
     /// <summary>
@@ -378,14 +386,15 @@ public class Orbit : RemoteObject
     /// </summary>
     /// <param name="target">Target orbit.</param>
     [Rpc("SpaceCenter", "Orbit_TrueAnomalyAtAN")]
-    public async Task<double> TrueAnomalyAtANAsync(Orbit target)
+    public async Task<Angle> TrueAnomalyAtANAsync(Orbit target)
     {
         var args = new object[]
         {
             this,
             target
         };
-        return await Connection.InvokeAsync<double>("SpaceCenter", "Orbit_TrueAnomalyAtAN", args);
+        var result = await Connection.InvokeAsync<double>("SpaceCenter", "Orbit_TrueAnomalyAtAN", args);
+        return Angle.FromRadians(result);
     }
 
     /// <summary>
@@ -393,14 +402,15 @@ public class Orbit : RemoteObject
     /// </summary>
     /// <param name="target">Target orbit.</param>
     [Rpc("SpaceCenter", "Orbit_TrueAnomalyAtDN")]
-    public double TrueAnomalyAtDN(Orbit target)
+    public Angle TrueAnomalyAtDN(Orbit target)
     {
         var args = new object[]
         {
             this,
             target
         };
-        return Connection.Invoke<double>("SpaceCenter", "Orbit_TrueAnomalyAtDN", args);
+        var result = Connection.Invoke<double>("SpaceCenter", "Orbit_TrueAnomalyAtDN", args);
+        return Angle.FromRadians(result);
     }
 
     /// <summary>
@@ -409,14 +419,15 @@ public class Orbit : RemoteObject
     /// </summary>
     /// <param name="target">Target orbit.</param>
     [Rpc("SpaceCenter", "Orbit_TrueAnomalyAtDN")]
-    public async Task<double> TrueAnomalyAtDNAsync(Orbit target)
+    public async Task<Angle> TrueAnomalyAtDNAsync(Orbit target)
     {
         var args = new object[]
         {
             this,
             target
         };
-        return await Connection.InvokeAsync<double>("SpaceCenter", "Orbit_TrueAnomalyAtDN", args);
+        var result = await Connection.InvokeAsync<double>("SpaceCenter", "Orbit_TrueAnomalyAtDN", args);
+        return Angle.FromRadians(result);
     }
 
     /// <summary>
@@ -424,14 +435,15 @@ public class Orbit : RemoteObject
     /// </summary>
     /// <param name="radius">The orbital radius in meters.</param>
     [Rpc("SpaceCenter", "Orbit_TrueAnomalyAtRadius")]
-    public double TrueAnomalyAtRadius(double radius)
+    public Angle TrueAnomalyAtRadius(double radius)
     {
         var args = new object[]
         {
             this,
             radius
         };
-        return Connection.Invoke<double>("SpaceCenter", "Orbit_TrueAnomalyAtRadius", args);
+        var result = Connection.Invoke<double>("SpaceCenter", "Orbit_TrueAnomalyAtRadius", args);
+        return Angle.FromRadians(result);
     }
 
     /// <summary>
@@ -440,14 +452,15 @@ public class Orbit : RemoteObject
     /// </summary>
     /// <param name="radius">The orbital radius in meters.</param>
     [Rpc("SpaceCenter", "Orbit_TrueAnomalyAtRadius")]
-    public async Task<double> TrueAnomalyAtRadiusAsync(double radius)
+    public async Task<Angle> TrueAnomalyAtRadiusAsync(double radius)
     {
         var args = new object[]
         {
             this,
             radius
         };
-        return await Connection.InvokeAsync<double>("SpaceCenter", "Orbit_TrueAnomalyAtRadius", args);
+        var result = await Connection.InvokeAsync<double>("SpaceCenter", "Orbit_TrueAnomalyAtRadius", args);
+        return Angle.FromRadians(result);
     }
 
     /// <summary>
@@ -455,14 +468,15 @@ public class Orbit : RemoteObject
     /// </summary>
     /// <param name="ut">The universal time in seconds.</param>
     [Rpc("SpaceCenter", "Orbit_TrueAnomalyAtUT")]
-    public double TrueAnomalyAtUT(double ut)
+    public Angle TrueAnomalyAtUT(double ut)
     {
         var args = new object[]
         {
             this,
             ut
         };
-        return Connection.Invoke<double>("SpaceCenter", "Orbit_TrueAnomalyAtUT", args);
+        var result = Connection.Invoke<double>("SpaceCenter", "Orbit_TrueAnomalyAtUT", args);
+        return Angle.FromRadians(result);
     }
 
     /// <summary>
@@ -471,14 +485,15 @@ public class Orbit : RemoteObject
     /// </summary>
     /// <param name="ut">The universal time in seconds.</param>
     [Rpc("SpaceCenter", "Orbit_TrueAnomalyAtUT")]
-    public async Task<double> TrueAnomalyAtUTAsync(double ut)
+    public async Task<Angle> TrueAnomalyAtUTAsync(double ut)
     {
         var args = new object[]
         {
             this,
             ut
         };
-        return await Connection.InvokeAsync<double>("SpaceCenter", "Orbit_TrueAnomalyAtUT", args);
+        var result = await Connection.InvokeAsync<double>("SpaceCenter", "Orbit_TrueAnomalyAtUT", args);
+        return Angle.FromRadians(result);
     }
 
     /// <summary>
@@ -486,12 +501,12 @@ public class Orbit : RemoteObject
     /// </summary>
     /// <param name="trueAnomaly">True anomaly.</param>
     [Rpc("SpaceCenter", "Orbit_UTAtTrueAnomaly")]
-    public double UTAtTrueAnomaly(double trueAnomaly)
+    public double UTAtTrueAnomaly(Angle trueAnomaly)
     {
         var args = new object[]
         {
             this,
-            trueAnomaly
+            trueAnomaly.Radians
         };
         return Connection.Invoke<double>("SpaceCenter", "Orbit_UTAtTrueAnomaly", args);
     }
@@ -502,12 +517,12 @@ public class Orbit : RemoteObject
     /// </summary>
     /// <param name="trueAnomaly">True anomaly.</param>
     [Rpc("SpaceCenter", "Orbit_UTAtTrueAnomaly")]
-    public async Task<double> UTAtTrueAnomalyAsync(double trueAnomaly)
+    public async Task<double> UTAtTrueAnomalyAsync(Angle trueAnomaly)
     {
         var args = new object[]
         {
             this,
-            trueAnomaly
+            trueAnomaly.Radians
         };
         return await Connection.InvokeAsync<double>("SpaceCenter", "Orbit_UTAtTrueAnomaly", args);
     }
@@ -656,31 +671,33 @@ public class Orbit : RemoteObject
 
     /// <summary>
     /// Gets the <a href="https://en.wikipedia.org/wiki/Argument_of_periapsis">argument of
-    /// periapsis</a>, in radians.
+    /// periapsis</a>.
     /// </summary>
     [Rpc("SpaceCenter", "Orbit_get_ArgumentOfPeriapsis")]
-    public double GetArgumentOfPeriapsis()
+    public Angle GetArgumentOfPeriapsis()
     {
         var args = new object[]
         {
             this
         };
-        return Connection.Invoke<double>("SpaceCenter", "Orbit_get_ArgumentOfPeriapsis", args);
+        var result = Connection.Invoke<double>("SpaceCenter", "Orbit_get_ArgumentOfPeriapsis", args);
+        return Angle.FromRadians(result);
     }
 
     /// <summary>
     /// Gets the <a href="https://en.wikipedia.org/wiki/Argument_of_periapsis">argument of
-    /// periapsis</a>, in radians.
+    /// periapsis</a>.
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Orbit_get_ArgumentOfPeriapsis")]
-    public async Task<double> GetArgumentOfPeriapsisAsync()
+    public async Task<Angle> GetArgumentOfPeriapsisAsync()
     {
         var args = new object[]
         {
             this
         };
-        return await Connection.InvokeAsync<double>("SpaceCenter", "Orbit_get_ArgumentOfPeriapsis", args);
+        var result = await Connection.InvokeAsync<double>("SpaceCenter", "Orbit_get_ArgumentOfPeriapsis", args);
+        return Angle.FromRadians(result);
     }
 
     /// <summary>
@@ -714,13 +731,14 @@ public class Orbit : RemoteObject
     /// Gets the <a href="https://en.wikipedia.org/wiki/Eccentric_anomaly">eccentric anomaly</a>.
     /// </summary>
     [Rpc("SpaceCenter", "Orbit_get_EccentricAnomaly")]
-    public double GetEccentricAnomaly()
+    public Angle GetEccentricAnomaly()
     {
         var args = new object[]
         {
             this
         };
-        return Connection.Invoke<double>("SpaceCenter", "Orbit_get_EccentricAnomaly", args);
+        var result = Connection.Invoke<double>("SpaceCenter", "Orbit_get_EccentricAnomaly", args);
+        return Angle.FromRadians(result);
     }
 
     /// <summary>
@@ -728,13 +746,14 @@ public class Orbit : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Orbit_get_EccentricAnomaly")]
-    public async Task<double> GetEccentricAnomalyAsync()
+    public async Task<Angle> GetEccentricAnomalyAsync()
     {
         var args = new object[]
         {
             this
         };
-        return await Connection.InvokeAsync<double>("SpaceCenter", "Orbit_get_EccentricAnomaly", args);
+        var result = await Connection.InvokeAsync<double>("SpaceCenter", "Orbit_get_EccentricAnomaly", args);
+        return Angle.FromRadians(result);
     }
 
     /// <summary>
@@ -799,75 +818,78 @@ public class Orbit : RemoteObject
 
     /// <summary>
     /// Gets the <a href="https://en.wikipedia.org/wiki/Orbital_inclination">inclination</a>
-    /// of the orbit,
-    /// in radians.
+    /// of the orbit.
     /// </summary>
     [Rpc("SpaceCenter", "Orbit_get_Inclination")]
-    public double GetInclination()
+    public Angle GetInclination()
     {
         var args = new object[]
         {
             this
         };
-        return Connection.Invoke<double>("SpaceCenter", "Orbit_get_Inclination", args);
+        var result = Connection.Invoke<double>("SpaceCenter", "Orbit_get_Inclination", args);
+        return Angle.FromRadians(result);
     }
 
     /// <summary>
     /// Gets the <a href="https://en.wikipedia.org/wiki/Orbital_inclination">inclination</a>
-    /// of the orbit,
-    /// in radians.
+    /// of the orbit.
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Orbit_get_Inclination")]
-    public async Task<double> GetInclinationAsync()
+    public async Task<Angle> GetInclinationAsync()
     {
         var args = new object[]
         {
             this
         };
-        return await Connection.InvokeAsync<double>("SpaceCenter", "Orbit_get_Inclination", args);
+        var result = await Connection.InvokeAsync<double>("SpaceCenter", "Orbit_get_Inclination", args);
+        return Angle.FromRadians(result);
     }
 
     /// <summary>
     /// Gets the <a href="https://en.wikipedia.org/wiki/Longitude_of_the_ascending_node">longitude of
-    /// the ascending node</a>, in radians.
+    /// the ascending node</a>.
     /// </summary>
     [Rpc("SpaceCenter", "Orbit_get_LongitudeOfAscendingNode")]
-    public double GetLongitudeOfAscendingNode()
+    public Angle GetLongitudeOfAscendingNode()
     {
         var args = new object[]
         {
             this
         };
-        return Connection.Invoke<double>("SpaceCenter", "Orbit_get_LongitudeOfAscendingNode", args);
+        var result = Connection.Invoke<double>("SpaceCenter", "Orbit_get_LongitudeOfAscendingNode", args);
+        return Angle.FromRadians(result);
     }
 
     /// <summary>
     /// Gets the <a href="https://en.wikipedia.org/wiki/Longitude_of_the_ascending_node">longitude of
-    /// the ascending node</a>, in radians.
+    /// the ascending node</a>.
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Orbit_get_LongitudeOfAscendingNode")]
-    public async Task<double> GetLongitudeOfAscendingNodeAsync()
+    public async Task<Angle> GetLongitudeOfAscendingNodeAsync()
     {
         var args = new object[]
         {
             this
         };
-        return await Connection.InvokeAsync<double>("SpaceCenter", "Orbit_get_LongitudeOfAscendingNode", args);
+        var result = await Connection.InvokeAsync<double>("SpaceCenter", "Orbit_get_LongitudeOfAscendingNode", args);
+        return Angle.FromRadians(result);
     }
 
     /// <summary>
     /// Gets the <a href="https://en.wikipedia.org/wiki/Mean_anomaly">mean anomaly</a>.
     /// </summary>
     [Rpc("SpaceCenter", "Orbit_get_MeanAnomaly")]
-    public double GetMeanAnomaly()
+    public Angle GetMeanAnomaly()
     {
         var args = new object[]
         {
             this
         };
-        return Connection.Invoke<double>("SpaceCenter", "Orbit_get_MeanAnomaly", args);
+        var result = Connection.Invoke<double>("SpaceCenter", "Orbit_get_MeanAnomaly", args);
+        return Angle.FromRadians(result);
     }
 
     /// <summary>
@@ -875,26 +897,28 @@ public class Orbit : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Orbit_get_MeanAnomaly")]
-    public async Task<double> GetMeanAnomalyAsync()
+    public async Task<Angle> GetMeanAnomalyAsync()
     {
         var args = new object[]
         {
             this
         };
-        return await Connection.InvokeAsync<double>("SpaceCenter", "Orbit_get_MeanAnomaly", args);
+        var result = await Connection.InvokeAsync<double>("SpaceCenter", "Orbit_get_MeanAnomaly", args);
+        return Angle.FromRadians(result);
     }
 
     /// <summary>
     /// Gets the <a href="https://en.wikipedia.org/wiki/Mean_anomaly">mean anomaly at epoch</a>.
     /// </summary>
     [Rpc("SpaceCenter", "Orbit_get_MeanAnomalyAtEpoch")]
-    public double GetMeanAnomalyAtEpoch()
+    public Angle GetMeanAnomalyAtEpoch()
     {
         var args = new object[]
         {
             this
         };
-        return Connection.Invoke<double>("SpaceCenter", "Orbit_get_MeanAnomalyAtEpoch", args);
+        var result = Connection.Invoke<double>("SpaceCenter", "Orbit_get_MeanAnomalyAtEpoch", args);
+        return Angle.FromRadians(result);
     }
 
     /// <summary>
@@ -902,13 +926,14 @@ public class Orbit : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Orbit_get_MeanAnomalyAtEpoch")]
-    public async Task<double> GetMeanAnomalyAtEpochAsync()
+    public async Task<Angle> GetMeanAnomalyAtEpochAsync()
     {
         var args = new object[]
         {
             this
         };
-        return await Connection.InvokeAsync<double>("SpaceCenter", "Orbit_get_MeanAnomalyAtEpoch", args);
+        var result = await Connection.InvokeAsync<double>("SpaceCenter", "Orbit_get_MeanAnomalyAtEpoch", args);
+        return Angle.FromRadians(result);
     }
 
     /// <summary>
@@ -1275,13 +1300,14 @@ public class Orbit : RemoteObject
     /// Gets the <a href="https://en.wikipedia.org/wiki/True_anomaly">true anomaly</a>.
     /// </summary>
     [Rpc("SpaceCenter", "Orbit_get_TrueAnomaly")]
-    public double GetTrueAnomaly()
+    public Angle GetTrueAnomaly()
     {
         var args = new object[]
         {
             this
         };
-        return Connection.Invoke<double>("SpaceCenter", "Orbit_get_TrueAnomaly", args);
+        var result = Connection.Invoke<double>("SpaceCenter", "Orbit_get_TrueAnomaly", args);
+        return Angle.FromRadians(result);
     }
 
     /// <summary>
@@ -1289,12 +1315,13 @@ public class Orbit : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Orbit_get_TrueAnomaly")]
-    public async Task<double> GetTrueAnomalyAsync()
+    public async Task<Angle> GetTrueAnomalyAsync()
     {
         var args = new object[]
         {
             this
         };
-        return await Connection.InvokeAsync<double>("SpaceCenter", "Orbit_get_TrueAnomaly", args);
+        var result = await Connection.InvokeAsync<double>("SpaceCenter", "Orbit_get_TrueAnomaly", args);
+        return Angle.FromRadians(result);
     }
 }

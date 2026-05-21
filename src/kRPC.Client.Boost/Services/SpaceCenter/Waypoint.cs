@@ -1,6 +1,7 @@
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
 using kRPC.Client.Boost.Attributes;
+using MathNet.Spatial.Units;
 using System.Threading.Tasks;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
@@ -425,13 +426,14 @@ public class Waypoint : RemoteObject
     /// Gets the latitude of the waypoint.
     /// </summary>
     [Rpc("SpaceCenter", "Waypoint_get_Latitude")]
-    public double GetLatitude()
+    public Angle GetLatitude()
     {
         var args = new object[]
         {
             this
         };
-        return Connection.Invoke<double>("SpaceCenter", "Waypoint_get_Latitude", args);
+        var result = Connection.Invoke<double>("SpaceCenter", "Waypoint_get_Latitude", args);
+        return Angle.FromDegrees(result);
     }
 
     /// <summary>
@@ -439,25 +441,26 @@ public class Waypoint : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Waypoint_get_Latitude")]
-    public async Task<double> GetLatitudeAsync()
+    public async Task<Angle> GetLatitudeAsync()
     {
         var args = new object[]
         {
             this
         };
-        return await Connection.InvokeAsync<double>("SpaceCenter", "Waypoint_get_Latitude", args);
+        var result = await Connection.InvokeAsync<double>("SpaceCenter", "Waypoint_get_Latitude", args);
+        return Angle.FromDegrees(result);
     }
 
     /// <summary>
     /// Sets the latitude of the waypoint.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    public void SetLatitude(double value)
+    public void SetLatitude(Angle value)
     {
         var args = new object[]
         {
             this,
-            value
+            value.Degrees
         };
         Connection.Invoke("SpaceCenter", "Waypoint_set_Latitude", args);
     }
@@ -467,12 +470,12 @@ public class Waypoint : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    public async Task SetLatitudeAsync(double value)
+    public async Task SetLatitudeAsync(Angle value)
     {
         var args = new object[]
         {
             this,
-            value
+            value.Degrees
         };
         await Connection.InvokeAsync("SpaceCenter", "Waypoint_set_Latitude", args);
     }
@@ -481,13 +484,14 @@ public class Waypoint : RemoteObject
     /// Gets the longitude of the waypoint.
     /// </summary>
     [Rpc("SpaceCenter", "Waypoint_get_Longitude")]
-    public double GetLongitude()
+    public Angle GetLongitude()
     {
         var args = new object[]
         {
             this
         };
-        return Connection.Invoke<double>("SpaceCenter", "Waypoint_get_Longitude", args);
+        var result = Connection.Invoke<double>("SpaceCenter", "Waypoint_get_Longitude", args);
+        return Angle.FromDegrees(result);
     }
 
     /// <summary>
@@ -495,25 +499,26 @@ public class Waypoint : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Waypoint_get_Longitude")]
-    public async Task<double> GetLongitudeAsync()
+    public async Task<Angle> GetLongitudeAsync()
     {
         var args = new object[]
         {
             this
         };
-        return await Connection.InvokeAsync<double>("SpaceCenter", "Waypoint_get_Longitude", args);
+        var result = await Connection.InvokeAsync<double>("SpaceCenter", "Waypoint_get_Longitude", args);
+        return Angle.FromDegrees(result);
     }
 
     /// <summary>
     /// Sets the longitude of the waypoint.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    public void SetLongitude(double value)
+    public void SetLongitude(Angle value)
     {
         var args = new object[]
         {
             this,
-            value
+            value.Degrees
         };
         Connection.Invoke("SpaceCenter", "Waypoint_set_Longitude", args);
     }
@@ -523,12 +528,12 @@ public class Waypoint : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    public async Task SetLongitudeAsync(double value)
+    public async Task SetLongitudeAsync(Angle value)
     {
         var args = new object[]
         {
             this,
-            value
+            value.Degrees
         };
         await Connection.InvokeAsync("SpaceCenter", "Waypoint_set_Longitude", args);
     }

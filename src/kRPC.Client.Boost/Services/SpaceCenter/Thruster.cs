@@ -3,6 +3,7 @@ using kRPC.Client.Boost.Services;
 using System;
 using kRPC.Client.Boost.Attributes;
 using MathNet.Spatial.Euclidean;
+using MathNet.Spatial.Units;
 using System.Threading.Tasks;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
@@ -221,30 +222,32 @@ public class Thruster : RemoteObject
     }
 
     /// <summary>
-    /// Gets the current gimbal angle in the pitch, roll and yaw axes, in degrees.
+    /// Gets the current gimbal angle in the pitch, roll and yaw axes.
     /// </summary>
     [Rpc("SpaceCenter", "Thruster_get_GimbalAngle")]
-    public Tuple<double,double,double> GetGimbalAngle()
+    public Tuple<Angle,Angle,Angle> GetGimbalAngle()
     {
         var args = new object[]
         {
             this
         };
-        return Connection.Invoke<Tuple<double,double,double>>("SpaceCenter", "Thruster_get_GimbalAngle", args);
+        var result = Connection.Invoke<Tuple<double,double,double>>("SpaceCenter", "Thruster_get_GimbalAngle", args);
+        return Tuple.Create(Angle.FromDegrees(result.Item1), Angle.FromDegrees(result.Item2), Angle.FromDegrees(result.Item3));
     }
 
     /// <summary>
-    /// Gets the current gimbal angle in the pitch, roll and yaw axes, in degrees.
+    /// Gets the current gimbal angle in the pitch, roll and yaw axes.
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Thruster_get_GimbalAngle")]
-    public async Task<Tuple<double,double,double>> GetGimbalAngleAsync()
+    public async Task<Tuple<Angle,Angle,Angle>> GetGimbalAngleAsync()
     {
         var args = new object[]
         {
             this
         };
-        return await Connection.InvokeAsync<Tuple<double,double,double>>("SpaceCenter", "Thruster_get_GimbalAngle", args);
+        var result = await Connection.InvokeAsync<Tuple<double,double,double>>("SpaceCenter", "Thruster_get_GimbalAngle", args);
+        return Tuple.Create(Angle.FromDegrees(result.Item1), Angle.FromDegrees(result.Item2), Angle.FromDegrees(result.Item3));
     }
 
     /// <summary>

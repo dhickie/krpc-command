@@ -3,6 +3,7 @@ using kRPC.Client.Boost.Services;
 using System;
 using kRPC.Client.Boost.Attributes;
 using MathNet.Spatial.Euclidean;
+using MathNet.Spatial.Units;
 using System.Threading.Tasks;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
@@ -147,51 +148,53 @@ public class AutoPilot : RemoteObject
     /// Gets the angle at which the autopilot considers the vessel to be pointing
     /// close to the target.
     /// This determines the midpoint of the target velocity attenuation function.
-    /// A vector of three angles, in degrees, one for each of the pitch, roll and yaw axes.
+    /// A vector of three angles, one for each of the pitch, roll and yaw axes.
     /// Defaults to 1° for each axis.
     /// </summary>
     [Rpc("SpaceCenter", "AutoPilot_get_AttenuationAngle")]
-    public Tuple<double,double,double> GetAttenuationAngle()
+    public Tuple<Angle,Angle,Angle> GetAttenuationAngle()
     {
         var args = new object[]
         {
             this
         };
-        return Connection.Invoke<Tuple<double,double,double>>("SpaceCenter", "AutoPilot_get_AttenuationAngle", args);
+        var result = Connection.Invoke<Tuple<double,double,double>>("SpaceCenter", "AutoPilot_get_AttenuationAngle", args);
+        return Tuple.Create(Angle.FromDegrees(result.Item1), Angle.FromDegrees(result.Item2), Angle.FromDegrees(result.Item3));
     }
 
     /// <summary>
     /// Gets the angle at which the autopilot considers the vessel to be pointing
     /// close to the target.
     /// This determines the midpoint of the target velocity attenuation function.
-    /// A vector of three angles, in degrees, one for each of the pitch, roll and yaw axes.
+    /// A vector of three angles, one for each of the pitch, roll and yaw axes.
     /// Defaults to 1° for each axis.
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "AutoPilot_get_AttenuationAngle")]
-    public async Task<Tuple<double,double,double>> GetAttenuationAngleAsync()
+    public async Task<Tuple<Angle,Angle,Angle>> GetAttenuationAngleAsync()
     {
         var args = new object[]
         {
             this
         };
-        return await Connection.InvokeAsync<Tuple<double,double,double>>("SpaceCenter", "AutoPilot_get_AttenuationAngle", args);
+        var result = await Connection.InvokeAsync<Tuple<double,double,double>>("SpaceCenter", "AutoPilot_get_AttenuationAngle", args);
+        return Tuple.Create(Angle.FromDegrees(result.Item1), Angle.FromDegrees(result.Item2), Angle.FromDegrees(result.Item3));
     }
 
     /// <summary>
     /// Sets the angle at which the autopilot considers the vessel to be pointing
     /// close to the target.
     /// This determines the midpoint of the target velocity attenuation function.
-    /// A vector of three angles, in degrees, one for each of the pitch, roll and yaw axes.
+    /// A vector of three angles, one for each of the pitch, roll and yaw axes.
     /// Defaults to 1° for each axis.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    public void SetAttenuationAngle(Tuple<double,double,double> value)
+    public void SetAttenuationAngle(Tuple<Angle,Angle,Angle> value)
     {
         var args = new object[]
         {
             this,
-            value
+            Tuple.Create(value.Item1.Degrees, value.Item2.Degrees, value.Item3.Degrees)
         };
         Connection.Invoke("SpaceCenter", "AutoPilot_set_AttenuationAngle", args);
     }
@@ -200,17 +203,17 @@ public class AutoPilot : RemoteObject
     /// Sets the angle at which the autopilot considers the vessel to be pointing
     /// close to the target.
     /// This determines the midpoint of the target velocity attenuation function.
-    /// A vector of three angles, in degrees, one for each of the pitch, roll and yaw axes.
+    /// A vector of three angles, one for each of the pitch, roll and yaw axes.
     /// Defaults to 1° for each axis.
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    public async Task SetAttenuationAngleAsync(Tuple<double,double,double> value)
+    public async Task SetAttenuationAngleAsync(Tuple<Angle,Angle,Angle> value)
     {
         var args = new object[]
         {
             this,
-            value
+            Tuple.Create(value.Item1.Degrees, value.Item2.Degrees, value.Item3.Degrees)
         };
         await Connection.InvokeAsync("SpaceCenter", "AutoPilot_set_AttenuationAngle", args);
     }
@@ -728,13 +731,14 @@ public class AutoPilot : RemoteObject
     /// Defaults to 5 degrees.
     /// </summary>
     [Rpc("SpaceCenter", "AutoPilot_get_RollThreshold")]
-    public double GetRollThreshold()
+    public Angle GetRollThreshold()
     {
         var args = new object[]
         {
             this
         };
-        return Connection.Invoke<double>("SpaceCenter", "AutoPilot_get_RollThreshold", args);
+        var result = Connection.Invoke<double>("SpaceCenter", "AutoPilot_get_RollThreshold", args);
+        return Angle.FromDegrees(result);
     }
 
     /// <summary>
@@ -743,13 +747,14 @@ public class AutoPilot : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "AutoPilot_get_RollThreshold")]
-    public async Task<double> GetRollThresholdAsync()
+    public async Task<Angle> GetRollThresholdAsync()
     {
         var args = new object[]
         {
             this
         };
-        return await Connection.InvokeAsync<double>("SpaceCenter", "AutoPilot_get_RollThreshold", args);
+        var result = await Connection.InvokeAsync<double>("SpaceCenter", "AutoPilot_get_RollThreshold", args);
+        return Angle.FromDegrees(result);
     }
 
     /// <summary>
@@ -757,12 +762,12 @@ public class AutoPilot : RemoteObject
     /// Defaults to 5 degrees.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    public void SetRollThreshold(double value)
+    public void SetRollThreshold(Angle value)
     {
         var args = new object[]
         {
             this,
-            value
+            value.Degrees
         };
         Connection.Invoke("SpaceCenter", "AutoPilot_set_RollThreshold", args);
     }
@@ -773,12 +778,12 @@ public class AutoPilot : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    public async Task SetRollThresholdAsync(double value)
+    public async Task SetRollThresholdAsync(Angle value)
     {
         var args = new object[]
         {
             this,
-            value
+            value.Degrees
         };
         await Connection.InvokeAsync("SpaceCenter", "AutoPilot_set_RollThreshold", args);
     }
