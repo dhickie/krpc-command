@@ -749,7 +749,7 @@ public class SpaceCenterService
     /// <returns>The corresponding rotation, as a quaternion of the form
     /// <math>(x, y, z, w)</math>, in reference frame <paramref name="to" />.</returns>
     [Rpc("SpaceCenter", "TransformRotation")]
-    public Tuple<double,double,double,double> TransformRotation(Tuple<double,double,double,double> rotation, ReferenceFrame from, ReferenceFrame to)
+    public Quaternion TransformRotation(Quaternion rotation, ReferenceFrame from, ReferenceFrame to)
     {
         var args = new object[]
         {
@@ -757,7 +757,7 @@ public class SpaceCenterService
             from,
             to
         };
-        return _connection.Invoke<Tuple<double,double,double,double>>("SpaceCenter", "TransformRotation", args);
+        return _connection.Invoke<Quaternion>("SpaceCenter", "TransformRotation", args);
     }
 
     /// <summary>
@@ -771,7 +771,7 @@ public class SpaceCenterService
     /// <returns>The corresponding rotation, as a quaternion of the form
     /// <math>(x, y, z, w)</math>, in reference frame <paramref name="to" />.</returns>
     [Rpc("SpaceCenter", "TransformRotation")]
-    public async Task<Tuple<double,double,double,double>> TransformRotationAsync(Tuple<double,double,double,double> rotation, ReferenceFrame from, ReferenceFrame to)
+    public async Task<Quaternion> TransformRotationAsync(Quaternion rotation, ReferenceFrame from, ReferenceFrame to)
     {
         var args = new object[]
         {
@@ -779,7 +779,7 @@ public class SpaceCenterService
             from,
             to
         };
-        return await _connection.InvokeAsync<Tuple<double,double,double,double>>("SpaceCenter", "TransformRotation", args);
+        return await _connection.InvokeAsync<Quaternion>("SpaceCenter", "TransformRotation", args);
     }
 
     /// <summary>

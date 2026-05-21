@@ -558,14 +558,14 @@ public class CelestialBody : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// rotation is in.</param>
     [Rpc("SpaceCenter", "CelestialBody_Rotation")]
-    public Tuple<double,double,double,double> Rotation(ReferenceFrame referenceFrame)
+    public Quaternion Rotation(ReferenceFrame referenceFrame)
     {
         var args = new object[]
         {
             this,
             referenceFrame
         };
-        return Connection.Invoke<Tuple<double,double,double,double>>("SpaceCenter", "CelestialBody_Rotation", args);
+        return Connection.Invoke<Quaternion>("SpaceCenter", "CelestialBody_Rotation", args);
     }
 
     /// <summary>
@@ -576,14 +576,14 @@ public class CelestialBody : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// rotation is in.</param>
     [Rpc("SpaceCenter", "CelestialBody_Rotation")]
-    public async Task<Tuple<double,double,double,double>> RotationAsync(ReferenceFrame referenceFrame)
+    public async Task<Quaternion> RotationAsync(ReferenceFrame referenceFrame)
     {
         var args = new object[]
         {
             this,
             referenceFrame
         };
-        return await Connection.InvokeAsync<Tuple<double,double,double,double>>("SpaceCenter", "CelestialBody_Rotation", args);
+        return await Connection.InvokeAsync<Quaternion>("SpaceCenter", "CelestialBody_Rotation", args);
     }
 
     /// <summary>

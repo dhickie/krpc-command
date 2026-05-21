@@ -981,13 +981,13 @@ public class Flight : RemoteObject
     /// </summary>
     /// <returns>The rotation as a quaternion of the form <math>(x, y, z, w)</math>.</returns>
     [Rpc("SpaceCenter", "Flight_get_Rotation")]
-    public Tuple<double,double,double,double> GetRotation()
+    public Quaternion GetRotation()
     {
         var args = new object[]
         {
             this
         };
-        return Connection.Invoke<Tuple<double,double,double,double>>("SpaceCenter", "Flight_get_Rotation", args);
+        return Connection.Invoke<Quaternion>("SpaceCenter", "Flight_get_Rotation", args);
     }
 
     /// <summary>
@@ -996,13 +996,13 @@ public class Flight : RemoteObject
     /// </summary>
     /// <returns>The rotation as a quaternion of the form <math>(x, y, z, w)</math>.</returns>
     [Rpc("SpaceCenter", "Flight_get_Rotation")]
-    public async Task<Tuple<double,double,double,double>> GetRotationAsync()
+    public async Task<Quaternion> GetRotationAsync()
     {
         var args = new object[]
         {
             this
         };
-        return await Connection.InvokeAsync<Tuple<double,double,double,double>>("SpaceCenter", "Flight_get_Rotation", args);
+        return await Connection.InvokeAsync<Quaternion>("SpaceCenter", "Flight_get_Rotation", args);
     }
 
     /// <summary>

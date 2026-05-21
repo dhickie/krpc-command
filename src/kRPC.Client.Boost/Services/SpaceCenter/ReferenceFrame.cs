@@ -101,13 +101,13 @@ public class ReferenceFrame : RemoteObject
     /// and its magnitude is the speed of the rotation in radians per second.
     /// Defaults to <math>(0, 0, 0)</math>.</param>
     [Rpc("SpaceCenter", "ReferenceFrame_static_CreateRelative")]
-    public ReferenceFrame CreateRelative(ReferenceFrame referenceFrame, Vector3D? position = null, Tuple<double,double,double,double>? rotation = null, Vector3D? velocity = null, Vector3D? angularVelocity = null)
+    public ReferenceFrame CreateRelative(ReferenceFrame referenceFrame, Vector3D? position = null, Quaternion? rotation = null, Vector3D? velocity = null, Vector3D? angularVelocity = null)
     {
         var args = new object?[]
         {
             referenceFrame,
             position ?? new Vector3D(0.0, 0.0, 0.0),
-            rotation ?? new Tuple<double,double,double,double>(0.0, 0.0, 0.0, 1.0),
+            rotation ?? new Quaternion(0.0, 0.0, 0.0, 1.0),
             velocity ?? new Vector3D(0.0, 0.0, 0.0),
             angularVelocity ?? new Vector3D(0.0, 0.0, 0.0)
         };
@@ -134,13 +134,13 @@ public class ReferenceFrame : RemoteObject
     /// and its magnitude is the speed of the rotation in radians per second.
     /// Defaults to <math>(0, 0, 0)</math>.</param>
     [Rpc("SpaceCenter", "ReferenceFrame_static_CreateRelative")]
-    public async Task<ReferenceFrame> CreateRelativeAsync(ReferenceFrame referenceFrame, Vector3D? position = null, Tuple<double,double,double,double>? rotation = null, Vector3D? velocity = null, Vector3D? angularVelocity = null)
+    public async Task<ReferenceFrame> CreateRelativeAsync(ReferenceFrame referenceFrame, Vector3D? position = null, Quaternion? rotation = null, Vector3D? velocity = null, Vector3D? angularVelocity = null)
     {
         var args = new object?[]
         {
             referenceFrame,
             position ?? new Vector3D(0.0, 0.0, 0.0),
-            rotation ?? new Tuple<double,double,double,double>(0.0, 0.0, 0.0, 1.0),
+            rotation ?? new Quaternion(0.0, 0.0, 0.0, 1.0),
             velocity ?? new Vector3D(0.0, 0.0, 0.0),
             angularVelocity ?? new Vector3D(0.0, 0.0, 0.0)
         };

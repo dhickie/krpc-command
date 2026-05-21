@@ -95,14 +95,14 @@ public class DockingPort : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// rotation is in.</param>
     [Rpc("SpaceCenter", "DockingPort_Rotation")]
-    public Tuple<double,double,double,double> Rotation(ReferenceFrame referenceFrame)
+    public Quaternion Rotation(ReferenceFrame referenceFrame)
     {
         var args = new object[]
         {
             this,
             referenceFrame
         };
-        return Connection.Invoke<Tuple<double,double,double,double>>("SpaceCenter", "DockingPort_Rotation", args);
+        return Connection.Invoke<Quaternion>("SpaceCenter", "DockingPort_Rotation", args);
     }
 
     /// <summary>
@@ -113,14 +113,14 @@ public class DockingPort : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// rotation is in.</param>
     [Rpc("SpaceCenter", "DockingPort_Rotation")]
-    public async Task<Tuple<double,double,double,double>> RotationAsync(ReferenceFrame referenceFrame)
+    public async Task<Quaternion> RotationAsync(ReferenceFrame referenceFrame)
     {
         var args = new object[]
         {
             this,
             referenceFrame
         };
-        return await Connection.InvokeAsync<Tuple<double,double,double,double>>("SpaceCenter", "DockingPort_Rotation", args);
+        return await Connection.InvokeAsync<Quaternion>("SpaceCenter", "DockingPort_Rotation", args);
     }
 
     /// <summary>
