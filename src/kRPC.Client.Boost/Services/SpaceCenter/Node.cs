@@ -1,7 +1,6 @@
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
-using Google.Protobuf;
-using systemAlias = System;
+using System;
 using kRPC.Client.Boost.Attributes;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
@@ -30,14 +29,13 @@ public class Node : RemoteObject
     /// Does not change when executing the maneuver node. See <see cref="M:SpaceCenter.Node.RemainingBurnVector" />.
     /// </remarks>
     [RpcAttribute ("SpaceCenter", "Node_BurnVector")]
-    public systemAlias::Tuple<double,double,double> BurnVector (global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame referenceFrame = null)
+    public Tuple<double,double,double> BurnVector (ReferenceFrame referenceFrame = null)
     {
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Node)),
-            global::KRPC.Client.Encoder.Encode (referenceFrame, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame))
+        var _args = new object[] {
+            this,
+            referenceFrame
         };
-        ByteString _data = connection.Invoke ("SpaceCenter", "Node_BurnVector", _args);
-        return (systemAlias::Tuple<double,double,double>)global::KRPC.Client.Encoder.Decode (_data, typeof(systemAlias::Tuple<double,double,double>), connection);
+        return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Node_BurnVector", _args);
     }
 
     /// <summary>
@@ -47,14 +45,13 @@ public class Node : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// direction is in.</param>
     [RpcAttribute ("SpaceCenter", "Node_Direction")]
-    public systemAlias::Tuple<double,double,double> Direction (global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame referenceFrame)
+    public Tuple<double,double,double> Direction (ReferenceFrame referenceFrame)
     {
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Node)),
-            global::KRPC.Client.Encoder.Encode (referenceFrame, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame))
+        var _args = new object[] {
+            this,
+            referenceFrame
         };
-        ByteString _data = connection.Invoke ("SpaceCenter", "Node_Direction", _args);
-        return (systemAlias::Tuple<double,double,double>)global::KRPC.Client.Encoder.Decode (_data, typeof(systemAlias::Tuple<double,double,double>), connection);
+        return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Node_Direction", _args);
     }
 
     /// <summary>
@@ -64,14 +61,13 @@ public class Node : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// position vector is in.</param>
     [RpcAttribute ("SpaceCenter", "Node_Position")]
-    public systemAlias::Tuple<double,double,double> Position (global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame referenceFrame)
+    public Tuple<double,double,double> Position (ReferenceFrame referenceFrame)
     {
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Node)),
-            global::KRPC.Client.Encoder.Encode (referenceFrame, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame))
+        var _args = new object[] {
+            this,
+            referenceFrame
         };
-        ByteString _data = connection.Invoke ("SpaceCenter", "Node_Position", _args);
-        return (systemAlias::Tuple<double,double,double>)global::KRPC.Client.Encoder.Decode (_data, typeof(systemAlias::Tuple<double,double,double>), connection);
+        return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Node_Position", _args);
     }
 
     /// <summary>
@@ -86,14 +82,13 @@ public class Node : RemoteObject
     /// Changes as the maneuver node is executed. See <see cref="M:SpaceCenter.Node.BurnVector" />.
     /// </remarks>
     [RpcAttribute ("SpaceCenter", "Node_RemainingBurnVector")]
-    public systemAlias::Tuple<double,double,double> RemainingBurnVector (global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame referenceFrame = null)
+    public Tuple<double,double,double> RemainingBurnVector (ReferenceFrame referenceFrame = null)
     {
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Node)),
-            global::KRPC.Client.Encoder.Encode (referenceFrame, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame))
+        var _args = new object[] {
+            this,
+            referenceFrame
         };
-        ByteString _data = connection.Invoke ("SpaceCenter", "Node_RemainingBurnVector", _args);
-        return (systemAlias::Tuple<double,double,double>)global::KRPC.Client.Encoder.Decode (_data, typeof(systemAlias::Tuple<double,double,double>), connection);
+        return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Node_RemainingBurnVector", _args);
     }
 
     /// <summary>
@@ -102,10 +97,10 @@ public class Node : RemoteObject
     [RpcAttribute ("SpaceCenter", "Node_Remove")]
     public void Remove ()
     {
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Node))
+        var _args = new object[] {
+            this
         };
-        connection.Invoke ("SpaceCenter", "Node_Remove", _args);
+        Connection.Invoke ("SpaceCenter", "Node_Remove", _args);
     }
 
     /// <summary>
@@ -117,18 +112,17 @@ public class Node : RemoteObject
     [RpcAttribute ("SpaceCenter", "Node_get_DeltaV")]
     public double DeltaV {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Node))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Node_get_DeltaV", _args);
-            return (double)global::KRPC.Client.Encoder.Decode (_data, typeof(double), connection);
+            return Connection.Invoke<double> ("SpaceCenter", "Node_get_DeltaV", _args);
         }
         set {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Node)),
-                global::KRPC.Client.Encoder.Encode (value, typeof(double))
+            var _args = new object[] {
+                this,
+                value
             };
-            connection.Invoke ("SpaceCenter", "Node_set_DeltaV", _args);
+            Connection.Invoke ("SpaceCenter", "Node_set_DeltaV", _args);
         }
     }
 
@@ -139,18 +133,17 @@ public class Node : RemoteObject
     [RpcAttribute ("SpaceCenter", "Node_get_Normal")]
     public double Normal {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Node))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Node_get_Normal", _args);
-            return (double)global::KRPC.Client.Encoder.Decode (_data, typeof(double), connection);
+            return Connection.Invoke<double> ("SpaceCenter", "Node_get_Normal", _args);
         }
         set {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Node)),
-                global::KRPC.Client.Encoder.Encode (value, typeof(double))
+            var _args = new object[] {
+                this,
+                value
             };
-            connection.Invoke ("SpaceCenter", "Node_set_Normal", _args);
+            Connection.Invoke ("SpaceCenter", "Node_set_Normal", _args);
         }
     }
 
@@ -158,13 +151,12 @@ public class Node : RemoteObject
     /// The orbit that results from executing the maneuver node.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "Node_get_Orbit")]
-    public global::kRPC.Client.Boost.Services.SpaceCenter.Orbit Orbit {
+    public Orbit Orbit {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Node))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Node_get_Orbit", _args);
-            return (global::kRPC.Client.Boost.Services.SpaceCenter.Orbit)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Orbit), connection);
+            return Connection.Invoke<Orbit> ("SpaceCenter", "Node_get_Orbit", _args);
         }
     }
 
@@ -177,13 +169,12 @@ public class Node : RemoteObject
     /// orbit, at the position of the maneuver node.</description></item><item><description>The z-axis points in the orbital normal direction of the original orbit,
     /// at the position of the maneuver node.</description></item></list></summary>
     [RpcAttribute ("SpaceCenter", "Node_get_OrbitalReferenceFrame")]
-    public global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame OrbitalReferenceFrame {
+    public ReferenceFrame OrbitalReferenceFrame {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Node))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Node_get_OrbitalReferenceFrame", _args);
-            return (global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame), connection);
+            return Connection.Invoke<ReferenceFrame> ("SpaceCenter", "Node_get_OrbitalReferenceFrame", _args);
         }
     }
 
@@ -194,18 +185,17 @@ public class Node : RemoteObject
     [RpcAttribute ("SpaceCenter", "Node_get_Prograde")]
     public double Prograde {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Node))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Node_get_Prograde", _args);
-            return (double)global::KRPC.Client.Encoder.Decode (_data, typeof(double), connection);
+            return Connection.Invoke<double> ("SpaceCenter", "Node_get_Prograde", _args);
         }
         set {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Node)),
-                global::KRPC.Client.Encoder.Encode (value, typeof(double))
+            var _args = new object[] {
+                this,
+                value
             };
-            connection.Invoke ("SpaceCenter", "Node_set_Prograde", _args);
+            Connection.Invoke ("SpaceCenter", "Node_set_Prograde", _args);
         }
     }
 
@@ -216,18 +206,17 @@ public class Node : RemoteObject
     [RpcAttribute ("SpaceCenter", "Node_get_Radial")]
     public double Radial {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Node))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Node_get_Radial", _args);
-            return (double)global::KRPC.Client.Encoder.Decode (_data, typeof(double), connection);
+            return Connection.Invoke<double> ("SpaceCenter", "Node_get_Radial", _args);
         }
         set {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Node)),
-                global::KRPC.Client.Encoder.Encode (value, typeof(double))
+            var _args = new object[] {
+                this,
+                value
             };
-            connection.Invoke ("SpaceCenter", "Node_set_Radial", _args);
+            Connection.Invoke ("SpaceCenter", "Node_set_Radial", _args);
         }
     }
 
@@ -235,13 +224,12 @@ public class Node : RemoteObject
     /// The reference frame that is fixed relative to the maneuver node's burn.
     /// <list type="bullet"><item><description>The origin is at the position of the maneuver node.</description></item><item><description>The y-axis points in the direction of the burn.</description></item><item><description>The x-axis and z-axis point in arbitrary but fixed directions.</description></item></list></summary>
     [RpcAttribute ("SpaceCenter", "Node_get_ReferenceFrame")]
-    public global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame ReferenceFrame {
+    public ReferenceFrame ReferenceFrame {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Node))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Node_get_ReferenceFrame", _args);
-            return (global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame), connection);
+            return Connection.Invoke<ReferenceFrame> ("SpaceCenter", "Node_get_ReferenceFrame", _args);
         }
     }
 
@@ -252,11 +240,10 @@ public class Node : RemoteObject
     [RpcAttribute ("SpaceCenter", "Node_get_RemainingDeltaV")]
     public double RemainingDeltaV {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Node))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Node_get_RemainingDeltaV", _args);
-            return (double)global::KRPC.Client.Encoder.Decode (_data, typeof(double), connection);
+            return Connection.Invoke<double> ("SpaceCenter", "Node_get_RemainingDeltaV", _args);
         }
     }
 
@@ -266,11 +253,10 @@ public class Node : RemoteObject
     [RpcAttribute ("SpaceCenter", "Node_get_TimeTo")]
     public double TimeTo {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Node))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Node_get_TimeTo", _args);
-            return (double)global::KRPC.Client.Encoder.Decode (_data, typeof(double), connection);
+            return Connection.Invoke<double> ("SpaceCenter", "Node_get_TimeTo", _args);
         }
     }
 
@@ -280,18 +266,17 @@ public class Node : RemoteObject
     [RpcAttribute ("SpaceCenter", "Node_get_UT")]
     public double UT {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Node))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Node_get_UT", _args);
-            return (double)global::KRPC.Client.Encoder.Decode (_data, typeof(double), connection);
+            return Connection.Invoke<double> ("SpaceCenter", "Node_get_UT", _args);
         }
         set {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Node)),
-                global::KRPC.Client.Encoder.Encode (value, typeof(double))
+            var _args = new object[] {
+                this,
+                value
             };
-            connection.Invoke ("SpaceCenter", "Node_set_UT", _args);
+            Connection.Invoke ("SpaceCenter", "Node_set_UT", _args);
         }
     }
 }

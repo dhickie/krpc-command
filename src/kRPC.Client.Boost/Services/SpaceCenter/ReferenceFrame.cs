@@ -1,8 +1,7 @@
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
-using Google.Protobuf;
 using KRPC.Client;
-using systemAlias = System;
+using System;
 using kRPC.Client.Boost.Attributes;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
@@ -41,18 +40,17 @@ public class ReferenceFrame : RemoteObject
     /// </remarks>
     /// <param name="connection">A connection object.</param>
     [RpcAttribute ("SpaceCenter", "ReferenceFrame_static_CreateHybrid")]
-    public static global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame CreateHybrid (IConnection connection, global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame position, global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame rotation = null, global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame velocity = null, global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame angularVelocity = null)
+    public static ReferenceFrame CreateHybrid (ConnectionMultiplexer connection, ReferenceFrame position, ReferenceFrame rotation = null, ReferenceFrame velocity = null, ReferenceFrame angularVelocity = null)
     {
         if (connection == null)
             throw new ArgumentNullException (nameof (connection));
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (position, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame)),
-            global::KRPC.Client.Encoder.Encode (rotation, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame)),
-            global::KRPC.Client.Encoder.Encode (velocity, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame)),
-            global::KRPC.Client.Encoder.Encode (angularVelocity, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame))
+        var _args = new object[] {
+            position,
+            rotation,
+            velocity,
+            angularVelocity
         };
-        ByteString _data = connection.Invoke ("SpaceCenter", "ReferenceFrame_static_CreateHybrid", _args);
-        return (global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame), connection);
+        return connection.Invoke<ReferenceFrame> ("SpaceCenter", "ReferenceFrame_static_CreateHybrid", _args);
     }
 
     /// <summary>
@@ -75,18 +73,17 @@ public class ReferenceFrame : RemoteObject
     /// Defaults to <math>(0, 0, 0)</math>.</param>
     /// <param name="connection">A connection object.</param>
     [RpcAttribute ("SpaceCenter", "ReferenceFrame_static_CreateRelative")]
-    public static global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame CreateRelative (IConnection connection, global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame referenceFrame, systemAlias::Tuple<double,double,double> position = null, systemAlias::Tuple<double,double,double,double> rotation = null, systemAlias::Tuple<double,double,double> velocity = null, systemAlias::Tuple<double,double,double> angularVelocity = null)
+    public static ReferenceFrame CreateRelative (ConnectionMultiplexer connection, ReferenceFrame referenceFrame, Tuple<double,double,double> position = null, Tuple<double,double,double,double> rotation = null, Tuple<double,double,double> velocity = null, Tuple<double,double,double> angularVelocity = null)
     {
         if (connection == null)
             throw new ArgumentNullException (nameof (connection));
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (referenceFrame, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame)),
-            global::KRPC.Client.Encoder.Encode (position ?? new systemAlias::Tuple<double,double,double> (0.0, 0.0, 0.0), typeof(systemAlias::Tuple<double,double,double>)),
-            global::KRPC.Client.Encoder.Encode (rotation ?? new systemAlias::Tuple<double,double,double,double> (0.0, 0.0, 0.0, 1.0), typeof(systemAlias::Tuple<double,double,double,double>)),
-            global::KRPC.Client.Encoder.Encode (velocity ?? new systemAlias::Tuple<double,double,double> (0.0, 0.0, 0.0), typeof(systemAlias::Tuple<double,double,double>)),
-            global::KRPC.Client.Encoder.Encode (angularVelocity ?? new systemAlias::Tuple<double,double,double> (0.0, 0.0, 0.0), typeof(systemAlias::Tuple<double,double,double>))
+        var _args = new object[] {
+            referenceFrame,
+            position ?? new Tuple<double,double,double> (0.0, 0.0, 0.0),
+            rotation ?? new Tuple<double,double,double,double> (0.0, 0.0, 0.0, 1.0),
+            velocity ?? new Tuple<double,double,double> (0.0, 0.0, 0.0),
+            angularVelocity ?? new Tuple<double,double,double> (0.0, 0.0, 0.0)
         };
-        ByteString _data = connection.Invoke ("SpaceCenter", "ReferenceFrame_static_CreateRelative", _args);
-        return (global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame), connection);
+        return connection.Invoke<ReferenceFrame> ("SpaceCenter", "ReferenceFrame_static_CreateRelative", _args);
     }
 }

@@ -1,6 +1,5 @@
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
-using Google.Protobuf;
 using kRPC.Client.Boost.Attributes;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
@@ -24,10 +23,10 @@ public class Parachute : RemoteObject
     [RpcAttribute ("SpaceCenter", "Parachute_Arm")]
     public void Arm ()
     {
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Parachute))
+        var _args = new object[] {
+            this
         };
-        connection.Invoke ("SpaceCenter", "Parachute_Arm", _args);
+        Connection.Invoke ("SpaceCenter", "Parachute_Arm", _args);
     }
 
     /// <summary>
@@ -36,10 +35,10 @@ public class Parachute : RemoteObject
     [RpcAttribute ("SpaceCenter", "Parachute_Cut")]
     public void Cut ()
     {
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Parachute))
+        var _args = new object[] {
+            this
         };
-        connection.Invoke ("SpaceCenter", "Parachute_Cut", _args);
+        Connection.Invoke ("SpaceCenter", "Parachute_Cut", _args);
     }
 
     /// <summary>
@@ -49,10 +48,10 @@ public class Parachute : RemoteObject
     [RpcAttribute ("SpaceCenter", "Parachute_Deploy")]
     public void Deploy ()
     {
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Parachute))
+        var _args = new object[] {
+            this
         };
-        connection.Invoke ("SpaceCenter", "Parachute_Deploy", _args);
+        Connection.Invoke ("SpaceCenter", "Parachute_Deploy", _args);
     }
 
     /// <summary>
@@ -61,11 +60,10 @@ public class Parachute : RemoteObject
     [RpcAttribute ("SpaceCenter", "Parachute_get_Armed")]
     public bool Armed {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Parachute))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Parachute_get_Armed", _args);
-            return (bool)global::KRPC.Client.Encoder.Decode (_data, typeof(bool), connection);
+            return Connection.Invoke<bool> ("SpaceCenter", "Parachute_get_Armed", _args);
         }
     }
 
@@ -76,18 +74,17 @@ public class Parachute : RemoteObject
     [RpcAttribute ("SpaceCenter", "Parachute_get_DeployAltitude")]
     public float DeployAltitude {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Parachute))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Parachute_get_DeployAltitude", _args);
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            return Connection.Invoke<float> ("SpaceCenter", "Parachute_get_DeployAltitude", _args);
         }
         set {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Parachute)),
-                global::KRPC.Client.Encoder.Encode (value, typeof(float))
+            var _args = new object[] {
+                this,
+                value
             };
-            connection.Invoke ("SpaceCenter", "Parachute_set_DeployAltitude", _args);
+            Connection.Invoke ("SpaceCenter", "Parachute_set_DeployAltitude", _args);
         }
     }
 
@@ -98,18 +95,17 @@ public class Parachute : RemoteObject
     [RpcAttribute ("SpaceCenter", "Parachute_get_DeployMinPressure")]
     public float DeployMinPressure {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Parachute))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Parachute_get_DeployMinPressure", _args);
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            return Connection.Invoke<float> ("SpaceCenter", "Parachute_get_DeployMinPressure", _args);
         }
         set {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Parachute)),
-                global::KRPC.Client.Encoder.Encode (value, typeof(float))
+            var _args = new object[] {
+                this,
+                value
             };
-            connection.Invoke ("SpaceCenter", "Parachute_set_DeployMinPressure", _args);
+            Connection.Invoke ("SpaceCenter", "Parachute_set_DeployMinPressure", _args);
         }
     }
 
@@ -119,11 +115,10 @@ public class Parachute : RemoteObject
     [RpcAttribute ("SpaceCenter", "Parachute_get_Deployed")]
     public bool Deployed {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Parachute))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Parachute_get_Deployed", _args);
-            return (bool)global::KRPC.Client.Encoder.Decode (_data, typeof(bool), connection);
+            return Connection.Invoke<bool> ("SpaceCenter", "Parachute_get_Deployed", _args);
         }
     }
 
@@ -131,13 +126,12 @@ public class Parachute : RemoteObject
     /// The part object for this parachute.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "Parachute_get_Part")]
-    public global::kRPC.Client.Boost.Services.SpaceCenter.Part Part {
+    public Part Part {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Parachute))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Parachute_get_Part", _args);
-            return (global::kRPC.Client.Boost.Services.SpaceCenter.Part)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Part), connection);
+            return Connection.Invoke<Part> ("SpaceCenter", "Parachute_get_Part", _args);
         }
     }
 
@@ -145,13 +139,12 @@ public class Parachute : RemoteObject
     /// The current state of the parachute.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "Parachute_get_State")]
-    public global::kRPC.Client.Boost.Services.SpaceCenter.ParachuteState State {
+    public ParachuteState State {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Parachute))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Parachute_get_State", _args);
-            return (global::kRPC.Client.Boost.Services.SpaceCenter.ParachuteState)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ParachuteState), connection);
+            return Connection.Invoke<ParachuteState> ("SpaceCenter", "Parachute_get_State", _args);
         }
     }
 }

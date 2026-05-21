@@ -1,8 +1,8 @@
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
-using Google.Protobuf;
 using KRPC.Client;
 using kRPC.Client.Boost.Attributes;
+using System.Collections.Generic;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
@@ -28,12 +28,11 @@ public class Resources : RemoteObject
     [RpcAttribute ("SpaceCenter", "Resources_Amount")]
     public float Amount (string name)
     {
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Resources)),
-            global::KRPC.Client.Encoder.Encode (name, typeof(string))
+        var _args = new object[] {
+            this,
+            name
         };
-        ByteString _data = connection.Invoke ("SpaceCenter", "Resources_Amount", _args);
-        return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+        return Connection.Invoke<float> ("SpaceCenter", "Resources_Amount", _args);
     }
 
     /// <summary>
@@ -43,12 +42,11 @@ public class Resources : RemoteObject
     [RpcAttribute ("SpaceCenter", "Resources_HasResource")]
     public bool HasResource (string name)
     {
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Resources)),
-            global::KRPC.Client.Encoder.Encode (name, typeof(string))
+        var _args = new object[] {
+            this,
+            name
         };
-        ByteString _data = connection.Invoke ("SpaceCenter", "Resources_HasResource", _args);
-        return (bool)global::KRPC.Client.Encoder.Decode (_data, typeof(bool), connection);
+        return Connection.Invoke<bool> ("SpaceCenter", "Resources_HasResource", _args);
     }
 
     /// <summary>
@@ -58,26 +56,24 @@ public class Resources : RemoteObject
     [RpcAttribute ("SpaceCenter", "Resources_Max")]
     public float Max (string name)
     {
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Resources)),
-            global::KRPC.Client.Encoder.Encode (name, typeof(string))
+        var _args = new object[] {
+            this,
+            name
         };
-        ByteString _data = connection.Invoke ("SpaceCenter", "Resources_Max", _args);
-        return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+        return Connection.Invoke<float> ("SpaceCenter", "Resources_Max", _args);
     }
 
     /// <summary>
     /// All the individual resources with the given name that can be stored.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "Resources_WithResource")]
-    public global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.Resource> WithResource (string name)
+    public IList<Resource> WithResource (string name)
     {
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Resources)),
-            global::KRPC.Client.Encoder.Encode (name, typeof(string))
+        var _args = new object[] {
+            this,
+            name
         };
-        ByteString _data = connection.Invoke ("SpaceCenter", "Resources_WithResource", _args);
-        return (global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.Resource>)global::KRPC.Client.Encoder.Decode (_data, typeof(global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.Resource>), connection);
+        return Connection.Invoke<IList<Resource>> ("SpaceCenter", "Resources_WithResource", _args);
     }
 
     /// <summary>
@@ -86,15 +82,14 @@ public class Resources : RemoteObject
     /// <param name="name">The name of the resource.</param>
     /// <param name="connection">A connection object.</param>
     [RpcAttribute ("SpaceCenter", "Resources_static_Density")]
-    public static float Density (IConnection connection, string name)
+    public static float Density (ConnectionMultiplexer connection, string name)
     {
         if (connection == null)
             throw new ArgumentNullException (nameof (connection));
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (name, typeof(string))
+        var _args = new object[] {
+            name
         };
-        ByteString _data = connection.Invoke ("SpaceCenter", "Resources_static_Density", _args);
-        return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+        return connection.Invoke<float> ("SpaceCenter", "Resources_static_Density", _args);
     }
 
     /// <summary>
@@ -103,28 +98,26 @@ public class Resources : RemoteObject
     /// <param name="name">The name of the resource.</param>
     /// <param name="connection">A connection object.</param>
     [RpcAttribute ("SpaceCenter", "Resources_static_FlowMode")]
-    public static global::kRPC.Client.Boost.Services.SpaceCenter.ResourceFlowMode FlowMode (IConnection connection, string name)
+    public static ResourceFlowMode FlowMode (ConnectionMultiplexer connection, string name)
     {
         if (connection == null)
             throw new ArgumentNullException (nameof (connection));
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (name, typeof(string))
+        var _args = new object[] {
+            name
         };
-        ByteString _data = connection.Invoke ("SpaceCenter", "Resources_static_FlowMode", _args);
-        return (global::kRPC.Client.Boost.Services.SpaceCenter.ResourceFlowMode)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ResourceFlowMode), connection);
+        return connection.Invoke<ResourceFlowMode> ("SpaceCenter", "Resources_static_FlowMode", _args);
     }
 
     /// <summary>
     /// All the individual resources that can be stored.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "Resources_get_All")]
-    public global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.Resource> All {
+    public IList<Resource> All {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Resources))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Resources_get_All", _args);
-            return (global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.Resource>)global::KRPC.Client.Encoder.Decode (_data, typeof(global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.Resource>), connection);
+            return Connection.Invoke<IList<Resource>> ("SpaceCenter", "Resources_get_All", _args);
         }
     }
 
@@ -138,18 +131,17 @@ public class Resources : RemoteObject
     [RpcAttribute ("SpaceCenter", "Resources_get_Enabled")]
     public bool Enabled {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Resources))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Resources_get_Enabled", _args);
-            return (bool)global::KRPC.Client.Encoder.Decode (_data, typeof(bool), connection);
+            return Connection.Invoke<bool> ("SpaceCenter", "Resources_get_Enabled", _args);
         }
         set {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Resources)),
-                global::KRPC.Client.Encoder.Encode (value, typeof(bool))
+            var _args = new object[] {
+                this,
+                value
             };
-            connection.Invoke ("SpaceCenter", "Resources_set_Enabled", _args);
+            Connection.Invoke ("SpaceCenter", "Resources_set_Enabled", _args);
         }
     }
 
@@ -157,13 +149,12 @@ public class Resources : RemoteObject
     /// A list of resource names that can be stored.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "Resources_get_Names")]
-    public global::System.Collections.Generic.IList<string> Names {
+    public IList<string> Names {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Resources))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Resources_get_Names", _args);
-            return (global::System.Collections.Generic.IList<string>)global::KRPC.Client.Encoder.Decode (_data, typeof(global::System.Collections.Generic.IList<string>), connection);
+            return Connection.Invoke<IList<string>> ("SpaceCenter", "Resources_get_Names", _args);
         }
     }
 }

@@ -1,7 +1,7 @@
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
-using Google.Protobuf;
 using kRPC.Client.Boost.Attributes;
+using System.Collections.Generic;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
@@ -21,13 +21,12 @@ public class ContractParameter : RemoteObject
     /// Child contract parameters.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "ContractParameter_get_Children")]
-    public global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.ContractParameter> Children {
+    public IList<ContractParameter> Children {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ContractParameter))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "ContractParameter_get_Children", _args);
-            return (global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.ContractParameter>)global::KRPC.Client.Encoder.Decode (_data, typeof(global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.ContractParameter>), connection);
+            return Connection.Invoke<IList<ContractParameter>> ("SpaceCenter", "ContractParameter_get_Children", _args);
         }
     }
 
@@ -37,11 +36,10 @@ public class ContractParameter : RemoteObject
     [RpcAttribute ("SpaceCenter", "ContractParameter_get_Completed")]
     public bool Completed {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ContractParameter))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "ContractParameter_get_Completed", _args);
-            return (bool)global::KRPC.Client.Encoder.Decode (_data, typeof(bool), connection);
+            return Connection.Invoke<bool> ("SpaceCenter", "ContractParameter_get_Completed", _args);
         }
     }
 
@@ -51,11 +49,10 @@ public class ContractParameter : RemoteObject
     [RpcAttribute ("SpaceCenter", "ContractParameter_get_Failed")]
     public bool Failed {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ContractParameter))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "ContractParameter_get_Failed", _args);
-            return (bool)global::KRPC.Client.Encoder.Decode (_data, typeof(bool), connection);
+            return Connection.Invoke<bool> ("SpaceCenter", "ContractParameter_get_Failed", _args);
         }
     }
 
@@ -65,11 +62,10 @@ public class ContractParameter : RemoteObject
     [RpcAttribute ("SpaceCenter", "ContractParameter_get_FundsCompletion")]
     public double FundsCompletion {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ContractParameter))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "ContractParameter_get_FundsCompletion", _args);
-            return (double)global::KRPC.Client.Encoder.Decode (_data, typeof(double), connection);
+            return Connection.Invoke<double> ("SpaceCenter", "ContractParameter_get_FundsCompletion", _args);
         }
     }
 
@@ -79,11 +75,10 @@ public class ContractParameter : RemoteObject
     [RpcAttribute ("SpaceCenter", "ContractParameter_get_FundsFailure")]
     public double FundsFailure {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ContractParameter))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "ContractParameter_get_FundsFailure", _args);
-            return (double)global::KRPC.Client.Encoder.Decode (_data, typeof(double), connection);
+            return Connection.Invoke<double> ("SpaceCenter", "ContractParameter_get_FundsFailure", _args);
         }
     }
 
@@ -93,11 +88,10 @@ public class ContractParameter : RemoteObject
     [RpcAttribute ("SpaceCenter", "ContractParameter_get_Notes")]
     public string Notes {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ContractParameter))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "ContractParameter_get_Notes", _args);
-            return (string)global::KRPC.Client.Encoder.Decode (_data, typeof(string), connection);
+            return Connection.Invoke<string> ("SpaceCenter", "ContractParameter_get_Notes", _args);
         }
     }
 
@@ -107,11 +101,10 @@ public class ContractParameter : RemoteObject
     [RpcAttribute ("SpaceCenter", "ContractParameter_get_Optional")]
     public bool Optional {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ContractParameter))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "ContractParameter_get_Optional", _args);
-            return (bool)global::KRPC.Client.Encoder.Decode (_data, typeof(bool), connection);
+            return Connection.Invoke<bool> ("SpaceCenter", "ContractParameter_get_Optional", _args);
         }
     }
 
@@ -121,11 +114,10 @@ public class ContractParameter : RemoteObject
     [RpcAttribute ("SpaceCenter", "ContractParameter_get_ReputationCompletion")]
     public double ReputationCompletion {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ContractParameter))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "ContractParameter_get_ReputationCompletion", _args);
-            return (double)global::KRPC.Client.Encoder.Decode (_data, typeof(double), connection);
+            return Connection.Invoke<double> ("SpaceCenter", "ContractParameter_get_ReputationCompletion", _args);
         }
     }
 
@@ -135,11 +127,10 @@ public class ContractParameter : RemoteObject
     [RpcAttribute ("SpaceCenter", "ContractParameter_get_ReputationFailure")]
     public double ReputationFailure {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ContractParameter))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "ContractParameter_get_ReputationFailure", _args);
-            return (double)global::KRPC.Client.Encoder.Decode (_data, typeof(double), connection);
+            return Connection.Invoke<double> ("SpaceCenter", "ContractParameter_get_ReputationFailure", _args);
         }
     }
 
@@ -149,11 +140,10 @@ public class ContractParameter : RemoteObject
     [RpcAttribute ("SpaceCenter", "ContractParameter_get_ScienceCompletion")]
     public double ScienceCompletion {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ContractParameter))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "ContractParameter_get_ScienceCompletion", _args);
-            return (double)global::KRPC.Client.Encoder.Decode (_data, typeof(double), connection);
+            return Connection.Invoke<double> ("SpaceCenter", "ContractParameter_get_ScienceCompletion", _args);
         }
     }
 
@@ -163,11 +153,10 @@ public class ContractParameter : RemoteObject
     [RpcAttribute ("SpaceCenter", "ContractParameter_get_Title")]
     public string Title {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ContractParameter))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "ContractParameter_get_Title", _args);
-            return (string)global::KRPC.Client.Encoder.Decode (_data, typeof(string), connection);
+            return Connection.Invoke<string> ("SpaceCenter", "ContractParameter_get_Title", _args);
         }
     }
 }

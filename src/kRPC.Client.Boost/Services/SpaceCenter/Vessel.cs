@@ -1,8 +1,8 @@
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
-using Google.Protobuf;
-using systemAlias = System;
+using System;
 using kRPC.Client.Boost.Attributes;
+using System.Collections.Generic;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
@@ -29,14 +29,13 @@ public class Vessel : RemoteObject
     /// <param name="referenceFrame">The reference frame the returned
     /// angular velocity is in.</param>
     [RpcAttribute ("SpaceCenter", "Vessel_AngularVelocity")]
-    public systemAlias::Tuple<double,double,double> AngularVelocity (global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame referenceFrame)
+    public Tuple<double,double,double> AngularVelocity (ReferenceFrame referenceFrame)
     {
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Vessel)),
-            global::KRPC.Client.Encoder.Encode (referenceFrame, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame))
+        var _args = new object[] {
+            this,
+            referenceFrame
         };
-        ByteString _data = connection.Invoke ("SpaceCenter", "Vessel_AngularVelocity", _args);
-        return (systemAlias::Tuple<double,double,double>)global::KRPC.Client.Encoder.Decode (_data, typeof(systemAlias::Tuple<double,double,double>), connection);
+        return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Vessel_AngularVelocity", _args);
     }
 
     /// <summary>
@@ -49,12 +48,11 @@ public class Vessel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Vessel_AvailableThrustAt")]
     public float AvailableThrustAt (double pressure)
     {
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Vessel)),
-            global::KRPC.Client.Encoder.Encode (pressure, typeof(double))
+        var _args = new object[] {
+            this,
+            pressure
         };
-        ByteString _data = connection.Invoke ("SpaceCenter", "Vessel_AvailableThrustAt", _args);
-        return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+        return Connection.Invoke<float> ("SpaceCenter", "Vessel_AvailableThrustAt", _args);
     }
 
     /// <summary>
@@ -65,14 +63,13 @@ public class Vessel : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// position vectors are in.</param>
     [RpcAttribute ("SpaceCenter", "Vessel_BoundingBox")]
-    public systemAlias::Tuple<systemAlias::Tuple<double,double,double>,systemAlias::Tuple<double,double,double>> BoundingBox (global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame referenceFrame)
+    public Tuple<Tuple<double,double,double>,Tuple<double,double,double>> BoundingBox (ReferenceFrame referenceFrame)
     {
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Vessel)),
-            global::KRPC.Client.Encoder.Encode (referenceFrame, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame))
+        var _args = new object[] {
+            this,
+            referenceFrame
         };
-        ByteString _data = connection.Invoke ("SpaceCenter", "Vessel_BoundingBox", _args);
-        return (systemAlias::Tuple<systemAlias::Tuple<double,double,double>,systemAlias::Tuple<double,double,double>>)global::KRPC.Client.Encoder.Decode (_data, typeof(systemAlias::Tuple<systemAlias::Tuple<double,double,double>,systemAlias::Tuple<double,double,double>>), connection);
+        return Connection.Invoke<Tuple<Tuple<double,double,double>,Tuple<double,double,double>>> ("SpaceCenter", "Vessel_BoundingBox", _args);
     }
 
     /// <summary>
@@ -82,14 +79,13 @@ public class Vessel : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// direction is in.</param>
     [RpcAttribute ("SpaceCenter", "Vessel_Direction")]
-    public systemAlias::Tuple<double,double,double> Direction (global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame referenceFrame)
+    public Tuple<double,double,double> Direction (ReferenceFrame referenceFrame)
     {
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Vessel)),
-            global::KRPC.Client.Encoder.Encode (referenceFrame, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame))
+        var _args = new object[] {
+            this,
+            referenceFrame
         };
-        ByteString _data = connection.Invoke ("SpaceCenter", "Vessel_Direction", _args);
-        return (systemAlias::Tuple<double,double,double>)global::KRPC.Client.Encoder.Decode (_data, typeof(systemAlias::Tuple<double,double,double>), connection);
+        return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Vessel_Direction", _args);
     }
 
     /// <summary>
@@ -101,14 +97,13 @@ public class Vessel : RemoteObject
     /// (<see cref="M:SpaceCenter.Vessel.SurfaceReferenceFrame" />).
     /// </param>
     [RpcAttribute ("SpaceCenter", "Vessel_Flight")]
-    public global::kRPC.Client.Boost.Services.SpaceCenter.Flight Flight (global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame referenceFrame = null)
+    public Flight Flight (ReferenceFrame referenceFrame = null)
     {
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Vessel)),
-            global::KRPC.Client.Encoder.Encode (referenceFrame, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame))
+        var _args = new object[] {
+            this,
+            referenceFrame
         };
-        ByteString _data = connection.Invoke ("SpaceCenter", "Vessel_Flight", _args);
-        return (global::kRPC.Client.Boost.Services.SpaceCenter.Flight)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Flight), connection);
+        return Connection.Invoke<Flight> ("SpaceCenter", "Vessel_Flight", _args);
     }
 
     /// <summary>
@@ -121,12 +116,11 @@ public class Vessel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Vessel_MaxThrustAt")]
     public float MaxThrustAt (double pressure)
     {
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Vessel)),
-            global::KRPC.Client.Encoder.Encode (pressure, typeof(double))
+        var _args = new object[] {
+            this,
+            pressure
         };
-        ByteString _data = connection.Invoke ("SpaceCenter", "Vessel_MaxThrustAt", _args);
-        return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+        return Connection.Invoke<float> ("SpaceCenter", "Vessel_MaxThrustAt", _args);
     }
 
     /// <summary>
@@ -136,14 +130,13 @@ public class Vessel : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// position vector is in.</param>
     [RpcAttribute ("SpaceCenter", "Vessel_Position")]
-    public systemAlias::Tuple<double,double,double> Position (global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame referenceFrame)
+    public Tuple<double,double,double> Position (ReferenceFrame referenceFrame)
     {
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Vessel)),
-            global::KRPC.Client.Encoder.Encode (referenceFrame, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame))
+        var _args = new object[] {
+            this,
+            referenceFrame
         };
-        ByteString _data = connection.Invoke ("SpaceCenter", "Vessel_Position", _args);
-        return (systemAlias::Tuple<double,double,double>)global::KRPC.Client.Encoder.Decode (_data, typeof(systemAlias::Tuple<double,double,double>), connection);
+        return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Vessel_Position", _args);
     }
 
     /// <summary>
@@ -152,10 +145,10 @@ public class Vessel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Vessel_Recover")]
     public void Recover ()
     {
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Vessel))
+        var _args = new object[] {
+            this
         };
-        connection.Invoke ("SpaceCenter", "Vessel_Recover", _args);
+        Connection.Invoke ("SpaceCenter", "Vessel_Recover", _args);
     }
 
     /// <summary>
@@ -167,15 +160,14 @@ public class Vessel : RemoteObject
     /// decoupled in just the given stage. When <c>true</c> returns the resources decoupled in
     /// the given stage and all subsequent stages combined.</param>
     [RpcAttribute ("SpaceCenter", "Vessel_ResourcesInDecoupleStage")]
-    public global::kRPC.Client.Boost.Services.SpaceCenter.Resources ResourcesInDecoupleStage (int stage, bool cumulative = true)
+    public Resources ResourcesInDecoupleStage (int stage, bool cumulative = true)
     {
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Vessel)),
-            global::KRPC.Client.Encoder.Encode (stage, typeof(int)),
-            global::KRPC.Client.Encoder.Encode (cumulative, typeof(bool))
+        var _args = new object[] {
+            this,
+            stage,
+            cumulative
         };
-        ByteString _data = connection.Invoke ("SpaceCenter", "Vessel_ResourcesInDecoupleStage", _args);
-        return (global::kRPC.Client.Boost.Services.SpaceCenter.Resources)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Resources), connection);
+        return Connection.Invoke<Resources> ("SpaceCenter", "Vessel_ResourcesInDecoupleStage", _args);
     }
 
     /// <summary>
@@ -185,14 +177,13 @@ public class Vessel : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// rotation is in.</param>
     [RpcAttribute ("SpaceCenter", "Vessel_Rotation")]
-    public systemAlias::Tuple<double,double,double,double> Rotation (global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame referenceFrame)
+    public Tuple<double,double,double,double> Rotation (ReferenceFrame referenceFrame)
     {
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Vessel)),
-            global::KRPC.Client.Encoder.Encode (referenceFrame, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame))
+        var _args = new object[] {
+            this,
+            referenceFrame
         };
-        ByteString _data = connection.Invoke ("SpaceCenter", "Vessel_Rotation", _args);
-        return (systemAlias::Tuple<double,double,double,double>)global::KRPC.Client.Encoder.Decode (_data, typeof(systemAlias::Tuple<double,double,double,double>), connection);
+        return Connection.Invoke<Tuple<double,double,double,double>> ("SpaceCenter", "Vessel_Rotation", _args);
     }
 
     /// <summary>
@@ -204,12 +195,11 @@ public class Vessel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Vessel_SpecificImpulseAt")]
     public float SpecificImpulseAt (double pressure)
     {
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Vessel)),
-            global::KRPC.Client.Encoder.Encode (pressure, typeof(double))
+        var _args = new object[] {
+            this,
+            pressure
         };
-        ByteString _data = connection.Invoke ("SpaceCenter", "Vessel_SpecificImpulseAt", _args);
-        return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+        return Connection.Invoke<float> ("SpaceCenter", "Vessel_SpecificImpulseAt", _args);
     }
 
     /// <summary>
@@ -220,14 +210,13 @@ public class Vessel : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// velocity vector is in.</param>
     [RpcAttribute ("SpaceCenter", "Vessel_Velocity")]
-    public systemAlias::Tuple<double,double,double> Velocity (global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame referenceFrame)
+    public Tuple<double,double,double> Velocity (ReferenceFrame referenceFrame)
     {
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Vessel)),
-            global::KRPC.Client.Encoder.Encode (referenceFrame, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame))
+        var _args = new object[] {
+            this,
+            referenceFrame
         };
-        ByteString _data = connection.Invoke ("SpaceCenter", "Vessel_Velocity", _args);
-        return (systemAlias::Tuple<double,double,double>)global::KRPC.Client.Encoder.Decode (_data, typeof(systemAlias::Tuple<double,double,double>), connection);
+        return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Vessel_Velocity", _args);
     }
 
     /// <summary>
@@ -235,13 +224,12 @@ public class Vessel : RemoteObject
     /// simple auto-piloting of the vessel.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "Vessel_get_AutoPilot")]
-    public global::kRPC.Client.Boost.Services.SpaceCenter.AutoPilot AutoPilot {
+    public AutoPilot AutoPilot {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Vessel))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Vessel_get_AutoPilot", _args);
-            return (global::kRPC.Client.Boost.Services.SpaceCenter.AutoPilot)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.AutoPilot), connection);
+            return Connection.Invoke<AutoPilot> ("SpaceCenter", "Vessel_get_AutoPilot", _args);
         }
     }
 
@@ -252,13 +240,12 @@ public class Vessel : RemoteObject
     /// These axes are equivalent to the pitch, roll and yaw axes of the vessel.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "Vessel_get_AvailableControlSurfaceTorque")]
-    public systemAlias::Tuple<systemAlias::Tuple<double,double,double>,systemAlias::Tuple<double,double,double>> AvailableControlSurfaceTorque {
+    public Tuple<Tuple<double,double,double>,Tuple<double,double,double>> AvailableControlSurfaceTorque {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Vessel))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Vessel_get_AvailableControlSurfaceTorque", _args);
-            return (systemAlias::Tuple<systemAlias::Tuple<double,double,double>,systemAlias::Tuple<double,double,double>>)global::KRPC.Client.Encoder.Decode (_data, typeof(systemAlias::Tuple<systemAlias::Tuple<double,double,double>,systemAlias::Tuple<double,double,double>>), connection);
+            return Connection.Invoke<Tuple<Tuple<double,double,double>,Tuple<double,double,double>>> ("SpaceCenter", "Vessel_get_AvailableControlSurfaceTorque", _args);
         }
     }
 
@@ -269,13 +256,12 @@ public class Vessel : RemoteObject
     /// These axes are equivalent to the pitch, roll and yaw axes of the vessel.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "Vessel_get_AvailableEngineTorque")]
-    public systemAlias::Tuple<systemAlias::Tuple<double,double,double>,systemAlias::Tuple<double,double,double>> AvailableEngineTorque {
+    public Tuple<Tuple<double,double,double>,Tuple<double,double,double>> AvailableEngineTorque {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Vessel))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Vessel_get_AvailableEngineTorque", _args);
-            return (systemAlias::Tuple<systemAlias::Tuple<double,double,double>,systemAlias::Tuple<double,double,double>>)global::KRPC.Client.Encoder.Decode (_data, typeof(systemAlias::Tuple<systemAlias::Tuple<double,double,double>,systemAlias::Tuple<double,double,double>>), connection);
+            return Connection.Invoke<Tuple<Tuple<double,double,double>,Tuple<double,double,double>>> ("SpaceCenter", "Vessel_get_AvailableEngineTorque", _args);
         }
     }
 
@@ -287,13 +273,12 @@ public class Vessel : RemoteObject
     /// These axes are equivalent to the pitch, roll and yaw axes of the vessel.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "Vessel_get_AvailableOtherTorque")]
-    public systemAlias::Tuple<systemAlias::Tuple<double,double,double>,systemAlias::Tuple<double,double,double>> AvailableOtherTorque {
+    public Tuple<Tuple<double,double,double>,Tuple<double,double,double>> AvailableOtherTorque {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Vessel))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Vessel_get_AvailableOtherTorque", _args);
-            return (systemAlias::Tuple<systemAlias::Tuple<double,double,double>,systemAlias::Tuple<double,double,double>>)global::KRPC.Client.Encoder.Decode (_data, typeof(systemAlias::Tuple<systemAlias::Tuple<double,double,double>,systemAlias::Tuple<double,double,double>>), connection);
+            return Connection.Invoke<Tuple<Tuple<double,double,double>,Tuple<double,double,double>>> ("SpaceCenter", "Vessel_get_AvailableOtherTorque", _args);
         }
     }
 
@@ -304,13 +289,12 @@ public class Vessel : RemoteObject
     /// These axes are equivalent to the right, forward and bottom directions of the vessel.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "Vessel_get_AvailableRCSForce")]
-    public systemAlias::Tuple<systemAlias::Tuple<double,double,double>,systemAlias::Tuple<double,double,double>> AvailableRCSForce {
+    public Tuple<Tuple<double,double,double>,Tuple<double,double,double>> AvailableRCSForce {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Vessel))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Vessel_get_AvailableRCSForce", _args);
-            return (systemAlias::Tuple<systemAlias::Tuple<double,double,double>,systemAlias::Tuple<double,double,double>>)global::KRPC.Client.Encoder.Decode (_data, typeof(systemAlias::Tuple<systemAlias::Tuple<double,double,double>,systemAlias::Tuple<double,double,double>>), connection);
+            return Connection.Invoke<Tuple<Tuple<double,double,double>,Tuple<double,double,double>>> ("SpaceCenter", "Vessel_get_AvailableRCSForce", _args);
         }
     }
 
@@ -321,13 +305,12 @@ public class Vessel : RemoteObject
     /// These axes are equivalent to the pitch, roll and yaw axes of the vessel.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "Vessel_get_AvailableRCSTorque")]
-    public systemAlias::Tuple<systemAlias::Tuple<double,double,double>,systemAlias::Tuple<double,double,double>> AvailableRCSTorque {
+    public Tuple<Tuple<double,double,double>,Tuple<double,double,double>> AvailableRCSTorque {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Vessel))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Vessel_get_AvailableRCSTorque", _args);
-            return (systemAlias::Tuple<systemAlias::Tuple<double,double,double>,systemAlias::Tuple<double,double,double>>)global::KRPC.Client.Encoder.Decode (_data, typeof(systemAlias::Tuple<systemAlias::Tuple<double,double,double>,systemAlias::Tuple<double,double,double>>), connection);
+            return Connection.Invoke<Tuple<Tuple<double,double,double>,Tuple<double,double,double>>> ("SpaceCenter", "Vessel_get_AvailableRCSTorque", _args);
         }
     }
 
@@ -338,13 +321,12 @@ public class Vessel : RemoteObject
     /// These axes are equivalent to the pitch, roll and yaw axes of the vessel.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "Vessel_get_AvailableReactionWheelTorque")]
-    public systemAlias::Tuple<systemAlias::Tuple<double,double,double>,systemAlias::Tuple<double,double,double>> AvailableReactionWheelTorque {
+    public Tuple<Tuple<double,double,double>,Tuple<double,double,double>> AvailableReactionWheelTorque {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Vessel))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Vessel_get_AvailableReactionWheelTorque", _args);
-            return (systemAlias::Tuple<systemAlias::Tuple<double,double,double>,systemAlias::Tuple<double,double,double>>)global::KRPC.Client.Encoder.Decode (_data, typeof(systemAlias::Tuple<systemAlias::Tuple<double,double,double>,systemAlias::Tuple<double,double,double>>), connection);
+            return Connection.Invoke<Tuple<Tuple<double,double,double>,Tuple<double,double,double>>> ("SpaceCenter", "Vessel_get_AvailableReactionWheelTorque", _args);
         }
     }
 
@@ -356,11 +338,10 @@ public class Vessel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Vessel_get_AvailableThrust")]
     public float AvailableThrust {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Vessel))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Vessel_get_AvailableThrust", _args);
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            return Connection.Invoke<float> ("SpaceCenter", "Vessel_get_AvailableThrust", _args);
         }
     }
 
@@ -372,13 +353,12 @@ public class Vessel : RemoteObject
     /// These axes are equivalent to the pitch, roll and yaw axes of the vessel.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "Vessel_get_AvailableTorque")]
-    public systemAlias::Tuple<systemAlias::Tuple<double,double,double>,systemAlias::Tuple<double,double,double>> AvailableTorque {
+    public Tuple<Tuple<double,double,double>,Tuple<double,double,double>> AvailableTorque {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Vessel))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Vessel_get_AvailableTorque", _args);
-            return (systemAlias::Tuple<systemAlias::Tuple<double,double,double>,systemAlias::Tuple<double,double,double>>)global::KRPC.Client.Encoder.Decode (_data, typeof(systemAlias::Tuple<systemAlias::Tuple<double,double,double>,systemAlias::Tuple<double,double,double>>), connection);
+            return Connection.Invoke<Tuple<Tuple<double,double,double>,Tuple<double,double,double>>> ("SpaceCenter", "Vessel_get_AvailableTorque", _args);
         }
     }
 
@@ -388,11 +368,10 @@ public class Vessel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Vessel_get_Biome")]
     public string Biome {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Vessel))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Vessel_get_Biome", _args);
-            return (string)global::KRPC.Client.Encoder.Decode (_data, typeof(string), connection);
+            return Connection.Invoke<string> ("SpaceCenter", "Vessel_get_Biome", _args);
         }
     }
 
@@ -401,13 +380,12 @@ public class Vessel : RemoteObject
     /// with CommNet for this vessel.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "Vessel_get_Comms")]
-    public global::kRPC.Client.Boost.Services.SpaceCenter.Comms Comms {
+    public Comms Comms {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Vessel))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Vessel_get_Comms", _args);
-            return (global::kRPC.Client.Boost.Services.SpaceCenter.Comms)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Comms), connection);
+            return Connection.Invoke<Comms> ("SpaceCenter", "Vessel_get_Comms", _args);
         }
     }
 
@@ -417,13 +395,12 @@ public class Vessel : RemoteObject
     /// RCS and thrust.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "Vessel_get_Control")]
-    public global::kRPC.Client.Boost.Services.SpaceCenter.Control Control {
+    public Control Control {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Vessel))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Vessel_get_Control", _args);
-            return (global::kRPC.Client.Boost.Services.SpaceCenter.Control)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Control), connection);
+            return Connection.Invoke<Control> ("SpaceCenter", "Vessel_get_Control", _args);
         }
     }
 
@@ -431,13 +408,12 @@ public class Vessel : RemoteObject
     /// The crew in the vessel.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "Vessel_get_Crew")]
-    public global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.CrewMember> Crew {
+    public IList<CrewMember> Crew {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Vessel))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Vessel_get_Crew", _args);
-            return (global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.CrewMember>)global::KRPC.Client.Encoder.Decode (_data, typeof(global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.CrewMember>), connection);
+            return Connection.Invoke<IList<CrewMember>> ("SpaceCenter", "Vessel_get_Crew", _args);
         }
     }
 
@@ -447,11 +423,10 @@ public class Vessel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Vessel_get_CrewCapacity")]
     public int CrewCapacity {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Vessel))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Vessel_get_CrewCapacity", _args);
-            return (int)global::KRPC.Client.Encoder.Decode (_data, typeof(int), connection);
+            return Connection.Invoke<int> ("SpaceCenter", "Vessel_get_CrewCapacity", _args);
         }
     }
 
@@ -461,11 +436,10 @@ public class Vessel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Vessel_get_CrewCount")]
     public int CrewCount {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Vessel))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Vessel_get_CrewCount", _args);
-            return (int)global::KRPC.Client.Encoder.Decode (_data, typeof(int), connection);
+            return Connection.Invoke<int> ("SpaceCenter", "Vessel_get_CrewCount", _args);
         }
     }
 
@@ -475,11 +449,10 @@ public class Vessel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Vessel_get_DryMass")]
     public float DryMass {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Vessel))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Vessel_get_DryMass", _args);
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            return Connection.Invoke<float> ("SpaceCenter", "Vessel_get_DryMass", _args);
         }
     }
 
@@ -489,13 +462,12 @@ public class Vessel : RemoteObject
     /// Returns the 3x3 matrix as a list of elements, in row-major order.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "Vessel_get_InertiaTensor")]
-    public global::System.Collections.Generic.IList<double> InertiaTensor {
+    public IList<double> InertiaTensor {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Vessel))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Vessel_get_InertiaTensor", _args);
-            return (global::System.Collections.Generic.IList<double>)global::KRPC.Client.Encoder.Decode (_data, typeof(global::System.Collections.Generic.IList<double>), connection);
+            return Connection.Invoke<IList<double>> ("SpaceCenter", "Vessel_get_InertiaTensor", _args);
         }
     }
 
@@ -507,11 +479,10 @@ public class Vessel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Vessel_get_KerbinSeaLevelSpecificImpulse")]
     public float KerbinSeaLevelSpecificImpulse {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Vessel))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Vessel_get_KerbinSeaLevelSpecificImpulse", _args);
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            return Connection.Invoke<float> ("SpaceCenter", "Vessel_get_KerbinSeaLevelSpecificImpulse", _args);
         }
     }
 
@@ -521,11 +492,10 @@ public class Vessel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Vessel_get_MET")]
     public double MET {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Vessel))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Vessel_get_MET", _args);
-            return (double)global::KRPC.Client.Encoder.Decode (_data, typeof(double), connection);
+            return Connection.Invoke<double> ("SpaceCenter", "Vessel_get_MET", _args);
         }
     }
 
@@ -535,11 +505,10 @@ public class Vessel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Vessel_get_Mass")]
     public float Mass {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Vessel))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Vessel_get_Mass", _args);
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            return Connection.Invoke<float> ("SpaceCenter", "Vessel_get_Mass", _args);
         }
     }
 
@@ -551,11 +520,10 @@ public class Vessel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Vessel_get_MaxThrust")]
     public float MaxThrust {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Vessel))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Vessel_get_MaxThrust", _args);
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            return Connection.Invoke<float> ("SpaceCenter", "Vessel_get_MaxThrust", _args);
         }
     }
 
@@ -567,11 +535,10 @@ public class Vessel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Vessel_get_MaxVacuumThrust")]
     public float MaxVacuumThrust {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Vessel))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Vessel_get_MaxVacuumThrust", _args);
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            return Connection.Invoke<float> ("SpaceCenter", "Vessel_get_MaxVacuumThrust", _args);
         }
     }
 
@@ -582,13 +549,12 @@ public class Vessel : RemoteObject
     /// This corresponds to the vessels reference frame (<see cref="T:SpaceCenter.ReferenceFrame" />).
     /// </summary>
     [RpcAttribute ("SpaceCenter", "Vessel_get_MomentOfInertia")]
-    public systemAlias::Tuple<double,double,double> MomentOfInertia {
+    public Tuple<double,double,double> MomentOfInertia {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Vessel))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Vessel_get_MomentOfInertia", _args);
-            return (systemAlias::Tuple<double,double,double>)global::KRPC.Client.Encoder.Decode (_data, typeof(systemAlias::Tuple<double,double,double>), connection);
+            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Vessel_get_MomentOfInertia", _args);
         }
     }
 
@@ -598,18 +564,17 @@ public class Vessel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Vessel_get_Name")]
     public string Name {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Vessel))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Vessel_get_Name", _args);
-            return (string)global::KRPC.Client.Encoder.Decode (_data, typeof(string), connection);
+            return Connection.Invoke<string> ("SpaceCenter", "Vessel_get_Name", _args);
         }
         set {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Vessel)),
-                global::KRPC.Client.Encoder.Encode (value, typeof(string))
+            var _args = new object[] {
+                this,
+                value
             };
-            connection.Invoke ("SpaceCenter", "Vessel_set_Name", _args);
+            Connection.Invoke ("SpaceCenter", "Vessel_set_Name", _args);
         }
     }
 
@@ -617,13 +582,12 @@ public class Vessel : RemoteObject
     /// The current orbit of the vessel.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "Vessel_get_Orbit")]
-    public global::kRPC.Client.Boost.Services.SpaceCenter.Orbit Orbit {
+    public Orbit Orbit {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Vessel))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Vessel_get_Orbit", _args);
-            return (global::kRPC.Client.Boost.Services.SpaceCenter.Orbit)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Orbit), connection);
+            return Connection.Invoke<Orbit> ("SpaceCenter", "Vessel_get_Orbit", _args);
         }
     }
 
@@ -635,13 +599,12 @@ public class Vessel : RemoteObject
     /// Be careful not to confuse this with 'orbit' mode on the navball.
     /// </remarks>
     [RpcAttribute ("SpaceCenter", "Vessel_get_OrbitalReferenceFrame")]
-    public global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame OrbitalReferenceFrame {
+    public ReferenceFrame OrbitalReferenceFrame {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Vessel))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Vessel_get_OrbitalReferenceFrame", _args);
-            return (global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame), connection);
+            return Connection.Invoke<ReferenceFrame> ("SpaceCenter", "Vessel_get_OrbitalReferenceFrame", _args);
         }
     }
 
@@ -649,13 +612,12 @@ public class Vessel : RemoteObject
     /// A <see cref="T:SpaceCenter.Parts" /> object, that can used to interact with the parts that make up this vessel.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "Vessel_get_Parts")]
-    public global::kRPC.Client.Boost.Services.SpaceCenter.Parts Parts {
+    public Parts Parts {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Vessel))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Vessel_get_Parts", _args);
-            return (global::kRPC.Client.Boost.Services.SpaceCenter.Parts)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Parts), connection);
+            return Connection.Invoke<Parts> ("SpaceCenter", "Vessel_get_Parts", _args);
         }
     }
 
@@ -665,11 +627,10 @@ public class Vessel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Vessel_get_Recoverable")]
     public bool Recoverable {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Vessel))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Vessel_get_Recoverable", _args);
-            return (bool)global::KRPC.Client.Encoder.Decode (_data, typeof(bool), connection);
+            return Connection.Invoke<bool> ("SpaceCenter", "Vessel_get_Recoverable", _args);
         }
     }
 
@@ -678,13 +639,12 @@ public class Vessel : RemoteObject
     /// and orientated with the vessel.
     /// <list type="bullet"><item><description>The origin is at the center of mass of the vessel.</description></item><item><description>The axes rotate with the vessel.</description></item><item><description>The x-axis points out to the right of the vessel.</description></item><item><description>The y-axis points in the forward direction of the vessel.</description></item><item><description>The z-axis points out of the bottom off the vessel.</description></item></list></summary>
     [RpcAttribute ("SpaceCenter", "Vessel_get_ReferenceFrame")]
-    public global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame ReferenceFrame {
+    public ReferenceFrame ReferenceFrame {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Vessel))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Vessel_get_ReferenceFrame", _args);
-            return (global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame), connection);
+            return Connection.Invoke<ReferenceFrame> ("SpaceCenter", "Vessel_get_ReferenceFrame", _args);
         }
     }
 
@@ -693,13 +653,12 @@ public class Vessel : RemoteObject
     /// about resources stored in the vessel.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "Vessel_get_Resources")]
-    public global::kRPC.Client.Boost.Services.SpaceCenter.Resources Resources {
+    public Resources Resources {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Vessel))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Vessel_get_Resources", _args);
-            return (global::kRPC.Client.Boost.Services.SpaceCenter.Resources)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Resources), connection);
+            return Connection.Invoke<Resources> ("SpaceCenter", "Vessel_get_Resources", _args);
         }
     }
 
@@ -707,13 +666,12 @@ public class Vessel : RemoteObject
     /// The situation the vessel is in.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "Vessel_get_Situation")]
-    public global::kRPC.Client.Boost.Services.SpaceCenter.VesselSituation Situation {
+    public VesselSituation Situation {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Vessel))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Vessel_get_Situation", _args);
-            return (global::kRPC.Client.Boost.Services.SpaceCenter.VesselSituation)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.VesselSituation), connection);
+            return Connection.Invoke<VesselSituation> ("SpaceCenter", "Vessel_get_Situation", _args);
         }
     }
 
@@ -724,11 +682,10 @@ public class Vessel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Vessel_get_SpecificImpulse")]
     public float SpecificImpulse {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Vessel))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Vessel_get_SpecificImpulse", _args);
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            return Connection.Invoke<float> ("SpaceCenter", "Vessel_get_SpecificImpulse", _args);
         }
     }
 
@@ -746,13 +703,12 @@ public class Vessel : RemoteObject
     /// Be careful not to confuse this with 'surface' mode on the navball.
     /// </remarks>
     [RpcAttribute ("SpaceCenter", "Vessel_get_SurfaceReferenceFrame")]
-    public global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame SurfaceReferenceFrame {
+    public ReferenceFrame SurfaceReferenceFrame {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Vessel))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Vessel_get_SurfaceReferenceFrame", _args);
-            return (global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame), connection);
+            return Connection.Invoke<ReferenceFrame> ("SpaceCenter", "Vessel_get_SurfaceReferenceFrame", _args);
         }
     }
 
@@ -764,13 +720,12 @@ public class Vessel : RemoteObject
     /// relative to the surface of the body being orbited.</description></item><item><description>The z-axis is in the plane of the
     /// <a href="https://en.wikipedia.org/wiki/Horizon">astronomical horizon</a>.</description></item><item><description>The x-axis is orthogonal to the other two axes.</description></item></list></summary>
     [RpcAttribute ("SpaceCenter", "Vessel_get_SurfaceVelocityReferenceFrame")]
-    public global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame SurfaceVelocityReferenceFrame {
+    public ReferenceFrame SurfaceVelocityReferenceFrame {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Vessel))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Vessel_get_SurfaceVelocityReferenceFrame", _args);
-            return (global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame), connection);
+            return Connection.Invoke<ReferenceFrame> ("SpaceCenter", "Vessel_get_SurfaceVelocityReferenceFrame", _args);
         }
     }
 
@@ -782,11 +737,10 @@ public class Vessel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Vessel_get_Thrust")]
     public float Thrust {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Vessel))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Vessel_get_Thrust", _args);
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            return Connection.Invoke<float> ("SpaceCenter", "Vessel_get_Thrust", _args);
         }
     }
 
@@ -794,20 +748,19 @@ public class Vessel : RemoteObject
     /// The type of the vessel.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "Vessel_get_Type")]
-    public global::kRPC.Client.Boost.Services.SpaceCenter.VesselType Type {
+    public VesselType Type {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Vessel))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Vessel_get_Type", _args);
-            return (global::kRPC.Client.Boost.Services.SpaceCenter.VesselType)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.VesselType), connection);
+            return Connection.Invoke<VesselType> ("SpaceCenter", "Vessel_get_Type", _args);
         }
         set {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Vessel)),
-                global::KRPC.Client.Encoder.Encode (value, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.VesselType))
+            var _args = new object[] {
+                this,
+                value
             };
-            connection.Invoke ("SpaceCenter", "Vessel_set_Type", _args);
+            Connection.Invoke ("SpaceCenter", "Vessel_set_Type", _args);
         }
     }
 
@@ -818,11 +771,10 @@ public class Vessel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Vessel_get_VacuumSpecificImpulse")]
     public float VacuumSpecificImpulse {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Vessel))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Vessel_get_VacuumSpecificImpulse", _args);
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            return Connection.Invoke<float> ("SpaceCenter", "Vessel_get_VacuumSpecificImpulse", _args);
         }
     }
 }

@@ -1,6 +1,5 @@
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
-using Google.Protobuf;
 using kRPC.Client.Boost.Attributes;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
@@ -23,11 +22,10 @@ public class ScienceSubject : RemoteObject
     [RpcAttribute ("SpaceCenter", "ScienceSubject_get_DataScale")]
     public float DataScale {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ScienceSubject))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "ScienceSubject_get_DataScale", _args);
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            return Connection.Invoke<float> ("SpaceCenter", "ScienceSubject_get_DataScale", _args);
         }
     }
 
@@ -37,11 +35,10 @@ public class ScienceSubject : RemoteObject
     [RpcAttribute ("SpaceCenter", "ScienceSubject_get_IsComplete")]
     public bool IsComplete {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ScienceSubject))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "ScienceSubject_get_IsComplete", _args);
-            return (bool)global::KRPC.Client.Encoder.Decode (_data, typeof(bool), connection);
+            return Connection.Invoke<bool> ("SpaceCenter", "ScienceSubject_get_IsComplete", _args);
         }
     }
 
@@ -52,11 +49,10 @@ public class ScienceSubject : RemoteObject
     [RpcAttribute ("SpaceCenter", "ScienceSubject_get_Science")]
     public float Science {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ScienceSubject))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "ScienceSubject_get_Science", _args);
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            return Connection.Invoke<float> ("SpaceCenter", "ScienceSubject_get_Science", _args);
         }
     }
 
@@ -66,11 +62,10 @@ public class ScienceSubject : RemoteObject
     [RpcAttribute ("SpaceCenter", "ScienceSubject_get_ScienceCap")]
     public float ScienceCap {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ScienceSubject))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "ScienceSubject_get_ScienceCap", _args);
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            return Connection.Invoke<float> ("SpaceCenter", "ScienceSubject_get_ScienceCap", _args);
         }
     }
 
@@ -81,11 +76,10 @@ public class ScienceSubject : RemoteObject
     [RpcAttribute ("SpaceCenter", "ScienceSubject_get_ScientificValue")]
     public float ScientificValue {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ScienceSubject))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "ScienceSubject_get_ScientificValue", _args);
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            return Connection.Invoke<float> ("SpaceCenter", "ScienceSubject_get_ScientificValue", _args);
         }
     }
 
@@ -95,11 +89,10 @@ public class ScienceSubject : RemoteObject
     [RpcAttribute ("SpaceCenter", "ScienceSubject_get_SubjectValue")]
     public float SubjectValue {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ScienceSubject))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "ScienceSubject_get_SubjectValue", _args);
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            return Connection.Invoke<float> ("SpaceCenter", "ScienceSubject_get_SubjectValue", _args);
         }
     }
 
@@ -109,11 +102,10 @@ public class ScienceSubject : RemoteObject
     [RpcAttribute ("SpaceCenter", "ScienceSubject_get_Title")]
     public string Title {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ScienceSubject))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "ScienceSubject_get_Title", _args);
-            return (string)global::KRPC.Client.Encoder.Decode (_data, typeof(string), connection);
+            return Connection.Invoke<string> ("SpaceCenter", "ScienceSubject_get_Title", _args);
         }
     }
 }

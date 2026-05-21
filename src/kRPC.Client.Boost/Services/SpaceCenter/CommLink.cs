@@ -1,6 +1,5 @@
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
-using Google.Protobuf;
 using kRPC.Client.Boost.Attributes;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
@@ -21,13 +20,12 @@ public class CommLink : RemoteObject
     /// Start point of the link.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "CommLink_get_End")]
-    public global::kRPC.Client.Boost.Services.SpaceCenter.CommNode End {
+    public CommNode End {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.CommLink))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "CommLink_get_End", _args);
-            return (global::kRPC.Client.Boost.Services.SpaceCenter.CommNode)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.CommNode), connection);
+            return Connection.Invoke<CommNode> ("SpaceCenter", "CommLink_get_End", _args);
         }
     }
 
@@ -37,11 +35,10 @@ public class CommLink : RemoteObject
     [RpcAttribute ("SpaceCenter", "CommLink_get_SignalStrength")]
     public double SignalStrength {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.CommLink))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "CommLink_get_SignalStrength", _args);
-            return (double)global::KRPC.Client.Encoder.Decode (_data, typeof(double), connection);
+            return Connection.Invoke<double> ("SpaceCenter", "CommLink_get_SignalStrength", _args);
         }
     }
 
@@ -49,13 +46,12 @@ public class CommLink : RemoteObject
     /// Start point of the link.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "CommLink_get_Start")]
-    public global::kRPC.Client.Boost.Services.SpaceCenter.CommNode Start {
+    public CommNode Start {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.CommLink))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "CommLink_get_Start", _args);
-            return (global::kRPC.Client.Boost.Services.SpaceCenter.CommNode)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.CommNode), connection);
+            return Connection.Invoke<CommNode> ("SpaceCenter", "CommLink_get_Start", _args);
         }
     }
 
@@ -63,13 +59,12 @@ public class CommLink : RemoteObject
     /// The type of link.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "CommLink_get_Type")]
-    public global::kRPC.Client.Boost.Services.SpaceCenter.CommLinkType Type {
+    public CommLinkType Type {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.CommLink))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "CommLink_get_Type", _args);
-            return (global::kRPC.Client.Boost.Services.SpaceCenter.CommLinkType)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.CommLinkType), connection);
+            return Connection.Invoke<CommLinkType> ("SpaceCenter", "CommLink_get_Type", _args);
         }
     }
 }

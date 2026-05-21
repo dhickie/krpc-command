@@ -1,6 +1,5 @@
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
-using Google.Protobuf;
 using kRPC.Client.Boost.Attributes;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
@@ -23,11 +22,10 @@ public class Alarm : RemoteObject
     [RpcAttribute ("SpaceCenter", "Alarm_get_Description")]
     public string Description {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Alarm))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Alarm_get_Description", _args);
-            return (string)global::KRPC.Client.Encoder.Decode (_data, typeof(string), connection);
+            return Connection.Invoke<string> ("SpaceCenter", "Alarm_get_Description", _args);
         }
     }
 
@@ -37,11 +35,10 @@ public class Alarm : RemoteObject
     [RpcAttribute ("SpaceCenter", "Alarm_get_EventOffset")]
     public double EventOffset {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Alarm))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Alarm_get_EventOffset", _args);
-            return (double)global::KRPC.Client.Encoder.Decode (_data, typeof(double), connection);
+            return Connection.Invoke<double> ("SpaceCenter", "Alarm_get_EventOffset", _args);
         }
     }
 
@@ -53,11 +50,10 @@ public class Alarm : RemoteObject
     [RpcAttribute ("SpaceCenter", "Alarm_get_ID")]
     public uint ID {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Alarm))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Alarm_get_ID", _args);
-            return (uint)global::KRPC.Client.Encoder.Decode (_data, typeof(uint), connection);
+            return Connection.Invoke<uint> ("SpaceCenter", "Alarm_get_ID", _args);
         }
     }
 
@@ -67,11 +63,10 @@ public class Alarm : RemoteObject
     [RpcAttribute ("SpaceCenter", "Alarm_get_Time")]
     public double Time {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Alarm))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Alarm_get_Time", _args);
-            return (double)global::KRPC.Client.Encoder.Decode (_data, typeof(double), connection);
+            return Connection.Invoke<double> ("SpaceCenter", "Alarm_get_Time", _args);
         }
     }
 
@@ -81,11 +76,10 @@ public class Alarm : RemoteObject
     [RpcAttribute ("SpaceCenter", "Alarm_get_TimeUntil")]
     public double TimeUntil {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Alarm))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Alarm_get_TimeUntil", _args);
-            return (double)global::KRPC.Client.Encoder.Decode (_data, typeof(double), connection);
+            return Connection.Invoke<double> ("SpaceCenter", "Alarm_get_TimeUntil", _args);
         }
     }
 
@@ -95,11 +89,10 @@ public class Alarm : RemoteObject
     [RpcAttribute ("SpaceCenter", "Alarm_get_Title")]
     public string Title {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Alarm))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Alarm_get_Title", _args);
-            return (string)global::KRPC.Client.Encoder.Decode (_data, typeof(string), connection);
+            return Connection.Invoke<string> ("SpaceCenter", "Alarm_get_Title", _args);
         }
     }
 
@@ -109,11 +102,10 @@ public class Alarm : RemoteObject
     [RpcAttribute ("SpaceCenter", "Alarm_get_Type")]
     public string Type {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Alarm))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Alarm_get_Type", _args);
-            return (string)global::KRPC.Client.Encoder.Decode (_data, typeof(string), connection);
+            return Connection.Invoke<string> ("SpaceCenter", "Alarm_get_Type", _args);
         }
     }
 
@@ -121,13 +113,12 @@ public class Alarm : RemoteObject
     /// Vessel the alarm references. <c>null</c> if it does not reference a vessel.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "Alarm_get_Vessel")]
-    public global::kRPC.Client.Boost.Services.SpaceCenter.Vessel Vessel {
+    public Vessel Vessel {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Alarm))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Alarm_get_Vessel", _args);
-            return (global::kRPC.Client.Boost.Services.SpaceCenter.Vessel)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Vessel), connection);
+            return Connection.Invoke<Vessel> ("SpaceCenter", "Alarm_get_Vessel", _args);
         }
     }
 }

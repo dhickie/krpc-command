@@ -1,6 +1,5 @@
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
-using Google.Protobuf;
 using kRPC.Client.Boost.Attributes;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
@@ -23,11 +22,10 @@ public class CommNode : RemoteObject
     [RpcAttribute ("SpaceCenter", "CommNode_get_IsControlPoint")]
     public bool IsControlPoint {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.CommNode))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "CommNode_get_IsControlPoint", _args);
-            return (bool)global::KRPC.Client.Encoder.Decode (_data, typeof(bool), connection);
+            return Connection.Invoke<bool> ("SpaceCenter", "CommNode_get_IsControlPoint", _args);
         }
     }
 
@@ -37,11 +35,10 @@ public class CommNode : RemoteObject
     [RpcAttribute ("SpaceCenter", "CommNode_get_IsHome")]
     public bool IsHome {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.CommNode))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "CommNode_get_IsHome", _args);
-            return (bool)global::KRPC.Client.Encoder.Decode (_data, typeof(bool), connection);
+            return Connection.Invoke<bool> ("SpaceCenter", "CommNode_get_IsHome", _args);
         }
     }
 
@@ -51,11 +48,10 @@ public class CommNode : RemoteObject
     [RpcAttribute ("SpaceCenter", "CommNode_get_IsVessel")]
     public bool IsVessel {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.CommNode))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "CommNode_get_IsVessel", _args);
-            return (bool)global::KRPC.Client.Encoder.Decode (_data, typeof(bool), connection);
+            return Connection.Invoke<bool> ("SpaceCenter", "CommNode_get_IsVessel", _args);
         }
     }
 
@@ -65,11 +61,10 @@ public class CommNode : RemoteObject
     [RpcAttribute ("SpaceCenter", "CommNode_get_Name")]
     public string Name {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.CommNode))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "CommNode_get_Name", _args);
-            return (string)global::KRPC.Client.Encoder.Decode (_data, typeof(string), connection);
+            return Connection.Invoke<string> ("SpaceCenter", "CommNode_get_Name", _args);
         }
     }
 
@@ -77,13 +72,12 @@ public class CommNode : RemoteObject
     /// The vessel for this communication node.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "CommNode_get_Vessel")]
-    public global::kRPC.Client.Boost.Services.SpaceCenter.Vessel Vessel {
+    public Vessel Vessel {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.CommNode))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "CommNode_get_Vessel", _args);
-            return (global::kRPC.Client.Boost.Services.SpaceCenter.Vessel)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Vessel), connection);
+            return Connection.Invoke<Vessel> ("SpaceCenter", "CommNode_get_Vessel", _args);
         }
     }
 }

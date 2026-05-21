@@ -1,7 +1,6 @@
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
-using Google.Protobuf;
-using systemAlias = System;
+using System;
 using kRPC.Client.Boost.Attributes;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
@@ -24,18 +23,17 @@ public class Light : RemoteObject
     [RpcAttribute ("SpaceCenter", "Light_get_Active")]
     public bool Active {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Light))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Light_get_Active", _args);
-            return (bool)global::KRPC.Client.Encoder.Decode (_data, typeof(bool), connection);
+            return Connection.Invoke<bool> ("SpaceCenter", "Light_get_Active", _args);
         }
         set {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Light)),
-                global::KRPC.Client.Encoder.Encode (value, typeof(bool))
+            var _args = new object[] {
+                this,
+                value
             };
-            connection.Invoke ("SpaceCenter", "Light_set_Active", _args);
+            Connection.Invoke ("SpaceCenter", "Light_set_Active", _args);
         }
     }
 
@@ -45,18 +43,17 @@ public class Light : RemoteObject
     [RpcAttribute ("SpaceCenter", "Light_get_Blink")]
     public bool Blink {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Light))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Light_get_Blink", _args);
-            return (bool)global::KRPC.Client.Encoder.Decode (_data, typeof(bool), connection);
+            return Connection.Invoke<bool> ("SpaceCenter", "Light_get_Blink", _args);
         }
         set {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Light)),
-                global::KRPC.Client.Encoder.Encode (value, typeof(bool))
+            var _args = new object[] {
+                this,
+                value
             };
-            connection.Invoke ("SpaceCenter", "Light_set_Blink", _args);
+            Connection.Invoke ("SpaceCenter", "Light_set_Blink", _args);
         }
     }
 
@@ -66,18 +63,17 @@ public class Light : RemoteObject
     [RpcAttribute ("SpaceCenter", "Light_get_BlinkRate")]
     public float BlinkRate {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Light))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Light_get_BlinkRate", _args);
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            return Connection.Invoke<float> ("SpaceCenter", "Light_get_BlinkRate", _args);
         }
         set {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Light)),
-                global::KRPC.Client.Encoder.Encode (value, typeof(float))
+            var _args = new object[] {
+                this,
+                value
             };
-            connection.Invoke ("SpaceCenter", "Light_set_BlinkRate", _args);
+            Connection.Invoke ("SpaceCenter", "Light_set_BlinkRate", _args);
         }
     }
 
@@ -85,20 +81,19 @@ public class Light : RemoteObject
     /// The color of the light, as an RGB triple.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "Light_get_Color")]
-    public systemAlias::Tuple<float,float,float> Color {
+    public Tuple<float,float,float> Color {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Light))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Light_get_Color", _args);
-            return (systemAlias::Tuple<float,float,float>)global::KRPC.Client.Encoder.Decode (_data, typeof(systemAlias::Tuple<float,float,float>), connection);
+            return Connection.Invoke<Tuple<float,float,float>> ("SpaceCenter", "Light_get_Color", _args);
         }
         set {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Light)),
-                global::KRPC.Client.Encoder.Encode (value, typeof(systemAlias::Tuple<float,float,float>))
+            var _args = new object[] {
+                this,
+                value
             };
-            connection.Invoke ("SpaceCenter", "Light_set_Color", _args);
+            Connection.Invoke ("SpaceCenter", "Light_set_Color", _args);
         }
     }
 
@@ -106,13 +101,12 @@ public class Light : RemoteObject
     /// The part object for this light.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "Light_get_Part")]
-    public global::kRPC.Client.Boost.Services.SpaceCenter.Part Part {
+    public Part Part {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Light))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Light_get_Part", _args);
-            return (global::kRPC.Client.Boost.Services.SpaceCenter.Part)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Part), connection);
+            return Connection.Invoke<Part> ("SpaceCenter", "Light_get_Part", _args);
         }
     }
 
@@ -122,11 +116,10 @@ public class Light : RemoteObject
     [RpcAttribute ("SpaceCenter", "Light_get_PowerUsage")]
     public float PowerUsage {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Light))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Light_get_PowerUsage", _args);
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            return Connection.Invoke<float> ("SpaceCenter", "Light_get_PowerUsage", _args);
         }
     }
 }

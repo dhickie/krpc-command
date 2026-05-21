@@ -1,6 +1,5 @@
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
-using Google.Protobuf;
 using KRPC.Client;
 using kRPC.Client.Boost.Attributes;
 
@@ -32,18 +31,17 @@ public class ResourceTransfer : RemoteObject
     /// <param name="maxAmount">The maximum amount of resource to transfer.</param>
     /// <param name="connection">A connection object.</param>
     [RpcAttribute ("SpaceCenter", "ResourceTransfer_static_Start")]
-    public static global::kRPC.Client.Boost.Services.SpaceCenter.ResourceTransfer Start (IConnection connection, global::kRPC.Client.Boost.Services.SpaceCenter.Part fromPart, global::kRPC.Client.Boost.Services.SpaceCenter.Part toPart, string resource, float maxAmount)
+    public static ResourceTransfer Start (ConnectionMultiplexer connection, Part fromPart, Part toPart, string resource, float maxAmount)
     {
         if (connection == null)
             throw new ArgumentNullException (nameof (connection));
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (fromPart, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Part)),
-            global::KRPC.Client.Encoder.Encode (toPart, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Part)),
-            global::KRPC.Client.Encoder.Encode (resource, typeof(string)),
-            global::KRPC.Client.Encoder.Encode (maxAmount, typeof(float))
+        var _args = new object[] {
+            fromPart,
+            toPart,
+            resource,
+            maxAmount
         };
-        ByteString _data = connection.Invoke ("SpaceCenter", "ResourceTransfer_static_Start", _args);
-        return (global::kRPC.Client.Boost.Services.SpaceCenter.ResourceTransfer)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ResourceTransfer), connection);
+        return connection.Invoke<ResourceTransfer> ("SpaceCenter", "ResourceTransfer_static_Start", _args);
     }
 
     /// <summary>
@@ -52,11 +50,10 @@ public class ResourceTransfer : RemoteObject
     [RpcAttribute ("SpaceCenter", "ResourceTransfer_get_Amount")]
     public float Amount {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ResourceTransfer))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "ResourceTransfer_get_Amount", _args);
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            return Connection.Invoke<float> ("SpaceCenter", "ResourceTransfer_get_Amount", _args);
         }
     }
 
@@ -66,11 +63,10 @@ public class ResourceTransfer : RemoteObject
     [RpcAttribute ("SpaceCenter", "ResourceTransfer_get_Complete")]
     public bool Complete {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ResourceTransfer))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "ResourceTransfer_get_Complete", _args);
-            return (bool)global::KRPC.Client.Encoder.Decode (_data, typeof(bool), connection);
+            return Connection.Invoke<bool> ("SpaceCenter", "ResourceTransfer_get_Complete", _args);
         }
     }
 }

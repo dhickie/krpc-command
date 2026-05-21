@@ -1,7 +1,6 @@
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
-using Google.Protobuf;
-using systemAlias = System;
+using System;
 using kRPC.Client.Boost.Attributes;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
@@ -25,18 +24,17 @@ public class ControlSurface : RemoteObject
     [RpcAttribute ("SpaceCenter", "ControlSurface_get_AuthorityLimiter")]
     public float AuthorityLimiter {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ControlSurface))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "ControlSurface_get_AuthorityLimiter", _args);
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            return Connection.Invoke<float> ("SpaceCenter", "ControlSurface_get_AuthorityLimiter", _args);
         }
         set {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ControlSurface)),
-                global::KRPC.Client.Encoder.Encode (value, typeof(float))
+            var _args = new object[] {
+                this,
+                value
             };
-            connection.Invoke ("SpaceCenter", "ControlSurface_set_AuthorityLimiter", _args);
+            Connection.Invoke ("SpaceCenter", "ControlSurface_set_AuthorityLimiter", _args);
         }
     }
 
@@ -46,13 +44,12 @@ public class ControlSurface : RemoteObject
     /// correspond to the coordinate axes of the <see cref="M:SpaceCenter.Vessel.ReferenceFrame" />.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "ControlSurface_get_AvailableTorque")]
-    public systemAlias::Tuple<systemAlias::Tuple<double,double,double>,systemAlias::Tuple<double,double,double>> AvailableTorque {
+    public Tuple<Tuple<double,double,double>,Tuple<double,double,double>> AvailableTorque {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ControlSurface))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "ControlSurface_get_AvailableTorque", _args);
-            return (systemAlias::Tuple<systemAlias::Tuple<double,double,double>,systemAlias::Tuple<double,double,double>>)global::KRPC.Client.Encoder.Decode (_data, typeof(systemAlias::Tuple<systemAlias::Tuple<double,double,double>,systemAlias::Tuple<double,double,double>>), connection);
+            return Connection.Invoke<Tuple<Tuple<double,double,double>,Tuple<double,double,double>>> ("SpaceCenter", "ControlSurface_get_AvailableTorque", _args);
         }
     }
 
@@ -62,18 +59,17 @@ public class ControlSurface : RemoteObject
     [RpcAttribute ("SpaceCenter", "ControlSurface_get_Deployed")]
     public bool Deployed {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ControlSurface))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "ControlSurface_get_Deployed", _args);
-            return (bool)global::KRPC.Client.Encoder.Decode (_data, typeof(bool), connection);
+            return Connection.Invoke<bool> ("SpaceCenter", "ControlSurface_get_Deployed", _args);
         }
         set {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ControlSurface)),
-                global::KRPC.Client.Encoder.Encode (value, typeof(bool))
+            var _args = new object[] {
+                this,
+                value
             };
-            connection.Invoke ("SpaceCenter", "ControlSurface_set_Deployed", _args);
+            Connection.Invoke ("SpaceCenter", "ControlSurface_set_Deployed", _args);
         }
     }
 
@@ -83,18 +79,17 @@ public class ControlSurface : RemoteObject
     [RpcAttribute ("SpaceCenter", "ControlSurface_get_Inverted")]
     public bool Inverted {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ControlSurface))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "ControlSurface_get_Inverted", _args);
-            return (bool)global::KRPC.Client.Encoder.Decode (_data, typeof(bool), connection);
+            return Connection.Invoke<bool> ("SpaceCenter", "ControlSurface_get_Inverted", _args);
         }
         set {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ControlSurface)),
-                global::KRPC.Client.Encoder.Encode (value, typeof(bool))
+            var _args = new object[] {
+                this,
+                value
             };
-            connection.Invoke ("SpaceCenter", "ControlSurface_set_Inverted", _args);
+            Connection.Invoke ("SpaceCenter", "ControlSurface_set_Inverted", _args);
         }
     }
 
@@ -102,13 +97,12 @@ public class ControlSurface : RemoteObject
     /// The part object for this control surface.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "ControlSurface_get_Part")]
-    public global::kRPC.Client.Boost.Services.SpaceCenter.Part Part {
+    public Part Part {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ControlSurface))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "ControlSurface_get_Part", _args);
-            return (global::kRPC.Client.Boost.Services.SpaceCenter.Part)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Part), connection);
+            return Connection.Invoke<Part> ("SpaceCenter", "ControlSurface_get_Part", _args);
         }
     }
 
@@ -118,18 +112,17 @@ public class ControlSurface : RemoteObject
     [RpcAttribute ("SpaceCenter", "ControlSurface_get_PitchEnabled")]
     public bool PitchEnabled {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ControlSurface))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "ControlSurface_get_PitchEnabled", _args);
-            return (bool)global::KRPC.Client.Encoder.Decode (_data, typeof(bool), connection);
+            return Connection.Invoke<bool> ("SpaceCenter", "ControlSurface_get_PitchEnabled", _args);
         }
         set {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ControlSurface)),
-                global::KRPC.Client.Encoder.Encode (value, typeof(bool))
+            var _args = new object[] {
+                this,
+                value
             };
-            connection.Invoke ("SpaceCenter", "ControlSurface_set_PitchEnabled", _args);
+            Connection.Invoke ("SpaceCenter", "ControlSurface_set_PitchEnabled", _args);
         }
     }
 
@@ -139,18 +132,17 @@ public class ControlSurface : RemoteObject
     [RpcAttribute ("SpaceCenter", "ControlSurface_get_RollEnabled")]
     public bool RollEnabled {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ControlSurface))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "ControlSurface_get_RollEnabled", _args);
-            return (bool)global::KRPC.Client.Encoder.Decode (_data, typeof(bool), connection);
+            return Connection.Invoke<bool> ("SpaceCenter", "ControlSurface_get_RollEnabled", _args);
         }
         set {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ControlSurface)),
-                global::KRPC.Client.Encoder.Encode (value, typeof(bool))
+            var _args = new object[] {
+                this,
+                value
             };
-            connection.Invoke ("SpaceCenter", "ControlSurface_set_RollEnabled", _args);
+            Connection.Invoke ("SpaceCenter", "ControlSurface_set_RollEnabled", _args);
         }
     }
 
@@ -160,11 +152,10 @@ public class ControlSurface : RemoteObject
     [RpcAttribute ("SpaceCenter", "ControlSurface_get_SurfaceArea")]
     public float SurfaceArea {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ControlSurface))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "ControlSurface_get_SurfaceArea", _args);
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            return Connection.Invoke<float> ("SpaceCenter", "ControlSurface_get_SurfaceArea", _args);
         }
     }
 
@@ -174,18 +165,17 @@ public class ControlSurface : RemoteObject
     [RpcAttribute ("SpaceCenter", "ControlSurface_get_YawEnabled")]
     public bool YawEnabled {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ControlSurface))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "ControlSurface_get_YawEnabled", _args);
-            return (bool)global::KRPC.Client.Encoder.Decode (_data, typeof(bool), connection);
+            return Connection.Invoke<bool> ("SpaceCenter", "ControlSurface_get_YawEnabled", _args);
         }
         set {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ControlSurface)),
-                global::KRPC.Client.Encoder.Encode (value, typeof(bool))
+            var _args = new object[] {
+                this,
+                value
             };
-            connection.Invoke ("SpaceCenter", "ControlSurface_set_YawEnabled", _args);
+            Connection.Invoke ("SpaceCenter", "ControlSurface_set_YawEnabled", _args);
         }
     }
 }

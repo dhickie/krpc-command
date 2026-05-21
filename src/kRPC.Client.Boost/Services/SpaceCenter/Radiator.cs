@@ -1,6 +1,5 @@
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
-using Google.Protobuf;
 using kRPC.Client.Boost.Attributes;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
@@ -23,11 +22,10 @@ public class Radiator : RemoteObject
     [RpcAttribute ("SpaceCenter", "Radiator_get_Deployable")]
     public bool Deployable {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Radiator))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Radiator_get_Deployable", _args);
-            return (bool)global::KRPC.Client.Encoder.Decode (_data, typeof(bool), connection);
+            return Connection.Invoke<bool> ("SpaceCenter", "Radiator_get_Deployable", _args);
         }
     }
 
@@ -38,18 +36,17 @@ public class Radiator : RemoteObject
     [RpcAttribute ("SpaceCenter", "Radiator_get_Deployed")]
     public bool Deployed {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Radiator))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Radiator_get_Deployed", _args);
-            return (bool)global::KRPC.Client.Encoder.Decode (_data, typeof(bool), connection);
+            return Connection.Invoke<bool> ("SpaceCenter", "Radiator_get_Deployed", _args);
         }
         set {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Radiator)),
-                global::KRPC.Client.Encoder.Encode (value, typeof(bool))
+            var _args = new object[] {
+                this,
+                value
             };
-            connection.Invoke ("SpaceCenter", "Radiator_set_Deployed", _args);
+            Connection.Invoke ("SpaceCenter", "Radiator_set_Deployed", _args);
         }
     }
 
@@ -57,13 +54,12 @@ public class Radiator : RemoteObject
     /// The part object for this radiator.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "Radiator_get_Part")]
-    public global::kRPC.Client.Boost.Services.SpaceCenter.Part Part {
+    public Part Part {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Radiator))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Radiator_get_Part", _args);
-            return (global::kRPC.Client.Boost.Services.SpaceCenter.Part)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Part), connection);
+            return Connection.Invoke<Part> ("SpaceCenter", "Radiator_get_Part", _args);
         }
     }
 
@@ -74,13 +70,12 @@ public class Radiator : RemoteObject
     /// A fixed radiator is always <see cref="M:SpaceCenter.RadiatorState.Extended" />.
     /// </remarks>
     [RpcAttribute ("SpaceCenter", "Radiator_get_State")]
-    public global::kRPC.Client.Boost.Services.SpaceCenter.RadiatorState State {
+    public RadiatorState State {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Radiator))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Radiator_get_State", _args);
-            return (global::kRPC.Client.Boost.Services.SpaceCenter.RadiatorState)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.RadiatorState), connection);
+            return Connection.Invoke<RadiatorState> ("SpaceCenter", "Radiator_get_State", _args);
         }
     }
 }

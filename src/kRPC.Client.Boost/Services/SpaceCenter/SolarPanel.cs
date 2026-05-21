@@ -1,6 +1,5 @@
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
-using Google.Protobuf;
 using kRPC.Client.Boost.Attributes;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
@@ -23,11 +22,10 @@ public class SolarPanel : RemoteObject
     [RpcAttribute ("SpaceCenter", "SolarPanel_get_Deployable")]
     public bool Deployable {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.SolarPanel))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "SolarPanel_get_Deployable", _args);
-            return (bool)global::KRPC.Client.Encoder.Decode (_data, typeof(bool), connection);
+            return Connection.Invoke<bool> ("SpaceCenter", "SolarPanel_get_Deployable", _args);
         }
     }
 
@@ -37,18 +35,17 @@ public class SolarPanel : RemoteObject
     [RpcAttribute ("SpaceCenter", "SolarPanel_get_Deployed")]
     public bool Deployed {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.SolarPanel))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "SolarPanel_get_Deployed", _args);
-            return (bool)global::KRPC.Client.Encoder.Decode (_data, typeof(bool), connection);
+            return Connection.Invoke<bool> ("SpaceCenter", "SolarPanel_get_Deployed", _args);
         }
         set {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.SolarPanel)),
-                global::KRPC.Client.Encoder.Encode (value, typeof(bool))
+            var _args = new object[] {
+                this,
+                value
             };
-            connection.Invoke ("SpaceCenter", "SolarPanel_set_Deployed", _args);
+            Connection.Invoke ("SpaceCenter", "SolarPanel_set_Deployed", _args);
         }
     }
 
@@ -59,11 +56,10 @@ public class SolarPanel : RemoteObject
     [RpcAttribute ("SpaceCenter", "SolarPanel_get_EnergyFlow")]
     public float EnergyFlow {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.SolarPanel))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "SolarPanel_get_EnergyFlow", _args);
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            return Connection.Invoke<float> ("SpaceCenter", "SolarPanel_get_EnergyFlow", _args);
         }
     }
 
@@ -71,13 +67,12 @@ public class SolarPanel : RemoteObject
     /// The part object for this solar panel.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "SolarPanel_get_Part")]
-    public global::kRPC.Client.Boost.Services.SpaceCenter.Part Part {
+    public Part Part {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.SolarPanel))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "SolarPanel_get_Part", _args);
-            return (global::kRPC.Client.Boost.Services.SpaceCenter.Part)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Part), connection);
+            return Connection.Invoke<Part> ("SpaceCenter", "SolarPanel_get_Part", _args);
         }
     }
 
@@ -85,13 +80,12 @@ public class SolarPanel : RemoteObject
     /// The current state of the solar panel.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "SolarPanel_get_State")]
-    public global::kRPC.Client.Boost.Services.SpaceCenter.SolarPanelState State {
+    public SolarPanelState State {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.SolarPanel))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "SolarPanel_get_State", _args);
-            return (global::kRPC.Client.Boost.Services.SpaceCenter.SolarPanelState)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.SolarPanelState), connection);
+            return Connection.Invoke<SolarPanelState> ("SpaceCenter", "SolarPanel_get_State", _args);
         }
     }
 
@@ -102,11 +96,10 @@ public class SolarPanel : RemoteObject
     [RpcAttribute ("SpaceCenter", "SolarPanel_get_SunExposure")]
     public float SunExposure {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.SolarPanel))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "SolarPanel_get_SunExposure", _args);
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            return Connection.Invoke<float> ("SpaceCenter", "SolarPanel_get_SunExposure", _args);
         }
     }
 }

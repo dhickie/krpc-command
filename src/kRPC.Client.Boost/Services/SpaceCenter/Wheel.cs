@@ -1,6 +1,5 @@
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
-using Google.Protobuf;
 using kRPC.Client.Boost.Attributes;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
@@ -25,18 +24,17 @@ public class Wheel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Wheel_get_AutoFrictionControl")]
     public bool AutoFrictionControl {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Wheel))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Wheel_get_AutoFrictionControl", _args);
-            return (bool)global::KRPC.Client.Encoder.Decode (_data, typeof(bool), connection);
+            return Connection.Invoke<bool> ("SpaceCenter", "Wheel_get_AutoFrictionControl", _args);
         }
         set {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Wheel)),
-                global::KRPC.Client.Encoder.Encode (value, typeof(bool))
+            var _args = new object[] {
+                this,
+                value
             };
-            connection.Invoke ("SpaceCenter", "Wheel_set_AutoFrictionControl", _args);
+            Connection.Invoke ("SpaceCenter", "Wheel_set_AutoFrictionControl", _args);
         }
     }
 
@@ -46,18 +44,17 @@ public class Wheel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Wheel_get_Brakes")]
     public float Brakes {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Wheel))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Wheel_get_Brakes", _args);
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            return Connection.Invoke<float> ("SpaceCenter", "Wheel_get_Brakes", _args);
         }
         set {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Wheel)),
-                global::KRPC.Client.Encoder.Encode (value, typeof(float))
+            var _args = new object[] {
+                this,
+                value
             };
-            connection.Invoke ("SpaceCenter", "Wheel_set_Brakes", _args);
+            Connection.Invoke ("SpaceCenter", "Wheel_set_Brakes", _args);
         }
     }
 
@@ -67,11 +64,10 @@ public class Wheel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Wheel_get_Broken")]
     public bool Broken {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Wheel))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Wheel_get_Broken", _args);
-            return (bool)global::KRPC.Client.Encoder.Decode (_data, typeof(bool), connection);
+            return Connection.Invoke<bool> ("SpaceCenter", "Wheel_get_Broken", _args);
         }
     }
 
@@ -81,11 +77,10 @@ public class Wheel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Wheel_get_Deflection")]
     public float Deflection {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Wheel))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Wheel_get_Deflection", _args);
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            return Connection.Invoke<float> ("SpaceCenter", "Wheel_get_Deflection", _args);
         }
     }
 
@@ -95,11 +90,10 @@ public class Wheel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Wheel_get_Deployable")]
     public bool Deployable {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Wheel))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Wheel_get_Deployable", _args);
-            return (bool)global::KRPC.Client.Encoder.Decode (_data, typeof(bool), connection);
+            return Connection.Invoke<bool> ("SpaceCenter", "Wheel_get_Deployable", _args);
         }
     }
 
@@ -109,18 +103,17 @@ public class Wheel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Wheel_get_Deployed")]
     public bool Deployed {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Wheel))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Wheel_get_Deployed", _args);
-            return (bool)global::KRPC.Client.Encoder.Decode (_data, typeof(bool), connection);
+            return Connection.Invoke<bool> ("SpaceCenter", "Wheel_get_Deployed", _args);
         }
         set {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Wheel)),
-                global::KRPC.Client.Encoder.Encode (value, typeof(bool))
+            var _args = new object[] {
+                this,
+                value
             };
-            connection.Invoke ("SpaceCenter", "Wheel_set_Deployed", _args);
+            Connection.Invoke ("SpaceCenter", "Wheel_set_Deployed", _args);
         }
     }
 
@@ -132,18 +125,17 @@ public class Wheel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Wheel_get_DriveLimiter")]
     public float DriveLimiter {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Wheel))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Wheel_get_DriveLimiter", _args);
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            return Connection.Invoke<float> ("SpaceCenter", "Wheel_get_DriveLimiter", _args);
         }
         set {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Wheel)),
-                global::KRPC.Client.Encoder.Encode (value, typeof(float))
+            var _args = new object[] {
+                this,
+                value
             };
-            connection.Invoke ("SpaceCenter", "Wheel_set_DriveLimiter", _args);
+            Connection.Invoke ("SpaceCenter", "Wheel_set_DriveLimiter", _args);
         }
     }
 
@@ -153,11 +145,10 @@ public class Wheel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Wheel_get_Grounded")]
     public bool Grounded {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Wheel))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Wheel_get_Grounded", _args);
-            return (bool)global::KRPC.Client.Encoder.Decode (_data, typeof(bool), connection);
+            return Connection.Invoke<bool> ("SpaceCenter", "Wheel_get_Grounded", _args);
         }
     }
 
@@ -167,11 +158,10 @@ public class Wheel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Wheel_get_HasBrakes")]
     public bool HasBrakes {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Wheel))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Wheel_get_HasBrakes", _args);
-            return (bool)global::KRPC.Client.Encoder.Decode (_data, typeof(bool), connection);
+            return Connection.Invoke<bool> ("SpaceCenter", "Wheel_get_HasBrakes", _args);
         }
     }
 
@@ -181,11 +171,10 @@ public class Wheel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Wheel_get_HasSuspension")]
     public bool HasSuspension {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Wheel))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Wheel_get_HasSuspension", _args);
-            return (bool)global::KRPC.Client.Encoder.Decode (_data, typeof(bool), connection);
+            return Connection.Invoke<bool> ("SpaceCenter", "Wheel_get_HasSuspension", _args);
         }
     }
 
@@ -196,18 +185,17 @@ public class Wheel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Wheel_get_ManualFrictionControl")]
     public float ManualFrictionControl {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Wheel))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Wheel_get_ManualFrictionControl", _args);
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            return Connection.Invoke<float> ("SpaceCenter", "Wheel_get_ManualFrictionControl", _args);
         }
         set {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Wheel)),
-                global::KRPC.Client.Encoder.Encode (value, typeof(float))
+            var _args = new object[] {
+                this,
+                value
             };
-            connection.Invoke ("SpaceCenter", "Wheel_set_ManualFrictionControl", _args);
+            Connection.Invoke ("SpaceCenter", "Wheel_set_ManualFrictionControl", _args);
         }
     }
 
@@ -217,18 +205,17 @@ public class Wheel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Wheel_get_MotorEnabled")]
     public bool MotorEnabled {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Wheel))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Wheel_get_MotorEnabled", _args);
-            return (bool)global::KRPC.Client.Encoder.Decode (_data, typeof(bool), connection);
+            return Connection.Invoke<bool> ("SpaceCenter", "Wheel_get_MotorEnabled", _args);
         }
         set {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Wheel)),
-                global::KRPC.Client.Encoder.Encode (value, typeof(bool))
+            var _args = new object[] {
+                this,
+                value
             };
-            connection.Invoke ("SpaceCenter", "Wheel_set_MotorEnabled", _args);
+            Connection.Invoke ("SpaceCenter", "Wheel_set_MotorEnabled", _args);
         }
     }
 
@@ -238,18 +225,17 @@ public class Wheel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Wheel_get_MotorInverted")]
     public bool MotorInverted {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Wheel))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Wheel_get_MotorInverted", _args);
-            return (bool)global::KRPC.Client.Encoder.Decode (_data, typeof(bool), connection);
+            return Connection.Invoke<bool> ("SpaceCenter", "Wheel_get_MotorInverted", _args);
         }
         set {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Wheel)),
-                global::KRPC.Client.Encoder.Encode (value, typeof(bool))
+            var _args = new object[] {
+                this,
+                value
             };
-            connection.Invoke ("SpaceCenter", "Wheel_set_MotorInverted", _args);
+            Connection.Invoke ("SpaceCenter", "Wheel_set_MotorInverted", _args);
         }
     }
 
@@ -259,11 +245,10 @@ public class Wheel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Wheel_get_MotorOutput")]
     public float MotorOutput {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Wheel))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Wheel_get_MotorOutput", _args);
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            return Connection.Invoke<float> ("SpaceCenter", "Wheel_get_MotorOutput", _args);
         }
     }
 
@@ -271,13 +256,12 @@ public class Wheel : RemoteObject
     /// Whether the direction of the motor is inverted.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "Wheel_get_MotorState")]
-    public global::kRPC.Client.Boost.Services.SpaceCenter.MotorState MotorState {
+    public MotorState MotorState {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Wheel))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Wheel_get_MotorState", _args);
-            return (global::kRPC.Client.Boost.Services.SpaceCenter.MotorState)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.MotorState), connection);
+            return Connection.Invoke<MotorState> ("SpaceCenter", "Wheel_get_MotorState", _args);
         }
     }
 
@@ -285,13 +269,12 @@ public class Wheel : RemoteObject
     /// The part object for this wheel.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "Wheel_get_Part")]
-    public global::kRPC.Client.Boost.Services.SpaceCenter.Part Part {
+    public Part Part {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Wheel))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Wheel_get_Part", _args);
-            return (global::kRPC.Client.Boost.Services.SpaceCenter.Part)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Part), connection);
+            return Connection.Invoke<Part> ("SpaceCenter", "Wheel_get_Part", _args);
         }
     }
 
@@ -301,11 +284,10 @@ public class Wheel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Wheel_get_Powered")]
     public bool Powered {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Wheel))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Wheel_get_Powered", _args);
-            return (bool)global::KRPC.Client.Encoder.Decode (_data, typeof(bool), connection);
+            return Connection.Invoke<bool> ("SpaceCenter", "Wheel_get_Powered", _args);
         }
     }
 
@@ -315,11 +297,10 @@ public class Wheel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Wheel_get_Radius")]
     public float Radius {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Wheel))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Wheel_get_Radius", _args);
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            return Connection.Invoke<float> ("SpaceCenter", "Wheel_get_Radius", _args);
         }
     }
 
@@ -329,11 +310,10 @@ public class Wheel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Wheel_get_Repairable")]
     public bool Repairable {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Wheel))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Wheel_get_Repairable", _args);
-            return (bool)global::KRPC.Client.Encoder.Decode (_data, typeof(bool), connection);
+            return Connection.Invoke<bool> ("SpaceCenter", "Wheel_get_Repairable", _args);
         }
     }
 
@@ -343,11 +323,10 @@ public class Wheel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Wheel_get_Slip")]
     public float Slip {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Wheel))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Wheel_get_Slip", _args);
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            return Connection.Invoke<float> ("SpaceCenter", "Wheel_get_Slip", _args);
         }
     }
 
@@ -355,13 +334,12 @@ public class Wheel : RemoteObject
     /// The current state of the wheel.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "Wheel_get_State")]
-    public global::kRPC.Client.Boost.Services.SpaceCenter.WheelState State {
+    public WheelState State {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Wheel))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Wheel_get_State", _args);
-            return (global::kRPC.Client.Boost.Services.SpaceCenter.WheelState)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.WheelState), connection);
+            return Connection.Invoke<WheelState> ("SpaceCenter", "Wheel_get_State", _args);
         }
     }
 
@@ -371,11 +349,10 @@ public class Wheel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Wheel_get_Steerable")]
     public bool Steerable {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Wheel))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Wheel_get_Steerable", _args);
-            return (bool)global::KRPC.Client.Encoder.Decode (_data, typeof(bool), connection);
+            return Connection.Invoke<bool> ("SpaceCenter", "Wheel_get_Steerable", _args);
         }
     }
 
@@ -385,18 +362,17 @@ public class Wheel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Wheel_get_SteeringAngleLimit")]
     public float SteeringAngleLimit {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Wheel))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Wheel_get_SteeringAngleLimit", _args);
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            return Connection.Invoke<float> ("SpaceCenter", "Wheel_get_SteeringAngleLimit", _args);
         }
         set {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Wheel)),
-                global::KRPC.Client.Encoder.Encode (value, typeof(float))
+            var _args = new object[] {
+                this,
+                value
             };
-            connection.Invoke ("SpaceCenter", "Wheel_set_SteeringAngleLimit", _args);
+            Connection.Invoke ("SpaceCenter", "Wheel_set_SteeringAngleLimit", _args);
         }
     }
 
@@ -406,18 +382,17 @@ public class Wheel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Wheel_get_SteeringEnabled")]
     public bool SteeringEnabled {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Wheel))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Wheel_get_SteeringEnabled", _args);
-            return (bool)global::KRPC.Client.Encoder.Decode (_data, typeof(bool), connection);
+            return Connection.Invoke<bool> ("SpaceCenter", "Wheel_get_SteeringEnabled", _args);
         }
         set {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Wheel)),
-                global::KRPC.Client.Encoder.Encode (value, typeof(bool))
+            var _args = new object[] {
+                this,
+                value
             };
-            connection.Invoke ("SpaceCenter", "Wheel_set_SteeringEnabled", _args);
+            Connection.Invoke ("SpaceCenter", "Wheel_set_SteeringEnabled", _args);
         }
     }
 
@@ -427,18 +402,17 @@ public class Wheel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Wheel_get_SteeringInverted")]
     public bool SteeringInverted {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Wheel))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Wheel_get_SteeringInverted", _args);
-            return (bool)global::KRPC.Client.Encoder.Decode (_data, typeof(bool), connection);
+            return Connection.Invoke<bool> ("SpaceCenter", "Wheel_get_SteeringInverted", _args);
         }
         set {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Wheel)),
-                global::KRPC.Client.Encoder.Encode (value, typeof(bool))
+            var _args = new object[] {
+                this,
+                value
             };
-            connection.Invoke ("SpaceCenter", "Wheel_set_SteeringInverted", _args);
+            Connection.Invoke ("SpaceCenter", "Wheel_set_SteeringInverted", _args);
         }
     }
 
@@ -448,18 +422,17 @@ public class Wheel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Wheel_get_SteeringResponseTime")]
     public float SteeringResponseTime {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Wheel))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Wheel_get_SteeringResponseTime", _args);
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            return Connection.Invoke<float> ("SpaceCenter", "Wheel_get_SteeringResponseTime", _args);
         }
         set {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Wheel)),
-                global::KRPC.Client.Encoder.Encode (value, typeof(float))
+            var _args = new object[] {
+                this,
+                value
             };
-            connection.Invoke ("SpaceCenter", "Wheel_set_SteeringResponseTime", _args);
+            Connection.Invoke ("SpaceCenter", "Wheel_set_SteeringResponseTime", _args);
         }
     }
 
@@ -469,11 +442,10 @@ public class Wheel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Wheel_get_Stress")]
     public float Stress {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Wheel))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Wheel_get_Stress", _args);
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            return Connection.Invoke<float> ("SpaceCenter", "Wheel_get_Stress", _args);
         }
     }
 
@@ -483,11 +455,10 @@ public class Wheel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Wheel_get_StressPercentage")]
     public float StressPercentage {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Wheel))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Wheel_get_StressPercentage", _args);
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            return Connection.Invoke<float> ("SpaceCenter", "Wheel_get_StressPercentage", _args);
         }
     }
 
@@ -497,11 +468,10 @@ public class Wheel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Wheel_get_StressTolerance")]
     public float StressTolerance {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Wheel))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Wheel_get_StressTolerance", _args);
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            return Connection.Invoke<float> ("SpaceCenter", "Wheel_get_StressTolerance", _args);
         }
     }
 
@@ -511,11 +481,10 @@ public class Wheel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Wheel_get_SuspensionDamperStrength")]
     public float SuspensionDamperStrength {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Wheel))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Wheel_get_SuspensionDamperStrength", _args);
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            return Connection.Invoke<float> ("SpaceCenter", "Wheel_get_SuspensionDamperStrength", _args);
         }
     }
 
@@ -525,11 +494,10 @@ public class Wheel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Wheel_get_SuspensionSpringStrength")]
     public float SuspensionSpringStrength {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Wheel))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Wheel_get_SuspensionSpringStrength", _args);
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            return Connection.Invoke<float> ("SpaceCenter", "Wheel_get_SuspensionSpringStrength", _args);
         }
     }
 
@@ -541,18 +509,17 @@ public class Wheel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Wheel_get_TractionControl")]
     public float TractionControl {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Wheel))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Wheel_get_TractionControl", _args);
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            return Connection.Invoke<float> ("SpaceCenter", "Wheel_get_TractionControl", _args);
         }
         set {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Wheel)),
-                global::KRPC.Client.Encoder.Encode (value, typeof(float))
+            var _args = new object[] {
+                this,
+                value
             };
-            connection.Invoke ("SpaceCenter", "Wheel_set_TractionControl", _args);
+            Connection.Invoke ("SpaceCenter", "Wheel_set_TractionControl", _args);
         }
     }
 
@@ -563,18 +530,17 @@ public class Wheel : RemoteObject
     [RpcAttribute ("SpaceCenter", "Wheel_get_TractionControlEnabled")]
     public bool TractionControlEnabled {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Wheel))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Wheel_get_TractionControlEnabled", _args);
-            return (bool)global::KRPC.Client.Encoder.Decode (_data, typeof(bool), connection);
+            return Connection.Invoke<bool> ("SpaceCenter", "Wheel_get_TractionControlEnabled", _args);
         }
         set {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Wheel)),
-                global::KRPC.Client.Encoder.Encode (value, typeof(bool))
+            var _args = new object[] {
+                this,
+                value
             };
-            connection.Invoke ("SpaceCenter", "Wheel_set_TractionControlEnabled", _args);
+            Connection.Invoke ("SpaceCenter", "Wheel_set_TractionControlEnabled", _args);
         }
     }
 }

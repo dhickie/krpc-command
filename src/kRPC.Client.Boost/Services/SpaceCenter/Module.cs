@@ -1,7 +1,7 @@
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
-using Google.Protobuf;
 using kRPC.Client.Boost.Attributes;
+using System.Collections.Generic;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
@@ -31,12 +31,11 @@ public class Module : RemoteObject
     [RpcAttribute ("SpaceCenter", "Module_GetField")]
     public string GetField (string name)
     {
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Module)),
-            global::KRPC.Client.Encoder.Encode (name, typeof(string))
+        var _args = new object[] {
+            this,
+            name
         };
-        ByteString _data = connection.Invoke ("SpaceCenter", "Module_GetField", _args);
-        return (string)global::KRPC.Client.Encoder.Decode (_data, typeof(string), connection);
+        return Connection.Invoke<string> ("SpaceCenter", "Module_GetField", _args);
     }
 
     /// <summary>
@@ -46,12 +45,11 @@ public class Module : RemoteObject
     [RpcAttribute ("SpaceCenter", "Module_GetFieldById")]
     public string GetFieldById (string id)
     {
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Module)),
-            global::KRPC.Client.Encoder.Encode (id, typeof(string))
+        var _args = new object[] {
+            this,
+            id
         };
-        ByteString _data = connection.Invoke ("SpaceCenter", "Module_GetFieldById", _args);
-        return (string)global::KRPC.Client.Encoder.Decode (_data, typeof(string), connection);
+        return Connection.Invoke<string> ("SpaceCenter", "Module_GetFieldById", _args);
     }
 
     /// <summary><c>true</c> if the part has an action with the given name.
@@ -60,12 +58,11 @@ public class Module : RemoteObject
     [RpcAttribute ("SpaceCenter", "Module_HasAction")]
     public bool HasAction (string name)
     {
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Module)),
-            global::KRPC.Client.Encoder.Encode (name, typeof(string))
+        var _args = new object[] {
+            this,
+            name
         };
-        ByteString _data = connection.Invoke ("SpaceCenter", "Module_HasAction", _args);
-        return (bool)global::KRPC.Client.Encoder.Decode (_data, typeof(bool), connection);
+        return Connection.Invoke<bool> ("SpaceCenter", "Module_HasAction", _args);
     }
 
     /// <summary><c>true</c> if the part has an action with the given identifier.
@@ -74,12 +71,11 @@ public class Module : RemoteObject
     [RpcAttribute ("SpaceCenter", "Module_HasActionWithId")]
     public bool HasActionWithId (string id)
     {
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Module)),
-            global::KRPC.Client.Encoder.Encode (id, typeof(string))
+        var _args = new object[] {
+            this,
+            id
         };
-        ByteString _data = connection.Invoke ("SpaceCenter", "Module_HasActionWithId", _args);
-        return (bool)global::KRPC.Client.Encoder.Decode (_data, typeof(bool), connection);
+        return Connection.Invoke<bool> ("SpaceCenter", "Module_HasActionWithId", _args);
     }
 
     /// <summary><c>true</c> if the module has an event with the given name.
@@ -88,12 +84,11 @@ public class Module : RemoteObject
     [RpcAttribute ("SpaceCenter", "Module_HasEvent")]
     public bool HasEvent (string name)
     {
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Module)),
-            global::KRPC.Client.Encoder.Encode (name, typeof(string))
+        var _args = new object[] {
+            this,
+            name
         };
-        ByteString _data = connection.Invoke ("SpaceCenter", "Module_HasEvent", _args);
-        return (bool)global::KRPC.Client.Encoder.Decode (_data, typeof(bool), connection);
+        return Connection.Invoke<bool> ("SpaceCenter", "Module_HasEvent", _args);
     }
 
     /// <summary><c>true</c> if the module has an event with the given identifier.
@@ -102,12 +97,11 @@ public class Module : RemoteObject
     [RpcAttribute ("SpaceCenter", "Module_HasEventWithId")]
     public bool HasEventWithId (string id)
     {
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Module)),
-            global::KRPC.Client.Encoder.Encode (id, typeof(string))
+        var _args = new object[] {
+            this,
+            id
         };
-        ByteString _data = connection.Invoke ("SpaceCenter", "Module_HasEventWithId", _args);
-        return (bool)global::KRPC.Client.Encoder.Decode (_data, typeof(bool), connection);
+        return Connection.Invoke<bool> ("SpaceCenter", "Module_HasEventWithId", _args);
     }
 
     /// <summary>
@@ -117,12 +111,11 @@ public class Module : RemoteObject
     [RpcAttribute ("SpaceCenter", "Module_HasField")]
     public bool HasField (string name)
     {
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Module)),
-            global::KRPC.Client.Encoder.Encode (name, typeof(string))
+        var _args = new object[] {
+            this,
+            name
         };
-        ByteString _data = connection.Invoke ("SpaceCenter", "Module_HasField", _args);
-        return (bool)global::KRPC.Client.Encoder.Decode (_data, typeof(bool), connection);
+        return Connection.Invoke<bool> ("SpaceCenter", "Module_HasField", _args);
     }
 
     /// <summary>
@@ -132,12 +125,11 @@ public class Module : RemoteObject
     [RpcAttribute ("SpaceCenter", "Module_HasFieldWithId")]
     public bool HasFieldWithId (string id)
     {
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Module)),
-            global::KRPC.Client.Encoder.Encode (id, typeof(string))
+        var _args = new object[] {
+            this,
+            id
         };
-        ByteString _data = connection.Invoke ("SpaceCenter", "Module_HasFieldWithId", _args);
-        return (bool)global::KRPC.Client.Encoder.Decode (_data, typeof(bool), connection);
+        return Connection.Invoke<bool> ("SpaceCenter", "Module_HasFieldWithId", _args);
     }
 
     /// <summary>
@@ -147,11 +139,11 @@ public class Module : RemoteObject
     [RpcAttribute ("SpaceCenter", "Module_ResetField")]
     public void ResetField (string name)
     {
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Module)),
-            global::KRPC.Client.Encoder.Encode (name, typeof(string))
+        var _args = new object[] {
+            this,
+            name
         };
-        connection.Invoke ("SpaceCenter", "Module_ResetField", _args);
+        Connection.Invoke ("SpaceCenter", "Module_ResetField", _args);
     }
 
     /// <summary>
@@ -161,11 +153,11 @@ public class Module : RemoteObject
     [RpcAttribute ("SpaceCenter", "Module_ResetFieldById")]
     public void ResetFieldById (string id)
     {
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Module)),
-            global::KRPC.Client.Encoder.Encode (id, typeof(string))
+        var _args = new object[] {
+            this,
+            id
         };
-        connection.Invoke ("SpaceCenter", "Module_ResetFieldById", _args);
+        Connection.Invoke ("SpaceCenter", "Module_ResetFieldById", _args);
     }
 
     /// <summary>
@@ -176,12 +168,12 @@ public class Module : RemoteObject
     [RpcAttribute ("SpaceCenter", "Module_SetAction")]
     public void SetAction (string name, bool value = true)
     {
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Module)),
-            global::KRPC.Client.Encoder.Encode (name, typeof(string)),
-            global::KRPC.Client.Encoder.Encode (value, typeof(bool))
+        var _args = new object[] {
+            this,
+            name,
+            value
         };
-        connection.Invoke ("SpaceCenter", "Module_SetAction", _args);
+        Connection.Invoke ("SpaceCenter", "Module_SetAction", _args);
     }
 
     /// <summary>
@@ -192,12 +184,12 @@ public class Module : RemoteObject
     [RpcAttribute ("SpaceCenter", "Module_SetActionById")]
     public void SetActionById (string id, bool value = true)
     {
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Module)),
-            global::KRPC.Client.Encoder.Encode (id, typeof(string)),
-            global::KRPC.Client.Encoder.Encode (value, typeof(bool))
+        var _args = new object[] {
+            this,
+            id,
+            value
         };
-        connection.Invoke ("SpaceCenter", "Module_SetActionById", _args);
+        Connection.Invoke ("SpaceCenter", "Module_SetActionById", _args);
     }
 
     /// <summary>
@@ -208,12 +200,12 @@ public class Module : RemoteObject
     [RpcAttribute ("SpaceCenter", "Module_SetFieldBool")]
     public void SetFieldBool (string name, bool value)
     {
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Module)),
-            global::KRPC.Client.Encoder.Encode (name, typeof(string)),
-            global::KRPC.Client.Encoder.Encode (value, typeof(bool))
+        var _args = new object[] {
+            this,
+            name,
+            value
         };
-        connection.Invoke ("SpaceCenter", "Module_SetFieldBool", _args);
+        Connection.Invoke ("SpaceCenter", "Module_SetFieldBool", _args);
     }
 
     /// <summary>
@@ -224,12 +216,12 @@ public class Module : RemoteObject
     [RpcAttribute ("SpaceCenter", "Module_SetFieldBoolById")]
     public void SetFieldBoolById (string id, bool value)
     {
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Module)),
-            global::KRPC.Client.Encoder.Encode (id, typeof(string)),
-            global::KRPC.Client.Encoder.Encode (value, typeof(bool))
+        var _args = new object[] {
+            this,
+            id,
+            value
         };
-        connection.Invoke ("SpaceCenter", "Module_SetFieldBoolById", _args);
+        Connection.Invoke ("SpaceCenter", "Module_SetFieldBoolById", _args);
     }
 
     /// <summary>
@@ -240,12 +232,12 @@ public class Module : RemoteObject
     [RpcAttribute ("SpaceCenter", "Module_SetFieldFloat")]
     public void SetFieldFloat (string name, float value)
     {
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Module)),
-            global::KRPC.Client.Encoder.Encode (name, typeof(string)),
-            global::KRPC.Client.Encoder.Encode (value, typeof(float))
+        var _args = new object[] {
+            this,
+            name,
+            value
         };
-        connection.Invoke ("SpaceCenter", "Module_SetFieldFloat", _args);
+        Connection.Invoke ("SpaceCenter", "Module_SetFieldFloat", _args);
     }
 
     /// <summary>
@@ -256,12 +248,12 @@ public class Module : RemoteObject
     [RpcAttribute ("SpaceCenter", "Module_SetFieldFloatById")]
     public void SetFieldFloatById (string id, float value)
     {
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Module)),
-            global::KRPC.Client.Encoder.Encode (id, typeof(string)),
-            global::KRPC.Client.Encoder.Encode (value, typeof(float))
+        var _args = new object[] {
+            this,
+            id,
+            value
         };
-        connection.Invoke ("SpaceCenter", "Module_SetFieldFloatById", _args);
+        Connection.Invoke ("SpaceCenter", "Module_SetFieldFloatById", _args);
     }
 
     /// <summary>
@@ -272,12 +264,12 @@ public class Module : RemoteObject
     [RpcAttribute ("SpaceCenter", "Module_SetFieldInt")]
     public void SetFieldInt (string name, int value)
     {
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Module)),
-            global::KRPC.Client.Encoder.Encode (name, typeof(string)),
-            global::KRPC.Client.Encoder.Encode (value, typeof(int))
+        var _args = new object[] {
+            this,
+            name,
+            value
         };
-        connection.Invoke ("SpaceCenter", "Module_SetFieldInt", _args);
+        Connection.Invoke ("SpaceCenter", "Module_SetFieldInt", _args);
     }
 
     /// <summary>
@@ -288,12 +280,12 @@ public class Module : RemoteObject
     [RpcAttribute ("SpaceCenter", "Module_SetFieldIntById")]
     public void SetFieldIntById (string id, int value)
     {
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Module)),
-            global::KRPC.Client.Encoder.Encode (id, typeof(string)),
-            global::KRPC.Client.Encoder.Encode (value, typeof(int))
+        var _args = new object[] {
+            this,
+            id,
+            value
         };
-        connection.Invoke ("SpaceCenter", "Module_SetFieldIntById", _args);
+        Connection.Invoke ("SpaceCenter", "Module_SetFieldIntById", _args);
     }
 
     /// <summary>
@@ -304,12 +296,12 @@ public class Module : RemoteObject
     [RpcAttribute ("SpaceCenter", "Module_SetFieldString")]
     public void SetFieldString (string name, string value)
     {
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Module)),
-            global::KRPC.Client.Encoder.Encode (name, typeof(string)),
-            global::KRPC.Client.Encoder.Encode (value, typeof(string))
+        var _args = new object[] {
+            this,
+            name,
+            value
         };
-        connection.Invoke ("SpaceCenter", "Module_SetFieldString", _args);
+        Connection.Invoke ("SpaceCenter", "Module_SetFieldString", _args);
     }
 
     /// <summary>
@@ -320,12 +312,12 @@ public class Module : RemoteObject
     [RpcAttribute ("SpaceCenter", "Module_SetFieldStringById")]
     public void SetFieldStringById (string id, string value)
     {
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Module)),
-            global::KRPC.Client.Encoder.Encode (id, typeof(string)),
-            global::KRPC.Client.Encoder.Encode (value, typeof(string))
+        var _args = new object[] {
+            this,
+            id,
+            value
         };
-        connection.Invoke ("SpaceCenter", "Module_SetFieldStringById", _args);
+        Connection.Invoke ("SpaceCenter", "Module_SetFieldStringById", _args);
     }
 
     /// <summary>
@@ -336,11 +328,11 @@ public class Module : RemoteObject
     [RpcAttribute ("SpaceCenter", "Module_TriggerEvent")]
     public void TriggerEvent (string name)
     {
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Module)),
-            global::KRPC.Client.Encoder.Encode (name, typeof(string))
+        var _args = new object[] {
+            this,
+            name
         };
-        connection.Invoke ("SpaceCenter", "Module_TriggerEvent", _args);
+        Connection.Invoke ("SpaceCenter", "Module_TriggerEvent", _args);
     }
 
     /// <summary>
@@ -351,11 +343,11 @@ public class Module : RemoteObject
     [RpcAttribute ("SpaceCenter", "Module_TriggerEventById")]
     public void TriggerEventById (string id)
     {
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Module)),
-            global::KRPC.Client.Encoder.Encode (id, typeof(string))
+        var _args = new object[] {
+            this,
+            id
         };
-        connection.Invoke ("SpaceCenter", "Module_TriggerEventById", _args);
+        Connection.Invoke ("SpaceCenter", "Module_TriggerEventById", _args);
     }
 
     /// <summary>
@@ -363,13 +355,12 @@ public class Module : RemoteObject
     /// be assigned to action groups in the in-game editor.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "Module_get_Actions")]
-    public global::System.Collections.Generic.IList<string> Actions {
+    public IList<string> Actions {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Module))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Module_get_Actions", _args);
-            return (global::System.Collections.Generic.IList<string>)global::KRPC.Client.Encoder.Decode (_data, typeof(global::System.Collections.Generic.IList<string>), connection);
+            return Connection.Invoke<IList<string>> ("SpaceCenter", "Module_get_Actions", _args);
         }
     }
 
@@ -378,13 +369,12 @@ public class Module : RemoteObject
     /// that can be assigned to action groups in the in-game editor.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "Module_get_ActionsById")]
-    public global::System.Collections.Generic.IList<string> ActionsById {
+    public IList<string> ActionsById {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Module))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Module_get_ActionsById", _args);
-            return (global::System.Collections.Generic.IList<string>)global::KRPC.Client.Encoder.Decode (_data, typeof(global::System.Collections.Generic.IList<string>), connection);
+            return Connection.Invoke<IList<string>> ("SpaceCenter", "Module_get_ActionsById", _args);
         }
     }
 
@@ -393,13 +383,12 @@ public class Module : RemoteObject
     /// visible in the right-click menu of the part.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "Module_get_Events")]
-    public global::System.Collections.Generic.IList<string> Events {
+    public IList<string> Events {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Module))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Module_get_Events", _args);
-            return (global::System.Collections.Generic.IList<string>)global::KRPC.Client.Encoder.Decode (_data, typeof(global::System.Collections.Generic.IList<string>), connection);
+            return Connection.Invoke<IList<string>> ("SpaceCenter", "Module_get_Events", _args);
         }
     }
 
@@ -408,13 +397,12 @@ public class Module : RemoteObject
     /// visible in the right-click menu of the part.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "Module_get_EventsById")]
-    public global::System.Collections.Generic.IList<string> EventsById {
+    public IList<string> EventsById {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Module))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Module_get_EventsById", _args);
-            return (global::System.Collections.Generic.IList<string>)global::KRPC.Client.Encoder.Decode (_data, typeof(global::System.Collections.Generic.IList<string>), connection);
+            return Connection.Invoke<IList<string>> ("SpaceCenter", "Module_get_EventsById", _args);
         }
     }
 
@@ -427,13 +415,12 @@ public class Module : RemoteObject
     /// In that case, use <see cref="M:SpaceCenter.Module.FieldsById" /> to get the fields by identifier.
     /// </remarks>
     [RpcAttribute ("SpaceCenter", "Module_get_Fields")]
-    public global::System.Collections.Generic.IDictionary<string,string> Fields {
+    public IDictionary<string,string> Fields {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Module))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Module_get_Fields", _args);
-            return (global::System.Collections.Generic.IDictionary<string,string>)global::KRPC.Client.Encoder.Decode (_data, typeof(global::System.Collections.Generic.IDictionary<string,string>), connection);
+            return Connection.Invoke<IDictionary<string,string>> ("SpaceCenter", "Module_get_Fields", _args);
         }
     }
 
@@ -442,13 +429,12 @@ public class Module : RemoteObject
     /// These are the values visible in the right-click menu of the part.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "Module_get_FieldsById")]
-    public global::System.Collections.Generic.IDictionary<string,string> FieldsById {
+    public IDictionary<string,string> FieldsById {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Module))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Module_get_FieldsById", _args);
-            return (global::System.Collections.Generic.IDictionary<string,string>)global::KRPC.Client.Encoder.Decode (_data, typeof(global::System.Collections.Generic.IDictionary<string,string>), connection);
+            return Connection.Invoke<IDictionary<string,string>> ("SpaceCenter", "Module_get_FieldsById", _args);
         }
     }
 
@@ -458,11 +444,10 @@ public class Module : RemoteObject
     [RpcAttribute ("SpaceCenter", "Module_get_Name")]
     public string Name {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Module))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Module_get_Name", _args);
-            return (string)global::KRPC.Client.Encoder.Decode (_data, typeof(string), connection);
+            return Connection.Invoke<string> ("SpaceCenter", "Module_get_Name", _args);
         }
     }
 
@@ -470,13 +455,12 @@ public class Module : RemoteObject
     /// The part that contains this module.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "Module_get_Part")]
-    public global::kRPC.Client.Boost.Services.SpaceCenter.Part Part {
+    public Part Part {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Module))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Module_get_Part", _args);
-            return (global::kRPC.Client.Boost.Services.SpaceCenter.Part)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Part), connection);
+            return Connection.Invoke<Part> ("SpaceCenter", "Module_get_Part", _args);
         }
     }
 }

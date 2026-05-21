@@ -1,7 +1,6 @@
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
-using Google.Protobuf;
-using systemAlias = System;
+using System;
 using kRPC.Client.Boost.Attributes;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
@@ -24,10 +23,10 @@ public class Force : RemoteObject
     [RpcAttribute ("SpaceCenter", "Force_Remove")]
     public void Remove ()
     {
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Force))
+        var _args = new object[] {
+            this
         };
-        connection.Invoke ("SpaceCenter", "Force_Remove", _args);
+        Connection.Invoke ("SpaceCenter", "Force_Remove", _args);
     }
 
     /// <summary>
@@ -36,20 +35,19 @@ public class Force : RemoteObject
     /// <returns>A vector pointing in the direction that the force acts,
     /// with its magnitude equal to the strength of the force in Newtons.</returns>
     [RpcAttribute ("SpaceCenter", "Force_get_ForceVector")]
-    public systemAlias::Tuple<double,double,double> ForceVector {
+    public Tuple<double,double,double> ForceVector {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Force))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Force_get_ForceVector", _args);
-            return (systemAlias::Tuple<double,double,double>)global::KRPC.Client.Encoder.Decode (_data, typeof(systemAlias::Tuple<double,double,double>), connection);
+            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Force_get_ForceVector", _args);
         }
         set {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Force)),
-                global::KRPC.Client.Encoder.Encode (value, typeof(systemAlias::Tuple<double,double,double>))
+            var _args = new object[] {
+                this,
+                value
             };
-            connection.Invoke ("SpaceCenter", "Force_set_ForceVector", _args);
+            Connection.Invoke ("SpaceCenter", "Force_set_ForceVector", _args);
         }
     }
 
@@ -57,13 +55,12 @@ public class Force : RemoteObject
     /// The part that this force is applied to.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "Force_get_Part")]
-    public global::kRPC.Client.Boost.Services.SpaceCenter.Part Part {
+    public Part Part {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Force))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Force_get_Part", _args);
-            return (global::kRPC.Client.Boost.Services.SpaceCenter.Part)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Part), connection);
+            return Connection.Invoke<Part> ("SpaceCenter", "Force_get_Part", _args);
         }
     }
 
@@ -72,20 +69,19 @@ public class Force : RemoteObject
     /// </summary>
     /// <returns>The position as a vector.</returns>
     [RpcAttribute ("SpaceCenter", "Force_get_Position")]
-    public systemAlias::Tuple<double,double,double> Position {
+    public Tuple<double,double,double> Position {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Force))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Force_get_Position", _args);
-            return (systemAlias::Tuple<double,double,double>)global::KRPC.Client.Encoder.Decode (_data, typeof(systemAlias::Tuple<double,double,double>), connection);
+            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Force_get_Position", _args);
         }
         set {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Force)),
-                global::KRPC.Client.Encoder.Encode (value, typeof(systemAlias::Tuple<double,double,double>))
+            var _args = new object[] {
+                this,
+                value
             };
-            connection.Invoke ("SpaceCenter", "Force_set_Position", _args);
+            Connection.Invoke ("SpaceCenter", "Force_set_Position", _args);
         }
     }
 
@@ -93,20 +89,19 @@ public class Force : RemoteObject
     /// The reference frame of the force vector and position.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "Force_get_ReferenceFrame")]
-    public global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame ReferenceFrame {
+    public ReferenceFrame ReferenceFrame {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Force))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Force_get_ReferenceFrame", _args);
-            return (global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame), connection);
+            return Connection.Invoke<ReferenceFrame> ("SpaceCenter", "Force_get_ReferenceFrame", _args);
         }
         set {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Force)),
-                global::KRPC.Client.Encoder.Encode (value, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame))
+            var _args = new object[] {
+                this,
+                value
             };
-            connection.Invoke ("SpaceCenter", "Force_set_ReferenceFrame", _args);
+            Connection.Invoke ("SpaceCenter", "Force_set_ReferenceFrame", _args);
         }
     }
 }

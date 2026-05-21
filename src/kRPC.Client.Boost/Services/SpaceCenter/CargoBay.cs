@@ -1,6 +1,5 @@
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
-using Google.Protobuf;
 using kRPC.Client.Boost.Attributes;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
@@ -23,18 +22,17 @@ public class CargoBay : RemoteObject
     [RpcAttribute ("SpaceCenter", "CargoBay_get_Open")]
     public bool Open {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.CargoBay))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "CargoBay_get_Open", _args);
-            return (bool)global::KRPC.Client.Encoder.Decode (_data, typeof(bool), connection);
+            return Connection.Invoke<bool> ("SpaceCenter", "CargoBay_get_Open", _args);
         }
         set {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.CargoBay)),
-                global::KRPC.Client.Encoder.Encode (value, typeof(bool))
+            var _args = new object[] {
+                this,
+                value
             };
-            connection.Invoke ("SpaceCenter", "CargoBay_set_Open", _args);
+            Connection.Invoke ("SpaceCenter", "CargoBay_set_Open", _args);
         }
     }
 
@@ -42,13 +40,12 @@ public class CargoBay : RemoteObject
     /// The part object for this cargo bay.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "CargoBay_get_Part")]
-    public global::kRPC.Client.Boost.Services.SpaceCenter.Part Part {
+    public Part Part {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.CargoBay))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "CargoBay_get_Part", _args);
-            return (global::kRPC.Client.Boost.Services.SpaceCenter.Part)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Part), connection);
+            return Connection.Invoke<Part> ("SpaceCenter", "CargoBay_get_Part", _args);
         }
     }
 
@@ -56,13 +53,12 @@ public class CargoBay : RemoteObject
     /// The state of the cargo bay.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "CargoBay_get_State")]
-    public global::kRPC.Client.Boost.Services.SpaceCenter.CargoBayState State {
+    public CargoBayState State {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.CargoBay))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "CargoBay_get_State", _args);
-            return (global::kRPC.Client.Boost.Services.SpaceCenter.CargoBayState)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.CargoBayState), connection);
+            return Connection.Invoke<CargoBayState> ("SpaceCenter", "CargoBay_get_State", _args);
         }
     }
 }

@@ -1,6 +1,5 @@
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
-using Google.Protobuf;
 using kRPC.Client.Boost.Attributes;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
@@ -24,11 +23,10 @@ public class Resource : RemoteObject
     [RpcAttribute ("SpaceCenter", "Resource_get_Amount")]
     public float Amount {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Resource))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Resource_get_Amount", _args);
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            return Connection.Invoke<float> ("SpaceCenter", "Resource_get_Amount", _args);
         }
     }
 
@@ -38,11 +36,10 @@ public class Resource : RemoteObject
     [RpcAttribute ("SpaceCenter", "Resource_get_Density")]
     public float Density {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Resource))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Resource_get_Density", _args);
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            return Connection.Invoke<float> ("SpaceCenter", "Resource_get_Density", _args);
         }
     }
 
@@ -52,18 +49,17 @@ public class Resource : RemoteObject
     [RpcAttribute ("SpaceCenter", "Resource_get_Enabled")]
     public bool Enabled {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Resource))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Resource_get_Enabled", _args);
-            return (bool)global::KRPC.Client.Encoder.Decode (_data, typeof(bool), connection);
+            return Connection.Invoke<bool> ("SpaceCenter", "Resource_get_Enabled", _args);
         }
         set {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Resource)),
-                global::KRPC.Client.Encoder.Encode (value, typeof(bool))
+            var _args = new object[] {
+                this,
+                value
             };
-            connection.Invoke ("SpaceCenter", "Resource_set_Enabled", _args);
+            Connection.Invoke ("SpaceCenter", "Resource_set_Enabled", _args);
         }
     }
 
@@ -71,13 +67,12 @@ public class Resource : RemoteObject
     /// The flow mode of the resource.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "Resource_get_FlowMode")]
-    public global::kRPC.Client.Boost.Services.SpaceCenter.ResourceFlowMode FlowMode {
+    public ResourceFlowMode FlowMode {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Resource))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Resource_get_FlowMode", _args);
-            return (global::kRPC.Client.Boost.Services.SpaceCenter.ResourceFlowMode)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ResourceFlowMode), connection);
+            return Connection.Invoke<ResourceFlowMode> ("SpaceCenter", "Resource_get_FlowMode", _args);
         }
     }
 
@@ -87,11 +82,10 @@ public class Resource : RemoteObject
     [RpcAttribute ("SpaceCenter", "Resource_get_Max")]
     public float Max {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Resource))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Resource_get_Max", _args);
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            return Connection.Invoke<float> ("SpaceCenter", "Resource_get_Max", _args);
         }
     }
 
@@ -101,11 +95,10 @@ public class Resource : RemoteObject
     [RpcAttribute ("SpaceCenter", "Resource_get_Name")]
     public string Name {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Resource))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Resource_get_Name", _args);
-            return (string)global::KRPC.Client.Encoder.Decode (_data, typeof(string), connection);
+            return Connection.Invoke<string> ("SpaceCenter", "Resource_get_Name", _args);
         }
     }
 
@@ -113,13 +106,12 @@ public class Resource : RemoteObject
     /// The part containing the resource.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "Resource_get_Part")]
-    public global::kRPC.Client.Boost.Services.SpaceCenter.Part Part {
+    public Part Part {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Resource))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Resource_get_Part", _args);
-            return (global::kRPC.Client.Boost.Services.SpaceCenter.Part)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Part), connection);
+            return Connection.Invoke<Part> ("SpaceCenter", "Resource_get_Part", _args);
         }
     }
 }

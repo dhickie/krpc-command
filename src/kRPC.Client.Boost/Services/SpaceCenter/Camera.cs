@@ -1,6 +1,5 @@
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
-using Google.Protobuf;
 using kRPC.Client.Boost.Attributes;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
@@ -24,11 +23,10 @@ public class Camera : RemoteObject
     [RpcAttribute ("SpaceCenter", "Camera_get_DefaultDistance")]
     public float DefaultDistance {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Camera))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Camera_get_DefaultDistance", _args);
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            return Connection.Invoke<float> ("SpaceCenter", "Camera_get_DefaultDistance", _args);
         }
     }
 
@@ -39,18 +37,17 @@ public class Camera : RemoteObject
     [RpcAttribute ("SpaceCenter", "Camera_get_Distance")]
     public float Distance {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Camera))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Camera_get_Distance", _args);
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            return Connection.Invoke<float> ("SpaceCenter", "Camera_get_Distance", _args);
         }
         set {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Camera)),
-                global::KRPC.Client.Encoder.Encode (value, typeof(float))
+            var _args = new object[] {
+                this,
+                value
             };
-            connection.Invoke ("SpaceCenter", "Camera_set_Distance", _args);
+            Connection.Invoke ("SpaceCenter", "Camera_set_Distance", _args);
         }
     }
 
@@ -60,20 +57,19 @@ public class Camera : RemoteObject
     /// Returns an error is the camera is not in map mode.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "Camera_get_FocussedBody")]
-    public global::kRPC.Client.Boost.Services.SpaceCenter.CelestialBody FocussedBody {
+    public CelestialBody FocussedBody {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Camera))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Camera_get_FocussedBody", _args);
-            return (global::kRPC.Client.Boost.Services.SpaceCenter.CelestialBody)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.CelestialBody), connection);
+            return Connection.Invoke<CelestialBody> ("SpaceCenter", "Camera_get_FocussedBody", _args);
         }
         set {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Camera)),
-                global::KRPC.Client.Encoder.Encode (value, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.CelestialBody))
+            var _args = new object[] {
+                this,
+                value
             };
-            connection.Invoke ("SpaceCenter", "Camera_set_FocussedBody", _args);
+            Connection.Invoke ("SpaceCenter", "Camera_set_FocussedBody", _args);
         }
     }
 
@@ -83,20 +79,19 @@ public class Camera : RemoteObject
     /// Returns an error is the camera is not in map mode.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "Camera_get_FocussedNode")]
-    public global::kRPC.Client.Boost.Services.SpaceCenter.Node FocussedNode {
+    public Node FocussedNode {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Camera))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Camera_get_FocussedNode", _args);
-            return (global::kRPC.Client.Boost.Services.SpaceCenter.Node)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Node), connection);
+            return Connection.Invoke<Node> ("SpaceCenter", "Camera_get_FocussedNode", _args);
         }
         set {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Camera)),
-                global::KRPC.Client.Encoder.Encode (value, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Node))
+            var _args = new object[] {
+                this,
+                value
             };
-            connection.Invoke ("SpaceCenter", "Camera_set_FocussedNode", _args);
+            Connection.Invoke ("SpaceCenter", "Camera_set_FocussedNode", _args);
         }
     }
 
@@ -106,20 +101,19 @@ public class Camera : RemoteObject
     /// Returns an error is the camera is not in map mode.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "Camera_get_FocussedVessel")]
-    public global::kRPC.Client.Boost.Services.SpaceCenter.Vessel FocussedVessel {
+    public Vessel FocussedVessel {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Camera))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Camera_get_FocussedVessel", _args);
-            return (global::kRPC.Client.Boost.Services.SpaceCenter.Vessel)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Vessel), connection);
+            return Connection.Invoke<Vessel> ("SpaceCenter", "Camera_get_FocussedVessel", _args);
         }
         set {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Camera)),
-                global::KRPC.Client.Encoder.Encode (value, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Vessel))
+            var _args = new object[] {
+                this,
+                value
             };
-            connection.Invoke ("SpaceCenter", "Camera_set_FocussedVessel", _args);
+            Connection.Invoke ("SpaceCenter", "Camera_set_FocussedVessel", _args);
         }
     }
 
@@ -129,18 +123,17 @@ public class Camera : RemoteObject
     [RpcAttribute ("SpaceCenter", "Camera_get_Heading")]
     public float Heading {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Camera))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Camera_get_Heading", _args);
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            return Connection.Invoke<float> ("SpaceCenter", "Camera_get_Heading", _args);
         }
         set {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Camera)),
-                global::KRPC.Client.Encoder.Encode (value, typeof(float))
+            var _args = new object[] {
+                this,
+                value
             };
-            connection.Invoke ("SpaceCenter", "Camera_set_Heading", _args);
+            Connection.Invoke ("SpaceCenter", "Camera_set_Heading", _args);
         }
     }
 
@@ -150,11 +143,10 @@ public class Camera : RemoteObject
     [RpcAttribute ("SpaceCenter", "Camera_get_MaxDistance")]
     public float MaxDistance {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Camera))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Camera_get_MaxDistance", _args);
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            return Connection.Invoke<float> ("SpaceCenter", "Camera_get_MaxDistance", _args);
         }
     }
 
@@ -164,11 +156,10 @@ public class Camera : RemoteObject
     [RpcAttribute ("SpaceCenter", "Camera_get_MaxPitch")]
     public float MaxPitch {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Camera))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Camera_get_MaxPitch", _args);
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            return Connection.Invoke<float> ("SpaceCenter", "Camera_get_MaxPitch", _args);
         }
     }
 
@@ -178,11 +169,10 @@ public class Camera : RemoteObject
     [RpcAttribute ("SpaceCenter", "Camera_get_MinDistance")]
     public float MinDistance {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Camera))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Camera_get_MinDistance", _args);
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            return Connection.Invoke<float> ("SpaceCenter", "Camera_get_MinDistance", _args);
         }
     }
 
@@ -192,11 +182,10 @@ public class Camera : RemoteObject
     [RpcAttribute ("SpaceCenter", "Camera_get_MinPitch")]
     public float MinPitch {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Camera))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Camera_get_MinPitch", _args);
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            return Connection.Invoke<float> ("SpaceCenter", "Camera_get_MinPitch", _args);
         }
     }
 
@@ -204,20 +193,19 @@ public class Camera : RemoteObject
     /// The current mode of the camera.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "Camera_get_Mode")]
-    public global::kRPC.Client.Boost.Services.SpaceCenter.CameraMode Mode {
+    public CameraMode Mode {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Camera))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Camera_get_Mode", _args);
-            return (global::kRPC.Client.Boost.Services.SpaceCenter.CameraMode)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.CameraMode), connection);
+            return Connection.Invoke<CameraMode> ("SpaceCenter", "Camera_get_Mode", _args);
         }
         set {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Camera)),
-                global::KRPC.Client.Encoder.Encode (value, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.CameraMode))
+            var _args = new object[] {
+                this,
+                value
             };
-            connection.Invoke ("SpaceCenter", "Camera_set_Mode", _args);
+            Connection.Invoke ("SpaceCenter", "Camera_set_Mode", _args);
         }
     }
 
@@ -227,18 +215,17 @@ public class Camera : RemoteObject
     [RpcAttribute ("SpaceCenter", "Camera_get_Pitch")]
     public float Pitch {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Camera))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Camera_get_Pitch", _args);
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            return Connection.Invoke<float> ("SpaceCenter", "Camera_get_Pitch", _args);
         }
         set {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Camera)),
-                global::KRPC.Client.Encoder.Encode (value, typeof(float))
+            var _args = new object[] {
+                this,
+                value
             };
-            connection.Invoke ("SpaceCenter", "Camera_set_Pitch", _args);
+            Connection.Invoke ("SpaceCenter", "Camera_set_Pitch", _args);
         }
     }
 }

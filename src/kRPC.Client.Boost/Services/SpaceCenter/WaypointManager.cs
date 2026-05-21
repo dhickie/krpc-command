@@ -1,7 +1,7 @@
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
-using Google.Protobuf;
 using kRPC.Client.Boost.Attributes;
+using System.Collections.Generic;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
@@ -29,17 +29,16 @@ public class WaypointManager : RemoteObject
     /// <param name="name">Name of the waypoint.</param>
     /// <returns></returns>
     [RpcAttribute ("SpaceCenter", "WaypointManager_AddWaypoint")]
-    public global::kRPC.Client.Boost.Services.SpaceCenter.Waypoint AddWaypoint (double latitude, double longitude, global::kRPC.Client.Boost.Services.SpaceCenter.CelestialBody body, string name)
+    public Waypoint AddWaypoint (double latitude, double longitude, CelestialBody body, string name)
     {
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.WaypointManager)),
-            global::KRPC.Client.Encoder.Encode (latitude, typeof(double)),
-            global::KRPC.Client.Encoder.Encode (longitude, typeof(double)),
-            global::KRPC.Client.Encoder.Encode (body, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.CelestialBody)),
-            global::KRPC.Client.Encoder.Encode (name, typeof(string))
+        var _args = new object[] {
+            this,
+            latitude,
+            longitude,
+            body,
+            name
         };
-        ByteString _data = connection.Invoke ("SpaceCenter", "WaypointManager_AddWaypoint", _args);
-        return (global::kRPC.Client.Boost.Services.SpaceCenter.Waypoint)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Waypoint), connection);
+        return Connection.Invoke<Waypoint> ("SpaceCenter", "WaypointManager_AddWaypoint", _args);
     }
 
     /// <summary>
@@ -53,18 +52,17 @@ public class WaypointManager : RemoteObject
     /// <param name="name">Name of the waypoint.</param>
     /// <returns></returns>
     [RpcAttribute ("SpaceCenter", "WaypointManager_AddWaypointAtAltitude")]
-    public global::kRPC.Client.Boost.Services.SpaceCenter.Waypoint AddWaypointAtAltitude (double latitude, double longitude, double altitude, global::kRPC.Client.Boost.Services.SpaceCenter.CelestialBody body, string name)
+    public Waypoint AddWaypointAtAltitude (double latitude, double longitude, double altitude, CelestialBody body, string name)
     {
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.WaypointManager)),
-            global::KRPC.Client.Encoder.Encode (latitude, typeof(double)),
-            global::KRPC.Client.Encoder.Encode (longitude, typeof(double)),
-            global::KRPC.Client.Encoder.Encode (altitude, typeof(double)),
-            global::KRPC.Client.Encoder.Encode (body, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.CelestialBody)),
-            global::KRPC.Client.Encoder.Encode (name, typeof(string))
+        var _args = new object[] {
+            this,
+            latitude,
+            longitude,
+            altitude,
+            body,
+            name
         };
-        ByteString _data = connection.Invoke ("SpaceCenter", "WaypointManager_AddWaypointAtAltitude", _args);
-        return (global::kRPC.Client.Boost.Services.SpaceCenter.Waypoint)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Waypoint), connection);
+        return Connection.Invoke<Waypoint> ("SpaceCenter", "WaypointManager_AddWaypointAtAltitude", _args);
     }
 
     /// <summary>
@@ -72,13 +70,12 @@ public class WaypointManager : RemoteObject
     /// Any other integers may be used as seed.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "WaypointManager_get_Colors")]
-    public global::System.Collections.Generic.IDictionary<string,int> Colors {
+    public IDictionary<string,int> Colors {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.WaypointManager))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "WaypointManager_get_Colors", _args);
-            return (global::System.Collections.Generic.IDictionary<string,int>)global::KRPC.Client.Encoder.Decode (_data, typeof(global::System.Collections.Generic.IDictionary<string,int>), connection);
+            return Connection.Invoke<IDictionary<string,int>> ("SpaceCenter", "WaypointManager_get_Colors", _args);
         }
     }
 
@@ -86,13 +83,12 @@ public class WaypointManager : RemoteObject
     /// Returns all available icons (from "GameData/Squad/Contracts/Icons/").
     /// </summary>
     [RpcAttribute ("SpaceCenter", "WaypointManager_get_Icons")]
-    public global::System.Collections.Generic.IList<string> Icons {
+    public IList<string> Icons {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.WaypointManager))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "WaypointManager_get_Icons", _args);
-            return (global::System.Collections.Generic.IList<string>)global::KRPC.Client.Encoder.Decode (_data, typeof(global::System.Collections.Generic.IList<string>), connection);
+            return Connection.Invoke<IList<string>> ("SpaceCenter", "WaypointManager_get_Icons", _args);
         }
     }
 
@@ -100,13 +96,12 @@ public class WaypointManager : RemoteObject
     /// A list of all existing waypoints.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "WaypointManager_get_Waypoints")]
-    public global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.Waypoint> Waypoints {
+    public IList<Waypoint> Waypoints {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.WaypointManager))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "WaypointManager_get_Waypoints", _args);
-            return (global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.Waypoint>)global::KRPC.Client.Encoder.Decode (_data, typeof(global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.Waypoint>), connection);
+            return Connection.Invoke<IList<Waypoint>> ("SpaceCenter", "WaypointManager_get_Waypoints", _args);
         }
     }
 }

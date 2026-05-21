@@ -1,9 +1,8 @@
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
-using Google.Protobuf;
-using genericCollectionsAlias = System.Collections.Generic;
-using systemAlias = System;
+using System;
 using kRPC.Client.Boost.Attributes;
+using System.Collections.Generic;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
@@ -26,15 +25,14 @@ public class CelestialBody : RemoteObject
     /// <param name="position">Position as a vector.</param>
     /// <param name="referenceFrame">Reference frame for the position vector.</param>
     [RpcAttribute ("SpaceCenter", "CelestialBody_AltitudeAtPosition")]
-    public double AltitudeAtPosition (systemAlias::Tuple<double,double,double> position, global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame referenceFrame)
+    public double AltitudeAtPosition (Tuple<double,double,double> position, ReferenceFrame referenceFrame)
     {
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.CelestialBody)),
-            global::KRPC.Client.Encoder.Encode (position, typeof(systemAlias::Tuple<double,double,double>)),
-            global::KRPC.Client.Encoder.Encode (referenceFrame, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame))
+        var _args = new object[] {
+            this,
+            position,
+            referenceFrame
         };
-        ByteString _data = connection.Invoke ("SpaceCenter", "CelestialBody_AltitudeAtPosition", _args);
-        return (double)global::KRPC.Client.Encoder.Decode (_data, typeof(double), connection);
+        return Connection.Invoke<double> ("SpaceCenter", "CelestialBody_AltitudeAtPosition", _args);
     }
 
     /// <summary>
@@ -46,14 +44,13 @@ public class CelestialBody : RemoteObject
     /// <param name="referenceFrame">The reference frame the returned
     /// angular velocity is in.</param>
     [RpcAttribute ("SpaceCenter", "CelestialBody_AngularVelocity")]
-    public systemAlias::Tuple<double,double,double> AngularVelocity (global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame referenceFrame)
+    public Tuple<double,double,double> AngularVelocity (ReferenceFrame referenceFrame)
     {
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.CelestialBody)),
-            global::KRPC.Client.Encoder.Encode (referenceFrame, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame))
+        var _args = new object[] {
+            this,
+            referenceFrame
         };
-        ByteString _data = connection.Invoke ("SpaceCenter", "CelestialBody_AngularVelocity", _args);
-        return (systemAlias::Tuple<double,double,double>)global::KRPC.Client.Encoder.Decode (_data, typeof(systemAlias::Tuple<double,double,double>), connection);
+        return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "CelestialBody_AngularVelocity", _args);
     }
 
     /// <summary>
@@ -63,15 +60,14 @@ public class CelestialBody : RemoteObject
     /// <param name="position">The position vector at which to measure the density.</param>
     /// <param name="referenceFrame">Reference frame that the position vector is in.</param>
     [RpcAttribute ("SpaceCenter", "CelestialBody_AtmosphericDensityAtPosition")]
-    public double AtmosphericDensityAtPosition (systemAlias::Tuple<double,double,double> position, global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame referenceFrame)
+    public double AtmosphericDensityAtPosition (Tuple<double,double,double> position, ReferenceFrame referenceFrame)
     {
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.CelestialBody)),
-            global::KRPC.Client.Encoder.Encode (position, typeof(systemAlias::Tuple<double,double,double>)),
-            global::KRPC.Client.Encoder.Encode (referenceFrame, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame))
+        var _args = new object[] {
+            this,
+            position,
+            referenceFrame
         };
-        ByteString _data = connection.Invoke ("SpaceCenter", "CelestialBody_AtmosphericDensityAtPosition", _args);
-        return (double)global::KRPC.Client.Encoder.Decode (_data, typeof(double), connection);
+        return Connection.Invoke<double> ("SpaceCenter", "CelestialBody_AtmosphericDensityAtPosition", _args);
     }
 
     /// <summary>
@@ -84,13 +80,12 @@ public class CelestialBody : RemoteObject
     [RpcAttribute ("SpaceCenter", "CelestialBody_BedrockHeight")]
     public double BedrockHeight (double latitude, double longitude)
     {
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.CelestialBody)),
-            global::KRPC.Client.Encoder.Encode (latitude, typeof(double)),
-            global::KRPC.Client.Encoder.Encode (longitude, typeof(double))
+        var _args = new object[] {
+            this,
+            latitude,
+            longitude
         };
-        ByteString _data = connection.Invoke ("SpaceCenter", "CelestialBody_BedrockHeight", _args);
-        return (double)global::KRPC.Client.Encoder.Decode (_data, typeof(double), connection);
+        return Connection.Invoke<double> ("SpaceCenter", "CelestialBody_BedrockHeight", _args);
     }
 
     /// <summary>
@@ -102,16 +97,15 @@ public class CelestialBody : RemoteObject
     /// <param name="longitude">Longitude in degrees.</param>
     /// <param name="referenceFrame">Reference frame for the returned position vector.</param>
     [RpcAttribute ("SpaceCenter", "CelestialBody_BedrockPosition")]
-    public systemAlias::Tuple<double,double,double> BedrockPosition (double latitude, double longitude, global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame referenceFrame)
+    public Tuple<double,double,double> BedrockPosition (double latitude, double longitude, ReferenceFrame referenceFrame)
     {
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.CelestialBody)),
-            global::KRPC.Client.Encoder.Encode (latitude, typeof(double)),
-            global::KRPC.Client.Encoder.Encode (longitude, typeof(double)),
-            global::KRPC.Client.Encoder.Encode (referenceFrame, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame))
+        var _args = new object[] {
+            this,
+            latitude,
+            longitude,
+            referenceFrame
         };
-        ByteString _data = connection.Invoke ("SpaceCenter", "CelestialBody_BedrockPosition", _args);
-        return (systemAlias::Tuple<double,double,double>)global::KRPC.Client.Encoder.Decode (_data, typeof(systemAlias::Tuple<double,double,double>), connection);
+        return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "CelestialBody_BedrockPosition", _args);
     }
 
     /// <summary>
@@ -120,13 +114,12 @@ public class CelestialBody : RemoteObject
     [RpcAttribute ("SpaceCenter", "CelestialBody_BiomeAt")]
     public string BiomeAt (double latitude, double longitude)
     {
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.CelestialBody)),
-            global::KRPC.Client.Encoder.Encode (latitude, typeof(double)),
-            global::KRPC.Client.Encoder.Encode (longitude, typeof(double))
+        var _args = new object[] {
+            this,
+            latitude,
+            longitude
         };
-        ByteString _data = connection.Invoke ("SpaceCenter", "CelestialBody_BiomeAt", _args);
-        return (string)global::KRPC.Client.Encoder.Decode (_data, typeof(string), connection);
+        return Connection.Invoke<string> ("SpaceCenter", "CelestialBody_BiomeAt", _args);
     }
 
     /// <summary>
@@ -143,12 +136,11 @@ public class CelestialBody : RemoteObject
     [RpcAttribute ("SpaceCenter", "CelestialBody_DensityAt")]
     public double DensityAt (double altitude)
     {
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.CelestialBody)),
-            global::KRPC.Client.Encoder.Encode (altitude, typeof(double))
+        var _args = new object[] {
+            this,
+            altitude
         };
-        ByteString _data = connection.Invoke ("SpaceCenter", "CelestialBody_DensityAt", _args);
-        return (double)global::KRPC.Client.Encoder.Decode (_data, typeof(double), connection);
+        return Connection.Invoke<double> ("SpaceCenter", "CelestialBody_DensityAt", _args);
     }
 
     /// <summary>
@@ -159,14 +151,13 @@ public class CelestialBody : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// direction is in.</param>
     [RpcAttribute ("SpaceCenter", "CelestialBody_Direction")]
-    public systemAlias::Tuple<double,double,double> Direction (global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame referenceFrame)
+    public Tuple<double,double,double> Direction (ReferenceFrame referenceFrame)
     {
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.CelestialBody)),
-            global::KRPC.Client.Encoder.Encode (referenceFrame, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame))
+        var _args = new object[] {
+            this,
+            referenceFrame
         };
-        ByteString _data = connection.Invoke ("SpaceCenter", "CelestialBody_Direction", _args);
-        return (systemAlias::Tuple<double,double,double>)global::KRPC.Client.Encoder.Decode (_data, typeof(systemAlias::Tuple<double,double,double>), connection);
+        return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "CelestialBody_Direction", _args);
     }
 
     /// <summary>
@@ -175,15 +166,14 @@ public class CelestialBody : RemoteObject
     /// <param name="position">Position as a vector.</param>
     /// <param name="referenceFrame">Reference frame for the position vector.</param>
     [RpcAttribute ("SpaceCenter", "CelestialBody_LatitudeAtPosition")]
-    public double LatitudeAtPosition (systemAlias::Tuple<double,double,double> position, global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame referenceFrame)
+    public double LatitudeAtPosition (Tuple<double,double,double> position, ReferenceFrame referenceFrame)
     {
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.CelestialBody)),
-            global::KRPC.Client.Encoder.Encode (position, typeof(systemAlias::Tuple<double,double,double>)),
-            global::KRPC.Client.Encoder.Encode (referenceFrame, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame))
+        var _args = new object[] {
+            this,
+            position,
+            referenceFrame
         };
-        ByteString _data = connection.Invoke ("SpaceCenter", "CelestialBody_LatitudeAtPosition", _args);
-        return (double)global::KRPC.Client.Encoder.Decode (_data, typeof(double), connection);
+        return Connection.Invoke<double> ("SpaceCenter", "CelestialBody_LatitudeAtPosition", _args);
     }
 
     /// <summary>
@@ -192,15 +182,14 @@ public class CelestialBody : RemoteObject
     /// <param name="position">Position as a vector.</param>
     /// <param name="referenceFrame">Reference frame for the position vector.</param>
     [RpcAttribute ("SpaceCenter", "CelestialBody_LongitudeAtPosition")]
-    public double LongitudeAtPosition (systemAlias::Tuple<double,double,double> position, global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame referenceFrame)
+    public double LongitudeAtPosition (Tuple<double,double,double> position, ReferenceFrame referenceFrame)
     {
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.CelestialBody)),
-            global::KRPC.Client.Encoder.Encode (position, typeof(systemAlias::Tuple<double,double,double>)),
-            global::KRPC.Client.Encoder.Encode (referenceFrame, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame))
+        var _args = new object[] {
+            this,
+            position,
+            referenceFrame
         };
-        ByteString _data = connection.Invoke ("SpaceCenter", "CelestialBody_LongitudeAtPosition", _args);
-        return (double)global::KRPC.Client.Encoder.Decode (_data, typeof(double), connection);
+        return Connection.Invoke<double> ("SpaceCenter", "CelestialBody_LongitudeAtPosition", _args);
     }
 
     /// <summary>
@@ -212,16 +201,15 @@ public class CelestialBody : RemoteObject
     /// <param name="longitude">Longitude in degrees.</param>
     /// <param name="referenceFrame">Reference frame for the returned position vector.</param>
     [RpcAttribute ("SpaceCenter", "CelestialBody_MSLPosition")]
-    public systemAlias::Tuple<double,double,double> MSLPosition (double latitude, double longitude, global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame referenceFrame)
+    public Tuple<double,double,double> MSLPosition (double latitude, double longitude, ReferenceFrame referenceFrame)
     {
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.CelestialBody)),
-            global::KRPC.Client.Encoder.Encode (latitude, typeof(double)),
-            global::KRPC.Client.Encoder.Encode (longitude, typeof(double)),
-            global::KRPC.Client.Encoder.Encode (referenceFrame, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame))
+        var _args = new object[] {
+            this,
+            latitude,
+            longitude,
+            referenceFrame
         };
-        ByteString _data = connection.Invoke ("SpaceCenter", "CelestialBody_MSLPosition", _args);
-        return (systemAlias::Tuple<double,double,double>)global::KRPC.Client.Encoder.Decode (_data, typeof(systemAlias::Tuple<double,double,double>), connection);
+        return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "CelestialBody_MSLPosition", _args);
     }
 
     /// <summary>
@@ -231,14 +219,13 @@ public class CelestialBody : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// position vector is in.</param>
     [RpcAttribute ("SpaceCenter", "CelestialBody_Position")]
-    public systemAlias::Tuple<double,double,double> Position (global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame referenceFrame)
+    public Tuple<double,double,double> Position (ReferenceFrame referenceFrame)
     {
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.CelestialBody)),
-            global::KRPC.Client.Encoder.Encode (referenceFrame, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame))
+        var _args = new object[] {
+            this,
+            referenceFrame
         };
-        ByteString _data = connection.Invoke ("SpaceCenter", "CelestialBody_Position", _args);
-        return (systemAlias::Tuple<double,double,double>)global::KRPC.Client.Encoder.Decode (_data, typeof(systemAlias::Tuple<double,double,double>), connection);
+        return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "CelestialBody_Position", _args);
     }
 
     /// <summary>
@@ -250,17 +237,16 @@ public class CelestialBody : RemoteObject
     /// <param name="altitude">Altitude in meters above sea level.</param>
     /// <param name="referenceFrame">Reference frame for the returned position vector.</param>
     [RpcAttribute ("SpaceCenter", "CelestialBody_PositionAtAltitude")]
-    public systemAlias::Tuple<double,double,double> PositionAtAltitude (double latitude, double longitude, double altitude, global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame referenceFrame)
+    public Tuple<double,double,double> PositionAtAltitude (double latitude, double longitude, double altitude, ReferenceFrame referenceFrame)
     {
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.CelestialBody)),
-            global::KRPC.Client.Encoder.Encode (latitude, typeof(double)),
-            global::KRPC.Client.Encoder.Encode (longitude, typeof(double)),
-            global::KRPC.Client.Encoder.Encode (altitude, typeof(double)),
-            global::KRPC.Client.Encoder.Encode (referenceFrame, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame))
+        var _args = new object[] {
+            this,
+            latitude,
+            longitude,
+            altitude,
+            referenceFrame
         };
-        ByteString _data = connection.Invoke ("SpaceCenter", "CelestialBody_PositionAtAltitude", _args);
-        return (systemAlias::Tuple<double,double,double>)global::KRPC.Client.Encoder.Decode (_data, typeof(systemAlias::Tuple<double,double,double>), connection);
+        return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "CelestialBody_PositionAtAltitude", _args);
     }
 
     /// <summary>
@@ -270,12 +256,11 @@ public class CelestialBody : RemoteObject
     [RpcAttribute ("SpaceCenter", "CelestialBody_PressureAt")]
     public double PressureAt (double altitude)
     {
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.CelestialBody)),
-            global::KRPC.Client.Encoder.Encode (altitude, typeof(double))
+        var _args = new object[] {
+            this,
+            altitude
         };
-        ByteString _data = connection.Invoke ("SpaceCenter", "CelestialBody_PressureAt", _args);
-        return (double)global::KRPC.Client.Encoder.Decode (_data, typeof(double), connection);
+        return Connection.Invoke<double> ("SpaceCenter", "CelestialBody_PressureAt", _args);
     }
 
     /// <summary>
@@ -285,14 +270,13 @@ public class CelestialBody : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// rotation is in.</param>
     [RpcAttribute ("SpaceCenter", "CelestialBody_Rotation")]
-    public systemAlias::Tuple<double,double,double,double> Rotation (global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame referenceFrame)
+    public Tuple<double,double,double,double> Rotation (ReferenceFrame referenceFrame)
     {
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.CelestialBody)),
-            global::KRPC.Client.Encoder.Encode (referenceFrame, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame))
+        var _args = new object[] {
+            this,
+            referenceFrame
         };
-        ByteString _data = connection.Invoke ("SpaceCenter", "CelestialBody_Rotation", _args);
-        return (systemAlias::Tuple<double,double,double,double>)global::KRPC.Client.Encoder.Decode (_data, typeof(systemAlias::Tuple<double,double,double,double>), connection);
+        return Connection.Invoke<Tuple<double,double,double,double>> ("SpaceCenter", "CelestialBody_Rotation", _args);
     }
 
     /// <summary>
@@ -304,13 +288,12 @@ public class CelestialBody : RemoteObject
     [RpcAttribute ("SpaceCenter", "CelestialBody_SurfaceHeight")]
     public double SurfaceHeight (double latitude, double longitude)
     {
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.CelestialBody)),
-            global::KRPC.Client.Encoder.Encode (latitude, typeof(double)),
-            global::KRPC.Client.Encoder.Encode (longitude, typeof(double))
+        var _args = new object[] {
+            this,
+            latitude,
+            longitude
         };
-        ByteString _data = connection.Invoke ("SpaceCenter", "CelestialBody_SurfaceHeight", _args);
-        return (double)global::KRPC.Client.Encoder.Decode (_data, typeof(double), connection);
+        return Connection.Invoke<double> ("SpaceCenter", "CelestialBody_SurfaceHeight", _args);
     }
 
     /// <summary>
@@ -322,16 +305,15 @@ public class CelestialBody : RemoteObject
     /// <param name="longitude">Longitude in degrees.</param>
     /// <param name="referenceFrame">Reference frame for the returned position vector.</param>
     [RpcAttribute ("SpaceCenter", "CelestialBody_SurfacePosition")]
-    public systemAlias::Tuple<double,double,double> SurfacePosition (double latitude, double longitude, global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame referenceFrame)
+    public Tuple<double,double,double> SurfacePosition (double latitude, double longitude, ReferenceFrame referenceFrame)
     {
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.CelestialBody)),
-            global::KRPC.Client.Encoder.Encode (latitude, typeof(double)),
-            global::KRPC.Client.Encoder.Encode (longitude, typeof(double)),
-            global::KRPC.Client.Encoder.Encode (referenceFrame, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame))
+        var _args = new object[] {
+            this,
+            latitude,
+            longitude,
+            referenceFrame
         };
-        ByteString _data = connection.Invoke ("SpaceCenter", "CelestialBody_SurfacePosition", _args);
-        return (systemAlias::Tuple<double,double,double>)global::KRPC.Client.Encoder.Decode (_data, typeof(systemAlias::Tuple<double,double,double>), connection);
+        return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "CelestialBody_SurfacePosition", _args);
     }
 
     /// <summary>
@@ -344,15 +326,14 @@ public class CelestialBody : RemoteObject
     /// the value could be wrong if you want to know the temperature in the far future.
     /// </remarks>
     [RpcAttribute ("SpaceCenter", "CelestialBody_TemperatureAt")]
-    public double TemperatureAt (systemAlias::Tuple<double,double,double> position, global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame referenceFrame)
+    public double TemperatureAt (Tuple<double,double,double> position, ReferenceFrame referenceFrame)
     {
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.CelestialBody)),
-            global::KRPC.Client.Encoder.Encode (position, typeof(systemAlias::Tuple<double,double,double>)),
-            global::KRPC.Client.Encoder.Encode (referenceFrame, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame))
+        var _args = new object[] {
+            this,
+            position,
+            referenceFrame
         };
-        ByteString _data = connection.Invoke ("SpaceCenter", "CelestialBody_TemperatureAt", _args);
-        return (double)global::KRPC.Client.Encoder.Decode (_data, typeof(double), connection);
+        return Connection.Invoke<double> ("SpaceCenter", "CelestialBody_TemperatureAt", _args);
     }
 
     /// <summary>
@@ -363,14 +344,13 @@ public class CelestialBody : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// velocity vector is in.</param>
     [RpcAttribute ("SpaceCenter", "CelestialBody_Velocity")]
-    public systemAlias::Tuple<double,double,double> Velocity (global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame referenceFrame)
+    public Tuple<double,double,double> Velocity (ReferenceFrame referenceFrame)
     {
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.CelestialBody)),
-            global::KRPC.Client.Encoder.Encode (referenceFrame, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame))
+        var _args = new object[] {
+            this,
+            referenceFrame
         };
-        ByteString _data = connection.Invoke ("SpaceCenter", "CelestialBody_Velocity", _args);
-        return (systemAlias::Tuple<double,double,double>)global::KRPC.Client.Encoder.Decode (_data, typeof(systemAlias::Tuple<double,double,double>), connection);
+        return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "CelestialBody_Velocity", _args);
     }
 
     /// <summary>
@@ -379,11 +359,10 @@ public class CelestialBody : RemoteObject
     [RpcAttribute ("SpaceCenter", "CelestialBody_get_AtmosphereDepth")]
     public double AtmosphereDepth {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.CelestialBody))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "CelestialBody_get_AtmosphereDepth", _args);
-            return (double)global::KRPC.Client.Encoder.Decode (_data, typeof(double), connection);
+            return Connection.Invoke<double> ("SpaceCenter", "CelestialBody_get_AtmosphereDepth", _args);
         }
     }
 
@@ -391,13 +370,12 @@ public class CelestialBody : RemoteObject
     /// The biomes present on this body.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "CelestialBody_get_Biomes")]
-    public genericCollectionsAlias::ISet<string> Biomes {
+    public ISet<string> Biomes {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.CelestialBody))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "CelestialBody_get_Biomes", _args);
-            return (genericCollectionsAlias::ISet<string>)global::KRPC.Client.Encoder.Decode (_data, typeof(genericCollectionsAlias::ISet<string>), connection);
+            return Connection.Invoke<ISet<string>> ("SpaceCenter", "CelestialBody_get_Biomes", _args);
         }
     }
 
@@ -407,11 +385,10 @@ public class CelestialBody : RemoteObject
     [RpcAttribute ("SpaceCenter", "CelestialBody_get_EquatorialRadius")]
     public double EquatorialRadius {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.CelestialBody))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "CelestialBody_get_EquatorialRadius", _args);
-            return (double)global::KRPC.Client.Encoder.Decode (_data, typeof(double), connection);
+            return Connection.Invoke<double> ("SpaceCenter", "CelestialBody_get_EquatorialRadius", _args);
         }
     }
 
@@ -422,11 +399,10 @@ public class CelestialBody : RemoteObject
     [RpcAttribute ("SpaceCenter", "CelestialBody_get_FlyingHighAltitudeThreshold")]
     public float FlyingHighAltitudeThreshold {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.CelestialBody))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "CelestialBody_get_FlyingHighAltitudeThreshold", _args);
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            return Connection.Invoke<float> ("SpaceCenter", "CelestialBody_get_FlyingHighAltitudeThreshold", _args);
         }
     }
 
@@ -437,11 +413,10 @@ public class CelestialBody : RemoteObject
     [RpcAttribute ("SpaceCenter", "CelestialBody_get_GravitationalParameter")]
     public double GravitationalParameter {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.CelestialBody))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "CelestialBody_get_GravitationalParameter", _args);
-            return (double)global::KRPC.Client.Encoder.Decode (_data, typeof(double), connection);
+            return Connection.Invoke<double> ("SpaceCenter", "CelestialBody_get_GravitationalParameter", _args);
         }
     }
 
@@ -450,11 +425,10 @@ public class CelestialBody : RemoteObject
     [RpcAttribute ("SpaceCenter", "CelestialBody_get_HasAtmosphere")]
     public bool HasAtmosphere {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.CelestialBody))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "CelestialBody_get_HasAtmosphere", _args);
-            return (bool)global::KRPC.Client.Encoder.Decode (_data, typeof(bool), connection);
+            return Connection.Invoke<bool> ("SpaceCenter", "CelestialBody_get_HasAtmosphere", _args);
         }
     }
 
@@ -463,11 +437,10 @@ public class CelestialBody : RemoteObject
     [RpcAttribute ("SpaceCenter", "CelestialBody_get_HasAtmosphericOxygen")]
     public bool HasAtmosphericOxygen {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.CelestialBody))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "CelestialBody_get_HasAtmosphericOxygen", _args);
-            return (bool)global::KRPC.Client.Encoder.Decode (_data, typeof(bool), connection);
+            return Connection.Invoke<bool> ("SpaceCenter", "CelestialBody_get_HasAtmosphericOxygen", _args);
         }
     }
 
@@ -477,11 +450,10 @@ public class CelestialBody : RemoteObject
     [RpcAttribute ("SpaceCenter", "CelestialBody_get_HasSolidSurface")]
     public bool HasSolidSurface {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.CelestialBody))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "CelestialBody_get_HasSolidSurface", _args);
-            return (bool)global::KRPC.Client.Encoder.Decode (_data, typeof(bool), connection);
+            return Connection.Invoke<bool> ("SpaceCenter", "CelestialBody_get_HasSolidSurface", _args);
         }
     }
 
@@ -491,11 +463,10 @@ public class CelestialBody : RemoteObject
     [RpcAttribute ("SpaceCenter", "CelestialBody_get_InitialRotation")]
     public double InitialRotation {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.CelestialBody))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "CelestialBody_get_InitialRotation", _args);
-            return (double)global::KRPC.Client.Encoder.Decode (_data, typeof(double), connection);
+            return Connection.Invoke<double> ("SpaceCenter", "CelestialBody_get_InitialRotation", _args);
         }
     }
 
@@ -505,11 +476,10 @@ public class CelestialBody : RemoteObject
     [RpcAttribute ("SpaceCenter", "CelestialBody_get_IsStar")]
     public bool IsStar {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.CelestialBody))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "CelestialBody_get_IsStar", _args);
-            return (bool)global::KRPC.Client.Encoder.Decode (_data, typeof(bool), connection);
+            return Connection.Invoke<bool> ("SpaceCenter", "CelestialBody_get_IsStar", _args);
         }
     }
 
@@ -519,11 +489,10 @@ public class CelestialBody : RemoteObject
     [RpcAttribute ("SpaceCenter", "CelestialBody_get_Mass")]
     public double Mass {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.CelestialBody))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "CelestialBody_get_Mass", _args);
-            return (double)global::KRPC.Client.Encoder.Decode (_data, typeof(double), connection);
+            return Connection.Invoke<double> ("SpaceCenter", "CelestialBody_get_Mass", _args);
         }
     }
 
@@ -533,11 +502,10 @@ public class CelestialBody : RemoteObject
     [RpcAttribute ("SpaceCenter", "CelestialBody_get_Name")]
     public string Name {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.CelestialBody))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "CelestialBody_get_Name", _args);
-            return (string)global::KRPC.Client.Encoder.Decode (_data, typeof(string), connection);
+            return Connection.Invoke<string> ("SpaceCenter", "CelestialBody_get_Name", _args);
         }
     }
 
@@ -549,13 +517,12 @@ public class CelestialBody : RemoteObject
     /// the north pole.</description></item><item><description>The z-axis points in an arbitrary direction through the
     /// equator.</description></item></list></summary>
     [RpcAttribute ("SpaceCenter", "CelestialBody_get_NonRotatingReferenceFrame")]
-    public global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame NonRotatingReferenceFrame {
+    public ReferenceFrame NonRotatingReferenceFrame {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.CelestialBody))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "CelestialBody_get_NonRotatingReferenceFrame", _args);
-            return (global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame), connection);
+            return Connection.Invoke<ReferenceFrame> ("SpaceCenter", "CelestialBody_get_NonRotatingReferenceFrame", _args);
         }
     }
 
@@ -563,13 +530,12 @@ public class CelestialBody : RemoteObject
     /// The orbit of the body.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "CelestialBody_get_Orbit")]
-    public global::kRPC.Client.Boost.Services.SpaceCenter.Orbit Orbit {
+    public Orbit Orbit {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.CelestialBody))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "CelestialBody_get_Orbit", _args);
-            return (global::kRPC.Client.Boost.Services.SpaceCenter.Orbit)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Orbit), connection);
+            return Connection.Invoke<Orbit> ("SpaceCenter", "CelestialBody_get_Orbit", _args);
         }
     }
 
@@ -583,13 +549,12 @@ public class CelestialBody : RemoteObject
     /// </description></item><item><description>The z-axis points in the orbital normal direction.
     /// </description></item></list></summary>
     [RpcAttribute ("SpaceCenter", "CelestialBody_get_OrbitalReferenceFrame")]
-    public global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame OrbitalReferenceFrame {
+    public ReferenceFrame OrbitalReferenceFrame {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.CelestialBody))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "CelestialBody_get_OrbitalReferenceFrame", _args);
-            return (global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame), connection);
+            return Connection.Invoke<ReferenceFrame> ("SpaceCenter", "CelestialBody_get_OrbitalReferenceFrame", _args);
         }
     }
 
@@ -602,13 +567,12 @@ public class CelestialBody : RemoteObject
     /// towards the north pole.</description></item><item><description>The z-axis points from the center of the body
     /// towards the equator at 90°E longitude.</description></item></list></summary>
     [RpcAttribute ("SpaceCenter", "CelestialBody_get_ReferenceFrame")]
-    public global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame ReferenceFrame {
+    public ReferenceFrame ReferenceFrame {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.CelestialBody))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "CelestialBody_get_ReferenceFrame", _args);
-            return (global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame), connection);
+            return Connection.Invoke<ReferenceFrame> ("SpaceCenter", "CelestialBody_get_ReferenceFrame", _args);
         }
     }
 
@@ -618,11 +582,10 @@ public class CelestialBody : RemoteObject
     [RpcAttribute ("SpaceCenter", "CelestialBody_get_RotationAngle")]
     public double RotationAngle {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.CelestialBody))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "CelestialBody_get_RotationAngle", _args);
-            return (double)global::KRPC.Client.Encoder.Decode (_data, typeof(double), connection);
+            return Connection.Invoke<double> ("SpaceCenter", "CelestialBody_get_RotationAngle", _args);
         }
     }
 
@@ -632,11 +595,10 @@ public class CelestialBody : RemoteObject
     [RpcAttribute ("SpaceCenter", "CelestialBody_get_RotationalPeriod")]
     public double RotationalPeriod {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.CelestialBody))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "CelestialBody_get_RotationalPeriod", _args);
-            return (double)global::KRPC.Client.Encoder.Decode (_data, typeof(double), connection);
+            return Connection.Invoke<double> ("SpaceCenter", "CelestialBody_get_RotationalPeriod", _args);
         }
     }
 
@@ -646,11 +608,10 @@ public class CelestialBody : RemoteObject
     [RpcAttribute ("SpaceCenter", "CelestialBody_get_RotationalSpeed")]
     public double RotationalSpeed {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.CelestialBody))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "CelestialBody_get_RotationalSpeed", _args);
-            return (double)global::KRPC.Client.Encoder.Decode (_data, typeof(double), connection);
+            return Connection.Invoke<double> ("SpaceCenter", "CelestialBody_get_RotationalSpeed", _args);
         }
     }
 
@@ -658,13 +619,12 @@ public class CelestialBody : RemoteObject
     /// A list of celestial bodies that are in orbit around this celestial body.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "CelestialBody_get_Satellites")]
-    public global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.CelestialBody> Satellites {
+    public IList<CelestialBody> Satellites {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.CelestialBody))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "CelestialBody_get_Satellites", _args);
-            return (global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.CelestialBody>)global::KRPC.Client.Encoder.Decode (_data, typeof(global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.CelestialBody>), connection);
+            return Connection.Invoke<IList<CelestialBody>> ("SpaceCenter", "CelestialBody_get_Satellites", _args);
         }
     }
 
@@ -675,11 +635,10 @@ public class CelestialBody : RemoteObject
     [RpcAttribute ("SpaceCenter", "CelestialBody_get_SpaceHighAltitudeThreshold")]
     public float SpaceHighAltitudeThreshold {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.CelestialBody))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "CelestialBody_get_SpaceHighAltitudeThreshold", _args);
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            return Connection.Invoke<float> ("SpaceCenter", "CelestialBody_get_SpaceHighAltitudeThreshold", _args);
         }
     }
 
@@ -689,11 +648,10 @@ public class CelestialBody : RemoteObject
     [RpcAttribute ("SpaceCenter", "CelestialBody_get_SphereOfInfluence")]
     public double SphereOfInfluence {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.CelestialBody))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "CelestialBody_get_SphereOfInfluence", _args);
-            return (double)global::KRPC.Client.Encoder.Decode (_data, typeof(double), connection);
+            return Connection.Invoke<double> ("SpaceCenter", "CelestialBody_get_SphereOfInfluence", _args);
         }
     }
 
@@ -704,11 +662,10 @@ public class CelestialBody : RemoteObject
     [RpcAttribute ("SpaceCenter", "CelestialBody_get_SurfaceGravity")]
     public double SurfaceGravity {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.CelestialBody))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "CelestialBody_get_SurfaceGravity", _args);
-            return (double)global::KRPC.Client.Encoder.Decode (_data, typeof(double), connection);
+            return Connection.Invoke<double> ("SpaceCenter", "CelestialBody_get_SurfaceGravity", _args);
         }
     }
 }

@@ -1,7 +1,7 @@
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
-using Google.Protobuf;
 using kRPC.Client.Boost.Attributes;
+using System.Collections.Generic;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
@@ -23,18 +23,17 @@ public class CrewMember : RemoteObject
     [RpcAttribute ("SpaceCenter", "CrewMember_get_Badass")]
     public bool Badass {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.CrewMember))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "CrewMember_get_Badass", _args);
-            return (bool)global::KRPC.Client.Encoder.Decode (_data, typeof(bool), connection);
+            return Connection.Invoke<bool> ("SpaceCenter", "CrewMember_get_Badass", _args);
         }
         set {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.CrewMember)),
-                global::KRPC.Client.Encoder.Encode (value, typeof(bool))
+            var _args = new object[] {
+                this,
+                value
             };
-            connection.Invoke ("SpaceCenter", "CrewMember_set_Badass", _args);
+            Connection.Invoke ("SpaceCenter", "CrewMember_set_Badass", _args);
         }
     }
 
@@ -42,13 +41,12 @@ public class CrewMember : RemoteObject
     /// The flight IDs for each entry in the career flight log.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "CrewMember_get_CareerLogFlights")]
-    public global::System.Collections.Generic.IList<int> CareerLogFlights {
+    public IList<int> CareerLogFlights {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.CrewMember))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "CrewMember_get_CareerLogFlights", _args);
-            return (global::System.Collections.Generic.IList<int>)global::KRPC.Client.Encoder.Decode (_data, typeof(global::System.Collections.Generic.IList<int>), connection);
+            return Connection.Invoke<IList<int>> ("SpaceCenter", "CrewMember_get_CareerLogFlights", _args);
         }
     }
 
@@ -56,13 +54,12 @@ public class CrewMember : RemoteObject
     /// The body name for each entry in the career flight log.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "CrewMember_get_CareerLogTargets")]
-    public global::System.Collections.Generic.IList<string> CareerLogTargets {
+    public IList<string> CareerLogTargets {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.CrewMember))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "CrewMember_get_CareerLogTargets", _args);
-            return (global::System.Collections.Generic.IList<string>)global::KRPC.Client.Encoder.Decode (_data, typeof(global::System.Collections.Generic.IList<string>), connection);
+            return Connection.Invoke<IList<string>> ("SpaceCenter", "CrewMember_get_CareerLogTargets", _args);
         }
     }
 
@@ -70,13 +67,12 @@ public class CrewMember : RemoteObject
     /// The type for each entry in the career flight log.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "CrewMember_get_CareerLogTypes")]
-    public global::System.Collections.Generic.IList<string> CareerLogTypes {
+    public IList<string> CareerLogTypes {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.CrewMember))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "CrewMember_get_CareerLogTypes", _args);
-            return (global::System.Collections.Generic.IList<string>)global::KRPC.Client.Encoder.Decode (_data, typeof(global::System.Collections.Generic.IList<string>), connection);
+            return Connection.Invoke<IList<string>> ("SpaceCenter", "CrewMember_get_CareerLogTypes", _args);
         }
     }
 
@@ -86,18 +82,17 @@ public class CrewMember : RemoteObject
     [RpcAttribute ("SpaceCenter", "CrewMember_get_Courage")]
     public float Courage {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.CrewMember))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "CrewMember_get_Courage", _args);
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            return Connection.Invoke<float> ("SpaceCenter", "CrewMember_get_Courage", _args);
         }
         set {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.CrewMember)),
-                global::KRPC.Client.Encoder.Encode (value, typeof(float))
+            var _args = new object[] {
+                this,
+                value
             };
-            connection.Invoke ("SpaceCenter", "CrewMember_set_Courage", _args);
+            Connection.Invoke ("SpaceCenter", "CrewMember_set_Courage", _args);
         }
     }
 
@@ -107,18 +102,17 @@ public class CrewMember : RemoteObject
     [RpcAttribute ("SpaceCenter", "CrewMember_get_Experience")]
     public float Experience {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.CrewMember))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "CrewMember_get_Experience", _args);
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            return Connection.Invoke<float> ("SpaceCenter", "CrewMember_get_Experience", _args);
         }
         set {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.CrewMember)),
-                global::KRPC.Client.Encoder.Encode (value, typeof(float))
+            var _args = new object[] {
+                this,
+                value
             };
-            connection.Invoke ("SpaceCenter", "CrewMember_set_Experience", _args);
+            Connection.Invoke ("SpaceCenter", "CrewMember_set_Experience", _args);
         }
     }
 
@@ -126,13 +120,12 @@ public class CrewMember : RemoteObject
     /// The crew member's gender.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "CrewMember_get_Gender")]
-    public global::kRPC.Client.Boost.Services.SpaceCenter.CrewMemberGender Gender {
+    public CrewMemberGender Gender {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.CrewMember))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "CrewMember_get_Gender", _args);
-            return (global::kRPC.Client.Boost.Services.SpaceCenter.CrewMemberGender)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.CrewMemberGender), connection);
+            return Connection.Invoke<CrewMemberGender> ("SpaceCenter", "CrewMember_get_Gender", _args);
         }
     }
 
@@ -142,18 +135,17 @@ public class CrewMember : RemoteObject
     [RpcAttribute ("SpaceCenter", "CrewMember_get_Name")]
     public string Name {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.CrewMember))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "CrewMember_get_Name", _args);
-            return (string)global::KRPC.Client.Encoder.Decode (_data, typeof(string), connection);
+            return Connection.Invoke<string> ("SpaceCenter", "CrewMember_get_Name", _args);
         }
         set {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.CrewMember)),
-                global::KRPC.Client.Encoder.Encode (value, typeof(string))
+            var _args = new object[] {
+                this,
+                value
             };
-            connection.Invoke ("SpaceCenter", "CrewMember_set_Name", _args);
+            Connection.Invoke ("SpaceCenter", "CrewMember_set_Name", _args);
         }
     }
 
@@ -163,11 +155,10 @@ public class CrewMember : RemoteObject
     [RpcAttribute ("SpaceCenter", "CrewMember_get_OnMission")]
     public bool OnMission {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.CrewMember))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "CrewMember_get_OnMission", _args);
-            return (bool)global::KRPC.Client.Encoder.Decode (_data, typeof(bool), connection);
+            return Connection.Invoke<bool> ("SpaceCenter", "CrewMember_get_OnMission", _args);
         }
     }
 
@@ -175,13 +166,12 @@ public class CrewMember : RemoteObject
     /// The crew member's current roster status.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "CrewMember_get_RosterStatus")]
-    public global::kRPC.Client.Boost.Services.SpaceCenter.RosterStatus RosterStatus {
+    public RosterStatus RosterStatus {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.CrewMember))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "CrewMember_get_RosterStatus", _args);
-            return (global::kRPC.Client.Boost.Services.SpaceCenter.RosterStatus)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.RosterStatus), connection);
+            return Connection.Invoke<RosterStatus> ("SpaceCenter", "CrewMember_get_RosterStatus", _args);
         }
     }
 
@@ -191,18 +181,17 @@ public class CrewMember : RemoteObject
     [RpcAttribute ("SpaceCenter", "CrewMember_get_Stupidity")]
     public float Stupidity {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.CrewMember))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "CrewMember_get_Stupidity", _args);
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            return Connection.Invoke<float> ("SpaceCenter", "CrewMember_get_Stupidity", _args);
         }
         set {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.CrewMember)),
-                global::KRPC.Client.Encoder.Encode (value, typeof(float))
+            var _args = new object[] {
+                this,
+                value
             };
-            connection.Invoke ("SpaceCenter", "CrewMember_set_Stupidity", _args);
+            Connection.Invoke ("SpaceCenter", "CrewMember_set_Stupidity", _args);
         }
     }
 
@@ -210,20 +199,19 @@ public class CrewMember : RemoteObject
     /// The crew member's suit type.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "CrewMember_get_SuitType")]
-    public global::kRPC.Client.Boost.Services.SpaceCenter.SuitType SuitType {
+    public SuitType SuitType {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.CrewMember))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "CrewMember_get_SuitType", _args);
-            return (global::kRPC.Client.Boost.Services.SpaceCenter.SuitType)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.SuitType), connection);
+            return Connection.Invoke<SuitType> ("SpaceCenter", "CrewMember_get_SuitType", _args);
         }
         set {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.CrewMember)),
-                global::KRPC.Client.Encoder.Encode (value, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.SuitType))
+            var _args = new object[] {
+                this,
+                value
             };
-            connection.Invoke ("SpaceCenter", "CrewMember_set_SuitType", _args);
+            Connection.Invoke ("SpaceCenter", "CrewMember_set_SuitType", _args);
         }
     }
 
@@ -233,11 +221,10 @@ public class CrewMember : RemoteObject
     [RpcAttribute ("SpaceCenter", "CrewMember_get_Trait")]
     public string Trait {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.CrewMember))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "CrewMember_get_Trait", _args);
-            return (string)global::KRPC.Client.Encoder.Decode (_data, typeof(string), connection);
+            return Connection.Invoke<string> ("SpaceCenter", "CrewMember_get_Trait", _args);
         }
     }
 
@@ -245,13 +232,12 @@ public class CrewMember : RemoteObject
     /// The type of crew member.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "CrewMember_get_Type")]
-    public global::kRPC.Client.Boost.Services.SpaceCenter.CrewMemberType Type {
+    public CrewMemberType Type {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.CrewMember))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "CrewMember_get_Type", _args);
-            return (global::kRPC.Client.Boost.Services.SpaceCenter.CrewMemberType)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.CrewMemberType), connection);
+            return Connection.Invoke<CrewMemberType> ("SpaceCenter", "CrewMember_get_Type", _args);
         }
     }
 
@@ -261,18 +247,17 @@ public class CrewMember : RemoteObject
     [RpcAttribute ("SpaceCenter", "CrewMember_get_Veteran")]
     public bool Veteran {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.CrewMember))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "CrewMember_get_Veteran", _args);
-            return (bool)global::KRPC.Client.Encoder.Decode (_data, typeof(bool), connection);
+            return Connection.Invoke<bool> ("SpaceCenter", "CrewMember_get_Veteran", _args);
         }
         set {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.CrewMember)),
-                global::KRPC.Client.Encoder.Encode (value, typeof(bool))
+            var _args = new object[] {
+                this,
+                value
             };
-            connection.Invoke ("SpaceCenter", "CrewMember_set_Veteran", _args);
+            Connection.Invoke ("SpaceCenter", "CrewMember_set_Veteran", _args);
         }
     }
 }

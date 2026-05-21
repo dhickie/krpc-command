@@ -1,6 +1,5 @@
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
-using Google.Protobuf;
 using kRPC.Client.Boost.Attributes;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
@@ -23,11 +22,10 @@ public class Propellant : RemoteObject
     [RpcAttribute ("SpaceCenter", "Propellant_get_CurrentAmount")]
     public double CurrentAmount {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Propellant))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Propellant_get_CurrentAmount", _args);
-            return (double)global::KRPC.Client.Encoder.Decode (_data, typeof(double), connection);
+            return Connection.Invoke<double> ("SpaceCenter", "Propellant_get_CurrentAmount", _args);
         }
     }
 
@@ -37,11 +35,10 @@ public class Propellant : RemoteObject
     [RpcAttribute ("SpaceCenter", "Propellant_get_CurrentRequirement")]
     public double CurrentRequirement {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Propellant))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Propellant_get_CurrentRequirement", _args);
-            return (double)global::KRPC.Client.Encoder.Decode (_data, typeof(double), connection);
+            return Connection.Invoke<double> ("SpaceCenter", "Propellant_get_CurrentRequirement", _args);
         }
     }
 
@@ -51,11 +48,10 @@ public class Propellant : RemoteObject
     [RpcAttribute ("SpaceCenter", "Propellant_get_DrawStackGauge")]
     public bool DrawStackGauge {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Propellant))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Propellant_get_DrawStackGauge", _args);
-            return (bool)global::KRPC.Client.Encoder.Decode (_data, typeof(bool), connection);
+            return Connection.Invoke<bool> ("SpaceCenter", "Propellant_get_DrawStackGauge", _args);
         }
     }
 
@@ -66,11 +62,10 @@ public class Propellant : RemoteObject
     [RpcAttribute ("SpaceCenter", "Propellant_get_IgnoreForIsp")]
     public bool IgnoreForIsp {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Propellant))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Propellant_get_IgnoreForIsp", _args);
-            return (bool)global::KRPC.Client.Encoder.Decode (_data, typeof(bool), connection);
+            return Connection.Invoke<bool> ("SpaceCenter", "Propellant_get_IgnoreForIsp", _args);
         }
     }
 
@@ -80,11 +75,10 @@ public class Propellant : RemoteObject
     [RpcAttribute ("SpaceCenter", "Propellant_get_IgnoreForThrustCurve")]
     public bool IgnoreForThrustCurve {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Propellant))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Propellant_get_IgnoreForThrustCurve", _args);
-            return (bool)global::KRPC.Client.Encoder.Decode (_data, typeof(bool), connection);
+            return Connection.Invoke<bool> ("SpaceCenter", "Propellant_get_IgnoreForThrustCurve", _args);
         }
     }
 
@@ -94,11 +88,10 @@ public class Propellant : RemoteObject
     [RpcAttribute ("SpaceCenter", "Propellant_get_IsDeprived")]
     public bool IsDeprived {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Propellant))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Propellant_get_IsDeprived", _args);
-            return (bool)global::KRPC.Client.Encoder.Decode (_data, typeof(bool), connection);
+            return Connection.Invoke<bool> ("SpaceCenter", "Propellant_get_IsDeprived", _args);
         }
     }
 
@@ -108,11 +101,10 @@ public class Propellant : RemoteObject
     [RpcAttribute ("SpaceCenter", "Propellant_get_Name")]
     public string Name {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Propellant))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Propellant_get_Name", _args);
-            return (string)global::KRPC.Client.Encoder.Decode (_data, typeof(string), connection);
+            return Connection.Invoke<string> ("SpaceCenter", "Propellant_get_Name", _args);
         }
     }
 
@@ -122,11 +114,10 @@ public class Propellant : RemoteObject
     [RpcAttribute ("SpaceCenter", "Propellant_get_Ratio")]
     public float Ratio {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Propellant))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Propellant_get_Ratio", _args);
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            return Connection.Invoke<float> ("SpaceCenter", "Propellant_get_Ratio", _args);
         }
     }
 
@@ -137,11 +128,10 @@ public class Propellant : RemoteObject
     [RpcAttribute ("SpaceCenter", "Propellant_get_TotalResourceAvailable")]
     public double TotalResourceAvailable {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Propellant))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Propellant_get_TotalResourceAvailable", _args);
-            return (double)global::KRPC.Client.Encoder.Decode (_data, typeof(double), connection);
+            return Connection.Invoke<double> ("SpaceCenter", "Propellant_get_TotalResourceAvailable", _args);
         }
     }
 
@@ -152,11 +142,10 @@ public class Propellant : RemoteObject
     [RpcAttribute ("SpaceCenter", "Propellant_get_TotalResourceCapacity")]
     public double TotalResourceCapacity {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Propellant))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Propellant_get_TotalResourceCapacity", _args);
-            return (double)global::KRPC.Client.Encoder.Decode (_data, typeof(double), connection);
+            return Connection.Invoke<double> ("SpaceCenter", "Propellant_get_TotalResourceCapacity", _args);
         }
     }
 }

@@ -1,7 +1,6 @@
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
-using Google.Protobuf;
-using systemAlias = System;
+using System;
 using kRPC.Client.Boost.Attributes;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
@@ -24,14 +23,13 @@ public class DockingPort : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// direction is in.</param>
     [RpcAttribute ("SpaceCenter", "DockingPort_Direction")]
-    public systemAlias::Tuple<double,double,double> Direction (global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame referenceFrame)
+    public Tuple<double,double,double> Direction (ReferenceFrame referenceFrame)
     {
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.DockingPort)),
-            global::KRPC.Client.Encoder.Encode (referenceFrame, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame))
+        var _args = new object[] {
+            this,
+            referenceFrame
         };
-        ByteString _data = connection.Invoke ("SpaceCenter", "DockingPort_Direction", _args);
-        return (systemAlias::Tuple<double,double,double>)global::KRPC.Client.Encoder.Decode (_data, typeof(systemAlias::Tuple<double,double,double>), connection);
+        return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "DockingPort_Direction", _args);
     }
 
     /// <summary>
@@ -41,14 +39,13 @@ public class DockingPort : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// position vector is in.</param>
     [RpcAttribute ("SpaceCenter", "DockingPort_Position")]
-    public systemAlias::Tuple<double,double,double> Position (global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame referenceFrame)
+    public Tuple<double,double,double> Position (ReferenceFrame referenceFrame)
     {
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.DockingPort)),
-            global::KRPC.Client.Encoder.Encode (referenceFrame, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame))
+        var _args = new object[] {
+            this,
+            referenceFrame
         };
-        ByteString _data = connection.Invoke ("SpaceCenter", "DockingPort_Position", _args);
-        return (systemAlias::Tuple<double,double,double>)global::KRPC.Client.Encoder.Decode (_data, typeof(systemAlias::Tuple<double,double,double>), connection);
+        return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "DockingPort_Position", _args);
     }
 
     /// <summary>
@@ -58,14 +55,13 @@ public class DockingPort : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// rotation is in.</param>
     [RpcAttribute ("SpaceCenter", "DockingPort_Rotation")]
-    public systemAlias::Tuple<double,double,double,double> Rotation (global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame referenceFrame)
+    public Tuple<double,double,double,double> Rotation (ReferenceFrame referenceFrame)
     {
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.DockingPort)),
-            global::KRPC.Client.Encoder.Encode (referenceFrame, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame))
+        var _args = new object[] {
+            this,
+            referenceFrame
         };
-        ByteString _data = connection.Invoke ("SpaceCenter", "DockingPort_Rotation", _args);
-        return (systemAlias::Tuple<double,double,double,double>)global::KRPC.Client.Encoder.Decode (_data, typeof(systemAlias::Tuple<double,double,double,double>), connection);
+        return Connection.Invoke<Tuple<double,double,double,double>> ("SpaceCenter", "DockingPort_Rotation", _args);
     }
 
     /// <summary>
@@ -79,13 +75,12 @@ public class DockingPort : RemoteObject
     /// <see cref="M:SpaceCenter.ActiveVessel" /> no longer refer to the active vessel.
     /// </remarks>
     [RpcAttribute ("SpaceCenter", "DockingPort_Undock")]
-    public global::kRPC.Client.Boost.Services.SpaceCenter.Vessel Undock ()
+    public Vessel Undock ()
     {
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.DockingPort))
+        var _args = new object[] {
+            this
         };
-        ByteString _data = connection.Invoke ("SpaceCenter", "DockingPort_Undock", _args);
-        return (global::kRPC.Client.Boost.Services.SpaceCenter.Vessel)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Vessel), connection);
+        return Connection.Invoke<Vessel> ("SpaceCenter", "DockingPort_Undock", _args);
     }
 
     /// <summary>
@@ -94,11 +89,10 @@ public class DockingPort : RemoteObject
     [RpcAttribute ("SpaceCenter", "DockingPort_get_CanRotate")]
     public bool CanRotate {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.DockingPort))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "DockingPort_get_CanRotate", _args);
-            return (bool)global::KRPC.Client.Encoder.Decode (_data, typeof(bool), connection);
+            return Connection.Invoke<bool> ("SpaceCenter", "DockingPort_get_CanRotate", _args);
         }
     }
 
@@ -107,13 +101,12 @@ public class DockingPort : RemoteObject
     /// docking port is not docked to anything.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "DockingPort_get_DockedPart")]
-    public global::kRPC.Client.Boost.Services.SpaceCenter.Part DockedPart {
+    public Part DockedPart {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.DockingPort))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "DockingPort_get_DockedPart", _args);
-            return (global::kRPC.Client.Boost.Services.SpaceCenter.Part)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Part), connection);
+            return Connection.Invoke<Part> ("SpaceCenter", "DockingPort_get_DockedPart", _args);
         }
     }
 
@@ -123,11 +116,10 @@ public class DockingPort : RemoteObject
     [RpcAttribute ("SpaceCenter", "DockingPort_get_HasShield")]
     public bool HasShield {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.DockingPort))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "DockingPort_get_HasShield", _args);
-            return (bool)global::KRPC.Client.Encoder.Decode (_data, typeof(bool), connection);
+            return Connection.Invoke<bool> ("SpaceCenter", "DockingPort_get_HasShield", _args);
         }
     }
 
@@ -137,11 +129,10 @@ public class DockingPort : RemoteObject
     [RpcAttribute ("SpaceCenter", "DockingPort_get_MaximumRotation")]
     public float MaximumRotation {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.DockingPort))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "DockingPort_get_MaximumRotation", _args);
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            return Connection.Invoke<float> ("SpaceCenter", "DockingPort_get_MaximumRotation", _args);
         }
     }
 
@@ -151,11 +142,10 @@ public class DockingPort : RemoteObject
     [RpcAttribute ("SpaceCenter", "DockingPort_get_MinimumRotation")]
     public float MinimumRotation {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.DockingPort))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "DockingPort_get_MinimumRotation", _args);
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            return Connection.Invoke<float> ("SpaceCenter", "DockingPort_get_MinimumRotation", _args);
         }
     }
 
@@ -163,13 +153,12 @@ public class DockingPort : RemoteObject
     /// The part object for this docking port.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "DockingPort_get_Part")]
-    public global::kRPC.Client.Boost.Services.SpaceCenter.Part Part {
+    public Part Part {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.DockingPort))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "DockingPort_get_Part", _args);
-            return (global::kRPC.Client.Boost.Services.SpaceCenter.Part)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Part), connection);
+            return Connection.Invoke<Part> ("SpaceCenter", "DockingPort_get_Part", _args);
         }
     }
 
@@ -180,11 +169,10 @@ public class DockingPort : RemoteObject
     [RpcAttribute ("SpaceCenter", "DockingPort_get_ReengageDistance")]
     public float ReengageDistance {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.DockingPort))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "DockingPort_get_ReengageDistance", _args);
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            return Connection.Invoke<float> ("SpaceCenter", "DockingPort_get_ReengageDistance", _args);
         }
     }
 
@@ -201,13 +189,12 @@ public class DockingPort : RemoteObject
     /// for the part, returned by <see cref="M:SpaceCenter.Part.ReferenceFrame" />.
     /// </remarks>
     [RpcAttribute ("SpaceCenter", "DockingPort_get_ReferenceFrame")]
-    public global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame ReferenceFrame {
+    public ReferenceFrame ReferenceFrame {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.DockingPort))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "DockingPort_get_ReferenceFrame", _args);
-            return (global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame), connection);
+            return Connection.Invoke<ReferenceFrame> ("SpaceCenter", "DockingPort_get_ReferenceFrame", _args);
         }
     }
 
@@ -217,18 +204,17 @@ public class DockingPort : RemoteObject
     [RpcAttribute ("SpaceCenter", "DockingPort_get_RotationLocked")]
     public bool RotationLocked {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.DockingPort))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "DockingPort_get_RotationLocked", _args);
-            return (bool)global::KRPC.Client.Encoder.Decode (_data, typeof(bool), connection);
+            return Connection.Invoke<bool> ("SpaceCenter", "DockingPort_get_RotationLocked", _args);
         }
         set {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.DockingPort)),
-                global::KRPC.Client.Encoder.Encode (value, typeof(bool))
+            var _args = new object[] {
+                this,
+                value
             };
-            connection.Invoke ("SpaceCenter", "DockingPort_set_RotationLocked", _args);
+            Connection.Invoke ("SpaceCenter", "DockingPort_set_RotationLocked", _args);
         }
     }
 
@@ -238,18 +224,17 @@ public class DockingPort : RemoteObject
     [RpcAttribute ("SpaceCenter", "DockingPort_get_RotationTarget")]
     public float RotationTarget {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.DockingPort))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "DockingPort_get_RotationTarget", _args);
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            return Connection.Invoke<float> ("SpaceCenter", "DockingPort_get_RotationTarget", _args);
         }
         set {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.DockingPort)),
-                global::KRPC.Client.Encoder.Encode (value, typeof(float))
+            var _args = new object[] {
+                this,
+                value
             };
-            connection.Invoke ("SpaceCenter", "DockingPort_set_RotationTarget", _args);
+            Connection.Invoke ("SpaceCenter", "DockingPort_set_RotationTarget", _args);
         }
     }
 
@@ -264,18 +249,17 @@ public class DockingPort : RemoteObject
     [RpcAttribute ("SpaceCenter", "DockingPort_get_Shielded")]
     public bool Shielded {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.DockingPort))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "DockingPort_get_Shielded", _args);
-            return (bool)global::KRPC.Client.Encoder.Decode (_data, typeof(bool), connection);
+            return Connection.Invoke<bool> ("SpaceCenter", "DockingPort_get_Shielded", _args);
         }
         set {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.DockingPort)),
-                global::KRPC.Client.Encoder.Encode (value, typeof(bool))
+            var _args = new object[] {
+                this,
+                value
             };
-            connection.Invoke ("SpaceCenter", "DockingPort_set_Shielded", _args);
+            Connection.Invoke ("SpaceCenter", "DockingPort_set_Shielded", _args);
         }
     }
 
@@ -283,13 +267,12 @@ public class DockingPort : RemoteObject
     /// The current state of the docking port.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "DockingPort_get_State")]
-    public global::kRPC.Client.Boost.Services.SpaceCenter.DockingPortState State {
+    public DockingPortState State {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.DockingPort))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "DockingPort_get_State", _args);
-            return (global::kRPC.Client.Boost.Services.SpaceCenter.DockingPortState)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.DockingPortState), connection);
+            return Connection.Invoke<DockingPortState> ("SpaceCenter", "DockingPort_get_State", _args);
         }
     }
 }

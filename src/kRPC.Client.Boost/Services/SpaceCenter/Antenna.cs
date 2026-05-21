@@ -1,6 +1,5 @@
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
-using Google.Protobuf;
 using kRPC.Client.Boost.Attributes;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
@@ -23,10 +22,10 @@ public class Antenna : RemoteObject
     [RpcAttribute ("SpaceCenter", "Antenna_Cancel")]
     public void Cancel ()
     {
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Antenna))
+        var _args = new object[] {
+            this
         };
-        connection.Invoke ("SpaceCenter", "Antenna_Cancel", _args);
+        Connection.Invoke ("SpaceCenter", "Antenna_Cancel", _args);
     }
 
     /// <summary>
@@ -35,10 +34,10 @@ public class Antenna : RemoteObject
     [RpcAttribute ("SpaceCenter", "Antenna_Transmit")]
     public void Transmit ()
     {
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Antenna))
+        var _args = new object[] {
+            this
         };
-        connection.Invoke ("SpaceCenter", "Antenna_Transmit", _args);
+        Connection.Invoke ("SpaceCenter", "Antenna_Transmit", _args);
     }
 
     /// <summary>
@@ -47,18 +46,17 @@ public class Antenna : RemoteObject
     [RpcAttribute ("SpaceCenter", "Antenna_get_AllowPartial")]
     public bool AllowPartial {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Antenna))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Antenna_get_AllowPartial", _args);
-            return (bool)global::KRPC.Client.Encoder.Decode (_data, typeof(bool), connection);
+            return Connection.Invoke<bool> ("SpaceCenter", "Antenna_get_AllowPartial", _args);
         }
         set {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Antenna)),
-                global::KRPC.Client.Encoder.Encode (value, typeof(bool))
+            var _args = new object[] {
+                this,
+                value
             };
-            connection.Invoke ("SpaceCenter", "Antenna_set_AllowPartial", _args);
+            Connection.Invoke ("SpaceCenter", "Antenna_set_AllowPartial", _args);
         }
     }
 
@@ -68,11 +66,10 @@ public class Antenna : RemoteObject
     [RpcAttribute ("SpaceCenter", "Antenna_get_CanTransmit")]
     public bool CanTransmit {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Antenna))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Antenna_get_CanTransmit", _args);
-            return (bool)global::KRPC.Client.Encoder.Decode (_data, typeof(bool), connection);
+            return Connection.Invoke<bool> ("SpaceCenter", "Antenna_get_CanTransmit", _args);
         }
     }
 
@@ -83,11 +80,10 @@ public class Antenna : RemoteObject
     [RpcAttribute ("SpaceCenter", "Antenna_get_Combinable")]
     public bool Combinable {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Antenna))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Antenna_get_Combinable", _args);
-            return (bool)global::KRPC.Client.Encoder.Decode (_data, typeof(bool), connection);
+            return Connection.Invoke<bool> ("SpaceCenter", "Antenna_get_Combinable", _args);
         }
     }
 
@@ -97,11 +93,10 @@ public class Antenna : RemoteObject
     [RpcAttribute ("SpaceCenter", "Antenna_get_CombinableExponent")]
     public double CombinableExponent {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Antenna))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Antenna_get_CombinableExponent", _args);
-            return (double)global::KRPC.Client.Encoder.Decode (_data, typeof(double), connection);
+            return Connection.Invoke<double> ("SpaceCenter", "Antenna_get_CombinableExponent", _args);
         }
     }
 
@@ -111,11 +106,10 @@ public class Antenna : RemoteObject
     [RpcAttribute ("SpaceCenter", "Antenna_get_Deployable")]
     public bool Deployable {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Antenna))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Antenna_get_Deployable", _args);
-            return (bool)global::KRPC.Client.Encoder.Decode (_data, typeof(bool), connection);
+            return Connection.Invoke<bool> ("SpaceCenter", "Antenna_get_Deployable", _args);
         }
     }
 
@@ -129,18 +123,17 @@ public class Antenna : RemoteObject
     [RpcAttribute ("SpaceCenter", "Antenna_get_Deployed")]
     public bool Deployed {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Antenna))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Antenna_get_Deployed", _args);
-            return (bool)global::KRPC.Client.Encoder.Decode (_data, typeof(bool), connection);
+            return Connection.Invoke<bool> ("SpaceCenter", "Antenna_get_Deployed", _args);
         }
         set {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Antenna)),
-                global::KRPC.Client.Encoder.Encode (value, typeof(bool))
+            var _args = new object[] {
+                this,
+                value
             };
-            connection.Invoke ("SpaceCenter", "Antenna_set_Deployed", _args);
+            Connection.Invoke ("SpaceCenter", "Antenna_set_Deployed", _args);
         }
     }
 
@@ -150,11 +143,10 @@ public class Antenna : RemoteObject
     [RpcAttribute ("SpaceCenter", "Antenna_get_PacketInterval")]
     public float PacketInterval {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Antenna))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Antenna_get_PacketInterval", _args);
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            return Connection.Invoke<float> ("SpaceCenter", "Antenna_get_PacketInterval", _args);
         }
     }
 
@@ -164,11 +156,10 @@ public class Antenna : RemoteObject
     [RpcAttribute ("SpaceCenter", "Antenna_get_PacketResourceCost")]
     public double PacketResourceCost {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Antenna))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Antenna_get_PacketResourceCost", _args);
-            return (double)global::KRPC.Client.Encoder.Decode (_data, typeof(double), connection);
+            return Connection.Invoke<double> ("SpaceCenter", "Antenna_get_PacketResourceCost", _args);
         }
     }
 
@@ -178,11 +169,10 @@ public class Antenna : RemoteObject
     [RpcAttribute ("SpaceCenter", "Antenna_get_PacketSize")]
     public float PacketSize {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Antenna))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Antenna_get_PacketSize", _args);
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            return Connection.Invoke<float> ("SpaceCenter", "Antenna_get_PacketSize", _args);
         }
     }
 
@@ -190,13 +180,12 @@ public class Antenna : RemoteObject
     /// The part object for this antenna.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "Antenna_get_Part")]
-    public global::kRPC.Client.Boost.Services.SpaceCenter.Part Part {
+    public Part Part {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Antenna))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Antenna_get_Part", _args);
-            return (global::kRPC.Client.Boost.Services.SpaceCenter.Part)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Part), connection);
+            return Connection.Invoke<Part> ("SpaceCenter", "Antenna_get_Part", _args);
         }
     }
 
@@ -206,11 +195,10 @@ public class Antenna : RemoteObject
     [RpcAttribute ("SpaceCenter", "Antenna_get_Power")]
     public double Power {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Antenna))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Antenna_get_Power", _args);
-            return (double)global::KRPC.Client.Encoder.Decode (_data, typeof(double), connection);
+            return Connection.Invoke<double> ("SpaceCenter", "Antenna_get_Power", _args);
         }
     }
 
@@ -218,13 +206,12 @@ public class Antenna : RemoteObject
     /// The current state of the antenna.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "Antenna_get_State")]
-    public global::kRPC.Client.Boost.Services.SpaceCenter.AntennaState State {
+    public AntennaState State {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Antenna))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Antenna_get_State", _args);
-            return (global::kRPC.Client.Boost.Services.SpaceCenter.AntennaState)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.AntennaState), connection);
+            return Connection.Invoke<AntennaState> ("SpaceCenter", "Antenna_get_State", _args);
         }
     }
 }

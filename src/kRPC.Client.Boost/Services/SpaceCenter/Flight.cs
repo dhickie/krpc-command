@@ -1,7 +1,6 @@
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
-using Google.Protobuf;
-using systemAlias = System;
+using System;
 using kRPC.Client.Boost.Attributes;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
@@ -32,16 +31,15 @@ public class Flight : RemoteObject
     /// <returns>A vector pointing in the direction that the force acts,
     /// with its magnitude equal to the strength of the force in Newtons.</returns>
     [RpcAttribute ("SpaceCenter", "Flight_SimulateAerodynamicForceAt")]
-    public systemAlias::Tuple<double,double,double> SimulateAerodynamicForceAt (global::kRPC.Client.Boost.Services.SpaceCenter.CelestialBody body, systemAlias::Tuple<double,double,double> position, systemAlias::Tuple<double,double,double> velocity)
+    public Tuple<double,double,double> SimulateAerodynamicForceAt (CelestialBody body, Tuple<double,double,double> position, Tuple<double,double,double> velocity)
     {
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Flight)),
-            global::KRPC.Client.Encoder.Encode (body, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.CelestialBody)),
-            global::KRPC.Client.Encoder.Encode (position, typeof(systemAlias::Tuple<double,double,double>)),
-            global::KRPC.Client.Encoder.Encode (velocity, typeof(systemAlias::Tuple<double,double,double>))
+        var _args = new object[] {
+            this,
+            body,
+            position,
+            velocity
         };
-        ByteString _data = connection.Invoke ("SpaceCenter", "Flight_SimulateAerodynamicForceAt", _args);
-        return (systemAlias::Tuple<double,double,double>)global::KRPC.Client.Encoder.Decode (_data, typeof(systemAlias::Tuple<double,double,double>), connection);
+        return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Flight_SimulateAerodynamicForceAt", _args);
     }
 
     /// <summary>
@@ -51,13 +49,12 @@ public class Flight : RemoteObject
     /// <returns>A vector pointing in the direction that the force acts,
     /// with its magnitude equal to the strength of the force in Newtons.</returns>
     [RpcAttribute ("SpaceCenter", "Flight_get_AerodynamicForce")]
-    public systemAlias::Tuple<double,double,double> AerodynamicForce {
+    public Tuple<double,double,double> AerodynamicForce {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Flight))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Flight_get_AerodynamicForce", _args);
-            return (systemAlias::Tuple<double,double,double>)global::KRPC.Client.Encoder.Decode (_data, typeof(systemAlias::Tuple<double,double,double>), connection);
+            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Flight_get_AerodynamicForce", _args);
         }
     }
 
@@ -68,11 +65,10 @@ public class Flight : RemoteObject
     [RpcAttribute ("SpaceCenter", "Flight_get_AngleOfAttack")]
     public float AngleOfAttack {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Flight))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Flight_get_AngleOfAttack", _args);
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            return Connection.Invoke<float> ("SpaceCenter", "Flight_get_AngleOfAttack", _args);
         }
     }
 
@@ -82,13 +78,12 @@ public class Flight : RemoteObject
     /// </summary>
     /// <returns>The direction as a unit vector.</returns>
     [RpcAttribute ("SpaceCenter", "Flight_get_AntiNormal")]
-    public systemAlias::Tuple<double,double,double> AntiNormal {
+    public Tuple<double,double,double> AntiNormal {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Flight))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Flight_get_AntiNormal", _args);
-            return (systemAlias::Tuple<double,double,double>)global::KRPC.Client.Encoder.Decode (_data, typeof(systemAlias::Tuple<double,double,double>), connection);
+            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Flight_get_AntiNormal", _args);
         }
     }
 
@@ -98,13 +93,12 @@ public class Flight : RemoteObject
     /// </summary>
     /// <returns>The direction as a unit vector.</returns>
     [RpcAttribute ("SpaceCenter", "Flight_get_AntiRadial")]
-    public systemAlias::Tuple<double,double,double> AntiRadial {
+    public Tuple<double,double,double> AntiRadial {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Flight))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Flight_get_AntiRadial", _args);
-            return (systemAlias::Tuple<double,double,double>)global::KRPC.Client.Encoder.Decode (_data, typeof(systemAlias::Tuple<double,double,double>), connection);
+            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Flight_get_AntiRadial", _args);
         }
     }
 
@@ -114,11 +108,10 @@ public class Flight : RemoteObject
     [RpcAttribute ("SpaceCenter", "Flight_get_AtmosphereDensity")]
     public float AtmosphereDensity {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Flight))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Flight_get_AtmosphereDensity", _args);
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            return Connection.Invoke<float> ("SpaceCenter", "Flight_get_AtmosphereDensity", _args);
         }
     }
 
@@ -131,11 +124,10 @@ public class Flight : RemoteObject
     [RpcAttribute ("SpaceCenter", "Flight_get_BallisticCoefficient")]
     public float BallisticCoefficient {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Flight))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Flight_get_BallisticCoefficient", _args);
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            return Connection.Invoke<float> ("SpaceCenter", "Flight_get_BallisticCoefficient", _args);
         }
     }
 
@@ -146,11 +138,10 @@ public class Flight : RemoteObject
     [RpcAttribute ("SpaceCenter", "Flight_get_BedrockAltitude")]
     public double BedrockAltitude {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Flight))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Flight_get_BedrockAltitude", _args);
-            return (double)global::KRPC.Client.Encoder.Decode (_data, typeof(double), connection);
+            return Connection.Invoke<double> ("SpaceCenter", "Flight_get_BedrockAltitude", _args);
         }
     }
 
@@ -159,13 +150,12 @@ public class Flight : RemoteObject
     /// in the reference frame <see cref="T:SpaceCenter.ReferenceFrame" /></summary>
     /// <returns>The position as a vector.</returns>
     [RpcAttribute ("SpaceCenter", "Flight_get_CenterOfMass")]
-    public systemAlias::Tuple<double,double,double> CenterOfMass {
+    public Tuple<double,double,double> CenterOfMass {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Flight))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Flight_get_CenterOfMass", _args);
-            return (systemAlias::Tuple<double,double,double>)global::KRPC.Client.Encoder.Decode (_data, typeof(systemAlias::Tuple<double,double,double>), connection);
+            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Flight_get_CenterOfMass", _args);
         }
     }
 
@@ -175,13 +165,12 @@ public class Flight : RemoteObject
     /// </summary>
     /// <returns>The direction as a unit vector.</returns>
     [RpcAttribute ("SpaceCenter", "Flight_get_Direction")]
-    public systemAlias::Tuple<double,double,double> Direction {
+    public Tuple<double,double,double> Direction {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Flight))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Flight_get_Direction", _args);
-            return (systemAlias::Tuple<double,double,double>)global::KRPC.Client.Encoder.Decode (_data, typeof(systemAlias::Tuple<double,double,double>), connection);
+            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Flight_get_Direction", _args);
         }
     }
 
@@ -191,13 +180,12 @@ public class Flight : RemoteObject
     /// <returns>A vector pointing in the direction of the force, with its magnitude
     /// equal to the strength of the force in Newtons.</returns>
     [RpcAttribute ("SpaceCenter", "Flight_get_Drag")]
-    public systemAlias::Tuple<double,double,double> Drag {
+    public Tuple<double,double,double> Drag {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Flight))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Flight_get_Drag", _args);
-            return (systemAlias::Tuple<double,double,double>)global::KRPC.Client.Encoder.Decode (_data, typeof(systemAlias::Tuple<double,double,double>), connection);
+            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Flight_get_Drag", _args);
         }
     }
 
@@ -211,11 +199,10 @@ public class Flight : RemoteObject
     [RpcAttribute ("SpaceCenter", "Flight_get_DragCoefficient")]
     public float DragCoefficient {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Flight))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Flight_get_DragCoefficient", _args);
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            return Connection.Invoke<float> ("SpaceCenter", "Flight_get_DragCoefficient", _args);
         }
     }
 
@@ -228,11 +215,10 @@ public class Flight : RemoteObject
     [RpcAttribute ("SpaceCenter", "Flight_get_DynamicPressure")]
     public float DynamicPressure {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Flight))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Flight_get_DynamicPressure", _args);
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            return Connection.Invoke<float> ("SpaceCenter", "Flight_get_DynamicPressure", _args);
         }
     }
 
@@ -243,11 +229,10 @@ public class Flight : RemoteObject
     [RpcAttribute ("SpaceCenter", "Flight_get_Elevation")]
     public double Elevation {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Flight))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Flight_get_Elevation", _args);
-            return (double)global::KRPC.Client.Encoder.Decode (_data, typeof(double), connection);
+            return Connection.Invoke<double> ("SpaceCenter", "Flight_get_Elevation", _args);
         }
     }
 
@@ -258,11 +243,10 @@ public class Flight : RemoteObject
     [RpcAttribute ("SpaceCenter", "Flight_get_EquivalentAirSpeed")]
     public float EquivalentAirSpeed {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Flight))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Flight_get_EquivalentAirSpeed", _args);
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            return Connection.Invoke<float> ("SpaceCenter", "Flight_get_EquivalentAirSpeed", _args);
         }
     }
 
@@ -272,11 +256,10 @@ public class Flight : RemoteObject
     [RpcAttribute ("SpaceCenter", "Flight_get_GForce")]
     public float GForce {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Flight))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Flight_get_GForce", _args);
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            return Connection.Invoke<float> ("SpaceCenter", "Flight_get_GForce", _args);
         }
     }
 
@@ -287,11 +270,10 @@ public class Flight : RemoteObject
     [RpcAttribute ("SpaceCenter", "Flight_get_Heading")]
     public float Heading {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Flight))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Flight_get_Heading", _args);
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            return Connection.Invoke<float> ("SpaceCenter", "Flight_get_Heading", _args);
         }
     }
 
@@ -302,11 +284,10 @@ public class Flight : RemoteObject
     [RpcAttribute ("SpaceCenter", "Flight_get_HorizontalSpeed")]
     public double HorizontalSpeed {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Flight))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Flight_get_HorizontalSpeed", _args);
-            return (double)global::KRPC.Client.Encoder.Decode (_data, typeof(double), connection);
+            return Connection.Invoke<double> ("SpaceCenter", "Flight_get_HorizontalSpeed", _args);
         }
     }
 
@@ -316,11 +297,10 @@ public class Flight : RemoteObject
     [RpcAttribute ("SpaceCenter", "Flight_get_Latitude")]
     public double Latitude {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Flight))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Flight_get_Latitude", _args);
-            return (double)global::KRPC.Client.Encoder.Decode (_data, typeof(double), connection);
+            return Connection.Invoke<double> ("SpaceCenter", "Flight_get_Latitude", _args);
         }
     }
 
@@ -331,13 +311,12 @@ public class Flight : RemoteObject
     /// <returns>A vector pointing in the direction that the force acts,
     /// with its magnitude equal to the strength of the force in Newtons.</returns>
     [RpcAttribute ("SpaceCenter", "Flight_get_Lift")]
-    public systemAlias::Tuple<double,double,double> Lift {
+    public Tuple<double,double,double> Lift {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Flight))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Flight_get_Lift", _args);
-            return (systemAlias::Tuple<double,double,double>)global::KRPC.Client.Encoder.Decode (_data, typeof(systemAlias::Tuple<double,double,double>), connection);
+            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Flight_get_Lift", _args);
         }
     }
 
@@ -351,11 +330,10 @@ public class Flight : RemoteObject
     [RpcAttribute ("SpaceCenter", "Flight_get_LiftCoefficient")]
     public float LiftCoefficient {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Flight))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Flight_get_LiftCoefficient", _args);
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            return Connection.Invoke<float> ("SpaceCenter", "Flight_get_LiftCoefficient", _args);
         }
     }
 
@@ -365,11 +343,10 @@ public class Flight : RemoteObject
     [RpcAttribute ("SpaceCenter", "Flight_get_Longitude")]
     public double Longitude {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Flight))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Flight_get_Longitude", _args);
-            return (double)global::KRPC.Client.Encoder.Decode (_data, typeof(double), connection);
+            return Connection.Invoke<double> ("SpaceCenter", "Flight_get_Longitude", _args);
         }
     }
 
@@ -379,11 +356,10 @@ public class Flight : RemoteObject
     [RpcAttribute ("SpaceCenter", "Flight_get_Mach")]
     public float Mach {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Flight))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Flight_get_Mach", _args);
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            return Connection.Invoke<float> ("SpaceCenter", "Flight_get_Mach", _args);
         }
     }
 
@@ -394,11 +370,10 @@ public class Flight : RemoteObject
     [RpcAttribute ("SpaceCenter", "Flight_get_MeanAltitude")]
     public double MeanAltitude {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Flight))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Flight_get_MeanAltitude", _args);
-            return (double)global::KRPC.Client.Encoder.Decode (_data, typeof(double), connection);
+            return Connection.Invoke<double> ("SpaceCenter", "Flight_get_MeanAltitude", _args);
         }
     }
 
@@ -408,13 +383,12 @@ public class Flight : RemoteObject
     /// </summary>
     /// <returns>The direction as a unit vector.</returns>
     [RpcAttribute ("SpaceCenter", "Flight_get_Normal")]
-    public systemAlias::Tuple<double,double,double> Normal {
+    public Tuple<double,double,double> Normal {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Flight))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Flight_get_Normal", _args);
-            return (systemAlias::Tuple<double,double,double>)global::KRPC.Client.Encoder.Decode (_data, typeof(systemAlias::Tuple<double,double,double>), connection);
+            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Flight_get_Normal", _args);
         }
     }
 
@@ -425,11 +399,10 @@ public class Flight : RemoteObject
     [RpcAttribute ("SpaceCenter", "Flight_get_Pitch")]
     public float Pitch {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Flight))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Flight_get_Pitch", _args);
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            return Connection.Invoke<float> ("SpaceCenter", "Flight_get_Pitch", _args);
         }
     }
 
@@ -439,13 +412,12 @@ public class Flight : RemoteObject
     /// </summary>
     /// <returns>The direction as a unit vector.</returns>
     [RpcAttribute ("SpaceCenter", "Flight_get_Prograde")]
-    public systemAlias::Tuple<double,double,double> Prograde {
+    public Tuple<double,double,double> Prograde {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Flight))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Flight_get_Prograde", _args);
-            return (systemAlias::Tuple<double,double,double>)global::KRPC.Client.Encoder.Decode (_data, typeof(systemAlias::Tuple<double,double,double>), connection);
+            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Flight_get_Prograde", _args);
         }
     }
 
@@ -455,13 +427,12 @@ public class Flight : RemoteObject
     /// </summary>
     /// <returns>The direction as a unit vector.</returns>
     [RpcAttribute ("SpaceCenter", "Flight_get_Radial")]
-    public systemAlias::Tuple<double,double,double> Radial {
+    public Tuple<double,double,double> Radial {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Flight))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Flight_get_Radial", _args);
-            return (systemAlias::Tuple<double,double,double>)global::KRPC.Client.Encoder.Decode (_data, typeof(systemAlias::Tuple<double,double,double>), connection);
+            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Flight_get_Radial", _args);
         }
     }
 
@@ -471,13 +442,12 @@ public class Flight : RemoteObject
     /// </summary>
     /// <returns>The direction as a unit vector.</returns>
     [RpcAttribute ("SpaceCenter", "Flight_get_Retrograde")]
-    public systemAlias::Tuple<double,double,double> Retrograde {
+    public Tuple<double,double,double> Retrograde {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Flight))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Flight_get_Retrograde", _args);
-            return (systemAlias::Tuple<double,double,double>)global::KRPC.Client.Encoder.Decode (_data, typeof(systemAlias::Tuple<double,double,double>), connection);
+            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Flight_get_Retrograde", _args);
         }
     }
 
@@ -490,11 +460,10 @@ public class Flight : RemoteObject
     [RpcAttribute ("SpaceCenter", "Flight_get_ReynoldsNumber")]
     public float ReynoldsNumber {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Flight))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Flight_get_ReynoldsNumber", _args);
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            return Connection.Invoke<float> ("SpaceCenter", "Flight_get_ReynoldsNumber", _args);
         }
     }
 
@@ -505,11 +474,10 @@ public class Flight : RemoteObject
     [RpcAttribute ("SpaceCenter", "Flight_get_Roll")]
     public float Roll {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Flight))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Flight_get_Roll", _args);
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            return Connection.Invoke<float> ("SpaceCenter", "Flight_get_Roll", _args);
         }
     }
 
@@ -517,13 +485,12 @@ public class Flight : RemoteObject
     /// The rotation of the vessel, in the reference frame <see cref="T:SpaceCenter.ReferenceFrame" /></summary>
     /// <returns>The rotation as a quaternion of the form <math>(x, y, z, w)</math>.</returns>
     [RpcAttribute ("SpaceCenter", "Flight_get_Rotation")]
-    public systemAlias::Tuple<double,double,double,double> Rotation {
+    public Tuple<double,double,double,double> Rotation {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Flight))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Flight_get_Rotation", _args);
-            return (systemAlias::Tuple<double,double,double,double>)global::KRPC.Client.Encoder.Decode (_data, typeof(systemAlias::Tuple<double,double,double,double>), connection);
+            return Connection.Invoke<Tuple<double,double,double,double>> ("SpaceCenter", "Flight_get_Rotation", _args);
         }
     }
 
@@ -533,11 +500,10 @@ public class Flight : RemoteObject
     [RpcAttribute ("SpaceCenter", "Flight_get_SideslipAngle")]
     public float SideslipAngle {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Flight))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Flight_get_SideslipAngle", _args);
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            return Connection.Invoke<float> ("SpaceCenter", "Flight_get_SideslipAngle", _args);
         }
     }
 
@@ -548,11 +514,10 @@ public class Flight : RemoteObject
     [RpcAttribute ("SpaceCenter", "Flight_get_Speed")]
     public double Speed {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Flight))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Flight_get_Speed", _args);
-            return (double)global::KRPC.Client.Encoder.Decode (_data, typeof(double), connection);
+            return Connection.Invoke<double> ("SpaceCenter", "Flight_get_Speed", _args);
         }
     }
 
@@ -562,11 +527,10 @@ public class Flight : RemoteObject
     [RpcAttribute ("SpaceCenter", "Flight_get_SpeedOfSound")]
     public float SpeedOfSound {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Flight))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Flight_get_SpeedOfSound", _args);
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            return Connection.Invoke<float> ("SpaceCenter", "Flight_get_SpeedOfSound", _args);
         }
     }
 
@@ -580,11 +544,10 @@ public class Flight : RemoteObject
     [RpcAttribute ("SpaceCenter", "Flight_get_StallFraction")]
     public float StallFraction {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Flight))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Flight_get_StallFraction", _args);
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            return Connection.Invoke<float> ("SpaceCenter", "Flight_get_StallFraction", _args);
         }
     }
 
@@ -595,11 +558,10 @@ public class Flight : RemoteObject
     [RpcAttribute ("SpaceCenter", "Flight_get_StaticAirTemperature")]
     public float StaticAirTemperature {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Flight))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Flight_get_StaticAirTemperature", _args);
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            return Connection.Invoke<float> ("SpaceCenter", "Flight_get_StaticAirTemperature", _args);
         }
     }
 
@@ -609,11 +571,10 @@ public class Flight : RemoteObject
     [RpcAttribute ("SpaceCenter", "Flight_get_StaticPressure")]
     public float StaticPressure {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Flight))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Flight_get_StaticPressure", _args);
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            return Connection.Invoke<float> ("SpaceCenter", "Flight_get_StaticPressure", _args);
         }
     }
 
@@ -623,11 +584,10 @@ public class Flight : RemoteObject
     [RpcAttribute ("SpaceCenter", "Flight_get_StaticPressureAtMSL")]
     public float StaticPressureAtMSL {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Flight))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Flight_get_StaticPressureAtMSL", _args);
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            return Connection.Invoke<float> ("SpaceCenter", "Flight_get_StaticPressureAtMSL", _args);
         }
     }
 
@@ -638,11 +598,10 @@ public class Flight : RemoteObject
     [RpcAttribute ("SpaceCenter", "Flight_get_SurfaceAltitude")]
     public double SurfaceAltitude {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Flight))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Flight_get_SurfaceAltitude", _args);
-            return (double)global::KRPC.Client.Encoder.Decode (_data, typeof(double), connection);
+            return Connection.Invoke<double> ("SpaceCenter", "Flight_get_SurfaceAltitude", _args);
         }
     }
 
@@ -653,11 +612,10 @@ public class Flight : RemoteObject
     [RpcAttribute ("SpaceCenter", "Flight_get_TerminalVelocity")]
     public float TerminalVelocity {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Flight))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Flight_get_TerminalVelocity", _args);
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            return Connection.Invoke<float> ("SpaceCenter", "Flight_get_TerminalVelocity", _args);
         }
     }
 
@@ -673,11 +631,10 @@ public class Flight : RemoteObject
     [RpcAttribute ("SpaceCenter", "Flight_get_ThrustSpecificFuelConsumption")]
     public float ThrustSpecificFuelConsumption {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Flight))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Flight_get_ThrustSpecificFuelConsumption", _args);
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            return Connection.Invoke<float> ("SpaceCenter", "Flight_get_ThrustSpecificFuelConsumption", _args);
         }
     }
 
@@ -689,11 +646,10 @@ public class Flight : RemoteObject
     [RpcAttribute ("SpaceCenter", "Flight_get_TotalAirTemperature")]
     public float TotalAirTemperature {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Flight))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Flight_get_TotalAirTemperature", _args);
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            return Connection.Invoke<float> ("SpaceCenter", "Flight_get_TotalAirTemperature", _args);
         }
     }
 
@@ -704,11 +660,10 @@ public class Flight : RemoteObject
     [RpcAttribute ("SpaceCenter", "Flight_get_TrueAirSpeed")]
     public float TrueAirSpeed {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Flight))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Flight_get_TrueAirSpeed", _args);
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            return Connection.Invoke<float> ("SpaceCenter", "Flight_get_TrueAirSpeed", _args);
         }
     }
 
@@ -718,13 +673,12 @@ public class Flight : RemoteObject
     /// <returns>The velocity as a vector. The vector points in the direction of travel,
     /// and its magnitude is the speed of the vessel in meters per second.</returns>
     [RpcAttribute ("SpaceCenter", "Flight_get_Velocity")]
-    public systemAlias::Tuple<double,double,double> Velocity {
+    public Tuple<double,double,double> Velocity {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Flight))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Flight_get_Velocity", _args);
-            return (systemAlias::Tuple<double,double,double>)global::KRPC.Client.Encoder.Decode (_data, typeof(systemAlias::Tuple<double,double,double>), connection);
+            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Flight_get_Velocity", _args);
         }
     }
 
@@ -735,11 +689,10 @@ public class Flight : RemoteObject
     [RpcAttribute ("SpaceCenter", "Flight_get_VerticalSpeed")]
     public double VerticalSpeed {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Flight))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Flight_get_VerticalSpeed", _args);
-            return (double)global::KRPC.Client.Encoder.Decode (_data, typeof(double), connection);
+            return Connection.Invoke<double> ("SpaceCenter", "Flight_get_VerticalSpeed", _args);
         }
     }
 }

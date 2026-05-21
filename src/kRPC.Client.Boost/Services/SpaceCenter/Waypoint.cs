@@ -1,6 +1,5 @@
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
-using Google.Protobuf;
 using kRPC.Client.Boost.Attributes;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
@@ -23,10 +22,10 @@ public class Waypoint : RemoteObject
     [RpcAttribute ("SpaceCenter", "Waypoint_Remove")]
     public void Remove ()
     {
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Waypoint))
+        var _args = new object[] {
+            this
         };
-        connection.Invoke ("SpaceCenter", "Waypoint_Remove", _args);
+        Connection.Invoke ("SpaceCenter", "Waypoint_Remove", _args);
     }
 
     /// <summary>
@@ -36,18 +35,17 @@ public class Waypoint : RemoteObject
     [RpcAttribute ("SpaceCenter", "Waypoint_get_BedrockAltitude")]
     public double BedrockAltitude {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Waypoint))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Waypoint_get_BedrockAltitude", _args);
-            return (double)global::KRPC.Client.Encoder.Decode (_data, typeof(double), connection);
+            return Connection.Invoke<double> ("SpaceCenter", "Waypoint_get_BedrockAltitude", _args);
         }
         set {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Waypoint)),
-                global::KRPC.Client.Encoder.Encode (value, typeof(double))
+            var _args = new object[] {
+                this,
+                value
             };
-            connection.Invoke ("SpaceCenter", "Waypoint_set_BedrockAltitude", _args);
+            Connection.Invoke ("SpaceCenter", "Waypoint_set_BedrockAltitude", _args);
         }
     }
 
@@ -55,20 +53,19 @@ public class Waypoint : RemoteObject
     /// The celestial body the waypoint is attached to.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "Waypoint_get_Body")]
-    public global::kRPC.Client.Boost.Services.SpaceCenter.CelestialBody Body {
+    public CelestialBody Body {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Waypoint))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Waypoint_get_Body", _args);
-            return (global::kRPC.Client.Boost.Services.SpaceCenter.CelestialBody)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.CelestialBody), connection);
+            return Connection.Invoke<CelestialBody> ("SpaceCenter", "Waypoint_get_Body", _args);
         }
         set {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Waypoint)),
-                global::KRPC.Client.Encoder.Encode (value, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.CelestialBody))
+            var _args = new object[] {
+                this,
+                value
             };
-            connection.Invoke ("SpaceCenter", "Waypoint_set_Body", _args);
+            Connection.Invoke ("SpaceCenter", "Waypoint_set_Body", _args);
         }
     }
 
@@ -80,11 +77,10 @@ public class Waypoint : RemoteObject
     [RpcAttribute ("SpaceCenter", "Waypoint_get_Clustered")]
     public bool Clustered {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Waypoint))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Waypoint_get_Clustered", _args);
-            return (bool)global::KRPC.Client.Encoder.Decode (_data, typeof(bool), connection);
+            return Connection.Invoke<bool> ("SpaceCenter", "Waypoint_get_Clustered", _args);
         }
     }
 
@@ -94,18 +90,17 @@ public class Waypoint : RemoteObject
     [RpcAttribute ("SpaceCenter", "Waypoint_get_Color")]
     public int Color {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Waypoint))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Waypoint_get_Color", _args);
-            return (int)global::KRPC.Client.Encoder.Decode (_data, typeof(int), connection);
+            return Connection.Invoke<int> ("SpaceCenter", "Waypoint_get_Color", _args);
         }
         set {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Waypoint)),
-                global::KRPC.Client.Encoder.Encode (value, typeof(int))
+            var _args = new object[] {
+                this,
+                value
             };
-            connection.Invoke ("SpaceCenter", "Waypoint_set_Color", _args);
+            Connection.Invoke ("SpaceCenter", "Waypoint_set_Color", _args);
         }
     }
 
@@ -113,13 +108,12 @@ public class Waypoint : RemoteObject
     /// The associated contract.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "Waypoint_get_Contract")]
-    public global::kRPC.Client.Boost.Services.SpaceCenter.Contract Contract {
+    public Contract Contract {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Waypoint))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Waypoint_get_Contract", _args);
-            return (global::kRPC.Client.Boost.Services.SpaceCenter.Contract)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Contract), connection);
+            return Connection.Invoke<Contract> ("SpaceCenter", "Waypoint_get_Contract", _args);
         }
     }
 
@@ -128,11 +122,10 @@ public class Waypoint : RemoteObject
     [RpcAttribute ("SpaceCenter", "Waypoint_get_Grounded")]
     public bool Grounded {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Waypoint))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Waypoint_get_Grounded", _args);
-            return (bool)global::KRPC.Client.Encoder.Decode (_data, typeof(bool), connection);
+            return Connection.Invoke<bool> ("SpaceCenter", "Waypoint_get_Grounded", _args);
         }
     }
 
@@ -142,11 +135,10 @@ public class Waypoint : RemoteObject
     [RpcAttribute ("SpaceCenter", "Waypoint_get_HasContract")]
     public bool HasContract {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Waypoint))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Waypoint_get_HasContract", _args);
-            return (bool)global::KRPC.Client.Encoder.Decode (_data, typeof(bool), connection);
+            return Connection.Invoke<bool> ("SpaceCenter", "Waypoint_get_HasContract", _args);
         }
     }
 
@@ -156,18 +148,17 @@ public class Waypoint : RemoteObject
     [RpcAttribute ("SpaceCenter", "Waypoint_get_Icon")]
     public string Icon {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Waypoint))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Waypoint_get_Icon", _args);
-            return (string)global::KRPC.Client.Encoder.Decode (_data, typeof(string), connection);
+            return Connection.Invoke<string> ("SpaceCenter", "Waypoint_get_Icon", _args);
         }
         set {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Waypoint)),
-                global::KRPC.Client.Encoder.Encode (value, typeof(string))
+            var _args = new object[] {
+                this,
+                value
             };
-            connection.Invoke ("SpaceCenter", "Waypoint_set_Icon", _args);
+            Connection.Invoke ("SpaceCenter", "Waypoint_set_Icon", _args);
         }
     }
 
@@ -181,11 +172,10 @@ public class Waypoint : RemoteObject
     [RpcAttribute ("SpaceCenter", "Waypoint_get_Index")]
     public int Index {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Waypoint))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Waypoint_get_Index", _args);
-            return (int)global::KRPC.Client.Encoder.Decode (_data, typeof(int), connection);
+            return Connection.Invoke<int> ("SpaceCenter", "Waypoint_get_Index", _args);
         }
     }
 
@@ -195,18 +185,17 @@ public class Waypoint : RemoteObject
     [RpcAttribute ("SpaceCenter", "Waypoint_get_Latitude")]
     public double Latitude {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Waypoint))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Waypoint_get_Latitude", _args);
-            return (double)global::KRPC.Client.Encoder.Decode (_data, typeof(double), connection);
+            return Connection.Invoke<double> ("SpaceCenter", "Waypoint_get_Latitude", _args);
         }
         set {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Waypoint)),
-                global::KRPC.Client.Encoder.Encode (value, typeof(double))
+            var _args = new object[] {
+                this,
+                value
             };
-            connection.Invoke ("SpaceCenter", "Waypoint_set_Latitude", _args);
+            Connection.Invoke ("SpaceCenter", "Waypoint_set_Latitude", _args);
         }
     }
 
@@ -216,18 +205,17 @@ public class Waypoint : RemoteObject
     [RpcAttribute ("SpaceCenter", "Waypoint_get_Longitude")]
     public double Longitude {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Waypoint))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Waypoint_get_Longitude", _args);
-            return (double)global::KRPC.Client.Encoder.Decode (_data, typeof(double), connection);
+            return Connection.Invoke<double> ("SpaceCenter", "Waypoint_get_Longitude", _args);
         }
         set {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Waypoint)),
-                global::KRPC.Client.Encoder.Encode (value, typeof(double))
+            var _args = new object[] {
+                this,
+                value
             };
-            connection.Invoke ("SpaceCenter", "Waypoint_set_Longitude", _args);
+            Connection.Invoke ("SpaceCenter", "Waypoint_set_Longitude", _args);
         }
     }
 
@@ -237,18 +225,17 @@ public class Waypoint : RemoteObject
     [RpcAttribute ("SpaceCenter", "Waypoint_get_MeanAltitude")]
     public double MeanAltitude {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Waypoint))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Waypoint_get_MeanAltitude", _args);
-            return (double)global::KRPC.Client.Encoder.Decode (_data, typeof(double), connection);
+            return Connection.Invoke<double> ("SpaceCenter", "Waypoint_get_MeanAltitude", _args);
         }
         set {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Waypoint)),
-                global::KRPC.Client.Encoder.Encode (value, typeof(double))
+            var _args = new object[] {
+                this,
+                value
             };
-            connection.Invoke ("SpaceCenter", "Waypoint_set_MeanAltitude", _args);
+            Connection.Invoke ("SpaceCenter", "Waypoint_set_MeanAltitude", _args);
         }
     }
 
@@ -258,18 +245,17 @@ public class Waypoint : RemoteObject
     [RpcAttribute ("SpaceCenter", "Waypoint_get_Name")]
     public string Name {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Waypoint))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Waypoint_get_Name", _args);
-            return (string)global::KRPC.Client.Encoder.Decode (_data, typeof(string), connection);
+            return Connection.Invoke<string> ("SpaceCenter", "Waypoint_get_Name", _args);
         }
         set {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Waypoint)),
-                global::KRPC.Client.Encoder.Encode (value, typeof(string))
+            var _args = new object[] {
+                this,
+                value
             };
-            connection.Invoke ("SpaceCenter", "Waypoint_set_Name", _args);
+            Connection.Invoke ("SpaceCenter", "Waypoint_set_Name", _args);
         }
     }
 
@@ -278,11 +264,10 @@ public class Waypoint : RemoteObject
     [RpcAttribute ("SpaceCenter", "Waypoint_get_NearSurface")]
     public bool NearSurface {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Waypoint))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Waypoint_get_NearSurface", _args);
-            return (bool)global::KRPC.Client.Encoder.Decode (_data, typeof(bool), connection);
+            return Connection.Invoke<bool> ("SpaceCenter", "Waypoint_get_NearSurface", _args);
         }
     }
 
@@ -293,18 +278,17 @@ public class Waypoint : RemoteObject
     [RpcAttribute ("SpaceCenter", "Waypoint_get_SurfaceAltitude")]
     public double SurfaceAltitude {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Waypoint))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Waypoint_get_SurfaceAltitude", _args);
-            return (double)global::KRPC.Client.Encoder.Decode (_data, typeof(double), connection);
+            return Connection.Invoke<double> ("SpaceCenter", "Waypoint_get_SurfaceAltitude", _args);
         }
         set {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Waypoint)),
-                global::KRPC.Client.Encoder.Encode (value, typeof(double))
+            var _args = new object[] {
+                this,
+                value
             };
-            connection.Invoke ("SpaceCenter", "Waypoint_set_SurfaceAltitude", _args);
+            Connection.Invoke ("SpaceCenter", "Waypoint_set_SurfaceAltitude", _args);
         }
     }
 }

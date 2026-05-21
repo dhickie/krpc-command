@@ -1,22 +1,17 @@
-#if NET35
-using systemAlias = global::KRPC.Client.Compatibility;
-using genericCollectionsAlias = global::KRPC.Client.Compatibility;
-#else
-#endif
+using kRPC.Client.Boost.Connection;
 
-namespace kRPC.Client.Boost.Services.SpaceCenter
+namespace kRPC.Client.Boost.Services.SpaceCenter;
+
+/// <summary>
+/// Extension methods for SpaceCenter service.
+/// </summary>
+public static class ExtensionMethods
 {
     /// <summary>
-    /// Extension methods for SpaceCenter service.
+    /// Create an instance of the SpaceCenter service.
     /// </summary>
-    public static class ExtensionMethods
+    public static SpaceCenterService SpaceCenter(this ConnectionMultiplexer connection)
     {
-        /// <summary>
-        /// Create an instance of the SpaceCenter service.
-        /// </summary>
-        public static global::kRPC.Client.Boost.Services.SpaceCenterService SpaceCenter (this global::KRPC.Client.IConnection connection)
-        {
-            return new global::kRPC.Client.Boost.Services.SpaceCenterService (connection);
-        }
+        return new SpaceCenterService(connection);
     }
 }

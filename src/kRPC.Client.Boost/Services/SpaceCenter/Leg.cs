@@ -1,6 +1,5 @@
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
-using Google.Protobuf;
 using kRPC.Client.Boost.Attributes;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
@@ -23,11 +22,10 @@ public class Leg : RemoteObject
     [RpcAttribute ("SpaceCenter", "Leg_get_Deployable")]
     public bool Deployable {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Leg))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Leg_get_Deployable", _args);
-            return (bool)global::KRPC.Client.Encoder.Decode (_data, typeof(bool), connection);
+            return Connection.Invoke<bool> ("SpaceCenter", "Leg_get_Deployable", _args);
         }
     }
 
@@ -41,18 +39,17 @@ public class Leg : RemoteObject
     [RpcAttribute ("SpaceCenter", "Leg_get_Deployed")]
     public bool Deployed {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Leg))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Leg_get_Deployed", _args);
-            return (bool)global::KRPC.Client.Encoder.Decode (_data, typeof(bool), connection);
+            return Connection.Invoke<bool> ("SpaceCenter", "Leg_get_Deployed", _args);
         }
         set {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Leg)),
-                global::KRPC.Client.Encoder.Encode (value, typeof(bool))
+            var _args = new object[] {
+                this,
+                value
             };
-            connection.Invoke ("SpaceCenter", "Leg_set_Deployed", _args);
+            Connection.Invoke ("SpaceCenter", "Leg_set_Deployed", _args);
         }
     }
 
@@ -62,11 +59,10 @@ public class Leg : RemoteObject
     [RpcAttribute ("SpaceCenter", "Leg_get_IsGrounded")]
     public bool IsGrounded {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Leg))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Leg_get_IsGrounded", _args);
-            return (bool)global::KRPC.Client.Encoder.Decode (_data, typeof(bool), connection);
+            return Connection.Invoke<bool> ("SpaceCenter", "Leg_get_IsGrounded", _args);
         }
     }
 
@@ -74,13 +70,12 @@ public class Leg : RemoteObject
     /// The part object for this landing leg.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "Leg_get_Part")]
-    public global::kRPC.Client.Boost.Services.SpaceCenter.Part Part {
+    public Part Part {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Leg))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Leg_get_Part", _args);
-            return (global::kRPC.Client.Boost.Services.SpaceCenter.Part)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Part), connection);
+            return Connection.Invoke<Part> ("SpaceCenter", "Leg_get_Part", _args);
         }
     }
 
@@ -88,13 +83,12 @@ public class Leg : RemoteObject
     /// The current state of the landing leg.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "Leg_get_State")]
-    public global::kRPC.Client.Boost.Services.SpaceCenter.LegState State {
+    public LegState State {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Leg))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Leg_get_State", _args);
-            return (global::kRPC.Client.Boost.Services.SpaceCenter.LegState)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.LegState), connection);
+            return Connection.Invoke<LegState> ("SpaceCenter", "Leg_get_State", _args);
         }
     }
 }

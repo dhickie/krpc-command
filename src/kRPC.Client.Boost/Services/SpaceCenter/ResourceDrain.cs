@@ -1,7 +1,7 @@
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
-using Google.Protobuf;
 using kRPC.Client.Boost.Attributes;
+using System.Collections.Generic;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
@@ -21,28 +21,27 @@ public class ResourceDrain : RemoteObject
     /// Whether the provided resource is enabled for draining.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "ResourceDrain_CheckResource")]
-    public bool CheckResource (global::kRPC.Client.Boost.Services.SpaceCenter.Resource resource)
+    public bool CheckResource (Resource resource)
     {
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ResourceDrain)),
-            global::KRPC.Client.Encoder.Encode (resource, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Resource))
+        var _args = new object[] {
+            this,
+            resource
         };
-        ByteString _data = connection.Invoke ("SpaceCenter", "ResourceDrain_CheckResource", _args);
-        return (bool)global::KRPC.Client.Encoder.Decode (_data, typeof(bool), connection);
+        return Connection.Invoke<bool> ("SpaceCenter", "ResourceDrain_CheckResource", _args);
     }
 
     /// <summary>
     /// Whether the given resource should be drained.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "ResourceDrain_SetResource")]
-    public void SetResource (global::kRPC.Client.Boost.Services.SpaceCenter.Resource resource, bool enabled)
+    public void SetResource (Resource resource, bool enabled)
     {
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ResourceDrain)),
-            global::KRPC.Client.Encoder.Encode (resource, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Resource)),
-            global::KRPC.Client.Encoder.Encode (enabled, typeof(bool))
+        var _args = new object[] {
+            this,
+            resource,
+            enabled
         };
-        connection.Invoke ("SpaceCenter", "ResourceDrain_SetResource", _args);
+        Connection.Invoke ("SpaceCenter", "ResourceDrain_SetResource", _args);
     }
 
     /// <summary>
@@ -51,10 +50,10 @@ public class ResourceDrain : RemoteObject
     [RpcAttribute ("SpaceCenter", "ResourceDrain_Start")]
     public void Start ()
     {
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ResourceDrain))
+        var _args = new object[] {
+            this
         };
-        connection.Invoke ("SpaceCenter", "ResourceDrain_Start", _args);
+        Connection.Invoke ("SpaceCenter", "ResourceDrain_Start", _args);
     }
 
     /// <summary>
@@ -63,23 +62,22 @@ public class ResourceDrain : RemoteObject
     [RpcAttribute ("SpaceCenter", "ResourceDrain_Stop")]
     public void Stop ()
     {
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ResourceDrain))
+        var _args = new object[] {
+            this
         };
-        connection.Invoke ("SpaceCenter", "ResourceDrain_Stop", _args);
+        Connection.Invoke ("SpaceCenter", "ResourceDrain_Stop", _args);
     }
 
     /// <summary>
     /// List of available resources.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "ResourceDrain_get_AvailableResources")]
-    public global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.Resource> AvailableResources {
+    public IList<Resource> AvailableResources {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ResourceDrain))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "ResourceDrain_get_AvailableResources", _args);
-            return (global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.Resource>)global::KRPC.Client.Encoder.Decode (_data, typeof(global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.Resource>), connection);
+            return Connection.Invoke<IList<Resource>> ("SpaceCenter", "ResourceDrain_get_AvailableResources", _args);
         }
     }
 
@@ -87,20 +85,19 @@ public class ResourceDrain : RemoteObject
     /// The drain mode.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "ResourceDrain_get_DrainMode")]
-    public global::kRPC.Client.Boost.Services.SpaceCenter.DrainMode DrainMode {
+    public DrainMode DrainMode {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ResourceDrain))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "ResourceDrain_get_DrainMode", _args);
-            return (global::kRPC.Client.Boost.Services.SpaceCenter.DrainMode)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.DrainMode), connection);
+            return Connection.Invoke<DrainMode> ("SpaceCenter", "ResourceDrain_get_DrainMode", _args);
         }
         set {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ResourceDrain)),
-                global::KRPC.Client.Encoder.Encode (value, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.DrainMode))
+            var _args = new object[] {
+                this,
+                value
             };
-            connection.Invoke ("SpaceCenter", "ResourceDrain_set_DrainMode", _args);
+            Connection.Invoke ("SpaceCenter", "ResourceDrain_set_DrainMode", _args);
         }
     }
 
@@ -110,11 +107,10 @@ public class ResourceDrain : RemoteObject
     [RpcAttribute ("SpaceCenter", "ResourceDrain_get_MaxRate")]
     public float MaxRate {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ResourceDrain))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "ResourceDrain_get_MaxRate", _args);
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            return Connection.Invoke<float> ("SpaceCenter", "ResourceDrain_get_MaxRate", _args);
         }
     }
 
@@ -124,11 +120,10 @@ public class ResourceDrain : RemoteObject
     [RpcAttribute ("SpaceCenter", "ResourceDrain_get_MinRate")]
     public float MinRate {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ResourceDrain))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "ResourceDrain_get_MinRate", _args);
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            return Connection.Invoke<float> ("SpaceCenter", "ResourceDrain_get_MinRate", _args);
         }
     }
 
@@ -136,13 +131,12 @@ public class ResourceDrain : RemoteObject
     /// The part object for this resource drain.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "ResourceDrain_get_Part")]
-    public global::kRPC.Client.Boost.Services.SpaceCenter.Part Part {
+    public Part Part {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ResourceDrain))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "ResourceDrain_get_Part", _args);
-            return (global::kRPC.Client.Boost.Services.SpaceCenter.Part)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Part), connection);
+            return Connection.Invoke<Part> ("SpaceCenter", "ResourceDrain_get_Part", _args);
         }
     }
 
@@ -152,18 +146,17 @@ public class ResourceDrain : RemoteObject
     [RpcAttribute ("SpaceCenter", "ResourceDrain_get_Rate")]
     public float Rate {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ResourceDrain))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "ResourceDrain_get_Rate", _args);
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            return Connection.Invoke<float> ("SpaceCenter", "ResourceDrain_get_Rate", _args);
         }
         set {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ResourceDrain)),
-                global::KRPC.Client.Encoder.Encode (value, typeof(float))
+            var _args = new object[] {
+                this,
+                value
             };
-            connection.Invoke ("SpaceCenter", "ResourceDrain_set_Rate", _args);
+            Connection.Invoke ("SpaceCenter", "ResourceDrain_set_Rate", _args);
         }
     }
 }

@@ -1,6 +1,5 @@
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
-using Google.Protobuf;
 using kRPC.Client.Boost.Attributes;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
@@ -26,26 +25,24 @@ public class Decoupler : RemoteObject
     /// <see cref="M:SpaceCenter.ActiveVessel" /> no longer refer to the active vessel.
     /// </remarks>
     [RpcAttribute ("SpaceCenter", "Decoupler_Decouple")]
-    public global::kRPC.Client.Boost.Services.SpaceCenter.Vessel Decouple ()
+    public Vessel Decouple ()
     {
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Decoupler))
+        var _args = new object[] {
+            this
         };
-        ByteString _data = connection.Invoke ("SpaceCenter", "Decoupler_Decouple", _args);
-        return (global::kRPC.Client.Boost.Services.SpaceCenter.Vessel)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Vessel), connection);
+        return Connection.Invoke<Vessel> ("SpaceCenter", "Decoupler_Decouple", _args);
     }
 
     /// <summary>
     /// The part attached to this decoupler's explosive node.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "Decoupler_get_AttachedPart")]
-    public global::kRPC.Client.Boost.Services.SpaceCenter.Part AttachedPart {
+    public Part AttachedPart {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Decoupler))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Decoupler_get_AttachedPart", _args);
-            return (global::kRPC.Client.Boost.Services.SpaceCenter.Part)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Part), connection);
+            return Connection.Invoke<Part> ("SpaceCenter", "Decoupler_get_AttachedPart", _args);
         }
     }
 
@@ -55,11 +52,10 @@ public class Decoupler : RemoteObject
     [RpcAttribute ("SpaceCenter", "Decoupler_get_Decoupled")]
     public bool Decoupled {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Decoupler))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Decoupler_get_Decoupled", _args);
-            return (bool)global::KRPC.Client.Encoder.Decode (_data, typeof(bool), connection);
+            return Connection.Invoke<bool> ("SpaceCenter", "Decoupler_get_Decoupled", _args);
         }
     }
 
@@ -69,11 +65,10 @@ public class Decoupler : RemoteObject
     [RpcAttribute ("SpaceCenter", "Decoupler_get_Impulse")]
     public float Impulse {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Decoupler))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Decoupler_get_Impulse", _args);
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            return Connection.Invoke<float> ("SpaceCenter", "Decoupler_get_Impulse", _args);
         }
     }
 
@@ -83,11 +78,10 @@ public class Decoupler : RemoteObject
     [RpcAttribute ("SpaceCenter", "Decoupler_get_IsOmniDecoupler")]
     public bool IsOmniDecoupler {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Decoupler))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Decoupler_get_IsOmniDecoupler", _args);
-            return (bool)global::KRPC.Client.Encoder.Decode (_data, typeof(bool), connection);
+            return Connection.Invoke<bool> ("SpaceCenter", "Decoupler_get_IsOmniDecoupler", _args);
         }
     }
 
@@ -95,13 +89,12 @@ public class Decoupler : RemoteObject
     /// The part object for this decoupler.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "Decoupler_get_Part")]
-    public global::kRPC.Client.Boost.Services.SpaceCenter.Part Part {
+    public Part Part {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Decoupler))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Decoupler_get_Part", _args);
-            return (global::kRPC.Client.Boost.Services.SpaceCenter.Part)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Part), connection);
+            return Connection.Invoke<Part> ("SpaceCenter", "Decoupler_get_Part", _args);
         }
     }
 
@@ -111,11 +104,10 @@ public class Decoupler : RemoteObject
     [RpcAttribute ("SpaceCenter", "Decoupler_get_Staged")]
     public bool Staged {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Decoupler))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Decoupler_get_Staged", _args);
-            return (bool)global::KRPC.Client.Encoder.Decode (_data, typeof(bool), connection);
+            return Connection.Invoke<bool> ("SpaceCenter", "Decoupler_get_Staged", _args);
         }
     }
 }

@@ -1,7 +1,7 @@
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
-using Google.Protobuf;
 using kRPC.Client.Boost.Attributes;
+using System.Collections.Generic;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
@@ -24,11 +24,10 @@ public class Comms : RemoteObject
     [RpcAttribute ("SpaceCenter", "Comms_get_CanCommunicate")]
     public bool CanCommunicate {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Comms))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Comms_get_CanCommunicate", _args);
-            return (bool)global::KRPC.Client.Encoder.Decode (_data, typeof(bool), connection);
+            return Connection.Invoke<bool> ("SpaceCenter", "Comms_get_CanCommunicate", _args);
         }
     }
 
@@ -38,11 +37,10 @@ public class Comms : RemoteObject
     [RpcAttribute ("SpaceCenter", "Comms_get_CanTransmitScience")]
     public bool CanTransmitScience {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Comms))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Comms_get_CanTransmitScience", _args);
-            return (bool)global::KRPC.Client.Encoder.Decode (_data, typeof(bool), connection);
+            return Connection.Invoke<bool> ("SpaceCenter", "Comms_get_CanTransmitScience", _args);
         }
     }
 
@@ -50,13 +48,12 @@ public class Comms : RemoteObject
     /// The communication path used to control the vessel.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "Comms_get_ControlPath")]
-    public global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.CommLink> ControlPath {
+    public IList<CommLink> ControlPath {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Comms))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Comms_get_ControlPath", _args);
-            return (global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.CommLink>)global::KRPC.Client.Encoder.Decode (_data, typeof(global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.CommLink>), connection);
+            return Connection.Invoke<IList<CommLink>> ("SpaceCenter", "Comms_get_ControlPath", _args);
         }
     }
 
@@ -66,11 +63,10 @@ public class Comms : RemoteObject
     [RpcAttribute ("SpaceCenter", "Comms_get_Power")]
     public double Power {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Comms))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Comms_get_Power", _args);
-            return (double)global::KRPC.Client.Encoder.Decode (_data, typeof(double), connection);
+            return Connection.Invoke<double> ("SpaceCenter", "Comms_get_Power", _args);
         }
     }
 
@@ -80,11 +76,10 @@ public class Comms : RemoteObject
     [RpcAttribute ("SpaceCenter", "Comms_get_SignalDelay")]
     public double SignalDelay {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Comms))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Comms_get_SignalDelay", _args);
-            return (double)global::KRPC.Client.Encoder.Decode (_data, typeof(double), connection);
+            return Connection.Invoke<double> ("SpaceCenter", "Comms_get_SignalDelay", _args);
         }
     }
 
@@ -94,11 +89,10 @@ public class Comms : RemoteObject
     [RpcAttribute ("SpaceCenter", "Comms_get_SignalStrength")]
     public double SignalStrength {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Comms))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Comms_get_SignalStrength", _args);
-            return (double)global::KRPC.Client.Encoder.Decode (_data, typeof(double), connection);
+            return Connection.Invoke<double> ("SpaceCenter", "Comms_get_SignalStrength", _args);
         }
     }
 }

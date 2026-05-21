@@ -1,6 +1,5 @@
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
-using Google.Protobuf;
 using kRPC.Client.Boost.Attributes;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
@@ -23,23 +22,22 @@ public class LaunchClamp : RemoteObject
     [RpcAttribute ("SpaceCenter", "LaunchClamp_Release")]
     public void Release ()
     {
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.LaunchClamp))
+        var _args = new object[] {
+            this
         };
-        connection.Invoke ("SpaceCenter", "LaunchClamp_Release", _args);
+        Connection.Invoke ("SpaceCenter", "LaunchClamp_Release", _args);
     }
 
     /// <summary>
     /// The part object for this launch clamp.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "LaunchClamp_get_Part")]
-    public global::kRPC.Client.Boost.Services.SpaceCenter.Part Part {
+    public Part Part {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.LaunchClamp))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "LaunchClamp_get_Part", _args);
-            return (global::kRPC.Client.Boost.Services.SpaceCenter.Part)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Part), connection);
+            return Connection.Invoke<Part> ("SpaceCenter", "LaunchClamp_get_Part", _args);
         }
     }
 }

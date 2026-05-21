@@ -1,7 +1,6 @@
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
-using Google.Protobuf;
-using systemAlias = System;
+using System;
 using kRPC.Client.Boost.Attributes;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
@@ -30,10 +29,10 @@ public class AutoPilot : RemoteObject
     [RpcAttribute ("SpaceCenter", "AutoPilot_Disengage")]
     public void Disengage ()
     {
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.AutoPilot))
+        var _args = new object[] {
+            this
         };
-        connection.Invoke ("SpaceCenter", "AutoPilot_Disengage", _args);
+        Connection.Invoke ("SpaceCenter", "AutoPilot_Disengage", _args);
     }
 
     /// <summary>
@@ -42,10 +41,10 @@ public class AutoPilot : RemoteObject
     [RpcAttribute ("SpaceCenter", "AutoPilot_Engage")]
     public void Engage ()
     {
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.AutoPilot))
+        var _args = new object[] {
+            this
         };
-        connection.Invoke ("SpaceCenter", "AutoPilot_Engage", _args);
+        Connection.Invoke ("SpaceCenter", "AutoPilot_Engage", _args);
     }
 
     /// <summary>
@@ -56,12 +55,12 @@ public class AutoPilot : RemoteObject
     [RpcAttribute ("SpaceCenter", "AutoPilot_TargetPitchAndHeading")]
     public void TargetPitchAndHeading (float pitch, float heading)
     {
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.AutoPilot)),
-            global::KRPC.Client.Encoder.Encode (pitch, typeof(float)),
-            global::KRPC.Client.Encoder.Encode (heading, typeof(float))
+        var _args = new object[] {
+            this,
+            pitch,
+            heading
         };
-        connection.Invoke ("SpaceCenter", "AutoPilot_TargetPitchAndHeading", _args);
+        Connection.Invoke ("SpaceCenter", "AutoPilot_TargetPitchAndHeading", _args);
     }
 
     /// <summary>
@@ -71,10 +70,10 @@ public class AutoPilot : RemoteObject
     [RpcAttribute ("SpaceCenter", "AutoPilot_Wait")]
     public void Wait ()
     {
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.AutoPilot))
+        var _args = new object[] {
+            this
         };
-        connection.Invoke ("SpaceCenter", "AutoPilot_Wait", _args);
+        Connection.Invoke ("SpaceCenter", "AutoPilot_Wait", _args);
     }
 
     /// <summary>
@@ -85,20 +84,19 @@ public class AutoPilot : RemoteObject
     /// Defaults to 1° for each axis.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "AutoPilot_get_AttenuationAngle")]
-    public systemAlias::Tuple<double,double,double> AttenuationAngle {
+    public Tuple<double,double,double> AttenuationAngle {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.AutoPilot))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "AutoPilot_get_AttenuationAngle", _args);
-            return (systemAlias::Tuple<double,double,double>)global::KRPC.Client.Encoder.Decode (_data, typeof(systemAlias::Tuple<double,double,double>), connection);
+            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "AutoPilot_get_AttenuationAngle", _args);
         }
         set {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.AutoPilot)),
-                global::KRPC.Client.Encoder.Encode (value, typeof(systemAlias::Tuple<double,double,double>))
+            var _args = new object[] {
+                this,
+                value
             };
-            connection.Invoke ("SpaceCenter", "AutoPilot_set_AttenuationAngle", _args);
+            Connection.Invoke ("SpaceCenter", "AutoPilot_set_AttenuationAngle", _args);
         }
     }
 
@@ -110,18 +108,17 @@ public class AutoPilot : RemoteObject
     [RpcAttribute ("SpaceCenter", "AutoPilot_get_AutoTune")]
     public bool AutoTune {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.AutoPilot))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "AutoPilot_get_AutoTune", _args);
-            return (bool)global::KRPC.Client.Encoder.Decode (_data, typeof(bool), connection);
+            return Connection.Invoke<bool> ("SpaceCenter", "AutoPilot_get_AutoTune", _args);
         }
         set {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.AutoPilot)),
-                global::KRPC.Client.Encoder.Encode (value, typeof(bool))
+            var _args = new object[] {
+                this,
+                value
             };
-            connection.Invoke ("SpaceCenter", "AutoPilot_set_AutoTune", _args);
+            Connection.Invoke ("SpaceCenter", "AutoPilot_set_AutoTune", _args);
         }
     }
 
@@ -132,20 +129,19 @@ public class AutoPilot : RemoteObject
     /// Defaults to 5 seconds for each axis.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "AutoPilot_get_DecelerationTime")]
-    public systemAlias::Tuple<double,double,double> DecelerationTime {
+    public Tuple<double,double,double> DecelerationTime {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.AutoPilot))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "AutoPilot_get_DecelerationTime", _args);
-            return (systemAlias::Tuple<double,double,double>)global::KRPC.Client.Encoder.Decode (_data, typeof(systemAlias::Tuple<double,double,double>), connection);
+            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "AutoPilot_get_DecelerationTime", _args);
         }
         set {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.AutoPilot)),
-                global::KRPC.Client.Encoder.Encode (value, typeof(systemAlias::Tuple<double,double,double>))
+            var _args = new object[] {
+                this,
+                value
             };
-            connection.Invoke ("SpaceCenter", "AutoPilot_set_DecelerationTime", _args);
+            Connection.Invoke ("SpaceCenter", "AutoPilot_set_DecelerationTime", _args);
         }
     }
 
@@ -157,11 +153,10 @@ public class AutoPilot : RemoteObject
     [RpcAttribute ("SpaceCenter", "AutoPilot_get_Error")]
     public float Error {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.AutoPilot))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "AutoPilot_get_Error", _args);
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            return Connection.Invoke<float> ("SpaceCenter", "AutoPilot_get_Error", _args);
         }
     }
 
@@ -172,11 +167,10 @@ public class AutoPilot : RemoteObject
     [RpcAttribute ("SpaceCenter", "AutoPilot_get_HeadingError")]
     public float HeadingError {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.AutoPilot))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "AutoPilot_get_HeadingError", _args);
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            return Connection.Invoke<float> ("SpaceCenter", "AutoPilot_get_HeadingError", _args);
         }
     }
 
@@ -186,20 +180,19 @@ public class AutoPilot : RemoteObject
     /// Defaults to 0.01 for each axis.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "AutoPilot_get_Overshoot")]
-    public systemAlias::Tuple<double,double,double> Overshoot {
+    public Tuple<double,double,double> Overshoot {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.AutoPilot))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "AutoPilot_get_Overshoot", _args);
-            return (systemAlias::Tuple<double,double,double>)global::KRPC.Client.Encoder.Decode (_data, typeof(systemAlias::Tuple<double,double,double>), connection);
+            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "AutoPilot_get_Overshoot", _args);
         }
         set {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.AutoPilot)),
-                global::KRPC.Client.Encoder.Encode (value, typeof(systemAlias::Tuple<double,double,double>))
+            var _args = new object[] {
+                this,
+                value
             };
-            connection.Invoke ("SpaceCenter", "AutoPilot_set_Overshoot", _args);
+            Connection.Invoke ("SpaceCenter", "AutoPilot_set_Overshoot", _args);
         }
     }
 
@@ -210,11 +203,10 @@ public class AutoPilot : RemoteObject
     [RpcAttribute ("SpaceCenter", "AutoPilot_get_PitchError")]
     public float PitchError {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.AutoPilot))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "AutoPilot_get_PitchError", _args);
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            return Connection.Invoke<float> ("SpaceCenter", "AutoPilot_get_PitchError", _args);
         }
     }
 
@@ -226,20 +218,19 @@ public class AutoPilot : RemoteObject
     /// which will overwrite any manual changes.
     /// </remarks>
     [RpcAttribute ("SpaceCenter", "AutoPilot_get_PitchPIDGains")]
-    public systemAlias::Tuple<double,double,double> PitchPIDGains {
+    public Tuple<double,double,double> PitchPIDGains {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.AutoPilot))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "AutoPilot_get_PitchPIDGains", _args);
-            return (systemAlias::Tuple<double,double,double>)global::KRPC.Client.Encoder.Decode (_data, typeof(systemAlias::Tuple<double,double,double>), connection);
+            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "AutoPilot_get_PitchPIDGains", _args);
         }
         set {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.AutoPilot)),
-                global::KRPC.Client.Encoder.Encode (value, typeof(systemAlias::Tuple<double,double,double>))
+            var _args = new object[] {
+                this,
+                value
             };
-            connection.Invoke ("SpaceCenter", "AutoPilot_set_PitchPIDGains", _args);
+            Connection.Invoke ("SpaceCenter", "AutoPilot_set_PitchPIDGains", _args);
         }
     }
 
@@ -252,20 +243,19 @@ public class AutoPilot : RemoteObject
     /// reference frame.
     /// </remarks>
     [RpcAttribute ("SpaceCenter", "AutoPilot_get_ReferenceFrame")]
-    public global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame ReferenceFrame {
+    public ReferenceFrame ReferenceFrame {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.AutoPilot))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "AutoPilot_get_ReferenceFrame", _args);
-            return (global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame), connection);
+            return Connection.Invoke<ReferenceFrame> ("SpaceCenter", "AutoPilot_get_ReferenceFrame", _args);
         }
         set {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.AutoPilot)),
-                global::KRPC.Client.Encoder.Encode (value, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame))
+            var _args = new object[] {
+                this,
+                value
             };
-            connection.Invoke ("SpaceCenter", "AutoPilot_set_ReferenceFrame", _args);
+            Connection.Invoke ("SpaceCenter", "AutoPilot_set_ReferenceFrame", _args);
         }
     }
 
@@ -276,11 +266,10 @@ public class AutoPilot : RemoteObject
     [RpcAttribute ("SpaceCenter", "AutoPilot_get_RollError")]
     public float RollError {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.AutoPilot))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "AutoPilot_get_RollError", _args);
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            return Connection.Invoke<float> ("SpaceCenter", "AutoPilot_get_RollError", _args);
         }
     }
 
@@ -292,20 +281,19 @@ public class AutoPilot : RemoteObject
     /// which will overwrite any manual changes.
     /// </remarks>
     [RpcAttribute ("SpaceCenter", "AutoPilot_get_RollPIDGains")]
-    public systemAlias::Tuple<double,double,double> RollPIDGains {
+    public Tuple<double,double,double> RollPIDGains {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.AutoPilot))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "AutoPilot_get_RollPIDGains", _args);
-            return (systemAlias::Tuple<double,double,double>)global::KRPC.Client.Encoder.Decode (_data, typeof(systemAlias::Tuple<double,double,double>), connection);
+            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "AutoPilot_get_RollPIDGains", _args);
         }
         set {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.AutoPilot)),
-                global::KRPC.Client.Encoder.Encode (value, typeof(systemAlias::Tuple<double,double,double>))
+            var _args = new object[] {
+                this,
+                value
             };
-            connection.Invoke ("SpaceCenter", "AutoPilot_set_RollPIDGains", _args);
+            Connection.Invoke ("SpaceCenter", "AutoPilot_set_RollPIDGains", _args);
         }
     }
 
@@ -316,18 +304,17 @@ public class AutoPilot : RemoteObject
     [RpcAttribute ("SpaceCenter", "AutoPilot_get_RollThreshold")]
     public double RollThreshold {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.AutoPilot))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "AutoPilot_get_RollThreshold", _args);
-            return (double)global::KRPC.Client.Encoder.Decode (_data, typeof(double), connection);
+            return Connection.Invoke<double> ("SpaceCenter", "AutoPilot_get_RollThreshold", _args);
         }
         set {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.AutoPilot)),
-                global::KRPC.Client.Encoder.Encode (value, typeof(double))
+            var _args = new object[] {
+                this,
+                value
             };
-            connection.Invoke ("SpaceCenter", "AutoPilot_set_RollThreshold", _args);
+            Connection.Invoke ("SpaceCenter", "AutoPilot_set_RollThreshold", _args);
         }
     }
 
@@ -338,18 +325,17 @@ public class AutoPilot : RemoteObject
     [RpcAttribute ("SpaceCenter", "AutoPilot_get_SAS")]
     public bool SAS {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.AutoPilot))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "AutoPilot_get_SAS", _args);
-            return (bool)global::KRPC.Client.Encoder.Decode (_data, typeof(bool), connection);
+            return Connection.Invoke<bool> ("SpaceCenter", "AutoPilot_get_SAS", _args);
         }
         set {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.AutoPilot)),
-                global::KRPC.Client.Encoder.Encode (value, typeof(bool))
+            var _args = new object[] {
+                this,
+                value
             };
-            connection.Invoke ("SpaceCenter", "AutoPilot_set_SAS", _args);
+            Connection.Invoke ("SpaceCenter", "AutoPilot_set_SAS", _args);
         }
     }
 
@@ -360,20 +346,19 @@ public class AutoPilot : RemoteObject
     /// </summary>
     /// <remarks>Equivalent to <see cref="M:SpaceCenter.Control.SASMode" /></remarks>
     [RpcAttribute ("SpaceCenter", "AutoPilot_get_SASMode")]
-    public global::kRPC.Client.Boost.Services.SpaceCenter.SASMode SASMode {
+    public SASMode SASMode {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.AutoPilot))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "AutoPilot_get_SASMode", _args);
-            return (global::kRPC.Client.Boost.Services.SpaceCenter.SASMode)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.SASMode), connection);
+            return Connection.Invoke<SASMode> ("SpaceCenter", "AutoPilot_get_SASMode", _args);
         }
         set {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.AutoPilot)),
-                global::KRPC.Client.Encoder.Encode (value, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.SASMode))
+            var _args = new object[] {
+                this,
+                value
             };
-            connection.Invoke ("SpaceCenter", "AutoPilot_set_SASMode", _args);
+            Connection.Invoke ("SpaceCenter", "AutoPilot_set_SASMode", _args);
         }
     }
 
@@ -384,20 +369,19 @@ public class AutoPilot : RemoteObject
     /// and yaw axes. Defaults to 0.5 seconds for each axis.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "AutoPilot_get_StoppingTime")]
-    public systemAlias::Tuple<double,double,double> StoppingTime {
+    public Tuple<double,double,double> StoppingTime {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.AutoPilot))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "AutoPilot_get_StoppingTime", _args);
-            return (systemAlias::Tuple<double,double,double>)global::KRPC.Client.Encoder.Decode (_data, typeof(systemAlias::Tuple<double,double,double>), connection);
+            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "AutoPilot_get_StoppingTime", _args);
         }
         set {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.AutoPilot)),
-                global::KRPC.Client.Encoder.Encode (value, typeof(systemAlias::Tuple<double,double,double>))
+            var _args = new object[] {
+                this,
+                value
             };
-            connection.Invoke ("SpaceCenter", "AutoPilot_set_StoppingTime", _args);
+            Connection.Invoke ("SpaceCenter", "AutoPilot_set_StoppingTime", _args);
         }
     }
 
@@ -406,20 +390,19 @@ public class AutoPilot : RemoteObject
     /// This is in the reference frame specified by <see cref="T:SpaceCenter.ReferenceFrame" />.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "AutoPilot_get_TargetDirection")]
-    public systemAlias::Tuple<double,double,double> TargetDirection {
+    public Tuple<double,double,double> TargetDirection {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.AutoPilot))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "AutoPilot_get_TargetDirection", _args);
-            return (systemAlias::Tuple<double,double,double>)global::KRPC.Client.Encoder.Decode (_data, typeof(systemAlias::Tuple<double,double,double>), connection);
+            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "AutoPilot_get_TargetDirection", _args);
         }
         set {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.AutoPilot)),
-                global::KRPC.Client.Encoder.Encode (value, typeof(systemAlias::Tuple<double,double,double>))
+            var _args = new object[] {
+                this,
+                value
             };
-            connection.Invoke ("SpaceCenter", "AutoPilot_set_TargetDirection", _args);
+            Connection.Invoke ("SpaceCenter", "AutoPilot_set_TargetDirection", _args);
         }
     }
 
@@ -429,18 +412,17 @@ public class AutoPilot : RemoteObject
     [RpcAttribute ("SpaceCenter", "AutoPilot_get_TargetHeading")]
     public float TargetHeading {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.AutoPilot))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "AutoPilot_get_TargetHeading", _args);
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            return Connection.Invoke<float> ("SpaceCenter", "AutoPilot_get_TargetHeading", _args);
         }
         set {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.AutoPilot)),
-                global::KRPC.Client.Encoder.Encode (value, typeof(float))
+            var _args = new object[] {
+                this,
+                value
             };
-            connection.Invoke ("SpaceCenter", "AutoPilot_set_TargetHeading", _args);
+            Connection.Invoke ("SpaceCenter", "AutoPilot_set_TargetHeading", _args);
         }
     }
 
@@ -450,18 +432,17 @@ public class AutoPilot : RemoteObject
     [RpcAttribute ("SpaceCenter", "AutoPilot_get_TargetPitch")]
     public float TargetPitch {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.AutoPilot))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "AutoPilot_get_TargetPitch", _args);
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            return Connection.Invoke<float> ("SpaceCenter", "AutoPilot_get_TargetPitch", _args);
         }
         set {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.AutoPilot)),
-                global::KRPC.Client.Encoder.Encode (value, typeof(float))
+            var _args = new object[] {
+                this,
+                value
             };
-            connection.Invoke ("SpaceCenter", "AutoPilot_set_TargetPitch", _args);
+            Connection.Invoke ("SpaceCenter", "AutoPilot_set_TargetPitch", _args);
         }
     }
 
@@ -471,18 +452,17 @@ public class AutoPilot : RemoteObject
     [RpcAttribute ("SpaceCenter", "AutoPilot_get_TargetRoll")]
     public float TargetRoll {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.AutoPilot))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "AutoPilot_get_TargetRoll", _args);
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            return Connection.Invoke<float> ("SpaceCenter", "AutoPilot_get_TargetRoll", _args);
         }
         set {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.AutoPilot)),
-                global::KRPC.Client.Encoder.Encode (value, typeof(float))
+            var _args = new object[] {
+                this,
+                value
             };
-            connection.Invoke ("SpaceCenter", "AutoPilot_set_TargetRoll", _args);
+            Connection.Invoke ("SpaceCenter", "AutoPilot_set_TargetRoll", _args);
         }
     }
 
@@ -492,20 +472,19 @@ public class AutoPilot : RemoteObject
     /// Defaults to 3 seconds for each axis.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "AutoPilot_get_TimeToPeak")]
-    public systemAlias::Tuple<double,double,double> TimeToPeak {
+    public Tuple<double,double,double> TimeToPeak {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.AutoPilot))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "AutoPilot_get_TimeToPeak", _args);
-            return (systemAlias::Tuple<double,double,double>)global::KRPC.Client.Encoder.Decode (_data, typeof(systemAlias::Tuple<double,double,double>), connection);
+            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "AutoPilot_get_TimeToPeak", _args);
         }
         set {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.AutoPilot)),
-                global::KRPC.Client.Encoder.Encode (value, typeof(systemAlias::Tuple<double,double,double>))
+            var _args = new object[] {
+                this,
+                value
             };
-            connection.Invoke ("SpaceCenter", "AutoPilot_set_TimeToPeak", _args);
+            Connection.Invoke ("SpaceCenter", "AutoPilot_set_TimeToPeak", _args);
         }
     }
 
@@ -517,20 +496,19 @@ public class AutoPilot : RemoteObject
     /// which will overwrite any manual changes.
     /// </remarks>
     [RpcAttribute ("SpaceCenter", "AutoPilot_get_YawPIDGains")]
-    public systemAlias::Tuple<double,double,double> YawPIDGains {
+    public Tuple<double,double,double> YawPIDGains {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.AutoPilot))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "AutoPilot_get_YawPIDGains", _args);
-            return (systemAlias::Tuple<double,double,double>)global::KRPC.Client.Encoder.Decode (_data, typeof(systemAlias::Tuple<double,double,double>), connection);
+            return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "AutoPilot_get_YawPIDGains", _args);
         }
         set {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.AutoPilot)),
-                global::KRPC.Client.Encoder.Encode (value, typeof(systemAlias::Tuple<double,double,double>))
+            var _args = new object[] {
+                this,
+                value
             };
-            connection.Invoke ("SpaceCenter", "AutoPilot_set_YawPIDGains", _args);
+            Connection.Invoke ("SpaceCenter", "AutoPilot_set_YawPIDGains", _args);
         }
     }
 }

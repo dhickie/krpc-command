@@ -1,6 +1,5 @@
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
-using Google.Protobuf;
 using kRPC.Client.Boost.Attributes;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
@@ -24,10 +23,10 @@ public class Fairing : RemoteObject
     [RpcAttribute ("SpaceCenter", "Fairing_Jettison")]
     public void Jettison ()
     {
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Fairing))
+        var _args = new object[] {
+            this
         };
-        connection.Invoke ("SpaceCenter", "Fairing_Jettison", _args);
+        Connection.Invoke ("SpaceCenter", "Fairing_Jettison", _args);
     }
 
     /// <summary>
@@ -36,11 +35,10 @@ public class Fairing : RemoteObject
     [RpcAttribute ("SpaceCenter", "Fairing_get_Jettisoned")]
     public bool Jettisoned {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Fairing))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Fairing_get_Jettisoned", _args);
-            return (bool)global::KRPC.Client.Encoder.Decode (_data, typeof(bool), connection);
+            return Connection.Invoke<bool> ("SpaceCenter", "Fairing_get_Jettisoned", _args);
         }
     }
 
@@ -48,13 +46,12 @@ public class Fairing : RemoteObject
     /// The part object for this fairing.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "Fairing_get_Part")]
-    public global::kRPC.Client.Boost.Services.SpaceCenter.Part Part {
+    public Part Part {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Fairing))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "Fairing_get_Part", _args);
-            return (global::kRPC.Client.Boost.Services.SpaceCenter.Part)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Part), connection);
+            return Connection.Invoke<Part> ("SpaceCenter", "Fairing_get_Part", _args);
         }
     }
 }

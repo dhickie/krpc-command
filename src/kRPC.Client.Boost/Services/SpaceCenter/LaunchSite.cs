@@ -1,6 +1,5 @@
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
-using Google.Protobuf;
 using kRPC.Client.Boost.Attributes;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
@@ -22,13 +21,12 @@ public class LaunchSite : RemoteObject
     /// The celestial body the launch site is on.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "LaunchSite_get_Body")]
-    public global::kRPC.Client.Boost.Services.SpaceCenter.CelestialBody Body {
+    public CelestialBody Body {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.LaunchSite))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "LaunchSite_get_Body", _args);
-            return (global::kRPC.Client.Boost.Services.SpaceCenter.CelestialBody)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.CelestialBody), connection);
+            return Connection.Invoke<CelestialBody> ("SpaceCenter", "LaunchSite_get_Body", _args);
         }
     }
 
@@ -36,13 +34,12 @@ public class LaunchSite : RemoteObject
     /// Which editor is normally used for this launch site.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "LaunchSite_get_EditorFacility")]
-    public global::kRPC.Client.Boost.Services.SpaceCenter.EditorFacility EditorFacility {
+    public EditorFacility EditorFacility {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.LaunchSite))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "LaunchSite_get_EditorFacility", _args);
-            return (global::kRPC.Client.Boost.Services.SpaceCenter.EditorFacility)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.EditorFacility), connection);
+            return Connection.Invoke<EditorFacility> ("SpaceCenter", "LaunchSite_get_EditorFacility", _args);
         }
     }
 
@@ -52,11 +49,10 @@ public class LaunchSite : RemoteObject
     [RpcAttribute ("SpaceCenter", "LaunchSite_get_Name")]
     public string Name {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.LaunchSite))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "LaunchSite_get_Name", _args);
-            return (string)global::KRPC.Client.Encoder.Decode (_data, typeof(string), connection);
+            return Connection.Invoke<string> ("SpaceCenter", "LaunchSite_get_Name", _args);
         }
     }
 }

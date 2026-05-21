@@ -1,7 +1,7 @@
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
-using Google.Protobuf;
 using kRPC.Client.Boost.Attributes;
+using System.Collections.Generic;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
@@ -22,15 +22,14 @@ public class RoboticController : RemoteObject
     /// </summary>
     /// <returns>Returns <c>true</c> if the axis is added successfully.</returns>
     [RpcAttribute ("SpaceCenter", "RoboticController_AddAxis")]
-    public bool AddAxis (global::kRPC.Client.Boost.Services.SpaceCenter.Module module, string fieldName)
+    public bool AddAxis (Module module, string fieldName)
     {
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.RoboticController)),
-            global::KRPC.Client.Encoder.Encode (module, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Module)),
-            global::KRPC.Client.Encoder.Encode (fieldName, typeof(string))
+        var _args = new object[] {
+            this,
+            module,
+            fieldName
         };
-        ByteString _data = connection.Invoke ("SpaceCenter", "RoboticController_AddAxis", _args);
-        return (bool)global::KRPC.Client.Encoder.Decode (_data, typeof(bool), connection);
+        return Connection.Invoke<bool> ("SpaceCenter", "RoboticController_AddAxis", _args);
     }
 
     /// <summary>
@@ -38,30 +37,28 @@ public class RoboticController : RemoteObject
     /// </summary>
     /// <returns>Returns <c>true</c> if the key frame is added successfully.</returns>
     [RpcAttribute ("SpaceCenter", "RoboticController_AddKeyFrame")]
-    public bool AddKeyFrame (global::kRPC.Client.Boost.Services.SpaceCenter.Module module, string fieldName, float time, float value)
+    public bool AddKeyFrame (Module module, string fieldName, float time, float value)
     {
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.RoboticController)),
-            global::KRPC.Client.Encoder.Encode (module, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Module)),
-            global::KRPC.Client.Encoder.Encode (fieldName, typeof(string)),
-            global::KRPC.Client.Encoder.Encode (time, typeof(float)),
-            global::KRPC.Client.Encoder.Encode (value, typeof(float))
+        var _args = new object[] {
+            this,
+            module,
+            fieldName,
+            time,
+            value
         };
-        ByteString _data = connection.Invoke ("SpaceCenter", "RoboticController_AddKeyFrame", _args);
-        return (bool)global::KRPC.Client.Encoder.Decode (_data, typeof(bool), connection);
+        return Connection.Invoke<bool> ("SpaceCenter", "RoboticController_AddKeyFrame", _args);
     }
 
     /// <summary>
     /// The axes for the controller.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "RoboticController_Axes")]
-    public global::System.Collections.Generic.IList<global::System.Collections.Generic.IList<string>> Axes ()
+    public IList<IList<string>> Axes ()
     {
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.RoboticController))
+        var _args = new object[] {
+            this
         };
-        ByteString _data = connection.Invoke ("SpaceCenter", "RoboticController_Axes", _args);
-        return (global::System.Collections.Generic.IList<global::System.Collections.Generic.IList<string>>)global::KRPC.Client.Encoder.Decode (_data, typeof(global::System.Collections.Generic.IList<global::System.Collections.Generic.IList<string>>), connection);
+        return Connection.Invoke<IList<IList<string>>> ("SpaceCenter", "RoboticController_Axes", _args);
     }
 
     /// <summary>
@@ -69,42 +66,39 @@ public class RoboticController : RemoteObject
     /// </summary>
     /// <returns>Returns <c>true</c> if the axis is cleared successfully.</returns>
     [RpcAttribute ("SpaceCenter", "RoboticController_ClearAxis")]
-    public bool ClearAxis (global::kRPC.Client.Boost.Services.SpaceCenter.Module module, string fieldName)
+    public bool ClearAxis (Module module, string fieldName)
     {
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.RoboticController)),
-            global::KRPC.Client.Encoder.Encode (module, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Module)),
-            global::KRPC.Client.Encoder.Encode (fieldName, typeof(string))
+        var _args = new object[] {
+            this,
+            module,
+            fieldName
         };
-        ByteString _data = connection.Invoke ("SpaceCenter", "RoboticController_ClearAxis", _args);
-        return (bool)global::KRPC.Client.Encoder.Decode (_data, typeof(bool), connection);
+        return Connection.Invoke<bool> ("SpaceCenter", "RoboticController_ClearAxis", _args);
     }
 
     /// <summary>
     /// Whether the controller has a part.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "RoboticController_HasPart")]
-    public bool HasPart (global::kRPC.Client.Boost.Services.SpaceCenter.Part part)
+    public bool HasPart (Part part)
     {
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.RoboticController)),
-            global::KRPC.Client.Encoder.Encode (part, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Part))
+        var _args = new object[] {
+            this,
+            part
         };
-        ByteString _data = connection.Invoke ("SpaceCenter", "RoboticController_HasPart", _args);
-        return (bool)global::KRPC.Client.Encoder.Decode (_data, typeof(bool), connection);
+        return Connection.Invoke<bool> ("SpaceCenter", "RoboticController_HasPart", _args);
     }
 
     /// <summary>
     /// The part object for this controller.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "RoboticController_get_Part")]
-    public global::kRPC.Client.Boost.Services.SpaceCenter.Part Part {
+    public Part Part {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.RoboticController))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "RoboticController_get_Part", _args);
-            return (global::kRPC.Client.Boost.Services.SpaceCenter.Part)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Part), connection);
+            return Connection.Invoke<Part> ("SpaceCenter", "RoboticController_get_Part", _args);
         }
     }
 }

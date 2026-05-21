@@ -1,8 +1,7 @@
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
-using Google.Protobuf;
-using genericCollectionsAlias = System.Collections.Generic;
 using kRPC.Client.Boost.Attributes;
+using System.Collections.Generic;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
@@ -23,13 +22,12 @@ public class ContractManager : RemoteObject
     /// A list of all active contracts.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "ContractManager_get_ActiveContracts")]
-    public global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.Contract> ActiveContracts {
+    public IList<Contract> ActiveContracts {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ContractManager))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "ContractManager_get_ActiveContracts", _args);
-            return (global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.Contract>)global::KRPC.Client.Encoder.Decode (_data, typeof(global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.Contract>), connection);
+            return Connection.Invoke<IList<Contract>> ("SpaceCenter", "ContractManager_get_ActiveContracts", _args);
         }
     }
 
@@ -37,13 +35,12 @@ public class ContractManager : RemoteObject
     /// A list of all contracts.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "ContractManager_get_AllContracts")]
-    public global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.Contract> AllContracts {
+    public IList<Contract> AllContracts {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ContractManager))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "ContractManager_get_AllContracts", _args);
-            return (global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.Contract>)global::KRPC.Client.Encoder.Decode (_data, typeof(global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.Contract>), connection);
+            return Connection.Invoke<IList<Contract>> ("SpaceCenter", "ContractManager_get_AllContracts", _args);
         }
     }
 
@@ -51,13 +48,12 @@ public class ContractManager : RemoteObject
     /// A list of all completed contracts.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "ContractManager_get_CompletedContracts")]
-    public global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.Contract> CompletedContracts {
+    public IList<Contract> CompletedContracts {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ContractManager))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "ContractManager_get_CompletedContracts", _args);
-            return (global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.Contract>)global::KRPC.Client.Encoder.Decode (_data, typeof(global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.Contract>), connection);
+            return Connection.Invoke<IList<Contract>> ("SpaceCenter", "ContractManager_get_CompletedContracts", _args);
         }
     }
 
@@ -65,13 +61,12 @@ public class ContractManager : RemoteObject
     /// A list of all failed contracts.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "ContractManager_get_FailedContracts")]
-    public global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.Contract> FailedContracts {
+    public IList<Contract> FailedContracts {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ContractManager))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "ContractManager_get_FailedContracts", _args);
-            return (global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.Contract>)global::KRPC.Client.Encoder.Decode (_data, typeof(global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.Contract>), connection);
+            return Connection.Invoke<IList<Contract>> ("SpaceCenter", "ContractManager_get_FailedContracts", _args);
         }
     }
 
@@ -79,13 +74,12 @@ public class ContractManager : RemoteObject
     /// A list of all offered, but unaccepted, contracts.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "ContractManager_get_OfferedContracts")]
-    public global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.Contract> OfferedContracts {
+    public IList<Contract> OfferedContracts {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ContractManager))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "ContractManager_get_OfferedContracts", _args);
-            return (global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.Contract>)global::KRPC.Client.Encoder.Decode (_data, typeof(global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.Contract>), connection);
+            return Connection.Invoke<IList<Contract>> ("SpaceCenter", "ContractManager_get_OfferedContracts", _args);
         }
     }
 
@@ -93,13 +87,12 @@ public class ContractManager : RemoteObject
     /// A list of all contract types.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "ContractManager_get_Types")]
-    public genericCollectionsAlias::ISet<string> Types {
+    public ISet<string> Types {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ContractManager))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "ContractManager_get_Types", _args);
-            return (genericCollectionsAlias::ISet<string>)global::KRPC.Client.Encoder.Decode (_data, typeof(genericCollectionsAlias::ISet<string>), connection);
+            return Connection.Invoke<ISet<string>> ("SpaceCenter", "ContractManager_get_Types", _args);
         }
     }
 }

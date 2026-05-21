@@ -1,7 +1,7 @@
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
-using Google.Protobuf;
 using kRPC.Client.Boost.Attributes;
+using System.Collections.Generic;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
@@ -24,12 +24,11 @@ public class ResourceConverter : RemoteObject
     [RpcAttribute ("SpaceCenter", "ResourceConverter_Active")]
     public bool Active (int index)
     {
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ResourceConverter)),
-            global::KRPC.Client.Encoder.Encode (index, typeof(int))
+        var _args = new object[] {
+            this,
+            index
         };
-        ByteString _data = connection.Invoke ("SpaceCenter", "ResourceConverter_Active", _args);
-        return (bool)global::KRPC.Client.Encoder.Decode (_data, typeof(bool), connection);
+        return Connection.Invoke<bool> ("SpaceCenter", "ResourceConverter_Active", _args);
     }
 
     /// <summary>
@@ -37,14 +36,13 @@ public class ResourceConverter : RemoteObject
     /// </summary>
     /// <param name="index">Index of the converter.</param>
     [RpcAttribute ("SpaceCenter", "ResourceConverter_Inputs")]
-    public global::System.Collections.Generic.IList<string> Inputs (int index)
+    public IList<string> Inputs (int index)
     {
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ResourceConverter)),
-            global::KRPC.Client.Encoder.Encode (index, typeof(int))
+        var _args = new object[] {
+            this,
+            index
         };
-        ByteString _data = connection.Invoke ("SpaceCenter", "ResourceConverter_Inputs", _args);
-        return (global::System.Collections.Generic.IList<string>)global::KRPC.Client.Encoder.Decode (_data, typeof(global::System.Collections.Generic.IList<string>), connection);
+        return Connection.Invoke<IList<string>> ("SpaceCenter", "ResourceConverter_Inputs", _args);
     }
 
     /// <summary>
@@ -54,12 +52,11 @@ public class ResourceConverter : RemoteObject
     [RpcAttribute ("SpaceCenter", "ResourceConverter_Name")]
     public string Name (int index)
     {
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ResourceConverter)),
-            global::KRPC.Client.Encoder.Encode (index, typeof(int))
+        var _args = new object[] {
+            this,
+            index
         };
-        ByteString _data = connection.Invoke ("SpaceCenter", "ResourceConverter_Name", _args);
-        return (string)global::KRPC.Client.Encoder.Decode (_data, typeof(string), connection);
+        return Connection.Invoke<string> ("SpaceCenter", "ResourceConverter_Name", _args);
     }
 
     /// <summary>
@@ -67,14 +64,13 @@ public class ResourceConverter : RemoteObject
     /// </summary>
     /// <param name="index">Index of the converter.</param>
     [RpcAttribute ("SpaceCenter", "ResourceConverter_Outputs")]
-    public global::System.Collections.Generic.IList<string> Outputs (int index)
+    public IList<string> Outputs (int index)
     {
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ResourceConverter)),
-            global::KRPC.Client.Encoder.Encode (index, typeof(int))
+        var _args = new object[] {
+            this,
+            index
         };
-        ByteString _data = connection.Invoke ("SpaceCenter", "ResourceConverter_Outputs", _args);
-        return (global::System.Collections.Generic.IList<string>)global::KRPC.Client.Encoder.Decode (_data, typeof(global::System.Collections.Generic.IList<string>), connection);
+        return Connection.Invoke<IList<string>> ("SpaceCenter", "ResourceConverter_Outputs", _args);
     }
 
     /// <summary>
@@ -84,11 +80,11 @@ public class ResourceConverter : RemoteObject
     [RpcAttribute ("SpaceCenter", "ResourceConverter_Start")]
     public void Start (int index)
     {
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ResourceConverter)),
-            global::KRPC.Client.Encoder.Encode (index, typeof(int))
+        var _args = new object[] {
+            this,
+            index
         };
-        connection.Invoke ("SpaceCenter", "ResourceConverter_Start", _args);
+        Connection.Invoke ("SpaceCenter", "ResourceConverter_Start", _args);
     }
 
     /// <summary>
@@ -96,14 +92,13 @@ public class ResourceConverter : RemoteObject
     /// </summary>
     /// <param name="index">Index of the converter.</param>
     [RpcAttribute ("SpaceCenter", "ResourceConverter_State")]
-    public global::kRPC.Client.Boost.Services.SpaceCenter.ResourceConverterState State (int index)
+    public ResourceConverterState State (int index)
     {
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ResourceConverter)),
-            global::KRPC.Client.Encoder.Encode (index, typeof(int))
+        var _args = new object[] {
+            this,
+            index
         };
-        ByteString _data = connection.Invoke ("SpaceCenter", "ResourceConverter_State", _args);
-        return (global::kRPC.Client.Boost.Services.SpaceCenter.ResourceConverterState)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ResourceConverterState), connection);
+        return Connection.Invoke<ResourceConverterState> ("SpaceCenter", "ResourceConverter_State", _args);
     }
 
     /// <summary>
@@ -114,12 +109,11 @@ public class ResourceConverter : RemoteObject
     [RpcAttribute ("SpaceCenter", "ResourceConverter_StatusInfo")]
     public string StatusInfo (int index)
     {
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ResourceConverter)),
-            global::KRPC.Client.Encoder.Encode (index, typeof(int))
+        var _args = new object[] {
+            this,
+            index
         };
-        ByteString _data = connection.Invoke ("SpaceCenter", "ResourceConverter_StatusInfo", _args);
-        return (string)global::KRPC.Client.Encoder.Decode (_data, typeof(string), connection);
+        return Connection.Invoke<string> ("SpaceCenter", "ResourceConverter_StatusInfo", _args);
     }
 
     /// <summary>
@@ -129,11 +123,11 @@ public class ResourceConverter : RemoteObject
     [RpcAttribute ("SpaceCenter", "ResourceConverter_Stop")]
     public void Stop (int index)
     {
-        var _args = new ByteString[] {
-            global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ResourceConverter)),
-            global::KRPC.Client.Encoder.Encode (index, typeof(int))
+        var _args = new object[] {
+            this,
+            index
         };
-        connection.Invoke ("SpaceCenter", "ResourceConverter_Stop", _args);
+        Connection.Invoke ("SpaceCenter", "ResourceConverter_Stop", _args);
     }
 
     /// <summary>
@@ -142,11 +136,10 @@ public class ResourceConverter : RemoteObject
     [RpcAttribute ("SpaceCenter", "ResourceConverter_get_CoreTemperature")]
     public float CoreTemperature {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ResourceConverter))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "ResourceConverter_get_CoreTemperature", _args);
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            return Connection.Invoke<float> ("SpaceCenter", "ResourceConverter_get_CoreTemperature", _args);
         }
     }
 
@@ -156,11 +149,10 @@ public class ResourceConverter : RemoteObject
     [RpcAttribute ("SpaceCenter", "ResourceConverter_get_Count")]
     public int Count {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ResourceConverter))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "ResourceConverter_get_Count", _args);
-            return (int)global::KRPC.Client.Encoder.Decode (_data, typeof(int), connection);
+            return Connection.Invoke<int> ("SpaceCenter", "ResourceConverter_get_Count", _args);
         }
     }
 
@@ -170,11 +162,10 @@ public class ResourceConverter : RemoteObject
     [RpcAttribute ("SpaceCenter", "ResourceConverter_get_OptimumCoreTemperature")]
     public float OptimumCoreTemperature {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ResourceConverter))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "ResourceConverter_get_OptimumCoreTemperature", _args);
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            return Connection.Invoke<float> ("SpaceCenter", "ResourceConverter_get_OptimumCoreTemperature", _args);
         }
     }
 
@@ -182,13 +173,12 @@ public class ResourceConverter : RemoteObject
     /// The part object for this converter.
     /// </summary>
     [RpcAttribute ("SpaceCenter", "ResourceConverter_get_Part")]
-    public global::kRPC.Client.Boost.Services.SpaceCenter.Part Part {
+    public Part Part {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ResourceConverter))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "ResourceConverter_get_Part", _args);
-            return (global::kRPC.Client.Boost.Services.SpaceCenter.Part)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Part), connection);
+            return Connection.Invoke<Part> ("SpaceCenter", "ResourceConverter_get_Part", _args);
         }
     }
 
@@ -198,11 +188,10 @@ public class ResourceConverter : RemoteObject
     [RpcAttribute ("SpaceCenter", "ResourceConverter_get_ThermalEfficiency")]
     public float ThermalEfficiency {
         get {
-            var _args = new ByteString[] {
-                global::KRPC.Client.Encoder.Encode (this, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ResourceConverter))
+            var _args = new object[] {
+                this
             };
-            ByteString _data = connection.Invoke ("SpaceCenter", "ResourceConverter_get_ThermalEfficiency", _args);
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            return Connection.Invoke<float> ("SpaceCenter", "ResourceConverter_get_ThermalEfficiency", _args);
         }
     }
 }
