@@ -1,6 +1,7 @@
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
 using Google.Protobuf;
+using kRPC.Client.Boost.Attributes;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
@@ -24,7 +25,7 @@ public class Decoupler : RemoteObject
     /// after calling this function, the object(s) returned by previous call(s) to
     /// <see cref="M:SpaceCenter.ActiveVessel" /> no longer refer to the active vessel.
     /// </remarks>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Decoupler_Decouple")]
+    [RpcAttribute ("SpaceCenter", "Decoupler_Decouple")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.Vessel Decouple ()
     {
         var _args = new ByteString[] {
@@ -37,7 +38,7 @@ public class Decoupler : RemoteObject
     /// <summary>
     /// The part attached to this decoupler's explosive node.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Decoupler_get_AttachedPart")]
+    [RpcAttribute ("SpaceCenter", "Decoupler_get_AttachedPart")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.Part AttachedPart {
         get {
             var _args = new ByteString[] {
@@ -51,7 +52,7 @@ public class Decoupler : RemoteObject
     /// <summary>
     /// Whether the decoupler has fired.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Decoupler_get_Decoupled")]
+    [RpcAttribute ("SpaceCenter", "Decoupler_get_Decoupled")]
     public bool Decoupled {
         get {
             var _args = new ByteString[] {
@@ -65,7 +66,7 @@ public class Decoupler : RemoteObject
     /// <summary>
     /// The impulse that the decoupler imparts when it is fired, in Newton seconds.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Decoupler_get_Impulse")]
+    [RpcAttribute ("SpaceCenter", "Decoupler_get_Impulse")]
     public float Impulse {
         get {
             var _args = new ByteString[] {
@@ -79,7 +80,7 @@ public class Decoupler : RemoteObject
     /// <summary>
     /// Whether the decoupler is an omni-decoupler (e.g. stack separator)
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Decoupler_get_IsOmniDecoupler")]
+    [RpcAttribute ("SpaceCenter", "Decoupler_get_IsOmniDecoupler")]
     public bool IsOmniDecoupler {
         get {
             var _args = new ByteString[] {
@@ -93,7 +94,7 @@ public class Decoupler : RemoteObject
     /// <summary>
     /// The part object for this decoupler.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Decoupler_get_Part")]
+    [RpcAttribute ("SpaceCenter", "Decoupler_get_Part")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.Part Part {
         get {
             var _args = new ByteString[] {
@@ -107,7 +108,7 @@ public class Decoupler : RemoteObject
     /// <summary>
     /// Whether the decoupler is enabled in the staging sequence.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Decoupler_get_Staged")]
+    [RpcAttribute ("SpaceCenter", "Decoupler_get_Staged")]
     public bool Staged {
         get {
             var _args = new ByteString[] {

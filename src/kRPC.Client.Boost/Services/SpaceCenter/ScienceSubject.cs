@@ -1,6 +1,7 @@
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
 using Google.Protobuf;
+using kRPC.Client.Boost.Attributes;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
@@ -19,7 +20,7 @@ public class ScienceSubject : RemoteObject
     /// <summary>
     /// Multiply science value by this to determine data amount in mits.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "ScienceSubject_get_DataScale")]
+    [RpcAttribute ("SpaceCenter", "ScienceSubject_get_DataScale")]
     public float DataScale {
         get {
             var _args = new ByteString[] {
@@ -33,7 +34,7 @@ public class ScienceSubject : RemoteObject
     /// <summary>
     /// Whether the experiment has been completed.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "ScienceSubject_get_IsComplete")]
+    [RpcAttribute ("SpaceCenter", "ScienceSubject_get_IsComplete")]
     public bool IsComplete {
         get {
             var _args = new ByteString[] {
@@ -48,7 +49,7 @@ public class ScienceSubject : RemoteObject
     /// Amount of science already earned from this subject, not updated until after
     /// transmission/recovery.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "ScienceSubject_get_Science")]
+    [RpcAttribute ("SpaceCenter", "ScienceSubject_get_Science")]
     public float Science {
         get {
             var _args = new ByteString[] {
@@ -62,7 +63,7 @@ public class ScienceSubject : RemoteObject
     /// <summary>
     /// Total science allowable for this subject.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "ScienceSubject_get_ScienceCap")]
+    [RpcAttribute ("SpaceCenter", "ScienceSubject_get_ScienceCap")]
     public float ScienceCap {
         get {
             var _args = new ByteString[] {
@@ -77,7 +78,7 @@ public class ScienceSubject : RemoteObject
     /// Diminishing value multiplier for decreasing the science value returned from repeated
     /// experiments.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "ScienceSubject_get_ScientificValue")]
+    [RpcAttribute ("SpaceCenter", "ScienceSubject_get_ScientificValue")]
     public float ScientificValue {
         get {
             var _args = new ByteString[] {
@@ -91,7 +92,7 @@ public class ScienceSubject : RemoteObject
     /// <summary>
     /// Multiplier for specific Celestial Body/Experiment Situation combination.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "ScienceSubject_get_SubjectValue")]
+    [RpcAttribute ("SpaceCenter", "ScienceSubject_get_SubjectValue")]
     public float SubjectValue {
         get {
             var _args = new ByteString[] {
@@ -105,7 +106,7 @@ public class ScienceSubject : RemoteObject
     /// <summary>
     /// Title of science subject, displayed in science archives
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "ScienceSubject_get_Title")]
+    [RpcAttribute ("SpaceCenter", "ScienceSubject_get_Title")]
     public string Title {
         get {
             var _args = new ByteString[] {

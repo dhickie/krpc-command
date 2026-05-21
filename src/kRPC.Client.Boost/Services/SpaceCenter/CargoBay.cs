@@ -1,6 +1,7 @@
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
 using Google.Protobuf;
+using kRPC.Client.Boost.Attributes;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
@@ -19,7 +20,7 @@ public class CargoBay : RemoteObject
     /// <summary>
     /// Whether the cargo bay is open.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "CargoBay_get_Open")]
+    [RpcAttribute ("SpaceCenter", "CargoBay_get_Open")]
     public bool Open {
         get {
             var _args = new ByteString[] {
@@ -40,7 +41,7 @@ public class CargoBay : RemoteObject
     /// <summary>
     /// The part object for this cargo bay.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "CargoBay_get_Part")]
+    [RpcAttribute ("SpaceCenter", "CargoBay_get_Part")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.Part Part {
         get {
             var _args = new ByteString[] {
@@ -54,7 +55,7 @@ public class CargoBay : RemoteObject
     /// <summary>
     /// The state of the cargo bay.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "CargoBay_get_State")]
+    [RpcAttribute ("SpaceCenter", "CargoBay_get_State")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.CargoBayState State {
         get {
             var _args = new ByteString[] {

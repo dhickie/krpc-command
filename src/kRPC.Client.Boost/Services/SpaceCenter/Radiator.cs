@@ -1,6 +1,7 @@
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
 using Google.Protobuf;
+using kRPC.Client.Boost.Attributes;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
@@ -19,7 +20,7 @@ public class Radiator : RemoteObject
     /// <summary>
     /// Whether the radiator is deployable.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Radiator_get_Deployable")]
+    [RpcAttribute ("SpaceCenter", "Radiator_get_Deployable")]
     public bool Deployable {
         get {
             var _args = new ByteString[] {
@@ -34,7 +35,7 @@ public class Radiator : RemoteObject
     /// For a deployable radiator, <c>true</c> if the radiator is extended.
     /// If the radiator is not deployable, this is always <c>true</c>.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Radiator_get_Deployed")]
+    [RpcAttribute ("SpaceCenter", "Radiator_get_Deployed")]
     public bool Deployed {
         get {
             var _args = new ByteString[] {
@@ -55,7 +56,7 @@ public class Radiator : RemoteObject
     /// <summary>
     /// The part object for this radiator.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Radiator_get_Part")]
+    [RpcAttribute ("SpaceCenter", "Radiator_get_Part")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.Part Part {
         get {
             var _args = new ByteString[] {
@@ -72,7 +73,7 @@ public class Radiator : RemoteObject
     /// <remarks>
     /// A fixed radiator is always <see cref="M:SpaceCenter.RadiatorState.Extended" />.
     /// </remarks>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Radiator_get_State")]
+    [RpcAttribute ("SpaceCenter", "Radiator_get_State")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.RadiatorState State {
         get {
             var _args = new ByteString[] {

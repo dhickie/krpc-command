@@ -1,6 +1,7 @@
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
 using Google.Protobuf;
+using kRPC.Client.Boost.Attributes;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
@@ -19,7 +20,7 @@ public class Intake : RemoteObject
     /// <summary>
     /// The area of the intake's opening, in square meters.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Intake_get_Area")]
+    [RpcAttribute ("SpaceCenter", "Intake_get_Area")]
     public float Area {
         get {
             var _args = new ByteString[] {
@@ -33,7 +34,7 @@ public class Intake : RemoteObject
     /// <summary>
     /// The rate of flow into the intake, in units of resource per second.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Intake_get_Flow")]
+    [RpcAttribute ("SpaceCenter", "Intake_get_Flow")]
     public float Flow {
         get {
             var _args = new ByteString[] {
@@ -47,7 +48,7 @@ public class Intake : RemoteObject
     /// <summary>
     /// Whether the intake is open.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Intake_get_Open")]
+    [RpcAttribute ("SpaceCenter", "Intake_get_Open")]
     public bool Open {
         get {
             var _args = new ByteString[] {
@@ -68,7 +69,7 @@ public class Intake : RemoteObject
     /// <summary>
     /// The part object for this intake.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Intake_get_Part")]
+    [RpcAttribute ("SpaceCenter", "Intake_get_Part")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.Part Part {
         get {
             var _args = new ByteString[] {
@@ -82,7 +83,7 @@ public class Intake : RemoteObject
     /// <summary>
     /// Speed of the flow into the intake, in <math>m/s</math>.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Intake_get_Speed")]
+    [RpcAttribute ("SpaceCenter", "Intake_get_Speed")]
     public float Speed {
         get {
             var _args = new ByteString[] {

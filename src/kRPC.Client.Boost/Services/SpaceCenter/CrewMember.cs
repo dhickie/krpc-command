@@ -1,6 +1,7 @@
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
 using Google.Protobuf;
+using kRPC.Client.Boost.Attributes;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
@@ -19,7 +20,7 @@ public class CrewMember : RemoteObject
     /// <summary>
     /// Whether the crew member is a badass.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "CrewMember_get_Badass")]
+    [RpcAttribute ("SpaceCenter", "CrewMember_get_Badass")]
     public bool Badass {
         get {
             var _args = new ByteString[] {
@@ -40,7 +41,7 @@ public class CrewMember : RemoteObject
     /// <summary>
     /// The flight IDs for each entry in the career flight log.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "CrewMember_get_CareerLogFlights")]
+    [RpcAttribute ("SpaceCenter", "CrewMember_get_CareerLogFlights")]
     public global::System.Collections.Generic.IList<int> CareerLogFlights {
         get {
             var _args = new ByteString[] {
@@ -54,7 +55,7 @@ public class CrewMember : RemoteObject
     /// <summary>
     /// The body name for each entry in the career flight log.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "CrewMember_get_CareerLogTargets")]
+    [RpcAttribute ("SpaceCenter", "CrewMember_get_CareerLogTargets")]
     public global::System.Collections.Generic.IList<string> CareerLogTargets {
         get {
             var _args = new ByteString[] {
@@ -68,7 +69,7 @@ public class CrewMember : RemoteObject
     /// <summary>
     /// The type for each entry in the career flight log.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "CrewMember_get_CareerLogTypes")]
+    [RpcAttribute ("SpaceCenter", "CrewMember_get_CareerLogTypes")]
     public global::System.Collections.Generic.IList<string> CareerLogTypes {
         get {
             var _args = new ByteString[] {
@@ -82,7 +83,7 @@ public class CrewMember : RemoteObject
     /// <summary>
     /// The crew members courage.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "CrewMember_get_Courage")]
+    [RpcAttribute ("SpaceCenter", "CrewMember_get_Courage")]
     public float Courage {
         get {
             var _args = new ByteString[] {
@@ -103,7 +104,7 @@ public class CrewMember : RemoteObject
     /// <summary>
     /// The crew members experience.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "CrewMember_get_Experience")]
+    [RpcAttribute ("SpaceCenter", "CrewMember_get_Experience")]
     public float Experience {
         get {
             var _args = new ByteString[] {
@@ -124,7 +125,7 @@ public class CrewMember : RemoteObject
     /// <summary>
     /// The crew member's gender.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "CrewMember_get_Gender")]
+    [RpcAttribute ("SpaceCenter", "CrewMember_get_Gender")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.CrewMemberGender Gender {
         get {
             var _args = new ByteString[] {
@@ -138,7 +139,7 @@ public class CrewMember : RemoteObject
     /// <summary>
     /// The crew members name.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "CrewMember_get_Name")]
+    [RpcAttribute ("SpaceCenter", "CrewMember_get_Name")]
     public string Name {
         get {
             var _args = new ByteString[] {
@@ -159,7 +160,7 @@ public class CrewMember : RemoteObject
     /// <summary>
     /// Whether the crew member is on a mission.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "CrewMember_get_OnMission")]
+    [RpcAttribute ("SpaceCenter", "CrewMember_get_OnMission")]
     public bool OnMission {
         get {
             var _args = new ByteString[] {
@@ -173,7 +174,7 @@ public class CrewMember : RemoteObject
     /// <summary>
     /// The crew member's current roster status.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "CrewMember_get_RosterStatus")]
+    [RpcAttribute ("SpaceCenter", "CrewMember_get_RosterStatus")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.RosterStatus RosterStatus {
         get {
             var _args = new ByteString[] {
@@ -187,7 +188,7 @@ public class CrewMember : RemoteObject
     /// <summary>
     /// The crew members stupidity.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "CrewMember_get_Stupidity")]
+    [RpcAttribute ("SpaceCenter", "CrewMember_get_Stupidity")]
     public float Stupidity {
         get {
             var _args = new ByteString[] {
@@ -208,7 +209,7 @@ public class CrewMember : RemoteObject
     /// <summary>
     /// The crew member's suit type.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "CrewMember_get_SuitType")]
+    [RpcAttribute ("SpaceCenter", "CrewMember_get_SuitType")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.SuitType SuitType {
         get {
             var _args = new ByteString[] {
@@ -229,7 +230,7 @@ public class CrewMember : RemoteObject
     /// <summary>
     /// The crew member's job.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "CrewMember_get_Trait")]
+    [RpcAttribute ("SpaceCenter", "CrewMember_get_Trait")]
     public string Trait {
         get {
             var _args = new ByteString[] {
@@ -243,7 +244,7 @@ public class CrewMember : RemoteObject
     /// <summary>
     /// The type of crew member.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "CrewMember_get_Type")]
+    [RpcAttribute ("SpaceCenter", "CrewMember_get_Type")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.CrewMemberType Type {
         get {
             var _args = new ByteString[] {
@@ -257,7 +258,7 @@ public class CrewMember : RemoteObject
     /// <summary>
     /// Whether the crew member is a veteran.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "CrewMember_get_Veteran")]
+    [RpcAttribute ("SpaceCenter", "CrewMember_get_Veteran")]
     public bool Veteran {
         get {
             var _args = new ByteString[] {

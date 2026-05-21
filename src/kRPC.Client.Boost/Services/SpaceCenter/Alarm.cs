@@ -1,6 +1,7 @@
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
 using Google.Protobuf;
+using kRPC.Client.Boost.Attributes;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
@@ -19,7 +20,7 @@ public class Alarm : RemoteObject
     /// <summary>
     /// Description of the alarm.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Alarm_get_Description")]
+    [RpcAttribute ("SpaceCenter", "Alarm_get_Description")]
     public string Description {
         get {
             var _args = new ByteString[] {
@@ -33,7 +34,7 @@ public class Alarm : RemoteObject
     /// <summary>
     /// Seconds between the alarm going off and the event it references.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Alarm_get_EventOffset")]
+    [RpcAttribute ("SpaceCenter", "Alarm_get_EventOffset")]
     public double EventOffset {
         get {
             var _args = new ByteString[] {
@@ -49,7 +50,7 @@ public class Alarm : RemoteObject
     /// KSP destroys and recreates an alarm when it is edited.
     /// This id will remain constant between the old and new alarms.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Alarm_get_ID")]
+    [RpcAttribute ("SpaceCenter", "Alarm_get_ID")]
     public uint ID {
         get {
             var _args = new ByteString[] {
@@ -63,7 +64,7 @@ public class Alarm : RemoteObject
     /// <summary>
     /// Time the alarm will trigger.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Alarm_get_Time")]
+    [RpcAttribute ("SpaceCenter", "Alarm_get_Time")]
     public double Time {
         get {
             var _args = new ByteString[] {
@@ -77,7 +78,7 @@ public class Alarm : RemoteObject
     /// <summary>
     /// Time until the alarm triggers.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Alarm_get_TimeUntil")]
+    [RpcAttribute ("SpaceCenter", "Alarm_get_TimeUntil")]
     public double TimeUntil {
         get {
             var _args = new ByteString[] {
@@ -91,7 +92,7 @@ public class Alarm : RemoteObject
     /// <summary>
     /// Title of the alarm
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Alarm_get_Title")]
+    [RpcAttribute ("SpaceCenter", "Alarm_get_Title")]
     public string Title {
         get {
             var _args = new ByteString[] {
@@ -105,7 +106,7 @@ public class Alarm : RemoteObject
     /// <summary>
     /// Type of alarm
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Alarm_get_Type")]
+    [RpcAttribute ("SpaceCenter", "Alarm_get_Type")]
     public string Type {
         get {
             var _args = new ByteString[] {
@@ -119,7 +120,7 @@ public class Alarm : RemoteObject
     /// <summary>
     /// Vessel the alarm references. <c>null</c> if it does not reference a vessel.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Alarm_get_Vessel")]
+    [RpcAttribute ("SpaceCenter", "Alarm_get_Vessel")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.Vessel Vessel {
         get {
             var _args = new ByteString[] {

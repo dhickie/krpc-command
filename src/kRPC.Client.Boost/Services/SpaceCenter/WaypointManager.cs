@@ -1,6 +1,7 @@
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
 using Google.Protobuf;
+using kRPC.Client.Boost.Attributes;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
@@ -27,7 +28,7 @@ public class WaypointManager : RemoteObject
     /// <param name="body">Celestial body the waypoint is attached to.</param>
     /// <param name="name">Name of the waypoint.</param>
     /// <returns></returns>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "WaypointManager_AddWaypoint")]
+    [RpcAttribute ("SpaceCenter", "WaypointManager_AddWaypoint")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.Waypoint AddWaypoint (double latitude, double longitude, global::kRPC.Client.Boost.Services.SpaceCenter.CelestialBody body, string name)
     {
         var _args = new ByteString[] {
@@ -51,7 +52,7 @@ public class WaypointManager : RemoteObject
     /// <param name="body">Celestial body the waypoint is attached to.</param>
     /// <param name="name">Name of the waypoint.</param>
     /// <returns></returns>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "WaypointManager_AddWaypointAtAltitude")]
+    [RpcAttribute ("SpaceCenter", "WaypointManager_AddWaypointAtAltitude")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.Waypoint AddWaypointAtAltitude (double latitude, double longitude, double altitude, global::kRPC.Client.Boost.Services.SpaceCenter.CelestialBody body, string name)
     {
         var _args = new ByteString[] {
@@ -70,7 +71,7 @@ public class WaypointManager : RemoteObject
     /// An example map of known color - seed pairs.
     /// Any other integers may be used as seed.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "WaypointManager_get_Colors")]
+    [RpcAttribute ("SpaceCenter", "WaypointManager_get_Colors")]
     public global::System.Collections.Generic.IDictionary<string,int> Colors {
         get {
             var _args = new ByteString[] {
@@ -84,7 +85,7 @@ public class WaypointManager : RemoteObject
     /// <summary>
     /// Returns all available icons (from "GameData/Squad/Contracts/Icons/").
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "WaypointManager_get_Icons")]
+    [RpcAttribute ("SpaceCenter", "WaypointManager_get_Icons")]
     public global::System.Collections.Generic.IList<string> Icons {
         get {
             var _args = new ByteString[] {
@@ -98,7 +99,7 @@ public class WaypointManager : RemoteObject
     /// <summary>
     /// A list of all existing waypoints.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "WaypointManager_get_Waypoints")]
+    [RpcAttribute ("SpaceCenter", "WaypointManager_get_Waypoints")]
     public global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.Waypoint> Waypoints {
         get {
             var _args = new ByteString[] {

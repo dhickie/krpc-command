@@ -1,6 +1,7 @@
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
 using Google.Protobuf;
+using kRPC.Client.Boost.Attributes;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
@@ -20,7 +21,7 @@ public class Parachute : RemoteObject
     /// Deploys the parachute. This has no effect if the parachute has already
     /// been armed or deployed.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Parachute_Arm")]
+    [RpcAttribute ("SpaceCenter", "Parachute_Arm")]
     public void Arm ()
     {
         var _args = new ByteString[] {
@@ -32,7 +33,7 @@ public class Parachute : RemoteObject
     /// <summary>
     /// Cuts the parachute.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Parachute_Cut")]
+    [RpcAttribute ("SpaceCenter", "Parachute_Cut")]
     public void Cut ()
     {
         var _args = new ByteString[] {
@@ -45,7 +46,7 @@ public class Parachute : RemoteObject
     /// Deploys the parachute. This has no effect if the parachute has already
     /// been deployed.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Parachute_Deploy")]
+    [RpcAttribute ("SpaceCenter", "Parachute_Deploy")]
     public void Deploy ()
     {
         var _args = new ByteString[] {
@@ -57,7 +58,7 @@ public class Parachute : RemoteObject
     /// <summary>
     /// Whether the parachute has been armed or deployed.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Parachute_get_Armed")]
+    [RpcAttribute ("SpaceCenter", "Parachute_get_Armed")]
     public bool Armed {
         get {
             var _args = new ByteString[] {
@@ -72,7 +73,7 @@ public class Parachute : RemoteObject
     /// The altitude at which the parachute will full deploy, in meters.
     /// Only applicable to stock parachutes.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Parachute_get_DeployAltitude")]
+    [RpcAttribute ("SpaceCenter", "Parachute_get_DeployAltitude")]
     public float DeployAltitude {
         get {
             var _args = new ByteString[] {
@@ -94,7 +95,7 @@ public class Parachute : RemoteObject
     /// The minimum pressure at which the parachute will semi-deploy, in atmospheres.
     /// Only applicable to stock parachutes.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Parachute_get_DeployMinPressure")]
+    [RpcAttribute ("SpaceCenter", "Parachute_get_DeployMinPressure")]
     public float DeployMinPressure {
         get {
             var _args = new ByteString[] {
@@ -115,7 +116,7 @@ public class Parachute : RemoteObject
     /// <summary>
     /// Whether the parachute has been deployed.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Parachute_get_Deployed")]
+    [RpcAttribute ("SpaceCenter", "Parachute_get_Deployed")]
     public bool Deployed {
         get {
             var _args = new ByteString[] {
@@ -129,7 +130,7 @@ public class Parachute : RemoteObject
     /// <summary>
     /// The part object for this parachute.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Parachute_get_Part")]
+    [RpcAttribute ("SpaceCenter", "Parachute_get_Part")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.Part Part {
         get {
             var _args = new ByteString[] {
@@ -143,7 +144,7 @@ public class Parachute : RemoteObject
     /// <summary>
     /// The current state of the parachute.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Parachute_get_State")]
+    [RpcAttribute ("SpaceCenter", "Parachute_get_State")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.ParachuteState State {
         get {
             var _args = new ByteString[] {

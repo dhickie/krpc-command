@@ -2,6 +2,7 @@ using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
 using Google.Protobuf;
 using systemAlias = System;
+using kRPC.Client.Boost.Attributes;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
@@ -30,7 +31,7 @@ public class Flight : RemoteObject
     /// </summary>
     /// <returns>A vector pointing in the direction that the force acts,
     /// with its magnitude equal to the strength of the force in Newtons.</returns>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Flight_SimulateAerodynamicForceAt")]
+    [RpcAttribute ("SpaceCenter", "Flight_SimulateAerodynamicForceAt")]
     public systemAlias::Tuple<double,double,double> SimulateAerodynamicForceAt (global::kRPC.Client.Boost.Services.SpaceCenter.CelestialBody body, systemAlias::Tuple<double,double,double> position, systemAlias::Tuple<double,double,double> velocity)
     {
         var _args = new ByteString[] {
@@ -49,7 +50,7 @@ public class Flight : RemoteObject
     /// </summary>
     /// <returns>A vector pointing in the direction that the force acts,
     /// with its magnitude equal to the strength of the force in Newtons.</returns>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Flight_get_AerodynamicForce")]
+    [RpcAttribute ("SpaceCenter", "Flight_get_AerodynamicForce")]
     public systemAlias::Tuple<double,double,double> AerodynamicForce {
         get {
             var _args = new ByteString[] {
@@ -64,7 +65,7 @@ public class Flight : RemoteObject
     /// The pitch angle between the orientation of the vessel and its velocity vector,
     /// in degrees.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Flight_get_AngleOfAttack")]
+    [RpcAttribute ("SpaceCenter", "Flight_get_AngleOfAttack")]
     public float AngleOfAttack {
         get {
             var _args = new ByteString[] {
@@ -80,7 +81,7 @@ public class Flight : RemoteObject
     /// in the reference frame <see cref="T:SpaceCenter.ReferenceFrame" />.
     /// </summary>
     /// <returns>The direction as a unit vector.</returns>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Flight_get_AntiNormal")]
+    [RpcAttribute ("SpaceCenter", "Flight_get_AntiNormal")]
     public systemAlias::Tuple<double,double,double> AntiNormal {
         get {
             var _args = new ByteString[] {
@@ -96,7 +97,7 @@ public class Flight : RemoteObject
     /// in the reference frame <see cref="T:SpaceCenter.ReferenceFrame" />.
     /// </summary>
     /// <returns>The direction as a unit vector.</returns>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Flight_get_AntiRadial")]
+    [RpcAttribute ("SpaceCenter", "Flight_get_AntiRadial")]
     public systemAlias::Tuple<double,double,double> AntiRadial {
         get {
             var _args = new ByteString[] {
@@ -110,7 +111,7 @@ public class Flight : RemoteObject
     /// <summary>
     /// The current density of the atmosphere around the vessel, in <math>kg/m^3</math>.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Flight_get_AtmosphereDensity")]
+    [RpcAttribute ("SpaceCenter", "Flight_get_AtmosphereDensity")]
     public float AtmosphereDensity {
         get {
             var _args = new ByteString[] {
@@ -127,7 +128,7 @@ public class Flight : RemoteObject
     /// <remarks>
     /// Requires <a href="https://forum.kerbalspaceprogram.com/index.php?/topic/19321-130-ferram-aerospace-research-v0159-liebe-82117/">Ferram Aerospace Research</a>.
     /// </remarks>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Flight_get_BallisticCoefficient")]
+    [RpcAttribute ("SpaceCenter", "Flight_get_BallisticCoefficient")]
     public float BallisticCoefficient {
         get {
             var _args = new ByteString[] {
@@ -142,7 +143,7 @@ public class Flight : RemoteObject
     /// The altitude above the surface of the body, in meters. When over water, this is the altitude above the sea floor.
     /// Measured from the center of mass of the vessel.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Flight_get_BedrockAltitude")]
+    [RpcAttribute ("SpaceCenter", "Flight_get_BedrockAltitude")]
     public double BedrockAltitude {
         get {
             var _args = new ByteString[] {
@@ -157,7 +158,7 @@ public class Flight : RemoteObject
     /// The position of the center of mass of the vessel,
     /// in the reference frame <see cref="T:SpaceCenter.ReferenceFrame" /></summary>
     /// <returns>The position as a vector.</returns>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Flight_get_CenterOfMass")]
+    [RpcAttribute ("SpaceCenter", "Flight_get_CenterOfMass")]
     public systemAlias::Tuple<double,double,double> CenterOfMass {
         get {
             var _args = new ByteString[] {
@@ -173,7 +174,7 @@ public class Flight : RemoteObject
     /// in the reference frame <see cref="T:SpaceCenter.ReferenceFrame" />.
     /// </summary>
     /// <returns>The direction as a unit vector.</returns>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Flight_get_Direction")]
+    [RpcAttribute ("SpaceCenter", "Flight_get_Direction")]
     public systemAlias::Tuple<double,double,double> Direction {
         get {
             var _args = new ByteString[] {
@@ -189,7 +190,7 @@ public class Flight : RemoteObject
     /// </summary>
     /// <returns>A vector pointing in the direction of the force, with its magnitude
     /// equal to the strength of the force in Newtons.</returns>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Flight_get_Drag")]
+    [RpcAttribute ("SpaceCenter", "Flight_get_Drag")]
     public systemAlias::Tuple<double,double,double> Drag {
         get {
             var _args = new ByteString[] {
@@ -207,7 +208,7 @@ public class Flight : RemoteObject
     /// <remarks>
     /// Requires <a href="https://forum.kerbalspaceprogram.com/index.php?/topic/19321-130-ferram-aerospace-research-v0159-liebe-82117/">Ferram Aerospace Research</a>.
     /// </remarks>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Flight_get_DragCoefficient")]
+    [RpcAttribute ("SpaceCenter", "Flight_get_DragCoefficient")]
     public float DragCoefficient {
         get {
             var _args = new ByteString[] {
@@ -224,7 +225,7 @@ public class Flight : RemoteObject
     /// <math>\frac{1}{2} . \mbox{air density} . \mbox{velocity}^2</math>.
     /// It is commonly denoted <math>Q</math>.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Flight_get_DynamicPressure")]
+    [RpcAttribute ("SpaceCenter", "Flight_get_DynamicPressure")]
     public float DynamicPressure {
         get {
             var _args = new ByteString[] {
@@ -239,7 +240,7 @@ public class Flight : RemoteObject
     /// The elevation of the terrain under the vessel, in meters. This is the height of the terrain above sea level,
     /// and is negative when the vessel is over the sea.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Flight_get_Elevation")]
+    [RpcAttribute ("SpaceCenter", "Flight_get_Elevation")]
     public double Elevation {
         get {
             var _args = new ByteString[] {
@@ -254,7 +255,7 @@ public class Flight : RemoteObject
     /// The <a href="https://en.wikipedia.org/wiki/Equivalent_airspeed">equivalent air speed</a>
     /// of the vessel, in meters per second.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Flight_get_EquivalentAirSpeed")]
+    [RpcAttribute ("SpaceCenter", "Flight_get_EquivalentAirSpeed")]
     public float EquivalentAirSpeed {
         get {
             var _args = new ByteString[] {
@@ -268,7 +269,7 @@ public class Flight : RemoteObject
     /// <summary>
     /// The current G force acting on the vessel in <math>g</math>.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Flight_get_GForce")]
+    [RpcAttribute ("SpaceCenter", "Flight_get_GForce")]
     public float GForce {
         get {
             var _args = new ByteString[] {
@@ -283,7 +284,7 @@ public class Flight : RemoteObject
     /// The heading of the vessel (its angle relative to north), in degrees.
     /// A value between 0° and 360°.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Flight_get_Heading")]
+    [RpcAttribute ("SpaceCenter", "Flight_get_Heading")]
     public float Heading {
         get {
             var _args = new ByteString[] {
@@ -298,7 +299,7 @@ public class Flight : RemoteObject
     /// The horizontal speed of the vessel in meters per second,
     /// in the reference frame <see cref="T:SpaceCenter.ReferenceFrame" />.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Flight_get_HorizontalSpeed")]
+    [RpcAttribute ("SpaceCenter", "Flight_get_HorizontalSpeed")]
     public double HorizontalSpeed {
         get {
             var _args = new ByteString[] {
@@ -312,7 +313,7 @@ public class Flight : RemoteObject
     /// <summary>
     /// The <a href="https://en.wikipedia.org/wiki/Latitude">latitude</a> of the vessel for the body being orbited, in degrees.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Flight_get_Latitude")]
+    [RpcAttribute ("SpaceCenter", "Flight_get_Latitude")]
     public double Latitude {
         get {
             var _args = new ByteString[] {
@@ -329,7 +330,7 @@ public class Flight : RemoteObject
     /// </summary>
     /// <returns>A vector pointing in the direction that the force acts,
     /// with its magnitude equal to the strength of the force in Newtons.</returns>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Flight_get_Lift")]
+    [RpcAttribute ("SpaceCenter", "Flight_get_Lift")]
     public systemAlias::Tuple<double,double,double> Lift {
         get {
             var _args = new ByteString[] {
@@ -347,7 +348,7 @@ public class Flight : RemoteObject
     /// <remarks>
     /// Requires <a href="https://forum.kerbalspaceprogram.com/index.php?/topic/19321-130-ferram-aerospace-research-v0159-liebe-82117/">Ferram Aerospace Research</a>.
     /// </remarks>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Flight_get_LiftCoefficient")]
+    [RpcAttribute ("SpaceCenter", "Flight_get_LiftCoefficient")]
     public float LiftCoefficient {
         get {
             var _args = new ByteString[] {
@@ -361,7 +362,7 @@ public class Flight : RemoteObject
     /// <summary>
     /// The <a href="https://en.wikipedia.org/wiki/Longitude">longitude</a> of the vessel for the body being orbited, in degrees.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Flight_get_Longitude")]
+    [RpcAttribute ("SpaceCenter", "Flight_get_Longitude")]
     public double Longitude {
         get {
             var _args = new ByteString[] {
@@ -375,7 +376,7 @@ public class Flight : RemoteObject
     /// <summary>
     /// The speed of the vessel, in multiples of the speed of sound.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Flight_get_Mach")]
+    [RpcAttribute ("SpaceCenter", "Flight_get_Mach")]
     public float Mach {
         get {
             var _args = new ByteString[] {
@@ -390,7 +391,7 @@ public class Flight : RemoteObject
     /// The altitude above sea level, in meters.
     /// Measured from the center of mass of the vessel.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Flight_get_MeanAltitude")]
+    [RpcAttribute ("SpaceCenter", "Flight_get_MeanAltitude")]
     public double MeanAltitude {
         get {
             var _args = new ByteString[] {
@@ -406,7 +407,7 @@ public class Flight : RemoteObject
     /// in the reference frame <see cref="T:SpaceCenter.ReferenceFrame" />.
     /// </summary>
     /// <returns>The direction as a unit vector.</returns>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Flight_get_Normal")]
+    [RpcAttribute ("SpaceCenter", "Flight_get_Normal")]
     public systemAlias::Tuple<double,double,double> Normal {
         get {
             var _args = new ByteString[] {
@@ -421,7 +422,7 @@ public class Flight : RemoteObject
     /// The pitch of the vessel relative to the horizon, in degrees.
     /// A value between -90° and +90°.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Flight_get_Pitch")]
+    [RpcAttribute ("SpaceCenter", "Flight_get_Pitch")]
     public float Pitch {
         get {
             var _args = new ByteString[] {
@@ -437,7 +438,7 @@ public class Flight : RemoteObject
     /// in the reference frame <see cref="T:SpaceCenter.ReferenceFrame" />.
     /// </summary>
     /// <returns>The direction as a unit vector.</returns>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Flight_get_Prograde")]
+    [RpcAttribute ("SpaceCenter", "Flight_get_Prograde")]
     public systemAlias::Tuple<double,double,double> Prograde {
         get {
             var _args = new ByteString[] {
@@ -453,7 +454,7 @@ public class Flight : RemoteObject
     /// in the reference frame <see cref="T:SpaceCenter.ReferenceFrame" />.
     /// </summary>
     /// <returns>The direction as a unit vector.</returns>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Flight_get_Radial")]
+    [RpcAttribute ("SpaceCenter", "Flight_get_Radial")]
     public systemAlias::Tuple<double,double,double> Radial {
         get {
             var _args = new ByteString[] {
@@ -469,7 +470,7 @@ public class Flight : RemoteObject
     /// in the reference frame <see cref="T:SpaceCenter.ReferenceFrame" />.
     /// </summary>
     /// <returns>The direction as a unit vector.</returns>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Flight_get_Retrograde")]
+    [RpcAttribute ("SpaceCenter", "Flight_get_Retrograde")]
     public systemAlias::Tuple<double,double,double> Retrograde {
         get {
             var _args = new ByteString[] {
@@ -486,7 +487,7 @@ public class Flight : RemoteObject
     /// <remarks>
     /// Requires <a href="https://forum.kerbalspaceprogram.com/index.php?/topic/19321-130-ferram-aerospace-research-v0159-liebe-82117/">Ferram Aerospace Research</a>.
     /// </remarks>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Flight_get_ReynoldsNumber")]
+    [RpcAttribute ("SpaceCenter", "Flight_get_ReynoldsNumber")]
     public float ReynoldsNumber {
         get {
             var _args = new ByteString[] {
@@ -501,7 +502,7 @@ public class Flight : RemoteObject
     /// The roll of the vessel relative to the horizon, in degrees.
     /// A value between -180° and +180°.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Flight_get_Roll")]
+    [RpcAttribute ("SpaceCenter", "Flight_get_Roll")]
     public float Roll {
         get {
             var _args = new ByteString[] {
@@ -515,7 +516,7 @@ public class Flight : RemoteObject
     /// <summary>
     /// The rotation of the vessel, in the reference frame <see cref="T:SpaceCenter.ReferenceFrame" /></summary>
     /// <returns>The rotation as a quaternion of the form <math>(x, y, z, w)</math>.</returns>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Flight_get_Rotation")]
+    [RpcAttribute ("SpaceCenter", "Flight_get_Rotation")]
     public systemAlias::Tuple<double,double,double,double> Rotation {
         get {
             var _args = new ByteString[] {
@@ -529,7 +530,7 @@ public class Flight : RemoteObject
     /// <summary>
     /// The yaw angle between the orientation of the vessel and its velocity vector, in degrees.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Flight_get_SideslipAngle")]
+    [RpcAttribute ("SpaceCenter", "Flight_get_SideslipAngle")]
     public float SideslipAngle {
         get {
             var _args = new ByteString[] {
@@ -544,7 +545,7 @@ public class Flight : RemoteObject
     /// The speed of the vessel in meters per second,
     /// in the reference frame <see cref="T:SpaceCenter.ReferenceFrame" />.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Flight_get_Speed")]
+    [RpcAttribute ("SpaceCenter", "Flight_get_Speed")]
     public double Speed {
         get {
             var _args = new ByteString[] {
@@ -558,7 +559,7 @@ public class Flight : RemoteObject
     /// <summary>
     /// The speed of sound, in the atmosphere around the vessel, in <math>m/s</math>.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Flight_get_SpeedOfSound")]
+    [RpcAttribute ("SpaceCenter", "Flight_get_SpeedOfSound")]
     public float SpeedOfSound {
         get {
             var _args = new ByteString[] {
@@ -576,7 +577,7 @@ public class Flight : RemoteObject
     /// <remarks>
     /// Requires <a href="https://forum.kerbalspaceprogram.com/index.php?/topic/19321-130-ferram-aerospace-research-v0159-liebe-82117/">Ferram Aerospace Research</a>.
     /// </remarks>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Flight_get_StallFraction")]
+    [RpcAttribute ("SpaceCenter", "Flight_get_StallFraction")]
     public float StallFraction {
         get {
             var _args = new ByteString[] {
@@ -591,7 +592,7 @@ public class Flight : RemoteObject
     /// The <a href="https://en.wikipedia.org/wiki/Total_air_temperature">static (ambient)
     /// temperature</a> of the atmosphere around the vessel, in Kelvin.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Flight_get_StaticAirTemperature")]
+    [RpcAttribute ("SpaceCenter", "Flight_get_StaticAirTemperature")]
     public float StaticAirTemperature {
         get {
             var _args = new ByteString[] {
@@ -605,7 +606,7 @@ public class Flight : RemoteObject
     /// <summary>
     /// The static atmospheric pressure acting on the vessel, in Pascals.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Flight_get_StaticPressure")]
+    [RpcAttribute ("SpaceCenter", "Flight_get_StaticPressure")]
     public float StaticPressure {
         get {
             var _args = new ByteString[] {
@@ -619,7 +620,7 @@ public class Flight : RemoteObject
     /// <summary>
     /// The static atmospheric pressure at mean sea level, in Pascals.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Flight_get_StaticPressureAtMSL")]
+    [RpcAttribute ("SpaceCenter", "Flight_get_StaticPressureAtMSL")]
     public float StaticPressureAtMSL {
         get {
             var _args = new ByteString[] {
@@ -634,7 +635,7 @@ public class Flight : RemoteObject
     /// The altitude above the surface of the body or sea level, whichever is closer, in meters.
     /// Measured from the center of mass of the vessel.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Flight_get_SurfaceAltitude")]
+    [RpcAttribute ("SpaceCenter", "Flight_get_SurfaceAltitude")]
     public double SurfaceAltitude {
         get {
             var _args = new ByteString[] {
@@ -649,7 +650,7 @@ public class Flight : RemoteObject
     /// An estimate of the current terminal velocity of the vessel, in meters per second.
     /// This is the speed at which the drag forces cancel out the force of gravity.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Flight_get_TerminalVelocity")]
+    [RpcAttribute ("SpaceCenter", "Flight_get_TerminalVelocity")]
     public float TerminalVelocity {
         get {
             var _args = new ByteString[] {
@@ -669,7 +670,7 @@ public class Flight : RemoteObject
     /// <remarks>
     /// Requires <a href="https://forum.kerbalspaceprogram.com/index.php?/topic/19321-130-ferram-aerospace-research-v0159-liebe-82117/">Ferram Aerospace Research</a>.
     /// </remarks>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Flight_get_ThrustSpecificFuelConsumption")]
+    [RpcAttribute ("SpaceCenter", "Flight_get_ThrustSpecificFuelConsumption")]
     public float ThrustSpecificFuelConsumption {
         get {
             var _args = new ByteString[] {
@@ -685,7 +686,7 @@ public class Flight : RemoteObject
     /// of the atmosphere around the vessel, in Kelvin.
     /// This includes the <see cref="M:SpaceCenter.Flight.StaticAirTemperature" /> and the vessel's kinetic energy.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Flight_get_TotalAirTemperature")]
+    [RpcAttribute ("SpaceCenter", "Flight_get_TotalAirTemperature")]
     public float TotalAirTemperature {
         get {
             var _args = new ByteString[] {
@@ -700,7 +701,7 @@ public class Flight : RemoteObject
     /// The <a href="https://en.wikipedia.org/wiki/True_airspeed">true air speed</a>
     /// of the vessel, in meters per second.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Flight_get_TrueAirSpeed")]
+    [RpcAttribute ("SpaceCenter", "Flight_get_TrueAirSpeed")]
     public float TrueAirSpeed {
         get {
             var _args = new ByteString[] {
@@ -716,7 +717,7 @@ public class Flight : RemoteObject
     /// </summary>
     /// <returns>The velocity as a vector. The vector points in the direction of travel,
     /// and its magnitude is the speed of the vessel in meters per second.</returns>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Flight_get_Velocity")]
+    [RpcAttribute ("SpaceCenter", "Flight_get_Velocity")]
     public systemAlias::Tuple<double,double,double> Velocity {
         get {
             var _args = new ByteString[] {
@@ -731,7 +732,7 @@ public class Flight : RemoteObject
     /// The vertical speed of the vessel in meters per second,
     /// in the reference frame <see cref="T:SpaceCenter.ReferenceFrame" />.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Flight_get_VerticalSpeed")]
+    [RpcAttribute ("SpaceCenter", "Flight_get_VerticalSpeed")]
     public double VerticalSpeed {
         get {
             var _args = new ByteString[] {

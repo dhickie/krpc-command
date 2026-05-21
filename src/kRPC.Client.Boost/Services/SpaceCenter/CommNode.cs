@@ -1,6 +1,7 @@
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
 using Google.Protobuf;
+using kRPC.Client.Boost.Attributes;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
@@ -19,7 +20,7 @@ public class CommNode : RemoteObject
     /// <summary>
     /// Whether the communication node is a control point, for example a manned vessel.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "CommNode_get_IsControlPoint")]
+    [RpcAttribute ("SpaceCenter", "CommNode_get_IsControlPoint")]
     public bool IsControlPoint {
         get {
             var _args = new ByteString[] {
@@ -33,7 +34,7 @@ public class CommNode : RemoteObject
     /// <summary>
     /// Whether the communication node is on Kerbin.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "CommNode_get_IsHome")]
+    [RpcAttribute ("SpaceCenter", "CommNode_get_IsHome")]
     public bool IsHome {
         get {
             var _args = new ByteString[] {
@@ -47,7 +48,7 @@ public class CommNode : RemoteObject
     /// <summary>
     /// Whether the communication node is a vessel.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "CommNode_get_IsVessel")]
+    [RpcAttribute ("SpaceCenter", "CommNode_get_IsVessel")]
     public bool IsVessel {
         get {
             var _args = new ByteString[] {
@@ -61,7 +62,7 @@ public class CommNode : RemoteObject
     /// <summary>
     /// Name of the communication node.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "CommNode_get_Name")]
+    [RpcAttribute ("SpaceCenter", "CommNode_get_Name")]
     public string Name {
         get {
             var _args = new ByteString[] {
@@ -75,7 +76,7 @@ public class CommNode : RemoteObject
     /// <summary>
     /// The vessel for this communication node.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "CommNode_get_Vessel")]
+    [RpcAttribute ("SpaceCenter", "CommNode_get_Vessel")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.Vessel Vessel {
         get {
             var _args = new ByteString[] {

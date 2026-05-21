@@ -2,6 +2,7 @@ using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
 using Google.Protobuf;
 using KRPC.Client;
+using kRPC.Client.Boost.Attributes;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
@@ -30,7 +31,7 @@ public class ResourceTransfer : RemoteObject
     /// <param name="resource">The name of the resource to transfer.</param>
     /// <param name="maxAmount">The maximum amount of resource to transfer.</param>
     /// <param name="connection">A connection object.</param>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "ResourceTransfer_static_Start")]
+    [RpcAttribute ("SpaceCenter", "ResourceTransfer_static_Start")]
     public static global::kRPC.Client.Boost.Services.SpaceCenter.ResourceTransfer Start (IConnection connection, global::kRPC.Client.Boost.Services.SpaceCenter.Part fromPart, global::kRPC.Client.Boost.Services.SpaceCenter.Part toPart, string resource, float maxAmount)
     {
         if (connection == null)
@@ -48,7 +49,7 @@ public class ResourceTransfer : RemoteObject
     /// <summary>
     /// The amount of the resource that has been transferred.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "ResourceTransfer_get_Amount")]
+    [RpcAttribute ("SpaceCenter", "ResourceTransfer_get_Amount")]
     public float Amount {
         get {
             var _args = new ByteString[] {
@@ -62,7 +63,7 @@ public class ResourceTransfer : RemoteObject
     /// <summary>
     /// Whether the transfer has completed.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "ResourceTransfer_get_Complete")]
+    [RpcAttribute ("SpaceCenter", "ResourceTransfer_get_Complete")]
     public bool Complete {
         get {
             var _args = new ByteString[] {

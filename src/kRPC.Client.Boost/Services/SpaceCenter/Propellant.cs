@@ -1,6 +1,7 @@
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
 using Google.Protobuf;
+using kRPC.Client.Boost.Attributes;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
@@ -19,7 +20,7 @@ public class Propellant : RemoteObject
     /// <summary>
     /// The current amount of propellant.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Propellant_get_CurrentAmount")]
+    [RpcAttribute ("SpaceCenter", "Propellant_get_CurrentAmount")]
     public double CurrentAmount {
         get {
             var _args = new ByteString[] {
@@ -33,7 +34,7 @@ public class Propellant : RemoteObject
     /// <summary>
     /// The required amount of propellant.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Propellant_get_CurrentRequirement")]
+    [RpcAttribute ("SpaceCenter", "Propellant_get_CurrentRequirement")]
     public double CurrentRequirement {
         get {
             var _args = new ByteString[] {
@@ -47,7 +48,7 @@ public class Propellant : RemoteObject
     /// <summary>
     /// If this propellant has a stack gauge or not.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Propellant_get_DrawStackGauge")]
+    [RpcAttribute ("SpaceCenter", "Propellant_get_DrawStackGauge")]
     public bool DrawStackGauge {
         get {
             var _args = new ByteString[] {
@@ -62,7 +63,7 @@ public class Propellant : RemoteObject
     /// If this propellant should be ignored when calculating required mass flow
     /// given specific impulse.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Propellant_get_IgnoreForIsp")]
+    [RpcAttribute ("SpaceCenter", "Propellant_get_IgnoreForIsp")]
     public bool IgnoreForIsp {
         get {
             var _args = new ByteString[] {
@@ -76,7 +77,7 @@ public class Propellant : RemoteObject
     /// <summary>
     /// If this propellant should be ignored for thrust curve calculations.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Propellant_get_IgnoreForThrustCurve")]
+    [RpcAttribute ("SpaceCenter", "Propellant_get_IgnoreForThrustCurve")]
     public bool IgnoreForThrustCurve {
         get {
             var _args = new ByteString[] {
@@ -90,7 +91,7 @@ public class Propellant : RemoteObject
     /// <summary>
     /// If this propellant is deprived.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Propellant_get_IsDeprived")]
+    [RpcAttribute ("SpaceCenter", "Propellant_get_IsDeprived")]
     public bool IsDeprived {
         get {
             var _args = new ByteString[] {
@@ -104,7 +105,7 @@ public class Propellant : RemoteObject
     /// <summary>
     /// The name of the propellant.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Propellant_get_Name")]
+    [RpcAttribute ("SpaceCenter", "Propellant_get_Name")]
     public string Name {
         get {
             var _args = new ByteString[] {
@@ -118,7 +119,7 @@ public class Propellant : RemoteObject
     /// <summary>
     /// The propellant ratio.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Propellant_get_Ratio")]
+    [RpcAttribute ("SpaceCenter", "Propellant_get_Ratio")]
     public float Ratio {
         get {
             var _args = new ByteString[] {
@@ -133,7 +134,7 @@ public class Propellant : RemoteObject
     /// The total amount of the underlying resource currently reachable given
     /// resource flow rules.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Propellant_get_TotalResourceAvailable")]
+    [RpcAttribute ("SpaceCenter", "Propellant_get_TotalResourceAvailable")]
     public double TotalResourceAvailable {
         get {
             var _args = new ByteString[] {
@@ -148,7 +149,7 @@ public class Propellant : RemoteObject
     /// The total vehicle capacity for the underlying propellant resource,
     /// restricted by resource flow rules.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Propellant_get_TotalResourceCapacity")]
+    [RpcAttribute ("SpaceCenter", "Propellant_get_TotalResourceCapacity")]
     public double TotalResourceCapacity {
         get {
             var _args = new ByteString[] {

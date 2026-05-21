@@ -2,6 +2,7 @@ using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
 using Google.Protobuf;
 using KRPC.Client;
+using kRPC.Client.Boost.Attributes;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
@@ -25,7 +26,7 @@ public class AlarmManager : RemoteObject
     /// <param name="title">Title for the alarm.</param>
     /// <param name="description">Description for the alarm.</param>
     /// <param name="connection">A connection object.</param>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "AlarmManager_static_AddAlarm")]
+    [RpcAttribute ("SpaceCenter", "AlarmManager_static_AddAlarm")]
     public static global::kRPC.Client.Boost.Services.SpaceCenter.Alarm AddAlarm (IConnection connection, double time, string title = "Alarm", string description = "")
     {
         if (connection == null)
@@ -47,7 +48,7 @@ public class AlarmManager : RemoteObject
     /// <param name="title">Title for the alarm.</param>
     /// <param name="description">Description for the alarm.</param>
     /// <param name="connection">A connection object.</param>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "AlarmManager_static_AddApoapsisAlarm")]
+    [RpcAttribute ("SpaceCenter", "AlarmManager_static_AddApoapsisAlarm")]
     public static global::kRPC.Client.Boost.Services.SpaceCenter.Alarm AddApoapsisAlarm (IConnection connection, global::kRPC.Client.Boost.Services.SpaceCenter.Vessel vessel, double offset = 60.0, string title = "Apoapsis Alarm", string description = "")
     {
         if (connection == null)
@@ -72,7 +73,7 @@ public class AlarmManager : RemoteObject
     /// <param name="title">Title for the alarm.</param>
     /// <param name="description">Description for the alarm.</param>
     /// <param name="connection">A connection object.</param>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "AlarmManager_static_AddManeuverNodeAlarm")]
+    [RpcAttribute ("SpaceCenter", "AlarmManager_static_AddManeuverNodeAlarm")]
     public static global::kRPC.Client.Boost.Services.SpaceCenter.Alarm AddManeuverNodeAlarm (IConnection connection, global::kRPC.Client.Boost.Services.SpaceCenter.Vessel vessel, global::kRPC.Client.Boost.Services.SpaceCenter.Node node, double offset = 60.0, bool addBurnTime = true, string title = "Maneuver Node Alarm", string description = "")
     {
         if (connection == null)
@@ -97,7 +98,7 @@ public class AlarmManager : RemoteObject
     /// <param name="title">Title for the alarm.</param>
     /// <param name="description">Description for the alarm.</param>
     /// <param name="connection">A connection object.</param>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "AlarmManager_static_AddPeriapsisAlarm")]
+    [RpcAttribute ("SpaceCenter", "AlarmManager_static_AddPeriapsisAlarm")]
     public static global::kRPC.Client.Boost.Services.SpaceCenter.Alarm AddPeriapsisAlarm (IConnection connection, global::kRPC.Client.Boost.Services.SpaceCenter.Vessel vessel, double offset = 60.0, string title = "Periapsis Alarm", string description = "")
     {
         if (connection == null)
@@ -120,7 +121,7 @@ public class AlarmManager : RemoteObject
     /// <param name="title">Title for the alarm.</param>
     /// <param name="description">Description for the alarm.</param>
     /// <param name="connection">A connection object.</param>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "AlarmManager_static_AddSOIAlarm")]
+    [RpcAttribute ("SpaceCenter", "AlarmManager_static_AddSOIAlarm")]
     public static global::kRPC.Client.Boost.Services.SpaceCenter.Alarm AddSOIAlarm (IConnection connection, global::kRPC.Client.Boost.Services.SpaceCenter.Vessel vessel, double offset = 60.0, string title = "SOI Change Alarm", string description = "")
     {
         if (connection == null)
@@ -143,7 +144,7 @@ public class AlarmManager : RemoteObject
     /// <param name="title">Title for the alarm.</param>
     /// <param name="description">Description for the alarm.</param>
     /// <param name="connection">A connection object.</param>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "AlarmManager_static_AddVesselAlarm")]
+    [RpcAttribute ("SpaceCenter", "AlarmManager_static_AddVesselAlarm")]
     public static global::kRPC.Client.Boost.Services.SpaceCenter.Alarm AddVesselAlarm (IConnection connection, double time, global::kRPC.Client.Boost.Services.SpaceCenter.Vessel vessel, string title = "Vessel Alarm", string description = "")
     {
         if (connection == null)
@@ -161,7 +162,7 @@ public class AlarmManager : RemoteObject
     /// <summary>
     /// A list of all alarms.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "AlarmManager_get_Alarms")]
+    [RpcAttribute ("SpaceCenter", "AlarmManager_get_Alarms")]
     public global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.Alarm> Alarms {
         get {
             var _args = new ByteString[] {

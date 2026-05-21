@@ -2,6 +2,7 @@ using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
 using Google.Protobuf;
 using systemAlias = System;
+using kRPC.Client.Boost.Attributes;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
@@ -20,7 +21,7 @@ public class ReactionWheel : RemoteObject
     /// <summary>
     /// Whether the reaction wheel is active.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "ReactionWheel_get_Active")]
+    [RpcAttribute ("SpaceCenter", "ReactionWheel_get_Active")]
     public bool Active {
         get {
             var _args = new ByteString[] {
@@ -44,7 +45,7 @@ public class ReactionWheel : RemoteObject
     /// correspond to the coordinate axes of the <see cref="M:SpaceCenter.Vessel.ReferenceFrame" />.
     /// Returns zero if the reaction wheel is inactive or broken.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "ReactionWheel_get_AvailableTorque")]
+    [RpcAttribute ("SpaceCenter", "ReactionWheel_get_AvailableTorque")]
     public systemAlias::Tuple<systemAlias::Tuple<double,double,double>,systemAlias::Tuple<double,double,double>> AvailableTorque {
         get {
             var _args = new ByteString[] {
@@ -58,7 +59,7 @@ public class ReactionWheel : RemoteObject
     /// <summary>
     /// Whether the reaction wheel is broken.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "ReactionWheel_get_Broken")]
+    [RpcAttribute ("SpaceCenter", "ReactionWheel_get_Broken")]
     public bool Broken {
         get {
             var _args = new ByteString[] {
@@ -74,7 +75,7 @@ public class ReactionWheel : RemoteObject
     /// when it is active, in the positive and negative pitch, roll and yaw axes of the vessel.
     /// These axes correspond to the coordinate axes of the <see cref="M:SpaceCenter.Vessel.ReferenceFrame" />.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "ReactionWheel_get_MaxTorque")]
+    [RpcAttribute ("SpaceCenter", "ReactionWheel_get_MaxTorque")]
     public systemAlias::Tuple<systemAlias::Tuple<double,double,double>,systemAlias::Tuple<double,double,double>> MaxTorque {
         get {
             var _args = new ByteString[] {
@@ -88,7 +89,7 @@ public class ReactionWheel : RemoteObject
     /// <summary>
     /// The part object for this reaction wheel.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "ReactionWheel_get_Part")]
+    [RpcAttribute ("SpaceCenter", "ReactionWheel_get_Part")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.Part Part {
         get {
             var _args = new ByteString[] {

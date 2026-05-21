@@ -1,6 +1,7 @@
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
 using Google.Protobuf;
+using kRPC.Client.Boost.Attributes;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
@@ -19,7 +20,7 @@ public class Waypoint : RemoteObject
     /// <summary>
     /// Removes the waypoint.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Waypoint_Remove")]
+    [RpcAttribute ("SpaceCenter", "Waypoint_Remove")]
     public void Remove ()
     {
         var _args = new ByteString[] {
@@ -32,7 +33,7 @@ public class Waypoint : RemoteObject
     /// The altitude of the waypoint above the surface of the body, in meters.
     /// When over water, this is the altitude above the sea floor.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Waypoint_get_BedrockAltitude")]
+    [RpcAttribute ("SpaceCenter", "Waypoint_get_BedrockAltitude")]
     public double BedrockAltitude {
         get {
             var _args = new ByteString[] {
@@ -53,7 +54,7 @@ public class Waypoint : RemoteObject
     /// <summary>
     /// The celestial body the waypoint is attached to.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Waypoint_get_Body")]
+    [RpcAttribute ("SpaceCenter", "Waypoint_get_Body")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.CelestialBody Body {
         get {
             var _args = new ByteString[] {
@@ -76,7 +77,7 @@ public class Waypoint : RemoteObject
     /// If <c>true</c>, there is a one-to-one correspondence with the greek letter name and
     /// the <see cref="M:SpaceCenter.Waypoint.Index" />.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Waypoint_get_Clustered")]
+    [RpcAttribute ("SpaceCenter", "Waypoint_get_Clustered")]
     public bool Clustered {
         get {
             var _args = new ByteString[] {
@@ -90,7 +91,7 @@ public class Waypoint : RemoteObject
     /// <summary>
     /// The seed of the icon color. See <see cref="M:SpaceCenter.WaypointManager.Colors" /> for example colors.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Waypoint_get_Color")]
+    [RpcAttribute ("SpaceCenter", "Waypoint_get_Color")]
     public int Color {
         get {
             var _args = new ByteString[] {
@@ -111,7 +112,7 @@ public class Waypoint : RemoteObject
     /// <summary>
     /// The associated contract.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Waypoint_get_Contract")]
+    [RpcAttribute ("SpaceCenter", "Waypoint_get_Contract")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.Contract Contract {
         get {
             var _args = new ByteString[] {
@@ -124,7 +125,7 @@ public class Waypoint : RemoteObject
 
     /// <summary><c>true</c> if the waypoint is attached to the ground.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Waypoint_get_Grounded")]
+    [RpcAttribute ("SpaceCenter", "Waypoint_get_Grounded")]
     public bool Grounded {
         get {
             var _args = new ByteString[] {
@@ -138,7 +139,7 @@ public class Waypoint : RemoteObject
     /// <summary>
     /// Whether the waypoint belongs to a contract.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Waypoint_get_HasContract")]
+    [RpcAttribute ("SpaceCenter", "Waypoint_get_HasContract")]
     public bool HasContract {
         get {
             var _args = new ByteString[] {
@@ -152,7 +153,7 @@ public class Waypoint : RemoteObject
     /// <summary>
     /// The icon of the waypoint.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Waypoint_get_Icon")]
+    [RpcAttribute ("SpaceCenter", "Waypoint_get_Icon")]
     public string Icon {
         get {
             var _args = new ByteString[] {
@@ -177,7 +178,7 @@ public class Waypoint : RemoteObject
     /// site has index 1 and the gamma site has index 2.
     /// When <see cref="M:SpaceCenter.Waypoint.Clustered" /> is <c>false</c>, this is zero.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Waypoint_get_Index")]
+    [RpcAttribute ("SpaceCenter", "Waypoint_get_Index")]
     public int Index {
         get {
             var _args = new ByteString[] {
@@ -191,7 +192,7 @@ public class Waypoint : RemoteObject
     /// <summary>
     /// The latitude of the waypoint.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Waypoint_get_Latitude")]
+    [RpcAttribute ("SpaceCenter", "Waypoint_get_Latitude")]
     public double Latitude {
         get {
             var _args = new ByteString[] {
@@ -212,7 +213,7 @@ public class Waypoint : RemoteObject
     /// <summary>
     /// The longitude of the waypoint.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Waypoint_get_Longitude")]
+    [RpcAttribute ("SpaceCenter", "Waypoint_get_Longitude")]
     public double Longitude {
         get {
             var _args = new ByteString[] {
@@ -233,7 +234,7 @@ public class Waypoint : RemoteObject
     /// <summary>
     /// The altitude of the waypoint above sea level, in meters.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Waypoint_get_MeanAltitude")]
+    [RpcAttribute ("SpaceCenter", "Waypoint_get_MeanAltitude")]
     public double MeanAltitude {
         get {
             var _args = new ByteString[] {
@@ -254,7 +255,7 @@ public class Waypoint : RemoteObject
     /// <summary>
     /// The name of the waypoint as it appears on the map and the contract.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Waypoint_get_Name")]
+    [RpcAttribute ("SpaceCenter", "Waypoint_get_Name")]
     public string Name {
         get {
             var _args = new ByteString[] {
@@ -274,7 +275,7 @@ public class Waypoint : RemoteObject
 
     /// <summary><c>true</c> if the waypoint is near to the surface of a body.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Waypoint_get_NearSurface")]
+    [RpcAttribute ("SpaceCenter", "Waypoint_get_NearSurface")]
     public bool NearSurface {
         get {
             var _args = new ByteString[] {
@@ -289,7 +290,7 @@ public class Waypoint : RemoteObject
     /// The altitude of the waypoint above the surface of the body or sea level,
     /// whichever is closer, in meters.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Waypoint_get_SurfaceAltitude")]
+    [RpcAttribute ("SpaceCenter", "Waypoint_get_SurfaceAltitude")]
     public double SurfaceAltitude {
         get {
             var _args = new ByteString[] {

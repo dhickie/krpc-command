@@ -1,6 +1,7 @@
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
 using Google.Protobuf;
+using kRPC.Client.Boost.Attributes;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
@@ -19,7 +20,7 @@ public class Experiment : RemoteObject
     /// <summary>
     /// Dump the experimental data contained by the experiment.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Experiment_Dump")]
+    [RpcAttribute ("SpaceCenter", "Experiment_Dump")]
     public void Dump ()
     {
         var _args = new ByteString[] {
@@ -31,7 +32,7 @@ public class Experiment : RemoteObject
     /// <summary>
     /// Reset the experiment.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Experiment_Reset")]
+    [RpcAttribute ("SpaceCenter", "Experiment_Reset")]
     public void Reset ()
     {
         var _args = new ByteString[] {
@@ -43,7 +44,7 @@ public class Experiment : RemoteObject
     /// <summary>
     /// Run the experiment.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Experiment_Run")]
+    [RpcAttribute ("SpaceCenter", "Experiment_Run")]
     public void Run ()
     {
         var _args = new ByteString[] {
@@ -55,7 +56,7 @@ public class Experiment : RemoteObject
     /// <summary>
     /// Transmit all experimental data contained by this part.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Experiment_Transmit")]
+    [RpcAttribute ("SpaceCenter", "Experiment_Transmit")]
     public void Transmit ()
     {
         var _args = new ByteString[] {
@@ -67,7 +68,7 @@ public class Experiment : RemoteObject
     /// <summary>
     /// Determines if the experiment is available given the current conditions.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Experiment_get_Available")]
+    [RpcAttribute ("SpaceCenter", "Experiment_get_Available")]
     public bool Available {
         get {
             var _args = new ByteString[] {
@@ -81,7 +82,7 @@ public class Experiment : RemoteObject
     /// <summary>
     /// The name of the biome the experiment is currently in.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Experiment_get_Biome")]
+    [RpcAttribute ("SpaceCenter", "Experiment_get_Biome")]
     public string Biome {
         get {
             var _args = new ByteString[] {
@@ -95,7 +96,7 @@ public class Experiment : RemoteObject
     /// <summary>
     /// The data contained in this experiment.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Experiment_get_Data")]
+    [RpcAttribute ("SpaceCenter", "Experiment_get_Data")]
     public global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.ScienceData> Data {
         get {
             var _args = new ByteString[] {
@@ -109,7 +110,7 @@ public class Experiment : RemoteObject
     /// <summary>
     /// Whether the experiment has been deployed.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Experiment_get_Deployed")]
+    [RpcAttribute ("SpaceCenter", "Experiment_get_Deployed")]
     public bool Deployed {
         get {
             var _args = new ByteString[] {
@@ -123,7 +124,7 @@ public class Experiment : RemoteObject
     /// <summary>
     /// Whether the experiment contains data.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Experiment_get_HasData")]
+    [RpcAttribute ("SpaceCenter", "Experiment_get_HasData")]
     public bool HasData {
         get {
             var _args = new ByteString[] {
@@ -137,7 +138,7 @@ public class Experiment : RemoteObject
     /// <summary>
     /// Whether the experiment is inoperable.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Experiment_get_Inoperable")]
+    [RpcAttribute ("SpaceCenter", "Experiment_get_Inoperable")]
     public bool Inoperable {
         get {
             var _args = new ByteString[] {
@@ -152,7 +153,7 @@ public class Experiment : RemoteObject
     /// Internal name of the experiment, as used in
     /// <a href="https://wiki.kerbalspaceprogram.com/wiki/CFG_File_Documentation">part cfg files</a>.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Experiment_get_Name")]
+    [RpcAttribute ("SpaceCenter", "Experiment_get_Name")]
     public string Name {
         get {
             var _args = new ByteString[] {
@@ -166,7 +167,7 @@ public class Experiment : RemoteObject
     /// <summary>
     /// The part object for this experiment.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Experiment_get_Part")]
+    [RpcAttribute ("SpaceCenter", "Experiment_get_Part")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.Part Part {
         get {
             var _args = new ByteString[] {
@@ -180,7 +181,7 @@ public class Experiment : RemoteObject
     /// <summary>
     /// Whether the experiment can be re-run.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Experiment_get_Rerunnable")]
+    [RpcAttribute ("SpaceCenter", "Experiment_get_Rerunnable")]
     public bool Rerunnable {
         get {
             var _args = new ByteString[] {
@@ -195,7 +196,7 @@ public class Experiment : RemoteObject
     /// Containing information on the corresponding specific science result for the current
     /// conditions. Returns <c>null</c> if the experiment is unavailable.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Experiment_get_ScienceSubject")]
+    [RpcAttribute ("SpaceCenter", "Experiment_get_ScienceSubject")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.ScienceSubject ScienceSubject {
         get {
             var _args = new ByteString[] {
@@ -209,7 +210,7 @@ public class Experiment : RemoteObject
     /// <summary>
     /// Title of the experiment, as shown on the in-game UI.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Experiment_get_Title")]
+    [RpcAttribute ("SpaceCenter", "Experiment_get_Title")]
     public string Title {
         get {
             var _args = new ByteString[] {

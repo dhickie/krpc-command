@@ -2,6 +2,7 @@ using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
 using Google.Protobuf;
 using KRPC.Client;
+using kRPC.Client.Boost.Attributes;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
@@ -24,7 +25,7 @@ public class Resources : RemoteObject
     /// Returns the amount of a resource that is currently stored.
     /// </summary>
     /// <param name="name">The name of the resource.</param>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Resources_Amount")]
+    [RpcAttribute ("SpaceCenter", "Resources_Amount")]
     public float Amount (string name)
     {
         var _args = new ByteString[] {
@@ -39,7 +40,7 @@ public class Resources : RemoteObject
     /// Check whether the named resource can be stored.
     /// </summary>
     /// <param name="name">The name of the resource.</param>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Resources_HasResource")]
+    [RpcAttribute ("SpaceCenter", "Resources_HasResource")]
     public bool HasResource (string name)
     {
         var _args = new ByteString[] {
@@ -54,7 +55,7 @@ public class Resources : RemoteObject
     /// Returns the amount of a resource that can be stored.
     /// </summary>
     /// <param name="name">The name of the resource.</param>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Resources_Max")]
+    [RpcAttribute ("SpaceCenter", "Resources_Max")]
     public float Max (string name)
     {
         var _args = new ByteString[] {
@@ -68,7 +69,7 @@ public class Resources : RemoteObject
     /// <summary>
     /// All the individual resources with the given name that can be stored.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Resources_WithResource")]
+    [RpcAttribute ("SpaceCenter", "Resources_WithResource")]
     public global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.Resource> WithResource (string name)
     {
         var _args = new ByteString[] {
@@ -84,7 +85,7 @@ public class Resources : RemoteObject
     /// </summary>
     /// <param name="name">The name of the resource.</param>
     /// <param name="connection">A connection object.</param>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Resources_static_Density")]
+    [RpcAttribute ("SpaceCenter", "Resources_static_Density")]
     public static float Density (IConnection connection, string name)
     {
         if (connection == null)
@@ -101,7 +102,7 @@ public class Resources : RemoteObject
     /// </summary>
     /// <param name="name">The name of the resource.</param>
     /// <param name="connection">A connection object.</param>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Resources_static_FlowMode")]
+    [RpcAttribute ("SpaceCenter", "Resources_static_FlowMode")]
     public static global::kRPC.Client.Boost.Services.SpaceCenter.ResourceFlowMode FlowMode (IConnection connection, string name)
     {
         if (connection == null)
@@ -116,7 +117,7 @@ public class Resources : RemoteObject
     /// <summary>
     /// All the individual resources that can be stored.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Resources_get_All")]
+    [RpcAttribute ("SpaceCenter", "Resources_get_All")]
     public global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.Resource> All {
         get {
             var _args = new ByteString[] {
@@ -134,7 +135,7 @@ public class Resources : RemoteObject
     /// This is <c>true</c> if all of the resources are enabled.
     /// If any of the resources are not enabled, this is <c>false</c>.
     /// </remarks>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Resources_get_Enabled")]
+    [RpcAttribute ("SpaceCenter", "Resources_get_Enabled")]
     public bool Enabled {
         get {
             var _args = new ByteString[] {
@@ -155,7 +156,7 @@ public class Resources : RemoteObject
     /// <summary>
     /// A list of resource names that can be stored.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Resources_get_Names")]
+    [RpcAttribute ("SpaceCenter", "Resources_get_Names")]
     public global::System.Collections.Generic.IList<string> Names {
         get {
             var _args = new ByteString[] {

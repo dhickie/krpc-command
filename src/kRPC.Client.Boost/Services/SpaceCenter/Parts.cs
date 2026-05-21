@@ -1,6 +1,7 @@
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
 using Google.Protobuf;
+using kRPC.Client.Boost.Attributes;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
@@ -21,7 +22,7 @@ public class Parts : RemoteObject
     /// A list of all parts that are decoupled in the given <paramref name="stage" />.
     /// </summary>
     /// <param name="stage"></param>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Parts_InDecoupleStage")]
+    [RpcAttribute ("SpaceCenter", "Parts_InDecoupleStage")]
     public global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.Part> InDecoupleStage (int stage)
     {
         var _args = new ByteString[] {
@@ -36,7 +37,7 @@ public class Parts : RemoteObject
     /// A list of all parts that are activated in the given <paramref name="stage" />.
     /// </summary>
     /// <param name="stage"></param>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Parts_InStage")]
+    [RpcAttribute ("SpaceCenter", "Parts_InStage")]
     public global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.Part> InStage (int stage)
     {
         var _args = new ByteString[] {
@@ -52,7 +53,7 @@ public class Parts : RemoteObject
     /// <see cref="M:SpaceCenter.Module.Name" /> is <paramref name="moduleName" />.
     /// </summary>
     /// <param name="moduleName"></param>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Parts_ModulesWithName")]
+    [RpcAttribute ("SpaceCenter", "Parts_ModulesWithName")]
     public global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.Module> ModulesWithName (string moduleName)
     {
         var _args = new ByteString[] {
@@ -68,7 +69,7 @@ public class Parts : RemoteObject
     /// <see cref="M:SpaceCenter.Module.Name" /> is <paramref name="moduleName" />.
     /// </summary>
     /// <param name="moduleName"></param>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Parts_WithModule")]
+    [RpcAttribute ("SpaceCenter", "Parts_WithModule")]
     public global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.Part> WithModule (string moduleName)
     {
         var _args = new ByteString[] {
@@ -83,7 +84,7 @@ public class Parts : RemoteObject
     /// A list of parts whose <see cref="M:SpaceCenter.Part.Name" /> is <paramref name="name" />.
     /// </summary>
     /// <param name="name"></param>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Parts_WithName")]
+    [RpcAttribute ("SpaceCenter", "Parts_WithName")]
     public global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.Part> WithName (string name)
     {
         var _args = new ByteString[] {
@@ -98,7 +99,7 @@ public class Parts : RemoteObject
     /// A list of all parts whose <see cref="M:SpaceCenter.Part.Tag" /> is <paramref name="tag" />.
     /// </summary>
     /// <param name="tag"></param>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Parts_WithTag")]
+    [RpcAttribute ("SpaceCenter", "Parts_WithTag")]
     public global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.Part> WithTag (string tag)
     {
         var _args = new ByteString[] {
@@ -113,7 +114,7 @@ public class Parts : RemoteObject
     /// A list of all parts whose <see cref="M:SpaceCenter.Part.Title" /> is <paramref name="title" />.
     /// </summary>
     /// <param name="title"></param>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Parts_WithTitle")]
+    [RpcAttribute ("SpaceCenter", "Parts_WithTitle")]
     public global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.Part> WithTitle (string title)
     {
         var _args = new ByteString[] {
@@ -127,7 +128,7 @@ public class Parts : RemoteObject
     /// <summary>
     /// A list of all of the vessels parts.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Parts_get_All")]
+    [RpcAttribute ("SpaceCenter", "Parts_get_All")]
     public global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.Part> All {
         get {
             var _args = new ByteString[] {
@@ -145,7 +146,7 @@ public class Parts : RemoteObject
     /// If RemoteTech is installed, this will always return an empty list.
     /// To interact with RemoteTech antennas, use the RemoteTech service APIs.
     /// </remarks>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Parts_get_Antennas")]
+    [RpcAttribute ("SpaceCenter", "Parts_get_Antennas")]
     public global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.Antenna> Antennas {
         get {
             var _args = new ByteString[] {
@@ -159,7 +160,7 @@ public class Parts : RemoteObject
     /// <summary>
     /// A list of all cargo bays in the vessel.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Parts_get_CargoBays")]
+    [RpcAttribute ("SpaceCenter", "Parts_get_CargoBays")]
     public global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.CargoBay> CargoBays {
         get {
             var _args = new ByteString[] {
@@ -173,7 +174,7 @@ public class Parts : RemoteObject
     /// <summary>
     /// A list of all control surfaces in the vessel.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Parts_get_ControlSurfaces")]
+    [RpcAttribute ("SpaceCenter", "Parts_get_ControlSurfaces")]
     public global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.ControlSurface> ControlSurfaces {
         get {
             var _args = new ByteString[] {
@@ -187,7 +188,7 @@ public class Parts : RemoteObject
     /// <summary>
     /// The part from which the vessel is controlled.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Parts_get_Controlling")]
+    [RpcAttribute ("SpaceCenter", "Parts_get_Controlling")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.Part Controlling {
         get {
             var _args = new ByteString[] {
@@ -208,7 +209,7 @@ public class Parts : RemoteObject
     /// <summary>
     /// A list of all decouplers in the vessel.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Parts_get_Decouplers")]
+    [RpcAttribute ("SpaceCenter", "Parts_get_Decouplers")]
     public global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.Decoupler> Decouplers {
         get {
             var _args = new ByteString[] {
@@ -222,7 +223,7 @@ public class Parts : RemoteObject
     /// <summary>
     /// A list of all docking ports in the vessel.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Parts_get_DockingPorts")]
+    [RpcAttribute ("SpaceCenter", "Parts_get_DockingPorts")]
     public global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.DockingPort> DockingPorts {
         get {
             var _args = new ByteString[] {
@@ -241,7 +242,7 @@ public class Parts : RemoteObject
     /// of engine, including liquid fuel rockets, solid rocket boosters, jet engines and
     /// RCS thrusters.
     /// </remarks>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Parts_get_Engines")]
+    [RpcAttribute ("SpaceCenter", "Parts_get_Engines")]
     public global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.Engine> Engines {
         get {
             var _args = new ByteString[] {
@@ -255,7 +256,7 @@ public class Parts : RemoteObject
     /// <summary>
     /// A list of all science experiments in the vessel.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Parts_get_Experiments")]
+    [RpcAttribute ("SpaceCenter", "Parts_get_Experiments")]
     public global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.Experiment> Experiments {
         get {
             var _args = new ByteString[] {
@@ -269,7 +270,7 @@ public class Parts : RemoteObject
     /// <summary>
     /// A list of all fairings in the vessel.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Parts_get_Fairings")]
+    [RpcAttribute ("SpaceCenter", "Parts_get_Fairings")]
     public global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.Fairing> Fairings {
         get {
             var _args = new ByteString[] {
@@ -283,7 +284,7 @@ public class Parts : RemoteObject
     /// <summary>
     /// A list of all intakes in the vessel.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Parts_get_Intakes")]
+    [RpcAttribute ("SpaceCenter", "Parts_get_Intakes")]
     public global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.Intake> Intakes {
         get {
             var _args = new ByteString[] {
@@ -297,7 +298,7 @@ public class Parts : RemoteObject
     /// <summary>
     /// A list of all launch clamps attached to the vessel.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Parts_get_LaunchClamps")]
+    [RpcAttribute ("SpaceCenter", "Parts_get_LaunchClamps")]
     public global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.LaunchClamp> LaunchClamps {
         get {
             var _args = new ByteString[] {
@@ -311,7 +312,7 @@ public class Parts : RemoteObject
     /// <summary>
     /// A list of all landing legs attached to the vessel.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Parts_get_Legs")]
+    [RpcAttribute ("SpaceCenter", "Parts_get_Legs")]
     public global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.Leg> Legs {
         get {
             var _args = new ByteString[] {
@@ -325,7 +326,7 @@ public class Parts : RemoteObject
     /// <summary>
     /// A list of all lights in the vessel.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Parts_get_Lights")]
+    [RpcAttribute ("SpaceCenter", "Parts_get_Lights")]
     public global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.Light> Lights {
         get {
             var _args = new ByteString[] {
@@ -339,7 +340,7 @@ public class Parts : RemoteObject
     /// <summary>
     /// A list of all parachutes in the vessel.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Parts_get_Parachutes")]
+    [RpcAttribute ("SpaceCenter", "Parts_get_Parachutes")]
     public global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.Parachute> Parachutes {
         get {
             var _args = new ByteString[] {
@@ -353,7 +354,7 @@ public class Parts : RemoteObject
     /// <summary>
     /// A list of all RCS blocks/thrusters in the vessel.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Parts_get_RCS")]
+    [RpcAttribute ("SpaceCenter", "Parts_get_RCS")]
     public global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.RCS> RCS {
         get {
             var _args = new ByteString[] {
@@ -367,7 +368,7 @@ public class Parts : RemoteObject
     /// <summary>
     /// A list of all radiators in the vessel.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Parts_get_Radiators")]
+    [RpcAttribute ("SpaceCenter", "Parts_get_Radiators")]
     public global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.Radiator> Radiators {
         get {
             var _args = new ByteString[] {
@@ -381,7 +382,7 @@ public class Parts : RemoteObject
     /// <summary>
     /// A list of all reaction wheels in the vessel.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Parts_get_ReactionWheels")]
+    [RpcAttribute ("SpaceCenter", "Parts_get_ReactionWheels")]
     public global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.ReactionWheel> ReactionWheels {
         get {
             var _args = new ByteString[] {
@@ -395,7 +396,7 @@ public class Parts : RemoteObject
     /// <summary>
     /// A list of all resource converters in the vessel.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Parts_get_ResourceConverters")]
+    [RpcAttribute ("SpaceCenter", "Parts_get_ResourceConverters")]
     public global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.ResourceConverter> ResourceConverters {
         get {
             var _args = new ByteString[] {
@@ -409,7 +410,7 @@ public class Parts : RemoteObject
     /// <summary>
     /// A list of all resource drains in the vessel.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Parts_get_ResourceDrains")]
+    [RpcAttribute ("SpaceCenter", "Parts_get_ResourceDrains")]
     public global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.ResourceDrain> ResourceDrains {
         get {
             var _args = new ByteString[] {
@@ -423,7 +424,7 @@ public class Parts : RemoteObject
     /// <summary>
     /// A list of all resource harvesters in the vessel.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Parts_get_ResourceHarvesters")]
+    [RpcAttribute ("SpaceCenter", "Parts_get_ResourceHarvesters")]
     public global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.ResourceHarvester> ResourceHarvesters {
         get {
             var _args = new ByteString[] {
@@ -437,7 +438,7 @@ public class Parts : RemoteObject
     /// <summary>
     /// A list of all robotic hinges in the vessel.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Parts_get_RoboticHinges")]
+    [RpcAttribute ("SpaceCenter", "Parts_get_RoboticHinges")]
     public global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.RoboticHinge> RoboticHinges {
         get {
             var _args = new ByteString[] {
@@ -451,7 +452,7 @@ public class Parts : RemoteObject
     /// <summary>
     /// A list of all robotic pistons in the vessel.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Parts_get_RoboticPistons")]
+    [RpcAttribute ("SpaceCenter", "Parts_get_RoboticPistons")]
     public global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.RoboticPiston> RoboticPistons {
         get {
             var _args = new ByteString[] {
@@ -465,7 +466,7 @@ public class Parts : RemoteObject
     /// <summary>
     /// A list of all robotic rotations in the vessel.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Parts_get_RoboticRotations")]
+    [RpcAttribute ("SpaceCenter", "Parts_get_RoboticRotations")]
     public global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.RoboticRotation> RoboticRotations {
         get {
             var _args = new ByteString[] {
@@ -479,7 +480,7 @@ public class Parts : RemoteObject
     /// <summary>
     /// A list of all robotic rotors in the vessel.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Parts_get_RoboticRotors")]
+    [RpcAttribute ("SpaceCenter", "Parts_get_RoboticRotors")]
     public global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.RoboticRotor> RoboticRotors {
         get {
             var _args = new ByteString[] {
@@ -493,7 +494,7 @@ public class Parts : RemoteObject
     /// <summary>
     /// The vessels root part.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Parts_get_Root")]
+    [RpcAttribute ("SpaceCenter", "Parts_get_Root")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.Part Root {
         get {
             var _args = new ByteString[] {
@@ -507,7 +508,7 @@ public class Parts : RemoteObject
     /// <summary>
     /// A list of all sensors in the vessel.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Parts_get_Sensors")]
+    [RpcAttribute ("SpaceCenter", "Parts_get_Sensors")]
     public global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.Sensor> Sensors {
         get {
             var _args = new ByteString[] {
@@ -521,7 +522,7 @@ public class Parts : RemoteObject
     /// <summary>
     /// A list of all solar panels in the vessel.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Parts_get_SolarPanels")]
+    [RpcAttribute ("SpaceCenter", "Parts_get_SolarPanels")]
     public global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.SolarPanel> SolarPanels {
         get {
             var _args = new ByteString[] {
@@ -535,7 +536,7 @@ public class Parts : RemoteObject
     /// <summary>
     /// A list of all wheels in the vessel.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Parts_get_Wheels")]
+    [RpcAttribute ("SpaceCenter", "Parts_get_Wheels")]
     public global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.Wheel> Wheels {
         get {
             var _args = new ByteString[] {

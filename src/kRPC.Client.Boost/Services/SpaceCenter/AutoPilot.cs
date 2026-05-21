@@ -2,6 +2,7 @@ using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
 using Google.Protobuf;
 using systemAlias = System;
+using kRPC.Client.Boost.Attributes;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
@@ -26,7 +27,7 @@ public class AutoPilot : RemoteObject
     /// <summary>
     /// Disengage the auto-pilot.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "AutoPilot_Disengage")]
+    [RpcAttribute ("SpaceCenter", "AutoPilot_Disengage")]
     public void Disengage ()
     {
         var _args = new ByteString[] {
@@ -38,7 +39,7 @@ public class AutoPilot : RemoteObject
     /// <summary>
     /// Engage the auto-pilot.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "AutoPilot_Engage")]
+    [RpcAttribute ("SpaceCenter", "AutoPilot_Engage")]
     public void Engage ()
     {
         var _args = new ByteString[] {
@@ -52,7 +53,7 @@ public class AutoPilot : RemoteObject
     /// </summary>
     /// <param name="pitch">Target pitch angle, in degrees between -90° and +90°.</param>
     /// <param name="heading">Target heading angle, in degrees between 0° and 360°.</param>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "AutoPilot_TargetPitchAndHeading")]
+    [RpcAttribute ("SpaceCenter", "AutoPilot_TargetPitchAndHeading")]
     public void TargetPitchAndHeading (float pitch, float heading)
     {
         var _args = new ByteString[] {
@@ -67,7 +68,7 @@ public class AutoPilot : RemoteObject
     /// Blocks until the vessel is pointing in the target direction and has
     /// the target roll (if set). Throws an exception if the auto-pilot has not been engaged.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "AutoPilot_Wait")]
+    [RpcAttribute ("SpaceCenter", "AutoPilot_Wait")]
     public void Wait ()
     {
         var _args = new ByteString[] {
@@ -83,7 +84,7 @@ public class AutoPilot : RemoteObject
     /// A vector of three angles, in degrees, one for each of the pitch, roll and yaw axes.
     /// Defaults to 1° for each axis.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "AutoPilot_get_AttenuationAngle")]
+    [RpcAttribute ("SpaceCenter", "AutoPilot_get_AttenuationAngle")]
     public systemAlias::Tuple<double,double,double> AttenuationAngle {
         get {
             var _args = new ByteString[] {
@@ -106,7 +107,7 @@ public class AutoPilot : RemoteObject
     /// using the vessels moment of inertia and available torque. Defaults to <c>true</c>.
     /// See <see cref="M:SpaceCenter.AutoPilot.TimeToPeak" /> and <see cref="M:SpaceCenter.AutoPilot.Overshoot" />.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "AutoPilot_get_AutoTune")]
+    [RpcAttribute ("SpaceCenter", "AutoPilot_get_AutoTune")]
     public bool AutoTune {
         get {
             var _args = new ByteString[] {
@@ -130,7 +131,7 @@ public class AutoPilot : RemoteObject
     /// A vector of three times, in seconds, one for each of the pitch, roll and yaw axes.
     /// Defaults to 5 seconds for each axis.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "AutoPilot_get_DecelerationTime")]
+    [RpcAttribute ("SpaceCenter", "AutoPilot_get_DecelerationTime")]
     public systemAlias::Tuple<double,double,double> DecelerationTime {
         get {
             var _args = new ByteString[] {
@@ -153,7 +154,7 @@ public class AutoPilot : RemoteObject
     /// to point in and the direction it is pointing in. Throws an exception if the auto-pilot
     /// has not been engaged and SAS is not enabled or is in stability assist mode.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "AutoPilot_get_Error")]
+    [RpcAttribute ("SpaceCenter", "AutoPilot_get_Error")]
     public float Error {
         get {
             var _args = new ByteString[] {
@@ -168,7 +169,7 @@ public class AutoPilot : RemoteObject
     /// The error, in degrees, between the vessels current and target heading.
     /// Throws an exception if the auto-pilot has not been engaged.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "AutoPilot_get_HeadingError")]
+    [RpcAttribute ("SpaceCenter", "AutoPilot_get_HeadingError")]
     public float HeadingError {
         get {
             var _args = new ByteString[] {
@@ -184,7 +185,7 @@ public class AutoPilot : RemoteObject
     /// A vector of three values, between 0 and 1, for each of the pitch, roll and yaw axes.
     /// Defaults to 0.01 for each axis.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "AutoPilot_get_Overshoot")]
+    [RpcAttribute ("SpaceCenter", "AutoPilot_get_Overshoot")]
     public systemAlias::Tuple<double,double,double> Overshoot {
         get {
             var _args = new ByteString[] {
@@ -206,7 +207,7 @@ public class AutoPilot : RemoteObject
     /// The error, in degrees, between the vessels current and target pitch.
     /// Throws an exception if the auto-pilot has not been engaged.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "AutoPilot_get_PitchError")]
+    [RpcAttribute ("SpaceCenter", "AutoPilot_get_PitchError")]
     public float PitchError {
         get {
             var _args = new ByteString[] {
@@ -224,7 +225,7 @@ public class AutoPilot : RemoteObject
     /// When <see cref="M:SpaceCenter.AutoPilot.AutoTune" /> is true, these values are updated automatically,
     /// which will overwrite any manual changes.
     /// </remarks>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "AutoPilot_get_PitchPIDGains")]
+    [RpcAttribute ("SpaceCenter", "AutoPilot_get_PitchPIDGains")]
     public systemAlias::Tuple<double,double,double> PitchPIDGains {
         get {
             var _args = new ByteString[] {
@@ -250,7 +251,7 @@ public class AutoPilot : RemoteObject
     /// the vessel being controlled, as it is impossible to rotate the vessel in such a
     /// reference frame.
     /// </remarks>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "AutoPilot_get_ReferenceFrame")]
+    [RpcAttribute ("SpaceCenter", "AutoPilot_get_ReferenceFrame")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame ReferenceFrame {
         get {
             var _args = new ByteString[] {
@@ -272,7 +273,7 @@ public class AutoPilot : RemoteObject
     /// The error, in degrees, between the vessels current and target roll.
     /// Throws an exception if the auto-pilot has not been engaged or no target roll is set.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "AutoPilot_get_RollError")]
+    [RpcAttribute ("SpaceCenter", "AutoPilot_get_RollError")]
     public float RollError {
         get {
             var _args = new ByteString[] {
@@ -290,7 +291,7 @@ public class AutoPilot : RemoteObject
     /// When <see cref="M:SpaceCenter.AutoPilot.AutoTune" /> is true, these values are updated automatically,
     /// which will overwrite any manual changes.
     /// </remarks>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "AutoPilot_get_RollPIDGains")]
+    [RpcAttribute ("SpaceCenter", "AutoPilot_get_RollPIDGains")]
     public systemAlias::Tuple<double,double,double> RollPIDGains {
         get {
             var _args = new ByteString[] {
@@ -312,7 +313,7 @@ public class AutoPilot : RemoteObject
     /// The threshold at which the autopilot will try to match the target roll angle, if any.
     /// Defaults to 5 degrees.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "AutoPilot_get_RollThreshold")]
+    [RpcAttribute ("SpaceCenter", "AutoPilot_get_RollThreshold")]
     public double RollThreshold {
         get {
             var _args = new ByteString[] {
@@ -334,7 +335,7 @@ public class AutoPilot : RemoteObject
     /// The state of SAS.
     /// </summary>
     /// <remarks>Equivalent to <see cref="M:SpaceCenter.Control.SAS" /></remarks>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "AutoPilot_get_SAS")]
+    [RpcAttribute ("SpaceCenter", "AutoPilot_get_SAS")]
     public bool SAS {
         get {
             var _args = new ByteString[] {
@@ -358,7 +359,7 @@ public class AutoPilot : RemoteObject
     /// when SAS is enabled.
     /// </summary>
     /// <remarks>Equivalent to <see cref="M:SpaceCenter.Control.SASMode" /></remarks>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "AutoPilot_get_SASMode")]
+    [RpcAttribute ("SpaceCenter", "AutoPilot_get_SASMode")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.SASMode SASMode {
         get {
             var _args = new ByteString[] {
@@ -382,7 +383,7 @@ public class AutoPilot : RemoteObject
     /// A vector of three stopping times, in seconds, one for each of the pitch, roll
     /// and yaw axes. Defaults to 0.5 seconds for each axis.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "AutoPilot_get_StoppingTime")]
+    [RpcAttribute ("SpaceCenter", "AutoPilot_get_StoppingTime")]
     public systemAlias::Tuple<double,double,double> StoppingTime {
         get {
             var _args = new ByteString[] {
@@ -404,7 +405,7 @@ public class AutoPilot : RemoteObject
     /// Direction vector corresponding to the target pitch and heading.
     /// This is in the reference frame specified by <see cref="T:SpaceCenter.ReferenceFrame" />.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "AutoPilot_get_TargetDirection")]
+    [RpcAttribute ("SpaceCenter", "AutoPilot_get_TargetDirection")]
     public systemAlias::Tuple<double,double,double> TargetDirection {
         get {
             var _args = new ByteString[] {
@@ -425,7 +426,7 @@ public class AutoPilot : RemoteObject
     /// <summary>
     /// The target heading, in degrees, between 0° and 360°.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "AutoPilot_get_TargetHeading")]
+    [RpcAttribute ("SpaceCenter", "AutoPilot_get_TargetHeading")]
     public float TargetHeading {
         get {
             var _args = new ByteString[] {
@@ -446,7 +447,7 @@ public class AutoPilot : RemoteObject
     /// <summary>
     /// The target pitch, in degrees, between -90° and +90°.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "AutoPilot_get_TargetPitch")]
+    [RpcAttribute ("SpaceCenter", "AutoPilot_get_TargetPitch")]
     public float TargetPitch {
         get {
             var _args = new ByteString[] {
@@ -467,7 +468,7 @@ public class AutoPilot : RemoteObject
     /// <summary>
     /// The target roll, in degrees. <c>NaN</c> if no target roll is set.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "AutoPilot_get_TargetRoll")]
+    [RpcAttribute ("SpaceCenter", "AutoPilot_get_TargetRoll")]
     public float TargetRoll {
         get {
             var _args = new ByteString[] {
@@ -490,7 +491,7 @@ public class AutoPilot : RemoteObject
     /// A vector of three times, in seconds, for each of the pitch, roll and yaw axes.
     /// Defaults to 3 seconds for each axis.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "AutoPilot_get_TimeToPeak")]
+    [RpcAttribute ("SpaceCenter", "AutoPilot_get_TimeToPeak")]
     public systemAlias::Tuple<double,double,double> TimeToPeak {
         get {
             var _args = new ByteString[] {
@@ -515,7 +516,7 @@ public class AutoPilot : RemoteObject
     /// When <see cref="M:SpaceCenter.AutoPilot.AutoTune" /> is true, these values are updated automatically,
     /// which will overwrite any manual changes.
     /// </remarks>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "AutoPilot_get_YawPIDGains")]
+    [RpcAttribute ("SpaceCenter", "AutoPilot_get_YawPIDGains")]
     public systemAlias::Tuple<double,double,double> YawPIDGains {
         get {
             var _args = new ByteString[] {

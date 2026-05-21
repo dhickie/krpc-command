@@ -1,6 +1,7 @@
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
 using Google.Protobuf;
+using kRPC.Client.Boost.Attributes;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
@@ -19,7 +20,7 @@ public class ResourceHarvester : RemoteObject
     /// <summary>
     /// Whether the harvester is actively drilling.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "ResourceHarvester_get_Active")]
+    [RpcAttribute ("SpaceCenter", "ResourceHarvester_get_Active")]
     public bool Active {
         get {
             var _args = new ByteString[] {
@@ -40,7 +41,7 @@ public class ResourceHarvester : RemoteObject
     /// <summary>
     /// The core temperature of the drill, in Kelvin.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "ResourceHarvester_get_CoreTemperature")]
+    [RpcAttribute ("SpaceCenter", "ResourceHarvester_get_CoreTemperature")]
     public float CoreTemperature {
         get {
             var _args = new ByteString[] {
@@ -54,7 +55,7 @@ public class ResourceHarvester : RemoteObject
     /// <summary>
     /// Whether the harvester is deployed.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "ResourceHarvester_get_Deployed")]
+    [RpcAttribute ("SpaceCenter", "ResourceHarvester_get_Deployed")]
     public bool Deployed {
         get {
             var _args = new ByteString[] {
@@ -75,7 +76,7 @@ public class ResourceHarvester : RemoteObject
     /// <summary>
     /// The rate at which the drill is extracting ore, in units per second.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "ResourceHarvester_get_ExtractionRate")]
+    [RpcAttribute ("SpaceCenter", "ResourceHarvester_get_ExtractionRate")]
     public float ExtractionRate {
         get {
             var _args = new ByteString[] {
@@ -89,7 +90,7 @@ public class ResourceHarvester : RemoteObject
     /// <summary>
     /// The core temperature at which the drill will operate with peak efficiency, in Kelvin.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "ResourceHarvester_get_OptimumCoreTemperature")]
+    [RpcAttribute ("SpaceCenter", "ResourceHarvester_get_OptimumCoreTemperature")]
     public float OptimumCoreTemperature {
         get {
             var _args = new ByteString[] {
@@ -103,7 +104,7 @@ public class ResourceHarvester : RemoteObject
     /// <summary>
     /// The part object for this harvester.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "ResourceHarvester_get_Part")]
+    [RpcAttribute ("SpaceCenter", "ResourceHarvester_get_Part")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.Part Part {
         get {
             var _args = new ByteString[] {
@@ -117,7 +118,7 @@ public class ResourceHarvester : RemoteObject
     /// <summary>
     /// The state of the harvester.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "ResourceHarvester_get_State")]
+    [RpcAttribute ("SpaceCenter", "ResourceHarvester_get_State")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.ResourceHarvesterState State {
         get {
             var _args = new ByteString[] {
@@ -131,7 +132,7 @@ public class ResourceHarvester : RemoteObject
     /// <summary>
     /// The thermal efficiency of the drill, as a percentage of its maximum.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "ResourceHarvester_get_ThermalEfficiency")]
+    [RpcAttribute ("SpaceCenter", "ResourceHarvester_get_ThermalEfficiency")]
     public float ThermalEfficiency {
         get {
             var _args = new ByteString[] {

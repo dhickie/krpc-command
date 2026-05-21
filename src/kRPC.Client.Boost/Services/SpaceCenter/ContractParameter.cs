@@ -1,6 +1,7 @@
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
 using Google.Protobuf;
+using kRPC.Client.Boost.Attributes;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
@@ -19,7 +20,7 @@ public class ContractParameter : RemoteObject
     /// <summary>
     /// Child contract parameters.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "ContractParameter_get_Children")]
+    [RpcAttribute ("SpaceCenter", "ContractParameter_get_Children")]
     public global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.ContractParameter> Children {
         get {
             var _args = new ByteString[] {
@@ -33,7 +34,7 @@ public class ContractParameter : RemoteObject
     /// <summary>
     /// Whether the parameter has been completed.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "ContractParameter_get_Completed")]
+    [RpcAttribute ("SpaceCenter", "ContractParameter_get_Completed")]
     public bool Completed {
         get {
             var _args = new ByteString[] {
@@ -47,7 +48,7 @@ public class ContractParameter : RemoteObject
     /// <summary>
     /// Whether the parameter has been failed.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "ContractParameter_get_Failed")]
+    [RpcAttribute ("SpaceCenter", "ContractParameter_get_Failed")]
     public bool Failed {
         get {
             var _args = new ByteString[] {
@@ -61,7 +62,7 @@ public class ContractParameter : RemoteObject
     /// <summary>
     /// Funds received on completion of the contract parameter.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "ContractParameter_get_FundsCompletion")]
+    [RpcAttribute ("SpaceCenter", "ContractParameter_get_FundsCompletion")]
     public double FundsCompletion {
         get {
             var _args = new ByteString[] {
@@ -75,7 +76,7 @@ public class ContractParameter : RemoteObject
     /// <summary>
     /// Funds lost if the contract parameter is failed.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "ContractParameter_get_FundsFailure")]
+    [RpcAttribute ("SpaceCenter", "ContractParameter_get_FundsFailure")]
     public double FundsFailure {
         get {
             var _args = new ByteString[] {
@@ -89,7 +90,7 @@ public class ContractParameter : RemoteObject
     /// <summary>
     /// Notes for the parameter.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "ContractParameter_get_Notes")]
+    [RpcAttribute ("SpaceCenter", "ContractParameter_get_Notes")]
     public string Notes {
         get {
             var _args = new ByteString[] {
@@ -103,7 +104,7 @@ public class ContractParameter : RemoteObject
     /// <summary>
     /// Whether the contract parameter is optional.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "ContractParameter_get_Optional")]
+    [RpcAttribute ("SpaceCenter", "ContractParameter_get_Optional")]
     public bool Optional {
         get {
             var _args = new ByteString[] {
@@ -117,7 +118,7 @@ public class ContractParameter : RemoteObject
     /// <summary>
     /// Reputation gained on completion of the contract parameter.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "ContractParameter_get_ReputationCompletion")]
+    [RpcAttribute ("SpaceCenter", "ContractParameter_get_ReputationCompletion")]
     public double ReputationCompletion {
         get {
             var _args = new ByteString[] {
@@ -131,7 +132,7 @@ public class ContractParameter : RemoteObject
     /// <summary>
     /// Reputation lost if the contract parameter is failed.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "ContractParameter_get_ReputationFailure")]
+    [RpcAttribute ("SpaceCenter", "ContractParameter_get_ReputationFailure")]
     public double ReputationFailure {
         get {
             var _args = new ByteString[] {
@@ -145,7 +146,7 @@ public class ContractParameter : RemoteObject
     /// <summary>
     /// Science gained on completion of the contract parameter.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "ContractParameter_get_ScienceCompletion")]
+    [RpcAttribute ("SpaceCenter", "ContractParameter_get_ScienceCompletion")]
     public double ScienceCompletion {
         get {
             var _args = new ByteString[] {
@@ -159,7 +160,7 @@ public class ContractParameter : RemoteObject
     /// <summary>
     /// Title of the parameter.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "ContractParameter_get_Title")]
+    [RpcAttribute ("SpaceCenter", "ContractParameter_get_Title")]
     public string Title {
         get {
             var _args = new ByteString[] {

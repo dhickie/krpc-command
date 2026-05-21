@@ -1,6 +1,7 @@
 using Google.Protobuf;
 using kRPC.Client.Boost.Connection;
 using systemAlias = System;
+using kRPC.Client.Boost.Attributes;
 
 namespace kRPC.Client.Boost.Services;
 
@@ -24,7 +25,7 @@ public class SpaceCenterService
     /// for details.
     /// </summary>
     /// <param name="factor">The warp factor to check.</param>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "CanRailsWarpAt")]
+    [RpcAttribute ("SpaceCenter", "CanRailsWarpAt")]
     public bool CanRailsWarpAt (int factor = 1)
     {
         var _args = new ByteString[] {
@@ -37,7 +38,7 @@ public class SpaceCenterService
     /// <summary>
     /// Whether the current flight can be reverted to launch.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "CanRevertToLaunch")]
+    [RpcAttribute ("SpaceCenter", "CanRevertToLaunch")]
     public bool CanRevertToLaunch ()
     {
         ByteString _data = _connection.Invoke ("SpaceCenter", "CanRevertToLaunch");
@@ -47,7 +48,7 @@ public class SpaceCenterService
     /// <summary>
     /// Clears the current target.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "ClearTarget")]
+    [RpcAttribute ("SpaceCenter", "ClearTarget")]
     public void ClearTarget ()
     {
         _connection.Invoke ("SpaceCenter", "ClearTarget");
@@ -59,7 +60,7 @@ public class SpaceCenterService
     /// <param name="name"></param>
     /// <param name="job"></param>
     /// <param name="male"></param>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "CreateKerbal")]
+    [RpcAttribute ("SpaceCenter", "CreateKerbal")]
     public void CreateKerbal (string name, string job, bool male)
     {
         var _args = new ByteString[] {
@@ -75,7 +76,7 @@ public class SpaceCenterService
     /// </summary>
     /// <param name="name"></param>
     /// <returns><c>null</c> if no Kerbal with the given name exists.</returns>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "GetKerbal")]
+    [RpcAttribute ("SpaceCenter", "GetKerbal")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.CrewMember GetKerbal (string name)
     {
         var _args = new ByteString[] {
@@ -102,7 +103,7 @@ public class SpaceCenterService
     /// <remarks>
     /// Throws an exception if any of the games pre-flight checks fail.
     /// </remarks>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "LaunchVessel")]
+    [RpcAttribute ("SpaceCenter", "LaunchVessel")]
     public void LaunchVessel (string craftDirectory, string name, string launchSite, bool recover = true, global::System.Collections.Generic.IList<string> crew = null, string flagUrl = "")
     {
         var _args = new ByteString[] {
@@ -127,7 +128,7 @@ public class SpaceCenterService
     /// set to "SPH" and the launch site set to "Runway".
     /// Throws an exception if any of the games pre-flight checks fail.
     /// </remarks>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "LaunchVesselFromSPH")]
+    [RpcAttribute ("SpaceCenter", "LaunchVesselFromSPH")]
     public void LaunchVesselFromSPH (string name, bool recover = true)
     {
         var _args = new ByteString[] {
@@ -148,7 +149,7 @@ public class SpaceCenterService
     /// set to "VAB" and the launch site set to "LaunchPad".
     /// Throws an exception if any of the games pre-flight checks fail.
     /// </remarks>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "LaunchVesselFromVAB")]
+    [RpcAttribute ("SpaceCenter", "LaunchVesselFromVAB")]
     public void LaunchVesselFromVAB (string name, bool recover = true)
     {
         var _args = new ByteString[] {
@@ -164,7 +165,7 @@ public class SpaceCenterService
     /// </summary>
     /// <param name="craftDirectory">Name of the directory in the current saves
     /// "Ships" directory. For example <c>"VAB"</c> or <c>"SPH"</c>.</param>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "LaunchableVessels")]
+    [RpcAttribute ("SpaceCenter", "LaunchableVessels")]
     public global::System.Collections.Generic.IList<string> LaunchableVessels (string craftDirectory)
     {
         var _args = new ByteString[] {
@@ -180,7 +181,7 @@ public class SpaceCenterService
     /// current save game.
     /// </summary>
     /// <param name="name">Name of the save.</param>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Load")]
+    [RpcAttribute ("SpaceCenter", "Load")]
     public void Load (string name)
     {
         var _args = new ByteString[] {
@@ -192,7 +193,7 @@ public class SpaceCenterService
     /// <summary>
     /// Switch to the space center view.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "LoadSpaceCenter")]
+    [RpcAttribute ("SpaceCenter", "LoadSpaceCenter")]
     public void LoadSpaceCenter ()
     {
         _connection.Invoke ("SpaceCenter", "LoadSpaceCenter");
@@ -204,7 +205,7 @@ public class SpaceCenterService
     /// <remarks>
     /// This is the same as calling <see cref="M:SpaceCenter.Load" /> with the name "quicksave".
     /// </remarks>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Quickload")]
+    [RpcAttribute ("SpaceCenter", "Quickload")]
     public void Quickload ()
     {
         _connection.Invoke ("SpaceCenter", "Quickload");
@@ -216,7 +217,7 @@ public class SpaceCenterService
     /// <remarks>
     /// This is the same as calling <see cref="M:SpaceCenter.Save" /> with the name "quicksave".
     /// </remarks>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Quicksave")]
+    [RpcAttribute ("SpaceCenter", "Quicksave")]
     public void Quicksave ()
     {
         _connection.Invoke ("SpaceCenter", "Quicksave");
@@ -230,7 +231,7 @@ public class SpaceCenterService
     /// <param name="direction">Direction of the ray, as a unit vector.</param>
     /// <param name="referenceFrame">The reference frame that the position and direction are in.</param>
     /// <returns>The distance to the hit, in meters, or infinity if there was no hit.</returns>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "RaycastDistance")]
+    [RpcAttribute ("SpaceCenter", "RaycastDistance")]
     public double RaycastDistance (systemAlias::Tuple<double,double,double> position, systemAlias::Tuple<double,double,double> direction, global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame referenceFrame)
     {
         var _args = new ByteString[] {
@@ -250,7 +251,7 @@ public class SpaceCenterService
     /// <param name="direction">Direction of the ray, as a unit vector.</param>
     /// <param name="referenceFrame">The reference frame that the position and direction are in.</param>
     /// <returns>The part that was hit or <c>null</c> if there was no hit.</returns>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "RaycastPart")]
+    [RpcAttribute ("SpaceCenter", "RaycastPart")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.Part RaycastPart (systemAlias::Tuple<double,double,double> position, systemAlias::Tuple<double,double,double> direction, global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame referenceFrame)
     {
         var _args = new ByteString[] {
@@ -265,7 +266,7 @@ public class SpaceCenterService
     /// <summary>
     /// Revert the current flight to launch.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "RevertToLaunch")]
+    [RpcAttribute ("SpaceCenter", "RevertToLaunch")]
     public void RevertToLaunch ()
     {
         _connection.Invoke ("SpaceCenter", "RevertToLaunch");
@@ -277,7 +278,7 @@ public class SpaceCenterService
     /// current save game.
     /// </summary>
     /// <param name="name">Name of the save.</param>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Save")]
+    [RpcAttribute ("SpaceCenter", "Save")]
     public void Save (string name)
     {
         var _args = new ByteString[] {
@@ -291,7 +292,7 @@ public class SpaceCenterService
     /// </summary>
     /// <param name="filePath">The path of the file to save.</param>
     /// <param name="scale">Resolution scaling factor</param>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Screenshot")]
+    [RpcAttribute ("SpaceCenter", "Screenshot")]
     public void Screenshot (string filePath, int scale = 1)
     {
         var _args = new ByteString[] {
@@ -306,7 +307,7 @@ public class SpaceCenterService
     /// </summary>
     /// <param name="crewMember">The crew member to transfer.</param>
     /// <param name="targetPart">The part to move them to.</param>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "TransferCrew")]
+    [RpcAttribute ("SpaceCenter", "TransferCrew")]
     public void TransferCrew (global::kRPC.Client.Boost.Services.SpaceCenter.CrewMember crewMember, global::kRPC.Client.Boost.Services.SpaceCenter.Part targetPart)
     {
         var _args = new ByteString[] {
@@ -325,7 +326,7 @@ public class SpaceCenterService
     /// <param name="to">The reference frame to covert the direction to.</param>
     /// <returns>The corresponding direction, as a vector, in reference frame
     /// <paramref name="to" />.</returns>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "TransformDirection")]
+    [RpcAttribute ("SpaceCenter", "TransformDirection")]
     public systemAlias::Tuple<double,double,double> TransformDirection (systemAlias::Tuple<double,double,double> direction, global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame from, global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame to)
     {
         var _args = new ByteString[] {
@@ -346,7 +347,7 @@ public class SpaceCenterService
     /// <param name="to">The reference frame to covert the position to.</param>
     /// <returns>The corresponding position, as a vector, in reference frame
     /// <paramref name="to" />.</returns>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "TransformPosition")]
+    [RpcAttribute ("SpaceCenter", "TransformPosition")]
     public systemAlias::Tuple<double,double,double> TransformPosition (systemAlias::Tuple<double,double,double> position, global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame from, global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame to)
     {
         var _args = new ByteString[] {
@@ -367,7 +368,7 @@ public class SpaceCenterService
     /// <param name="to">The reference frame to covert the rotation to.</param>
     /// <returns>The corresponding rotation, as a quaternion of the form
     /// <math>(x, y, z, w)</math>, in reference frame <paramref name="to" />.</returns>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "TransformRotation")]
+    [RpcAttribute ("SpaceCenter", "TransformRotation")]
     public systemAlias::Tuple<double,double,double,double> TransformRotation (systemAlias::Tuple<double,double,double,double> rotation, global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame from, global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame to)
     {
         var _args = new ByteString[] {
@@ -393,7 +394,7 @@ public class SpaceCenterService
     /// <param name="to">The reference frame to covert the velocity to.</param>
     /// <returns>The corresponding velocity, as a vector, in reference frame
     /// <paramref name="to" />.</returns>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "TransformVelocity")]
+    [RpcAttribute ("SpaceCenter", "TransformVelocity")]
     public systemAlias::Tuple<double,double,double> TransformVelocity (systemAlias::Tuple<double,double,double> position, systemAlias::Tuple<double,double,double> velocity, global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame from, global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame to)
     {
         var _args = new ByteString[] {
@@ -420,7 +421,7 @@ public class SpaceCenterService
     /// </param>
     /// <param name="maxPhysicsRate">The maximum warp rate in physical time warp.</param>
     /// <returns>When the time warp is complete.</returns>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "WarpTo")]
+    [RpcAttribute ("SpaceCenter", "WarpTo")]
     public void WarpTo (double ut, float maxRailsRate = 100000.0f, float maxPhysicsRate = 2.0f)
     {
         var _args = new ByteString[] {
@@ -434,7 +435,7 @@ public class SpaceCenterService
     /// <summary>
     /// The currently active vessel.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "get_ActiveVessel")]
+    [RpcAttribute ("SpaceCenter", "get_ActiveVessel")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.Vessel ActiveVessel {
         get {
             ByteString _data = _connection.Invoke ("SpaceCenter", "get_ActiveVessel");
@@ -451,7 +452,7 @@ public class SpaceCenterService
     /// <summary>
     /// The alarm manager.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "get_AlarmManager")]
+    [RpcAttribute ("SpaceCenter", "get_AlarmManager")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.AlarmManager AlarmManager {
         get {
             ByteString _data = _connection.Invoke ("SpaceCenter", "get_AlarmManager");
@@ -463,7 +464,7 @@ public class SpaceCenterService
     /// A dictionary of all celestial bodies (planets, moons, etc.) in the game,
     /// keyed by the name of the body.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "get_Bodies")]
+    [RpcAttribute ("SpaceCenter", "get_Bodies")]
     public global::System.Collections.Generic.IDictionary<string,global::kRPC.Client.Boost.Services.SpaceCenter.CelestialBody> Bodies {
         get {
             ByteString _data = _connection.Invoke ("SpaceCenter", "get_Bodies");
@@ -474,7 +475,7 @@ public class SpaceCenterService
     /// <summary>
     /// An object that can be used to control the camera.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "get_Camera")]
+    [RpcAttribute ("SpaceCenter", "get_Camera")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.Camera Camera {
         get {
             ByteString _data = _connection.Invoke ("SpaceCenter", "get_Camera");
@@ -485,7 +486,7 @@ public class SpaceCenterService
     /// <summary>
     /// The contract manager.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "get_ContractManager")]
+    [RpcAttribute ("SpaceCenter", "get_ContractManager")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.ContractManager ContractManager {
         get {
             ByteString _data = _connection.Invoke ("SpaceCenter", "get_ContractManager");
@@ -496,7 +497,7 @@ public class SpaceCenterService
     /// <summary>
     /// Whether <a href="https://forum.kerbalspaceprogram.com/index.php?/topic/19321-130-ferram-aerospace-research-v0159-liebe-82117/">Ferram Aerospace Research</a> is installed.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "get_FARAvailable")]
+    [RpcAttribute ("SpaceCenter", "get_FARAvailable")]
     public bool FARAvailable {
         get {
             ByteString _data = _connection.Invoke ("SpaceCenter", "get_FARAvailable");
@@ -507,7 +508,7 @@ public class SpaceCenterService
     /// <summary>
     /// The current amount of funds.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "get_Funds")]
+    [RpcAttribute ("SpaceCenter", "get_Funds")]
     public double Funds {
         get {
             ByteString _data = _connection.Invoke ("SpaceCenter", "get_Funds");
@@ -519,7 +520,7 @@ public class SpaceCenterService
     /// The value of the <a href="https://en.wikipedia.org/wiki/Gravitational_constant">
     /// gravitational constant</a> G in <math>N(m/kg)^2</math>.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "get_G")]
+    [RpcAttribute ("SpaceCenter", "get_G")]
     public double G {
         get {
             ByteString _data = _connection.Invoke ("SpaceCenter", "get_G");
@@ -530,7 +531,7 @@ public class SpaceCenterService
     /// <summary>
     /// The current mode the game is in.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "get_GameMode")]
+    [RpcAttribute ("SpaceCenter", "get_GameMode")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.GameMode GameMode {
         get {
             ByteString _data = _connection.Invoke ("SpaceCenter", "get_GameMode");
@@ -541,7 +542,7 @@ public class SpaceCenterService
     /// <summary>
     /// A list of available launch sites.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "get_LaunchSites")]
+    [RpcAttribute ("SpaceCenter", "get_LaunchSites")]
     public global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.LaunchSite> LaunchSites {
         get {
             ByteString _data = _connection.Invoke ("SpaceCenter", "get_LaunchSites");
@@ -552,7 +553,7 @@ public class SpaceCenterService
     /// <summary>
     /// The visible objects in map mode.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "get_MapFilter")]
+    [RpcAttribute ("SpaceCenter", "get_MapFilter")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.MapFilterType MapFilter {
         get {
             ByteString _data = _connection.Invoke ("SpaceCenter", "get_MapFilter");
@@ -572,7 +573,7 @@ public class SpaceCenterService
     /// <a href="https://wiki.kerbalspaceprogram.com/wiki/Time_warp">the KSP wiki</a>
     /// for details.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "get_MaximumRailsWarpFactor")]
+    [RpcAttribute ("SpaceCenter", "get_MaximumRailsWarpFactor")]
     public int MaximumRailsWarpFactor {
         get {
             ByteString _data = _connection.Invoke ("SpaceCenter", "get_MaximumRailsWarpFactor");
@@ -583,7 +584,7 @@ public class SpaceCenterService
     /// <summary>
     /// Whether the navball is visible.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "get_Navball")]
+    [RpcAttribute ("SpaceCenter", "get_Navball")]
     public bool Navball {
         get {
             ByteString _data = _connection.Invoke ("SpaceCenter", "get_Navball");
@@ -601,7 +602,7 @@ public class SpaceCenterService
     /// The physical time warp rate. A value between 0 and 3 inclusive. 0 means
     /// no time warp. Returns 0 if regular "on-rails" time warp is active.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "get_PhysicsWarpFactor")]
+    [RpcAttribute ("SpaceCenter", "get_PhysicsWarpFactor")]
     public int PhysicsWarpFactor {
         get {
             ByteString _data = _connection.Invoke ("SpaceCenter", "get_PhysicsWarpFactor");
@@ -625,7 +626,7 @@ public class SpaceCenterService
     /// planet. See <a href="https://wiki.kerbalspaceprogram.com/wiki/Time_warp">
     /// the KSP wiki</a> for details.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "get_RailsWarpFactor")]
+    [RpcAttribute ("SpaceCenter", "get_RailsWarpFactor")]
     public int RailsWarpFactor {
         get {
             ByteString _data = _connection.Invoke ("SpaceCenter", "get_RailsWarpFactor");
@@ -642,7 +643,7 @@ public class SpaceCenterService
     /// <summary>
     /// The current amount of reputation.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "get_Reputation")]
+    [RpcAttribute ("SpaceCenter", "get_Reputation")]
     public float Reputation {
         get {
             ByteString _data = _connection.Invoke ("SpaceCenter", "get_Reputation");
@@ -653,7 +654,7 @@ public class SpaceCenterService
     /// <summary>
     /// The current amount of science.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "get_Science")]
+    [RpcAttribute ("SpaceCenter", "get_Science")]
     public float Science {
         get {
             ByteString _data = _connection.Invoke ("SpaceCenter", "get_Science");
@@ -664,7 +665,7 @@ public class SpaceCenterService
     /// <summary>
     /// The currently targeted celestial body.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "get_TargetBody")]
+    [RpcAttribute ("SpaceCenter", "get_TargetBody")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.CelestialBody TargetBody {
         get {
             ByteString _data = _connection.Invoke ("SpaceCenter", "get_TargetBody");
@@ -681,7 +682,7 @@ public class SpaceCenterService
     /// <summary>
     /// The currently targeted docking port.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "get_TargetDockingPort")]
+    [RpcAttribute ("SpaceCenter", "get_TargetDockingPort")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.DockingPort TargetDockingPort {
         get {
             ByteString _data = _connection.Invoke ("SpaceCenter", "get_TargetDockingPort");
@@ -698,7 +699,7 @@ public class SpaceCenterService
     /// <summary>
     /// The currently targeted vessel.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "get_TargetVessel")]
+    [RpcAttribute ("SpaceCenter", "get_TargetVessel")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.Vessel TargetVessel {
         get {
             ByteString _data = _connection.Invoke ("SpaceCenter", "get_TargetVessel");
@@ -715,7 +716,7 @@ public class SpaceCenterService
     /// <summary>
     /// Whether the UI is visible.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "get_UIVisible")]
+    [RpcAttribute ("SpaceCenter", "get_UIVisible")]
     public bool UIVisible {
         get {
             ByteString _data = _connection.Invoke ("SpaceCenter", "get_UIVisible");
@@ -732,7 +733,7 @@ public class SpaceCenterService
     /// <summary>
     /// The current universal time in seconds.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "get_UT")]
+    [RpcAttribute ("SpaceCenter", "get_UT")]
     public double UT {
         get {
             ByteString _data = _connection.Invoke ("SpaceCenter", "get_UT");
@@ -743,7 +744,7 @@ public class SpaceCenterService
     /// <summary>
     /// A list of all the vessels in the game.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "get_Vessels")]
+    [RpcAttribute ("SpaceCenter", "get_Vessels")]
     public global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.Vessel> Vessels {
         get {
             ByteString _data = _connection.Invoke ("SpaceCenter", "get_Vessels");
@@ -758,7 +759,7 @@ public class SpaceCenterService
     /// <see cref="M:SpaceCenter.RailsWarpFactor" />, and in physics time warp, this is equal to
     /// <see cref="M:SpaceCenter.PhysicsWarpFactor" />.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "get_WarpFactor")]
+    [RpcAttribute ("SpaceCenter", "get_WarpFactor")]
     public float WarpFactor {
         get {
             ByteString _data = _connection.Invoke ("SpaceCenter", "get_WarpFactor");
@@ -771,7 +772,7 @@ public class SpaceCenterService
     /// warp is not active, <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.WarpMode.Rails" /> if regular "on-rails" time warp
     /// is active, or <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.WarpMode.Physics" /> if physical time warp is active.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "get_WarpMode")]
+    [RpcAttribute ("SpaceCenter", "get_WarpMode")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.WarpMode WarpMode {
         get {
             ByteString _data = _connection.Invoke ("SpaceCenter", "get_WarpMode");
@@ -785,7 +786,7 @@ public class SpaceCenterService
     /// time is passing 10x faster than normal. Returns 1 if time warp is not
     /// active.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "get_WarpRate")]
+    [RpcAttribute ("SpaceCenter", "get_WarpRate")]
     public float WarpRate {
         get {
             ByteString _data = _connection.Invoke ("SpaceCenter", "get_WarpRate");
@@ -796,7 +797,7 @@ public class SpaceCenterService
     /// <summary>
     /// The waypoint manager.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "get_WaypointManager")]
+    [RpcAttribute ("SpaceCenter", "get_WaypointManager")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.WaypointManager WaypointManager {
         get {
             ByteString _data = _connection.Invoke ("SpaceCenter", "get_WaypointManager");

@@ -3,6 +3,7 @@ using kRPC.Client.Boost.Services;
 using Google.Protobuf;
 using KRPC.Client;
 using systemAlias = System;
+using kRPC.Client.Boost.Attributes;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
@@ -24,7 +25,7 @@ public class Orbit : RemoteObject
     /// Estimates and returns the distance at closest approach to a target orbit, in meters.
     /// </summary>
     /// <param name="target">Target orbit.</param>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Orbit_DistanceAtClosestApproach")]
+    [RpcAttribute ("SpaceCenter", "Orbit_DistanceAtClosestApproach")]
     public double DistanceAtClosestApproach (global::kRPC.Client.Boost.Services.SpaceCenter.Orbit target)
     {
         var _args = new ByteString[] {
@@ -39,7 +40,7 @@ public class Orbit : RemoteObject
     /// The eccentric anomaly at the given universal time.
     /// </summary>
     /// <param name="ut">The universal time, in seconds.</param>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Orbit_EccentricAnomalyAtUT")]
+    [RpcAttribute ("SpaceCenter", "Orbit_EccentricAnomalyAtUT")]
     public double EccentricAnomalyAtUT (double ut)
     {
         var _args = new ByteString[] {
@@ -60,7 +61,7 @@ public class Orbit : RemoteObject
     /// </returns>
     /// <param name="target">Target orbit.</param>
     /// <param name="orbits">The number of future orbits to search.</param>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Orbit_ListClosestApproaches")]
+    [RpcAttribute ("SpaceCenter", "Orbit_ListClosestApproaches")]
     public global::System.Collections.Generic.IList<global::System.Collections.Generic.IList<double>> ListClosestApproaches (global::kRPC.Client.Boost.Services.SpaceCenter.Orbit target, int orbits)
     {
         var _args = new ByteString[] {
@@ -76,7 +77,7 @@ public class Orbit : RemoteObject
     /// The mean anomaly at the given time.
     /// </summary>
     /// <param name="ut">The universal time in seconds.</param>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Orbit_MeanAnomalyAtUT")]
+    [RpcAttribute ("SpaceCenter", "Orbit_MeanAnomalyAtUT")]
     public double MeanAnomalyAtUT (double ut)
     {
         var _args = new ByteString[] {
@@ -91,7 +92,7 @@ public class Orbit : RemoteObject
     /// The orbital speed at the given time, in meters per second.
     /// </summary>
     /// <param name="time">Time from now, in seconds.</param>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Orbit_OrbitalSpeedAt")]
+    [RpcAttribute ("SpaceCenter", "Orbit_OrbitalSpeedAt")]
     public double OrbitalSpeedAt (double time)
     {
         var _args = new ByteString[] {
@@ -109,7 +110,7 @@ public class Orbit : RemoteObject
     /// <param name="ut">The universal time to measure the position at.</param>
     /// <param name="referenceFrame">The reference frame that the returned
     /// position vector is in.</param>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Orbit_PositionAt")]
+    [RpcAttribute ("SpaceCenter", "Orbit_PositionAt")]
     public systemAlias::Tuple<double,double,double> PositionAt (double ut, global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame referenceFrame)
     {
         var _args = new ByteString[] {
@@ -125,7 +126,7 @@ public class Orbit : RemoteObject
     /// The orbital radius at the given time, in meters.
     /// </summary>
     /// <param name="ut">The universal time to measure the radius at.</param>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Orbit_RadiusAt")]
+    [RpcAttribute ("SpaceCenter", "Orbit_RadiusAt")]
     public double RadiusAt (double ut)
     {
         var _args = new ByteString[] {
@@ -140,7 +141,7 @@ public class Orbit : RemoteObject
     /// The orbital radius at the point in the orbit given by the true anomaly.
     /// </summary>
     /// <param name="trueAnomaly">The true anomaly.</param>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Orbit_RadiusAtTrueAnomaly")]
+    [RpcAttribute ("SpaceCenter", "Orbit_RadiusAtTrueAnomaly")]
     public double RadiusAtTrueAnomaly (double trueAnomaly)
     {
         var _args = new ByteString[] {
@@ -155,7 +156,7 @@ public class Orbit : RemoteObject
     /// Relative inclination of this orbit and the target orbit, in radians.
     /// </summary>
     /// <param name="target">Target orbit.</param>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Orbit_RelativeInclination")]
+    [RpcAttribute ("SpaceCenter", "Orbit_RelativeInclination")]
     public double RelativeInclination (global::kRPC.Client.Boost.Services.SpaceCenter.Orbit target)
     {
         var _args = new ByteString[] {
@@ -171,7 +172,7 @@ public class Orbit : RemoteObject
     /// </summary>
     /// <returns>The universal time at closest approach, in seconds.</returns>
     /// <param name="target">Target orbit.</param>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Orbit_TimeOfClosestApproach")]
+    [RpcAttribute ("SpaceCenter", "Orbit_TimeOfClosestApproach")]
     public double TimeOfClosestApproach (global::kRPC.Client.Boost.Services.SpaceCenter.Orbit target)
     {
         var _args = new ByteString[] {
@@ -186,7 +187,7 @@ public class Orbit : RemoteObject
     /// The true anomaly of the ascending node with the given target orbit.
     /// </summary>
     /// <param name="target">Target orbit.</param>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Orbit_TrueAnomalyAtAN")]
+    [RpcAttribute ("SpaceCenter", "Orbit_TrueAnomalyAtAN")]
     public double TrueAnomalyAtAN (global::kRPC.Client.Boost.Services.SpaceCenter.Orbit target)
     {
         var _args = new ByteString[] {
@@ -201,7 +202,7 @@ public class Orbit : RemoteObject
     /// The true anomaly of the descending node with the given target orbit.
     /// </summary>
     /// <param name="target">Target orbit.</param>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Orbit_TrueAnomalyAtDN")]
+    [RpcAttribute ("SpaceCenter", "Orbit_TrueAnomalyAtDN")]
     public double TrueAnomalyAtDN (global::kRPC.Client.Boost.Services.SpaceCenter.Orbit target)
     {
         var _args = new ByteString[] {
@@ -216,7 +217,7 @@ public class Orbit : RemoteObject
     /// The true anomaly at the given orbital radius.
     /// </summary>
     /// <param name="radius">The orbital radius in meters.</param>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Orbit_TrueAnomalyAtRadius")]
+    [RpcAttribute ("SpaceCenter", "Orbit_TrueAnomalyAtRadius")]
     public double TrueAnomalyAtRadius (double radius)
     {
         var _args = new ByteString[] {
@@ -231,7 +232,7 @@ public class Orbit : RemoteObject
     /// The true anomaly at the given time.
     /// </summary>
     /// <param name="ut">The universal time in seconds.</param>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Orbit_TrueAnomalyAtUT")]
+    [RpcAttribute ("SpaceCenter", "Orbit_TrueAnomalyAtUT")]
     public double TrueAnomalyAtUT (double ut)
     {
         var _args = new ByteString[] {
@@ -246,7 +247,7 @@ public class Orbit : RemoteObject
     /// The universal time, in seconds, corresponding to the given true anomaly.
     /// </summary>
     /// <param name="trueAnomaly">True anomaly.</param>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Orbit_UTAtTrueAnomaly")]
+    [RpcAttribute ("SpaceCenter", "Orbit_UTAtTrueAnomaly")]
     public double UTAtTrueAnomaly (double trueAnomaly)
     {
         var _args = new ByteString[] {
@@ -265,7 +266,7 @@ public class Orbit : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// direction is in.</param>
     /// <param name="connection">A connection object.</param>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Orbit_static_ReferencePlaneDirection")]
+    [RpcAttribute ("SpaceCenter", "Orbit_static_ReferencePlaneDirection")]
     public static systemAlias::Tuple<double,double,double> ReferencePlaneDirection (IConnection connection, global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame referenceFrame)
     {
         if (connection == null)
@@ -286,7 +287,7 @@ public class Orbit : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// direction is in.</param>
     /// <param name="connection">A connection object.</param>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Orbit_static_ReferencePlaneNormal")]
+    [RpcAttribute ("SpaceCenter", "Orbit_static_ReferencePlaneNormal")]
     public static systemAlias::Tuple<double,double,double> ReferencePlaneNormal (IConnection connection, global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame referenceFrame)
     {
         if (connection == null)
@@ -306,7 +307,7 @@ public class Orbit : RemoteObject
     /// For the apoapsis altitude reported on the in-game map view,
     /// use <see cref="M:SpaceCenter.Orbit.ApoapsisAltitude" />.
     /// </remarks>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Orbit_get_Apoapsis")]
+    [RpcAttribute ("SpaceCenter", "Orbit_get_Apoapsis")]
     public double Apoapsis {
         get {
             var _args = new ByteString[] {
@@ -323,7 +324,7 @@ public class Orbit : RemoteObject
     /// <remarks>
     /// This is equal to <see cref="M:SpaceCenter.Orbit.Apoapsis" /> minus the equatorial radius of the body.
     /// </remarks>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Orbit_get_ApoapsisAltitude")]
+    [RpcAttribute ("SpaceCenter", "Orbit_get_ApoapsisAltitude")]
     public double ApoapsisAltitude {
         get {
             var _args = new ByteString[] {
@@ -338,7 +339,7 @@ public class Orbit : RemoteObject
     /// The <a href="https://en.wikipedia.org/wiki/Argument_of_periapsis">argument of
     /// periapsis</a>, in radians.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Orbit_get_ArgumentOfPeriapsis")]
+    [RpcAttribute ("SpaceCenter", "Orbit_get_ArgumentOfPeriapsis")]
     public double ArgumentOfPeriapsis {
         get {
             var _args = new ByteString[] {
@@ -352,7 +353,7 @@ public class Orbit : RemoteObject
     /// <summary>
     /// The celestial body (e.g. planet or moon) around which the object is orbiting.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Orbit_get_Body")]
+    [RpcAttribute ("SpaceCenter", "Orbit_get_Body")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.CelestialBody Body {
         get {
             var _args = new ByteString[] {
@@ -366,7 +367,7 @@ public class Orbit : RemoteObject
     /// <summary>
     /// The <a href="https://en.wikipedia.org/wiki/Eccentric_anomaly">eccentric anomaly</a>.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Orbit_get_EccentricAnomaly")]
+    [RpcAttribute ("SpaceCenter", "Orbit_get_EccentricAnomaly")]
     public double EccentricAnomaly {
         get {
             var _args = new ByteString[] {
@@ -381,7 +382,7 @@ public class Orbit : RemoteObject
     /// The <a href="https://en.wikipedia.org/wiki/Orbital_eccentricity">eccentricity</a>
     /// of the orbit.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Orbit_get_Eccentricity")]
+    [RpcAttribute ("SpaceCenter", "Orbit_get_Eccentricity")]
     public double Eccentricity {
         get {
             var _args = new ByteString[] {
@@ -397,7 +398,7 @@ public class Orbit : RemoteObject
     /// <a href="https://en.wikipedia.org/wiki/Mean_anomaly">mean anomaly at epoch</a>
     /// was measured, in seconds.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Orbit_get_Epoch")]
+    [RpcAttribute ("SpaceCenter", "Orbit_get_Epoch")]
     public double Epoch {
         get {
             var _args = new ByteString[] {
@@ -413,7 +414,7 @@ public class Orbit : RemoteObject
     /// of the orbit,
     /// in radians.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Orbit_get_Inclination")]
+    [RpcAttribute ("SpaceCenter", "Orbit_get_Inclination")]
     public double Inclination {
         get {
             var _args = new ByteString[] {
@@ -428,7 +429,7 @@ public class Orbit : RemoteObject
     /// The <a href="https://en.wikipedia.org/wiki/Longitude_of_the_ascending_node">longitude of
     /// the ascending node</a>, in radians.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Orbit_get_LongitudeOfAscendingNode")]
+    [RpcAttribute ("SpaceCenter", "Orbit_get_LongitudeOfAscendingNode")]
     public double LongitudeOfAscendingNode {
         get {
             var _args = new ByteString[] {
@@ -442,7 +443,7 @@ public class Orbit : RemoteObject
     /// <summary>
     /// The <a href="https://en.wikipedia.org/wiki/Mean_anomaly">mean anomaly</a>.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Orbit_get_MeanAnomaly")]
+    [RpcAttribute ("SpaceCenter", "Orbit_get_MeanAnomaly")]
     public double MeanAnomaly {
         get {
             var _args = new ByteString[] {
@@ -456,7 +457,7 @@ public class Orbit : RemoteObject
     /// <summary>
     /// The <a href="https://en.wikipedia.org/wiki/Mean_anomaly">mean anomaly at epoch</a>.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Orbit_get_MeanAnomalyAtEpoch")]
+    [RpcAttribute ("SpaceCenter", "Orbit_get_MeanAnomalyAtEpoch")]
     public double MeanAnomalyAtEpoch {
         get {
             var _args = new ByteString[] {
@@ -471,7 +472,7 @@ public class Orbit : RemoteObject
     /// If the object is going to change sphere of influence in the future, returns the new
     /// orbit after the change. Otherwise returns <c>null</c>.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Orbit_get_NextOrbit")]
+    [RpcAttribute ("SpaceCenter", "Orbit_get_NextOrbit")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.Orbit NextOrbit {
         get {
             var _args = new ByteString[] {
@@ -485,7 +486,7 @@ public class Orbit : RemoteObject
     /// <summary>
     /// The current orbital speed in meters per second.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Orbit_get_OrbitalSpeed")]
+    [RpcAttribute ("SpaceCenter", "Orbit_get_OrbitalSpeed")]
     public double OrbitalSpeed {
         get {
             var _args = new ByteString[] {
@@ -504,7 +505,7 @@ public class Orbit : RemoteObject
     /// For the periapsis altitude reported on the in-game map view,
     /// use <see cref="M:SpaceCenter.Orbit.PeriapsisAltitude" />.
     /// </remarks>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Orbit_get_Periapsis")]
+    [RpcAttribute ("SpaceCenter", "Orbit_get_Periapsis")]
     public double Periapsis {
         get {
             var _args = new ByteString[] {
@@ -521,7 +522,7 @@ public class Orbit : RemoteObject
     /// <remarks>
     /// This is equal to <see cref="M:SpaceCenter.Orbit.Periapsis" /> minus the equatorial radius of the body.
     /// </remarks>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Orbit_get_PeriapsisAltitude")]
+    [RpcAttribute ("SpaceCenter", "Orbit_get_PeriapsisAltitude")]
     public double PeriapsisAltitude {
         get {
             var _args = new ByteString[] {
@@ -535,7 +536,7 @@ public class Orbit : RemoteObject
     /// <summary>
     /// The orbital period, in seconds.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Orbit_get_Period")]
+    [RpcAttribute ("SpaceCenter", "Orbit_get_Period")]
     public double Period {
         get {
             var _args = new ByteString[] {
@@ -554,7 +555,7 @@ public class Orbit : RemoteObject
     /// <remarks>
     /// This value will change over time if the orbit is elliptical.
     /// </remarks>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Orbit_get_Radius")]
+    [RpcAttribute ("SpaceCenter", "Orbit_get_Radius")]
     public double Radius {
         get {
             var _args = new ByteString[] {
@@ -568,7 +569,7 @@ public class Orbit : RemoteObject
     /// <summary>
     /// The semi-major axis of the orbit, in meters.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Orbit_get_SemiMajorAxis")]
+    [RpcAttribute ("SpaceCenter", "Orbit_get_SemiMajorAxis")]
     public double SemiMajorAxis {
         get {
             var _args = new ByteString[] {
@@ -582,7 +583,7 @@ public class Orbit : RemoteObject
     /// <summary>
     /// The semi-minor axis of the orbit, in meters.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Orbit_get_SemiMinorAxis")]
+    [RpcAttribute ("SpaceCenter", "Orbit_get_SemiMinorAxis")]
     public double SemiMinorAxis {
         get {
             var _args = new ByteString[] {
@@ -599,7 +600,7 @@ public class Orbit : RemoteObject
     /// <remarks>
     /// This value will change over time if the orbit is elliptical.
     /// </remarks>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Orbit_get_Speed")]
+    [RpcAttribute ("SpaceCenter", "Orbit_get_Speed")]
     public double Speed {
         get {
             var _args = new ByteString[] {
@@ -613,7 +614,7 @@ public class Orbit : RemoteObject
     /// <summary>
     /// The time until the object reaches apoapsis, in seconds.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Orbit_get_TimeToApoapsis")]
+    [RpcAttribute ("SpaceCenter", "Orbit_get_TimeToApoapsis")]
     public double TimeToApoapsis {
         get {
             var _args = new ByteString[] {
@@ -627,7 +628,7 @@ public class Orbit : RemoteObject
     /// <summary>
     /// The time until the object reaches periapsis, in seconds.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Orbit_get_TimeToPeriapsis")]
+    [RpcAttribute ("SpaceCenter", "Orbit_get_TimeToPeriapsis")]
     public double TimeToPeriapsis {
         get {
             var _args = new ByteString[] {
@@ -642,7 +643,7 @@ public class Orbit : RemoteObject
     /// The time until the object changes sphere of influence, in seconds. Returns <c>NaN</c>
     /// if the object is not going to change sphere of influence.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Orbit_get_TimeToSOIChange")]
+    [RpcAttribute ("SpaceCenter", "Orbit_get_TimeToSOIChange")]
     public double TimeToSOIChange {
         get {
             var _args = new ByteString[] {
@@ -656,7 +657,7 @@ public class Orbit : RemoteObject
     /// <summary>
     /// The <a href="https://en.wikipedia.org/wiki/True_anomaly">true anomaly</a>.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Orbit_get_TrueAnomaly")]
+    [RpcAttribute ("SpaceCenter", "Orbit_get_TrueAnomaly")]
     public double TrueAnomaly {
         get {
             var _args = new ByteString[] {

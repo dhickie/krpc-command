@@ -2,6 +2,7 @@ using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
 using Google.Protobuf;
 using systemAlias = System;
+using kRPC.Client.Boost.Attributes;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
@@ -29,7 +30,7 @@ public class Thruster : RemoteObject
     /// <returns>The position as a vector.</returns>
     /// <param name="referenceFrame">The reference frame that the returned
     /// position vector is in.</param>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Thruster_GimbalPosition")]
+    [RpcAttribute ("SpaceCenter", "Thruster_GimbalPosition")]
     public systemAlias::Tuple<double,double,double> GimbalPosition (global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame referenceFrame)
     {
         var _args = new ByteString[] {
@@ -48,7 +49,7 @@ public class Thruster : RemoteObject
     /// <returns>The direction as a unit vector.</returns>
     /// <param name="referenceFrame">The reference frame that the returned
     /// direction is in.</param>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Thruster_InitialThrustDirection")]
+    [RpcAttribute ("SpaceCenter", "Thruster_InitialThrustDirection")]
     public systemAlias::Tuple<double,double,double> InitialThrustDirection (global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame referenceFrame)
     {
         var _args = new ByteString[] {
@@ -70,7 +71,7 @@ public class Thruster : RemoteObject
     /// This position can move when the gimbal rotates. This is because the thrust position and
     /// gimbal position are not necessarily the same.
     /// </remarks>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Thruster_InitialThrustPosition")]
+    [RpcAttribute ("SpaceCenter", "Thruster_InitialThrustPosition")]
     public systemAlias::Tuple<double,double,double> InitialThrustPosition (global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame referenceFrame)
     {
         var _args = new ByteString[] {
@@ -89,7 +90,7 @@ public class Thruster : RemoteObject
     /// <returns>The direction as a unit vector.</returns>
     /// <param name="referenceFrame">The reference frame that the returned
     /// direction is in.</param>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Thruster_ThrustDirection")]
+    [RpcAttribute ("SpaceCenter", "Thruster_ThrustDirection")]
     public systemAlias::Tuple<double,double,double> ThrustDirection (global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame referenceFrame)
     {
         var _args = new ByteString[] {
@@ -107,7 +108,7 @@ public class Thruster : RemoteObject
     /// <returns>The position as a vector.</returns>
     /// <param name="referenceFrame">The reference frame that the returned
     /// position vector is in.</param>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Thruster_ThrustPosition")]
+    [RpcAttribute ("SpaceCenter", "Thruster_ThrustPosition")]
     public systemAlias::Tuple<double,double,double> ThrustPosition (global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame referenceFrame)
     {
         var _args = new ByteString[] {
@@ -121,7 +122,7 @@ public class Thruster : RemoteObject
     /// <summary>
     /// The current gimbal angle in the pitch, roll and yaw axes, in degrees.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Thruster_get_GimbalAngle")]
+    [RpcAttribute ("SpaceCenter", "Thruster_get_GimbalAngle")]
     public systemAlias::Tuple<double,double,double> GimbalAngle {
         get {
             var _args = new ByteString[] {
@@ -135,7 +136,7 @@ public class Thruster : RemoteObject
     /// <summary>
     /// Whether the thruster is gimballed.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Thruster_get_Gimballed")]
+    [RpcAttribute ("SpaceCenter", "Thruster_get_Gimballed")]
     public bool Gimballed {
         get {
             var _args = new ByteString[] {
@@ -149,7 +150,7 @@ public class Thruster : RemoteObject
     /// <summary>
     /// The <see cref="T:SpaceCenter.Part" /> that contains this thruster.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Thruster_get_Part")]
+    [RpcAttribute ("SpaceCenter", "Thruster_get_Part")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.Part Part {
         get {
             var _args = new ByteString[] {
@@ -171,7 +172,7 @@ public class Thruster : RemoteObject
     /// This is the direction in which the thruster expels propellant, including any gimballing.
     /// </description></item><item><description>The y-axis points along the thrust direction.</description></item><item><description>The x-axis and z-axis are perpendicular to the thrust direction.
     /// </description></item></list></summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Thruster_get_ThrustReferenceFrame")]
+    [RpcAttribute ("SpaceCenter", "Thruster_get_ThrustReferenceFrame")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame ThrustReferenceFrame {
         get {
             var _args = new ByteString[] {

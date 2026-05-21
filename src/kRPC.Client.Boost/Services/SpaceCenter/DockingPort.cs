@@ -2,6 +2,7 @@ using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
 using Google.Protobuf;
 using systemAlias = System;
+using kRPC.Client.Boost.Attributes;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
@@ -22,7 +23,7 @@ public class DockingPort : RemoteObject
     /// <returns>The direction as a unit vector.</returns>
     /// <param name="referenceFrame">The reference frame that the returned
     /// direction is in.</param>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "DockingPort_Direction")]
+    [RpcAttribute ("SpaceCenter", "DockingPort_Direction")]
     public systemAlias::Tuple<double,double,double> Direction (global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame referenceFrame)
     {
         var _args = new ByteString[] {
@@ -39,7 +40,7 @@ public class DockingPort : RemoteObject
     /// <returns>The position as a vector.</returns>
     /// <param name="referenceFrame">The reference frame that the returned
     /// position vector is in.</param>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "DockingPort_Position")]
+    [RpcAttribute ("SpaceCenter", "DockingPort_Position")]
     public systemAlias::Tuple<double,double,double> Position (global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame referenceFrame)
     {
         var _args = new ByteString[] {
@@ -56,7 +57,7 @@ public class DockingPort : RemoteObject
     /// <returns>The rotation as a quaternion of the form <math>(x, y, z, w)</math>.</returns>
     /// <param name="referenceFrame">The reference frame that the returned
     /// rotation is in.</param>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "DockingPort_Rotation")]
+    [RpcAttribute ("SpaceCenter", "DockingPort_Rotation")]
     public systemAlias::Tuple<double,double,double,double> Rotation (global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame referenceFrame)
     {
         var _args = new ByteString[] {
@@ -77,7 +78,7 @@ public class DockingPort : RemoteObject
     /// after calling this function, the object(s) returned by previous call(s) to
     /// <see cref="M:SpaceCenter.ActiveVessel" /> no longer refer to the active vessel.
     /// </remarks>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "DockingPort_Undock")]
+    [RpcAttribute ("SpaceCenter", "DockingPort_Undock")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.Vessel Undock ()
     {
         var _args = new ByteString[] {
@@ -90,7 +91,7 @@ public class DockingPort : RemoteObject
     /// <summary>
     /// Whether the docking port can be commanded to rotate while docked.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "DockingPort_get_CanRotate")]
+    [RpcAttribute ("SpaceCenter", "DockingPort_get_CanRotate")]
     public bool CanRotate {
         get {
             var _args = new ByteString[] {
@@ -105,7 +106,7 @@ public class DockingPort : RemoteObject
     /// The part that this docking port is docked to. Returns <c>null</c> if this
     /// docking port is not docked to anything.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "DockingPort_get_DockedPart")]
+    [RpcAttribute ("SpaceCenter", "DockingPort_get_DockedPart")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.Part DockedPart {
         get {
             var _args = new ByteString[] {
@@ -119,7 +120,7 @@ public class DockingPort : RemoteObject
     /// <summary>
     /// Whether the docking port has a shield.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "DockingPort_get_HasShield")]
+    [RpcAttribute ("SpaceCenter", "DockingPort_get_HasShield")]
     public bool HasShield {
         get {
             var _args = new ByteString[] {
@@ -133,7 +134,7 @@ public class DockingPort : RemoteObject
     /// <summary>
     /// Maximum rotation angle in degrees.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "DockingPort_get_MaximumRotation")]
+    [RpcAttribute ("SpaceCenter", "DockingPort_get_MaximumRotation")]
     public float MaximumRotation {
         get {
             var _args = new ByteString[] {
@@ -147,7 +148,7 @@ public class DockingPort : RemoteObject
     /// <summary>
     /// Minimum rotation angle in degrees.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "DockingPort_get_MinimumRotation")]
+    [RpcAttribute ("SpaceCenter", "DockingPort_get_MinimumRotation")]
     public float MinimumRotation {
         get {
             var _args = new ByteString[] {
@@ -161,7 +162,7 @@ public class DockingPort : RemoteObject
     /// <summary>
     /// The part object for this docking port.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "DockingPort_get_Part")]
+    [RpcAttribute ("SpaceCenter", "DockingPort_get_Part")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.Part Part {
         get {
             var _args = new ByteString[] {
@@ -176,7 +177,7 @@ public class DockingPort : RemoteObject
     /// The distance a docking port must move away when it undocks before it
     /// becomes ready to dock with another port, in meters.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "DockingPort_get_ReengageDistance")]
+    [RpcAttribute ("SpaceCenter", "DockingPort_get_ReengageDistance")]
     public float ReengageDistance {
         get {
             var _args = new ByteString[] {
@@ -199,7 +200,7 @@ public class DockingPort : RemoteObject
     /// This reference frame is not necessarily equivalent to the reference frame
     /// for the part, returned by <see cref="M:SpaceCenter.Part.ReferenceFrame" />.
     /// </remarks>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "DockingPort_get_ReferenceFrame")]
+    [RpcAttribute ("SpaceCenter", "DockingPort_get_ReferenceFrame")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame ReferenceFrame {
         get {
             var _args = new ByteString[] {
@@ -213,7 +214,7 @@ public class DockingPort : RemoteObject
     /// <summary>
     /// Lock rotation. When locked, allows auto-strut to work across the joint.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "DockingPort_get_RotationLocked")]
+    [RpcAttribute ("SpaceCenter", "DockingPort_get_RotationLocked")]
     public bool RotationLocked {
         get {
             var _args = new ByteString[] {
@@ -234,7 +235,7 @@ public class DockingPort : RemoteObject
     /// <summary>
     /// Rotation target angle in degrees.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "DockingPort_get_RotationTarget")]
+    [RpcAttribute ("SpaceCenter", "DockingPort_get_RotationTarget")]
     public float RotationTarget {
         get {
             var _args = new ByteString[] {
@@ -260,7 +261,7 @@ public class DockingPort : RemoteObject
     /// closed, and when set to <c>false</c> the shield is opened. If the docking
     /// port does not have a shield, setting this attribute has no effect.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "DockingPort_get_Shielded")]
+    [RpcAttribute ("SpaceCenter", "DockingPort_get_Shielded")]
     public bool Shielded {
         get {
             var _args = new ByteString[] {
@@ -281,7 +282,7 @@ public class DockingPort : RemoteObject
     /// <summary>
     /// The current state of the docking port.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "DockingPort_get_State")]
+    [RpcAttribute ("SpaceCenter", "DockingPort_get_State")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.DockingPortState State {
         get {
             var _args = new ByteString[] {

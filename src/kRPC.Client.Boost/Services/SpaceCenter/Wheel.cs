@@ -1,6 +1,7 @@
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
 using Google.Protobuf;
+using kRPC.Client.Boost.Attributes;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
@@ -21,7 +22,7 @@ public class Wheel : RemoteObject
     /// <summary>
     /// Whether automatic friction control is enabled.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Wheel_get_AutoFrictionControl")]
+    [RpcAttribute ("SpaceCenter", "Wheel_get_AutoFrictionControl")]
     public bool AutoFrictionControl {
         get {
             var _args = new ByteString[] {
@@ -42,7 +43,7 @@ public class Wheel : RemoteObject
     /// <summary>
     /// The braking force, as a percentage of maximum, when the brakes are applied.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Wheel_get_Brakes")]
+    [RpcAttribute ("SpaceCenter", "Wheel_get_Brakes")]
     public float Brakes {
         get {
             var _args = new ByteString[] {
@@ -63,7 +64,7 @@ public class Wheel : RemoteObject
     /// <summary>
     /// Whether the wheel is broken.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Wheel_get_Broken")]
+    [RpcAttribute ("SpaceCenter", "Wheel_get_Broken")]
     public bool Broken {
         get {
             var _args = new ByteString[] {
@@ -77,7 +78,7 @@ public class Wheel : RemoteObject
     /// <summary>
     /// Current deflection of the wheel.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Wheel_get_Deflection")]
+    [RpcAttribute ("SpaceCenter", "Wheel_get_Deflection")]
     public float Deflection {
         get {
             var _args = new ByteString[] {
@@ -91,7 +92,7 @@ public class Wheel : RemoteObject
     /// <summary>
     /// Whether the wheel is deployable.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Wheel_get_Deployable")]
+    [RpcAttribute ("SpaceCenter", "Wheel_get_Deployable")]
     public bool Deployable {
         get {
             var _args = new ByteString[] {
@@ -105,7 +106,7 @@ public class Wheel : RemoteObject
     /// <summary>
     /// Whether the wheel is deployed.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Wheel_get_Deployed")]
+    [RpcAttribute ("SpaceCenter", "Wheel_get_Deployed")]
     public bool Deployed {
         get {
             var _args = new ByteString[] {
@@ -128,7 +129,7 @@ public class Wheel : RemoteObject
     /// Only takes effect if the wheel has automatic traction control disabled.
     /// A value between 0 and 100 inclusive.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Wheel_get_DriveLimiter")]
+    [RpcAttribute ("SpaceCenter", "Wheel_get_DriveLimiter")]
     public float DriveLimiter {
         get {
             var _args = new ByteString[] {
@@ -149,7 +150,7 @@ public class Wheel : RemoteObject
     /// <summary>
     /// Whether the wheel is touching the ground.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Wheel_get_Grounded")]
+    [RpcAttribute ("SpaceCenter", "Wheel_get_Grounded")]
     public bool Grounded {
         get {
             var _args = new ByteString[] {
@@ -163,7 +164,7 @@ public class Wheel : RemoteObject
     /// <summary>
     /// Whether the wheel has brakes.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Wheel_get_HasBrakes")]
+    [RpcAttribute ("SpaceCenter", "Wheel_get_HasBrakes")]
     public bool HasBrakes {
         get {
             var _args = new ByteString[] {
@@ -177,7 +178,7 @@ public class Wheel : RemoteObject
     /// <summary>
     /// Whether the wheel has suspension.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Wheel_get_HasSuspension")]
+    [RpcAttribute ("SpaceCenter", "Wheel_get_HasSuspension")]
     public bool HasSuspension {
         get {
             var _args = new ByteString[] {
@@ -192,7 +193,7 @@ public class Wheel : RemoteObject
     /// Manual friction control value. Only has an effect if automatic friction control is disabled.
     /// A value between 0 and 5 inclusive.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Wheel_get_ManualFrictionControl")]
+    [RpcAttribute ("SpaceCenter", "Wheel_get_ManualFrictionControl")]
     public float ManualFrictionControl {
         get {
             var _args = new ByteString[] {
@@ -213,7 +214,7 @@ public class Wheel : RemoteObject
     /// <summary>
     /// Whether the motor is enabled.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Wheel_get_MotorEnabled")]
+    [RpcAttribute ("SpaceCenter", "Wheel_get_MotorEnabled")]
     public bool MotorEnabled {
         get {
             var _args = new ByteString[] {
@@ -234,7 +235,7 @@ public class Wheel : RemoteObject
     /// <summary>
     /// Whether the direction of the motor is inverted.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Wheel_get_MotorInverted")]
+    [RpcAttribute ("SpaceCenter", "Wheel_get_MotorInverted")]
     public bool MotorInverted {
         get {
             var _args = new ByteString[] {
@@ -255,7 +256,7 @@ public class Wheel : RemoteObject
     /// <summary>
     /// The output of the motor. This is the torque currently being generated, in Newton meters.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Wheel_get_MotorOutput")]
+    [RpcAttribute ("SpaceCenter", "Wheel_get_MotorOutput")]
     public float MotorOutput {
         get {
             var _args = new ByteString[] {
@@ -269,7 +270,7 @@ public class Wheel : RemoteObject
     /// <summary>
     /// Whether the direction of the motor is inverted.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Wheel_get_MotorState")]
+    [RpcAttribute ("SpaceCenter", "Wheel_get_MotorState")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.MotorState MotorState {
         get {
             var _args = new ByteString[] {
@@ -283,7 +284,7 @@ public class Wheel : RemoteObject
     /// <summary>
     /// The part object for this wheel.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Wheel_get_Part")]
+    [RpcAttribute ("SpaceCenter", "Wheel_get_Part")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.Part Part {
         get {
             var _args = new ByteString[] {
@@ -297,7 +298,7 @@ public class Wheel : RemoteObject
     /// <summary>
     /// Whether the wheel is powered by a motor.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Wheel_get_Powered")]
+    [RpcAttribute ("SpaceCenter", "Wheel_get_Powered")]
     public bool Powered {
         get {
             var _args = new ByteString[] {
@@ -311,7 +312,7 @@ public class Wheel : RemoteObject
     /// <summary>
     /// Radius of the wheel, in meters.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Wheel_get_Radius")]
+    [RpcAttribute ("SpaceCenter", "Wheel_get_Radius")]
     public float Radius {
         get {
             var _args = new ByteString[] {
@@ -325,7 +326,7 @@ public class Wheel : RemoteObject
     /// <summary>
     /// Whether the wheel is repairable.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Wheel_get_Repairable")]
+    [RpcAttribute ("SpaceCenter", "Wheel_get_Repairable")]
     public bool Repairable {
         get {
             var _args = new ByteString[] {
@@ -339,7 +340,7 @@ public class Wheel : RemoteObject
     /// <summary>
     /// Current slip of the wheel.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Wheel_get_Slip")]
+    [RpcAttribute ("SpaceCenter", "Wheel_get_Slip")]
     public float Slip {
         get {
             var _args = new ByteString[] {
@@ -353,7 +354,7 @@ public class Wheel : RemoteObject
     /// <summary>
     /// The current state of the wheel.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Wheel_get_State")]
+    [RpcAttribute ("SpaceCenter", "Wheel_get_State")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.WheelState State {
         get {
             var _args = new ByteString[] {
@@ -367,7 +368,7 @@ public class Wheel : RemoteObject
     /// <summary>
     /// Whether the wheel has steering.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Wheel_get_Steerable")]
+    [RpcAttribute ("SpaceCenter", "Wheel_get_Steerable")]
     public bool Steerable {
         get {
             var _args = new ByteString[] {
@@ -381,7 +382,7 @@ public class Wheel : RemoteObject
     /// <summary>
     /// The steering angle limit.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Wheel_get_SteeringAngleLimit")]
+    [RpcAttribute ("SpaceCenter", "Wheel_get_SteeringAngleLimit")]
     public float SteeringAngleLimit {
         get {
             var _args = new ByteString[] {
@@ -402,7 +403,7 @@ public class Wheel : RemoteObject
     /// <summary>
     /// Whether the wheel steering is enabled.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Wheel_get_SteeringEnabled")]
+    [RpcAttribute ("SpaceCenter", "Wheel_get_SteeringEnabled")]
     public bool SteeringEnabled {
         get {
             var _args = new ByteString[] {
@@ -423,7 +424,7 @@ public class Wheel : RemoteObject
     /// <summary>
     /// Whether the wheel steering is inverted.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Wheel_get_SteeringInverted")]
+    [RpcAttribute ("SpaceCenter", "Wheel_get_SteeringInverted")]
     public bool SteeringInverted {
         get {
             var _args = new ByteString[] {
@@ -444,7 +445,7 @@ public class Wheel : RemoteObject
     /// <summary>
     /// Steering response time.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Wheel_get_SteeringResponseTime")]
+    [RpcAttribute ("SpaceCenter", "Wheel_get_SteeringResponseTime")]
     public float SteeringResponseTime {
         get {
             var _args = new ByteString[] {
@@ -465,7 +466,7 @@ public class Wheel : RemoteObject
     /// <summary>
     /// Current stress on the wheel.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Wheel_get_Stress")]
+    [RpcAttribute ("SpaceCenter", "Wheel_get_Stress")]
     public float Stress {
         get {
             var _args = new ByteString[] {
@@ -479,7 +480,7 @@ public class Wheel : RemoteObject
     /// <summary>
     /// Current stress on the wheel as a percentage of its stress tolerance.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Wheel_get_StressPercentage")]
+    [RpcAttribute ("SpaceCenter", "Wheel_get_StressPercentage")]
     public float StressPercentage {
         get {
             var _args = new ByteString[] {
@@ -493,7 +494,7 @@ public class Wheel : RemoteObject
     /// <summary>
     /// Stress tolerance of the wheel.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Wheel_get_StressTolerance")]
+    [RpcAttribute ("SpaceCenter", "Wheel_get_StressTolerance")]
     public float StressTolerance {
         get {
             var _args = new ByteString[] {
@@ -507,7 +508,7 @@ public class Wheel : RemoteObject
     /// <summary>
     /// Suspension damper strength, as set in the editor.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Wheel_get_SuspensionDamperStrength")]
+    [RpcAttribute ("SpaceCenter", "Wheel_get_SuspensionDamperStrength")]
     public float SuspensionDamperStrength {
         get {
             var _args = new ByteString[] {
@@ -521,7 +522,7 @@ public class Wheel : RemoteObject
     /// <summary>
     /// Suspension spring strength, as set in the editor.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Wheel_get_SuspensionSpringStrength")]
+    [RpcAttribute ("SpaceCenter", "Wheel_get_SuspensionSpringStrength")]
     public float SuspensionSpringStrength {
         get {
             var _args = new ByteString[] {
@@ -537,7 +538,7 @@ public class Wheel : RemoteObject
     /// Only takes effect if the wheel has automatic traction control enabled.
     /// A value between 0 and 5 inclusive.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Wheel_get_TractionControl")]
+    [RpcAttribute ("SpaceCenter", "Wheel_get_TractionControl")]
     public float TractionControl {
         get {
             var _args = new ByteString[] {
@@ -559,7 +560,7 @@ public class Wheel : RemoteObject
     /// Whether automatic traction control is enabled.
     /// A wheel only has traction control if it is powered.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Wheel_get_TractionControlEnabled")]
+    [RpcAttribute ("SpaceCenter", "Wheel_get_TractionControlEnabled")]
     public bool TractionControlEnabled {
         get {
             var _args = new ByteString[] {

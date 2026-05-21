@@ -1,6 +1,7 @@
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
 using Google.Protobuf;
+using kRPC.Client.Boost.Attributes;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
@@ -19,7 +20,7 @@ public class CommLink : RemoteObject
     /// <summary>
     /// Start point of the link.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "CommLink_get_End")]
+    [RpcAttribute ("SpaceCenter", "CommLink_get_End")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.CommNode End {
         get {
             var _args = new ByteString[] {
@@ -33,7 +34,7 @@ public class CommLink : RemoteObject
     /// <summary>
     /// Signal strength of the link.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "CommLink_get_SignalStrength")]
+    [RpcAttribute ("SpaceCenter", "CommLink_get_SignalStrength")]
     public double SignalStrength {
         get {
             var _args = new ByteString[] {
@@ -47,7 +48,7 @@ public class CommLink : RemoteObject
     /// <summary>
     /// Start point of the link.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "CommLink_get_Start")]
+    [RpcAttribute ("SpaceCenter", "CommLink_get_Start")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.CommNode Start {
         get {
             var _args = new ByteString[] {
@@ -61,7 +62,7 @@ public class CommLink : RemoteObject
     /// <summary>
     /// The type of link.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "CommLink_get_Type")]
+    [RpcAttribute ("SpaceCenter", "CommLink_get_Type")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.CommLinkType Type {
         get {
             var _args = new ByteString[] {

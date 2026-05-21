@@ -2,6 +2,7 @@ using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
 using Google.Protobuf;
 using systemAlias = System;
+using kRPC.Client.Boost.Attributes;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
@@ -29,7 +30,7 @@ public class Engine : RemoteObject
     /// Takes the given pressure into account.
     /// </summary>
     /// <param name="pressure">Atmospheric pressure in atmospheres</param>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Engine_AvailableThrustAt")]
+    [RpcAttribute ("SpaceCenter", "Engine_AvailableThrustAt")]
     public float AvailableThrustAt (double pressure)
     {
         var _args = new ByteString[] {
@@ -46,7 +47,7 @@ public class Engine : RemoteObject
     /// Takes the given pressure into account.
     /// </summary>
     /// <param name="pressure">Atmospheric pressure in atmospheres</param>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Engine_MaxThrustAt")]
+    [RpcAttribute ("SpaceCenter", "Engine_MaxThrustAt")]
     public float MaxThrustAt (double pressure)
     {
         var _args = new ByteString[] {
@@ -62,7 +63,7 @@ public class Engine : RemoteObject
     /// if the engine is not active.
     /// </summary>
     /// <param name="pressure">Atmospheric pressure in atmospheres</param>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Engine_SpecificImpulseAt")]
+    [RpcAttribute ("SpaceCenter", "Engine_SpecificImpulseAt")]
     public float SpecificImpulseAt (double pressure)
     {
         var _args = new ByteString[] {
@@ -76,7 +77,7 @@ public class Engine : RemoteObject
     /// <summary>
     /// Toggle the current engine mode.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Engine_ToggleMode")]
+    [RpcAttribute ("SpaceCenter", "Engine_ToggleMode")]
     public void ToggleMode ()
     {
         var _args = new ByteString[] {
@@ -89,7 +90,7 @@ public class Engine : RemoteObject
     /// Whether the engine is active. Setting this attribute may have no effect,
     /// depending on <see cref="M:SpaceCenter.Engine.CanShutdown" /> and <see cref="M:SpaceCenter.Engine.CanRestart" />.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Engine_get_Active")]
+    [RpcAttribute ("SpaceCenter", "Engine_get_Active")]
     public bool Active {
         get {
             var _args = new ByteString[] {
@@ -110,7 +111,7 @@ public class Engine : RemoteObject
     /// <summary>
     /// Whether the engine will automatically switch modes.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Engine_get_AutoModeSwitch")]
+    [RpcAttribute ("SpaceCenter", "Engine_get_AutoModeSwitch")]
     public bool AutoModeSwitch {
         get {
             var _args = new ByteString[] {
@@ -135,7 +136,7 @@ public class Engine : RemoteObject
     /// Takes the engine's current <see cref="M:SpaceCenter.Engine.ThrustLimit" /> and atmospheric conditions
     /// into account.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Engine_get_AvailableThrust")]
+    [RpcAttribute ("SpaceCenter", "Engine_get_AvailableThrust")]
     public float AvailableThrust {
         get {
             var _args = new ByteString[] {
@@ -152,7 +153,7 @@ public class Engine : RemoteObject
     /// correspond to the coordinate axes of the <see cref="M:SpaceCenter.Vessel.ReferenceFrame" />.
     /// Returns zero if the engine is inactive, or not gimballed.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Engine_get_AvailableTorque")]
+    [RpcAttribute ("SpaceCenter", "Engine_get_AvailableTorque")]
     public systemAlias::Tuple<systemAlias::Tuple<double,double,double>,systemAlias::Tuple<double,double,double>> AvailableTorque {
         get {
             var _args = new ByteString[] {
@@ -168,7 +169,7 @@ public class Engine : RemoteObject
     /// returns <c>false</c>. For example, this is <c>true</c> for liquid fueled rockets
     /// and <c>false</c> for solid rocket boosters.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Engine_get_CanRestart")]
+    [RpcAttribute ("SpaceCenter", "Engine_get_CanRestart")]
     public bool CanRestart {
         get {
             var _args = new ByteString[] {
@@ -183,7 +184,7 @@ public class Engine : RemoteObject
     /// Whether the engine can be shutdown once activated. For example, this is
     /// <c>true</c> for liquid fueled rockets and <c>false</c> for solid rocket boosters.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Engine_get_CanShutdown")]
+    [RpcAttribute ("SpaceCenter", "Engine_get_CanShutdown")]
     public bool CanShutdown {
         get {
             var _args = new ByteString[] {
@@ -198,7 +199,7 @@ public class Engine : RemoteObject
     /// The gimbal limiter of the engine. A value between 0 and 1.
     /// Returns 0 if the gimbal is locked.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Engine_get_GimbalLimit")]
+    [RpcAttribute ("SpaceCenter", "Engine_get_GimbalLimit")]
     public float GimbalLimit {
         get {
             var _args = new ByteString[] {
@@ -220,7 +221,7 @@ public class Engine : RemoteObject
     /// Whether the engines gimbal is locked in place. Setting this attribute has
     /// no effect if the engine is not gimballed.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Engine_get_GimbalLocked")]
+    [RpcAttribute ("SpaceCenter", "Engine_get_GimbalLocked")]
     public bool GimbalLocked {
         get {
             var _args = new ByteString[] {
@@ -242,7 +243,7 @@ public class Engine : RemoteObject
     /// The range over which the gimbal can move, in degrees.
     /// Returns 0 if the engine is not gimballed.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Engine_get_GimbalRange")]
+    [RpcAttribute ("SpaceCenter", "Engine_get_GimbalRange")]
     public float GimbalRange {
         get {
             var _args = new ByteString[] {
@@ -256,7 +257,7 @@ public class Engine : RemoteObject
     /// <summary>
     /// Whether the engine is gimballed.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Engine_get_Gimballed")]
+    [RpcAttribute ("SpaceCenter", "Engine_get_Gimballed")]
     public bool Gimballed {
         get {
             var _args = new ByteString[] {
@@ -270,7 +271,7 @@ public class Engine : RemoteObject
     /// <summary>
     /// Whether the engine has any fuel available.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Engine_get_HasFuel")]
+    [RpcAttribute ("SpaceCenter", "Engine_get_HasFuel")]
     public bool HasFuel {
         get {
             var _args = new ByteString[] {
@@ -284,7 +285,7 @@ public class Engine : RemoteObject
     /// <summary>
     /// Whether the engine has multiple modes of operation.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Engine_get_HasModes")]
+    [RpcAttribute ("SpaceCenter", "Engine_get_HasModes")]
     public bool HasModes {
         get {
             var _args = new ByteString[] {
@@ -298,7 +299,7 @@ public class Engine : RemoteObject
     /// <summary>
     /// Whether the independent throttle is enabled for the engine.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Engine_get_IndependentThrottle")]
+    [RpcAttribute ("SpaceCenter", "Engine_get_IndependentThrottle")]
     public bool IndependentThrottle {
         get {
             var _args = new ByteString[] {
@@ -319,7 +320,7 @@ public class Engine : RemoteObject
     /// <summary>
     /// The specific impulse of the engine at sea level on Kerbin, in seconds.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Engine_get_KerbinSeaLevelSpecificImpulse")]
+    [RpcAttribute ("SpaceCenter", "Engine_get_KerbinSeaLevelSpecificImpulse")]
     public float KerbinSeaLevelSpecificImpulse {
         get {
             var _args = new ByteString[] {
@@ -334,7 +335,7 @@ public class Engine : RemoteObject
     /// The amount of thrust, in Newtons, that would be produced by the engine
     /// when activated and fueled, with its throttle and throttle limiter set to 100%.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Engine_get_MaxThrust")]
+    [RpcAttribute ("SpaceCenter", "Engine_get_MaxThrust")]
     public float MaxThrust {
         get {
             var _args = new ByteString[] {
@@ -351,7 +352,7 @@ public class Engine : RemoteObject
     /// when activated, <see cref="M:SpaceCenter.Engine.ThrustLimit" /> is set to 100%, the main
     /// vessel's throttle is set to 100% and the engine is in a vacuum.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Engine_get_MaxVacuumThrust")]
+    [RpcAttribute ("SpaceCenter", "Engine_get_MaxVacuumThrust")]
     public float MaxVacuumThrust {
         get {
             var _args = new ByteString[] {
@@ -365,7 +366,7 @@ public class Engine : RemoteObject
     /// <summary>
     /// The name of the current engine mode.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Engine_get_Mode")]
+    [RpcAttribute ("SpaceCenter", "Engine_get_Mode")]
     public string Mode {
         get {
             var _args = new ByteString[] {
@@ -387,7 +388,7 @@ public class Engine : RemoteObject
     /// The available modes for the engine.
     /// A dictionary mapping mode names to <see cref="T:SpaceCenter.Engine" /> objects.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Engine_get_Modes")]
+    [RpcAttribute ("SpaceCenter", "Engine_get_Modes")]
     public global::System.Collections.Generic.IDictionary<string,global::kRPC.Client.Boost.Services.SpaceCenter.Engine> Modes {
         get {
             var _args = new ByteString[] {
@@ -401,7 +402,7 @@ public class Engine : RemoteObject
     /// <summary>
     /// The part object for this engine.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Engine_get_Part")]
+    [RpcAttribute ("SpaceCenter", "Engine_get_Part")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.Part Part {
         get {
             var _args = new ByteString[] {
@@ -415,7 +416,7 @@ public class Engine : RemoteObject
     /// <summary>
     /// The names of the propellants that the engine consumes.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Engine_get_PropellantNames")]
+    [RpcAttribute ("SpaceCenter", "Engine_get_PropellantNames")]
     public global::System.Collections.Generic.IList<string> PropellantNames {
         get {
             var _args = new ByteString[] {
@@ -434,7 +435,7 @@ public class Engine : RemoteObject
     /// For example, if the ratios are 0.6 for LiquidFuel and 0.4 for Oxidizer, then for every
     /// 0.6 units of LiquidFuel that the engine burns, it will burn 0.4 units of Oxidizer.
     /// </remarks>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Engine_get_PropellantRatios")]
+    [RpcAttribute ("SpaceCenter", "Engine_get_PropellantRatios")]
     public global::System.Collections.Generic.IDictionary<string,float> PropellantRatios {
         get {
             var _args = new ByteString[] {
@@ -448,7 +449,7 @@ public class Engine : RemoteObject
     /// <summary>
     /// The propellants that the engine consumes.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Engine_get_Propellants")]
+    [RpcAttribute ("SpaceCenter", "Engine_get_Propellants")]
     public global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.Propellant> Propellants {
         get {
             var _args = new ByteString[] {
@@ -463,7 +464,7 @@ public class Engine : RemoteObject
     /// The current specific impulse of the engine, in seconds. Returns zero
     /// if the engine is not active.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Engine_get_SpecificImpulse")]
+    [RpcAttribute ("SpaceCenter", "Engine_get_SpecificImpulse")]
     public float SpecificImpulse {
         get {
             var _args = new ByteString[] {
@@ -483,7 +484,7 @@ public class Engine : RemoteObject
     /// When the engine's independent throttle is enabled
     /// (see <see cref="M:SpaceCenter.Engine.IndependentThrottle" />), can be used to set the throttle percentage.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Engine_get_Throttle")]
+    [RpcAttribute ("SpaceCenter", "Engine_get_Throttle")]
     public float Throttle {
         get {
             var _args = new ByteString[] {
@@ -506,7 +507,7 @@ public class Engine : RemoteObject
     /// this is <c>true</c> for liquid fueled rockets, and <c>false</c> for solid rocket
     /// boosters.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Engine_get_ThrottleLocked")]
+    [RpcAttribute ("SpaceCenter", "Engine_get_ThrottleLocked")]
     public bool ThrottleLocked {
         get {
             var _args = new ByteString[] {
@@ -520,7 +521,7 @@ public class Engine : RemoteObject
     /// <summary>
     /// The current amount of thrust being produced by the engine, in Newtons.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Engine_get_Thrust")]
+    [RpcAttribute ("SpaceCenter", "Engine_get_Thrust")]
     public float Thrust {
         get {
             var _args = new ByteString[] {
@@ -536,7 +537,7 @@ public class Engine : RemoteObject
     /// attribute may have no effect, for example the thrust limit for a solid
     /// rocket booster cannot be changed in flight.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Engine_get_ThrustLimit")]
+    [RpcAttribute ("SpaceCenter", "Engine_get_ThrustLimit")]
     public float ThrustLimit {
         get {
             var _args = new ByteString[] {
@@ -563,7 +564,7 @@ public class Engine : RemoteObject
     /// The overall thrust produced by the engine, as reported by <see cref="M:SpaceCenter.Engine.AvailableThrust" />,
     /// <see cref="M:SpaceCenter.Engine.MaxThrust" /> and others, is the sum of the thrust generated by each thruster.
     /// </remarks>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Engine_get_Thrusters")]
+    [RpcAttribute ("SpaceCenter", "Engine_get_Thrusters")]
     public global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.Thruster> Thrusters {
         get {
             var _args = new ByteString[] {
@@ -577,7 +578,7 @@ public class Engine : RemoteObject
     /// <summary>
     /// The vacuum specific impulse of the engine, in seconds.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Engine_get_VacuumSpecificImpulse")]
+    [RpcAttribute ("SpaceCenter", "Engine_get_VacuumSpecificImpulse")]
     public float VacuumSpecificImpulse {
         get {
             var _args = new ByteString[] {

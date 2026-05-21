@@ -2,6 +2,7 @@ using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
 using Google.Protobuf;
 using systemAlias = System;
+using kRPC.Client.Boost.Attributes;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
@@ -20,7 +21,7 @@ public class Light : RemoteObject
     /// <summary>
     /// Whether the light is switched on.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Light_get_Active")]
+    [RpcAttribute ("SpaceCenter", "Light_get_Active")]
     public bool Active {
         get {
             var _args = new ByteString[] {
@@ -41,7 +42,7 @@ public class Light : RemoteObject
     /// <summary>
     /// Whether blinking is enabled.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Light_get_Blink")]
+    [RpcAttribute ("SpaceCenter", "Light_get_Blink")]
     public bool Blink {
         get {
             var _args = new ByteString[] {
@@ -62,7 +63,7 @@ public class Light : RemoteObject
     /// <summary>
     /// The blink rate of the light.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Light_get_BlinkRate")]
+    [RpcAttribute ("SpaceCenter", "Light_get_BlinkRate")]
     public float BlinkRate {
         get {
             var _args = new ByteString[] {
@@ -83,7 +84,7 @@ public class Light : RemoteObject
     /// <summary>
     /// The color of the light, as an RGB triple.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Light_get_Color")]
+    [RpcAttribute ("SpaceCenter", "Light_get_Color")]
     public systemAlias::Tuple<float,float,float> Color {
         get {
             var _args = new ByteString[] {
@@ -104,7 +105,7 @@ public class Light : RemoteObject
     /// <summary>
     /// The part object for this light.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Light_get_Part")]
+    [RpcAttribute ("SpaceCenter", "Light_get_Part")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.Part Part {
         get {
             var _args = new ByteString[] {
@@ -118,7 +119,7 @@ public class Light : RemoteObject
     /// <summary>
     /// The current power usage, in units of charge per second.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Light_get_PowerUsage")]
+    [RpcAttribute ("SpaceCenter", "Light_get_PowerUsage")]
     public float PowerUsage {
         get {
             var _args = new ByteString[] {

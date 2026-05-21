@@ -1,6 +1,7 @@
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
 using Google.Protobuf;
+using kRPC.Client.Boost.Attributes;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
@@ -20,7 +21,7 @@ public class RoboticController : RemoteObject
     /// Add an axis to the controller.
     /// </summary>
     /// <returns>Returns <c>true</c> if the axis is added successfully.</returns>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "RoboticController_AddAxis")]
+    [RpcAttribute ("SpaceCenter", "RoboticController_AddAxis")]
     public bool AddAxis (global::kRPC.Client.Boost.Services.SpaceCenter.Module module, string fieldName)
     {
         var _args = new ByteString[] {
@@ -36,7 +37,7 @@ public class RoboticController : RemoteObject
     /// Add key frame value for controller axis.
     /// </summary>
     /// <returns>Returns <c>true</c> if the key frame is added successfully.</returns>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "RoboticController_AddKeyFrame")]
+    [RpcAttribute ("SpaceCenter", "RoboticController_AddKeyFrame")]
     public bool AddKeyFrame (global::kRPC.Client.Boost.Services.SpaceCenter.Module module, string fieldName, float time, float value)
     {
         var _args = new ByteString[] {
@@ -53,7 +54,7 @@ public class RoboticController : RemoteObject
     /// <summary>
     /// The axes for the controller.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "RoboticController_Axes")]
+    [RpcAttribute ("SpaceCenter", "RoboticController_Axes")]
     public global::System.Collections.Generic.IList<global::System.Collections.Generic.IList<string>> Axes ()
     {
         var _args = new ByteString[] {
@@ -67,7 +68,7 @@ public class RoboticController : RemoteObject
     /// Clear axis.
     /// </summary>
     /// <returns>Returns <c>true</c> if the axis is cleared successfully.</returns>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "RoboticController_ClearAxis")]
+    [RpcAttribute ("SpaceCenter", "RoboticController_ClearAxis")]
     public bool ClearAxis (global::kRPC.Client.Boost.Services.SpaceCenter.Module module, string fieldName)
     {
         var _args = new ByteString[] {
@@ -82,7 +83,7 @@ public class RoboticController : RemoteObject
     /// <summary>
     /// Whether the controller has a part.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "RoboticController_HasPart")]
+    [RpcAttribute ("SpaceCenter", "RoboticController_HasPart")]
     public bool HasPart (global::kRPC.Client.Boost.Services.SpaceCenter.Part part)
     {
         var _args = new ByteString[] {
@@ -96,7 +97,7 @@ public class RoboticController : RemoteObject
     /// <summary>
     /// The part object for this controller.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "RoboticController_get_Part")]
+    [RpcAttribute ("SpaceCenter", "RoboticController_get_Part")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.Part Part {
         get {
             var _args = new ByteString[] {

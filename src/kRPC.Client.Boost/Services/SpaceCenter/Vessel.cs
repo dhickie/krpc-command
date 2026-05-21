@@ -2,6 +2,7 @@ using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
 using Google.Protobuf;
 using systemAlias = System;
+using kRPC.Client.Boost.Attributes;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
@@ -27,7 +28,7 @@ public class Vessel : RemoteObject
     /// axis of rotation, using the right-hand rule.</returns>
     /// <param name="referenceFrame">The reference frame the returned
     /// angular velocity is in.</param>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Vessel_AngularVelocity")]
+    [RpcAttribute ("SpaceCenter", "Vessel_AngularVelocity")]
     public systemAlias::Tuple<double,double,double> AngularVelocity (global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame referenceFrame)
     {
         var _args = new ByteString[] {
@@ -45,7 +46,7 @@ public class Vessel : RemoteObject
     /// Takes the given pressure into account.
     /// </summary>
     /// <param name="pressure">Atmospheric pressure in atmospheres</param>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Vessel_AvailableThrustAt")]
+    [RpcAttribute ("SpaceCenter", "Vessel_AvailableThrustAt")]
     public float AvailableThrustAt (double pressure)
     {
         var _args = new ByteString[] {
@@ -63,7 +64,7 @@ public class Vessel : RemoteObject
     /// as position vectors.</returns>
     /// <param name="referenceFrame">The reference frame that the returned
     /// position vectors are in.</param>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Vessel_BoundingBox")]
+    [RpcAttribute ("SpaceCenter", "Vessel_BoundingBox")]
     public systemAlias::Tuple<systemAlias::Tuple<double,double,double>,systemAlias::Tuple<double,double,double>> BoundingBox (global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame referenceFrame)
     {
         var _args = new ByteString[] {
@@ -80,7 +81,7 @@ public class Vessel : RemoteObject
     /// <returns>The direction as a unit vector.</returns>
     /// <param name="referenceFrame">The reference frame that the returned
     /// direction is in.</param>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Vessel_Direction")]
+    [RpcAttribute ("SpaceCenter", "Vessel_Direction")]
     public systemAlias::Tuple<double,double,double> Direction (global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame referenceFrame)
     {
         var _args = new ByteString[] {
@@ -99,7 +100,7 @@ public class Vessel : RemoteObject
     /// Reference frame. Defaults to the vessel's surface reference frame
     /// (<see cref="M:SpaceCenter.Vessel.SurfaceReferenceFrame" />).
     /// </param>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Vessel_Flight")]
+    [RpcAttribute ("SpaceCenter", "Vessel_Flight")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.Flight Flight (global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame referenceFrame = null)
     {
         var _args = new ByteString[] {
@@ -117,7 +118,7 @@ public class Vessel : RemoteObject
     /// Takes the given pressure into account.
     /// </summary>
     /// <param name="pressure">Atmospheric pressure in atmospheres</param>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Vessel_MaxThrustAt")]
+    [RpcAttribute ("SpaceCenter", "Vessel_MaxThrustAt")]
     public float MaxThrustAt (double pressure)
     {
         var _args = new ByteString[] {
@@ -134,7 +135,7 @@ public class Vessel : RemoteObject
     /// <returns>The position as a vector.</returns>
     /// <param name="referenceFrame">The reference frame that the returned
     /// position vector is in.</param>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Vessel_Position")]
+    [RpcAttribute ("SpaceCenter", "Vessel_Position")]
     public systemAlias::Tuple<double,double,double> Position (global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame referenceFrame)
     {
         var _args = new ByteString[] {
@@ -148,7 +149,7 @@ public class Vessel : RemoteObject
     /// <summary>
     /// Recover the vessel.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Vessel_Recover")]
+    [RpcAttribute ("SpaceCenter", "Vessel_Recover")]
     public void Recover ()
     {
         var _args = new ByteString[] {
@@ -165,7 +166,7 @@ public class Vessel : RemoteObject
     /// <param name="cumulative">When <c>false</c>, returns the resources for parts
     /// decoupled in just the given stage. When <c>true</c> returns the resources decoupled in
     /// the given stage and all subsequent stages combined.</param>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Vessel_ResourcesInDecoupleStage")]
+    [RpcAttribute ("SpaceCenter", "Vessel_ResourcesInDecoupleStage")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.Resources ResourcesInDecoupleStage (int stage, bool cumulative = true)
     {
         var _args = new ByteString[] {
@@ -183,7 +184,7 @@ public class Vessel : RemoteObject
     /// <returns>The rotation as a quaternion of the form <math>(x, y, z, w)</math>.</returns>
     /// <param name="referenceFrame">The reference frame that the returned
     /// rotation is in.</param>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Vessel_Rotation")]
+    [RpcAttribute ("SpaceCenter", "Vessel_Rotation")]
     public systemAlias::Tuple<double,double,double,double> Rotation (global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame referenceFrame)
     {
         var _args = new ByteString[] {
@@ -200,7 +201,7 @@ public class Vessel : RemoteObject
     /// Takes the given pressure into account.
     /// </summary>
     /// <param name="pressure">Atmospheric pressure in atmospheres</param>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Vessel_SpecificImpulseAt")]
+    [RpcAttribute ("SpaceCenter", "Vessel_SpecificImpulseAt")]
     public float SpecificImpulseAt (double pressure)
     {
         var _args = new ByteString[] {
@@ -218,7 +219,7 @@ public class Vessel : RemoteObject
     /// and its magnitude is the speed of the body in meters per second.</returns>
     /// <param name="referenceFrame">The reference frame that the returned
     /// velocity vector is in.</param>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Vessel_Velocity")]
+    [RpcAttribute ("SpaceCenter", "Vessel_Velocity")]
     public systemAlias::Tuple<double,double,double> Velocity (global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame referenceFrame)
     {
         var _args = new ByteString[] {
@@ -233,7 +234,7 @@ public class Vessel : RemoteObject
     /// An <see cref="T:SpaceCenter.AutoPilot" /> object, that can be used to perform
     /// simple auto-piloting of the vessel.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Vessel_get_AutoPilot")]
+    [RpcAttribute ("SpaceCenter", "Vessel_get_AutoPilot")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.AutoPilot AutoPilot {
         get {
             var _args = new ByteString[] {
@@ -250,7 +251,7 @@ public class Vessel : RemoteObject
     /// vessels reference frame (<see cref="T:SpaceCenter.ReferenceFrame" />).
     /// These axes are equivalent to the pitch, roll and yaw axes of the vessel.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Vessel_get_AvailableControlSurfaceTorque")]
+    [RpcAttribute ("SpaceCenter", "Vessel_get_AvailableControlSurfaceTorque")]
     public systemAlias::Tuple<systemAlias::Tuple<double,double,double>,systemAlias::Tuple<double,double,double>> AvailableControlSurfaceTorque {
         get {
             var _args = new ByteString[] {
@@ -267,7 +268,7 @@ public class Vessel : RemoteObject
     /// vessels reference frame (<see cref="T:SpaceCenter.ReferenceFrame" />).
     /// These axes are equivalent to the pitch, roll and yaw axes of the vessel.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Vessel_get_AvailableEngineTorque")]
+    [RpcAttribute ("SpaceCenter", "Vessel_get_AvailableEngineTorque")]
     public systemAlias::Tuple<systemAlias::Tuple<double,double,double>,systemAlias::Tuple<double,double,double>> AvailableEngineTorque {
         get {
             var _args = new ByteString[] {
@@ -285,7 +286,7 @@ public class Vessel : RemoteObject
     /// vessels reference frame (<see cref="T:SpaceCenter.ReferenceFrame" />).
     /// These axes are equivalent to the pitch, roll and yaw axes of the vessel.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Vessel_get_AvailableOtherTorque")]
+    [RpcAttribute ("SpaceCenter", "Vessel_get_AvailableOtherTorque")]
     public systemAlias::Tuple<systemAlias::Tuple<double,double,double>,systemAlias::Tuple<double,double,double>> AvailableOtherTorque {
         get {
             var _args = new ByteString[] {
@@ -302,7 +303,7 @@ public class Vessel : RemoteObject
     /// vessels reference frame (<see cref="T:SpaceCenter.ReferenceFrame" />).
     /// These axes are equivalent to the right, forward and bottom directions of the vessel.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Vessel_get_AvailableRCSForce")]
+    [RpcAttribute ("SpaceCenter", "Vessel_get_AvailableRCSForce")]
     public systemAlias::Tuple<systemAlias::Tuple<double,double,double>,systemAlias::Tuple<double,double,double>> AvailableRCSForce {
         get {
             var _args = new ByteString[] {
@@ -319,7 +320,7 @@ public class Vessel : RemoteObject
     /// vessels reference frame (<see cref="T:SpaceCenter.ReferenceFrame" />).
     /// These axes are equivalent to the pitch, roll and yaw axes of the vessel.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Vessel_get_AvailableRCSTorque")]
+    [RpcAttribute ("SpaceCenter", "Vessel_get_AvailableRCSTorque")]
     public systemAlias::Tuple<systemAlias::Tuple<double,double,double>,systemAlias::Tuple<double,double,double>> AvailableRCSTorque {
         get {
             var _args = new ByteString[] {
@@ -336,7 +337,7 @@ public class Vessel : RemoteObject
     /// vessels reference frame (<see cref="T:SpaceCenter.ReferenceFrame" />).
     /// These axes are equivalent to the pitch, roll and yaw axes of the vessel.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Vessel_get_AvailableReactionWheelTorque")]
+    [RpcAttribute ("SpaceCenter", "Vessel_get_AvailableReactionWheelTorque")]
     public systemAlias::Tuple<systemAlias::Tuple<double,double,double>,systemAlias::Tuple<double,double,double>> AvailableReactionWheelTorque {
         get {
             var _args = new ByteString[] {
@@ -352,7 +353,7 @@ public class Vessel : RemoteObject
     /// active engines, in Newtons. This is computed by summing
     /// <see cref="M:SpaceCenter.Engine.AvailableThrust" /> for every active engine in the vessel.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Vessel_get_AvailableThrust")]
+    [RpcAttribute ("SpaceCenter", "Vessel_get_AvailableThrust")]
     public float AvailableThrust {
         get {
             var _args = new ByteString[] {
@@ -370,7 +371,7 @@ public class Vessel : RemoteObject
     /// vessels reference frame (<see cref="T:SpaceCenter.ReferenceFrame" />).
     /// These axes are equivalent to the pitch, roll and yaw axes of the vessel.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Vessel_get_AvailableTorque")]
+    [RpcAttribute ("SpaceCenter", "Vessel_get_AvailableTorque")]
     public systemAlias::Tuple<systemAlias::Tuple<double,double,double>,systemAlias::Tuple<double,double,double>> AvailableTorque {
         get {
             var _args = new ByteString[] {
@@ -384,7 +385,7 @@ public class Vessel : RemoteObject
     /// <summary>
     /// The name of the biome the vessel is currently in.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Vessel_get_Biome")]
+    [RpcAttribute ("SpaceCenter", "Vessel_get_Biome")]
     public string Biome {
         get {
             var _args = new ByteString[] {
@@ -399,7 +400,7 @@ public class Vessel : RemoteObject
     /// Returns a <see cref="T:SpaceCenter.Comms" /> object that can be used to interact
     /// with CommNet for this vessel.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Vessel_get_Comms")]
+    [RpcAttribute ("SpaceCenter", "Vessel_get_Comms")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.Comms Comms {
         get {
             var _args = new ByteString[] {
@@ -415,7 +416,7 @@ public class Vessel : RemoteObject
     /// the vessel's control inputs. For example, its pitch/yaw/roll controls,
     /// RCS and thrust.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Vessel_get_Control")]
+    [RpcAttribute ("SpaceCenter", "Vessel_get_Control")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.Control Control {
         get {
             var _args = new ByteString[] {
@@ -429,7 +430,7 @@ public class Vessel : RemoteObject
     /// <summary>
     /// The crew in the vessel.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Vessel_get_Crew")]
+    [RpcAttribute ("SpaceCenter", "Vessel_get_Crew")]
     public global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.CrewMember> Crew {
         get {
             var _args = new ByteString[] {
@@ -443,7 +444,7 @@ public class Vessel : RemoteObject
     /// <summary>
     /// The number of crew that can occupy the vessel.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Vessel_get_CrewCapacity")]
+    [RpcAttribute ("SpaceCenter", "Vessel_get_CrewCapacity")]
     public int CrewCapacity {
         get {
             var _args = new ByteString[] {
@@ -457,7 +458,7 @@ public class Vessel : RemoteObject
     /// <summary>
     /// The number of crew that are occupying the vessel.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Vessel_get_CrewCount")]
+    [RpcAttribute ("SpaceCenter", "Vessel_get_CrewCount")]
     public int CrewCount {
         get {
             var _args = new ByteString[] {
@@ -471,7 +472,7 @@ public class Vessel : RemoteObject
     /// <summary>
     /// The total mass of the vessel, excluding resources, in kg.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Vessel_get_DryMass")]
+    [RpcAttribute ("SpaceCenter", "Vessel_get_DryMass")]
     public float DryMass {
         get {
             var _args = new ByteString[] {
@@ -487,7 +488,7 @@ public class Vessel : RemoteObject
     /// in the vessels reference frame (<see cref="T:SpaceCenter.ReferenceFrame" />).
     /// Returns the 3x3 matrix as a list of elements, in row-major order.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Vessel_get_InertiaTensor")]
+    [RpcAttribute ("SpaceCenter", "Vessel_get_InertiaTensor")]
     public global::System.Collections.Generic.IList<double> InertiaTensor {
         get {
             var _args = new ByteString[] {
@@ -503,7 +504,7 @@ public class Vessel : RemoteObject
     /// This is computed using the formula
     /// <a href="https://wiki.kerbalspaceprogram.com/wiki/Specific_impulse#Multiple_engines">described here</a>.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Vessel_get_KerbinSeaLevelSpecificImpulse")]
+    [RpcAttribute ("SpaceCenter", "Vessel_get_KerbinSeaLevelSpecificImpulse")]
     public float KerbinSeaLevelSpecificImpulse {
         get {
             var _args = new ByteString[] {
@@ -517,7 +518,7 @@ public class Vessel : RemoteObject
     /// <summary>
     /// The mission elapsed time in seconds.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Vessel_get_MET")]
+    [RpcAttribute ("SpaceCenter", "Vessel_get_MET")]
     public double MET {
         get {
             var _args = new ByteString[] {
@@ -531,7 +532,7 @@ public class Vessel : RemoteObject
     /// <summary>
     /// The total mass of the vessel, including resources, in kg.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Vessel_get_Mass")]
+    [RpcAttribute ("SpaceCenter", "Vessel_get_Mass")]
     public float Mass {
         get {
             var _args = new ByteString[] {
@@ -547,7 +548,7 @@ public class Vessel : RemoteObject
     /// engines, in Newtons. This is computed by summing
     /// <see cref="M:SpaceCenter.Engine.MaxThrust" /> for every active engine.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Vessel_get_MaxThrust")]
+    [RpcAttribute ("SpaceCenter", "Vessel_get_MaxThrust")]
     public float MaxThrust {
         get {
             var _args = new ByteString[] {
@@ -563,7 +564,7 @@ public class Vessel : RemoteObject
     /// engines when the vessel is in a vacuum, in Newtons. This is computed by
     /// summing <see cref="M:SpaceCenter.Engine.MaxVacuumThrust" /> for every active engine.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Vessel_get_MaxVacuumThrust")]
+    [RpcAttribute ("SpaceCenter", "Vessel_get_MaxVacuumThrust")]
     public float MaxVacuumThrust {
         get {
             var _args = new ByteString[] {
@@ -580,7 +581,7 @@ public class Vessel : RemoteObject
     /// pitch, roll and yaw directions respectively.
     /// This corresponds to the vessels reference frame (<see cref="T:SpaceCenter.ReferenceFrame" />).
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Vessel_get_MomentOfInertia")]
+    [RpcAttribute ("SpaceCenter", "Vessel_get_MomentOfInertia")]
     public systemAlias::Tuple<double,double,double> MomentOfInertia {
         get {
             var _args = new ByteString[] {
@@ -594,7 +595,7 @@ public class Vessel : RemoteObject
     /// <summary>
     /// The name of the vessel.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Vessel_get_Name")]
+    [RpcAttribute ("SpaceCenter", "Vessel_get_Name")]
     public string Name {
         get {
             var _args = new ByteString[] {
@@ -615,7 +616,7 @@ public class Vessel : RemoteObject
     /// <summary>
     /// The current orbit of the vessel.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Vessel_get_Orbit")]
+    [RpcAttribute ("SpaceCenter", "Vessel_get_Orbit")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.Orbit Orbit {
         get {
             var _args = new ByteString[] {
@@ -633,7 +634,7 @@ public class Vessel : RemoteObject
     /// <remarks>
     /// Be careful not to confuse this with 'orbit' mode on the navball.
     /// </remarks>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Vessel_get_OrbitalReferenceFrame")]
+    [RpcAttribute ("SpaceCenter", "Vessel_get_OrbitalReferenceFrame")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame OrbitalReferenceFrame {
         get {
             var _args = new ByteString[] {
@@ -647,7 +648,7 @@ public class Vessel : RemoteObject
     /// <summary>
     /// A <see cref="T:SpaceCenter.Parts" /> object, that can used to interact with the parts that make up this vessel.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Vessel_get_Parts")]
+    [RpcAttribute ("SpaceCenter", "Vessel_get_Parts")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.Parts Parts {
         get {
             var _args = new ByteString[] {
@@ -661,7 +662,7 @@ public class Vessel : RemoteObject
     /// <summary>
     /// Whether the vessel is recoverable.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Vessel_get_Recoverable")]
+    [RpcAttribute ("SpaceCenter", "Vessel_get_Recoverable")]
     public bool Recoverable {
         get {
             var _args = new ByteString[] {
@@ -676,7 +677,7 @@ public class Vessel : RemoteObject
     /// The reference frame that is fixed relative to the vessel,
     /// and orientated with the vessel.
     /// <list type="bullet"><item><description>The origin is at the center of mass of the vessel.</description></item><item><description>The axes rotate with the vessel.</description></item><item><description>The x-axis points out to the right of the vessel.</description></item><item><description>The y-axis points in the forward direction of the vessel.</description></item><item><description>The z-axis points out of the bottom off the vessel.</description></item></list></summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Vessel_get_ReferenceFrame")]
+    [RpcAttribute ("SpaceCenter", "Vessel_get_ReferenceFrame")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame ReferenceFrame {
         get {
             var _args = new ByteString[] {
@@ -691,7 +692,7 @@ public class Vessel : RemoteObject
     /// A <see cref="T:SpaceCenter.Resources" /> object, that can used to get information
     /// about resources stored in the vessel.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Vessel_get_Resources")]
+    [RpcAttribute ("SpaceCenter", "Vessel_get_Resources")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.Resources Resources {
         get {
             var _args = new ByteString[] {
@@ -705,7 +706,7 @@ public class Vessel : RemoteObject
     /// <summary>
     /// The situation the vessel is in.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Vessel_get_Situation")]
+    [RpcAttribute ("SpaceCenter", "Vessel_get_Situation")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.VesselSituation Situation {
         get {
             var _args = new ByteString[] {
@@ -720,7 +721,7 @@ public class Vessel : RemoteObject
     /// The combined specific impulse of all active engines, in seconds. This is computed using the formula
     /// <a href="https://wiki.kerbalspaceprogram.com/wiki/Specific_impulse#Multiple_engines">described here</a>.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Vessel_get_SpecificImpulse")]
+    [RpcAttribute ("SpaceCenter", "Vessel_get_SpecificImpulse")]
     public float SpecificImpulse {
         get {
             var _args = new ByteString[] {
@@ -744,7 +745,7 @@ public class Vessel : RemoteObject
     /// <remarks>
     /// Be careful not to confuse this with 'surface' mode on the navball.
     /// </remarks>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Vessel_get_SurfaceReferenceFrame")]
+    [RpcAttribute ("SpaceCenter", "Vessel_get_SurfaceReferenceFrame")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame SurfaceReferenceFrame {
         get {
             var _args = new ByteString[] {
@@ -762,7 +763,7 @@ public class Vessel : RemoteObject
     /// <list type="bullet"><item><description>The origin is at the center of mass of the vessel.</description></item><item><description>The axes rotate with the vessel's velocity vector.</description></item><item><description>The y-axis points in the direction of the vessel's velocity vector,
     /// relative to the surface of the body being orbited.</description></item><item><description>The z-axis is in the plane of the
     /// <a href="https://en.wikipedia.org/wiki/Horizon">astronomical horizon</a>.</description></item><item><description>The x-axis is orthogonal to the other two axes.</description></item></list></summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Vessel_get_SurfaceVelocityReferenceFrame")]
+    [RpcAttribute ("SpaceCenter", "Vessel_get_SurfaceVelocityReferenceFrame")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame SurfaceVelocityReferenceFrame {
         get {
             var _args = new ByteString[] {
@@ -778,7 +779,7 @@ public class Vessel : RemoteObject
     /// Newtons. This is computed by summing <see cref="M:SpaceCenter.Engine.Thrust" /> for
     /// every engine in the vessel.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Vessel_get_Thrust")]
+    [RpcAttribute ("SpaceCenter", "Vessel_get_Thrust")]
     public float Thrust {
         get {
             var _args = new ByteString[] {
@@ -792,7 +793,7 @@ public class Vessel : RemoteObject
     /// <summary>
     /// The type of the vessel.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Vessel_get_Type")]
+    [RpcAttribute ("SpaceCenter", "Vessel_get_Type")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.VesselType Type {
         get {
             var _args = new ByteString[] {
@@ -814,7 +815,7 @@ public class Vessel : RemoteObject
     /// The combined vacuum specific impulse of all active engines, in seconds. This is computed using the formula
     /// <a href="https://wiki.kerbalspaceprogram.com/wiki/Specific_impulse#Multiple_engines">described here</a>.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Vessel_get_VacuumSpecificImpulse")]
+    [RpcAttribute ("SpaceCenter", "Vessel_get_VacuumSpecificImpulse")]
     public float VacuumSpecificImpulse {
         get {
             var _args = new ByteString[] {

@@ -3,6 +3,7 @@ using kRPC.Client.Boost.Services;
 using Google.Protobuf;
 using genericCollectionsAlias = System.Collections.Generic;
 using systemAlias = System;
+using kRPC.Client.Boost.Attributes;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
@@ -24,7 +25,7 @@ public class CelestialBody : RemoteObject
     /// </summary>
     /// <param name="position">Position as a vector.</param>
     /// <param name="referenceFrame">Reference frame for the position vector.</param>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "CelestialBody_AltitudeAtPosition")]
+    [RpcAttribute ("SpaceCenter", "CelestialBody_AltitudeAtPosition")]
     public double AltitudeAtPosition (systemAlias::Tuple<double,double,double> position, global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame referenceFrame)
     {
         var _args = new ByteString[] {
@@ -44,7 +45,7 @@ public class CelestialBody : RemoteObject
     /// of rotation, using the right-hand rule.</returns>
     /// <param name="referenceFrame">The reference frame the returned
     /// angular velocity is in.</param>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "CelestialBody_AngularVelocity")]
+    [RpcAttribute ("SpaceCenter", "CelestialBody_AngularVelocity")]
     public systemAlias::Tuple<double,double,double> AngularVelocity (global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame referenceFrame)
     {
         var _args = new ByteString[] {
@@ -61,7 +62,7 @@ public class CelestialBody : RemoteObject
     /// </summary>
     /// <param name="position">The position vector at which to measure the density.</param>
     /// <param name="referenceFrame">Reference frame that the position vector is in.</param>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "CelestialBody_AtmosphericDensityAtPosition")]
+    [RpcAttribute ("SpaceCenter", "CelestialBody_AtmosphericDensityAtPosition")]
     public double AtmosphericDensityAtPosition (systemAlias::Tuple<double,double,double> position, global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame referenceFrame)
     {
         var _args = new ByteString[] {
@@ -80,7 +81,7 @@ public class CelestialBody : RemoteObject
     /// </summary>
     /// <param name="latitude">Latitude in degrees.</param>
     /// <param name="longitude">Longitude in degrees.</param>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "CelestialBody_BedrockHeight")]
+    [RpcAttribute ("SpaceCenter", "CelestialBody_BedrockHeight")]
     public double BedrockHeight (double latitude, double longitude)
     {
         var _args = new ByteString[] {
@@ -100,7 +101,7 @@ public class CelestialBody : RemoteObject
     /// <param name="latitude">Latitude in degrees.</param>
     /// <param name="longitude">Longitude in degrees.</param>
     /// <param name="referenceFrame">Reference frame for the returned position vector.</param>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "CelestialBody_BedrockPosition")]
+    [RpcAttribute ("SpaceCenter", "CelestialBody_BedrockPosition")]
     public systemAlias::Tuple<double,double,double> BedrockPosition (double latitude, double longitude, global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame referenceFrame)
     {
         var _args = new ByteString[] {
@@ -116,7 +117,7 @@ public class CelestialBody : RemoteObject
     /// <summary>
     /// The biome at the given latitude and longitude, in degrees.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "CelestialBody_BiomeAt")]
+    [RpcAttribute ("SpaceCenter", "CelestialBody_BiomeAt")]
     public string BiomeAt (double latitude, double longitude)
     {
         var _args = new ByteString[] {
@@ -139,7 +140,7 @@ public class CelestialBody : RemoteObject
     /// However, the difference is small for high altitudes, so it makes very little difference
     /// for trajectory prediction.
     /// </remarks>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "CelestialBody_DensityAt")]
+    [RpcAttribute ("SpaceCenter", "CelestialBody_DensityAt")]
     public double DensityAt (double altitude)
     {
         var _args = new ByteString[] {
@@ -157,7 +158,7 @@ public class CelestialBody : RemoteObject
     /// <returns>The direction as a unit vector.</returns>
     /// <param name="referenceFrame">The reference frame that the returned
     /// direction is in.</param>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "CelestialBody_Direction")]
+    [RpcAttribute ("SpaceCenter", "CelestialBody_Direction")]
     public systemAlias::Tuple<double,double,double> Direction (global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame referenceFrame)
     {
         var _args = new ByteString[] {
@@ -173,7 +174,7 @@ public class CelestialBody : RemoteObject
     /// </summary>
     /// <param name="position">Position as a vector.</param>
     /// <param name="referenceFrame">Reference frame for the position vector.</param>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "CelestialBody_LatitudeAtPosition")]
+    [RpcAttribute ("SpaceCenter", "CelestialBody_LatitudeAtPosition")]
     public double LatitudeAtPosition (systemAlias::Tuple<double,double,double> position, global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame referenceFrame)
     {
         var _args = new ByteString[] {
@@ -190,7 +191,7 @@ public class CelestialBody : RemoteObject
     /// </summary>
     /// <param name="position">Position as a vector.</param>
     /// <param name="referenceFrame">Reference frame for the position vector.</param>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "CelestialBody_LongitudeAtPosition")]
+    [RpcAttribute ("SpaceCenter", "CelestialBody_LongitudeAtPosition")]
     public double LongitudeAtPosition (systemAlias::Tuple<double,double,double> position, global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame referenceFrame)
     {
         var _args = new ByteString[] {
@@ -210,7 +211,7 @@ public class CelestialBody : RemoteObject
     /// <param name="latitude">Latitude in degrees.</param>
     /// <param name="longitude">Longitude in degrees.</param>
     /// <param name="referenceFrame">Reference frame for the returned position vector.</param>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "CelestialBody_MSLPosition")]
+    [RpcAttribute ("SpaceCenter", "CelestialBody_MSLPosition")]
     public systemAlias::Tuple<double,double,double> MSLPosition (double latitude, double longitude, global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame referenceFrame)
     {
         var _args = new ByteString[] {
@@ -229,7 +230,7 @@ public class CelestialBody : RemoteObject
     /// <returns>The position as a vector.</returns>
     /// <param name="referenceFrame">The reference frame that the returned
     /// position vector is in.</param>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "CelestialBody_Position")]
+    [RpcAttribute ("SpaceCenter", "CelestialBody_Position")]
     public systemAlias::Tuple<double,double,double> Position (global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame referenceFrame)
     {
         var _args = new ByteString[] {
@@ -248,7 +249,7 @@ public class CelestialBody : RemoteObject
     /// <param name="longitude">Longitude in degrees.</param>
     /// <param name="altitude">Altitude in meters above sea level.</param>
     /// <param name="referenceFrame">Reference frame for the returned position vector.</param>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "CelestialBody_PositionAtAltitude")]
+    [RpcAttribute ("SpaceCenter", "CelestialBody_PositionAtAltitude")]
     public systemAlias::Tuple<double,double,double> PositionAtAltitude (double latitude, double longitude, double altitude, global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame referenceFrame)
     {
         var _args = new ByteString[] {
@@ -266,7 +267,7 @@ public class CelestialBody : RemoteObject
     /// Gets the air pressure, in Pascals, for the specified
     /// altitude above sea level, in meters.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "CelestialBody_PressureAt")]
+    [RpcAttribute ("SpaceCenter", "CelestialBody_PressureAt")]
     public double PressureAt (double altitude)
     {
         var _args = new ByteString[] {
@@ -283,7 +284,7 @@ public class CelestialBody : RemoteObject
     /// <returns>The rotation as a quaternion of the form <math>(x, y, z, w)</math>.</returns>
     /// <param name="referenceFrame">The reference frame that the returned
     /// rotation is in.</param>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "CelestialBody_Rotation")]
+    [RpcAttribute ("SpaceCenter", "CelestialBody_Rotation")]
     public systemAlias::Tuple<double,double,double,double> Rotation (global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame referenceFrame)
     {
         var _args = new ByteString[] {
@@ -300,7 +301,7 @@ public class CelestialBody : RemoteObject
     /// </summary>
     /// <param name="latitude">Latitude in degrees.</param>
     /// <param name="longitude">Longitude in degrees.</param>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "CelestialBody_SurfaceHeight")]
+    [RpcAttribute ("SpaceCenter", "CelestialBody_SurfaceHeight")]
     public double SurfaceHeight (double latitude, double longitude)
     {
         var _args = new ByteString[] {
@@ -320,7 +321,7 @@ public class CelestialBody : RemoteObject
     /// <param name="latitude">Latitude in degrees.</param>
     /// <param name="longitude">Longitude in degrees.</param>
     /// <param name="referenceFrame">Reference frame for the returned position vector.</param>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "CelestialBody_SurfacePosition")]
+    [RpcAttribute ("SpaceCenter", "CelestialBody_SurfacePosition")]
     public systemAlias::Tuple<double,double,double> SurfacePosition (double latitude, double longitude, global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame referenceFrame)
     {
         var _args = new ByteString[] {
@@ -342,7 +343,7 @@ public class CelestialBody : RemoteObject
     /// This calculation is performed using the bodies current position, which means that
     /// the value could be wrong if you want to know the temperature in the far future.
     /// </remarks>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "CelestialBody_TemperatureAt")]
+    [RpcAttribute ("SpaceCenter", "CelestialBody_TemperatureAt")]
     public double TemperatureAt (systemAlias::Tuple<double,double,double> position, global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame referenceFrame)
     {
         var _args = new ByteString[] {
@@ -361,7 +362,7 @@ public class CelestialBody : RemoteObject
     /// and its magnitude is the speed of the body in meters per second.</returns>
     /// <param name="referenceFrame">The reference frame that the returned
     /// velocity vector is in.</param>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "CelestialBody_Velocity")]
+    [RpcAttribute ("SpaceCenter", "CelestialBody_Velocity")]
     public systemAlias::Tuple<double,double,double> Velocity (global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame referenceFrame)
     {
         var _args = new ByteString[] {
@@ -375,7 +376,7 @@ public class CelestialBody : RemoteObject
     /// <summary>
     /// The depth of the atmosphere, in meters.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "CelestialBody_get_AtmosphereDepth")]
+    [RpcAttribute ("SpaceCenter", "CelestialBody_get_AtmosphereDepth")]
     public double AtmosphereDepth {
         get {
             var _args = new ByteString[] {
@@ -389,7 +390,7 @@ public class CelestialBody : RemoteObject
     /// <summary>
     /// The biomes present on this body.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "CelestialBody_get_Biomes")]
+    [RpcAttribute ("SpaceCenter", "CelestialBody_get_Biomes")]
     public genericCollectionsAlias::ISet<string> Biomes {
         get {
             var _args = new ByteString[] {
@@ -403,7 +404,7 @@ public class CelestialBody : RemoteObject
     /// <summary>
     /// The equatorial radius of the body, in meters.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "CelestialBody_get_EquatorialRadius")]
+    [RpcAttribute ("SpaceCenter", "CelestialBody_get_EquatorialRadius")]
     public double EquatorialRadius {
         get {
             var _args = new ByteString[] {
@@ -418,7 +419,7 @@ public class CelestialBody : RemoteObject
     /// The altitude, in meters, above which a vessel is considered to be
     /// flying "high" when doing science.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "CelestialBody_get_FlyingHighAltitudeThreshold")]
+    [RpcAttribute ("SpaceCenter", "CelestialBody_get_FlyingHighAltitudeThreshold")]
     public float FlyingHighAltitudeThreshold {
         get {
             var _args = new ByteString[] {
@@ -433,7 +434,7 @@ public class CelestialBody : RemoteObject
     /// The <a href="https://en.wikipedia.org/wiki/Standard_gravitational_parameter">standard
     /// gravitational parameter</a> of the body in <math>m^3s^{-2}</math>.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "CelestialBody_get_GravitationalParameter")]
+    [RpcAttribute ("SpaceCenter", "CelestialBody_get_GravitationalParameter")]
     public double GravitationalParameter {
         get {
             var _args = new ByteString[] {
@@ -446,7 +447,7 @@ public class CelestialBody : RemoteObject
 
     /// <summary><c>true</c> if the body has an atmosphere.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "CelestialBody_get_HasAtmosphere")]
+    [RpcAttribute ("SpaceCenter", "CelestialBody_get_HasAtmosphere")]
     public bool HasAtmosphere {
         get {
             var _args = new ByteString[] {
@@ -459,7 +460,7 @@ public class CelestialBody : RemoteObject
 
     /// <summary><c>true</c> if there is oxygen in the atmosphere, required for air-breathing engines.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "CelestialBody_get_HasAtmosphericOxygen")]
+    [RpcAttribute ("SpaceCenter", "CelestialBody_get_HasAtmosphericOxygen")]
     public bool HasAtmosphericOxygen {
         get {
             var _args = new ByteString[] {
@@ -473,7 +474,7 @@ public class CelestialBody : RemoteObject
     /// <summary>
     /// Whether or not the body has a solid surface.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "CelestialBody_get_HasSolidSurface")]
+    [RpcAttribute ("SpaceCenter", "CelestialBody_get_HasSolidSurface")]
     public bool HasSolidSurface {
         get {
             var _args = new ByteString[] {
@@ -487,7 +488,7 @@ public class CelestialBody : RemoteObject
     /// <summary>
     /// The initial rotation angle of the body (at UT 0), in radians.
     /// A value between 0 and <math>2\pi</math></summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "CelestialBody_get_InitialRotation")]
+    [RpcAttribute ("SpaceCenter", "CelestialBody_get_InitialRotation")]
     public double InitialRotation {
         get {
             var _args = new ByteString[] {
@@ -501,7 +502,7 @@ public class CelestialBody : RemoteObject
     /// <summary>
     /// Whether or not the body is a star.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "CelestialBody_get_IsStar")]
+    [RpcAttribute ("SpaceCenter", "CelestialBody_get_IsStar")]
     public bool IsStar {
         get {
             var _args = new ByteString[] {
@@ -515,7 +516,7 @@ public class CelestialBody : RemoteObject
     /// <summary>
     /// The mass of the body, in kilograms.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "CelestialBody_get_Mass")]
+    [RpcAttribute ("SpaceCenter", "CelestialBody_get_Mass")]
     public double Mass {
         get {
             var _args = new ByteString[] {
@@ -529,7 +530,7 @@ public class CelestialBody : RemoteObject
     /// <summary>
     /// The name of the body.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "CelestialBody_get_Name")]
+    [RpcAttribute ("SpaceCenter", "CelestialBody_get_Name")]
     public string Name {
         get {
             var _args = new ByteString[] {
@@ -547,7 +548,7 @@ public class CelestialBody : RemoteObject
     /// equator.</description></item><item><description>The y-axis points from the center of the body towards
     /// the north pole.</description></item><item><description>The z-axis points in an arbitrary direction through the
     /// equator.</description></item></list></summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "CelestialBody_get_NonRotatingReferenceFrame")]
+    [RpcAttribute ("SpaceCenter", "CelestialBody_get_NonRotatingReferenceFrame")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame NonRotatingReferenceFrame {
         get {
             var _args = new ByteString[] {
@@ -561,7 +562,7 @@ public class CelestialBody : RemoteObject
     /// <summary>
     /// The orbit of the body.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "CelestialBody_get_Orbit")]
+    [RpcAttribute ("SpaceCenter", "CelestialBody_get_Orbit")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.Orbit Orbit {
         get {
             var _args = new ByteString[] {
@@ -581,7 +582,7 @@ public class CelestialBody : RemoteObject
     /// </description></item><item><description>The y-axis points in the orbital prograde direction.
     /// </description></item><item><description>The z-axis points in the orbital normal direction.
     /// </description></item></list></summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "CelestialBody_get_OrbitalReferenceFrame")]
+    [RpcAttribute ("SpaceCenter", "CelestialBody_get_OrbitalReferenceFrame")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame OrbitalReferenceFrame {
         get {
             var _args = new ByteString[] {
@@ -600,7 +601,7 @@ public class CelestialBody : RemoteObject
     /// position at 0° longitude, 0° latitude).</description></item><item><description>The y-axis points from the center of the body
     /// towards the north pole.</description></item><item><description>The z-axis points from the center of the body
     /// towards the equator at 90°E longitude.</description></item></list></summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "CelestialBody_get_ReferenceFrame")]
+    [RpcAttribute ("SpaceCenter", "CelestialBody_get_ReferenceFrame")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame ReferenceFrame {
         get {
             var _args = new ByteString[] {
@@ -614,7 +615,7 @@ public class CelestialBody : RemoteObject
     /// <summary>
     /// The current rotation angle of the body, in radians.
     /// A value between 0 and <math>2\pi</math></summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "CelestialBody_get_RotationAngle")]
+    [RpcAttribute ("SpaceCenter", "CelestialBody_get_RotationAngle")]
     public double RotationAngle {
         get {
             var _args = new ByteString[] {
@@ -628,7 +629,7 @@ public class CelestialBody : RemoteObject
     /// <summary>
     /// The sidereal rotational period of the body, in seconds.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "CelestialBody_get_RotationalPeriod")]
+    [RpcAttribute ("SpaceCenter", "CelestialBody_get_RotationalPeriod")]
     public double RotationalPeriod {
         get {
             var _args = new ByteString[] {
@@ -642,7 +643,7 @@ public class CelestialBody : RemoteObject
     /// <summary>
     /// The rotational speed of the body, in radians per second.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "CelestialBody_get_RotationalSpeed")]
+    [RpcAttribute ("SpaceCenter", "CelestialBody_get_RotationalSpeed")]
     public double RotationalSpeed {
         get {
             var _args = new ByteString[] {
@@ -656,7 +657,7 @@ public class CelestialBody : RemoteObject
     /// <summary>
     /// A list of celestial bodies that are in orbit around this celestial body.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "CelestialBody_get_Satellites")]
+    [RpcAttribute ("SpaceCenter", "CelestialBody_get_Satellites")]
     public global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.CelestialBody> Satellites {
         get {
             var _args = new ByteString[] {
@@ -671,7 +672,7 @@ public class CelestialBody : RemoteObject
     /// The altitude, in meters, above which a vessel is considered to be
     /// in "high" space when doing science.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "CelestialBody_get_SpaceHighAltitudeThreshold")]
+    [RpcAttribute ("SpaceCenter", "CelestialBody_get_SpaceHighAltitudeThreshold")]
     public float SpaceHighAltitudeThreshold {
         get {
             var _args = new ByteString[] {
@@ -685,7 +686,7 @@ public class CelestialBody : RemoteObject
     /// <summary>
     /// The radius of the sphere of influence of the body, in meters.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "CelestialBody_get_SphereOfInfluence")]
+    [RpcAttribute ("SpaceCenter", "CelestialBody_get_SphereOfInfluence")]
     public double SphereOfInfluence {
         get {
             var _args = new ByteString[] {
@@ -700,7 +701,7 @@ public class CelestialBody : RemoteObject
     /// The acceleration due to gravity at sea level (mean altitude) on the body,
     /// in <math>m/s^2</math>.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "CelestialBody_get_SurfaceGravity")]
+    [RpcAttribute ("SpaceCenter", "CelestialBody_get_SurfaceGravity")]
     public double SurfaceGravity {
         get {
             var _args = new ByteString[] {

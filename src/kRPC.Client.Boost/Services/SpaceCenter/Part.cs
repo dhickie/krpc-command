@@ -2,6 +2,7 @@ using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
 using Google.Protobuf;
 using systemAlias = System;
+using kRPC.Client.Boost.Attributes;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
@@ -27,7 +28,7 @@ public class Part : RemoteObject
     /// <param name="position">The position at which the force acts, as a vector.</param>
     /// <param name="referenceFrame">The reference frame that the
     /// force and position are in.</param>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Part_AddForce")]
+    [RpcAttribute ("SpaceCenter", "Part_AddForce")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.Force AddForce (systemAlias::Tuple<double,double,double> force, systemAlias::Tuple<double,double,double> position, global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame referenceFrame)
     {
         var _args = new ByteString[] {
@@ -52,7 +53,7 @@ public class Part : RemoteObject
     /// If the part is not collidable, the box has zero volume and is centered on
     /// the <see cref="M:SpaceCenter.Part.Position" /> of the part.
     /// </remarks>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Part_BoundingBox")]
+    [RpcAttribute ("SpaceCenter", "Part_BoundingBox")]
     public systemAlias::Tuple<systemAlias::Tuple<double,double,double>,systemAlias::Tuple<double,double,double>> BoundingBox (global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame referenceFrame)
     {
         var _args = new ByteString[] {
@@ -70,7 +71,7 @@ public class Part : RemoteObject
     /// <returns>The position as a vector.</returns>
     /// <param name="referenceFrame">The reference frame that the returned
     /// position vector is in.</param>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Part_CenterOfMass")]
+    [RpcAttribute ("SpaceCenter", "Part_CenterOfMass")]
     public systemAlias::Tuple<double,double,double> CenterOfMass (global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame referenceFrame)
     {
         var _args = new ByteString[] {
@@ -87,7 +88,7 @@ public class Part : RemoteObject
     /// <returns>The direction as a unit vector.</returns>
     /// <param name="referenceFrame">The reference frame that the returned
     /// direction is in.</param>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Part_Direction")]
+    [RpcAttribute ("SpaceCenter", "Part_Direction")]
     public systemAlias::Tuple<double,double,double> Direction (global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame referenceFrame)
     {
         var _args = new ByteString[] {
@@ -107,7 +108,7 @@ public class Part : RemoteObject
     /// <param name="referenceFrame">The reference frame that the
     /// force and position are in.</param>
     /// <remarks>The force is applied instantaneously in a single physics update.</remarks>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Part_InstantaneousForce")]
+    [RpcAttribute ("SpaceCenter", "Part_InstantaneousForce")]
     public void InstantaneousForce (systemAlias::Tuple<double,double,double> force, systemAlias::Tuple<double,double,double> position, global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame referenceFrame)
     {
         var _args = new ByteString[] {
@@ -130,7 +131,7 @@ public class Part : RemoteObject
     /// It s not necessarily the same as the parts center of mass.
     /// Use <see cref="M:SpaceCenter.Part.CenterOfMass" /> to get the parts center of mass.
     /// </remarks>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Part_Position")]
+    [RpcAttribute ("SpaceCenter", "Part_Position")]
     public systemAlias::Tuple<double,double,double> Position (global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame referenceFrame)
     {
         var _args = new ByteString[] {
@@ -147,7 +148,7 @@ public class Part : RemoteObject
     /// <returns>The rotation as a quaternion of the form <math>(x, y, z, w)</math>.</returns>
     /// <param name="referenceFrame">The reference frame that the returned
     /// rotation is in.</param>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Part_Rotation")]
+    [RpcAttribute ("SpaceCenter", "Part_Rotation")]
     public systemAlias::Tuple<double,double,double,double> Rotation (global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame referenceFrame)
     {
         var _args = new ByteString[] {
@@ -165,7 +166,7 @@ public class Part : RemoteObject
     /// and its magnitude is the speed of the body in meters per second.</returns>
     /// <param name="referenceFrame">The reference frame that the returned
     /// velocity vector is in.</param>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Part_Velocity")]
+    [RpcAttribute ("SpaceCenter", "Part_Velocity")]
     public systemAlias::Tuple<double,double,double> Velocity (global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame referenceFrame)
     {
         var _args = new ByteString[] {
@@ -183,7 +184,7 @@ public class Part : RemoteObject
     /// If RemoteTech is installed, this will always return <c>null</c>.
     /// To interact with RemoteTech antennas, use the RemoteTech service APIs.
     /// </remarks>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Part_get_Antenna")]
+    [RpcAttribute ("SpaceCenter", "Part_get_Antenna")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.Antenna Antenna {
         get {
             var _args = new ByteString[] {
@@ -197,7 +198,7 @@ public class Part : RemoteObject
     /// <summary>
     /// Auto-strut mode.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Part_get_AutoStrutMode")]
+    [RpcAttribute ("SpaceCenter", "Part_get_AutoStrutMode")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.AutoStrutMode AutoStrutMode {
         get {
             var _args = new ByteString[] {
@@ -211,7 +212,7 @@ public class Part : RemoteObject
     /// <summary>
     /// How many open seats the part has.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Part_get_AvailableSeats")]
+    [RpcAttribute ("SpaceCenter", "Part_get_AvailableSeats")]
     public uint AvailableSeats {
         get {
             var _args = new ByteString[] {
@@ -226,7 +227,7 @@ public class Part : RemoteObject
     /// Whether the part is axially attached to its parent, i.e. on the top
     /// or bottom of its parent. If the part has no parent, returns <c>false</c>.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Part_get_AxiallyAttached")]
+    [RpcAttribute ("SpaceCenter", "Part_get_AxiallyAttached")]
     public bool AxiallyAttached {
         get {
             var _args = new ByteString[] {
@@ -240,7 +241,7 @@ public class Part : RemoteObject
     /// <summary>
     /// A <see cref="T:SpaceCenter.CargoBay" /> if the part is a cargo bay, otherwise <c>null</c>.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Part_get_CargoBay")]
+    [RpcAttribute ("SpaceCenter", "Part_get_CargoBay")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.CargoBay CargoBay {
         get {
             var _args = new ByteString[] {
@@ -262,7 +263,7 @@ public class Part : RemoteObject
     /// reference frame for the docking port, returned by
     /// <see cref="M:SpaceCenter.DockingPort.ReferenceFrame" />.
     /// </remarks>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Part_get_CenterOfMassReferenceFrame")]
+    [RpcAttribute ("SpaceCenter", "Part_get_CenterOfMassReferenceFrame")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame CenterOfMassReferenceFrame {
         get {
             var _args = new ByteString[] {
@@ -278,7 +279,7 @@ public class Part : RemoteObject
     /// This, in combination with <see cref="M:SpaceCenter.Part.Parent" />, can be used to traverse the vessels
     /// parts tree.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Part_get_Children")]
+    [RpcAttribute ("SpaceCenter", "Part_get_Children")]
     public global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.Part> Children {
         get {
             var _args = new ByteString[] {
@@ -293,7 +294,7 @@ public class Part : RemoteObject
     /// A <see cref="T:SpaceCenter.ControlSurface" /> if the part is an aerodynamic control surface,
     /// otherwise <c>null</c>.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Part_get_ControlSurface")]
+    [RpcAttribute ("SpaceCenter", "Part_get_ControlSurface")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.ControlSurface ControlSurface {
         get {
             var _args = new ByteString[] {
@@ -307,7 +308,7 @@ public class Part : RemoteObject
     /// <summary>
     /// The cost of the part, in units of funds.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Part_get_Cost")]
+    [RpcAttribute ("SpaceCenter", "Part_get_Cost")]
     public double Cost {
         get {
             var _args = new ByteString[] {
@@ -321,7 +322,7 @@ public class Part : RemoteObject
     /// <summary>
     /// Whether this part is crossfeed capable.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Part_get_Crossfeed")]
+    [RpcAttribute ("SpaceCenter", "Part_get_Crossfeed")]
     public bool Crossfeed {
         get {
             var _args = new ByteString[] {
@@ -336,7 +337,7 @@ public class Part : RemoteObject
     /// The stage in which this part will be decoupled. Returns -1 if the part is never
     /// decoupled from the vessel.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Part_get_DecoupleStage")]
+    [RpcAttribute ("SpaceCenter", "Part_get_DecoupleStage")]
     public int DecoupleStage {
         get {
             var _args = new ByteString[] {
@@ -350,7 +351,7 @@ public class Part : RemoteObject
     /// <summary>
     /// A <see cref="T:SpaceCenter.Decoupler" /> if the part is a decoupler, otherwise <c>null</c>.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Part_get_Decoupler")]
+    [RpcAttribute ("SpaceCenter", "Part_get_Decoupler")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.Decoupler Decoupler {
         get {
             var _args = new ByteString[] {
@@ -364,7 +365,7 @@ public class Part : RemoteObject
     /// <summary>
     /// A <see cref="T:SpaceCenter.DockingPort" /> if the part is a docking port, otherwise <c>null</c>.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Part_get_DockingPort")]
+    [RpcAttribute ("SpaceCenter", "Part_get_DockingPort")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.DockingPort DockingPort {
         get {
             var _args = new ByteString[] {
@@ -379,7 +380,7 @@ public class Part : RemoteObject
     /// The mass of the part, not including any resources it contains, in kilograms.
     /// Returns zero if the part is massless.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Part_get_DryMass")]
+    [RpcAttribute ("SpaceCenter", "Part_get_DryMass")]
     public double DryMass {
         get {
             var _args = new ByteString[] {
@@ -393,7 +394,7 @@ public class Part : RemoteObject
     /// <summary>
     /// The dynamic pressure acting on the part, in Pascals.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Part_get_DynamicPressure")]
+    [RpcAttribute ("SpaceCenter", "Part_get_DynamicPressure")]
     public float DynamicPressure {
         get {
             var _args = new ByteString[] {
@@ -407,7 +408,7 @@ public class Part : RemoteObject
     /// <summary>
     /// An <see cref="T:SpaceCenter.Engine" /> if the part is an engine, otherwise <c>null</c>.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Part_get_Engine")]
+    [RpcAttribute ("SpaceCenter", "Part_get_Engine")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.Engine Engine {
         get {
             var _args = new ByteString[] {
@@ -426,7 +427,7 @@ public class Part : RemoteObject
     /// Throws an exception if the part contains more than one experiment.
     /// In that case, use <see cref="M:SpaceCenter.Part.Experiments" /> to get the list of experiments in the part.
     /// </remarks>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Part_get_Experiment")]
+    [RpcAttribute ("SpaceCenter", "Part_get_Experiment")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.Experiment Experiment {
         get {
             var _args = new ByteString[] {
@@ -440,7 +441,7 @@ public class Part : RemoteObject
     /// <summary>
     /// A list of <see cref="T:SpaceCenter.Experiment" /> objects that the part contains.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Part_get_Experiments")]
+    [RpcAttribute ("SpaceCenter", "Part_get_Experiments")]
     public global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.Experiment> Experiments {
         get {
             var _args = new ByteString[] {
@@ -454,7 +455,7 @@ public class Part : RemoteObject
     /// <summary>
     /// A <see cref="T:SpaceCenter.Fairing" /> if the part is a fairing, otherwise <c>null</c>.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Part_get_Fairing")]
+    [RpcAttribute ("SpaceCenter", "Part_get_Fairing")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.Fairing Fairing {
         get {
             var _args = new ByteString[] {
@@ -468,7 +469,7 @@ public class Part : RemoteObject
     /// <summary>
     /// The asset URL for the part's flag.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Part_get_FlagURL")]
+    [RpcAttribute ("SpaceCenter", "Part_get_FlagURL")]
     public string FlagURL {
         get {
             var _args = new ByteString[] {
@@ -490,7 +491,7 @@ public class Part : RemoteObject
     /// The parts that are connected to this part via fuel lines, where the direction of the
     /// fuel line is into this part.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Part_get_FuelLinesFrom")]
+    [RpcAttribute ("SpaceCenter", "Part_get_FuelLinesFrom")]
     public global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.Part> FuelLinesFrom {
         get {
             var _args = new ByteString[] {
@@ -505,7 +506,7 @@ public class Part : RemoteObject
     /// The parts that are connected to this part via fuel lines, where the direction of the
     /// fuel line is out of this part.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Part_get_FuelLinesTo")]
+    [RpcAttribute ("SpaceCenter", "Part_get_FuelLinesTo")]
     public global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.Part> FuelLinesTo {
         get {
             var _args = new ByteString[] {
@@ -532,7 +533,7 @@ public class Part : RemoteObject
     /// <summary>
     /// The color used to highlight the part, as an RGB triple.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Part_get_HighlightColor")]
+    [RpcAttribute ("SpaceCenter", "Part_get_HighlightColor")]
     public systemAlias::Tuple<double,double,double> HighlightColor {
         get {
             var _args = new ByteString[] {
@@ -553,7 +554,7 @@ public class Part : RemoteObject
     /// <summary>
     /// Whether the part is highlighted.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Part_get_Highlighted")]
+    [RpcAttribute ("SpaceCenter", "Part_get_Highlighted")]
     public bool Highlighted {
         get {
             var _args = new ByteString[] {
@@ -574,7 +575,7 @@ public class Part : RemoteObject
     /// <summary>
     /// The impact tolerance of the part, in meters per second.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Part_get_ImpactTolerance")]
+    [RpcAttribute ("SpaceCenter", "Part_get_ImpactTolerance")]
     public double ImpactTolerance {
         get {
             var _args = new ByteString[] {
@@ -590,7 +591,7 @@ public class Part : RemoteObject
     /// (<see cref="T:SpaceCenter.ReferenceFrame" />).
     /// Returns the 3x3 matrix as a list of elements, in row-major order.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Part_get_InertiaTensor")]
+    [RpcAttribute ("SpaceCenter", "Part_get_InertiaTensor")]
     public global::System.Collections.Generic.IList<double> InertiaTensor {
         get {
             var _args = new ByteString[] {
@@ -609,7 +610,7 @@ public class Part : RemoteObject
     /// of engine, including liquid fuel rockets, solid rocket boosters and jet engines.
     /// For RCS thrusters see <see cref="T:SpaceCenter.RCS" />.
     /// </remarks>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Part_get_Intake")]
+    [RpcAttribute ("SpaceCenter", "Part_get_Intake")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.Intake Intake {
         get {
             var _args = new ByteString[] {
@@ -623,7 +624,7 @@ public class Part : RemoteObject
     /// <summary>
     /// Whether this part is a fuel line.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Part_get_IsFuelLine")]
+    [RpcAttribute ("SpaceCenter", "Part_get_IsFuelLine")]
     public bool IsFuelLine {
         get {
             var _args = new ByteString[] {
@@ -637,7 +638,7 @@ public class Part : RemoteObject
     /// <summary>
     /// A <see cref="T:SpaceCenter.LaunchClamp" /> if the part is a launch clamp, otherwise <c>null</c>.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Part_get_LaunchClamp")]
+    [RpcAttribute ("SpaceCenter", "Part_get_LaunchClamp")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.LaunchClamp LaunchClamp {
         get {
             var _args = new ByteString[] {
@@ -651,7 +652,7 @@ public class Part : RemoteObject
     /// <summary>
     /// A <see cref="T:SpaceCenter.Leg" /> if the part is a landing leg, otherwise <c>null</c>.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Part_get_Leg")]
+    [RpcAttribute ("SpaceCenter", "Part_get_Leg")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.Leg Leg {
         get {
             var _args = new ByteString[] {
@@ -665,7 +666,7 @@ public class Part : RemoteObject
     /// <summary>
     /// A <see cref="T:SpaceCenter.Light" /> if the part is a light, otherwise <c>null</c>.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Part_get_Light")]
+    [RpcAttribute ("SpaceCenter", "Part_get_Light")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.Light Light {
         get {
             var _args = new ByteString[] {
@@ -680,7 +681,7 @@ public class Part : RemoteObject
     /// The current mass of the part, including resources it contains, in kilograms.
     /// Returns zero if the part is massless.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Part_get_Mass")]
+    [RpcAttribute ("SpaceCenter", "Part_get_Mass")]
     public double Mass {
         get {
             var _args = new ByteString[] {
@@ -695,7 +696,7 @@ public class Part : RemoteObject
     /// Whether the part is
     /// <a href="https://wiki.kerbalspaceprogram.com/wiki/Massless_part">massless</a>.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Part_get_Massless")]
+    [RpcAttribute ("SpaceCenter", "Part_get_Massless")]
     public bool Massless {
         get {
             var _args = new ByteString[] {
@@ -709,7 +710,7 @@ public class Part : RemoteObject
     /// <summary>
     /// Maximum temperature that the skin of the part can survive, in Kelvin.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Part_get_MaxSkinTemperature")]
+    [RpcAttribute ("SpaceCenter", "Part_get_MaxSkinTemperature")]
     public double MaxSkinTemperature {
         get {
             var _args = new ByteString[] {
@@ -723,7 +724,7 @@ public class Part : RemoteObject
     /// <summary>
     /// Maximum temperature that the part can survive, in Kelvin.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Part_get_MaxTemperature")]
+    [RpcAttribute ("SpaceCenter", "Part_get_MaxTemperature")]
     public double MaxTemperature {
         get {
             var _args = new ByteString[] {
@@ -737,7 +738,7 @@ public class Part : RemoteObject
     /// <summary>
     /// The modules for this part.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Part_get_Modules")]
+    [RpcAttribute ("SpaceCenter", "Part_get_Modules")]
     public global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.Module> Modules {
         get {
             var _args = new ByteString[] {
@@ -752,7 +753,7 @@ public class Part : RemoteObject
     /// The moment of inertia of the part in <math>kg.m^2</math> around its center of mass
     /// in the parts reference frame (<see cref="T:SpaceCenter.ReferenceFrame" />).
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Part_get_MomentOfInertia")]
+    [RpcAttribute ("SpaceCenter", "Part_get_MomentOfInertia")]
     public systemAlias::Tuple<double,double,double> MomentOfInertia {
         get {
             var _args = new ByteString[] {
@@ -768,7 +769,7 @@ public class Part : RemoteObject
     /// <a href="https://wiki.kerbalspaceprogram.com/wiki/CFG_File_Documentation">part cfg files</a>.
     /// For example "Mark1-2Pod".
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Part_get_Name")]
+    [RpcAttribute ("SpaceCenter", "Part_get_Name")]
     public string Name {
         get {
             var _args = new ByteString[] {
@@ -782,7 +783,7 @@ public class Part : RemoteObject
     /// <summary>
     /// A <see cref="T:SpaceCenter.Parachute" /> if the part is a parachute, otherwise <c>null</c>.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Part_get_Parachute")]
+    [RpcAttribute ("SpaceCenter", "Part_get_Parachute")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.Parachute Parachute {
         get {
             var _args = new ByteString[] {
@@ -798,7 +799,7 @@ public class Part : RemoteObject
     /// This, in combination with <see cref="M:SpaceCenter.Part.Children" />, can be used to traverse the vessels
     /// parts tree.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Part_get_Parent")]
+    [RpcAttribute ("SpaceCenter", "Part_get_Parent")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.Part Parent {
         get {
             var _args = new ByteString[] {
@@ -812,7 +813,7 @@ public class Part : RemoteObject
     /// <summary>
     /// A <see cref="T:SpaceCenter.RCS" /> if the part is an RCS block/thruster, otherwise <c>null</c>.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Part_get_RCS")]
+    [RpcAttribute ("SpaceCenter", "Part_get_RCS")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.RCS RCS {
         get {
             var _args = new ByteString[] {
@@ -827,7 +828,7 @@ public class Part : RemoteObject
     /// Whether the part is radially attached to its parent, i.e. on the side of its parent.
     /// If the part has no parent, returns <c>false</c>.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Part_get_RadiallyAttached")]
+    [RpcAttribute ("SpaceCenter", "Part_get_RadiallyAttached")]
     public bool RadiallyAttached {
         get {
             var _args = new ByteString[] {
@@ -841,7 +842,7 @@ public class Part : RemoteObject
     /// <summary>
     /// A <see cref="T:SpaceCenter.Radiator" /> if the part is a radiator, otherwise <c>null</c>.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Part_get_Radiator")]
+    [RpcAttribute ("SpaceCenter", "Part_get_Radiator")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.Radiator Radiator {
         get {
             var _args = new ByteString[] {
@@ -855,7 +856,7 @@ public class Part : RemoteObject
     /// <summary>
     /// A <see cref="T:SpaceCenter.ReactionWheel" /> if the part is a reaction wheel, otherwise <c>null</c>.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Part_get_ReactionWheel")]
+    [RpcAttribute ("SpaceCenter", "Part_get_ReactionWheel")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.ReactionWheel ReactionWheel {
         get {
             var _args = new ByteString[] {
@@ -877,7 +878,7 @@ public class Part : RemoteObject
     /// reference frame for the docking port, returned by
     /// <see cref="M:SpaceCenter.DockingPort.ReferenceFrame" />.
     /// </remarks>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Part_get_ReferenceFrame")]
+    [RpcAttribute ("SpaceCenter", "Part_get_ReferenceFrame")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame ReferenceFrame {
         get {
             var _args = new ByteString[] {
@@ -892,7 +893,7 @@ public class Part : RemoteObject
     /// A <see cref="T:SpaceCenter.ResourceConverter" /> if the part is a resource converter,
     /// otherwise <c>null</c>.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Part_get_ResourceConverter")]
+    [RpcAttribute ("SpaceCenter", "Part_get_ResourceConverter")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.ResourceConverter ResourceConverter {
         get {
             var _args = new ByteString[] {
@@ -906,7 +907,7 @@ public class Part : RemoteObject
     /// <summary>
     /// A <see cref="T:SpaceCenter.ResourceDrain" /> if the part is a resource drain, otherwise <c>null</c>.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Part_get_ResourceDrain")]
+    [RpcAttribute ("SpaceCenter", "Part_get_ResourceDrain")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.ResourceDrain ResourceDrain {
         get {
             var _args = new ByteString[] {
@@ -921,7 +922,7 @@ public class Part : RemoteObject
     /// A <see cref="T:SpaceCenter.ResourceHarvester" /> if the part is a resource harvester,
     /// otherwise <c>null</c>.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Part_get_ResourceHarvester")]
+    [RpcAttribute ("SpaceCenter", "Part_get_ResourceHarvester")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.ResourceHarvester ResourceHarvester {
         get {
             var _args = new ByteString[] {
@@ -935,7 +936,7 @@ public class Part : RemoteObject
     /// <summary>
     /// A <see cref="T:SpaceCenter.Resources" /> object for the part.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Part_get_Resources")]
+    [RpcAttribute ("SpaceCenter", "Part_get_Resources")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.Resources Resources {
         get {
             var _args = new ByteString[] {
@@ -950,7 +951,7 @@ public class Part : RemoteObject
     /// A <see cref="T:SpaceCenter.RoboticController" /> if the part is a robotic controller,
     /// otherwise <c>null</c>.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Part_get_RoboticController")]
+    [RpcAttribute ("SpaceCenter", "Part_get_RoboticController")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.RoboticController RoboticController {
         get {
             var _args = new ByteString[] {
@@ -964,7 +965,7 @@ public class Part : RemoteObject
     /// <summary>
     /// A <see cref="T:SpaceCenter.RoboticHinge" /> if the part is a robotic hinge, otherwise <c>null</c>.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Part_get_RoboticHinge")]
+    [RpcAttribute ("SpaceCenter", "Part_get_RoboticHinge")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.RoboticHinge RoboticHinge {
         get {
             var _args = new ByteString[] {
@@ -978,7 +979,7 @@ public class Part : RemoteObject
     /// <summary>
     /// A <see cref="T:SpaceCenter.RoboticPiston" /> if the part is a robotic piston, otherwise <c>null</c>.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Part_get_RoboticPiston")]
+    [RpcAttribute ("SpaceCenter", "Part_get_RoboticPiston")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.RoboticPiston RoboticPiston {
         get {
             var _args = new ByteString[] {
@@ -992,7 +993,7 @@ public class Part : RemoteObject
     /// <summary>
     /// A <see cref="T:SpaceCenter.RoboticRotation" /> if the part is a robotic rotation servo, otherwise <c>null</c>.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Part_get_RoboticRotation")]
+    [RpcAttribute ("SpaceCenter", "Part_get_RoboticRotation")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.RoboticRotation RoboticRotation {
         get {
             var _args = new ByteString[] {
@@ -1006,7 +1007,7 @@ public class Part : RemoteObject
     /// <summary>
     /// A <see cref="T:SpaceCenter.RoboticRotor" /> if the part is a robotic rotor, otherwise <c>null</c>.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Part_get_RoboticRotor")]
+    [RpcAttribute ("SpaceCenter", "Part_get_RoboticRotor")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.RoboticRotor RoboticRotor {
         get {
             var _args = new ByteString[] {
@@ -1020,7 +1021,7 @@ public class Part : RemoteObject
     /// <summary>
     /// A <see cref="T:SpaceCenter.Sensor" /> if the part is a sensor, otherwise <c>null</c>.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Part_get_Sensor")]
+    [RpcAttribute ("SpaceCenter", "Part_get_Sensor")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.Sensor Sensor {
         get {
             var _args = new ByteString[] {
@@ -1034,7 +1035,7 @@ public class Part : RemoteObject
     /// <summary>
     /// Whether the part is shielded from the exterior of the vessel, for example by a fairing.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Part_get_Shielded")]
+    [RpcAttribute ("SpaceCenter", "Part_get_Shielded")]
     public bool Shielded {
         get {
             var _args = new ByteString[] {
@@ -1048,7 +1049,7 @@ public class Part : RemoteObject
     /// <summary>
     /// Temperature of the skin of the part, in Kelvin.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Part_get_SkinTemperature")]
+    [RpcAttribute ("SpaceCenter", "Part_get_SkinTemperature")]
     public double SkinTemperature {
         get {
             var _args = new ByteString[] {
@@ -1062,7 +1063,7 @@ public class Part : RemoteObject
     /// <summary>
     /// A <see cref="T:SpaceCenter.SolarPanel" /> if the part is a solar panel, otherwise <c>null</c>.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Part_get_SolarPanel")]
+    [RpcAttribute ("SpaceCenter", "Part_get_SolarPanel")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.SolarPanel SolarPanel {
         get {
             var _args = new ByteString[] {
@@ -1077,7 +1078,7 @@ public class Part : RemoteObject
     /// The stage in which this part will be activated. Returns -1 if the part is not
     /// activated by staging.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Part_get_Stage")]
+    [RpcAttribute ("SpaceCenter", "Part_get_Stage")]
     public int Stage {
         get {
             var _args = new ByteString[] {
@@ -1097,7 +1098,7 @@ public class Part : RemoteObject
     /// <a href="https://forum.kerbalspaceprogram.com/index.php?/topic/61827-/">kOS</a>
     /// if it is installed.
     /// </remarks>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Part_get_Tag")]
+    [RpcAttribute ("SpaceCenter", "Part_get_Tag")]
     public string Tag {
         get {
             var _args = new ByteString[] {
@@ -1118,7 +1119,7 @@ public class Part : RemoteObject
     /// <summary>
     /// Temperature of the part, in Kelvin.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Part_get_Temperature")]
+    [RpcAttribute ("SpaceCenter", "Part_get_Temperature")]
     public double Temperature {
         get {
             var _args = new ByteString[] {
@@ -1135,7 +1136,7 @@ public class Part : RemoteObject
     /// A positive value means the part is gaining heat energy, and negative means it is
     /// losing heat energy.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Part_get_ThermalConductionFlux")]
+    [RpcAttribute ("SpaceCenter", "Part_get_ThermalConductionFlux")]
     public float ThermalConductionFlux {
         get {
             var _args = new ByteString[] {
@@ -1152,7 +1153,7 @@ public class Part : RemoteObject
     /// A positive value means the part is gaining heat energy, and negative means it is
     /// losing heat energy.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Part_get_ThermalConvectionFlux")]
+    [RpcAttribute ("SpaceCenter", "Part_get_ThermalConvectionFlux")]
     public float ThermalConvectionFlux {
         get {
             var _args = new ByteString[] {
@@ -1170,7 +1171,7 @@ public class Part : RemoteObject
     /// A positive value means the part is gaining heat energy, and negative means it is losing
     /// heat energy.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Part_get_ThermalInternalFlux")]
+    [RpcAttribute ("SpaceCenter", "Part_get_ThermalInternalFlux")]
     public float ThermalInternalFlux {
         get {
             var _args = new ByteString[] {
@@ -1185,7 +1186,7 @@ public class Part : RemoteObject
     /// A measure of how much energy it takes to increase the internal temperature of the part,
     /// in Joules per Kelvin.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Part_get_ThermalMass")]
+    [RpcAttribute ("SpaceCenter", "Part_get_ThermalMass")]
     public float ThermalMass {
         get {
             var _args = new ByteString[] {
@@ -1202,7 +1203,7 @@ public class Part : RemoteObject
     /// A positive value means the part is gaining heat energy, and negative means it is
     /// losing heat energy.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Part_get_ThermalRadiationFlux")]
+    [RpcAttribute ("SpaceCenter", "Part_get_ThermalRadiationFlux")]
     public float ThermalRadiationFlux {
         get {
             var _args = new ByteString[] {
@@ -1217,7 +1218,7 @@ public class Part : RemoteObject
     /// A measure of how much energy it takes to increase the temperature of the resources
     /// contained in the part, in Joules per Kelvin.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Part_get_ThermalResourceMass")]
+    [RpcAttribute ("SpaceCenter", "Part_get_ThermalResourceMass")]
     public float ThermalResourceMass {
         get {
             var _args = new ByteString[] {
@@ -1232,7 +1233,7 @@ public class Part : RemoteObject
     /// A measure of how much energy it takes to increase the skin temperature of the part,
     /// in Joules per Kelvin.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Part_get_ThermalSkinMass")]
+    [RpcAttribute ("SpaceCenter", "Part_get_ThermalSkinMass")]
     public float ThermalSkinMass {
         get {
             var _args = new ByteString[] {
@@ -1249,7 +1250,7 @@ public class Part : RemoteObject
     /// A positive value means the part's internals are gaining heat energy,
     /// and negative means its skin is gaining heat energy.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Part_get_ThermalSkinToInternalFlux")]
+    [RpcAttribute ("SpaceCenter", "Part_get_ThermalSkinToInternalFlux")]
     public float ThermalSkinToInternalFlux {
         get {
             var _args = new ByteString[] {
@@ -1263,7 +1264,7 @@ public class Part : RemoteObject
     /// <summary>
     /// Title of the part, as shown when the part is right clicked in-game. For example "Mk1-2 Command Pod".
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Part_get_Title")]
+    [RpcAttribute ("SpaceCenter", "Part_get_Title")]
     public string Title {
         get {
             var _args = new ByteString[] {
@@ -1277,7 +1278,7 @@ public class Part : RemoteObject
     /// <summary>
     /// The vessel that contains this part.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Part_get_Vessel")]
+    [RpcAttribute ("SpaceCenter", "Part_get_Vessel")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.Vessel Vessel {
         get {
             var _args = new ByteString[] {
@@ -1291,7 +1292,7 @@ public class Part : RemoteObject
     /// <summary>
     /// A <see cref="T:SpaceCenter.Wheel" /> if the part is a wheel, otherwise <c>null</c>.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Part_get_Wheel")]
+    [RpcAttribute ("SpaceCenter", "Part_get_Wheel")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.Wheel Wheel {
         get {
             var _args = new ByteString[] {

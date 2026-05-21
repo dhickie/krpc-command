@@ -1,6 +1,7 @@
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
 using Google.Protobuf;
+using kRPC.Client.Boost.Attributes;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
@@ -20,7 +21,7 @@ public class Camera : RemoteObject
     /// <summary>
     /// Default distance from the camera to the subject, in meters.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Camera_get_DefaultDistance")]
+    [RpcAttribute ("SpaceCenter", "Camera_get_DefaultDistance")]
     public float DefaultDistance {
         get {
             var _args = new ByteString[] {
@@ -35,7 +36,7 @@ public class Camera : RemoteObject
     /// The distance from the camera to the subject, in meters.
     /// A value between <see cref="M:SpaceCenter.Camera.MinDistance" /> and <see cref="M:SpaceCenter.Camera.MaxDistance" />.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Camera_get_Distance")]
+    [RpcAttribute ("SpaceCenter", "Camera_get_Distance")]
     public float Distance {
         get {
             var _args = new ByteString[] {
@@ -58,7 +59,7 @@ public class Camera : RemoteObject
     /// Returns <c>null</c> if the camera is not focussed on a celestial body.
     /// Returns an error is the camera is not in map mode.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Camera_get_FocussedBody")]
+    [RpcAttribute ("SpaceCenter", "Camera_get_FocussedBody")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.CelestialBody FocussedBody {
         get {
             var _args = new ByteString[] {
@@ -81,7 +82,7 @@ public class Camera : RemoteObject
     /// Returns <c>null</c> if the camera is not focussed on a maneuver node.
     /// Returns an error is the camera is not in map mode.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Camera_get_FocussedNode")]
+    [RpcAttribute ("SpaceCenter", "Camera_get_FocussedNode")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.Node FocussedNode {
         get {
             var _args = new ByteString[] {
@@ -104,7 +105,7 @@ public class Camera : RemoteObject
     /// Returns <c>null</c> if the camera is not focussed on a vessel.
     /// Returns an error is the camera is not in map mode.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Camera_get_FocussedVessel")]
+    [RpcAttribute ("SpaceCenter", "Camera_get_FocussedVessel")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.Vessel FocussedVessel {
         get {
             var _args = new ByteString[] {
@@ -125,7 +126,7 @@ public class Camera : RemoteObject
     /// <summary>
     /// The heading of the camera, in degrees.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Camera_get_Heading")]
+    [RpcAttribute ("SpaceCenter", "Camera_get_Heading")]
     public float Heading {
         get {
             var _args = new ByteString[] {
@@ -146,7 +147,7 @@ public class Camera : RemoteObject
     /// <summary>
     /// Maximum distance from the camera to the subject, in meters.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Camera_get_MaxDistance")]
+    [RpcAttribute ("SpaceCenter", "Camera_get_MaxDistance")]
     public float MaxDistance {
         get {
             var _args = new ByteString[] {
@@ -160,7 +161,7 @@ public class Camera : RemoteObject
     /// <summary>
     /// The maximum pitch of the camera.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Camera_get_MaxPitch")]
+    [RpcAttribute ("SpaceCenter", "Camera_get_MaxPitch")]
     public float MaxPitch {
         get {
             var _args = new ByteString[] {
@@ -174,7 +175,7 @@ public class Camera : RemoteObject
     /// <summary>
     /// Minimum distance from the camera to the subject, in meters.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Camera_get_MinDistance")]
+    [RpcAttribute ("SpaceCenter", "Camera_get_MinDistance")]
     public float MinDistance {
         get {
             var _args = new ByteString[] {
@@ -188,7 +189,7 @@ public class Camera : RemoteObject
     /// <summary>
     /// The minimum pitch of the camera.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Camera_get_MinPitch")]
+    [RpcAttribute ("SpaceCenter", "Camera_get_MinPitch")]
     public float MinPitch {
         get {
             var _args = new ByteString[] {
@@ -202,7 +203,7 @@ public class Camera : RemoteObject
     /// <summary>
     /// The current mode of the camera.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Camera_get_Mode")]
+    [RpcAttribute ("SpaceCenter", "Camera_get_Mode")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.CameraMode Mode {
         get {
             var _args = new ByteString[] {
@@ -223,7 +224,7 @@ public class Camera : RemoteObject
     /// <summary>
     /// The pitch of the camera, in degrees.
     /// A value between <see cref="M:SpaceCenter.Camera.MinPitch" /> and <see cref="M:SpaceCenter.Camera.MaxPitch" /></summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Camera_get_Pitch")]
+    [RpcAttribute ("SpaceCenter", "Camera_get_Pitch")]
     public float Pitch {
         get {
             var _args = new ByteString[] {

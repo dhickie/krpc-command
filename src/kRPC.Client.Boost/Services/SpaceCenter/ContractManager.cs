@@ -2,6 +2,7 @@ using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
 using Google.Protobuf;
 using genericCollectionsAlias = System.Collections.Generic;
+using kRPC.Client.Boost.Attributes;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
@@ -21,7 +22,7 @@ public class ContractManager : RemoteObject
     /// <summary>
     /// A list of all active contracts.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "ContractManager_get_ActiveContracts")]
+    [RpcAttribute ("SpaceCenter", "ContractManager_get_ActiveContracts")]
     public global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.Contract> ActiveContracts {
         get {
             var _args = new ByteString[] {
@@ -35,7 +36,7 @@ public class ContractManager : RemoteObject
     /// <summary>
     /// A list of all contracts.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "ContractManager_get_AllContracts")]
+    [RpcAttribute ("SpaceCenter", "ContractManager_get_AllContracts")]
     public global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.Contract> AllContracts {
         get {
             var _args = new ByteString[] {
@@ -49,7 +50,7 @@ public class ContractManager : RemoteObject
     /// <summary>
     /// A list of all completed contracts.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "ContractManager_get_CompletedContracts")]
+    [RpcAttribute ("SpaceCenter", "ContractManager_get_CompletedContracts")]
     public global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.Contract> CompletedContracts {
         get {
             var _args = new ByteString[] {
@@ -63,7 +64,7 @@ public class ContractManager : RemoteObject
     /// <summary>
     /// A list of all failed contracts.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "ContractManager_get_FailedContracts")]
+    [RpcAttribute ("SpaceCenter", "ContractManager_get_FailedContracts")]
     public global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.Contract> FailedContracts {
         get {
             var _args = new ByteString[] {
@@ -77,7 +78,7 @@ public class ContractManager : RemoteObject
     /// <summary>
     /// A list of all offered, but unaccepted, contracts.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "ContractManager_get_OfferedContracts")]
+    [RpcAttribute ("SpaceCenter", "ContractManager_get_OfferedContracts")]
     public global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.Contract> OfferedContracts {
         get {
             var _args = new ByteString[] {
@@ -91,7 +92,7 @@ public class ContractManager : RemoteObject
     /// <summary>
     /// A list of all contract types.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "ContractManager_get_Types")]
+    [RpcAttribute ("SpaceCenter", "ContractManager_get_Types")]
     public genericCollectionsAlias::ISet<string> Types {
         get {
             var _args = new ByteString[] {

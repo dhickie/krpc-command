@@ -1,6 +1,7 @@
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
 using Google.Protobuf;
+using kRPC.Client.Boost.Attributes;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
@@ -20,7 +21,7 @@ public class LaunchSite : RemoteObject
     /// <summary>
     /// The celestial body the launch site is on.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "LaunchSite_get_Body")]
+    [RpcAttribute ("SpaceCenter", "LaunchSite_get_Body")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.CelestialBody Body {
         get {
             var _args = new ByteString[] {
@@ -34,7 +35,7 @@ public class LaunchSite : RemoteObject
     /// <summary>
     /// Which editor is normally used for this launch site.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "LaunchSite_get_EditorFacility")]
+    [RpcAttribute ("SpaceCenter", "LaunchSite_get_EditorFacility")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.EditorFacility EditorFacility {
         get {
             var _args = new ByteString[] {
@@ -48,7 +49,7 @@ public class LaunchSite : RemoteObject
     /// <summary>
     /// The name of the launch site.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "LaunchSite_get_Name")]
+    [RpcAttribute ("SpaceCenter", "LaunchSite_get_Name")]
     public string Name {
         get {
             var _args = new ByteString[] {

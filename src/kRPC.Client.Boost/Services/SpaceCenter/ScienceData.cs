@@ -1,6 +1,7 @@
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
 using Google.Protobuf;
+using kRPC.Client.Boost.Attributes;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
@@ -19,7 +20,7 @@ public class ScienceData : RemoteObject
     /// <summary>
     /// Data amount.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "ScienceData_get_DataAmount")]
+    [RpcAttribute ("SpaceCenter", "ScienceData_get_DataAmount")]
     public float DataAmount {
         get {
             var _args = new ByteString[] {
@@ -33,7 +34,7 @@ public class ScienceData : RemoteObject
     /// <summary>
     /// Science value.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "ScienceData_get_ScienceValue")]
+    [RpcAttribute ("SpaceCenter", "ScienceData_get_ScienceValue")]
     public float ScienceValue {
         get {
             var _args = new ByteString[] {
@@ -47,7 +48,7 @@ public class ScienceData : RemoteObject
     /// <summary>
     /// Transmit value.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "ScienceData_get_TransmitValue")]
+    [RpcAttribute ("SpaceCenter", "ScienceData_get_TransmitValue")]
     public float TransmitValue {
         get {
             var _args = new ByteString[] {

@@ -1,6 +1,7 @@
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
 using Google.Protobuf;
+using kRPC.Client.Boost.Attributes;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
@@ -19,7 +20,7 @@ public class LaunchClamp : RemoteObject
     /// <summary>
     /// Releases the docking clamp. Has no effect if the clamp has already been released.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "LaunchClamp_Release")]
+    [RpcAttribute ("SpaceCenter", "LaunchClamp_Release")]
     public void Release ()
     {
         var _args = new ByteString[] {
@@ -31,7 +32,7 @@ public class LaunchClamp : RemoteObject
     /// <summary>
     /// The part object for this launch clamp.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "LaunchClamp_get_Part")]
+    [RpcAttribute ("SpaceCenter", "LaunchClamp_get_Part")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.Part Part {
         get {
             var _args = new ByteString[] {

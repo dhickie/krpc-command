@@ -1,6 +1,7 @@
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
 using Google.Protobuf;
+using kRPC.Client.Boost.Attributes;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
@@ -19,7 +20,7 @@ public class Leg : RemoteObject
     /// <summary>
     /// Whether the leg is deployable.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Leg_get_Deployable")]
+    [RpcAttribute ("SpaceCenter", "Leg_get_Deployable")]
     public bool Deployable {
         get {
             var _args = new ByteString[] {
@@ -37,7 +38,7 @@ public class Leg : RemoteObject
     /// Fixed landing legs are always deployed.
     /// Returns an error if you try to deploy fixed landing gear.
     /// </remarks>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Leg_get_Deployed")]
+    [RpcAttribute ("SpaceCenter", "Leg_get_Deployed")]
     public bool Deployed {
         get {
             var _args = new ByteString[] {
@@ -58,7 +59,7 @@ public class Leg : RemoteObject
     /// <summary>
     /// Returns whether the leg is touching the ground.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Leg_get_IsGrounded")]
+    [RpcAttribute ("SpaceCenter", "Leg_get_IsGrounded")]
     public bool IsGrounded {
         get {
             var _args = new ByteString[] {
@@ -72,7 +73,7 @@ public class Leg : RemoteObject
     /// <summary>
     /// The part object for this landing leg.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Leg_get_Part")]
+    [RpcAttribute ("SpaceCenter", "Leg_get_Part")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.Part Part {
         get {
             var _args = new ByteString[] {
@@ -86,7 +87,7 @@ public class Leg : RemoteObject
     /// <summary>
     /// The current state of the landing leg.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Leg_get_State")]
+    [RpcAttribute ("SpaceCenter", "Leg_get_State")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.LegState State {
         get {
             var _args = new ByteString[] {

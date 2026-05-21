@@ -1,6 +1,7 @@
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
 using Google.Protobuf;
+using kRPC.Client.Boost.Attributes;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
@@ -20,7 +21,7 @@ public class Comms : RemoteObject
     /// <summary>
     /// Whether the vessel can communicate with KSC.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Comms_get_CanCommunicate")]
+    [RpcAttribute ("SpaceCenter", "Comms_get_CanCommunicate")]
     public bool CanCommunicate {
         get {
             var _args = new ByteString[] {
@@ -34,7 +35,7 @@ public class Comms : RemoteObject
     /// <summary>
     /// Whether the vessel can transmit science data to KSC.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Comms_get_CanTransmitScience")]
+    [RpcAttribute ("SpaceCenter", "Comms_get_CanTransmitScience")]
     public bool CanTransmitScience {
         get {
             var _args = new ByteString[] {
@@ -48,7 +49,7 @@ public class Comms : RemoteObject
     /// <summary>
     /// The communication path used to control the vessel.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Comms_get_ControlPath")]
+    [RpcAttribute ("SpaceCenter", "Comms_get_ControlPath")]
     public global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.CommLink> ControlPath {
         get {
             var _args = new ByteString[] {
@@ -62,7 +63,7 @@ public class Comms : RemoteObject
     /// <summary>
     /// The combined power of all active antennae on the vessel.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Comms_get_Power")]
+    [RpcAttribute ("SpaceCenter", "Comms_get_Power")]
     public double Power {
         get {
             var _args = new ByteString[] {
@@ -76,7 +77,7 @@ public class Comms : RemoteObject
     /// <summary>
     /// Signal delay to KSC in seconds.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Comms_get_SignalDelay")]
+    [RpcAttribute ("SpaceCenter", "Comms_get_SignalDelay")]
     public double SignalDelay {
         get {
             var _args = new ByteString[] {
@@ -90,7 +91,7 @@ public class Comms : RemoteObject
     /// <summary>
     /// Signal strength to KSC.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Comms_get_SignalStrength")]
+    [RpcAttribute ("SpaceCenter", "Comms_get_SignalStrength")]
     public double SignalStrength {
         get {
             var _args = new ByteString[] {

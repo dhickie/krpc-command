@@ -2,6 +2,7 @@ using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
 using Google.Protobuf;
 using systemAlias = System;
+using kRPC.Client.Boost.Attributes;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
@@ -28,7 +29,7 @@ public class Node : RemoteObject
     /// <remarks>
     /// Does not change when executing the maneuver node. See <see cref="M:SpaceCenter.Node.RemainingBurnVector" />.
     /// </remarks>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Node_BurnVector")]
+    [RpcAttribute ("SpaceCenter", "Node_BurnVector")]
     public systemAlias::Tuple<double,double,double> BurnVector (global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame referenceFrame = null)
     {
         var _args = new ByteString[] {
@@ -45,7 +46,7 @@ public class Node : RemoteObject
     /// <returns>The direction as a unit vector.</returns>
     /// <param name="referenceFrame">The reference frame that the returned
     /// direction is in.</param>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Node_Direction")]
+    [RpcAttribute ("SpaceCenter", "Node_Direction")]
     public systemAlias::Tuple<double,double,double> Direction (global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame referenceFrame)
     {
         var _args = new ByteString[] {
@@ -62,7 +63,7 @@ public class Node : RemoteObject
     /// <returns>The position as a vector.</returns>
     /// <param name="referenceFrame">The reference frame that the returned
     /// position vector is in.</param>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Node_Position")]
+    [RpcAttribute ("SpaceCenter", "Node_Position")]
     public systemAlias::Tuple<double,double,double> Position (global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame referenceFrame)
     {
         var _args = new ByteString[] {
@@ -84,7 +85,7 @@ public class Node : RemoteObject
     /// <remarks>
     /// Changes as the maneuver node is executed. See <see cref="M:SpaceCenter.Node.BurnVector" />.
     /// </remarks>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Node_RemainingBurnVector")]
+    [RpcAttribute ("SpaceCenter", "Node_RemainingBurnVector")]
     public systemAlias::Tuple<double,double,double> RemainingBurnVector (global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame referenceFrame = null)
     {
         var _args = new ByteString[] {
@@ -98,7 +99,7 @@ public class Node : RemoteObject
     /// <summary>
     /// Removes the maneuver node.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Node_Remove")]
+    [RpcAttribute ("SpaceCenter", "Node_Remove")]
     public void Remove ()
     {
         var _args = new ByteString[] {
@@ -113,7 +114,7 @@ public class Node : RemoteObject
     /// <remarks>
     /// Does not change when executing the maneuver node. See <see cref="M:SpaceCenter.Node.RemainingDeltaV" />.
     /// </remarks>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Node_get_DeltaV")]
+    [RpcAttribute ("SpaceCenter", "Node_get_DeltaV")]
     public double DeltaV {
         get {
             var _args = new ByteString[] {
@@ -135,7 +136,7 @@ public class Node : RemoteObject
     /// The magnitude of the maneuver nodes delta-v in the normal direction,
     /// in meters per second.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Node_get_Normal")]
+    [RpcAttribute ("SpaceCenter", "Node_get_Normal")]
     public double Normal {
         get {
             var _args = new ByteString[] {
@@ -156,7 +157,7 @@ public class Node : RemoteObject
     /// <summary>
     /// The orbit that results from executing the maneuver node.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Node_get_Orbit")]
+    [RpcAttribute ("SpaceCenter", "Node_get_Orbit")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.Orbit Orbit {
         get {
             var _args = new ByteString[] {
@@ -175,7 +176,7 @@ public class Node : RemoteObject
     /// orbit, at the position of the maneuver node.</description></item><item><description>The y-axis points in the orbital prograde direction of the original
     /// orbit, at the position of the maneuver node.</description></item><item><description>The z-axis points in the orbital normal direction of the original orbit,
     /// at the position of the maneuver node.</description></item></list></summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Node_get_OrbitalReferenceFrame")]
+    [RpcAttribute ("SpaceCenter", "Node_get_OrbitalReferenceFrame")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame OrbitalReferenceFrame {
         get {
             var _args = new ByteString[] {
@@ -190,7 +191,7 @@ public class Node : RemoteObject
     /// The magnitude of the maneuver nodes delta-v in the prograde direction,
     /// in meters per second.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Node_get_Prograde")]
+    [RpcAttribute ("SpaceCenter", "Node_get_Prograde")]
     public double Prograde {
         get {
             var _args = new ByteString[] {
@@ -212,7 +213,7 @@ public class Node : RemoteObject
     /// The magnitude of the maneuver nodes delta-v in the radial direction,
     /// in meters per second.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Node_get_Radial")]
+    [RpcAttribute ("SpaceCenter", "Node_get_Radial")]
     public double Radial {
         get {
             var _args = new ByteString[] {
@@ -233,7 +234,7 @@ public class Node : RemoteObject
     /// <summary>
     /// The reference frame that is fixed relative to the maneuver node's burn.
     /// <list type="bullet"><item><description>The origin is at the position of the maneuver node.</description></item><item><description>The y-axis points in the direction of the burn.</description></item><item><description>The x-axis and z-axis point in arbitrary but fixed directions.</description></item></list></summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Node_get_ReferenceFrame")]
+    [RpcAttribute ("SpaceCenter", "Node_get_ReferenceFrame")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame ReferenceFrame {
         get {
             var _args = new ByteString[] {
@@ -248,7 +249,7 @@ public class Node : RemoteObject
     /// Gets the remaining delta-v of the maneuver node, in meters per second. Changes as the
     /// node is executed. This is equivalent to the delta-v reported in-game.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Node_get_RemainingDeltaV")]
+    [RpcAttribute ("SpaceCenter", "Node_get_RemainingDeltaV")]
     public double RemainingDeltaV {
         get {
             var _args = new ByteString[] {
@@ -262,7 +263,7 @@ public class Node : RemoteObject
     /// <summary>
     /// The time until the maneuver node will be encountered, in seconds.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Node_get_TimeTo")]
+    [RpcAttribute ("SpaceCenter", "Node_get_TimeTo")]
     public double TimeTo {
         get {
             var _args = new ByteString[] {
@@ -276,7 +277,7 @@ public class Node : RemoteObject
     /// <summary>
     /// The universal time at which the maneuver will occur, in seconds.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Node_get_UT")]
+    [RpcAttribute ("SpaceCenter", "Node_get_UT")]
     public double UT {
         get {
             var _args = new ByteString[] {

@@ -1,6 +1,7 @@
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
 using Google.Protobuf;
+using kRPC.Client.Boost.Attributes;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
@@ -20,7 +21,7 @@ public class Fairing : RemoteObject
     /// <summary>
     /// Jettison the fairing. Has no effect if it has already been jettisoned.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Fairing_Jettison")]
+    [RpcAttribute ("SpaceCenter", "Fairing_Jettison")]
     public void Jettison ()
     {
         var _args = new ByteString[] {
@@ -32,7 +33,7 @@ public class Fairing : RemoteObject
     /// <summary>
     /// Whether the fairing has been jettisoned.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Fairing_get_Jettisoned")]
+    [RpcAttribute ("SpaceCenter", "Fairing_get_Jettisoned")]
     public bool Jettisoned {
         get {
             var _args = new ByteString[] {
@@ -46,7 +47,7 @@ public class Fairing : RemoteObject
     /// <summary>
     /// The part object for this fairing.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Fairing_get_Part")]
+    [RpcAttribute ("SpaceCenter", "Fairing_get_Part")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.Part Part {
         get {
             var _args = new ByteString[] {

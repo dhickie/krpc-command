@@ -2,6 +2,7 @@ using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
 using Google.Protobuf;
 using systemAlias = System;
+using kRPC.Client.Boost.Attributes;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
@@ -21,7 +22,7 @@ public class ControlSurface : RemoteObject
     /// The authority limiter for the control surface, which controls how far the
     /// control surface will move.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "ControlSurface_get_AuthorityLimiter")]
+    [RpcAttribute ("SpaceCenter", "ControlSurface_get_AuthorityLimiter")]
     public float AuthorityLimiter {
         get {
             var _args = new ByteString[] {
@@ -44,7 +45,7 @@ public class ControlSurface : RemoteObject
     /// in the positive and negative pitch, roll and yaw axes of the vessel. These axes
     /// correspond to the coordinate axes of the <see cref="M:SpaceCenter.Vessel.ReferenceFrame" />.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "ControlSurface_get_AvailableTorque")]
+    [RpcAttribute ("SpaceCenter", "ControlSurface_get_AvailableTorque")]
     public systemAlias::Tuple<systemAlias::Tuple<double,double,double>,systemAlias::Tuple<double,double,double>> AvailableTorque {
         get {
             var _args = new ByteString[] {
@@ -58,7 +59,7 @@ public class ControlSurface : RemoteObject
     /// <summary>
     /// Whether the control surface has been fully deployed.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "ControlSurface_get_Deployed")]
+    [RpcAttribute ("SpaceCenter", "ControlSurface_get_Deployed")]
     public bool Deployed {
         get {
             var _args = new ByteString[] {
@@ -79,7 +80,7 @@ public class ControlSurface : RemoteObject
     /// <summary>
     /// Whether the control surface movement is inverted.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "ControlSurface_get_Inverted")]
+    [RpcAttribute ("SpaceCenter", "ControlSurface_get_Inverted")]
     public bool Inverted {
         get {
             var _args = new ByteString[] {
@@ -100,7 +101,7 @@ public class ControlSurface : RemoteObject
     /// <summary>
     /// The part object for this control surface.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "ControlSurface_get_Part")]
+    [RpcAttribute ("SpaceCenter", "ControlSurface_get_Part")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.Part Part {
         get {
             var _args = new ByteString[] {
@@ -114,7 +115,7 @@ public class ControlSurface : RemoteObject
     /// <summary>
     /// Whether the control surface has pitch control enabled.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "ControlSurface_get_PitchEnabled")]
+    [RpcAttribute ("SpaceCenter", "ControlSurface_get_PitchEnabled")]
     public bool PitchEnabled {
         get {
             var _args = new ByteString[] {
@@ -135,7 +136,7 @@ public class ControlSurface : RemoteObject
     /// <summary>
     /// Whether the control surface has roll control enabled.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "ControlSurface_get_RollEnabled")]
+    [RpcAttribute ("SpaceCenter", "ControlSurface_get_RollEnabled")]
     public bool RollEnabled {
         get {
             var _args = new ByteString[] {
@@ -156,7 +157,7 @@ public class ControlSurface : RemoteObject
     /// <summary>
     /// Surface area of the control surface in <math>m^2</math>.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "ControlSurface_get_SurfaceArea")]
+    [RpcAttribute ("SpaceCenter", "ControlSurface_get_SurfaceArea")]
     public float SurfaceArea {
         get {
             var _args = new ByteString[] {
@@ -170,7 +171,7 @@ public class ControlSurface : RemoteObject
     /// <summary>
     /// Whether the control surface has yaw control enabled.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "ControlSurface_get_YawEnabled")]
+    [RpcAttribute ("SpaceCenter", "ControlSurface_get_YawEnabled")]
     public bool YawEnabled {
         get {
             var _args = new ByteString[] {

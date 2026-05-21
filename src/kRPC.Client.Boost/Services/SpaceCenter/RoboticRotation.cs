@@ -1,6 +1,7 @@
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
 using Google.Protobuf;
+using kRPC.Client.Boost.Attributes;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
@@ -19,7 +20,7 @@ public class RoboticRotation : RemoteObject
     /// <summary>
     /// Move rotation servo to it's built position.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "RoboticRotation_MoveHome")]
+    [RpcAttribute ("SpaceCenter", "RoboticRotation_MoveHome")]
     public void MoveHome ()
     {
         var _args = new ByteString[] {
@@ -31,7 +32,7 @@ public class RoboticRotation : RemoteObject
     /// <summary>
     /// Current angle.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "RoboticRotation_get_CurrentAngle")]
+    [RpcAttribute ("SpaceCenter", "RoboticRotation_get_CurrentAngle")]
     public float CurrentAngle {
         get {
             var _args = new ByteString[] {
@@ -45,7 +46,7 @@ public class RoboticRotation : RemoteObject
     /// <summary>
     /// Damping percentage.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "RoboticRotation_get_Damping")]
+    [RpcAttribute ("SpaceCenter", "RoboticRotation_get_Damping")]
     public float Damping {
         get {
             var _args = new ByteString[] {
@@ -66,7 +67,7 @@ public class RoboticRotation : RemoteObject
     /// <summary>
     /// Lock Movement
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "RoboticRotation_get_Locked")]
+    [RpcAttribute ("SpaceCenter", "RoboticRotation_get_Locked")]
     public bool Locked {
         get {
             var _args = new ByteString[] {
@@ -87,7 +88,7 @@ public class RoboticRotation : RemoteObject
     /// <summary>
     /// Whether the motor is engaged.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "RoboticRotation_get_MotorEngaged")]
+    [RpcAttribute ("SpaceCenter", "RoboticRotation_get_MotorEngaged")]
     public bool MotorEngaged {
         get {
             var _args = new ByteString[] {
@@ -108,7 +109,7 @@ public class RoboticRotation : RemoteObject
     /// <summary>
     /// The part object for this robotic rotation servo.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "RoboticRotation_get_Part")]
+    [RpcAttribute ("SpaceCenter", "RoboticRotation_get_Part")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.Part Part {
         get {
             var _args = new ByteString[] {
@@ -122,7 +123,7 @@ public class RoboticRotation : RemoteObject
     /// <summary>
     /// Target movement rate in degrees per second.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "RoboticRotation_get_Rate")]
+    [RpcAttribute ("SpaceCenter", "RoboticRotation_get_Rate")]
     public float Rate {
         get {
             var _args = new ByteString[] {
@@ -143,7 +144,7 @@ public class RoboticRotation : RemoteObject
     /// <summary>
     /// Target angle.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "RoboticRotation_get_TargetAngle")]
+    [RpcAttribute ("SpaceCenter", "RoboticRotation_get_TargetAngle")]
     public float TargetAngle {
         get {
             var _args = new ByteString[] {

@@ -1,6 +1,7 @@
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
 using Google.Protobuf;
+using kRPC.Client.Boost.Attributes;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
@@ -20,7 +21,7 @@ public class Resource : RemoteObject
     /// <summary>
     /// The amount of the resource that is currently stored in the part.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Resource_get_Amount")]
+    [RpcAttribute ("SpaceCenter", "Resource_get_Amount")]
     public float Amount {
         get {
             var _args = new ByteString[] {
@@ -34,7 +35,7 @@ public class Resource : RemoteObject
     /// <summary>
     /// The density of the resource, in <math>kg/l</math>.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Resource_get_Density")]
+    [RpcAttribute ("SpaceCenter", "Resource_get_Density")]
     public float Density {
         get {
             var _args = new ByteString[] {
@@ -48,7 +49,7 @@ public class Resource : RemoteObject
     /// <summary>
     /// Whether use of this resource is enabled.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Resource_get_Enabled")]
+    [RpcAttribute ("SpaceCenter", "Resource_get_Enabled")]
     public bool Enabled {
         get {
             var _args = new ByteString[] {
@@ -69,7 +70,7 @@ public class Resource : RemoteObject
     /// <summary>
     /// The flow mode of the resource.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Resource_get_FlowMode")]
+    [RpcAttribute ("SpaceCenter", "Resource_get_FlowMode")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.ResourceFlowMode FlowMode {
         get {
             var _args = new ByteString[] {
@@ -83,7 +84,7 @@ public class Resource : RemoteObject
     /// <summary>
     /// The total amount of the resource that can be stored in the part.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Resource_get_Max")]
+    [RpcAttribute ("SpaceCenter", "Resource_get_Max")]
     public float Max {
         get {
             var _args = new ByteString[] {
@@ -97,7 +98,7 @@ public class Resource : RemoteObject
     /// <summary>
     /// The name of the resource.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Resource_get_Name")]
+    [RpcAttribute ("SpaceCenter", "Resource_get_Name")]
     public string Name {
         get {
             var _args = new ByteString[] {
@@ -111,7 +112,7 @@ public class Resource : RemoteObject
     /// <summary>
     /// The part containing the resource.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Resource_get_Part")]
+    [RpcAttribute ("SpaceCenter", "Resource_get_Part")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.Part Part {
         get {
             var _args = new ByteString[] {

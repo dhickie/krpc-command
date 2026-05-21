@@ -1,6 +1,7 @@
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
 using Google.Protobuf;
+using kRPC.Client.Boost.Attributes;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
@@ -19,7 +20,7 @@ public class Antenna : RemoteObject
     /// <summary>
     /// Cancel current transmission of data.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Antenna_Cancel")]
+    [RpcAttribute ("SpaceCenter", "Antenna_Cancel")]
     public void Cancel ()
     {
         var _args = new ByteString[] {
@@ -31,7 +32,7 @@ public class Antenna : RemoteObject
     /// <summary>
     /// Transmit data.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Antenna_Transmit")]
+    [RpcAttribute ("SpaceCenter", "Antenna_Transmit")]
     public void Transmit ()
     {
         var _args = new ByteString[] {
@@ -43,7 +44,7 @@ public class Antenna : RemoteObject
     /// <summary>
     /// Whether partial data transmission is permitted.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Antenna_get_AllowPartial")]
+    [RpcAttribute ("SpaceCenter", "Antenna_get_AllowPartial")]
     public bool AllowPartial {
         get {
             var _args = new ByteString[] {
@@ -64,7 +65,7 @@ public class Antenna : RemoteObject
     /// <summary>
     /// Whether data can be transmitted by this antenna.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Antenna_get_CanTransmit")]
+    [RpcAttribute ("SpaceCenter", "Antenna_get_CanTransmit")]
     public bool CanTransmit {
         get {
             var _args = new ByteString[] {
@@ -79,7 +80,7 @@ public class Antenna : RemoteObject
     /// Whether the antenna can be combined with other antennae on the vessel
     /// to boost the power.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Antenna_get_Combinable")]
+    [RpcAttribute ("SpaceCenter", "Antenna_get_Combinable")]
     public bool Combinable {
         get {
             var _args = new ByteString[] {
@@ -93,7 +94,7 @@ public class Antenna : RemoteObject
     /// <summary>
     /// Exponent used to calculate the combined power of multiple antennae on a vessel.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Antenna_get_CombinableExponent")]
+    [RpcAttribute ("SpaceCenter", "Antenna_get_CombinableExponent")]
     public double CombinableExponent {
         get {
             var _args = new ByteString[] {
@@ -107,7 +108,7 @@ public class Antenna : RemoteObject
     /// <summary>
     /// Whether the antenna is deployable.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Antenna_get_Deployable")]
+    [RpcAttribute ("SpaceCenter", "Antenna_get_Deployable")]
     public bool Deployable {
         get {
             var _args = new ByteString[] {
@@ -125,7 +126,7 @@ public class Antenna : RemoteObject
     /// Fixed antennas are always deployed.
     /// Returns an error if you try to deploy a fixed antenna.
     /// </remarks>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Antenna_get_Deployed")]
+    [RpcAttribute ("SpaceCenter", "Antenna_get_Deployed")]
     public bool Deployed {
         get {
             var _args = new ByteString[] {
@@ -146,7 +147,7 @@ public class Antenna : RemoteObject
     /// <summary>
     /// Interval between sending packets in seconds.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Antenna_get_PacketInterval")]
+    [RpcAttribute ("SpaceCenter", "Antenna_get_PacketInterval")]
     public float PacketInterval {
         get {
             var _args = new ByteString[] {
@@ -160,7 +161,7 @@ public class Antenna : RemoteObject
     /// <summary>
     /// Units of electric charge consumed per packet sent.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Antenna_get_PacketResourceCost")]
+    [RpcAttribute ("SpaceCenter", "Antenna_get_PacketResourceCost")]
     public double PacketResourceCost {
         get {
             var _args = new ByteString[] {
@@ -174,7 +175,7 @@ public class Antenna : RemoteObject
     /// <summary>
     /// Amount of data sent per packet in Mits.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Antenna_get_PacketSize")]
+    [RpcAttribute ("SpaceCenter", "Antenna_get_PacketSize")]
     public float PacketSize {
         get {
             var _args = new ByteString[] {
@@ -188,7 +189,7 @@ public class Antenna : RemoteObject
     /// <summary>
     /// The part object for this antenna.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Antenna_get_Part")]
+    [RpcAttribute ("SpaceCenter", "Antenna_get_Part")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.Part Part {
         get {
             var _args = new ByteString[] {
@@ -202,7 +203,7 @@ public class Antenna : RemoteObject
     /// <summary>
     /// The power of the antenna.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Antenna_get_Power")]
+    [RpcAttribute ("SpaceCenter", "Antenna_get_Power")]
     public double Power {
         get {
             var _args = new ByteString[] {
@@ -216,7 +217,7 @@ public class Antenna : RemoteObject
     /// <summary>
     /// The current state of the antenna.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Antenna_get_State")]
+    [RpcAttribute ("SpaceCenter", "Antenna_get_State")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.AntennaState State {
         get {
             var _args = new ByteString[] {

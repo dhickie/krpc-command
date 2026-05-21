@@ -2,6 +2,7 @@ using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
 using Google.Protobuf;
 using systemAlias = System;
+using kRPC.Client.Boost.Attributes;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
@@ -20,7 +21,7 @@ public class Force : RemoteObject
     /// <summary>
     /// Remove the force.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Force_Remove")]
+    [RpcAttribute ("SpaceCenter", "Force_Remove")]
     public void Remove ()
     {
         var _args = new ByteString[] {
@@ -34,7 +35,7 @@ public class Force : RemoteObject
     /// </summary>
     /// <returns>A vector pointing in the direction that the force acts,
     /// with its magnitude equal to the strength of the force in Newtons.</returns>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Force_get_ForceVector")]
+    [RpcAttribute ("SpaceCenter", "Force_get_ForceVector")]
     public systemAlias::Tuple<double,double,double> ForceVector {
         get {
             var _args = new ByteString[] {
@@ -55,7 +56,7 @@ public class Force : RemoteObject
     /// <summary>
     /// The part that this force is applied to.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Force_get_Part")]
+    [RpcAttribute ("SpaceCenter", "Force_get_Part")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.Part Part {
         get {
             var _args = new ByteString[] {
@@ -70,7 +71,7 @@ public class Force : RemoteObject
     /// The position at which the force acts, in reference frame <see cref="T:SpaceCenter.ReferenceFrame" />.
     /// </summary>
     /// <returns>The position as a vector.</returns>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Force_get_Position")]
+    [RpcAttribute ("SpaceCenter", "Force_get_Position")]
     public systemAlias::Tuple<double,double,double> Position {
         get {
             var _args = new ByteString[] {
@@ -91,7 +92,7 @@ public class Force : RemoteObject
     /// <summary>
     /// The reference frame of the force vector and position.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Force_get_ReferenceFrame")]
+    [RpcAttribute ("SpaceCenter", "Force_get_ReferenceFrame")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame ReferenceFrame {
         get {
             var _args = new ByteString[] {

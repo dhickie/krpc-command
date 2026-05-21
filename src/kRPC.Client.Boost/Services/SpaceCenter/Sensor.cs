@@ -1,6 +1,7 @@
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
 using Google.Protobuf;
+using kRPC.Client.Boost.Attributes;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
@@ -19,7 +20,7 @@ public class Sensor : RemoteObject
     /// <summary>
     /// Whether the sensor is active.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Sensor_get_Active")]
+    [RpcAttribute ("SpaceCenter", "Sensor_get_Active")]
     public bool Active {
         get {
             var _args = new ByteString[] {
@@ -40,7 +41,7 @@ public class Sensor : RemoteObject
     /// <summary>
     /// The part object for this sensor.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Sensor_get_Part")]
+    [RpcAttribute ("SpaceCenter", "Sensor_get_Part")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.Part Part {
         get {
             var _args = new ByteString[] {
@@ -54,7 +55,7 @@ public class Sensor : RemoteObject
     /// <summary>
     /// The current value of the sensor.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Sensor_get_Value")]
+    [RpcAttribute ("SpaceCenter", "Sensor_get_Value")]
     public string Value {
         get {
             var _args = new ByteString[] {

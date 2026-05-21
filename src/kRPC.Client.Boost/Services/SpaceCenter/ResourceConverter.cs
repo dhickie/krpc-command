@@ -1,6 +1,7 @@
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
 using Google.Protobuf;
+using kRPC.Client.Boost.Attributes;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
@@ -20,7 +21,7 @@ public class ResourceConverter : RemoteObject
     /// True if the specified converter is active.
     /// </summary>
     /// <param name="index">Index of the converter.</param>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "ResourceConverter_Active")]
+    [RpcAttribute ("SpaceCenter", "ResourceConverter_Active")]
     public bool Active (int index)
     {
         var _args = new ByteString[] {
@@ -35,7 +36,7 @@ public class ResourceConverter : RemoteObject
     /// List of the names of resources consumed by the specified converter.
     /// </summary>
     /// <param name="index">Index of the converter.</param>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "ResourceConverter_Inputs")]
+    [RpcAttribute ("SpaceCenter", "ResourceConverter_Inputs")]
     public global::System.Collections.Generic.IList<string> Inputs (int index)
     {
         var _args = new ByteString[] {
@@ -50,7 +51,7 @@ public class ResourceConverter : RemoteObject
     /// The name of the specified converter.
     /// </summary>
     /// <param name="index">Index of the converter.</param>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "ResourceConverter_Name")]
+    [RpcAttribute ("SpaceCenter", "ResourceConverter_Name")]
     public string Name (int index)
     {
         var _args = new ByteString[] {
@@ -65,7 +66,7 @@ public class ResourceConverter : RemoteObject
     /// List of the names of resources produced by the specified converter.
     /// </summary>
     /// <param name="index">Index of the converter.</param>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "ResourceConverter_Outputs")]
+    [RpcAttribute ("SpaceCenter", "ResourceConverter_Outputs")]
     public global::System.Collections.Generic.IList<string> Outputs (int index)
     {
         var _args = new ByteString[] {
@@ -80,7 +81,7 @@ public class ResourceConverter : RemoteObject
     /// Start the specified converter.
     /// </summary>
     /// <param name="index">Index of the converter.</param>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "ResourceConverter_Start")]
+    [RpcAttribute ("SpaceCenter", "ResourceConverter_Start")]
     public void Start (int index)
     {
         var _args = new ByteString[] {
@@ -94,7 +95,7 @@ public class ResourceConverter : RemoteObject
     /// The state of the specified converter.
     /// </summary>
     /// <param name="index">Index of the converter.</param>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "ResourceConverter_State")]
+    [RpcAttribute ("SpaceCenter", "ResourceConverter_State")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.ResourceConverterState State (int index)
     {
         var _args = new ByteString[] {
@@ -110,7 +111,7 @@ public class ResourceConverter : RemoteObject
     /// This is the full status message shown in the in-game UI.
     /// </summary>
     /// <param name="index">Index of the converter.</param>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "ResourceConverter_StatusInfo")]
+    [RpcAttribute ("SpaceCenter", "ResourceConverter_StatusInfo")]
     public string StatusInfo (int index)
     {
         var _args = new ByteString[] {
@@ -125,7 +126,7 @@ public class ResourceConverter : RemoteObject
     /// Stop the specified converter.
     /// </summary>
     /// <param name="index">Index of the converter.</param>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "ResourceConverter_Stop")]
+    [RpcAttribute ("SpaceCenter", "ResourceConverter_Stop")]
     public void Stop (int index)
     {
         var _args = new ByteString[] {
@@ -138,7 +139,7 @@ public class ResourceConverter : RemoteObject
     /// <summary>
     /// The core temperature of the converter, in Kelvin.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "ResourceConverter_get_CoreTemperature")]
+    [RpcAttribute ("SpaceCenter", "ResourceConverter_get_CoreTemperature")]
     public float CoreTemperature {
         get {
             var _args = new ByteString[] {
@@ -152,7 +153,7 @@ public class ResourceConverter : RemoteObject
     /// <summary>
     /// The number of converters in the part.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "ResourceConverter_get_Count")]
+    [RpcAttribute ("SpaceCenter", "ResourceConverter_get_Count")]
     public int Count {
         get {
             var _args = new ByteString[] {
@@ -166,7 +167,7 @@ public class ResourceConverter : RemoteObject
     /// <summary>
     /// The core temperature at which the converter will operate with peak efficiency, in Kelvin.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "ResourceConverter_get_OptimumCoreTemperature")]
+    [RpcAttribute ("SpaceCenter", "ResourceConverter_get_OptimumCoreTemperature")]
     public float OptimumCoreTemperature {
         get {
             var _args = new ByteString[] {
@@ -180,7 +181,7 @@ public class ResourceConverter : RemoteObject
     /// <summary>
     /// The part object for this converter.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "ResourceConverter_get_Part")]
+    [RpcAttribute ("SpaceCenter", "ResourceConverter_get_Part")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.Part Part {
         get {
             var _args = new ByteString[] {
@@ -194,7 +195,7 @@ public class ResourceConverter : RemoteObject
     /// <summary>
     /// The thermal efficiency of the converter, as a percentage of its maximum.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "ResourceConverter_get_ThermalEfficiency")]
+    [RpcAttribute ("SpaceCenter", "ResourceConverter_get_ThermalEfficiency")]
     public float ThermalEfficiency {
         get {
             var _args = new ByteString[] {

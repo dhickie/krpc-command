@@ -2,6 +2,7 @@ using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
 using Google.Protobuf;
 using systemAlias = System;
+using kRPC.Client.Boost.Attributes;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
@@ -23,7 +24,7 @@ public class RCS : RemoteObject
     /// (<see cref="M:SpaceCenter.Control.RCS" />), the RCS thruster itself is not enabled
     /// (<see cref="M:SpaceCenter.RCS.Enabled" />) or it is covered by a fairing (<see cref="M:SpaceCenter.Part.Shielded" />).
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "RCS_get_Active")]
+    [RpcAttribute ("SpaceCenter", "RCS_get_Active")]
     public bool Active {
         get {
             var _args = new ByteString[] {
@@ -40,7 +41,7 @@ public class RCS : RemoteObject
     /// correspond to the coordinate axes of the <see cref="M:SpaceCenter.Vessel.ReferenceFrame" />.
     /// Returns zero if RCS is disabled.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "RCS_get_AvailableForce")]
+    [RpcAttribute ("SpaceCenter", "RCS_get_AvailableForce")]
     public systemAlias::Tuple<systemAlias::Tuple<double,double,double>,systemAlias::Tuple<double,double,double>> AvailableForce {
         get {
             var _args = new ByteString[] {
@@ -57,7 +58,7 @@ public class RCS : RemoteObject
     /// Takes the thrusters current <see cref="M:SpaceCenter.RCS.ThrustLimit" /> and atmospheric conditions
     /// into account.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "RCS_get_AvailableThrust")]
+    [RpcAttribute ("SpaceCenter", "RCS_get_AvailableThrust")]
     public float AvailableThrust {
         get {
             var _args = new ByteString[] {
@@ -74,7 +75,7 @@ public class RCS : RemoteObject
     /// correspond to the coordinate axes of the <see cref="M:SpaceCenter.Vessel.ReferenceFrame" />.
     /// Returns zero if RCS is disable.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "RCS_get_AvailableTorque")]
+    [RpcAttribute ("SpaceCenter", "RCS_get_AvailableTorque")]
     public systemAlias::Tuple<systemAlias::Tuple<double,double,double>,systemAlias::Tuple<double,double,double>> AvailableTorque {
         get {
             var _args = new ByteString[] {
@@ -88,7 +89,7 @@ public class RCS : RemoteObject
     /// <summary>
     /// Whether the RCS thrusters are enabled.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "RCS_get_Enabled")]
+    [RpcAttribute ("SpaceCenter", "RCS_get_Enabled")]
     public bool Enabled {
         get {
             var _args = new ByteString[] {
@@ -109,7 +110,7 @@ public class RCS : RemoteObject
     /// <summary>
     /// Whether the RCS thruster will fire when pitch control input is given.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "RCS_get_ForwardEnabled")]
+    [RpcAttribute ("SpaceCenter", "RCS_get_ForwardEnabled")]
     public bool ForwardEnabled {
         get {
             var _args = new ByteString[] {
@@ -130,7 +131,7 @@ public class RCS : RemoteObject
     /// <summary>
     /// Whether the RCS has fuel available.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "RCS_get_HasFuel")]
+    [RpcAttribute ("SpaceCenter", "RCS_get_HasFuel")]
     public bool HasFuel {
         get {
             var _args = new ByteString[] {
@@ -144,7 +145,7 @@ public class RCS : RemoteObject
     /// <summary>
     /// The specific impulse of the RCS at sea level on Kerbin, in seconds.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "RCS_get_KerbinSeaLevelSpecificImpulse")]
+    [RpcAttribute ("SpaceCenter", "RCS_get_KerbinSeaLevelSpecificImpulse")]
     public float KerbinSeaLevelSpecificImpulse {
         get {
             var _args = new ByteString[] {
@@ -161,7 +162,7 @@ public class RCS : RemoteObject
     /// Takes the thrusters current <see cref="M:SpaceCenter.RCS.ThrustLimit" /> and atmospheric conditions
     /// into account.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "RCS_get_MaxThrust")]
+    [RpcAttribute ("SpaceCenter", "RCS_get_MaxThrust")]
     public float MaxThrust {
         get {
             var _args = new ByteString[] {
@@ -176,7 +177,7 @@ public class RCS : RemoteObject
     /// The maximum amount of thrust that can be produced by the RCS thrusters when active
     /// in a vacuum, in Newtons.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "RCS_get_MaxVacuumThrust")]
+    [RpcAttribute ("SpaceCenter", "RCS_get_MaxVacuumThrust")]
     public float MaxVacuumThrust {
         get {
             var _args = new ByteString[] {
@@ -190,7 +191,7 @@ public class RCS : RemoteObject
     /// <summary>
     /// The part object for this RCS.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "RCS_get_Part")]
+    [RpcAttribute ("SpaceCenter", "RCS_get_Part")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.Part Part {
         get {
             var _args = new ByteString[] {
@@ -204,7 +205,7 @@ public class RCS : RemoteObject
     /// <summary>
     /// Whether the RCS thruster will fire when pitch control input is given.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "RCS_get_PitchEnabled")]
+    [RpcAttribute ("SpaceCenter", "RCS_get_PitchEnabled")]
     public bool PitchEnabled {
         get {
             var _args = new ByteString[] {
@@ -226,7 +227,7 @@ public class RCS : RemoteObject
     /// The ratios of resources that the RCS consumes. A dictionary mapping resource names
     /// to the ratios at which they are consumed by the RCS.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "RCS_get_PropellantRatios")]
+    [RpcAttribute ("SpaceCenter", "RCS_get_PropellantRatios")]
     public global::System.Collections.Generic.IDictionary<string,float> PropellantRatios {
         get {
             var _args = new ByteString[] {
@@ -240,7 +241,7 @@ public class RCS : RemoteObject
     /// <summary>
     /// The names of resources that the RCS consumes.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "RCS_get_Propellants")]
+    [RpcAttribute ("SpaceCenter", "RCS_get_Propellants")]
     public global::System.Collections.Generic.IList<string> Propellants {
         get {
             var _args = new ByteString[] {
@@ -254,7 +255,7 @@ public class RCS : RemoteObject
     /// <summary>
     /// Whether the RCS thruster will fire when roll control input is given.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "RCS_get_RightEnabled")]
+    [RpcAttribute ("SpaceCenter", "RCS_get_RightEnabled")]
     public bool RightEnabled {
         get {
             var _args = new ByteString[] {
@@ -275,7 +276,7 @@ public class RCS : RemoteObject
     /// <summary>
     /// Whether the RCS thruster will fire when roll control input is given.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "RCS_get_RollEnabled")]
+    [RpcAttribute ("SpaceCenter", "RCS_get_RollEnabled")]
     public bool RollEnabled {
         get {
             var _args = new ByteString[] {
@@ -297,7 +298,7 @@ public class RCS : RemoteObject
     /// The current specific impulse of the RCS, in seconds. Returns zero
     /// if the RCS is not active.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "RCS_get_SpecificImpulse")]
+    [RpcAttribute ("SpaceCenter", "RCS_get_SpecificImpulse")]
     public float SpecificImpulse {
         get {
             var _args = new ByteString[] {
@@ -311,7 +312,7 @@ public class RCS : RemoteObject
     /// <summary>
     /// The thrust limiter of the thruster. A value between 0 and 1.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "RCS_get_ThrustLimit")]
+    [RpcAttribute ("SpaceCenter", "RCS_get_ThrustLimit")]
     public float ThrustLimit {
         get {
             var _args = new ByteString[] {
@@ -332,7 +333,7 @@ public class RCS : RemoteObject
     /// <summary>
     /// A list of thrusters, one of each nozzel in the RCS part.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "RCS_get_Thrusters")]
+    [RpcAttribute ("SpaceCenter", "RCS_get_Thrusters")]
     public global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.Thruster> Thrusters {
         get {
             var _args = new ByteString[] {
@@ -346,7 +347,7 @@ public class RCS : RemoteObject
     /// <summary>
     /// Whether the RCS thruster will fire when yaw control input is given.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "RCS_get_UpEnabled")]
+    [RpcAttribute ("SpaceCenter", "RCS_get_UpEnabled")]
     public bool UpEnabled {
         get {
             var _args = new ByteString[] {
@@ -367,7 +368,7 @@ public class RCS : RemoteObject
     /// <summary>
     /// The vacuum specific impulse of the RCS, in seconds.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "RCS_get_VacuumSpecificImpulse")]
+    [RpcAttribute ("SpaceCenter", "RCS_get_VacuumSpecificImpulse")]
     public float VacuumSpecificImpulse {
         get {
             var _args = new ByteString[] {
@@ -381,7 +382,7 @@ public class RCS : RemoteObject
     /// <summary>
     /// Whether the RCS thruster will fire when yaw control input is given.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "RCS_get_YawEnabled")]
+    [RpcAttribute ("SpaceCenter", "RCS_get_YawEnabled")]
     public bool YawEnabled {
         get {
             var _args = new ByteString[] {

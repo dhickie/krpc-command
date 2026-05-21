@@ -3,6 +3,7 @@ using kRPC.Client.Boost.Services;
 using Google.Protobuf;
 using KRPC.Client;
 using systemAlias = System;
+using kRPC.Client.Boost.Attributes;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
@@ -39,7 +40,7 @@ public class ReferenceFrame : RemoteObject
     /// <paramref name="position" /> reference frame.
     /// </remarks>
     /// <param name="connection">A connection object.</param>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "ReferenceFrame_static_CreateHybrid")]
+    [RpcAttribute ("SpaceCenter", "ReferenceFrame_static_CreateHybrid")]
     public static global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame CreateHybrid (IConnection connection, global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame position, global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame rotation = null, global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame velocity = null, global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame angularVelocity = null)
     {
         if (connection == null)
@@ -73,7 +74,7 @@ public class ReferenceFrame : RemoteObject
     /// and its magnitude is the speed of the rotation in radians per second.
     /// Defaults to <math>(0, 0, 0)</math>.</param>
     /// <param name="connection">A connection object.</param>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "ReferenceFrame_static_CreateRelative")]
+    [RpcAttribute ("SpaceCenter", "ReferenceFrame_static_CreateRelative")]
     public static global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame CreateRelative (IConnection connection, global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame referenceFrame, systemAlias::Tuple<double,double,double> position = null, systemAlias::Tuple<double,double,double,double> rotation = null, systemAlias::Tuple<double,double,double> velocity = null, systemAlias::Tuple<double,double,double> angularVelocity = null)
     {
         if (connection == null)

@@ -1,6 +1,7 @@
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
 using Google.Protobuf;
+using kRPC.Client.Boost.Attributes;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
@@ -19,7 +20,7 @@ public class ResourceDrain : RemoteObject
     /// <summary>
     /// Whether the provided resource is enabled for draining.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "ResourceDrain_CheckResource")]
+    [RpcAttribute ("SpaceCenter", "ResourceDrain_CheckResource")]
     public bool CheckResource (global::kRPC.Client.Boost.Services.SpaceCenter.Resource resource)
     {
         var _args = new ByteString[] {
@@ -33,7 +34,7 @@ public class ResourceDrain : RemoteObject
     /// <summary>
     /// Whether the given resource should be drained.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "ResourceDrain_SetResource")]
+    [RpcAttribute ("SpaceCenter", "ResourceDrain_SetResource")]
     public void SetResource (global::kRPC.Client.Boost.Services.SpaceCenter.Resource resource, bool enabled)
     {
         var _args = new ByteString[] {
@@ -47,7 +48,7 @@ public class ResourceDrain : RemoteObject
     /// <summary>
     /// Activates resource draining for all enabled parts.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "ResourceDrain_Start")]
+    [RpcAttribute ("SpaceCenter", "ResourceDrain_Start")]
     public void Start ()
     {
         var _args = new ByteString[] {
@@ -59,7 +60,7 @@ public class ResourceDrain : RemoteObject
     /// <summary>
     /// Turns off resource draining.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "ResourceDrain_Stop")]
+    [RpcAttribute ("SpaceCenter", "ResourceDrain_Stop")]
     public void Stop ()
     {
         var _args = new ByteString[] {
@@ -71,7 +72,7 @@ public class ResourceDrain : RemoteObject
     /// <summary>
     /// List of available resources.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "ResourceDrain_get_AvailableResources")]
+    [RpcAttribute ("SpaceCenter", "ResourceDrain_get_AvailableResources")]
     public global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.Resource> AvailableResources {
         get {
             var _args = new ByteString[] {
@@ -85,7 +86,7 @@ public class ResourceDrain : RemoteObject
     /// <summary>
     /// The drain mode.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "ResourceDrain_get_DrainMode")]
+    [RpcAttribute ("SpaceCenter", "ResourceDrain_get_DrainMode")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.DrainMode DrainMode {
         get {
             var _args = new ByteString[] {
@@ -106,7 +107,7 @@ public class ResourceDrain : RemoteObject
     /// <summary>
     /// Maximum possible drain rate.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "ResourceDrain_get_MaxRate")]
+    [RpcAttribute ("SpaceCenter", "ResourceDrain_get_MaxRate")]
     public float MaxRate {
         get {
             var _args = new ByteString[] {
@@ -120,7 +121,7 @@ public class ResourceDrain : RemoteObject
     /// <summary>
     /// Minimum possible drain rate
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "ResourceDrain_get_MinRate")]
+    [RpcAttribute ("SpaceCenter", "ResourceDrain_get_MinRate")]
     public float MinRate {
         get {
             var _args = new ByteString[] {
@@ -134,7 +135,7 @@ public class ResourceDrain : RemoteObject
     /// <summary>
     /// The part object for this resource drain.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "ResourceDrain_get_Part")]
+    [RpcAttribute ("SpaceCenter", "ResourceDrain_get_Part")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.Part Part {
         get {
             var _args = new ByteString[] {
@@ -148,7 +149,7 @@ public class ResourceDrain : RemoteObject
     /// <summary>
     /// Current drain rate.
     /// </summary>
-    [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "ResourceDrain_get_Rate")]
+    [RpcAttribute ("SpaceCenter", "ResourceDrain_get_Rate")]
     public float Rate {
         get {
             var _args = new ByteString[] {
