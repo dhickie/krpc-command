@@ -1,3 +1,5 @@
+using kRPC.Client.Boost.Connection;
+using kRPC.Client.Boost.Services;
 using Google.Protobuf;
 using KRPC.Client;
 
@@ -6,12 +8,12 @@ namespace kRPC.Client.Boost.Services.SpaceCenter;
 /// <summary>
 /// Transfer resources between parts.
 /// </summary>
-public class ResourceTransfer : global::KRPC.Client.RemoteObject
+public class ResourceTransfer : RemoteObject
 {
     /// <summary>
     /// Construct an instance of this remote object. Should not be called directly. This interface is intended for internal decoding.
     /// </summary>
-    public ResourceTransfer (global::KRPC.Client.IConnection connection, UInt64 id) : base (connection, id)
+    public ResourceTransfer (ConnectionMultiplexer connection, ulong id) : base (connection, id)
     {
     }
 

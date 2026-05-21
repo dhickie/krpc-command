@@ -1,3 +1,5 @@
+using kRPC.Client.Boost.Connection;
+using kRPC.Client.Boost.Services;
 using Google.Protobuf;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
@@ -12,12 +14,12 @@ namespace kRPC.Client.Boost.Services.SpaceCenter;
 /// For example, an engine has a "ModuleEngines" part module that contains all the
 /// functionality of an engine.
 /// </summary>
-public class Module : global::KRPC.Client.RemoteObject
+public class Module : RemoteObject
 {
     /// <summary>
     /// Construct an instance of this remote object. Should not be called directly. This interface is intended for internal decoding.
     /// </summary>
-    public Module (global::KRPC.Client.IConnection connection, UInt64 id) : base (connection, id)
+    public Module (ConnectionMultiplexer connection, ulong id) : base (connection, id)
     {
     }
 

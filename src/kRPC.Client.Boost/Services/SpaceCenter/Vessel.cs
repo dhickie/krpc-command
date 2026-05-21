@@ -1,3 +1,5 @@
+using kRPC.Client.Boost.Connection;
+using kRPC.Client.Boost.Services;
 using Google.Protobuf;
 using systemAlias = System;
 
@@ -8,12 +10,12 @@ namespace kRPC.Client.Boost.Services.SpaceCenter;
 /// orbital and flight data, manipulating control inputs and managing resources.
 /// Created using <see cref="M:SpaceCenter.ActiveVessel" /> or <see cref="M:SpaceCenter.Vessels" />.
 /// </summary>
-public class Vessel : global::KRPC.Client.RemoteObject
+public class Vessel : RemoteObject
 {
     /// <summary>
     /// Construct an instance of this remote object. Should not be called directly. This interface is intended for internal decoding.
     /// </summary>
-    public Vessel (global::KRPC.Client.IConnection connection, UInt64 id) : base (connection, id)
+    public Vessel (ConnectionMultiplexer connection, ulong id) : base (connection, id)
     {
     }
 

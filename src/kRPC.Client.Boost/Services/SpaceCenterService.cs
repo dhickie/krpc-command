@@ -1,4 +1,5 @@
 using Google.Protobuf;
+using kRPC.Client.Boost.Connection;
 using systemAlias = System;
 
 namespace kRPC.Client.Boost.Services;
@@ -8,9 +9,9 @@ namespace kRPC.Client.Boost.Services;
 /// </summary>
 public class SpaceCenterService
 {
-    global::KRPC.Client.IConnection connection;
+    ConnectionMultiplexer connection;
 
-    internal SpaceCenterService (global::KRPC.Client.IConnection serverConnection)
+    internal SpaceCenterService (ConnectionMultiplexer serverConnection)
     {
         connection = serverConnection;
     }

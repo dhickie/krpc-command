@@ -1,3 +1,5 @@
+using kRPC.Client.Boost.Connection;
+using kRPC.Client.Boost.Services;
 using Google.Protobuf;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
@@ -5,12 +7,12 @@ namespace kRPC.Client.Boost.Services.SpaceCenter;
 /// <summary>
 /// Represents a communication node in the network. For example, a vessel or the KSC.
 /// </summary>
-public class CommNode : global::KRPC.Client.RemoteObject
+public class CommNode : RemoteObject
 {
     /// <summary>
     /// Construct an instance of this remote object. Should not be called directly. This interface is intended for internal decoding.
     /// </summary>
-    public CommNode (global::KRPC.Client.IConnection connection, UInt64 id) : base (connection, id)
+    public CommNode (ConnectionMultiplexer connection, ulong id) : base (connection, id)
     {
     }
 

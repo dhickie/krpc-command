@@ -1,3 +1,5 @@
+using kRPC.Client.Boost.Connection;
+using kRPC.Client.Boost.Services;
 using Google.Protobuf;
 using KRPC.Client;
 using systemAlias = System;
@@ -12,12 +14,12 @@ namespace kRPC.Client.Boost.Services.SpaceCenter;
 /// This class does not contain any properties or methods. It is only
 /// used as a parameter to other functions.
 /// </remarks>
-public class ReferenceFrame : global::KRPC.Client.RemoteObject
+public class ReferenceFrame : RemoteObject
 {
     /// <summary>
     /// Construct an instance of this remote object. Should not be called directly. This interface is intended for internal decoding.
     /// </summary>
-    public ReferenceFrame (global::KRPC.Client.IConnection connection, UInt64 id) : base (connection, id)
+    public ReferenceFrame (ConnectionMultiplexer connection, ulong id) : base (connection, id)
     {
     }
 

@@ -1,3 +1,5 @@
+using kRPC.Client.Boost.Connection;
+using kRPC.Client.Boost.Services;
 using Google.Protobuf;
 using systemAlias = System;
 
@@ -6,12 +8,12 @@ namespace kRPC.Client.Boost.Services.SpaceCenter;
 /// <summary>
 /// Represents a maneuver node. Can be created using <see cref="M:SpaceCenter.Control.AddNode" />.
 /// </summary>
-public class Node : global::KRPC.Client.RemoteObject
+public class Node : RemoteObject
 {
     /// <summary>
     /// Construct an instance of this remote object. Should not be called directly. This interface is intended for internal decoding.
     /// </summary>
-    public Node (global::KRPC.Client.IConnection connection, UInt64 id) : base (connection, id)
+    public Node (ConnectionMultiplexer connection, ulong id) : base (connection, id)
     {
     }
 

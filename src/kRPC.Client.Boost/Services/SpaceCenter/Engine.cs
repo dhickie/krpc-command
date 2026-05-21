@@ -1,3 +1,5 @@
+using kRPC.Client.Boost.Connection;
+using kRPC.Client.Boost.Services;
 using Google.Protobuf;
 using systemAlias = System;
 
@@ -11,12 +13,12 @@ namespace kRPC.Client.Boost.Services.SpaceCenter;
 /// <remarks>
 /// For RCS thrusters <see cref="M:SpaceCenter.Part.RCS" />.
 /// </remarks>
-public class Engine : global::KRPC.Client.RemoteObject
+public class Engine : RemoteObject
 {
     /// <summary>
     /// Construct an instance of this remote object. Should not be called directly. This interface is intended for internal decoding.
     /// </summary>
-    public Engine (global::KRPC.Client.IConnection connection, UInt64 id) : base (connection, id)
+    public Engine (ConnectionMultiplexer connection, ulong id) : base (connection, id)
     {
     }
 

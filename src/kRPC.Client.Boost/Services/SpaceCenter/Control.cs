@@ -1,3 +1,5 @@
+using kRPC.Client.Boost.Connection;
+using kRPC.Client.Boost.Services;
 using Google.Protobuf;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
@@ -12,12 +14,12 @@ namespace kRPC.Client.Boost.Services.SpaceCenter;
 /// Control inputs (such as pitch, yaw and roll) are zeroed when all clients
 /// that have set one or more of these inputs are no longer connected.
 /// </remarks>
-public class Control : global::KRPC.Client.RemoteObject
+public class Control : RemoteObject
 {
     /// <summary>
     /// Construct an instance of this remote object. Should not be called directly. This interface is intended for internal decoding.
     /// </summary>
-    public Control (global::KRPC.Client.IConnection connection, UInt64 id) : base (connection, id)
+    public Control (ConnectionMultiplexer connection, ulong id) : base (connection, id)
     {
     }
 

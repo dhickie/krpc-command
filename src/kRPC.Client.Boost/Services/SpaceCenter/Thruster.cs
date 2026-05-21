@@ -1,3 +1,5 @@
+using kRPC.Client.Boost.Connection;
+using kRPC.Client.Boost.Services;
 using Google.Protobuf;
 using systemAlias = System;
 
@@ -12,12 +14,12 @@ namespace kRPC.Client.Boost.Services.SpaceCenter;
 /// For example, the S3 KS-25x4 "Mammoth" has four rocket nozzels, and so consists of
 /// four thrusters.
 /// </remarks>
-public class Thruster : global::KRPC.Client.RemoteObject
+public class Thruster : RemoteObject
 {
     /// <summary>
     /// Construct an instance of this remote object. Should not be called directly. This interface is intended for internal decoding.
     /// </summary>
-    public Thruster (global::KRPC.Client.IConnection connection, UInt64 id) : base (connection, id)
+    public Thruster (ConnectionMultiplexer connection, ulong id) : base (connection, id)
     {
     }
 

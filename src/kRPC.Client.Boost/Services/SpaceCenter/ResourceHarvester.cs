@@ -1,3 +1,5 @@
+using kRPC.Client.Boost.Connection;
+using kRPC.Client.Boost.Services;
 using Google.Protobuf;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
@@ -5,12 +7,12 @@ namespace kRPC.Client.Boost.Services.SpaceCenter;
 /// <summary>
 /// A resource harvester (drill). Obtained by calling <see cref="M:SpaceCenter.Part.ResourceHarvester" />.
 /// </summary>
-public class ResourceHarvester : global::KRPC.Client.RemoteObject
+public class ResourceHarvester : RemoteObject
 {
     /// <summary>
     /// Construct an instance of this remote object. Should not be called directly. This interface is intended for internal decoding.
     /// </summary>
-    public ResourceHarvester (global::KRPC.Client.IConnection connection, UInt64 id) : base (connection, id)
+    public ResourceHarvester (ConnectionMultiplexer connection, ulong id) : base (connection, id)
     {
     }
 

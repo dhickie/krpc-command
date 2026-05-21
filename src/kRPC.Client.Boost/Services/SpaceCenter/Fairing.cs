@@ -1,3 +1,5 @@
+using kRPC.Client.Boost.Connection;
+using kRPC.Client.Boost.Services;
 using Google.Protobuf;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
@@ -6,12 +8,12 @@ namespace kRPC.Client.Boost.Services.SpaceCenter;
 /// A fairing. Obtained by calling <see cref="M:SpaceCenter.Part.Fairing" />.
 /// Supports both stock fairings, and those from the ProceduralFairings mod.
 /// </summary>
-public class Fairing : global::KRPC.Client.RemoteObject
+public class Fairing : RemoteObject
 {
     /// <summary>
     /// Construct an instance of this remote object. Should not be called directly. This interface is intended for internal decoding.
     /// </summary>
-    public Fairing (global::KRPC.Client.IConnection connection, UInt64 id) : base (connection, id)
+    public Fairing (ConnectionMultiplexer connection, ulong id) : base (connection, id)
     {
     }
 

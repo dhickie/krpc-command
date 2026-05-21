@@ -1,3 +1,5 @@
+using kRPC.Client.Boost.Connection;
+using kRPC.Client.Boost.Services;
 using Google.Protobuf;
 using systemAlias = System;
 
@@ -12,12 +14,12 @@ namespace kRPC.Client.Boost.Services.SpaceCenter;
 /// <remarks>
 /// To get orbital information, such as the apoapsis or inclination, see <see cref="T:SpaceCenter.Orbit" />.
 /// </remarks>
-public class Flight : global::KRPC.Client.RemoteObject
+public class Flight : RemoteObject
 {
     /// <summary>
     /// Construct an instance of this remote object. Should not be called directly. This interface is intended for internal decoding.
     /// </summary>
-    public Flight (global::KRPC.Client.IConnection connection, UInt64 id) : base (connection, id)
+    public Flight (ConnectionMultiplexer connection, ulong id) : base (connection, id)
     {
     }
 

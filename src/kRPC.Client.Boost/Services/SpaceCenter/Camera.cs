@@ -1,3 +1,5 @@
+using kRPC.Client.Boost.Connection;
+using kRPC.Client.Boost.Services;
 using Google.Protobuf;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
@@ -6,12 +8,12 @@ namespace kRPC.Client.Boost.Services.SpaceCenter;
 /// Controls the game's camera.
 /// Obtained by calling <see cref="M:SpaceCenter.Camera" />.
 /// </summary>
-public class Camera : global::KRPC.Client.RemoteObject
+public class Camera : RemoteObject
 {
     /// <summary>
     /// Construct an instance of this remote object. Should not be called directly. This interface is intended for internal decoding.
     /// </summary>
-    public Camera (global::KRPC.Client.IConnection connection, UInt64 id) : base (connection, id)
+    public Camera (ConnectionMultiplexer connection, ulong id) : base (connection, id)
     {
     }
 

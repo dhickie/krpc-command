@@ -1,3 +1,5 @@
+using kRPC.Client.Boost.Connection;
+using kRPC.Client.Boost.Services;
 using Google.Protobuf;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
@@ -7,12 +9,12 @@ namespace kRPC.Client.Boost.Services.SpaceCenter;
 /// With this structure, you can obtain coordinate data for the locations of these waypoints.
 /// Obtained by calling <see cref="M:SpaceCenter.WaypointManager" />.
 /// </summary>
-public class WaypointManager : global::KRPC.Client.RemoteObject
+public class WaypointManager : RemoteObject
 {
     /// <summary>
     /// Construct an instance of this remote object. Should not be called directly. This interface is intended for internal decoding.
     /// </summary>
-    public WaypointManager (global::KRPC.Client.IConnection connection, UInt64 id) : base (connection, id)
+    public WaypointManager (ConnectionMultiplexer connection, ulong id) : base (connection, id)
     {
     }
 

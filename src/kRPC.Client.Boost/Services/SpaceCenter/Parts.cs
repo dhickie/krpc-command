@@ -1,3 +1,5 @@
+using kRPC.Client.Boost.Connection;
+using kRPC.Client.Boost.Services;
 using Google.Protobuf;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
@@ -6,12 +8,12 @@ namespace kRPC.Client.Boost.Services.SpaceCenter;
 /// Instances of this class are used to interact with the parts of a vessel.
 /// An instance can be obtained by calling <see cref="M:SpaceCenter.Vessel.Parts" />.
 /// </summary>
-public class Parts : global::KRPC.Client.RemoteObject
+public class Parts : RemoteObject
 {
     /// <summary>
     /// Construct an instance of this remote object. Should not be called directly. This interface is intended for internal decoding.
     /// </summary>
-    public Parts (global::KRPC.Client.IConnection connection, UInt64 id) : base (connection, id)
+    public Parts (ConnectionMultiplexer connection, ulong id) : base (connection, id)
     {
     }
 

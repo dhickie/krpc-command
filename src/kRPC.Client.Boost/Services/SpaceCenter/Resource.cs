@@ -1,3 +1,5 @@
+using kRPC.Client.Boost.Connection;
+using kRPC.Client.Boost.Services;
 using Google.Protobuf;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
@@ -6,12 +8,12 @@ namespace kRPC.Client.Boost.Services.SpaceCenter;
 /// An individual resource stored within a part.
 /// Created using methods in the <see cref="T:SpaceCenter.Resources" /> class.
 /// </summary>
-public class Resource : global::KRPC.Client.RemoteObject
+public class Resource : RemoteObject
 {
     /// <summary>
     /// Construct an instance of this remote object. Should not be called directly. This interface is intended for internal decoding.
     /// </summary>
-    public Resource (global::KRPC.Client.IConnection connection, UInt64 id) : base (connection, id)
+    public Resource (ConnectionMultiplexer connection, ulong id) : base (connection, id)
     {
     }
 

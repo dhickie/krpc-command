@@ -1,3 +1,5 @@
+using kRPC.Client.Boost.Connection;
+using kRPC.Client.Boost.Services;
 using Google.Protobuf;
 using genericCollectionsAlias = System.Collections.Generic;
 
@@ -7,12 +9,12 @@ namespace kRPC.Client.Boost.Services.SpaceCenter;
 /// Contracts manager.
 /// Obtained by calling <see cref="M:SpaceCenter.ContractManager" />.
 /// </summary>
-public class ContractManager : global::KRPC.Client.RemoteObject
+public class ContractManager : RemoteObject
 {
     /// <summary>
     /// Construct an instance of this remote object. Should not be called directly. This interface is intended for internal decoding.
     /// </summary>
-    public ContractManager (global::KRPC.Client.IConnection connection, UInt64 id) : base (connection, id)
+    public ContractManager (ConnectionMultiplexer connection, ulong id) : base (connection, id)
     {
     }
 

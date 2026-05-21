@@ -1,3 +1,5 @@
+using kRPC.Client.Boost.Connection;
+using kRPC.Client.Boost.Services;
 using Google.Protobuf;
 using KRPC.Client;
 using systemAlias = System;
@@ -9,12 +11,12 @@ namespace kRPC.Client.Boost.Services.SpaceCenter;
 /// <see cref="M:SpaceCenter.Vessel.Orbit" />, or a celestial body, obtained by calling
 /// <see cref="M:SpaceCenter.CelestialBody.Orbit" />.
 /// </summary>
-public class Orbit : global::KRPC.Client.RemoteObject
+public class Orbit : RemoteObject
 {
     /// <summary>
     /// Construct an instance of this remote object. Should not be called directly. This interface is intended for internal decoding.
     /// </summary>
-    public Orbit (global::KRPC.Client.IConnection connection, UInt64 id) : base (connection, id)
+    public Orbit (ConnectionMultiplexer connection, ulong id) : base (connection, id)
     {
     }
 

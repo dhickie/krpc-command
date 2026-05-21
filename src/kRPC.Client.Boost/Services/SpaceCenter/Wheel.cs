@@ -1,3 +1,5 @@
+using kRPC.Client.Boost.Connection;
+using kRPC.Client.Boost.Services;
 using Google.Protobuf;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
@@ -7,12 +9,12 @@ namespace kRPC.Client.Boost.Services.SpaceCenter;
 /// Obtained by calling <see cref="M:SpaceCenter.Part.Wheel" />.
 /// Can be used to control the motors, steering and deployment of wheels, among other things.
 /// </summary>
-public class Wheel : global::KRPC.Client.RemoteObject
+public class Wheel : RemoteObject
 {
     /// <summary>
     /// Construct an instance of this remote object. Should not be called directly. This interface is intended for internal decoding.
     /// </summary>
-    public Wheel (global::KRPC.Client.IConnection connection, UInt64 id) : base (connection, id)
+    public Wheel (ConnectionMultiplexer connection, ulong id) : base (connection, id)
     {
     }
 

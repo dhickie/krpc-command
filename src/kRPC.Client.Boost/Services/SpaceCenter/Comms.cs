@@ -1,3 +1,5 @@
+using kRPC.Client.Boost.Connection;
+using kRPC.Client.Boost.Services;
 using Google.Protobuf;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
@@ -6,12 +8,12 @@ namespace kRPC.Client.Boost.Services.SpaceCenter;
 /// Used to interact with CommNet for a given vessel.
 /// Obtained by calling <see cref="M:SpaceCenter.Vessel.Comms" />.
 /// </summary>
-public class Comms : global::KRPC.Client.RemoteObject
+public class Comms : RemoteObject
 {
     /// <summary>
     /// Construct an instance of this remote object. Should not be called directly. This interface is intended for internal decoding.
     /// </summary>
-    public Comms (global::KRPC.Client.IConnection connection, UInt64 id) : base (connection, id)
+    public Comms (ConnectionMultiplexer connection, ulong id) : base (connection, id)
     {
     }
 

@@ -1,3 +1,5 @@
+using kRPC.Client.Boost.Connection;
+using kRPC.Client.Boost.Services;
 using Google.Protobuf;
 using systemAlias = System;
 
@@ -6,12 +8,12 @@ namespace kRPC.Client.Boost.Services.SpaceCenter;
 /// <summary>
 /// A light. Obtained by calling <see cref="M:SpaceCenter.Part.Light" />.
 /// </summary>
-public class Light : global::KRPC.Client.RemoteObject
+public class Light : RemoteObject
 {
     /// <summary>
     /// Construct an instance of this remote object. Should not be called directly. This interface is intended for internal decoding.
     /// </summary>
-    public Light (global::KRPC.Client.IConnection connection, UInt64 id) : base (connection, id)
+    public Light (ConnectionMultiplexer connection, ulong id) : base (connection, id)
     {
     }
 

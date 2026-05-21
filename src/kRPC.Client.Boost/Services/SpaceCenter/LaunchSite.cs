@@ -1,3 +1,5 @@
+using kRPC.Client.Boost.Connection;
+using kRPC.Client.Boost.Services;
 using Google.Protobuf;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
@@ -6,12 +8,12 @@ namespace kRPC.Client.Boost.Services.SpaceCenter;
 /// A place where craft can be launched from.
 /// More of these can be added with mods like Kerbal Konstructs.
 /// </summary>
-public class LaunchSite : global::KRPC.Client.RemoteObject
+public class LaunchSite : RemoteObject
 {
     /// <summary>
     /// Construct an instance of this remote object. Should not be called directly. This interface is intended for internal decoding.
     /// </summary>
-    public LaunchSite (global::KRPC.Client.IConnection connection, UInt64 id) : base (connection, id)
+    public LaunchSite (ConnectionMultiplexer connection, ulong id) : base (connection, id)
     {
     }
 

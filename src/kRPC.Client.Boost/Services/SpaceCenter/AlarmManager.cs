@@ -1,3 +1,5 @@
+using kRPC.Client.Boost.Connection;
+using kRPC.Client.Boost.Services;
 using Google.Protobuf;
 using KRPC.Client;
 
@@ -7,12 +9,12 @@ namespace kRPC.Client.Boost.Services.SpaceCenter;
 /// Alarm manager.
 /// Obtained by calling <see cref="M:SpaceCenter.AlarmManager" />.
 /// </summary>
-public class AlarmManager : global::KRPC.Client.RemoteObject
+public class AlarmManager : RemoteObject
 {
     /// <summary>
     /// Construct an instance of this remote object. Should not be called directly. This interface is intended for internal decoding.
     /// </summary>
-    public AlarmManager (global::KRPC.Client.IConnection connection, UInt64 id) : base (connection, id)
+    public AlarmManager (ConnectionMultiplexer connection, ulong id) : base (connection, id)
     {
     }
 

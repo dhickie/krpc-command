@@ -1,3 +1,5 @@
+using kRPC.Client.Boost.Connection;
+using kRPC.Client.Boost.Services;
 using Google.Protobuf;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
@@ -5,12 +7,12 @@ namespace kRPC.Client.Boost.Services.SpaceCenter;
 /// <summary>
 /// Represents a waypoint. Can be created using <see cref="M:SpaceCenter.WaypointManager.AddWaypoint" />.
 /// </summary>
-public class Waypoint : global::KRPC.Client.RemoteObject
+public class Waypoint : RemoteObject
 {
     /// <summary>
     /// Construct an instance of this remote object. Should not be called directly. This interface is intended for internal decoding.
     /// </summary>
-    public Waypoint (global::KRPC.Client.IConnection connection, UInt64 id) : base (connection, id)
+    public Waypoint (ConnectionMultiplexer connection, ulong id) : base (connection, id)
     {
     }
 

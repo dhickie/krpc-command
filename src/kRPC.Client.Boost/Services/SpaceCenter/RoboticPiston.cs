@@ -1,3 +1,5 @@
+using kRPC.Client.Boost.Connection;
+using kRPC.Client.Boost.Services;
 using Google.Protobuf;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
@@ -5,12 +7,12 @@ namespace kRPC.Client.Boost.Services.SpaceCenter;
 /// <summary>
 /// A robotic piston part. Obtained by calling <see cref="M:SpaceCenter.Part.RoboticPiston" />.
 /// </summary>
-public class RoboticPiston : global::KRPC.Client.RemoteObject
+public class RoboticPiston : RemoteObject
 {
     /// <summary>
     /// Construct an instance of this remote object. Should not be called directly. This interface is intended for internal decoding.
     /// </summary>
-    public RoboticPiston (global::KRPC.Client.IConnection connection, UInt64 id) : base (connection, id)
+    public RoboticPiston (ConnectionMultiplexer connection, ulong id) : base (connection, id)
     {
     }
 

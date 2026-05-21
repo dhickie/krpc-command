@@ -1,3 +1,5 @@
+using kRPC.Client.Boost.Connection;
+using kRPC.Client.Boost.Services;
 using Google.Protobuf;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
@@ -5,12 +7,12 @@ namespace kRPC.Client.Boost.Services.SpaceCenter;
 /// <summary>
 /// A radiator. Obtained by calling <see cref="M:SpaceCenter.Part.Radiator" />.
 /// </summary>
-public class Radiator : global::KRPC.Client.RemoteObject
+public class Radiator : RemoteObject
 {
     /// <summary>
     /// Construct an instance of this remote object. Should not be called directly. This interface is intended for internal decoding.
     /// </summary>
-    public Radiator (global::KRPC.Client.IConnection connection, UInt64 id) : base (connection, id)
+    public Radiator (ConnectionMultiplexer connection, ulong id) : base (connection, id)
     {
     }
 

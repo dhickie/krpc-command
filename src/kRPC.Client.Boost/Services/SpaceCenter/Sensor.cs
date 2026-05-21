@@ -1,3 +1,5 @@
+using kRPC.Client.Boost.Connection;
+using kRPC.Client.Boost.Services;
 using Google.Protobuf;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
@@ -5,12 +7,12 @@ namespace kRPC.Client.Boost.Services.SpaceCenter;
 /// <summary>
 /// A sensor, such as a thermometer. Obtained by calling <see cref="M:SpaceCenter.Part.Sensor" />.
 /// </summary>
-public class Sensor : global::KRPC.Client.RemoteObject
+public class Sensor : RemoteObject
 {
     /// <summary>
     /// Construct an instance of this remote object. Should not be called directly. This interface is intended for internal decoding.
     /// </summary>
-    public Sensor (global::KRPC.Client.IConnection connection, UInt64 id) : base (connection, id)
+    public Sensor (ConnectionMultiplexer connection, ulong id) : base (connection, id)
     {
     }
 
