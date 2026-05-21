@@ -9,11 +9,11 @@ namespace kRPC.Client.Boost.Services;
 /// </summary>
 public class SpaceCenterService
 {
-    ConnectionMultiplexer connection;
+    private readonly ConnectionMultiplexer _connection;
 
     internal SpaceCenterService (ConnectionMultiplexer serverConnection)
     {
-        connection = serverConnection;
+        _connection = serverConnection;
     }
 
     /// <summary>
@@ -30,8 +30,8 @@ public class SpaceCenterService
         var _args = new ByteString[] {
             global::KRPC.Client.Encoder.Encode (factor, typeof(int))
         };
-        ByteString _data = connection.Invoke ("SpaceCenter", "CanRailsWarpAt", _args);
-        return (bool)global::KRPC.Client.Encoder.Decode (_data, typeof(bool), connection);
+        ByteString _data = _connection.Invoke ("SpaceCenter", "CanRailsWarpAt", _args);
+        return (bool)global::KRPC.Client.Encoder.Decode (_data, typeof(bool), _connection);
     }
 
     /// <summary>
@@ -40,8 +40,8 @@ public class SpaceCenterService
     [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "CanRevertToLaunch")]
     public bool CanRevertToLaunch ()
     {
-        ByteString _data = connection.Invoke ("SpaceCenter", "CanRevertToLaunch");
-        return (bool)global::KRPC.Client.Encoder.Decode (_data, typeof(bool), connection);
+        ByteString _data = _connection.Invoke ("SpaceCenter", "CanRevertToLaunch");
+        return (bool)global::KRPC.Client.Encoder.Decode (_data, typeof(bool), _connection);
     }
 
     /// <summary>
@@ -50,7 +50,7 @@ public class SpaceCenterService
     [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "ClearTarget")]
     public void ClearTarget ()
     {
-        connection.Invoke ("SpaceCenter", "ClearTarget");
+        _connection.Invoke ("SpaceCenter", "ClearTarget");
     }
 
     /// <summary>
@@ -67,7 +67,7 @@ public class SpaceCenterService
             global::KRPC.Client.Encoder.Encode (job, typeof(string)),
             global::KRPC.Client.Encoder.Encode (male, typeof(bool))
         };
-        connection.Invoke ("SpaceCenter", "CreateKerbal", _args);
+        _connection.Invoke ("SpaceCenter", "CreateKerbal", _args);
     }
 
     /// <summary>
@@ -81,8 +81,8 @@ public class SpaceCenterService
         var _args = new ByteString[] {
             global::KRPC.Client.Encoder.Encode (name, typeof(string))
         };
-        ByteString _data = connection.Invoke ("SpaceCenter", "GetKerbal", _args);
-        return (global::kRPC.Client.Boost.Services.SpaceCenter.CrewMember)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.CrewMember), connection);
+        ByteString _data = _connection.Invoke ("SpaceCenter", "GetKerbal", _args);
+        return (global::kRPC.Client.Boost.Services.SpaceCenter.CrewMember)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.CrewMember), _connection);
     }
 
     /// <summary>
@@ -113,7 +113,7 @@ public class SpaceCenterService
             global::KRPC.Client.Encoder.Encode (crew ?? null, typeof(global::System.Collections.Generic.IList<string>)),
             global::KRPC.Client.Encoder.Encode (flagUrl, typeof(string))
         };
-        connection.Invoke ("SpaceCenter", "LaunchVessel", _args);
+        _connection.Invoke ("SpaceCenter", "LaunchVessel", _args);
     }
 
     /// <summary>
@@ -134,7 +134,7 @@ public class SpaceCenterService
             global::KRPC.Client.Encoder.Encode (name, typeof(string)),
             global::KRPC.Client.Encoder.Encode (recover, typeof(bool))
         };
-        connection.Invoke ("SpaceCenter", "LaunchVesselFromSPH", _args);
+        _connection.Invoke ("SpaceCenter", "LaunchVesselFromSPH", _args);
     }
 
     /// <summary>
@@ -155,7 +155,7 @@ public class SpaceCenterService
             global::KRPC.Client.Encoder.Encode (name, typeof(string)),
             global::KRPC.Client.Encoder.Encode (recover, typeof(bool))
         };
-        connection.Invoke ("SpaceCenter", "LaunchVesselFromVAB", _args);
+        _connection.Invoke ("SpaceCenter", "LaunchVesselFromVAB", _args);
     }
 
     /// <summary>
@@ -170,8 +170,8 @@ public class SpaceCenterService
         var _args = new ByteString[] {
             global::KRPC.Client.Encoder.Encode (craftDirectory, typeof(string))
         };
-        ByteString _data = connection.Invoke ("SpaceCenter", "LaunchableVessels", _args);
-        return (global::System.Collections.Generic.IList<string>)global::KRPC.Client.Encoder.Decode (_data, typeof(global::System.Collections.Generic.IList<string>), connection);
+        ByteString _data = _connection.Invoke ("SpaceCenter", "LaunchableVessels", _args);
+        return (global::System.Collections.Generic.IList<string>)global::KRPC.Client.Encoder.Decode (_data, typeof(global::System.Collections.Generic.IList<string>), _connection);
     }
 
     /// <summary>
@@ -186,7 +186,7 @@ public class SpaceCenterService
         var _args = new ByteString[] {
             global::KRPC.Client.Encoder.Encode (name, typeof(string))
         };
-        connection.Invoke ("SpaceCenter", "Load", _args);
+        _connection.Invoke ("SpaceCenter", "Load", _args);
     }
 
     /// <summary>
@@ -195,7 +195,7 @@ public class SpaceCenterService
     [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "LoadSpaceCenter")]
     public void LoadSpaceCenter ()
     {
-        connection.Invoke ("SpaceCenter", "LoadSpaceCenter");
+        _connection.Invoke ("SpaceCenter", "LoadSpaceCenter");
     }
 
     /// <summary>
@@ -207,7 +207,7 @@ public class SpaceCenterService
     [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Quickload")]
     public void Quickload ()
     {
-        connection.Invoke ("SpaceCenter", "Quickload");
+        _connection.Invoke ("SpaceCenter", "Quickload");
     }
 
     /// <summary>
@@ -219,7 +219,7 @@ public class SpaceCenterService
     [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "Quicksave")]
     public void Quicksave ()
     {
-        connection.Invoke ("SpaceCenter", "Quicksave");
+        _connection.Invoke ("SpaceCenter", "Quicksave");
     }
 
     /// <summary>
@@ -238,8 +238,8 @@ public class SpaceCenterService
             global::KRPC.Client.Encoder.Encode (direction, typeof(systemAlias::Tuple<double,double,double>)),
             global::KRPC.Client.Encoder.Encode (referenceFrame, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame))
         };
-        ByteString _data = connection.Invoke ("SpaceCenter", "RaycastDistance", _args);
-        return (double)global::KRPC.Client.Encoder.Decode (_data, typeof(double), connection);
+        ByteString _data = _connection.Invoke ("SpaceCenter", "RaycastDistance", _args);
+        return (double)global::KRPC.Client.Encoder.Decode (_data, typeof(double), _connection);
     }
 
     /// <summary>
@@ -258,8 +258,8 @@ public class SpaceCenterService
             global::KRPC.Client.Encoder.Encode (direction, typeof(systemAlias::Tuple<double,double,double>)),
             global::KRPC.Client.Encoder.Encode (referenceFrame, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame))
         };
-        ByteString _data = connection.Invoke ("SpaceCenter", "RaycastPart", _args);
-        return (global::kRPC.Client.Boost.Services.SpaceCenter.Part)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Part), connection);
+        ByteString _data = _connection.Invoke ("SpaceCenter", "RaycastPart", _args);
+        return (global::kRPC.Client.Boost.Services.SpaceCenter.Part)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Part), _connection);
     }
 
     /// <summary>
@@ -268,7 +268,7 @@ public class SpaceCenterService
     [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "RevertToLaunch")]
     public void RevertToLaunch ()
     {
-        connection.Invoke ("SpaceCenter", "RevertToLaunch");
+        _connection.Invoke ("SpaceCenter", "RevertToLaunch");
     }
 
     /// <summary>
@@ -283,7 +283,7 @@ public class SpaceCenterService
         var _args = new ByteString[] {
             global::KRPC.Client.Encoder.Encode (name, typeof(string))
         };
-        connection.Invoke ("SpaceCenter", "Save", _args);
+        _connection.Invoke ("SpaceCenter", "Save", _args);
     }
 
     /// <summary>
@@ -298,7 +298,7 @@ public class SpaceCenterService
             global::KRPC.Client.Encoder.Encode (filePath, typeof(string)),
             global::KRPC.Client.Encoder.Encode (scale, typeof(int))
         };
-        connection.Invoke ("SpaceCenter", "Screenshot", _args);
+        _connection.Invoke ("SpaceCenter", "Screenshot", _args);
     }
 
     /// <summary>
@@ -313,7 +313,7 @@ public class SpaceCenterService
             global::KRPC.Client.Encoder.Encode (crewMember, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.CrewMember)),
             global::KRPC.Client.Encoder.Encode (targetPart, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Part))
         };
-        connection.Invoke ("SpaceCenter", "TransferCrew", _args);
+        _connection.Invoke ("SpaceCenter", "TransferCrew", _args);
     }
 
     /// <summary>
@@ -333,8 +333,8 @@ public class SpaceCenterService
             global::KRPC.Client.Encoder.Encode (from, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame)),
             global::KRPC.Client.Encoder.Encode (to, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame))
         };
-        ByteString _data = connection.Invoke ("SpaceCenter", "TransformDirection", _args);
-        return (systemAlias::Tuple<double,double,double>)global::KRPC.Client.Encoder.Decode (_data, typeof(systemAlias::Tuple<double,double,double>), connection);
+        ByteString _data = _connection.Invoke ("SpaceCenter", "TransformDirection", _args);
+        return (systemAlias::Tuple<double,double,double>)global::KRPC.Client.Encoder.Decode (_data, typeof(systemAlias::Tuple<double,double,double>), _connection);
     }
 
     /// <summary>
@@ -354,8 +354,8 @@ public class SpaceCenterService
             global::KRPC.Client.Encoder.Encode (from, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame)),
             global::KRPC.Client.Encoder.Encode (to, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame))
         };
-        ByteString _data = connection.Invoke ("SpaceCenter", "TransformPosition", _args);
-        return (systemAlias::Tuple<double,double,double>)global::KRPC.Client.Encoder.Decode (_data, typeof(systemAlias::Tuple<double,double,double>), connection);
+        ByteString _data = _connection.Invoke ("SpaceCenter", "TransformPosition", _args);
+        return (systemAlias::Tuple<double,double,double>)global::KRPC.Client.Encoder.Decode (_data, typeof(systemAlias::Tuple<double,double,double>), _connection);
     }
 
     /// <summary>
@@ -375,8 +375,8 @@ public class SpaceCenterService
             global::KRPC.Client.Encoder.Encode (from, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame)),
             global::KRPC.Client.Encoder.Encode (to, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame))
         };
-        ByteString _data = connection.Invoke ("SpaceCenter", "TransformRotation", _args);
-        return (systemAlias::Tuple<double,double,double,double>)global::KRPC.Client.Encoder.Decode (_data, typeof(systemAlias::Tuple<double,double,double,double>), connection);
+        ByteString _data = _connection.Invoke ("SpaceCenter", "TransformRotation", _args);
+        return (systemAlias::Tuple<double,double,double,double>)global::KRPC.Client.Encoder.Decode (_data, typeof(systemAlias::Tuple<double,double,double,double>), _connection);
     }
 
     /// <summary>
@@ -402,8 +402,8 @@ public class SpaceCenterService
             global::KRPC.Client.Encoder.Encode (from, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame)),
             global::KRPC.Client.Encoder.Encode (to, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ReferenceFrame))
         };
-        ByteString _data = connection.Invoke ("SpaceCenter", "TransformVelocity", _args);
-        return (systemAlias::Tuple<double,double,double>)global::KRPC.Client.Encoder.Decode (_data, typeof(systemAlias::Tuple<double,double,double>), connection);
+        ByteString _data = _connection.Invoke ("SpaceCenter", "TransformVelocity", _args);
+        return (systemAlias::Tuple<double,double,double>)global::KRPC.Client.Encoder.Decode (_data, typeof(systemAlias::Tuple<double,double,double>), _connection);
     }
 
     /// <summary>
@@ -428,7 +428,7 @@ public class SpaceCenterService
             global::KRPC.Client.Encoder.Encode (maxRailsRate, typeof(float)),
             global::KRPC.Client.Encoder.Encode (maxPhysicsRate, typeof(float))
         };
-        connection.Invoke ("SpaceCenter", "WarpTo", _args);
+        _connection.Invoke ("SpaceCenter", "WarpTo", _args);
     }
 
     /// <summary>
@@ -437,14 +437,14 @@ public class SpaceCenterService
     [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "get_ActiveVessel")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.Vessel ActiveVessel {
         get {
-            ByteString _data = connection.Invoke ("SpaceCenter", "get_ActiveVessel");
-            return (global::kRPC.Client.Boost.Services.SpaceCenter.Vessel)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Vessel), connection);
+            ByteString _data = _connection.Invoke ("SpaceCenter", "get_ActiveVessel");
+            return (global::kRPC.Client.Boost.Services.SpaceCenter.Vessel)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Vessel), _connection);
         }
         set {
             var _args = new ByteString[] {
                 global::KRPC.Client.Encoder.Encode (value, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Vessel))
             };
-            connection.Invoke ("SpaceCenter", "set_ActiveVessel", _args);
+            _connection.Invoke ("SpaceCenter", "set_ActiveVessel", _args);
         }
     }
 
@@ -454,8 +454,8 @@ public class SpaceCenterService
     [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "get_AlarmManager")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.AlarmManager AlarmManager {
         get {
-            ByteString _data = connection.Invoke ("SpaceCenter", "get_AlarmManager");
-            return (global::kRPC.Client.Boost.Services.SpaceCenter.AlarmManager)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.AlarmManager), connection);
+            ByteString _data = _connection.Invoke ("SpaceCenter", "get_AlarmManager");
+            return (global::kRPC.Client.Boost.Services.SpaceCenter.AlarmManager)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.AlarmManager), _connection);
         }
     }
 
@@ -466,8 +466,8 @@ public class SpaceCenterService
     [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "get_Bodies")]
     public global::System.Collections.Generic.IDictionary<string,global::kRPC.Client.Boost.Services.SpaceCenter.CelestialBody> Bodies {
         get {
-            ByteString _data = connection.Invoke ("SpaceCenter", "get_Bodies");
-            return (global::System.Collections.Generic.IDictionary<string,global::kRPC.Client.Boost.Services.SpaceCenter.CelestialBody>)global::KRPC.Client.Encoder.Decode (_data, typeof(global::System.Collections.Generic.IDictionary<string,global::kRPC.Client.Boost.Services.SpaceCenter.CelestialBody>), connection);
+            ByteString _data = _connection.Invoke ("SpaceCenter", "get_Bodies");
+            return (global::System.Collections.Generic.IDictionary<string,global::kRPC.Client.Boost.Services.SpaceCenter.CelestialBody>)global::KRPC.Client.Encoder.Decode (_data, typeof(global::System.Collections.Generic.IDictionary<string,global::kRPC.Client.Boost.Services.SpaceCenter.CelestialBody>), _connection);
         }
     }
 
@@ -477,8 +477,8 @@ public class SpaceCenterService
     [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "get_Camera")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.Camera Camera {
         get {
-            ByteString _data = connection.Invoke ("SpaceCenter", "get_Camera");
-            return (global::kRPC.Client.Boost.Services.SpaceCenter.Camera)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Camera), connection);
+            ByteString _data = _connection.Invoke ("SpaceCenter", "get_Camera");
+            return (global::kRPC.Client.Boost.Services.SpaceCenter.Camera)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Camera), _connection);
         }
     }
 
@@ -488,8 +488,8 @@ public class SpaceCenterService
     [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "get_ContractManager")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.ContractManager ContractManager {
         get {
-            ByteString _data = connection.Invoke ("SpaceCenter", "get_ContractManager");
-            return (global::kRPC.Client.Boost.Services.SpaceCenter.ContractManager)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ContractManager), connection);
+            ByteString _data = _connection.Invoke ("SpaceCenter", "get_ContractManager");
+            return (global::kRPC.Client.Boost.Services.SpaceCenter.ContractManager)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.ContractManager), _connection);
         }
     }
 
@@ -499,8 +499,8 @@ public class SpaceCenterService
     [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "get_FARAvailable")]
     public bool FARAvailable {
         get {
-            ByteString _data = connection.Invoke ("SpaceCenter", "get_FARAvailable");
-            return (bool)global::KRPC.Client.Encoder.Decode (_data, typeof(bool), connection);
+            ByteString _data = _connection.Invoke ("SpaceCenter", "get_FARAvailable");
+            return (bool)global::KRPC.Client.Encoder.Decode (_data, typeof(bool), _connection);
         }
     }
 
@@ -510,8 +510,8 @@ public class SpaceCenterService
     [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "get_Funds")]
     public double Funds {
         get {
-            ByteString _data = connection.Invoke ("SpaceCenter", "get_Funds");
-            return (double)global::KRPC.Client.Encoder.Decode (_data, typeof(double), connection);
+            ByteString _data = _connection.Invoke ("SpaceCenter", "get_Funds");
+            return (double)global::KRPC.Client.Encoder.Decode (_data, typeof(double), _connection);
         }
     }
 
@@ -522,8 +522,8 @@ public class SpaceCenterService
     [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "get_G")]
     public double G {
         get {
-            ByteString _data = connection.Invoke ("SpaceCenter", "get_G");
-            return (double)global::KRPC.Client.Encoder.Decode (_data, typeof(double), connection);
+            ByteString _data = _connection.Invoke ("SpaceCenter", "get_G");
+            return (double)global::KRPC.Client.Encoder.Decode (_data, typeof(double), _connection);
         }
     }
 
@@ -533,8 +533,8 @@ public class SpaceCenterService
     [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "get_GameMode")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.GameMode GameMode {
         get {
-            ByteString _data = connection.Invoke ("SpaceCenter", "get_GameMode");
-            return (global::kRPC.Client.Boost.Services.SpaceCenter.GameMode)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.GameMode), connection);
+            ByteString _data = _connection.Invoke ("SpaceCenter", "get_GameMode");
+            return (global::kRPC.Client.Boost.Services.SpaceCenter.GameMode)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.GameMode), _connection);
         }
     }
 
@@ -544,8 +544,8 @@ public class SpaceCenterService
     [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "get_LaunchSites")]
     public global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.LaunchSite> LaunchSites {
         get {
-            ByteString _data = connection.Invoke ("SpaceCenter", "get_LaunchSites");
-            return (global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.LaunchSite>)global::KRPC.Client.Encoder.Decode (_data, typeof(global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.LaunchSite>), connection);
+            ByteString _data = _connection.Invoke ("SpaceCenter", "get_LaunchSites");
+            return (global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.LaunchSite>)global::KRPC.Client.Encoder.Decode (_data, typeof(global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.LaunchSite>), _connection);
         }
     }
 
@@ -555,14 +555,14 @@ public class SpaceCenterService
     [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "get_MapFilter")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.MapFilterType MapFilter {
         get {
-            ByteString _data = connection.Invoke ("SpaceCenter", "get_MapFilter");
-            return (global::kRPC.Client.Boost.Services.SpaceCenter.MapFilterType)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.MapFilterType), connection);
+            ByteString _data = _connection.Invoke ("SpaceCenter", "get_MapFilter");
+            return (global::kRPC.Client.Boost.Services.SpaceCenter.MapFilterType)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.MapFilterType), _connection);
         }
         set {
             var _args = new ByteString[] {
                 global::KRPC.Client.Encoder.Encode (value, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.MapFilterType))
             };
-            connection.Invoke ("SpaceCenter", "set_MapFilter", _args);
+            _connection.Invoke ("SpaceCenter", "set_MapFilter", _args);
         }
     }
 
@@ -575,8 +575,8 @@ public class SpaceCenterService
     [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "get_MaximumRailsWarpFactor")]
     public int MaximumRailsWarpFactor {
         get {
-            ByteString _data = connection.Invoke ("SpaceCenter", "get_MaximumRailsWarpFactor");
-            return (int)global::KRPC.Client.Encoder.Decode (_data, typeof(int), connection);
+            ByteString _data = _connection.Invoke ("SpaceCenter", "get_MaximumRailsWarpFactor");
+            return (int)global::KRPC.Client.Encoder.Decode (_data, typeof(int), _connection);
         }
     }
 
@@ -586,14 +586,14 @@ public class SpaceCenterService
     [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "get_Navball")]
     public bool Navball {
         get {
-            ByteString _data = connection.Invoke ("SpaceCenter", "get_Navball");
-            return (bool)global::KRPC.Client.Encoder.Decode (_data, typeof(bool), connection);
+            ByteString _data = _connection.Invoke ("SpaceCenter", "get_Navball");
+            return (bool)global::KRPC.Client.Encoder.Decode (_data, typeof(bool), _connection);
         }
         set {
             var _args = new ByteString[] {
                 global::KRPC.Client.Encoder.Encode (value, typeof(bool))
             };
-            connection.Invoke ("SpaceCenter", "set_Navball", _args);
+            _connection.Invoke ("SpaceCenter", "set_Navball", _args);
         }
     }
 
@@ -604,14 +604,14 @@ public class SpaceCenterService
     [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "get_PhysicsWarpFactor")]
     public int PhysicsWarpFactor {
         get {
-            ByteString _data = connection.Invoke ("SpaceCenter", "get_PhysicsWarpFactor");
-            return (int)global::KRPC.Client.Encoder.Decode (_data, typeof(int), connection);
+            ByteString _data = _connection.Invoke ("SpaceCenter", "get_PhysicsWarpFactor");
+            return (int)global::KRPC.Client.Encoder.Decode (_data, typeof(int), _connection);
         }
         set {
             var _args = new ByteString[] {
                 global::KRPC.Client.Encoder.Encode (value, typeof(int))
             };
-            connection.Invoke ("SpaceCenter", "set_PhysicsWarpFactor", _args);
+            _connection.Invoke ("SpaceCenter", "set_PhysicsWarpFactor", _args);
         }
     }
 
@@ -628,14 +628,14 @@ public class SpaceCenterService
     [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "get_RailsWarpFactor")]
     public int RailsWarpFactor {
         get {
-            ByteString _data = connection.Invoke ("SpaceCenter", "get_RailsWarpFactor");
-            return (int)global::KRPC.Client.Encoder.Decode (_data, typeof(int), connection);
+            ByteString _data = _connection.Invoke ("SpaceCenter", "get_RailsWarpFactor");
+            return (int)global::KRPC.Client.Encoder.Decode (_data, typeof(int), _connection);
         }
         set {
             var _args = new ByteString[] {
                 global::KRPC.Client.Encoder.Encode (value, typeof(int))
             };
-            connection.Invoke ("SpaceCenter", "set_RailsWarpFactor", _args);
+            _connection.Invoke ("SpaceCenter", "set_RailsWarpFactor", _args);
         }
     }
 
@@ -645,8 +645,8 @@ public class SpaceCenterService
     [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "get_Reputation")]
     public float Reputation {
         get {
-            ByteString _data = connection.Invoke ("SpaceCenter", "get_Reputation");
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            ByteString _data = _connection.Invoke ("SpaceCenter", "get_Reputation");
+            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), _connection);
         }
     }
 
@@ -656,8 +656,8 @@ public class SpaceCenterService
     [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "get_Science")]
     public float Science {
         get {
-            ByteString _data = connection.Invoke ("SpaceCenter", "get_Science");
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            ByteString _data = _connection.Invoke ("SpaceCenter", "get_Science");
+            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), _connection);
         }
     }
 
@@ -667,14 +667,14 @@ public class SpaceCenterService
     [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "get_TargetBody")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.CelestialBody TargetBody {
         get {
-            ByteString _data = connection.Invoke ("SpaceCenter", "get_TargetBody");
-            return (global::kRPC.Client.Boost.Services.SpaceCenter.CelestialBody)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.CelestialBody), connection);
+            ByteString _data = _connection.Invoke ("SpaceCenter", "get_TargetBody");
+            return (global::kRPC.Client.Boost.Services.SpaceCenter.CelestialBody)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.CelestialBody), _connection);
         }
         set {
             var _args = new ByteString[] {
                 global::KRPC.Client.Encoder.Encode (value, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.CelestialBody))
             };
-            connection.Invoke ("SpaceCenter", "set_TargetBody", _args);
+            _connection.Invoke ("SpaceCenter", "set_TargetBody", _args);
         }
     }
 
@@ -684,14 +684,14 @@ public class SpaceCenterService
     [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "get_TargetDockingPort")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.DockingPort TargetDockingPort {
         get {
-            ByteString _data = connection.Invoke ("SpaceCenter", "get_TargetDockingPort");
-            return (global::kRPC.Client.Boost.Services.SpaceCenter.DockingPort)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.DockingPort), connection);
+            ByteString _data = _connection.Invoke ("SpaceCenter", "get_TargetDockingPort");
+            return (global::kRPC.Client.Boost.Services.SpaceCenter.DockingPort)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.DockingPort), _connection);
         }
         set {
             var _args = new ByteString[] {
                 global::KRPC.Client.Encoder.Encode (value, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.DockingPort))
             };
-            connection.Invoke ("SpaceCenter", "set_TargetDockingPort", _args);
+            _connection.Invoke ("SpaceCenter", "set_TargetDockingPort", _args);
         }
     }
 
@@ -701,14 +701,14 @@ public class SpaceCenterService
     [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "get_TargetVessel")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.Vessel TargetVessel {
         get {
-            ByteString _data = connection.Invoke ("SpaceCenter", "get_TargetVessel");
-            return (global::kRPC.Client.Boost.Services.SpaceCenter.Vessel)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Vessel), connection);
+            ByteString _data = _connection.Invoke ("SpaceCenter", "get_TargetVessel");
+            return (global::kRPC.Client.Boost.Services.SpaceCenter.Vessel)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Vessel), _connection);
         }
         set {
             var _args = new ByteString[] {
                 global::KRPC.Client.Encoder.Encode (value, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.Vessel))
             };
-            connection.Invoke ("SpaceCenter", "set_TargetVessel", _args);
+            _connection.Invoke ("SpaceCenter", "set_TargetVessel", _args);
         }
     }
 
@@ -718,14 +718,14 @@ public class SpaceCenterService
     [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "get_UIVisible")]
     public bool UIVisible {
         get {
-            ByteString _data = connection.Invoke ("SpaceCenter", "get_UIVisible");
-            return (bool)global::KRPC.Client.Encoder.Decode (_data, typeof(bool), connection);
+            ByteString _data = _connection.Invoke ("SpaceCenter", "get_UIVisible");
+            return (bool)global::KRPC.Client.Encoder.Decode (_data, typeof(bool), _connection);
         }
         set {
             var _args = new ByteString[] {
                 global::KRPC.Client.Encoder.Encode (value, typeof(bool))
             };
-            connection.Invoke ("SpaceCenter", "set_UIVisible", _args);
+            _connection.Invoke ("SpaceCenter", "set_UIVisible", _args);
         }
     }
 
@@ -735,8 +735,8 @@ public class SpaceCenterService
     [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "get_UT")]
     public double UT {
         get {
-            ByteString _data = connection.Invoke ("SpaceCenter", "get_UT");
-            return (double)global::KRPC.Client.Encoder.Decode (_data, typeof(double), connection);
+            ByteString _data = _connection.Invoke ("SpaceCenter", "get_UT");
+            return (double)global::KRPC.Client.Encoder.Decode (_data, typeof(double), _connection);
         }
     }
 
@@ -746,8 +746,8 @@ public class SpaceCenterService
     [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "get_Vessels")]
     public global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.Vessel> Vessels {
         get {
-            ByteString _data = connection.Invoke ("SpaceCenter", "get_Vessels");
-            return (global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.Vessel>)global::KRPC.Client.Encoder.Decode (_data, typeof(global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.Vessel>), connection);
+            ByteString _data = _connection.Invoke ("SpaceCenter", "get_Vessels");
+            return (global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.Vessel>)global::KRPC.Client.Encoder.Decode (_data, typeof(global::System.Collections.Generic.IList<global::kRPC.Client.Boost.Services.SpaceCenter.Vessel>), _connection);
         }
     }
 
@@ -761,8 +761,8 @@ public class SpaceCenterService
     [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "get_WarpFactor")]
     public float WarpFactor {
         get {
-            ByteString _data = connection.Invoke ("SpaceCenter", "get_WarpFactor");
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            ByteString _data = _connection.Invoke ("SpaceCenter", "get_WarpFactor");
+            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), _connection);
         }
     }
 
@@ -774,8 +774,8 @@ public class SpaceCenterService
     [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "get_WarpMode")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.WarpMode WarpMode {
         get {
-            ByteString _data = connection.Invoke ("SpaceCenter", "get_WarpMode");
-            return (global::kRPC.Client.Boost.Services.SpaceCenter.WarpMode)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.WarpMode), connection);
+            ByteString _data = _connection.Invoke ("SpaceCenter", "get_WarpMode");
+            return (global::kRPC.Client.Boost.Services.SpaceCenter.WarpMode)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.WarpMode), _connection);
         }
     }
 
@@ -788,8 +788,8 @@ public class SpaceCenterService
     [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "get_WarpRate")]
     public float WarpRate {
         get {
-            ByteString _data = connection.Invoke ("SpaceCenter", "get_WarpRate");
-            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), connection);
+            ByteString _data = _connection.Invoke ("SpaceCenter", "get_WarpRate");
+            return (float)global::KRPC.Client.Encoder.Decode (_data, typeof(float), _connection);
         }
     }
 
@@ -799,8 +799,8 @@ public class SpaceCenterService
     [global::KRPC.Client.Attributes.RPCAttribute ("SpaceCenter", "get_WaypointManager")]
     public global::kRPC.Client.Boost.Services.SpaceCenter.WaypointManager WaypointManager {
         get {
-            ByteString _data = connection.Invoke ("SpaceCenter", "get_WaypointManager");
-            return (global::kRPC.Client.Boost.Services.SpaceCenter.WaypointManager)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.WaypointManager), connection);
+            ByteString _data = _connection.Invoke ("SpaceCenter", "get_WaypointManager");
+            return (global::kRPC.Client.Boost.Services.SpaceCenter.WaypointManager)global::KRPC.Client.Encoder.Decode (_data, typeof(global::kRPC.Client.Boost.Services.SpaceCenter.WaypointManager), _connection);
         }
     }
 }
