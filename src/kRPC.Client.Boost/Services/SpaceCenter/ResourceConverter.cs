@@ -21,7 +21,7 @@ public class ResourceConverter : RemoteObject
     /// True if the specified converter is active.
     /// </summary>
     /// <param name="index">Index of the converter.</param>
-    [RpcAttribute ("SpaceCenter", "ResourceConverter_Active")]
+    [Rpc ("SpaceCenter", "ResourceConverter_Active")]
     public bool Active (int index)
     {
         var args = new object[] {
@@ -35,7 +35,7 @@ public class ResourceConverter : RemoteObject
     /// List of the names of resources consumed by the specified converter.
     /// </summary>
     /// <param name="index">Index of the converter.</param>
-    [RpcAttribute ("SpaceCenter", "ResourceConverter_Inputs")]
+    [Rpc ("SpaceCenter", "ResourceConverter_Inputs")]
     public IList<string> Inputs (int index)
     {
         var args = new object[] {
@@ -49,7 +49,7 @@ public class ResourceConverter : RemoteObject
     /// The name of the specified converter.
     /// </summary>
     /// <param name="index">Index of the converter.</param>
-    [RpcAttribute ("SpaceCenter", "ResourceConverter_Name")]
+    [Rpc ("SpaceCenter", "ResourceConverter_Name")]
     public string Name (int index)
     {
         var args = new object[] {
@@ -63,7 +63,7 @@ public class ResourceConverter : RemoteObject
     /// List of the names of resources produced by the specified converter.
     /// </summary>
     /// <param name="index">Index of the converter.</param>
-    [RpcAttribute ("SpaceCenter", "ResourceConverter_Outputs")]
+    [Rpc ("SpaceCenter", "ResourceConverter_Outputs")]
     public IList<string> Outputs (int index)
     {
         var args = new object[] {
@@ -77,7 +77,7 @@ public class ResourceConverter : RemoteObject
     /// Start the specified converter.
     /// </summary>
     /// <param name="index">Index of the converter.</param>
-    [RpcAttribute ("SpaceCenter", "ResourceConverter_Start")]
+    [Rpc ("SpaceCenter", "ResourceConverter_Start")]
     public void Start (int index)
     {
         var args = new object[] {
@@ -91,7 +91,7 @@ public class ResourceConverter : RemoteObject
     /// The state of the specified converter.
     /// </summary>
     /// <param name="index">Index of the converter.</param>
-    [RpcAttribute ("SpaceCenter", "ResourceConverter_State")]
+    [Rpc ("SpaceCenter", "ResourceConverter_State")]
     public ResourceConverterState State (int index)
     {
         var args = new object[] {
@@ -106,7 +106,7 @@ public class ResourceConverter : RemoteObject
     /// This is the full status message shown in the in-game UI.
     /// </summary>
     /// <param name="index">Index of the converter.</param>
-    [RpcAttribute ("SpaceCenter", "ResourceConverter_StatusInfo")]
+    [Rpc ("SpaceCenter", "ResourceConverter_StatusInfo")]
     public string StatusInfo (int index)
     {
         var args = new object[] {
@@ -120,7 +120,7 @@ public class ResourceConverter : RemoteObject
     /// Stop the specified converter.
     /// </summary>
     /// <param name="index">Index of the converter.</param>
-    [RpcAttribute ("SpaceCenter", "ResourceConverter_Stop")]
+    [Rpc ("SpaceCenter", "ResourceConverter_Stop")]
     public void Stop (int index)
     {
         var args = new object[] {
@@ -133,7 +133,7 @@ public class ResourceConverter : RemoteObject
     /// <summary>
     /// The core temperature of the converter, in Kelvin.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "ResourceConverter_get_CoreTemperature")]
+    [Rpc ("SpaceCenter", "ResourceConverter_get_CoreTemperature")]
     public float CoreTemperature {
         get {
             var args = new object[] {
@@ -146,7 +146,7 @@ public class ResourceConverter : RemoteObject
     /// <summary>
     /// The number of converters in the part.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "ResourceConverter_get_Count")]
+    [Rpc ("SpaceCenter", "ResourceConverter_get_Count")]
     public int Count {
         get {
             var args = new object[] {
@@ -159,7 +159,7 @@ public class ResourceConverter : RemoteObject
     /// <summary>
     /// The core temperature at which the converter will operate with peak efficiency, in Kelvin.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "ResourceConverter_get_OptimumCoreTemperature")]
+    [Rpc ("SpaceCenter", "ResourceConverter_get_OptimumCoreTemperature")]
     public float OptimumCoreTemperature {
         get {
             var args = new object[] {
@@ -172,7 +172,7 @@ public class ResourceConverter : RemoteObject
     /// <summary>
     /// The part object for this converter.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "ResourceConverter_get_Part")]
+    [Rpc ("SpaceCenter", "ResourceConverter_get_Part")]
     public Part Part {
         get {
             var args = new object[] {
@@ -185,7 +185,7 @@ public class ResourceConverter : RemoteObject
     /// <summary>
     /// The thermal efficiency of the converter, as a percentage of its maximum.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "ResourceConverter_get_ThermalEfficiency")]
+    [Rpc ("SpaceCenter", "ResourceConverter_get_ThermalEfficiency")]
     public float ThermalEfficiency {
         get {
             var args = new object[] {

@@ -39,7 +39,7 @@ public class ReferenceFrame : RemoteObject
     /// <paramref name="position" /> reference frame.
     /// </remarks>
     /// <param name="connection">A connection object.</param>
-    [RpcAttribute ("SpaceCenter", "ReferenceFrame_static_CreateHybrid")]
+    [Rpc ("SpaceCenter", "ReferenceFrame_static_CreateHybrid")]
     public static ReferenceFrame CreateHybrid (ConnectionMultiplexer connection, ReferenceFrame position, ReferenceFrame rotation = null, ReferenceFrame velocity = null, ReferenceFrame angularVelocity = null)
     {
         if (connection == null)
@@ -72,7 +72,7 @@ public class ReferenceFrame : RemoteObject
     /// and its magnitude is the speed of the rotation in radians per second.
     /// Defaults to <math>(0, 0, 0)</math>.</param>
     /// <param name="connection">A connection object.</param>
-    [RpcAttribute ("SpaceCenter", "ReferenceFrame_static_CreateRelative")]
+    [Rpc ("SpaceCenter", "ReferenceFrame_static_CreateRelative")]
     public static ReferenceFrame CreateRelative (ConnectionMultiplexer connection, ReferenceFrame referenceFrame, Tuple<double,double,double> position = null, Tuple<double,double,double,double> rotation = null, Tuple<double,double,double> velocity = null, Tuple<double,double,double> angularVelocity = null)
     {
         if (connection == null)

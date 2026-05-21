@@ -30,7 +30,7 @@ public class Flight : RemoteObject
     /// </summary>
     /// <returns>A vector pointing in the direction that the force acts,
     /// with its magnitude equal to the strength of the force in Newtons.</returns>
-    [RpcAttribute ("SpaceCenter", "Flight_SimulateAerodynamicForceAt")]
+    [Rpc ("SpaceCenter", "Flight_SimulateAerodynamicForceAt")]
     public Tuple<double,double,double> SimulateAerodynamicForceAt (CelestialBody body, Tuple<double,double,double> position, Tuple<double,double,double> velocity)
     {
         var args = new object[] {
@@ -48,7 +48,7 @@ public class Flight : RemoteObject
     /// </summary>
     /// <returns>A vector pointing in the direction that the force acts,
     /// with its magnitude equal to the strength of the force in Newtons.</returns>
-    [RpcAttribute ("SpaceCenter", "Flight_get_AerodynamicForce")]
+    [Rpc ("SpaceCenter", "Flight_get_AerodynamicForce")]
     public Tuple<double,double,double> AerodynamicForce {
         get {
             var args = new object[] {
@@ -62,7 +62,7 @@ public class Flight : RemoteObject
     /// The pitch angle between the orientation of the vessel and its velocity vector,
     /// in degrees.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Flight_get_AngleOfAttack")]
+    [Rpc ("SpaceCenter", "Flight_get_AngleOfAttack")]
     public float AngleOfAttack {
         get {
             var args = new object[] {
@@ -77,7 +77,7 @@ public class Flight : RemoteObject
     /// in the reference frame <see cref="T:SpaceCenter.ReferenceFrame" />.
     /// </summary>
     /// <returns>The direction as a unit vector.</returns>
-    [RpcAttribute ("SpaceCenter", "Flight_get_AntiNormal")]
+    [Rpc ("SpaceCenter", "Flight_get_AntiNormal")]
     public Tuple<double,double,double> AntiNormal {
         get {
             var args = new object[] {
@@ -92,7 +92,7 @@ public class Flight : RemoteObject
     /// in the reference frame <see cref="T:SpaceCenter.ReferenceFrame" />.
     /// </summary>
     /// <returns>The direction as a unit vector.</returns>
-    [RpcAttribute ("SpaceCenter", "Flight_get_AntiRadial")]
+    [Rpc ("SpaceCenter", "Flight_get_AntiRadial")]
     public Tuple<double,double,double> AntiRadial {
         get {
             var args = new object[] {
@@ -105,7 +105,7 @@ public class Flight : RemoteObject
     /// <summary>
     /// The current density of the atmosphere around the vessel, in <math>kg/m^3</math>.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Flight_get_AtmosphereDensity")]
+    [Rpc ("SpaceCenter", "Flight_get_AtmosphereDensity")]
     public float AtmosphereDensity {
         get {
             var args = new object[] {
@@ -121,7 +121,7 @@ public class Flight : RemoteObject
     /// <remarks>
     /// Requires <a href="https://forum.kerbalspaceprogram.com/index.php?/topic/19321-130-ferram-aerospace-research-v0159-liebe-82117/">Ferram Aerospace Research</a>.
     /// </remarks>
-    [RpcAttribute ("SpaceCenter", "Flight_get_BallisticCoefficient")]
+    [Rpc ("SpaceCenter", "Flight_get_BallisticCoefficient")]
     public float BallisticCoefficient {
         get {
             var args = new object[] {
@@ -135,7 +135,7 @@ public class Flight : RemoteObject
     /// The altitude above the surface of the body, in meters. When over water, this is the altitude above the sea floor.
     /// Measured from the center of mass of the vessel.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Flight_get_BedrockAltitude")]
+    [Rpc ("SpaceCenter", "Flight_get_BedrockAltitude")]
     public double BedrockAltitude {
         get {
             var args = new object[] {
@@ -149,7 +149,7 @@ public class Flight : RemoteObject
     /// The position of the center of mass of the vessel,
     /// in the reference frame <see cref="T:SpaceCenter.ReferenceFrame" /></summary>
     /// <returns>The position as a vector.</returns>
-    [RpcAttribute ("SpaceCenter", "Flight_get_CenterOfMass")]
+    [Rpc ("SpaceCenter", "Flight_get_CenterOfMass")]
     public Tuple<double,double,double> CenterOfMass {
         get {
             var args = new object[] {
@@ -164,7 +164,7 @@ public class Flight : RemoteObject
     /// in the reference frame <see cref="T:SpaceCenter.ReferenceFrame" />.
     /// </summary>
     /// <returns>The direction as a unit vector.</returns>
-    [RpcAttribute ("SpaceCenter", "Flight_get_Direction")]
+    [Rpc ("SpaceCenter", "Flight_get_Direction")]
     public Tuple<double,double,double> Direction {
         get {
             var args = new object[] {
@@ -179,7 +179,7 @@ public class Flight : RemoteObject
     /// </summary>
     /// <returns>A vector pointing in the direction of the force, with its magnitude
     /// equal to the strength of the force in Newtons.</returns>
-    [RpcAttribute ("SpaceCenter", "Flight_get_Drag")]
+    [Rpc ("SpaceCenter", "Flight_get_Drag")]
     public Tuple<double,double,double> Drag {
         get {
             var args = new object[] {
@@ -196,7 +196,7 @@ public class Flight : RemoteObject
     /// <remarks>
     /// Requires <a href="https://forum.kerbalspaceprogram.com/index.php?/topic/19321-130-ferram-aerospace-research-v0159-liebe-82117/">Ferram Aerospace Research</a>.
     /// </remarks>
-    [RpcAttribute ("SpaceCenter", "Flight_get_DragCoefficient")]
+    [Rpc ("SpaceCenter", "Flight_get_DragCoefficient")]
     public float DragCoefficient {
         get {
             var args = new object[] {
@@ -212,7 +212,7 @@ public class Flight : RemoteObject
     /// <math>\frac{1}{2} . \mbox{air density} . \mbox{velocity}^2</math>.
     /// It is commonly denoted <math>Q</math>.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Flight_get_DynamicPressure")]
+    [Rpc ("SpaceCenter", "Flight_get_DynamicPressure")]
     public float DynamicPressure {
         get {
             var args = new object[] {
@@ -226,7 +226,7 @@ public class Flight : RemoteObject
     /// The elevation of the terrain under the vessel, in meters. This is the height of the terrain above sea level,
     /// and is negative when the vessel is over the sea.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Flight_get_Elevation")]
+    [Rpc ("SpaceCenter", "Flight_get_Elevation")]
     public double Elevation {
         get {
             var args = new object[] {
@@ -240,7 +240,7 @@ public class Flight : RemoteObject
     /// The <a href="https://en.wikipedia.org/wiki/Equivalent_airspeed">equivalent air speed</a>
     /// of the vessel, in meters per second.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Flight_get_EquivalentAirSpeed")]
+    [Rpc ("SpaceCenter", "Flight_get_EquivalentAirSpeed")]
     public float EquivalentAirSpeed {
         get {
             var args = new object[] {
@@ -253,7 +253,7 @@ public class Flight : RemoteObject
     /// <summary>
     /// The current G force acting on the vessel in <math>g</math>.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Flight_get_GForce")]
+    [Rpc ("SpaceCenter", "Flight_get_GForce")]
     public float GForce {
         get {
             var args = new object[] {
@@ -267,7 +267,7 @@ public class Flight : RemoteObject
     /// The heading of the vessel (its angle relative to north), in degrees.
     /// A value between 0° and 360°.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Flight_get_Heading")]
+    [Rpc ("SpaceCenter", "Flight_get_Heading")]
     public float Heading {
         get {
             var args = new object[] {
@@ -281,7 +281,7 @@ public class Flight : RemoteObject
     /// The horizontal speed of the vessel in meters per second,
     /// in the reference frame <see cref="T:SpaceCenter.ReferenceFrame" />.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Flight_get_HorizontalSpeed")]
+    [Rpc ("SpaceCenter", "Flight_get_HorizontalSpeed")]
     public double HorizontalSpeed {
         get {
             var args = new object[] {
@@ -294,7 +294,7 @@ public class Flight : RemoteObject
     /// <summary>
     /// The <a href="https://en.wikipedia.org/wiki/Latitude">latitude</a> of the vessel for the body being orbited, in degrees.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Flight_get_Latitude")]
+    [Rpc ("SpaceCenter", "Flight_get_Latitude")]
     public double Latitude {
         get {
             var args = new object[] {
@@ -310,7 +310,7 @@ public class Flight : RemoteObject
     /// </summary>
     /// <returns>A vector pointing in the direction that the force acts,
     /// with its magnitude equal to the strength of the force in Newtons.</returns>
-    [RpcAttribute ("SpaceCenter", "Flight_get_Lift")]
+    [Rpc ("SpaceCenter", "Flight_get_Lift")]
     public Tuple<double,double,double> Lift {
         get {
             var args = new object[] {
@@ -327,7 +327,7 @@ public class Flight : RemoteObject
     /// <remarks>
     /// Requires <a href="https://forum.kerbalspaceprogram.com/index.php?/topic/19321-130-ferram-aerospace-research-v0159-liebe-82117/">Ferram Aerospace Research</a>.
     /// </remarks>
-    [RpcAttribute ("SpaceCenter", "Flight_get_LiftCoefficient")]
+    [Rpc ("SpaceCenter", "Flight_get_LiftCoefficient")]
     public float LiftCoefficient {
         get {
             var args = new object[] {
@@ -340,7 +340,7 @@ public class Flight : RemoteObject
     /// <summary>
     /// The <a href="https://en.wikipedia.org/wiki/Longitude">longitude</a> of the vessel for the body being orbited, in degrees.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Flight_get_Longitude")]
+    [Rpc ("SpaceCenter", "Flight_get_Longitude")]
     public double Longitude {
         get {
             var args = new object[] {
@@ -353,7 +353,7 @@ public class Flight : RemoteObject
     /// <summary>
     /// The speed of the vessel, in multiples of the speed of sound.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Flight_get_Mach")]
+    [Rpc ("SpaceCenter", "Flight_get_Mach")]
     public float Mach {
         get {
             var args = new object[] {
@@ -367,7 +367,7 @@ public class Flight : RemoteObject
     /// The altitude above sea level, in meters.
     /// Measured from the center of mass of the vessel.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Flight_get_MeanAltitude")]
+    [Rpc ("SpaceCenter", "Flight_get_MeanAltitude")]
     public double MeanAltitude {
         get {
             var args = new object[] {
@@ -382,7 +382,7 @@ public class Flight : RemoteObject
     /// in the reference frame <see cref="T:SpaceCenter.ReferenceFrame" />.
     /// </summary>
     /// <returns>The direction as a unit vector.</returns>
-    [RpcAttribute ("SpaceCenter", "Flight_get_Normal")]
+    [Rpc ("SpaceCenter", "Flight_get_Normal")]
     public Tuple<double,double,double> Normal {
         get {
             var args = new object[] {
@@ -396,7 +396,7 @@ public class Flight : RemoteObject
     /// The pitch of the vessel relative to the horizon, in degrees.
     /// A value between -90° and +90°.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Flight_get_Pitch")]
+    [Rpc ("SpaceCenter", "Flight_get_Pitch")]
     public float Pitch {
         get {
             var args = new object[] {
@@ -411,7 +411,7 @@ public class Flight : RemoteObject
     /// in the reference frame <see cref="T:SpaceCenter.ReferenceFrame" />.
     /// </summary>
     /// <returns>The direction as a unit vector.</returns>
-    [RpcAttribute ("SpaceCenter", "Flight_get_Prograde")]
+    [Rpc ("SpaceCenter", "Flight_get_Prograde")]
     public Tuple<double,double,double> Prograde {
         get {
             var args = new object[] {
@@ -426,7 +426,7 @@ public class Flight : RemoteObject
     /// in the reference frame <see cref="T:SpaceCenter.ReferenceFrame" />.
     /// </summary>
     /// <returns>The direction as a unit vector.</returns>
-    [RpcAttribute ("SpaceCenter", "Flight_get_Radial")]
+    [Rpc ("SpaceCenter", "Flight_get_Radial")]
     public Tuple<double,double,double> Radial {
         get {
             var args = new object[] {
@@ -441,7 +441,7 @@ public class Flight : RemoteObject
     /// in the reference frame <see cref="T:SpaceCenter.ReferenceFrame" />.
     /// </summary>
     /// <returns>The direction as a unit vector.</returns>
-    [RpcAttribute ("SpaceCenter", "Flight_get_Retrograde")]
+    [Rpc ("SpaceCenter", "Flight_get_Retrograde")]
     public Tuple<double,double,double> Retrograde {
         get {
             var args = new object[] {
@@ -457,7 +457,7 @@ public class Flight : RemoteObject
     /// <remarks>
     /// Requires <a href="https://forum.kerbalspaceprogram.com/index.php?/topic/19321-130-ferram-aerospace-research-v0159-liebe-82117/">Ferram Aerospace Research</a>.
     /// </remarks>
-    [RpcAttribute ("SpaceCenter", "Flight_get_ReynoldsNumber")]
+    [Rpc ("SpaceCenter", "Flight_get_ReynoldsNumber")]
     public float ReynoldsNumber {
         get {
             var args = new object[] {
@@ -471,7 +471,7 @@ public class Flight : RemoteObject
     /// The roll of the vessel relative to the horizon, in degrees.
     /// A value between -180° and +180°.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Flight_get_Roll")]
+    [Rpc ("SpaceCenter", "Flight_get_Roll")]
     public float Roll {
         get {
             var args = new object[] {
@@ -484,7 +484,7 @@ public class Flight : RemoteObject
     /// <summary>
     /// The rotation of the vessel, in the reference frame <see cref="T:SpaceCenter.ReferenceFrame" /></summary>
     /// <returns>The rotation as a quaternion of the form <math>(x, y, z, w)</math>.</returns>
-    [RpcAttribute ("SpaceCenter", "Flight_get_Rotation")]
+    [Rpc ("SpaceCenter", "Flight_get_Rotation")]
     public Tuple<double,double,double,double> Rotation {
         get {
             var args = new object[] {
@@ -497,7 +497,7 @@ public class Flight : RemoteObject
     /// <summary>
     /// The yaw angle between the orientation of the vessel and its velocity vector, in degrees.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Flight_get_SideslipAngle")]
+    [Rpc ("SpaceCenter", "Flight_get_SideslipAngle")]
     public float SideslipAngle {
         get {
             var args = new object[] {
@@ -511,7 +511,7 @@ public class Flight : RemoteObject
     /// The speed of the vessel in meters per second,
     /// in the reference frame <see cref="T:SpaceCenter.ReferenceFrame" />.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Flight_get_Speed")]
+    [Rpc ("SpaceCenter", "Flight_get_Speed")]
     public double Speed {
         get {
             var args = new object[] {
@@ -524,7 +524,7 @@ public class Flight : RemoteObject
     /// <summary>
     /// The speed of sound, in the atmosphere around the vessel, in <math>m/s</math>.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Flight_get_SpeedOfSound")]
+    [Rpc ("SpaceCenter", "Flight_get_SpeedOfSound")]
     public float SpeedOfSound {
         get {
             var args = new object[] {
@@ -541,7 +541,7 @@ public class Flight : RemoteObject
     /// <remarks>
     /// Requires <a href="https://forum.kerbalspaceprogram.com/index.php?/topic/19321-130-ferram-aerospace-research-v0159-liebe-82117/">Ferram Aerospace Research</a>.
     /// </remarks>
-    [RpcAttribute ("SpaceCenter", "Flight_get_StallFraction")]
+    [Rpc ("SpaceCenter", "Flight_get_StallFraction")]
     public float StallFraction {
         get {
             var args = new object[] {
@@ -555,7 +555,7 @@ public class Flight : RemoteObject
     /// The <a href="https://en.wikipedia.org/wiki/Total_air_temperature">static (ambient)
     /// temperature</a> of the atmosphere around the vessel, in Kelvin.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Flight_get_StaticAirTemperature")]
+    [Rpc ("SpaceCenter", "Flight_get_StaticAirTemperature")]
     public float StaticAirTemperature {
         get {
             var args = new object[] {
@@ -568,7 +568,7 @@ public class Flight : RemoteObject
     /// <summary>
     /// The static atmospheric pressure acting on the vessel, in Pascals.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Flight_get_StaticPressure")]
+    [Rpc ("SpaceCenter", "Flight_get_StaticPressure")]
     public float StaticPressure {
         get {
             var args = new object[] {
@@ -581,7 +581,7 @@ public class Flight : RemoteObject
     /// <summary>
     /// The static atmospheric pressure at mean sea level, in Pascals.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Flight_get_StaticPressureAtMSL")]
+    [Rpc ("SpaceCenter", "Flight_get_StaticPressureAtMSL")]
     public float StaticPressureAtMSL {
         get {
             var args = new object[] {
@@ -595,7 +595,7 @@ public class Flight : RemoteObject
     /// The altitude above the surface of the body or sea level, whichever is closer, in meters.
     /// Measured from the center of mass of the vessel.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Flight_get_SurfaceAltitude")]
+    [Rpc ("SpaceCenter", "Flight_get_SurfaceAltitude")]
     public double SurfaceAltitude {
         get {
             var args = new object[] {
@@ -609,7 +609,7 @@ public class Flight : RemoteObject
     /// An estimate of the current terminal velocity of the vessel, in meters per second.
     /// This is the speed at which the drag forces cancel out the force of gravity.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Flight_get_TerminalVelocity")]
+    [Rpc ("SpaceCenter", "Flight_get_TerminalVelocity")]
     public float TerminalVelocity {
         get {
             var args = new object[] {
@@ -628,7 +628,7 @@ public class Flight : RemoteObject
     /// <remarks>
     /// Requires <a href="https://forum.kerbalspaceprogram.com/index.php?/topic/19321-130-ferram-aerospace-research-v0159-liebe-82117/">Ferram Aerospace Research</a>.
     /// </remarks>
-    [RpcAttribute ("SpaceCenter", "Flight_get_ThrustSpecificFuelConsumption")]
+    [Rpc ("SpaceCenter", "Flight_get_ThrustSpecificFuelConsumption")]
     public float ThrustSpecificFuelConsumption {
         get {
             var args = new object[] {
@@ -643,7 +643,7 @@ public class Flight : RemoteObject
     /// of the atmosphere around the vessel, in Kelvin.
     /// This includes the <see cref="M:SpaceCenter.Flight.StaticAirTemperature" /> and the vessel's kinetic energy.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Flight_get_TotalAirTemperature")]
+    [Rpc ("SpaceCenter", "Flight_get_TotalAirTemperature")]
     public float TotalAirTemperature {
         get {
             var args = new object[] {
@@ -657,7 +657,7 @@ public class Flight : RemoteObject
     /// The <a href="https://en.wikipedia.org/wiki/True_airspeed">true air speed</a>
     /// of the vessel, in meters per second.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Flight_get_TrueAirSpeed")]
+    [Rpc ("SpaceCenter", "Flight_get_TrueAirSpeed")]
     public float TrueAirSpeed {
         get {
             var args = new object[] {
@@ -672,7 +672,7 @@ public class Flight : RemoteObject
     /// </summary>
     /// <returns>The velocity as a vector. The vector points in the direction of travel,
     /// and its magnitude is the speed of the vessel in meters per second.</returns>
-    [RpcAttribute ("SpaceCenter", "Flight_get_Velocity")]
+    [Rpc ("SpaceCenter", "Flight_get_Velocity")]
     public Tuple<double,double,double> Velocity {
         get {
             var args = new object[] {
@@ -686,7 +686,7 @@ public class Flight : RemoteObject
     /// The vertical speed of the vessel in meters per second,
     /// in the reference frame <see cref="T:SpaceCenter.ReferenceFrame" />.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Flight_get_VerticalSpeed")]
+    [Rpc ("SpaceCenter", "Flight_get_VerticalSpeed")]
     public double VerticalSpeed {
         get {
             var args = new object[] {

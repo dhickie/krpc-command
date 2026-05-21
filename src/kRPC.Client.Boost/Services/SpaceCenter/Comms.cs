@@ -21,7 +21,7 @@ public class Comms : RemoteObject
     /// <summary>
     /// Whether the vessel can communicate with KSC.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Comms_get_CanCommunicate")]
+    [Rpc ("SpaceCenter", "Comms_get_CanCommunicate")]
     public bool CanCommunicate {
         get {
             var args = new object[] {
@@ -34,7 +34,7 @@ public class Comms : RemoteObject
     /// <summary>
     /// Whether the vessel can transmit science data to KSC.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Comms_get_CanTransmitScience")]
+    [Rpc ("SpaceCenter", "Comms_get_CanTransmitScience")]
     public bool CanTransmitScience {
         get {
             var args = new object[] {
@@ -47,7 +47,7 @@ public class Comms : RemoteObject
     /// <summary>
     /// The communication path used to control the vessel.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Comms_get_ControlPath")]
+    [Rpc ("SpaceCenter", "Comms_get_ControlPath")]
     public IList<CommLink> ControlPath {
         get {
             var args = new object[] {
@@ -60,7 +60,7 @@ public class Comms : RemoteObject
     /// <summary>
     /// The combined power of all active antennae on the vessel.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Comms_get_Power")]
+    [Rpc ("SpaceCenter", "Comms_get_Power")]
     public double Power {
         get {
             var args = new object[] {
@@ -73,7 +73,7 @@ public class Comms : RemoteObject
     /// <summary>
     /// Signal delay to KSC in seconds.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Comms_get_SignalDelay")]
+    [Rpc ("SpaceCenter", "Comms_get_SignalDelay")]
     public double SignalDelay {
         get {
             var args = new object[] {
@@ -86,7 +86,7 @@ public class Comms : RemoteObject
     /// <summary>
     /// Signal strength to KSC.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Comms_get_SignalStrength")]
+    [Rpc ("SpaceCenter", "Comms_get_SignalStrength")]
     public double SignalStrength {
         get {
             var args = new object[] {

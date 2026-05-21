@@ -20,7 +20,7 @@ public class ReactionWheel : RemoteObject
     /// <summary>
     /// Whether the reaction wheel is active.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "ReactionWheel_get_Active")]
+    [Rpc ("SpaceCenter", "ReactionWheel_get_Active")]
     public bool Active {
         get {
             var args = new object[] {
@@ -43,7 +43,7 @@ public class ReactionWheel : RemoteObject
     /// correspond to the coordinate axes of the <see cref="M:SpaceCenter.Vessel.ReferenceFrame" />.
     /// Returns zero if the reaction wheel is inactive or broken.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "ReactionWheel_get_AvailableTorque")]
+    [Rpc ("SpaceCenter", "ReactionWheel_get_AvailableTorque")]
     public Tuple<Tuple<double,double,double>,Tuple<double,double,double>> AvailableTorque {
         get {
             var args = new object[] {
@@ -56,7 +56,7 @@ public class ReactionWheel : RemoteObject
     /// <summary>
     /// Whether the reaction wheel is broken.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "ReactionWheel_get_Broken")]
+    [Rpc ("SpaceCenter", "ReactionWheel_get_Broken")]
     public bool Broken {
         get {
             var args = new object[] {
@@ -71,7 +71,7 @@ public class ReactionWheel : RemoteObject
     /// when it is active, in the positive and negative pitch, roll and yaw axes of the vessel.
     /// These axes correspond to the coordinate axes of the <see cref="M:SpaceCenter.Vessel.ReferenceFrame" />.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "ReactionWheel_get_MaxTorque")]
+    [Rpc ("SpaceCenter", "ReactionWheel_get_MaxTorque")]
     public Tuple<Tuple<double,double,double>,Tuple<double,double,double>> MaxTorque {
         get {
             var args = new object[] {
@@ -84,7 +84,7 @@ public class ReactionWheel : RemoteObject
     /// <summary>
     /// The part object for this reaction wheel.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "ReactionWheel_get_Part")]
+    [Rpc ("SpaceCenter", "ReactionWheel_get_Part")]
     public Part Part {
         get {
             var args = new object[] {

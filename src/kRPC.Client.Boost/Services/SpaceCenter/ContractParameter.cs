@@ -20,7 +20,7 @@ public class ContractParameter : RemoteObject
     /// <summary>
     /// Child contract parameters.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "ContractParameter_get_Children")]
+    [Rpc ("SpaceCenter", "ContractParameter_get_Children")]
     public IList<ContractParameter> Children {
         get {
             var args = new object[] {
@@ -33,7 +33,7 @@ public class ContractParameter : RemoteObject
     /// <summary>
     /// Whether the parameter has been completed.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "ContractParameter_get_Completed")]
+    [Rpc ("SpaceCenter", "ContractParameter_get_Completed")]
     public bool Completed {
         get {
             var args = new object[] {
@@ -46,7 +46,7 @@ public class ContractParameter : RemoteObject
     /// <summary>
     /// Whether the parameter has been failed.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "ContractParameter_get_Failed")]
+    [Rpc ("SpaceCenter", "ContractParameter_get_Failed")]
     public bool Failed {
         get {
             var args = new object[] {
@@ -59,7 +59,7 @@ public class ContractParameter : RemoteObject
     /// <summary>
     /// Funds received on completion of the contract parameter.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "ContractParameter_get_FundsCompletion")]
+    [Rpc ("SpaceCenter", "ContractParameter_get_FundsCompletion")]
     public double FundsCompletion {
         get {
             var args = new object[] {
@@ -72,7 +72,7 @@ public class ContractParameter : RemoteObject
     /// <summary>
     /// Funds lost if the contract parameter is failed.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "ContractParameter_get_FundsFailure")]
+    [Rpc ("SpaceCenter", "ContractParameter_get_FundsFailure")]
     public double FundsFailure {
         get {
             var args = new object[] {
@@ -85,7 +85,7 @@ public class ContractParameter : RemoteObject
     /// <summary>
     /// Notes for the parameter.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "ContractParameter_get_Notes")]
+    [Rpc ("SpaceCenter", "ContractParameter_get_Notes")]
     public string Notes {
         get {
             var args = new object[] {
@@ -98,7 +98,7 @@ public class ContractParameter : RemoteObject
     /// <summary>
     /// Whether the contract parameter is optional.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "ContractParameter_get_Optional")]
+    [Rpc ("SpaceCenter", "ContractParameter_get_Optional")]
     public bool Optional {
         get {
             var args = new object[] {
@@ -111,7 +111,7 @@ public class ContractParameter : RemoteObject
     /// <summary>
     /// Reputation gained on completion of the contract parameter.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "ContractParameter_get_ReputationCompletion")]
+    [Rpc ("SpaceCenter", "ContractParameter_get_ReputationCompletion")]
     public double ReputationCompletion {
         get {
             var args = new object[] {
@@ -124,7 +124,7 @@ public class ContractParameter : RemoteObject
     /// <summary>
     /// Reputation lost if the contract parameter is failed.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "ContractParameter_get_ReputationFailure")]
+    [Rpc ("SpaceCenter", "ContractParameter_get_ReputationFailure")]
     public double ReputationFailure {
         get {
             var args = new object[] {
@@ -137,7 +137,7 @@ public class ContractParameter : RemoteObject
     /// <summary>
     /// Science gained on completion of the contract parameter.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "ContractParameter_get_ScienceCompletion")]
+    [Rpc ("SpaceCenter", "ContractParameter_get_ScienceCompletion")]
     public double ScienceCompletion {
         get {
             var args = new object[] {
@@ -150,7 +150,7 @@ public class ContractParameter : RemoteObject
     /// <summary>
     /// Title of the parameter.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "ContractParameter_get_Title")]
+    [Rpc ("SpaceCenter", "ContractParameter_get_Title")]
     public string Title {
         get {
             var args = new object[] {

@@ -19,7 +19,7 @@ public class CommNode : RemoteObject
     /// <summary>
     /// Whether the communication node is a control point, for example a manned vessel.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "CommNode_get_IsControlPoint")]
+    [Rpc ("SpaceCenter", "CommNode_get_IsControlPoint")]
     public bool IsControlPoint {
         get {
             var args = new object[] {
@@ -32,7 +32,7 @@ public class CommNode : RemoteObject
     /// <summary>
     /// Whether the communication node is on Kerbin.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "CommNode_get_IsHome")]
+    [Rpc ("SpaceCenter", "CommNode_get_IsHome")]
     public bool IsHome {
         get {
             var args = new object[] {
@@ -45,7 +45,7 @@ public class CommNode : RemoteObject
     /// <summary>
     /// Whether the communication node is a vessel.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "CommNode_get_IsVessel")]
+    [Rpc ("SpaceCenter", "CommNode_get_IsVessel")]
     public bool IsVessel {
         get {
             var args = new object[] {
@@ -58,7 +58,7 @@ public class CommNode : RemoteObject
     /// <summary>
     /// Name of the communication node.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "CommNode_get_Name")]
+    [Rpc ("SpaceCenter", "CommNode_get_Name")]
     public string Name {
         get {
             var args = new object[] {
@@ -71,7 +71,7 @@ public class CommNode : RemoteObject
     /// <summary>
     /// The vessel for this communication node.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "CommNode_get_Vessel")]
+    [Rpc ("SpaceCenter", "CommNode_get_Vessel")]
     public Vessel Vessel {
         get {
             var args = new object[] {

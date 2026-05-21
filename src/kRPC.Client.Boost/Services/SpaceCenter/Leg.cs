@@ -19,7 +19,7 @@ public class Leg : RemoteObject
     /// <summary>
     /// Whether the leg is deployable.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Leg_get_Deployable")]
+    [Rpc ("SpaceCenter", "Leg_get_Deployable")]
     public bool Deployable {
         get {
             var args = new object[] {
@@ -36,7 +36,7 @@ public class Leg : RemoteObject
     /// Fixed landing legs are always deployed.
     /// Returns an error if you try to deploy fixed landing gear.
     /// </remarks>
-    [RpcAttribute ("SpaceCenter", "Leg_get_Deployed")]
+    [Rpc ("SpaceCenter", "Leg_get_Deployed")]
     public bool Deployed {
         get {
             var args = new object[] {
@@ -56,7 +56,7 @@ public class Leg : RemoteObject
     /// <summary>
     /// Returns whether the leg is touching the ground.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Leg_get_IsGrounded")]
+    [Rpc ("SpaceCenter", "Leg_get_IsGrounded")]
     public bool IsGrounded {
         get {
             var args = new object[] {
@@ -69,7 +69,7 @@ public class Leg : RemoteObject
     /// <summary>
     /// The part object for this landing leg.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Leg_get_Part")]
+    [Rpc ("SpaceCenter", "Leg_get_Part")]
     public Part Part {
         get {
             var args = new object[] {
@@ -82,7 +82,7 @@ public class Leg : RemoteObject
     /// <summary>
     /// The current state of the landing leg.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Leg_get_State")]
+    [Rpc ("SpaceCenter", "Leg_get_State")]
     public LegState State {
         get {
             var args = new object[] {

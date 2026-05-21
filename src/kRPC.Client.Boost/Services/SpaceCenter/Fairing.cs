@@ -20,7 +20,7 @@ public class Fairing : RemoteObject
     /// <summary>
     /// Jettison the fairing. Has no effect if it has already been jettisoned.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Fairing_Jettison")]
+    [Rpc ("SpaceCenter", "Fairing_Jettison")]
     public void Jettison ()
     {
         var args = new object[] {
@@ -32,7 +32,7 @@ public class Fairing : RemoteObject
     /// <summary>
     /// Whether the fairing has been jettisoned.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Fairing_get_Jettisoned")]
+    [Rpc ("SpaceCenter", "Fairing_get_Jettisoned")]
     public bool Jettisoned {
         get {
             var args = new object[] {
@@ -45,7 +45,7 @@ public class Fairing : RemoteObject
     /// <summary>
     /// The part object for this fairing.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Fairing_get_Part")]
+    [Rpc ("SpaceCenter", "Fairing_get_Part")]
     public Part Part {
         get {
             var args = new object[] {

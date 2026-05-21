@@ -28,7 +28,7 @@ public class Vessel : RemoteObject
     /// axis of rotation, using the right-hand rule.</returns>
     /// <param name="referenceFrame">The reference frame the returned
     /// angular velocity is in.</param>
-    [RpcAttribute ("SpaceCenter", "Vessel_AngularVelocity")]
+    [Rpc ("SpaceCenter", "Vessel_AngularVelocity")]
     public Tuple<double,double,double> AngularVelocity (ReferenceFrame referenceFrame)
     {
         var args = new object[] {
@@ -45,7 +45,7 @@ public class Vessel : RemoteObject
     /// Takes the given pressure into account.
     /// </summary>
     /// <param name="pressure">Atmospheric pressure in atmospheres</param>
-    [RpcAttribute ("SpaceCenter", "Vessel_AvailableThrustAt")]
+    [Rpc ("SpaceCenter", "Vessel_AvailableThrustAt")]
     public float AvailableThrustAt (double pressure)
     {
         var args = new object[] {
@@ -62,7 +62,7 @@ public class Vessel : RemoteObject
     /// as position vectors.</returns>
     /// <param name="referenceFrame">The reference frame that the returned
     /// position vectors are in.</param>
-    [RpcAttribute ("SpaceCenter", "Vessel_BoundingBox")]
+    [Rpc ("SpaceCenter", "Vessel_BoundingBox")]
     public Tuple<Tuple<double,double,double>,Tuple<double,double,double>> BoundingBox (ReferenceFrame referenceFrame)
     {
         var args = new object[] {
@@ -78,7 +78,7 @@ public class Vessel : RemoteObject
     /// <returns>The direction as a unit vector.</returns>
     /// <param name="referenceFrame">The reference frame that the returned
     /// direction is in.</param>
-    [RpcAttribute ("SpaceCenter", "Vessel_Direction")]
+    [Rpc ("SpaceCenter", "Vessel_Direction")]
     public Tuple<double,double,double> Direction (ReferenceFrame referenceFrame)
     {
         var args = new object[] {
@@ -96,7 +96,7 @@ public class Vessel : RemoteObject
     /// Reference frame. Defaults to the vessel's surface reference frame
     /// (<see cref="M:SpaceCenter.Vessel.SurfaceReferenceFrame" />).
     /// </param>
-    [RpcAttribute ("SpaceCenter", "Vessel_Flight")]
+    [Rpc ("SpaceCenter", "Vessel_Flight")]
     public Flight Flight (ReferenceFrame referenceFrame = null)
     {
         var args = new object[] {
@@ -113,7 +113,7 @@ public class Vessel : RemoteObject
     /// Takes the given pressure into account.
     /// </summary>
     /// <param name="pressure">Atmospheric pressure in atmospheres</param>
-    [RpcAttribute ("SpaceCenter", "Vessel_MaxThrustAt")]
+    [Rpc ("SpaceCenter", "Vessel_MaxThrustAt")]
     public float MaxThrustAt (double pressure)
     {
         var args = new object[] {
@@ -129,7 +129,7 @@ public class Vessel : RemoteObject
     /// <returns>The position as a vector.</returns>
     /// <param name="referenceFrame">The reference frame that the returned
     /// position vector is in.</param>
-    [RpcAttribute ("SpaceCenter", "Vessel_Position")]
+    [Rpc ("SpaceCenter", "Vessel_Position")]
     public Tuple<double,double,double> Position (ReferenceFrame referenceFrame)
     {
         var args = new object[] {
@@ -142,7 +142,7 @@ public class Vessel : RemoteObject
     /// <summary>
     /// Recover the vessel.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Vessel_Recover")]
+    [Rpc ("SpaceCenter", "Vessel_Recover")]
     public void Recover ()
     {
         var args = new object[] {
@@ -159,7 +159,7 @@ public class Vessel : RemoteObject
     /// <param name="cumulative">When <c>false</c>, returns the resources for parts
     /// decoupled in just the given stage. When <c>true</c> returns the resources decoupled in
     /// the given stage and all subsequent stages combined.</param>
-    [RpcAttribute ("SpaceCenter", "Vessel_ResourcesInDecoupleStage")]
+    [Rpc ("SpaceCenter", "Vessel_ResourcesInDecoupleStage")]
     public Resources ResourcesInDecoupleStage (int stage, bool cumulative = true)
     {
         var args = new object[] {
@@ -176,7 +176,7 @@ public class Vessel : RemoteObject
     /// <returns>The rotation as a quaternion of the form <math>(x, y, z, w)</math>.</returns>
     /// <param name="referenceFrame">The reference frame that the returned
     /// rotation is in.</param>
-    [RpcAttribute ("SpaceCenter", "Vessel_Rotation")]
+    [Rpc ("SpaceCenter", "Vessel_Rotation")]
     public Tuple<double,double,double,double> Rotation (ReferenceFrame referenceFrame)
     {
         var args = new object[] {
@@ -192,7 +192,7 @@ public class Vessel : RemoteObject
     /// Takes the given pressure into account.
     /// </summary>
     /// <param name="pressure">Atmospheric pressure in atmospheres</param>
-    [RpcAttribute ("SpaceCenter", "Vessel_SpecificImpulseAt")]
+    [Rpc ("SpaceCenter", "Vessel_SpecificImpulseAt")]
     public float SpecificImpulseAt (double pressure)
     {
         var args = new object[] {
@@ -209,7 +209,7 @@ public class Vessel : RemoteObject
     /// and its magnitude is the speed of the body in meters per second.</returns>
     /// <param name="referenceFrame">The reference frame that the returned
     /// velocity vector is in.</param>
-    [RpcAttribute ("SpaceCenter", "Vessel_Velocity")]
+    [Rpc ("SpaceCenter", "Vessel_Velocity")]
     public Tuple<double,double,double> Velocity (ReferenceFrame referenceFrame)
     {
         var args = new object[] {
@@ -223,7 +223,7 @@ public class Vessel : RemoteObject
     /// An <see cref="T:SpaceCenter.AutoPilot" /> object, that can be used to perform
     /// simple auto-piloting of the vessel.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Vessel_get_AutoPilot")]
+    [Rpc ("SpaceCenter", "Vessel_get_AutoPilot")]
     public AutoPilot AutoPilot {
         get {
             var args = new object[] {
@@ -239,7 +239,7 @@ public class Vessel : RemoteObject
     /// vessels reference frame (<see cref="T:SpaceCenter.ReferenceFrame" />).
     /// These axes are equivalent to the pitch, roll and yaw axes of the vessel.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Vessel_get_AvailableControlSurfaceTorque")]
+    [Rpc ("SpaceCenter", "Vessel_get_AvailableControlSurfaceTorque")]
     public Tuple<Tuple<double,double,double>,Tuple<double,double,double>> AvailableControlSurfaceTorque {
         get {
             var args = new object[] {
@@ -255,7 +255,7 @@ public class Vessel : RemoteObject
     /// vessels reference frame (<see cref="T:SpaceCenter.ReferenceFrame" />).
     /// These axes are equivalent to the pitch, roll and yaw axes of the vessel.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Vessel_get_AvailableEngineTorque")]
+    [Rpc ("SpaceCenter", "Vessel_get_AvailableEngineTorque")]
     public Tuple<Tuple<double,double,double>,Tuple<double,double,double>> AvailableEngineTorque {
         get {
             var args = new object[] {
@@ -272,7 +272,7 @@ public class Vessel : RemoteObject
     /// vessels reference frame (<see cref="T:SpaceCenter.ReferenceFrame" />).
     /// These axes are equivalent to the pitch, roll and yaw axes of the vessel.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Vessel_get_AvailableOtherTorque")]
+    [Rpc ("SpaceCenter", "Vessel_get_AvailableOtherTorque")]
     public Tuple<Tuple<double,double,double>,Tuple<double,double,double>> AvailableOtherTorque {
         get {
             var args = new object[] {
@@ -288,7 +288,7 @@ public class Vessel : RemoteObject
     /// vessels reference frame (<see cref="T:SpaceCenter.ReferenceFrame" />).
     /// These axes are equivalent to the right, forward and bottom directions of the vessel.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Vessel_get_AvailableRCSForce")]
+    [Rpc ("SpaceCenter", "Vessel_get_AvailableRCSForce")]
     public Tuple<Tuple<double,double,double>,Tuple<double,double,double>> AvailableRCSForce {
         get {
             var args = new object[] {
@@ -304,7 +304,7 @@ public class Vessel : RemoteObject
     /// vessels reference frame (<see cref="T:SpaceCenter.ReferenceFrame" />).
     /// These axes are equivalent to the pitch, roll and yaw axes of the vessel.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Vessel_get_AvailableRCSTorque")]
+    [Rpc ("SpaceCenter", "Vessel_get_AvailableRCSTorque")]
     public Tuple<Tuple<double,double,double>,Tuple<double,double,double>> AvailableRCSTorque {
         get {
             var args = new object[] {
@@ -320,7 +320,7 @@ public class Vessel : RemoteObject
     /// vessels reference frame (<see cref="T:SpaceCenter.ReferenceFrame" />).
     /// These axes are equivalent to the pitch, roll and yaw axes of the vessel.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Vessel_get_AvailableReactionWheelTorque")]
+    [Rpc ("SpaceCenter", "Vessel_get_AvailableReactionWheelTorque")]
     public Tuple<Tuple<double,double,double>,Tuple<double,double,double>> AvailableReactionWheelTorque {
         get {
             var args = new object[] {
@@ -335,7 +335,7 @@ public class Vessel : RemoteObject
     /// active engines, in Newtons. This is computed by summing
     /// <see cref="M:SpaceCenter.Engine.AvailableThrust" /> for every active engine in the vessel.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Vessel_get_AvailableThrust")]
+    [Rpc ("SpaceCenter", "Vessel_get_AvailableThrust")]
     public float AvailableThrust {
         get {
             var args = new object[] {
@@ -352,7 +352,7 @@ public class Vessel : RemoteObject
     /// vessels reference frame (<see cref="T:SpaceCenter.ReferenceFrame" />).
     /// These axes are equivalent to the pitch, roll and yaw axes of the vessel.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Vessel_get_AvailableTorque")]
+    [Rpc ("SpaceCenter", "Vessel_get_AvailableTorque")]
     public Tuple<Tuple<double,double,double>,Tuple<double,double,double>> AvailableTorque {
         get {
             var args = new object[] {
@@ -365,7 +365,7 @@ public class Vessel : RemoteObject
     /// <summary>
     /// The name of the biome the vessel is currently in.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Vessel_get_Biome")]
+    [Rpc ("SpaceCenter", "Vessel_get_Biome")]
     public string Biome {
         get {
             var args = new object[] {
@@ -379,7 +379,7 @@ public class Vessel : RemoteObject
     /// Returns a <see cref="T:SpaceCenter.Comms" /> object that can be used to interact
     /// with CommNet for this vessel.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Vessel_get_Comms")]
+    [Rpc ("SpaceCenter", "Vessel_get_Comms")]
     public Comms Comms {
         get {
             var args = new object[] {
@@ -394,7 +394,7 @@ public class Vessel : RemoteObject
     /// the vessel's control inputs. For example, its pitch/yaw/roll controls,
     /// RCS and thrust.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Vessel_get_Control")]
+    [Rpc ("SpaceCenter", "Vessel_get_Control")]
     public Control Control {
         get {
             var args = new object[] {
@@ -407,7 +407,7 @@ public class Vessel : RemoteObject
     /// <summary>
     /// The crew in the vessel.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Vessel_get_Crew")]
+    [Rpc ("SpaceCenter", "Vessel_get_Crew")]
     public IList<CrewMember> Crew {
         get {
             var args = new object[] {
@@ -420,7 +420,7 @@ public class Vessel : RemoteObject
     /// <summary>
     /// The number of crew that can occupy the vessel.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Vessel_get_CrewCapacity")]
+    [Rpc ("SpaceCenter", "Vessel_get_CrewCapacity")]
     public int CrewCapacity {
         get {
             var args = new object[] {
@@ -433,7 +433,7 @@ public class Vessel : RemoteObject
     /// <summary>
     /// The number of crew that are occupying the vessel.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Vessel_get_CrewCount")]
+    [Rpc ("SpaceCenter", "Vessel_get_CrewCount")]
     public int CrewCount {
         get {
             var args = new object[] {
@@ -446,7 +446,7 @@ public class Vessel : RemoteObject
     /// <summary>
     /// The total mass of the vessel, excluding resources, in kg.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Vessel_get_DryMass")]
+    [Rpc ("SpaceCenter", "Vessel_get_DryMass")]
     public float DryMass {
         get {
             var args = new object[] {
@@ -461,7 +461,7 @@ public class Vessel : RemoteObject
     /// in the vessels reference frame (<see cref="T:SpaceCenter.ReferenceFrame" />).
     /// Returns the 3x3 matrix as a list of elements, in row-major order.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Vessel_get_InertiaTensor")]
+    [Rpc ("SpaceCenter", "Vessel_get_InertiaTensor")]
     public IList<double> InertiaTensor {
         get {
             var args = new object[] {
@@ -476,7 +476,7 @@ public class Vessel : RemoteObject
     /// This is computed using the formula
     /// <a href="https://wiki.kerbalspaceprogram.com/wiki/Specific_impulse#Multiple_engines">described here</a>.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Vessel_get_KerbinSeaLevelSpecificImpulse")]
+    [Rpc ("SpaceCenter", "Vessel_get_KerbinSeaLevelSpecificImpulse")]
     public float KerbinSeaLevelSpecificImpulse {
         get {
             var args = new object[] {
@@ -489,7 +489,7 @@ public class Vessel : RemoteObject
     /// <summary>
     /// The mission elapsed time in seconds.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Vessel_get_MET")]
+    [Rpc ("SpaceCenter", "Vessel_get_MET")]
     public double MET {
         get {
             var args = new object[] {
@@ -502,7 +502,7 @@ public class Vessel : RemoteObject
     /// <summary>
     /// The total mass of the vessel, including resources, in kg.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Vessel_get_Mass")]
+    [Rpc ("SpaceCenter", "Vessel_get_Mass")]
     public float Mass {
         get {
             var args = new object[] {
@@ -517,7 +517,7 @@ public class Vessel : RemoteObject
     /// engines, in Newtons. This is computed by summing
     /// <see cref="M:SpaceCenter.Engine.MaxThrust" /> for every active engine.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Vessel_get_MaxThrust")]
+    [Rpc ("SpaceCenter", "Vessel_get_MaxThrust")]
     public float MaxThrust {
         get {
             var args = new object[] {
@@ -532,7 +532,7 @@ public class Vessel : RemoteObject
     /// engines when the vessel is in a vacuum, in Newtons. This is computed by
     /// summing <see cref="M:SpaceCenter.Engine.MaxVacuumThrust" /> for every active engine.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Vessel_get_MaxVacuumThrust")]
+    [Rpc ("SpaceCenter", "Vessel_get_MaxVacuumThrust")]
     public float MaxVacuumThrust {
         get {
             var args = new object[] {
@@ -548,7 +548,7 @@ public class Vessel : RemoteObject
     /// pitch, roll and yaw directions respectively.
     /// This corresponds to the vessels reference frame (<see cref="T:SpaceCenter.ReferenceFrame" />).
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Vessel_get_MomentOfInertia")]
+    [Rpc ("SpaceCenter", "Vessel_get_MomentOfInertia")]
     public Tuple<double,double,double> MomentOfInertia {
         get {
             var args = new object[] {
@@ -561,7 +561,7 @@ public class Vessel : RemoteObject
     /// <summary>
     /// The name of the vessel.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Vessel_get_Name")]
+    [Rpc ("SpaceCenter", "Vessel_get_Name")]
     public string Name {
         get {
             var args = new object[] {
@@ -581,7 +581,7 @@ public class Vessel : RemoteObject
     /// <summary>
     /// The current orbit of the vessel.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Vessel_get_Orbit")]
+    [Rpc ("SpaceCenter", "Vessel_get_Orbit")]
     public Orbit Orbit {
         get {
             var args = new object[] {
@@ -598,7 +598,7 @@ public class Vessel : RemoteObject
     /// <remarks>
     /// Be careful not to confuse this with 'orbit' mode on the navball.
     /// </remarks>
-    [RpcAttribute ("SpaceCenter", "Vessel_get_OrbitalReferenceFrame")]
+    [Rpc ("SpaceCenter", "Vessel_get_OrbitalReferenceFrame")]
     public ReferenceFrame OrbitalReferenceFrame {
         get {
             var args = new object[] {
@@ -611,7 +611,7 @@ public class Vessel : RemoteObject
     /// <summary>
     /// A <see cref="T:SpaceCenter.Parts" /> object, that can used to interact with the parts that make up this vessel.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Vessel_get_Parts")]
+    [Rpc ("SpaceCenter", "Vessel_get_Parts")]
     public Parts Parts {
         get {
             var args = new object[] {
@@ -624,7 +624,7 @@ public class Vessel : RemoteObject
     /// <summary>
     /// Whether the vessel is recoverable.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Vessel_get_Recoverable")]
+    [Rpc ("SpaceCenter", "Vessel_get_Recoverable")]
     public bool Recoverable {
         get {
             var args = new object[] {
@@ -638,7 +638,7 @@ public class Vessel : RemoteObject
     /// The reference frame that is fixed relative to the vessel,
     /// and orientated with the vessel.
     /// <list type="bullet"><item><description>The origin is at the center of mass of the vessel.</description></item><item><description>The axes rotate with the vessel.</description></item><item><description>The x-axis points out to the right of the vessel.</description></item><item><description>The y-axis points in the forward direction of the vessel.</description></item><item><description>The z-axis points out of the bottom off the vessel.</description></item></list></summary>
-    [RpcAttribute ("SpaceCenter", "Vessel_get_ReferenceFrame")]
+    [Rpc ("SpaceCenter", "Vessel_get_ReferenceFrame")]
     public ReferenceFrame ReferenceFrame {
         get {
             var args = new object[] {
@@ -652,7 +652,7 @@ public class Vessel : RemoteObject
     /// A <see cref="T:SpaceCenter.Resources" /> object, that can used to get information
     /// about resources stored in the vessel.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Vessel_get_Resources")]
+    [Rpc ("SpaceCenter", "Vessel_get_Resources")]
     public Resources Resources {
         get {
             var args = new object[] {
@@ -665,7 +665,7 @@ public class Vessel : RemoteObject
     /// <summary>
     /// The situation the vessel is in.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Vessel_get_Situation")]
+    [Rpc ("SpaceCenter", "Vessel_get_Situation")]
     public VesselSituation Situation {
         get {
             var args = new object[] {
@@ -679,7 +679,7 @@ public class Vessel : RemoteObject
     /// The combined specific impulse of all active engines, in seconds. This is computed using the formula
     /// <a href="https://wiki.kerbalspaceprogram.com/wiki/Specific_impulse#Multiple_engines">described here</a>.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Vessel_get_SpecificImpulse")]
+    [Rpc ("SpaceCenter", "Vessel_get_SpecificImpulse")]
     public float SpecificImpulse {
         get {
             var args = new object[] {
@@ -702,7 +702,7 @@ public class Vessel : RemoteObject
     /// <remarks>
     /// Be careful not to confuse this with 'surface' mode on the navball.
     /// </remarks>
-    [RpcAttribute ("SpaceCenter", "Vessel_get_SurfaceReferenceFrame")]
+    [Rpc ("SpaceCenter", "Vessel_get_SurfaceReferenceFrame")]
     public ReferenceFrame SurfaceReferenceFrame {
         get {
             var args = new object[] {
@@ -719,7 +719,7 @@ public class Vessel : RemoteObject
     /// <list type="bullet"><item><description>The origin is at the center of mass of the vessel.</description></item><item><description>The axes rotate with the vessel's velocity vector.</description></item><item><description>The y-axis points in the direction of the vessel's velocity vector,
     /// relative to the surface of the body being orbited.</description></item><item><description>The z-axis is in the plane of the
     /// <a href="https://en.wikipedia.org/wiki/Horizon">astronomical horizon</a>.</description></item><item><description>The x-axis is orthogonal to the other two axes.</description></item></list></summary>
-    [RpcAttribute ("SpaceCenter", "Vessel_get_SurfaceVelocityReferenceFrame")]
+    [Rpc ("SpaceCenter", "Vessel_get_SurfaceVelocityReferenceFrame")]
     public ReferenceFrame SurfaceVelocityReferenceFrame {
         get {
             var args = new object[] {
@@ -734,7 +734,7 @@ public class Vessel : RemoteObject
     /// Newtons. This is computed by summing <see cref="M:SpaceCenter.Engine.Thrust" /> for
     /// every engine in the vessel.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Vessel_get_Thrust")]
+    [Rpc ("SpaceCenter", "Vessel_get_Thrust")]
     public float Thrust {
         get {
             var args = new object[] {
@@ -747,7 +747,7 @@ public class Vessel : RemoteObject
     /// <summary>
     /// The type of the vessel.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Vessel_get_Type")]
+    [Rpc ("SpaceCenter", "Vessel_get_Type")]
     public VesselType Type {
         get {
             var args = new object[] {
@@ -768,7 +768,7 @@ public class Vessel : RemoteObject
     /// The combined vacuum specific impulse of all active engines, in seconds. This is computed using the formula
     /// <a href="https://wiki.kerbalspaceprogram.com/wiki/Specific_impulse#Multiple_engines">described here</a>.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Vessel_get_VacuumSpecificImpulse")]
+    [Rpc ("SpaceCenter", "Vessel_get_VacuumSpecificImpulse")]
     public float VacuumSpecificImpulse {
         get {
             var args = new object[] {

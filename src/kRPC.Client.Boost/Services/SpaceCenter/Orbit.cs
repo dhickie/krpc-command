@@ -25,7 +25,7 @@ public class Orbit : RemoteObject
     /// Estimates and returns the distance at closest approach to a target orbit, in meters.
     /// </summary>
     /// <param name="target">Target orbit.</param>
-    [RpcAttribute ("SpaceCenter", "Orbit_DistanceAtClosestApproach")]
+    [Rpc ("SpaceCenter", "Orbit_DistanceAtClosestApproach")]
     public double DistanceAtClosestApproach (Orbit target)
     {
         var args = new object[] {
@@ -39,7 +39,7 @@ public class Orbit : RemoteObject
     /// The eccentric anomaly at the given universal time.
     /// </summary>
     /// <param name="ut">The universal time, in seconds.</param>
-    [RpcAttribute ("SpaceCenter", "Orbit_EccentricAnomalyAtUT")]
+    [Rpc ("SpaceCenter", "Orbit_EccentricAnomalyAtUT")]
     public double EccentricAnomalyAtUT (double ut)
     {
         var args = new object[] {
@@ -59,7 +59,7 @@ public class Orbit : RemoteObject
     /// </returns>
     /// <param name="target">Target orbit.</param>
     /// <param name="orbits">The number of future orbits to search.</param>
-    [RpcAttribute ("SpaceCenter", "Orbit_ListClosestApproaches")]
+    [Rpc ("SpaceCenter", "Orbit_ListClosestApproaches")]
     public IList<IList<double>> ListClosestApproaches (Orbit target, int orbits)
     {
         var args = new object[] {
@@ -74,7 +74,7 @@ public class Orbit : RemoteObject
     /// The mean anomaly at the given time.
     /// </summary>
     /// <param name="ut">The universal time in seconds.</param>
-    [RpcAttribute ("SpaceCenter", "Orbit_MeanAnomalyAtUT")]
+    [Rpc ("SpaceCenter", "Orbit_MeanAnomalyAtUT")]
     public double MeanAnomalyAtUT (double ut)
     {
         var args = new object[] {
@@ -88,7 +88,7 @@ public class Orbit : RemoteObject
     /// The orbital speed at the given time, in meters per second.
     /// </summary>
     /// <param name="time">Time from now, in seconds.</param>
-    [RpcAttribute ("SpaceCenter", "Orbit_OrbitalSpeedAt")]
+    [Rpc ("SpaceCenter", "Orbit_OrbitalSpeedAt")]
     public double OrbitalSpeedAt (double time)
     {
         var args = new object[] {
@@ -105,7 +105,7 @@ public class Orbit : RemoteObject
     /// <param name="ut">The universal time to measure the position at.</param>
     /// <param name="referenceFrame">The reference frame that the returned
     /// position vector is in.</param>
-    [RpcAttribute ("SpaceCenter", "Orbit_PositionAt")]
+    [Rpc ("SpaceCenter", "Orbit_PositionAt")]
     public Tuple<double,double,double> PositionAt (double ut, ReferenceFrame referenceFrame)
     {
         var args = new object[] {
@@ -120,7 +120,7 @@ public class Orbit : RemoteObject
     /// The orbital radius at the given time, in meters.
     /// </summary>
     /// <param name="ut">The universal time to measure the radius at.</param>
-    [RpcAttribute ("SpaceCenter", "Orbit_RadiusAt")]
+    [Rpc ("SpaceCenter", "Orbit_RadiusAt")]
     public double RadiusAt (double ut)
     {
         var args = new object[] {
@@ -134,7 +134,7 @@ public class Orbit : RemoteObject
     /// The orbital radius at the point in the orbit given by the true anomaly.
     /// </summary>
     /// <param name="trueAnomaly">The true anomaly.</param>
-    [RpcAttribute ("SpaceCenter", "Orbit_RadiusAtTrueAnomaly")]
+    [Rpc ("SpaceCenter", "Orbit_RadiusAtTrueAnomaly")]
     public double RadiusAtTrueAnomaly (double trueAnomaly)
     {
         var args = new object[] {
@@ -148,7 +148,7 @@ public class Orbit : RemoteObject
     /// Relative inclination of this orbit and the target orbit, in radians.
     /// </summary>
     /// <param name="target">Target orbit.</param>
-    [RpcAttribute ("SpaceCenter", "Orbit_RelativeInclination")]
+    [Rpc ("SpaceCenter", "Orbit_RelativeInclination")]
     public double RelativeInclination (Orbit target)
     {
         var args = new object[] {
@@ -163,7 +163,7 @@ public class Orbit : RemoteObject
     /// </summary>
     /// <returns>The universal time at closest approach, in seconds.</returns>
     /// <param name="target">Target orbit.</param>
-    [RpcAttribute ("SpaceCenter", "Orbit_TimeOfClosestApproach")]
+    [Rpc ("SpaceCenter", "Orbit_TimeOfClosestApproach")]
     public double TimeOfClosestApproach (Orbit target)
     {
         var args = new object[] {
@@ -177,7 +177,7 @@ public class Orbit : RemoteObject
     /// The true anomaly of the ascending node with the given target orbit.
     /// </summary>
     /// <param name="target">Target orbit.</param>
-    [RpcAttribute ("SpaceCenter", "Orbit_TrueAnomalyAtAN")]
+    [Rpc ("SpaceCenter", "Orbit_TrueAnomalyAtAN")]
     public double TrueAnomalyAtAN (Orbit target)
     {
         var args = new object[] {
@@ -191,7 +191,7 @@ public class Orbit : RemoteObject
     /// The true anomaly of the descending node with the given target orbit.
     /// </summary>
     /// <param name="target">Target orbit.</param>
-    [RpcAttribute ("SpaceCenter", "Orbit_TrueAnomalyAtDN")]
+    [Rpc ("SpaceCenter", "Orbit_TrueAnomalyAtDN")]
     public double TrueAnomalyAtDN (Orbit target)
     {
         var args = new object[] {
@@ -205,7 +205,7 @@ public class Orbit : RemoteObject
     /// The true anomaly at the given orbital radius.
     /// </summary>
     /// <param name="radius">The orbital radius in meters.</param>
-    [RpcAttribute ("SpaceCenter", "Orbit_TrueAnomalyAtRadius")]
+    [Rpc ("SpaceCenter", "Orbit_TrueAnomalyAtRadius")]
     public double TrueAnomalyAtRadius (double radius)
     {
         var args = new object[] {
@@ -219,7 +219,7 @@ public class Orbit : RemoteObject
     /// The true anomaly at the given time.
     /// </summary>
     /// <param name="ut">The universal time in seconds.</param>
-    [RpcAttribute ("SpaceCenter", "Orbit_TrueAnomalyAtUT")]
+    [Rpc ("SpaceCenter", "Orbit_TrueAnomalyAtUT")]
     public double TrueAnomalyAtUT (double ut)
     {
         var args = new object[] {
@@ -233,7 +233,7 @@ public class Orbit : RemoteObject
     /// The universal time, in seconds, corresponding to the given true anomaly.
     /// </summary>
     /// <param name="trueAnomaly">True anomaly.</param>
-    [RpcAttribute ("SpaceCenter", "Orbit_UTAtTrueAnomaly")]
+    [Rpc ("SpaceCenter", "Orbit_UTAtTrueAnomaly")]
     public double UTAtTrueAnomaly (double trueAnomaly)
     {
         var args = new object[] {
@@ -251,7 +251,7 @@ public class Orbit : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// direction is in.</param>
     /// <param name="connection">A connection object.</param>
-    [RpcAttribute ("SpaceCenter", "Orbit_static_ReferencePlaneDirection")]
+    [Rpc ("SpaceCenter", "Orbit_static_ReferencePlaneDirection")]
     public static Tuple<double,double,double> ReferencePlaneDirection (ConnectionMultiplexer connection, ReferenceFrame referenceFrame)
     {
         if (connection == null)
@@ -271,7 +271,7 @@ public class Orbit : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// direction is in.</param>
     /// <param name="connection">A connection object.</param>
-    [RpcAttribute ("SpaceCenter", "Orbit_static_ReferencePlaneNormal")]
+    [Rpc ("SpaceCenter", "Orbit_static_ReferencePlaneNormal")]
     public static Tuple<double,double,double> ReferencePlaneNormal (ConnectionMultiplexer connection, ReferenceFrame referenceFrame)
     {
         if (connection == null)
@@ -290,7 +290,7 @@ public class Orbit : RemoteObject
     /// For the apoapsis altitude reported on the in-game map view,
     /// use <see cref="M:SpaceCenter.Orbit.ApoapsisAltitude" />.
     /// </remarks>
-    [RpcAttribute ("SpaceCenter", "Orbit_get_Apoapsis")]
+    [Rpc ("SpaceCenter", "Orbit_get_Apoapsis")]
     public double Apoapsis {
         get {
             var args = new object[] {
@@ -306,7 +306,7 @@ public class Orbit : RemoteObject
     /// <remarks>
     /// This is equal to <see cref="M:SpaceCenter.Orbit.Apoapsis" /> minus the equatorial radius of the body.
     /// </remarks>
-    [RpcAttribute ("SpaceCenter", "Orbit_get_ApoapsisAltitude")]
+    [Rpc ("SpaceCenter", "Orbit_get_ApoapsisAltitude")]
     public double ApoapsisAltitude {
         get {
             var args = new object[] {
@@ -320,7 +320,7 @@ public class Orbit : RemoteObject
     /// The <a href="https://en.wikipedia.org/wiki/Argument_of_periapsis">argument of
     /// periapsis</a>, in radians.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Orbit_get_ArgumentOfPeriapsis")]
+    [Rpc ("SpaceCenter", "Orbit_get_ArgumentOfPeriapsis")]
     public double ArgumentOfPeriapsis {
         get {
             var args = new object[] {
@@ -333,7 +333,7 @@ public class Orbit : RemoteObject
     /// <summary>
     /// The celestial body (e.g. planet or moon) around which the object is orbiting.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Orbit_get_Body")]
+    [Rpc ("SpaceCenter", "Orbit_get_Body")]
     public CelestialBody Body {
         get {
             var args = new object[] {
@@ -346,7 +346,7 @@ public class Orbit : RemoteObject
     /// <summary>
     /// The <a href="https://en.wikipedia.org/wiki/Eccentric_anomaly">eccentric anomaly</a>.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Orbit_get_EccentricAnomaly")]
+    [Rpc ("SpaceCenter", "Orbit_get_EccentricAnomaly")]
     public double EccentricAnomaly {
         get {
             var args = new object[] {
@@ -360,7 +360,7 @@ public class Orbit : RemoteObject
     /// The <a href="https://en.wikipedia.org/wiki/Orbital_eccentricity">eccentricity</a>
     /// of the orbit.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Orbit_get_Eccentricity")]
+    [Rpc ("SpaceCenter", "Orbit_get_Eccentricity")]
     public double Eccentricity {
         get {
             var args = new object[] {
@@ -375,7 +375,7 @@ public class Orbit : RemoteObject
     /// <a href="https://en.wikipedia.org/wiki/Mean_anomaly">mean anomaly at epoch</a>
     /// was measured, in seconds.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Orbit_get_Epoch")]
+    [Rpc ("SpaceCenter", "Orbit_get_Epoch")]
     public double Epoch {
         get {
             var args = new object[] {
@@ -390,7 +390,7 @@ public class Orbit : RemoteObject
     /// of the orbit,
     /// in radians.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Orbit_get_Inclination")]
+    [Rpc ("SpaceCenter", "Orbit_get_Inclination")]
     public double Inclination {
         get {
             var args = new object[] {
@@ -404,7 +404,7 @@ public class Orbit : RemoteObject
     /// The <a href="https://en.wikipedia.org/wiki/Longitude_of_the_ascending_node">longitude of
     /// the ascending node</a>, in radians.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Orbit_get_LongitudeOfAscendingNode")]
+    [Rpc ("SpaceCenter", "Orbit_get_LongitudeOfAscendingNode")]
     public double LongitudeOfAscendingNode {
         get {
             var args = new object[] {
@@ -417,7 +417,7 @@ public class Orbit : RemoteObject
     /// <summary>
     /// The <a href="https://en.wikipedia.org/wiki/Mean_anomaly">mean anomaly</a>.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Orbit_get_MeanAnomaly")]
+    [Rpc ("SpaceCenter", "Orbit_get_MeanAnomaly")]
     public double MeanAnomaly {
         get {
             var args = new object[] {
@@ -430,7 +430,7 @@ public class Orbit : RemoteObject
     /// <summary>
     /// The <a href="https://en.wikipedia.org/wiki/Mean_anomaly">mean anomaly at epoch</a>.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Orbit_get_MeanAnomalyAtEpoch")]
+    [Rpc ("SpaceCenter", "Orbit_get_MeanAnomalyAtEpoch")]
     public double MeanAnomalyAtEpoch {
         get {
             var args = new object[] {
@@ -444,7 +444,7 @@ public class Orbit : RemoteObject
     /// If the object is going to change sphere of influence in the future, returns the new
     /// orbit after the change. Otherwise returns <c>null</c>.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Orbit_get_NextOrbit")]
+    [Rpc ("SpaceCenter", "Orbit_get_NextOrbit")]
     public Orbit NextOrbit {
         get {
             var args = new object[] {
@@ -457,7 +457,7 @@ public class Orbit : RemoteObject
     /// <summary>
     /// The current orbital speed in meters per second.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Orbit_get_OrbitalSpeed")]
+    [Rpc ("SpaceCenter", "Orbit_get_OrbitalSpeed")]
     public double OrbitalSpeed {
         get {
             var args = new object[] {
@@ -475,7 +475,7 @@ public class Orbit : RemoteObject
     /// For the periapsis altitude reported on the in-game map view,
     /// use <see cref="M:SpaceCenter.Orbit.PeriapsisAltitude" />.
     /// </remarks>
-    [RpcAttribute ("SpaceCenter", "Orbit_get_Periapsis")]
+    [Rpc ("SpaceCenter", "Orbit_get_Periapsis")]
     public double Periapsis {
         get {
             var args = new object[] {
@@ -491,7 +491,7 @@ public class Orbit : RemoteObject
     /// <remarks>
     /// This is equal to <see cref="M:SpaceCenter.Orbit.Periapsis" /> minus the equatorial radius of the body.
     /// </remarks>
-    [RpcAttribute ("SpaceCenter", "Orbit_get_PeriapsisAltitude")]
+    [Rpc ("SpaceCenter", "Orbit_get_PeriapsisAltitude")]
     public double PeriapsisAltitude {
         get {
             var args = new object[] {
@@ -504,7 +504,7 @@ public class Orbit : RemoteObject
     /// <summary>
     /// The orbital period, in seconds.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Orbit_get_Period")]
+    [Rpc ("SpaceCenter", "Orbit_get_Period")]
     public double Period {
         get {
             var args = new object[] {
@@ -522,7 +522,7 @@ public class Orbit : RemoteObject
     /// <remarks>
     /// This value will change over time if the orbit is elliptical.
     /// </remarks>
-    [RpcAttribute ("SpaceCenter", "Orbit_get_Radius")]
+    [Rpc ("SpaceCenter", "Orbit_get_Radius")]
     public double Radius {
         get {
             var args = new object[] {
@@ -535,7 +535,7 @@ public class Orbit : RemoteObject
     /// <summary>
     /// The semi-major axis of the orbit, in meters.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Orbit_get_SemiMajorAxis")]
+    [Rpc ("SpaceCenter", "Orbit_get_SemiMajorAxis")]
     public double SemiMajorAxis {
         get {
             var args = new object[] {
@@ -548,7 +548,7 @@ public class Orbit : RemoteObject
     /// <summary>
     /// The semi-minor axis of the orbit, in meters.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Orbit_get_SemiMinorAxis")]
+    [Rpc ("SpaceCenter", "Orbit_get_SemiMinorAxis")]
     public double SemiMinorAxis {
         get {
             var args = new object[] {
@@ -564,7 +564,7 @@ public class Orbit : RemoteObject
     /// <remarks>
     /// This value will change over time if the orbit is elliptical.
     /// </remarks>
-    [RpcAttribute ("SpaceCenter", "Orbit_get_Speed")]
+    [Rpc ("SpaceCenter", "Orbit_get_Speed")]
     public double Speed {
         get {
             var args = new object[] {
@@ -577,7 +577,7 @@ public class Orbit : RemoteObject
     /// <summary>
     /// The time until the object reaches apoapsis, in seconds.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Orbit_get_TimeToApoapsis")]
+    [Rpc ("SpaceCenter", "Orbit_get_TimeToApoapsis")]
     public double TimeToApoapsis {
         get {
             var args = new object[] {
@@ -590,7 +590,7 @@ public class Orbit : RemoteObject
     /// <summary>
     /// The time until the object reaches periapsis, in seconds.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Orbit_get_TimeToPeriapsis")]
+    [Rpc ("SpaceCenter", "Orbit_get_TimeToPeriapsis")]
     public double TimeToPeriapsis {
         get {
             var args = new object[] {
@@ -604,7 +604,7 @@ public class Orbit : RemoteObject
     /// The time until the object changes sphere of influence, in seconds. Returns <c>NaN</c>
     /// if the object is not going to change sphere of influence.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Orbit_get_TimeToSOIChange")]
+    [Rpc ("SpaceCenter", "Orbit_get_TimeToSOIChange")]
     public double TimeToSOIChange {
         get {
             var args = new object[] {
@@ -617,7 +617,7 @@ public class Orbit : RemoteObject
     /// <summary>
     /// The <a href="https://en.wikipedia.org/wiki/True_anomaly">true anomaly</a>.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Orbit_get_TrueAnomaly")]
+    [Rpc ("SpaceCenter", "Orbit_get_TrueAnomaly")]
     public double TrueAnomaly {
         get {
             var args = new object[] {

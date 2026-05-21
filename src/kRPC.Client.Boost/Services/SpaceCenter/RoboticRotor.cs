@@ -19,7 +19,7 @@ public class RoboticRotor : RemoteObject
     /// <summary>
     /// Current RPM.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "RoboticRotor_get_CurrentRPM")]
+    [Rpc ("SpaceCenter", "RoboticRotor_get_CurrentRPM")]
     public float CurrentRPM {
         get {
             var args = new object[] {
@@ -32,7 +32,7 @@ public class RoboticRotor : RemoteObject
     /// <summary>
     /// Whether the rotor direction is inverted.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "RoboticRotor_get_Inverted")]
+    [Rpc ("SpaceCenter", "RoboticRotor_get_Inverted")]
     public bool Inverted {
         get {
             var args = new object[] {
@@ -52,7 +52,7 @@ public class RoboticRotor : RemoteObject
     /// <summary>
     /// Lock movement.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "RoboticRotor_get_Locked")]
+    [Rpc ("SpaceCenter", "RoboticRotor_get_Locked")]
     public bool Locked {
         get {
             var args = new object[] {
@@ -72,7 +72,7 @@ public class RoboticRotor : RemoteObject
     /// <summary>
     /// Whether the motor is engaged.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "RoboticRotor_get_MotorEngaged")]
+    [Rpc ("SpaceCenter", "RoboticRotor_get_MotorEngaged")]
     public bool MotorEngaged {
         get {
             var args = new object[] {
@@ -92,7 +92,7 @@ public class RoboticRotor : RemoteObject
     /// <summary>
     /// The part object for this robotic rotor.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "RoboticRotor_get_Part")]
+    [Rpc ("SpaceCenter", "RoboticRotor_get_Part")]
     public Part Part {
         get {
             var args = new object[] {
@@ -105,7 +105,7 @@ public class RoboticRotor : RemoteObject
     /// <summary>
     /// Target RPM.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "RoboticRotor_get_TargetRPM")]
+    [Rpc ("SpaceCenter", "RoboticRotor_get_TargetRPM")]
     public float TargetRPM {
         get {
             var args = new object[] {
@@ -125,7 +125,7 @@ public class RoboticRotor : RemoteObject
     /// <summary>
     /// Torque limit percentage.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "RoboticRotor_get_TorqueLimit")]
+    [Rpc ("SpaceCenter", "RoboticRotor_get_TorqueLimit")]
     public float TorqueLimit {
         get {
             var args = new object[] {

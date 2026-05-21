@@ -22,7 +22,7 @@ public class Parts : RemoteObject
     /// A list of all parts that are decoupled in the given <paramref name="stage" />.
     /// </summary>
     /// <param name="stage"></param>
-    [RpcAttribute ("SpaceCenter", "Parts_InDecoupleStage")]
+    [Rpc ("SpaceCenter", "Parts_InDecoupleStage")]
     public IList<Part> InDecoupleStage (int stage)
     {
         var args = new object[] {
@@ -36,7 +36,7 @@ public class Parts : RemoteObject
     /// A list of all parts that are activated in the given <paramref name="stage" />.
     /// </summary>
     /// <param name="stage"></param>
-    [RpcAttribute ("SpaceCenter", "Parts_InStage")]
+    [Rpc ("SpaceCenter", "Parts_InStage")]
     public IList<Part> InStage (int stage)
     {
         var args = new object[] {
@@ -51,7 +51,7 @@ public class Parts : RemoteObject
     /// <see cref="M:SpaceCenter.Module.Name" /> is <paramref name="moduleName" />.
     /// </summary>
     /// <param name="moduleName"></param>
-    [RpcAttribute ("SpaceCenter", "Parts_ModulesWithName")]
+    [Rpc ("SpaceCenter", "Parts_ModulesWithName")]
     public IList<Module> ModulesWithName (string moduleName)
     {
         var args = new object[] {
@@ -66,7 +66,7 @@ public class Parts : RemoteObject
     /// <see cref="M:SpaceCenter.Module.Name" /> is <paramref name="moduleName" />.
     /// </summary>
     /// <param name="moduleName"></param>
-    [RpcAttribute ("SpaceCenter", "Parts_WithModule")]
+    [Rpc ("SpaceCenter", "Parts_WithModule")]
     public IList<Part> WithModule (string moduleName)
     {
         var args = new object[] {
@@ -80,7 +80,7 @@ public class Parts : RemoteObject
     /// A list of parts whose <see cref="M:SpaceCenter.Part.Name" /> is <paramref name="name" />.
     /// </summary>
     /// <param name="name"></param>
-    [RpcAttribute ("SpaceCenter", "Parts_WithName")]
+    [Rpc ("SpaceCenter", "Parts_WithName")]
     public IList<Part> WithName (string name)
     {
         var args = new object[] {
@@ -94,7 +94,7 @@ public class Parts : RemoteObject
     /// A list of all parts whose <see cref="M:SpaceCenter.Part.Tag" /> is <paramref name="tag" />.
     /// </summary>
     /// <param name="tag"></param>
-    [RpcAttribute ("SpaceCenter", "Parts_WithTag")]
+    [Rpc ("SpaceCenter", "Parts_WithTag")]
     public IList<Part> WithTag (string tag)
     {
         var args = new object[] {
@@ -108,7 +108,7 @@ public class Parts : RemoteObject
     /// A list of all parts whose <see cref="M:SpaceCenter.Part.Title" /> is <paramref name="title" />.
     /// </summary>
     /// <param name="title"></param>
-    [RpcAttribute ("SpaceCenter", "Parts_WithTitle")]
+    [Rpc ("SpaceCenter", "Parts_WithTitle")]
     public IList<Part> WithTitle (string title)
     {
         var args = new object[] {
@@ -121,7 +121,7 @@ public class Parts : RemoteObject
     /// <summary>
     /// A list of all of the vessels parts.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Parts_get_All")]
+    [Rpc ("SpaceCenter", "Parts_get_All")]
     public IList<Part> All {
         get {
             var args = new object[] {
@@ -138,7 +138,7 @@ public class Parts : RemoteObject
     /// If RemoteTech is installed, this will always return an empty list.
     /// To interact with RemoteTech antennas, use the RemoteTech service APIs.
     /// </remarks>
-    [RpcAttribute ("SpaceCenter", "Parts_get_Antennas")]
+    [Rpc ("SpaceCenter", "Parts_get_Antennas")]
     public IList<Antenna> Antennas {
         get {
             var args = new object[] {
@@ -151,7 +151,7 @@ public class Parts : RemoteObject
     /// <summary>
     /// A list of all cargo bays in the vessel.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Parts_get_CargoBays")]
+    [Rpc ("SpaceCenter", "Parts_get_CargoBays")]
     public IList<CargoBay> CargoBays {
         get {
             var args = new object[] {
@@ -164,7 +164,7 @@ public class Parts : RemoteObject
     /// <summary>
     /// A list of all control surfaces in the vessel.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Parts_get_ControlSurfaces")]
+    [Rpc ("SpaceCenter", "Parts_get_ControlSurfaces")]
     public IList<ControlSurface> ControlSurfaces {
         get {
             var args = new object[] {
@@ -177,7 +177,7 @@ public class Parts : RemoteObject
     /// <summary>
     /// The part from which the vessel is controlled.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Parts_get_Controlling")]
+    [Rpc ("SpaceCenter", "Parts_get_Controlling")]
     public Part Controlling {
         get {
             var args = new object[] {
@@ -197,7 +197,7 @@ public class Parts : RemoteObject
     /// <summary>
     /// A list of all decouplers in the vessel.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Parts_get_Decouplers")]
+    [Rpc ("SpaceCenter", "Parts_get_Decouplers")]
     public IList<Decoupler> Decouplers {
         get {
             var args = new object[] {
@@ -210,7 +210,7 @@ public class Parts : RemoteObject
     /// <summary>
     /// A list of all docking ports in the vessel.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Parts_get_DockingPorts")]
+    [Rpc ("SpaceCenter", "Parts_get_DockingPorts")]
     public IList<DockingPort> DockingPorts {
         get {
             var args = new object[] {
@@ -228,7 +228,7 @@ public class Parts : RemoteObject
     /// of engine, including liquid fuel rockets, solid rocket boosters, jet engines and
     /// RCS thrusters.
     /// </remarks>
-    [RpcAttribute ("SpaceCenter", "Parts_get_Engines")]
+    [Rpc ("SpaceCenter", "Parts_get_Engines")]
     public IList<Engine> Engines {
         get {
             var args = new object[] {
@@ -241,7 +241,7 @@ public class Parts : RemoteObject
     /// <summary>
     /// A list of all science experiments in the vessel.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Parts_get_Experiments")]
+    [Rpc ("SpaceCenter", "Parts_get_Experiments")]
     public IList<Experiment> Experiments {
         get {
             var args = new object[] {
@@ -254,7 +254,7 @@ public class Parts : RemoteObject
     /// <summary>
     /// A list of all fairings in the vessel.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Parts_get_Fairings")]
+    [Rpc ("SpaceCenter", "Parts_get_Fairings")]
     public IList<Fairing> Fairings {
         get {
             var args = new object[] {
@@ -267,7 +267,7 @@ public class Parts : RemoteObject
     /// <summary>
     /// A list of all intakes in the vessel.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Parts_get_Intakes")]
+    [Rpc ("SpaceCenter", "Parts_get_Intakes")]
     public IList<Intake> Intakes {
         get {
             var args = new object[] {
@@ -280,7 +280,7 @@ public class Parts : RemoteObject
     /// <summary>
     /// A list of all launch clamps attached to the vessel.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Parts_get_LaunchClamps")]
+    [Rpc ("SpaceCenter", "Parts_get_LaunchClamps")]
     public IList<LaunchClamp> LaunchClamps {
         get {
             var args = new object[] {
@@ -293,7 +293,7 @@ public class Parts : RemoteObject
     /// <summary>
     /// A list of all landing legs attached to the vessel.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Parts_get_Legs")]
+    [Rpc ("SpaceCenter", "Parts_get_Legs")]
     public IList<Leg> Legs {
         get {
             var args = new object[] {
@@ -306,7 +306,7 @@ public class Parts : RemoteObject
     /// <summary>
     /// A list of all lights in the vessel.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Parts_get_Lights")]
+    [Rpc ("SpaceCenter", "Parts_get_Lights")]
     public IList<Light> Lights {
         get {
             var args = new object[] {
@@ -319,7 +319,7 @@ public class Parts : RemoteObject
     /// <summary>
     /// A list of all parachutes in the vessel.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Parts_get_Parachutes")]
+    [Rpc ("SpaceCenter", "Parts_get_Parachutes")]
     public IList<Parachute> Parachutes {
         get {
             var args = new object[] {
@@ -332,7 +332,7 @@ public class Parts : RemoteObject
     /// <summary>
     /// A list of all RCS blocks/thrusters in the vessel.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Parts_get_RCS")]
+    [Rpc ("SpaceCenter", "Parts_get_RCS")]
     public IList<RCS> RCS {
         get {
             var args = new object[] {
@@ -345,7 +345,7 @@ public class Parts : RemoteObject
     /// <summary>
     /// A list of all radiators in the vessel.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Parts_get_Radiators")]
+    [Rpc ("SpaceCenter", "Parts_get_Radiators")]
     public IList<Radiator> Radiators {
         get {
             var args = new object[] {
@@ -358,7 +358,7 @@ public class Parts : RemoteObject
     /// <summary>
     /// A list of all reaction wheels in the vessel.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Parts_get_ReactionWheels")]
+    [Rpc ("SpaceCenter", "Parts_get_ReactionWheels")]
     public IList<ReactionWheel> ReactionWheels {
         get {
             var args = new object[] {
@@ -371,7 +371,7 @@ public class Parts : RemoteObject
     /// <summary>
     /// A list of all resource converters in the vessel.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Parts_get_ResourceConverters")]
+    [Rpc ("SpaceCenter", "Parts_get_ResourceConverters")]
     public IList<ResourceConverter> ResourceConverters {
         get {
             var args = new object[] {
@@ -384,7 +384,7 @@ public class Parts : RemoteObject
     /// <summary>
     /// A list of all resource drains in the vessel.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Parts_get_ResourceDrains")]
+    [Rpc ("SpaceCenter", "Parts_get_ResourceDrains")]
     public IList<ResourceDrain> ResourceDrains {
         get {
             var args = new object[] {
@@ -397,7 +397,7 @@ public class Parts : RemoteObject
     /// <summary>
     /// A list of all resource harvesters in the vessel.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Parts_get_ResourceHarvesters")]
+    [Rpc ("SpaceCenter", "Parts_get_ResourceHarvesters")]
     public IList<ResourceHarvester> ResourceHarvesters {
         get {
             var args = new object[] {
@@ -410,7 +410,7 @@ public class Parts : RemoteObject
     /// <summary>
     /// A list of all robotic hinges in the vessel.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Parts_get_RoboticHinges")]
+    [Rpc ("SpaceCenter", "Parts_get_RoboticHinges")]
     public IList<RoboticHinge> RoboticHinges {
         get {
             var args = new object[] {
@@ -423,7 +423,7 @@ public class Parts : RemoteObject
     /// <summary>
     /// A list of all robotic pistons in the vessel.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Parts_get_RoboticPistons")]
+    [Rpc ("SpaceCenter", "Parts_get_RoboticPistons")]
     public IList<RoboticPiston> RoboticPistons {
         get {
             var args = new object[] {
@@ -436,7 +436,7 @@ public class Parts : RemoteObject
     /// <summary>
     /// A list of all robotic rotations in the vessel.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Parts_get_RoboticRotations")]
+    [Rpc ("SpaceCenter", "Parts_get_RoboticRotations")]
     public IList<RoboticRotation> RoboticRotations {
         get {
             var args = new object[] {
@@ -449,7 +449,7 @@ public class Parts : RemoteObject
     /// <summary>
     /// A list of all robotic rotors in the vessel.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Parts_get_RoboticRotors")]
+    [Rpc ("SpaceCenter", "Parts_get_RoboticRotors")]
     public IList<RoboticRotor> RoboticRotors {
         get {
             var args = new object[] {
@@ -462,7 +462,7 @@ public class Parts : RemoteObject
     /// <summary>
     /// The vessels root part.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Parts_get_Root")]
+    [Rpc ("SpaceCenter", "Parts_get_Root")]
     public Part Root {
         get {
             var args = new object[] {
@@ -475,7 +475,7 @@ public class Parts : RemoteObject
     /// <summary>
     /// A list of all sensors in the vessel.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Parts_get_Sensors")]
+    [Rpc ("SpaceCenter", "Parts_get_Sensors")]
     public IList<Sensor> Sensors {
         get {
             var args = new object[] {
@@ -488,7 +488,7 @@ public class Parts : RemoteObject
     /// <summary>
     /// A list of all solar panels in the vessel.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Parts_get_SolarPanels")]
+    [Rpc ("SpaceCenter", "Parts_get_SolarPanels")]
     public IList<SolarPanel> SolarPanels {
         get {
             var args = new object[] {
@@ -501,7 +501,7 @@ public class Parts : RemoteObject
     /// <summary>
     /// A list of all wheels in the vessel.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Parts_get_Wheels")]
+    [Rpc ("SpaceCenter", "Parts_get_Wheels")]
     public IList<Wheel> Wheels {
         get {
             var args = new object[] {

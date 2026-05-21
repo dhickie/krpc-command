@@ -28,7 +28,7 @@ public class Module : RemoteObject
     /// Returns the value of a field with the given name.
     /// </summary>
     /// <param name="name">Name of the field.</param>
-    [RpcAttribute ("SpaceCenter", "Module_GetField")]
+    [Rpc ("SpaceCenter", "Module_GetField")]
     public string GetField (string name)
     {
         var args = new object[] {
@@ -42,7 +42,7 @@ public class Module : RemoteObject
     /// Returns the value of a field with the given identifier.
     /// </summary>
     /// <param name="id">Identifier of the field.</param>
-    [RpcAttribute ("SpaceCenter", "Module_GetFieldById")]
+    [Rpc ("SpaceCenter", "Module_GetFieldById")]
     public string GetFieldById (string id)
     {
         var args = new object[] {
@@ -55,7 +55,7 @@ public class Module : RemoteObject
     /// <summary><c>true</c> if the part has an action with the given name.
     /// </summary>
     /// <param name="name"></param>
-    [RpcAttribute ("SpaceCenter", "Module_HasAction")]
+    [Rpc ("SpaceCenter", "Module_HasAction")]
     public bool HasAction (string name)
     {
         var args = new object[] {
@@ -68,7 +68,7 @@ public class Module : RemoteObject
     /// <summary><c>true</c> if the part has an action with the given identifier.
     /// </summary>
     /// <param name="id"></param>
-    [RpcAttribute ("SpaceCenter", "Module_HasActionWithId")]
+    [Rpc ("SpaceCenter", "Module_HasActionWithId")]
     public bool HasActionWithId (string id)
     {
         var args = new object[] {
@@ -81,7 +81,7 @@ public class Module : RemoteObject
     /// <summary><c>true</c> if the module has an event with the given name.
     /// </summary>
     /// <param name="name"></param>
-    [RpcAttribute ("SpaceCenter", "Module_HasEvent")]
+    [Rpc ("SpaceCenter", "Module_HasEvent")]
     public bool HasEvent (string name)
     {
         var args = new object[] {
@@ -94,7 +94,7 @@ public class Module : RemoteObject
     /// <summary><c>true</c> if the module has an event with the given identifier.
     /// </summary>
     /// <param name="id"></param>
-    [RpcAttribute ("SpaceCenter", "Module_HasEventWithId")]
+    [Rpc ("SpaceCenter", "Module_HasEventWithId")]
     public bool HasEventWithId (string id)
     {
         var args = new object[] {
@@ -108,7 +108,7 @@ public class Module : RemoteObject
     /// Returns <c>true</c> if the module has a field with the given name.
     /// </summary>
     /// <param name="name">Name of the field.</param>
-    [RpcAttribute ("SpaceCenter", "Module_HasField")]
+    [Rpc ("SpaceCenter", "Module_HasField")]
     public bool HasField (string name)
     {
         var args = new object[] {
@@ -122,7 +122,7 @@ public class Module : RemoteObject
     /// Returns <c>true</c> if the module has a field with the given identifier.
     /// </summary>
     /// <param name="id">Identifier of the field.</param>
-    [RpcAttribute ("SpaceCenter", "Module_HasFieldWithId")]
+    [Rpc ("SpaceCenter", "Module_HasFieldWithId")]
     public bool HasFieldWithId (string id)
     {
         var args = new object[] {
@@ -136,7 +136,7 @@ public class Module : RemoteObject
     /// Set the value of a field to its original value.
     /// </summary>
     /// <param name="name">Name of the field.</param>
-    [RpcAttribute ("SpaceCenter", "Module_ResetField")]
+    [Rpc ("SpaceCenter", "Module_ResetField")]
     public void ResetField (string name)
     {
         var args = new object[] {
@@ -150,7 +150,7 @@ public class Module : RemoteObject
     /// Set the value of a field to its original value.
     /// </summary>
     /// <param name="id">Identifier of the field.</param>
-    [RpcAttribute ("SpaceCenter", "Module_ResetFieldById")]
+    [Rpc ("SpaceCenter", "Module_ResetFieldById")]
     public void ResetFieldById (string id)
     {
         var args = new object[] {
@@ -165,7 +165,7 @@ public class Module : RemoteObject
     /// </summary>
     /// <param name="name"></param>
     /// <param name="value"></param>
-    [RpcAttribute ("SpaceCenter", "Module_SetAction")]
+    [Rpc ("SpaceCenter", "Module_SetAction")]
     public void SetAction (string name, bool value = true)
     {
         var args = new object[] {
@@ -181,7 +181,7 @@ public class Module : RemoteObject
     /// </summary>
     /// <param name="id"></param>
     /// <param name="value"></param>
-    [RpcAttribute ("SpaceCenter", "Module_SetActionById")]
+    [Rpc ("SpaceCenter", "Module_SetActionById")]
     public void SetActionById (string id, bool value = true)
     {
         var args = new object[] {
@@ -197,7 +197,7 @@ public class Module : RemoteObject
     /// </summary>
     /// <param name="name">Name of the field.</param>
     /// <param name="value">Value to set.</param>
-    [RpcAttribute ("SpaceCenter", "Module_SetFieldBool")]
+    [Rpc ("SpaceCenter", "Module_SetFieldBool")]
     public void SetFieldBool (string name, bool value)
     {
         var args = new object[] {
@@ -213,7 +213,7 @@ public class Module : RemoteObject
     /// </summary>
     /// <param name="id">Identifier of the field.</param>
     /// <param name="value">Value to set.</param>
-    [RpcAttribute ("SpaceCenter", "Module_SetFieldBoolById")]
+    [Rpc ("SpaceCenter", "Module_SetFieldBoolById")]
     public void SetFieldBoolById (string id, bool value)
     {
         var args = new object[] {
@@ -229,7 +229,7 @@ public class Module : RemoteObject
     /// </summary>
     /// <param name="name">Name of the field.</param>
     /// <param name="value">Value to set.</param>
-    [RpcAttribute ("SpaceCenter", "Module_SetFieldFloat")]
+    [Rpc ("SpaceCenter", "Module_SetFieldFloat")]
     public void SetFieldFloat (string name, float value)
     {
         var args = new object[] {
@@ -245,7 +245,7 @@ public class Module : RemoteObject
     /// </summary>
     /// <param name="id">Identifier of the field.</param>
     /// <param name="value">Value to set.</param>
-    [RpcAttribute ("SpaceCenter", "Module_SetFieldFloatById")]
+    [Rpc ("SpaceCenter", "Module_SetFieldFloatById")]
     public void SetFieldFloatById (string id, float value)
     {
         var args = new object[] {
@@ -261,7 +261,7 @@ public class Module : RemoteObject
     /// </summary>
     /// <param name="name">Name of the field.</param>
     /// <param name="value">Value to set.</param>
-    [RpcAttribute ("SpaceCenter", "Module_SetFieldInt")]
+    [Rpc ("SpaceCenter", "Module_SetFieldInt")]
     public void SetFieldInt (string name, int value)
     {
         var args = new object[] {
@@ -277,7 +277,7 @@ public class Module : RemoteObject
     /// </summary>
     /// <param name="id">Identifier of the field.</param>
     /// <param name="value">Value to set.</param>
-    [RpcAttribute ("SpaceCenter", "Module_SetFieldIntById")]
+    [Rpc ("SpaceCenter", "Module_SetFieldIntById")]
     public void SetFieldIntById (string id, int value)
     {
         var args = new object[] {
@@ -293,7 +293,7 @@ public class Module : RemoteObject
     /// </summary>
     /// <param name="name">Name of the field.</param>
     /// <param name="value">Value to set.</param>
-    [RpcAttribute ("SpaceCenter", "Module_SetFieldString")]
+    [Rpc ("SpaceCenter", "Module_SetFieldString")]
     public void SetFieldString (string name, string value)
     {
         var args = new object[] {
@@ -309,7 +309,7 @@ public class Module : RemoteObject
     /// </summary>
     /// <param name="id">Identifier of the field.</param>
     /// <param name="value">Value to set.</param>
-    [RpcAttribute ("SpaceCenter", "Module_SetFieldStringById")]
+    [Rpc ("SpaceCenter", "Module_SetFieldStringById")]
     public void SetFieldStringById (string id, string value)
     {
         var args = new object[] {
@@ -325,7 +325,7 @@ public class Module : RemoteObject
     /// of the part.
     /// </summary>
     /// <param name="name"></param>
-    [RpcAttribute ("SpaceCenter", "Module_TriggerEvent")]
+    [Rpc ("SpaceCenter", "Module_TriggerEvent")]
     public void TriggerEvent (string name)
     {
         var args = new object[] {
@@ -340,7 +340,7 @@ public class Module : RemoteObject
     /// Equivalent to clicking the button in the right-click menu of the part.
     /// </summary>
     /// <param name="id"></param>
-    [RpcAttribute ("SpaceCenter", "Module_TriggerEventById")]
+    [Rpc ("SpaceCenter", "Module_TriggerEventById")]
     public void TriggerEventById (string id)
     {
         var args = new object[] {
@@ -354,7 +354,7 @@ public class Module : RemoteObject
     /// A list of all the names of the modules actions. These are the parts actions that can
     /// be assigned to action groups in the in-game editor.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Module_get_Actions")]
+    [Rpc ("SpaceCenter", "Module_get_Actions")]
     public IList<string> Actions {
         get {
             var args = new object[] {
@@ -368,7 +368,7 @@ public class Module : RemoteObject
     /// A list of all the identifiers of the modules actions. These are the parts actions
     /// that can be assigned to action groups in the in-game editor.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Module_get_ActionsById")]
+    [Rpc ("SpaceCenter", "Module_get_ActionsById")]
     public IList<string> ActionsById {
         get {
             var args = new object[] {
@@ -382,7 +382,7 @@ public class Module : RemoteObject
     /// A list of the names of all of the modules events. Events are the clickable buttons
     /// visible in the right-click menu of the part.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Module_get_Events")]
+    [Rpc ("SpaceCenter", "Module_get_Events")]
     public IList<string> Events {
         get {
             var args = new object[] {
@@ -396,7 +396,7 @@ public class Module : RemoteObject
     /// A list of the identifiers of all of the modules events. Events are the clickable buttons
     /// visible in the right-click menu of the part.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Module_get_EventsById")]
+    [Rpc ("SpaceCenter", "Module_get_EventsById")]
     public IList<string> EventsById {
         get {
             var args = new object[] {
@@ -414,7 +414,7 @@ public class Module : RemoteObject
     /// Throws an exception if there is more than one field with the same name.
     /// In that case, use <see cref="M:SpaceCenter.Module.FieldsById" /> to get the fields by identifier.
     /// </remarks>
-    [RpcAttribute ("SpaceCenter", "Module_get_Fields")]
+    [Rpc ("SpaceCenter", "Module_get_Fields")]
     public IDictionary<string,string> Fields {
         get {
             var args = new object[] {
@@ -428,7 +428,7 @@ public class Module : RemoteObject
     /// The modules field identifiers and their associated values, as a dictionary.
     /// These are the values visible in the right-click menu of the part.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Module_get_FieldsById")]
+    [Rpc ("SpaceCenter", "Module_get_FieldsById")]
     public IDictionary<string,string> FieldsById {
         get {
             var args = new object[] {
@@ -441,7 +441,7 @@ public class Module : RemoteObject
     /// <summary>
     /// Name of the PartModule. For example, "ModuleEngines".
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Module_get_Name")]
+    [Rpc ("SpaceCenter", "Module_get_Name")]
     public string Name {
         get {
             var args = new object[] {
@@ -454,7 +454,7 @@ public class Module : RemoteObject
     /// <summary>
     /// The part that contains this module.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Module_get_Part")]
+    [Rpc ("SpaceCenter", "Module_get_Part")]
     public Part Part {
         get {
             var args = new object[] {

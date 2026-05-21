@@ -29,7 +29,7 @@ public class Thruster : RemoteObject
     /// <returns>The position as a vector.</returns>
     /// <param name="referenceFrame">The reference frame that the returned
     /// position vector is in.</param>
-    [RpcAttribute ("SpaceCenter", "Thruster_GimbalPosition")]
+    [Rpc ("SpaceCenter", "Thruster_GimbalPosition")]
     public Tuple<double,double,double> GimbalPosition (ReferenceFrame referenceFrame)
     {
         var args = new object[] {
@@ -47,7 +47,7 @@ public class Thruster : RemoteObject
     /// <returns>The direction as a unit vector.</returns>
     /// <param name="referenceFrame">The reference frame that the returned
     /// direction is in.</param>
-    [RpcAttribute ("SpaceCenter", "Thruster_InitialThrustDirection")]
+    [Rpc ("SpaceCenter", "Thruster_InitialThrustDirection")]
     public Tuple<double,double,double> InitialThrustDirection (ReferenceFrame referenceFrame)
     {
         var args = new object[] {
@@ -68,7 +68,7 @@ public class Thruster : RemoteObject
     /// This position can move when the gimbal rotates. This is because the thrust position and
     /// gimbal position are not necessarily the same.
     /// </remarks>
-    [RpcAttribute ("SpaceCenter", "Thruster_InitialThrustPosition")]
+    [Rpc ("SpaceCenter", "Thruster_InitialThrustPosition")]
     public Tuple<double,double,double> InitialThrustPosition (ReferenceFrame referenceFrame)
     {
         var args = new object[] {
@@ -86,7 +86,7 @@ public class Thruster : RemoteObject
     /// <returns>The direction as a unit vector.</returns>
     /// <param name="referenceFrame">The reference frame that the returned
     /// direction is in.</param>
-    [RpcAttribute ("SpaceCenter", "Thruster_ThrustDirection")]
+    [Rpc ("SpaceCenter", "Thruster_ThrustDirection")]
     public Tuple<double,double,double> ThrustDirection (ReferenceFrame referenceFrame)
     {
         var args = new object[] {
@@ -103,7 +103,7 @@ public class Thruster : RemoteObject
     /// <returns>The position as a vector.</returns>
     /// <param name="referenceFrame">The reference frame that the returned
     /// position vector is in.</param>
-    [RpcAttribute ("SpaceCenter", "Thruster_ThrustPosition")]
+    [Rpc ("SpaceCenter", "Thruster_ThrustPosition")]
     public Tuple<double,double,double> ThrustPosition (ReferenceFrame referenceFrame)
     {
         var args = new object[] {
@@ -116,7 +116,7 @@ public class Thruster : RemoteObject
     /// <summary>
     /// The current gimbal angle in the pitch, roll and yaw axes, in degrees.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Thruster_get_GimbalAngle")]
+    [Rpc ("SpaceCenter", "Thruster_get_GimbalAngle")]
     public Tuple<double,double,double> GimbalAngle {
         get {
             var args = new object[] {
@@ -129,7 +129,7 @@ public class Thruster : RemoteObject
     /// <summary>
     /// Whether the thruster is gimballed.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Thruster_get_Gimballed")]
+    [Rpc ("SpaceCenter", "Thruster_get_Gimballed")]
     public bool Gimballed {
         get {
             var args = new object[] {
@@ -142,7 +142,7 @@ public class Thruster : RemoteObject
     /// <summary>
     /// The <see cref="T:SpaceCenter.Part" /> that contains this thruster.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Thruster_get_Part")]
+    [Rpc ("SpaceCenter", "Thruster_get_Part")]
     public Part Part {
         get {
             var args = new object[] {
@@ -163,7 +163,7 @@ public class Thruster : RemoteObject
     /// This is the direction in which the thruster expels propellant, including any gimballing.
     /// </description></item><item><description>The y-axis points along the thrust direction.</description></item><item><description>The x-axis and z-axis are perpendicular to the thrust direction.
     /// </description></item></list></summary>
-    [RpcAttribute ("SpaceCenter", "Thruster_get_ThrustReferenceFrame")]
+    [Rpc ("SpaceCenter", "Thruster_get_ThrustReferenceFrame")]
     public ReferenceFrame ThrustReferenceFrame {
         get {
             var args = new object[] {

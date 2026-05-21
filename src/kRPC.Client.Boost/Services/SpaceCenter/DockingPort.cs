@@ -22,7 +22,7 @@ public class DockingPort : RemoteObject
     /// <returns>The direction as a unit vector.</returns>
     /// <param name="referenceFrame">The reference frame that the returned
     /// direction is in.</param>
-    [RpcAttribute ("SpaceCenter", "DockingPort_Direction")]
+    [Rpc ("SpaceCenter", "DockingPort_Direction")]
     public Tuple<double,double,double> Direction (ReferenceFrame referenceFrame)
     {
         var args = new object[] {
@@ -38,7 +38,7 @@ public class DockingPort : RemoteObject
     /// <returns>The position as a vector.</returns>
     /// <param name="referenceFrame">The reference frame that the returned
     /// position vector is in.</param>
-    [RpcAttribute ("SpaceCenter", "DockingPort_Position")]
+    [Rpc ("SpaceCenter", "DockingPort_Position")]
     public Tuple<double,double,double> Position (ReferenceFrame referenceFrame)
     {
         var args = new object[] {
@@ -54,7 +54,7 @@ public class DockingPort : RemoteObject
     /// <returns>The rotation as a quaternion of the form <math>(x, y, z, w)</math>.</returns>
     /// <param name="referenceFrame">The reference frame that the returned
     /// rotation is in.</param>
-    [RpcAttribute ("SpaceCenter", "DockingPort_Rotation")]
+    [Rpc ("SpaceCenter", "DockingPort_Rotation")]
     public Tuple<double,double,double,double> Rotation (ReferenceFrame referenceFrame)
     {
         var args = new object[] {
@@ -74,7 +74,7 @@ public class DockingPort : RemoteObject
     /// after calling this function, the object(s) returned by previous call(s) to
     /// <see cref="M:SpaceCenter.ActiveVessel" /> no longer refer to the active vessel.
     /// </remarks>
-    [RpcAttribute ("SpaceCenter", "DockingPort_Undock")]
+    [Rpc ("SpaceCenter", "DockingPort_Undock")]
     public Vessel Undock ()
     {
         var args = new object[] {
@@ -86,7 +86,7 @@ public class DockingPort : RemoteObject
     /// <summary>
     /// Whether the docking port can be commanded to rotate while docked.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "DockingPort_get_CanRotate")]
+    [Rpc ("SpaceCenter", "DockingPort_get_CanRotate")]
     public bool CanRotate {
         get {
             var args = new object[] {
@@ -100,7 +100,7 @@ public class DockingPort : RemoteObject
     /// The part that this docking port is docked to. Returns <c>null</c> if this
     /// docking port is not docked to anything.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "DockingPort_get_DockedPart")]
+    [Rpc ("SpaceCenter", "DockingPort_get_DockedPart")]
     public Part DockedPart {
         get {
             var args = new object[] {
@@ -113,7 +113,7 @@ public class DockingPort : RemoteObject
     /// <summary>
     /// Whether the docking port has a shield.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "DockingPort_get_HasShield")]
+    [Rpc ("SpaceCenter", "DockingPort_get_HasShield")]
     public bool HasShield {
         get {
             var args = new object[] {
@@ -126,7 +126,7 @@ public class DockingPort : RemoteObject
     /// <summary>
     /// Maximum rotation angle in degrees.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "DockingPort_get_MaximumRotation")]
+    [Rpc ("SpaceCenter", "DockingPort_get_MaximumRotation")]
     public float MaximumRotation {
         get {
             var args = new object[] {
@@ -139,7 +139,7 @@ public class DockingPort : RemoteObject
     /// <summary>
     /// Minimum rotation angle in degrees.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "DockingPort_get_MinimumRotation")]
+    [Rpc ("SpaceCenter", "DockingPort_get_MinimumRotation")]
     public float MinimumRotation {
         get {
             var args = new object[] {
@@ -152,7 +152,7 @@ public class DockingPort : RemoteObject
     /// <summary>
     /// The part object for this docking port.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "DockingPort_get_Part")]
+    [Rpc ("SpaceCenter", "DockingPort_get_Part")]
     public Part Part {
         get {
             var args = new object[] {
@@ -166,7 +166,7 @@ public class DockingPort : RemoteObject
     /// The distance a docking port must move away when it undocks before it
     /// becomes ready to dock with another port, in meters.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "DockingPort_get_ReengageDistance")]
+    [Rpc ("SpaceCenter", "DockingPort_get_ReengageDistance")]
     public float ReengageDistance {
         get {
             var args = new object[] {
@@ -188,7 +188,7 @@ public class DockingPort : RemoteObject
     /// This reference frame is not necessarily equivalent to the reference frame
     /// for the part, returned by <see cref="M:SpaceCenter.Part.ReferenceFrame" />.
     /// </remarks>
-    [RpcAttribute ("SpaceCenter", "DockingPort_get_ReferenceFrame")]
+    [Rpc ("SpaceCenter", "DockingPort_get_ReferenceFrame")]
     public ReferenceFrame ReferenceFrame {
         get {
             var args = new object[] {
@@ -201,7 +201,7 @@ public class DockingPort : RemoteObject
     /// <summary>
     /// Lock rotation. When locked, allows auto-strut to work across the joint.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "DockingPort_get_RotationLocked")]
+    [Rpc ("SpaceCenter", "DockingPort_get_RotationLocked")]
     public bool RotationLocked {
         get {
             var args = new object[] {
@@ -221,7 +221,7 @@ public class DockingPort : RemoteObject
     /// <summary>
     /// Rotation target angle in degrees.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "DockingPort_get_RotationTarget")]
+    [Rpc ("SpaceCenter", "DockingPort_get_RotationTarget")]
     public float RotationTarget {
         get {
             var args = new object[] {
@@ -246,7 +246,7 @@ public class DockingPort : RemoteObject
     /// closed, and when set to <c>false</c> the shield is opened. If the docking
     /// port does not have a shield, setting this attribute has no effect.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "DockingPort_get_Shielded")]
+    [Rpc ("SpaceCenter", "DockingPort_get_Shielded")]
     public bool Shielded {
         get {
             var args = new object[] {
@@ -266,7 +266,7 @@ public class DockingPort : RemoteObject
     /// <summary>
     /// The current state of the docking port.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "DockingPort_get_State")]
+    [Rpc ("SpaceCenter", "DockingPort_get_State")]
     public DockingPortState State {
         get {
             var args = new object[] {

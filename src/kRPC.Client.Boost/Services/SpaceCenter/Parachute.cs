@@ -20,7 +20,7 @@ public class Parachute : RemoteObject
     /// Deploys the parachute. This has no effect if the parachute has already
     /// been armed or deployed.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Parachute_Arm")]
+    [Rpc ("SpaceCenter", "Parachute_Arm")]
     public void Arm ()
     {
         var args = new object[] {
@@ -32,7 +32,7 @@ public class Parachute : RemoteObject
     /// <summary>
     /// Cuts the parachute.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Parachute_Cut")]
+    [Rpc ("SpaceCenter", "Parachute_Cut")]
     public void Cut ()
     {
         var args = new object[] {
@@ -45,7 +45,7 @@ public class Parachute : RemoteObject
     /// Deploys the parachute. This has no effect if the parachute has already
     /// been deployed.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Parachute_Deploy")]
+    [Rpc ("SpaceCenter", "Parachute_Deploy")]
     public void Deploy ()
     {
         var args = new object[] {
@@ -57,7 +57,7 @@ public class Parachute : RemoteObject
     /// <summary>
     /// Whether the parachute has been armed or deployed.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Parachute_get_Armed")]
+    [Rpc ("SpaceCenter", "Parachute_get_Armed")]
     public bool Armed {
         get {
             var args = new object[] {
@@ -71,7 +71,7 @@ public class Parachute : RemoteObject
     /// The altitude at which the parachute will full deploy, in meters.
     /// Only applicable to stock parachutes.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Parachute_get_DeployAltitude")]
+    [Rpc ("SpaceCenter", "Parachute_get_DeployAltitude")]
     public float DeployAltitude {
         get {
             var args = new object[] {
@@ -92,7 +92,7 @@ public class Parachute : RemoteObject
     /// The minimum pressure at which the parachute will semi-deploy, in atmospheres.
     /// Only applicable to stock parachutes.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Parachute_get_DeployMinPressure")]
+    [Rpc ("SpaceCenter", "Parachute_get_DeployMinPressure")]
     public float DeployMinPressure {
         get {
             var args = new object[] {
@@ -112,7 +112,7 @@ public class Parachute : RemoteObject
     /// <summary>
     /// Whether the parachute has been deployed.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Parachute_get_Deployed")]
+    [Rpc ("SpaceCenter", "Parachute_get_Deployed")]
     public bool Deployed {
         get {
             var args = new object[] {
@@ -125,7 +125,7 @@ public class Parachute : RemoteObject
     /// <summary>
     /// The part object for this parachute.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Parachute_get_Part")]
+    [Rpc ("SpaceCenter", "Parachute_get_Part")]
     public Part Part {
         get {
             var args = new object[] {
@@ -138,7 +138,7 @@ public class Parachute : RemoteObject
     /// <summary>
     /// The current state of the parachute.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Parachute_get_State")]
+    [Rpc ("SpaceCenter", "Parachute_get_State")]
     public ParachuteState State {
         get {
             var args = new object[] {

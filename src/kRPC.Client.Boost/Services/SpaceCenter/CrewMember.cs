@@ -20,7 +20,7 @@ public class CrewMember : RemoteObject
     /// <summary>
     /// Whether the crew member is a badass.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "CrewMember_get_Badass")]
+    [Rpc ("SpaceCenter", "CrewMember_get_Badass")]
     public bool Badass {
         get {
             var args = new object[] {
@@ -40,7 +40,7 @@ public class CrewMember : RemoteObject
     /// <summary>
     /// The flight IDs for each entry in the career flight log.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "CrewMember_get_CareerLogFlights")]
+    [Rpc ("SpaceCenter", "CrewMember_get_CareerLogFlights")]
     public IList<int> CareerLogFlights {
         get {
             var args = new object[] {
@@ -53,7 +53,7 @@ public class CrewMember : RemoteObject
     /// <summary>
     /// The body name for each entry in the career flight log.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "CrewMember_get_CareerLogTargets")]
+    [Rpc ("SpaceCenter", "CrewMember_get_CareerLogTargets")]
     public IList<string> CareerLogTargets {
         get {
             var args = new object[] {
@@ -66,7 +66,7 @@ public class CrewMember : RemoteObject
     /// <summary>
     /// The type for each entry in the career flight log.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "CrewMember_get_CareerLogTypes")]
+    [Rpc ("SpaceCenter", "CrewMember_get_CareerLogTypes")]
     public IList<string> CareerLogTypes {
         get {
             var args = new object[] {
@@ -79,7 +79,7 @@ public class CrewMember : RemoteObject
     /// <summary>
     /// The crew members courage.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "CrewMember_get_Courage")]
+    [Rpc ("SpaceCenter", "CrewMember_get_Courage")]
     public float Courage {
         get {
             var args = new object[] {
@@ -99,7 +99,7 @@ public class CrewMember : RemoteObject
     /// <summary>
     /// The crew members experience.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "CrewMember_get_Experience")]
+    [Rpc ("SpaceCenter", "CrewMember_get_Experience")]
     public float Experience {
         get {
             var args = new object[] {
@@ -119,7 +119,7 @@ public class CrewMember : RemoteObject
     /// <summary>
     /// The crew member's gender.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "CrewMember_get_Gender")]
+    [Rpc ("SpaceCenter", "CrewMember_get_Gender")]
     public CrewMemberGender Gender {
         get {
             var args = new object[] {
@@ -132,7 +132,7 @@ public class CrewMember : RemoteObject
     /// <summary>
     /// The crew members name.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "CrewMember_get_Name")]
+    [Rpc ("SpaceCenter", "CrewMember_get_Name")]
     public string Name {
         get {
             var args = new object[] {
@@ -152,7 +152,7 @@ public class CrewMember : RemoteObject
     /// <summary>
     /// Whether the crew member is on a mission.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "CrewMember_get_OnMission")]
+    [Rpc ("SpaceCenter", "CrewMember_get_OnMission")]
     public bool OnMission {
         get {
             var args = new object[] {
@@ -165,7 +165,7 @@ public class CrewMember : RemoteObject
     /// <summary>
     /// The crew member's current roster status.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "CrewMember_get_RosterStatus")]
+    [Rpc ("SpaceCenter", "CrewMember_get_RosterStatus")]
     public RosterStatus RosterStatus {
         get {
             var args = new object[] {
@@ -178,7 +178,7 @@ public class CrewMember : RemoteObject
     /// <summary>
     /// The crew members stupidity.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "CrewMember_get_Stupidity")]
+    [Rpc ("SpaceCenter", "CrewMember_get_Stupidity")]
     public float Stupidity {
         get {
             var args = new object[] {
@@ -198,7 +198,7 @@ public class CrewMember : RemoteObject
     /// <summary>
     /// The crew member's suit type.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "CrewMember_get_SuitType")]
+    [Rpc ("SpaceCenter", "CrewMember_get_SuitType")]
     public SuitType SuitType {
         get {
             var args = new object[] {
@@ -218,7 +218,7 @@ public class CrewMember : RemoteObject
     /// <summary>
     /// The crew member's job.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "CrewMember_get_Trait")]
+    [Rpc ("SpaceCenter", "CrewMember_get_Trait")]
     public string Trait {
         get {
             var args = new object[] {
@@ -231,7 +231,7 @@ public class CrewMember : RemoteObject
     /// <summary>
     /// The type of crew member.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "CrewMember_get_Type")]
+    [Rpc ("SpaceCenter", "CrewMember_get_Type")]
     public CrewMemberType Type {
         get {
             var args = new object[] {
@@ -244,7 +244,7 @@ public class CrewMember : RemoteObject
     /// <summary>
     /// Whether the crew member is a veteran.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "CrewMember_get_Veteran")]
+    [Rpc ("SpaceCenter", "CrewMember_get_Veteran")]
     public bool Veteran {
         get {
             var args = new object[] {

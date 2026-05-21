@@ -19,7 +19,7 @@ public class ResourceHarvester : RemoteObject
     /// <summary>
     /// Whether the harvester is actively drilling.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "ResourceHarvester_get_Active")]
+    [Rpc ("SpaceCenter", "ResourceHarvester_get_Active")]
     public bool Active {
         get {
             var args = new object[] {
@@ -39,7 +39,7 @@ public class ResourceHarvester : RemoteObject
     /// <summary>
     /// The core temperature of the drill, in Kelvin.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "ResourceHarvester_get_CoreTemperature")]
+    [Rpc ("SpaceCenter", "ResourceHarvester_get_CoreTemperature")]
     public float CoreTemperature {
         get {
             var args = new object[] {
@@ -52,7 +52,7 @@ public class ResourceHarvester : RemoteObject
     /// <summary>
     /// Whether the harvester is deployed.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "ResourceHarvester_get_Deployed")]
+    [Rpc ("SpaceCenter", "ResourceHarvester_get_Deployed")]
     public bool Deployed {
         get {
             var args = new object[] {
@@ -72,7 +72,7 @@ public class ResourceHarvester : RemoteObject
     /// <summary>
     /// The rate at which the drill is extracting ore, in units per second.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "ResourceHarvester_get_ExtractionRate")]
+    [Rpc ("SpaceCenter", "ResourceHarvester_get_ExtractionRate")]
     public float ExtractionRate {
         get {
             var args = new object[] {
@@ -85,7 +85,7 @@ public class ResourceHarvester : RemoteObject
     /// <summary>
     /// The core temperature at which the drill will operate with peak efficiency, in Kelvin.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "ResourceHarvester_get_OptimumCoreTemperature")]
+    [Rpc ("SpaceCenter", "ResourceHarvester_get_OptimumCoreTemperature")]
     public float OptimumCoreTemperature {
         get {
             var args = new object[] {
@@ -98,7 +98,7 @@ public class ResourceHarvester : RemoteObject
     /// <summary>
     /// The part object for this harvester.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "ResourceHarvester_get_Part")]
+    [Rpc ("SpaceCenter", "ResourceHarvester_get_Part")]
     public Part Part {
         get {
             var args = new object[] {
@@ -111,7 +111,7 @@ public class ResourceHarvester : RemoteObject
     /// <summary>
     /// The state of the harvester.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "ResourceHarvester_get_State")]
+    [Rpc ("SpaceCenter", "ResourceHarvester_get_State")]
     public ResourceHarvesterState State {
         get {
             var args = new object[] {
@@ -124,7 +124,7 @@ public class ResourceHarvester : RemoteObject
     /// <summary>
     /// The thermal efficiency of the drill, as a percentage of its maximum.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "ResourceHarvester_get_ThermalEfficiency")]
+    [Rpc ("SpaceCenter", "ResourceHarvester_get_ThermalEfficiency")]
     public float ThermalEfficiency {
         get {
             var args = new object[] {

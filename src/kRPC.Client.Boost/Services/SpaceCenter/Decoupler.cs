@@ -24,7 +24,7 @@ public class Decoupler : RemoteObject
     /// after calling this function, the object(s) returned by previous call(s) to
     /// <see cref="M:SpaceCenter.ActiveVessel" /> no longer refer to the active vessel.
     /// </remarks>
-    [RpcAttribute ("SpaceCenter", "Decoupler_Decouple")]
+    [Rpc ("SpaceCenter", "Decoupler_Decouple")]
     public Vessel Decouple ()
     {
         var args = new object[] {
@@ -36,7 +36,7 @@ public class Decoupler : RemoteObject
     /// <summary>
     /// The part attached to this decoupler's explosive node.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Decoupler_get_AttachedPart")]
+    [Rpc ("SpaceCenter", "Decoupler_get_AttachedPart")]
     public Part AttachedPart {
         get {
             var args = new object[] {
@@ -49,7 +49,7 @@ public class Decoupler : RemoteObject
     /// <summary>
     /// Whether the decoupler has fired.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Decoupler_get_Decoupled")]
+    [Rpc ("SpaceCenter", "Decoupler_get_Decoupled")]
     public bool Decoupled {
         get {
             var args = new object[] {
@@ -62,7 +62,7 @@ public class Decoupler : RemoteObject
     /// <summary>
     /// The impulse that the decoupler imparts when it is fired, in Newton seconds.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Decoupler_get_Impulse")]
+    [Rpc ("SpaceCenter", "Decoupler_get_Impulse")]
     public float Impulse {
         get {
             var args = new object[] {
@@ -75,7 +75,7 @@ public class Decoupler : RemoteObject
     /// <summary>
     /// Whether the decoupler is an omni-decoupler (e.g. stack separator)
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Decoupler_get_IsOmniDecoupler")]
+    [Rpc ("SpaceCenter", "Decoupler_get_IsOmniDecoupler")]
     public bool IsOmniDecoupler {
         get {
             var args = new object[] {
@@ -88,7 +88,7 @@ public class Decoupler : RemoteObject
     /// <summary>
     /// The part object for this decoupler.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Decoupler_get_Part")]
+    [Rpc ("SpaceCenter", "Decoupler_get_Part")]
     public Part Part {
         get {
             var args = new object[] {
@@ -101,7 +101,7 @@ public class Decoupler : RemoteObject
     /// <summary>
     /// Whether the decoupler is enabled in the staging sequence.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Decoupler_get_Staged")]
+    [Rpc ("SpaceCenter", "Decoupler_get_Staged")]
     public bool Staged {
         get {
             var args = new object[] {

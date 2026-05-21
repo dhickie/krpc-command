@@ -20,7 +20,7 @@ public class ResourceDrain : RemoteObject
     /// <summary>
     /// Whether the provided resource is enabled for draining.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "ResourceDrain_CheckResource")]
+    [Rpc ("SpaceCenter", "ResourceDrain_CheckResource")]
     public bool CheckResource (Resource resource)
     {
         var args = new object[] {
@@ -33,7 +33,7 @@ public class ResourceDrain : RemoteObject
     /// <summary>
     /// Whether the given resource should be drained.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "ResourceDrain_SetResource")]
+    [Rpc ("SpaceCenter", "ResourceDrain_SetResource")]
     public void SetResource (Resource resource, bool enabled)
     {
         var args = new object[] {
@@ -47,7 +47,7 @@ public class ResourceDrain : RemoteObject
     /// <summary>
     /// Activates resource draining for all enabled parts.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "ResourceDrain_Start")]
+    [Rpc ("SpaceCenter", "ResourceDrain_Start")]
     public void Start ()
     {
         var args = new object[] {
@@ -59,7 +59,7 @@ public class ResourceDrain : RemoteObject
     /// <summary>
     /// Turns off resource draining.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "ResourceDrain_Stop")]
+    [Rpc ("SpaceCenter", "ResourceDrain_Stop")]
     public void Stop ()
     {
         var args = new object[] {
@@ -71,7 +71,7 @@ public class ResourceDrain : RemoteObject
     /// <summary>
     /// List of available resources.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "ResourceDrain_get_AvailableResources")]
+    [Rpc ("SpaceCenter", "ResourceDrain_get_AvailableResources")]
     public IList<Resource> AvailableResources {
         get {
             var args = new object[] {
@@ -84,7 +84,7 @@ public class ResourceDrain : RemoteObject
     /// <summary>
     /// The drain mode.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "ResourceDrain_get_DrainMode")]
+    [Rpc ("SpaceCenter", "ResourceDrain_get_DrainMode")]
     public DrainMode DrainMode {
         get {
             var args = new object[] {
@@ -104,7 +104,7 @@ public class ResourceDrain : RemoteObject
     /// <summary>
     /// Maximum possible drain rate.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "ResourceDrain_get_MaxRate")]
+    [Rpc ("SpaceCenter", "ResourceDrain_get_MaxRate")]
     public float MaxRate {
         get {
             var args = new object[] {
@@ -117,7 +117,7 @@ public class ResourceDrain : RemoteObject
     /// <summary>
     /// Minimum possible drain rate
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "ResourceDrain_get_MinRate")]
+    [Rpc ("SpaceCenter", "ResourceDrain_get_MinRate")]
     public float MinRate {
         get {
             var args = new object[] {
@@ -130,7 +130,7 @@ public class ResourceDrain : RemoteObject
     /// <summary>
     /// The part object for this resource drain.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "ResourceDrain_get_Part")]
+    [Rpc ("SpaceCenter", "ResourceDrain_get_Part")]
     public Part Part {
         get {
             var args = new object[] {
@@ -143,7 +143,7 @@ public class ResourceDrain : RemoteObject
     /// <summary>
     /// Current drain rate.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "ResourceDrain_get_Rate")]
+    [Rpc ("SpaceCenter", "ResourceDrain_get_Rate")]
     public float Rate {
         get {
             var args = new object[] {

@@ -20,7 +20,7 @@ public class LaunchSite : RemoteObject
     /// <summary>
     /// The celestial body the launch site is on.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "LaunchSite_get_Body")]
+    [Rpc ("SpaceCenter", "LaunchSite_get_Body")]
     public CelestialBody Body {
         get {
             var args = new object[] {
@@ -33,7 +33,7 @@ public class LaunchSite : RemoteObject
     /// <summary>
     /// Which editor is normally used for this launch site.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "LaunchSite_get_EditorFacility")]
+    [Rpc ("SpaceCenter", "LaunchSite_get_EditorFacility")]
     public EditorFacility EditorFacility {
         get {
             var args = new object[] {
@@ -46,7 +46,7 @@ public class LaunchSite : RemoteObject
     /// <summary>
     /// The name of the launch site.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "LaunchSite_get_Name")]
+    [Rpc ("SpaceCenter", "LaunchSite_get_Name")]
     public string Name {
         get {
             var args = new object[] {

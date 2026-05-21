@@ -20,7 +20,7 @@ public class Force : RemoteObject
     /// <summary>
     /// Remove the force.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Force_Remove")]
+    [Rpc ("SpaceCenter", "Force_Remove")]
     public void Remove ()
     {
         var args = new object[] {
@@ -34,7 +34,7 @@ public class Force : RemoteObject
     /// </summary>
     /// <returns>A vector pointing in the direction that the force acts,
     /// with its magnitude equal to the strength of the force in Newtons.</returns>
-    [RpcAttribute ("SpaceCenter", "Force_get_ForceVector")]
+    [Rpc ("SpaceCenter", "Force_get_ForceVector")]
     public Tuple<double,double,double> ForceVector {
         get {
             var args = new object[] {
@@ -54,7 +54,7 @@ public class Force : RemoteObject
     /// <summary>
     /// The part that this force is applied to.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Force_get_Part")]
+    [Rpc ("SpaceCenter", "Force_get_Part")]
     public Part Part {
         get {
             var args = new object[] {
@@ -68,7 +68,7 @@ public class Force : RemoteObject
     /// The position at which the force acts, in reference frame <see cref="T:SpaceCenter.ReferenceFrame" />.
     /// </summary>
     /// <returns>The position as a vector.</returns>
-    [RpcAttribute ("SpaceCenter", "Force_get_Position")]
+    [Rpc ("SpaceCenter", "Force_get_Position")]
     public Tuple<double,double,double> Position {
         get {
             var args = new object[] {
@@ -88,7 +88,7 @@ public class Force : RemoteObject
     /// <summary>
     /// The reference frame of the force vector and position.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Force_get_ReferenceFrame")]
+    [Rpc ("SpaceCenter", "Force_get_ReferenceFrame")]
     public ReferenceFrame ReferenceFrame {
         get {
             var args = new object[] {

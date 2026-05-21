@@ -21,7 +21,7 @@ public class Wheel : RemoteObject
     /// <summary>
     /// Whether automatic friction control is enabled.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Wheel_get_AutoFrictionControl")]
+    [Rpc ("SpaceCenter", "Wheel_get_AutoFrictionControl")]
     public bool AutoFrictionControl {
         get {
             var args = new object[] {
@@ -41,7 +41,7 @@ public class Wheel : RemoteObject
     /// <summary>
     /// The braking force, as a percentage of maximum, when the brakes are applied.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Wheel_get_Brakes")]
+    [Rpc ("SpaceCenter", "Wheel_get_Brakes")]
     public float Brakes {
         get {
             var args = new object[] {
@@ -61,7 +61,7 @@ public class Wheel : RemoteObject
     /// <summary>
     /// Whether the wheel is broken.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Wheel_get_Broken")]
+    [Rpc ("SpaceCenter", "Wheel_get_Broken")]
     public bool Broken {
         get {
             var args = new object[] {
@@ -74,7 +74,7 @@ public class Wheel : RemoteObject
     /// <summary>
     /// Current deflection of the wheel.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Wheel_get_Deflection")]
+    [Rpc ("SpaceCenter", "Wheel_get_Deflection")]
     public float Deflection {
         get {
             var args = new object[] {
@@ -87,7 +87,7 @@ public class Wheel : RemoteObject
     /// <summary>
     /// Whether the wheel is deployable.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Wheel_get_Deployable")]
+    [Rpc ("SpaceCenter", "Wheel_get_Deployable")]
     public bool Deployable {
         get {
             var args = new object[] {
@@ -100,7 +100,7 @@ public class Wheel : RemoteObject
     /// <summary>
     /// Whether the wheel is deployed.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Wheel_get_Deployed")]
+    [Rpc ("SpaceCenter", "Wheel_get_Deployed")]
     public bool Deployed {
         get {
             var args = new object[] {
@@ -122,7 +122,7 @@ public class Wheel : RemoteObject
     /// Only takes effect if the wheel has automatic traction control disabled.
     /// A value between 0 and 100 inclusive.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Wheel_get_DriveLimiter")]
+    [Rpc ("SpaceCenter", "Wheel_get_DriveLimiter")]
     public float DriveLimiter {
         get {
             var args = new object[] {
@@ -142,7 +142,7 @@ public class Wheel : RemoteObject
     /// <summary>
     /// Whether the wheel is touching the ground.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Wheel_get_Grounded")]
+    [Rpc ("SpaceCenter", "Wheel_get_Grounded")]
     public bool Grounded {
         get {
             var args = new object[] {
@@ -155,7 +155,7 @@ public class Wheel : RemoteObject
     /// <summary>
     /// Whether the wheel has brakes.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Wheel_get_HasBrakes")]
+    [Rpc ("SpaceCenter", "Wheel_get_HasBrakes")]
     public bool HasBrakes {
         get {
             var args = new object[] {
@@ -168,7 +168,7 @@ public class Wheel : RemoteObject
     /// <summary>
     /// Whether the wheel has suspension.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Wheel_get_HasSuspension")]
+    [Rpc ("SpaceCenter", "Wheel_get_HasSuspension")]
     public bool HasSuspension {
         get {
             var args = new object[] {
@@ -182,7 +182,7 @@ public class Wheel : RemoteObject
     /// Manual friction control value. Only has an effect if automatic friction control is disabled.
     /// A value between 0 and 5 inclusive.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Wheel_get_ManualFrictionControl")]
+    [Rpc ("SpaceCenter", "Wheel_get_ManualFrictionControl")]
     public float ManualFrictionControl {
         get {
             var args = new object[] {
@@ -202,7 +202,7 @@ public class Wheel : RemoteObject
     /// <summary>
     /// Whether the motor is enabled.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Wheel_get_MotorEnabled")]
+    [Rpc ("SpaceCenter", "Wheel_get_MotorEnabled")]
     public bool MotorEnabled {
         get {
             var args = new object[] {
@@ -222,7 +222,7 @@ public class Wheel : RemoteObject
     /// <summary>
     /// Whether the direction of the motor is inverted.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Wheel_get_MotorInverted")]
+    [Rpc ("SpaceCenter", "Wheel_get_MotorInverted")]
     public bool MotorInverted {
         get {
             var args = new object[] {
@@ -242,7 +242,7 @@ public class Wheel : RemoteObject
     /// <summary>
     /// The output of the motor. This is the torque currently being generated, in Newton meters.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Wheel_get_MotorOutput")]
+    [Rpc ("SpaceCenter", "Wheel_get_MotorOutput")]
     public float MotorOutput {
         get {
             var args = new object[] {
@@ -255,7 +255,7 @@ public class Wheel : RemoteObject
     /// <summary>
     /// Whether the direction of the motor is inverted.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Wheel_get_MotorState")]
+    [Rpc ("SpaceCenter", "Wheel_get_MotorState")]
     public MotorState MotorState {
         get {
             var args = new object[] {
@@ -268,7 +268,7 @@ public class Wheel : RemoteObject
     /// <summary>
     /// The part object for this wheel.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Wheel_get_Part")]
+    [Rpc ("SpaceCenter", "Wheel_get_Part")]
     public Part Part {
         get {
             var args = new object[] {
@@ -281,7 +281,7 @@ public class Wheel : RemoteObject
     /// <summary>
     /// Whether the wheel is powered by a motor.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Wheel_get_Powered")]
+    [Rpc ("SpaceCenter", "Wheel_get_Powered")]
     public bool Powered {
         get {
             var args = new object[] {
@@ -294,7 +294,7 @@ public class Wheel : RemoteObject
     /// <summary>
     /// Radius of the wheel, in meters.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Wheel_get_Radius")]
+    [Rpc ("SpaceCenter", "Wheel_get_Radius")]
     public float Radius {
         get {
             var args = new object[] {
@@ -307,7 +307,7 @@ public class Wheel : RemoteObject
     /// <summary>
     /// Whether the wheel is repairable.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Wheel_get_Repairable")]
+    [Rpc ("SpaceCenter", "Wheel_get_Repairable")]
     public bool Repairable {
         get {
             var args = new object[] {
@@ -320,7 +320,7 @@ public class Wheel : RemoteObject
     /// <summary>
     /// Current slip of the wheel.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Wheel_get_Slip")]
+    [Rpc ("SpaceCenter", "Wheel_get_Slip")]
     public float Slip {
         get {
             var args = new object[] {
@@ -333,7 +333,7 @@ public class Wheel : RemoteObject
     /// <summary>
     /// The current state of the wheel.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Wheel_get_State")]
+    [Rpc ("SpaceCenter", "Wheel_get_State")]
     public WheelState State {
         get {
             var args = new object[] {
@@ -346,7 +346,7 @@ public class Wheel : RemoteObject
     /// <summary>
     /// Whether the wheel has steering.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Wheel_get_Steerable")]
+    [Rpc ("SpaceCenter", "Wheel_get_Steerable")]
     public bool Steerable {
         get {
             var args = new object[] {
@@ -359,7 +359,7 @@ public class Wheel : RemoteObject
     /// <summary>
     /// The steering angle limit.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Wheel_get_SteeringAngleLimit")]
+    [Rpc ("SpaceCenter", "Wheel_get_SteeringAngleLimit")]
     public float SteeringAngleLimit {
         get {
             var args = new object[] {
@@ -379,7 +379,7 @@ public class Wheel : RemoteObject
     /// <summary>
     /// Whether the wheel steering is enabled.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Wheel_get_SteeringEnabled")]
+    [Rpc ("SpaceCenter", "Wheel_get_SteeringEnabled")]
     public bool SteeringEnabled {
         get {
             var args = new object[] {
@@ -399,7 +399,7 @@ public class Wheel : RemoteObject
     /// <summary>
     /// Whether the wheel steering is inverted.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Wheel_get_SteeringInverted")]
+    [Rpc ("SpaceCenter", "Wheel_get_SteeringInverted")]
     public bool SteeringInverted {
         get {
             var args = new object[] {
@@ -419,7 +419,7 @@ public class Wheel : RemoteObject
     /// <summary>
     /// Steering response time.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Wheel_get_SteeringResponseTime")]
+    [Rpc ("SpaceCenter", "Wheel_get_SteeringResponseTime")]
     public float SteeringResponseTime {
         get {
             var args = new object[] {
@@ -439,7 +439,7 @@ public class Wheel : RemoteObject
     /// <summary>
     /// Current stress on the wheel.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Wheel_get_Stress")]
+    [Rpc ("SpaceCenter", "Wheel_get_Stress")]
     public float Stress {
         get {
             var args = new object[] {
@@ -452,7 +452,7 @@ public class Wheel : RemoteObject
     /// <summary>
     /// Current stress on the wheel as a percentage of its stress tolerance.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Wheel_get_StressPercentage")]
+    [Rpc ("SpaceCenter", "Wheel_get_StressPercentage")]
     public float StressPercentage {
         get {
             var args = new object[] {
@@ -465,7 +465,7 @@ public class Wheel : RemoteObject
     /// <summary>
     /// Stress tolerance of the wheel.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Wheel_get_StressTolerance")]
+    [Rpc ("SpaceCenter", "Wheel_get_StressTolerance")]
     public float StressTolerance {
         get {
             var args = new object[] {
@@ -478,7 +478,7 @@ public class Wheel : RemoteObject
     /// <summary>
     /// Suspension damper strength, as set in the editor.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Wheel_get_SuspensionDamperStrength")]
+    [Rpc ("SpaceCenter", "Wheel_get_SuspensionDamperStrength")]
     public float SuspensionDamperStrength {
         get {
             var args = new object[] {
@@ -491,7 +491,7 @@ public class Wheel : RemoteObject
     /// <summary>
     /// Suspension spring strength, as set in the editor.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Wheel_get_SuspensionSpringStrength")]
+    [Rpc ("SpaceCenter", "Wheel_get_SuspensionSpringStrength")]
     public float SuspensionSpringStrength {
         get {
             var args = new object[] {
@@ -506,7 +506,7 @@ public class Wheel : RemoteObject
     /// Only takes effect if the wheel has automatic traction control enabled.
     /// A value between 0 and 5 inclusive.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Wheel_get_TractionControl")]
+    [Rpc ("SpaceCenter", "Wheel_get_TractionControl")]
     public float TractionControl {
         get {
             var args = new object[] {
@@ -527,7 +527,7 @@ public class Wheel : RemoteObject
     /// Whether automatic traction control is enabled.
     /// A wheel only has traction control if it is powered.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Wheel_get_TractionControlEnabled")]
+    [Rpc ("SpaceCenter", "Wheel_get_TractionControlEnabled")]
     public bool TractionControlEnabled {
         get {
             var args = new object[] {

@@ -19,7 +19,7 @@ public class RoboticPiston : RemoteObject
     /// <summary>
     /// Move piston to it's built position.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "RoboticPiston_MoveHome")]
+    [Rpc ("SpaceCenter", "RoboticPiston_MoveHome")]
     public void MoveHome ()
     {
         var args = new object[] {
@@ -31,7 +31,7 @@ public class RoboticPiston : RemoteObject
     /// <summary>
     /// Current extension of the piston.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "RoboticPiston_get_CurrentExtension")]
+    [Rpc ("SpaceCenter", "RoboticPiston_get_CurrentExtension")]
     public float CurrentExtension {
         get {
             var args = new object[] {
@@ -44,7 +44,7 @@ public class RoboticPiston : RemoteObject
     /// <summary>
     /// Damping percentage.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "RoboticPiston_get_Damping")]
+    [Rpc ("SpaceCenter", "RoboticPiston_get_Damping")]
     public float Damping {
         get {
             var args = new object[] {
@@ -64,7 +64,7 @@ public class RoboticPiston : RemoteObject
     /// <summary>
     /// Lock movement.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "RoboticPiston_get_Locked")]
+    [Rpc ("SpaceCenter", "RoboticPiston_get_Locked")]
     public bool Locked {
         get {
             var args = new object[] {
@@ -84,7 +84,7 @@ public class RoboticPiston : RemoteObject
     /// <summary>
     /// Whether the motor is engaged.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "RoboticPiston_get_MotorEngaged")]
+    [Rpc ("SpaceCenter", "RoboticPiston_get_MotorEngaged")]
     public bool MotorEngaged {
         get {
             var args = new object[] {
@@ -104,7 +104,7 @@ public class RoboticPiston : RemoteObject
     /// <summary>
     /// The part object for this robotic piston.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "RoboticPiston_get_Part")]
+    [Rpc ("SpaceCenter", "RoboticPiston_get_Part")]
     public Part Part {
         get {
             var args = new object[] {
@@ -117,7 +117,7 @@ public class RoboticPiston : RemoteObject
     /// <summary>
     /// Target movement rate in degrees per second.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "RoboticPiston_get_Rate")]
+    [Rpc ("SpaceCenter", "RoboticPiston_get_Rate")]
     public float Rate {
         get {
             var args = new object[] {
@@ -137,7 +137,7 @@ public class RoboticPiston : RemoteObject
     /// <summary>
     /// Target extension of the piston.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "RoboticPiston_get_TargetExtension")]
+    [Rpc ("SpaceCenter", "RoboticPiston_get_TargetExtension")]
     public float TargetExtension {
         get {
             var args = new object[] {

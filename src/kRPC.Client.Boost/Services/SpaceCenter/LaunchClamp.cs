@@ -19,7 +19,7 @@ public class LaunchClamp : RemoteObject
     /// <summary>
     /// Releases the docking clamp. Has no effect if the clamp has already been released.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "LaunchClamp_Release")]
+    [Rpc ("SpaceCenter", "LaunchClamp_Release")]
     public void Release ()
     {
         var args = new object[] {
@@ -31,7 +31,7 @@ public class LaunchClamp : RemoteObject
     /// <summary>
     /// The part object for this launch clamp.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "LaunchClamp_get_Part")]
+    [Rpc ("SpaceCenter", "LaunchClamp_get_Part")]
     public Part Part {
         get {
             var args = new object[] {

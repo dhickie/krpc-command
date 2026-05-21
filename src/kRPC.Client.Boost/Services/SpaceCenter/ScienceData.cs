@@ -19,7 +19,7 @@ public class ScienceData : RemoteObject
     /// <summary>
     /// Data amount.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "ScienceData_get_DataAmount")]
+    [Rpc ("SpaceCenter", "ScienceData_get_DataAmount")]
     public float DataAmount {
         get {
             var args = new object[] {
@@ -32,7 +32,7 @@ public class ScienceData : RemoteObject
     /// <summary>
     /// Science value.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "ScienceData_get_ScienceValue")]
+    [Rpc ("SpaceCenter", "ScienceData_get_ScienceValue")]
     public float ScienceValue {
         get {
             var args = new object[] {
@@ -45,7 +45,7 @@ public class ScienceData : RemoteObject
     /// <summary>
     /// Transmit value.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "ScienceData_get_TransmitValue")]
+    [Rpc ("SpaceCenter", "ScienceData_get_TransmitValue")]
     public float TransmitValue {
         get {
             var args = new object[] {

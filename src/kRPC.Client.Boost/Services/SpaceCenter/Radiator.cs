@@ -19,7 +19,7 @@ public class Radiator : RemoteObject
     /// <summary>
     /// Whether the radiator is deployable.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Radiator_get_Deployable")]
+    [Rpc ("SpaceCenter", "Radiator_get_Deployable")]
     public bool Deployable {
         get {
             var args = new object[] {
@@ -33,7 +33,7 @@ public class Radiator : RemoteObject
     /// For a deployable radiator, <c>true</c> if the radiator is extended.
     /// If the radiator is not deployable, this is always <c>true</c>.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Radiator_get_Deployed")]
+    [Rpc ("SpaceCenter", "Radiator_get_Deployed")]
     public bool Deployed {
         get {
             var args = new object[] {
@@ -53,7 +53,7 @@ public class Radiator : RemoteObject
     /// <summary>
     /// The part object for this radiator.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Radiator_get_Part")]
+    [Rpc ("SpaceCenter", "Radiator_get_Part")]
     public Part Part {
         get {
             var args = new object[] {
@@ -69,7 +69,7 @@ public class Radiator : RemoteObject
     /// <remarks>
     /// A fixed radiator is always <see cref="M:SpaceCenter.RadiatorState.Extended" />.
     /// </remarks>
-    [RpcAttribute ("SpaceCenter", "Radiator_get_State")]
+    [Rpc ("SpaceCenter", "Radiator_get_State")]
     public RadiatorState State {
         get {
             var args = new object[] {

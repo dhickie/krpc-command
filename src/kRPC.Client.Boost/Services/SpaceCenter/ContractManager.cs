@@ -21,7 +21,7 @@ public class ContractManager : RemoteObject
     /// <summary>
     /// A list of all active contracts.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "ContractManager_get_ActiveContracts")]
+    [Rpc ("SpaceCenter", "ContractManager_get_ActiveContracts")]
     public IList<Contract> ActiveContracts {
         get {
             var args = new object[] {
@@ -34,7 +34,7 @@ public class ContractManager : RemoteObject
     /// <summary>
     /// A list of all contracts.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "ContractManager_get_AllContracts")]
+    [Rpc ("SpaceCenter", "ContractManager_get_AllContracts")]
     public IList<Contract> AllContracts {
         get {
             var args = new object[] {
@@ -47,7 +47,7 @@ public class ContractManager : RemoteObject
     /// <summary>
     /// A list of all completed contracts.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "ContractManager_get_CompletedContracts")]
+    [Rpc ("SpaceCenter", "ContractManager_get_CompletedContracts")]
     public IList<Contract> CompletedContracts {
         get {
             var args = new object[] {
@@ -60,7 +60,7 @@ public class ContractManager : RemoteObject
     /// <summary>
     /// A list of all failed contracts.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "ContractManager_get_FailedContracts")]
+    [Rpc ("SpaceCenter", "ContractManager_get_FailedContracts")]
     public IList<Contract> FailedContracts {
         get {
             var args = new object[] {
@@ -73,7 +73,7 @@ public class ContractManager : RemoteObject
     /// <summary>
     /// A list of all offered, but unaccepted, contracts.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "ContractManager_get_OfferedContracts")]
+    [Rpc ("SpaceCenter", "ContractManager_get_OfferedContracts")]
     public IList<Contract> OfferedContracts {
         get {
             var args = new object[] {
@@ -86,7 +86,7 @@ public class ContractManager : RemoteObject
     /// <summary>
     /// A list of all contract types.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "ContractManager_get_Types")]
+    [Rpc ("SpaceCenter", "ContractManager_get_Types")]
     public ISet<string> Types {
         get {
             var args = new object[] {

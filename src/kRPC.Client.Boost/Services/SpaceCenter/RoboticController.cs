@@ -21,7 +21,7 @@ public class RoboticController : RemoteObject
     /// Add an axis to the controller.
     /// </summary>
     /// <returns>Returns <c>true</c> if the axis is added successfully.</returns>
-    [RpcAttribute ("SpaceCenter", "RoboticController_AddAxis")]
+    [Rpc ("SpaceCenter", "RoboticController_AddAxis")]
     public bool AddAxis (Module module, string fieldName)
     {
         var args = new object[] {
@@ -36,7 +36,7 @@ public class RoboticController : RemoteObject
     /// Add key frame value for controller axis.
     /// </summary>
     /// <returns>Returns <c>true</c> if the key frame is added successfully.</returns>
-    [RpcAttribute ("SpaceCenter", "RoboticController_AddKeyFrame")]
+    [Rpc ("SpaceCenter", "RoboticController_AddKeyFrame")]
     public bool AddKeyFrame (Module module, string fieldName, float time, float value)
     {
         var args = new object[] {
@@ -52,7 +52,7 @@ public class RoboticController : RemoteObject
     /// <summary>
     /// The axes for the controller.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "RoboticController_Axes")]
+    [Rpc ("SpaceCenter", "RoboticController_Axes")]
     public IList<IList<string>> Axes ()
     {
         var args = new object[] {
@@ -65,7 +65,7 @@ public class RoboticController : RemoteObject
     /// Clear axis.
     /// </summary>
     /// <returns>Returns <c>true</c> if the axis is cleared successfully.</returns>
-    [RpcAttribute ("SpaceCenter", "RoboticController_ClearAxis")]
+    [Rpc ("SpaceCenter", "RoboticController_ClearAxis")]
     public bool ClearAxis (Module module, string fieldName)
     {
         var args = new object[] {
@@ -79,7 +79,7 @@ public class RoboticController : RemoteObject
     /// <summary>
     /// Whether the controller has a part.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "RoboticController_HasPart")]
+    [Rpc ("SpaceCenter", "RoboticController_HasPart")]
     public bool HasPart (Part part)
     {
         var args = new object[] {
@@ -92,7 +92,7 @@ public class RoboticController : RemoteObject
     /// <summary>
     /// The part object for this controller.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "RoboticController_get_Part")]
+    [Rpc ("SpaceCenter", "RoboticController_get_Part")]
     public Part Part {
         get {
             var args = new object[] {

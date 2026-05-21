@@ -19,7 +19,7 @@ public class CommLink : RemoteObject
     /// <summary>
     /// Start point of the link.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "CommLink_get_End")]
+    [Rpc ("SpaceCenter", "CommLink_get_End")]
     public CommNode End {
         get {
             var args = new object[] {
@@ -32,7 +32,7 @@ public class CommLink : RemoteObject
     /// <summary>
     /// Signal strength of the link.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "CommLink_get_SignalStrength")]
+    [Rpc ("SpaceCenter", "CommLink_get_SignalStrength")]
     public double SignalStrength {
         get {
             var args = new object[] {
@@ -45,7 +45,7 @@ public class CommLink : RemoteObject
     /// <summary>
     /// Start point of the link.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "CommLink_get_Start")]
+    [Rpc ("SpaceCenter", "CommLink_get_Start")]
     public CommNode Start {
         get {
             var args = new object[] {
@@ -58,7 +58,7 @@ public class CommLink : RemoteObject
     /// <summary>
     /// The type of link.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "CommLink_get_Type")]
+    [Rpc ("SpaceCenter", "CommLink_get_Type")]
     public CommLinkType Type {
         get {
             var args = new object[] {

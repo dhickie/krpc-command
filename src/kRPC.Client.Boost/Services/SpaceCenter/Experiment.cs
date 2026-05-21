@@ -20,7 +20,7 @@ public class Experiment : RemoteObject
     /// <summary>
     /// Dump the experimental data contained by the experiment.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Experiment_Dump")]
+    [Rpc ("SpaceCenter", "Experiment_Dump")]
     public void Dump ()
     {
         var args = new object[] {
@@ -32,7 +32,7 @@ public class Experiment : RemoteObject
     /// <summary>
     /// Reset the experiment.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Experiment_Reset")]
+    [Rpc ("SpaceCenter", "Experiment_Reset")]
     public void Reset ()
     {
         var args = new object[] {
@@ -44,7 +44,7 @@ public class Experiment : RemoteObject
     /// <summary>
     /// Run the experiment.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Experiment_Run")]
+    [Rpc ("SpaceCenter", "Experiment_Run")]
     public void Run ()
     {
         var args = new object[] {
@@ -56,7 +56,7 @@ public class Experiment : RemoteObject
     /// <summary>
     /// Transmit all experimental data contained by this part.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Experiment_Transmit")]
+    [Rpc ("SpaceCenter", "Experiment_Transmit")]
     public void Transmit ()
     {
         var args = new object[] {
@@ -68,7 +68,7 @@ public class Experiment : RemoteObject
     /// <summary>
     /// Determines if the experiment is available given the current conditions.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Experiment_get_Available")]
+    [Rpc ("SpaceCenter", "Experiment_get_Available")]
     public bool Available {
         get {
             var args = new object[] {
@@ -81,7 +81,7 @@ public class Experiment : RemoteObject
     /// <summary>
     /// The name of the biome the experiment is currently in.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Experiment_get_Biome")]
+    [Rpc ("SpaceCenter", "Experiment_get_Biome")]
     public string Biome {
         get {
             var args = new object[] {
@@ -94,7 +94,7 @@ public class Experiment : RemoteObject
     /// <summary>
     /// The data contained in this experiment.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Experiment_get_Data")]
+    [Rpc ("SpaceCenter", "Experiment_get_Data")]
     public IList<ScienceData> Data {
         get {
             var args = new object[] {
@@ -107,7 +107,7 @@ public class Experiment : RemoteObject
     /// <summary>
     /// Whether the experiment has been deployed.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Experiment_get_Deployed")]
+    [Rpc ("SpaceCenter", "Experiment_get_Deployed")]
     public bool Deployed {
         get {
             var args = new object[] {
@@ -120,7 +120,7 @@ public class Experiment : RemoteObject
     /// <summary>
     /// Whether the experiment contains data.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Experiment_get_HasData")]
+    [Rpc ("SpaceCenter", "Experiment_get_HasData")]
     public bool HasData {
         get {
             var args = new object[] {
@@ -133,7 +133,7 @@ public class Experiment : RemoteObject
     /// <summary>
     /// Whether the experiment is inoperable.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Experiment_get_Inoperable")]
+    [Rpc ("SpaceCenter", "Experiment_get_Inoperable")]
     public bool Inoperable {
         get {
             var args = new object[] {
@@ -147,7 +147,7 @@ public class Experiment : RemoteObject
     /// Internal name of the experiment, as used in
     /// <a href="https://wiki.kerbalspaceprogram.com/wiki/CFG_File_Documentation">part cfg files</a>.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Experiment_get_Name")]
+    [Rpc ("SpaceCenter", "Experiment_get_Name")]
     public string Name {
         get {
             var args = new object[] {
@@ -160,7 +160,7 @@ public class Experiment : RemoteObject
     /// <summary>
     /// The part object for this experiment.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Experiment_get_Part")]
+    [Rpc ("SpaceCenter", "Experiment_get_Part")]
     public Part Part {
         get {
             var args = new object[] {
@@ -173,7 +173,7 @@ public class Experiment : RemoteObject
     /// <summary>
     /// Whether the experiment can be re-run.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Experiment_get_Rerunnable")]
+    [Rpc ("SpaceCenter", "Experiment_get_Rerunnable")]
     public bool Rerunnable {
         get {
             var args = new object[] {
@@ -187,7 +187,7 @@ public class Experiment : RemoteObject
     /// Containing information on the corresponding specific science result for the current
     /// conditions. Returns <c>null</c> if the experiment is unavailable.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Experiment_get_ScienceSubject")]
+    [Rpc ("SpaceCenter", "Experiment_get_ScienceSubject")]
     public ScienceSubject ScienceSubject {
         get {
             var args = new object[] {
@@ -200,7 +200,7 @@ public class Experiment : RemoteObject
     /// <summary>
     /// Title of the experiment, as shown on the in-game UI.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Experiment_get_Title")]
+    [Rpc ("SpaceCenter", "Experiment_get_Title")]
     public string Title {
         get {
             var args = new object[] {

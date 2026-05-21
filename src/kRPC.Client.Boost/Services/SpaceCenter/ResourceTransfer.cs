@@ -30,7 +30,7 @@ public class ResourceTransfer : RemoteObject
     /// <param name="resource">The name of the resource to transfer.</param>
     /// <param name="maxAmount">The maximum amount of resource to transfer.</param>
     /// <param name="connection">A connection object.</param>
-    [RpcAttribute ("SpaceCenter", "ResourceTransfer_static_Start")]
+    [Rpc ("SpaceCenter", "ResourceTransfer_static_Start")]
     public static ResourceTransfer Start (ConnectionMultiplexer connection, Part fromPart, Part toPart, string resource, float maxAmount)
     {
         if (connection == null)
@@ -47,7 +47,7 @@ public class ResourceTransfer : RemoteObject
     /// <summary>
     /// The amount of the resource that has been transferred.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "ResourceTransfer_get_Amount")]
+    [Rpc ("SpaceCenter", "ResourceTransfer_get_Amount")]
     public float Amount {
         get {
             var args = new object[] {
@@ -60,7 +60,7 @@ public class ResourceTransfer : RemoteObject
     /// <summary>
     /// Whether the transfer has completed.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "ResourceTransfer_get_Complete")]
+    [Rpc ("SpaceCenter", "ResourceTransfer_get_Complete")]
     public bool Complete {
         get {
             var args = new object[] {

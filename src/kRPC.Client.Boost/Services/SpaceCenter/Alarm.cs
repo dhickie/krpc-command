@@ -19,7 +19,7 @@ public class Alarm : RemoteObject
     /// <summary>
     /// Description of the alarm.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Alarm_get_Description")]
+    [Rpc ("SpaceCenter", "Alarm_get_Description")]
     public string Description {
         get {
             var args = new object[] {
@@ -32,7 +32,7 @@ public class Alarm : RemoteObject
     /// <summary>
     /// Seconds between the alarm going off and the event it references.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Alarm_get_EventOffset")]
+    [Rpc ("SpaceCenter", "Alarm_get_EventOffset")]
     public double EventOffset {
         get {
             var args = new object[] {
@@ -47,7 +47,7 @@ public class Alarm : RemoteObject
     /// KSP destroys and recreates an alarm when it is edited.
     /// This id will remain constant between the old and new alarms.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Alarm_get_ID")]
+    [Rpc ("SpaceCenter", "Alarm_get_ID")]
     public uint ID {
         get {
             var args = new object[] {
@@ -60,7 +60,7 @@ public class Alarm : RemoteObject
     /// <summary>
     /// Time the alarm will trigger.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Alarm_get_Time")]
+    [Rpc ("SpaceCenter", "Alarm_get_Time")]
     public double Time {
         get {
             var args = new object[] {
@@ -73,7 +73,7 @@ public class Alarm : RemoteObject
     /// <summary>
     /// Time until the alarm triggers.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Alarm_get_TimeUntil")]
+    [Rpc ("SpaceCenter", "Alarm_get_TimeUntil")]
     public double TimeUntil {
         get {
             var args = new object[] {
@@ -86,7 +86,7 @@ public class Alarm : RemoteObject
     /// <summary>
     /// Title of the alarm
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Alarm_get_Title")]
+    [Rpc ("SpaceCenter", "Alarm_get_Title")]
     public string Title {
         get {
             var args = new object[] {
@@ -99,7 +99,7 @@ public class Alarm : RemoteObject
     /// <summary>
     /// Type of alarm
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Alarm_get_Type")]
+    [Rpc ("SpaceCenter", "Alarm_get_Type")]
     public string Type {
         get {
             var args = new object[] {
@@ -112,7 +112,7 @@ public class Alarm : RemoteObject
     /// <summary>
     /// Vessel the alarm references. <c>null</c> if it does not reference a vessel.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Alarm_get_Vessel")]
+    [Rpc ("SpaceCenter", "Alarm_get_Vessel")]
     public Vessel Vessel {
         get {
             var args = new object[] {

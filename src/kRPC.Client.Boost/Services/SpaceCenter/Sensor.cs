@@ -19,7 +19,7 @@ public class Sensor : RemoteObject
     /// <summary>
     /// Whether the sensor is active.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Sensor_get_Active")]
+    [Rpc ("SpaceCenter", "Sensor_get_Active")]
     public bool Active {
         get {
             var args = new object[] {
@@ -39,7 +39,7 @@ public class Sensor : RemoteObject
     /// <summary>
     /// The part object for this sensor.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Sensor_get_Part")]
+    [Rpc ("SpaceCenter", "Sensor_get_Part")]
     public Part Part {
         get {
             var args = new object[] {
@@ -52,7 +52,7 @@ public class Sensor : RemoteObject
     /// <summary>
     /// The current value of the sensor.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Sensor_get_Value")]
+    [Rpc ("SpaceCenter", "Sensor_get_Value")]
     public string Value {
         get {
             var args = new object[] {

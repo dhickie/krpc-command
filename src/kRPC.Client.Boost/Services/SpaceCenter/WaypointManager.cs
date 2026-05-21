@@ -28,7 +28,7 @@ public class WaypointManager : RemoteObject
     /// <param name="body">Celestial body the waypoint is attached to.</param>
     /// <param name="name">Name of the waypoint.</param>
     /// <returns></returns>
-    [RpcAttribute ("SpaceCenter", "WaypointManager_AddWaypoint")]
+    [Rpc ("SpaceCenter", "WaypointManager_AddWaypoint")]
     public Waypoint AddWaypoint (double latitude, double longitude, CelestialBody body, string name)
     {
         var args = new object[] {
@@ -51,7 +51,7 @@ public class WaypointManager : RemoteObject
     /// <param name="body">Celestial body the waypoint is attached to.</param>
     /// <param name="name">Name of the waypoint.</param>
     /// <returns></returns>
-    [RpcAttribute ("SpaceCenter", "WaypointManager_AddWaypointAtAltitude")]
+    [Rpc ("SpaceCenter", "WaypointManager_AddWaypointAtAltitude")]
     public Waypoint AddWaypointAtAltitude (double latitude, double longitude, double altitude, CelestialBody body, string name)
     {
         var args = new object[] {
@@ -69,7 +69,7 @@ public class WaypointManager : RemoteObject
     /// An example map of known color - seed pairs.
     /// Any other integers may be used as seed.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "WaypointManager_get_Colors")]
+    [Rpc ("SpaceCenter", "WaypointManager_get_Colors")]
     public IDictionary<string,int> Colors {
         get {
             var args = new object[] {
@@ -82,7 +82,7 @@ public class WaypointManager : RemoteObject
     /// <summary>
     /// Returns all available icons (from "GameData/Squad/Contracts/Icons/").
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "WaypointManager_get_Icons")]
+    [Rpc ("SpaceCenter", "WaypointManager_get_Icons")]
     public IList<string> Icons {
         get {
             var args = new object[] {
@@ -95,7 +95,7 @@ public class WaypointManager : RemoteObject
     /// <summary>
     /// A list of all existing waypoints.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "WaypointManager_get_Waypoints")]
+    [Rpc ("SpaceCenter", "WaypointManager_get_Waypoints")]
     public IList<Waypoint> Waypoints {
         get {
             var args = new object[] {

@@ -28,7 +28,7 @@ public class Node : RemoteObject
     /// <remarks>
     /// Does not change when executing the maneuver node. See <see cref="M:SpaceCenter.Node.RemainingBurnVector" />.
     /// </remarks>
-    [RpcAttribute ("SpaceCenter", "Node_BurnVector")]
+    [Rpc ("SpaceCenter", "Node_BurnVector")]
     public Tuple<double,double,double> BurnVector (ReferenceFrame referenceFrame = null)
     {
         var args = new object[] {
@@ -44,7 +44,7 @@ public class Node : RemoteObject
     /// <returns>The direction as a unit vector.</returns>
     /// <param name="referenceFrame">The reference frame that the returned
     /// direction is in.</param>
-    [RpcAttribute ("SpaceCenter", "Node_Direction")]
+    [Rpc ("SpaceCenter", "Node_Direction")]
     public Tuple<double,double,double> Direction (ReferenceFrame referenceFrame)
     {
         var args = new object[] {
@@ -60,7 +60,7 @@ public class Node : RemoteObject
     /// <returns>The position as a vector.</returns>
     /// <param name="referenceFrame">The reference frame that the returned
     /// position vector is in.</param>
-    [RpcAttribute ("SpaceCenter", "Node_Position")]
+    [Rpc ("SpaceCenter", "Node_Position")]
     public Tuple<double,double,double> Position (ReferenceFrame referenceFrame)
     {
         var args = new object[] {
@@ -81,7 +81,7 @@ public class Node : RemoteObject
     /// <remarks>
     /// Changes as the maneuver node is executed. See <see cref="M:SpaceCenter.Node.BurnVector" />.
     /// </remarks>
-    [RpcAttribute ("SpaceCenter", "Node_RemainingBurnVector")]
+    [Rpc ("SpaceCenter", "Node_RemainingBurnVector")]
     public Tuple<double,double,double> RemainingBurnVector (ReferenceFrame referenceFrame = null)
     {
         var args = new object[] {
@@ -94,7 +94,7 @@ public class Node : RemoteObject
     /// <summary>
     /// Removes the maneuver node.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Node_Remove")]
+    [Rpc ("SpaceCenter", "Node_Remove")]
     public void Remove ()
     {
         var args = new object[] {
@@ -109,7 +109,7 @@ public class Node : RemoteObject
     /// <remarks>
     /// Does not change when executing the maneuver node. See <see cref="M:SpaceCenter.Node.RemainingDeltaV" />.
     /// </remarks>
-    [RpcAttribute ("SpaceCenter", "Node_get_DeltaV")]
+    [Rpc ("SpaceCenter", "Node_get_DeltaV")]
     public double DeltaV {
         get {
             var args = new object[] {
@@ -130,7 +130,7 @@ public class Node : RemoteObject
     /// The magnitude of the maneuver nodes delta-v in the normal direction,
     /// in meters per second.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Node_get_Normal")]
+    [Rpc ("SpaceCenter", "Node_get_Normal")]
     public double Normal {
         get {
             var args = new object[] {
@@ -150,7 +150,7 @@ public class Node : RemoteObject
     /// <summary>
     /// The orbit that results from executing the maneuver node.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Node_get_Orbit")]
+    [Rpc ("SpaceCenter", "Node_get_Orbit")]
     public Orbit Orbit {
         get {
             var args = new object[] {
@@ -168,7 +168,7 @@ public class Node : RemoteObject
     /// orbit, at the position of the maneuver node.</description></item><item><description>The y-axis points in the orbital prograde direction of the original
     /// orbit, at the position of the maneuver node.</description></item><item><description>The z-axis points in the orbital normal direction of the original orbit,
     /// at the position of the maneuver node.</description></item></list></summary>
-    [RpcAttribute ("SpaceCenter", "Node_get_OrbitalReferenceFrame")]
+    [Rpc ("SpaceCenter", "Node_get_OrbitalReferenceFrame")]
     public ReferenceFrame OrbitalReferenceFrame {
         get {
             var args = new object[] {
@@ -182,7 +182,7 @@ public class Node : RemoteObject
     /// The magnitude of the maneuver nodes delta-v in the prograde direction,
     /// in meters per second.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Node_get_Prograde")]
+    [Rpc ("SpaceCenter", "Node_get_Prograde")]
     public double Prograde {
         get {
             var args = new object[] {
@@ -203,7 +203,7 @@ public class Node : RemoteObject
     /// The magnitude of the maneuver nodes delta-v in the radial direction,
     /// in meters per second.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Node_get_Radial")]
+    [Rpc ("SpaceCenter", "Node_get_Radial")]
     public double Radial {
         get {
             var args = new object[] {
@@ -223,7 +223,7 @@ public class Node : RemoteObject
     /// <summary>
     /// The reference frame that is fixed relative to the maneuver node's burn.
     /// <list type="bullet"><item><description>The origin is at the position of the maneuver node.</description></item><item><description>The y-axis points in the direction of the burn.</description></item><item><description>The x-axis and z-axis point in arbitrary but fixed directions.</description></item></list></summary>
-    [RpcAttribute ("SpaceCenter", "Node_get_ReferenceFrame")]
+    [Rpc ("SpaceCenter", "Node_get_ReferenceFrame")]
     public ReferenceFrame ReferenceFrame {
         get {
             var args = new object[] {
@@ -237,7 +237,7 @@ public class Node : RemoteObject
     /// Gets the remaining delta-v of the maneuver node, in meters per second. Changes as the
     /// node is executed. This is equivalent to the delta-v reported in-game.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Node_get_RemainingDeltaV")]
+    [Rpc ("SpaceCenter", "Node_get_RemainingDeltaV")]
     public double RemainingDeltaV {
         get {
             var args = new object[] {
@@ -250,7 +250,7 @@ public class Node : RemoteObject
     /// <summary>
     /// The time until the maneuver node will be encountered, in seconds.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Node_get_TimeTo")]
+    [Rpc ("SpaceCenter", "Node_get_TimeTo")]
     public double TimeTo {
         get {
             var args = new object[] {
@@ -263,7 +263,7 @@ public class Node : RemoteObject
     /// <summary>
     /// The universal time at which the maneuver will occur, in seconds.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Node_get_UT")]
+    [Rpc ("SpaceCenter", "Node_get_UT")]
     public double UT {
         get {
             var args = new object[] {

@@ -30,7 +30,7 @@ public class Engine : RemoteObject
     /// Takes the given pressure into account.
     /// </summary>
     /// <param name="pressure">Atmospheric pressure in atmospheres</param>
-    [RpcAttribute ("SpaceCenter", "Engine_AvailableThrustAt")]
+    [Rpc ("SpaceCenter", "Engine_AvailableThrustAt")]
     public float AvailableThrustAt (double pressure)
     {
         var args = new object[] {
@@ -46,7 +46,7 @@ public class Engine : RemoteObject
     /// Takes the given pressure into account.
     /// </summary>
     /// <param name="pressure">Atmospheric pressure in atmospheres</param>
-    [RpcAttribute ("SpaceCenter", "Engine_MaxThrustAt")]
+    [Rpc ("SpaceCenter", "Engine_MaxThrustAt")]
     public float MaxThrustAt (double pressure)
     {
         var args = new object[] {
@@ -61,7 +61,7 @@ public class Engine : RemoteObject
     /// if the engine is not active.
     /// </summary>
     /// <param name="pressure">Atmospheric pressure in atmospheres</param>
-    [RpcAttribute ("SpaceCenter", "Engine_SpecificImpulseAt")]
+    [Rpc ("SpaceCenter", "Engine_SpecificImpulseAt")]
     public float SpecificImpulseAt (double pressure)
     {
         var args = new object[] {
@@ -74,7 +74,7 @@ public class Engine : RemoteObject
     /// <summary>
     /// Toggle the current engine mode.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Engine_ToggleMode")]
+    [Rpc ("SpaceCenter", "Engine_ToggleMode")]
     public void ToggleMode ()
     {
         var args = new object[] {
@@ -87,7 +87,7 @@ public class Engine : RemoteObject
     /// Whether the engine is active. Setting this attribute may have no effect,
     /// depending on <see cref="M:SpaceCenter.Engine.CanShutdown" /> and <see cref="M:SpaceCenter.Engine.CanRestart" />.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Engine_get_Active")]
+    [Rpc ("SpaceCenter", "Engine_get_Active")]
     public bool Active {
         get {
             var args = new object[] {
@@ -107,7 +107,7 @@ public class Engine : RemoteObject
     /// <summary>
     /// Whether the engine will automatically switch modes.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Engine_get_AutoModeSwitch")]
+    [Rpc ("SpaceCenter", "Engine_get_AutoModeSwitch")]
     public bool AutoModeSwitch {
         get {
             var args = new object[] {
@@ -131,7 +131,7 @@ public class Engine : RemoteObject
     /// Takes the engine's current <see cref="M:SpaceCenter.Engine.ThrustLimit" /> and atmospheric conditions
     /// into account.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Engine_get_AvailableThrust")]
+    [Rpc ("SpaceCenter", "Engine_get_AvailableThrust")]
     public float AvailableThrust {
         get {
             var args = new object[] {
@@ -147,7 +147,7 @@ public class Engine : RemoteObject
     /// correspond to the coordinate axes of the <see cref="M:SpaceCenter.Vessel.ReferenceFrame" />.
     /// Returns zero if the engine is inactive, or not gimballed.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Engine_get_AvailableTorque")]
+    [Rpc ("SpaceCenter", "Engine_get_AvailableTorque")]
     public Tuple<Tuple<double,double,double>,Tuple<double,double,double>> AvailableTorque {
         get {
             var args = new object[] {
@@ -162,7 +162,7 @@ public class Engine : RemoteObject
     /// returns <c>false</c>. For example, this is <c>true</c> for liquid fueled rockets
     /// and <c>false</c> for solid rocket boosters.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Engine_get_CanRestart")]
+    [Rpc ("SpaceCenter", "Engine_get_CanRestart")]
     public bool CanRestart {
         get {
             var args = new object[] {
@@ -176,7 +176,7 @@ public class Engine : RemoteObject
     /// Whether the engine can be shutdown once activated. For example, this is
     /// <c>true</c> for liquid fueled rockets and <c>false</c> for solid rocket boosters.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Engine_get_CanShutdown")]
+    [Rpc ("SpaceCenter", "Engine_get_CanShutdown")]
     public bool CanShutdown {
         get {
             var args = new object[] {
@@ -190,7 +190,7 @@ public class Engine : RemoteObject
     /// The gimbal limiter of the engine. A value between 0 and 1.
     /// Returns 0 if the gimbal is locked.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Engine_get_GimbalLimit")]
+    [Rpc ("SpaceCenter", "Engine_get_GimbalLimit")]
     public float GimbalLimit {
         get {
             var args = new object[] {
@@ -211,7 +211,7 @@ public class Engine : RemoteObject
     /// Whether the engines gimbal is locked in place. Setting this attribute has
     /// no effect if the engine is not gimballed.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Engine_get_GimbalLocked")]
+    [Rpc ("SpaceCenter", "Engine_get_GimbalLocked")]
     public bool GimbalLocked {
         get {
             var args = new object[] {
@@ -232,7 +232,7 @@ public class Engine : RemoteObject
     /// The range over which the gimbal can move, in degrees.
     /// Returns 0 if the engine is not gimballed.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Engine_get_GimbalRange")]
+    [Rpc ("SpaceCenter", "Engine_get_GimbalRange")]
     public float GimbalRange {
         get {
             var args = new object[] {
@@ -245,7 +245,7 @@ public class Engine : RemoteObject
     /// <summary>
     /// Whether the engine is gimballed.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Engine_get_Gimballed")]
+    [Rpc ("SpaceCenter", "Engine_get_Gimballed")]
     public bool Gimballed {
         get {
             var args = new object[] {
@@ -258,7 +258,7 @@ public class Engine : RemoteObject
     /// <summary>
     /// Whether the engine has any fuel available.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Engine_get_HasFuel")]
+    [Rpc ("SpaceCenter", "Engine_get_HasFuel")]
     public bool HasFuel {
         get {
             var args = new object[] {
@@ -271,7 +271,7 @@ public class Engine : RemoteObject
     /// <summary>
     /// Whether the engine has multiple modes of operation.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Engine_get_HasModes")]
+    [Rpc ("SpaceCenter", "Engine_get_HasModes")]
     public bool HasModes {
         get {
             var args = new object[] {
@@ -284,7 +284,7 @@ public class Engine : RemoteObject
     /// <summary>
     /// Whether the independent throttle is enabled for the engine.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Engine_get_IndependentThrottle")]
+    [Rpc ("SpaceCenter", "Engine_get_IndependentThrottle")]
     public bool IndependentThrottle {
         get {
             var args = new object[] {
@@ -304,7 +304,7 @@ public class Engine : RemoteObject
     /// <summary>
     /// The specific impulse of the engine at sea level on Kerbin, in seconds.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Engine_get_KerbinSeaLevelSpecificImpulse")]
+    [Rpc ("SpaceCenter", "Engine_get_KerbinSeaLevelSpecificImpulse")]
     public float KerbinSeaLevelSpecificImpulse {
         get {
             var args = new object[] {
@@ -318,7 +318,7 @@ public class Engine : RemoteObject
     /// The amount of thrust, in Newtons, that would be produced by the engine
     /// when activated and fueled, with its throttle and throttle limiter set to 100%.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Engine_get_MaxThrust")]
+    [Rpc ("SpaceCenter", "Engine_get_MaxThrust")]
     public float MaxThrust {
         get {
             var args = new object[] {
@@ -334,7 +334,7 @@ public class Engine : RemoteObject
     /// when activated, <see cref="M:SpaceCenter.Engine.ThrustLimit" /> is set to 100%, the main
     /// vessel's throttle is set to 100% and the engine is in a vacuum.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Engine_get_MaxVacuumThrust")]
+    [Rpc ("SpaceCenter", "Engine_get_MaxVacuumThrust")]
     public float MaxVacuumThrust {
         get {
             var args = new object[] {
@@ -347,7 +347,7 @@ public class Engine : RemoteObject
     /// <summary>
     /// The name of the current engine mode.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Engine_get_Mode")]
+    [Rpc ("SpaceCenter", "Engine_get_Mode")]
     public string Mode {
         get {
             var args = new object[] {
@@ -368,7 +368,7 @@ public class Engine : RemoteObject
     /// The available modes for the engine.
     /// A dictionary mapping mode names to <see cref="T:SpaceCenter.Engine" /> objects.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Engine_get_Modes")]
+    [Rpc ("SpaceCenter", "Engine_get_Modes")]
     public IDictionary<string,Engine> Modes {
         get {
             var args = new object[] {
@@ -381,7 +381,7 @@ public class Engine : RemoteObject
     /// <summary>
     /// The part object for this engine.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Engine_get_Part")]
+    [Rpc ("SpaceCenter", "Engine_get_Part")]
     public Part Part {
         get {
             var args = new object[] {
@@ -394,7 +394,7 @@ public class Engine : RemoteObject
     /// <summary>
     /// The names of the propellants that the engine consumes.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Engine_get_PropellantNames")]
+    [Rpc ("SpaceCenter", "Engine_get_PropellantNames")]
     public IList<string> PropellantNames {
         get {
             var args = new object[] {
@@ -412,7 +412,7 @@ public class Engine : RemoteObject
     /// For example, if the ratios are 0.6 for LiquidFuel and 0.4 for Oxidizer, then for every
     /// 0.6 units of LiquidFuel that the engine burns, it will burn 0.4 units of Oxidizer.
     /// </remarks>
-    [RpcAttribute ("SpaceCenter", "Engine_get_PropellantRatios")]
+    [Rpc ("SpaceCenter", "Engine_get_PropellantRatios")]
     public IDictionary<string,float> PropellantRatios {
         get {
             var args = new object[] {
@@ -425,7 +425,7 @@ public class Engine : RemoteObject
     /// <summary>
     /// The propellants that the engine consumes.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Engine_get_Propellants")]
+    [Rpc ("SpaceCenter", "Engine_get_Propellants")]
     public IList<Propellant> Propellants {
         get {
             var args = new object[] {
@@ -439,7 +439,7 @@ public class Engine : RemoteObject
     /// The current specific impulse of the engine, in seconds. Returns zero
     /// if the engine is not active.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Engine_get_SpecificImpulse")]
+    [Rpc ("SpaceCenter", "Engine_get_SpecificImpulse")]
     public float SpecificImpulse {
         get {
             var args = new object[] {
@@ -458,7 +458,7 @@ public class Engine : RemoteObject
     /// When the engine's independent throttle is enabled
     /// (see <see cref="M:SpaceCenter.Engine.IndependentThrottle" />), can be used to set the throttle percentage.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Engine_get_Throttle")]
+    [Rpc ("SpaceCenter", "Engine_get_Throttle")]
     public float Throttle {
         get {
             var args = new object[] {
@@ -480,7 +480,7 @@ public class Engine : RemoteObject
     /// this is <c>true</c> for liquid fueled rockets, and <c>false</c> for solid rocket
     /// boosters.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Engine_get_ThrottleLocked")]
+    [Rpc ("SpaceCenter", "Engine_get_ThrottleLocked")]
     public bool ThrottleLocked {
         get {
             var args = new object[] {
@@ -493,7 +493,7 @@ public class Engine : RemoteObject
     /// <summary>
     /// The current amount of thrust being produced by the engine, in Newtons.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Engine_get_Thrust")]
+    [Rpc ("SpaceCenter", "Engine_get_Thrust")]
     public float Thrust {
         get {
             var args = new object[] {
@@ -508,7 +508,7 @@ public class Engine : RemoteObject
     /// attribute may have no effect, for example the thrust limit for a solid
     /// rocket booster cannot be changed in flight.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Engine_get_ThrustLimit")]
+    [Rpc ("SpaceCenter", "Engine_get_ThrustLimit")]
     public float ThrustLimit {
         get {
             var args = new object[] {
@@ -534,7 +534,7 @@ public class Engine : RemoteObject
     /// The overall thrust produced by the engine, as reported by <see cref="M:SpaceCenter.Engine.AvailableThrust" />,
     /// <see cref="M:SpaceCenter.Engine.MaxThrust" /> and others, is the sum of the thrust generated by each thruster.
     /// </remarks>
-    [RpcAttribute ("SpaceCenter", "Engine_get_Thrusters")]
+    [Rpc ("SpaceCenter", "Engine_get_Thrusters")]
     public IList<Thruster> Thrusters {
         get {
             var args = new object[] {
@@ -547,7 +547,7 @@ public class Engine : RemoteObject
     /// <summary>
     /// The vacuum specific impulse of the engine, in seconds.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Engine_get_VacuumSpecificImpulse")]
+    [Rpc ("SpaceCenter", "Engine_get_VacuumSpecificImpulse")]
     public float VacuumSpecificImpulse {
         get {
             var args = new object[] {

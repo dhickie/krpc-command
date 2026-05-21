@@ -19,7 +19,7 @@ public class RoboticHinge : RemoteObject
     /// <summary>
     /// Move hinge to it's built position.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "RoboticHinge_MoveHome")]
+    [Rpc ("SpaceCenter", "RoboticHinge_MoveHome")]
     public void MoveHome ()
     {
         var args = new object[] {
@@ -31,7 +31,7 @@ public class RoboticHinge : RemoteObject
     /// <summary>
     /// Current angle.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "RoboticHinge_get_CurrentAngle")]
+    [Rpc ("SpaceCenter", "RoboticHinge_get_CurrentAngle")]
     public float CurrentAngle {
         get {
             var args = new object[] {
@@ -44,7 +44,7 @@ public class RoboticHinge : RemoteObject
     /// <summary>
     /// Damping percentage.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "RoboticHinge_get_Damping")]
+    [Rpc ("SpaceCenter", "RoboticHinge_get_Damping")]
     public float Damping {
         get {
             var args = new object[] {
@@ -64,7 +64,7 @@ public class RoboticHinge : RemoteObject
     /// <summary>
     /// Lock movement.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "RoboticHinge_get_Locked")]
+    [Rpc ("SpaceCenter", "RoboticHinge_get_Locked")]
     public bool Locked {
         get {
             var args = new object[] {
@@ -84,7 +84,7 @@ public class RoboticHinge : RemoteObject
     /// <summary>
     /// Whether the motor is engaged.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "RoboticHinge_get_MotorEngaged")]
+    [Rpc ("SpaceCenter", "RoboticHinge_get_MotorEngaged")]
     public bool MotorEngaged {
         get {
             var args = new object[] {
@@ -104,7 +104,7 @@ public class RoboticHinge : RemoteObject
     /// <summary>
     /// The part object for this robotic hinge.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "RoboticHinge_get_Part")]
+    [Rpc ("SpaceCenter", "RoboticHinge_get_Part")]
     public Part Part {
         get {
             var args = new object[] {
@@ -117,7 +117,7 @@ public class RoboticHinge : RemoteObject
     /// <summary>
     /// Target movement rate in degrees per second.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "RoboticHinge_get_Rate")]
+    [Rpc ("SpaceCenter", "RoboticHinge_get_Rate")]
     public float Rate {
         get {
             var args = new object[] {
@@ -137,7 +137,7 @@ public class RoboticHinge : RemoteObject
     /// <summary>
     /// Target angle.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "RoboticHinge_get_TargetAngle")]
+    [Rpc ("SpaceCenter", "RoboticHinge_get_TargetAngle")]
     public float TargetAngle {
         get {
             var args = new object[] {

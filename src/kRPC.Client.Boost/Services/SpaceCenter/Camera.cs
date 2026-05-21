@@ -20,7 +20,7 @@ public class Camera : RemoteObject
     /// <summary>
     /// Default distance from the camera to the subject, in meters.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Camera_get_DefaultDistance")]
+    [Rpc ("SpaceCenter", "Camera_get_DefaultDistance")]
     public float DefaultDistance {
         get {
             var args = new object[] {
@@ -34,7 +34,7 @@ public class Camera : RemoteObject
     /// The distance from the camera to the subject, in meters.
     /// A value between <see cref="M:SpaceCenter.Camera.MinDistance" /> and <see cref="M:SpaceCenter.Camera.MaxDistance" />.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Camera_get_Distance")]
+    [Rpc ("SpaceCenter", "Camera_get_Distance")]
     public float Distance {
         get {
             var args = new object[] {
@@ -56,7 +56,7 @@ public class Camera : RemoteObject
     /// Returns <c>null</c> if the camera is not focussed on a celestial body.
     /// Returns an error is the camera is not in map mode.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Camera_get_FocussedBody")]
+    [Rpc ("SpaceCenter", "Camera_get_FocussedBody")]
     public CelestialBody FocussedBody {
         get {
             var args = new object[] {
@@ -78,7 +78,7 @@ public class Camera : RemoteObject
     /// Returns <c>null</c> if the camera is not focussed on a maneuver node.
     /// Returns an error is the camera is not in map mode.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Camera_get_FocussedNode")]
+    [Rpc ("SpaceCenter", "Camera_get_FocussedNode")]
     public Node FocussedNode {
         get {
             var args = new object[] {
@@ -100,7 +100,7 @@ public class Camera : RemoteObject
     /// Returns <c>null</c> if the camera is not focussed on a vessel.
     /// Returns an error is the camera is not in map mode.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Camera_get_FocussedVessel")]
+    [Rpc ("SpaceCenter", "Camera_get_FocussedVessel")]
     public Vessel FocussedVessel {
         get {
             var args = new object[] {
@@ -120,7 +120,7 @@ public class Camera : RemoteObject
     /// <summary>
     /// The heading of the camera, in degrees.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Camera_get_Heading")]
+    [Rpc ("SpaceCenter", "Camera_get_Heading")]
     public float Heading {
         get {
             var args = new object[] {
@@ -140,7 +140,7 @@ public class Camera : RemoteObject
     /// <summary>
     /// Maximum distance from the camera to the subject, in meters.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Camera_get_MaxDistance")]
+    [Rpc ("SpaceCenter", "Camera_get_MaxDistance")]
     public float MaxDistance {
         get {
             var args = new object[] {
@@ -153,7 +153,7 @@ public class Camera : RemoteObject
     /// <summary>
     /// The maximum pitch of the camera.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Camera_get_MaxPitch")]
+    [Rpc ("SpaceCenter", "Camera_get_MaxPitch")]
     public float MaxPitch {
         get {
             var args = new object[] {
@@ -166,7 +166,7 @@ public class Camera : RemoteObject
     /// <summary>
     /// Minimum distance from the camera to the subject, in meters.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Camera_get_MinDistance")]
+    [Rpc ("SpaceCenter", "Camera_get_MinDistance")]
     public float MinDistance {
         get {
             var args = new object[] {
@@ -179,7 +179,7 @@ public class Camera : RemoteObject
     /// <summary>
     /// The minimum pitch of the camera.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Camera_get_MinPitch")]
+    [Rpc ("SpaceCenter", "Camera_get_MinPitch")]
     public float MinPitch {
         get {
             var args = new object[] {
@@ -192,7 +192,7 @@ public class Camera : RemoteObject
     /// <summary>
     /// The current mode of the camera.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Camera_get_Mode")]
+    [Rpc ("SpaceCenter", "Camera_get_Mode")]
     public CameraMode Mode {
         get {
             var args = new object[] {
@@ -212,7 +212,7 @@ public class Camera : RemoteObject
     /// <summary>
     /// The pitch of the camera, in degrees.
     /// A value between <see cref="M:SpaceCenter.Camera.MinPitch" /> and <see cref="M:SpaceCenter.Camera.MaxPitch" /></summary>
-    [RpcAttribute ("SpaceCenter", "Camera_get_Pitch")]
+    [Rpc ("SpaceCenter", "Camera_get_Pitch")]
     public float Pitch {
         get {
             var args = new object[] {

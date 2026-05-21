@@ -34,7 +34,7 @@ public class Control : RemoteObject
     /// <see cref="M:SpaceCenter.ActiveVessel" /> no longer refer to the active vessel.
     /// Throws an exception if staging is locked.
     /// </remarks>
-    [RpcAttribute ("SpaceCenter", "Control_ActivateNextStage")]
+    [Rpc ("SpaceCenter", "Control_ActivateNextStage")]
     public IList<Vessel> ActivateNextStage ()
     {
         var args = new object[] {
@@ -53,7 +53,7 @@ public class Control : RemoteObject
     /// <param name="prograde">Delta-v in the prograde direction.</param>
     /// <param name="normal">Delta-v in the normal direction.</param>
     /// <param name="radial">Delta-v in the radial direction.</param>
-    [RpcAttribute ("SpaceCenter", "Control_AddNode")]
+    [Rpc ("SpaceCenter", "Control_AddNode")]
     public Node AddNode (double ut, float prograde = 0.0f, float normal = 0.0f, float radial = 0.0f)
     {
         var args = new object[] {
@@ -73,7 +73,7 @@ public class Control : RemoteObject
     /// A number between 0 and 9 inclusive,
     /// or between 0 and 250 inclusive when the <a href="https://forum.kerbalspaceprogram.com/index.php?/topic/67235-122dec1016-action-groups-extended-250-action-groups-in-flight-editing-now-kosremotetech/">Extended Action Groups mod</a> is installed.
     /// </param>
-    [RpcAttribute ("SpaceCenter", "Control_GetActionGroup")]
+    [Rpc ("SpaceCenter", "Control_GetActionGroup")]
     public bool GetActionGroup (uint group)
     {
         var args = new object[] {
@@ -86,7 +86,7 @@ public class Control : RemoteObject
     /// <summary>
     /// Remove all maneuver nodes.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Control_RemoveNodes")]
+    [Rpc ("SpaceCenter", "Control_RemoveNodes")]
     public void RemoveNodes ()
     {
         var args = new object[] {
@@ -103,7 +103,7 @@ public class Control : RemoteObject
     /// or between 0 and 250 inclusive when the <a href="https://forum.kerbalspaceprogram.com/index.php?/topic/67235-122dec1016-action-groups-extended-250-action-groups-in-flight-editing-now-kosremotetech/">Extended Action Groups mod</a> is installed.
     /// </param>
     /// <param name="state"></param>
-    [RpcAttribute ("SpaceCenter", "Control_SetActionGroup")]
+    [Rpc ("SpaceCenter", "Control_SetActionGroup")]
     public void SetActionGroup (uint group, bool state)
     {
         var args = new object[] {
@@ -121,7 +121,7 @@ public class Control : RemoteObject
     /// A number between 0 and 9 inclusive,
     /// or between 0 and 250 inclusive when the <a href="https://forum.kerbalspaceprogram.com/index.php?/topic/67235-122dec1016-action-groups-extended-250-action-groups-in-flight-editing-now-kosremotetech/">Extended Action Groups mod</a> is installed.
     /// </param>
-    [RpcAttribute ("SpaceCenter", "Control_ToggleActionGroup")]
+    [Rpc ("SpaceCenter", "Control_ToggleActionGroup")]
     public void ToggleActionGroup (uint group)
     {
         var args = new object[] {
@@ -134,7 +134,7 @@ public class Control : RemoteObject
     /// <summary>
     /// The state of the abort action group.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Control_get_Abort")]
+    [Rpc ("SpaceCenter", "Control_get_Abort")]
     public bool Abort {
         get {
             var args = new object[] {
@@ -156,7 +156,7 @@ public class Control : RemoteObject
     /// and sets the deployment state of all antennas.
     /// See <see cref="M:SpaceCenter.Antenna.Deployed" />.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Control_get_Antennas")]
+    [Rpc ("SpaceCenter", "Control_get_Antennas")]
     public bool Antennas {
         get {
             var args = new object[] {
@@ -176,7 +176,7 @@ public class Control : RemoteObject
     /// <summary>
     /// The state of the wheel brakes.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Control_get_Brakes")]
+    [Rpc ("SpaceCenter", "Control_get_Brakes")]
     public bool Brakes {
         get {
             var args = new object[] {
@@ -198,7 +198,7 @@ public class Control : RemoteObject
     /// and sets the open state of all cargo bays.
     /// See <see cref="M:SpaceCenter.CargoBay.Open" />.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Control_get_CargoBays")]
+    [Rpc ("SpaceCenter", "Control_get_CargoBays")]
     public bool CargoBays {
         get {
             var args = new object[] {
@@ -219,7 +219,7 @@ public class Control : RemoteObject
     /// The current stage of the vessel. Corresponds to the stage number in
     /// the in-game UI.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Control_get_CurrentStage")]
+    [Rpc ("SpaceCenter", "Control_get_CurrentStage")]
     public int CurrentStage {
         get {
             var args = new object[] {
@@ -233,7 +233,7 @@ public class Control : RemoteObject
     /// The state of CustomAxis01.
     /// A value between -1 and 1.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Control_get_CustomAxis01")]
+    [Rpc ("SpaceCenter", "Control_get_CustomAxis01")]
     public float CustomAxis01 {
         get {
             var args = new object[] {
@@ -254,7 +254,7 @@ public class Control : RemoteObject
     /// The state of CustomAxis02.
     /// A value between -1 and 1.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Control_get_CustomAxis02")]
+    [Rpc ("SpaceCenter", "Control_get_CustomAxis02")]
     public float CustomAxis02 {
         get {
             var args = new object[] {
@@ -275,7 +275,7 @@ public class Control : RemoteObject
     /// The state of CustomAxis03.
     /// A value between -1 and 1.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Control_get_CustomAxis03")]
+    [Rpc ("SpaceCenter", "Control_get_CustomAxis03")]
     public float CustomAxis03 {
         get {
             var args = new object[] {
@@ -296,7 +296,7 @@ public class Control : RemoteObject
     /// The state of CustomAxis04.
     /// A value between -1 and 1.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Control_get_CustomAxis04")]
+    [Rpc ("SpaceCenter", "Control_get_CustomAxis04")]
     public float CustomAxis04 {
         get {
             var args = new object[] {
@@ -318,7 +318,7 @@ public class Control : RemoteObject
     /// A value between -1 and 1.
     /// Equivalent to the h and n keys.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Control_get_Forward")]
+    [Rpc ("SpaceCenter", "Control_get_Forward")]
     public float Forward {
         get {
             var args = new object[] {
@@ -338,7 +338,7 @@ public class Control : RemoteObject
     /// <summary>
     /// The state of the landing gear/legs.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Control_get_Gear")]
+    [Rpc ("SpaceCenter", "Control_get_Gear")]
     public bool Gear {
         get {
             var args = new object[] {
@@ -363,7 +363,7 @@ public class Control : RemoteObject
     /// This mode prevents keyboard control, or SAS, from interfering with the controls when
     /// they are set.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Control_get_InputMode")]
+    [Rpc ("SpaceCenter", "Control_get_InputMode")]
     public ControlInputMode InputMode {
         get {
             var args = new object[] {
@@ -385,7 +385,7 @@ public class Control : RemoteObject
     /// and sets the open state of all air intakes.
     /// See <see cref="M:SpaceCenter.Intake.Open" />.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Control_get_Intakes")]
+    [Rpc ("SpaceCenter", "Control_get_Intakes")]
     public bool Intakes {
         get {
             var args = new object[] {
@@ -408,7 +408,7 @@ public class Control : RemoteObject
     /// Does not include wheels (for example landing gear).
     /// See <see cref="M:SpaceCenter.Leg.Deployed" />.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Control_get_Legs")]
+    [Rpc ("SpaceCenter", "Control_get_Legs")]
     public bool Legs {
         get {
             var args = new object[] {
@@ -428,7 +428,7 @@ public class Control : RemoteObject
     /// <summary>
     /// The state of the lights.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Control_get_Lights")]
+    [Rpc ("SpaceCenter", "Control_get_Lights")]
     public bool Lights {
         get {
             var args = new object[] {
@@ -448,7 +448,7 @@ public class Control : RemoteObject
     /// <summary>
     /// Returns a list of all existing maneuver nodes, ordered by time from first to last.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Control_get_Nodes")]
+    [Rpc ("SpaceCenter", "Control_get_Nodes")]
     public IList<Node> Nodes {
         get {
             var args = new object[] {
@@ -464,7 +464,7 @@ public class Control : RemoteObject
     /// Cannot be set to <c>false</c>.
     /// See <see cref="M:SpaceCenter.Parachute.Deployed" />.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Control_get_Parachutes")]
+    [Rpc ("SpaceCenter", "Control_get_Parachutes")]
     public bool Parachutes {
         get {
             var args = new object[] {
@@ -486,7 +486,7 @@ public class Control : RemoteObject
     /// A value between -1 and 1.
     /// Equivalent to the w and s keys.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Control_get_Pitch")]
+    [Rpc ("SpaceCenter", "Control_get_Pitch")]
     public float Pitch {
         get {
             var args = new object[] {
@@ -506,7 +506,7 @@ public class Control : RemoteObject
     /// <summary>
     /// The state of RCS.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Control_get_RCS")]
+    [Rpc ("SpaceCenter", "Control_get_RCS")]
     public bool RCS {
         get {
             var args = new object[] {
@@ -528,7 +528,7 @@ public class Control : RemoteObject
     /// and sets the deployment state of all radiators.
     /// See <see cref="M:SpaceCenter.Radiator.Deployed" />.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Control_get_Radiators")]
+    [Rpc ("SpaceCenter", "Control_get_Radiators")]
     public bool Radiators {
         get {
             var args = new object[] {
@@ -550,7 +550,7 @@ public class Control : RemoteObject
     /// and sets the active state of all reaction wheels.
     /// See <see cref="M:SpaceCenter.ReactionWheel.Active" />.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Control_get_ReactionWheels")]
+    [Rpc ("SpaceCenter", "Control_get_ReactionWheels")]
     public bool ReactionWheels {
         get {
             var args = new object[] {
@@ -572,7 +572,7 @@ public class Control : RemoteObject
     /// and sets the deployment state of all resource harvesters.
     /// See <see cref="M:SpaceCenter.ResourceHarvester.Deployed" />.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Control_get_ResourceHarvesters")]
+    [Rpc ("SpaceCenter", "Control_get_ResourceHarvesters")]
     public bool ResourceHarvesters {
         get {
             var args = new object[] {
@@ -594,7 +594,7 @@ public class Control : RemoteObject
     /// and sets the active state of all resource harvesters.
     /// See <see cref="M:SpaceCenter.ResourceHarvester.Active" />.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Control_get_ResourceHarvestersActive")]
+    [Rpc ("SpaceCenter", "Control_get_ResourceHarvestersActive")]
     public bool ResourceHarvestersActive {
         get {
             var args = new object[] {
@@ -616,7 +616,7 @@ public class Control : RemoteObject
     /// A value between -1 and 1.
     /// Equivalent to the j and l keys.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Control_get_Right")]
+    [Rpc ("SpaceCenter", "Control_get_Right")]
     public float Right {
         get {
             var args = new object[] {
@@ -638,7 +638,7 @@ public class Control : RemoteObject
     /// A value between -1 and 1.
     /// Equivalent to the q and e keys.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Control_get_Roll")]
+    [Rpc ("SpaceCenter", "Control_get_Roll")]
     public float Roll {
         get {
             var args = new object[] {
@@ -659,7 +659,7 @@ public class Control : RemoteObject
     /// The state of SAS.
     /// </summary>
     /// <remarks>Equivalent to <see cref="M:SpaceCenter.AutoPilot.SAS" /></remarks>
-    [RpcAttribute ("SpaceCenter", "Control_get_SAS")]
+    [Rpc ("SpaceCenter", "Control_get_SAS")]
     public bool SAS {
         get {
             var args = new object[] {
@@ -682,7 +682,7 @@ public class Control : RemoteObject
     /// the left of the navball that appear when SAS is enabled.
     /// </summary>
     /// <remarks>Equivalent to <see cref="M:SpaceCenter.AutoPilot.SASMode" /></remarks>
-    [RpcAttribute ("SpaceCenter", "Control_get_SASMode")]
+    [Rpc ("SpaceCenter", "Control_get_SASMode")]
     public SASMode SASMode {
         get {
             var args = new object[] {
@@ -704,7 +704,7 @@ public class Control : RemoteObject
     /// and sets the deployment state of all solar panels.
     /// See <see cref="M:SpaceCenter.SolarPanel.Deployed" />.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Control_get_SolarPanels")]
+    [Rpc ("SpaceCenter", "Control_get_SolarPanels")]
     public bool SolarPanels {
         get {
             var args = new object[] {
@@ -724,7 +724,7 @@ public class Control : RemoteObject
     /// <summary>
     /// The source of the vessels control, for example by a kerbal or a probe core.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Control_get_Source")]
+    [Rpc ("SpaceCenter", "Control_get_Source")]
     public ControlSource Source {
         get {
             var args = new object[] {
@@ -738,7 +738,7 @@ public class Control : RemoteObject
     /// The current <see cref="T:SpaceCenter.SpeedMode" /> of the navball.
     /// This is the mode displayed next to the speed at the top of the navball.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Control_get_SpeedMode")]
+    [Rpc ("SpaceCenter", "Control_get_SpeedMode")]
     public SpeedMode SpeedMode {
         get {
             var args = new object[] {
@@ -761,7 +761,7 @@ public class Control : RemoteObject
     /// <remarks>
     /// This is equivalent to locking the staging using Alt+L
     /// </remarks>
-    [RpcAttribute ("SpaceCenter", "Control_get_StageLock")]
+    [Rpc ("SpaceCenter", "Control_get_StageLock")]
     public bool StageLock {
         get {
             var args = new object[] {
@@ -781,7 +781,7 @@ public class Control : RemoteObject
     /// <summary>
     /// The control state of the vessel.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Control_get_State")]
+    [Rpc ("SpaceCenter", "Control_get_State")]
     public ControlState State {
         get {
             var args = new object[] {
@@ -794,7 +794,7 @@ public class Control : RemoteObject
     /// <summary>
     /// The state of the throttle. A value between 0 and 1.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Control_get_Throttle")]
+    [Rpc ("SpaceCenter", "Control_get_Throttle")]
     public float Throttle {
         get {
             var args = new object[] {
@@ -816,7 +816,7 @@ public class Control : RemoteObject
     /// A value between -1 and 1.
     /// Equivalent to the i and k keys.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Control_get_Up")]
+    [Rpc ("SpaceCenter", "Control_get_Up")]
     public float Up {
         get {
             var args = new object[] {
@@ -838,7 +838,7 @@ public class Control : RemoteObject
     /// A value between -1 and 1.
     /// A value of 1 steers to the left, and a value of -1 steers to the right.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Control_get_WheelSteering")]
+    [Rpc ("SpaceCenter", "Control_get_WheelSteering")]
     public float WheelSteering {
         get {
             var args = new object[] {
@@ -861,7 +861,7 @@ public class Control : RemoteObject
     /// A value of 1 rotates the wheels forwards, a value of -1 rotates
     /// the wheels backwards.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Control_get_WheelThrottle")]
+    [Rpc ("SpaceCenter", "Control_get_WheelThrottle")]
     public float WheelThrottle {
         get {
             var args = new object[] {
@@ -884,7 +884,7 @@ public class Control : RemoteObject
     /// Does not include landing legs.
     /// See <see cref="M:SpaceCenter.Wheel.Deployed" />.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Control_get_Wheels")]
+    [Rpc ("SpaceCenter", "Control_get_Wheels")]
     public bool Wheels {
         get {
             var args = new object[] {
@@ -906,7 +906,7 @@ public class Control : RemoteObject
     /// A value between -1 and 1.
     /// Equivalent to the a and d keys.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Control_get_Yaw")]
+    [Rpc ("SpaceCenter", "Control_get_Yaw")]
     public float Yaw {
         get {
             var args = new object[] {

@@ -24,7 +24,7 @@ public class RCS : RemoteObject
     /// (<see cref="M:SpaceCenter.Control.RCS" />), the RCS thruster itself is not enabled
     /// (<see cref="M:SpaceCenter.RCS.Enabled" />) or it is covered by a fairing (<see cref="M:SpaceCenter.Part.Shielded" />).
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "RCS_get_Active")]
+    [Rpc ("SpaceCenter", "RCS_get_Active")]
     public bool Active {
         get {
             var args = new object[] {
@@ -40,7 +40,7 @@ public class RCS : RemoteObject
     /// correspond to the coordinate axes of the <see cref="M:SpaceCenter.Vessel.ReferenceFrame" />.
     /// Returns zero if RCS is disabled.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "RCS_get_AvailableForce")]
+    [Rpc ("SpaceCenter", "RCS_get_AvailableForce")]
     public Tuple<Tuple<double,double,double>,Tuple<double,double,double>> AvailableForce {
         get {
             var args = new object[] {
@@ -56,7 +56,7 @@ public class RCS : RemoteObject
     /// Takes the thrusters current <see cref="M:SpaceCenter.RCS.ThrustLimit" /> and atmospheric conditions
     /// into account.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "RCS_get_AvailableThrust")]
+    [Rpc ("SpaceCenter", "RCS_get_AvailableThrust")]
     public float AvailableThrust {
         get {
             var args = new object[] {
@@ -72,7 +72,7 @@ public class RCS : RemoteObject
     /// correspond to the coordinate axes of the <see cref="M:SpaceCenter.Vessel.ReferenceFrame" />.
     /// Returns zero if RCS is disable.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "RCS_get_AvailableTorque")]
+    [Rpc ("SpaceCenter", "RCS_get_AvailableTorque")]
     public Tuple<Tuple<double,double,double>,Tuple<double,double,double>> AvailableTorque {
         get {
             var args = new object[] {
@@ -85,7 +85,7 @@ public class RCS : RemoteObject
     /// <summary>
     /// Whether the RCS thrusters are enabled.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "RCS_get_Enabled")]
+    [Rpc ("SpaceCenter", "RCS_get_Enabled")]
     public bool Enabled {
         get {
             var args = new object[] {
@@ -105,7 +105,7 @@ public class RCS : RemoteObject
     /// <summary>
     /// Whether the RCS thruster will fire when pitch control input is given.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "RCS_get_ForwardEnabled")]
+    [Rpc ("SpaceCenter", "RCS_get_ForwardEnabled")]
     public bool ForwardEnabled {
         get {
             var args = new object[] {
@@ -125,7 +125,7 @@ public class RCS : RemoteObject
     /// <summary>
     /// Whether the RCS has fuel available.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "RCS_get_HasFuel")]
+    [Rpc ("SpaceCenter", "RCS_get_HasFuel")]
     public bool HasFuel {
         get {
             var args = new object[] {
@@ -138,7 +138,7 @@ public class RCS : RemoteObject
     /// <summary>
     /// The specific impulse of the RCS at sea level on Kerbin, in seconds.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "RCS_get_KerbinSeaLevelSpecificImpulse")]
+    [Rpc ("SpaceCenter", "RCS_get_KerbinSeaLevelSpecificImpulse")]
     public float KerbinSeaLevelSpecificImpulse {
         get {
             var args = new object[] {
@@ -154,7 +154,7 @@ public class RCS : RemoteObject
     /// Takes the thrusters current <see cref="M:SpaceCenter.RCS.ThrustLimit" /> and atmospheric conditions
     /// into account.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "RCS_get_MaxThrust")]
+    [Rpc ("SpaceCenter", "RCS_get_MaxThrust")]
     public float MaxThrust {
         get {
             var args = new object[] {
@@ -168,7 +168,7 @@ public class RCS : RemoteObject
     /// The maximum amount of thrust that can be produced by the RCS thrusters when active
     /// in a vacuum, in Newtons.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "RCS_get_MaxVacuumThrust")]
+    [Rpc ("SpaceCenter", "RCS_get_MaxVacuumThrust")]
     public float MaxVacuumThrust {
         get {
             var args = new object[] {
@@ -181,7 +181,7 @@ public class RCS : RemoteObject
     /// <summary>
     /// The part object for this RCS.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "RCS_get_Part")]
+    [Rpc ("SpaceCenter", "RCS_get_Part")]
     public Part Part {
         get {
             var args = new object[] {
@@ -194,7 +194,7 @@ public class RCS : RemoteObject
     /// <summary>
     /// Whether the RCS thruster will fire when pitch control input is given.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "RCS_get_PitchEnabled")]
+    [Rpc ("SpaceCenter", "RCS_get_PitchEnabled")]
     public bool PitchEnabled {
         get {
             var args = new object[] {
@@ -215,7 +215,7 @@ public class RCS : RemoteObject
     /// The ratios of resources that the RCS consumes. A dictionary mapping resource names
     /// to the ratios at which they are consumed by the RCS.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "RCS_get_PropellantRatios")]
+    [Rpc ("SpaceCenter", "RCS_get_PropellantRatios")]
     public IDictionary<string,float> PropellantRatios {
         get {
             var args = new object[] {
@@ -228,7 +228,7 @@ public class RCS : RemoteObject
     /// <summary>
     /// The names of resources that the RCS consumes.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "RCS_get_Propellants")]
+    [Rpc ("SpaceCenter", "RCS_get_Propellants")]
     public IList<string> Propellants {
         get {
             var args = new object[] {
@@ -241,7 +241,7 @@ public class RCS : RemoteObject
     /// <summary>
     /// Whether the RCS thruster will fire when roll control input is given.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "RCS_get_RightEnabled")]
+    [Rpc ("SpaceCenter", "RCS_get_RightEnabled")]
     public bool RightEnabled {
         get {
             var args = new object[] {
@@ -261,7 +261,7 @@ public class RCS : RemoteObject
     /// <summary>
     /// Whether the RCS thruster will fire when roll control input is given.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "RCS_get_RollEnabled")]
+    [Rpc ("SpaceCenter", "RCS_get_RollEnabled")]
     public bool RollEnabled {
         get {
             var args = new object[] {
@@ -282,7 +282,7 @@ public class RCS : RemoteObject
     /// The current specific impulse of the RCS, in seconds. Returns zero
     /// if the RCS is not active.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "RCS_get_SpecificImpulse")]
+    [Rpc ("SpaceCenter", "RCS_get_SpecificImpulse")]
     public float SpecificImpulse {
         get {
             var args = new object[] {
@@ -295,7 +295,7 @@ public class RCS : RemoteObject
     /// <summary>
     /// The thrust limiter of the thruster. A value between 0 and 1.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "RCS_get_ThrustLimit")]
+    [Rpc ("SpaceCenter", "RCS_get_ThrustLimit")]
     public float ThrustLimit {
         get {
             var args = new object[] {
@@ -315,7 +315,7 @@ public class RCS : RemoteObject
     /// <summary>
     /// A list of thrusters, one of each nozzel in the RCS part.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "RCS_get_Thrusters")]
+    [Rpc ("SpaceCenter", "RCS_get_Thrusters")]
     public IList<Thruster> Thrusters {
         get {
             var args = new object[] {
@@ -328,7 +328,7 @@ public class RCS : RemoteObject
     /// <summary>
     /// Whether the RCS thruster will fire when yaw control input is given.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "RCS_get_UpEnabled")]
+    [Rpc ("SpaceCenter", "RCS_get_UpEnabled")]
     public bool UpEnabled {
         get {
             var args = new object[] {
@@ -348,7 +348,7 @@ public class RCS : RemoteObject
     /// <summary>
     /// The vacuum specific impulse of the RCS, in seconds.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "RCS_get_VacuumSpecificImpulse")]
+    [Rpc ("SpaceCenter", "RCS_get_VacuumSpecificImpulse")]
     public float VacuumSpecificImpulse {
         get {
             var args = new object[] {
@@ -361,7 +361,7 @@ public class RCS : RemoteObject
     /// <summary>
     /// Whether the RCS thruster will fire when yaw control input is given.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "RCS_get_YawEnabled")]
+    [Rpc ("SpaceCenter", "RCS_get_YawEnabled")]
     public bool YawEnabled {
         get {
             var args = new object[] {

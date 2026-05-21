@@ -28,7 +28,7 @@ public class Part : RemoteObject
     /// <param name="position">The position at which the force acts, as a vector.</param>
     /// <param name="referenceFrame">The reference frame that the
     /// force and position are in.</param>
-    [RpcAttribute ("SpaceCenter", "Part_AddForce")]
+    [Rpc ("SpaceCenter", "Part_AddForce")]
     public Force AddForce (Tuple<double,double,double> force, Tuple<double,double,double> position, ReferenceFrame referenceFrame)
     {
         var args = new object[] {
@@ -52,7 +52,7 @@ public class Part : RemoteObject
     /// If the part is not collidable, the box has zero volume and is centered on
     /// the <see cref="M:SpaceCenter.Part.Position" /> of the part.
     /// </remarks>
-    [RpcAttribute ("SpaceCenter", "Part_BoundingBox")]
+    [Rpc ("SpaceCenter", "Part_BoundingBox")]
     public Tuple<Tuple<double,double,double>,Tuple<double,double,double>> BoundingBox (ReferenceFrame referenceFrame)
     {
         var args = new object[] {
@@ -69,7 +69,7 @@ public class Part : RemoteObject
     /// <returns>The position as a vector.</returns>
     /// <param name="referenceFrame">The reference frame that the returned
     /// position vector is in.</param>
-    [RpcAttribute ("SpaceCenter", "Part_CenterOfMass")]
+    [Rpc ("SpaceCenter", "Part_CenterOfMass")]
     public Tuple<double,double,double> CenterOfMass (ReferenceFrame referenceFrame)
     {
         var args = new object[] {
@@ -85,7 +85,7 @@ public class Part : RemoteObject
     /// <returns>The direction as a unit vector.</returns>
     /// <param name="referenceFrame">The reference frame that the returned
     /// direction is in.</param>
-    [RpcAttribute ("SpaceCenter", "Part_Direction")]
+    [Rpc ("SpaceCenter", "Part_Direction")]
     public Tuple<double,double,double> Direction (ReferenceFrame referenceFrame)
     {
         var args = new object[] {
@@ -104,7 +104,7 @@ public class Part : RemoteObject
     /// <param name="referenceFrame">The reference frame that the
     /// force and position are in.</param>
     /// <remarks>The force is applied instantaneously in a single physics update.</remarks>
-    [RpcAttribute ("SpaceCenter", "Part_InstantaneousForce")]
+    [Rpc ("SpaceCenter", "Part_InstantaneousForce")]
     public void InstantaneousForce (Tuple<double,double,double> force, Tuple<double,double,double> position, ReferenceFrame referenceFrame)
     {
         var args = new object[] {
@@ -127,7 +127,7 @@ public class Part : RemoteObject
     /// It s not necessarily the same as the parts center of mass.
     /// Use <see cref="M:SpaceCenter.Part.CenterOfMass" /> to get the parts center of mass.
     /// </remarks>
-    [RpcAttribute ("SpaceCenter", "Part_Position")]
+    [Rpc ("SpaceCenter", "Part_Position")]
     public Tuple<double,double,double> Position (ReferenceFrame referenceFrame)
     {
         var args = new object[] {
@@ -143,7 +143,7 @@ public class Part : RemoteObject
     /// <returns>The rotation as a quaternion of the form <math>(x, y, z, w)</math>.</returns>
     /// <param name="referenceFrame">The reference frame that the returned
     /// rotation is in.</param>
-    [RpcAttribute ("SpaceCenter", "Part_Rotation")]
+    [Rpc ("SpaceCenter", "Part_Rotation")]
     public Tuple<double,double,double,double> Rotation (ReferenceFrame referenceFrame)
     {
         var args = new object[] {
@@ -160,7 +160,7 @@ public class Part : RemoteObject
     /// and its magnitude is the speed of the body in meters per second.</returns>
     /// <param name="referenceFrame">The reference frame that the returned
     /// velocity vector is in.</param>
-    [RpcAttribute ("SpaceCenter", "Part_Velocity")]
+    [Rpc ("SpaceCenter", "Part_Velocity")]
     public Tuple<double,double,double> Velocity (ReferenceFrame referenceFrame)
     {
         var args = new object[] {
@@ -177,7 +177,7 @@ public class Part : RemoteObject
     /// If RemoteTech is installed, this will always return <c>null</c>.
     /// To interact with RemoteTech antennas, use the RemoteTech service APIs.
     /// </remarks>
-    [RpcAttribute ("SpaceCenter", "Part_get_Antenna")]
+    [Rpc ("SpaceCenter", "Part_get_Antenna")]
     public Antenna Antenna {
         get {
             var args = new object[] {
@@ -190,7 +190,7 @@ public class Part : RemoteObject
     /// <summary>
     /// Auto-strut mode.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Part_get_AutoStrutMode")]
+    [Rpc ("SpaceCenter", "Part_get_AutoStrutMode")]
     public AutoStrutMode AutoStrutMode {
         get {
             var args = new object[] {
@@ -203,7 +203,7 @@ public class Part : RemoteObject
     /// <summary>
     /// How many open seats the part has.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Part_get_AvailableSeats")]
+    [Rpc ("SpaceCenter", "Part_get_AvailableSeats")]
     public uint AvailableSeats {
         get {
             var args = new object[] {
@@ -217,7 +217,7 @@ public class Part : RemoteObject
     /// Whether the part is axially attached to its parent, i.e. on the top
     /// or bottom of its parent. If the part has no parent, returns <c>false</c>.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Part_get_AxiallyAttached")]
+    [Rpc ("SpaceCenter", "Part_get_AxiallyAttached")]
     public bool AxiallyAttached {
         get {
             var args = new object[] {
@@ -230,7 +230,7 @@ public class Part : RemoteObject
     /// <summary>
     /// A <see cref="T:SpaceCenter.CargoBay" /> if the part is a cargo bay, otherwise <c>null</c>.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Part_get_CargoBay")]
+    [Rpc ("SpaceCenter", "Part_get_CargoBay")]
     public CargoBay CargoBay {
         get {
             var args = new object[] {
@@ -251,7 +251,7 @@ public class Part : RemoteObject
     /// reference frame for the docking port, returned by
     /// <see cref="M:SpaceCenter.DockingPort.ReferenceFrame" />.
     /// </remarks>
-    [RpcAttribute ("SpaceCenter", "Part_get_CenterOfMassReferenceFrame")]
+    [Rpc ("SpaceCenter", "Part_get_CenterOfMassReferenceFrame")]
     public ReferenceFrame CenterOfMassReferenceFrame {
         get {
             var args = new object[] {
@@ -266,7 +266,7 @@ public class Part : RemoteObject
     /// This, in combination with <see cref="M:SpaceCenter.Part.Parent" />, can be used to traverse the vessels
     /// parts tree.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Part_get_Children")]
+    [Rpc ("SpaceCenter", "Part_get_Children")]
     public IList<Part> Children {
         get {
             var args = new object[] {
@@ -280,7 +280,7 @@ public class Part : RemoteObject
     /// A <see cref="T:SpaceCenter.ControlSurface" /> if the part is an aerodynamic control surface,
     /// otherwise <c>null</c>.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Part_get_ControlSurface")]
+    [Rpc ("SpaceCenter", "Part_get_ControlSurface")]
     public ControlSurface ControlSurface {
         get {
             var args = new object[] {
@@ -293,7 +293,7 @@ public class Part : RemoteObject
     /// <summary>
     /// The cost of the part, in units of funds.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Part_get_Cost")]
+    [Rpc ("SpaceCenter", "Part_get_Cost")]
     public double Cost {
         get {
             var args = new object[] {
@@ -306,7 +306,7 @@ public class Part : RemoteObject
     /// <summary>
     /// Whether this part is crossfeed capable.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Part_get_Crossfeed")]
+    [Rpc ("SpaceCenter", "Part_get_Crossfeed")]
     public bool Crossfeed {
         get {
             var args = new object[] {
@@ -320,7 +320,7 @@ public class Part : RemoteObject
     /// The stage in which this part will be decoupled. Returns -1 if the part is never
     /// decoupled from the vessel.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Part_get_DecoupleStage")]
+    [Rpc ("SpaceCenter", "Part_get_DecoupleStage")]
     public int DecoupleStage {
         get {
             var args = new object[] {
@@ -333,7 +333,7 @@ public class Part : RemoteObject
     /// <summary>
     /// A <see cref="T:SpaceCenter.Decoupler" /> if the part is a decoupler, otherwise <c>null</c>.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Part_get_Decoupler")]
+    [Rpc ("SpaceCenter", "Part_get_Decoupler")]
     public Decoupler Decoupler {
         get {
             var args = new object[] {
@@ -346,7 +346,7 @@ public class Part : RemoteObject
     /// <summary>
     /// A <see cref="T:SpaceCenter.DockingPort" /> if the part is a docking port, otherwise <c>null</c>.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Part_get_DockingPort")]
+    [Rpc ("SpaceCenter", "Part_get_DockingPort")]
     public DockingPort DockingPort {
         get {
             var args = new object[] {
@@ -360,7 +360,7 @@ public class Part : RemoteObject
     /// The mass of the part, not including any resources it contains, in kilograms.
     /// Returns zero if the part is massless.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Part_get_DryMass")]
+    [Rpc ("SpaceCenter", "Part_get_DryMass")]
     public double DryMass {
         get {
             var args = new object[] {
@@ -373,7 +373,7 @@ public class Part : RemoteObject
     /// <summary>
     /// The dynamic pressure acting on the part, in Pascals.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Part_get_DynamicPressure")]
+    [Rpc ("SpaceCenter", "Part_get_DynamicPressure")]
     public float DynamicPressure {
         get {
             var args = new object[] {
@@ -386,7 +386,7 @@ public class Part : RemoteObject
     /// <summary>
     /// An <see cref="T:SpaceCenter.Engine" /> if the part is an engine, otherwise <c>null</c>.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Part_get_Engine")]
+    [Rpc ("SpaceCenter", "Part_get_Engine")]
     public Engine Engine {
         get {
             var args = new object[] {
@@ -404,7 +404,7 @@ public class Part : RemoteObject
     /// Throws an exception if the part contains more than one experiment.
     /// In that case, use <see cref="M:SpaceCenter.Part.Experiments" /> to get the list of experiments in the part.
     /// </remarks>
-    [RpcAttribute ("SpaceCenter", "Part_get_Experiment")]
+    [Rpc ("SpaceCenter", "Part_get_Experiment")]
     public Experiment Experiment {
         get {
             var args = new object[] {
@@ -417,7 +417,7 @@ public class Part : RemoteObject
     /// <summary>
     /// A list of <see cref="T:SpaceCenter.Experiment" /> objects that the part contains.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Part_get_Experiments")]
+    [Rpc ("SpaceCenter", "Part_get_Experiments")]
     public IList<Experiment> Experiments {
         get {
             var args = new object[] {
@@ -430,7 +430,7 @@ public class Part : RemoteObject
     /// <summary>
     /// A <see cref="T:SpaceCenter.Fairing" /> if the part is a fairing, otherwise <c>null</c>.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Part_get_Fairing")]
+    [Rpc ("SpaceCenter", "Part_get_Fairing")]
     public Fairing Fairing {
         get {
             var args = new object[] {
@@ -443,7 +443,7 @@ public class Part : RemoteObject
     /// <summary>
     /// The asset URL for the part's flag.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Part_get_FlagURL")]
+    [Rpc ("SpaceCenter", "Part_get_FlagURL")]
     public string FlagURL {
         get {
             var args = new object[] {
@@ -464,7 +464,7 @@ public class Part : RemoteObject
     /// The parts that are connected to this part via fuel lines, where the direction of the
     /// fuel line is into this part.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Part_get_FuelLinesFrom")]
+    [Rpc ("SpaceCenter", "Part_get_FuelLinesFrom")]
     public IList<Part> FuelLinesFrom {
         get {
             var args = new object[] {
@@ -478,7 +478,7 @@ public class Part : RemoteObject
     /// The parts that are connected to this part via fuel lines, where the direction of the
     /// fuel line is out of this part.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Part_get_FuelLinesTo")]
+    [Rpc ("SpaceCenter", "Part_get_FuelLinesTo")]
     public IList<Part> FuelLinesTo {
         get {
             var args = new object[] {
@@ -504,7 +504,7 @@ public class Part : RemoteObject
     /// <summary>
     /// The color used to highlight the part, as an RGB triple.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Part_get_HighlightColor")]
+    [Rpc ("SpaceCenter", "Part_get_HighlightColor")]
     public Tuple<double,double,double> HighlightColor {
         get {
             var args = new object[] {
@@ -524,7 +524,7 @@ public class Part : RemoteObject
     /// <summary>
     /// Whether the part is highlighted.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Part_get_Highlighted")]
+    [Rpc ("SpaceCenter", "Part_get_Highlighted")]
     public bool Highlighted {
         get {
             var args = new object[] {
@@ -544,7 +544,7 @@ public class Part : RemoteObject
     /// <summary>
     /// The impact tolerance of the part, in meters per second.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Part_get_ImpactTolerance")]
+    [Rpc ("SpaceCenter", "Part_get_ImpactTolerance")]
     public double ImpactTolerance {
         get {
             var args = new object[] {
@@ -559,7 +559,7 @@ public class Part : RemoteObject
     /// (<see cref="T:SpaceCenter.ReferenceFrame" />).
     /// Returns the 3x3 matrix as a list of elements, in row-major order.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Part_get_InertiaTensor")]
+    [Rpc ("SpaceCenter", "Part_get_InertiaTensor")]
     public IList<double> InertiaTensor {
         get {
             var args = new object[] {
@@ -577,7 +577,7 @@ public class Part : RemoteObject
     /// of engine, including liquid fuel rockets, solid rocket boosters and jet engines.
     /// For RCS thrusters see <see cref="T:SpaceCenter.RCS" />.
     /// </remarks>
-    [RpcAttribute ("SpaceCenter", "Part_get_Intake")]
+    [Rpc ("SpaceCenter", "Part_get_Intake")]
     public Intake Intake {
         get {
             var args = new object[] {
@@ -590,7 +590,7 @@ public class Part : RemoteObject
     /// <summary>
     /// Whether this part is a fuel line.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Part_get_IsFuelLine")]
+    [Rpc ("SpaceCenter", "Part_get_IsFuelLine")]
     public bool IsFuelLine {
         get {
             var args = new object[] {
@@ -603,7 +603,7 @@ public class Part : RemoteObject
     /// <summary>
     /// A <see cref="T:SpaceCenter.LaunchClamp" /> if the part is a launch clamp, otherwise <c>null</c>.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Part_get_LaunchClamp")]
+    [Rpc ("SpaceCenter", "Part_get_LaunchClamp")]
     public LaunchClamp LaunchClamp {
         get {
             var args = new object[] {
@@ -616,7 +616,7 @@ public class Part : RemoteObject
     /// <summary>
     /// A <see cref="T:SpaceCenter.Leg" /> if the part is a landing leg, otherwise <c>null</c>.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Part_get_Leg")]
+    [Rpc ("SpaceCenter", "Part_get_Leg")]
     public Leg Leg {
         get {
             var args = new object[] {
@@ -629,7 +629,7 @@ public class Part : RemoteObject
     /// <summary>
     /// A <see cref="T:SpaceCenter.Light" /> if the part is a light, otherwise <c>null</c>.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Part_get_Light")]
+    [Rpc ("SpaceCenter", "Part_get_Light")]
     public Light Light {
         get {
             var args = new object[] {
@@ -643,7 +643,7 @@ public class Part : RemoteObject
     /// The current mass of the part, including resources it contains, in kilograms.
     /// Returns zero if the part is massless.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Part_get_Mass")]
+    [Rpc ("SpaceCenter", "Part_get_Mass")]
     public double Mass {
         get {
             var args = new object[] {
@@ -657,7 +657,7 @@ public class Part : RemoteObject
     /// Whether the part is
     /// <a href="https://wiki.kerbalspaceprogram.com/wiki/Massless_part">massless</a>.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Part_get_Massless")]
+    [Rpc ("SpaceCenter", "Part_get_Massless")]
     public bool Massless {
         get {
             var args = new object[] {
@@ -670,7 +670,7 @@ public class Part : RemoteObject
     /// <summary>
     /// Maximum temperature that the skin of the part can survive, in Kelvin.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Part_get_MaxSkinTemperature")]
+    [Rpc ("SpaceCenter", "Part_get_MaxSkinTemperature")]
     public double MaxSkinTemperature {
         get {
             var args = new object[] {
@@ -683,7 +683,7 @@ public class Part : RemoteObject
     /// <summary>
     /// Maximum temperature that the part can survive, in Kelvin.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Part_get_MaxTemperature")]
+    [Rpc ("SpaceCenter", "Part_get_MaxTemperature")]
     public double MaxTemperature {
         get {
             var args = new object[] {
@@ -696,7 +696,7 @@ public class Part : RemoteObject
     /// <summary>
     /// The modules for this part.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Part_get_Modules")]
+    [Rpc ("SpaceCenter", "Part_get_Modules")]
     public IList<Module> Modules {
         get {
             var args = new object[] {
@@ -710,7 +710,7 @@ public class Part : RemoteObject
     /// The moment of inertia of the part in <math>kg.m^2</math> around its center of mass
     /// in the parts reference frame (<see cref="T:SpaceCenter.ReferenceFrame" />).
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Part_get_MomentOfInertia")]
+    [Rpc ("SpaceCenter", "Part_get_MomentOfInertia")]
     public Tuple<double,double,double> MomentOfInertia {
         get {
             var args = new object[] {
@@ -725,7 +725,7 @@ public class Part : RemoteObject
     /// <a href="https://wiki.kerbalspaceprogram.com/wiki/CFG_File_Documentation">part cfg files</a>.
     /// For example "Mark1-2Pod".
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Part_get_Name")]
+    [Rpc ("SpaceCenter", "Part_get_Name")]
     public string Name {
         get {
             var args = new object[] {
@@ -738,7 +738,7 @@ public class Part : RemoteObject
     /// <summary>
     /// A <see cref="T:SpaceCenter.Parachute" /> if the part is a parachute, otherwise <c>null</c>.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Part_get_Parachute")]
+    [Rpc ("SpaceCenter", "Part_get_Parachute")]
     public Parachute Parachute {
         get {
             var args = new object[] {
@@ -753,7 +753,7 @@ public class Part : RemoteObject
     /// This, in combination with <see cref="M:SpaceCenter.Part.Children" />, can be used to traverse the vessels
     /// parts tree.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Part_get_Parent")]
+    [Rpc ("SpaceCenter", "Part_get_Parent")]
     public Part Parent {
         get {
             var args = new object[] {
@@ -766,7 +766,7 @@ public class Part : RemoteObject
     /// <summary>
     /// A <see cref="T:SpaceCenter.RCS" /> if the part is an RCS block/thruster, otherwise <c>null</c>.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Part_get_RCS")]
+    [Rpc ("SpaceCenter", "Part_get_RCS")]
     public RCS RCS {
         get {
             var args = new object[] {
@@ -780,7 +780,7 @@ public class Part : RemoteObject
     /// Whether the part is radially attached to its parent, i.e. on the side of its parent.
     /// If the part has no parent, returns <c>false</c>.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Part_get_RadiallyAttached")]
+    [Rpc ("SpaceCenter", "Part_get_RadiallyAttached")]
     public bool RadiallyAttached {
         get {
             var args = new object[] {
@@ -793,7 +793,7 @@ public class Part : RemoteObject
     /// <summary>
     /// A <see cref="T:SpaceCenter.Radiator" /> if the part is a radiator, otherwise <c>null</c>.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Part_get_Radiator")]
+    [Rpc ("SpaceCenter", "Part_get_Radiator")]
     public Radiator Radiator {
         get {
             var args = new object[] {
@@ -806,7 +806,7 @@ public class Part : RemoteObject
     /// <summary>
     /// A <see cref="T:SpaceCenter.ReactionWheel" /> if the part is a reaction wheel, otherwise <c>null</c>.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Part_get_ReactionWheel")]
+    [Rpc ("SpaceCenter", "Part_get_ReactionWheel")]
     public ReactionWheel ReactionWheel {
         get {
             var args = new object[] {
@@ -827,7 +827,7 @@ public class Part : RemoteObject
     /// reference frame for the docking port, returned by
     /// <see cref="M:SpaceCenter.DockingPort.ReferenceFrame" />.
     /// </remarks>
-    [RpcAttribute ("SpaceCenter", "Part_get_ReferenceFrame")]
+    [Rpc ("SpaceCenter", "Part_get_ReferenceFrame")]
     public ReferenceFrame ReferenceFrame {
         get {
             var args = new object[] {
@@ -841,7 +841,7 @@ public class Part : RemoteObject
     /// A <see cref="T:SpaceCenter.ResourceConverter" /> if the part is a resource converter,
     /// otherwise <c>null</c>.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Part_get_ResourceConverter")]
+    [Rpc ("SpaceCenter", "Part_get_ResourceConverter")]
     public ResourceConverter ResourceConverter {
         get {
             var args = new object[] {
@@ -854,7 +854,7 @@ public class Part : RemoteObject
     /// <summary>
     /// A <see cref="T:SpaceCenter.ResourceDrain" /> if the part is a resource drain, otherwise <c>null</c>.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Part_get_ResourceDrain")]
+    [Rpc ("SpaceCenter", "Part_get_ResourceDrain")]
     public ResourceDrain ResourceDrain {
         get {
             var args = new object[] {
@@ -868,7 +868,7 @@ public class Part : RemoteObject
     /// A <see cref="T:SpaceCenter.ResourceHarvester" /> if the part is a resource harvester,
     /// otherwise <c>null</c>.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Part_get_ResourceHarvester")]
+    [Rpc ("SpaceCenter", "Part_get_ResourceHarvester")]
     public ResourceHarvester ResourceHarvester {
         get {
             var args = new object[] {
@@ -881,7 +881,7 @@ public class Part : RemoteObject
     /// <summary>
     /// A <see cref="T:SpaceCenter.Resources" /> object for the part.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Part_get_Resources")]
+    [Rpc ("SpaceCenter", "Part_get_Resources")]
     public Resources Resources {
         get {
             var args = new object[] {
@@ -895,7 +895,7 @@ public class Part : RemoteObject
     /// A <see cref="T:SpaceCenter.RoboticController" /> if the part is a robotic controller,
     /// otherwise <c>null</c>.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Part_get_RoboticController")]
+    [Rpc ("SpaceCenter", "Part_get_RoboticController")]
     public RoboticController RoboticController {
         get {
             var args = new object[] {
@@ -908,7 +908,7 @@ public class Part : RemoteObject
     /// <summary>
     /// A <see cref="T:SpaceCenter.RoboticHinge" /> if the part is a robotic hinge, otherwise <c>null</c>.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Part_get_RoboticHinge")]
+    [Rpc ("SpaceCenter", "Part_get_RoboticHinge")]
     public RoboticHinge RoboticHinge {
         get {
             var args = new object[] {
@@ -921,7 +921,7 @@ public class Part : RemoteObject
     /// <summary>
     /// A <see cref="T:SpaceCenter.RoboticPiston" /> if the part is a robotic piston, otherwise <c>null</c>.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Part_get_RoboticPiston")]
+    [Rpc ("SpaceCenter", "Part_get_RoboticPiston")]
     public RoboticPiston RoboticPiston {
         get {
             var args = new object[] {
@@ -934,7 +934,7 @@ public class Part : RemoteObject
     /// <summary>
     /// A <see cref="T:SpaceCenter.RoboticRotation" /> if the part is a robotic rotation servo, otherwise <c>null</c>.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Part_get_RoboticRotation")]
+    [Rpc ("SpaceCenter", "Part_get_RoboticRotation")]
     public RoboticRotation RoboticRotation {
         get {
             var args = new object[] {
@@ -947,7 +947,7 @@ public class Part : RemoteObject
     /// <summary>
     /// A <see cref="T:SpaceCenter.RoboticRotor" /> if the part is a robotic rotor, otherwise <c>null</c>.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Part_get_RoboticRotor")]
+    [Rpc ("SpaceCenter", "Part_get_RoboticRotor")]
     public RoboticRotor RoboticRotor {
         get {
             var args = new object[] {
@@ -960,7 +960,7 @@ public class Part : RemoteObject
     /// <summary>
     /// A <see cref="T:SpaceCenter.Sensor" /> if the part is a sensor, otherwise <c>null</c>.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Part_get_Sensor")]
+    [Rpc ("SpaceCenter", "Part_get_Sensor")]
     public Sensor Sensor {
         get {
             var args = new object[] {
@@ -973,7 +973,7 @@ public class Part : RemoteObject
     /// <summary>
     /// Whether the part is shielded from the exterior of the vessel, for example by a fairing.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Part_get_Shielded")]
+    [Rpc ("SpaceCenter", "Part_get_Shielded")]
     public bool Shielded {
         get {
             var args = new object[] {
@@ -986,7 +986,7 @@ public class Part : RemoteObject
     /// <summary>
     /// Temperature of the skin of the part, in Kelvin.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Part_get_SkinTemperature")]
+    [Rpc ("SpaceCenter", "Part_get_SkinTemperature")]
     public double SkinTemperature {
         get {
             var args = new object[] {
@@ -999,7 +999,7 @@ public class Part : RemoteObject
     /// <summary>
     /// A <see cref="T:SpaceCenter.SolarPanel" /> if the part is a solar panel, otherwise <c>null</c>.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Part_get_SolarPanel")]
+    [Rpc ("SpaceCenter", "Part_get_SolarPanel")]
     public SolarPanel SolarPanel {
         get {
             var args = new object[] {
@@ -1013,7 +1013,7 @@ public class Part : RemoteObject
     /// The stage in which this part will be activated. Returns -1 if the part is not
     /// activated by staging.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Part_get_Stage")]
+    [Rpc ("SpaceCenter", "Part_get_Stage")]
     public int Stage {
         get {
             var args = new object[] {
@@ -1032,7 +1032,7 @@ public class Part : RemoteObject
     /// <a href="https://forum.kerbalspaceprogram.com/index.php?/topic/61827-/">kOS</a>
     /// if it is installed.
     /// </remarks>
-    [RpcAttribute ("SpaceCenter", "Part_get_Tag")]
+    [Rpc ("SpaceCenter", "Part_get_Tag")]
     public string Tag {
         get {
             var args = new object[] {
@@ -1052,7 +1052,7 @@ public class Part : RemoteObject
     /// <summary>
     /// Temperature of the part, in Kelvin.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Part_get_Temperature")]
+    [Rpc ("SpaceCenter", "Part_get_Temperature")]
     public double Temperature {
         get {
             var args = new object[] {
@@ -1068,7 +1068,7 @@ public class Part : RemoteObject
     /// A positive value means the part is gaining heat energy, and negative means it is
     /// losing heat energy.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Part_get_ThermalConductionFlux")]
+    [Rpc ("SpaceCenter", "Part_get_ThermalConductionFlux")]
     public float ThermalConductionFlux {
         get {
             var args = new object[] {
@@ -1084,7 +1084,7 @@ public class Part : RemoteObject
     /// A positive value means the part is gaining heat energy, and negative means it is
     /// losing heat energy.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Part_get_ThermalConvectionFlux")]
+    [Rpc ("SpaceCenter", "Part_get_ThermalConvectionFlux")]
     public float ThermalConvectionFlux {
         get {
             var args = new object[] {
@@ -1101,7 +1101,7 @@ public class Part : RemoteObject
     /// A positive value means the part is gaining heat energy, and negative means it is losing
     /// heat energy.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Part_get_ThermalInternalFlux")]
+    [Rpc ("SpaceCenter", "Part_get_ThermalInternalFlux")]
     public float ThermalInternalFlux {
         get {
             var args = new object[] {
@@ -1115,7 +1115,7 @@ public class Part : RemoteObject
     /// A measure of how much energy it takes to increase the internal temperature of the part,
     /// in Joules per Kelvin.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Part_get_ThermalMass")]
+    [Rpc ("SpaceCenter", "Part_get_ThermalMass")]
     public float ThermalMass {
         get {
             var args = new object[] {
@@ -1131,7 +1131,7 @@ public class Part : RemoteObject
     /// A positive value means the part is gaining heat energy, and negative means it is
     /// losing heat energy.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Part_get_ThermalRadiationFlux")]
+    [Rpc ("SpaceCenter", "Part_get_ThermalRadiationFlux")]
     public float ThermalRadiationFlux {
         get {
             var args = new object[] {
@@ -1145,7 +1145,7 @@ public class Part : RemoteObject
     /// A measure of how much energy it takes to increase the temperature of the resources
     /// contained in the part, in Joules per Kelvin.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Part_get_ThermalResourceMass")]
+    [Rpc ("SpaceCenter", "Part_get_ThermalResourceMass")]
     public float ThermalResourceMass {
         get {
             var args = new object[] {
@@ -1159,7 +1159,7 @@ public class Part : RemoteObject
     /// A measure of how much energy it takes to increase the skin temperature of the part,
     /// in Joules per Kelvin.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Part_get_ThermalSkinMass")]
+    [Rpc ("SpaceCenter", "Part_get_ThermalSkinMass")]
     public float ThermalSkinMass {
         get {
             var args = new object[] {
@@ -1175,7 +1175,7 @@ public class Part : RemoteObject
     /// A positive value means the part's internals are gaining heat energy,
     /// and negative means its skin is gaining heat energy.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Part_get_ThermalSkinToInternalFlux")]
+    [Rpc ("SpaceCenter", "Part_get_ThermalSkinToInternalFlux")]
     public float ThermalSkinToInternalFlux {
         get {
             var args = new object[] {
@@ -1188,7 +1188,7 @@ public class Part : RemoteObject
     /// <summary>
     /// Title of the part, as shown when the part is right clicked in-game. For example "Mk1-2 Command Pod".
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Part_get_Title")]
+    [Rpc ("SpaceCenter", "Part_get_Title")]
     public string Title {
         get {
             var args = new object[] {
@@ -1201,7 +1201,7 @@ public class Part : RemoteObject
     /// <summary>
     /// The vessel that contains this part.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Part_get_Vessel")]
+    [Rpc ("SpaceCenter", "Part_get_Vessel")]
     public Vessel Vessel {
         get {
             var args = new object[] {
@@ -1214,7 +1214,7 @@ public class Part : RemoteObject
     /// <summary>
     /// A <see cref="T:SpaceCenter.Wheel" /> if the part is a wheel, otherwise <c>null</c>.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Part_get_Wheel")]
+    [Rpc ("SpaceCenter", "Part_get_Wheel")]
     public Wheel Wheel {
         get {
             var args = new object[] {

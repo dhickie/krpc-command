@@ -20,7 +20,7 @@ public class Contract : RemoteObject
     /// <summary>
     /// Accept an offered contract.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Contract_Accept")]
+    [Rpc ("SpaceCenter", "Contract_Accept")]
     public void Accept ()
     {
         var args = new object[] {
@@ -32,7 +32,7 @@ public class Contract : RemoteObject
     /// <summary>
     /// Cancel an active contract.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Contract_Cancel")]
+    [Rpc ("SpaceCenter", "Contract_Cancel")]
     public void Cancel ()
     {
         var args = new object[] {
@@ -44,7 +44,7 @@ public class Contract : RemoteObject
     /// <summary>
     /// Decline an offered contract.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Contract_Decline")]
+    [Rpc ("SpaceCenter", "Contract_Decline")]
     public void Decline ()
     {
         var args = new object[] {
@@ -56,7 +56,7 @@ public class Contract : RemoteObject
     /// <summary>
     /// Whether the contract is active.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Contract_get_Active")]
+    [Rpc ("SpaceCenter", "Contract_get_Active")]
     public bool Active {
         get {
             var args = new object[] {
@@ -69,7 +69,7 @@ public class Contract : RemoteObject
     /// <summary>
     /// Whether the contract can be canceled.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Contract_get_CanBeCanceled")]
+    [Rpc ("SpaceCenter", "Contract_get_CanBeCanceled")]
     public bool CanBeCanceled {
         get {
             var args = new object[] {
@@ -82,7 +82,7 @@ public class Contract : RemoteObject
     /// <summary>
     /// Whether the contract can be declined.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Contract_get_CanBeDeclined")]
+    [Rpc ("SpaceCenter", "Contract_get_CanBeDeclined")]
     public bool CanBeDeclined {
         get {
             var args = new object[] {
@@ -95,7 +95,7 @@ public class Contract : RemoteObject
     /// <summary>
     /// Whether the contract can be failed.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Contract_get_CanBeFailed")]
+    [Rpc ("SpaceCenter", "Contract_get_CanBeFailed")]
     public bool CanBeFailed {
         get {
             var args = new object[] {
@@ -108,7 +108,7 @@ public class Contract : RemoteObject
     /// <summary>
     /// Description of the contract.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Contract_get_Description")]
+    [Rpc ("SpaceCenter", "Contract_get_Description")]
     public string Description {
         get {
             var args = new object[] {
@@ -121,7 +121,7 @@ public class Contract : RemoteObject
     /// <summary>
     /// Whether the contract has been failed.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Contract_get_Failed")]
+    [Rpc ("SpaceCenter", "Contract_get_Failed")]
     public bool Failed {
         get {
             var args = new object[] {
@@ -134,7 +134,7 @@ public class Contract : RemoteObject
     /// <summary>
     /// Funds received when accepting the contract.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Contract_get_FundsAdvance")]
+    [Rpc ("SpaceCenter", "Contract_get_FundsAdvance")]
     public double FundsAdvance {
         get {
             var args = new object[] {
@@ -147,7 +147,7 @@ public class Contract : RemoteObject
     /// <summary>
     /// Funds received on completion of the contract.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Contract_get_FundsCompletion")]
+    [Rpc ("SpaceCenter", "Contract_get_FundsCompletion")]
     public double FundsCompletion {
         get {
             var args = new object[] {
@@ -160,7 +160,7 @@ public class Contract : RemoteObject
     /// <summary>
     /// Funds lost if the contract is failed.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Contract_get_FundsFailure")]
+    [Rpc ("SpaceCenter", "Contract_get_FundsFailure")]
     public double FundsFailure {
         get {
             var args = new object[] {
@@ -173,7 +173,7 @@ public class Contract : RemoteObject
     /// <summary>
     /// Keywords for the contract.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Contract_get_Keywords")]
+    [Rpc ("SpaceCenter", "Contract_get_Keywords")]
     public IList<string> Keywords {
         get {
             var args = new object[] {
@@ -186,7 +186,7 @@ public class Contract : RemoteObject
     /// <summary>
     /// Notes for the contract.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Contract_get_Notes")]
+    [Rpc ("SpaceCenter", "Contract_get_Notes")]
     public string Notes {
         get {
             var args = new object[] {
@@ -199,7 +199,7 @@ public class Contract : RemoteObject
     /// <summary>
     /// Parameters for the contract.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Contract_get_Parameters")]
+    [Rpc ("SpaceCenter", "Contract_get_Parameters")]
     public IList<ContractParameter> Parameters {
         get {
             var args = new object[] {
@@ -212,7 +212,7 @@ public class Contract : RemoteObject
     /// <summary>
     /// Whether the contract has been read.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Contract_get_Read")]
+    [Rpc ("SpaceCenter", "Contract_get_Read")]
     public bool Read {
         get {
             var args = new object[] {
@@ -225,7 +225,7 @@ public class Contract : RemoteObject
     /// <summary>
     /// Reputation gained on completion of the contract.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Contract_get_ReputationCompletion")]
+    [Rpc ("SpaceCenter", "Contract_get_ReputationCompletion")]
     public double ReputationCompletion {
         get {
             var args = new object[] {
@@ -238,7 +238,7 @@ public class Contract : RemoteObject
     /// <summary>
     /// Reputation lost if the contract is failed.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Contract_get_ReputationFailure")]
+    [Rpc ("SpaceCenter", "Contract_get_ReputationFailure")]
     public double ReputationFailure {
         get {
             var args = new object[] {
@@ -251,7 +251,7 @@ public class Contract : RemoteObject
     /// <summary>
     /// Science gained on completion of the contract.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Contract_get_ScienceCompletion")]
+    [Rpc ("SpaceCenter", "Contract_get_ScienceCompletion")]
     public double ScienceCompletion {
         get {
             var args = new object[] {
@@ -264,7 +264,7 @@ public class Contract : RemoteObject
     /// <summary>
     /// Whether the contract has been seen.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Contract_get_Seen")]
+    [Rpc ("SpaceCenter", "Contract_get_Seen")]
     public bool Seen {
         get {
             var args = new object[] {
@@ -277,7 +277,7 @@ public class Contract : RemoteObject
     /// <summary>
     /// State of the contract.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Contract_get_State")]
+    [Rpc ("SpaceCenter", "Contract_get_State")]
     public ContractState State {
         get {
             var args = new object[] {
@@ -290,7 +290,7 @@ public class Contract : RemoteObject
     /// <summary>
     /// Synopsis for the contract.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Contract_get_Synopsis")]
+    [Rpc ("SpaceCenter", "Contract_get_Synopsis")]
     public string Synopsis {
         get {
             var args = new object[] {
@@ -303,7 +303,7 @@ public class Contract : RemoteObject
     /// <summary>
     /// Title of the contract.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Contract_get_Title")]
+    [Rpc ("SpaceCenter", "Contract_get_Title")]
     public string Title {
         get {
             var args = new object[] {
@@ -316,7 +316,7 @@ public class Contract : RemoteObject
     /// <summary>
     /// Type of the contract.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Contract_get_Type")]
+    [Rpc ("SpaceCenter", "Contract_get_Type")]
     public string Type {
         get {
             var args = new object[] {

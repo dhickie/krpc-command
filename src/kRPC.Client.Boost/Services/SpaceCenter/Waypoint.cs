@@ -19,7 +19,7 @@ public class Waypoint : RemoteObject
     /// <summary>
     /// Removes the waypoint.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Waypoint_Remove")]
+    [Rpc ("SpaceCenter", "Waypoint_Remove")]
     public void Remove ()
     {
         var args = new object[] {
@@ -32,7 +32,7 @@ public class Waypoint : RemoteObject
     /// The altitude of the waypoint above the surface of the body, in meters.
     /// When over water, this is the altitude above the sea floor.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Waypoint_get_BedrockAltitude")]
+    [Rpc ("SpaceCenter", "Waypoint_get_BedrockAltitude")]
     public double BedrockAltitude {
         get {
             var args = new object[] {
@@ -52,7 +52,7 @@ public class Waypoint : RemoteObject
     /// <summary>
     /// The celestial body the waypoint is attached to.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Waypoint_get_Body")]
+    [Rpc ("SpaceCenter", "Waypoint_get_Body")]
     public CelestialBody Body {
         get {
             var args = new object[] {
@@ -74,7 +74,7 @@ public class Waypoint : RemoteObject
     /// If <c>true</c>, there is a one-to-one correspondence with the greek letter name and
     /// the <see cref="M:SpaceCenter.Waypoint.Index" />.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Waypoint_get_Clustered")]
+    [Rpc ("SpaceCenter", "Waypoint_get_Clustered")]
     public bool Clustered {
         get {
             var args = new object[] {
@@ -87,7 +87,7 @@ public class Waypoint : RemoteObject
     /// <summary>
     /// The seed of the icon color. See <see cref="M:SpaceCenter.WaypointManager.Colors" /> for example colors.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Waypoint_get_Color")]
+    [Rpc ("SpaceCenter", "Waypoint_get_Color")]
     public int Color {
         get {
             var args = new object[] {
@@ -107,7 +107,7 @@ public class Waypoint : RemoteObject
     /// <summary>
     /// The associated contract.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Waypoint_get_Contract")]
+    [Rpc ("SpaceCenter", "Waypoint_get_Contract")]
     public Contract Contract {
         get {
             var args = new object[] {
@@ -119,7 +119,7 @@ public class Waypoint : RemoteObject
 
     /// <summary><c>true</c> if the waypoint is attached to the ground.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Waypoint_get_Grounded")]
+    [Rpc ("SpaceCenter", "Waypoint_get_Grounded")]
     public bool Grounded {
         get {
             var args = new object[] {
@@ -132,7 +132,7 @@ public class Waypoint : RemoteObject
     /// <summary>
     /// Whether the waypoint belongs to a contract.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Waypoint_get_HasContract")]
+    [Rpc ("SpaceCenter", "Waypoint_get_HasContract")]
     public bool HasContract {
         get {
             var args = new object[] {
@@ -145,7 +145,7 @@ public class Waypoint : RemoteObject
     /// <summary>
     /// The icon of the waypoint.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Waypoint_get_Icon")]
+    [Rpc ("SpaceCenter", "Waypoint_get_Icon")]
     public string Icon {
         get {
             var args = new object[] {
@@ -169,7 +169,7 @@ public class Waypoint : RemoteObject
     /// site has index 1 and the gamma site has index 2.
     /// When <see cref="M:SpaceCenter.Waypoint.Clustered" /> is <c>false</c>, this is zero.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Waypoint_get_Index")]
+    [Rpc ("SpaceCenter", "Waypoint_get_Index")]
     public int Index {
         get {
             var args = new object[] {
@@ -182,7 +182,7 @@ public class Waypoint : RemoteObject
     /// <summary>
     /// The latitude of the waypoint.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Waypoint_get_Latitude")]
+    [Rpc ("SpaceCenter", "Waypoint_get_Latitude")]
     public double Latitude {
         get {
             var args = new object[] {
@@ -202,7 +202,7 @@ public class Waypoint : RemoteObject
     /// <summary>
     /// The longitude of the waypoint.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Waypoint_get_Longitude")]
+    [Rpc ("SpaceCenter", "Waypoint_get_Longitude")]
     public double Longitude {
         get {
             var args = new object[] {
@@ -222,7 +222,7 @@ public class Waypoint : RemoteObject
     /// <summary>
     /// The altitude of the waypoint above sea level, in meters.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Waypoint_get_MeanAltitude")]
+    [Rpc ("SpaceCenter", "Waypoint_get_MeanAltitude")]
     public double MeanAltitude {
         get {
             var args = new object[] {
@@ -242,7 +242,7 @@ public class Waypoint : RemoteObject
     /// <summary>
     /// The name of the waypoint as it appears on the map and the contract.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Waypoint_get_Name")]
+    [Rpc ("SpaceCenter", "Waypoint_get_Name")]
     public string Name {
         get {
             var args = new object[] {
@@ -261,7 +261,7 @@ public class Waypoint : RemoteObject
 
     /// <summary><c>true</c> if the waypoint is near to the surface of a body.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Waypoint_get_NearSurface")]
+    [Rpc ("SpaceCenter", "Waypoint_get_NearSurface")]
     public bool NearSurface {
         get {
             var args = new object[] {
@@ -275,7 +275,7 @@ public class Waypoint : RemoteObject
     /// The altitude of the waypoint above the surface of the body or sea level,
     /// whichever is closer, in meters.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Waypoint_get_SurfaceAltitude")]
+    [Rpc ("SpaceCenter", "Waypoint_get_SurfaceAltitude")]
     public double SurfaceAltitude {
         get {
             var args = new object[] {

@@ -25,7 +25,7 @@ public class Resources : RemoteObject
     /// Returns the amount of a resource that is currently stored.
     /// </summary>
     /// <param name="name">The name of the resource.</param>
-    [RpcAttribute ("SpaceCenter", "Resources_Amount")]
+    [Rpc ("SpaceCenter", "Resources_Amount")]
     public float Amount (string name)
     {
         var args = new object[] {
@@ -39,7 +39,7 @@ public class Resources : RemoteObject
     /// Check whether the named resource can be stored.
     /// </summary>
     /// <param name="name">The name of the resource.</param>
-    [RpcAttribute ("SpaceCenter", "Resources_HasResource")]
+    [Rpc ("SpaceCenter", "Resources_HasResource")]
     public bool HasResource (string name)
     {
         var args = new object[] {
@@ -53,7 +53,7 @@ public class Resources : RemoteObject
     /// Returns the amount of a resource that can be stored.
     /// </summary>
     /// <param name="name">The name of the resource.</param>
-    [RpcAttribute ("SpaceCenter", "Resources_Max")]
+    [Rpc ("SpaceCenter", "Resources_Max")]
     public float Max (string name)
     {
         var args = new object[] {
@@ -66,7 +66,7 @@ public class Resources : RemoteObject
     /// <summary>
     /// All the individual resources with the given name that can be stored.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Resources_WithResource")]
+    [Rpc ("SpaceCenter", "Resources_WithResource")]
     public IList<Resource> WithResource (string name)
     {
         var args = new object[] {
@@ -81,7 +81,7 @@ public class Resources : RemoteObject
     /// </summary>
     /// <param name="name">The name of the resource.</param>
     /// <param name="connection">A connection object.</param>
-    [RpcAttribute ("SpaceCenter", "Resources_static_Density")]
+    [Rpc ("SpaceCenter", "Resources_static_Density")]
     public static float Density (ConnectionMultiplexer connection, string name)
     {
         if (connection == null)
@@ -97,7 +97,7 @@ public class Resources : RemoteObject
     /// </summary>
     /// <param name="name">The name of the resource.</param>
     /// <param name="connection">A connection object.</param>
-    [RpcAttribute ("SpaceCenter", "Resources_static_FlowMode")]
+    [Rpc ("SpaceCenter", "Resources_static_FlowMode")]
     public static ResourceFlowMode FlowMode (ConnectionMultiplexer connection, string name)
     {
         if (connection == null)
@@ -111,7 +111,7 @@ public class Resources : RemoteObject
     /// <summary>
     /// All the individual resources that can be stored.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Resources_get_All")]
+    [Rpc ("SpaceCenter", "Resources_get_All")]
     public IList<Resource> All {
         get {
             var args = new object[] {
@@ -128,7 +128,7 @@ public class Resources : RemoteObject
     /// This is <c>true</c> if all of the resources are enabled.
     /// If any of the resources are not enabled, this is <c>false</c>.
     /// </remarks>
-    [RpcAttribute ("SpaceCenter", "Resources_get_Enabled")]
+    [Rpc ("SpaceCenter", "Resources_get_Enabled")]
     public bool Enabled {
         get {
             var args = new object[] {
@@ -148,7 +148,7 @@ public class Resources : RemoteObject
     /// <summary>
     /// A list of resource names that can be stored.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Resources_get_Names")]
+    [Rpc ("SpaceCenter", "Resources_get_Names")]
     public IList<string> Names {
         get {
             var args = new object[] {

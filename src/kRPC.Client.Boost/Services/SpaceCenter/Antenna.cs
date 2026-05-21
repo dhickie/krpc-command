@@ -19,7 +19,7 @@ public class Antenna : RemoteObject
     /// <summary>
     /// Cancel current transmission of data.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Antenna_Cancel")]
+    [Rpc ("SpaceCenter", "Antenna_Cancel")]
     public void Cancel ()
     {
         var args = new object[] {
@@ -31,7 +31,7 @@ public class Antenna : RemoteObject
     /// <summary>
     /// Transmit data.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Antenna_Transmit")]
+    [Rpc ("SpaceCenter", "Antenna_Transmit")]
     public void Transmit ()
     {
         var args = new object[] {
@@ -43,7 +43,7 @@ public class Antenna : RemoteObject
     /// <summary>
     /// Whether partial data transmission is permitted.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Antenna_get_AllowPartial")]
+    [Rpc ("SpaceCenter", "Antenna_get_AllowPartial")]
     public bool AllowPartial {
         get {
             var args = new object[] {
@@ -63,7 +63,7 @@ public class Antenna : RemoteObject
     /// <summary>
     /// Whether data can be transmitted by this antenna.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Antenna_get_CanTransmit")]
+    [Rpc ("SpaceCenter", "Antenna_get_CanTransmit")]
     public bool CanTransmit {
         get {
             var args = new object[] {
@@ -77,7 +77,7 @@ public class Antenna : RemoteObject
     /// Whether the antenna can be combined with other antennae on the vessel
     /// to boost the power.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Antenna_get_Combinable")]
+    [Rpc ("SpaceCenter", "Antenna_get_Combinable")]
     public bool Combinable {
         get {
             var args = new object[] {
@@ -90,7 +90,7 @@ public class Antenna : RemoteObject
     /// <summary>
     /// Exponent used to calculate the combined power of multiple antennae on a vessel.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Antenna_get_CombinableExponent")]
+    [Rpc ("SpaceCenter", "Antenna_get_CombinableExponent")]
     public double CombinableExponent {
         get {
             var args = new object[] {
@@ -103,7 +103,7 @@ public class Antenna : RemoteObject
     /// <summary>
     /// Whether the antenna is deployable.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Antenna_get_Deployable")]
+    [Rpc ("SpaceCenter", "Antenna_get_Deployable")]
     public bool Deployable {
         get {
             var args = new object[] {
@@ -120,7 +120,7 @@ public class Antenna : RemoteObject
     /// Fixed antennas are always deployed.
     /// Returns an error if you try to deploy a fixed antenna.
     /// </remarks>
-    [RpcAttribute ("SpaceCenter", "Antenna_get_Deployed")]
+    [Rpc ("SpaceCenter", "Antenna_get_Deployed")]
     public bool Deployed {
         get {
             var args = new object[] {
@@ -140,7 +140,7 @@ public class Antenna : RemoteObject
     /// <summary>
     /// Interval between sending packets in seconds.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Antenna_get_PacketInterval")]
+    [Rpc ("SpaceCenter", "Antenna_get_PacketInterval")]
     public float PacketInterval {
         get {
             var args = new object[] {
@@ -153,7 +153,7 @@ public class Antenna : RemoteObject
     /// <summary>
     /// Units of electric charge consumed per packet sent.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Antenna_get_PacketResourceCost")]
+    [Rpc ("SpaceCenter", "Antenna_get_PacketResourceCost")]
     public double PacketResourceCost {
         get {
             var args = new object[] {
@@ -166,7 +166,7 @@ public class Antenna : RemoteObject
     /// <summary>
     /// Amount of data sent per packet in Mits.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Antenna_get_PacketSize")]
+    [Rpc ("SpaceCenter", "Antenna_get_PacketSize")]
     public float PacketSize {
         get {
             var args = new object[] {
@@ -179,7 +179,7 @@ public class Antenna : RemoteObject
     /// <summary>
     /// The part object for this antenna.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Antenna_get_Part")]
+    [Rpc ("SpaceCenter", "Antenna_get_Part")]
     public Part Part {
         get {
             var args = new object[] {
@@ -192,7 +192,7 @@ public class Antenna : RemoteObject
     /// <summary>
     /// The power of the antenna.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Antenna_get_Power")]
+    [Rpc ("SpaceCenter", "Antenna_get_Power")]
     public double Power {
         get {
             var args = new object[] {
@@ -205,7 +205,7 @@ public class Antenna : RemoteObject
     /// <summary>
     /// The current state of the antenna.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Antenna_get_State")]
+    [Rpc ("SpaceCenter", "Antenna_get_State")]
     public AntennaState State {
         get {
             var args = new object[] {

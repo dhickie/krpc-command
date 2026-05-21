@@ -20,7 +20,7 @@ public class Light : RemoteObject
     /// <summary>
     /// Whether the light is switched on.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Light_get_Active")]
+    [Rpc ("SpaceCenter", "Light_get_Active")]
     public bool Active {
         get {
             var args = new object[] {
@@ -40,7 +40,7 @@ public class Light : RemoteObject
     /// <summary>
     /// Whether blinking is enabled.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Light_get_Blink")]
+    [Rpc ("SpaceCenter", "Light_get_Blink")]
     public bool Blink {
         get {
             var args = new object[] {
@@ -60,7 +60,7 @@ public class Light : RemoteObject
     /// <summary>
     /// The blink rate of the light.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Light_get_BlinkRate")]
+    [Rpc ("SpaceCenter", "Light_get_BlinkRate")]
     public float BlinkRate {
         get {
             var args = new object[] {
@@ -80,7 +80,7 @@ public class Light : RemoteObject
     /// <summary>
     /// The color of the light, as an RGB triple.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Light_get_Color")]
+    [Rpc ("SpaceCenter", "Light_get_Color")]
     public Tuple<float,float,float> Color {
         get {
             var args = new object[] {
@@ -100,7 +100,7 @@ public class Light : RemoteObject
     /// <summary>
     /// The part object for this light.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Light_get_Part")]
+    [Rpc ("SpaceCenter", "Light_get_Part")]
     public Part Part {
         get {
             var args = new object[] {
@@ -113,7 +113,7 @@ public class Light : RemoteObject
     /// <summary>
     /// The current power usage, in units of charge per second.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Light_get_PowerUsage")]
+    [Rpc ("SpaceCenter", "Light_get_PowerUsage")]
     public float PowerUsage {
         get {
             var args = new object[] {

@@ -19,7 +19,7 @@ public class CargoBay : RemoteObject
     /// <summary>
     /// Whether the cargo bay is open.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "CargoBay_get_Open")]
+    [Rpc ("SpaceCenter", "CargoBay_get_Open")]
     public bool Open {
         get {
             var args = new object[] {
@@ -39,7 +39,7 @@ public class CargoBay : RemoteObject
     /// <summary>
     /// The part object for this cargo bay.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "CargoBay_get_Part")]
+    [Rpc ("SpaceCenter", "CargoBay_get_Part")]
     public Part Part {
         get {
             var args = new object[] {
@@ -52,7 +52,7 @@ public class CargoBay : RemoteObject
     /// <summary>
     /// The state of the cargo bay.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "CargoBay_get_State")]
+    [Rpc ("SpaceCenter", "CargoBay_get_State")]
     public CargoBayState State {
         get {
             var args = new object[] {

@@ -19,7 +19,7 @@ public class Propellant : RemoteObject
     /// <summary>
     /// The current amount of propellant.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Propellant_get_CurrentAmount")]
+    [Rpc ("SpaceCenter", "Propellant_get_CurrentAmount")]
     public double CurrentAmount {
         get {
             var args = new object[] {
@@ -32,7 +32,7 @@ public class Propellant : RemoteObject
     /// <summary>
     /// The required amount of propellant.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Propellant_get_CurrentRequirement")]
+    [Rpc ("SpaceCenter", "Propellant_get_CurrentRequirement")]
     public double CurrentRequirement {
         get {
             var args = new object[] {
@@ -45,7 +45,7 @@ public class Propellant : RemoteObject
     /// <summary>
     /// If this propellant has a stack gauge or not.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Propellant_get_DrawStackGauge")]
+    [Rpc ("SpaceCenter", "Propellant_get_DrawStackGauge")]
     public bool DrawStackGauge {
         get {
             var args = new object[] {
@@ -59,7 +59,7 @@ public class Propellant : RemoteObject
     /// If this propellant should be ignored when calculating required mass flow
     /// given specific impulse.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Propellant_get_IgnoreForIsp")]
+    [Rpc ("SpaceCenter", "Propellant_get_IgnoreForIsp")]
     public bool IgnoreForIsp {
         get {
             var args = new object[] {
@@ -72,7 +72,7 @@ public class Propellant : RemoteObject
     /// <summary>
     /// If this propellant should be ignored for thrust curve calculations.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Propellant_get_IgnoreForThrustCurve")]
+    [Rpc ("SpaceCenter", "Propellant_get_IgnoreForThrustCurve")]
     public bool IgnoreForThrustCurve {
         get {
             var args = new object[] {
@@ -85,7 +85,7 @@ public class Propellant : RemoteObject
     /// <summary>
     /// If this propellant is deprived.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Propellant_get_IsDeprived")]
+    [Rpc ("SpaceCenter", "Propellant_get_IsDeprived")]
     public bool IsDeprived {
         get {
             var args = new object[] {
@@ -98,7 +98,7 @@ public class Propellant : RemoteObject
     /// <summary>
     /// The name of the propellant.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Propellant_get_Name")]
+    [Rpc ("SpaceCenter", "Propellant_get_Name")]
     public string Name {
         get {
             var args = new object[] {
@@ -111,7 +111,7 @@ public class Propellant : RemoteObject
     /// <summary>
     /// The propellant ratio.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Propellant_get_Ratio")]
+    [Rpc ("SpaceCenter", "Propellant_get_Ratio")]
     public float Ratio {
         get {
             var args = new object[] {
@@ -125,7 +125,7 @@ public class Propellant : RemoteObject
     /// The total amount of the underlying resource currently reachable given
     /// resource flow rules.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Propellant_get_TotalResourceAvailable")]
+    [Rpc ("SpaceCenter", "Propellant_get_TotalResourceAvailable")]
     public double TotalResourceAvailable {
         get {
             var args = new object[] {
@@ -139,7 +139,7 @@ public class Propellant : RemoteObject
     /// The total vehicle capacity for the underlying propellant resource,
     /// restricted by resource flow rules.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "Propellant_get_TotalResourceCapacity")]
+    [Rpc ("SpaceCenter", "Propellant_get_TotalResourceCapacity")]
     public double TotalResourceCapacity {
         get {
             var args = new object[] {

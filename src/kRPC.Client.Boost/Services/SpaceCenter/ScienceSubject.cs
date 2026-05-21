@@ -19,7 +19,7 @@ public class ScienceSubject : RemoteObject
     /// <summary>
     /// Multiply science value by this to determine data amount in mits.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "ScienceSubject_get_DataScale")]
+    [Rpc ("SpaceCenter", "ScienceSubject_get_DataScale")]
     public float DataScale {
         get {
             var args = new object[] {
@@ -32,7 +32,7 @@ public class ScienceSubject : RemoteObject
     /// <summary>
     /// Whether the experiment has been completed.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "ScienceSubject_get_IsComplete")]
+    [Rpc ("SpaceCenter", "ScienceSubject_get_IsComplete")]
     public bool IsComplete {
         get {
             var args = new object[] {
@@ -46,7 +46,7 @@ public class ScienceSubject : RemoteObject
     /// Amount of science already earned from this subject, not updated until after
     /// transmission/recovery.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "ScienceSubject_get_Science")]
+    [Rpc ("SpaceCenter", "ScienceSubject_get_Science")]
     public float Science {
         get {
             var args = new object[] {
@@ -59,7 +59,7 @@ public class ScienceSubject : RemoteObject
     /// <summary>
     /// Total science allowable for this subject.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "ScienceSubject_get_ScienceCap")]
+    [Rpc ("SpaceCenter", "ScienceSubject_get_ScienceCap")]
     public float ScienceCap {
         get {
             var args = new object[] {
@@ -73,7 +73,7 @@ public class ScienceSubject : RemoteObject
     /// Diminishing value multiplier for decreasing the science value returned from repeated
     /// experiments.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "ScienceSubject_get_ScientificValue")]
+    [Rpc ("SpaceCenter", "ScienceSubject_get_ScientificValue")]
     public float ScientificValue {
         get {
             var args = new object[] {
@@ -86,7 +86,7 @@ public class ScienceSubject : RemoteObject
     /// <summary>
     /// Multiplier for specific Celestial Body/Experiment Situation combination.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "ScienceSubject_get_SubjectValue")]
+    [Rpc ("SpaceCenter", "ScienceSubject_get_SubjectValue")]
     public float SubjectValue {
         get {
             var args = new object[] {
@@ -99,7 +99,7 @@ public class ScienceSubject : RemoteObject
     /// <summary>
     /// Title of science subject, displayed in science archives
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "ScienceSubject_get_Title")]
+    [Rpc ("SpaceCenter", "ScienceSubject_get_Title")]
     public string Title {
         get {
             var args = new object[] {
