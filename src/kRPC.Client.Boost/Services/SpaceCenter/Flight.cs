@@ -2,6 +2,7 @@ using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
 using System;
 using kRPC.Client.Boost.Attributes;
+using MathNet.Spatial.Euclidean;
 using System.Threading.Tasks;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
@@ -32,7 +33,7 @@ public class Flight : RemoteObject
     /// <returns>A vector pointing in the direction that the force acts,
     /// with its magnitude equal to the strength of the force in Newtons.</returns>
     [Rpc("SpaceCenter", "Flight_SimulateAerodynamicForceAt")]
-    public Tuple<double,double,double> SimulateAerodynamicForceAt(CelestialBody body, Tuple<double,double,double> position, Tuple<double,double,double> velocity)
+    public Vector3D SimulateAerodynamicForceAt(CelestialBody body, Vector3D position, Vector3D velocity)
     {
         var args = new object[]
         {
@@ -41,7 +42,7 @@ public class Flight : RemoteObject
             position,
             velocity
         };
-        return Connection.Invoke<Tuple<double,double,double>>("SpaceCenter", "Flight_SimulateAerodynamicForceAt", args);
+        return Connection.Invoke<Vector3D>("SpaceCenter", "Flight_SimulateAerodynamicForceAt", args);
     }
 
     /// <summary>
@@ -53,7 +54,7 @@ public class Flight : RemoteObject
     /// <returns>A vector pointing in the direction that the force acts,
     /// with its magnitude equal to the strength of the force in Newtons.</returns>
     [Rpc("SpaceCenter", "Flight_SimulateAerodynamicForceAt")]
-    public async Task<Tuple<double,double,double>> SimulateAerodynamicForceAtAsync(CelestialBody body, Tuple<double,double,double> position, Tuple<double,double,double> velocity)
+    public async Task<Vector3D> SimulateAerodynamicForceAtAsync(CelestialBody body, Vector3D position, Vector3D velocity)
     {
         var args = new object[]
         {
@@ -62,7 +63,7 @@ public class Flight : RemoteObject
             position,
             velocity
         };
-        return await Connection.InvokeAsync<Tuple<double,double,double>>("SpaceCenter", "Flight_SimulateAerodynamicForceAt", args);
+        return await Connection.InvokeAsync<Vector3D>("SpaceCenter", "Flight_SimulateAerodynamicForceAt", args);
     }
 
     /// <summary>
@@ -72,13 +73,13 @@ public class Flight : RemoteObject
     /// <returns>A vector pointing in the direction that the force acts,
     /// with its magnitude equal to the strength of the force in Newtons.</returns>
     [Rpc("SpaceCenter", "Flight_get_AerodynamicForce")]
-    public Tuple<double,double,double> GetAerodynamicForce()
+    public Vector3D GetAerodynamicForce()
     {
         var args = new object[]
         {
             this
         };
-        return Connection.Invoke<Tuple<double,double,double>>("SpaceCenter", "Flight_get_AerodynamicForce", args);
+        return Connection.Invoke<Vector3D>("SpaceCenter", "Flight_get_AerodynamicForce", args);
     }
 
     /// <summary>
@@ -89,13 +90,13 @@ public class Flight : RemoteObject
     /// <returns>A vector pointing in the direction that the force acts,
     /// with its magnitude equal to the strength of the force in Newtons.</returns>
     [Rpc("SpaceCenter", "Flight_get_AerodynamicForce")]
-    public async Task<Tuple<double,double,double>> GetAerodynamicForceAsync()
+    public async Task<Vector3D> GetAerodynamicForceAsync()
     {
         var args = new object[]
         {
             this
         };
-        return await Connection.InvokeAsync<Tuple<double,double,double>>("SpaceCenter", "Flight_get_AerodynamicForce", args);
+        return await Connection.InvokeAsync<Vector3D>("SpaceCenter", "Flight_get_AerodynamicForce", args);
     }
 
     /// <summary>
@@ -133,13 +134,13 @@ public class Flight : RemoteObject
     /// </summary>
     /// <returns>The direction as a unit vector.</returns>
     [Rpc("SpaceCenter", "Flight_get_AntiNormal")]
-    public Tuple<double,double,double> GetAntiNormal()
+    public Vector3D GetAntiNormal()
     {
         var args = new object[]
         {
             this
         };
-        return Connection.Invoke<Tuple<double,double,double>>("SpaceCenter", "Flight_get_AntiNormal", args);
+        return Connection.Invoke<Vector3D>("SpaceCenter", "Flight_get_AntiNormal", args);
     }
 
     /// <summary>
@@ -149,13 +150,13 @@ public class Flight : RemoteObject
     /// </summary>
     /// <returns>The direction as a unit vector.</returns>
     [Rpc("SpaceCenter", "Flight_get_AntiNormal")]
-    public async Task<Tuple<double,double,double>> GetAntiNormalAsync()
+    public async Task<Vector3D> GetAntiNormalAsync()
     {
         var args = new object[]
         {
             this
         };
-        return await Connection.InvokeAsync<Tuple<double,double,double>>("SpaceCenter", "Flight_get_AntiNormal", args);
+        return await Connection.InvokeAsync<Vector3D>("SpaceCenter", "Flight_get_AntiNormal", args);
     }
 
     /// <summary>
@@ -164,13 +165,13 @@ public class Flight : RemoteObject
     /// </summary>
     /// <returns>The direction as a unit vector.</returns>
     [Rpc("SpaceCenter", "Flight_get_AntiRadial")]
-    public Tuple<double,double,double> GetAntiRadial()
+    public Vector3D GetAntiRadial()
     {
         var args = new object[]
         {
             this
         };
-        return Connection.Invoke<Tuple<double,double,double>>("SpaceCenter", "Flight_get_AntiRadial", args);
+        return Connection.Invoke<Vector3D>("SpaceCenter", "Flight_get_AntiRadial", args);
     }
 
     /// <summary>
@@ -180,13 +181,13 @@ public class Flight : RemoteObject
     /// </summary>
     /// <returns>The direction as a unit vector.</returns>
     [Rpc("SpaceCenter", "Flight_get_AntiRadial")]
-    public async Task<Tuple<double,double,double>> GetAntiRadialAsync()
+    public async Task<Vector3D> GetAntiRadialAsync()
     {
         var args = new object[]
         {
             this
         };
-        return await Connection.InvokeAsync<Tuple<double,double,double>>("SpaceCenter", "Flight_get_AntiRadial", args);
+        return await Connection.InvokeAsync<Vector3D>("SpaceCenter", "Flight_get_AntiRadial", args);
     }
 
     /// <summary>
@@ -284,13 +285,13 @@ public class Flight : RemoteObject
     /// </summary>
     /// <returns>The position as a vector.</returns>
     [Rpc("SpaceCenter", "Flight_get_CenterOfMass")]
-    public Tuple<double,double,double> GetCenterOfMass()
+    public Vector3D GetCenterOfMass()
     {
         var args = new object[]
         {
             this
         };
-        return Connection.Invoke<Tuple<double,double,double>>("SpaceCenter", "Flight_get_CenterOfMass", args);
+        return Connection.Invoke<Vector3D>("SpaceCenter", "Flight_get_CenterOfMass", args);
     }
 
     /// <summary>
@@ -300,13 +301,13 @@ public class Flight : RemoteObject
     /// </summary>
     /// <returns>The position as a vector.</returns>
     [Rpc("SpaceCenter", "Flight_get_CenterOfMass")]
-    public async Task<Tuple<double,double,double>> GetCenterOfMassAsync()
+    public async Task<Vector3D> GetCenterOfMassAsync()
     {
         var args = new object[]
         {
             this
         };
-        return await Connection.InvokeAsync<Tuple<double,double,double>>("SpaceCenter", "Flight_get_CenterOfMass", args);
+        return await Connection.InvokeAsync<Vector3D>("SpaceCenter", "Flight_get_CenterOfMass", args);
     }
 
     /// <summary>
@@ -315,13 +316,13 @@ public class Flight : RemoteObject
     /// </summary>
     /// <returns>The direction as a unit vector.</returns>
     [Rpc("SpaceCenter", "Flight_get_Direction")]
-    public Tuple<double,double,double> GetDirection()
+    public Vector3D GetDirection()
     {
         var args = new object[]
         {
             this
         };
-        return Connection.Invoke<Tuple<double,double,double>>("SpaceCenter", "Flight_get_Direction", args);
+        return Connection.Invoke<Vector3D>("SpaceCenter", "Flight_get_Direction", args);
     }
 
     /// <summary>
@@ -331,13 +332,13 @@ public class Flight : RemoteObject
     /// </summary>
     /// <returns>The direction as a unit vector.</returns>
     [Rpc("SpaceCenter", "Flight_get_Direction")]
-    public async Task<Tuple<double,double,double>> GetDirectionAsync()
+    public async Task<Vector3D> GetDirectionAsync()
     {
         var args = new object[]
         {
             this
         };
-        return await Connection.InvokeAsync<Tuple<double,double,double>>("SpaceCenter", "Flight_get_Direction", args);
+        return await Connection.InvokeAsync<Vector3D>("SpaceCenter", "Flight_get_Direction", args);
     }
 
     /// <summary>
@@ -346,13 +347,13 @@ public class Flight : RemoteObject
     /// <returns>A vector pointing in the direction of the force, with its magnitude
     /// equal to the strength of the force in Newtons.</returns>
     [Rpc("SpaceCenter", "Flight_get_Drag")]
-    public Tuple<double,double,double> GetDrag()
+    public Vector3D GetDrag()
     {
         var args = new object[]
         {
             this
         };
-        return Connection.Invoke<Tuple<double,double,double>>("SpaceCenter", "Flight_get_Drag", args);
+        return Connection.Invoke<Vector3D>("SpaceCenter", "Flight_get_Drag", args);
     }
 
     /// <summary>
@@ -362,13 +363,13 @@ public class Flight : RemoteObject
     /// <returns>A vector pointing in the direction of the force, with its magnitude
     /// equal to the strength of the force in Newtons.</returns>
     [Rpc("SpaceCenter", "Flight_get_Drag")]
-    public async Task<Tuple<double,double,double>> GetDragAsync()
+    public async Task<Vector3D> GetDragAsync()
     {
         var args = new object[]
         {
             this
         };
-        return await Connection.InvokeAsync<Tuple<double,double,double>>("SpaceCenter", "Flight_get_Drag", args);
+        return await Connection.InvokeAsync<Vector3D>("SpaceCenter", "Flight_get_Drag", args);
     }
 
     /// <summary>
@@ -616,13 +617,13 @@ public class Flight : RemoteObject
     /// <returns>A vector pointing in the direction that the force acts,
     /// with its magnitude equal to the strength of the force in Newtons.</returns>
     [Rpc("SpaceCenter", "Flight_get_Lift")]
-    public Tuple<double,double,double> GetLift()
+    public Vector3D GetLift()
     {
         var args = new object[]
         {
             this
         };
-        return Connection.Invoke<Tuple<double,double,double>>("SpaceCenter", "Flight_get_Lift", args);
+        return Connection.Invoke<Vector3D>("SpaceCenter", "Flight_get_Lift", args);
     }
 
     /// <summary>
@@ -633,13 +634,13 @@ public class Flight : RemoteObject
     /// <returns>A vector pointing in the direction that the force acts,
     /// with its magnitude equal to the strength of the force in Newtons.</returns>
     [Rpc("SpaceCenter", "Flight_get_Lift")]
-    public async Task<Tuple<double,double,double>> GetLiftAsync()
+    public async Task<Vector3D> GetLiftAsync()
     {
         var args = new object[]
         {
             this
         };
-        return await Connection.InvokeAsync<Tuple<double,double,double>>("SpaceCenter", "Flight_get_Lift", args);
+        return await Connection.InvokeAsync<Vector3D>("SpaceCenter", "Flight_get_Lift", args);
     }
 
     /// <summary>
@@ -766,13 +767,13 @@ public class Flight : RemoteObject
     /// </summary>
     /// <returns>The direction as a unit vector.</returns>
     [Rpc("SpaceCenter", "Flight_get_Normal")]
-    public Tuple<double,double,double> GetNormal()
+    public Vector3D GetNormal()
     {
         var args = new object[]
         {
             this
         };
-        return Connection.Invoke<Tuple<double,double,double>>("SpaceCenter", "Flight_get_Normal", args);
+        return Connection.Invoke<Vector3D>("SpaceCenter", "Flight_get_Normal", args);
     }
 
     /// <summary>
@@ -782,13 +783,13 @@ public class Flight : RemoteObject
     /// </summary>
     /// <returns>The direction as a unit vector.</returns>
     [Rpc("SpaceCenter", "Flight_get_Normal")]
-    public async Task<Tuple<double,double,double>> GetNormalAsync()
+    public async Task<Vector3D> GetNormalAsync()
     {
         var args = new object[]
         {
             this
         };
-        return await Connection.InvokeAsync<Tuple<double,double,double>>("SpaceCenter", "Flight_get_Normal", args);
+        return await Connection.InvokeAsync<Vector3D>("SpaceCenter", "Flight_get_Normal", args);
     }
 
     /// <summary>
@@ -826,13 +827,13 @@ public class Flight : RemoteObject
     /// </summary>
     /// <returns>The direction as a unit vector.</returns>
     [Rpc("SpaceCenter", "Flight_get_Prograde")]
-    public Tuple<double,double,double> GetPrograde()
+    public Vector3D GetPrograde()
     {
         var args = new object[]
         {
             this
         };
-        return Connection.Invoke<Tuple<double,double,double>>("SpaceCenter", "Flight_get_Prograde", args);
+        return Connection.Invoke<Vector3D>("SpaceCenter", "Flight_get_Prograde", args);
     }
 
     /// <summary>
@@ -842,13 +843,13 @@ public class Flight : RemoteObject
     /// </summary>
     /// <returns>The direction as a unit vector.</returns>
     [Rpc("SpaceCenter", "Flight_get_Prograde")]
-    public async Task<Tuple<double,double,double>> GetProgradeAsync()
+    public async Task<Vector3D> GetProgradeAsync()
     {
         var args = new object[]
         {
             this
         };
-        return await Connection.InvokeAsync<Tuple<double,double,double>>("SpaceCenter", "Flight_get_Prograde", args);
+        return await Connection.InvokeAsync<Vector3D>("SpaceCenter", "Flight_get_Prograde", args);
     }
 
     /// <summary>
@@ -857,13 +858,13 @@ public class Flight : RemoteObject
     /// </summary>
     /// <returns>The direction as a unit vector.</returns>
     [Rpc("SpaceCenter", "Flight_get_Radial")]
-    public Tuple<double,double,double> GetRadial()
+    public Vector3D GetRadial()
     {
         var args = new object[]
         {
             this
         };
-        return Connection.Invoke<Tuple<double,double,double>>("SpaceCenter", "Flight_get_Radial", args);
+        return Connection.Invoke<Vector3D>("SpaceCenter", "Flight_get_Radial", args);
     }
 
     /// <summary>
@@ -873,13 +874,13 @@ public class Flight : RemoteObject
     /// </summary>
     /// <returns>The direction as a unit vector.</returns>
     [Rpc("SpaceCenter", "Flight_get_Radial")]
-    public async Task<Tuple<double,double,double>> GetRadialAsync()
+    public async Task<Vector3D> GetRadialAsync()
     {
         var args = new object[]
         {
             this
         };
-        return await Connection.InvokeAsync<Tuple<double,double,double>>("SpaceCenter", "Flight_get_Radial", args);
+        return await Connection.InvokeAsync<Vector3D>("SpaceCenter", "Flight_get_Radial", args);
     }
 
     /// <summary>
@@ -888,13 +889,13 @@ public class Flight : RemoteObject
     /// </summary>
     /// <returns>The direction as a unit vector.</returns>
     [Rpc("SpaceCenter", "Flight_get_Retrograde")]
-    public Tuple<double,double,double> GetRetrograde()
+    public Vector3D GetRetrograde()
     {
         var args = new object[]
         {
             this
         };
-        return Connection.Invoke<Tuple<double,double,double>>("SpaceCenter", "Flight_get_Retrograde", args);
+        return Connection.Invoke<Vector3D>("SpaceCenter", "Flight_get_Retrograde", args);
     }
 
     /// <summary>
@@ -904,13 +905,13 @@ public class Flight : RemoteObject
     /// </summary>
     /// <returns>The direction as a unit vector.</returns>
     [Rpc("SpaceCenter", "Flight_get_Retrograde")]
-    public async Task<Tuple<double,double,double>> GetRetrogradeAsync()
+    public async Task<Vector3D> GetRetrogradeAsync()
     {
         var args = new object[]
         {
             this
         };
-        return await Connection.InvokeAsync<Tuple<double,double,double>>("SpaceCenter", "Flight_get_Retrograde", args);
+        return await Connection.InvokeAsync<Vector3D>("SpaceCenter", "Flight_get_Retrograde", args);
     }
 
     /// <summary>
@@ -1368,13 +1369,13 @@ public class Flight : RemoteObject
     /// <returns>The velocity as a vector. The vector points in the direction of travel,
     /// and its magnitude is the speed of the vessel in meters per second.</returns>
     [Rpc("SpaceCenter", "Flight_get_Velocity")]
-    public Tuple<double,double,double> GetVelocity()
+    public Vector3D GetVelocity()
     {
         var args = new object[]
         {
             this
         };
-        return Connection.Invoke<Tuple<double,double,double>>("SpaceCenter", "Flight_get_Velocity", args);
+        return Connection.Invoke<Vector3D>("SpaceCenter", "Flight_get_Velocity", args);
     }
 
     /// <summary>
@@ -1384,13 +1385,13 @@ public class Flight : RemoteObject
     /// <returns>The velocity as a vector. The vector points in the direction of travel,
     /// and its magnitude is the speed of the vessel in meters per second.</returns>
     [Rpc("SpaceCenter", "Flight_get_Velocity")]
-    public async Task<Tuple<double,double,double>> GetVelocityAsync()
+    public async Task<Vector3D> GetVelocityAsync()
     {
         var args = new object[]
         {
             this
         };
-        return await Connection.InvokeAsync<Tuple<double,double,double>>("SpaceCenter", "Flight_get_Velocity", args);
+        return await Connection.InvokeAsync<Vector3D>("SpaceCenter", "Flight_get_Velocity", args);
     }
 
     /// <summary>

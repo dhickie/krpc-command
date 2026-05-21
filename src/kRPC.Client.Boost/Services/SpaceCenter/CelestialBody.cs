@@ -2,6 +2,7 @@ using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
 using System;
 using kRPC.Client.Boost.Attributes;
+using MathNet.Spatial.Euclidean;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -26,7 +27,7 @@ public class CelestialBody : RemoteObject
     /// <param name="position">Position as a vector.</param>
     /// <param name="referenceFrame">Reference frame for the position vector.</param>
     [Rpc("SpaceCenter", "CelestialBody_AltitudeAtPosition")]
-    public double AltitudeAtPosition(Tuple<double,double,double> position, ReferenceFrame referenceFrame)
+    public double AltitudeAtPosition(Vector3D position, ReferenceFrame referenceFrame)
     {
         var args = new object[]
         {
@@ -44,7 +45,7 @@ public class CelestialBody : RemoteObject
     /// <param name="position">Position as a vector.</param>
     /// <param name="referenceFrame">Reference frame for the position vector.</param>
     [Rpc("SpaceCenter", "CelestialBody_AltitudeAtPosition")]
-    public async Task<double> AltitudeAtPositionAsync(Tuple<double,double,double> position, ReferenceFrame referenceFrame)
+    public async Task<double> AltitudeAtPositionAsync(Vector3D position, ReferenceFrame referenceFrame)
     {
         var args = new object[]
         {
@@ -64,14 +65,14 @@ public class CelestialBody : RemoteObject
     /// <param name="referenceFrame">The reference frame the returned
     /// angular velocity is in.</param>
     [Rpc("SpaceCenter", "CelestialBody_AngularVelocity")]
-    public Tuple<double,double,double> AngularVelocity(ReferenceFrame referenceFrame)
+    public Vector3D AngularVelocity(ReferenceFrame referenceFrame)
     {
         var args = new object[]
         {
             this,
             referenceFrame
         };
-        return Connection.Invoke<Tuple<double,double,double>>("SpaceCenter", "CelestialBody_AngularVelocity", args);
+        return Connection.Invoke<Vector3D>("SpaceCenter", "CelestialBody_AngularVelocity", args);
     }
 
     /// <summary>
@@ -84,14 +85,14 @@ public class CelestialBody : RemoteObject
     /// <param name="referenceFrame">The reference frame the returned
     /// angular velocity is in.</param>
     [Rpc("SpaceCenter", "CelestialBody_AngularVelocity")]
-    public async Task<Tuple<double,double,double>> AngularVelocityAsync(ReferenceFrame referenceFrame)
+    public async Task<Vector3D> AngularVelocityAsync(ReferenceFrame referenceFrame)
     {
         var args = new object[]
         {
             this,
             referenceFrame
         };
-        return await Connection.InvokeAsync<Tuple<double,double,double>>("SpaceCenter", "CelestialBody_AngularVelocity", args);
+        return await Connection.InvokeAsync<Vector3D>("SpaceCenter", "CelestialBody_AngularVelocity", args);
     }
 
     /// <summary>
@@ -101,7 +102,7 @@ public class CelestialBody : RemoteObject
     /// <param name="position">The position vector at which to measure the density.</param>
     /// <param name="referenceFrame">Reference frame that the position vector is in.</param>
     [Rpc("SpaceCenter", "CelestialBody_AtmosphericDensityAtPosition")]
-    public double AtmosphericDensityAtPosition(Tuple<double,double,double> position, ReferenceFrame referenceFrame)
+    public double AtmosphericDensityAtPosition(Vector3D position, ReferenceFrame referenceFrame)
     {
         var args = new object[]
         {
@@ -120,7 +121,7 @@ public class CelestialBody : RemoteObject
     /// <param name="position">The position vector at which to measure the density.</param>
     /// <param name="referenceFrame">Reference frame that the position vector is in.</param>
     [Rpc("SpaceCenter", "CelestialBody_AtmosphericDensityAtPosition")]
-    public async Task<double> AtmosphericDensityAtPositionAsync(Tuple<double,double,double> position, ReferenceFrame referenceFrame)
+    public async Task<double> AtmosphericDensityAtPositionAsync(Vector3D position, ReferenceFrame referenceFrame)
     {
         var args = new object[]
         {
@@ -179,7 +180,7 @@ public class CelestialBody : RemoteObject
     /// <param name="longitude">Longitude in degrees.</param>
     /// <param name="referenceFrame">Reference frame for the returned position vector.</param>
     [Rpc("SpaceCenter", "CelestialBody_BedrockPosition")]
-    public Tuple<double,double,double> BedrockPosition(double latitude, double longitude, ReferenceFrame referenceFrame)
+    public Vector3D BedrockPosition(double latitude, double longitude, ReferenceFrame referenceFrame)
     {
         var args = new object[]
         {
@@ -188,7 +189,7 @@ public class CelestialBody : RemoteObject
             longitude,
             referenceFrame
         };
-        return Connection.Invoke<Tuple<double,double,double>>("SpaceCenter", "CelestialBody_BedrockPosition", args);
+        return Connection.Invoke<Vector3D>("SpaceCenter", "CelestialBody_BedrockPosition", args);
     }
 
     /// <summary>
@@ -201,7 +202,7 @@ public class CelestialBody : RemoteObject
     /// <param name="longitude">Longitude in degrees.</param>
     /// <param name="referenceFrame">Reference frame for the returned position vector.</param>
     [Rpc("SpaceCenter", "CelestialBody_BedrockPosition")]
-    public async Task<Tuple<double,double,double>> BedrockPositionAsync(double latitude, double longitude, ReferenceFrame referenceFrame)
+    public async Task<Vector3D> BedrockPositionAsync(double latitude, double longitude, ReferenceFrame referenceFrame)
     {
         var args = new object[]
         {
@@ -210,7 +211,7 @@ public class CelestialBody : RemoteObject
             longitude,
             referenceFrame
         };
-        return await Connection.InvokeAsync<Tuple<double,double,double>>("SpaceCenter", "CelestialBody_BedrockPosition", args);
+        return await Connection.InvokeAsync<Vector3D>("SpaceCenter", "CelestialBody_BedrockPosition", args);
     }
 
     /// <summary>
@@ -297,14 +298,14 @@ public class CelestialBody : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// direction is in.</param>
     [Rpc("SpaceCenter", "CelestialBody_Direction")]
-    public Tuple<double,double,double> Direction(ReferenceFrame referenceFrame)
+    public Vector3D Direction(ReferenceFrame referenceFrame)
     {
         var args = new object[]
         {
             this,
             referenceFrame
         };
-        return Connection.Invoke<Tuple<double,double,double>>("SpaceCenter", "CelestialBody_Direction", args);
+        return Connection.Invoke<Vector3D>("SpaceCenter", "CelestialBody_Direction", args);
     }
 
     /// <summary>
@@ -316,14 +317,14 @@ public class CelestialBody : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// direction is in.</param>
     [Rpc("SpaceCenter", "CelestialBody_Direction")]
-    public async Task<Tuple<double,double,double>> DirectionAsync(ReferenceFrame referenceFrame)
+    public async Task<Vector3D> DirectionAsync(ReferenceFrame referenceFrame)
     {
         var args = new object[]
         {
             this,
             referenceFrame
         };
-        return await Connection.InvokeAsync<Tuple<double,double,double>>("SpaceCenter", "CelestialBody_Direction", args);
+        return await Connection.InvokeAsync<Vector3D>("SpaceCenter", "CelestialBody_Direction", args);
     }
 
     /// <summary>
@@ -332,7 +333,7 @@ public class CelestialBody : RemoteObject
     /// <param name="position">Position as a vector.</param>
     /// <param name="referenceFrame">Reference frame for the position vector.</param>
     [Rpc("SpaceCenter", "CelestialBody_LatitudeAtPosition")]
-    public double LatitudeAtPosition(Tuple<double,double,double> position, ReferenceFrame referenceFrame)
+    public double LatitudeAtPosition(Vector3D position, ReferenceFrame referenceFrame)
     {
         var args = new object[]
         {
@@ -350,7 +351,7 @@ public class CelestialBody : RemoteObject
     /// <param name="position">Position as a vector.</param>
     /// <param name="referenceFrame">Reference frame for the position vector.</param>
     [Rpc("SpaceCenter", "CelestialBody_LatitudeAtPosition")]
-    public async Task<double> LatitudeAtPositionAsync(Tuple<double,double,double> position, ReferenceFrame referenceFrame)
+    public async Task<double> LatitudeAtPositionAsync(Vector3D position, ReferenceFrame referenceFrame)
     {
         var args = new object[]
         {
@@ -367,7 +368,7 @@ public class CelestialBody : RemoteObject
     /// <param name="position">Position as a vector.</param>
     /// <param name="referenceFrame">Reference frame for the position vector.</param>
     [Rpc("SpaceCenter", "CelestialBody_LongitudeAtPosition")]
-    public double LongitudeAtPosition(Tuple<double,double,double> position, ReferenceFrame referenceFrame)
+    public double LongitudeAtPosition(Vector3D position, ReferenceFrame referenceFrame)
     {
         var args = new object[]
         {
@@ -385,7 +386,7 @@ public class CelestialBody : RemoteObject
     /// <param name="position">Position as a vector.</param>
     /// <param name="referenceFrame">Reference frame for the position vector.</param>
     [Rpc("SpaceCenter", "CelestialBody_LongitudeAtPosition")]
-    public async Task<double> LongitudeAtPositionAsync(Tuple<double,double,double> position, ReferenceFrame referenceFrame)
+    public async Task<double> LongitudeAtPositionAsync(Vector3D position, ReferenceFrame referenceFrame)
     {
         var args = new object[]
         {
@@ -405,7 +406,7 @@ public class CelestialBody : RemoteObject
     /// <param name="longitude">Longitude in degrees.</param>
     /// <param name="referenceFrame">Reference frame for the returned position vector.</param>
     [Rpc("SpaceCenter", "CelestialBody_MSLPosition")]
-    public Tuple<double,double,double> MSLPosition(double latitude, double longitude, ReferenceFrame referenceFrame)
+    public Vector3D MSLPosition(double latitude, double longitude, ReferenceFrame referenceFrame)
     {
         var args = new object[]
         {
@@ -414,7 +415,7 @@ public class CelestialBody : RemoteObject
             longitude,
             referenceFrame
         };
-        return Connection.Invoke<Tuple<double,double,double>>("SpaceCenter", "CelestialBody_MSLPosition", args);
+        return Connection.Invoke<Vector3D>("SpaceCenter", "CelestialBody_MSLPosition", args);
     }
 
     /// <summary>
@@ -427,7 +428,7 @@ public class CelestialBody : RemoteObject
     /// <param name="longitude">Longitude in degrees.</param>
     /// <param name="referenceFrame">Reference frame for the returned position vector.</param>
     [Rpc("SpaceCenter", "CelestialBody_MSLPosition")]
-    public async Task<Tuple<double,double,double>> MSLPositionAsync(double latitude, double longitude, ReferenceFrame referenceFrame)
+    public async Task<Vector3D> MSLPositionAsync(double latitude, double longitude, ReferenceFrame referenceFrame)
     {
         var args = new object[]
         {
@@ -436,7 +437,7 @@ public class CelestialBody : RemoteObject
             longitude,
             referenceFrame
         };
-        return await Connection.InvokeAsync<Tuple<double,double,double>>("SpaceCenter", "CelestialBody_MSLPosition", args);
+        return await Connection.InvokeAsync<Vector3D>("SpaceCenter", "CelestialBody_MSLPosition", args);
     }
 
     /// <summary>
@@ -446,14 +447,14 @@ public class CelestialBody : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// position vector is in.</param>
     [Rpc("SpaceCenter", "CelestialBody_Position")]
-    public Tuple<double,double,double> Position(ReferenceFrame referenceFrame)
+    public Vector3D Position(ReferenceFrame referenceFrame)
     {
         var args = new object[]
         {
             this,
             referenceFrame
         };
-        return Connection.Invoke<Tuple<double,double,double>>("SpaceCenter", "CelestialBody_Position", args);
+        return Connection.Invoke<Vector3D>("SpaceCenter", "CelestialBody_Position", args);
     }
 
     /// <summary>
@@ -464,14 +465,14 @@ public class CelestialBody : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// position vector is in.</param>
     [Rpc("SpaceCenter", "CelestialBody_Position")]
-    public async Task<Tuple<double,double,double>> PositionAsync(ReferenceFrame referenceFrame)
+    public async Task<Vector3D> PositionAsync(ReferenceFrame referenceFrame)
     {
         var args = new object[]
         {
             this,
             referenceFrame
         };
-        return await Connection.InvokeAsync<Tuple<double,double,double>>("SpaceCenter", "CelestialBody_Position", args);
+        return await Connection.InvokeAsync<Vector3D>("SpaceCenter", "CelestialBody_Position", args);
     }
 
     /// <summary>
@@ -483,7 +484,7 @@ public class CelestialBody : RemoteObject
     /// <param name="altitude">Altitude in meters above sea level.</param>
     /// <param name="referenceFrame">Reference frame for the returned position vector.</param>
     [Rpc("SpaceCenter", "CelestialBody_PositionAtAltitude")]
-    public Tuple<double,double,double> PositionAtAltitude(double latitude, double longitude, double altitude, ReferenceFrame referenceFrame)
+    public Vector3D PositionAtAltitude(double latitude, double longitude, double altitude, ReferenceFrame referenceFrame)
     {
         var args = new object[]
         {
@@ -493,7 +494,7 @@ public class CelestialBody : RemoteObject
             altitude,
             referenceFrame
         };
-        return Connection.Invoke<Tuple<double,double,double>>("SpaceCenter", "CelestialBody_PositionAtAltitude", args);
+        return Connection.Invoke<Vector3D>("SpaceCenter", "CelestialBody_PositionAtAltitude", args);
     }
 
     /// <summary>
@@ -506,7 +507,7 @@ public class CelestialBody : RemoteObject
     /// <param name="altitude">Altitude in meters above sea level.</param>
     /// <param name="referenceFrame">Reference frame for the returned position vector.</param>
     [Rpc("SpaceCenter", "CelestialBody_PositionAtAltitude")]
-    public async Task<Tuple<double,double,double>> PositionAtAltitudeAsync(double latitude, double longitude, double altitude, ReferenceFrame referenceFrame)
+    public async Task<Vector3D> PositionAtAltitudeAsync(double latitude, double longitude, double altitude, ReferenceFrame referenceFrame)
     {
         var args = new object[]
         {
@@ -516,7 +517,7 @@ public class CelestialBody : RemoteObject
             altitude,
             referenceFrame
         };
-        return await Connection.InvokeAsync<Tuple<double,double,double>>("SpaceCenter", "CelestialBody_PositionAtAltitude", args);
+        return await Connection.InvokeAsync<Vector3D>("SpaceCenter", "CelestialBody_PositionAtAltitude", args);
     }
 
     /// <summary>
@@ -631,7 +632,7 @@ public class CelestialBody : RemoteObject
     /// <param name="longitude">Longitude in degrees.</param>
     /// <param name="referenceFrame">Reference frame for the returned position vector.</param>
     [Rpc("SpaceCenter", "CelestialBody_SurfacePosition")]
-    public Tuple<double,double,double> SurfacePosition(double latitude, double longitude, ReferenceFrame referenceFrame)
+    public Vector3D SurfacePosition(double latitude, double longitude, ReferenceFrame referenceFrame)
     {
         var args = new object[]
         {
@@ -640,7 +641,7 @@ public class CelestialBody : RemoteObject
             longitude,
             referenceFrame
         };
-        return Connection.Invoke<Tuple<double,double,double>>("SpaceCenter", "CelestialBody_SurfacePosition", args);
+        return Connection.Invoke<Vector3D>("SpaceCenter", "CelestialBody_SurfacePosition", args);
     }
 
     /// <summary>
@@ -653,7 +654,7 @@ public class CelestialBody : RemoteObject
     /// <param name="longitude">Longitude in degrees.</param>
     /// <param name="referenceFrame">Reference frame for the returned position vector.</param>
     [Rpc("SpaceCenter", "CelestialBody_SurfacePosition")]
-    public async Task<Tuple<double,double,double>> SurfacePositionAsync(double latitude, double longitude, ReferenceFrame referenceFrame)
+    public async Task<Vector3D> SurfacePositionAsync(double latitude, double longitude, ReferenceFrame referenceFrame)
     {
         var args = new object[]
         {
@@ -662,7 +663,7 @@ public class CelestialBody : RemoteObject
             longitude,
             referenceFrame
         };
-        return await Connection.InvokeAsync<Tuple<double,double,double>>("SpaceCenter", "CelestialBody_SurfacePosition", args);
+        return await Connection.InvokeAsync<Vector3D>("SpaceCenter", "CelestialBody_SurfacePosition", args);
     }
 
     /// <summary>
@@ -675,7 +676,7 @@ public class CelestialBody : RemoteObject
     /// the value could be wrong if you want to know the temperature in the far future.
     /// </remarks>
     [Rpc("SpaceCenter", "CelestialBody_TemperatureAt")]
-    public double TemperatureAt(Tuple<double,double,double> position, ReferenceFrame referenceFrame)
+    public double TemperatureAt(Vector3D position, ReferenceFrame referenceFrame)
     {
         var args = new object[]
         {
@@ -697,7 +698,7 @@ public class CelestialBody : RemoteObject
     /// the value could be wrong if you want to know the temperature in the far future.
     /// </remarks>
     [Rpc("SpaceCenter", "CelestialBody_TemperatureAt")]
-    public async Task<double> TemperatureAtAsync(Tuple<double,double,double> position, ReferenceFrame referenceFrame)
+    public async Task<double> TemperatureAtAsync(Vector3D position, ReferenceFrame referenceFrame)
     {
         var args = new object[]
         {
@@ -716,14 +717,14 @@ public class CelestialBody : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// velocity vector is in.</param>
     [Rpc("SpaceCenter", "CelestialBody_Velocity")]
-    public Tuple<double,double,double> Velocity(ReferenceFrame referenceFrame)
+    public Vector3D Velocity(ReferenceFrame referenceFrame)
     {
         var args = new object[]
         {
             this,
             referenceFrame
         };
-        return Connection.Invoke<Tuple<double,double,double>>("SpaceCenter", "CelestialBody_Velocity", args);
+        return Connection.Invoke<Vector3D>("SpaceCenter", "CelestialBody_Velocity", args);
     }
 
     /// <summary>
@@ -735,14 +736,14 @@ public class CelestialBody : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// velocity vector is in.</param>
     [Rpc("SpaceCenter", "CelestialBody_Velocity")]
-    public async Task<Tuple<double,double,double>> VelocityAsync(ReferenceFrame referenceFrame)
+    public async Task<Vector3D> VelocityAsync(ReferenceFrame referenceFrame)
     {
         var args = new object[]
         {
             this,
             referenceFrame
         };
-        return await Connection.InvokeAsync<Tuple<double,double,double>>("SpaceCenter", "CelestialBody_Velocity", args);
+        return await Connection.InvokeAsync<Vector3D>("SpaceCenter", "CelestialBody_Velocity", args);
     }
 
     /// <summary>

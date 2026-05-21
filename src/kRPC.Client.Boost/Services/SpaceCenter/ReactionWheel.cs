@@ -2,6 +2,7 @@ using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
 using System;
 using kRPC.Client.Boost.Attributes;
+using MathNet.Spatial.Euclidean;
 using System.Threading.Tasks;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
@@ -81,13 +82,13 @@ public class ReactionWheel : RemoteObject
     /// Returns zero if the reaction wheel is inactive or broken.
     /// </summary>
     [Rpc("SpaceCenter", "ReactionWheel_get_AvailableTorque")]
-    public Tuple<Tuple<double,double,double>,Tuple<double,double,double>> GetAvailableTorque()
+    public Tuple<Vector3D,Vector3D> GetAvailableTorque()
     {
         var args = new object[]
         {
             this
         };
-        return Connection.Invoke<Tuple<Tuple<double,double,double>,Tuple<double,double,double>>>("SpaceCenter", "ReactionWheel_get_AvailableTorque", args);
+        return Connection.Invoke<Tuple<Vector3D,Vector3D>>("SpaceCenter", "ReactionWheel_get_AvailableTorque", args);
     }
 
     /// <summary>
@@ -98,13 +99,13 @@ public class ReactionWheel : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "ReactionWheel_get_AvailableTorque")]
-    public async Task<Tuple<Tuple<double,double,double>,Tuple<double,double,double>>> GetAvailableTorqueAsync()
+    public async Task<Tuple<Vector3D,Vector3D>> GetAvailableTorqueAsync()
     {
         var args = new object[]
         {
             this
         };
-        return await Connection.InvokeAsync<Tuple<Tuple<double,double,double>,Tuple<double,double,double>>>("SpaceCenter", "ReactionWheel_get_AvailableTorque", args);
+        return await Connection.InvokeAsync<Tuple<Vector3D,Vector3D>>("SpaceCenter", "ReactionWheel_get_AvailableTorque", args);
     }
 
     /// <summary>
@@ -140,13 +141,13 @@ public class ReactionWheel : RemoteObject
     /// These axes correspond to the coordinate axes of the <see cref="M:SpaceCenter.Vessel.GetReferenceFrame" />.
     /// </summary>
     [Rpc("SpaceCenter", "ReactionWheel_get_MaxTorque")]
-    public Tuple<Tuple<double,double,double>,Tuple<double,double,double>> GetMaxTorque()
+    public Tuple<Vector3D,Vector3D> GetMaxTorque()
     {
         var args = new object[]
         {
             this
         };
-        return Connection.Invoke<Tuple<Tuple<double,double,double>,Tuple<double,double,double>>>("SpaceCenter", "ReactionWheel_get_MaxTorque", args);
+        return Connection.Invoke<Tuple<Vector3D,Vector3D>>("SpaceCenter", "ReactionWheel_get_MaxTorque", args);
     }
 
     /// <summary>
@@ -156,13 +157,13 @@ public class ReactionWheel : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "ReactionWheel_get_MaxTorque")]
-    public async Task<Tuple<Tuple<double,double,double>,Tuple<double,double,double>>> GetMaxTorqueAsync()
+    public async Task<Tuple<Vector3D,Vector3D>> GetMaxTorqueAsync()
     {
         var args = new object[]
         {
             this
         };
-        return await Connection.InvokeAsync<Tuple<Tuple<double,double,double>,Tuple<double,double,double>>>("SpaceCenter", "ReactionWheel_get_MaxTorque", args);
+        return await Connection.InvokeAsync<Tuple<Vector3D,Vector3D>>("SpaceCenter", "ReactionWheel_get_MaxTorque", args);
     }
 
     /// <summary>

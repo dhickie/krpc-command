@@ -3,6 +3,7 @@ using System;
 using kRPC.Client.Boost.Attributes;
 using System.Collections.Generic;
 using kRPC.Client.Boost.Services.SpaceCenter;
+using MathNet.Spatial.Euclidean;
 using System.Threading.Tasks;
 
 namespace kRPC.Client.Boost.Services;
@@ -461,7 +462,7 @@ public class SpaceCenterService
     /// <param name="referenceFrame">The reference frame that the position and direction are in.</param>
     /// <returns>The distance to the hit, in meters, or infinity if there was no hit.</returns>
     [Rpc("SpaceCenter", "RaycastDistance")]
-    public double RaycastDistance(Tuple<double,double,double> position, Tuple<double,double,double> direction, ReferenceFrame referenceFrame)
+    public double RaycastDistance(Vector3D position, Vector3D direction, ReferenceFrame referenceFrame)
     {
         var args = new object[]
         {
@@ -482,7 +483,7 @@ public class SpaceCenterService
     /// <param name="referenceFrame">The reference frame that the position and direction are in.</param>
     /// <returns>The distance to the hit, in meters, or infinity if there was no hit.</returns>
     [Rpc("SpaceCenter", "RaycastDistance")]
-    public async Task<double> RaycastDistanceAsync(Tuple<double,double,double> position, Tuple<double,double,double> direction, ReferenceFrame referenceFrame)
+    public async Task<double> RaycastDistanceAsync(Vector3D position, Vector3D direction, ReferenceFrame referenceFrame)
     {
         var args = new object[]
         {
@@ -502,7 +503,7 @@ public class SpaceCenterService
     /// <param name="referenceFrame">The reference frame that the position and direction are in.</param>
     /// <returns>The part that was hit or <c>null</c> if there was no hit.</returns>
     [Rpc("SpaceCenter", "RaycastPart")]
-    public Part? RaycastPart(Tuple<double,double,double> position, Tuple<double,double,double> direction, ReferenceFrame referenceFrame)
+    public Part? RaycastPart(Vector3D position, Vector3D direction, ReferenceFrame referenceFrame)
     {
         var args = new object[]
         {
@@ -523,7 +524,7 @@ public class SpaceCenterService
     /// <param name="referenceFrame">The reference frame that the position and direction are in.</param>
     /// <returns>The part that was hit or <c>null</c> if there was no hit.</returns>
     [Rpc("SpaceCenter", "RaycastPart")]
-    public async Task<Part?> RaycastPartAsync(Tuple<double,double,double> position, Tuple<double,double,double> direction, ReferenceFrame referenceFrame)
+    public async Task<Part?> RaycastPartAsync(Vector3D position, Vector3D direction, ReferenceFrame referenceFrame)
     {
         var args = new object[]
         {
@@ -662,7 +663,7 @@ public class SpaceCenterService
     /// <returns>The corresponding direction, as a vector, in reference frame
     /// <paramref name="to" />.</returns>
     [Rpc("SpaceCenter", "TransformDirection")]
-    public Tuple<double,double,double> TransformDirection(Tuple<double,double,double> direction, ReferenceFrame from, ReferenceFrame to)
+    public Vector3D TransformDirection(Vector3D direction, ReferenceFrame from, ReferenceFrame to)
     {
         var args = new object[]
         {
@@ -670,7 +671,7 @@ public class SpaceCenterService
             from,
             to
         };
-        return _connection.Invoke<Tuple<double,double,double>>("SpaceCenter", "TransformDirection", args);
+        return _connection.Invoke<Vector3D>("SpaceCenter", "TransformDirection", args);
     }
 
     /// <summary>
@@ -684,7 +685,7 @@ public class SpaceCenterService
     /// <returns>The corresponding direction, as a vector, in reference frame
     /// <paramref name="to" />.</returns>
     [Rpc("SpaceCenter", "TransformDirection")]
-    public async Task<Tuple<double,double,double>> TransformDirectionAsync(Tuple<double,double,double> direction, ReferenceFrame from, ReferenceFrame to)
+    public async Task<Vector3D> TransformDirectionAsync(Vector3D direction, ReferenceFrame from, ReferenceFrame to)
     {
         var args = new object[]
         {
@@ -692,7 +693,7 @@ public class SpaceCenterService
             from,
             to
         };
-        return await _connection.InvokeAsync<Tuple<double,double,double>>("SpaceCenter", "TransformDirection", args);
+        return await _connection.InvokeAsync<Vector3D>("SpaceCenter", "TransformDirection", args);
     }
 
     /// <summary>
@@ -705,7 +706,7 @@ public class SpaceCenterService
     /// <returns>The corresponding position, as a vector, in reference frame
     /// <paramref name="to" />.</returns>
     [Rpc("SpaceCenter", "TransformPosition")]
-    public Tuple<double,double,double> TransformPosition(Tuple<double,double,double> position, ReferenceFrame from, ReferenceFrame to)
+    public Vector3D TransformPosition(Vector3D position, ReferenceFrame from, ReferenceFrame to)
     {
         var args = new object[]
         {
@@ -713,7 +714,7 @@ public class SpaceCenterService
             from,
             to
         };
-        return _connection.Invoke<Tuple<double,double,double>>("SpaceCenter", "TransformPosition", args);
+        return _connection.Invoke<Vector3D>("SpaceCenter", "TransformPosition", args);
     }
 
     /// <summary>
@@ -727,7 +728,7 @@ public class SpaceCenterService
     /// <returns>The corresponding position, as a vector, in reference frame
     /// <paramref name="to" />.</returns>
     [Rpc("SpaceCenter", "TransformPosition")]
-    public async Task<Tuple<double,double,double>> TransformPositionAsync(Tuple<double,double,double> position, ReferenceFrame from, ReferenceFrame to)
+    public async Task<Vector3D> TransformPositionAsync(Vector3D position, ReferenceFrame from, ReferenceFrame to)
     {
         var args = new object[]
         {
@@ -735,7 +736,7 @@ public class SpaceCenterService
             from,
             to
         };
-        return await _connection.InvokeAsync<Tuple<double,double,double>>("SpaceCenter", "TransformPosition", args);
+        return await _connection.InvokeAsync<Vector3D>("SpaceCenter", "TransformPosition", args);
     }
 
     /// <summary>
@@ -796,7 +797,7 @@ public class SpaceCenterService
     /// <returns>The corresponding velocity, as a vector, in reference frame
     /// <paramref name="to" />.</returns>
     [Rpc("SpaceCenter", "TransformVelocity")]
-    public Tuple<double,double,double> TransformVelocity(Tuple<double,double,double> position, Tuple<double,double,double> velocity, ReferenceFrame from, ReferenceFrame to)
+    public Vector3D TransformVelocity(Vector3D position, Vector3D velocity, ReferenceFrame from, ReferenceFrame to)
     {
         var args = new object[]
         {
@@ -805,7 +806,7 @@ public class SpaceCenterService
             from,
             to
         };
-        return _connection.Invoke<Tuple<double,double,double>>("SpaceCenter", "TransformVelocity", args);
+        return _connection.Invoke<Vector3D>("SpaceCenter", "TransformVelocity", args);
     }
 
     /// <summary>
@@ -824,7 +825,7 @@ public class SpaceCenterService
     /// <returns>The corresponding velocity, as a vector, in reference frame
     /// <paramref name="to" />.</returns>
     [Rpc("SpaceCenter", "TransformVelocity")]
-    public async Task<Tuple<double,double,double>> TransformVelocityAsync(Tuple<double,double,double> position, Tuple<double,double,double> velocity, ReferenceFrame from, ReferenceFrame to)
+    public async Task<Vector3D> TransformVelocityAsync(Vector3D position, Vector3D velocity, ReferenceFrame from, ReferenceFrame to)
     {
         var args = new object[]
         {
@@ -833,7 +834,7 @@ public class SpaceCenterService
             from,
             to
         };
-        return await _connection.InvokeAsync<Tuple<double,double,double>>("SpaceCenter", "TransformVelocity", args);
+        return await _connection.InvokeAsync<Vector3D>("SpaceCenter", "TransformVelocity", args);
     }
 
     /// <summary>

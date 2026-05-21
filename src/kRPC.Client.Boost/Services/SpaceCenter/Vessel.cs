@@ -2,6 +2,7 @@ using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
 using System;
 using kRPC.Client.Boost.Attributes;
+using MathNet.Spatial.Euclidean;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -30,14 +31,14 @@ public class Vessel : RemoteObject
     /// <param name="referenceFrame">The reference frame the returned
     /// angular velocity is in.</param>
     [Rpc("SpaceCenter", "Vessel_AngularVelocity")]
-    public Tuple<double,double,double> AngularVelocity(ReferenceFrame referenceFrame)
+    public Vector3D AngularVelocity(ReferenceFrame referenceFrame)
     {
         var args = new object[]
         {
             this,
             referenceFrame
         };
-        return Connection.Invoke<Tuple<double,double,double>>("SpaceCenter", "Vessel_AngularVelocity", args);
+        return Connection.Invoke<Vector3D>("SpaceCenter", "Vessel_AngularVelocity", args);
     }
 
     /// <summary>
@@ -50,14 +51,14 @@ public class Vessel : RemoteObject
     /// <param name="referenceFrame">The reference frame the returned
     /// angular velocity is in.</param>
     [Rpc("SpaceCenter", "Vessel_AngularVelocity")]
-    public async Task<Tuple<double,double,double>> AngularVelocityAsync(ReferenceFrame referenceFrame)
+    public async Task<Vector3D> AngularVelocityAsync(ReferenceFrame referenceFrame)
     {
         var args = new object[]
         {
             this,
             referenceFrame
         };
-        return await Connection.InvokeAsync<Tuple<double,double,double>>("SpaceCenter", "Vessel_AngularVelocity", args);
+        return await Connection.InvokeAsync<Vector3D>("SpaceCenter", "Vessel_AngularVelocity", args);
     }
 
     /// <summary>
@@ -105,14 +106,14 @@ public class Vessel : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// position vectors are in.</param>
     [Rpc("SpaceCenter", "Vessel_BoundingBox")]
-    public Tuple<Tuple<double,double,double>,Tuple<double,double,double>> BoundingBox(ReferenceFrame referenceFrame)
+    public Tuple<Vector3D,Vector3D> BoundingBox(ReferenceFrame referenceFrame)
     {
         var args = new object[]
         {
             this,
             referenceFrame
         };
-        return Connection.Invoke<Tuple<Tuple<double,double,double>,Tuple<double,double,double>>>("SpaceCenter", "Vessel_BoundingBox", args);
+        return Connection.Invoke<Tuple<Vector3D,Vector3D>>("SpaceCenter", "Vessel_BoundingBox", args);
     }
 
     /// <summary>
@@ -124,14 +125,14 @@ public class Vessel : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// position vectors are in.</param>
     [Rpc("SpaceCenter", "Vessel_BoundingBox")]
-    public async Task<Tuple<Tuple<double,double,double>,Tuple<double,double,double>>> BoundingBoxAsync(ReferenceFrame referenceFrame)
+    public async Task<Tuple<Vector3D,Vector3D>> BoundingBoxAsync(ReferenceFrame referenceFrame)
     {
         var args = new object[]
         {
             this,
             referenceFrame
         };
-        return await Connection.InvokeAsync<Tuple<Tuple<double,double,double>,Tuple<double,double,double>>>("SpaceCenter", "Vessel_BoundingBox", args);
+        return await Connection.InvokeAsync<Tuple<Vector3D,Vector3D>>("SpaceCenter", "Vessel_BoundingBox", args);
     }
 
     /// <summary>
@@ -141,14 +142,14 @@ public class Vessel : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// direction is in.</param>
     [Rpc("SpaceCenter", "Vessel_Direction")]
-    public Tuple<double,double,double> Direction(ReferenceFrame referenceFrame)
+    public Vector3D Direction(ReferenceFrame referenceFrame)
     {
         var args = new object[]
         {
             this,
             referenceFrame
         };
-        return Connection.Invoke<Tuple<double,double,double>>("SpaceCenter", "Vessel_Direction", args);
+        return Connection.Invoke<Vector3D>("SpaceCenter", "Vessel_Direction", args);
     }
 
     /// <summary>
@@ -159,14 +160,14 @@ public class Vessel : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// direction is in.</param>
     [Rpc("SpaceCenter", "Vessel_Direction")]
-    public async Task<Tuple<double,double,double>> DirectionAsync(ReferenceFrame referenceFrame)
+    public async Task<Vector3D> DirectionAsync(ReferenceFrame referenceFrame)
     {
         var args = new object[]
         {
             this,
             referenceFrame
         };
-        return await Connection.InvokeAsync<Tuple<double,double,double>>("SpaceCenter", "Vessel_Direction", args);
+        return await Connection.InvokeAsync<Vector3D>("SpaceCenter", "Vessel_Direction", args);
     }
 
     /// <summary>
@@ -252,14 +253,14 @@ public class Vessel : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// position vector is in.</param>
     [Rpc("SpaceCenter", "Vessel_Position")]
-    public Tuple<double,double,double> Position(ReferenceFrame referenceFrame)
+    public Vector3D Position(ReferenceFrame referenceFrame)
     {
         var args = new object[]
         {
             this,
             referenceFrame
         };
-        return Connection.Invoke<Tuple<double,double,double>>("SpaceCenter", "Vessel_Position", args);
+        return Connection.Invoke<Vector3D>("SpaceCenter", "Vessel_Position", args);
     }
 
     /// <summary>
@@ -270,14 +271,14 @@ public class Vessel : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// position vector is in.</param>
     [Rpc("SpaceCenter", "Vessel_Position")]
-    public async Task<Tuple<double,double,double>> PositionAsync(ReferenceFrame referenceFrame)
+    public async Task<Vector3D> PositionAsync(ReferenceFrame referenceFrame)
     {
         var args = new object[]
         {
             this,
             referenceFrame
         };
-        return await Connection.InvokeAsync<Tuple<double,double,double>>("SpaceCenter", "Vessel_Position", args);
+        return await Connection.InvokeAsync<Vector3D>("SpaceCenter", "Vessel_Position", args);
     }
 
     /// <summary>
@@ -426,14 +427,14 @@ public class Vessel : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// velocity vector is in.</param>
     [Rpc("SpaceCenter", "Vessel_Velocity")]
-    public Tuple<double,double,double> Velocity(ReferenceFrame referenceFrame)
+    public Vector3D Velocity(ReferenceFrame referenceFrame)
     {
         var args = new object[]
         {
             this,
             referenceFrame
         };
-        return Connection.Invoke<Tuple<double,double,double>>("SpaceCenter", "Vessel_Velocity", args);
+        return Connection.Invoke<Vector3D>("SpaceCenter", "Vessel_Velocity", args);
     }
 
     /// <summary>
@@ -445,14 +446,14 @@ public class Vessel : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// velocity vector is in.</param>
     [Rpc("SpaceCenter", "Vessel_Velocity")]
-    public async Task<Tuple<double,double,double>> VelocityAsync(ReferenceFrame referenceFrame)
+    public async Task<Vector3D> VelocityAsync(ReferenceFrame referenceFrame)
     {
         var args = new object[]
         {
             this,
             referenceFrame
         };
-        return await Connection.InvokeAsync<Tuple<double,double,double>>("SpaceCenter", "Vessel_Velocity", args);
+        return await Connection.InvokeAsync<Vector3D>("SpaceCenter", "Vessel_Velocity", args);
     }
 
     /// <summary>
@@ -491,13 +492,13 @@ public class Vessel : RemoteObject
     /// These axes are equivalent to the pitch, roll and yaw axes of the vessel.
     /// </summary>
     [Rpc("SpaceCenter", "Vessel_get_AvailableControlSurfaceTorque")]
-    public Tuple<Tuple<double,double,double>,Tuple<double,double,double>> GetAvailableControlSurfaceTorque()
+    public Tuple<Vector3D,Vector3D> GetAvailableControlSurfaceTorque()
     {
         var args = new object[]
         {
             this
         };
-        return Connection.Invoke<Tuple<Tuple<double,double,double>,Tuple<double,double,double>>>("SpaceCenter", "Vessel_get_AvailableControlSurfaceTorque", args);
+        return Connection.Invoke<Tuple<Vector3D,Vector3D>>("SpaceCenter", "Vessel_get_AvailableControlSurfaceTorque", args);
     }
 
     /// <summary>
@@ -508,13 +509,13 @@ public class Vessel : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Vessel_get_AvailableControlSurfaceTorque")]
-    public async Task<Tuple<Tuple<double,double,double>,Tuple<double,double,double>>> GetAvailableControlSurfaceTorqueAsync()
+    public async Task<Tuple<Vector3D,Vector3D>> GetAvailableControlSurfaceTorqueAsync()
     {
         var args = new object[]
         {
             this
         };
-        return await Connection.InvokeAsync<Tuple<Tuple<double,double,double>,Tuple<double,double,double>>>("SpaceCenter", "Vessel_get_AvailableControlSurfaceTorque", args);
+        return await Connection.InvokeAsync<Tuple<Vector3D,Vector3D>>("SpaceCenter", "Vessel_get_AvailableControlSurfaceTorque", args);
     }
 
     /// <summary>
@@ -524,13 +525,13 @@ public class Vessel : RemoteObject
     /// These axes are equivalent to the pitch, roll and yaw axes of the vessel.
     /// </summary>
     [Rpc("SpaceCenter", "Vessel_get_AvailableEngineTorque")]
-    public Tuple<Tuple<double,double,double>,Tuple<double,double,double>> GetAvailableEngineTorque()
+    public Tuple<Vector3D,Vector3D> GetAvailableEngineTorque()
     {
         var args = new object[]
         {
             this
         };
-        return Connection.Invoke<Tuple<Tuple<double,double,double>,Tuple<double,double,double>>>("SpaceCenter", "Vessel_get_AvailableEngineTorque", args);
+        return Connection.Invoke<Tuple<Vector3D,Vector3D>>("SpaceCenter", "Vessel_get_AvailableEngineTorque", args);
     }
 
     /// <summary>
@@ -541,13 +542,13 @@ public class Vessel : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Vessel_get_AvailableEngineTorque")]
-    public async Task<Tuple<Tuple<double,double,double>,Tuple<double,double,double>>> GetAvailableEngineTorqueAsync()
+    public async Task<Tuple<Vector3D,Vector3D>> GetAvailableEngineTorqueAsync()
     {
         var args = new object[]
         {
             this
         };
-        return await Connection.InvokeAsync<Tuple<Tuple<double,double,double>,Tuple<double,double,double>>>("SpaceCenter", "Vessel_get_AvailableEngineTorque", args);
+        return await Connection.InvokeAsync<Tuple<Vector3D,Vector3D>>("SpaceCenter", "Vessel_get_AvailableEngineTorque", args);
     }
 
     /// <summary>
@@ -558,13 +559,13 @@ public class Vessel : RemoteObject
     /// These axes are equivalent to the pitch, roll and yaw axes of the vessel.
     /// </summary>
     [Rpc("SpaceCenter", "Vessel_get_AvailableOtherTorque")]
-    public Tuple<Tuple<double,double,double>,Tuple<double,double,double>> GetAvailableOtherTorque()
+    public Tuple<Vector3D,Vector3D> GetAvailableOtherTorque()
     {
         var args = new object[]
         {
             this
         };
-        return Connection.Invoke<Tuple<Tuple<double,double,double>,Tuple<double,double,double>>>("SpaceCenter", "Vessel_get_AvailableOtherTorque", args);
+        return Connection.Invoke<Tuple<Vector3D,Vector3D>>("SpaceCenter", "Vessel_get_AvailableOtherTorque", args);
     }
 
     /// <summary>
@@ -576,13 +577,13 @@ public class Vessel : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Vessel_get_AvailableOtherTorque")]
-    public async Task<Tuple<Tuple<double,double,double>,Tuple<double,double,double>>> GetAvailableOtherTorqueAsync()
+    public async Task<Tuple<Vector3D,Vector3D>> GetAvailableOtherTorqueAsync()
     {
         var args = new object[]
         {
             this
         };
-        return await Connection.InvokeAsync<Tuple<Tuple<double,double,double>,Tuple<double,double,double>>>("SpaceCenter", "Vessel_get_AvailableOtherTorque", args);
+        return await Connection.InvokeAsync<Tuple<Vector3D,Vector3D>>("SpaceCenter", "Vessel_get_AvailableOtherTorque", args);
     }
 
     /// <summary>
@@ -592,13 +593,13 @@ public class Vessel : RemoteObject
     /// These axes are equivalent to the right, forward and bottom directions of the vessel.
     /// </summary>
     [Rpc("SpaceCenter", "Vessel_get_AvailableRCSForce")]
-    public Tuple<Tuple<double,double,double>,Tuple<double,double,double>> GetAvailableRCSForce()
+    public Tuple<Vector3D,Vector3D> GetAvailableRCSForce()
     {
         var args = new object[]
         {
             this
         };
-        return Connection.Invoke<Tuple<Tuple<double,double,double>,Tuple<double,double,double>>>("SpaceCenter", "Vessel_get_AvailableRCSForce", args);
+        return Connection.Invoke<Tuple<Vector3D,Vector3D>>("SpaceCenter", "Vessel_get_AvailableRCSForce", args);
     }
 
     /// <summary>
@@ -609,13 +610,13 @@ public class Vessel : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Vessel_get_AvailableRCSForce")]
-    public async Task<Tuple<Tuple<double,double,double>,Tuple<double,double,double>>> GetAvailableRCSForceAsync()
+    public async Task<Tuple<Vector3D,Vector3D>> GetAvailableRCSForceAsync()
     {
         var args = new object[]
         {
             this
         };
-        return await Connection.InvokeAsync<Tuple<Tuple<double,double,double>,Tuple<double,double,double>>>("SpaceCenter", "Vessel_get_AvailableRCSForce", args);
+        return await Connection.InvokeAsync<Tuple<Vector3D,Vector3D>>("SpaceCenter", "Vessel_get_AvailableRCSForce", args);
     }
 
     /// <summary>
@@ -625,13 +626,13 @@ public class Vessel : RemoteObject
     /// These axes are equivalent to the pitch, roll and yaw axes of the vessel.
     /// </summary>
     [Rpc("SpaceCenter", "Vessel_get_AvailableRCSTorque")]
-    public Tuple<Tuple<double,double,double>,Tuple<double,double,double>> GetAvailableRCSTorque()
+    public Tuple<Vector3D,Vector3D> GetAvailableRCSTorque()
     {
         var args = new object[]
         {
             this
         };
-        return Connection.Invoke<Tuple<Tuple<double,double,double>,Tuple<double,double,double>>>("SpaceCenter", "Vessel_get_AvailableRCSTorque", args);
+        return Connection.Invoke<Tuple<Vector3D,Vector3D>>("SpaceCenter", "Vessel_get_AvailableRCSTorque", args);
     }
 
     /// <summary>
@@ -642,13 +643,13 @@ public class Vessel : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Vessel_get_AvailableRCSTorque")]
-    public async Task<Tuple<Tuple<double,double,double>,Tuple<double,double,double>>> GetAvailableRCSTorqueAsync()
+    public async Task<Tuple<Vector3D,Vector3D>> GetAvailableRCSTorqueAsync()
     {
         var args = new object[]
         {
             this
         };
-        return await Connection.InvokeAsync<Tuple<Tuple<double,double,double>,Tuple<double,double,double>>>("SpaceCenter", "Vessel_get_AvailableRCSTorque", args);
+        return await Connection.InvokeAsync<Tuple<Vector3D,Vector3D>>("SpaceCenter", "Vessel_get_AvailableRCSTorque", args);
     }
 
     /// <summary>
@@ -658,13 +659,13 @@ public class Vessel : RemoteObject
     /// These axes are equivalent to the pitch, roll and yaw axes of the vessel.
     /// </summary>
     [Rpc("SpaceCenter", "Vessel_get_AvailableReactionWheelTorque")]
-    public Tuple<Tuple<double,double,double>,Tuple<double,double,double>> GetAvailableReactionWheelTorque()
+    public Tuple<Vector3D,Vector3D> GetAvailableReactionWheelTorque()
     {
         var args = new object[]
         {
             this
         };
-        return Connection.Invoke<Tuple<Tuple<double,double,double>,Tuple<double,double,double>>>("SpaceCenter", "Vessel_get_AvailableReactionWheelTorque", args);
+        return Connection.Invoke<Tuple<Vector3D,Vector3D>>("SpaceCenter", "Vessel_get_AvailableReactionWheelTorque", args);
     }
 
     /// <summary>
@@ -675,13 +676,13 @@ public class Vessel : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Vessel_get_AvailableReactionWheelTorque")]
-    public async Task<Tuple<Tuple<double,double,double>,Tuple<double,double,double>>> GetAvailableReactionWheelTorqueAsync()
+    public async Task<Tuple<Vector3D,Vector3D>> GetAvailableReactionWheelTorqueAsync()
     {
         var args = new object[]
         {
             this
         };
-        return await Connection.InvokeAsync<Tuple<Tuple<double,double,double>,Tuple<double,double,double>>>("SpaceCenter", "Vessel_get_AvailableReactionWheelTorque", args);
+        return await Connection.InvokeAsync<Tuple<Vector3D,Vector3D>>("SpaceCenter", "Vessel_get_AvailableReactionWheelTorque", args);
     }
 
     /// <summary>
@@ -723,13 +724,13 @@ public class Vessel : RemoteObject
     /// These axes are equivalent to the pitch, roll and yaw axes of the vessel.
     /// </summary>
     [Rpc("SpaceCenter", "Vessel_get_AvailableTorque")]
-    public Tuple<Tuple<double,double,double>,Tuple<double,double,double>> GetAvailableTorque()
+    public Tuple<Vector3D,Vector3D> GetAvailableTorque()
     {
         var args = new object[]
         {
             this
         };
-        return Connection.Invoke<Tuple<Tuple<double,double,double>,Tuple<double,double,double>>>("SpaceCenter", "Vessel_get_AvailableTorque", args);
+        return Connection.Invoke<Tuple<Vector3D,Vector3D>>("SpaceCenter", "Vessel_get_AvailableTorque", args);
     }
 
     /// <summary>
@@ -741,13 +742,13 @@ public class Vessel : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Vessel_get_AvailableTorque")]
-    public async Task<Tuple<Tuple<double,double,double>,Tuple<double,double,double>>> GetAvailableTorqueAsync()
+    public async Task<Tuple<Vector3D,Vector3D>> GetAvailableTorqueAsync()
     {
         var args = new object[]
         {
             this
         };
-        return await Connection.InvokeAsync<Tuple<Tuple<double,double,double>,Tuple<double,double,double>>>("SpaceCenter", "Vessel_get_AvailableTorque", args);
+        return await Connection.InvokeAsync<Tuple<Vector3D,Vector3D>>("SpaceCenter", "Vessel_get_AvailableTorque", args);
     }
 
     /// <summary>

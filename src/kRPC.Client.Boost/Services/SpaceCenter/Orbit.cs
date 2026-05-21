@@ -3,6 +3,7 @@ using kRPC.Client.Boost.Services;
 using KRPC.Client;
 using System;
 using kRPC.Client.Boost.Attributes;
+using MathNet.Spatial.Euclidean;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -199,7 +200,7 @@ public class Orbit : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// position vector is in.</param>
     [Rpc("SpaceCenter", "Orbit_PositionAt")]
-    public Tuple<double,double,double> PositionAt(double ut, ReferenceFrame referenceFrame)
+    public Vector3D PositionAt(double ut, ReferenceFrame referenceFrame)
     {
         var args = new object[]
         {
@@ -207,7 +208,7 @@ public class Orbit : RemoteObject
             ut,
             referenceFrame
         };
-        return Connection.Invoke<Tuple<double,double,double>>("SpaceCenter", "Orbit_PositionAt", args);
+        return Connection.Invoke<Vector3D>("SpaceCenter", "Orbit_PositionAt", args);
     }
 
     /// <summary>
@@ -219,7 +220,7 @@ public class Orbit : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// position vector is in.</param>
     [Rpc("SpaceCenter", "Orbit_PositionAt")]
-    public async Task<Tuple<double,double,double>> PositionAtAsync(double ut, ReferenceFrame referenceFrame)
+    public async Task<Vector3D> PositionAtAsync(double ut, ReferenceFrame referenceFrame)
     {
         var args = new object[]
         {
@@ -227,7 +228,7 @@ public class Orbit : RemoteObject
             ut,
             referenceFrame
         };
-        return await Connection.InvokeAsync<Tuple<double,double,double>>("SpaceCenter", "Orbit_PositionAt", args);
+        return await Connection.InvokeAsync<Vector3D>("SpaceCenter", "Orbit_PositionAt", args);
     }
 
     /// <summary>
@@ -519,13 +520,13 @@ public class Orbit : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// direction is in.</param>
     [Rpc("SpaceCenter", "Orbit_static_ReferencePlaneDirection")]
-    public Tuple<double,double,double> ReferencePlaneDirection(ReferenceFrame referenceFrame)
+    public Vector3D ReferencePlaneDirection(ReferenceFrame referenceFrame)
     {
         var args = new object[]
         {
             referenceFrame
         };
-        return Connection.Invoke<Tuple<double,double,double>>("SpaceCenter", "Orbit_static_ReferencePlaneDirection", args);
+        return Connection.Invoke<Vector3D>("SpaceCenter", "Orbit_static_ReferencePlaneDirection", args);
     }
 
     /// <summary>
@@ -537,13 +538,13 @@ public class Orbit : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// direction is in.</param>
     [Rpc("SpaceCenter", "Orbit_static_ReferencePlaneDirection")]
-    public async Task<Tuple<double,double,double>> ReferencePlaneDirectionAsync(ReferenceFrame referenceFrame)
+    public async Task<Vector3D> ReferencePlaneDirectionAsync(ReferenceFrame referenceFrame)
     {
         var args = new object[]
         {
             referenceFrame
         };
-        return await Connection.InvokeAsync<Tuple<double,double,double>>("SpaceCenter", "Orbit_static_ReferencePlaneDirection", args);
+        return await Connection.InvokeAsync<Vector3D>("SpaceCenter", "Orbit_static_ReferencePlaneDirection", args);
     }
 
     /// <summary>
@@ -555,13 +556,13 @@ public class Orbit : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// direction is in.</param>
     [Rpc("SpaceCenter", "Orbit_static_ReferencePlaneNormal")]
-    public Tuple<double,double,double> ReferencePlaneNormal(ReferenceFrame referenceFrame)
+    public Vector3D ReferencePlaneNormal(ReferenceFrame referenceFrame)
     {
         var args = new object[]
         {
             referenceFrame
         };
-        return Connection.Invoke<Tuple<double,double,double>>("SpaceCenter", "Orbit_static_ReferencePlaneNormal", args);
+        return Connection.Invoke<Vector3D>("SpaceCenter", "Orbit_static_ReferencePlaneNormal", args);
     }
 
     /// <summary>
@@ -574,13 +575,13 @@ public class Orbit : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// direction is in.</param>
     [Rpc("SpaceCenter", "Orbit_static_ReferencePlaneNormal")]
-    public async Task<Tuple<double,double,double>> ReferencePlaneNormalAsync(ReferenceFrame referenceFrame)
+    public async Task<Vector3D> ReferencePlaneNormalAsync(ReferenceFrame referenceFrame)
     {
         var args = new object[]
         {
             referenceFrame
         };
-        return await Connection.InvokeAsync<Tuple<double,double,double>>("SpaceCenter", "Orbit_static_ReferencePlaneNormal", args);
+        return await Connection.InvokeAsync<Vector3D>("SpaceCenter", "Orbit_static_ReferencePlaneNormal", args);
     }
 
     /// <summary>

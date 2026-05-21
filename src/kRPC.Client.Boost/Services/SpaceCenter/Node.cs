@@ -2,6 +2,7 @@ using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
 using System;
 using kRPC.Client.Boost.Attributes;
+using MathNet.Spatial.Euclidean;
 using System.Threading.Tasks;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
@@ -30,14 +31,14 @@ public class Node : RemoteObject
     /// Does not change when executing the maneuver node. See <see cref="M:SpaceCenter.Node.RemainingBurnVector" />.
     /// </remarks>
     [Rpc("SpaceCenter", "Node_BurnVector")]
-    public Tuple<double,double,double> BurnVector(ReferenceFrame? referenceFrame = null)
+    public Vector3D BurnVector(ReferenceFrame? referenceFrame = null)
     {
         var args = new object?[]
         {
             this,
             referenceFrame
         };
-        return Connection.Invoke<Tuple<double,double,double>>("SpaceCenter", "Node_BurnVector", args);
+        return Connection.Invoke<Vector3D>("SpaceCenter", "Node_BurnVector", args);
     }
 
     /// <summary>
@@ -53,14 +54,14 @@ public class Node : RemoteObject
     /// Does not change when executing the maneuver node. See <see cref="M:SpaceCenter.Node.RemainingBurnVector" />.
     /// </remarks>
     [Rpc("SpaceCenter", "Node_BurnVector")]
-    public async Task<Tuple<double,double,double>> BurnVectorAsync(ReferenceFrame? referenceFrame = null)
+    public async Task<Vector3D> BurnVectorAsync(ReferenceFrame? referenceFrame = null)
     {
         var args = new object?[]
         {
             this,
             referenceFrame
         };
-        return await Connection.InvokeAsync<Tuple<double,double,double>>("SpaceCenter", "Node_BurnVector", args);
+        return await Connection.InvokeAsync<Vector3D>("SpaceCenter", "Node_BurnVector", args);
     }
 
     /// <summary>
@@ -70,14 +71,14 @@ public class Node : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// direction is in.</param>
     [Rpc("SpaceCenter", "Node_Direction")]
-    public Tuple<double,double,double> Direction(ReferenceFrame referenceFrame)
+    public Vector3D Direction(ReferenceFrame referenceFrame)
     {
         var args = new object[]
         {
             this,
             referenceFrame
         };
-        return Connection.Invoke<Tuple<double,double,double>>("SpaceCenter", "Node_Direction", args);
+        return Connection.Invoke<Vector3D>("SpaceCenter", "Node_Direction", args);
     }
 
     /// <summary>
@@ -88,14 +89,14 @@ public class Node : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// direction is in.</param>
     [Rpc("SpaceCenter", "Node_Direction")]
-    public async Task<Tuple<double,double,double>> DirectionAsync(ReferenceFrame referenceFrame)
+    public async Task<Vector3D> DirectionAsync(ReferenceFrame referenceFrame)
     {
         var args = new object[]
         {
             this,
             referenceFrame
         };
-        return await Connection.InvokeAsync<Tuple<double,double,double>>("SpaceCenter", "Node_Direction", args);
+        return await Connection.InvokeAsync<Vector3D>("SpaceCenter", "Node_Direction", args);
     }
 
     /// <summary>
@@ -105,14 +106,14 @@ public class Node : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// position vector is in.</param>
     [Rpc("SpaceCenter", "Node_Position")]
-    public Tuple<double,double,double> Position(ReferenceFrame referenceFrame)
+    public Vector3D Position(ReferenceFrame referenceFrame)
     {
         var args = new object[]
         {
             this,
             referenceFrame
         };
-        return Connection.Invoke<Tuple<double,double,double>>("SpaceCenter", "Node_Position", args);
+        return Connection.Invoke<Vector3D>("SpaceCenter", "Node_Position", args);
     }
 
     /// <summary>
@@ -123,14 +124,14 @@ public class Node : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// position vector is in.</param>
     [Rpc("SpaceCenter", "Node_Position")]
-    public async Task<Tuple<double,double,double>> PositionAsync(ReferenceFrame referenceFrame)
+    public async Task<Vector3D> PositionAsync(ReferenceFrame referenceFrame)
     {
         var args = new object[]
         {
             this,
             referenceFrame
         };
-        return await Connection.InvokeAsync<Tuple<double,double,double>>("SpaceCenter", "Node_Position", args);
+        return await Connection.InvokeAsync<Vector3D>("SpaceCenter", "Node_Position", args);
     }
 
     /// <summary>
@@ -145,14 +146,14 @@ public class Node : RemoteObject
     /// Changes as the maneuver node is executed. See <see cref="M:SpaceCenter.Node.BurnVector" />.
     /// </remarks>
     [Rpc("SpaceCenter", "Node_RemainingBurnVector")]
-    public Tuple<double,double,double> RemainingBurnVector(ReferenceFrame? referenceFrame = null)
+    public Vector3D RemainingBurnVector(ReferenceFrame? referenceFrame = null)
     {
         var args = new object?[]
         {
             this,
             referenceFrame
         };
-        return Connection.Invoke<Tuple<double,double,double>>("SpaceCenter", "Node_RemainingBurnVector", args);
+        return Connection.Invoke<Vector3D>("SpaceCenter", "Node_RemainingBurnVector", args);
     }
 
     /// <summary>
@@ -168,14 +169,14 @@ public class Node : RemoteObject
     /// Changes as the maneuver node is executed. See <see cref="M:SpaceCenter.Node.BurnVector" />.
     /// </remarks>
     [Rpc("SpaceCenter", "Node_RemainingBurnVector")]
-    public async Task<Tuple<double,double,double>> RemainingBurnVectorAsync(ReferenceFrame? referenceFrame = null)
+    public async Task<Vector3D> RemainingBurnVectorAsync(ReferenceFrame? referenceFrame = null)
     {
         var args = new object?[]
         {
             this,
             referenceFrame
         };
-        return await Connection.InvokeAsync<Tuple<double,double,double>>("SpaceCenter", "Node_RemainingBurnVector", args);
+        return await Connection.InvokeAsync<Vector3D>("SpaceCenter", "Node_RemainingBurnVector", args);
     }
 
     /// <summary>

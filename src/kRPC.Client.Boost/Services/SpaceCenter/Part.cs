@@ -2,6 +2,7 @@ using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
 using System;
 using kRPC.Client.Boost.Attributes;
+using MathNet.Spatial.Euclidean;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -30,7 +31,7 @@ public class Part : RemoteObject
     /// <param name="referenceFrame">The reference frame that the
     /// force and position are in.</param>
     [Rpc("SpaceCenter", "Part_AddForce")]
-    public Force AddForce(Tuple<double,double,double> force, Tuple<double,double,double> position, ReferenceFrame referenceFrame)
+    public Force AddForce(Vector3D force, Vector3D position, ReferenceFrame referenceFrame)
     {
         var args = new object[]
         {
@@ -53,7 +54,7 @@ public class Part : RemoteObject
     /// <param name="referenceFrame">The reference frame that the
     /// force and position are in.</param>
     [Rpc("SpaceCenter", "Part_AddForce")]
-    public async Task<Force> AddForceAsync(Tuple<double,double,double> force, Tuple<double,double,double> position, ReferenceFrame referenceFrame)
+    public async Task<Force> AddForceAsync(Vector3D force, Vector3D position, ReferenceFrame referenceFrame)
     {
         var args = new object[]
         {
@@ -78,14 +79,14 @@ public class Part : RemoteObject
     /// the <see cref="M:SpaceCenter.Part.Position" /> of the part.
     /// </remarks>
     [Rpc("SpaceCenter", "Part_BoundingBox")]
-    public Tuple<Tuple<double,double,double>,Tuple<double,double,double>> BoundingBox(ReferenceFrame referenceFrame)
+    public Tuple<Vector3D,Vector3D> BoundingBox(ReferenceFrame referenceFrame)
     {
         var args = new object[]
         {
             this,
             referenceFrame
         };
-        return Connection.Invoke<Tuple<Tuple<double,double,double>,Tuple<double,double,double>>>("SpaceCenter", "Part_BoundingBox", args);
+        return Connection.Invoke<Tuple<Vector3D,Vector3D>>("SpaceCenter", "Part_BoundingBox", args);
     }
 
     /// <summary>
@@ -102,14 +103,14 @@ public class Part : RemoteObject
     /// the <see cref="M:SpaceCenter.Part.Position" /> of the part.
     /// </remarks>
     [Rpc("SpaceCenter", "Part_BoundingBox")]
-    public async Task<Tuple<Tuple<double,double,double>,Tuple<double,double,double>>> BoundingBoxAsync(ReferenceFrame referenceFrame)
+    public async Task<Tuple<Vector3D,Vector3D>> BoundingBoxAsync(ReferenceFrame referenceFrame)
     {
         var args = new object[]
         {
             this,
             referenceFrame
         };
-        return await Connection.InvokeAsync<Tuple<Tuple<double,double,double>,Tuple<double,double,double>>>("SpaceCenter", "Part_BoundingBox", args);
+        return await Connection.InvokeAsync<Tuple<Vector3D,Vector3D>>("SpaceCenter", "Part_BoundingBox", args);
     }
 
     /// <summary>
@@ -120,14 +121,14 @@ public class Part : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// position vector is in.</param>
     [Rpc("SpaceCenter", "Part_CenterOfMass")]
-    public Tuple<double,double,double> CenterOfMass(ReferenceFrame referenceFrame)
+    public Vector3D CenterOfMass(ReferenceFrame referenceFrame)
     {
         var args = new object[]
         {
             this,
             referenceFrame
         };
-        return Connection.Invoke<Tuple<double,double,double>>("SpaceCenter", "Part_CenterOfMass", args);
+        return Connection.Invoke<Vector3D>("SpaceCenter", "Part_CenterOfMass", args);
     }
 
     /// <summary>
@@ -139,14 +140,14 @@ public class Part : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// position vector is in.</param>
     [Rpc("SpaceCenter", "Part_CenterOfMass")]
-    public async Task<Tuple<double,double,double>> CenterOfMassAsync(ReferenceFrame referenceFrame)
+    public async Task<Vector3D> CenterOfMassAsync(ReferenceFrame referenceFrame)
     {
         var args = new object[]
         {
             this,
             referenceFrame
         };
-        return await Connection.InvokeAsync<Tuple<double,double,double>>("SpaceCenter", "Part_CenterOfMass", args);
+        return await Connection.InvokeAsync<Vector3D>("SpaceCenter", "Part_CenterOfMass", args);
     }
 
     /// <summary>
@@ -156,14 +157,14 @@ public class Part : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// direction is in.</param>
     [Rpc("SpaceCenter", "Part_Direction")]
-    public Tuple<double,double,double> Direction(ReferenceFrame referenceFrame)
+    public Vector3D Direction(ReferenceFrame referenceFrame)
     {
         var args = new object[]
         {
             this,
             referenceFrame
         };
-        return Connection.Invoke<Tuple<double,double,double>>("SpaceCenter", "Part_Direction", args);
+        return Connection.Invoke<Vector3D>("SpaceCenter", "Part_Direction", args);
     }
 
     /// <summary>
@@ -174,14 +175,14 @@ public class Part : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// direction is in.</param>
     [Rpc("SpaceCenter", "Part_Direction")]
-    public async Task<Tuple<double,double,double>> DirectionAsync(ReferenceFrame referenceFrame)
+    public async Task<Vector3D> DirectionAsync(ReferenceFrame referenceFrame)
     {
         var args = new object[]
         {
             this,
             referenceFrame
         };
-        return await Connection.InvokeAsync<Tuple<double,double,double>>("SpaceCenter", "Part_Direction", args);
+        return await Connection.InvokeAsync<Vector3D>("SpaceCenter", "Part_Direction", args);
     }
 
     /// <summary>
@@ -194,7 +195,7 @@ public class Part : RemoteObject
     /// force and position are in.</param>
     /// <remarks>The force is applied instantaneously in a single physics update.</remarks>
     [Rpc("SpaceCenter", "Part_InstantaneousForce")]
-    public void InstantaneousForce(Tuple<double,double,double> force, Tuple<double,double,double> position, ReferenceFrame referenceFrame)
+    public void InstantaneousForce(Vector3D force, Vector3D position, ReferenceFrame referenceFrame)
     {
         var args = new object[]
         {
@@ -217,7 +218,7 @@ public class Part : RemoteObject
     /// force and position are in.</param>
     /// <remarks>The force is applied instantaneously in a single physics update.</remarks>
     [Rpc("SpaceCenter", "Part_InstantaneousForce")]
-    public async Task InstantaneousForceAsync(Tuple<double,double,double> force, Tuple<double,double,double> position, ReferenceFrame referenceFrame)
+    public async Task InstantaneousForceAsync(Vector3D force, Vector3D position, ReferenceFrame referenceFrame)
     {
         var args = new object[]
         {
@@ -241,14 +242,14 @@ public class Part : RemoteObject
     /// Use <see cref="M:SpaceCenter.Part.CenterOfMass" /> to get the parts center of mass.
     /// </remarks>
     [Rpc("SpaceCenter", "Part_Position")]
-    public Tuple<double,double,double> Position(ReferenceFrame referenceFrame)
+    public Vector3D Position(ReferenceFrame referenceFrame)
     {
         var args = new object[]
         {
             this,
             referenceFrame
         };
-        return Connection.Invoke<Tuple<double,double,double>>("SpaceCenter", "Part_Position", args);
+        return Connection.Invoke<Vector3D>("SpaceCenter", "Part_Position", args);
     }
 
     /// <summary>
@@ -264,14 +265,14 @@ public class Part : RemoteObject
     /// Use <see cref="M:SpaceCenter.Part.CenterOfMass" /> to get the parts center of mass.
     /// </remarks>
     [Rpc("SpaceCenter", "Part_Position")]
-    public async Task<Tuple<double,double,double>> PositionAsync(ReferenceFrame referenceFrame)
+    public async Task<Vector3D> PositionAsync(ReferenceFrame referenceFrame)
     {
         var args = new object[]
         {
             this,
             referenceFrame
         };
-        return await Connection.InvokeAsync<Tuple<double,double,double>>("SpaceCenter", "Part_Position", args);
+        return await Connection.InvokeAsync<Vector3D>("SpaceCenter", "Part_Position", args);
     }
 
     /// <summary>
@@ -317,14 +318,14 @@ public class Part : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// velocity vector is in.</param>
     [Rpc("SpaceCenter", "Part_Velocity")]
-    public Tuple<double,double,double> Velocity(ReferenceFrame referenceFrame)
+    public Vector3D Velocity(ReferenceFrame referenceFrame)
     {
         var args = new object[]
         {
             this,
             referenceFrame
         };
-        return Connection.Invoke<Tuple<double,double,double>>("SpaceCenter", "Part_Velocity", args);
+        return Connection.Invoke<Vector3D>("SpaceCenter", "Part_Velocity", args);
     }
 
     /// <summary>
@@ -336,14 +337,14 @@ public class Part : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// velocity vector is in.</param>
     [Rpc("SpaceCenter", "Part_Velocity")]
-    public async Task<Tuple<double,double,double>> VelocityAsync(ReferenceFrame referenceFrame)
+    public async Task<Vector3D> VelocityAsync(ReferenceFrame referenceFrame)
     {
         var args = new object[]
         {
             this,
             referenceFrame
         };
-        return await Connection.InvokeAsync<Tuple<double,double,double>>("SpaceCenter", "Part_Velocity", args);
+        return await Connection.InvokeAsync<Vector3D>("SpaceCenter", "Part_Velocity", args);
     }
 
     /// <summary>

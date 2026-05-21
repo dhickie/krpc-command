@@ -2,6 +2,7 @@ using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
 using System;
 using kRPC.Client.Boost.Attributes;
+using MathNet.Spatial.Euclidean;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -314,13 +315,13 @@ public class Engine : RemoteObject
     /// Returns zero if the engine is inactive, or not gimballed.
     /// </summary>
     [Rpc("SpaceCenter", "Engine_get_AvailableTorque")]
-    public Tuple<Tuple<double,double,double>,Tuple<double,double,double>> GetAvailableTorque()
+    public Tuple<Vector3D,Vector3D> GetAvailableTorque()
     {
         var args = new object[]
         {
             this
         };
-        return Connection.Invoke<Tuple<Tuple<double,double,double>,Tuple<double,double,double>>>("SpaceCenter", "Engine_get_AvailableTorque", args);
+        return Connection.Invoke<Tuple<Vector3D,Vector3D>>("SpaceCenter", "Engine_get_AvailableTorque", args);
     }
 
     /// <summary>
@@ -331,13 +332,13 @@ public class Engine : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Engine_get_AvailableTorque")]
-    public async Task<Tuple<Tuple<double,double,double>,Tuple<double,double,double>>> GetAvailableTorqueAsync()
+    public async Task<Tuple<Vector3D,Vector3D>> GetAvailableTorqueAsync()
     {
         var args = new object[]
         {
             this
         };
-        return await Connection.InvokeAsync<Tuple<Tuple<double,double,double>,Tuple<double,double,double>>>("SpaceCenter", "Engine_get_AvailableTorque", args);
+        return await Connection.InvokeAsync<Tuple<Vector3D,Vector3D>>("SpaceCenter", "Engine_get_AvailableTorque", args);
     }
 
     /// <summary>

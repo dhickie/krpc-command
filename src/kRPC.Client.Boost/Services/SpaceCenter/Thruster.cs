@@ -2,13 +2,14 @@ using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
 using System;
 using kRPC.Client.Boost.Attributes;
+using MathNet.Spatial.Euclidean;
 using System.Threading.Tasks;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
 /// <summary>
 /// The component of an <see cref="T:SpaceCenter.Engine" /> or <see cref="T:SpaceCenter.RCS" /> part that generates thrust.
-/// Can obtained by calling <see cref="M:SpaceCenter.Engine.GetThrusters" /> or <see cref="M:SpaceCenter.RCS.GetThrusters" />.
+/// Can be obtained by calling <see cref="M:SpaceCenter.Engine.GetThrusters" /> or <see cref="M:SpaceCenter.RCS.GetThrusters" />.
 /// </summary>
 /// <remarks>
 /// Engines can consist of multiple thrusters.
@@ -31,14 +32,14 @@ public class Thruster : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// position vector is in.</param>
     [Rpc("SpaceCenter", "Thruster_GimbalPosition")]
-    public Tuple<double,double,double> GimbalPosition(ReferenceFrame referenceFrame)
+    public Vector3D GimbalPosition(ReferenceFrame referenceFrame)
     {
         var args = new object[]
         {
             this,
             referenceFrame
         };
-        return Connection.Invoke<Tuple<double,double,double>>("SpaceCenter", "Thruster_GimbalPosition", args);
+        return Connection.Invoke<Vector3D>("SpaceCenter", "Thruster_GimbalPosition", args);
     }
 
     /// <summary>
@@ -49,14 +50,14 @@ public class Thruster : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// position vector is in.</param>
     [Rpc("SpaceCenter", "Thruster_GimbalPosition")]
-    public async Task<Tuple<double,double,double>> GimbalPositionAsync(ReferenceFrame referenceFrame)
+    public async Task<Vector3D> GimbalPositionAsync(ReferenceFrame referenceFrame)
     {
         var args = new object[]
         {
             this,
             referenceFrame
         };
-        return await Connection.InvokeAsync<Tuple<double,double,double>>("SpaceCenter", "Thruster_GimbalPosition", args);
+        return await Connection.InvokeAsync<Vector3D>("SpaceCenter", "Thruster_GimbalPosition", args);
     }
 
     /// <summary>
@@ -68,14 +69,14 @@ public class Thruster : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// direction is in.</param>
     [Rpc("SpaceCenter", "Thruster_InitialThrustDirection")]
-    public Tuple<double,double,double> InitialThrustDirection(ReferenceFrame referenceFrame)
+    public Vector3D InitialThrustDirection(ReferenceFrame referenceFrame)
     {
         var args = new object[]
         {
             this,
             referenceFrame
         };
-        return Connection.Invoke<Tuple<double,double,double>>("SpaceCenter", "Thruster_InitialThrustDirection", args);
+        return Connection.Invoke<Vector3D>("SpaceCenter", "Thruster_InitialThrustDirection", args);
     }
 
     /// <summary>
@@ -88,14 +89,14 @@ public class Thruster : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// direction is in.</param>
     [Rpc("SpaceCenter", "Thruster_InitialThrustDirection")]
-    public async Task<Tuple<double,double,double>> InitialThrustDirectionAsync(ReferenceFrame referenceFrame)
+    public async Task<Vector3D> InitialThrustDirectionAsync(ReferenceFrame referenceFrame)
     {
         var args = new object[]
         {
             this,
             referenceFrame
         };
-        return await Connection.InvokeAsync<Tuple<double,double,double>>("SpaceCenter", "Thruster_InitialThrustDirection", args);
+        return await Connection.InvokeAsync<Vector3D>("SpaceCenter", "Thruster_InitialThrustDirection", args);
     }
 
     /// <summary>
@@ -110,14 +111,14 @@ public class Thruster : RemoteObject
     /// gimbal position are not necessarily the same.
     /// </remarks>
     [Rpc("SpaceCenter", "Thruster_InitialThrustPosition")]
-    public Tuple<double,double,double> InitialThrustPosition(ReferenceFrame referenceFrame)
+    public Vector3D InitialThrustPosition(ReferenceFrame referenceFrame)
     {
         var args = new object[]
         {
             this,
             referenceFrame
         };
-        return Connection.Invoke<Tuple<double,double,double>>("SpaceCenter", "Thruster_InitialThrustPosition", args);
+        return Connection.Invoke<Vector3D>("SpaceCenter", "Thruster_InitialThrustPosition", args);
     }
 
     /// <summary>
@@ -133,14 +134,14 @@ public class Thruster : RemoteObject
     /// gimbal position are not necessarily the same.
     /// </remarks>
     [Rpc("SpaceCenter", "Thruster_InitialThrustPosition")]
-    public async Task<Tuple<double,double,double>> InitialThrustPositionAsync(ReferenceFrame referenceFrame)
+    public async Task<Vector3D> InitialThrustPositionAsync(ReferenceFrame referenceFrame)
     {
         var args = new object[]
         {
             this,
             referenceFrame
         };
-        return await Connection.InvokeAsync<Tuple<double,double,double>>("SpaceCenter", "Thruster_InitialThrustPosition", args);
+        return await Connection.InvokeAsync<Vector3D>("SpaceCenter", "Thruster_InitialThrustPosition", args);
     }
 
     /// <summary>
@@ -152,14 +153,14 @@ public class Thruster : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// direction is in.</param>
     [Rpc("SpaceCenter", "Thruster_ThrustDirection")]
-    public Tuple<double,double,double> ThrustDirection(ReferenceFrame referenceFrame)
+    public Vector3D ThrustDirection(ReferenceFrame referenceFrame)
     {
         var args = new object[]
         {
             this,
             referenceFrame
         };
-        return Connection.Invoke<Tuple<double,double,double>>("SpaceCenter", "Thruster_ThrustDirection", args);
+        return Connection.Invoke<Vector3D>("SpaceCenter", "Thruster_ThrustDirection", args);
     }
 
     /// <summary>
@@ -172,14 +173,14 @@ public class Thruster : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// direction is in.</param>
     [Rpc("SpaceCenter", "Thruster_ThrustDirection")]
-    public async Task<Tuple<double,double,double>> ThrustDirectionAsync(ReferenceFrame referenceFrame)
+    public async Task<Vector3D> ThrustDirectionAsync(ReferenceFrame referenceFrame)
     {
         var args = new object[]
         {
             this,
             referenceFrame
         };
-        return await Connection.InvokeAsync<Tuple<double,double,double>>("SpaceCenter", "Thruster_ThrustDirection", args);
+        return await Connection.InvokeAsync<Vector3D>("SpaceCenter", "Thruster_ThrustDirection", args);
     }
 
     /// <summary>
@@ -190,14 +191,14 @@ public class Thruster : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// position vector is in.</param>
     [Rpc("SpaceCenter", "Thruster_ThrustPosition")]
-    public Tuple<double,double,double> ThrustPosition(ReferenceFrame referenceFrame)
+    public Vector3D ThrustPosition(ReferenceFrame referenceFrame)
     {
         var args = new object[]
         {
             this,
             referenceFrame
         };
-        return Connection.Invoke<Tuple<double,double,double>>("SpaceCenter", "Thruster_ThrustPosition", args);
+        return Connection.Invoke<Vector3D>("SpaceCenter", "Thruster_ThrustPosition", args);
     }
 
     /// <summary>
@@ -209,14 +210,14 @@ public class Thruster : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// position vector is in.</param>
     [Rpc("SpaceCenter", "Thruster_ThrustPosition")]
-    public async Task<Tuple<double,double,double>> ThrustPositionAsync(ReferenceFrame referenceFrame)
+    public async Task<Vector3D> ThrustPositionAsync(ReferenceFrame referenceFrame)
     {
         var args = new object[]
         {
             this,
             referenceFrame
         };
-        return await Connection.InvokeAsync<Tuple<double,double,double>>("SpaceCenter", "Thruster_ThrustPosition", args);
+        return await Connection.InvokeAsync<Vector3D>("SpaceCenter", "Thruster_ThrustPosition", args);
     }
 
     /// <summary>

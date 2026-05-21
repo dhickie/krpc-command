@@ -2,6 +2,7 @@ using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
 using System;
 using kRPC.Client.Boost.Attributes;
+using MathNet.Spatial.Euclidean;
 using System.Threading.Tasks;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
@@ -979,13 +980,13 @@ public class AutoPilot : RemoteObject
     /// This is in the reference frame specified by <see cref="T:SpaceCenter.ReferenceFrame" />.
     /// </summary>
     [Rpc("SpaceCenter", "AutoPilot_get_TargetDirection")]
-    public Tuple<double,double,double> GetTargetDirection()
+    public Vector3D GetTargetDirection()
     {
         var args = new object[]
         {
             this
         };
-        return Connection.Invoke<Tuple<double,double,double>>("SpaceCenter", "AutoPilot_get_TargetDirection", args);
+        return Connection.Invoke<Vector3D>("SpaceCenter", "AutoPilot_get_TargetDirection", args);
     }
 
     /// <summary>
@@ -994,13 +995,13 @@ public class AutoPilot : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "AutoPilot_get_TargetDirection")]
-    public async Task<Tuple<double,double,double>> GetTargetDirectionAsync()
+    public async Task<Vector3D> GetTargetDirectionAsync()
     {
         var args = new object[]
         {
             this
         };
-        return await Connection.InvokeAsync<Tuple<double,double,double>>("SpaceCenter", "AutoPilot_get_TargetDirection", args);
+        return await Connection.InvokeAsync<Vector3D>("SpaceCenter", "AutoPilot_get_TargetDirection", args);
     }
 
     /// <summary>
@@ -1008,7 +1009,7 @@ public class AutoPilot : RemoteObject
     /// This is in the reference frame specified by <see cref="T:SpaceCenter.ReferenceFrame" />.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    public void SetTargetDirection(Tuple<double,double,double> value)
+    public void SetTargetDirection(Vector3D value)
     {
         var args = new object[]
         {
@@ -1024,7 +1025,7 @@ public class AutoPilot : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    public async Task SetTargetDirectionAsync(Tuple<double,double,double> value)
+    public async Task SetTargetDirectionAsync(Vector3D value)
     {
         var args = new object[]
         {

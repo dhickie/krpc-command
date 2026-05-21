@@ -2,6 +2,7 @@ using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
 using System;
 using kRPC.Client.Boost.Attributes;
+using MathNet.Spatial.Euclidean;
 using System.Threading.Tasks;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
@@ -51,13 +52,13 @@ public class Force : RemoteObject
     /// <returns>A vector pointing in the direction that the force acts,
     /// with its magnitude equal to the strength of the force in Newtons.</returns>
     [Rpc("SpaceCenter", "Force_get_ForceVector")]
-    public Tuple<double,double,double> GetForceVector()
+    public Vector3D GetForceVector()
     {
         var args = new object[]
         {
             this
         };
-        return Connection.Invoke<Tuple<double,double,double>>("SpaceCenter", "Force_get_ForceVector", args);
+        return Connection.Invoke<Vector3D>("SpaceCenter", "Force_get_ForceVector", args);
     }
 
     /// <summary>
@@ -67,20 +68,20 @@ public class Force : RemoteObject
     /// <returns>A vector pointing in the direction that the force acts,
     /// with its magnitude equal to the strength of the force in Newtons.</returns>
     [Rpc("SpaceCenter", "Force_get_ForceVector")]
-    public async Task<Tuple<double,double,double>> GetForceVectorAsync()
+    public async Task<Vector3D> GetForceVectorAsync()
     {
         var args = new object[]
         {
             this
         };
-        return await Connection.InvokeAsync<Tuple<double,double,double>>("SpaceCenter", "Force_get_ForceVector", args);
+        return await Connection.InvokeAsync<Vector3D>("SpaceCenter", "Force_get_ForceVector", args);
     }
 
     /// <summary>
     /// Sets the force vector, in Newtons.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    public void SetForceVector(Tuple<double,double,double> value)
+    public void SetForceVector(Vector3D value)
     {
         var args = new object[]
         {
@@ -95,7 +96,7 @@ public class Force : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    public async Task SetForceVectorAsync(Tuple<double,double,double> value)
+    public async Task SetForceVectorAsync(Vector3D value)
     {
         var args = new object[]
         {
@@ -137,13 +138,13 @@ public class Force : RemoteObject
     /// </summary>
     /// <returns>The position as a vector.</returns>
     [Rpc("SpaceCenter", "Force_get_Position")]
-    public Tuple<double,double,double> GetPosition()
+    public Vector3D GetPosition()
     {
         var args = new object[]
         {
             this
         };
-        return Connection.Invoke<Tuple<double,double,double>>("SpaceCenter", "Force_get_Position", args);
+        return Connection.Invoke<Vector3D>("SpaceCenter", "Force_get_Position", args);
     }
 
     /// <summary>
@@ -152,20 +153,20 @@ public class Force : RemoteObject
     /// </summary>
     /// <returns>The position as a vector.</returns>
     [Rpc("SpaceCenter", "Force_get_Position")]
-    public async Task<Tuple<double,double,double>> GetPositionAsync()
+    public async Task<Vector3D> GetPositionAsync()
     {
         var args = new object[]
         {
             this
         };
-        return await Connection.InvokeAsync<Tuple<double,double,double>>("SpaceCenter", "Force_get_Position", args);
+        return await Connection.InvokeAsync<Vector3D>("SpaceCenter", "Force_get_Position", args);
     }
 
     /// <summary>
     /// Sets the position at which the force acts, in reference frame <see cref="T:SpaceCenter.ReferenceFrame" />.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    public void SetPosition(Tuple<double,double,double> value)
+    public void SetPosition(Vector3D value)
     {
         var args = new object[]
         {
@@ -180,7 +181,7 @@ public class Force : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    public async Task SetPositionAsync(Tuple<double,double,double> value)
+    public async Task SetPositionAsync(Vector3D value)
     {
         var args = new object[]
         {
