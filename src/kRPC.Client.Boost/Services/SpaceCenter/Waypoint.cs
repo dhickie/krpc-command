@@ -12,33 +12,35 @@ public class Waypoint : RemoteObject
     /// <summary>
     /// Construct an instance of this remote object. Should not be called directly. This interface is intended for internal decoding.
     /// </summary>
-    public Waypoint (ConnectionMultiplexer connection, ulong id) : base (connection, id)
+    public Waypoint(ConnectionMultiplexer connection, ulong id) : base(connection, id)
     {
     }
 
     /// <summary>
     /// Removes the waypoint.
     /// </summary>
-    [Rpc ("SpaceCenter", "Waypoint_Remove")]
-    public void Remove ()
+    [Rpc("SpaceCenter", "Waypoint_Remove")]
+    public void Remove()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        Connection.Invoke ("SpaceCenter", "Waypoint_Remove", args);
+        Connection.Invoke("SpaceCenter", "Waypoint_Remove", args);
     }
 
     /// <summary>
     /// Gets the altitude of the waypoint above the surface of the body, in meters.
     /// When over water, this is the altitude above the sea floor.
     /// </summary>
-    [Rpc ("SpaceCenter", "Waypoint_get_BedrockAltitude")]
-    public double GetBedrockAltitude ()
+    [Rpc("SpaceCenter", "Waypoint_get_BedrockAltitude")]
+    public double GetBedrockAltitude()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<double> ("SpaceCenter", "Waypoint_get_BedrockAltitude", args);
+        return Connection.Invoke<double>("SpaceCenter", "Waypoint_get_BedrockAltitude", args);
     }
 
     /// <summary>
@@ -46,38 +48,41 @@ public class Waypoint : RemoteObject
     /// When over water, this is the altitude above the sea floor.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    public void SetBedrockAltitude (double value)
+    public void SetBedrockAltitude(double value)
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this,
             value
         };
-        Connection.Invoke ("SpaceCenter", "Waypoint_set_BedrockAltitude", args);
+        Connection.Invoke("SpaceCenter", "Waypoint_set_BedrockAltitude", args);
     }
 
     /// <summary>
     /// Gets the celestial body the waypoint is attached to.
     /// </summary>
-    [Rpc ("SpaceCenter", "Waypoint_get_Body")]
-    public CelestialBody GetBody ()
+    [Rpc("SpaceCenter", "Waypoint_get_Body")]
+    public CelestialBody GetBody()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<CelestialBody> ("SpaceCenter", "Waypoint_get_Body", args);
+        return Connection.Invoke<CelestialBody>("SpaceCenter", "Waypoint_get_Body", args);
     }
 
     /// <summary>
     /// Sets the celestial body the waypoint is attached to.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    public void SetBody (CelestialBody value)
+    public void SetBody(CelestialBody value)
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this,
             value
         };
-        Connection.Invoke ("SpaceCenter", "Waypoint_set_Body", args);
+        Connection.Invoke("SpaceCenter", "Waypoint_set_Body", args);
     }
 
     /// <summary>
@@ -86,99 +91,107 @@ public class Waypoint : RemoteObject
     /// If <c>true</c>, there is a one-to-one correspondence with the greek letter name and
     /// the <see cref="M:SpaceCenter.Waypoint.GetIndex" />.
     /// </summary>
-    [Rpc ("SpaceCenter", "Waypoint_get_Clustered")]
-    public bool GetClustered ()
+    [Rpc("SpaceCenter", "Waypoint_get_Clustered")]
+    public bool GetClustered()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<bool> ("SpaceCenter", "Waypoint_get_Clustered", args);
+        return Connection.Invoke<bool>("SpaceCenter", "Waypoint_get_Clustered", args);
     }
 
     /// <summary>
     /// Gets the seed of the icon color. See <see cref="M:SpaceCenter.WaypointManager.GetColors" /> for example colors.
     /// </summary>
-    [Rpc ("SpaceCenter", "Waypoint_get_Color")]
-    public int GetColor ()
+    [Rpc("SpaceCenter", "Waypoint_get_Color")]
+    public int GetColor()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<int> ("SpaceCenter", "Waypoint_get_Color", args);
+        return Connection.Invoke<int>("SpaceCenter", "Waypoint_get_Color", args);
     }
 
     /// <summary>
     /// Sets the seed of the icon color. See <see cref="M:SpaceCenter.WaypointManager.GetColors" /> for example colors.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    public void SetColor (int value)
+    public void SetColor(int value)
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this,
             value
         };
-        Connection.Invoke ("SpaceCenter", "Waypoint_set_Color", args);
+        Connection.Invoke("SpaceCenter", "Waypoint_set_Color", args);
     }
 
     /// <summary>
     /// Gets the associated contract.
     /// </summary>
-    [Rpc ("SpaceCenter", "Waypoint_get_Contract")]
-    public Contract GetContract ()
+    [Rpc("SpaceCenter", "Waypoint_get_Contract")]
+    public Contract GetContract()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<Contract> ("SpaceCenter", "Waypoint_get_Contract", args);
+        return Connection.Invoke<Contract>("SpaceCenter", "Waypoint_get_Contract", args);
     }
 
     /// <summary>
     /// Returns <c>true</c> if the waypoint is attached to the ground.
     /// </summary>
-    [Rpc ("SpaceCenter", "Waypoint_get_Grounded")]
-    public bool GetGrounded ()
+    [Rpc("SpaceCenter", "Waypoint_get_Grounded")]
+    public bool GetGrounded()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<bool> ("SpaceCenter", "Waypoint_get_Grounded", args);
+        return Connection.Invoke<bool>("SpaceCenter", "Waypoint_get_Grounded", args);
     }
 
     /// <summary>
     /// Gets whether the waypoint belongs to a contract.
     /// </summary>
-    [Rpc ("SpaceCenter", "Waypoint_get_HasContract")]
-    public bool GetHasContract ()
+    [Rpc("SpaceCenter", "Waypoint_get_HasContract")]
+    public bool GetHasContract()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<bool> ("SpaceCenter", "Waypoint_get_HasContract", args);
+        return Connection.Invoke<bool>("SpaceCenter", "Waypoint_get_HasContract", args);
     }
 
     /// <summary>
     /// Gets the icon of the waypoint.
     /// </summary>
-    [Rpc ("SpaceCenter", "Waypoint_get_Icon")]
-    public string GetIcon ()
+    [Rpc("SpaceCenter", "Waypoint_get_Icon")]
+    public string GetIcon()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<string> ("SpaceCenter", "Waypoint_get_Icon", args);
+        return Connection.Invoke<string>("SpaceCenter", "Waypoint_get_Icon", args);
     }
 
     /// <summary>
     /// Sets the icon of the waypoint.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    public void SetIcon (string value)
+    public void SetIcon(string value)
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this,
             value
         };
-        Connection.Invoke ("SpaceCenter", "Waypoint_set_Icon", args);
+        Connection.Invoke("SpaceCenter", "Waypoint_set_Icon", args);
     }
 
     /// <summary>
@@ -188,138 +201,149 @@ public class Waypoint : RemoteObject
     /// site has index 1 and the gamma site has index 2.
     /// When <see cref="M:SpaceCenter.Waypoint.GetClustered" /> is <c>false</c>, this is zero.
     /// </summary>
-    [Rpc ("SpaceCenter", "Waypoint_get_Index")]
-    public int GetIndex ()
+    [Rpc("SpaceCenter", "Waypoint_get_Index")]
+    public int GetIndex()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<int> ("SpaceCenter", "Waypoint_get_Index", args);
+        return Connection.Invoke<int>("SpaceCenter", "Waypoint_get_Index", args);
     }
 
     /// <summary>
     /// Gets the latitude of the waypoint.
     /// </summary>
-    [Rpc ("SpaceCenter", "Waypoint_get_Latitude")]
-    public double GetLatitude ()
+    [Rpc("SpaceCenter", "Waypoint_get_Latitude")]
+    public double GetLatitude()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<double> ("SpaceCenter", "Waypoint_get_Latitude", args);
+        return Connection.Invoke<double>("SpaceCenter", "Waypoint_get_Latitude", args);
     }
 
     /// <summary>
     /// Sets the latitude of the waypoint.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    public void SetLatitude (double value)
+    public void SetLatitude(double value)
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this,
             value
         };
-        Connection.Invoke ("SpaceCenter", "Waypoint_set_Latitude", args);
+        Connection.Invoke("SpaceCenter", "Waypoint_set_Latitude", args);
     }
 
     /// <summary>
     /// Gets the longitude of the waypoint.
     /// </summary>
-    [Rpc ("SpaceCenter", "Waypoint_get_Longitude")]
-    public double GetLongitude ()
+    [Rpc("SpaceCenter", "Waypoint_get_Longitude")]
+    public double GetLongitude()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<double> ("SpaceCenter", "Waypoint_get_Longitude", args);
+        return Connection.Invoke<double>("SpaceCenter", "Waypoint_get_Longitude", args);
     }
 
     /// <summary>
     /// Sets the longitude of the waypoint.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    public void SetLongitude (double value)
+    public void SetLongitude(double value)
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this,
             value
         };
-        Connection.Invoke ("SpaceCenter", "Waypoint_set_Longitude", args);
+        Connection.Invoke("SpaceCenter", "Waypoint_set_Longitude", args);
     }
 
     /// <summary>
     /// Gets the altitude of the waypoint above sea level, in meters.
     /// </summary>
-    [Rpc ("SpaceCenter", "Waypoint_get_MeanAltitude")]
-    public double GetMeanAltitude ()
+    [Rpc("SpaceCenter", "Waypoint_get_MeanAltitude")]
+    public double GetMeanAltitude()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<double> ("SpaceCenter", "Waypoint_get_MeanAltitude", args);
+        return Connection.Invoke<double>("SpaceCenter", "Waypoint_get_MeanAltitude", args);
     }
 
     /// <summary>
     /// Sets the altitude of the waypoint above sea level, in meters.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    public void SetMeanAltitude (double value)
+    public void SetMeanAltitude(double value)
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this,
             value
         };
-        Connection.Invoke ("SpaceCenter", "Waypoint_set_MeanAltitude", args);
+        Connection.Invoke("SpaceCenter", "Waypoint_set_MeanAltitude", args);
     }
 
     /// <summary>
     /// Gets the name of the waypoint as it appears on the map and the contract.
     /// </summary>
-    [Rpc ("SpaceCenter", "Waypoint_get_Name")]
-    public string GetName ()
+    [Rpc("SpaceCenter", "Waypoint_get_Name")]
+    public string GetName()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<string> ("SpaceCenter", "Waypoint_get_Name", args);
+        return Connection.Invoke<string>("SpaceCenter", "Waypoint_get_Name", args);
     }
 
     /// <summary>
     /// Sets the name of the waypoint as it appears on the map and the contract.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    public void SetName (string value)
+    public void SetName(string value)
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this,
             value
         };
-        Connection.Invoke ("SpaceCenter", "Waypoint_set_Name", args);
+        Connection.Invoke("SpaceCenter", "Waypoint_set_Name", args);
     }
 
     /// <summary>
     /// Returns <c>true</c> if the waypoint is near to the surface of a body.
     /// </summary>
-    [Rpc ("SpaceCenter", "Waypoint_get_NearSurface")]
-    public bool GetNearSurface ()
+    [Rpc("SpaceCenter", "Waypoint_get_NearSurface")]
+    public bool GetNearSurface()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<bool> ("SpaceCenter", "Waypoint_get_NearSurface", args);
+        return Connection.Invoke<bool>("SpaceCenter", "Waypoint_get_NearSurface", args);
     }
 
     /// <summary>
     /// Gets the altitude of the waypoint above the surface of the body or sea level,
     /// whichever is closer, in meters.
     /// </summary>
-    [Rpc ("SpaceCenter", "Waypoint_get_SurfaceAltitude")]
-    public double GetSurfaceAltitude ()
+    [Rpc("SpaceCenter", "Waypoint_get_SurfaceAltitude")]
+    public double GetSurfaceAltitude()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<double> ("SpaceCenter", "Waypoint_get_SurfaceAltitude", args);
+        return Connection.Invoke<double>("SpaceCenter", "Waypoint_get_SurfaceAltitude", args);
     }
 
     /// <summary>
@@ -327,12 +351,13 @@ public class Waypoint : RemoteObject
     /// whichever is closer, in meters.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    public void SetSurfaceAltitude (double value)
+    public void SetSurfaceAltitude(double value)
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this,
             value
         };
-        Connection.Invoke ("SpaceCenter", "Waypoint_set_SurfaceAltitude", args);
+        Connection.Invoke("SpaceCenter", "Waypoint_set_SurfaceAltitude", args);
     }
 }

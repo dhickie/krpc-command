@@ -19,7 +19,7 @@ public class Thruster : RemoteObject
     /// <summary>
     /// Construct an instance of this remote object. Should not be called directly. This interface is intended for internal decoding.
     /// </summary>
-    public Thruster (ConnectionMultiplexer connection, ulong id) : base (connection, id)
+    public Thruster(ConnectionMultiplexer connection, ulong id) : base(connection, id)
     {
     }
 
@@ -29,14 +29,15 @@ public class Thruster : RemoteObject
     /// <returns>The position as a vector.</returns>
     /// <param name="referenceFrame">The reference frame that the returned
     /// position vector is in.</param>
-    [Rpc ("SpaceCenter", "Thruster_GimbalPosition")]
-    public Tuple<double,double,double> GimbalPosition (ReferenceFrame referenceFrame)
+    [Rpc("SpaceCenter", "Thruster_GimbalPosition")]
+    public Tuple<double,double,double> GimbalPosition(ReferenceFrame referenceFrame)
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this,
             referenceFrame
         };
-        return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Thruster_GimbalPosition", args);
+        return Connection.Invoke<Tuple<double,double,double>>("SpaceCenter", "Thruster_GimbalPosition", args);
     }
 
     /// <summary>
@@ -47,14 +48,15 @@ public class Thruster : RemoteObject
     /// <returns>The direction as a unit vector.</returns>
     /// <param name="referenceFrame">The reference frame that the returned
     /// direction is in.</param>
-    [Rpc ("SpaceCenter", "Thruster_InitialThrustDirection")]
-    public Tuple<double,double,double> InitialThrustDirection (ReferenceFrame referenceFrame)
+    [Rpc("SpaceCenter", "Thruster_InitialThrustDirection")]
+    public Tuple<double,double,double> InitialThrustDirection(ReferenceFrame referenceFrame)
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this,
             referenceFrame
         };
-        return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Thruster_InitialThrustDirection", args);
+        return Connection.Invoke<Tuple<double,double,double>>("SpaceCenter", "Thruster_InitialThrustDirection", args);
     }
 
     /// <summary>
@@ -68,14 +70,15 @@ public class Thruster : RemoteObject
     /// This position can move when the gimbal rotates. This is because the thrust position and
     /// gimbal position are not necessarily the same.
     /// </remarks>
-    [Rpc ("SpaceCenter", "Thruster_InitialThrustPosition")]
-    public Tuple<double,double,double> InitialThrustPosition (ReferenceFrame referenceFrame)
+    [Rpc("SpaceCenter", "Thruster_InitialThrustPosition")]
+    public Tuple<double,double,double> InitialThrustPosition(ReferenceFrame referenceFrame)
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this,
             referenceFrame
         };
-        return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Thruster_InitialThrustPosition", args);
+        return Connection.Invoke<Tuple<double,double,double>>("SpaceCenter", "Thruster_InitialThrustPosition", args);
     }
 
     /// <summary>
@@ -86,14 +89,15 @@ public class Thruster : RemoteObject
     /// <returns>The direction as a unit vector.</returns>
     /// <param name="referenceFrame">The reference frame that the returned
     /// direction is in.</param>
-    [Rpc ("SpaceCenter", "Thruster_ThrustDirection")]
-    public Tuple<double,double,double> ThrustDirection (ReferenceFrame referenceFrame)
+    [Rpc("SpaceCenter", "Thruster_ThrustDirection")]
+    public Tuple<double,double,double> ThrustDirection(ReferenceFrame referenceFrame)
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this,
             referenceFrame
         };
-        return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Thruster_ThrustDirection", args);
+        return Connection.Invoke<Tuple<double,double,double>>("SpaceCenter", "Thruster_ThrustDirection", args);
     }
 
     /// <summary>
@@ -103,50 +107,54 @@ public class Thruster : RemoteObject
     /// <returns>The position as a vector.</returns>
     /// <param name="referenceFrame">The reference frame that the returned
     /// position vector is in.</param>
-    [Rpc ("SpaceCenter", "Thruster_ThrustPosition")]
-    public Tuple<double,double,double> ThrustPosition (ReferenceFrame referenceFrame)
+    [Rpc("SpaceCenter", "Thruster_ThrustPosition")]
+    public Tuple<double,double,double> ThrustPosition(ReferenceFrame referenceFrame)
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this,
             referenceFrame
         };
-        return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Thruster_ThrustPosition", args);
+        return Connection.Invoke<Tuple<double,double,double>>("SpaceCenter", "Thruster_ThrustPosition", args);
     }
 
     /// <summary>
     /// Gets the current gimbal angle in the pitch, roll and yaw axes, in degrees.
     /// </summary>
-    [Rpc ("SpaceCenter", "Thruster_get_GimbalAngle")]
-    public Tuple<double,double,double> GetGimbalAngle ()
+    [Rpc("SpaceCenter", "Thruster_get_GimbalAngle")]
+    public Tuple<double,double,double> GetGimbalAngle()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Thruster_get_GimbalAngle", args);
+        return Connection.Invoke<Tuple<double,double,double>>("SpaceCenter", "Thruster_get_GimbalAngle", args);
     }
 
     /// <summary>
     /// Gets whether the thruster is gimballed.
     /// </summary>
-    [Rpc ("SpaceCenter", "Thruster_get_Gimballed")]
-    public bool GetGimballed ()
+    [Rpc("SpaceCenter", "Thruster_get_Gimballed")]
+    public bool GetGimballed()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<bool> ("SpaceCenter", "Thruster_get_Gimballed", args);
+        return Connection.Invoke<bool>("SpaceCenter", "Thruster_get_Gimballed", args);
     }
 
     /// <summary>
     /// Gets the <see cref="T:SpaceCenter.Part" /> that contains this thruster.
     /// </summary>
-    [Rpc ("SpaceCenter", "Thruster_get_Part")]
-    public Part GetPart ()
+    [Rpc("SpaceCenter", "Thruster_get_Part")]
+    public Part GetPart()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<Part> ("SpaceCenter", "Thruster_get_Part", args);
+        return Connection.Invoke<Part>("SpaceCenter", "Thruster_get_Part", args);
     }
 
     /// <summary>
@@ -161,12 +169,13 @@ public class Thruster : RemoteObject
     /// </description></item><item><description>The y-axis points along the thrust direction.</description></item><item><description>The x-axis and z-axis are perpendicular to the thrust direction.
     /// </description></item></list>
     /// </summary>
-    [Rpc ("SpaceCenter", "Thruster_get_ThrustReferenceFrame")]
-    public ReferenceFrame GetThrustReferenceFrame ()
+    [Rpc("SpaceCenter", "Thruster_get_ThrustReferenceFrame")]
+    public ReferenceFrame GetThrustReferenceFrame()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<ReferenceFrame> ("SpaceCenter", "Thruster_get_ThrustReferenceFrame", args);
+        return Connection.Invoke<ReferenceFrame>("SpaceCenter", "Thruster_get_ThrustReferenceFrame", args);
     }
 }

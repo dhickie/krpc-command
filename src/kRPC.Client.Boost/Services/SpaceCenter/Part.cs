@@ -15,7 +15,7 @@ public class Part : RemoteObject
     /// <summary>
     /// Construct an instance of this remote object. Should not be called directly. This interface is intended for internal decoding.
     /// </summary>
-    public Part (ConnectionMultiplexer connection, ulong id) : base (connection, id)
+    public Part(ConnectionMultiplexer connection, ulong id) : base(connection, id)
     {
     }
 
@@ -28,16 +28,17 @@ public class Part : RemoteObject
     /// <param name="position">The position at which the force acts, as a vector.</param>
     /// <param name="referenceFrame">The reference frame that the
     /// force and position are in.</param>
-    [Rpc ("SpaceCenter", "Part_AddForce")]
-    public Force AddForce (Tuple<double,double,double> force, Tuple<double,double,double> position, ReferenceFrame referenceFrame)
+    [Rpc("SpaceCenter", "Part_AddForce")]
+    public Force AddForce(Tuple<double,double,double> force, Tuple<double,double,double> position, ReferenceFrame referenceFrame)
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this,
             force,
             position,
             referenceFrame
         };
-        return Connection.Invoke<Force> ("SpaceCenter", "Part_AddForce", args);
+        return Connection.Invoke<Force>("SpaceCenter", "Part_AddForce", args);
     }
 
     /// <summary>
@@ -52,14 +53,15 @@ public class Part : RemoteObject
     /// If the part is not collidable, the box has zero volume and is centered on
     /// the <see cref="M:SpaceCenter.Part.Position" /> of the part.
     /// </remarks>
-    [Rpc ("SpaceCenter", "Part_BoundingBox")]
-    public Tuple<Tuple<double,double,double>,Tuple<double,double,double>> BoundingBox (ReferenceFrame referenceFrame)
+    [Rpc("SpaceCenter", "Part_BoundingBox")]
+    public Tuple<Tuple<double,double,double>,Tuple<double,double,double>> BoundingBox(ReferenceFrame referenceFrame)
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this,
             referenceFrame
         };
-        return Connection.Invoke<Tuple<Tuple<double,double,double>,Tuple<double,double,double>>> ("SpaceCenter", "Part_BoundingBox", args);
+        return Connection.Invoke<Tuple<Tuple<double,double,double>,Tuple<double,double,double>>>("SpaceCenter", "Part_BoundingBox", args);
     }
 
     /// <summary>
@@ -69,14 +71,15 @@ public class Part : RemoteObject
     /// <returns>The position as a vector.</returns>
     /// <param name="referenceFrame">The reference frame that the returned
     /// position vector is in.</param>
-    [Rpc ("SpaceCenter", "Part_CenterOfMass")]
-    public Tuple<double,double,double> CenterOfMass (ReferenceFrame referenceFrame)
+    [Rpc("SpaceCenter", "Part_CenterOfMass")]
+    public Tuple<double,double,double> CenterOfMass(ReferenceFrame referenceFrame)
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this,
             referenceFrame
         };
-        return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Part_CenterOfMass", args);
+        return Connection.Invoke<Tuple<double,double,double>>("SpaceCenter", "Part_CenterOfMass", args);
     }
 
     /// <summary>
@@ -85,14 +88,15 @@ public class Part : RemoteObject
     /// <returns>The direction as a unit vector.</returns>
     /// <param name="referenceFrame">The reference frame that the returned
     /// direction is in.</param>
-    [Rpc ("SpaceCenter", "Part_Direction")]
-    public Tuple<double,double,double> Direction (ReferenceFrame referenceFrame)
+    [Rpc("SpaceCenter", "Part_Direction")]
+    public Tuple<double,double,double> Direction(ReferenceFrame referenceFrame)
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this,
             referenceFrame
         };
-        return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Part_Direction", args);
+        return Connection.Invoke<Tuple<double,double,double>>("SpaceCenter", "Part_Direction", args);
     }
 
     /// <summary>
@@ -104,16 +108,17 @@ public class Part : RemoteObject
     /// <param name="referenceFrame">The reference frame that the
     /// force and position are in.</param>
     /// <remarks>The force is applied instantaneously in a single physics update.</remarks>
-    [Rpc ("SpaceCenter", "Part_InstantaneousForce")]
-    public void InstantaneousForce (Tuple<double,double,double> force, Tuple<double,double,double> position, ReferenceFrame referenceFrame)
+    [Rpc("SpaceCenter", "Part_InstantaneousForce")]
+    public void InstantaneousForce(Tuple<double,double,double> force, Tuple<double,double,double> position, ReferenceFrame referenceFrame)
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this,
             force,
             position,
             referenceFrame
         };
-        Connection.Invoke ("SpaceCenter", "Part_InstantaneousForce", args);
+        Connection.Invoke("SpaceCenter", "Part_InstantaneousForce", args);
     }
 
     /// <summary>
@@ -127,14 +132,15 @@ public class Part : RemoteObject
     /// It s not necessarily the same as the parts center of mass.
     /// Use <see cref="M:SpaceCenter.Part.CenterOfMass" /> to get the parts center of mass.
     /// </remarks>
-    [Rpc ("SpaceCenter", "Part_Position")]
-    public Tuple<double,double,double> Position (ReferenceFrame referenceFrame)
+    [Rpc("SpaceCenter", "Part_Position")]
+    public Tuple<double,double,double> Position(ReferenceFrame referenceFrame)
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this,
             referenceFrame
         };
-        return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Part_Position", args);
+        return Connection.Invoke<Tuple<double,double,double>>("SpaceCenter", "Part_Position", args);
     }
 
     /// <summary>
@@ -143,14 +149,15 @@ public class Part : RemoteObject
     /// <returns>The rotation as a quaternion of the form <math>(x, y, z, w)</math>.</returns>
     /// <param name="referenceFrame">The reference frame that the returned
     /// rotation is in.</param>
-    [Rpc ("SpaceCenter", "Part_Rotation")]
-    public Tuple<double,double,double,double> Rotation (ReferenceFrame referenceFrame)
+    [Rpc("SpaceCenter", "Part_Rotation")]
+    public Tuple<double,double,double,double> Rotation(ReferenceFrame referenceFrame)
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this,
             referenceFrame
         };
-        return Connection.Invoke<Tuple<double,double,double,double>> ("SpaceCenter", "Part_Rotation", args);
+        return Connection.Invoke<Tuple<double,double,double,double>>("SpaceCenter", "Part_Rotation", args);
     }
 
     /// <summary>
@@ -160,14 +167,15 @@ public class Part : RemoteObject
     /// and its magnitude is the speed of the body in meters per second.</returns>
     /// <param name="referenceFrame">The reference frame that the returned
     /// velocity vector is in.</param>
-    [Rpc ("SpaceCenter", "Part_Velocity")]
-    public Tuple<double,double,double> Velocity (ReferenceFrame referenceFrame)
+    [Rpc("SpaceCenter", "Part_Velocity")]
+    public Tuple<double,double,double> Velocity(ReferenceFrame referenceFrame)
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this,
             referenceFrame
         };
-        return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Part_Velocity", args);
+        return Connection.Invoke<Tuple<double,double,double>>("SpaceCenter", "Part_Velocity", args);
     }
 
     /// <summary>
@@ -177,62 +185,67 @@ public class Part : RemoteObject
     /// If RemoteTech is installed, this will always return <c>null</c>.
     /// To interact with RemoteTech antennas, use the RemoteTech service APIs.
     /// </remarks>
-    [Rpc ("SpaceCenter", "Part_get_Antenna")]
-    public Antenna GetAntenna ()
+    [Rpc("SpaceCenter", "Part_get_Antenna")]
+    public Antenna GetAntenna()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<Antenna> ("SpaceCenter", "Part_get_Antenna", args);
+        return Connection.Invoke<Antenna>("SpaceCenter", "Part_get_Antenna", args);
     }
 
     /// <summary>
     /// Auto-strut mode.
     /// </summary>
-    [Rpc ("SpaceCenter", "Part_get_AutoStrutMode")]
-    public AutoStrutMode GetAutoStrutMode ()
+    [Rpc("SpaceCenter", "Part_get_AutoStrutMode")]
+    public AutoStrutMode GetAutoStrutMode()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<AutoStrutMode> ("SpaceCenter", "Part_get_AutoStrutMode", args);
+        return Connection.Invoke<AutoStrutMode>("SpaceCenter", "Part_get_AutoStrutMode", args);
     }
 
     /// <summary>
     /// How many open seats the part has.
     /// </summary>
-    [Rpc ("SpaceCenter", "Part_get_AvailableSeats")]
-    public uint GetAvailableSeats ()
+    [Rpc("SpaceCenter", "Part_get_AvailableSeats")]
+    public uint GetAvailableSeats()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<uint> ("SpaceCenter", "Part_get_AvailableSeats", args);
+        return Connection.Invoke<uint>("SpaceCenter", "Part_get_AvailableSeats", args);
     }
 
     /// <summary>
     /// Gets whether the part is axially attached to its parent, i.e. on the top
     /// or bottom of its parent. If the part has no parent, returns <c>false</c>.
     /// </summary>
-    [Rpc ("SpaceCenter", "Part_get_AxiallyAttached")]
-    public bool GetAxiallyAttached ()
+    [Rpc("SpaceCenter", "Part_get_AxiallyAttached")]
+    public bool GetAxiallyAttached()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<bool> ("SpaceCenter", "Part_get_AxiallyAttached", args);
+        return Connection.Invoke<bool>("SpaceCenter", "Part_get_AxiallyAttached", args);
     }
 
     /// <summary>
     /// Gets a <see cref="T:SpaceCenter.CargoBay" /> if the part is a cargo bay, otherwise <c>null</c>.
     /// </summary>
-    [Rpc ("SpaceCenter", "Part_get_CargoBay")]
-    public CargoBay GetCargoBay ()
+    [Rpc("SpaceCenter", "Part_get_CargoBay")]
+    public CargoBay GetCargoBay()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<CargoBay> ("SpaceCenter", "Part_get_CargoBay", args);
+        return Connection.Invoke<CargoBay>("SpaceCenter", "Part_get_CargoBay", args);
     }
 
     /// <summary>
@@ -247,13 +260,14 @@ public class Part : RemoteObject
     /// reference frame for the docking port, returned by
     /// <see cref="M:SpaceCenter.DockingPort.GetReferenceFrame" />.
     /// </remarks>
-    [Rpc ("SpaceCenter", "Part_get_CenterOfMassReferenceFrame")]
-    public ReferenceFrame GetCenterOfMassReferenceFrame ()
+    [Rpc("SpaceCenter", "Part_get_CenterOfMassReferenceFrame")]
+    public ReferenceFrame GetCenterOfMassReferenceFrame()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<ReferenceFrame> ("SpaceCenter", "Part_get_CenterOfMassReferenceFrame", args);
+        return Connection.Invoke<ReferenceFrame>("SpaceCenter", "Part_get_CenterOfMassReferenceFrame", args);
     }
 
     /// <summary>
@@ -261,124 +275,134 @@ public class Part : RemoteObject
     /// This, in combination with <see cref="M:SpaceCenter.Part.GetParent" />, can be used to traverse the vessels
     /// parts tree.
     /// </summary>
-    [Rpc ("SpaceCenter", "Part_get_Children")]
-    public IList<Part> GetChildren ()
+    [Rpc("SpaceCenter", "Part_get_Children")]
+    public IList<Part> GetChildren()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<IList<Part>> ("SpaceCenter", "Part_get_Children", args);
+        return Connection.Invoke<IList<Part>>("SpaceCenter", "Part_get_Children", args);
     }
 
     /// <summary>
     /// Gets a <see cref="T:SpaceCenter.ControlSurface" /> if the part is an aerodynamic control surface,
     /// otherwise <c>null</c>.
     /// </summary>
-    [Rpc ("SpaceCenter", "Part_get_ControlSurface")]
-    public ControlSurface GetControlSurface ()
+    [Rpc("SpaceCenter", "Part_get_ControlSurface")]
+    public ControlSurface GetControlSurface()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<ControlSurface> ("SpaceCenter", "Part_get_ControlSurface", args);
+        return Connection.Invoke<ControlSurface>("SpaceCenter", "Part_get_ControlSurface", args);
     }
 
     /// <summary>
     /// Gets the cost of the part, in units of funds.
     /// </summary>
-    [Rpc ("SpaceCenter", "Part_get_Cost")]
-    public double GetCost ()
+    [Rpc("SpaceCenter", "Part_get_Cost")]
+    public double GetCost()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<double> ("SpaceCenter", "Part_get_Cost", args);
+        return Connection.Invoke<double>("SpaceCenter", "Part_get_Cost", args);
     }
 
     /// <summary>
     /// Gets whether this part is crossfeed capable.
     /// </summary>
-    [Rpc ("SpaceCenter", "Part_get_Crossfeed")]
-    public bool GetCrossfeed ()
+    [Rpc("SpaceCenter", "Part_get_Crossfeed")]
+    public bool GetCrossfeed()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<bool> ("SpaceCenter", "Part_get_Crossfeed", args);
+        return Connection.Invoke<bool>("SpaceCenter", "Part_get_Crossfeed", args);
     }
 
     /// <summary>
     /// Gets the stage in which this part will be decoupled. Returns -1 if the part is never
     /// decoupled from the vessel.
     /// </summary>
-    [Rpc ("SpaceCenter", "Part_get_DecoupleStage")]
-    public int GetDecoupleStage ()
+    [Rpc("SpaceCenter", "Part_get_DecoupleStage")]
+    public int GetDecoupleStage()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<int> ("SpaceCenter", "Part_get_DecoupleStage", args);
+        return Connection.Invoke<int>("SpaceCenter", "Part_get_DecoupleStage", args);
     }
 
     /// <summary>
     /// Gets a <see cref="T:SpaceCenter.Decoupler" /> if the part is a decoupler, otherwise <c>null</c>.
     /// </summary>
-    [Rpc ("SpaceCenter", "Part_get_Decoupler")]
-    public Decoupler GetDecoupler ()
+    [Rpc("SpaceCenter", "Part_get_Decoupler")]
+    public Decoupler GetDecoupler()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<Decoupler> ("SpaceCenter", "Part_get_Decoupler", args);
+        return Connection.Invoke<Decoupler>("SpaceCenter", "Part_get_Decoupler", args);
     }
 
     /// <summary>
     /// Gets a <see cref="T:SpaceCenter.DockingPort" /> if the part is a docking port, otherwise <c>null</c>.
     /// </summary>
-    [Rpc ("SpaceCenter", "Part_get_DockingPort")]
-    public DockingPort GetDockingPort ()
+    [Rpc("SpaceCenter", "Part_get_DockingPort")]
+    public DockingPort GetDockingPort()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<DockingPort> ("SpaceCenter", "Part_get_DockingPort", args);
+        return Connection.Invoke<DockingPort>("SpaceCenter", "Part_get_DockingPort", args);
     }
 
     /// <summary>
     /// Gets the mass of the part, not including any resources it contains, in kilograms.
     /// Returns zero if the part is massless.
     /// </summary>
-    [Rpc ("SpaceCenter", "Part_get_DryMass")]
-    public double GetDryMass ()
+    [Rpc("SpaceCenter", "Part_get_DryMass")]
+    public double GetDryMass()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<double> ("SpaceCenter", "Part_get_DryMass", args);
+        return Connection.Invoke<double>("SpaceCenter", "Part_get_DryMass", args);
     }
 
     /// <summary>
     /// Gets the dynamic pressure acting on the part, in Pascals.
     /// </summary>
-    [Rpc ("SpaceCenter", "Part_get_DynamicPressure")]
-    public float GetDynamicPressure ()
+    [Rpc("SpaceCenter", "Part_get_DynamicPressure")]
+    public float GetDynamicPressure()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<float> ("SpaceCenter", "Part_get_DynamicPressure", args);
+        return Connection.Invoke<float>("SpaceCenter", "Part_get_DynamicPressure", args);
     }
 
     /// <summary>
     /// Gets an <see cref="T:SpaceCenter.Engine" /> if the part is an engine, otherwise <c>null</c>.
     /// </summary>
-    [Rpc ("SpaceCenter", "Part_get_Engine")]
-    public Engine GetEngine ()
+    [Rpc("SpaceCenter", "Part_get_Engine")]
+    public Engine GetEngine()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<Engine> ("SpaceCenter", "Part_get_Engine", args);
+        return Connection.Invoke<Engine>("SpaceCenter", "Part_get_Engine", args);
     }
 
     /// <summary>
@@ -389,162 +413,175 @@ public class Part : RemoteObject
     /// Throws an exception if the part contains more than one experiment.
     /// In that case, use <see cref="M:SpaceCenter.Part.GetExperiments" /> to get the list of experiments in the part.
     /// </remarks>
-    [Rpc ("SpaceCenter", "Part_get_Experiment")]
-    public Experiment GetExperiment ()
+    [Rpc("SpaceCenter", "Part_get_Experiment")]
+    public Experiment GetExperiment()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<Experiment> ("SpaceCenter", "Part_get_Experiment", args);
+        return Connection.Invoke<Experiment>("SpaceCenter", "Part_get_Experiment", args);
     }
 
     /// <summary>
     /// Gets a list of <see cref="T:SpaceCenter.Experiment" /> objects that the part contains.
     /// </summary>
-    [Rpc ("SpaceCenter", "Part_get_Experiments")]
-    public IList<Experiment> GetExperiments ()
+    [Rpc("SpaceCenter", "Part_get_Experiments")]
+    public IList<Experiment> GetExperiments()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<IList<Experiment>> ("SpaceCenter", "Part_get_Experiments", args);
+        return Connection.Invoke<IList<Experiment>>("SpaceCenter", "Part_get_Experiments", args);
     }
 
     /// <summary>
     /// Gets a <see cref="T:SpaceCenter.Fairing" /> if the part is a fairing, otherwise <c>null</c>.
     /// </summary>
-    [Rpc ("SpaceCenter", "Part_get_Fairing")]
-    public Fairing GetFairing ()
+    [Rpc("SpaceCenter", "Part_get_Fairing")]
+    public Fairing GetFairing()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<Fairing> ("SpaceCenter", "Part_get_Fairing", args);
+        return Connection.Invoke<Fairing>("SpaceCenter", "Part_get_Fairing", args);
     }
 
     /// <summary>
     /// Gets the asset URL for the part's flag.
     /// </summary>
-    [Rpc ("SpaceCenter", "Part_get_FlagURL")]
-    public string GetFlagURL ()
+    [Rpc("SpaceCenter", "Part_get_FlagURL")]
+    public string GetFlagURL()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<string> ("SpaceCenter", "Part_get_FlagURL", args);
+        return Connection.Invoke<string>("SpaceCenter", "Part_get_FlagURL", args);
     }
 
     /// <summary>
     /// Sets the asset URL for the part's flag.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    public void SetFlagURL (string value)
+    public void SetFlagURL(string value)
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this,
             value
         };
-        Connection.Invoke ("SpaceCenter", "Part_set_FlagURL", args);
+        Connection.Invoke("SpaceCenter", "Part_set_FlagURL", args);
     }
 
     /// <summary>
     /// Gets the parts that are connected to this part via fuel lines, where the direction of the
     /// fuel line is into this part.
     /// </summary>
-    [Rpc ("SpaceCenter", "Part_get_FuelLinesFrom")]
-    public IList<Part> GetFuelLinesFrom ()
+    [Rpc("SpaceCenter", "Part_get_FuelLinesFrom")]
+    public IList<Part> GetFuelLinesFrom()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<IList<Part>> ("SpaceCenter", "Part_get_FuelLinesFrom", args);
+        return Connection.Invoke<IList<Part>>("SpaceCenter", "Part_get_FuelLinesFrom", args);
     }
 
     /// <summary>
     /// Gets the parts that are connected to this part via fuel lines, where the direction of the
     /// fuel line is out of this part.
     /// </summary>
-    [Rpc ("SpaceCenter", "Part_get_FuelLinesTo")]
-    public IList<Part> GetFuelLinesTo ()
+    [Rpc("SpaceCenter", "Part_get_FuelLinesTo")]
+    public IList<Part> GetFuelLinesTo()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<IList<Part>> ("SpaceCenter", "Part_get_FuelLinesTo", args);
+        return Connection.Invoke<IList<Part>>("SpaceCenter", "Part_get_FuelLinesTo", args);
     }
 
     /// <summary>
     /// Whether the part is glowing.
     /// </summary>
-    public void SetGlow (bool value)
+    public void SetGlow(bool value)
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this,
             value
         };
-        Connection.Invoke ("SpaceCenter", "Part_set_Glow", args);
+        Connection.Invoke("SpaceCenter", "Part_set_Glow", args);
     }
 
     /// <summary>
     /// Gets the color used to highlight the part, as an RGB triple.
     /// </summary>
-    [Rpc ("SpaceCenter", "Part_get_HighlightColor")]
-    public Tuple<double,double,double> GetHighlightColor ()
+    [Rpc("SpaceCenter", "Part_get_HighlightColor")]
+    public Tuple<double,double,double> GetHighlightColor()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Part_get_HighlightColor", args);
+        return Connection.Invoke<Tuple<double,double,double>>("SpaceCenter", "Part_get_HighlightColor", args);
     }
 
     /// <summary>
     /// Sets the color used to highlight the part, as an RGB triple.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    public void SetHighlightColor (Tuple<double,double,double> value)
+    public void SetHighlightColor(Tuple<double,double,double> value)
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this,
             value
         };
-        Connection.Invoke ("SpaceCenter", "Part_set_HighlightColor", args);
+        Connection.Invoke("SpaceCenter", "Part_set_HighlightColor", args);
     }
 
     /// <summary>
     /// Gets whether the part is highlighted.
     /// </summary>
-    [Rpc ("SpaceCenter", "Part_get_Highlighted")]
-    public bool GetHighlighted ()
+    [Rpc("SpaceCenter", "Part_get_Highlighted")]
+    public bool GetHighlighted()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<bool> ("SpaceCenter", "Part_get_Highlighted", args);
+        return Connection.Invoke<bool>("SpaceCenter", "Part_get_Highlighted", args);
     }
 
     /// <summary>
     /// Sets whether the part is highlighted.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    public void SetHighlighted (bool value)
+    public void SetHighlighted(bool value)
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this,
             value
         };
-        Connection.Invoke ("SpaceCenter", "Part_set_Highlighted", args);
+        Connection.Invoke("SpaceCenter", "Part_set_Highlighted", args);
     }
 
     /// <summary>
     /// Gets the impact tolerance of the part, in meters per second.
     /// </summary>
-    [Rpc ("SpaceCenter", "Part_get_ImpactTolerance")]
-    public double GetImpactTolerance ()
+    [Rpc("SpaceCenter", "Part_get_ImpactTolerance")]
+    public double GetImpactTolerance()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<double> ("SpaceCenter", "Part_get_ImpactTolerance", args);
+        return Connection.Invoke<double>("SpaceCenter", "Part_get_ImpactTolerance", args);
     }
 
     /// <summary>
@@ -552,13 +589,14 @@ public class Part : RemoteObject
     /// (<see cref="T:SpaceCenter.ReferenceFrame" />).
     /// Returns the 3x3 matrix as a list of elements, in row-major order.
     /// </summary>
-    [Rpc ("SpaceCenter", "Part_get_InertiaTensor")]
-    public IList<double> GetInertiaTensor ()
+    [Rpc("SpaceCenter", "Part_get_InertiaTensor")]
+    public IList<double> GetInertiaTensor()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<IList<double>> ("SpaceCenter", "Part_get_InertiaTensor", args);
+        return Connection.Invoke<IList<double>>("SpaceCenter", "Part_get_InertiaTensor", args);
     }
 
     /// <summary>
@@ -569,136 +607,147 @@ public class Part : RemoteObject
     /// of engine, including liquid fuel rockets, solid rocket boosters and jet engines.
     /// For RCS thrusters see <see cref="T:SpaceCenter.RCS" />.
     /// </remarks>
-    [Rpc ("SpaceCenter", "Part_get_Intake")]
-    public Intake GetIntake ()
+    [Rpc("SpaceCenter", "Part_get_Intake")]
+    public Intake GetIntake()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<Intake> ("SpaceCenter", "Part_get_Intake", args);
+        return Connection.Invoke<Intake>("SpaceCenter", "Part_get_Intake", args);
     }
 
     /// <summary>
     /// Gets whether this part is a fuel line.
     /// </summary>
-    [Rpc ("SpaceCenter", "Part_get_IsFuelLine")]
-    public bool GetIsFuelLine ()
+    [Rpc("SpaceCenter", "Part_get_IsFuelLine")]
+    public bool GetIsFuelLine()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<bool> ("SpaceCenter", "Part_get_IsFuelLine", args);
+        return Connection.Invoke<bool>("SpaceCenter", "Part_get_IsFuelLine", args);
     }
 
     /// <summary>
     /// Gets a <see cref="T:SpaceCenter.LaunchClamp" /> if the part is a launch clamp, otherwise <c>null</c>.
     /// </summary>
-    [Rpc ("SpaceCenter", "Part_get_LaunchClamp")]
-    public LaunchClamp GetLaunchClamp ()
+    [Rpc("SpaceCenter", "Part_get_LaunchClamp")]
+    public LaunchClamp GetLaunchClamp()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<LaunchClamp> ("SpaceCenter", "Part_get_LaunchClamp", args);
+        return Connection.Invoke<LaunchClamp>("SpaceCenter", "Part_get_LaunchClamp", args);
     }
 
     /// <summary>
     /// Gets a <see cref="T:SpaceCenter.Leg" /> if the part is a landing leg, otherwise <c>null</c>.
     /// </summary>
-    [Rpc ("SpaceCenter", "Part_get_Leg")]
-    public Leg GetLeg ()
+    [Rpc("SpaceCenter", "Part_get_Leg")]
+    public Leg GetLeg()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<Leg> ("SpaceCenter", "Part_get_Leg", args);
+        return Connection.Invoke<Leg>("SpaceCenter", "Part_get_Leg", args);
     }
 
     /// <summary>
     /// Gets a <see cref="T:SpaceCenter.Light" /> if the part is a light, otherwise <c>null</c>.
     /// </summary>
-    [Rpc ("SpaceCenter", "Part_get_Light")]
-    public Light GetLight ()
+    [Rpc("SpaceCenter", "Part_get_Light")]
+    public Light GetLight()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<Light> ("SpaceCenter", "Part_get_Light", args);
+        return Connection.Invoke<Light>("SpaceCenter", "Part_get_Light", args);
     }
 
     /// <summary>
     /// Gets the current mass of the part, including resources it contains, in kilograms.
     /// Returns zero if the part is massless.
     /// </summary>
-    [Rpc ("SpaceCenter", "Part_get_Mass")]
-    public double GetMass ()
+    [Rpc("SpaceCenter", "Part_get_Mass")]
+    public double GetMass()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<double> ("SpaceCenter", "Part_get_Mass", args);
+        return Connection.Invoke<double>("SpaceCenter", "Part_get_Mass", args);
     }
 
     /// <summary>
     /// Gets whether the part is
     /// <a href="https://wiki.kerbalspaceprogram.com/wiki/Massless_part">massless</a>.
     /// </summary>
-    [Rpc ("SpaceCenter", "Part_get_Massless")]
-    public bool GetMassless ()
+    [Rpc("SpaceCenter", "Part_get_Massless")]
+    public bool GetMassless()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<bool> ("SpaceCenter", "Part_get_Massless", args);
+        return Connection.Invoke<bool>("SpaceCenter", "Part_get_Massless", args);
     }
 
     /// <summary>
     /// Gets the maximum temperature that the skin of the part can survive, in Kelvin.
     /// </summary>
-    [Rpc ("SpaceCenter", "Part_get_MaxSkinTemperature")]
-    public double GetMaxSkinTemperature ()
+    [Rpc("SpaceCenter", "Part_get_MaxSkinTemperature")]
+    public double GetMaxSkinTemperature()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<double> ("SpaceCenter", "Part_get_MaxSkinTemperature", args);
+        return Connection.Invoke<double>("SpaceCenter", "Part_get_MaxSkinTemperature", args);
     }
 
     /// <summary>
     /// Gets the maximum temperature that the part can survive, in Kelvin.
     /// </summary>
-    [Rpc ("SpaceCenter", "Part_get_MaxTemperature")]
-    public double GetMaxTemperature ()
+    [Rpc("SpaceCenter", "Part_get_MaxTemperature")]
+    public double GetMaxTemperature()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<double> ("SpaceCenter", "Part_get_MaxTemperature", args);
+        return Connection.Invoke<double>("SpaceCenter", "Part_get_MaxTemperature", args);
     }
 
     /// <summary>
     /// Gets the modules for this part.
     /// </summary>
-    [Rpc ("SpaceCenter", "Part_get_Modules")]
-    public IList<Module> GetModules ()
+    [Rpc("SpaceCenter", "Part_get_Modules")]
+    public IList<Module> GetModules()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<IList<Module>> ("SpaceCenter", "Part_get_Modules", args);
+        return Connection.Invoke<IList<Module>>("SpaceCenter", "Part_get_Modules", args);
     }
 
     /// <summary>
     /// Gets the moment of inertia of the part in <math>kg.m^2</math> around its center of mass
     /// in the parts reference frame (<see cref="T:SpaceCenter.ReferenceFrame" />).
     /// </summary>
-    [Rpc ("SpaceCenter", "Part_get_MomentOfInertia")]
-    public Tuple<double,double,double> GetMomentOfInertia ()
+    [Rpc("SpaceCenter", "Part_get_MomentOfInertia")]
+    public Tuple<double,double,double> GetMomentOfInertia()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Part_get_MomentOfInertia", args);
+        return Connection.Invoke<Tuple<double,double,double>>("SpaceCenter", "Part_get_MomentOfInertia", args);
     }
 
     /// <summary>
@@ -706,25 +755,27 @@ public class Part : RemoteObject
     /// <a href="https://wiki.kerbalspaceprogram.com/wiki/CFG_File_Documentation">part cfg files</a>.
     /// For example "Mark1-2Pod".
     /// </summary>
-    [Rpc ("SpaceCenter", "Part_get_Name")]
-    public string GetName ()
+    [Rpc("SpaceCenter", "Part_get_Name")]
+    public string GetName()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<string> ("SpaceCenter", "Part_get_Name", args);
+        return Connection.Invoke<string>("SpaceCenter", "Part_get_Name", args);
     }
 
     /// <summary>
     /// Gets a <see cref="T:SpaceCenter.Parachute" /> if the part is a parachute, otherwise <c>null</c>.
     /// </summary>
-    [Rpc ("SpaceCenter", "Part_get_Parachute")]
-    public Parachute GetParachute ()
+    [Rpc("SpaceCenter", "Part_get_Parachute")]
+    public Parachute GetParachute()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<Parachute> ("SpaceCenter", "Part_get_Parachute", args);
+        return Connection.Invoke<Parachute>("SpaceCenter", "Part_get_Parachute", args);
     }
 
     /// <summary>
@@ -732,62 +783,67 @@ public class Part : RemoteObject
     /// This, in combination with <see cref="M:SpaceCenter.Part.GetChildren" />, can be used to traverse the vessels
     /// parts tree.
     /// </summary>
-    [Rpc ("SpaceCenter", "Part_get_Parent")]
-    public Part GetParent ()
+    [Rpc("SpaceCenter", "Part_get_Parent")]
+    public Part GetParent()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<Part> ("SpaceCenter", "Part_get_Parent", args);
+        return Connection.Invoke<Part>("SpaceCenter", "Part_get_Parent", args);
     }
 
     /// <summary>
     /// Gets a <see cref="T:SpaceCenter.RCS" /> if the part is an RCS block/thruster, otherwise <c>null</c>.
     /// </summary>
-    [Rpc ("SpaceCenter", "Part_get_RCS")]
-    public RCS GetRCS ()
+    [Rpc("SpaceCenter", "Part_get_RCS")]
+    public RCS GetRCS()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<RCS> ("SpaceCenter", "Part_get_RCS", args);
+        return Connection.Invoke<RCS>("SpaceCenter", "Part_get_RCS", args);
     }
 
     /// <summary>
     /// Gets whether the part is radially attached to its parent, i.e. on the side of its parent.
     /// If the part has no parent, returns <c>false</c>.
     /// </summary>
-    [Rpc ("SpaceCenter", "Part_get_RadiallyAttached")]
-    public bool GetRadiallyAttached ()
+    [Rpc("SpaceCenter", "Part_get_RadiallyAttached")]
+    public bool GetRadiallyAttached()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<bool> ("SpaceCenter", "Part_get_RadiallyAttached", args);
+        return Connection.Invoke<bool>("SpaceCenter", "Part_get_RadiallyAttached", args);
     }
 
     /// <summary>
     /// Gets a <see cref="T:SpaceCenter.Radiator" /> if the part is a radiator, otherwise <c>null</c>.
     /// </summary>
-    [Rpc ("SpaceCenter", "Part_get_Radiator")]
-    public Radiator GetRadiator ()
+    [Rpc("SpaceCenter", "Part_get_Radiator")]
+    public Radiator GetRadiator()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<Radiator> ("SpaceCenter", "Part_get_Radiator", args);
+        return Connection.Invoke<Radiator>("SpaceCenter", "Part_get_Radiator", args);
     }
 
     /// <summary>
     /// Gets a <see cref="T:SpaceCenter.ReactionWheel" /> if the part is a reaction wheel, otherwise <c>null</c>.
     /// </summary>
-    [Rpc ("SpaceCenter", "Part_get_ReactionWheel")]
-    public ReactionWheel GetReactionWheel ()
+    [Rpc("SpaceCenter", "Part_get_ReactionWheel")]
+    public ReactionWheel GetReactionWheel()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<ReactionWheel> ("SpaceCenter", "Part_get_ReactionWheel", args);
+        return Connection.Invoke<ReactionWheel>("SpaceCenter", "Part_get_ReactionWheel", args);
     }
 
     /// <summary>
@@ -802,185 +858,200 @@ public class Part : RemoteObject
     /// reference frame for the docking port, returned by
     /// <see cref="M:SpaceCenter.DockingPort.GetReferenceFrame" />.
     /// </remarks>
-    [Rpc ("SpaceCenter", "Part_get_ReferenceFrame")]
-    public ReferenceFrame GetReferenceFrame ()
+    [Rpc("SpaceCenter", "Part_get_ReferenceFrame")]
+    public ReferenceFrame GetReferenceFrame()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<ReferenceFrame> ("SpaceCenter", "Part_get_ReferenceFrame", args);
+        return Connection.Invoke<ReferenceFrame>("SpaceCenter", "Part_get_ReferenceFrame", args);
     }
 
     /// <summary>
     /// Gets a <see cref="T:SpaceCenter.ResourceConverter" /> if the part is a resource converter,
     /// otherwise <c>null</c>.
     /// </summary>
-    [Rpc ("SpaceCenter", "Part_get_ResourceConverter")]
-    public ResourceConverter GetResourceConverter ()
+    [Rpc("SpaceCenter", "Part_get_ResourceConverter")]
+    public ResourceConverter GetResourceConverter()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<ResourceConverter> ("SpaceCenter", "Part_get_ResourceConverter", args);
+        return Connection.Invoke<ResourceConverter>("SpaceCenter", "Part_get_ResourceConverter", args);
     }
 
     /// <summary>
     /// Gets a <see cref="T:SpaceCenter.ResourceDrain" /> if the part is a resource drain, otherwise <c>null</c>.
     /// </summary>
-    [Rpc ("SpaceCenter", "Part_get_ResourceDrain")]
-    public ResourceDrain GetResourceDrain ()
+    [Rpc("SpaceCenter", "Part_get_ResourceDrain")]
+    public ResourceDrain GetResourceDrain()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<ResourceDrain> ("SpaceCenter", "Part_get_ResourceDrain", args);
+        return Connection.Invoke<ResourceDrain>("SpaceCenter", "Part_get_ResourceDrain", args);
     }
 
     /// <summary>
     /// Gets a <see cref="T:SpaceCenter.ResourceHarvester" /> if the part is a resource harvester,
     /// otherwise <c>null</c>.
     /// </summary>
-    [Rpc ("SpaceCenter", "Part_get_ResourceHarvester")]
-    public ResourceHarvester GetResourceHarvester ()
+    [Rpc("SpaceCenter", "Part_get_ResourceHarvester")]
+    public ResourceHarvester GetResourceHarvester()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<ResourceHarvester> ("SpaceCenter", "Part_get_ResourceHarvester", args);
+        return Connection.Invoke<ResourceHarvester>("SpaceCenter", "Part_get_ResourceHarvester", args);
     }
 
     /// <summary>
     /// Gets a <see cref="T:SpaceCenter.Resources" /> object for the part.
     /// </summary>
-    [Rpc ("SpaceCenter", "Part_get_Resources")]
-    public Resources GetResources ()
+    [Rpc("SpaceCenter", "Part_get_Resources")]
+    public Resources GetResources()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<Resources> ("SpaceCenter", "Part_get_Resources", args);
+        return Connection.Invoke<Resources>("SpaceCenter", "Part_get_Resources", args);
     }
 
     /// <summary>
     /// Gets a <see cref="T:SpaceCenter.RoboticController" /> if the part is a robotic controller,
     /// otherwise <c>null</c>.
     /// </summary>
-    [Rpc ("SpaceCenter", "Part_get_RoboticController")]
-    public RoboticController GetRoboticController ()
+    [Rpc("SpaceCenter", "Part_get_RoboticController")]
+    public RoboticController GetRoboticController()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<RoboticController> ("SpaceCenter", "Part_get_RoboticController", args);
+        return Connection.Invoke<RoboticController>("SpaceCenter", "Part_get_RoboticController", args);
     }
 
     /// <summary>
     /// Gets a <see cref="T:SpaceCenter.RoboticHinge" /> if the part is a robotic hinge, otherwise <c>null</c>.
     /// </summary>
-    [Rpc ("SpaceCenter", "Part_get_RoboticHinge")]
-    public RoboticHinge GetRoboticHinge ()
+    [Rpc("SpaceCenter", "Part_get_RoboticHinge")]
+    public RoboticHinge GetRoboticHinge()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<RoboticHinge> ("SpaceCenter", "Part_get_RoboticHinge", args);
+        return Connection.Invoke<RoboticHinge>("SpaceCenter", "Part_get_RoboticHinge", args);
     }
 
     /// <summary>
     /// Gets a <see cref="T:SpaceCenter.RoboticPiston" /> if the part is a robotic piston, otherwise <c>null</c>.
     /// </summary>
-    [Rpc ("SpaceCenter", "Part_get_RoboticPiston")]
-    public RoboticPiston GetRoboticPiston ()
+    [Rpc("SpaceCenter", "Part_get_RoboticPiston")]
+    public RoboticPiston GetRoboticPiston()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<RoboticPiston> ("SpaceCenter", "Part_get_RoboticPiston", args);
+        return Connection.Invoke<RoboticPiston>("SpaceCenter", "Part_get_RoboticPiston", args);
     }
 
     /// <summary>
     /// Gets a <see cref="T:SpaceCenter.RoboticRotation" /> if the part is a robotic rotation servo, otherwise <c>null</c>.
     /// </summary>
-    [Rpc ("SpaceCenter", "Part_get_RoboticRotation")]
-    public RoboticRotation GetRoboticRotation ()
+    [Rpc("SpaceCenter", "Part_get_RoboticRotation")]
+    public RoboticRotation GetRoboticRotation()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<RoboticRotation> ("SpaceCenter", "Part_get_RoboticRotation", args);
+        return Connection.Invoke<RoboticRotation>("SpaceCenter", "Part_get_RoboticRotation", args);
     }
 
     /// <summary>
     /// Gets a <see cref="T:SpaceCenter.RoboticRotor" /> if the part is a robotic rotor, otherwise <c>null</c>.
     /// </summary>
-    [Rpc ("SpaceCenter", "Part_get_RoboticRotor")]
-    public RoboticRotor GetRoboticRotor ()
+    [Rpc("SpaceCenter", "Part_get_RoboticRotor")]
+    public RoboticRotor GetRoboticRotor()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<RoboticRotor> ("SpaceCenter", "Part_get_RoboticRotor", args);
+        return Connection.Invoke<RoboticRotor>("SpaceCenter", "Part_get_RoboticRotor", args);
     }
 
     /// <summary>
     /// Gets a <see cref="T:SpaceCenter.Sensor" /> if the part is a sensor, otherwise <c>null</c>.
     /// </summary>
-    [Rpc ("SpaceCenter", "Part_get_Sensor")]
-    public Sensor GetSensor ()
+    [Rpc("SpaceCenter", "Part_get_Sensor")]
+    public Sensor GetSensor()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<Sensor> ("SpaceCenter", "Part_get_Sensor", args);
+        return Connection.Invoke<Sensor>("SpaceCenter", "Part_get_Sensor", args);
     }
 
     /// <summary>
     /// Gets whether the part is shielded from the exterior of the vessel, for example by a fairing.
     /// </summary>
-    [Rpc ("SpaceCenter", "Part_get_Shielded")]
-    public bool GetShielded ()
+    [Rpc("SpaceCenter", "Part_get_Shielded")]
+    public bool GetShielded()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<bool> ("SpaceCenter", "Part_get_Shielded", args);
+        return Connection.Invoke<bool>("SpaceCenter", "Part_get_Shielded", args);
     }
 
     /// <summary>
     /// Temperature of the skin of the part, in Kelvin.
     /// </summary>
-    [Rpc ("SpaceCenter", "Part_get_SkinTemperature")]
-    public double GetSkinTemperature ()
+    [Rpc("SpaceCenter", "Part_get_SkinTemperature")]
+    public double GetSkinTemperature()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<double> ("SpaceCenter", "Part_get_SkinTemperature", args);
+        return Connection.Invoke<double>("SpaceCenter", "Part_get_SkinTemperature", args);
     }
 
     /// <summary>
     /// Gets a <see cref="T:SpaceCenter.SolarPanel" /> if the part is a solar panel, otherwise <c>null</c>.
     /// </summary>
-    [Rpc ("SpaceCenter", "Part_get_SolarPanel")]
-    public SolarPanel GetSolarPanel ()
+    [Rpc("SpaceCenter", "Part_get_SolarPanel")]
+    public SolarPanel GetSolarPanel()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<SolarPanel> ("SpaceCenter", "Part_get_SolarPanel", args);
+        return Connection.Invoke<SolarPanel>("SpaceCenter", "Part_get_SolarPanel", args);
     }
 
     /// <summary>
     /// Gets the stage in which this part will be activated. Returns -1 if the part is not
     /// activated by staging.
     /// </summary>
-    [Rpc ("SpaceCenter", "Part_get_Stage")]
-    public int GetStage ()
+    [Rpc("SpaceCenter", "Part_get_Stage")]
+    public int GetStage()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<int> ("SpaceCenter", "Part_get_Stage", args);
+        return Connection.Invoke<int>("SpaceCenter", "Part_get_Stage", args);
     }
 
     /// <summary>
@@ -992,13 +1063,14 @@ public class Part : RemoteObject
     /// <a href="https://forum.kerbalspaceprogram.com/index.php?/topic/61827-/">kOS</a>
     /// if it is installed.
     /// </remarks>
-    [Rpc ("SpaceCenter", "Part_get_Tag")]
-    public string GetTag ()
+    [Rpc("SpaceCenter", "Part_get_Tag")]
+    public string GetTag()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<string> ("SpaceCenter", "Part_get_Tag", args);
+        return Connection.Invoke<string>("SpaceCenter", "Part_get_Tag", args);
     }
 
     /// <summary>
@@ -1006,25 +1078,27 @@ public class Part : RemoteObject
     /// in-game user interface.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    public void SetTag (string value)
+    public void SetTag(string value)
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this,
             value
         };
-        Connection.Invoke ("SpaceCenter", "Part_set_Tag", args);
+        Connection.Invoke("SpaceCenter", "Part_set_Tag", args);
     }
 
     /// <summary>
     /// Temperature of the part, in Kelvin.
     /// </summary>
-    [Rpc ("SpaceCenter", "Part_get_Temperature")]
-    public double GetTemperature ()
+    [Rpc("SpaceCenter", "Part_get_Temperature")]
+    public double GetTemperature()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<double> ("SpaceCenter", "Part_get_Temperature", args);
+        return Connection.Invoke<double>("SpaceCenter", "Part_get_Temperature", args);
     }
 
     /// <summary>
@@ -1033,13 +1107,14 @@ public class Part : RemoteObject
     /// A positive value means the part is gaining heat energy, and negative means it is
     /// losing heat energy.
     /// </summary>
-    [Rpc ("SpaceCenter", "Part_get_ThermalConductionFlux")]
-    public float GetThermalConductionFlux ()
+    [Rpc("SpaceCenter", "Part_get_ThermalConductionFlux")]
+    public float GetThermalConductionFlux()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<float> ("SpaceCenter", "Part_get_ThermalConductionFlux", args);
+        return Connection.Invoke<float>("SpaceCenter", "Part_get_ThermalConductionFlux", args);
     }
 
     /// <summary>
@@ -1048,13 +1123,14 @@ public class Part : RemoteObject
     /// A positive value means the part is gaining heat energy, and negative means it is
     /// losing heat energy.
     /// </summary>
-    [Rpc ("SpaceCenter", "Part_get_ThermalConvectionFlux")]
-    public float GetThermalConvectionFlux ()
+    [Rpc("SpaceCenter", "Part_get_ThermalConvectionFlux")]
+    public float GetThermalConvectionFlux()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<float> ("SpaceCenter", "Part_get_ThermalConvectionFlux", args);
+        return Connection.Invoke<float>("SpaceCenter", "Part_get_ThermalConvectionFlux", args);
     }
 
     /// <summary>
@@ -1064,26 +1140,28 @@ public class Part : RemoteObject
     /// A positive value means the part is gaining heat energy, and negative means it is losing
     /// heat energy.
     /// </summary>
-    [Rpc ("SpaceCenter", "Part_get_ThermalInternalFlux")]
-    public float GetThermalInternalFlux ()
+    [Rpc("SpaceCenter", "Part_get_ThermalInternalFlux")]
+    public float GetThermalInternalFlux()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<float> ("SpaceCenter", "Part_get_ThermalInternalFlux", args);
+        return Connection.Invoke<float>("SpaceCenter", "Part_get_ThermalInternalFlux", args);
     }
 
     /// <summary>
     /// Gets a measure of how much energy it takes to increase the internal temperature of the part,
     /// in Joules per Kelvin.
     /// </summary>
-    [Rpc ("SpaceCenter", "Part_get_ThermalMass")]
-    public float GetThermalMass ()
+    [Rpc("SpaceCenter", "Part_get_ThermalMass")]
+    public float GetThermalMass()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<float> ("SpaceCenter", "Part_get_ThermalMass", args);
+        return Connection.Invoke<float>("SpaceCenter", "Part_get_ThermalMass", args);
     }
 
     /// <summary>
@@ -1092,39 +1170,42 @@ public class Part : RemoteObject
     /// A positive value means the part is gaining heat energy, and negative means it is
     /// losing heat energy.
     /// </summary>
-    [Rpc ("SpaceCenter", "Part_get_ThermalRadiationFlux")]
-    public float GetThermalRadiationFlux ()
+    [Rpc("SpaceCenter", "Part_get_ThermalRadiationFlux")]
+    public float GetThermalRadiationFlux()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<float> ("SpaceCenter", "Part_get_ThermalRadiationFlux", args);
+        return Connection.Invoke<float>("SpaceCenter", "Part_get_ThermalRadiationFlux", args);
     }
 
     /// <summary>
     /// Gets a measure of how much energy it takes to increase the temperature of the resources
     /// contained in the part, in Joules per Kelvin.
     /// </summary>
-    [Rpc ("SpaceCenter", "Part_get_ThermalResourceMass")]
-    public float GetThermalResourceMass ()
+    [Rpc("SpaceCenter", "Part_get_ThermalResourceMass")]
+    public float GetThermalResourceMass()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<float> ("SpaceCenter", "Part_get_ThermalResourceMass", args);
+        return Connection.Invoke<float>("SpaceCenter", "Part_get_ThermalResourceMass", args);
     }
 
     /// <summary>
     /// Gets a measure of how much energy it takes to increase the skin temperature of the part,
     /// in Joules per Kelvin.
     /// </summary>
-    [Rpc ("SpaceCenter", "Part_get_ThermalSkinMass")]
-    public float GetThermalSkinMass ()
+    [Rpc("SpaceCenter", "Part_get_ThermalSkinMass")]
+    public float GetThermalSkinMass()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<float> ("SpaceCenter", "Part_get_ThermalSkinMass", args);
+        return Connection.Invoke<float>("SpaceCenter", "Part_get_ThermalSkinMass", args);
     }
 
     /// <summary>
@@ -1133,48 +1214,52 @@ public class Part : RemoteObject
     /// A positive value means the part's internals are gaining heat energy,
     /// and negative means its skin is gaining heat energy.
     /// </summary>
-    [Rpc ("SpaceCenter", "Part_get_ThermalSkinToInternalFlux")]
-    public float GetThermalSkinToInternalFlux ()
+    [Rpc("SpaceCenter", "Part_get_ThermalSkinToInternalFlux")]
+    public float GetThermalSkinToInternalFlux()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<float> ("SpaceCenter", "Part_get_ThermalSkinToInternalFlux", args);
+        return Connection.Invoke<float>("SpaceCenter", "Part_get_ThermalSkinToInternalFlux", args);
     }
 
     /// <summary>
     /// Title of the part, as shown when the part is right clicked in-game. For example "Mk1-2 Command Pod".
     /// </summary>
-    [Rpc ("SpaceCenter", "Part_get_Title")]
-    public string GetTitle ()
+    [Rpc("SpaceCenter", "Part_get_Title")]
+    public string GetTitle()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<string> ("SpaceCenter", "Part_get_Title", args);
+        return Connection.Invoke<string>("SpaceCenter", "Part_get_Title", args);
     }
 
     /// <summary>
     /// Gets the vessel that contains this part.
     /// </summary>
-    [Rpc ("SpaceCenter", "Part_get_Vessel")]
-    public Vessel GetVessel ()
+    [Rpc("SpaceCenter", "Part_get_Vessel")]
+    public Vessel GetVessel()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<Vessel> ("SpaceCenter", "Part_get_Vessel", args);
+        return Connection.Invoke<Vessel>("SpaceCenter", "Part_get_Vessel", args);
     }
 
     /// <summary>
     /// Gets a <see cref="T:SpaceCenter.Wheel" /> if the part is a wheel, otherwise <c>null</c>.
     /// </summary>
-    [Rpc ("SpaceCenter", "Part_get_Wheel")]
-    public Wheel GetWheel ()
+    [Rpc("SpaceCenter", "Part_get_Wheel")]
+    public Wheel GetWheel()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<Wheel> ("SpaceCenter", "Part_get_Wheel", args);
+        return Connection.Invoke<Wheel>("SpaceCenter", "Part_get_Wheel", args);
     }
 }

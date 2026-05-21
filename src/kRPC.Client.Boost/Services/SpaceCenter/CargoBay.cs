@@ -12,56 +12,60 @@ public class CargoBay : RemoteObject
     /// <summary>
     /// Construct an instance of this remote object. Should not be called directly. This interface is intended for internal decoding.
     /// </summary>
-    public CargoBay (ConnectionMultiplexer connection, ulong id) : base (connection, id)
+    public CargoBay(ConnectionMultiplexer connection, ulong id) : base(connection, id)
     {
     }
 
     /// <summary>
     /// Gets whether the cargo bay is open.
     /// </summary>
-    [Rpc ("SpaceCenter", "CargoBay_get_Open")]
-    public bool GetOpen ()
+    [Rpc("SpaceCenter", "CargoBay_get_Open")]
+    public bool GetOpen()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<bool> ("SpaceCenter", "CargoBay_get_Open", args);
+        return Connection.Invoke<bool>("SpaceCenter", "CargoBay_get_Open", args);
     }
 
     /// <summary>
     /// Sets whether the cargo bay is open.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    public void SetOpen (bool value)
+    public void SetOpen(bool value)
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this,
             value
         };
-        Connection.Invoke ("SpaceCenter", "CargoBay_set_Open", args);
+        Connection.Invoke("SpaceCenter", "CargoBay_set_Open", args);
     }
 
     /// <summary>
     /// Gets the part object for this cargo bay.
     /// </summary>
-    [Rpc ("SpaceCenter", "CargoBay_get_Part")]
-    public Part GetPart ()
+    [Rpc("SpaceCenter", "CargoBay_get_Part")]
+    public Part GetPart()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<Part> ("SpaceCenter", "CargoBay_get_Part", args);
+        return Connection.Invoke<Part>("SpaceCenter", "CargoBay_get_Part", args);
     }
 
     /// <summary>
     /// Gets the state of the cargo bay.
     /// </summary>
-    [Rpc ("SpaceCenter", "CargoBay_get_State")]
-    public CargoBayState GetState ()
+    [Rpc("SpaceCenter", "CargoBay_get_State")]
+    public CargoBayState GetState()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<CargoBayState> ("SpaceCenter", "CargoBay_get_State", args);
+        return Connection.Invoke<CargoBayState>("SpaceCenter", "CargoBay_get_State", args);
     }
 }

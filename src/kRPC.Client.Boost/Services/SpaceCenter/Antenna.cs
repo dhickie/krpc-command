@@ -12,106 +12,114 @@ public class Antenna : RemoteObject
     /// <summary>
     /// Construct an instance of this remote object. Should not be called directly. This interface is intended for internal decoding.
     /// </summary>
-    public Antenna (ConnectionMultiplexer connection, ulong id) : base (connection, id)
+    public Antenna(ConnectionMultiplexer connection, ulong id) : base(connection, id)
     {
     }
 
     /// <summary>
     /// Cancel current transmission of data.
     /// </summary>
-    [Rpc ("SpaceCenter", "Antenna_Cancel")]
-    public void Cancel ()
+    [Rpc("SpaceCenter", "Antenna_Cancel")]
+    public void Cancel()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        Connection.Invoke ("SpaceCenter", "Antenna_Cancel", args);
+        Connection.Invoke("SpaceCenter", "Antenna_Cancel", args);
     }
 
     /// <summary>
     /// Transmit data.
     /// </summary>
-    [Rpc ("SpaceCenter", "Antenna_Transmit")]
-    public void Transmit ()
+    [Rpc("SpaceCenter", "Antenna_Transmit")]
+    public void Transmit()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        Connection.Invoke ("SpaceCenter", "Antenna_Transmit", args);
+        Connection.Invoke("SpaceCenter", "Antenna_Transmit", args);
     }
 
     /// <summary>
     /// Gets whether partial data transmission is permitted.
     /// </summary>
-    [Rpc ("SpaceCenter", "Antenna_get_AllowPartial")]
-    public bool GetAllowPartial ()
+    [Rpc("SpaceCenter", "Antenna_get_AllowPartial")]
+    public bool GetAllowPartial()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<bool> ("SpaceCenter", "Antenna_get_AllowPartial", args);
+        return Connection.Invoke<bool>("SpaceCenter", "Antenna_get_AllowPartial", args);
     }
 
     /// <summary>
     /// Sets whether partial data transmission is permitted.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    public void SetAllowPartial (bool value)
+    public void SetAllowPartial(bool value)
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this,
             value
         };
-        Connection.Invoke ("SpaceCenter", "Antenna_set_AllowPartial", args);
+        Connection.Invoke("SpaceCenter", "Antenna_set_AllowPartial", args);
     }
 
     /// <summary>
     /// Gets whether data can be transmitted by this antenna.
     /// </summary>
-    [Rpc ("SpaceCenter", "Antenna_get_CanTransmit")]
-    public bool GetCanTransmit ()
+    [Rpc("SpaceCenter", "Antenna_get_CanTransmit")]
+    public bool GetCanTransmit()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<bool> ("SpaceCenter", "Antenna_get_CanTransmit", args);
+        return Connection.Invoke<bool>("SpaceCenter", "Antenna_get_CanTransmit", args);
     }
 
     /// <summary>
     /// Gets whether the antenna can be combined with other antennae on the vessel
     /// to boost the power.
     /// </summary>
-    [Rpc ("SpaceCenter", "Antenna_get_Combinable")]
-    public bool GetCombinable ()
+    [Rpc("SpaceCenter", "Antenna_get_Combinable")]
+    public bool GetCombinable()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<bool> ("SpaceCenter", "Antenna_get_Combinable", args);
+        return Connection.Invoke<bool>("SpaceCenter", "Antenna_get_Combinable", args);
     }
 
     /// <summary>
     /// Exponent used to calculate the combined power of multiple antennae on a vessel.
     /// </summary>
-    [Rpc ("SpaceCenter", "Antenna_get_CombinableExponent")]
-    public double GetCombinableExponent ()
+    [Rpc("SpaceCenter", "Antenna_get_CombinableExponent")]
+    public double GetCombinableExponent()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<double> ("SpaceCenter", "Antenna_get_CombinableExponent", args);
+        return Connection.Invoke<double>("SpaceCenter", "Antenna_get_CombinableExponent", args);
     }
 
     /// <summary>
     /// Gets whether the antenna is deployable.
     /// </summary>
-    [Rpc ("SpaceCenter", "Antenna_get_Deployable")]
-    public bool GetDeployable ()
+    [Rpc("SpaceCenter", "Antenna_get_Deployable")]
+    public bool GetDeployable()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<bool> ("SpaceCenter", "Antenna_get_Deployable", args);
+        return Connection.Invoke<bool>("SpaceCenter", "Antenna_get_Deployable", args);
     }
 
     /// <summary>
@@ -121,97 +129,105 @@ public class Antenna : RemoteObject
     /// Fixed antennas are always deployed.
     /// Returns an error if you try to deploy a fixed antenna.
     /// </remarks>
-    [Rpc ("SpaceCenter", "Antenna_get_Deployed")]
-    public bool GetDeployed ()
+    [Rpc("SpaceCenter", "Antenna_get_Deployed")]
+    public bool GetDeployed()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<bool> ("SpaceCenter", "Antenna_get_Deployed", args);
+        return Connection.Invoke<bool>("SpaceCenter", "Antenna_get_Deployed", args);
     }
 
     /// <summary>
     /// Sets whether the antenna is deployed.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    public void SetDeployed (bool value)
+    public void SetDeployed(bool value)
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this,
             value
         };
-        Connection.Invoke ("SpaceCenter", "Antenna_set_Deployed", args);
+        Connection.Invoke("SpaceCenter", "Antenna_set_Deployed", args);
     }
 
     /// <summary>
     /// Interval between sending packets in seconds.
     /// </summary>
-    [Rpc ("SpaceCenter", "Antenna_get_PacketInterval")]
-    public float GetPacketInterval ()
+    [Rpc("SpaceCenter", "Antenna_get_PacketInterval")]
+    public float GetPacketInterval()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<float> ("SpaceCenter", "Antenna_get_PacketInterval", args);
+        return Connection.Invoke<float>("SpaceCenter", "Antenna_get_PacketInterval", args);
     }
 
     /// <summary>
     /// Units of electric charge consumed per packet sent.
     /// </summary>
-    [Rpc ("SpaceCenter", "Antenna_get_PacketResourceCost")]
-    public double GetPacketResourceCost ()
+    [Rpc("SpaceCenter", "Antenna_get_PacketResourceCost")]
+    public double GetPacketResourceCost()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<double> ("SpaceCenter", "Antenna_get_PacketResourceCost", args);
+        return Connection.Invoke<double>("SpaceCenter", "Antenna_get_PacketResourceCost", args);
     }
 
     /// <summary>
     /// Amount of data sent per packet in Mits.
     /// </summary>
-    [Rpc ("SpaceCenter", "Antenna_get_PacketSize")]
-    public float GetPacketSize ()
+    [Rpc("SpaceCenter", "Antenna_get_PacketSize")]
+    public float GetPacketSize()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<float> ("SpaceCenter", "Antenna_get_PacketSize", args);
+        return Connection.Invoke<float>("SpaceCenter", "Antenna_get_PacketSize", args);
     }
 
     /// <summary>
     /// Gets the part object for this antenna.
     /// </summary>
-    [Rpc ("SpaceCenter", "Antenna_get_Part")]
-    public Part GetPart ()
+    [Rpc("SpaceCenter", "Antenna_get_Part")]
+    public Part GetPart()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<Part> ("SpaceCenter", "Antenna_get_Part", args);
+        return Connection.Invoke<Part>("SpaceCenter", "Antenna_get_Part", args);
     }
 
     /// <summary>
     /// Gets the power of the antenna.
     /// </summary>
-    [Rpc ("SpaceCenter", "Antenna_get_Power")]
-    public double GetPower ()
+    [Rpc("SpaceCenter", "Antenna_get_Power")]
+    public double GetPower()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<double> ("SpaceCenter", "Antenna_get_Power", args);
+        return Connection.Invoke<double>("SpaceCenter", "Antenna_get_Power", args);
     }
 
     /// <summary>
     /// Gets the current state of the antenna.
     /// </summary>
-    [Rpc ("SpaceCenter", "Antenna_get_State")]
-    public AntennaState GetState ()
+    [Rpc("SpaceCenter", "Antenna_get_State")]
+    public AntennaState GetState()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<AntennaState> ("SpaceCenter", "Antenna_get_State", args);
+        return Connection.Invoke<AntennaState>("SpaceCenter", "Antenna_get_State", args);
     }
 }

@@ -13,7 +13,7 @@ public class RoboticController : RemoteObject
     /// <summary>
     /// Construct an instance of this remote object. Should not be called directly. This interface is intended for internal decoding.
     /// </summary>
-    public RoboticController (ConnectionMultiplexer connection, ulong id) : base (connection, id)
+    public RoboticController(ConnectionMultiplexer connection, ulong id) : base(connection, id)
     {
     }
 
@@ -21,83 +21,89 @@ public class RoboticController : RemoteObject
     /// Add an axis to the controller.
     /// </summary>
     /// <returns>Returns <c>true</c> if the axis is added successfully.</returns>
-    [Rpc ("SpaceCenter", "RoboticController_AddAxis")]
-    public bool AddAxis (Module module, string fieldName)
+    [Rpc("SpaceCenter", "RoboticController_AddAxis")]
+    public bool AddAxis(Module module, string fieldName)
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this,
             module,
             fieldName
         };
-        return Connection.Invoke<bool> ("SpaceCenter", "RoboticController_AddAxis", args);
+        return Connection.Invoke<bool>("SpaceCenter", "RoboticController_AddAxis", args);
     }
 
     /// <summary>
     /// Add key frame value for controller axis.
     /// </summary>
     /// <returns>Returns <c>true</c> if the key frame is added successfully.</returns>
-    [Rpc ("SpaceCenter", "RoboticController_AddKeyFrame")]
-    public bool AddKeyFrame (Module module, string fieldName, float time, float value)
+    [Rpc("SpaceCenter", "RoboticController_AddKeyFrame")]
+    public bool AddKeyFrame(Module module, string fieldName, float time, float value)
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this,
             module,
             fieldName,
             time,
             value
         };
-        return Connection.Invoke<bool> ("SpaceCenter", "RoboticController_AddKeyFrame", args);
+        return Connection.Invoke<bool>("SpaceCenter", "RoboticController_AddKeyFrame", args);
     }
 
     /// <summary>
     /// The axes for the controller.
     /// </summary>
-    [Rpc ("SpaceCenter", "RoboticController_Axes")]
-    public IList<IList<string>> Axes ()
+    [Rpc("SpaceCenter", "RoboticController_Axes")]
+    public IList<IList<string>> Axes()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<IList<IList<string>>> ("SpaceCenter", "RoboticController_Axes", args);
+        return Connection.Invoke<IList<IList<string>>>("SpaceCenter", "RoboticController_Axes", args);
     }
 
     /// <summary>
     /// Clear axis.
     /// </summary>
     /// <returns>Returns <c>true</c> if the axis is cleared successfully.</returns>
-    [Rpc ("SpaceCenter", "RoboticController_ClearAxis")]
-    public bool ClearAxis (Module module, string fieldName)
+    [Rpc("SpaceCenter", "RoboticController_ClearAxis")]
+    public bool ClearAxis(Module module, string fieldName)
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this,
             module,
             fieldName
         };
-        return Connection.Invoke<bool> ("SpaceCenter", "RoboticController_ClearAxis", args);
+        return Connection.Invoke<bool>("SpaceCenter", "RoboticController_ClearAxis", args);
     }
 
     /// <summary>
     /// Whether the controller has a part.
     /// </summary>
-    [Rpc ("SpaceCenter", "RoboticController_HasPart")]
-    public bool HasPart (Part part)
+    [Rpc("SpaceCenter", "RoboticController_HasPart")]
+    public bool HasPart(Part part)
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this,
             part
         };
-        return Connection.Invoke<bool> ("SpaceCenter", "RoboticController_HasPart", args);
+        return Connection.Invoke<bool>("SpaceCenter", "RoboticController_HasPart", args);
     }
 
     /// <summary>
     /// Gets the part object for this controller.
     /// </summary>
-    [Rpc ("SpaceCenter", "RoboticController_get_Part")]
-    public Part GetPart ()
+    [Rpc("SpaceCenter", "RoboticController_get_Part")]
+    public Part GetPart()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<Part> ("SpaceCenter", "RoboticController_get_Part", args);
+        return Connection.Invoke<Part>("SpaceCenter", "RoboticController_get_Part", args);
     }
 }

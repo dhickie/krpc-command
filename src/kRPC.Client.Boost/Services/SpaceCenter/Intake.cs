@@ -12,80 +12,86 @@ public class Intake : RemoteObject
     /// <summary>
     /// Construct an instance of this remote object. Should not be called directly. This interface is intended for internal decoding.
     /// </summary>
-    public Intake (ConnectionMultiplexer connection, ulong id) : base (connection, id)
+    public Intake(ConnectionMultiplexer connection, ulong id) : base(connection, id)
     {
     }
 
     /// <summary>
     /// Gets the area of the intake's opening, in square meters.
     /// </summary>
-    [Rpc ("SpaceCenter", "Intake_get_Area")]
-    public float GetArea ()
+    [Rpc("SpaceCenter", "Intake_get_Area")]
+    public float GetArea()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<float> ("SpaceCenter", "Intake_get_Area", args);
+        return Connection.Invoke<float>("SpaceCenter", "Intake_get_Area", args);
     }
 
     /// <summary>
     /// Gets the rate of flow into the intake, in units of resource per second.
     /// </summary>
-    [Rpc ("SpaceCenter", "Intake_get_Flow")]
-    public float GetFlow ()
+    [Rpc("SpaceCenter", "Intake_get_Flow")]
+    public float GetFlow()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<float> ("SpaceCenter", "Intake_get_Flow", args);
+        return Connection.Invoke<float>("SpaceCenter", "Intake_get_Flow", args);
     }
 
     /// <summary>
     /// Gets whether the intake is open.
     /// </summary>
-    [Rpc ("SpaceCenter", "Intake_get_Open")]
-    public bool GetOpen ()
+    [Rpc("SpaceCenter", "Intake_get_Open")]
+    public bool GetOpen()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<bool> ("SpaceCenter", "Intake_get_Open", args);
+        return Connection.Invoke<bool>("SpaceCenter", "Intake_get_Open", args);
     }
 
     /// <summary>
     /// Sets whether the intake is open.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    public void SetOpen (bool value)
+    public void SetOpen(bool value)
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this,
             value
         };
-        Connection.Invoke ("SpaceCenter", "Intake_set_Open", args);
+        Connection.Invoke("SpaceCenter", "Intake_set_Open", args);
     }
 
     /// <summary>
     /// Gets the part object for this intake.
     /// </summary>
-    [Rpc ("SpaceCenter", "Intake_get_Part")]
-    public Part GetPart ()
+    [Rpc("SpaceCenter", "Intake_get_Part")]
+    public Part GetPart()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<Part> ("SpaceCenter", "Intake_get_Part", args);
+        return Connection.Invoke<Part>("SpaceCenter", "Intake_get_Part", args);
     }
 
     /// <summary>
     /// Speed of the flow into the intake, in <math>m/s</math>.
     /// </summary>
-    [Rpc ("SpaceCenter", "Intake_get_Speed")]
-    public float GetSpeed ()
+    [Rpc("SpaceCenter", "Intake_get_Speed")]
+    public float GetSpeed()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<float> ("SpaceCenter", "Intake_get_Speed", args);
+        return Connection.Invoke<float>("SpaceCenter", "Intake_get_Speed", args);
     }
 }

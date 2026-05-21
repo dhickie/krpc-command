@@ -17,7 +17,7 @@ public class Orbit : RemoteObject
     /// <summary>
     /// Construct an instance of this remote object. Should not be called directly. This interface is intended for internal decoding.
     /// </summary>
-    public Orbit (ConnectionMultiplexer connection, ulong id) : base (connection, id)
+    public Orbit(ConnectionMultiplexer connection, ulong id) : base(connection, id)
     {
     }
 
@@ -25,28 +25,30 @@ public class Orbit : RemoteObject
     /// Estimates and returns the distance at closest approach to a target orbit, in meters.
     /// </summary>
     /// <param name="target">Target orbit.</param>
-    [Rpc ("SpaceCenter", "Orbit_DistanceAtClosestApproach")]
-    public double DistanceAtClosestApproach (Orbit target)
+    [Rpc("SpaceCenter", "Orbit_DistanceAtClosestApproach")]
+    public double DistanceAtClosestApproach(Orbit target)
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this,
             target
         };
-        return Connection.Invoke<double> ("SpaceCenter", "Orbit_DistanceAtClosestApproach", args);
+        return Connection.Invoke<double>("SpaceCenter", "Orbit_DistanceAtClosestApproach", args);
     }
 
     /// <summary>
     /// The eccentric anomaly at the given universal time.
     /// </summary>
     /// <param name="ut">The universal time, in seconds.</param>
-    [Rpc ("SpaceCenter", "Orbit_EccentricAnomalyAtUT")]
-    public double EccentricAnomalyAtUT (double ut)
+    [Rpc("SpaceCenter", "Orbit_EccentricAnomalyAtUT")]
+    public double EccentricAnomalyAtUT(double ut)
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this,
             ut
         };
-        return Connection.Invoke<double> ("SpaceCenter", "Orbit_EccentricAnomalyAtUT", args);
+        return Connection.Invoke<double>("SpaceCenter", "Orbit_EccentricAnomalyAtUT", args);
     }
 
     /// <summary>
@@ -59,43 +61,46 @@ public class Orbit : RemoteObject
     /// </returns>
     /// <param name="target">Target orbit.</param>
     /// <param name="orbits">The number of future orbits to search.</param>
-    [Rpc ("SpaceCenter", "Orbit_ListClosestApproaches")]
-    public IList<IList<double>> ListClosestApproaches (Orbit target, int orbits)
+    [Rpc("SpaceCenter", "Orbit_ListClosestApproaches")]
+    public IList<IList<double>> ListClosestApproaches(Orbit target, int orbits)
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this,
             target,
             orbits
         };
-        return Connection.Invoke<IList<IList<double>>> ("SpaceCenter", "Orbit_ListClosestApproaches", args);
+        return Connection.Invoke<IList<IList<double>>>("SpaceCenter", "Orbit_ListClosestApproaches", args);
     }
 
     /// <summary>
     /// The mean anomaly at the given time.
     /// </summary>
     /// <param name="ut">The universal time in seconds.</param>
-    [Rpc ("SpaceCenter", "Orbit_MeanAnomalyAtUT")]
-    public double MeanAnomalyAtUT (double ut)
+    [Rpc("SpaceCenter", "Orbit_MeanAnomalyAtUT")]
+    public double MeanAnomalyAtUT(double ut)
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this,
             ut
         };
-        return Connection.Invoke<double> ("SpaceCenter", "Orbit_MeanAnomalyAtUT", args);
+        return Connection.Invoke<double>("SpaceCenter", "Orbit_MeanAnomalyAtUT", args);
     }
 
     /// <summary>
     /// The orbital speed at the given time, in meters per second.
     /// </summary>
     /// <param name="time">Time from now, in seconds.</param>
-    [Rpc ("SpaceCenter", "Orbit_OrbitalSpeedAt")]
-    public double OrbitalSpeedAt (double time)
+    [Rpc("SpaceCenter", "Orbit_OrbitalSpeedAt")]
+    public double OrbitalSpeedAt(double time)
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this,
             time
         };
-        return Connection.Invoke<double> ("SpaceCenter", "Orbit_OrbitalSpeedAt", args);
+        return Connection.Invoke<double>("SpaceCenter", "Orbit_OrbitalSpeedAt", args);
     }
 
     /// <summary>
@@ -105,57 +110,61 @@ public class Orbit : RemoteObject
     /// <param name="ut">The universal time to measure the position at.</param>
     /// <param name="referenceFrame">The reference frame that the returned
     /// position vector is in.</param>
-    [Rpc ("SpaceCenter", "Orbit_PositionAt")]
-    public Tuple<double,double,double> PositionAt (double ut, ReferenceFrame referenceFrame)
+    [Rpc("SpaceCenter", "Orbit_PositionAt")]
+    public Tuple<double,double,double> PositionAt(double ut, ReferenceFrame referenceFrame)
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this,
             ut,
             referenceFrame
         };
-        return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Orbit_PositionAt", args);
+        return Connection.Invoke<Tuple<double,double,double>>("SpaceCenter", "Orbit_PositionAt", args);
     }
 
     /// <summary>
     /// The orbital radius at the given time, in meters.
     /// </summary>
     /// <param name="ut">The universal time to measure the radius at.</param>
-    [Rpc ("SpaceCenter", "Orbit_RadiusAt")]
-    public double RadiusAt (double ut)
+    [Rpc("SpaceCenter", "Orbit_RadiusAt")]
+    public double RadiusAt(double ut)
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this,
             ut
         };
-        return Connection.Invoke<double> ("SpaceCenter", "Orbit_RadiusAt", args);
+        return Connection.Invoke<double>("SpaceCenter", "Orbit_RadiusAt", args);
     }
 
     /// <summary>
     /// The orbital radius at the point in the orbit given by the true anomaly.
     /// </summary>
     /// <param name="trueAnomaly">The true anomaly.</param>
-    [Rpc ("SpaceCenter", "Orbit_RadiusAtTrueAnomaly")]
-    public double RadiusAtTrueAnomaly (double trueAnomaly)
+    [Rpc("SpaceCenter", "Orbit_RadiusAtTrueAnomaly")]
+    public double RadiusAtTrueAnomaly(double trueAnomaly)
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this,
             trueAnomaly
         };
-        return Connection.Invoke<double> ("SpaceCenter", "Orbit_RadiusAtTrueAnomaly", args);
+        return Connection.Invoke<double>("SpaceCenter", "Orbit_RadiusAtTrueAnomaly", args);
     }
 
     /// <summary>
     /// Relative inclination of this orbit and the target orbit, in radians.
     /// </summary>
     /// <param name="target">Target orbit.</param>
-    [Rpc ("SpaceCenter", "Orbit_RelativeInclination")]
-    public double RelativeInclination (Orbit target)
+    [Rpc("SpaceCenter", "Orbit_RelativeInclination")]
+    public double RelativeInclination(Orbit target)
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this,
             target
         };
-        return Connection.Invoke<double> ("SpaceCenter", "Orbit_RelativeInclination", args);
+        return Connection.Invoke<double>("SpaceCenter", "Orbit_RelativeInclination", args);
     }
 
     /// <summary>
@@ -163,84 +172,90 @@ public class Orbit : RemoteObject
     /// </summary>
     /// <returns>The universal time at closest approach, in seconds.</returns>
     /// <param name="target">Target orbit.</param>
-    [Rpc ("SpaceCenter", "Orbit_TimeOfClosestApproach")]
-    public double TimeOfClosestApproach (Orbit target)
+    [Rpc("SpaceCenter", "Orbit_TimeOfClosestApproach")]
+    public double TimeOfClosestApproach(Orbit target)
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this,
             target
         };
-        return Connection.Invoke<double> ("SpaceCenter", "Orbit_TimeOfClosestApproach", args);
+        return Connection.Invoke<double>("SpaceCenter", "Orbit_TimeOfClosestApproach", args);
     }
 
     /// <summary>
     /// The true anomaly of the ascending node with the given target orbit.
     /// </summary>
     /// <param name="target">Target orbit.</param>
-    [Rpc ("SpaceCenter", "Orbit_TrueAnomalyAtAN")]
-    public double TrueAnomalyAtAN (Orbit target)
+    [Rpc("SpaceCenter", "Orbit_TrueAnomalyAtAN")]
+    public double TrueAnomalyAtAN(Orbit target)
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this,
             target
         };
-        return Connection.Invoke<double> ("SpaceCenter", "Orbit_TrueAnomalyAtAN", args);
+        return Connection.Invoke<double>("SpaceCenter", "Orbit_TrueAnomalyAtAN", args);
     }
 
     /// <summary>
     /// The true anomaly of the descending node with the given target orbit.
     /// </summary>
     /// <param name="target">Target orbit.</param>
-    [Rpc ("SpaceCenter", "Orbit_TrueAnomalyAtDN")]
-    public double TrueAnomalyAtDN (Orbit target)
+    [Rpc("SpaceCenter", "Orbit_TrueAnomalyAtDN")]
+    public double TrueAnomalyAtDN(Orbit target)
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this,
             target
         };
-        return Connection.Invoke<double> ("SpaceCenter", "Orbit_TrueAnomalyAtDN", args);
+        return Connection.Invoke<double>("SpaceCenter", "Orbit_TrueAnomalyAtDN", args);
     }
 
     /// <summary>
     /// The true anomaly at the given orbital radius.
     /// </summary>
     /// <param name="radius">The orbital radius in meters.</param>
-    [Rpc ("SpaceCenter", "Orbit_TrueAnomalyAtRadius")]
-    public double TrueAnomalyAtRadius (double radius)
+    [Rpc("SpaceCenter", "Orbit_TrueAnomalyAtRadius")]
+    public double TrueAnomalyAtRadius(double radius)
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this,
             radius
         };
-        return Connection.Invoke<double> ("SpaceCenter", "Orbit_TrueAnomalyAtRadius", args);
+        return Connection.Invoke<double>("SpaceCenter", "Orbit_TrueAnomalyAtRadius", args);
     }
 
     /// <summary>
     /// The true anomaly at the given time.
     /// </summary>
     /// <param name="ut">The universal time in seconds.</param>
-    [Rpc ("SpaceCenter", "Orbit_TrueAnomalyAtUT")]
-    public double TrueAnomalyAtUT (double ut)
+    [Rpc("SpaceCenter", "Orbit_TrueAnomalyAtUT")]
+    public double TrueAnomalyAtUT(double ut)
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this,
             ut
         };
-        return Connection.Invoke<double> ("SpaceCenter", "Orbit_TrueAnomalyAtUT", args);
+        return Connection.Invoke<double>("SpaceCenter", "Orbit_TrueAnomalyAtUT", args);
     }
 
     /// <summary>
     /// The universal time, in seconds, corresponding to the given true anomaly.
     /// </summary>
     /// <param name="trueAnomaly">True anomaly.</param>
-    [Rpc ("SpaceCenter", "Orbit_UTAtTrueAnomaly")]
-    public double UTAtTrueAnomaly (double trueAnomaly)
+    [Rpc("SpaceCenter", "Orbit_UTAtTrueAnomaly")]
+    public double UTAtTrueAnomaly(double trueAnomaly)
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this,
             trueAnomaly
         };
-        return Connection.Invoke<double> ("SpaceCenter", "Orbit_UTAtTrueAnomaly", args);
+        return Connection.Invoke<double>("SpaceCenter", "Orbit_UTAtTrueAnomaly", args);
     }
 
     /// <summary>
@@ -251,15 +266,16 @@ public class Orbit : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// direction is in.</param>
     /// <param name="connection">A connection object.</param>
-    [Rpc ("SpaceCenter", "Orbit_static_ReferencePlaneDirection")]
-    public static Tuple<double,double,double> ReferencePlaneDirection (ConnectionMultiplexer connection, ReferenceFrame referenceFrame)
+    [Rpc("SpaceCenter", "Orbit_static_ReferencePlaneDirection")]
+    public static Tuple<double,double,double> ReferencePlaneDirection(ConnectionMultiplexer connection, ReferenceFrame referenceFrame)
     {
         if (connection == null)
-            throw new ArgumentNullException (nameof (connection));
-        var args = new object[] {
+            throw new ArgumentNullException(nameof(connection));
+        var args = new object[]
+        {
             referenceFrame
         };
-        return connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Orbit_static_ReferencePlaneDirection", args);
+        return connection.Invoke<Tuple<double,double,double>>("SpaceCenter", "Orbit_static_ReferencePlaneDirection", args);
     }
 
     /// <summary>
@@ -271,15 +287,16 @@ public class Orbit : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// direction is in.</param>
     /// <param name="connection">A connection object.</param>
-    [Rpc ("SpaceCenter", "Orbit_static_ReferencePlaneNormal")]
-    public static Tuple<double,double,double> ReferencePlaneNormal (ConnectionMultiplexer connection, ReferenceFrame referenceFrame)
+    [Rpc("SpaceCenter", "Orbit_static_ReferencePlaneNormal")]
+    public static Tuple<double,double,double> ReferencePlaneNormal(ConnectionMultiplexer connection, ReferenceFrame referenceFrame)
     {
         if (connection == null)
-            throw new ArgumentNullException (nameof (connection));
-        var args = new object[] {
+            throw new ArgumentNullException(nameof(connection));
+        var args = new object[]
+        {
             referenceFrame
         };
-        return connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "Orbit_static_ReferencePlaneNormal", args);
+        return connection.Invoke<Tuple<double,double,double>>("SpaceCenter", "Orbit_static_ReferencePlaneNormal", args);
     }
 
     /// <summary>
@@ -290,13 +307,14 @@ public class Orbit : RemoteObject
     /// For the apoapsis altitude reported on the in-game map view,
     /// use <see cref="M:SpaceCenter.Orbit.GetApoapsisAltitude" />.
     /// </remarks>
-    [Rpc ("SpaceCenter", "Orbit_get_Apoapsis")]
-    public double GetApoapsis ()
+    [Rpc("SpaceCenter", "Orbit_get_Apoapsis")]
+    public double GetApoapsis()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<double> ("SpaceCenter", "Orbit_get_Apoapsis", args);
+        return Connection.Invoke<double>("SpaceCenter", "Orbit_get_Apoapsis", args);
     }
 
     /// <summary>
@@ -305,63 +323,68 @@ public class Orbit : RemoteObject
     /// <remarks>
     /// This is equal to <see cref="M:SpaceCenter.Orbit.GetApoapsis" /> minus the equatorial radius of the body.
     /// </remarks>
-    [Rpc ("SpaceCenter", "Orbit_get_ApoapsisAltitude")]
-    public double GetApoapsisAltitude ()
+    [Rpc("SpaceCenter", "Orbit_get_ApoapsisAltitude")]
+    public double GetApoapsisAltitude()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<double> ("SpaceCenter", "Orbit_get_ApoapsisAltitude", args);
+        return Connection.Invoke<double>("SpaceCenter", "Orbit_get_ApoapsisAltitude", args);
     }
 
     /// <summary>
     /// Gets the <a href="https://en.wikipedia.org/wiki/Argument_of_periapsis">argument of
     /// periapsis</a>, in radians.
     /// </summary>
-    [Rpc ("SpaceCenter", "Orbit_get_ArgumentOfPeriapsis")]
-    public double GetArgumentOfPeriapsis ()
+    [Rpc("SpaceCenter", "Orbit_get_ArgumentOfPeriapsis")]
+    public double GetArgumentOfPeriapsis()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<double> ("SpaceCenter", "Orbit_get_ArgumentOfPeriapsis", args);
+        return Connection.Invoke<double>("SpaceCenter", "Orbit_get_ArgumentOfPeriapsis", args);
     }
 
     /// <summary>
     /// Gets the celestial body (e.g. planet or moon) around which the object is orbiting.
     /// </summary>
-    [Rpc ("SpaceCenter", "Orbit_get_Body")]
-    public CelestialBody GetBody ()
+    [Rpc("SpaceCenter", "Orbit_get_Body")]
+    public CelestialBody GetBody()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<CelestialBody> ("SpaceCenter", "Orbit_get_Body", args);
+        return Connection.Invoke<CelestialBody>("SpaceCenter", "Orbit_get_Body", args);
     }
 
     /// <summary>
     /// Gets the <a href="https://en.wikipedia.org/wiki/Eccentric_anomaly">eccentric anomaly</a>.
     /// </summary>
-    [Rpc ("SpaceCenter", "Orbit_get_EccentricAnomaly")]
-    public double GetEccentricAnomaly ()
+    [Rpc("SpaceCenter", "Orbit_get_EccentricAnomaly")]
+    public double GetEccentricAnomaly()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<double> ("SpaceCenter", "Orbit_get_EccentricAnomaly", args);
+        return Connection.Invoke<double>("SpaceCenter", "Orbit_get_EccentricAnomaly", args);
     }
 
     /// <summary>
     /// Gets the <a href="https://en.wikipedia.org/wiki/Orbital_eccentricity">eccentricity</a>
     /// of the orbit.
     /// </summary>
-    [Rpc ("SpaceCenter", "Orbit_get_Eccentricity")]
-    public double GetEccentricity ()
+    [Rpc("SpaceCenter", "Orbit_get_Eccentricity")]
+    public double GetEccentricity()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<double> ("SpaceCenter", "Orbit_get_Eccentricity", args);
+        return Connection.Invoke<double>("SpaceCenter", "Orbit_get_Eccentricity", args);
     }
 
     /// <summary>
@@ -369,13 +392,14 @@ public class Orbit : RemoteObject
     /// <a href="https://en.wikipedia.org/wiki/Mean_anomaly">mean anomaly at epoch</a>
     /// was measured, in seconds.
     /// </summary>
-    [Rpc ("SpaceCenter", "Orbit_get_Epoch")]
-    public double GetEpoch ()
+    [Rpc("SpaceCenter", "Orbit_get_Epoch")]
+    public double GetEpoch()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<double> ("SpaceCenter", "Orbit_get_Epoch", args);
+        return Connection.Invoke<double>("SpaceCenter", "Orbit_get_Epoch", args);
     }
 
     /// <summary>
@@ -383,75 +407,81 @@ public class Orbit : RemoteObject
     /// of the orbit,
     /// in radians.
     /// </summary>
-    [Rpc ("SpaceCenter", "Orbit_get_Inclination")]
-    public double GetInclination ()
+    [Rpc("SpaceCenter", "Orbit_get_Inclination")]
+    public double GetInclination()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<double> ("SpaceCenter", "Orbit_get_Inclination", args);
+        return Connection.Invoke<double>("SpaceCenter", "Orbit_get_Inclination", args);
     }
 
     /// <summary>
     /// Gets the <a href="https://en.wikipedia.org/wiki/Longitude_of_the_ascending_node">longitude of
     /// the ascending node</a>, in radians.
     /// </summary>
-    [Rpc ("SpaceCenter", "Orbit_get_LongitudeOfAscendingNode")]
-    public double GetLongitudeOfAscendingNode ()
+    [Rpc("SpaceCenter", "Orbit_get_LongitudeOfAscendingNode")]
+    public double GetLongitudeOfAscendingNode()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<double> ("SpaceCenter", "Orbit_get_LongitudeOfAscendingNode", args);
+        return Connection.Invoke<double>("SpaceCenter", "Orbit_get_LongitudeOfAscendingNode", args);
     }
 
     /// <summary>
     /// Gets the <a href="https://en.wikipedia.org/wiki/Mean_anomaly">mean anomaly</a>.
     /// </summary>
-    [Rpc ("SpaceCenter", "Orbit_get_MeanAnomaly")]
-    public double GetMeanAnomaly ()
+    [Rpc("SpaceCenter", "Orbit_get_MeanAnomaly")]
+    public double GetMeanAnomaly()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<double> ("SpaceCenter", "Orbit_get_MeanAnomaly", args);
+        return Connection.Invoke<double>("SpaceCenter", "Orbit_get_MeanAnomaly", args);
     }
 
     /// <summary>
     /// Gets the <a href="https://en.wikipedia.org/wiki/Mean_anomaly">mean anomaly at epoch</a>.
     /// </summary>
-    [Rpc ("SpaceCenter", "Orbit_get_MeanAnomalyAtEpoch")]
-    public double GetMeanAnomalyAtEpoch ()
+    [Rpc("SpaceCenter", "Orbit_get_MeanAnomalyAtEpoch")]
+    public double GetMeanAnomalyAtEpoch()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<double> ("SpaceCenter", "Orbit_get_MeanAnomalyAtEpoch", args);
+        return Connection.Invoke<double>("SpaceCenter", "Orbit_get_MeanAnomalyAtEpoch", args);
     }
 
     /// <summary>
     /// If the object is going to change sphere of influence in the future, returns the new
     /// orbit after the change. Otherwise returns <c>null</c>.
     /// </summary>
-    [Rpc ("SpaceCenter", "Orbit_get_NextOrbit")]
-    public Orbit GetNextOrbit ()
+    [Rpc("SpaceCenter", "Orbit_get_NextOrbit")]
+    public Orbit GetNextOrbit()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<Orbit> ("SpaceCenter", "Orbit_get_NextOrbit", args);
+        return Connection.Invoke<Orbit>("SpaceCenter", "Orbit_get_NextOrbit", args);
     }
 
     /// <summary>
     /// Gets the current orbital speed in meters per second.
     /// </summary>
-    [Rpc ("SpaceCenter", "Orbit_get_OrbitalSpeed")]
-    public double GetOrbitalSpeed ()
+    [Rpc("SpaceCenter", "Orbit_get_OrbitalSpeed")]
+    public double GetOrbitalSpeed()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<double> ("SpaceCenter", "Orbit_get_OrbitalSpeed", args);
+        return Connection.Invoke<double>("SpaceCenter", "Orbit_get_OrbitalSpeed", args);
     }
 
     /// <summary>
@@ -462,13 +492,14 @@ public class Orbit : RemoteObject
     /// For the periapsis altitude reported on the in-game map view,
     /// use <see cref="M:SpaceCenter.Orbit.GetPeriapsisAltitude" />.
     /// </remarks>
-    [Rpc ("SpaceCenter", "Orbit_get_Periapsis")]
-    public double GetPeriapsis ()
+    [Rpc("SpaceCenter", "Orbit_get_Periapsis")]
+    public double GetPeriapsis()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<double> ("SpaceCenter", "Orbit_get_Periapsis", args);
+        return Connection.Invoke<double>("SpaceCenter", "Orbit_get_Periapsis", args);
     }
 
     /// <summary>
@@ -477,25 +508,27 @@ public class Orbit : RemoteObject
     /// <remarks>
     /// This is equal to <see cref="M:SpaceCenter.Orbit.GetPeriapsis" /> minus the equatorial radius of the body.
     /// </remarks>
-    [Rpc ("SpaceCenter", "Orbit_get_PeriapsisAltitude")]
-    public double GetPeriapsisAltitude ()
+    [Rpc("SpaceCenter", "Orbit_get_PeriapsisAltitude")]
+    public double GetPeriapsisAltitude()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<double> ("SpaceCenter", "Orbit_get_PeriapsisAltitude", args);
+        return Connection.Invoke<double>("SpaceCenter", "Orbit_get_PeriapsisAltitude", args);
     }
 
     /// <summary>
     /// Gets the orbital period, in seconds.
     /// </summary>
-    [Rpc ("SpaceCenter", "Orbit_get_Period")]
-    public double GetPeriod ()
+    [Rpc("SpaceCenter", "Orbit_get_Period")]
+    public double GetPeriod()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<double> ("SpaceCenter", "Orbit_get_Period", args);
+        return Connection.Invoke<double>("SpaceCenter", "Orbit_get_Period", args);
     }
 
     /// <summary>
@@ -506,37 +539,40 @@ public class Orbit : RemoteObject
     /// <remarks>
     /// This value will change over time if the orbit is elliptical.
     /// </remarks>
-    [Rpc ("SpaceCenter", "Orbit_get_Radius")]
-    public double GetRadius ()
+    [Rpc("SpaceCenter", "Orbit_get_Radius")]
+    public double GetRadius()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<double> ("SpaceCenter", "Orbit_get_Radius", args);
+        return Connection.Invoke<double>("SpaceCenter", "Orbit_get_Radius", args);
     }
 
     /// <summary>
     /// Gets the semi-major axis of the orbit, in meters.
     /// </summary>
-    [Rpc ("SpaceCenter", "Orbit_get_SemiMajorAxis")]
-    public double GetSemiMajorAxis ()
+    [Rpc("SpaceCenter", "Orbit_get_SemiMajorAxis")]
+    public double GetSemiMajorAxis()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<double> ("SpaceCenter", "Orbit_get_SemiMajorAxis", args);
+        return Connection.Invoke<double>("SpaceCenter", "Orbit_get_SemiMajorAxis", args);
     }
 
     /// <summary>
     /// Gets the semi-minor axis of the orbit, in meters.
     /// </summary>
-    [Rpc ("SpaceCenter", "Orbit_get_SemiMinorAxis")]
-    public double GetSemiMinorAxis ()
+    [Rpc("SpaceCenter", "Orbit_get_SemiMinorAxis")]
+    public double GetSemiMinorAxis()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<double> ("SpaceCenter", "Orbit_get_SemiMinorAxis", args);
+        return Connection.Invoke<double>("SpaceCenter", "Orbit_get_SemiMinorAxis", args);
     }
 
     /// <summary>
@@ -545,61 +581,66 @@ public class Orbit : RemoteObject
     /// <remarks>
     /// This value will change over time if the orbit is elliptical.
     /// </remarks>
-    [Rpc ("SpaceCenter", "Orbit_get_Speed")]
-    public double GetSpeed ()
+    [Rpc("SpaceCenter", "Orbit_get_Speed")]
+    public double GetSpeed()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<double> ("SpaceCenter", "Orbit_get_Speed", args);
+        return Connection.Invoke<double>("SpaceCenter", "Orbit_get_Speed", args);
     }
 
     /// <summary>
     /// Gets the time until the object reaches apoapsis, in seconds.
     /// </summary>
-    [Rpc ("SpaceCenter", "Orbit_get_TimeToApoapsis")]
-    public double GetTimeToApoapsis ()
+    [Rpc("SpaceCenter", "Orbit_get_TimeToApoapsis")]
+    public double GetTimeToApoapsis()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<double> ("SpaceCenter", "Orbit_get_TimeToApoapsis", args);
+        return Connection.Invoke<double>("SpaceCenter", "Orbit_get_TimeToApoapsis", args);
     }
 
     /// <summary>
     /// Gets the time until the object reaches periapsis, in seconds.
     /// </summary>
-    [Rpc ("SpaceCenter", "Orbit_get_TimeToPeriapsis")]
-    public double GetTimeToPeriapsis ()
+    [Rpc("SpaceCenter", "Orbit_get_TimeToPeriapsis")]
+    public double GetTimeToPeriapsis()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<double> ("SpaceCenter", "Orbit_get_TimeToPeriapsis", args);
+        return Connection.Invoke<double>("SpaceCenter", "Orbit_get_TimeToPeriapsis", args);
     }
 
     /// <summary>
     /// Gets the time until the object changes sphere of influence, in seconds. Returns <c>NaN</c>
     /// if the object is not going to change sphere of influence.
     /// </summary>
-    [Rpc ("SpaceCenter", "Orbit_get_TimeToSOIChange")]
-    public double GetTimeToSOIChange ()
+    [Rpc("SpaceCenter", "Orbit_get_TimeToSOIChange")]
+    public double GetTimeToSOIChange()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<double> ("SpaceCenter", "Orbit_get_TimeToSOIChange", args);
+        return Connection.Invoke<double>("SpaceCenter", "Orbit_get_TimeToSOIChange", args);
     }
 
     /// <summary>
     /// Gets the <a href="https://en.wikipedia.org/wiki/True_anomaly">true anomaly</a>.
     /// </summary>
-    [Rpc ("SpaceCenter", "Orbit_get_TrueAnomaly")]
-    public double GetTrueAnomaly ()
+    [Rpc("SpaceCenter", "Orbit_get_TrueAnomaly")]
+    public double GetTrueAnomaly()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<double> ("SpaceCenter", "Orbit_get_TrueAnomaly", args);
+        return Connection.Invoke<double>("SpaceCenter", "Orbit_get_TrueAnomaly", args);
     }
 }

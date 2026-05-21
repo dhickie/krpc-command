@@ -13,7 +13,7 @@ public class ResourceTransfer : RemoteObject
     /// <summary>
     /// Construct an instance of this remote object. Should not be called directly. This interface is intended for internal decoding.
     /// </summary>
-    public ResourceTransfer (ConnectionMultiplexer connection, ulong id) : base (connection, id)
+    public ResourceTransfer(ConnectionMultiplexer connection, ulong id) : base(connection, id)
     {
     }
 
@@ -30,41 +30,44 @@ public class ResourceTransfer : RemoteObject
     /// <param name="resource">The name of the resource to transfer.</param>
     /// <param name="maxAmount">The maximum amount of resource to transfer.</param>
     /// <param name="connection">A connection object.</param>
-    [Rpc ("SpaceCenter", "ResourceTransfer_static_Start")]
-    public static ResourceTransfer Start (ConnectionMultiplexer connection, Part fromPart, Part toPart, string resource, float maxAmount)
+    [Rpc("SpaceCenter", "ResourceTransfer_static_Start")]
+    public static ResourceTransfer Start(ConnectionMultiplexer connection, Part fromPart, Part toPart, string resource, float maxAmount)
     {
         if (connection == null)
-            throw new ArgumentNullException (nameof (connection));
-        var args = new object[] {
+            throw new ArgumentNullException(nameof(connection));
+        var args = new object[]
+        {
             fromPart,
             toPart,
             resource,
             maxAmount
         };
-        return connection.Invoke<ResourceTransfer> ("SpaceCenter", "ResourceTransfer_static_Start", args);
+        return connection.Invoke<ResourceTransfer>("SpaceCenter", "ResourceTransfer_static_Start", args);
     }
 
     /// <summary>
     /// Gets the amount of the resource that has been transferred.
     /// </summary>
-    [Rpc ("SpaceCenter", "ResourceTransfer_get_Amount")]
-    public float GetAmount ()
+    [Rpc("SpaceCenter", "ResourceTransfer_get_Amount")]
+    public float GetAmount()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<float> ("SpaceCenter", "ResourceTransfer_get_Amount", args);
+        return Connection.Invoke<float>("SpaceCenter", "ResourceTransfer_get_Amount", args);
     }
 
     /// <summary>
     /// Gets whether the transfer has completed.
     /// </summary>
-    [Rpc ("SpaceCenter", "ResourceTransfer_get_Complete")]
-    public bool GetComplete ()
+    [Rpc("SpaceCenter", "ResourceTransfer_get_Complete")]
+    public bool GetComplete()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<bool> ("SpaceCenter", "ResourceTransfer_get_Complete", args);
+        return Connection.Invoke<bool>("SpaceCenter", "ResourceTransfer_get_Complete", args);
     }
 }

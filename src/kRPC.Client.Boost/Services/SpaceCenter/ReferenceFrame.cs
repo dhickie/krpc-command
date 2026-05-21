@@ -19,7 +19,7 @@ public class ReferenceFrame : RemoteObject
     /// <summary>
     /// Construct an instance of this remote object. Should not be called directly. This interface is intended for internal decoding.
     /// </summary>
-    public ReferenceFrame (ConnectionMultiplexer connection, ulong id) : base (connection, id)
+    public ReferenceFrame(ConnectionMultiplexer connection, ulong id) : base(connection, id)
     {
     }
 
@@ -39,18 +39,19 @@ public class ReferenceFrame : RemoteObject
     /// <paramref name="position" /> reference frame.
     /// </remarks>
     /// <param name="connection">A connection object.</param>
-    [Rpc ("SpaceCenter", "ReferenceFrame_static_CreateHybrid")]
-    public static ReferenceFrame CreateHybrid (ConnectionMultiplexer connection, ReferenceFrame position, ReferenceFrame rotation = null, ReferenceFrame velocity = null, ReferenceFrame angularVelocity = null)
+    [Rpc("SpaceCenter", "ReferenceFrame_static_CreateHybrid")]
+    public static ReferenceFrame CreateHybrid(ConnectionMultiplexer connection, ReferenceFrame position, ReferenceFrame rotation = null, ReferenceFrame velocity = null, ReferenceFrame angularVelocity = null)
     {
         if (connection == null)
-            throw new ArgumentNullException (nameof (connection));
-        var args = new object[] {
+            throw new ArgumentNullException(nameof(connection));
+        var args = new object[]
+        {
             position,
             rotation,
             velocity,
             angularVelocity
         };
-        return connection.Invoke<ReferenceFrame> ("SpaceCenter", "ReferenceFrame_static_CreateHybrid", args);
+        return connection.Invoke<ReferenceFrame>("SpaceCenter", "ReferenceFrame_static_CreateHybrid", args);
     }
 
     /// <summary>
@@ -72,18 +73,19 @@ public class ReferenceFrame : RemoteObject
     /// and its magnitude is the speed of the rotation in radians per second.
     /// Defaults to <math>(0, 0, 0)</math>.</param>
     /// <param name="connection">A connection object.</param>
-    [Rpc ("SpaceCenter", "ReferenceFrame_static_CreateRelative")]
-    public static ReferenceFrame CreateRelative (ConnectionMultiplexer connection, ReferenceFrame referenceFrame, Tuple<double,double,double> position = null, Tuple<double,double,double,double> rotation = null, Tuple<double,double,double> velocity = null, Tuple<double,double,double> angularVelocity = null)
+    [Rpc("SpaceCenter", "ReferenceFrame_static_CreateRelative")]
+    public static ReferenceFrame CreateRelative(ConnectionMultiplexer connection, ReferenceFrame referenceFrame, Tuple<double,double,double> position = null, Tuple<double,double,double,double> rotation = null, Tuple<double,double,double> velocity = null, Tuple<double,double,double> angularVelocity = null)
     {
         if (connection == null)
-            throw new ArgumentNullException (nameof (connection));
-        var args = new object[] {
+            throw new ArgumentNullException(nameof(connection));
+        var args = new object[]
+        {
             referenceFrame,
-            position ?? new Tuple<double,double,double> (0.0, 0.0, 0.0),
-            rotation ?? new Tuple<double,double,double,double> (0.0, 0.0, 0.0, 1.0),
-            velocity ?? new Tuple<double,double,double> (0.0, 0.0, 0.0),
-            angularVelocity ?? new Tuple<double,double,double> (0.0, 0.0, 0.0)
+            position ?? new Tuple<double,double,double>(0.0, 0.0, 0.0),
+            rotation ?? new Tuple<double,double,double,double>(0.0, 0.0, 0.0, 1.0),
+            velocity ?? new Tuple<double,double,double>(0.0, 0.0, 0.0),
+            angularVelocity ?? new Tuple<double,double,double>(0.0, 0.0, 0.0)
         };
-        return connection.Invoke<ReferenceFrame> ("SpaceCenter", "ReferenceFrame_static_CreateRelative", args);
+        return connection.Invoke<ReferenceFrame>("SpaceCenter", "ReferenceFrame_static_CreateRelative", args);
     }
 }

@@ -13,7 +13,7 @@ public class SpaceCenterService
 {
     private readonly ConnectionMultiplexer _connection;
 
-    internal SpaceCenterService (ConnectionMultiplexer serverConnection)
+    internal SpaceCenterService(ConnectionMultiplexer serverConnection)
     {
         _connection = serverConnection;
     }
@@ -26,31 +26,32 @@ public class SpaceCenterService
     /// for details.
     /// </summary>
     /// <param name="factor">The warp factor to check.</param>
-    [RpcAttribute ("SpaceCenter", "CanRailsWarpAt")]
-    public bool CanRailsWarpAt (int factor = 1)
+    [RpcAttribute("SpaceCenter", "CanRailsWarpAt")]
+    public bool CanRailsWarpAt(int factor = 1)
     {
-        var _args = new object[] {
+        var _args = new object[]
+        {
             factor
         };
-        return _connection.Invoke<bool> ("SpaceCenter", "CanRailsWarpAt", _args);
+        return _connection.Invoke<bool>("SpaceCenter", "CanRailsWarpAt", _args);
     }
 
     /// <summary>
     /// Whether the current flight can be reverted to launch.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "CanRevertToLaunch")]
-    public bool CanRevertToLaunch ()
+    [RpcAttribute("SpaceCenter", "CanRevertToLaunch")]
+    public bool CanRevertToLaunch()
     {
-        return _connection.Invoke<bool> ("SpaceCenter", "CanRevertToLaunch");
+        return _connection.Invoke<bool>("SpaceCenter", "CanRevertToLaunch");
     }
 
     /// <summary>
     /// Clears the current target.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "ClearTarget")]
-    public void ClearTarget ()
+    [RpcAttribute("SpaceCenter", "ClearTarget")]
+    public void ClearTarget()
     {
-        _connection.Invoke ("SpaceCenter", "ClearTarget");
+        _connection.Invoke("SpaceCenter", "ClearTarget");
     }
 
     /// <summary>
@@ -59,15 +60,16 @@ public class SpaceCenterService
     /// <param name="name"></param>
     /// <param name="job"></param>
     /// <param name="male"></param>
-    [RpcAttribute ("SpaceCenter", "CreateKerbal")]
-    public void CreateKerbal (string name, string job, bool male)
+    [RpcAttribute("SpaceCenter", "CreateKerbal")]
+    public void CreateKerbal(string name, string job, bool male)
     {
-        var _args = new object[] {
+        var _args = new object[]
+        {
             name,
             job,
             male
         };
-        _connection.Invoke ("SpaceCenter", "CreateKerbal", _args);
+        _connection.Invoke("SpaceCenter", "CreateKerbal", _args);
     }
 
     /// <summary>
@@ -75,13 +77,14 @@ public class SpaceCenterService
     /// </summary>
     /// <param name="name"></param>
     /// <returns><c>null</c> if no Kerbal with the given name exists.</returns>
-    [RpcAttribute ("SpaceCenter", "GetKerbal")]
-    public CrewMember GetKerbal (string name)
+    [RpcAttribute("SpaceCenter", "GetKerbal")]
+    public CrewMember GetKerbal(string name)
     {
-        var _args = new object[] {
+        var _args = new object[]
+        {
             name
         };
-        return _connection.Invoke<CrewMember> ("SpaceCenter", "GetKerbal", _args);
+        return _connection.Invoke<CrewMember>("SpaceCenter", "GetKerbal", _args);
     }
 
     /// <summary>
@@ -101,10 +104,11 @@ public class SpaceCenterService
     /// <remarks>
     /// Throws an exception if any of the games pre-flight checks fail.
     /// </remarks>
-    [RpcAttribute ("SpaceCenter", "LaunchVessel")]
-    public void LaunchVessel (string craftDirectory, string name, string launchSite, bool recover = true, IList<string> crew = null, string flagUrl = "")
+    [RpcAttribute("SpaceCenter", "LaunchVessel")]
+    public void LaunchVessel(string craftDirectory, string name, string launchSite, bool recover = true, IList<string> crew = null, string flagUrl = "")
     {
-        var _args = new object[] {
+        var _args = new object[]
+        {
             craftDirectory,
             name,
             launchSite,
@@ -112,7 +116,7 @@ public class SpaceCenterService
             crew ?? null,
             flagUrl
         };
-        _connection.Invoke ("SpaceCenter", "LaunchVessel", _args);
+        _connection.Invoke("SpaceCenter", "LaunchVessel", _args);
     }
 
     /// <summary>
@@ -126,14 +130,15 @@ public class SpaceCenterService
     /// set to "SPH" and the launch site set to "Runway".
     /// Throws an exception if any of the games pre-flight checks fail.
     /// </remarks>
-    [RpcAttribute ("SpaceCenter", "LaunchVesselFromSPH")]
-    public void LaunchVesselFromSPH (string name, bool recover = true)
+    [RpcAttribute("SpaceCenter", "LaunchVesselFromSPH")]
+    public void LaunchVesselFromSPH(string name, bool recover = true)
     {
-        var _args = new object[] {
+        var _args = new object[]
+        {
             name,
             recover
         };
-        _connection.Invoke ("SpaceCenter", "LaunchVesselFromSPH", _args);
+        _connection.Invoke("SpaceCenter", "LaunchVesselFromSPH", _args);
     }
 
     /// <summary>
@@ -147,14 +152,15 @@ public class SpaceCenterService
     /// set to "VAB" and the launch site set to "LaunchPad".
     /// Throws an exception if any of the games pre-flight checks fail.
     /// </remarks>
-    [RpcAttribute ("SpaceCenter", "LaunchVesselFromVAB")]
-    public void LaunchVesselFromVAB (string name, bool recover = true)
+    [RpcAttribute("SpaceCenter", "LaunchVesselFromVAB")]
+    public void LaunchVesselFromVAB(string name, bool recover = true)
     {
-        var _args = new object[] {
+        var _args = new object[]
+        {
             name,
             recover
         };
-        _connection.Invoke ("SpaceCenter", "LaunchVesselFromVAB", _args);
+        _connection.Invoke("SpaceCenter", "LaunchVesselFromVAB", _args);
     }
 
     /// <summary>
@@ -163,13 +169,14 @@ public class SpaceCenterService
     /// </summary>
     /// <param name="craftDirectory">Name of the directory in the current saves
     /// "Ships" directory. For example <c>"VAB"</c> or <c>"SPH"</c>.</param>
-    [RpcAttribute ("SpaceCenter", "LaunchableVessels")]
-    public IList<string> LaunchableVessels (string craftDirectory)
+    [RpcAttribute("SpaceCenter", "LaunchableVessels")]
+    public IList<string> LaunchableVessels(string craftDirectory)
     {
-        var _args = new object[] {
+        var _args = new object[]
+        {
             craftDirectory
         };
-        return _connection.Invoke<IList<string>> ("SpaceCenter", "LaunchableVessels", _args);
+        return _connection.Invoke<IList<string>>("SpaceCenter", "LaunchableVessels", _args);
     }
 
     /// <summary>
@@ -178,22 +185,23 @@ public class SpaceCenterService
     /// current save game.
     /// </summary>
     /// <param name="name">Name of the save.</param>
-    [RpcAttribute ("SpaceCenter", "Load")]
-    public void Load (string name)
+    [RpcAttribute("SpaceCenter", "Load")]
+    public void Load(string name)
     {
-        var _args = new object[] {
+        var _args = new object[]
+        {
             name
         };
-        _connection.Invoke ("SpaceCenter", "Load", _args);
+        _connection.Invoke("SpaceCenter", "Load", _args);
     }
 
     /// <summary>
     /// Switch to the space center view.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "LoadSpaceCenter")]
-    public void LoadSpaceCenter ()
+    [RpcAttribute("SpaceCenter", "LoadSpaceCenter")]
+    public void LoadSpaceCenter()
     {
-        _connection.Invoke ("SpaceCenter", "LoadSpaceCenter");
+        _connection.Invoke("SpaceCenter", "LoadSpaceCenter");
     }
 
     /// <summary>
@@ -202,10 +210,10 @@ public class SpaceCenterService
     /// <remarks>
     /// This is the same as calling <see cref="M:SpaceCenter.Load" /> with the name "quicksave".
     /// </remarks>
-    [RpcAttribute ("SpaceCenter", "Quickload")]
-    public void Quickload ()
+    [RpcAttribute("SpaceCenter", "Quickload")]
+    public void Quickload()
     {
-        _connection.Invoke ("SpaceCenter", "Quickload");
+        _connection.Invoke("SpaceCenter", "Quickload");
     }
 
     /// <summary>
@@ -214,10 +222,10 @@ public class SpaceCenterService
     /// <remarks>
     /// This is the same as calling <see cref="M:SpaceCenter.Save" /> with the name "quicksave".
     /// </remarks>
-    [RpcAttribute ("SpaceCenter", "Quicksave")]
-    public void Quicksave ()
+    [RpcAttribute("SpaceCenter", "Quicksave")]
+    public void Quicksave()
     {
-        _connection.Invoke ("SpaceCenter", "Quicksave");
+        _connection.Invoke("SpaceCenter", "Quicksave");
     }
 
     /// <summary>
@@ -228,15 +236,16 @@ public class SpaceCenterService
     /// <param name="direction">Direction of the ray, as a unit vector.</param>
     /// <param name="referenceFrame">The reference frame that the position and direction are in.</param>
     /// <returns>The distance to the hit, in meters, or infinity if there was no hit.</returns>
-    [RpcAttribute ("SpaceCenter", "RaycastDistance")]
-    public double RaycastDistance (Tuple<double,double,double> position, Tuple<double,double,double> direction, ReferenceFrame referenceFrame)
+    [RpcAttribute("SpaceCenter", "RaycastDistance")]
+    public double RaycastDistance(Tuple<double,double,double> position, Tuple<double,double,double> direction, ReferenceFrame referenceFrame)
     {
-        var _args = new object[] {
+        var _args = new object[]
+        {
             position,
             direction,
             referenceFrame
         };
-        return _connection.Invoke<double> ("SpaceCenter", "RaycastDistance", _args);
+        return _connection.Invoke<double>("SpaceCenter", "RaycastDistance", _args);
     }
 
     /// <summary>
@@ -247,24 +256,25 @@ public class SpaceCenterService
     /// <param name="direction">Direction of the ray, as a unit vector.</param>
     /// <param name="referenceFrame">The reference frame that the position and direction are in.</param>
     /// <returns>The part that was hit or <c>null</c> if there was no hit.</returns>
-    [RpcAttribute ("SpaceCenter", "RaycastPart")]
-    public Part RaycastPart (Tuple<double,double,double> position, Tuple<double,double,double> direction, ReferenceFrame referenceFrame)
+    [RpcAttribute("SpaceCenter", "RaycastPart")]
+    public Part RaycastPart(Tuple<double,double,double> position, Tuple<double,double,double> direction, ReferenceFrame referenceFrame)
     {
-        var _args = new object[] {
+        var _args = new object[]
+        {
             position,
             direction,
             referenceFrame
         };
-        return _connection.Invoke<Part> ("SpaceCenter", "RaycastPart", _args);
+        return _connection.Invoke<Part>("SpaceCenter", "RaycastPart", _args);
     }
 
     /// <summary>
     /// Revert the current flight to launch.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "RevertToLaunch")]
-    public void RevertToLaunch ()
+    [RpcAttribute("SpaceCenter", "RevertToLaunch")]
+    public void RevertToLaunch()
     {
-        _connection.Invoke ("SpaceCenter", "RevertToLaunch");
+        _connection.Invoke("SpaceCenter", "RevertToLaunch");
     }
 
     /// <summary>
@@ -273,13 +283,14 @@ public class SpaceCenterService
     /// current save game.
     /// </summary>
     /// <param name="name">Name of the save.</param>
-    [RpcAttribute ("SpaceCenter", "Save")]
-    public void Save (string name)
+    [RpcAttribute("SpaceCenter", "Save")]
+    public void Save(string name)
     {
-        var _args = new object[] {
+        var _args = new object[]
+        {
             name
         };
-        _connection.Invoke ("SpaceCenter", "Save", _args);
+        _connection.Invoke("SpaceCenter", "Save", _args);
     }
 
     /// <summary>
@@ -287,14 +298,15 @@ public class SpaceCenterService
     /// </summary>
     /// <param name="filePath">The path of the file to save.</param>
     /// <param name="scale">Resolution scaling factor</param>
-    [RpcAttribute ("SpaceCenter", "Screenshot")]
-    public void Screenshot (string filePath, int scale = 1)
+    [RpcAttribute("SpaceCenter", "Screenshot")]
+    public void Screenshot(string filePath, int scale = 1)
     {
-        var _args = new object[] {
+        var _args = new object[]
+        {
             filePath,
             scale
         };
-        _connection.Invoke ("SpaceCenter", "Screenshot", _args);
+        _connection.Invoke("SpaceCenter", "Screenshot", _args);
     }
 
     /// <summary>
@@ -302,14 +314,15 @@ public class SpaceCenterService
     /// </summary>
     /// <param name="crewMember">The crew member to transfer.</param>
     /// <param name="targetPart">The part to move them to.</param>
-    [RpcAttribute ("SpaceCenter", "TransferCrew")]
-    public void TransferCrew (CrewMember crewMember, Part targetPart)
+    [RpcAttribute("SpaceCenter", "TransferCrew")]
+    public void TransferCrew(CrewMember crewMember, Part targetPart)
     {
-        var _args = new object[] {
+        var _args = new object[]
+        {
             crewMember,
             targetPart
         };
-        _connection.Invoke ("SpaceCenter", "TransferCrew", _args);
+        _connection.Invoke("SpaceCenter", "TransferCrew", _args);
     }
 
     /// <summary>
@@ -321,15 +334,16 @@ public class SpaceCenterService
     /// <param name="to">The reference frame to covert the direction to.</param>
     /// <returns>The corresponding direction, as a vector, in reference frame
     /// <paramref name="to" />.</returns>
-    [RpcAttribute ("SpaceCenter", "TransformDirection")]
-    public Tuple<double,double,double> TransformDirection (Tuple<double,double,double> direction, ReferenceFrame from, ReferenceFrame to)
+    [RpcAttribute("SpaceCenter", "TransformDirection")]
+    public Tuple<double,double,double> TransformDirection(Tuple<double,double,double> direction, ReferenceFrame from, ReferenceFrame to)
     {
-        var _args = new object[] {
+        var _args = new object[]
+        {
             direction,
             from,
             to
         };
-        return _connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "TransformDirection", _args);
+        return _connection.Invoke<Tuple<double,double,double>>("SpaceCenter", "TransformDirection", _args);
     }
 
     /// <summary>
@@ -341,15 +355,16 @@ public class SpaceCenterService
     /// <param name="to">The reference frame to covert the position to.</param>
     /// <returns>The corresponding position, as a vector, in reference frame
     /// <paramref name="to" />.</returns>
-    [RpcAttribute ("SpaceCenter", "TransformPosition")]
-    public Tuple<double,double,double> TransformPosition (Tuple<double,double,double> position, ReferenceFrame from, ReferenceFrame to)
+    [RpcAttribute("SpaceCenter", "TransformPosition")]
+    public Tuple<double,double,double> TransformPosition(Tuple<double,double,double> position, ReferenceFrame from, ReferenceFrame to)
     {
-        var _args = new object[] {
+        var _args = new object[]
+        {
             position,
             from,
             to
         };
-        return _connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "TransformPosition", _args);
+        return _connection.Invoke<Tuple<double,double,double>>("SpaceCenter", "TransformPosition", _args);
     }
 
     /// <summary>
@@ -361,15 +376,16 @@ public class SpaceCenterService
     /// <param name="to">The reference frame to covert the rotation to.</param>
     /// <returns>The corresponding rotation, as a quaternion of the form
     /// <math>(x, y, z, w)</math>, in reference frame <paramref name="to" />.</returns>
-    [RpcAttribute ("SpaceCenter", "TransformRotation")]
-    public Tuple<double,double,double,double> TransformRotation (Tuple<double,double,double,double> rotation, ReferenceFrame from, ReferenceFrame to)
+    [RpcAttribute("SpaceCenter", "TransformRotation")]
+    public Tuple<double,double,double,double> TransformRotation(Tuple<double,double,double,double> rotation, ReferenceFrame from, ReferenceFrame to)
     {
-        var _args = new object[] {
+        var _args = new object[]
+        {
             rotation,
             from,
             to
         };
-        return _connection.Invoke<Tuple<double,double,double,double>> ("SpaceCenter", "TransformRotation", _args);
+        return _connection.Invoke<Tuple<double,double,double,double>>("SpaceCenter", "TransformRotation", _args);
     }
 
     /// <summary>
@@ -386,16 +402,17 @@ public class SpaceCenterService
     /// <param name="to">The reference frame to covert the velocity to.</param>
     /// <returns>The corresponding velocity, as a vector, in reference frame
     /// <paramref name="to" />.</returns>
-    [RpcAttribute ("SpaceCenter", "TransformVelocity")]
-    public Tuple<double,double,double> TransformVelocity (Tuple<double,double,double> position, Tuple<double,double,double> velocity, ReferenceFrame from, ReferenceFrame to)
+    [RpcAttribute("SpaceCenter", "TransformVelocity")]
+    public Tuple<double,double,double> TransformVelocity(Tuple<double,double,double> position, Tuple<double,double,double> velocity, ReferenceFrame from, ReferenceFrame to)
     {
-        var _args = new object[] {
+        var _args = new object[]
+        {
             position,
             velocity,
             from,
             to
         };
-        return _connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "TransformVelocity", _args);
+        return _connection.Invoke<Tuple<double,double,double>>("SpaceCenter", "TransformVelocity", _args);
     }
 
     /// <summary>
@@ -412,140 +429,143 @@ public class SpaceCenterService
     /// </param>
     /// <param name="maxPhysicsRate">The maximum warp rate in physical time warp.</param>
     /// <returns>When the time warp is complete.</returns>
-    [RpcAttribute ("SpaceCenter", "WarpTo")]
-    public void WarpTo (double ut, float maxRailsRate = 100000.0f, float maxPhysicsRate = 2.0f)
+    [RpcAttribute("SpaceCenter", "WarpTo")]
+    public void WarpTo(double ut, float maxRailsRate = 100000.0f, float maxPhysicsRate = 2.0f)
     {
-        var _args = new object[] {
+        var _args = new object[]
+        {
             ut,
             maxRailsRate,
             maxPhysicsRate
         };
-        _connection.Invoke ("SpaceCenter", "WarpTo", _args);
+        _connection.Invoke("SpaceCenter", "WarpTo", _args);
     }
 
     /// <summary>
     /// Gets the currently active vessel.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "get_ActiveVessel")]
-    public Vessel GetActiveVessel ()
+    [RpcAttribute("SpaceCenter", "get_ActiveVessel")]
+    public Vessel GetActiveVessel()
     {
-        return _connection.Invoke<Vessel> ("SpaceCenter", "get_ActiveVessel");
+        return _connection.Invoke<Vessel>("SpaceCenter", "get_ActiveVessel");
     }
 
     /// <summary>
     /// Sets the currently active vessel.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    public void SetActiveVessel (Vessel value)
+    public void SetActiveVessel(Vessel value)
     {
-        var _args = new object[] {
+        var _args = new object[]
+        {
             value
         };
-        _connection.Invoke ("SpaceCenter", "set_ActiveVessel", _args);
+        _connection.Invoke("SpaceCenter", "set_ActiveVessel", _args);
     }
 
     /// <summary>
     /// Gets the alarm manager.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "get_AlarmManager")]
-    public AlarmManager GetAlarmManager ()
+    [RpcAttribute("SpaceCenter", "get_AlarmManager")]
+    public AlarmManager GetAlarmManager()
     {
-        return _connection.Invoke<AlarmManager> ("SpaceCenter", "get_AlarmManager");
+        return _connection.Invoke<AlarmManager>("SpaceCenter", "get_AlarmManager");
     }
 
     /// <summary>
     /// Gets a dictionary of all celestial bodies (planets, moons, etc.) in the game,
     /// keyed by the name of the body.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "get_Bodies")]
-    public IDictionary<string,CelestialBody> GetBodies ()
+    [RpcAttribute("SpaceCenter", "get_Bodies")]
+    public IDictionary<string,CelestialBody> GetBodies()
     {
-        return _connection.Invoke<IDictionary<string,CelestialBody>> ("SpaceCenter", "get_Bodies");
+        return _connection.Invoke<IDictionary<string,CelestialBody>>("SpaceCenter", "get_Bodies");
     }
 
     /// <summary>
     /// Gets an object that can be used to control the camera.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "get_Camera")]
-    public Camera GetCamera ()
+    [RpcAttribute("SpaceCenter", "get_Camera")]
+    public Camera GetCamera()
     {
-        return _connection.Invoke<Camera> ("SpaceCenter", "get_Camera");
+        return _connection.Invoke<Camera>("SpaceCenter", "get_Camera");
     }
 
     /// <summary>
     /// Gets the contract manager.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "get_ContractManager")]
-    public ContractManager GetContractManager ()
+    [RpcAttribute("SpaceCenter", "get_ContractManager")]
+    public ContractManager GetContractManager()
     {
-        return _connection.Invoke<ContractManager> ("SpaceCenter", "get_ContractManager");
+        return _connection.Invoke<ContractManager>("SpaceCenter", "get_ContractManager");
     }
 
     /// <summary>
     /// Gets whether <a href="https://forum.kerbalspaceprogram.com/index.php?/topic/19321-130-ferram-aerospace-research-v0159-liebe-82117/">Ferram Aerospace Research</a> is installed.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "get_FARAvailable")]
-    public bool GetFARAvailable ()
+    [RpcAttribute("SpaceCenter", "get_FARAvailable")]
+    public bool GetFARAvailable()
     {
-        return _connection.Invoke<bool> ("SpaceCenter", "get_FARAvailable");
+        return _connection.Invoke<bool>("SpaceCenter", "get_FARAvailable");
     }
 
     /// <summary>
     /// Gets the current amount of funds.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "get_Funds")]
-    public double GetFunds ()
+    [RpcAttribute("SpaceCenter", "get_Funds")]
+    public double GetFunds()
     {
-        return _connection.Invoke<double> ("SpaceCenter", "get_Funds");
+        return _connection.Invoke<double>("SpaceCenter", "get_Funds");
     }
 
     /// <summary>
     /// Gets the value of the <a href="https://en.wikipedia.org/wiki/Gravitational_constant">
     /// gravitational constant</a> G in <math>N(m/kg)^2</math>.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "get_G")]
-    public double GetG ()
+    [RpcAttribute("SpaceCenter", "get_G")]
+    public double GetG()
     {
-        return _connection.Invoke<double> ("SpaceCenter", "get_G");
+        return _connection.Invoke<double>("SpaceCenter", "get_G");
     }
 
     /// <summary>
     /// Gets the current mode the game is in.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "get_GameMode")]
-    public GameMode GetGameMode ()
+    [RpcAttribute("SpaceCenter", "get_GameMode")]
+    public GameMode GetGameMode()
     {
-        return _connection.Invoke<GameMode> ("SpaceCenter", "get_GameMode");
+        return _connection.Invoke<GameMode>("SpaceCenter", "get_GameMode");
     }
 
     /// <summary>
     /// Gets a list of available launch sites.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "get_LaunchSites")]
-    public IList<LaunchSite> GetLaunchSites ()
+    [RpcAttribute("SpaceCenter", "get_LaunchSites")]
+    public IList<LaunchSite> GetLaunchSites()
     {
-        return _connection.Invoke<IList<LaunchSite>> ("SpaceCenter", "get_LaunchSites");
+        return _connection.Invoke<IList<LaunchSite>>("SpaceCenter", "get_LaunchSites");
     }
 
     /// <summary>
     /// Gets the visible objects in map mode.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "get_MapFilter")]
-    public MapFilterType GetMapFilter ()
+    [RpcAttribute("SpaceCenter", "get_MapFilter")]
+    public MapFilterType GetMapFilter()
     {
-        return _connection.Invoke<MapFilterType> ("SpaceCenter", "get_MapFilter");
+        return _connection.Invoke<MapFilterType>("SpaceCenter", "get_MapFilter");
     }
 
     /// <summary>
     /// Sets the visible objects in map mode.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    public void SetMapFilter (MapFilterType value)
+    public void SetMapFilter(MapFilterType value)
     {
-        var _args = new object[] {
+        var _args = new object[]
+        {
             value
         };
-        _connection.Invoke ("SpaceCenter", "set_MapFilter", _args);
+        _connection.Invoke("SpaceCenter", "set_MapFilter", _args);
     }
 
     /// <summary>
@@ -554,41 +574,42 @@ public class SpaceCenterService
     /// <a href="https://wiki.kerbalspaceprogram.com/wiki/Time_warp">the KSP wiki</a>
     /// for details.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "get_MaximumRailsWarpFactor")]
-    public int GetMaximumRailsWarpFactor ()
+    [RpcAttribute("SpaceCenter", "get_MaximumRailsWarpFactor")]
+    public int GetMaximumRailsWarpFactor()
     {
-        return _connection.Invoke<int> ("SpaceCenter", "get_MaximumRailsWarpFactor");
+        return _connection.Invoke<int>("SpaceCenter", "get_MaximumRailsWarpFactor");
     }
 
     /// <summary>
     /// Gets whether the navball is visible.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "get_Navball")]
-    public bool GetNavball ()
+    [RpcAttribute("SpaceCenter", "get_Navball")]
+    public bool GetNavball()
     {
-        return _connection.Invoke<bool> ("SpaceCenter", "get_Navball");
+        return _connection.Invoke<bool>("SpaceCenter", "get_Navball");
     }
 
     /// <summary>
     /// Sets whether the navball is visible.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    public void SetNavball (bool value)
+    public void SetNavball(bool value)
     {
-        var _args = new object[] {
+        var _args = new object[]
+        {
             value
         };
-        _connection.Invoke ("SpaceCenter", "set_Navball", _args);
+        _connection.Invoke("SpaceCenter", "set_Navball", _args);
     }
 
     /// <summary>
     /// Gets the physical time warp rate. A value between 0 and 3 inclusive. 0 means
     /// no time warp. Returns 0 if regular "on-rails" time warp is active.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "get_PhysicsWarpFactor")]
-    public int GetPhysicsWarpFactor ()
+    [RpcAttribute("SpaceCenter", "get_PhysicsWarpFactor")]
+    public int GetPhysicsWarpFactor()
     {
-        return _connection.Invoke<int> ("SpaceCenter", "get_PhysicsWarpFactor");
+        return _connection.Invoke<int>("SpaceCenter", "get_PhysicsWarpFactor");
     }
 
     /// <summary>
@@ -596,12 +617,13 @@ public class SpaceCenterService
     /// no time warp. Returns 0 if regular "on-rails" time warp is active.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    public void SetPhysicsWarpFactor (int value)
+    public void SetPhysicsWarpFactor(int value)
     {
-        var _args = new object[] {
+        var _args = new object[]
+        {
             value
         };
-        _connection.Invoke ("SpaceCenter", "set_PhysicsWarpFactor", _args);
+        _connection.Invoke("SpaceCenter", "set_PhysicsWarpFactor", _args);
     }
 
     /// <summary>
@@ -614,10 +636,10 @@ public class SpaceCenterService
     /// planet. See <a href="https://wiki.kerbalspaceprogram.com/wiki/Time_warp">
     /// the KSP wiki</a> for details.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "get_RailsWarpFactor")]
-    public int GetRailsWarpFactor ()
+    [RpcAttribute("SpaceCenter", "get_RailsWarpFactor")]
+    public int GetRailsWarpFactor()
     {
-        return _connection.Invoke<int> ("SpaceCenter", "get_RailsWarpFactor");
+        return _connection.Invoke<int>("SpaceCenter", "get_RailsWarpFactor");
     }
 
     /// <summary>
@@ -631,132 +653,137 @@ public class SpaceCenterService
     /// the KSP wiki</a> for details.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    public void SetRailsWarpFactor (int value)
+    public void SetRailsWarpFactor(int value)
     {
-        var _args = new object[] {
+        var _args = new object[]
+        {
             value
         };
-        _connection.Invoke ("SpaceCenter", "set_RailsWarpFactor", _args);
+        _connection.Invoke("SpaceCenter", "set_RailsWarpFactor", _args);
     }
 
     /// <summary>
     /// Gets the current amount of reputation.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "get_Reputation")]
-    public float GetReputation ()
+    [RpcAttribute("SpaceCenter", "get_Reputation")]
+    public float GetReputation()
     {
-        return _connection.Invoke<float> ("SpaceCenter", "get_Reputation");
+        return _connection.Invoke<float>("SpaceCenter", "get_Reputation");
     }
 
     /// <summary>
     /// Gets the current amount of science.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "get_Science")]
-    public float GetScience ()
+    [RpcAttribute("SpaceCenter", "get_Science")]
+    public float GetScience()
     {
-        return _connection.Invoke<float> ("SpaceCenter", "get_Science");
+        return _connection.Invoke<float>("SpaceCenter", "get_Science");
     }
 
     /// <summary>
     /// Gets the currently targeted celestial body.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "get_TargetBody")]
-    public CelestialBody GetTargetBody ()
+    [RpcAttribute("SpaceCenter", "get_TargetBody")]
+    public CelestialBody GetTargetBody()
     {
-        return _connection.Invoke<CelestialBody> ("SpaceCenter", "get_TargetBody");
+        return _connection.Invoke<CelestialBody>("SpaceCenter", "get_TargetBody");
     }
 
     /// <summary>
     /// Sets the currently targeted celestial body.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    public void SetTargetBody (CelestialBody value)
+    public void SetTargetBody(CelestialBody value)
     {
-        var _args = new object[] {
+        var _args = new object[]
+        {
             value
         };
-        _connection.Invoke ("SpaceCenter", "set_TargetBody", _args);
+        _connection.Invoke("SpaceCenter", "set_TargetBody", _args);
     }
 
     /// <summary>
     /// Gets the currently targeted docking port.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "get_TargetDockingPort")]
-    public DockingPort GetTargetDockingPort ()
+    [RpcAttribute("SpaceCenter", "get_TargetDockingPort")]
+    public DockingPort GetTargetDockingPort()
     {
-        return _connection.Invoke<DockingPort> ("SpaceCenter", "get_TargetDockingPort");
+        return _connection.Invoke<DockingPort>("SpaceCenter", "get_TargetDockingPort");
     }
 
     /// <summary>
     /// Sets the currently targeted docking port.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    public void SetTargetDockingPort (DockingPort value)
+    public void SetTargetDockingPort(DockingPort value)
     {
-        var _args = new object[] {
+        var _args = new object[]
+        {
             value
         };
-        _connection.Invoke ("SpaceCenter", "set_TargetDockingPort", _args);
+        _connection.Invoke("SpaceCenter", "set_TargetDockingPort", _args);
     }
 
     /// <summary>
     /// Gets the currently targeted vessel.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "get_TargetVessel")]
-    public Vessel GetTargetVessel ()
+    [RpcAttribute("SpaceCenter", "get_TargetVessel")]
+    public Vessel GetTargetVessel()
     {
-        return _connection.Invoke<Vessel> ("SpaceCenter", "get_TargetVessel");
+        return _connection.Invoke<Vessel>("SpaceCenter", "get_TargetVessel");
     }
 
     /// <summary>
     /// Sets the currently targeted vessel.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    public void SetTargetVessel (Vessel value)
+    public void SetTargetVessel(Vessel value)
     {
-        var _args = new object[] {
+        var _args = new object[]
+        {
             value
         };
-        _connection.Invoke ("SpaceCenter", "set_TargetVessel", _args);
+        _connection.Invoke("SpaceCenter", "set_TargetVessel", _args);
     }
 
     /// <summary>
     /// Gets whether the UI is visible.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "get_UIVisible")]
-    public bool GetUIVisible ()
+    [RpcAttribute("SpaceCenter", "get_UIVisible")]
+    public bool GetUIVisible()
     {
-        return _connection.Invoke<bool> ("SpaceCenter", "get_UIVisible");
+        return _connection.Invoke<bool>("SpaceCenter", "get_UIVisible");
     }
 
     /// <summary>
     /// Sets whether the UI is visible.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    public void SetUIVisible (bool value)
+    public void SetUIVisible(bool value)
     {
-        var _args = new object[] {
+        var _args = new object[]
+        {
             value
         };
-        _connection.Invoke ("SpaceCenter", "set_UIVisible", _args);
+        _connection.Invoke("SpaceCenter", "set_UIVisible", _args);
     }
 
     /// <summary>
     /// Gets the current universal time in seconds.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "get_UT")]
-    public double GetUT ()
+    [RpcAttribute("SpaceCenter", "get_UT")]
+    public double GetUT()
     {
-        return _connection.Invoke<double> ("SpaceCenter", "get_UT");
+        return _connection.Invoke<double>("SpaceCenter", "get_UT");
     }
 
     /// <summary>
     /// Gets a list of all the vessels in the game.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "get_Vessels")]
-    public IList<Vessel> GetVessels ()
+    [RpcAttribute("SpaceCenter", "get_Vessels")]
+    public IList<Vessel> GetVessels()
     {
-        return _connection.Invoke<IList<Vessel>> ("SpaceCenter", "get_Vessels");
+        return _connection.Invoke<IList<Vessel>>("SpaceCenter", "get_Vessels");
     }
 
     /// <summary>
@@ -766,10 +793,10 @@ public class SpaceCenterService
     /// <see cref="M:SpaceCenter.GetRailsWarpFactor" />, and in physics time warp, this is equal to
     /// <see cref="M:SpaceCenter.GetPhysicsWarpFactor" />.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "get_WarpFactor")]
-    public float GetWarpFactor ()
+    [RpcAttribute("SpaceCenter", "get_WarpFactor")]
+    public float GetWarpFactor()
     {
-        return _connection.Invoke<float> ("SpaceCenter", "get_WarpFactor");
+        return _connection.Invoke<float>("SpaceCenter", "get_WarpFactor");
     }
 
     /// <summary>
@@ -777,10 +804,10 @@ public class SpaceCenterService
     /// warp is not active, <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.WarpMode.Rails" /> if regular "on-rails" time warp
     /// is active, or <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.WarpMode.Physics" /> if physical time warp is active.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "get_WarpMode")]
-    public WarpMode GetWarpMode ()
+    [RpcAttribute("SpaceCenter", "get_WarpMode")]
+    public WarpMode GetWarpMode()
     {
-        return _connection.Invoke<WarpMode> ("SpaceCenter", "get_WarpMode");
+        return _connection.Invoke<WarpMode>("SpaceCenter", "get_WarpMode");
     }
 
     /// <summary>
@@ -789,18 +816,18 @@ public class SpaceCenterService
     /// time is passing 10x faster than normal. Returns 1 if time warp is not
     /// active.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "get_WarpRate")]
-    public float GetWarpRate ()
+    [RpcAttribute("SpaceCenter", "get_WarpRate")]
+    public float GetWarpRate()
     {
-        return _connection.Invoke<float> ("SpaceCenter", "get_WarpRate");
+        return _connection.Invoke<float>("SpaceCenter", "get_WarpRate");
     }
 
     /// <summary>
     /// Gets the waypoint manager.
     /// </summary>
-    [RpcAttribute ("SpaceCenter", "get_WaypointManager")]
-    public WaypointManager GetWaypointManager ()
+    [RpcAttribute("SpaceCenter", "get_WaypointManager")]
+    public WaypointManager GetWaypointManager()
     {
-        return _connection.Invoke<WaypointManager> ("SpaceCenter", "get_WaypointManager");
+        return _connection.Invoke<WaypointManager>("SpaceCenter", "get_WaypointManager");
     }
 }

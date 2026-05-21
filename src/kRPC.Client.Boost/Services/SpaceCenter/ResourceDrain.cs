@@ -13,156 +13,168 @@ public class ResourceDrain : RemoteObject
     /// <summary>
     /// Construct an instance of this remote object. Should not be called directly. This interface is intended for internal decoding.
     /// </summary>
-    public ResourceDrain (ConnectionMultiplexer connection, ulong id) : base (connection, id)
+    public ResourceDrain(ConnectionMultiplexer connection, ulong id) : base(connection, id)
     {
     }
 
     /// <summary>
     /// Whether the provided resource is enabled for draining.
     /// </summary>
-    [Rpc ("SpaceCenter", "ResourceDrain_CheckResource")]
-    public bool CheckResource (Resource resource)
+    [Rpc("SpaceCenter", "ResourceDrain_CheckResource")]
+    public bool CheckResource(Resource resource)
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this,
             resource
         };
-        return Connection.Invoke<bool> ("SpaceCenter", "ResourceDrain_CheckResource", args);
+        return Connection.Invoke<bool>("SpaceCenter", "ResourceDrain_CheckResource", args);
     }
 
     /// <summary>
     /// Whether the given resource should be drained.
     /// </summary>
-    [Rpc ("SpaceCenter", "ResourceDrain_SetResource")]
-    public void SetResource (Resource resource, bool enabled)
+    [Rpc("SpaceCenter", "ResourceDrain_SetResource")]
+    public void SetResource(Resource resource, bool enabled)
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this,
             resource,
             enabled
         };
-        Connection.Invoke ("SpaceCenter", "ResourceDrain_SetResource", args);
+        Connection.Invoke("SpaceCenter", "ResourceDrain_SetResource", args);
     }
 
     /// <summary>
     /// Activates resource draining for all enabled parts.
     /// </summary>
-    [Rpc ("SpaceCenter", "ResourceDrain_Start")]
-    public void Start ()
+    [Rpc("SpaceCenter", "ResourceDrain_Start")]
+    public void Start()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        Connection.Invoke ("SpaceCenter", "ResourceDrain_Start", args);
+        Connection.Invoke("SpaceCenter", "ResourceDrain_Start", args);
     }
 
     /// <summary>
     /// Turns off resource draining.
     /// </summary>
-    [Rpc ("SpaceCenter", "ResourceDrain_Stop")]
-    public void Stop ()
+    [Rpc("SpaceCenter", "ResourceDrain_Stop")]
+    public void Stop()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        Connection.Invoke ("SpaceCenter", "ResourceDrain_Stop", args);
+        Connection.Invoke("SpaceCenter", "ResourceDrain_Stop", args);
     }
 
     /// <summary>
     /// Gets the list of available resources.
     /// </summary>
-    [Rpc ("SpaceCenter", "ResourceDrain_get_AvailableResources")]
-    public IList<Resource> GetAvailableResources ()
+    [Rpc("SpaceCenter", "ResourceDrain_get_AvailableResources")]
+    public IList<Resource> GetAvailableResources()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<IList<Resource>> ("SpaceCenter", "ResourceDrain_get_AvailableResources", args);
+        return Connection.Invoke<IList<Resource>>("SpaceCenter", "ResourceDrain_get_AvailableResources", args);
     }
 
     /// <summary>
     /// Gets the drain mode.
     /// </summary>
-    [Rpc ("SpaceCenter", "ResourceDrain_get_DrainMode")]
-    public DrainMode GetDrainMode ()
+    [Rpc("SpaceCenter", "ResourceDrain_get_DrainMode")]
+    public DrainMode GetDrainMode()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<DrainMode> ("SpaceCenter", "ResourceDrain_get_DrainMode", args);
+        return Connection.Invoke<DrainMode>("SpaceCenter", "ResourceDrain_get_DrainMode", args);
     }
 
     /// <summary>
     /// Sets the drain mode.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    public void SetDrainMode (DrainMode value)
+    public void SetDrainMode(DrainMode value)
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this,
             value
         };
-        Connection.Invoke ("SpaceCenter", "ResourceDrain_set_DrainMode", args);
+        Connection.Invoke("SpaceCenter", "ResourceDrain_set_DrainMode", args);
     }
 
     /// <summary>
     /// Gets the maximum possible drain rate.
     /// </summary>
-    [Rpc ("SpaceCenter", "ResourceDrain_get_MaxRate")]
-    public float GetMaxRate ()
+    [Rpc("SpaceCenter", "ResourceDrain_get_MaxRate")]
+    public float GetMaxRate()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<float> ("SpaceCenter", "ResourceDrain_get_MaxRate", args);
+        return Connection.Invoke<float>("SpaceCenter", "ResourceDrain_get_MaxRate", args);
     }
 
     /// <summary>
     /// Gets the minimum possible drain rate
     /// </summary>
-    [Rpc ("SpaceCenter", "ResourceDrain_get_MinRate")]
-    public float GetMinRate ()
+    [Rpc("SpaceCenter", "ResourceDrain_get_MinRate")]
+    public float GetMinRate()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<float> ("SpaceCenter", "ResourceDrain_get_MinRate", args);
+        return Connection.Invoke<float>("SpaceCenter", "ResourceDrain_get_MinRate", args);
     }
 
     /// <summary>
     /// Gets the part object for this resource drain.
     /// </summary>
-    [Rpc ("SpaceCenter", "ResourceDrain_get_Part")]
-    public Part GetPart ()
+    [Rpc("SpaceCenter", "ResourceDrain_get_Part")]
+    public Part GetPart()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<Part> ("SpaceCenter", "ResourceDrain_get_Part", args);
+        return Connection.Invoke<Part>("SpaceCenter", "ResourceDrain_get_Part", args);
     }
 
     /// <summary>
     /// Gets the current drain rate.
     /// </summary>
-    [Rpc ("SpaceCenter", "ResourceDrain_get_Rate")]
-    public float GetRate ()
+    [Rpc("SpaceCenter", "ResourceDrain_get_Rate")]
+    public float GetRate()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<float> ("SpaceCenter", "ResourceDrain_get_Rate", args);
+        return Connection.Invoke<float>("SpaceCenter", "ResourceDrain_get_Rate", args);
     }
 
     /// <summary>
     /// Sets the current drain rate.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    public void SetRate (float value)
+    public void SetRate(float value)
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this,
             value
         };
-        Connection.Invoke ("SpaceCenter", "ResourceDrain_set_Rate", args);
+        Connection.Invoke("SpaceCenter", "ResourceDrain_set_Rate", args);
     }
 }

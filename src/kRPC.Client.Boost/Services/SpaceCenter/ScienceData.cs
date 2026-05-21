@@ -12,43 +12,46 @@ public class ScienceData : RemoteObject
     /// <summary>
     /// Construct an instance of this remote object. Should not be called directly. This interface is intended for internal decoding.
     /// </summary>
-    public ScienceData (ConnectionMultiplexer connection, ulong id) : base (connection, id)
+    public ScienceData(ConnectionMultiplexer connection, ulong id) : base(connection, id)
     {
     }
 
     /// <summary>
     /// Data amount.
     /// </summary>
-    [Rpc ("SpaceCenter", "ScienceData_get_DataAmount")]
-    public float GetDataAmount ()
+    [Rpc("SpaceCenter", "ScienceData_get_DataAmount")]
+    public float GetDataAmount()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<float> ("SpaceCenter", "ScienceData_get_DataAmount", args);
+        return Connection.Invoke<float>("SpaceCenter", "ScienceData_get_DataAmount", args);
     }
 
     /// <summary>
     /// Science value.
     /// </summary>
-    [Rpc ("SpaceCenter", "ScienceData_get_ScienceValue")]
-    public float GetScienceValue ()
+    [Rpc("SpaceCenter", "ScienceData_get_ScienceValue")]
+    public float GetScienceValue()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<float> ("SpaceCenter", "ScienceData_get_ScienceValue", args);
+        return Connection.Invoke<float>("SpaceCenter", "ScienceData_get_ScienceValue", args);
     }
 
     /// <summary>
     /// Transmit value.
     /// </summary>
-    [Rpc ("SpaceCenter", "ScienceData_get_TransmitValue")]
-    public float GetTransmitValue ()
+    [Rpc("SpaceCenter", "ScienceData_get_TransmitValue")]
+    public float GetTransmitValue()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<float> ("SpaceCenter", "ScienceData_get_TransmitValue", args);
+        return Connection.Invoke<float>("SpaceCenter", "ScienceData_get_TransmitValue", args);
     }
 }

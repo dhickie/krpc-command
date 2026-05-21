@@ -19,32 +19,34 @@ public class AutoPilot : RemoteObject
     /// <summary>
     /// Construct an instance of this remote object. Should not be called directly. This interface is intended for internal decoding.
     /// </summary>
-    public AutoPilot (ConnectionMultiplexer connection, ulong id) : base (connection, id)
+    public AutoPilot(ConnectionMultiplexer connection, ulong id) : base(connection, id)
     {
     }
 
     /// <summary>
     /// Disengage the auto-pilot.
     /// </summary>
-    [Rpc ("SpaceCenter", "AutoPilot_Disengage")]
-    public void Disengage ()
+    [Rpc("SpaceCenter", "AutoPilot_Disengage")]
+    public void Disengage()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        Connection.Invoke ("SpaceCenter", "AutoPilot_Disengage", args);
+        Connection.Invoke("SpaceCenter", "AutoPilot_Disengage", args);
     }
 
     /// <summary>
     /// Engage the auto-pilot.
     /// </summary>
-    [Rpc ("SpaceCenter", "AutoPilot_Engage")]
-    public void Engage ()
+    [Rpc("SpaceCenter", "AutoPilot_Engage")]
+    public void Engage()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        Connection.Invoke ("SpaceCenter", "AutoPilot_Engage", args);
+        Connection.Invoke("SpaceCenter", "AutoPilot_Engage", args);
     }
 
     /// <summary>
@@ -52,28 +54,30 @@ public class AutoPilot : RemoteObject
     /// </summary>
     /// <param name="pitch">Target pitch angle, in degrees between -90° and +90°.</param>
     /// <param name="heading">Target heading angle, in degrees between 0° and 360°.</param>
-    [Rpc ("SpaceCenter", "AutoPilot_TargetPitchAndHeading")]
-    public void TargetPitchAndHeading (float pitch, float heading)
+    [Rpc("SpaceCenter", "AutoPilot_TargetPitchAndHeading")]
+    public void TargetPitchAndHeading(float pitch, float heading)
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this,
             pitch,
             heading
         };
-        Connection.Invoke ("SpaceCenter", "AutoPilot_TargetPitchAndHeading", args);
+        Connection.Invoke("SpaceCenter", "AutoPilot_TargetPitchAndHeading", args);
     }
 
     /// <summary>
     /// Blocks until the vessel is pointing in the target direction and has
     /// the target roll (if set). Throws an exception if the auto-pilot has not been engaged.
     /// </summary>
-    [Rpc ("SpaceCenter", "AutoPilot_Wait")]
-    public void Wait ()
+    [Rpc("SpaceCenter", "AutoPilot_Wait")]
+    public void Wait()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        Connection.Invoke ("SpaceCenter", "AutoPilot_Wait", args);
+        Connection.Invoke("SpaceCenter", "AutoPilot_Wait", args);
     }
 
     /// <summary>
@@ -83,13 +87,14 @@ public class AutoPilot : RemoteObject
     /// A vector of three angles, in degrees, one for each of the pitch, roll and yaw axes.
     /// Defaults to 1° for each axis.
     /// </summary>
-    [Rpc ("SpaceCenter", "AutoPilot_get_AttenuationAngle")]
-    public Tuple<double,double,double> GetAttenuationAngle ()
+    [Rpc("SpaceCenter", "AutoPilot_get_AttenuationAngle")]
+    public Tuple<double,double,double> GetAttenuationAngle()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "AutoPilot_get_AttenuationAngle", args);
+        return Connection.Invoke<Tuple<double,double,double>>("SpaceCenter", "AutoPilot_get_AttenuationAngle", args);
     }
 
     /// <summary>
@@ -100,13 +105,14 @@ public class AutoPilot : RemoteObject
     /// Defaults to 1° for each axis.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    public void SetAttenuationAngle (Tuple<double,double,double> value)
+    public void SetAttenuationAngle(Tuple<double,double,double> value)
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this,
             value
         };
-        Connection.Invoke ("SpaceCenter", "AutoPilot_set_AttenuationAngle", args);
+        Connection.Invoke("SpaceCenter", "AutoPilot_set_AttenuationAngle", args);
     }
 
     /// <summary>
@@ -114,13 +120,14 @@ public class AutoPilot : RemoteObject
     /// using the vessels moment of inertia and available torque. Defaults to <c>true</c>.
     /// See <see cref="M:SpaceCenter.AutoPilot.GetTimeToPeak" /> and <see cref="M:SpaceCenter.AutoPilot.GetOvershoot" />.
     /// </summary>
-    [Rpc ("SpaceCenter", "AutoPilot_get_AutoTune")]
-    public bool GetAutoTune ()
+    [Rpc("SpaceCenter", "AutoPilot_get_AutoTune")]
+    public bool GetAutoTune()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<bool> ("SpaceCenter", "AutoPilot_get_AutoTune", args);
+        return Connection.Invoke<bool>("SpaceCenter", "AutoPilot_get_AutoTune", args);
     }
 
     /// <summary>
@@ -129,13 +136,14 @@ public class AutoPilot : RemoteObject
     /// See <see cref="M:SpaceCenter.AutoPilot.GetTimeToPeak" /> and <see cref="M:SpaceCenter.AutoPilot.GetOvershoot" />.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    public void SetAutoTune (bool value)
+    public void SetAutoTune(bool value)
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this,
             value
         };
-        Connection.Invoke ("SpaceCenter", "AutoPilot_set_AutoTune", args);
+        Connection.Invoke("SpaceCenter", "AutoPilot_set_AutoTune", args);
     }
 
     /// <summary>
@@ -144,13 +152,14 @@ public class AutoPilot : RemoteObject
     /// A vector of three times, in seconds, one for each of the pitch, roll and yaw axes.
     /// Defaults to 5 seconds for each axis.
     /// </summary>
-    [Rpc ("SpaceCenter", "AutoPilot_get_DecelerationTime")]
-    public Tuple<double,double,double> GetDecelerationTime ()
+    [Rpc("SpaceCenter", "AutoPilot_get_DecelerationTime")]
+    public Tuple<double,double,double> GetDecelerationTime()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "AutoPilot_get_DecelerationTime", args);
+        return Connection.Invoke<Tuple<double,double,double>>("SpaceCenter", "AutoPilot_get_DecelerationTime", args);
     }
 
     /// <summary>
@@ -160,13 +169,14 @@ public class AutoPilot : RemoteObject
     /// Defaults to 5 seconds for each axis.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    public void SetDecelerationTime (Tuple<double,double,double> value)
+    public void SetDecelerationTime(Tuple<double,double,double> value)
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this,
             value
         };
-        Connection.Invoke ("SpaceCenter", "AutoPilot_set_DecelerationTime", args);
+        Connection.Invoke("SpaceCenter", "AutoPilot_set_DecelerationTime", args);
     }
 
     /// <summary>
@@ -174,26 +184,28 @@ public class AutoPilot : RemoteObject
     /// to point in and the direction it is pointing in. Throws an exception if the auto-pilot
     /// has not been engaged and SAS is not enabled or is in stability assist mode.
     /// </summary>
-    [Rpc ("SpaceCenter", "AutoPilot_get_Error")]
-    public float GetError ()
+    [Rpc("SpaceCenter", "AutoPilot_get_Error")]
+    public float GetError()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<float> ("SpaceCenter", "AutoPilot_get_Error", args);
+        return Connection.Invoke<float>("SpaceCenter", "AutoPilot_get_Error", args);
     }
 
     /// <summary>
     /// Gets the error, in degrees, between the vessels current and target heading.
     /// Throws an exception if the auto-pilot has not been engaged.
     /// </summary>
-    [Rpc ("SpaceCenter", "AutoPilot_get_HeadingError")]
-    public float GetHeadingError ()
+    [Rpc("SpaceCenter", "AutoPilot_get_HeadingError")]
+    public float GetHeadingError()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<float> ("SpaceCenter", "AutoPilot_get_HeadingError", args);
+        return Connection.Invoke<float>("SpaceCenter", "AutoPilot_get_HeadingError", args);
     }
 
     /// <summary>
@@ -201,13 +213,14 @@ public class AutoPilot : RemoteObject
     /// A vector of three values, between 0 and 1, for each of the pitch, roll and yaw axes.
     /// Defaults to 0.01 for each axis.
     /// </summary>
-    [Rpc ("SpaceCenter", "AutoPilot_get_Overshoot")]
-    public Tuple<double,double,double> GetOvershoot ()
+    [Rpc("SpaceCenter", "AutoPilot_get_Overshoot")]
+    public Tuple<double,double,double> GetOvershoot()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "AutoPilot_get_Overshoot", args);
+        return Connection.Invoke<Tuple<double,double,double>>("SpaceCenter", "AutoPilot_get_Overshoot", args);
     }
 
     /// <summary>
@@ -216,26 +229,28 @@ public class AutoPilot : RemoteObject
     /// Defaults to 0.01 for each axis.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    public void SetOvershoot (Tuple<double,double,double> value)
+    public void SetOvershoot(Tuple<double,double,double> value)
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this,
             value
         };
-        Connection.Invoke ("SpaceCenter", "AutoPilot_set_Overshoot", args);
+        Connection.Invoke("SpaceCenter", "AutoPilot_set_Overshoot", args);
     }
 
     /// <summary>
     /// Gets the error, in degrees, between the vessels current and target pitch.
     /// Throws an exception if the auto-pilot has not been engaged.
     /// </summary>
-    [Rpc ("SpaceCenter", "AutoPilot_get_PitchError")]
-    public float GetPitchError ()
+    [Rpc("SpaceCenter", "AutoPilot_get_PitchError")]
+    public float GetPitchError()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<float> ("SpaceCenter", "AutoPilot_get_PitchError", args);
+        return Connection.Invoke<float>("SpaceCenter", "AutoPilot_get_PitchError", args);
     }
 
     /// <summary>
@@ -245,26 +260,28 @@ public class AutoPilot : RemoteObject
     /// When <see cref="M:SpaceCenter.AutoPilot.GetAutoTune" /> is true, these values are updated automatically,
     /// which will overwrite any manual changes.
     /// </remarks>
-    [Rpc ("SpaceCenter", "AutoPilot_get_PitchPIDGains")]
-    public Tuple<double,double,double> GetPitchPIDGains ()
+    [Rpc("SpaceCenter", "AutoPilot_get_PitchPIDGains")]
+    public Tuple<double,double,double> GetPitchPIDGains()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "AutoPilot_get_PitchPIDGains", args);
+        return Connection.Invoke<Tuple<double,double,double>>("SpaceCenter", "AutoPilot_get_PitchPIDGains", args);
     }
 
     /// <summary>
     /// Sets gains for the pitch PID controller.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    public void SetPitchPIDGains (Tuple<double,double,double> value)
+    public void SetPitchPIDGains(Tuple<double,double,double> value)
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this,
             value
         };
-        Connection.Invoke ("SpaceCenter", "AutoPilot_set_PitchPIDGains", args);
+        Connection.Invoke("SpaceCenter", "AutoPilot_set_PitchPIDGains", args);
     }
 
     /// <summary>
@@ -275,39 +292,42 @@ public class AutoPilot : RemoteObject
     /// the vessel being controlled, as it is impossible to rotate the vessel in such a
     /// reference frame.
     /// </remarks>
-    [Rpc ("SpaceCenter", "AutoPilot_get_ReferenceFrame")]
-    public ReferenceFrame GetReferenceFrame ()
+    [Rpc("SpaceCenter", "AutoPilot_get_ReferenceFrame")]
+    public ReferenceFrame GetReferenceFrame()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<ReferenceFrame> ("SpaceCenter", "AutoPilot_get_ReferenceFrame", args);
+        return Connection.Invoke<ReferenceFrame>("SpaceCenter", "AutoPilot_get_ReferenceFrame", args);
     }
 
     /// <summary>
     /// Sets the reference frame for the target direction (<see cref="M:SpaceCenter.AutoPilot.GetTargetDirection" />).
     /// </summary>
     /// <param name="value">The value to set.</param>
-    public void SetReferenceFrame (ReferenceFrame value)
+    public void SetReferenceFrame(ReferenceFrame value)
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this,
             value
         };
-        Connection.Invoke ("SpaceCenter", "AutoPilot_set_ReferenceFrame", args);
+        Connection.Invoke("SpaceCenter", "AutoPilot_set_ReferenceFrame", args);
     }
 
     /// <summary>
     /// Gets the error, in degrees, between the vessels current and target roll.
     /// Throws an exception if the auto-pilot has not been engaged or no target roll is set.
     /// </summary>
-    [Rpc ("SpaceCenter", "AutoPilot_get_RollError")]
-    public float GetRollError ()
+    [Rpc("SpaceCenter", "AutoPilot_get_RollError")]
+    public float GetRollError()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<float> ("SpaceCenter", "AutoPilot_get_RollError", args);
+        return Connection.Invoke<float>("SpaceCenter", "AutoPilot_get_RollError", args);
     }
 
     /// <summary>
@@ -317,39 +337,42 @@ public class AutoPilot : RemoteObject
     /// When <see cref="M:SpaceCenter.AutoPilot.GetAutoTune" /> is true, these values are updated automatically,
     /// which will overwrite any manual changes.
     /// </remarks>
-    [Rpc ("SpaceCenter", "AutoPilot_get_RollPIDGains")]
-    public Tuple<double,double,double> GetRollPIDGains ()
+    [Rpc("SpaceCenter", "AutoPilot_get_RollPIDGains")]
+    public Tuple<double,double,double> GetRollPIDGains()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "AutoPilot_get_RollPIDGains", args);
+        return Connection.Invoke<Tuple<double,double,double>>("SpaceCenter", "AutoPilot_get_RollPIDGains", args);
     }
 
     /// <summary>
     /// Sets gains for the roll PID controller.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    public void SetRollPIDGains (Tuple<double,double,double> value)
+    public void SetRollPIDGains(Tuple<double,double,double> value)
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this,
             value
         };
-        Connection.Invoke ("SpaceCenter", "AutoPilot_set_RollPIDGains", args);
+        Connection.Invoke("SpaceCenter", "AutoPilot_set_RollPIDGains", args);
     }
 
     /// <summary>
     /// Gets the threshold at which the autopilot will try to match the target roll angle, if any.
     /// Defaults to 5 degrees.
     /// </summary>
-    [Rpc ("SpaceCenter", "AutoPilot_get_RollThreshold")]
-    public double GetRollThreshold ()
+    [Rpc("SpaceCenter", "AutoPilot_get_RollThreshold")]
+    public double GetRollThreshold()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<double> ("SpaceCenter", "AutoPilot_get_RollThreshold", args);
+        return Connection.Invoke<double>("SpaceCenter", "AutoPilot_get_RollThreshold", args);
     }
 
     /// <summary>
@@ -357,39 +380,42 @@ public class AutoPilot : RemoteObject
     /// Defaults to 5 degrees.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    public void SetRollThreshold (double value)
+    public void SetRollThreshold(double value)
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this,
             value
         };
-        Connection.Invoke ("SpaceCenter", "AutoPilot_set_RollThreshold", args);
+        Connection.Invoke("SpaceCenter", "AutoPilot_set_RollThreshold", args);
     }
 
     /// <summary>
     /// Gets the state of SAS.
     /// </summary>
     /// <remarks>Equivalent to <see cref="M:SpaceCenter.Control.GetSAS" /></remarks>
-    [Rpc ("SpaceCenter", "AutoPilot_get_SAS")]
-    public bool GetSAS ()
+    [Rpc("SpaceCenter", "AutoPilot_get_SAS")]
+    public bool GetSAS()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<bool> ("SpaceCenter", "AutoPilot_get_SAS", args);
+        return Connection.Invoke<bool>("SpaceCenter", "AutoPilot_get_SAS", args);
     }
 
     /// <summary>
     /// Sets the state of SAS.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    public void SetSAS (bool value)
+    public void SetSAS(bool value)
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this,
             value
         };
-        Connection.Invoke ("SpaceCenter", "AutoPilot_set_SAS", args);
+        Connection.Invoke("SpaceCenter", "AutoPilot_set_SAS", args);
     }
 
     /// <summary>
@@ -398,13 +424,14 @@ public class AutoPilot : RemoteObject
     /// when SAS is enabled.
     /// </summary>
     /// <remarks>Equivalent to <see cref="M:SpaceCenter.Control.GetSASMode" /></remarks>
-    [Rpc ("SpaceCenter", "AutoPilot_get_SASMode")]
-    public SASMode GetSASMode ()
+    [Rpc("SpaceCenter", "AutoPilot_get_SASMode")]
+    public SASMode GetSASMode()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<SASMode> ("SpaceCenter", "AutoPilot_get_SASMode", args);
+        return Connection.Invoke<SASMode>("SpaceCenter", "AutoPilot_get_SASMode", args);
     }
 
     /// <summary>
@@ -413,13 +440,14 @@ public class AutoPilot : RemoteObject
     /// when SAS is enabled.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    public void SetSASMode (SASMode value)
+    public void SetSASMode(SASMode value)
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this,
             value
         };
-        Connection.Invoke ("SpaceCenter", "AutoPilot_set_SASMode", args);
+        Connection.Invoke("SpaceCenter", "AutoPilot_set_SASMode", args);
     }
 
     /// <summary>
@@ -428,13 +456,14 @@ public class AutoPilot : RemoteObject
     /// A vector of three stopping times, in seconds, one for each of the pitch, roll
     /// and yaw axes. Defaults to 0.5 seconds for each axis.
     /// </summary>
-    [Rpc ("SpaceCenter", "AutoPilot_get_StoppingTime")]
-    public Tuple<double,double,double> GetStoppingTime ()
+    [Rpc("SpaceCenter", "AutoPilot_get_StoppingTime")]
+    public Tuple<double,double,double> GetStoppingTime()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "AutoPilot_get_StoppingTime", args);
+        return Connection.Invoke<Tuple<double,double,double>>("SpaceCenter", "AutoPilot_get_StoppingTime", args);
     }
 
     /// <summary>
@@ -444,26 +473,28 @@ public class AutoPilot : RemoteObject
     /// and yaw axes. Defaults to 0.5 seconds for each axis.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    public void SetStoppingTime (Tuple<double,double,double> value)
+    public void SetStoppingTime(Tuple<double,double,double> value)
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this,
             value
         };
-        Connection.Invoke ("SpaceCenter", "AutoPilot_set_StoppingTime", args);
+        Connection.Invoke("SpaceCenter", "AutoPilot_set_StoppingTime", args);
     }
 
     /// <summary>
     /// Direction vector corresponding to the target pitch and heading.
     /// This is in the reference frame specified by <see cref="T:SpaceCenter.ReferenceFrame" />.
     /// </summary>
-    [Rpc ("SpaceCenter", "AutoPilot_get_TargetDirection")]
-    public Tuple<double,double,double> GetTargetDirection ()
+    [Rpc("SpaceCenter", "AutoPilot_get_TargetDirection")]
+    public Tuple<double,double,double> GetTargetDirection()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "AutoPilot_get_TargetDirection", args);
+        return Connection.Invoke<Tuple<double,double,double>>("SpaceCenter", "AutoPilot_get_TargetDirection", args);
     }
 
     /// <summary>
@@ -471,88 +502,95 @@ public class AutoPilot : RemoteObject
     /// This is in the reference frame specified by <see cref="T:SpaceCenter.ReferenceFrame" />.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    public void SetTargetDirection (Tuple<double,double,double> value)
+    public void SetTargetDirection(Tuple<double,double,double> value)
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this,
             value
         };
-        Connection.Invoke ("SpaceCenter", "AutoPilot_set_TargetDirection", args);
+        Connection.Invoke("SpaceCenter", "AutoPilot_set_TargetDirection", args);
     }
 
     /// <summary>
     /// Gets the target heading, in degrees, between 0° and 360°.
     /// </summary>
-    [Rpc ("SpaceCenter", "AutoPilot_get_TargetHeading")]
-    public float GetTargetHeading ()
+    [Rpc("SpaceCenter", "AutoPilot_get_TargetHeading")]
+    public float GetTargetHeading()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<float> ("SpaceCenter", "AutoPilot_get_TargetHeading", args);
+        return Connection.Invoke<float>("SpaceCenter", "AutoPilot_get_TargetHeading", args);
     }
 
     /// <summary>
     /// Sets the target heading, in degrees, between 0° and 360°.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    public void SetTargetHeading (float value)
+    public void SetTargetHeading(float value)
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this,
             value
         };
-        Connection.Invoke ("SpaceCenter", "AutoPilot_set_TargetHeading", args);
+        Connection.Invoke("SpaceCenter", "AutoPilot_set_TargetHeading", args);
     }
 
     /// <summary>
     /// Gets the target pitch, in degrees, between -90° and +90°.
     /// </summary>
-    [Rpc ("SpaceCenter", "AutoPilot_get_TargetPitch")]
-    public float GetTargetPitch ()
+    [Rpc("SpaceCenter", "AutoPilot_get_TargetPitch")]
+    public float GetTargetPitch()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<float> ("SpaceCenter", "AutoPilot_get_TargetPitch", args);
+        return Connection.Invoke<float>("SpaceCenter", "AutoPilot_get_TargetPitch", args);
     }
 
     /// <summary>
     /// Sets the target pitch, in degrees, between -90° and +90°.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    public void SetTargetPitch (float value)
+    public void SetTargetPitch(float value)
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this,
             value
         };
-        Connection.Invoke ("SpaceCenter", "AutoPilot_set_TargetPitch", args);
+        Connection.Invoke("SpaceCenter", "AutoPilot_set_TargetPitch", args);
     }
 
     /// <summary>
     /// Gets the target roll, in degrees. <c>NaN</c> if no target roll is set.
     /// </summary>
-    [Rpc ("SpaceCenter", "AutoPilot_get_TargetRoll")]
-    public float GetTargetRoll ()
+    [Rpc("SpaceCenter", "AutoPilot_get_TargetRoll")]
+    public float GetTargetRoll()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<float> ("SpaceCenter", "AutoPilot_get_TargetRoll", args);
+        return Connection.Invoke<float>("SpaceCenter", "AutoPilot_get_TargetRoll", args);
     }
 
     /// <summary>
     /// Sets the target roll, in degrees. <c>NaN</c> if no target roll is set.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    public void SetTargetRoll (float value)
+    public void SetTargetRoll(float value)
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this,
             value
         };
-        Connection.Invoke ("SpaceCenter", "AutoPilot_set_TargetRoll", args);
+        Connection.Invoke("SpaceCenter", "AutoPilot_set_TargetRoll", args);
     }
 
     /// <summary>
@@ -560,13 +598,14 @@ public class AutoPilot : RemoteObject
     /// A vector of three times, in seconds, for each of the pitch, roll and yaw axes.
     /// Defaults to 3 seconds for each axis.
     /// </summary>
-    [Rpc ("SpaceCenter", "AutoPilot_get_TimeToPeak")]
-    public Tuple<double,double,double> GetTimeToPeak ()
+    [Rpc("SpaceCenter", "AutoPilot_get_TimeToPeak")]
+    public Tuple<double,double,double> GetTimeToPeak()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "AutoPilot_get_TimeToPeak", args);
+        return Connection.Invoke<Tuple<double,double,double>>("SpaceCenter", "AutoPilot_get_TimeToPeak", args);
     }
 
     /// <summary>
@@ -575,13 +614,14 @@ public class AutoPilot : RemoteObject
     /// Defaults to 3 seconds for each axis.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    public void SetTimeToPeak (Tuple<double,double,double> value)
+    public void SetTimeToPeak(Tuple<double,double,double> value)
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this,
             value
         };
-        Connection.Invoke ("SpaceCenter", "AutoPilot_set_TimeToPeak", args);
+        Connection.Invoke("SpaceCenter", "AutoPilot_set_TimeToPeak", args);
     }
 
     /// <summary>
@@ -591,25 +631,27 @@ public class AutoPilot : RemoteObject
     /// When <see cref="M:SpaceCenter.AutoPilot.GetAutoTune" /> is true, these values are updated automatically,
     /// which will overwrite any manual changes.
     /// </remarks>
-    [Rpc ("SpaceCenter", "AutoPilot_get_YawPIDGains")]
-    public Tuple<double,double,double> GetYawPIDGains ()
+    [Rpc("SpaceCenter", "AutoPilot_get_YawPIDGains")]
+    public Tuple<double,double,double> GetYawPIDGains()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<Tuple<double,double,double>> ("SpaceCenter", "AutoPilot_get_YawPIDGains", args);
+        return Connection.Invoke<Tuple<double,double,double>>("SpaceCenter", "AutoPilot_get_YawPIDGains", args);
     }
 
     /// <summary>
     /// Sets gains for the yaw PID controller.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    public void SetYawPIDGains (Tuple<double,double,double> value)
+    public void SetYawPIDGains(Tuple<double,double,double> value)
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this,
             value
         };
-        Connection.Invoke ("SpaceCenter", "AutoPilot_set_YawPIDGains", args);
+        Connection.Invoke("SpaceCenter", "AutoPilot_set_YawPIDGains", args);
     }
 }

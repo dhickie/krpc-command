@@ -13,43 +13,46 @@ public class LaunchSite : RemoteObject
     /// <summary>
     /// Construct an instance of this remote object. Should not be called directly. This interface is intended for internal decoding.
     /// </summary>
-    public LaunchSite (ConnectionMultiplexer connection, ulong id) : base (connection, id)
+    public LaunchSite(ConnectionMultiplexer connection, ulong id) : base(connection, id)
     {
     }
 
     /// <summary>
     /// Gets the celestial body the launch site is on.
     /// </summary>
-    [Rpc ("SpaceCenter", "LaunchSite_get_Body")]
-    public CelestialBody GetBody ()
+    [Rpc("SpaceCenter", "LaunchSite_get_Body")]
+    public CelestialBody GetBody()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<CelestialBody> ("SpaceCenter", "LaunchSite_get_Body", args);
+        return Connection.Invoke<CelestialBody>("SpaceCenter", "LaunchSite_get_Body", args);
     }
 
     /// <summary>
     /// Which editor is normally used for this launch site.
     /// </summary>
-    [Rpc ("SpaceCenter", "LaunchSite_get_EditorFacility")]
-    public EditorFacility GetEditorFacility ()
+    [Rpc("SpaceCenter", "LaunchSite_get_EditorFacility")]
+    public EditorFacility GetEditorFacility()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<EditorFacility> ("SpaceCenter", "LaunchSite_get_EditorFacility", args);
+        return Connection.Invoke<EditorFacility>("SpaceCenter", "LaunchSite_get_EditorFacility", args);
     }
 
     /// <summary>
     /// Gets the name of the launch site.
     /// </summary>
-    [Rpc ("SpaceCenter", "LaunchSite_get_Name")]
-    public string GetName ()
+    [Rpc("SpaceCenter", "LaunchSite_get_Name")]
+    public string GetName()
     {
-        var args = new object[] {
+        var args = new object[]
+        {
             this
         };
-        return Connection.Invoke<string> ("SpaceCenter", "LaunchSite_get_Name", args);
+        return Connection.Invoke<string>("SpaceCenter", "LaunchSite_get_Name", args);
     }
 }
