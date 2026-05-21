@@ -1,6 +1,7 @@
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
 using kRPC.Client.Boost.Attributes;
+using System.Threading.Tasks;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
@@ -30,6 +31,20 @@ public class RoboticRotor : RemoteObject
     }
 
     /// <summary>
+    /// Gets the current RPM.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "RoboticRotor_get_CurrentRPM")]
+    public async Task<float> GetCurrentRPMAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<float>("SpaceCenter", "RoboticRotor_get_CurrentRPM", args);
+    }
+
+    /// <summary>
     /// Gets whether the rotor direction is inverted.
     /// </summary>
     [Rpc("SpaceCenter", "RoboticRotor_get_Inverted")]
@@ -40,6 +55,20 @@ public class RoboticRotor : RemoteObject
             this
         };
         return Connection.Invoke<bool>("SpaceCenter", "RoboticRotor_get_Inverted", args);
+    }
+
+    /// <summary>
+    /// Gets whether the rotor direction is inverted.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "RoboticRotor_get_Inverted")]
+    public async Task<bool> GetInvertedAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<bool>("SpaceCenter", "RoboticRotor_get_Inverted", args);
     }
 
     /// <summary>
@@ -57,6 +86,21 @@ public class RoboticRotor : RemoteObject
     }
 
     /// <summary>
+    /// Sets whether the rotor direction is inverted.
+    /// Executes asynchronously.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public async Task SetInvertedAsync(bool value)
+    {
+        var args = new object[]
+        {
+            this,
+            value
+        };
+        await Connection.InvokeAsync("SpaceCenter", "RoboticRotor_set_Inverted", args);
+    }
+
+    /// <summary>
     /// Lock movement.
     /// </summary>
     [Rpc("SpaceCenter", "RoboticRotor_get_Locked")]
@@ -67,6 +111,20 @@ public class RoboticRotor : RemoteObject
             this
         };
         return Connection.Invoke<bool>("SpaceCenter", "RoboticRotor_get_Locked", args);
+    }
+
+    /// <summary>
+    /// Lock movement.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "RoboticRotor_get_Locked")]
+    public async Task<bool> GetLockedAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<bool>("SpaceCenter", "RoboticRotor_get_Locked", args);
     }
 
     /// <summary>
@@ -84,6 +142,21 @@ public class RoboticRotor : RemoteObject
     }
 
     /// <summary>
+    /// Sets whether movement is locked.
+    /// Executes asynchronously.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public async Task SetLockedAsync(bool value)
+    {
+        var args = new object[]
+        {
+            this,
+            value
+        };
+        await Connection.InvokeAsync("SpaceCenter", "RoboticRotor_set_Locked", args);
+    }
+
+    /// <summary>
     /// Gets whether the motor is engaged.
     /// </summary>
     [Rpc("SpaceCenter", "RoboticRotor_get_MotorEngaged")]
@@ -94,6 +167,20 @@ public class RoboticRotor : RemoteObject
             this
         };
         return Connection.Invoke<bool>("SpaceCenter", "RoboticRotor_get_MotorEngaged", args);
+    }
+
+    /// <summary>
+    /// Gets whether the motor is engaged.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "RoboticRotor_get_MotorEngaged")]
+    public async Task<bool> GetMotorEngagedAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<bool>("SpaceCenter", "RoboticRotor_get_MotorEngaged", args);
     }
 
     /// <summary>
@@ -111,6 +198,21 @@ public class RoboticRotor : RemoteObject
     }
 
     /// <summary>
+    /// Sets whether the motor is engaged.
+    /// Executes asynchronously.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public async Task SetMotorEngagedAsync(bool value)
+    {
+        var args = new object[]
+        {
+            this,
+            value
+        };
+        await Connection.InvokeAsync("SpaceCenter", "RoboticRotor_set_MotorEngaged", args);
+    }
+
+    /// <summary>
     /// Gets the part object for this robotic rotor.
     /// </summary>
     [Rpc("SpaceCenter", "RoboticRotor_get_Part")]
@@ -124,6 +226,20 @@ public class RoboticRotor : RemoteObject
     }
 
     /// <summary>
+    /// Gets the part object for this robotic rotor.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "RoboticRotor_get_Part")]
+    public async Task<Part> GetPartAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<Part>("SpaceCenter", "RoboticRotor_get_Part", args);
+    }
+
+    /// <summary>
     /// Target RPM.
     /// </summary>
     [Rpc("SpaceCenter", "RoboticRotor_get_TargetRPM")]
@@ -134,6 +250,20 @@ public class RoboticRotor : RemoteObject
             this
         };
         return Connection.Invoke<float>("SpaceCenter", "RoboticRotor_get_TargetRPM", args);
+    }
+
+    /// <summary>
+    /// Target RPM.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "RoboticRotor_get_TargetRPM")]
+    public async Task<float> GetTargetRPMAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<float>("SpaceCenter", "RoboticRotor_get_TargetRPM", args);
     }
 
     /// <summary>
@@ -151,6 +281,21 @@ public class RoboticRotor : RemoteObject
     }
 
     /// <summary>
+    /// Sets the target RPM.
+    /// Executes asynchronously.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public async Task SetTargetRPMAsync(float value)
+    {
+        var args = new object[]
+        {
+            this,
+            value
+        };
+        await Connection.InvokeAsync("SpaceCenter", "RoboticRotor_set_TargetRPM", args);
+    }
+
+    /// <summary>
     /// Torque limit percentage.
     /// </summary>
     [Rpc("SpaceCenter", "RoboticRotor_get_TorqueLimit")]
@@ -161,6 +306,20 @@ public class RoboticRotor : RemoteObject
             this
         };
         return Connection.Invoke<float>("SpaceCenter", "RoboticRotor_get_TorqueLimit", args);
+    }
+
+    /// <summary>
+    /// Torque limit percentage.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "RoboticRotor_get_TorqueLimit")]
+    public async Task<float> GetTorqueLimitAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<float>("SpaceCenter", "RoboticRotor_get_TorqueLimit", args);
     }
 
     /// <summary>
@@ -175,5 +334,20 @@ public class RoboticRotor : RemoteObject
             value
         };
         Connection.Invoke("SpaceCenter", "RoboticRotor_set_TorqueLimit", args);
+    }
+
+    /// <summary>
+    /// Sets the torque limit percentage.
+    /// Executes asynchronously.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public async Task SetTorqueLimitAsync(float value)
+    {
+        var args = new object[]
+        {
+            this,
+            value
+        };
+        await Connection.InvokeAsync("SpaceCenter", "RoboticRotor_set_TorqueLimit", args);
     }
 }

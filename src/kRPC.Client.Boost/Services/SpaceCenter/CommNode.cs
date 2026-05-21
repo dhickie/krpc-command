@@ -1,6 +1,7 @@
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
 using kRPC.Client.Boost.Attributes;
+using System.Threading.Tasks;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
@@ -30,6 +31,20 @@ public class CommNode : RemoteObject
     }
 
     /// <summary>
+    /// Gets whether the communication node is a control point, for example a manned vessel.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "CommNode_get_IsControlPoint")]
+    public async Task<bool> GetIsControlPointAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<bool>("SpaceCenter", "CommNode_get_IsControlPoint", args);
+    }
+
+    /// <summary>
     /// Gets whether the communication node is on Kerbin.
     /// </summary>
     [Rpc("SpaceCenter", "CommNode_get_IsHome")]
@@ -40,6 +55,20 @@ public class CommNode : RemoteObject
             this
         };
         return Connection.Invoke<bool>("SpaceCenter", "CommNode_get_IsHome", args);
+    }
+
+    /// <summary>
+    /// Gets whether the communication node is on Kerbin.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "CommNode_get_IsHome")]
+    public async Task<bool> GetIsHomeAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<bool>("SpaceCenter", "CommNode_get_IsHome", args);
     }
 
     /// <summary>
@@ -56,6 +85,20 @@ public class CommNode : RemoteObject
     }
 
     /// <summary>
+    /// Gets whether the communication node is a vessel.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "CommNode_get_IsVessel")]
+    public async Task<bool> GetIsVesselAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<bool>("SpaceCenter", "CommNode_get_IsVessel", args);
+    }
+
+    /// <summary>
     /// Name of the communication node.
     /// </summary>
     [Rpc("SpaceCenter", "CommNode_get_Name")]
@@ -69,6 +112,20 @@ public class CommNode : RemoteObject
     }
 
     /// <summary>
+    /// Name of the communication node.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "CommNode_get_Name")]
+    public async Task<string> GetNameAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<string>("SpaceCenter", "CommNode_get_Name", args);
+    }
+
+    /// <summary>
     /// Gets the vessel for this communication node.
     /// </summary>
     [Rpc("SpaceCenter", "CommNode_get_Vessel")]
@@ -79,5 +136,19 @@ public class CommNode : RemoteObject
             this
         };
         return Connection.Invoke<Vessel>("SpaceCenter", "CommNode_get_Vessel", args);
+    }
+
+    /// <summary>
+    /// Gets the vessel for this communication node.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "CommNode_get_Vessel")]
+    public async Task<Vessel> GetVesselAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<Vessel>("SpaceCenter", "CommNode_get_Vessel", args);
     }
 }

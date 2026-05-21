@@ -2,6 +2,7 @@ using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
 using kRPC.Client.Boost.Attributes;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
@@ -40,6 +41,22 @@ public class Module : RemoteObject
     }
 
     /// <summary>
+    /// Returns the value of a field with the given name.
+    /// Executes asynchronously.
+    /// </summary>
+    /// <param name="name">Name of the field.</param>
+    [Rpc("SpaceCenter", "Module_GetField")]
+    public async Task<string> GetFieldAsync(string name)
+    {
+        var args = new object[]
+        {
+            this,
+            name
+        };
+        return await Connection.InvokeAsync<string>("SpaceCenter", "Module_GetField", args);
+    }
+
+    /// <summary>
     /// Returns the value of a field with the given identifier.
     /// </summary>
     /// <param name="id">Identifier of the field.</param>
@@ -52,6 +69,22 @@ public class Module : RemoteObject
             id
         };
         return Connection.Invoke<string>("SpaceCenter", "Module_GetFieldById", args);
+    }
+
+    /// <summary>
+    /// Returns the value of a field with the given identifier.
+    /// Executes asynchronously.
+    /// </summary>
+    /// <param name="id">Identifier of the field.</param>
+    [Rpc("SpaceCenter", "Module_GetFieldById")]
+    public async Task<string> GetFieldByIdAsync(string id)
+    {
+        var args = new object[]
+        {
+            this,
+            id
+        };
+        return await Connection.InvokeAsync<string>("SpaceCenter", "Module_GetFieldById", args);
     }
 
     /// <summary><c>true</c> if the part has an action with the given name.
@@ -68,6 +101,21 @@ public class Module : RemoteObject
         return Connection.Invoke<bool>("SpaceCenter", "Module_HasAction", args);
     }
 
+    /// <summary><c>true</c> if the part has an action with the given name.
+    /// Executes asynchronously.
+    /// </summary>
+    /// <param name="name"></param>
+    [Rpc("SpaceCenter", "Module_HasAction")]
+    public async Task<bool> HasActionAsync(string name)
+    {
+        var args = new object[]
+        {
+            this,
+            name
+        };
+        return await Connection.InvokeAsync<bool>("SpaceCenter", "Module_HasAction", args);
+    }
+
     /// <summary><c>true</c> if the part has an action with the given identifier.
     /// </summary>
     /// <param name="id"></param>
@@ -80,6 +128,21 @@ public class Module : RemoteObject
             id
         };
         return Connection.Invoke<bool>("SpaceCenter", "Module_HasActionWithId", args);
+    }
+
+    /// <summary><c>true</c> if the part has an action with the given identifier.
+    /// Executes asynchronously.
+    /// </summary>
+    /// <param name="id"></param>
+    [Rpc("SpaceCenter", "Module_HasActionWithId")]
+    public async Task<bool> HasActionWithIdAsync(string id)
+    {
+        var args = new object[]
+        {
+            this,
+            id
+        };
+        return await Connection.InvokeAsync<bool>("SpaceCenter", "Module_HasActionWithId", args);
     }
 
     /// <summary><c>true</c> if the module has an event with the given name.
@@ -96,6 +159,21 @@ public class Module : RemoteObject
         return Connection.Invoke<bool>("SpaceCenter", "Module_HasEvent", args);
     }
 
+    /// <summary><c>true</c> if the module has an event with the given name.
+    /// Executes asynchronously.
+    /// </summary>
+    /// <param name="name"></param>
+    [Rpc("SpaceCenter", "Module_HasEvent")]
+    public async Task<bool> HasEventAsync(string name)
+    {
+        var args = new object[]
+        {
+            this,
+            name
+        };
+        return await Connection.InvokeAsync<bool>("SpaceCenter", "Module_HasEvent", args);
+    }
+
     /// <summary><c>true</c> if the module has an event with the given identifier.
     /// </summary>
     /// <param name="id"></param>
@@ -108,6 +186,21 @@ public class Module : RemoteObject
             id
         };
         return Connection.Invoke<bool>("SpaceCenter", "Module_HasEventWithId", args);
+    }
+
+    /// <summary><c>true</c> if the module has an event with the given identifier.
+    /// Executes asynchronously.
+    /// </summary>
+    /// <param name="id"></param>
+    [Rpc("SpaceCenter", "Module_HasEventWithId")]
+    public async Task<bool> HasEventWithIdAsync(string id)
+    {
+        var args = new object[]
+        {
+            this,
+            id
+        };
+        return await Connection.InvokeAsync<bool>("SpaceCenter", "Module_HasEventWithId", args);
     }
 
     /// <summary>
@@ -126,6 +219,22 @@ public class Module : RemoteObject
     }
 
     /// <summary>
+    /// Returns <c>true</c> if the module has a field with the given name.
+    /// Executes asynchronously.
+    /// </summary>
+    /// <param name="name">Name of the field.</param>
+    [Rpc("SpaceCenter", "Module_HasField")]
+    public async Task<bool> HasFieldAsync(string name)
+    {
+        var args = new object[]
+        {
+            this,
+            name
+        };
+        return await Connection.InvokeAsync<bool>("SpaceCenter", "Module_HasField", args);
+    }
+
+    /// <summary>
     /// Returns <c>true</c> if the module has a field with the given identifier.
     /// </summary>
     /// <param name="id">Identifier of the field.</param>
@@ -138,6 +247,22 @@ public class Module : RemoteObject
             id
         };
         return Connection.Invoke<bool>("SpaceCenter", "Module_HasFieldWithId", args);
+    }
+
+    /// <summary>
+    /// Returns <c>true</c> if the module has a field with the given identifier.
+    /// Executes asynchronously.
+    /// </summary>
+    /// <param name="id">Identifier of the field.</param>
+    [Rpc("SpaceCenter", "Module_HasFieldWithId")]
+    public async Task<bool> HasFieldWithIdAsync(string id)
+    {
+        var args = new object[]
+        {
+            this,
+            id
+        };
+        return await Connection.InvokeAsync<bool>("SpaceCenter", "Module_HasFieldWithId", args);
     }
 
     /// <summary>
@@ -157,6 +282,22 @@ public class Module : RemoteObject
 
     /// <summary>
     /// Set the value of a field to its original value.
+    /// Executes asynchronously.
+    /// </summary>
+    /// <param name="name">Name of the field.</param>
+    [Rpc("SpaceCenter", "Module_ResetField")]
+    public async Task ResetFieldAsync(string name)
+    {
+        var args = new object[]
+        {
+            this,
+            name
+        };
+        await Connection.InvokeAsync("SpaceCenter", "Module_ResetField", args);
+    }
+
+    /// <summary>
+    /// Set the value of a field to its original value.
     /// </summary>
     /// <param name="id">Identifier of the field.</param>
     [Rpc("SpaceCenter", "Module_ResetFieldById")]
@@ -168,6 +309,22 @@ public class Module : RemoteObject
             id
         };
         Connection.Invoke("SpaceCenter", "Module_ResetFieldById", args);
+    }
+
+    /// <summary>
+    /// Set the value of a field to its original value.
+    /// Executes asynchronously.
+    /// </summary>
+    /// <param name="id">Identifier of the field.</param>
+    [Rpc("SpaceCenter", "Module_ResetFieldById")]
+    public async Task ResetFieldByIdAsync(string id)
+    {
+        var args = new object[]
+        {
+            this,
+            id
+        };
+        await Connection.InvokeAsync("SpaceCenter", "Module_ResetFieldById", args);
     }
 
     /// <summary>
@@ -188,6 +345,24 @@ public class Module : RemoteObject
     }
 
     /// <summary>
+    /// Set the value of an action with the given name.
+    /// Executes asynchronously.
+    /// </summary>
+    /// <param name="name"></param>
+    /// <param name="value"></param>
+    [Rpc("SpaceCenter", "Module_SetAction")]
+    public async Task SetActionAsync(string name, bool value = true)
+    {
+        var args = new object[]
+        {
+            this,
+            name,
+            value
+        };
+        await Connection.InvokeAsync("SpaceCenter", "Module_SetAction", args);
+    }
+
+    /// <summary>
     /// Set the value of an action with the given identifier.
     /// </summary>
     /// <param name="id"></param>
@@ -202,6 +377,24 @@ public class Module : RemoteObject
             value
         };
         Connection.Invoke("SpaceCenter", "Module_SetActionById", args);
+    }
+
+    /// <summary>
+    /// Set the value of an action with the given identifier.
+    /// Executes asynchronously.
+    /// </summary>
+    /// <param name="id"></param>
+    /// <param name="value"></param>
+    [Rpc("SpaceCenter", "Module_SetActionById")]
+    public async Task SetActionByIdAsync(string id, bool value = true)
+    {
+        var args = new object[]
+        {
+            this,
+            id,
+            value
+        };
+        await Connection.InvokeAsync("SpaceCenter", "Module_SetActionById", args);
     }
 
     /// <summary>
@@ -223,6 +416,24 @@ public class Module : RemoteObject
 
     /// <summary>
     /// Set the value of a field to true or false.
+    /// Executes asynchronously.
+    /// </summary>
+    /// <param name="name">Name of the field.</param>
+    /// <param name="value">Value to set.</param>
+    [Rpc("SpaceCenter", "Module_SetFieldBool")]
+    public async Task SetFieldBoolAsync(string name, bool value)
+    {
+        var args = new object[]
+        {
+            this,
+            name,
+            value
+        };
+        await Connection.InvokeAsync("SpaceCenter", "Module_SetFieldBool", args);
+    }
+
+    /// <summary>
+    /// Set the value of a field to true or false.
     /// </summary>
     /// <param name="id">Identifier of the field.</param>
     /// <param name="value">Value to set.</param>
@@ -236,6 +447,24 @@ public class Module : RemoteObject
             value
         };
         Connection.Invoke("SpaceCenter", "Module_SetFieldBoolById", args);
+    }
+
+    /// <summary>
+    /// Set the value of a field to true or false.
+    /// Executes asynchronously.
+    /// </summary>
+    /// <param name="id">Identifier of the field.</param>
+    /// <param name="value">Value to set.</param>
+    [Rpc("SpaceCenter", "Module_SetFieldBoolById")]
+    public async Task SetFieldBoolByIdAsync(string id, bool value)
+    {
+        var args = new object[]
+        {
+            this,
+            id,
+            value
+        };
+        await Connection.InvokeAsync("SpaceCenter", "Module_SetFieldBoolById", args);
     }
 
     /// <summary>
@@ -257,6 +486,24 @@ public class Module : RemoteObject
 
     /// <summary>
     /// Set the value of a field to the given floating point number.
+    /// Executes asynchronously.
+    /// </summary>
+    /// <param name="name">Name of the field.</param>
+    /// <param name="value">Value to set.</param>
+    [Rpc("SpaceCenter", "Module_SetFieldFloat")]
+    public async Task SetFieldFloatAsync(string name, float value)
+    {
+        var args = new object[]
+        {
+            this,
+            name,
+            value
+        };
+        await Connection.InvokeAsync("SpaceCenter", "Module_SetFieldFloat", args);
+    }
+
+    /// <summary>
+    /// Set the value of a field to the given floating point number.
     /// </summary>
     /// <param name="id">Identifier of the field.</param>
     /// <param name="value">Value to set.</param>
@@ -270,6 +517,24 @@ public class Module : RemoteObject
             value
         };
         Connection.Invoke("SpaceCenter", "Module_SetFieldFloatById", args);
+    }
+
+    /// <summary>
+    /// Set the value of a field to the given floating point number.
+    /// Executes asynchronously.
+    /// </summary>
+    /// <param name="id">Identifier of the field.</param>
+    /// <param name="value">Value to set.</param>
+    [Rpc("SpaceCenter", "Module_SetFieldFloatById")]
+    public async Task SetFieldFloatByIdAsync(string id, float value)
+    {
+        var args = new object[]
+        {
+            this,
+            id,
+            value
+        };
+        await Connection.InvokeAsync("SpaceCenter", "Module_SetFieldFloatById", args);
     }
 
     /// <summary>
@@ -291,6 +556,24 @@ public class Module : RemoteObject
 
     /// <summary>
     /// Set the value of a field to the given integer number.
+    /// Executes asynchronously.
+    /// </summary>
+    /// <param name="name">Name of the field.</param>
+    /// <param name="value">Value to set.</param>
+    [Rpc("SpaceCenter", "Module_SetFieldInt")]
+    public async Task SetFieldIntAsync(string name, int value)
+    {
+        var args = new object[]
+        {
+            this,
+            name,
+            value
+        };
+        await Connection.InvokeAsync("SpaceCenter", "Module_SetFieldInt", args);
+    }
+
+    /// <summary>
+    /// Set the value of a field to the given integer number.
     /// </summary>
     /// <param name="id">Identifier of the field.</param>
     /// <param name="value">Value to set.</param>
@@ -304,6 +587,24 @@ public class Module : RemoteObject
             value
         };
         Connection.Invoke("SpaceCenter", "Module_SetFieldIntById", args);
+    }
+
+    /// <summary>
+    /// Set the value of a field to the given integer number.
+    /// Executes asynchronously.
+    /// </summary>
+    /// <param name="id">Identifier of the field.</param>
+    /// <param name="value">Value to set.</param>
+    [Rpc("SpaceCenter", "Module_SetFieldIntById")]
+    public async Task SetFieldIntByIdAsync(string id, int value)
+    {
+        var args = new object[]
+        {
+            this,
+            id,
+            value
+        };
+        await Connection.InvokeAsync("SpaceCenter", "Module_SetFieldIntById", args);
     }
 
     /// <summary>
@@ -325,6 +626,24 @@ public class Module : RemoteObject
 
     /// <summary>
     /// Set the value of a field to the given string.
+    /// Executes asynchronously.
+    /// </summary>
+    /// <param name="name">Name of the field.</param>
+    /// <param name="value">Value to set.</param>
+    [Rpc("SpaceCenter", "Module_SetFieldString")]
+    public async Task SetFieldStringAsync(string name, string value)
+    {
+        var args = new object[]
+        {
+            this,
+            name,
+            value
+        };
+        await Connection.InvokeAsync("SpaceCenter", "Module_SetFieldString", args);
+    }
+
+    /// <summary>
+    /// Set the value of a field to the given string.
     /// </summary>
     /// <param name="id">Identifier of the field.</param>
     /// <param name="value">Value to set.</param>
@@ -338,6 +657,24 @@ public class Module : RemoteObject
             value
         };
         Connection.Invoke("SpaceCenter", "Module_SetFieldStringById", args);
+    }
+
+    /// <summary>
+    /// Set the value of a field to the given string.
+    /// Executes asynchronously.
+    /// </summary>
+    /// <param name="id">Identifier of the field.</param>
+    /// <param name="value">Value to set.</param>
+    [Rpc("SpaceCenter", "Module_SetFieldStringById")]
+    public async Task SetFieldStringByIdAsync(string id, string value)
+    {
+        var args = new object[]
+        {
+            this,
+            id,
+            value
+        };
+        await Connection.InvokeAsync("SpaceCenter", "Module_SetFieldStringById", args);
     }
 
     /// <summary>
@@ -357,6 +694,23 @@ public class Module : RemoteObject
     }
 
     /// <summary>
+    /// Trigger the named event. Equivalent to clicking the button in the right-click menu
+    /// of the part.
+    /// Executes asynchronously.
+    /// </summary>
+    /// <param name="name"></param>
+    [Rpc("SpaceCenter", "Module_TriggerEvent")]
+    public async Task TriggerEventAsync(string name)
+    {
+        var args = new object[]
+        {
+            this,
+            name
+        };
+        await Connection.InvokeAsync("SpaceCenter", "Module_TriggerEvent", args);
+    }
+
+    /// <summary>
     /// Trigger the event with the given identifier.
     /// Equivalent to clicking the button in the right-click menu of the part.
     /// </summary>
@@ -370,6 +724,23 @@ public class Module : RemoteObject
             id
         };
         Connection.Invoke("SpaceCenter", "Module_TriggerEventById", args);
+    }
+
+    /// <summary>
+    /// Trigger the event with the given identifier.
+    /// Equivalent to clicking the button in the right-click menu of the part.
+    /// Executes asynchronously.
+    /// </summary>
+    /// <param name="id"></param>
+    [Rpc("SpaceCenter", "Module_TriggerEventById")]
+    public async Task TriggerEventByIdAsync(string id)
+    {
+        var args = new object[]
+        {
+            this,
+            id
+        };
+        await Connection.InvokeAsync("SpaceCenter", "Module_TriggerEventById", args);
     }
 
     /// <summary>
@@ -387,6 +758,21 @@ public class Module : RemoteObject
     }
 
     /// <summary>
+    /// Gets a list of all the names of the modules actions. These are the parts actions that can
+    /// be assigned to action groups in the in-game editor.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "Module_get_Actions")]
+    public async Task<IList<string>> GetActionsAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<IList<string>>("SpaceCenter", "Module_get_Actions", args);
+    }
+
+    /// <summary>
     /// Gets a list of all the identifiers of the modules actions. These are the parts actions
     /// that can be assigned to action groups in the in-game editor.
     /// </summary>
@@ -398,6 +784,21 @@ public class Module : RemoteObject
             this
         };
         return Connection.Invoke<IList<string>>("SpaceCenter", "Module_get_ActionsById", args);
+    }
+
+    /// <summary>
+    /// Gets a list of all the identifiers of the modules actions. These are the parts actions
+    /// that can be assigned to action groups in the in-game editor.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "Module_get_ActionsById")]
+    public async Task<IList<string>> GetActionsByIdAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<IList<string>>("SpaceCenter", "Module_get_ActionsById", args);
     }
 
     /// <summary>
@@ -415,6 +816,21 @@ public class Module : RemoteObject
     }
 
     /// <summary>
+    /// Gets a list of the names of all of the modules events. Events are the clickable buttons
+    /// visible in the right-click menu of the part.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "Module_get_Events")]
+    public async Task<IList<string>> GetEventsAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<IList<string>>("SpaceCenter", "Module_get_Events", args);
+    }
+
+    /// <summary>
     /// Gets a list of the identifiers of all of the modules events. Events are the clickable buttons
     /// visible in the right-click menu of the part.
     /// </summary>
@@ -426,6 +842,21 @@ public class Module : RemoteObject
             this
         };
         return Connection.Invoke<IList<string>>("SpaceCenter", "Module_get_EventsById", args);
+    }
+
+    /// <summary>
+    /// Gets a list of the identifiers of all of the modules events. Events are the clickable buttons
+    /// visible in the right-click menu of the part.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "Module_get_EventsById")]
+    public async Task<IList<string>> GetEventsByIdAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<IList<string>>("SpaceCenter", "Module_get_EventsById", args);
     }
 
     /// <summary>
@@ -447,6 +878,25 @@ public class Module : RemoteObject
     }
 
     /// <summary>
+    /// Gets the modules field names and their associated values, as a dictionary.
+    /// These are the values visible in the right-click menu of the part.
+    /// Executes asynchronously.
+    /// </summary>
+    /// <remarks>
+    /// Throws an exception if there is more than one field with the same name.
+    /// In that case, use <see cref="M:SpaceCenter.Module.GetFieldsById" /> to get the fields by identifier.
+    /// </remarks>
+    [Rpc("SpaceCenter", "Module_get_Fields")]
+    public async Task<IDictionary<string,string>> GetFieldsAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<IDictionary<string,string>>("SpaceCenter", "Module_get_Fields", args);
+    }
+
+    /// <summary>
     /// Gets the modules field identifiers and their associated values, as a dictionary.
     /// These are the values visible in the right-click menu of the part.
     /// </summary>
@@ -458,6 +908,21 @@ public class Module : RemoteObject
             this
         };
         return Connection.Invoke<IDictionary<string,string>>("SpaceCenter", "Module_get_FieldsById", args);
+    }
+
+    /// <summary>
+    /// Gets the modules field identifiers and their associated values, as a dictionary.
+    /// These are the values visible in the right-click menu of the part.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "Module_get_FieldsById")]
+    public async Task<IDictionary<string,string>> GetFieldsByIdAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<IDictionary<string,string>>("SpaceCenter", "Module_get_FieldsById", args);
     }
 
     /// <summary>
@@ -474,6 +939,20 @@ public class Module : RemoteObject
     }
 
     /// <summary>
+    /// Name of the PartModule. For example, "ModuleEngines".
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "Module_get_Name")]
+    public async Task<string> GetNameAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<string>("SpaceCenter", "Module_get_Name", args);
+    }
+
+    /// <summary>
     /// Gets the part that contains this module.
     /// </summary>
     [Rpc("SpaceCenter", "Module_get_Part")]
@@ -484,5 +963,19 @@ public class Module : RemoteObject
             this
         };
         return Connection.Invoke<Part>("SpaceCenter", "Module_get_Part", args);
+    }
+
+    /// <summary>
+    /// Gets the part that contains this module.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "Module_get_Part")]
+    public async Task<Part> GetPartAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<Part>("SpaceCenter", "Module_get_Part", args);
     }
 }

@@ -1,6 +1,7 @@
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
 using kRPC.Client.Boost.Attributes;
+using System.Threading.Tasks;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
@@ -30,6 +31,20 @@ public class Sensor : RemoteObject
     }
 
     /// <summary>
+    /// Gets whether the sensor is active.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "Sensor_get_Active")]
+    public async Task<bool> GetActiveAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<bool>("SpaceCenter", "Sensor_get_Active", args);
+    }
+
+    /// <summary>
     /// Sets whether the sensor is active.
     /// </summary>
     /// <param name="value">The value to set.</param>
@@ -41,6 +56,21 @@ public class Sensor : RemoteObject
             value
         };
         Connection.Invoke("SpaceCenter", "Sensor_set_Active", args);
+    }
+
+    /// <summary>
+    /// Sets whether the sensor is active.
+    /// Executes asynchronously.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public async Task SetActiveAsync(bool value)
+    {
+        var args = new object[]
+        {
+            this,
+            value
+        };
+        await Connection.InvokeAsync("SpaceCenter", "Sensor_set_Active", args);
     }
 
     /// <summary>
@@ -57,6 +87,20 @@ public class Sensor : RemoteObject
     }
 
     /// <summary>
+    /// Gets the part object for this sensor.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "Sensor_get_Part")]
+    public async Task<Part> GetPartAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<Part>("SpaceCenter", "Sensor_get_Part", args);
+    }
+
+    /// <summary>
     /// Gets the current value of the sensor.
     /// </summary>
     [Rpc("SpaceCenter", "Sensor_get_Value")]
@@ -67,5 +111,19 @@ public class Sensor : RemoteObject
             this
         };
         return Connection.Invoke<string>("SpaceCenter", "Sensor_get_Value", args);
+    }
+
+    /// <summary>
+    /// Gets the current value of the sensor.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "Sensor_get_Value")]
+    public async Task<string> GetValueAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<string>("SpaceCenter", "Sensor_get_Value", args);
     }
 }

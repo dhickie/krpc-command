@@ -2,6 +2,7 @@ using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
 using kRPC.Client.Boost.Attributes;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
@@ -34,6 +35,23 @@ public class RoboticController : RemoteObject
     }
 
     /// <summary>
+    /// Add an axis to the controller.
+    /// Executes asynchronously.
+    /// </summary>
+    /// <returns>Returns <c>true</c> if the axis is added successfully.</returns>
+    [Rpc("SpaceCenter", "RoboticController_AddAxis")]
+    public async Task<bool> AddAxisAsync(Module module, string fieldName)
+    {
+        var args = new object[]
+        {
+            this,
+            module,
+            fieldName
+        };
+        return await Connection.InvokeAsync<bool>("SpaceCenter", "RoboticController_AddAxis", args);
+    }
+
+    /// <summary>
     /// Add key frame value for controller axis.
     /// </summary>
     /// <returns>Returns <c>true</c> if the key frame is added successfully.</returns>
@@ -52,6 +70,25 @@ public class RoboticController : RemoteObject
     }
 
     /// <summary>
+    /// Add key frame value for controller axis.
+    /// Executes asynchronously.
+    /// </summary>
+    /// <returns>Returns <c>true</c> if the key frame is added successfully.</returns>
+    [Rpc("SpaceCenter", "RoboticController_AddKeyFrame")]
+    public async Task<bool> AddKeyFrameAsync(Module module, string fieldName, float time, float value)
+    {
+        var args = new object[]
+        {
+            this,
+            module,
+            fieldName,
+            time,
+            value
+        };
+        return await Connection.InvokeAsync<bool>("SpaceCenter", "RoboticController_AddKeyFrame", args);
+    }
+
+    /// <summary>
     /// The axes for the controller.
     /// </summary>
     [Rpc("SpaceCenter", "RoboticController_Axes")]
@@ -62,6 +99,20 @@ public class RoboticController : RemoteObject
             this
         };
         return Connection.Invoke<IList<IList<string>>>("SpaceCenter", "RoboticController_Axes", args);
+    }
+
+    /// <summary>
+    /// The axes for the controller.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "RoboticController_Axes")]
+    public async Task<IList<IList<string>>> AxesAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<IList<IList<string>>>("SpaceCenter", "RoboticController_Axes", args);
     }
 
     /// <summary>
@@ -81,6 +132,23 @@ public class RoboticController : RemoteObject
     }
 
     /// <summary>
+    /// Clear axis.
+    /// Executes asynchronously.
+    /// </summary>
+    /// <returns>Returns <c>true</c> if the axis is cleared successfully.</returns>
+    [Rpc("SpaceCenter", "RoboticController_ClearAxis")]
+    public async Task<bool> ClearAxisAsync(Module module, string fieldName)
+    {
+        var args = new object[]
+        {
+            this,
+            module,
+            fieldName
+        };
+        return await Connection.InvokeAsync<bool>("SpaceCenter", "RoboticController_ClearAxis", args);
+    }
+
+    /// <summary>
     /// Whether the controller has a part.
     /// </summary>
     [Rpc("SpaceCenter", "RoboticController_HasPart")]
@@ -95,6 +163,21 @@ public class RoboticController : RemoteObject
     }
 
     /// <summary>
+    /// Whether the controller has a part.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "RoboticController_HasPart")]
+    public async Task<bool> HasPartAsync(Part part)
+    {
+        var args = new object[]
+        {
+            this,
+            part
+        };
+        return await Connection.InvokeAsync<bool>("SpaceCenter", "RoboticController_HasPart", args);
+    }
+
+    /// <summary>
     /// Gets the part object for this controller.
     /// </summary>
     [Rpc("SpaceCenter", "RoboticController_get_Part")]
@@ -105,5 +188,19 @@ public class RoboticController : RemoteObject
             this
         };
         return Connection.Invoke<Part>("SpaceCenter", "RoboticController_get_Part", args);
+    }
+
+    /// <summary>
+    /// Gets the part object for this controller.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "RoboticController_get_Part")]
+    public async Task<Part> GetPartAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<Part>("SpaceCenter", "RoboticController_get_Part", args);
     }
 }

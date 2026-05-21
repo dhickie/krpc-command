@@ -2,6 +2,7 @@ using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
 using kRPC.Client.Boost.Attributes;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
@@ -32,6 +33,21 @@ public class ResourceDrain : RemoteObject
     }
 
     /// <summary>
+    /// Whether the provided resource is enabled for draining.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "ResourceDrain_CheckResource")]
+    public async Task<bool> CheckResourceAsync(Resource resource)
+    {
+        var args = new object[]
+        {
+            this,
+            resource
+        };
+        return await Connection.InvokeAsync<bool>("SpaceCenter", "ResourceDrain_CheckResource", args);
+    }
+
+    /// <summary>
     /// Whether the given resource should be drained.
     /// </summary>
     [Rpc("SpaceCenter", "ResourceDrain_SetResource")]
@@ -44,6 +60,22 @@ public class ResourceDrain : RemoteObject
             enabled
         };
         Connection.Invoke("SpaceCenter", "ResourceDrain_SetResource", args);
+    }
+
+    /// <summary>
+    /// Whether the given resource should be drained.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "ResourceDrain_SetResource")]
+    public async Task SetResourceAsync(Resource resource, bool enabled)
+    {
+        var args = new object[]
+        {
+            this,
+            resource,
+            enabled
+        };
+        await Connection.InvokeAsync("SpaceCenter", "ResourceDrain_SetResource", args);
     }
 
     /// <summary>
@@ -60,6 +92,20 @@ public class ResourceDrain : RemoteObject
     }
 
     /// <summary>
+    /// Activates resource draining for all enabled parts.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "ResourceDrain_Start")]
+    public async Task StartAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        await Connection.InvokeAsync("SpaceCenter", "ResourceDrain_Start", args);
+    }
+
+    /// <summary>
     /// Turns off resource draining.
     /// </summary>
     [Rpc("SpaceCenter", "ResourceDrain_Stop")]
@@ -70,6 +116,20 @@ public class ResourceDrain : RemoteObject
             this
         };
         Connection.Invoke("SpaceCenter", "ResourceDrain_Stop", args);
+    }
+
+    /// <summary>
+    /// Turns off resource draining.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "ResourceDrain_Stop")]
+    public async Task StopAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        await Connection.InvokeAsync("SpaceCenter", "ResourceDrain_Stop", args);
     }
 
     /// <summary>
@@ -86,6 +146,20 @@ public class ResourceDrain : RemoteObject
     }
 
     /// <summary>
+    /// Gets the list of available resources.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "ResourceDrain_get_AvailableResources")]
+    public async Task<IList<Resource>> GetAvailableResourcesAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<IList<Resource>>("SpaceCenter", "ResourceDrain_get_AvailableResources", args);
+    }
+
+    /// <summary>
     /// Gets the drain mode.
     /// </summary>
     [Rpc("SpaceCenter", "ResourceDrain_get_DrainMode")]
@@ -96,6 +170,20 @@ public class ResourceDrain : RemoteObject
             this
         };
         return Connection.Invoke<DrainMode>("SpaceCenter", "ResourceDrain_get_DrainMode", args);
+    }
+
+    /// <summary>
+    /// Gets the drain mode.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "ResourceDrain_get_DrainMode")]
+    public async Task<DrainMode> GetDrainModeAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<DrainMode>("SpaceCenter", "ResourceDrain_get_DrainMode", args);
     }
 
     /// <summary>
@@ -113,6 +201,21 @@ public class ResourceDrain : RemoteObject
     }
 
     /// <summary>
+    /// Sets the drain mode.
+    /// Executes asynchronously.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public async Task SetDrainModeAsync(DrainMode value)
+    {
+        var args = new object[]
+        {
+            this,
+            value
+        };
+        await Connection.InvokeAsync("SpaceCenter", "ResourceDrain_set_DrainMode", args);
+    }
+
+    /// <summary>
     /// Gets the maximum possible drain rate.
     /// </summary>
     [Rpc("SpaceCenter", "ResourceDrain_get_MaxRate")]
@@ -123,6 +226,20 @@ public class ResourceDrain : RemoteObject
             this
         };
         return Connection.Invoke<float>("SpaceCenter", "ResourceDrain_get_MaxRate", args);
+    }
+
+    /// <summary>
+    /// Gets the maximum possible drain rate.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "ResourceDrain_get_MaxRate")]
+    public async Task<float> GetMaxRateAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<float>("SpaceCenter", "ResourceDrain_get_MaxRate", args);
     }
 
     /// <summary>
@@ -139,6 +256,20 @@ public class ResourceDrain : RemoteObject
     }
 
     /// <summary>
+    /// Gets the minimum possible drain rate
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "ResourceDrain_get_MinRate")]
+    public async Task<float> GetMinRateAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<float>("SpaceCenter", "ResourceDrain_get_MinRate", args);
+    }
+
+    /// <summary>
     /// Gets the part object for this resource drain.
     /// </summary>
     [Rpc("SpaceCenter", "ResourceDrain_get_Part")]
@@ -149,6 +280,20 @@ public class ResourceDrain : RemoteObject
             this
         };
         return Connection.Invoke<Part>("SpaceCenter", "ResourceDrain_get_Part", args);
+    }
+
+    /// <summary>
+    /// Gets the part object for this resource drain.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "ResourceDrain_get_Part")]
+    public async Task<Part> GetPartAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<Part>("SpaceCenter", "ResourceDrain_get_Part", args);
     }
 
     /// <summary>
@@ -165,6 +310,20 @@ public class ResourceDrain : RemoteObject
     }
 
     /// <summary>
+    /// Gets the current drain rate.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "ResourceDrain_get_Rate")]
+    public async Task<float> GetRateAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<float>("SpaceCenter", "ResourceDrain_get_Rate", args);
+    }
+
+    /// <summary>
     /// Sets the current drain rate.
     /// </summary>
     /// <param name="value">The value to set.</param>
@@ -176,5 +335,20 @@ public class ResourceDrain : RemoteObject
             value
         };
         Connection.Invoke("SpaceCenter", "ResourceDrain_set_Rate", args);
+    }
+
+    /// <summary>
+    /// Sets the current drain rate.
+    /// Executes asynchronously.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public async Task SetRateAsync(float value)
+    {
+        var args = new object[]
+        {
+            this,
+            value
+        };
+        await Connection.InvokeAsync("SpaceCenter", "ResourceDrain_set_Rate", args);
     }
 }

@@ -2,6 +2,7 @@ using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
 using System;
 using kRPC.Client.Boost.Attributes;
+using System.Threading.Tasks;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
@@ -31,6 +32,20 @@ public class Force : RemoteObject
     }
 
     /// <summary>
+    /// Remove the force.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "Force_Remove")]
+    public async Task RemoveAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        await Connection.InvokeAsync("SpaceCenter", "Force_Remove", args);
+    }
+
+    /// <summary>
     /// Gets the force vector, in Newtons.
     /// </summary>
     /// <returns>A vector pointing in the direction that the force acts,
@@ -43,6 +58,22 @@ public class Force : RemoteObject
             this
         };
         return Connection.Invoke<Tuple<double,double,double>>("SpaceCenter", "Force_get_ForceVector", args);
+    }
+
+    /// <summary>
+    /// Gets the force vector, in Newtons.
+    /// Executes asynchronously.
+    /// </summary>
+    /// <returns>A vector pointing in the direction that the force acts,
+    /// with its magnitude equal to the strength of the force in Newtons.</returns>
+    [Rpc("SpaceCenter", "Force_get_ForceVector")]
+    public async Task<Tuple<double,double,double>> GetForceVectorAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<Tuple<double,double,double>>("SpaceCenter", "Force_get_ForceVector", args);
     }
 
     /// <summary>
@@ -60,6 +91,21 @@ public class Force : RemoteObject
     }
 
     /// <summary>
+    /// Sets the force vector, in Newtons.
+    /// Executes asynchronously.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public async Task SetForceVectorAsync(Tuple<double,double,double> value)
+    {
+        var args = new object[]
+        {
+            this,
+            value
+        };
+        await Connection.InvokeAsync("SpaceCenter", "Force_set_ForceVector", args);
+    }
+
+    /// <summary>
     /// Gets the part that this force is applied to.
     /// </summary>
     [Rpc("SpaceCenter", "Force_get_Part")]
@@ -70,6 +116,20 @@ public class Force : RemoteObject
             this
         };
         return Connection.Invoke<Part>("SpaceCenter", "Force_get_Part", args);
+    }
+
+    /// <summary>
+    /// Gets the part that this force is applied to.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "Force_get_Part")]
+    public async Task<Part> GetPartAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<Part>("SpaceCenter", "Force_get_Part", args);
     }
 
     /// <summary>
@@ -87,6 +147,21 @@ public class Force : RemoteObject
     }
 
     /// <summary>
+    /// Gets the position at which the force acts, in reference frame <see cref="T:SpaceCenter.ReferenceFrame" />.
+    /// Executes asynchronously.
+    /// </summary>
+    /// <returns>The position as a vector.</returns>
+    [Rpc("SpaceCenter", "Force_get_Position")]
+    public async Task<Tuple<double,double,double>> GetPositionAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<Tuple<double,double,double>>("SpaceCenter", "Force_get_Position", args);
+    }
+
+    /// <summary>
     /// Sets the position at which the force acts, in reference frame <see cref="T:SpaceCenter.ReferenceFrame" />.
     /// </summary>
     /// <param name="value">The value to set.</param>
@@ -98,6 +173,21 @@ public class Force : RemoteObject
             value
         };
         Connection.Invoke("SpaceCenter", "Force_set_Position", args);
+    }
+
+    /// <summary>
+    /// Sets the position at which the force acts, in reference frame <see cref="T:SpaceCenter.ReferenceFrame" />.
+    /// Executes asynchronously.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public async Task SetPositionAsync(Tuple<double,double,double> value)
+    {
+        var args = new object[]
+        {
+            this,
+            value
+        };
+        await Connection.InvokeAsync("SpaceCenter", "Force_set_Position", args);
     }
 
     /// <summary>
@@ -114,6 +204,20 @@ public class Force : RemoteObject
     }
 
     /// <summary>
+    /// Gets the reference frame of the force vector and position.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "Force_get_ReferenceFrame")]
+    public async Task<ReferenceFrame> GetReferenceFrameAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<ReferenceFrame>("SpaceCenter", "Force_get_ReferenceFrame", args);
+    }
+
+    /// <summary>
     /// Sets the reference frame of the force vector and position.
     /// </summary>
     /// <param name="value">The value to set.</param>
@@ -125,5 +229,20 @@ public class Force : RemoteObject
             value
         };
         Connection.Invoke("SpaceCenter", "Force_set_ReferenceFrame", args);
+    }
+
+    /// <summary>
+    /// Sets the reference frame of the force vector and position.
+    /// Executes asynchronously.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public async Task SetReferenceFrameAsync(ReferenceFrame value)
+    {
+        var args = new object[]
+        {
+            this,
+            value
+        };
+        await Connection.InvokeAsync("SpaceCenter", "Force_set_ReferenceFrame", args);
     }
 }

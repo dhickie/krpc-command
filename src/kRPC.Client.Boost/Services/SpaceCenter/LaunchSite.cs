@@ -1,6 +1,7 @@
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
 using kRPC.Client.Boost.Attributes;
+using System.Threading.Tasks;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
@@ -31,6 +32,20 @@ public class LaunchSite : RemoteObject
     }
 
     /// <summary>
+    /// Gets the celestial body the launch site is on.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "LaunchSite_get_Body")]
+    public async Task<CelestialBody> GetBodyAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<CelestialBody>("SpaceCenter", "LaunchSite_get_Body", args);
+    }
+
+    /// <summary>
     /// Which editor is normally used for this launch site.
     /// </summary>
     [Rpc("SpaceCenter", "LaunchSite_get_EditorFacility")]
@@ -44,6 +59,20 @@ public class LaunchSite : RemoteObject
     }
 
     /// <summary>
+    /// Which editor is normally used for this launch site.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "LaunchSite_get_EditorFacility")]
+    public async Task<EditorFacility> GetEditorFacilityAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<EditorFacility>("SpaceCenter", "LaunchSite_get_EditorFacility", args);
+    }
+
+    /// <summary>
     /// Gets the name of the launch site.
     /// </summary>
     [Rpc("SpaceCenter", "LaunchSite_get_Name")]
@@ -54,5 +83,19 @@ public class LaunchSite : RemoteObject
             this
         };
         return Connection.Invoke<string>("SpaceCenter", "LaunchSite_get_Name", args);
+    }
+
+    /// <summary>
+    /// Gets the name of the launch site.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "LaunchSite_get_Name")]
+    public async Task<string> GetNameAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<string>("SpaceCenter", "LaunchSite_get_Name", args);
     }
 }

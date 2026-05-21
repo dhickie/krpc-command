@@ -1,6 +1,7 @@
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
 using kRPC.Client.Boost.Attributes;
+using System.Threading.Tasks;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
@@ -30,6 +31,20 @@ public class RoboticPiston : RemoteObject
     }
 
     /// <summary>
+    /// Move piston to it's built position.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "RoboticPiston_MoveHome")]
+    public async Task MoveHomeAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        await Connection.InvokeAsync("SpaceCenter", "RoboticPiston_MoveHome", args);
+    }
+
+    /// <summary>
     /// Gets the current extension of the piston.
     /// </summary>
     [Rpc("SpaceCenter", "RoboticPiston_get_CurrentExtension")]
@@ -43,6 +58,20 @@ public class RoboticPiston : RemoteObject
     }
 
     /// <summary>
+    /// Gets the current extension of the piston.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "RoboticPiston_get_CurrentExtension")]
+    public async Task<float> GetCurrentExtensionAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<float>("SpaceCenter", "RoboticPiston_get_CurrentExtension", args);
+    }
+
+    /// <summary>
     /// Damping percentage.
     /// </summary>
     [Rpc("SpaceCenter", "RoboticPiston_get_Damping")]
@@ -53,6 +82,20 @@ public class RoboticPiston : RemoteObject
             this
         };
         return Connection.Invoke<float>("SpaceCenter", "RoboticPiston_get_Damping", args);
+    }
+
+    /// <summary>
+    /// Damping percentage.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "RoboticPiston_get_Damping")]
+    public async Task<float> GetDampingAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<float>("SpaceCenter", "RoboticPiston_get_Damping", args);
     }
 
     /// <summary>
@@ -70,6 +113,21 @@ public class RoboticPiston : RemoteObject
     }
 
     /// <summary>
+    /// Sets the damping percentage.
+    /// Executes asynchronously.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public async Task SetDampingAsync(float value)
+    {
+        var args = new object[]
+        {
+            this,
+            value
+        };
+        await Connection.InvokeAsync("SpaceCenter", "RoboticPiston_set_Damping", args);
+    }
+
+    /// <summary>
     /// Lock movement.
     /// </summary>
     [Rpc("SpaceCenter", "RoboticPiston_get_Locked")]
@@ -80,6 +138,20 @@ public class RoboticPiston : RemoteObject
             this
         };
         return Connection.Invoke<bool>("SpaceCenter", "RoboticPiston_get_Locked", args);
+    }
+
+    /// <summary>
+    /// Lock movement.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "RoboticPiston_get_Locked")]
+    public async Task<bool> GetLockedAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<bool>("SpaceCenter", "RoboticPiston_get_Locked", args);
     }
 
     /// <summary>
@@ -97,6 +169,21 @@ public class RoboticPiston : RemoteObject
     }
 
     /// <summary>
+    /// Sets whether movement is locked.
+    /// Executes asynchronously.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public async Task SetLockedAsync(bool value)
+    {
+        var args = new object[]
+        {
+            this,
+            value
+        };
+        await Connection.InvokeAsync("SpaceCenter", "RoboticPiston_set_Locked", args);
+    }
+
+    /// <summary>
     /// Gets whether the motor is engaged.
     /// </summary>
     [Rpc("SpaceCenter", "RoboticPiston_get_MotorEngaged")]
@@ -107,6 +194,20 @@ public class RoboticPiston : RemoteObject
             this
         };
         return Connection.Invoke<bool>("SpaceCenter", "RoboticPiston_get_MotorEngaged", args);
+    }
+
+    /// <summary>
+    /// Gets whether the motor is engaged.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "RoboticPiston_get_MotorEngaged")]
+    public async Task<bool> GetMotorEngagedAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<bool>("SpaceCenter", "RoboticPiston_get_MotorEngaged", args);
     }
 
     /// <summary>
@@ -124,6 +225,21 @@ public class RoboticPiston : RemoteObject
     }
 
     /// <summary>
+    /// Sets whether the motor is engaged.
+    /// Executes asynchronously.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public async Task SetMotorEngagedAsync(bool value)
+    {
+        var args = new object[]
+        {
+            this,
+            value
+        };
+        await Connection.InvokeAsync("SpaceCenter", "RoboticPiston_set_MotorEngaged", args);
+    }
+
+    /// <summary>
     /// Gets the part object for this robotic piston.
     /// </summary>
     [Rpc("SpaceCenter", "RoboticPiston_get_Part")]
@@ -137,6 +253,20 @@ public class RoboticPiston : RemoteObject
     }
 
     /// <summary>
+    /// Gets the part object for this robotic piston.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "RoboticPiston_get_Part")]
+    public async Task<Part> GetPartAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<Part>("SpaceCenter", "RoboticPiston_get_Part", args);
+    }
+
+    /// <summary>
     /// Target movement rate in degrees per second.
     /// </summary>
     [Rpc("SpaceCenter", "RoboticPiston_get_Rate")]
@@ -147,6 +277,20 @@ public class RoboticPiston : RemoteObject
             this
         };
         return Connection.Invoke<float>("SpaceCenter", "RoboticPiston_get_Rate", args);
+    }
+
+    /// <summary>
+    /// Target movement rate in degrees per second.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "RoboticPiston_get_Rate")]
+    public async Task<float> GetRateAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<float>("SpaceCenter", "RoboticPiston_get_Rate", args);
     }
 
     /// <summary>
@@ -164,6 +308,21 @@ public class RoboticPiston : RemoteObject
     }
 
     /// <summary>
+    /// Sets the target movement rate in degrees per second.
+    /// Executes asynchronously.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public async Task SetRateAsync(float value)
+    {
+        var args = new object[]
+        {
+            this,
+            value
+        };
+        await Connection.InvokeAsync("SpaceCenter", "RoboticPiston_set_Rate", args);
+    }
+
+    /// <summary>
     /// Target extension of the piston.
     /// </summary>
     [Rpc("SpaceCenter", "RoboticPiston_get_TargetExtension")]
@@ -174,6 +333,20 @@ public class RoboticPiston : RemoteObject
             this
         };
         return Connection.Invoke<float>("SpaceCenter", "RoboticPiston_get_TargetExtension", args);
+    }
+
+    /// <summary>
+    /// Target extension of the piston.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "RoboticPiston_get_TargetExtension")]
+    public async Task<float> GetTargetExtensionAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<float>("SpaceCenter", "RoboticPiston_get_TargetExtension", args);
     }
 
     /// <summary>
@@ -188,5 +361,20 @@ public class RoboticPiston : RemoteObject
             value
         };
         Connection.Invoke("SpaceCenter", "RoboticPiston_set_TargetExtension", args);
+    }
+
+    /// <summary>
+    /// Sets the target extension of the piston.
+    /// Executes asynchronously.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public async Task SetTargetExtensionAsync(float value)
+    {
+        var args = new object[]
+        {
+            this,
+            value
+        };
+        await Connection.InvokeAsync("SpaceCenter", "RoboticPiston_set_TargetExtension", args);
     }
 }

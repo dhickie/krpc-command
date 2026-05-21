@@ -2,6 +2,7 @@ using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
 using kRPC.Client.Boost.Attributes;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
@@ -31,6 +32,20 @@ public class Contract : RemoteObject
     }
 
     /// <summary>
+    /// Accept an offered contract.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "Contract_Accept")]
+    public async Task AcceptAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        await Connection.InvokeAsync("SpaceCenter", "Contract_Accept", args);
+    }
+
+    /// <summary>
     /// Cancel an active contract.
     /// </summary>
     [Rpc("SpaceCenter", "Contract_Cancel")]
@@ -41,6 +56,20 @@ public class Contract : RemoteObject
             this
         };
         Connection.Invoke("SpaceCenter", "Contract_Cancel", args);
+    }
+
+    /// <summary>
+    /// Cancel an active contract.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "Contract_Cancel")]
+    public async Task CancelAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        await Connection.InvokeAsync("SpaceCenter", "Contract_Cancel", args);
     }
 
     /// <summary>
@@ -57,6 +86,20 @@ public class Contract : RemoteObject
     }
 
     /// <summary>
+    /// Decline an offered contract.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "Contract_Decline")]
+    public async Task DeclineAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        await Connection.InvokeAsync("SpaceCenter", "Contract_Decline", args);
+    }
+
+    /// <summary>
     /// Gets whether the contract is active.
     /// </summary>
     [Rpc("SpaceCenter", "Contract_get_Active")]
@@ -67,6 +110,20 @@ public class Contract : RemoteObject
             this
         };
         return Connection.Invoke<bool>("SpaceCenter", "Contract_get_Active", args);
+    }
+
+    /// <summary>
+    /// Gets whether the contract is active.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "Contract_get_Active")]
+    public async Task<bool> GetActiveAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<bool>("SpaceCenter", "Contract_get_Active", args);
     }
 
     /// <summary>
@@ -83,6 +140,20 @@ public class Contract : RemoteObject
     }
 
     /// <summary>
+    /// Gets whether the contract can be canceled.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "Contract_get_CanBeCanceled")]
+    public async Task<bool> GetCanBeCanceledAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<bool>("SpaceCenter", "Contract_get_CanBeCanceled", args);
+    }
+
+    /// <summary>
     /// Gets whether the contract can be declined.
     /// </summary>
     [Rpc("SpaceCenter", "Contract_get_CanBeDeclined")]
@@ -93,6 +164,20 @@ public class Contract : RemoteObject
             this
         };
         return Connection.Invoke<bool>("SpaceCenter", "Contract_get_CanBeDeclined", args);
+    }
+
+    /// <summary>
+    /// Gets whether the contract can be declined.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "Contract_get_CanBeDeclined")]
+    public async Task<bool> GetCanBeDeclinedAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<bool>("SpaceCenter", "Contract_get_CanBeDeclined", args);
     }
 
     /// <summary>
@@ -109,6 +194,20 @@ public class Contract : RemoteObject
     }
 
     /// <summary>
+    /// Gets whether the contract can be failed.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "Contract_get_CanBeFailed")]
+    public async Task<bool> GetCanBeFailedAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<bool>("SpaceCenter", "Contract_get_CanBeFailed", args);
+    }
+
+    /// <summary>
     /// Description of the contract.
     /// </summary>
     [Rpc("SpaceCenter", "Contract_get_Description")]
@@ -119,6 +218,20 @@ public class Contract : RemoteObject
             this
         };
         return Connection.Invoke<string>("SpaceCenter", "Contract_get_Description", args);
+    }
+
+    /// <summary>
+    /// Description of the contract.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "Contract_get_Description")]
+    public async Task<string> GetDescriptionAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<string>("SpaceCenter", "Contract_get_Description", args);
     }
 
     /// <summary>
@@ -135,6 +248,20 @@ public class Contract : RemoteObject
     }
 
     /// <summary>
+    /// Gets whether the contract has been failed.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "Contract_get_Failed")]
+    public async Task<bool> GetFailedAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<bool>("SpaceCenter", "Contract_get_Failed", args);
+    }
+
+    /// <summary>
     /// Funds received when accepting the contract.
     /// </summary>
     [Rpc("SpaceCenter", "Contract_get_FundsAdvance")]
@@ -145,6 +272,20 @@ public class Contract : RemoteObject
             this
         };
         return Connection.Invoke<double>("SpaceCenter", "Contract_get_FundsAdvance", args);
+    }
+
+    /// <summary>
+    /// Funds received when accepting the contract.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "Contract_get_FundsAdvance")]
+    public async Task<double> GetFundsAdvanceAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<double>("SpaceCenter", "Contract_get_FundsAdvance", args);
     }
 
     /// <summary>
@@ -161,6 +302,20 @@ public class Contract : RemoteObject
     }
 
     /// <summary>
+    /// Funds received on completion of the contract.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "Contract_get_FundsCompletion")]
+    public async Task<double> GetFundsCompletionAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<double>("SpaceCenter", "Contract_get_FundsCompletion", args);
+    }
+
+    /// <summary>
     /// Funds lost if the contract is failed.
     /// </summary>
     [Rpc("SpaceCenter", "Contract_get_FundsFailure")]
@@ -171,6 +326,20 @@ public class Contract : RemoteObject
             this
         };
         return Connection.Invoke<double>("SpaceCenter", "Contract_get_FundsFailure", args);
+    }
+
+    /// <summary>
+    /// Funds lost if the contract is failed.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "Contract_get_FundsFailure")]
+    public async Task<double> GetFundsFailureAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<double>("SpaceCenter", "Contract_get_FundsFailure", args);
     }
 
     /// <summary>
@@ -187,6 +356,20 @@ public class Contract : RemoteObject
     }
 
     /// <summary>
+    /// Keywords for the contract.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "Contract_get_Keywords")]
+    public async Task<IList<string>> GetKeywordsAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<IList<string>>("SpaceCenter", "Contract_get_Keywords", args);
+    }
+
+    /// <summary>
     /// Notes for the contract.
     /// </summary>
     [Rpc("SpaceCenter", "Contract_get_Notes")]
@@ -197,6 +380,20 @@ public class Contract : RemoteObject
             this
         };
         return Connection.Invoke<string>("SpaceCenter", "Contract_get_Notes", args);
+    }
+
+    /// <summary>
+    /// Notes for the contract.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "Contract_get_Notes")]
+    public async Task<string> GetNotesAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<string>("SpaceCenter", "Contract_get_Notes", args);
     }
 
     /// <summary>
@@ -213,6 +410,20 @@ public class Contract : RemoteObject
     }
 
     /// <summary>
+    /// Parameters for the contract.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "Contract_get_Parameters")]
+    public async Task<IList<ContractParameter>> GetParametersAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<IList<ContractParameter>>("SpaceCenter", "Contract_get_Parameters", args);
+    }
+
+    /// <summary>
     /// Gets whether the contract has been read.
     /// </summary>
     [Rpc("SpaceCenter", "Contract_get_Read")]
@@ -223,6 +434,20 @@ public class Contract : RemoteObject
             this
         };
         return Connection.Invoke<bool>("SpaceCenter", "Contract_get_Read", args);
+    }
+
+    /// <summary>
+    /// Gets whether the contract has been read.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "Contract_get_Read")]
+    public async Task<bool> GetReadAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<bool>("SpaceCenter", "Contract_get_Read", args);
     }
 
     /// <summary>
@@ -239,6 +464,20 @@ public class Contract : RemoteObject
     }
 
     /// <summary>
+    /// Reputation gained on completion of the contract.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "Contract_get_ReputationCompletion")]
+    public async Task<double> GetReputationCompletionAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<double>("SpaceCenter", "Contract_get_ReputationCompletion", args);
+    }
+
+    /// <summary>
     /// Reputation lost if the contract is failed.
     /// </summary>
     [Rpc("SpaceCenter", "Contract_get_ReputationFailure")]
@@ -249,6 +488,20 @@ public class Contract : RemoteObject
             this
         };
         return Connection.Invoke<double>("SpaceCenter", "Contract_get_ReputationFailure", args);
+    }
+
+    /// <summary>
+    /// Reputation lost if the contract is failed.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "Contract_get_ReputationFailure")]
+    public async Task<double> GetReputationFailureAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<double>("SpaceCenter", "Contract_get_ReputationFailure", args);
     }
 
     /// <summary>
@@ -265,6 +518,20 @@ public class Contract : RemoteObject
     }
 
     /// <summary>
+    /// Science gained on completion of the contract.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "Contract_get_ScienceCompletion")]
+    public async Task<double> GetScienceCompletionAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<double>("SpaceCenter", "Contract_get_ScienceCompletion", args);
+    }
+
+    /// <summary>
     /// Gets whether the contract has been seen.
     /// </summary>
     [Rpc("SpaceCenter", "Contract_get_Seen")]
@@ -275,6 +542,20 @@ public class Contract : RemoteObject
             this
         };
         return Connection.Invoke<bool>("SpaceCenter", "Contract_get_Seen", args);
+    }
+
+    /// <summary>
+    /// Gets whether the contract has been seen.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "Contract_get_Seen")]
+    public async Task<bool> GetSeenAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<bool>("SpaceCenter", "Contract_get_Seen", args);
     }
 
     /// <summary>
@@ -291,6 +572,20 @@ public class Contract : RemoteObject
     }
 
     /// <summary>
+    /// State of the contract.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "Contract_get_State")]
+    public async Task<ContractState> GetStateAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<ContractState>("SpaceCenter", "Contract_get_State", args);
+    }
+
+    /// <summary>
     /// Synopsis for the contract.
     /// </summary>
     [Rpc("SpaceCenter", "Contract_get_Synopsis")]
@@ -301,6 +596,20 @@ public class Contract : RemoteObject
             this
         };
         return Connection.Invoke<string>("SpaceCenter", "Contract_get_Synopsis", args);
+    }
+
+    /// <summary>
+    /// Synopsis for the contract.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "Contract_get_Synopsis")]
+    public async Task<string> GetSynopsisAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<string>("SpaceCenter", "Contract_get_Synopsis", args);
     }
 
     /// <summary>
@@ -317,6 +626,20 @@ public class Contract : RemoteObject
     }
 
     /// <summary>
+    /// Title of the contract.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "Contract_get_Title")]
+    public async Task<string> GetTitleAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<string>("SpaceCenter", "Contract_get_Title", args);
+    }
+
+    /// <summary>
     /// Type of the contract.
     /// </summary>
     [Rpc("SpaceCenter", "Contract_get_Type")]
@@ -327,5 +650,19 @@ public class Contract : RemoteObject
             this
         };
         return Connection.Invoke<string>("SpaceCenter", "Contract_get_Type", args);
+    }
+
+    /// <summary>
+    /// Type of the contract.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "Contract_get_Type")]
+    public async Task<string> GetTypeAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<string>("SpaceCenter", "Contract_get_Type", args);
     }
 }

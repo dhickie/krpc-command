@@ -1,6 +1,7 @@
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
 using kRPC.Client.Boost.Attributes;
+using System.Threading.Tasks;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
@@ -31,6 +32,20 @@ public class Camera : RemoteObject
     }
 
     /// <summary>
+    /// Default distance from the camera to the subject, in meters.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "Camera_get_DefaultDistance")]
+    public async Task<float> GetDefaultDistanceAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<float>("SpaceCenter", "Camera_get_DefaultDistance", args);
+    }
+
+    /// <summary>
     /// Gets the distance from the camera to the subject, in meters.
     /// A value between <see cref="M:SpaceCenter.Camera.GetMinDistance" /> and <see cref="M:SpaceCenter.Camera.GetMaxDistance" />.
     /// </summary>
@@ -42,6 +57,21 @@ public class Camera : RemoteObject
             this
         };
         return Connection.Invoke<float>("SpaceCenter", "Camera_get_Distance", args);
+    }
+
+    /// <summary>
+    /// Gets the distance from the camera to the subject, in meters.
+    /// A value between <see cref="M:SpaceCenter.Camera.GetMinDistance" /> and <see cref="M:SpaceCenter.Camera.GetMaxDistance" />.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "Camera_get_Distance")]
+    public async Task<float> GetDistanceAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<float>("SpaceCenter", "Camera_get_Distance", args);
     }
 
     /// <summary>
@@ -60,6 +90,22 @@ public class Camera : RemoteObject
     }
 
     /// <summary>
+    /// Sets the distance from the camera to the subject, in meters.
+    /// A value between <see cref="M:SpaceCenter.Camera.GetMinDistance" /> and <see cref="M:SpaceCenter.Camera.GetMaxDistance" />.
+    /// Executes asynchronously.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public async Task SetDistanceAsync(float value)
+    {
+        var args = new object[]
+        {
+            this,
+            value
+        };
+        await Connection.InvokeAsync("SpaceCenter", "Camera_set_Distance", args);
+    }
+
+    /// <summary>
     /// In map mode, the celestial body that the camera is focussed on.
     /// Returns <c>null</c> if the camera is not focussed on a celestial body.
     /// Returns an error is the camera is not in map mode.
@@ -72,6 +118,22 @@ public class Camera : RemoteObject
             this
         };
         return Connection.Invoke<CelestialBody>("SpaceCenter", "Camera_get_FocussedBody", args);
+    }
+
+    /// <summary>
+    /// In map mode, the celestial body that the camera is focussed on.
+    /// Returns <c>null</c> if the camera is not focussed on a celestial body.
+    /// Returns an error is the camera is not in map mode.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "Camera_get_FocussedBody")]
+    public async Task<CelestialBody> GetFocussedBodyAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<CelestialBody>("SpaceCenter", "Camera_get_FocussedBody", args);
     }
 
     /// <summary>
@@ -91,6 +153,23 @@ public class Camera : RemoteObject
     }
 
     /// <summary>
+    /// Sets in map mode, the celestial body that the camera is focussed on.
+    /// Returns <c>null</c> if the camera is not focussed on a celestial body.
+    /// Returns an error is the camera is not in map mode.
+    /// Executes asynchronously.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public async Task SetFocussedBodyAsync(CelestialBody value)
+    {
+        var args = new object[]
+        {
+            this,
+            value
+        };
+        await Connection.InvokeAsync("SpaceCenter", "Camera_set_FocussedBody", args);
+    }
+
+    /// <summary>
     /// In map mode, the maneuver node that the camera is focussed on.
     /// Returns <c>null</c> if the camera is not focussed on a maneuver node.
     /// Returns an error is the camera is not in map mode.
@@ -103,6 +182,22 @@ public class Camera : RemoteObject
             this
         };
         return Connection.Invoke<Node>("SpaceCenter", "Camera_get_FocussedNode", args);
+    }
+
+    /// <summary>
+    /// In map mode, the maneuver node that the camera is focussed on.
+    /// Returns <c>null</c> if the camera is not focussed on a maneuver node.
+    /// Returns an error is the camera is not in map mode.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "Camera_get_FocussedNode")]
+    public async Task<Node> GetFocussedNodeAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<Node>("SpaceCenter", "Camera_get_FocussedNode", args);
     }
 
     /// <summary>
@@ -122,6 +217,23 @@ public class Camera : RemoteObject
     }
 
     /// <summary>
+    /// Sets in map mode, the maneuver node that the camera is focussed on.
+    /// Returns <c>null</c> if the camera is not focussed on a maneuver node.
+    /// Returns an error is the camera is not in map mode.
+    /// Executes asynchronously.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public async Task SetFocussedNodeAsync(Node value)
+    {
+        var args = new object[]
+        {
+            this,
+            value
+        };
+        await Connection.InvokeAsync("SpaceCenter", "Camera_set_FocussedNode", args);
+    }
+
+    /// <summary>
     /// In map mode, the vessel that the camera is focussed on.
     /// Returns <c>null</c> if the camera is not focussed on a vessel.
     /// Returns an error is the camera is not in map mode.
@@ -134,6 +246,22 @@ public class Camera : RemoteObject
             this
         };
         return Connection.Invoke<Vessel>("SpaceCenter", "Camera_get_FocussedVessel", args);
+    }
+
+    /// <summary>
+    /// In map mode, the vessel that the camera is focussed on.
+    /// Returns <c>null</c> if the camera is not focussed on a vessel.
+    /// Returns an error is the camera is not in map mode.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "Camera_get_FocussedVessel")]
+    public async Task<Vessel> GetFocussedVesselAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<Vessel>("SpaceCenter", "Camera_get_FocussedVessel", args);
     }
 
     /// <summary>
@@ -153,6 +281,23 @@ public class Camera : RemoteObject
     }
 
     /// <summary>
+    /// Sets in map mode, the vessel that the camera is focussed on.
+    /// Returns <c>null</c> if the camera is not focussed on a vessel.
+    /// Returns an error is the camera is not in map mode.
+    /// Executes asynchronously.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public async Task SetFocussedVesselAsync(Vessel value)
+    {
+        var args = new object[]
+        {
+            this,
+            value
+        };
+        await Connection.InvokeAsync("SpaceCenter", "Camera_set_FocussedVessel", args);
+    }
+
+    /// <summary>
     /// Gets the heading of the camera, in degrees.
     /// </summary>
     [Rpc("SpaceCenter", "Camera_get_Heading")]
@@ -163,6 +308,20 @@ public class Camera : RemoteObject
             this
         };
         return Connection.Invoke<float>("SpaceCenter", "Camera_get_Heading", args);
+    }
+
+    /// <summary>
+    /// Gets the heading of the camera, in degrees.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "Camera_get_Heading")]
+    public async Task<float> GetHeadingAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<float>("SpaceCenter", "Camera_get_Heading", args);
     }
 
     /// <summary>
@@ -180,6 +339,21 @@ public class Camera : RemoteObject
     }
 
     /// <summary>
+    /// Sets the heading of the camera, in degrees.
+    /// Executes asynchronously.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public async Task SetHeadingAsync(float value)
+    {
+        var args = new object[]
+        {
+            this,
+            value
+        };
+        await Connection.InvokeAsync("SpaceCenter", "Camera_set_Heading", args);
+    }
+
+    /// <summary>
     /// Gets the maximum distance from the camera to the subject, in meters.
     /// </summary>
     [Rpc("SpaceCenter", "Camera_get_MaxDistance")]
@@ -190,6 +364,20 @@ public class Camera : RemoteObject
             this
         };
         return Connection.Invoke<float>("SpaceCenter", "Camera_get_MaxDistance", args);
+    }
+
+    /// <summary>
+    /// Gets the maximum distance from the camera to the subject, in meters.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "Camera_get_MaxDistance")]
+    public async Task<float> GetMaxDistanceAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<float>("SpaceCenter", "Camera_get_MaxDistance", args);
     }
 
     /// <summary>
@@ -206,6 +394,20 @@ public class Camera : RemoteObject
     }
 
     /// <summary>
+    /// Gets the maximum pitch of the camera.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "Camera_get_MaxPitch")]
+    public async Task<float> GetMaxPitchAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<float>("SpaceCenter", "Camera_get_MaxPitch", args);
+    }
+
+    /// <summary>
     /// Gets the minimum distance from the camera to the subject, in meters.
     /// </summary>
     [Rpc("SpaceCenter", "Camera_get_MinDistance")]
@@ -216,6 +418,20 @@ public class Camera : RemoteObject
             this
         };
         return Connection.Invoke<float>("SpaceCenter", "Camera_get_MinDistance", args);
+    }
+
+    /// <summary>
+    /// Gets the minimum distance from the camera to the subject, in meters.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "Camera_get_MinDistance")]
+    public async Task<float> GetMinDistanceAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<float>("SpaceCenter", "Camera_get_MinDistance", args);
     }
 
     /// <summary>
@@ -232,6 +448,20 @@ public class Camera : RemoteObject
     }
 
     /// <summary>
+    /// Gets the minimum pitch of the camera.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "Camera_get_MinPitch")]
+    public async Task<float> GetMinPitchAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<float>("SpaceCenter", "Camera_get_MinPitch", args);
+    }
+
+    /// <summary>
     /// Gets the current mode of the camera.
     /// </summary>
     [Rpc("SpaceCenter", "Camera_get_Mode")]
@@ -242,6 +472,20 @@ public class Camera : RemoteObject
             this
         };
         return Connection.Invoke<CameraMode>("SpaceCenter", "Camera_get_Mode", args);
+    }
+
+    /// <summary>
+    /// Gets the current mode of the camera.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "Camera_get_Mode")]
+    public async Task<CameraMode> GetModeAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<CameraMode>("SpaceCenter", "Camera_get_Mode", args);
     }
 
     /// <summary>
@@ -259,6 +503,21 @@ public class Camera : RemoteObject
     }
 
     /// <summary>
+    /// Sets the current mode of the camera.
+    /// Executes asynchronously.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public async Task SetModeAsync(CameraMode value)
+    {
+        var args = new object[]
+        {
+            this,
+            value
+        };
+        await Connection.InvokeAsync("SpaceCenter", "Camera_set_Mode", args);
+    }
+
+    /// <summary>
     /// Gets the pitch of the camera, in degrees.
     /// A value between <see cref="M:SpaceCenter.Camera.GetMinPitch" /> and <see cref="M:SpaceCenter.Camera.GetMaxPitch" />
     /// </summary>
@@ -270,6 +529,21 @@ public class Camera : RemoteObject
             this
         };
         return Connection.Invoke<float>("SpaceCenter", "Camera_get_Pitch", args);
+    }
+
+    /// <summary>
+    /// Gets the pitch of the camera, in degrees.
+    /// A value between <see cref="M:SpaceCenter.Camera.GetMinPitch" /> and <see cref="M:SpaceCenter.Camera.GetMaxPitch" />
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "Camera_get_Pitch")]
+    public async Task<float> GetPitchAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<float>("SpaceCenter", "Camera_get_Pitch", args);
     }
 
     /// <summary>
@@ -285,5 +559,21 @@ public class Camera : RemoteObject
             value
         };
         Connection.Invoke("SpaceCenter", "Camera_set_Pitch", args);
+    }
+
+    /// <summary>
+    /// Sets the pitch of the camera, in degrees.
+    /// A value between <see cref="M:SpaceCenter.Camera.GetMinPitch" /> and <see cref="M:SpaceCenter.Camera.GetMaxPitch" />
+    /// Executes asynchronously.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public async Task SetPitchAsync(float value)
+    {
+        var args = new object[]
+        {
+            this,
+            value
+        };
+        await Connection.InvokeAsync("SpaceCenter", "Camera_set_Pitch", args);
     }
 }

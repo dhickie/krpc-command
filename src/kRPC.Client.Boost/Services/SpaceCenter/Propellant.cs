@@ -1,6 +1,7 @@
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
 using kRPC.Client.Boost.Attributes;
+using System.Threading.Tasks;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
@@ -30,6 +31,20 @@ public class Propellant : RemoteObject
     }
 
     /// <summary>
+    /// Gets the current amount of propellant.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "Propellant_get_CurrentAmount")]
+    public async Task<double> GetCurrentAmountAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<double>("SpaceCenter", "Propellant_get_CurrentAmount", args);
+    }
+
+    /// <summary>
     /// Gets the required amount of propellant.
     /// </summary>
     [Rpc("SpaceCenter", "Propellant_get_CurrentRequirement")]
@@ -43,6 +58,20 @@ public class Propellant : RemoteObject
     }
 
     /// <summary>
+    /// Gets the required amount of propellant.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "Propellant_get_CurrentRequirement")]
+    public async Task<double> GetCurrentRequirementAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<double>("SpaceCenter", "Propellant_get_CurrentRequirement", args);
+    }
+
+    /// <summary>
     /// If this propellant has a stack gauge or not.
     /// </summary>
     [Rpc("SpaceCenter", "Propellant_get_DrawStackGauge")]
@@ -53,6 +82,20 @@ public class Propellant : RemoteObject
             this
         };
         return Connection.Invoke<bool>("SpaceCenter", "Propellant_get_DrawStackGauge", args);
+    }
+
+    /// <summary>
+    /// If this propellant has a stack gauge or not.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "Propellant_get_DrawStackGauge")]
+    public async Task<bool> GetDrawStackGaugeAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<bool>("SpaceCenter", "Propellant_get_DrawStackGauge", args);
     }
 
     /// <summary>
@@ -70,6 +113,21 @@ public class Propellant : RemoteObject
     }
 
     /// <summary>
+    /// If this propellant should be ignored when calculating required mass flow
+    /// given specific impulse.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "Propellant_get_IgnoreForIsp")]
+    public async Task<bool> GetIgnoreForIspAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<bool>("SpaceCenter", "Propellant_get_IgnoreForIsp", args);
+    }
+
+    /// <summary>
     /// If this propellant should be ignored for thrust curve calculations.
     /// </summary>
     [Rpc("SpaceCenter", "Propellant_get_IgnoreForThrustCurve")]
@@ -80,6 +138,20 @@ public class Propellant : RemoteObject
             this
         };
         return Connection.Invoke<bool>("SpaceCenter", "Propellant_get_IgnoreForThrustCurve", args);
+    }
+
+    /// <summary>
+    /// If this propellant should be ignored for thrust curve calculations.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "Propellant_get_IgnoreForThrustCurve")]
+    public async Task<bool> GetIgnoreForThrustCurveAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<bool>("SpaceCenter", "Propellant_get_IgnoreForThrustCurve", args);
     }
 
     /// <summary>
@@ -96,6 +168,20 @@ public class Propellant : RemoteObject
     }
 
     /// <summary>
+    /// If this propellant is deprived.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "Propellant_get_IsDeprived")]
+    public async Task<bool> GetIsDeprivedAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<bool>("SpaceCenter", "Propellant_get_IsDeprived", args);
+    }
+
+    /// <summary>
     /// Gets the name of the propellant.
     /// </summary>
     [Rpc("SpaceCenter", "Propellant_get_Name")]
@@ -109,6 +195,20 @@ public class Propellant : RemoteObject
     }
 
     /// <summary>
+    /// Gets the name of the propellant.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "Propellant_get_Name")]
+    public async Task<string> GetNameAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<string>("SpaceCenter", "Propellant_get_Name", args);
+    }
+
+    /// <summary>
     /// Gets the propellant ratio.
     /// </summary>
     [Rpc("SpaceCenter", "Propellant_get_Ratio")]
@@ -119,6 +219,20 @@ public class Propellant : RemoteObject
             this
         };
         return Connection.Invoke<float>("SpaceCenter", "Propellant_get_Ratio", args);
+    }
+
+    /// <summary>
+    /// Gets the propellant ratio.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "Propellant_get_Ratio")]
+    public async Task<float> GetRatioAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<float>("SpaceCenter", "Propellant_get_Ratio", args);
     }
 
     /// <summary>
@@ -136,6 +250,21 @@ public class Propellant : RemoteObject
     }
 
     /// <summary>
+    /// Gets the total amount of the underlying resource currently reachable given
+    /// resource flow rules.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "Propellant_get_TotalResourceAvailable")]
+    public async Task<double> GetTotalResourceAvailableAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<double>("SpaceCenter", "Propellant_get_TotalResourceAvailable", args);
+    }
+
+    /// <summary>
     /// Gets the total vehicle capacity for the underlying propellant resource,
     /// restricted by resource flow rules.
     /// </summary>
@@ -147,5 +276,20 @@ public class Propellant : RemoteObject
             this
         };
         return Connection.Invoke<double>("SpaceCenter", "Propellant_get_TotalResourceCapacity", args);
+    }
+
+    /// <summary>
+    /// Gets the total vehicle capacity for the underlying propellant resource,
+    /// restricted by resource flow rules.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "Propellant_get_TotalResourceCapacity")]
+    public async Task<double> GetTotalResourceCapacityAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<double>("SpaceCenter", "Propellant_get_TotalResourceCapacity", args);
     }
 }

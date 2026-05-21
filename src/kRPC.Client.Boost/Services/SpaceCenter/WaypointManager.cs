@@ -2,6 +2,7 @@ using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
 using kRPC.Client.Boost.Attributes;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
@@ -43,6 +44,30 @@ public class WaypointManager : RemoteObject
     }
 
     /// <summary>
+    /// Creates a waypoint at the given position at ground level, and returns a
+    /// <see cref="T:SpaceCenter.Waypoint" /> object that can be used to modify it.
+    /// Executes asynchronously.
+    /// </summary>
+    /// <param name="latitude">Latitude of the waypoint.</param>
+    /// <param name="longitude">Longitude of the waypoint.</param>
+    /// <param name="body">Celestial body the waypoint is attached to.</param>
+    /// <param name="name">Name of the waypoint.</param>
+    /// <returns></returns>
+    [Rpc("SpaceCenter", "WaypointManager_AddWaypoint")]
+    public async Task<Waypoint> AddWaypointAsync(double latitude, double longitude, CelestialBody body, string name)
+    {
+        var args = new object[]
+        {
+            this,
+            latitude,
+            longitude,
+            body,
+            name
+        };
+        return await Connection.InvokeAsync<Waypoint>("SpaceCenter", "WaypointManager_AddWaypoint", args);
+    }
+
+    /// <summary>
     /// Creates a waypoint at the given position and altitude, and returns a
     /// <see cref="T:SpaceCenter.Waypoint" /> object that can be used to modify it.
     /// </summary>
@@ -68,6 +93,32 @@ public class WaypointManager : RemoteObject
     }
 
     /// <summary>
+    /// Creates a waypoint at the given position and altitude, and returns a
+    /// <see cref="T:SpaceCenter.Waypoint" /> object that can be used to modify it.
+    /// Executes asynchronously.
+    /// </summary>
+    /// <param name="latitude">Latitude of the waypoint.</param>
+    /// <param name="longitude">Longitude of the waypoint.</param>
+    /// <param name="altitude">Altitude (above sea level) of the waypoint.</param>
+    /// <param name="body">Celestial body the waypoint is attached to.</param>
+    /// <param name="name">Name of the waypoint.</param>
+    /// <returns></returns>
+    [Rpc("SpaceCenter", "WaypointManager_AddWaypointAtAltitude")]
+    public async Task<Waypoint> AddWaypointAtAltitudeAsync(double latitude, double longitude, double altitude, CelestialBody body, string name)
+    {
+        var args = new object[]
+        {
+            this,
+            latitude,
+            longitude,
+            altitude,
+            body,
+            name
+        };
+        return await Connection.InvokeAsync<Waypoint>("SpaceCenter", "WaypointManager_AddWaypointAtAltitude", args);
+    }
+
+    /// <summary>
     /// Gets an example map of known color - seed pairs.
     /// Any other integers may be used as seed.
     /// </summary>
@@ -79,6 +130,21 @@ public class WaypointManager : RemoteObject
             this
         };
         return Connection.Invoke<IDictionary<string,int>>("SpaceCenter", "WaypointManager_get_Colors", args);
+    }
+
+    /// <summary>
+    /// Gets an example map of known color - seed pairs.
+    /// Any other integers may be used as seed.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "WaypointManager_get_Colors")]
+    public async Task<IDictionary<string,int>> GetColorsAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<IDictionary<string,int>>("SpaceCenter", "WaypointManager_get_Colors", args);
     }
 
     /// <summary>
@@ -95,6 +161,20 @@ public class WaypointManager : RemoteObject
     }
 
     /// <summary>
+    /// Returns all available icons (from "GameData/Squad/Contracts/Icons/").
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "WaypointManager_get_Icons")]
+    public async Task<IList<string>> GetIconsAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<IList<string>>("SpaceCenter", "WaypointManager_get_Icons", args);
+    }
+
+    /// <summary>
     /// Gets a list of all existing waypoints.
     /// </summary>
     [Rpc("SpaceCenter", "WaypointManager_get_Waypoints")]
@@ -105,5 +185,19 @@ public class WaypointManager : RemoteObject
             this
         };
         return Connection.Invoke<IList<Waypoint>>("SpaceCenter", "WaypointManager_get_Waypoints", args);
+    }
+
+    /// <summary>
+    /// Gets a list of all existing waypoints.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "WaypointManager_get_Waypoints")]
+    public async Task<IList<Waypoint>> GetWaypointsAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<IList<Waypoint>>("SpaceCenter", "WaypointManager_get_Waypoints", args);
     }
 }

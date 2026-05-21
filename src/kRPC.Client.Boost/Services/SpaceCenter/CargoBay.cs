@@ -1,6 +1,7 @@
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
 using kRPC.Client.Boost.Attributes;
+using System.Threading.Tasks;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
@@ -30,6 +31,20 @@ public class CargoBay : RemoteObject
     }
 
     /// <summary>
+    /// Gets whether the cargo bay is open.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "CargoBay_get_Open")]
+    public async Task<bool> GetOpenAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<bool>("SpaceCenter", "CargoBay_get_Open", args);
+    }
+
+    /// <summary>
     /// Sets whether the cargo bay is open.
     /// </summary>
     /// <param name="value">The value to set.</param>
@@ -41,6 +56,21 @@ public class CargoBay : RemoteObject
             value
         };
         Connection.Invoke("SpaceCenter", "CargoBay_set_Open", args);
+    }
+
+    /// <summary>
+    /// Sets whether the cargo bay is open.
+    /// Executes asynchronously.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public async Task SetOpenAsync(bool value)
+    {
+        var args = new object[]
+        {
+            this,
+            value
+        };
+        await Connection.InvokeAsync("SpaceCenter", "CargoBay_set_Open", args);
     }
 
     /// <summary>
@@ -57,6 +87,20 @@ public class CargoBay : RemoteObject
     }
 
     /// <summary>
+    /// Gets the part object for this cargo bay.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "CargoBay_get_Part")]
+    public async Task<Part> GetPartAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<Part>("SpaceCenter", "CargoBay_get_Part", args);
+    }
+
+    /// <summary>
     /// Gets the state of the cargo bay.
     /// </summary>
     [Rpc("SpaceCenter", "CargoBay_get_State")]
@@ -67,5 +111,19 @@ public class CargoBay : RemoteObject
             this
         };
         return Connection.Invoke<CargoBayState>("SpaceCenter", "CargoBay_get_State", args);
+    }
+
+    /// <summary>
+    /// Gets the state of the cargo bay.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "CargoBay_get_State")]
+    public async Task<CargoBayState> GetStateAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<CargoBayState>("SpaceCenter", "CargoBay_get_State", args);
     }
 }

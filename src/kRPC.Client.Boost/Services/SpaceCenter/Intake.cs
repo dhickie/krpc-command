@@ -1,6 +1,7 @@
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
 using kRPC.Client.Boost.Attributes;
+using System.Threading.Tasks;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
@@ -30,6 +31,20 @@ public class Intake : RemoteObject
     }
 
     /// <summary>
+    /// Gets the area of the intake's opening, in square meters.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "Intake_get_Area")]
+    public async Task<float> GetAreaAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<float>("SpaceCenter", "Intake_get_Area", args);
+    }
+
+    /// <summary>
     /// Gets the rate of flow into the intake, in units of resource per second.
     /// </summary>
     [Rpc("SpaceCenter", "Intake_get_Flow")]
@@ -43,6 +58,20 @@ public class Intake : RemoteObject
     }
 
     /// <summary>
+    /// Gets the rate of flow into the intake, in units of resource per second.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "Intake_get_Flow")]
+    public async Task<float> GetFlowAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<float>("SpaceCenter", "Intake_get_Flow", args);
+    }
+
+    /// <summary>
     /// Gets whether the intake is open.
     /// </summary>
     [Rpc("SpaceCenter", "Intake_get_Open")]
@@ -53,6 +82,20 @@ public class Intake : RemoteObject
             this
         };
         return Connection.Invoke<bool>("SpaceCenter", "Intake_get_Open", args);
+    }
+
+    /// <summary>
+    /// Gets whether the intake is open.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "Intake_get_Open")]
+    public async Task<bool> GetOpenAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<bool>("SpaceCenter", "Intake_get_Open", args);
     }
 
     /// <summary>
@@ -70,6 +113,21 @@ public class Intake : RemoteObject
     }
 
     /// <summary>
+    /// Sets whether the intake is open.
+    /// Executes asynchronously.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public async Task SetOpenAsync(bool value)
+    {
+        var args = new object[]
+        {
+            this,
+            value
+        };
+        await Connection.InvokeAsync("SpaceCenter", "Intake_set_Open", args);
+    }
+
+    /// <summary>
     /// Gets the part object for this intake.
     /// </summary>
     [Rpc("SpaceCenter", "Intake_get_Part")]
@@ -83,6 +141,20 @@ public class Intake : RemoteObject
     }
 
     /// <summary>
+    /// Gets the part object for this intake.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "Intake_get_Part")]
+    public async Task<Part> GetPartAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<Part>("SpaceCenter", "Intake_get_Part", args);
+    }
+
+    /// <summary>
     /// Speed of the flow into the intake, in <math>m/s</math>.
     /// </summary>
     [Rpc("SpaceCenter", "Intake_get_Speed")]
@@ -93,5 +165,19 @@ public class Intake : RemoteObject
             this
         };
         return Connection.Invoke<float>("SpaceCenter", "Intake_get_Speed", args);
+    }
+
+    /// <summary>
+    /// Speed of the flow into the intake, in <math>m/s</math>.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "Intake_get_Speed")]
+    public async Task<float> GetSpeedAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<float>("SpaceCenter", "Intake_get_Speed", args);
     }
 }

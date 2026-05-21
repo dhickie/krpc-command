@@ -1,6 +1,7 @@
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
 using kRPC.Client.Boost.Attributes;
+using System.Threading.Tasks;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
@@ -30,6 +31,20 @@ public class LaunchClamp : RemoteObject
     }
 
     /// <summary>
+    /// Releases the docking clamp. Has no effect if the clamp has already been released.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "LaunchClamp_Release")]
+    public async Task ReleaseAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        await Connection.InvokeAsync("SpaceCenter", "LaunchClamp_Release", args);
+    }
+
+    /// <summary>
     /// Gets the part object for this launch clamp.
     /// </summary>
     [Rpc("SpaceCenter", "LaunchClamp_get_Part")]
@@ -40,5 +55,19 @@ public class LaunchClamp : RemoteObject
             this
         };
         return Connection.Invoke<Part>("SpaceCenter", "LaunchClamp_get_Part", args);
+    }
+
+    /// <summary>
+    /// Gets the part object for this launch clamp.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "LaunchClamp_get_Part")]
+    public async Task<Part> GetPartAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<Part>("SpaceCenter", "LaunchClamp_get_Part", args);
     }
 }

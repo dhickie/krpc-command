@@ -1,6 +1,7 @@
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
 using kRPC.Client.Boost.Attributes;
+using System.Threading.Tasks;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
@@ -31,6 +32,20 @@ public class Fairing : RemoteObject
     }
 
     /// <summary>
+    /// Jettison the fairing. Has no effect if it has already been jettisoned.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "Fairing_Jettison")]
+    public async Task JettisonAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        await Connection.InvokeAsync("SpaceCenter", "Fairing_Jettison", args);
+    }
+
+    /// <summary>
     /// Gets whether the fairing has been jettisoned.
     /// </summary>
     [Rpc("SpaceCenter", "Fairing_get_Jettisoned")]
@@ -44,6 +59,20 @@ public class Fairing : RemoteObject
     }
 
     /// <summary>
+    /// Gets whether the fairing has been jettisoned.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "Fairing_get_Jettisoned")]
+    public async Task<bool> GetJettisonedAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<bool>("SpaceCenter", "Fairing_get_Jettisoned", args);
+    }
+
+    /// <summary>
     /// Gets the part object for this fairing.
     /// </summary>
     [Rpc("SpaceCenter", "Fairing_get_Part")]
@@ -54,5 +83,19 @@ public class Fairing : RemoteObject
             this
         };
         return Connection.Invoke<Part>("SpaceCenter", "Fairing_get_Part", args);
+    }
+
+    /// <summary>
+    /// Gets the part object for this fairing.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "Fairing_get_Part")]
+    public async Task<Part> GetPartAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<Part>("SpaceCenter", "Fairing_get_Part", args);
     }
 }

@@ -1,6 +1,7 @@
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
 using kRPC.Client.Boost.Attributes;
+using System.Threading.Tasks;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
@@ -30,6 +31,20 @@ public class Alarm : RemoteObject
     }
 
     /// <summary>
+    /// Description of the alarm.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "Alarm_get_Description")]
+    public async Task<string> GetDescriptionAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<string>("SpaceCenter", "Alarm_get_Description", args);
+    }
+
+    /// <summary>
     /// Seconds between the alarm going off and the event it references.
     /// </summary>
     [Rpc("SpaceCenter", "Alarm_get_EventOffset")]
@@ -40,6 +55,20 @@ public class Alarm : RemoteObject
             this
         };
         return Connection.Invoke<double>("SpaceCenter", "Alarm_get_EventOffset", args);
+    }
+
+    /// <summary>
+    /// Seconds between the alarm going off and the event it references.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "Alarm_get_EventOffset")]
+    public async Task<double> GetEventOffsetAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<double>("SpaceCenter", "Alarm_get_EventOffset", args);
     }
 
     /// <summary>
@@ -58,6 +87,22 @@ public class Alarm : RemoteObject
     }
 
     /// <summary>
+    /// Unique identifier of the alarm.
+    /// KSP destroys and recreates an alarm when it is edited.
+    /// This id will remain constant between the old and new alarms.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "Alarm_get_ID")]
+    public async Task<uint> GetIDAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<uint>("SpaceCenter", "Alarm_get_ID", args);
+    }
+
+    /// <summary>
     /// Time the alarm will trigger.
     /// </summary>
     [Rpc("SpaceCenter", "Alarm_get_Time")]
@@ -68,6 +113,20 @@ public class Alarm : RemoteObject
             this
         };
         return Connection.Invoke<double>("SpaceCenter", "Alarm_get_Time", args);
+    }
+
+    /// <summary>
+    /// Time the alarm will trigger.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "Alarm_get_Time")]
+    public async Task<double> GetTimeAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<double>("SpaceCenter", "Alarm_get_Time", args);
     }
 
     /// <summary>
@@ -84,6 +143,20 @@ public class Alarm : RemoteObject
     }
 
     /// <summary>
+    /// Time until the alarm triggers.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "Alarm_get_TimeUntil")]
+    public async Task<double> GetTimeUntilAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<double>("SpaceCenter", "Alarm_get_TimeUntil", args);
+    }
+
+    /// <summary>
     /// Title of the alarm
     /// </summary>
     [Rpc("SpaceCenter", "Alarm_get_Title")]
@@ -94,6 +167,20 @@ public class Alarm : RemoteObject
             this
         };
         return Connection.Invoke<string>("SpaceCenter", "Alarm_get_Title", args);
+    }
+
+    /// <summary>
+    /// Title of the alarm
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "Alarm_get_Title")]
+    public async Task<string> GetTitleAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<string>("SpaceCenter", "Alarm_get_Title", args);
     }
 
     /// <summary>
@@ -110,6 +197,20 @@ public class Alarm : RemoteObject
     }
 
     /// <summary>
+    /// Type of alarm
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "Alarm_get_Type")]
+    public async Task<string> GetAlarmTypeAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<string>("SpaceCenter", "Alarm_get_Type", args);
+    }
+
+    /// <summary>
     /// Vessel the alarm references. <c>null</c> if it does not reference a vessel.
     /// </summary>
     [Rpc("SpaceCenter", "Alarm_get_Vessel")]
@@ -120,5 +221,19 @@ public class Alarm : RemoteObject
             this
         };
         return Connection.Invoke<Vessel>("SpaceCenter", "Alarm_get_Vessel", args);
+    }
+
+    /// <summary>
+    /// Vessel the alarm references. <c>null</c> if it does not reference a vessel.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "Alarm_get_Vessel")]
+    public async Task<Vessel> GetVesselAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<Vessel>("SpaceCenter", "Alarm_get_Vessel", args);
     }
 }

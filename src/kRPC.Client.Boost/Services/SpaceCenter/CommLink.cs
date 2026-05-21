@@ -1,6 +1,7 @@
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
 using kRPC.Client.Boost.Attributes;
+using System.Threading.Tasks;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
@@ -30,6 +31,20 @@ public class CommLink : RemoteObject
     }
 
     /// <summary>
+    /// Start point of the link.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "CommLink_get_End")]
+    public async Task<CommNode> GetEndAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<CommNode>("SpaceCenter", "CommLink_get_End", args);
+    }
+
+    /// <summary>
     /// Signal strength of the link.
     /// </summary>
     [Rpc("SpaceCenter", "CommLink_get_SignalStrength")]
@@ -40,6 +55,20 @@ public class CommLink : RemoteObject
             this
         };
         return Connection.Invoke<double>("SpaceCenter", "CommLink_get_SignalStrength", args);
+    }
+
+    /// <summary>
+    /// Signal strength of the link.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "CommLink_get_SignalStrength")]
+    public async Task<double> GetSignalStrengthAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<double>("SpaceCenter", "CommLink_get_SignalStrength", args);
     }
 
     /// <summary>
@@ -56,6 +85,20 @@ public class CommLink : RemoteObject
     }
 
     /// <summary>
+    /// Start point of the link.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "CommLink_get_Start")]
+    public async Task<CommNode> GetStartAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<CommNode>("SpaceCenter", "CommLink_get_Start", args);
+    }
+
+    /// <summary>
     /// Gets the type of link.
     /// </summary>
     [Rpc("SpaceCenter", "CommLink_get_Type")]
@@ -66,5 +109,19 @@ public class CommLink : RemoteObject
             this
         };
         return Connection.Invoke<CommLinkType>("SpaceCenter", "CommLink_get_Type", args);
+    }
+
+    /// <summary>
+    /// Gets the type of link.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "CommLink_get_Type")]
+    public async Task<CommLinkType> GetTypeAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<CommLinkType>("SpaceCenter", "CommLink_get_Type", args);
     }
 }

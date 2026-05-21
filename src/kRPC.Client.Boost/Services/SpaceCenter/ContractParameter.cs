@@ -2,6 +2,7 @@ using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
 using kRPC.Client.Boost.Attributes;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
@@ -31,6 +32,20 @@ public class ContractParameter : RemoteObject
     }
 
     /// <summary>
+    /// Child contract parameters.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "ContractParameter_get_Children")]
+    public async Task<IList<ContractParameter>> GetChildrenAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<IList<ContractParameter>>("SpaceCenter", "ContractParameter_get_Children", args);
+    }
+
+    /// <summary>
     /// Gets whether the parameter has been completed.
     /// </summary>
     [Rpc("SpaceCenter", "ContractParameter_get_Completed")]
@@ -41,6 +56,20 @@ public class ContractParameter : RemoteObject
             this
         };
         return Connection.Invoke<bool>("SpaceCenter", "ContractParameter_get_Completed", args);
+    }
+
+    /// <summary>
+    /// Gets whether the parameter has been completed.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "ContractParameter_get_Completed")]
+    public async Task<bool> GetCompletedAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<bool>("SpaceCenter", "ContractParameter_get_Completed", args);
     }
 
     /// <summary>
@@ -57,6 +86,20 @@ public class ContractParameter : RemoteObject
     }
 
     /// <summary>
+    /// Gets whether the parameter has been failed.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "ContractParameter_get_Failed")]
+    public async Task<bool> GetFailedAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<bool>("SpaceCenter", "ContractParameter_get_Failed", args);
+    }
+
+    /// <summary>
     /// Funds received on completion of the contract parameter.
     /// </summary>
     [Rpc("SpaceCenter", "ContractParameter_get_FundsCompletion")]
@@ -67,6 +110,20 @@ public class ContractParameter : RemoteObject
             this
         };
         return Connection.Invoke<double>("SpaceCenter", "ContractParameter_get_FundsCompletion", args);
+    }
+
+    /// <summary>
+    /// Funds received on completion of the contract parameter.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "ContractParameter_get_FundsCompletion")]
+    public async Task<double> GetFundsCompletionAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<double>("SpaceCenter", "ContractParameter_get_FundsCompletion", args);
     }
 
     /// <summary>
@@ -83,6 +140,20 @@ public class ContractParameter : RemoteObject
     }
 
     /// <summary>
+    /// Funds lost if the contract parameter is failed.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "ContractParameter_get_FundsFailure")]
+    public async Task<double> GetFundsFailureAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<double>("SpaceCenter", "ContractParameter_get_FundsFailure", args);
+    }
+
+    /// <summary>
     /// Notes for the parameter.
     /// </summary>
     [Rpc("SpaceCenter", "ContractParameter_get_Notes")]
@@ -93,6 +164,20 @@ public class ContractParameter : RemoteObject
             this
         };
         return Connection.Invoke<string>("SpaceCenter", "ContractParameter_get_Notes", args);
+    }
+
+    /// <summary>
+    /// Notes for the parameter.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "ContractParameter_get_Notes")]
+    public async Task<string> GetNotesAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<string>("SpaceCenter", "ContractParameter_get_Notes", args);
     }
 
     /// <summary>
@@ -109,6 +194,20 @@ public class ContractParameter : RemoteObject
     }
 
     /// <summary>
+    /// Gets whether the contract parameter is optional.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "ContractParameter_get_Optional")]
+    public async Task<bool> GetOptionalAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<bool>("SpaceCenter", "ContractParameter_get_Optional", args);
+    }
+
+    /// <summary>
     /// Reputation gained on completion of the contract parameter.
     /// </summary>
     [Rpc("SpaceCenter", "ContractParameter_get_ReputationCompletion")]
@@ -119,6 +218,20 @@ public class ContractParameter : RemoteObject
             this
         };
         return Connection.Invoke<double>("SpaceCenter", "ContractParameter_get_ReputationCompletion", args);
+    }
+
+    /// <summary>
+    /// Reputation gained on completion of the contract parameter.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "ContractParameter_get_ReputationCompletion")]
+    public async Task<double> GetReputationCompletionAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<double>("SpaceCenter", "ContractParameter_get_ReputationCompletion", args);
     }
 
     /// <summary>
@@ -135,6 +248,20 @@ public class ContractParameter : RemoteObject
     }
 
     /// <summary>
+    /// Reputation lost if the contract parameter is failed.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "ContractParameter_get_ReputationFailure")]
+    public async Task<double> GetReputationFailureAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<double>("SpaceCenter", "ContractParameter_get_ReputationFailure", args);
+    }
+
+    /// <summary>
     /// Science gained on completion of the contract parameter.
     /// </summary>
     [Rpc("SpaceCenter", "ContractParameter_get_ScienceCompletion")]
@@ -148,6 +275,20 @@ public class ContractParameter : RemoteObject
     }
 
     /// <summary>
+    /// Science gained on completion of the contract parameter.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "ContractParameter_get_ScienceCompletion")]
+    public async Task<double> GetScienceCompletionAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<double>("SpaceCenter", "ContractParameter_get_ScienceCompletion", args);
+    }
+
+    /// <summary>
     /// Title of the parameter.
     /// </summary>
     [Rpc("SpaceCenter", "ContractParameter_get_Title")]
@@ -158,5 +299,19 @@ public class ContractParameter : RemoteObject
             this
         };
         return Connection.Invoke<string>("SpaceCenter", "ContractParameter_get_Title", args);
+    }
+
+    /// <summary>
+    /// Title of the parameter.
+    /// Executes asynchronously.
+    /// </summary>
+    [Rpc("SpaceCenter", "ContractParameter_get_Title")]
+    public async Task<string> GetTitleAsync()
+    {
+        var args = new object[]
+        {
+            this
+        };
+        return await Connection.InvokeAsync<string>("SpaceCenter", "ContractParameter_get_Title", args);
     }
 }
