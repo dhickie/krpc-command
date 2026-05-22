@@ -148,13 +148,13 @@ namespace kRPC.Client.Boost.Connection
                             else if (IsAClassType(type!))
                                 stream.WriteUInt64(((RemoteObject)value).Id);
                             else if (IsATupleType(type!))
-                                WriteTuple(value, type!, buffer);
+                                EncodeTuple(value, type!, buffer);
                             else if (IsAListType(type!))
-                                WriteList(value, type!, buffer);
+                                EncodeList(value, type!, buffer);
                             else if (IsASetType(type!))
-                                WriteSet(value, type!, buffer);
+                                EncodeSet(value, type!, buffer);
                             else if (IsADictionaryType(type!))
-                                WriteDictionary(value, type!, buffer);
+                                EncodeDictionary(value, type!, buffer);
                             else if (IsAMessageType(type!))
                                 ((IMessage)value).WriteTo(buffer);
                             else
@@ -168,79 +168,32 @@ namespace kRPC.Client.Boost.Connection
             stream.Flush();
             return ByteString.CopyFrom(buffer.GetBuffer(), 0, (int)buffer.Length);
         }
-
-        private static void WriteTuple(object value, Type type, Stream stream)
+        
+        private static bool IsAGenericType(Type type, Type genericType)
         {
-            var encodedTuple = new Schema.Tuple();
-            var valueTypes = type.GetGenericArguments();
-            var genericType = Type.GetType("System.Tuple`" + valueTypes.Length);
-            var tupleType = genericType?.MakeGenericType(valueTypes)
-                ?? throw new CodecException("Unable to determine tuple type");
-            using (var internalBuffer = new MemoryStream()) 
+            var t = type;
+            while (!ReferenceEquals(t, null))
             {
-                var internalStream = new CodedOutputStream(internalBuffer);
-                for (var i = 0; i < valueTypes.Length; i++) 
-                {
-                    var property = tupleType.GetProperty("Item" + (i + 1));
-                    var item = property?.GetGetMethod()?.Invoke(value, null)
-                        ?? throw new CodecException("Unable to determine tuple property");
-                    encodedTuple.Items.Add(EncodeObject(item, valueTypes[i], internalBuffer, internalStream));
-                }
-            }
-            encodedTuple.WriteTo(stream);
-        }
-
-        private static void WriteList(object value, Type type, Stream stream)
-        {
-            var encodedList = new Schema.List();
-            var list = (IList)value;
-            var valueType = type.GetGenericArguments().Single();
-            using (var internalBuffer = new MemoryStream()) 
-            {
-                var internalStream = new CodedOutputStream(internalBuffer);
-                foreach (var item in list)
-                    encodedList.Items.Add(EncodeObject(item, valueType, internalBuffer, internalStream));
-            }
-            encodedList.WriteTo(stream);
-        }
-
-        private static void WriteSet(object value, Type type, Stream stream)
-        {
-            var encodedSet = new Schema.Set();
-            var set = (IEnumerable)value;
-            var valueType = type.GetGenericArguments().Single();
-            using (var internalBuffer = new MemoryStream())
-            {
-                var internalStream = new CodedOutputStream(internalBuffer);
-                foreach (var item in set)
-                    encodedSet.Items.Add(EncodeObject(item, valueType, internalBuffer, internalStream));
-            }
-            encodedSet.WriteTo(stream);
-        }
-
-        private static void WriteDictionary(object value, Type type, Stream stream)
-        {
-            if (!type.IsInstanceOfType(value) || typeof(IDictionary).IsAssignableFrom(type))
-                throw new CodecException($"{value.GetType().Name} and {type.Name} are not compatible with writing a dictionary");
+                if (t.IsGenericType && t.GetGenericTypeDefinition() == genericType)
+                    return true;
                 
-            var keyType = type.GetGenericArguments()[0];
-            var valueType = type.GetGenericArguments()[1];
-            var encodedDictionary = new Schema.Dictionary();
-            
-            using (var internalBuffer = new MemoryStream()) 
-            {
-                var internalStream = new CodedOutputStream(internalBuffer);
-                foreach (DictionaryEntry entry in (IDictionary)value) 
-                {
-                    var encodedEntry = new Schema.DictionaryEntry
-                    {
-                        Key = EncodeObject(entry.Key, keyType, internalBuffer, internalStream),
-                        Value = EncodeObject(entry.Value, valueType, internalBuffer, internalStream)
-                    };
-                    encodedDictionary.Entries.Add(encodedEntry);
-                }
+                if (t.GetInterfaces().Any(intType => IsAGenericType(intType, genericType)))
+                    return true;
+                
+                t = t.BaseType;
             }
-            encodedDictionary.WriteTo(stream);
+            
+            return false;
+        }
+
+        private static bool IsAClassType(Type type)
+        {
+            return type.IsSubclassOf(typeof(RemoteObject));
+        }
+
+        private static bool IsAMessageType(Type type)
+        {
+            return typeof(IMessage).IsAssignableFrom(type);
         }
         
         private static bool IsACollectionType(Type type)
@@ -259,6 +212,27 @@ namespace kRPC.Client.Boost.Connection
                 IsAGenericType(type, typeof(Tuple<,,,,,>)) ||
                 IsAGenericType(type, typeof(Tuple<,,,,,,>)) ||
                 IsAGenericType(type, typeof(Tuple<,,,,,,,>));
+        }
+        
+        private static void EncodeTuple(object value, Type type, Stream stream)
+        {
+            var encodedTuple = new Schema.Tuple();
+            var valueTypes = type.GetGenericArguments();
+            var genericType = Type.GetType("System.Tuple`" + valueTypes.Length);
+            var tupleType = genericType?.MakeGenericType(valueTypes)
+                            ?? throw new CodecException("Unable to determine tuple type");
+            using (var internalBuffer = new MemoryStream()) 
+            {
+                var internalStream = new CodedOutputStream(internalBuffer);
+                for (var i = 0; i < valueTypes.Length; i++) 
+                {
+                    var property = tupleType.GetProperty("Item" + (i + 1));
+                    var item = property?.GetGetMethod()?.Invoke(value, null)
+                               ?? throw new CodecException("Unable to determine tuple property");
+                    encodedTuple.Items.Add(EncodeObject(item, valueTypes[i], internalBuffer, internalStream));
+                }
+            }
+            encodedTuple.WriteTo(stream);
         }
 
         private static object DecodeTuple(CodedInputStream stream, Type type, ConnectionMultiplexer client)
@@ -285,6 +259,20 @@ namespace kRPC.Client.Boost.Connection
         {
             return IsAGenericType(type, typeof(IList<>));
         }
+        
+        private static void EncodeList(object value, Type type, Stream stream)
+        {
+            var encodedList = new Schema.List();
+            var list = (IList)value;
+            var valueType = type.GetGenericArguments().Single();
+            using (var internalBuffer = new MemoryStream()) 
+            {
+                var internalStream = new CodedOutputStream(internalBuffer);
+                foreach (var item in list)
+                    encodedList.Items.Add(EncodeObject(item, valueType, internalBuffer, internalStream));
+            }
+            encodedList.WriteTo(stream);
+        }
 
         private static object DecodeList(CodedInputStream stream, Type type, ConnectionMultiplexer client)
         {
@@ -303,6 +291,20 @@ namespace kRPC.Client.Boost.Connection
         private static bool IsASetType(Type type)
         {
             return IsAGenericType(type, typeof(ISet<>));
+        }
+        
+        private static void EncodeSet(object value, Type type, Stream stream)
+        {
+            var encodedSet = new Schema.Set();
+            var set = (IEnumerable)value;
+            var valueType = type.GetGenericArguments().Single();
+            using (var internalBuffer = new MemoryStream())
+            {
+                var internalStream = new CodedOutputStream(internalBuffer);
+                foreach (var item in set)
+                    encodedSet.Items.Add(EncodeObject(item, valueType, internalBuffer, internalStream));
+            }
+            encodedSet.WriteTo(stream);
         }
 
         private static object DecodeSet(CodedInputStream stream, Type type, ConnectionMultiplexer client)
@@ -327,6 +329,31 @@ namespace kRPC.Client.Boost.Connection
         {
             return IsAGenericType(type, typeof(IDictionary<,>));
         }
+        
+        private static void EncodeDictionary(object value, Type type, Stream stream)
+        {
+            if (!type.IsInstanceOfType(value) || typeof(IDictionary).IsAssignableFrom(type))
+                throw new CodecException($"{value.GetType().Name} and {type.Name} are not compatible with writing a dictionary");
+                
+            var keyType = type.GetGenericArguments()[0];
+            var valueType = type.GetGenericArguments()[1];
+            var encodedDictionary = new Schema.Dictionary();
+            
+            using (var internalBuffer = new MemoryStream()) 
+            {
+                var internalStream = new CodedOutputStream(internalBuffer);
+                foreach (DictionaryEntry entry in (IDictionary)value) 
+                {
+                    var encodedEntry = new Schema.DictionaryEntry
+                    {
+                        Key = EncodeObject(entry.Key, keyType, internalBuffer, internalStream),
+                        Value = EncodeObject(entry.Value, valueType, internalBuffer, internalStream)
+                    };
+                    encodedDictionary.Entries.Add(encodedEntry);
+                }
+            }
+            encodedDictionary.WriteTo(stream);
+        }
 
         private static object DecodeDictionary(CodedInputStream stream, Type type, ConnectionMultiplexer client)
         {
@@ -343,33 +370,6 @@ namespace kRPC.Client.Boost.Connection
             }
             
             return dictionary;
-        }
-
-        private static bool IsAGenericType(Type type, Type genericType)
-        {
-            var t = type;
-            while (!ReferenceEquals(t, null))
-            {
-                if (t.IsGenericType && t.GetGenericTypeDefinition() == genericType)
-                    return true;
-                
-                if (t.GetInterfaces().Any(intType => IsAGenericType(intType, genericType)))
-                    return true;
-                
-                t = t.BaseType;
-            }
-            
-            return false;
-        }
-
-        private static bool IsAClassType(Type type)
-        {
-            return type.IsSubclassOf(typeof(RemoteObject));
-        }
-
-        private static bool IsAMessageType(Type type)
-        {
-            return typeof(IMessage).IsAssignableFrom(type);
         }
 
         private static ConstructorInfo GetGenericConstructor(Type type, Type expectedGenericType, bool emptyTypeConstructor)
