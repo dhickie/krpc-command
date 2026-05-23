@@ -3,7 +3,7 @@ using System.Reflection;
 using Google.Protobuf;
 using kRPC.Client.Boost.Exceptions;
 using kRPC.Client.Boost.Services;
-using kRPC.Client.Boost.Services.KRPC.RemoteObjects;
+using MathNet.Spatial.Euclidean;
 using Type = System.Type;
 
 namespace kRPC.Client.Boost.Connection
@@ -78,6 +78,10 @@ namespace kRPC.Client.Boost.Connection
                 return DecodeSet(stream, type, client);
             if (IsADictionaryType(type))
                 return DecodeDictionary(stream, type, client);
+            if (IsAVectorType(type))
+                return DecodeVector(stream, client);
+            if (IsAQuaternionType(type))
+                return DecodeQuaternion(stream, client);
             if (IsAMessageType(type))
             {
                 var message = (IMessage)(Activator.CreateInstance(type)
@@ -155,6 +159,10 @@ namespace kRPC.Client.Boost.Connection
                                 EncodeSet(value, type!, buffer);
                             else if (IsADictionaryType(type!))
                                 EncodeDictionary(value, type!, buffer);
+                            else if (IsAVectorType(type!))
+                                EncodeVector(value, buffer);
+                            else if (IsAQuaternionType(type!))
+                                EncodeQuaternion(value, buffer);
                             else if (IsAMessageType(type!))
                                 ((IMessage)value).WriteTo(buffer);
                             else
@@ -370,6 +378,54 @@ namespace kRPC.Client.Boost.Connection
             }
             
             return dictionary;
+        }
+
+        private static bool IsAVectorType(Type type)
+        {
+            return type == typeof(Vector3D);
+        }
+
+        private static void EncodeVector(object value, Stream stream)
+        {
+            if (value is not Vector3D v)
+                throw new CodecException("Can't encode a non-vector as a vector");
+            
+            var tuple = new Tuple<double, double, double>(v.X, v.Y, v.Z);
+            EncodeTuple(tuple, tuple.GetType(), stream);
+        }
+
+        private static object DecodeVector(CodedInputStream stream, ConnectionMultiplexer client)
+        {
+            var tuple = DecodeTuple(stream, typeof(Tuple<double, double, double>), client);
+            
+            if (tuple is not Tuple<double, double, double> t)
+                throw new CodecException("Did not receive a vector tuple when decoding a vector tuple");
+            
+            return new Vector3D(t.Item1, t.Item2, t.Item3);
+        }
+
+        private static bool IsAQuaternionType(Type type)
+        {
+            return type == typeof(Quaternion);
+        }
+
+        private static void EncodeQuaternion(object value, Stream stream)
+        {
+            if (value is not Quaternion q)
+                throw new CodecException("Can't encode a non-quaternion as a quaternion");
+            
+            var tuple = new Tuple<double, double, double, double>(q.Real, q.ImagX, q.ImagY, q.ImagZ);
+            EncodeTuple(tuple, tuple.GetType(), stream);
+        }
+
+        private static object DecodeQuaternion(CodedInputStream stream, ConnectionMultiplexer client)
+        {
+            var tuple = DecodeTuple(stream, typeof(Tuple<double, double, double, double>), client);
+            
+            if (tuple is not Tuple<double, double, double, double> t)
+                throw new CodecException("Did not receive a quaternion as a quaternion");
+
+            return new Quaternion(t.Item1, t.Item2, t.Item3, t.Item4);
         }
 
         private static ConstructorInfo GetGenericConstructor(Type type, Type expectedGenericType, bool emptyTypeConstructor)
