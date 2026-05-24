@@ -2,8 +2,10 @@ using System.Collections.Concurrent;
 using System.Linq.Expressions;
 using kRPC.Client.Boost.Connection.Requests;
 using kRPC.Client.Boost.Exceptions;
+using kRPC.Client.Boost.Logging;
 using kRPC.Client.Boost.Services.KRPC.RemoteObjects;
 using kRPC.Client.Boost.Streams;
+using Microsoft.Extensions.Logging;
 
 namespace kRPC.Client.Boost.Connection;
 
@@ -15,21 +17,27 @@ public class ConnectionMultiplexer : IDisposable
 {
     private readonly StreamConnection _streamConnection;
     private readonly RpcConnection[] _rpcConnections;
+    
     private readonly BlockingCollection<StreamRequest> _streamRequests;
     private readonly BlockingCollection<ProcedureRequest> _rpcRequests;
     private readonly ConcurrentDictionary<string, ProcedureResult> _results;
+    
+    private readonly LogManager _logManager;
 
     private readonly CancellationTokenSource _disposalTokenSource = new();
     private bool _disposed;
-    
+
     /// <summary>
     /// Creates a connection multiplexer that manages one or more connections to a kRPC server.
     /// All interaction with kRPC starts with an instance of this class.
     /// </summary>
     /// <param name="numRpcConnections">The number of simultaneous RPC connections to create</param>
     /// <param name="config">The configuration for the connection(s)</param>
-    public ConnectionMultiplexer(int numRpcConnections, ConnectionConfig config)
+    /// <param name="loggerFactory">The optional ILoggerFactory implementation to use when logging</param>
+    public ConnectionMultiplexer(int numRpcConnections, ConnectionConfig config, ILoggerFactory? loggerFactory = null)
     {
+        _logManager = new LogManager(loggerFactory);
+        
         _streamRequests = new BlockingCollection<StreamRequest>();
         _rpcRequests = new BlockingCollection<ProcedureRequest>();
         _results = new ConcurrentDictionary<string, ProcedureResult>();
@@ -97,7 +105,8 @@ public class ConnectionMultiplexer : IDisposable
     internal RemoteStream AddStream<T>(Expression<Func<T>> expression, bool start)
     {
         var result = AddNewStreamRequestToQueue(expression, start);
-        return result.WaitForResult(_disposalTokenSource.Token);
+        return result.WaitForResult(_disposalTokenSource.Token) 
+               ?? throw new StreamCreationException("Received null stream creation result");
     }
     
     /// <summary>
@@ -110,7 +119,8 @@ public class ConnectionMultiplexer : IDisposable
     internal async Task<RemoteStream> AddStreamAsync<T>(Expression<Func<T>> expression, bool start)
     {
         var result = AddNewStreamRequestToQueue(expression, start);
-        return await result.WaitForResultAsync(_disposalTokenSource.Token);
+        return await result.WaitForResultAsync(_disposalTokenSource.Token)
+               ?? throw new StreamCreationException("Received null stream creation result");
     }
 
     /// <summary>
@@ -154,7 +164,7 @@ public class ConnectionMultiplexer : IDisposable
     /// <param name="arguments">The arguments to the procedure</param>
     /// <typeparam name="TResponse">The type of the response object</typeparam>
     /// <returns>The result object from the procedure.</returns>
-    internal TResponse Invoke<TResponse>(string service, string procedure, object?[]? arguments = null)
+    internal TResponse? Invoke<TResponse>(string service, string procedure, object?[]? arguments = null)
     {
         CheckDisposed();
         var result = AddRpcRequestToQueue<TResponse>(service, procedure, arguments);
@@ -182,7 +192,7 @@ public class ConnectionMultiplexer : IDisposable
     /// <param name="arguments">The arguments to the procedure</param>
     /// <typeparam name="TResponse">The type of the response object</typeparam>
     /// <returns>The result object from the procedure.</returns>
-    internal async Task<TResponse> InvokeAsync<TResponse>(string service, string procedure, object?[]? arguments = null)
+    internal async Task<TResponse?> InvokeAsync<TResponse>(string service, string procedure, object?[]? arguments = null)
     {
         CheckDisposed();
         var result = AddRpcRequestToQueue<TResponse>(service, procedure, arguments);
