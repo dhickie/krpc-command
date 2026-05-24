@@ -10,9 +10,9 @@ public abstract class RemoteObject
     /// <summary>
     /// Creates a new remote object.
     /// </summary>
-    /// <param name="id">The ID of the object on the server</param>
     /// <param name="connection">The connection multiplexer that provides access to the server</param>
-    protected RemoteObject(ulong id, ConnectionMultiplexer connection)
+    /// <param name="id">The ID of the object on the server</param>
+    protected RemoteObject(ConnectionMultiplexer connection, ulong id)
     {
         Id = id;
         Connection = connection;

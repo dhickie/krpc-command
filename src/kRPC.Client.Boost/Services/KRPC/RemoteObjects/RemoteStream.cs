@@ -12,7 +12,7 @@ public class RemoteStream : RemoteObject
     /// </summary>
     /// <param name="id">The ID of the stream</param>
     /// <param name="connection">The multiplexer that provides access to the server</param>
-    protected RemoteStream(ulong id, ConnectionMultiplexer connection) : base(id, connection)
+    protected RemoteStream(ulong id, ConnectionMultiplexer connection) : base(connection, id)
     {}
     
     /// <summary>

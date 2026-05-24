@@ -150,7 +150,7 @@ internal abstract class Connection : IDisposable
     /// <param name="procedure">The name of the procedure</param>
     /// <param name="arguments">Arguments to the procedure</param>
     /// <returns>The result object</returns>
-    protected object Invoke(System.Type resultType, string service, string procedure, IList<object>? arguments = null)
+    protected object? Invoke(System.Type resultType, string service, string procedure, IList<object?>? arguments = null)
     {
         var result = Invoke(GetCall(service, procedure, arguments));
         return Codec.Decode(result, resultType, _connection);
@@ -162,7 +162,7 @@ internal abstract class Connection : IDisposable
     /// <param name="service">The service the procedure is in</param>
     /// <param name="procedure">The name of the procedure</param>
     /// <param name="arguments">Arguments to the procedure</param>
-    protected void Invoke(string service, string procedure, IEnumerable<object>? arguments = null)
+    protected void Invoke(string service, string procedure, IEnumerable<object?>? arguments = null)
     {
         Invoke(GetCall(service, procedure, arguments));
     }
@@ -244,7 +244,7 @@ internal abstract class Connection : IDisposable
         return response.Results[0].Value;
     }
 
-    private static ProcedureCall GetCall(string service, string procedure, IEnumerable<object>? arguments = null)
+    private static ProcedureCall GetCall(string service, string procedure, IEnumerable<object?>? arguments = null)
     {
         var call = new ProcedureCall
         {

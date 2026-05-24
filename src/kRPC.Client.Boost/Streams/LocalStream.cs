@@ -97,7 +97,7 @@ internal sealed class LocalStream<T> : LocalStream where T : class
         }
     }
     
-    protected override bool TrySetImpl(object value)
+    protected override bool TrySetImpl(object? value)
     {
         _initLock.EnterReadLock();
         try
@@ -176,10 +176,10 @@ internal abstract class LocalStream(Type dataType)
     /// <exception cref="ArgumentException">
     ///     Thrown if the type of the provided value doesn't match the data type contained in the stream.
     /// </exception>
-    public bool TrySet(object value)
+    public bool TrySet(object? value)
     {
-        var valueType = value.GetType();
-        if (valueType != dataType)
+        var valueType = value?.GetType();
+        if (valueType != null && valueType != dataType)
         {
             throw new ArgumentException(
                 $"Attempt to set stream value of type {valueType.Name} on a stream containing data type {dataType.Name}");
@@ -200,5 +200,5 @@ internal abstract class LocalStream(Type dataType)
     
     protected abstract bool TryGetImpl<T>(out T? value) where T : class;
 
-    protected abstract bool TrySetImpl(object value);
+    protected abstract bool TrySetImpl(object? value);
 }
