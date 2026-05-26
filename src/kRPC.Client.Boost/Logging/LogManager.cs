@@ -11,11 +11,19 @@ internal class LogManager
         _loggerFactory = loggerFactory ?? LoggerFactory.Create(builder => builder.AddConsole());
     }
 
-    public static ILogger GetLogger<T>()
+    public static ILogger<T> GetLogger<T>()
     {
         if (_loggerFactory == null)
             throw new InvalidOperationException("Cannot create a logger before the logger factory is initialised");
         
         return _loggerFactory.CreateLogger<T>();
+    }
+
+    public static ILogger GetLogger(Type classType)
+    {
+        if (_loggerFactory == null)
+            throw new InvalidOperationException("Cannot create a logger before the logger factory is initialised");
+        
+        return _loggerFactory.CreateLogger(classType.FullName ?? classType.Name);
     }
 }

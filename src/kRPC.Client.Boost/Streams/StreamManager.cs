@@ -2,7 +2,11 @@ using System.Collections.Concurrent;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq.Expressions;
+using System.Runtime.CompilerServices;
 using kRPC.Client.Boost.Connection;
+using kRPC.Client.Boost.Exceptions;
+using kRPC.Client.Boost.Logging;
+using Microsoft.Extensions.Logging;
 
 namespace kRPC.Client.Boost.Streams;
 
@@ -13,7 +17,7 @@ namespace kRPC.Client.Boost.Streams;
 /// maintaining optimum performance.
 /// </summary>
 [SuppressMessage("ReSharper", "InconsistentlySynchronizedField")]
-internal static class StreamManager
+internal static partial class StreamManager
 {
     // TODO make these configurable
     private const int CompactionIntervalSeconds = 10;
@@ -29,6 +33,8 @@ internal static class StreamManager
     private static readonly ConcurrentDictionary<string, object> Locks = new();
     private static readonly ConcurrentDictionary<string, LocalStream> Streams = new();
     private static readonly ConcurrentDictionary<ulong, string> IdMap = new();
+
+    private static readonly ILogger _logger = LogManager.GetLogger(typeof(StreamManager));
 
     /// <summary>
     /// Initialises the StreamManager's internal state and starts the compaction thread.
@@ -116,11 +122,12 @@ internal static class StreamManager
             {
                 return streamRegistration.TryGet(out value);
             }
-            catch
+            catch (Exception e)
             {
                 // The get can fail if there's a server side issue or if the stream has been closed elsewhere.
                 // If this happens, just return false.
-                // TODO Add logging
+                _logger.LogWarning(
+                    e, "An error occured trying to get the latest value out of a stream, returning false");
                 value = null;
                 return false;
             }
@@ -135,12 +142,11 @@ internal static class StreamManager
         ValidateState();
 
         if (!IdMap.TryGetValue(remoteId, out var key))
-            return; // TODO log something here
-
-        if (!Streams.TryGetValue(key, out var stream))
-            return; // TODO log something here
-        
-        stream.TrySet(value); // TODO log something if the set fails
+            LogUnableToFindRemoteStreamIdInMap(_logger, remoteId);
+        else if (!Streams.TryGetValue(key, out var stream))
+            LogUnableToFindStreamKeyInCollection(_logger, key);
+        else if (!stream.TrySet(value))
+            LogFailedToSetStreamValue(_logger, key);
     }
 
     private static void AddSubscriptionImpl<T>(string key, 
@@ -166,12 +172,13 @@ internal static class StreamManager
                 // Create a new stream
                 var newStream = new LocalStream<T>(_connection!, expression);
                 IdMap[newStream.RemoteId!.Value] = key;
+
+                if (Streams.TryAdd(key, newStream)) 
+                    return;
                 
-                if (!Streams.TryAdd(key, newStream))
-                {
-                    // TODO add a more specific exception type
-                    throw new Exception("Unable to add new stream registration, this should never happen");
-                }
+                const string message = "Failed to add stream to streams collection";
+                _logger.LogError(message);
+                throw new StreamCreationException(message);
             }
         }
     }
@@ -214,7 +221,13 @@ internal static class StreamManager
             try
             {
                 if (sw.Elapsed > nextCycle)
-                    continue; // If the next cycle was immediately due, then skip it TODO log a warning here
+                {
+                    _logger.LogWarning(
+                        "Compaction cycle took longer than loop interval - next cycle is due at {nextCyle}, but stopwatch is already at {elapsed}", 
+                        nextCycle.TotalSeconds, 
+                        sw.Elapsed.TotalSeconds);
+                    continue;
+                }
 
                 Thread.Sleep(nextCycle - sw.Elapsed);
                 CompactDictionaries();
@@ -262,7 +275,7 @@ internal static class StreamManager
                 var streamRemoved = Streams.TryRemove(key, out _);
 
                 if (!lockRemoved || !streamRemoved)
-                    throw new Exception("Unabled to removed lock or stream from dictionaries during compaction");
+                    throw new Exception("Unable to remove lock or stream from dictionaries during compaction");
             }
             
             // If the dictionary count is still above the limit, then increase the limit if possible
@@ -272,7 +285,10 @@ internal static class StreamManager
             var nextMax = _currentMaxDictionarySize + MaxDictionarySizeIncreaseInterval;
             if (nextMax > MaxDictionarySize)
             {
-                // TODO Log a warning here
+                _logger.LogWarning(
+                    "Lock and stream collections are above max size limit: Max size: {maxSize}, current size: {currentSize}", 
+                    nextMax, 
+                    MaxDictionarySize);
             }
                 
             _currentMaxDictionarySize = nextMax;
@@ -282,4 +298,13 @@ internal static class StreamManager
             CompactionLock.ExitWriteLock();
         }
     }
+
+    [LoggerMessage(LogLevel.Information, "Unable to set stream value - remote ID {remoteId} not found in ID map")]
+    static partial void LogUnableToFindRemoteStreamIdInMap(ILogger logger, ulong remoteId);
+
+    [LoggerMessage(LogLevel.Information, "Unable to set stream value - local stream with key {key} not found in stream collection")]
+    static partial void LogUnableToFindStreamKeyInCollection(ILogger logger, string key);
+    
+    [LoggerMessage(LogLevel.Information, "Failed to set value of stream with key {key}")]
+    static partial void LogFailedToSetStreamValue(ILogger logger, string key);
 }

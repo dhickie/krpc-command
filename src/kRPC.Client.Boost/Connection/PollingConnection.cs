@@ -1,5 +1,7 @@
 using System.Collections.Concurrent;
 using kRPC.Client.Boost.Connection.Requests;
+using kRPC.Client.Boost.Logging;
+using Microsoft.Extensions.Logging;
 
 namespace kRPC.Client.Boost.Connection;
 
@@ -16,6 +18,7 @@ internal abstract class PollingConnection<TRequest> : Connection, IDisposable wh
     private bool _disposed;
     private readonly ReaderWriterLockSlim _disposeLock = new();
     private readonly CancellationTokenSource _disposeTokenSource = new();
+    private readonly ILogger<PollingConnection<TRequest>> _logger = LogManager.GetLogger<PollingConnection<TRequest>>();
 
     private Action<TRequest, ProcedureResult>? _invokeAction;
     
@@ -68,7 +71,12 @@ internal abstract class PollingConnection<TRequest> : Connection, IDisposable wh
         {
             var request = _requestQueue.Take(_disposeTokenSource.Token);
             if (!_responses.TryGetValue(request.RequestId, out var response))
-                continue; // TODO Log a warning here, and move on
+            {
+                _logger.LogWarning(
+                    "Response collection did not contain a response for request {RequestId}, continuing to next request", 
+                    request.RequestId);
+                continue;
+            }
 
             _disposeLock.EnterReadLock();
             try
@@ -81,7 +89,7 @@ internal abstract class PollingConnection<TRequest> : Connection, IDisposable wh
             }
             catch (Exception e)
             {
-                // TODO Log an error here
+                _logger.LogError(e, "An exception occured trying to invoke the requested procedure");
                 response.MarkFaulted(e);
             }
             finally

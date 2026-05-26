@@ -190,10 +190,9 @@ internal abstract class Connection : IDisposable
                 var codedStream = new CodedInputStream(buffer, 0, bufferSize);
                 messageSize = (int)codedStream.ReadUInt32();
                 break;
-            } 
+            }
             catch (InvalidProtocolBufferException) 
             {
-                // TODO At least log some some info if this happens
             }
         }
         
