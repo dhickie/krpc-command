@@ -23,6 +23,7 @@ public class ConnectionMultiplexer : IDisposable
     private readonly ConcurrentDictionary<string, ProcedureResult> _results;
     
     private readonly LogManager _logManager;
+    private readonly ILogger<ConnectionMultiplexer> _logger;
 
     private readonly CancellationTokenSource _disposalTokenSource = new();
     private bool _disposed;
@@ -36,25 +37,40 @@ public class ConnectionMultiplexer : IDisposable
     /// <param name="loggerFactory">The optional ILoggerFactory implementation to use when logging</param>
     public ConnectionMultiplexer(int numRpcConnections, ConnectionConfig config, ILoggerFactory? loggerFactory = null)
     {
-        _logManager = new LogManager(loggerFactory);
-        
-        _streamRequests = new BlockingCollection<StreamRequest>();
-        _rpcRequests = new BlockingCollection<ProcedureRequest>();
-        _results = new ConcurrentDictionary<string, ProcedureResult>();
-        
-        // Create the stream connection - we intentionally keep a single stream connection to ensure that all stream
-        // requests are passed through the same TCP connection, which the server has associated with the streaming
-        // TCP connection
-        _streamConnection = new StreamConnection(this, config, _streamRequests, _results);
-        
-        // Create the RPC connections
-        _rpcConnections = new RpcConnection[numRpcConnections];
-        for (var i = 0; i < numRpcConnections; i++)
+        try
         {
-            _rpcConnections[0] = new RpcConnection(this, config, _rpcRequests, _results);
+            _logManager = new LogManager(loggerFactory);
+            _logger = LogManager.GetLogger<ConnectionMultiplexer>();
+
+            _streamRequests = new BlockingCollection<StreamRequest>();
+            _rpcRequests = new BlockingCollection<ProcedureRequest>();
+            _results = new ConcurrentDictionary<string, ProcedureResult>();
+
+            LogStartupInformation(config);
+
+            // Create the stream connection - we intentionally keep a single stream connection to ensure that all stream
+            // requests are passed through the same TCP connection, which the server has associated with the streaming
+            // TCP connection
+            _logger.LogInformation("Establishing stream connection");
+            _streamConnection = new StreamConnection(this, config, _streamRequests, _results);
+
+            // Create the RPC connections
+            _rpcConnections = new RpcConnection[numRpcConnections];
+            for (var i = 0; i < numRpcConnections; i++)
+            {
+                _logger.LogInformation("Establishing RPC connection {connectionNumber} of {numConnections}", 
+                    i, 
+                    numRpcConnections);
+                _rpcConnections[0] = new RpcConnection(this, config, _rpcRequests, _results);
+            }
+            
+            StreamManager.Initialise(this);
         }
-        
-        StreamManager.Initialise(this);
+        catch (Exception e)
+        {
+            _logger?.LogError(e, "Fatal error occured while trying to establish connection with server");
+            throw;
+        }
     }
 
     /// <summary>
@@ -76,6 +92,8 @@ public class ConnectionMultiplexer : IDisposable
 
     protected virtual void Dispose(bool disposing)
     {
+        _logger.LogInformation("Disconnecting from kRPC server");
+        
         if (disposing)
         {
             foreach (var connection in _rpcConnections)
@@ -261,5 +279,14 @@ public class ConnectionMultiplexer : IDisposable
     private void CheckDisposed()
     {
         ObjectDisposedException.ThrowIf(_disposed, this);
+    }
+    
+    private void LogStartupInformation(ConnectionConfig config)
+    {
+        _logger.LogInformation("Initialising connection to kRPC server:");
+        _logger.LogInformation("IP: {ipAddress}", config.Address);
+        _logger.LogInformation("Stream port: {streamPort}", config.StreamPort);
+        _logger.LogInformation("RPC port: {rpcPort}", config.RpcPort);
+        _logger.LogInformation("Client name: {clientName}", config.Name);
     }
 }

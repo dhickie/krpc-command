@@ -17,7 +17,7 @@ namespace kRPC.Client.Boost.Streams;
 /// maintaining optimum performance.
 /// </summary>
 [SuppressMessage("ReSharper", "InconsistentlySynchronizedField")]
-internal static partial class StreamManager
+internal static class StreamManager
 {
     // TODO make these configurable
     private const int CompactionIntervalSeconds = 10;
@@ -142,11 +142,11 @@ internal static partial class StreamManager
         ValidateState();
 
         if (!IdMap.TryGetValue(remoteId, out var key))
-            LogUnableToFindRemoteStreamIdInMap(_logger, remoteId);
+            _logger.LogInformation("Unable to set stream value - remote ID {remoteId} not found in ID map", remoteId);
         else if (!Streams.TryGetValue(key, out var stream))
-            LogUnableToFindStreamKeyInCollection(_logger, key);
+            _logger.LogInformation("Unable to set stream value - local stream with key {key} not found in stream collection", key);
         else if (!stream.TrySet(value))
-            LogFailedToSetStreamValue(_logger, key);
+            _logger.LogInformation("Failed to set value of stream with key {key}", key);
     }
 
     private static void AddSubscriptionImpl<T>(string key, 
@@ -298,13 +298,4 @@ internal static partial class StreamManager
             CompactionLock.ExitWriteLock();
         }
     }
-
-    [LoggerMessage(LogLevel.Information, "Unable to set stream value - remote ID {remoteId} not found in ID map")]
-    static partial void LogUnableToFindRemoteStreamIdInMap(ILogger logger, ulong remoteId);
-
-    [LoggerMessage(LogLevel.Information, "Unable to set stream value - local stream with key {key} not found in stream collection")]
-    static partial void LogUnableToFindStreamKeyInCollection(ILogger logger, string key);
-    
-    [LoggerMessage(LogLevel.Information, "Failed to set value of stream with key {key}")]
-    static partial void LogFailedToSetStreamValue(ILogger logger, string key);
 }
