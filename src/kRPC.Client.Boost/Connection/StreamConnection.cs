@@ -119,15 +119,27 @@ internal class StreamConnection : PollingConnection<StreamRequest, StreamConnect
             try
             {
                 var update = StreamUpdate.Parser.ParseFrom(new CodedInputStream(_streamBuffer, 0, size));
+                _logger.LogDebug("Processing stream update for {numStreams} streams", update.Results.Count);
 
                 foreach (var result in update.Results)
                 {
                     if (!_streamTypes.TryGetValue(result.Id, out var type))
+                    {
+                        // This should only happen for streams that have very recently been torn down
+                        _logger.LogDebug("Received stream update for unknown stream with ID {streamId}", result.Id);
                         continue;
+                    }
 
                     var resultValue = Codec.Decode(result.Result.Value, type, _connection);
+                    _logger.LogTrace("Setting stream with ID {streamId} of type {streamType} to {resultValue}", 
+                        result.Id, type, resultValue);
                     StreamManager.SetValue(result.Id, resultValue);
                 }
+            }
+            catch (System.Exception e)
+            {
+                _logger.LogError(e, "Exception occured while processing stream update");
+                throw;
             }
             finally
             {
