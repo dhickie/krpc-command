@@ -2,8 +2,10 @@ using System.Collections.Concurrent;
 using System.Linq.Expressions;
 using kRPC.Client.Boost.Connection.Requests;
 using kRPC.Client.Boost.Exceptions;
+using kRPC.Client.Boost.Logging;
 using kRPC.Client.Boost.Services.KRPC.RemoteObjects;
 using kRPC.Client.Boost.Streams;
+using Microsoft.Extensions.Logging;
 
 namespace kRPC.Client.Boost.Connection;
 
@@ -15,38 +17,62 @@ public class ConnectionMultiplexer : IDisposable
 {
     private readonly StreamConnection _streamConnection;
     private readonly RpcConnection[] _rpcConnections;
+    
     private readonly BlockingCollection<StreamRequest> _streamRequests;
     private readonly BlockingCollection<ProcedureRequest> _rpcRequests;
     private readonly ConcurrentDictionary<string, ProcedureResult> _results;
+    
+    private readonly LogManager _logManager;
+    private readonly ILogger<ConnectionMultiplexer> _logger;
 
     private readonly CancellationTokenSource _disposalTokenSource = new();
     private bool _disposed;
-    
+
     /// <summary>
     /// Creates a connection multiplexer that manages one or more connections to a kRPC server.
     /// All interaction with kRPC starts with an instance of this class.
     /// </summary>
     /// <param name="numRpcConnections">The number of simultaneous RPC connections to create</param>
     /// <param name="config">The configuration for the connection(s)</param>
-    public ConnectionMultiplexer(int numRpcConnections, ConnectionConfig config)
+    /// <param name="loggerFactory">The optional ILoggerFactory implementation to use when logging</param>
+    public ConnectionMultiplexer(int numRpcConnections, ConnectionConfig config, ILoggerFactory? loggerFactory = null)
     {
-        _streamRequests = new BlockingCollection<StreamRequest>();
-        _rpcRequests = new BlockingCollection<ProcedureRequest>();
-        _results = new ConcurrentDictionary<string, ProcedureResult>();
-        
-        // Create the stream connection - we intentionally keep a single stream connection to ensure that all stream
-        // requests are passed through the same TCP connection, which the server has associated with the streaming
-        // TCP connection
-        _streamConnection = new StreamConnection(this, config, _streamRequests, _results);
-        
-        // Create the RPC connections
-        _rpcConnections = new RpcConnection[numRpcConnections];
-        for (var i = 0; i < numRpcConnections; i++)
+        try
         {
-            _rpcConnections[0] = new RpcConnection(this, config, _rpcRequests, _results);
+            _logManager = new LogManager(loggerFactory);
+            _logger = LogManager.GetLogger<ConnectionMultiplexer>();
+
+            _streamRequests = new BlockingCollection<StreamRequest>();
+            _rpcRequests = new BlockingCollection<ProcedureRequest>();
+            _results = new ConcurrentDictionary<string, ProcedureResult>();
+
+            LogStartupInformation(config);
+
+            // Create the stream connection - we intentionally keep a single stream connection to ensure that all stream
+            // requests are passed through the same TCP connection, which the server has associated with the streaming
+            // TCP connection
+            _logger.LogInformation("Establishing stream connection");
+            var streamConnName = $"{config.Name}_stream_1";
+            _streamConnection = new StreamConnection(this, config, streamConnName, _streamRequests, _results);
+
+            // Create the RPC connections
+            _rpcConnections = new RpcConnection[numRpcConnections];
+            for (var i = 0; i < numRpcConnections; i++)
+            {
+                var connName = $"{config.Name}_rpc_{i+1}";
+                _logger.LogInformation("Establishing RPC connection {connectionNumber} of {numConnections}", 
+                    i, 
+                    numRpcConnections);
+                _rpcConnections[0] = new RpcConnection(this, config, connName, _rpcRequests, _results);
+            }
+            
+            StreamManager.Initialise(this);
         }
-        
-        StreamManager.Initialise(this);
+        catch (Exception e)
+        {
+            _logger?.LogError(e, "Fatal error occured while trying to establish connection with server");
+            throw;
+        }
     }
 
     /// <summary>
@@ -68,6 +94,8 @@ public class ConnectionMultiplexer : IDisposable
 
     protected virtual void Dispose(bool disposing)
     {
+        _logger.LogInformation("Disconnecting from kRPC server");
+        
         if (disposing)
         {
             foreach (var connection in _rpcConnections)
@@ -97,7 +125,8 @@ public class ConnectionMultiplexer : IDisposable
     internal RemoteStream AddStream<T>(Expression<Func<T>> expression, bool start)
     {
         var result = AddNewStreamRequestToQueue(expression, start);
-        return result.WaitForResult(_disposalTokenSource.Token);
+        return result.WaitForResult(_disposalTokenSource.Token) 
+               ?? throw new StreamCreationException("Received null stream creation result");
     }
     
     /// <summary>
@@ -110,7 +139,8 @@ public class ConnectionMultiplexer : IDisposable
     internal async Task<RemoteStream> AddStreamAsync<T>(Expression<Func<T>> expression, bool start)
     {
         var result = AddNewStreamRequestToQueue(expression, start);
-        return await result.WaitForResultAsync(_disposalTokenSource.Token);
+        return await result.WaitForResultAsync(_disposalTokenSource.Token)
+               ?? throw new StreamCreationException("Received null stream creation result");
     }
 
     /// <summary>
@@ -154,7 +184,7 @@ public class ConnectionMultiplexer : IDisposable
     /// <param name="arguments">The arguments to the procedure</param>
     /// <typeparam name="TResponse">The type of the response object</typeparam>
     /// <returns>The result object from the procedure.</returns>
-    internal TResponse Invoke<TResponse>(string service, string procedure, object?[]? arguments = null)
+    internal TResponse? Invoke<TResponse>(string service, string procedure, object?[]? arguments = null)
     {
         CheckDisposed();
         var result = AddRpcRequestToQueue<TResponse>(service, procedure, arguments);
@@ -182,7 +212,7 @@ public class ConnectionMultiplexer : IDisposable
     /// <param name="arguments">The arguments to the procedure</param>
     /// <typeparam name="TResponse">The type of the response object</typeparam>
     /// <returns>The result object from the procedure.</returns>
-    internal async Task<TResponse> InvokeAsync<TResponse>(string service, string procedure, object?[]? arguments = null)
+    internal async Task<TResponse?> InvokeAsync<TResponse>(string service, string procedure, object?[]? arguments = null)
     {
         CheckDisposed();
         var result = AddRpcRequestToQueue<TResponse>(service, procedure, arguments);
@@ -199,6 +229,7 @@ public class ConnectionMultiplexer : IDisposable
             throw new ProcedureException("Duplicate key in response dictionary");
         
         // Add the request to the queue
+        request.QueuedAt = DateTimeOffset.UtcNow;
         _rpcRequests.Add(request);
 
         return result;
@@ -212,6 +243,7 @@ public class ConnectionMultiplexer : IDisposable
         if (!_results.TryAdd(request.RequestId, result))
             throw new ProcedureException("Duplicate key in response dictionary");
         
+        request.QueuedAt = DateTimeOffset.UtcNow;
         _rpcRequests.Add(request);
 
         return result;
@@ -225,6 +257,7 @@ public class ConnectionMultiplexer : IDisposable
         if (!_results.TryAdd(request.RequestId, result))
             throw new ProcedureException("Duplicate key in response dictionary");
         
+        request.QueuedAt = DateTimeOffset.UtcNow;
         _streamRequests.Add(request);
 
         return result;
@@ -243,6 +276,7 @@ public class ConnectionMultiplexer : IDisposable
         if (!_results.TryAdd(request.RequestId, result))
             throw new ProcedureException("Duplicate key in response dictionary");
         
+        request.QueuedAt = DateTimeOffset.UtcNow;
         _streamRequests.Add(request);
 
         return result;
@@ -251,5 +285,14 @@ public class ConnectionMultiplexer : IDisposable
     private void CheckDisposed()
     {
         ObjectDisposedException.ThrowIf(_disposed, this);
+    }
+    
+    private void LogStartupInformation(ConnectionConfig config)
+    {
+        _logger.LogInformation("Initialising connection to kRPC server:");
+        _logger.LogInformation("IP: {ipAddress}", config.Address);
+        _logger.LogInformation("Stream port: {streamPort}", config.StreamPort);
+        _logger.LogInformation("RPC port: {rpcPort}", config.RpcPort);
+        _logger.LogInformation("Client name: {clientName}", config.Name);
     }
 }

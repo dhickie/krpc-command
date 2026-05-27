@@ -35,7 +35,8 @@ internal abstract class Connection : IDisposable
     /// </summary>
     /// <param name="connection">The top level connection object, for passing to decoded remote objects</param>
     /// <param name="config">The configuration of the connection</param>
-    protected Connection(ConnectionMultiplexer connection, ConnectionConfig config)
+    /// <param name="connectionName">The name of this connection</param>
+    protected Connection(ConnectionMultiplexer connection, ConnectionConfig config, string connectionName)
     {
         ArgumentOutOfRangeException.ThrowIfNegativeOrZero(config.RpcPort);
 
@@ -46,7 +47,7 @@ internal abstract class Connection : IDisposable
         _rpcClient.Connect(config.Address, config.RpcPort);
         _rpcStream = _rpcClient.GetStream();
         _codedRpcStream = new CodedOutputStream(_rpcStream, true);
-        _clientId = Connect(_codedRpcStream, _rpcStream, ref _responseBuffer, RequestType.Rpc, config.Name);
+        _clientId = Connect(_codedRpcStream, _rpcStream, ref _responseBuffer, RequestType.Rpc, connectionName);
     }
 
     /// <summary>
@@ -190,10 +191,9 @@ internal abstract class Connection : IDisposable
                 var codedStream = new CodedInputStream(buffer, 0, bufferSize);
                 messageSize = (int)codedStream.ReadUInt32();
                 break;
-            } 
+            }
             catch (InvalidProtocolBufferException) 
             {
-                // TODO At least log some some info if this happens
             }
         }
         

@@ -12,4 +12,6 @@ internal class ProcedureRequest(string service, string procedure, object?[]? arg
     public readonly string Service = service;
     public readonly string Procedure = procedure;
     public readonly object?[] Arguments = arguments ?? [];
+
+    public DateTimeOffset QueuedAt = DateTimeOffset.MinValue;
 }
