@@ -3,8 +3,10 @@ using System.Net.Sockets;
 using Google.Protobuf;
 using kRPC.Client.Boost.Connection.Requests;
 using kRPC.Client.Boost.Connection.Schema;
+using kRPC.Client.Boost.Logging;
 using kRPC.Client.Boost.Services.KRPC.RemoteObjects;
 using kRPC.Client.Boost.Streams;
+using Microsoft.Extensions.Logging;
 using RequestType = kRPC.Client.Boost.Connection.Schema.ConnectionRequest.Types.Type;
 
 namespace kRPC.Client.Boost.Connection;
@@ -14,9 +16,12 @@ namespace kRPC.Client.Boost.Connection;
 /// from a queue of pending Stream requests. It also receives updates for existing streams and tells the StreamManager
 /// to update the local state.
 /// </summary>
-internal class StreamConnection : PollingConnection<StreamRequest>, IDisposable
+internal class StreamConnection : PollingConnection<StreamRequest, StreamConnection>, IDisposable
 {
+    private readonly ILogger<StreamConnection> _logger = LogManager.GetLogger<StreamConnection>();
+    
     private readonly ConnectionMultiplexer _connection;
+    private readonly string _connectionName;
     private readonly Thread _streamThread;
     
     private readonly TcpClient _streamClient;
@@ -29,20 +34,23 @@ internal class StreamConnection : PollingConnection<StreamRequest>, IDisposable
     private byte[] _streamBuffer = new byte[BufferInitialSize];
     
     private readonly ConcurrentDictionary<ulong, System.Type> _streamTypes = new();
-    
+
     /// <summary>
     /// Create a new Stream connection.
     /// </summary>
     /// <param name="connection">The top level connection for passing to remote object instances</param>
     /// <param name="config">The configuration for the connection</param>
+    /// <param name="connectionName">The name for this connection</param>
     /// <param name="requestQueue">The queue of pending stream requests</param>
     /// <param name="responses">The collection of response objects</param>
     public StreamConnection(ConnectionMultiplexer connection,
         ConnectionConfig config,
+        string connectionName,
         BlockingCollection<StreamRequest> requestQueue,
         ConcurrentDictionary<string, ProcedureResult> responses)
-    : base(connection, config, requestQueue, responses)
+    : base(connection, config, connectionName, requestQueue, responses)
     {
+        _connectionName = connectionName;
         _connection = connection;
         
         // Establish the Stream connection once the base connection has established the RPC connection
@@ -52,8 +60,8 @@ internal class StreamConnection : PollingConnection<StreamRequest>, IDisposable
         var codedStreamStream = new CodedOutputStream(_streamStream, true);
         Connect(codedStreamStream, _streamStream, ref _streamBuffer, RequestType.Stream);
         
-        // Set the polling function for Stream RPC requests (create stream, remove stream etc.)
-        SetInvokeAction(Invoke);
+        // Set the polling function for Stream RPC requests (create stream, remove stream etc.) & setup logger
+        Setup(_logger, Invoke);
         
         // Setup the stream update thread
         _streamThread = new Thread(() =>
@@ -169,5 +177,19 @@ internal class StreamConnection : PollingConnection<StreamRequest>, IDisposable
         {
             _disposeLock.ExitWriteLock();
         }
+    }
+    
+    protected override void LogRequestStart(StreamRequest request)
+    {
+        var argumentsString = string.Join(", ", request.Arguments);
+        _logger.LogDebug("Stream request {requestId} to {service}_{procedure} with arguments {arguments} served by {connectionName}",
+            request.RequestId, request.Service, request.Procedure, argumentsString, _connectionName);
+    }
+
+    protected override void LogRequestEnd(StreamRequest request, TimeSpan duration, bool success)
+    {
+        var resultString = success ? "success" : "failure";
+        _logger.LogDebug("Stream Request {requestId} ended in {result} after {duration}ms", 
+            request.RequestId, resultString, duration.TotalMilliseconds);
     }
 }

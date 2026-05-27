@@ -52,16 +52,18 @@ public class ConnectionMultiplexer : IDisposable
             // requests are passed through the same TCP connection, which the server has associated with the streaming
             // TCP connection
             _logger.LogInformation("Establishing stream connection");
-            _streamConnection = new StreamConnection(this, config, _streamRequests, _results);
+            var streamConnName = $"{config.Name}_stream_1";
+            _streamConnection = new StreamConnection(this, config, streamConnName, _streamRequests, _results);
 
             // Create the RPC connections
             _rpcConnections = new RpcConnection[numRpcConnections];
             for (var i = 0; i < numRpcConnections; i++)
             {
+                var connName = $"{config.Name}_rpc_{i+1}";
                 _logger.LogInformation("Establishing RPC connection {connectionNumber} of {numConnections}", 
                     i, 
                     numRpcConnections);
-                _rpcConnections[0] = new RpcConnection(this, config, _rpcRequests, _results);
+                _rpcConnections[0] = new RpcConnection(this, config, connName, _rpcRequests, _results);
             }
             
             StreamManager.Initialise(this);

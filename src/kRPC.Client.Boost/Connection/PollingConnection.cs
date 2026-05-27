@@ -1,6 +1,6 @@
 using System.Collections.Concurrent;
+using System.Diagnostics;
 using kRPC.Client.Boost.Connection.Requests;
-using kRPC.Client.Boost.Logging;
 using Microsoft.Extensions.Logging;
 
 namespace kRPC.Client.Boost.Connection;
@@ -9,7 +9,8 @@ namespace kRPC.Client.Boost.Connection;
 /// Represents a connection to the server that polls for pending RPC requests and actions them in order.
 /// </summary>
 /// <typeparam name="TRequest">The type of request that this connection processes</typeparam>
-internal abstract class PollingConnection<TRequest> : Connection, IDisposable where TRequest : ProcedureRequest
+/// <typeparam name="TConnection">The type of connection that has been established</typeparam>
+internal abstract class PollingConnection<TRequest,TConnection> : Connection, IDisposable where TRequest : ProcedureRequest
 {
     private readonly BlockingCollection<TRequest> _requestQueue;
     private readonly ConcurrentDictionary<string, ProcedureResult> _responses;
@@ -18,34 +19,40 @@ internal abstract class PollingConnection<TRequest> : Connection, IDisposable wh
     private bool _disposed;
     private readonly ReaderWriterLockSlim _disposeLock = new();
     private readonly CancellationTokenSource _disposeTokenSource = new();
-    private readonly ILogger<PollingConnection<TRequest>> _logger = LogManager.GetLogger<PollingConnection<TRequest>>();
-
-    private Action<TRequest, ProcedureResult>? _invokeAction;
     
+    private ILogger<TConnection>? _logger;
+    private Action<TRequest, ProcedureResult>? _invokeAction;
+    private bool _setupComplete;
+
     /// <summary>
     /// Creates a new polling connection.
     /// </summary>
     /// <param name="connection">The top level connection for passing to remote object instances</param>
     /// <param name="config">The configuration for the connection</param>
+    /// <param name="connectionName">The name of this connection</param>
     /// <param name="requestQueue">The queue of requests for processing</param>
     /// <param name="responses">The collection of responses to pending requests</param>
     protected PollingConnection(ConnectionMultiplexer connection, 
-        ConnectionConfig config, 
+        ConnectionConfig config,
+        string connectionName,
         BlockingCollection<TRequest> requestQueue, 
         ConcurrentDictionary<string, ProcedureResult> responses)
-        : base(connection, config)
+        : base(connection, config, connectionName)
     {
         _requestQueue = requestQueue;
         _responses = responses;
     }
 
     /// <summary>
-    /// Sets the action that should be invoked when processing a pending request.
+    /// Sets up the connection with data from the derived type.
     /// </summary>
+    /// <param name="logger">The logger to use for this connection</param>
     /// <param name="action">The action to invoke</param>
-    protected void SetInvokeAction(Action<TRequest, ProcedureResult> action)
+    protected void Setup(ILogger<TConnection> logger, Action<TRequest, ProcedureResult> action)
     {
+        _logger = logger;
         _invokeAction = action;
+        _setupComplete = true;
     }
 
     /// <summary>
@@ -54,8 +61,8 @@ internal abstract class PollingConnection<TRequest> : Connection, IDisposable wh
     /// <exception cref="InvalidOperationException">Thrown if called before the invoke action has been set</exception>
     protected void StartPolling()
     {
-        if (_invokeAction == null)
-            throw new InvalidOperationException("Cannot start polling thread if invoke action hasn't been set");
+        if (!_setupComplete)
+            throw new InvalidOperationException("Cannot start polling thread if setup isn't complete");
         
         _pollingThread = new Thread(() =>
         {
@@ -67,34 +74,51 @@ internal abstract class PollingConnection<TRequest> : Connection, IDisposable wh
     
     private void PollForRequests()
     {
+        var sw = new Stopwatch();
+        var success = false;
+        
+        sw.Start();
+        
         while (true)
         {
             var request = _requestQueue.Take(_disposeTokenSource.Token);
-            if (!_responses.TryGetValue(request.RequestId, out var response))
-            {
-                _logger.LogWarning(
-                    "Response collection did not contain a response for request {RequestId}, continuing to next request", 
-                    request.RequestId);
-                continue;
-            }
-
-            _disposeLock.EnterReadLock();
+            LogRequestStart(request);
+            var start = sw.Elapsed;
+            
             try
             {
-                // Kill the thread if the connection has been disposed
-                if (_disposed)
-                    break;
-                
-                _invokeAction!(request, response);
-            }
-            catch (Exception e)
-            {
-                _logger.LogError(e, "An exception occured trying to invoke the requested procedure");
-                response.MarkFaulted(e);
+                if (!_responses.TryGetValue(request.RequestId, out var response))
+                {
+                    _logger!.LogWarning(
+                        "Response collection did not contain a response for request {RequestId}, skipping request",
+                        request.RequestId);
+                    continue;
+                }
+
+                _disposeLock.EnterReadLock();
+                try
+                {
+                    // Kill the thread if the connection has been disposed
+                    if (_disposed)
+                        break;
+
+                    _invokeAction!(request, response);
+                    success = true;
+                }
+                catch (Exception e)
+                {
+                    _logger!.LogError(e, "An exception occured trying to invoke the requested procedure");
+                    response.MarkFaulted(e);
+                    success = false;
+                }
+                finally
+                {
+                    _disposeLock.ExitReadLock();
+                }
             }
             finally
             {
-                _disposeLock.ExitReadLock();
+                LogRequestEnd(request, sw.Elapsed - start, success);
             }
         }
     }
@@ -129,4 +153,8 @@ internal abstract class PollingConnection<TRequest> : Connection, IDisposable wh
         
         GC.SuppressFinalize(this);
     }
+    
+    protected abstract void LogRequestStart(TRequest request);
+    
+    protected abstract void LogRequestEnd(TRequest request, TimeSpan duration, bool success);
 }
