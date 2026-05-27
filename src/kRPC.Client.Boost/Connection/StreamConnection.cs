@@ -194,8 +194,15 @@ internal class StreamConnection : PollingConnection<StreamRequest, StreamConnect
     protected override void LogRequestStart(StreamRequest request)
     {
         var argumentsString = string.Join(", ", request.Arguments);
-        _logger.LogDebug("Stream request {requestId} to {service}_{procedure} with arguments {arguments} served by {connectionName}",
-            request.RequestId, request.Service, request.Procedure, argumentsString, _connectionName);
+        var queueTime = GetQueueTime(request);
+        _logger.LogDebug(
+            "Stream request {requestId} to {service}_{procedure} with arguments {arguments} served by {connectionName} after {queueTime}ms in queue",
+            request.RequestId, 
+            request.Service, 
+            request.Procedure, 
+            argumentsString, 
+            _connectionName, 
+            queueTime.TotalMilliseconds);
     }
 
     protected override void LogRequestEnd(StreamRequest request, TimeSpan duration, bool success)

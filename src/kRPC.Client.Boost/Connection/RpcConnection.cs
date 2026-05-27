@@ -50,8 +50,15 @@ internal class RpcConnection : PollingConnection<ProcedureRequest, RpcConnection
     protected override void LogRequestStart(ProcedureRequest request)
     {
         var argumentsString = string.Join(", ", request.Arguments);
-        _logger.LogDebug("RPC request {requestId} to {service}_{procedure} with arguments {arguments} served by {connectionName}",
-            request.RequestId, request.Service, request.Procedure, argumentsString, _connectionName);
+        var queueTime = GetQueueTime(request);
+        _logger.LogDebug(
+            "RPC request {requestId} to {service}_{procedure} with arguments {arguments} served by {connectionName} after {queueTime}ms in queue",
+            request.RequestId, 
+            request.Service, 
+            request.Procedure, 
+            argumentsString, 
+            _connectionName,
+            queueTime.TotalMilliseconds);
     }
 
     protected override void LogRequestEnd(ProcedureRequest request, TimeSpan duration, bool success)

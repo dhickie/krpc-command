@@ -153,6 +153,11 @@ internal abstract class PollingConnection<TRequest,TConnection> : Connection, ID
         
         GC.SuppressFinalize(this);
     }
+
+    protected TimeSpan GetQueueTime(TRequest request)
+    {
+        return request.QueuedAt - DateTimeOffset.UtcNow;
+    }
     
     protected abstract void LogRequestStart(TRequest request);
     

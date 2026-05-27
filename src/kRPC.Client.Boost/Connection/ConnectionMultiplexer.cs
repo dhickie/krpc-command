@@ -229,6 +229,7 @@ public class ConnectionMultiplexer : IDisposable
             throw new ProcedureException("Duplicate key in response dictionary");
         
         // Add the request to the queue
+        request.QueuedAt = DateTimeOffset.UtcNow;
         _rpcRequests.Add(request);
 
         return result;
@@ -242,6 +243,7 @@ public class ConnectionMultiplexer : IDisposable
         if (!_results.TryAdd(request.RequestId, result))
             throw new ProcedureException("Duplicate key in response dictionary");
         
+        request.QueuedAt = DateTimeOffset.UtcNow;
         _rpcRequests.Add(request);
 
         return result;
@@ -255,6 +257,7 @@ public class ConnectionMultiplexer : IDisposable
         if (!_results.TryAdd(request.RequestId, result))
             throw new ProcedureException("Duplicate key in response dictionary");
         
+        request.QueuedAt = DateTimeOffset.UtcNow;
         _streamRequests.Add(request);
 
         return result;
@@ -273,6 +276,7 @@ public class ConnectionMultiplexer : IDisposable
         if (!_results.TryAdd(request.RequestId, result))
             throw new ProcedureException("Duplicate key in response dictionary");
         
+        request.QueuedAt = DateTimeOffset.UtcNow;
         _streamRequests.Add(request);
 
         return result;
