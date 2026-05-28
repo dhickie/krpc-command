@@ -1,5 +1,8 @@
 namespace kRPC.Client.Boost.Config;
 
+/// <summary>
+/// Abstract base class from which all other configuration classes are derived.
+/// </summary>
 public abstract class Config
 {
     private List<string> _errors = [];

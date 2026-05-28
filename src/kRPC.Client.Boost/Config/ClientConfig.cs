@@ -3,6 +3,12 @@ using kRPC.Client.Boost.Exceptions;
 
 namespace kRPC.Client.Boost.Config;
 
+/// <summary>
+/// The top level configuration object that is passed when creating the <see cref="Connection.ConnectionMultiplexer">multiplexer</see>.
+/// </summary>
+/// <param name="multiplexerConfig">The multiplexer configuration to use</param>
+/// <param name="connectionConfig">The connection configuration to use</param>
+/// <param name="streamConfig">The stream configuration to use</param>
 public class ClientConfig(
     MultiplexerConfig? multiplexerConfig = null, 
     ConnectionConfig? connectionConfig = null,

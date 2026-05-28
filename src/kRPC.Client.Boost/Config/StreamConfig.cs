@@ -2,6 +2,32 @@ using System.Text;
 
 namespace kRPC.Client.Boost.Config;
 
+/// <summary>
+/// Encapsulates all configuration related to stream management.
+/// </summary>
+/// <param name="compactionInterval">
+///     The interval at which the stream manager should check for streams that no longer have any subscribers.
+///     If the streams dictionary has reached it's max size, streams with no subscribers are then removed.
+///     Creating new streams, adding/removing subscribers from existing streams, or tearing down streams are all blocked while compaction is in progress.
+///     Having a long compaction interval will reduce this disruption, and the potential cost of higher memory usage.
+///     Defaults to 10 seconds.
+/// </param>
+/// <param name="initialDictionarySize">
+///     The initial number of items that can be kept in the streams dictionary before compaction starts to kick in.
+///     Having a higher value means compaction will happen less, and have less disruption as a result.
+///     However, this will also lead to higher memory usage.
+///     Defaults to 1024.
+/// </param>
+/// <param name="maxDictionarySize">
+///     The maximum permitted size of the streams dictionary.
+///     Defaults to 8192.
+/// </param>
+/// <param name="maxDictionarySizeIncreaseInterval">
+///     If the streams dictionary gets past the initial dictionary size, then compaction will start to kick in.
+///     If the streams dictionary is still above the initial size after compaction, it is increased in size by this amount.
+///     The size is only increased up to the configured max size.
+///     Defaults to 512.
+/// </param>
 public class StreamConfig(
     TimeSpan? compactionInterval = null,
     int? initialDictionarySize = null,

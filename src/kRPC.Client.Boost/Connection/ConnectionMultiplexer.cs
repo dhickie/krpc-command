@@ -33,14 +33,15 @@ public class ConnectionMultiplexer : IDisposable
     /// Creates a connection multiplexer that manages one or more connections to a kRPC server.
     /// All interaction with kRPC starts with an instance of this class.
     /// </summary>
-    /// <param name="config">The configuration to use with the client</param>
+    /// <param name="config">The configuration to use with the client. Uses all default values if left null.</param>
     /// <param name="loggerFactory">The optional ILoggerFactory implementation to use when logging</param>
-    public ConnectionMultiplexer(ClientConfig config, ILoggerFactory? loggerFactory = null)
+    public ConnectionMultiplexer(ClientConfig? config = null, ILoggerFactory? loggerFactory = null)
     {
         try
         {
             _logManager = new LogManager(loggerFactory);
             _logger = LogManager.GetLogger<ConnectionMultiplexer>();
+            config ??= new ClientConfig();
             config.Validate();
 
             _streamRequests = new BlockingCollection<StreamRequest>();

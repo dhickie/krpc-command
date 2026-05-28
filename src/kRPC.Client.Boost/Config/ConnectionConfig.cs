@@ -6,9 +6,9 @@ namespace kRPC.Client.Boost.Config;
 /// <summary>
 /// Encapsulates all configuration for connecting to the kRPC server.
 /// </summary>
-/// <param name="address">The IP address of the server</param>
-/// <param name="rpcPort">The port to use for the RPC connection</param>
-/// <param name="streamPort">The port to use for the Streaming connection</param>
+/// <param name="address">The IP address of the server. Defaults to localhost.</param>
+/// <param name="rpcPort">The port to use for RPC connections. Defaults to 5000.</param>
+/// <param name="streamPort">The port to use for the Streaming connection. Defaults to 5001.</param>
 public class ConnectionConfig(
     IPAddress? address = null, 
     int? rpcPort = null, 
