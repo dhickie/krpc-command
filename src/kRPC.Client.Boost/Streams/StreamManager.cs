@@ -2,7 +2,7 @@ using System.Collections.Concurrent;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq.Expressions;
-using System.Runtime.CompilerServices;
+using kRPC.Client.Boost.Config;
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Exceptions;
 using kRPC.Client.Boost.Logging;
@@ -19,11 +19,10 @@ namespace kRPC.Client.Boost.Streams;
 [SuppressMessage("ReSharper", "InconsistentlySynchronizedField")]
 internal static class StreamManager
 {
-    // TODO make these configurable
-    private const int CompactionIntervalSeconds = 10;
-    private const int MaxDictionarySize = 8192;
-    private const int MaxDictionarySizeIncreaseInterval = 512;
-    private static int _currentMaxDictionarySize = 1024;
+    private static TimeSpan _compactionInterval;
+    private static int _maxDictionarySize;
+    private static int _maxDictionarySizeIncreaseInterval;
+    private static int _currentMaxDictionarySize;
 
     private static bool _initialised;
     private static readonly object InitLock = new();
@@ -34,13 +33,14 @@ internal static class StreamManager
     private static readonly ConcurrentDictionary<string, LocalStream> Streams = new();
     private static readonly ConcurrentDictionary<ulong, string> IdMap = new();
 
-    private static readonly ILogger _logger = LogManager.GetLogger(typeof(StreamManager));
+    private static readonly ILogger Logger = LogManager.GetLogger(typeof(StreamManager));
 
     /// <summary>
     /// Initialises the StreamManager's internal state and starts the compaction thread.
     /// </summary>
-    /// <param name="connection">The kRPC connection.</param>
-    public static void Initialise(ConnectionMultiplexer connection)
+    /// <param name="connection">The kRPC connection</param>
+    /// <param name="config">The stream configuration to use</param>
+    public static void Initialise(ConnectionMultiplexer connection, StreamConfig config)
     {
         if (_initialised)
             return;
@@ -51,6 +51,10 @@ internal static class StreamManager
                 return;
             
             _connection = connection;
+            _compactionInterval = config.CompactionInterval;
+            _maxDictionarySize = config.MaxDictionarySize;
+            _maxDictionarySizeIncreaseInterval = config.MaxDictionarySizeIncreaseInterval;
+            _currentMaxDictionarySize = config.InitialDictionarySize;
             _compactionThread = new Thread(() =>
             {
                 Thread.CurrentThread.IsBackground = true;
@@ -126,7 +130,7 @@ internal static class StreamManager
             {
                 // The get can fail if there's a server side issue or if the stream has been closed elsewhere.
                 // If this happens, just return false.
-                _logger.LogWarning(
+                Logger.LogWarning(
                     e, "An error occured trying to get the latest value out of a stream, returning false");
                 value = null;
                 return false;
@@ -142,11 +146,11 @@ internal static class StreamManager
         ValidateState();
 
         if (!IdMap.TryGetValue(remoteId, out var key))
-            _logger.LogInformation("Unable to set stream value - remote ID {remoteId} not found in ID map", remoteId);
+            Logger.LogInformation("Unable to set stream value - remote ID {remoteId} not found in ID map", remoteId);
         else if (!Streams.TryGetValue(key, out var stream))
-            _logger.LogInformation("Unable to set stream value - local stream with key {key} not found in stream collection", key);
+            Logger.LogInformation("Unable to set stream value - local stream with key {key} not found in stream collection", key);
         else if (!stream.TrySet(value))
-            _logger.LogInformation("Failed to set value of stream with key {key}", key);
+            Logger.LogInformation("Failed to set value of stream with key {key}", key);
     }
 
     private static void AddSubscriptionImpl<T>(string key, 
@@ -177,7 +181,7 @@ internal static class StreamManager
                     return;
                 
                 const string message = "Failed to add stream to streams collection";
-                _logger.LogError(message);
+                Logger.LogError(message);
                 throw new StreamCreationException(message);
             }
         }
@@ -215,15 +219,15 @@ internal static class StreamManager
         var sw = new Stopwatch();
         sw.Start();
         
-        var nextCycle = sw.Elapsed + TimeSpan.FromSeconds(CompactionIntervalSeconds);
+        var nextCycle = sw.Elapsed + _compactionInterval;
         while (true)
         {
             try
             {
                 if (sw.Elapsed > nextCycle)
                 {
-                    _logger.LogWarning(
-                        "Compaction cycle took longer than loop interval - next cycle is due at {nextCyle}, but stopwatch is already at {elapsed}", 
+                    Logger.LogWarning(
+                        "Compaction cycle took longer than loop interval - next cycle is due at {nextCycle}, but stopwatch is already at {elapsed}", 
                         nextCycle.TotalSeconds, 
                         sw.Elapsed.TotalSeconds);
                     continue;
@@ -234,7 +238,7 @@ internal static class StreamManager
             }
             finally
             {
-                nextCycle += TimeSpan.FromSeconds(CompactionIntervalSeconds);
+                nextCycle += _compactionInterval;
             }
         }
     }
@@ -282,13 +286,13 @@ internal static class StreamManager
             if (Locks.Count < _currentMaxDictionarySize) 
                 return;
             
-            var nextMax = _currentMaxDictionarySize + MaxDictionarySizeIncreaseInterval;
-            if (nextMax > MaxDictionarySize)
+            var nextMax = _currentMaxDictionarySize + _maxDictionarySizeIncreaseInterval;
+            if (nextMax > _maxDictionarySize)
             {
-                _logger.LogWarning(
+                Logger.LogWarning(
                     "Lock and stream collections are above max size limit: Max size: {maxSize}, current size: {currentSize}", 
                     nextMax, 
-                    MaxDictionarySize);
+                    _maxDictionarySize);
             }
                 
             _currentMaxDictionarySize = nextMax;

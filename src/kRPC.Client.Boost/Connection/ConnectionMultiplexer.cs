@@ -67,7 +67,7 @@ public class ConnectionMultiplexer : IDisposable
                 _rpcConnections[0] = new RpcConnection(this, config.Connection, connName, _rpcRequests, _results);
             }
             
-            StreamManager.Initialise(this);
+            StreamManager.Initialise(this, config.Stream);
         }
         catch (Exception e)
         {
