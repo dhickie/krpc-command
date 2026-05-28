@@ -1,5 +1,6 @@
 using System.Collections.Concurrent;
 using System.Linq.Expressions;
+using kRPC.Client.Boost.Config;
 using kRPC.Client.Boost.Connection.Requests;
 using kRPC.Client.Boost.Exceptions;
 using kRPC.Client.Boost.Logging;
@@ -32,15 +33,15 @@ public class ConnectionMultiplexer : IDisposable
     /// Creates a connection multiplexer that manages one or more connections to a kRPC server.
     /// All interaction with kRPC starts with an instance of this class.
     /// </summary>
-    /// <param name="numRpcConnections">The number of simultaneous RPC connections to create</param>
-    /// <param name="config">The configuration for the connection(s)</param>
+    /// <param name="config">The configuration to use with the client</param>
     /// <param name="loggerFactory">The optional ILoggerFactory implementation to use when logging</param>
-    public ConnectionMultiplexer(int numRpcConnections, ConnectionConfig config, ILoggerFactory? loggerFactory = null)
+    public ConnectionMultiplexer(ClientConfig config, ILoggerFactory? loggerFactory = null)
     {
         try
         {
             _logManager = new LogManager(loggerFactory);
             _logger = LogManager.GetLogger<ConnectionMultiplexer>();
+            config.Validate();
 
             _streamRequests = new BlockingCollection<StreamRequest>();
             _rpcRequests = new BlockingCollection<ProcedureRequest>();
@@ -52,18 +53,18 @@ public class ConnectionMultiplexer : IDisposable
             // requests are passed through the same TCP connection, which the server has associated with the streaming
             // TCP connection
             _logger.LogInformation("Establishing stream connection");
-            var streamConnName = $"{config.Name}_stream_1";
-            _streamConnection = new StreamConnection(this, config, streamConnName, _streamRequests, _results);
+            var streamConnName = $"{config.Multiplexer.ClientName}_stream_1";
+            _streamConnection = new StreamConnection(this, config.Connection, streamConnName, _streamRequests, _results);
 
             // Create the RPC connections
-            _rpcConnections = new RpcConnection[numRpcConnections];
-            for (var i = 0; i < numRpcConnections; i++)
+            _rpcConnections = new RpcConnection[config.Multiplexer.NumRpcConnections];
+            for (var i = 0; i < config.Multiplexer.NumRpcConnections; i++)
             {
-                var connName = $"{config.Name}_rpc_{i+1}";
+                var connName = $"{config.Multiplexer.ClientName}_rpc_{i+1}";
                 _logger.LogInformation("Establishing RPC connection {connectionNumber} of {numConnections}", 
                     i, 
-                    numRpcConnections);
-                _rpcConnections[0] = new RpcConnection(this, config, connName, _rpcRequests, _results);
+                    config.Multiplexer.NumRpcConnections);
+                _rpcConnections[0] = new RpcConnection(this, config.Connection, connName, _rpcRequests, _results);
             }
             
             StreamManager.Initialise(this);
@@ -287,12 +288,14 @@ public class ConnectionMultiplexer : IDisposable
         ObjectDisposedException.ThrowIf(_disposed, this);
     }
     
-    private void LogStartupInformation(ConnectionConfig config)
+    private void LogStartupInformation(ClientConfig config)
     {
         _logger.LogInformation("Initialising connection to kRPC server:");
-        _logger.LogInformation("IP: {ipAddress}", config.Address);
-        _logger.LogInformation("Stream port: {streamPort}", config.StreamPort);
-        _logger.LogInformation("RPC port: {rpcPort}", config.RpcPort);
-        _logger.LogInformation("Client name: {clientName}", config.Name);
+        _logger.LogInformation("IP: {ipAddress}", config.Connection.Address);
+        _logger.LogInformation("Stream port: {streamPort}", config.Connection.StreamPort);
+        _logger.LogInformation("RPC port: {rpcPort}", config.Connection.RpcPort);
+        _logger.LogInformation("Client name: {clientName}", config.Multiplexer.ClientName);
+        
+        _logger.LogDebug("Client configuration:\n{ClientConfig}", config);
     }
 }

@@ -1,6 +1,7 @@
 using System.Linq.Expressions;
 using System.Net.Sockets;
 using Google.Protobuf;
+using kRPC.Client.Boost.Config;
 using kRPC.Client.Boost.Connection.Schema;
 using kRPC.Client.Boost.Exceptions;
 using Exception = System.Exception;
