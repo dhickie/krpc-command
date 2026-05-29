@@ -14,10 +14,25 @@ public class ClientConfig(
     ConnectionConfig? connectionConfig = null,
     StreamConfig? streamConfig = null)
 {
+    /// <summary>
+    /// The multiplexer configuration.
+    /// </summary>
     public MultiplexerConfig Multiplexer = multiplexerConfig ?? new MultiplexerConfig();
+    
+    /// <summary>
+    /// The connection configuration.
+    /// </summary>
     public ConnectionConfig Connection = connectionConfig ?? new ConnectionConfig();
+    
+    /// <summary>
+    /// The stream configuration.
+    /// </summary>
     public StreamConfig Stream = streamConfig ?? new StreamConfig();
 
+    /// <summary>
+    /// Validates that the current configuration is valid.
+    /// </summary>
+    /// <exception cref="ConfigException">Thrown if the configuration is invalid.</exception>
     public void Validate()
     {
         var errors = new List<string>();
@@ -28,6 +43,10 @@ public class ClientConfig(
         ConfigException.ThrowIfContainsErrors(errors);
     }
 
+    /// <summary>
+    /// Converts the configuration to a formatted string.
+    /// </summary>
+    /// <returns>The configuration as a formatted string.</returns>
     public override string ToString()
     {
         var builder = new StringBuilder();
