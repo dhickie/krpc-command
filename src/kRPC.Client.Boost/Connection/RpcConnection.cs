@@ -1,4 +1,5 @@
 using System.Collections.Concurrent;
+using kRPC.Client.Boost.Config;
 using kRPC.Client.Boost.Connection.Requests;
 using kRPC.Client.Boost.Logging;
 using Microsoft.Extensions.Logging;
