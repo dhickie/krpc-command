@@ -1,6 +1,8 @@
 using System.Linq.Expressions;
 using System.Net.Sockets;
+using System.Reflection;
 using Google.Protobuf;
+using kRPC.Client.Boost.Attributes;
 using kRPC.Client.Boost.Config;
 using kRPC.Client.Boost.Connection.Schema;
 using kRPC.Client.Boost.Exceptions;
@@ -273,9 +275,13 @@ internal abstract class Connection : IDisposable
     }
 
     /// <summary>
-    /// Return the procedure call message for a remote procedure call.
+    /// Return the protobuf procedure call message for a remote procedure call, for use in creating streams.
     /// </summary>
-    private static ProcedureCall GetCall(LambdaExpression expression)
+    /// <param name="expression">The expression to get the call of</param>
+    /// <returns></returns>
+    /// <exception cref="ArgumentNullException">Thrown if the provided expression is null</exception>
+    /// <exception cref="ArgumentException">Thrown if the provided expression is not valid in creating a stream</exception>
+    internal static ProcedureCall GetCall(LambdaExpression expression)
     {
         if (ReferenceEquals(expression, null))
             throw new ArgumentNullException(nameof(expression));
@@ -290,8 +296,40 @@ internal abstract class Connection : IDisposable
 
     private static ProcedureCall GetCall(MethodCallExpression expression)
     {
-        // TODO Implement fetching the correct procedure from a MethodCallExpression when we have attributes on procedures
-        throw new NotImplementedException();
+        var attribute = expression.Method.GetCustomAttribute<RpcAttribute>();
+        if (attribute == null)
+            throw new ArgumentException("Invalid expression. Method must call a remote procedure.");
+        
+        var service = attribute!.Service;
+        var procedure = attribute!.Procedure;
+        var arguments = expression.Arguments.Select(x =>
+        {
+            if (x is not ConstantExpression constantExpression)
+                throw new ArgumentException("Invalid expression. Method arguments must be compile time constants.");
+
+            return constantExpression.Value;
+        });
+
+        var call = new ProcedureCall
+        {
+            Procedure = procedure,
+            Service = service
+        };
+
+        var position = 0u;
+        foreach (var argument in arguments)
+        {
+            var encodedValue = Codec.Encode(argument);
+            var arg = new Argument
+            {
+                Position = position,
+                Value = encodedValue
+            };
+            call.Arguments.Add(arg);
+            position++;
+        }
+
+        return call;
     }
     
     private static void AssertSuccess(Response response)
