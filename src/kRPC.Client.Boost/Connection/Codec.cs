@@ -1,9 +1,13 @@
 using System.Collections;
+using System.Linq.Expressions;
 using System.Reflection;
 using Google.Protobuf;
+using kRPC.Client.Boost.Connection.Schema;
 using kRPC.Client.Boost.Exceptions;
 using kRPC.Client.Boost.Services;
 using MathNet.Spatial.Euclidean;
+using DictionaryEntry = System.Collections.DictionaryEntry;
+using Stream = System.IO.Stream;
 using Type = System.Type;
 
 namespace kRPC.Client.Boost.Connection
@@ -151,6 +155,8 @@ namespace kRPC.Client.Boost.Connection
                                 stream.WriteBytes(ByteString.CopyFrom((byte[])value));
                             else if (IsAClassType(type!))
                                 stream.WriteUInt64(((RemoteObject)value).Id);
+                            else if (IsLambdaExpressionType(type!))
+                                EncodeLambdaExpression(value, buffer);
                             else if (IsATupleType(type!))
                                 EncodeTuple(value, type!, buffer);
                             else if (IsAListType(type!))
@@ -207,6 +213,25 @@ namespace kRPC.Client.Boost.Connection
         private static bool IsACollectionType(Type type)
         {
             return IsATupleType(type) || IsAListType(type) || IsASetType(type) || IsADictionaryType(type);
+        }
+
+        private static bool IsLambdaExpressionType(Type type)
+        {
+            return typeof(LambdaExpression).IsAssignableFrom(type);
+        }
+
+        private static void EncodeLambdaExpression(object value, Stream stream)
+        {
+            var procedureCall = Connection.GetCall((LambdaExpression)value);
+
+            ByteString encodedCall;
+            using (var internalBuffer = new MemoryStream())
+            {
+                var internalStream = new CodedOutputStream(internalBuffer);
+                encodedCall = EncodeObject(procedureCall, typeof(ProcedureCall), internalBuffer, internalStream);
+            }
+            
+            encodedCall.WriteTo(stream);
         }
         
         private static bool IsATupleType(Type type)

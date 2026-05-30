@@ -1,5 +1,7 @@
 using System.Linq.Expressions;
 using System.Reflection;
+using kRPC.Client.Boost.Attributes;
+using kRPC.Client.Boost.Connection.Schema;
 
 namespace kRPC.Client.Boost.Streams;
 
@@ -65,7 +67,28 @@ public sealed class StreamSubscription : IDisposable
 
     private string GetStreamKey(LambdaExpression expression)
     {
-        // TODO implement this when we have attributes indicating procedure names
-        throw new NotImplementedException();
+        var body = expression.Body;
+        if (body is not MethodCallExpression methodCallExpression)
+            throw new ArgumentException("Expressions must be an Expression<Func<T>> that calls a single function with no chaining and no parameters");
+        
+        var attribute = methodCallExpression.Method.GetCustomAttribute<RpcAttribute>();
+        if (attribute == null)
+            throw new ArgumentException("Invalid expression. Method must call a remote procedure.");
+        
+        var service = attribute!.Service;
+        var procedure = attribute!.Procedure;
+        var arguments = methodCallExpression.Arguments.Select(x =>
+        {
+            if (x is not ConstantExpression constantExpression)
+                throw new ArgumentException("Invalid expression. Method arguments must be compile time constants.");
+
+            return constantExpression.Value?.ToString();
+        });
+
+        var key = $"{service}_{procedure}";
+        foreach (var argument in arguments)
+            key += $"_{argument ?? string.Empty}";
+
+        return key;
     }
 }
