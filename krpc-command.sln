@@ -7,6 +7,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "krpc-command", "src\krpc-co
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "kRPC.Client.Boost", "src\kRPC.Client.Boost\kRPC.Client.Boost.csproj", "{4D5F72BB-92EB-4696-9A4B-8FF15A3852C6}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{80E3FD64-F00F-403A-82C5-1F21C8A4D392}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{833A0B38-698E-4B18-BC37-767F9CBC9C98}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "kRPC.Client.Boost.UnitTests", "tests\kRPC.Client.Boost.UnitTests\kRPC.Client.Boost.UnitTests.csproj", "{89540036-61D0-448B-83B8-8742C6A33048}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,8 +47,25 @@ Global
 		{4D5F72BB-92EB-4696-9A4B-8FF15A3852C6}.Release|x64.Build.0 = Release|Any CPU
 		{4D5F72BB-92EB-4696-9A4B-8FF15A3852C6}.Release|x86.ActiveCfg = Release|Any CPU
 		{4D5F72BB-92EB-4696-9A4B-8FF15A3852C6}.Release|x86.Build.0 = Release|Any CPU
+		{89540036-61D0-448B-83B8-8742C6A33048}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89540036-61D0-448B-83B8-8742C6A33048}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89540036-61D0-448B-83B8-8742C6A33048}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{89540036-61D0-448B-83B8-8742C6A33048}.Debug|x64.Build.0 = Debug|Any CPU
+		{89540036-61D0-448B-83B8-8742C6A33048}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{89540036-61D0-448B-83B8-8742C6A33048}.Debug|x86.Build.0 = Debug|Any CPU
+		{89540036-61D0-448B-83B8-8742C6A33048}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89540036-61D0-448B-83B8-8742C6A33048}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89540036-61D0-448B-83B8-8742C6A33048}.Release|x64.ActiveCfg = Release|Any CPU
+		{89540036-61D0-448B-83B8-8742C6A33048}.Release|x64.Build.0 = Release|Any CPU
+		{89540036-61D0-448B-83B8-8742C6A33048}.Release|x86.ActiveCfg = Release|Any CPU
+		{89540036-61D0-448B-83B8-8742C6A33048}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{CB6E59A4-50D2-463C-9B72-DDF27213FF6A} = {80E3FD64-F00F-403A-82C5-1F21C8A4D392}
+		{4D5F72BB-92EB-4696-9A4B-8FF15A3852C6} = {80E3FD64-F00F-403A-82C5-1F21C8A4D392}
+		{89540036-61D0-448B-83B8-8742C6A33048} = {833A0B38-698E-4B18-BC37-767F9CBC9C98}
 	EndGlobalSection
 EndGlobal
