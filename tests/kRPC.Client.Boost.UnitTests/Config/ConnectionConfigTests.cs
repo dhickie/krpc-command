@@ -3,7 +3,7 @@ using kRPC.Client.Boost.Config;
 
 namespace kRPC.Client.Boost.UnitTests.Config;
 
-public class ConnectionConfigTests
+public class ConnectionConfigTests : ConfigTestBase
 {
     [Theory]
     [InlineData("0.0.0.0")]
@@ -55,21 +55,5 @@ public class ConnectionConfigTests
         };
         
         AssertConfigIsValid(config);
-    }
-
-    private static void AssertConfigHasValidationErrors(ConnectionConfig config)
-    {
-        var errors = new List<string>();
-        config.Validate(errors);
-        
-        Assert.True(errors.Count > 0);
-    }
-    
-    private static void AssertConfigIsValid(ConnectionConfig config)
-    {
-        var errors = new List<string>();
-        config.Validate(errors);
-        
-        Assert.Empty(errors);
     }
 }
