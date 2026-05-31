@@ -64,8 +64,8 @@ public class StreamConfig(
 
     protected override void Validate()
     {
-        IsInvalid(CompactionInterval, x => x > TimeSpan.Zero, "CompactionInterval must be a positive interval");
-        IsInvalid(InitialDictionarySize, x => x > 0, "InitialDictionarySize must be a positive number");
+        IsInvalid(CompactionInterval, x => x == TimeSpan.Zero, "CompactionInterval must be a positive interval");
+        IsInvalid(InitialDictionarySize, x => x <= 0, "InitialDictionarySize must be a positive number");
         IsInvalid(MaxDictionarySize, x => x <= 0, "MaxDictionarySize must be greater than 0");
         IsInvalid(MaxDictionarySizeIncreaseInterval, x => x <= 0, "MaxDictionarySizeIncreaseInterval must be greater than 0");
         IsInvalid(InitialDictionarySize, MaxDictionarySize, (x, y) => x > y, "InitialDictionarySize must be less than or equal to MaxDictionarySize");

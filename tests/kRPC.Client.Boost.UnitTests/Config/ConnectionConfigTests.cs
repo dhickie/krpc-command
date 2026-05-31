@@ -23,8 +23,8 @@ public class ConnectionConfigTests : ConfigTestBase
     [Theory]
     [InlineData(-1, 80)]
     [InlineData(80, -1)]
-    [InlineData(1000000, 80)]
-    [InlineData(80, 1000000)]
+    [InlineData(65536, 80)]
+    [InlineData(80, 65536)]
     [InlineData(80, 80)]
     public void ValidationFails_WhenPortIsInvalid(int rpcPort, int streamPort)
     {

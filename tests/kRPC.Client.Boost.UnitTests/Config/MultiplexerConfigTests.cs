@@ -1,4 +1,3 @@
-using System.Reflection;
 using kRPC.Client.Boost.Config;
 
 namespace kRPC.Client.Boost.UnitTests.Config;
