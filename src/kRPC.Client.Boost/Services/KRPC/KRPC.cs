@@ -9,7 +9,7 @@ namespace kRPC.Client.Boost.Services.KRPC;
 /// </summary>
 /// <param name="connection">The connection multiplexer that provides access to the server</param>
 // ReSharper disable once InconsistentNaming
-public class KRPC(ConnectionMultiplexer connection)
+public class KRPC(IConnectionMultiplexer connection)
 {
     /// <summary>
     /// Synchronously dds a stream to the server.

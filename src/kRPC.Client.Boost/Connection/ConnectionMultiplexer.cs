@@ -14,7 +14,7 @@ namespace kRPC.Client.Boost.Connection;
 /// A multiplexer that distributes requests among multiple connections to the kRPC server.
 /// This is the point of entry for clients wishing to interact with the server.
 /// </summary>
-public class ConnectionMultiplexer : IDisposable
+internal class ConnectionMultiplexer : IDisposable, IConnectionMultiplexer
 {
     private readonly StreamConnection _streamConnection;
     private readonly RpcConnection[] _rpcConnections;
@@ -112,109 +112,68 @@ public class ConnectionMultiplexer : IDisposable
         _disposalTokenSource.Cancel();
     }
 
-    /// <summary>
-    /// Returns an object providing access to the KRPC service.
-    /// </summary>
+    /// <inheritdoc/>
     public Services.KRPC.KRPC KRPC => new(this);
 
-    /// <summary>
-    /// Synchronously adds a new stream to the server.
-    /// </summary>
-    /// <param name="expression">The expression for the stream</param>
-    /// <param name="start">Whether to start the stream immediately</param>
-    /// <typeparam name="T">The type of the data updated by the stream</typeparam>
-    /// <returns>The remote stream object</returns>
-    internal RemoteStream AddStream<T>(Expression<Func<T>> expression, bool start)
+    /// <inheritdoc/>
+    public Services.SpaceCenter.SpaceCenter SpaceCenter => new(this);
+
+    /// <inheritdoc/>
+    public RemoteStream AddStream<T>(Expression<Func<T>> expression, bool start)
     {
         var result = AddNewStreamRequestToQueue(expression, start);
         return result.WaitForResult(_disposalTokenSource.Token) 
                ?? throw new StreamCreationException("Received null stream creation result");
     }
     
-    /// <summary>
-    /// Asynchronously adds a new stream to the server.
-    /// </summary>
-    /// <param name="expression">The expression for the stream</param>
-    /// <param name="start">Whether to start the stream immediately</param>
-    /// <typeparam name="T">The type of the data updated by the stream</typeparam>
-    /// <returns>The remote stream object</returns>
-    internal async Task<RemoteStream> AddStreamAsync<T>(Expression<Func<T>> expression, bool start)
+    /// <inheritdoc/>
+    public async Task<RemoteStream> AddStreamAsync<T>(Expression<Func<T>> expression, bool start)
     {
         var result = AddNewStreamRequestToQueue(expression, start);
         return await result.WaitForResultAsync(_disposalTokenSource.Token)
                ?? throw new StreamCreationException("Received null stream creation result");
     }
 
-    /// <summary>
-    /// Synchronously removes a stream from the server.
-    /// </summary>
-    /// <param name="streamId">The ID of the stream to remove</param>
-    internal void RemoveStream(ulong streamId)
+    /// <inheritdoc/>
+    public void RemoveStream(ulong streamId)
     {
         var result = AddRemoveStreamRequestToQueue(streamId);
         result.WaitForCompletion(_disposalTokenSource.Token);
     }
 
-    /// <summary>
-    /// Asynchronously removes a stream from the server.
-    /// </summary>
-    /// <param name="streamId">The ID of the stream to remove</param>
-    internal async Task RemoveStreamAsync(ulong streamId)
+    /// <inheritdoc/>
+    public async Task RemoveStreamAsync(ulong streamId)
     {
         var result = AddRemoveStreamRequestToQueue(streamId);
         await result.WaitForCompletionAsync(_disposalTokenSource.Token);
     }
 
-    /// <summary>
-    /// Synchronously invokes a procedure that doesn't have a result object.
-    /// </summary>
-    /// <param name="service">The service the procedure is part of</param>
-    /// <param name="procedure">The procedure to invoke</param>
-    /// <param name="arguments">The arguments to the procedure</param>
-    internal void Invoke(string service, string procedure, object?[]? arguments = null)
+    /// <inheritdoc/>
+    public void Invoke(string service, string procedure, object?[]? arguments = null)
     {
         CheckDisposed();
         var result = AddRpcRequestToQueue(service, procedure, arguments);
         result.WaitForCompletion(_disposalTokenSource.Token);
     }
     
-    /// <summary>
-    /// Synchronously invokes a procedure that returns a result object.
-    /// </summary>
-    /// <param name="service">The service the procedure is part of</param>
-    /// <param name="procedure">The procedure to invoke</param>
-    /// <param name="arguments">The arguments to the procedure</param>
-    /// <typeparam name="TResponse">The type of the response object</typeparam>
-    /// <returns>The result object from the procedure.</returns>
-    internal TResponse? Invoke<TResponse>(string service, string procedure, object?[]? arguments = null)
+    /// <inheritdoc/>
+    public TResponse? Invoke<TResponse>(string service, string procedure, object?[]? arguments = null)
     {
         CheckDisposed();
         var result = AddRpcRequestToQueue<TResponse>(service, procedure, arguments);
         return result.WaitForResult(_disposalTokenSource.Token);
     }
 
-    /// <summary>
-    /// Asynchronously invokes a procedure that doesn't have a result object.
-    /// </summary>
-    /// <param name="service">The service the procedure is part of</param>
-    /// <param name="procedure">The procedure to invoke</param>
-    /// <param name="arguments">The arguments to the procedure</param>
-    internal async Task InvokeAsync(string service, string procedure, object?[]? arguments = null)
+    /// <inheritdoc/>
+    public async Task InvokeAsync(string service, string procedure, object?[]? arguments = null)
     {
         CheckDisposed();
         var result = AddRpcRequestToQueue(service, procedure, arguments);
         await result.WaitForCompletionAsync(_disposalTokenSource.Token);
     }
 
-    /// <summary>
-    /// Asynchronously invokes a procedure that returns a result object.
-    /// </summary>
-    /// <param name="service">The service the procedure is part of</param>
-    /// <param name="procedure">The procedure to invoke</param>
-    /// <param name="arguments">The arguments to the procedure</param>
-    /// <typeparam name="TResponse">The type of the response object</typeparam>
-    /// <returns>The result object from the procedure.</returns>
-    internal async Task<TResponse?> InvokeAsync<TResponse>(string service, string procedure, object?[]? arguments = null)
+    /// <inheritdoc/>
+    public async Task<TResponse?> InvokeAsync<TResponse>(string service, string procedure, object?[]? arguments = null)
     {
         CheckDisposed();
         var result = AddRpcRequestToQueue<TResponse>(service, procedure, arguments);

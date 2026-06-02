@@ -12,7 +12,7 @@ public class RoboticPiston : RemoteObject
     /// <summary>
     /// Construct an instance of this remote object. Should not be called directly. This interface is intended for internal decoding.
     /// </summary>
-    public RoboticPiston(ConnectionMultiplexer connection, ulong id) : base(connection, id)
+    public RoboticPiston(IConnectionMultiplexer connection, ulong id) : base(connection, id)
     {
     }
 

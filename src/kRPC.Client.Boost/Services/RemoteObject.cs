@@ -12,7 +12,7 @@ public abstract class RemoteObject
     /// </summary>
     /// <param name="connection">The connection multiplexer that provides access to the server</param>
     /// <param name="id">The ID of the object on the server</param>
-    protected RemoteObject(ConnectionMultiplexer connection, ulong id)
+    protected RemoteObject(IConnectionMultiplexer connection, ulong id)
     {
         Id = id;
         Connection = connection;
@@ -23,5 +23,5 @@ public abstract class RemoteObject
     /// </summary>
     internal ulong Id { get; }
 
-    protected ConnectionMultiplexer Connection { get; }
+    protected IConnectionMultiplexer Connection { get; }
 }

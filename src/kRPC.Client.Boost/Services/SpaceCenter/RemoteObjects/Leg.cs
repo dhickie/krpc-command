@@ -11,7 +11,7 @@ public class Leg : RemoteObject
     /// <summary>
     /// Construct an instance of this remote object. Should not be called directly. This interface is intended for internal decoding.
     /// </summary>
-    public Leg(ConnectionMultiplexer connection, ulong id) : base(connection, id)
+    public Leg(IConnectionMultiplexer connection, ulong id) : base(connection, id)
     {
     }
 

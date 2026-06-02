@@ -11,7 +11,7 @@ public class Alarm : RemoteObject
     /// <summary>
     /// Construct an instance of this remote object. Should not be called directly. This interface is intended for internal decoding.
     /// </summary>
-    public Alarm(ConnectionMultiplexer connection, ulong id) : base(connection, id)
+    public Alarm(IConnectionMultiplexer connection, ulong id) : base(connection, id)
     {
     }
 

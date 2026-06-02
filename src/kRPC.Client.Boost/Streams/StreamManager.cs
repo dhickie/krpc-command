@@ -26,7 +26,7 @@ internal static class StreamManager
 
     private static bool _initialised;
     private static readonly object InitLock = new();
-    private static ConnectionMultiplexer? _connection;
+    private static IConnectionMultiplexer? _connection;
     private static Thread? _compactionThread;
     private static readonly ReaderWriterLockSlim CompactionLock = new();
     private static readonly ConcurrentDictionary<string, object> Locks = new();

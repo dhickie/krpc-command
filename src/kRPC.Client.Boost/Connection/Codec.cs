@@ -31,7 +31,7 @@ namespace kRPC.Client.Boost.Connection
         /// <summary>
         /// Decode a value of the given type.
         /// </summary>
-        public static object? Decode(ByteString value, Type type, ConnectionMultiplexer client)
+        public static object? Decode(ByteString value, Type type, IConnectionMultiplexer client)
         {
             if (ReferenceEquals(type, null))
                 throw new CodecException($"{nameof(type)} should not be null");
@@ -268,7 +268,7 @@ namespace kRPC.Client.Boost.Connection
             encodedTuple.WriteTo(stream);
         }
 
-        private static object DecodeTuple(CodedInputStream stream, Type type, ConnectionMultiplexer client)
+        private static object DecodeTuple(CodedInputStream stream, Type type, IConnectionMultiplexer client)
         {
             var encodedTuple = ParseEncodedStream(Schema.Tuple.Parser, stream);
             var genericArgs = type.GetGenericArguments();
@@ -307,7 +307,7 @@ namespace kRPC.Client.Boost.Connection
             encodedList.WriteTo(stream);
         }
 
-        private static object DecodeList(CodedInputStream stream, Type type, ConnectionMultiplexer client)
+        private static object DecodeList(CodedInputStream stream, Type type, IConnectionMultiplexer client)
         {
             var constructor = GetGenericConstructor(type, typeof(List<>), true);
             var encodedList = ParseEncodedStream(Schema.List.Parser, stream);
@@ -340,7 +340,7 @@ namespace kRPC.Client.Boost.Connection
             encodedSet.WriteTo(stream);
         }
 
-        private static object DecodeSet(CodedInputStream stream, Type type, ConnectionMultiplexer client)
+        private static object DecodeSet(CodedInputStream stream, Type type, IConnectionMultiplexer client)
         {
             var encodedSet = ParseEncodedStream(Schema.Set.Parser, stream);
             var constructor = GetGenericConstructor(type, typeof(HashSet<>), true);
@@ -388,7 +388,7 @@ namespace kRPC.Client.Boost.Connection
             encodedDictionary.WriteTo(stream);
         }
 
-        private static object DecodeDictionary(CodedInputStream stream, Type type, ConnectionMultiplexer client)
+        private static object DecodeDictionary(CodedInputStream stream, Type type, IConnectionMultiplexer client)
         {
             var encodedDictionary = ParseEncodedStream(Schema.Dictionary.Parser, stream);
             var constructor = GetGenericConstructor(type, typeof(Dictionary<,>), true);
@@ -419,7 +419,7 @@ namespace kRPC.Client.Boost.Connection
             EncodeTuple(tuple, tuple.GetType(), stream);
         }
 
-        private static object DecodeVector(CodedInputStream stream, ConnectionMultiplexer client)
+        private static object DecodeVector(CodedInputStream stream, IConnectionMultiplexer client)
         {
             var tuple = DecodeTuple(stream, typeof(Tuple<double, double, double>), client);
             
@@ -443,7 +443,7 @@ namespace kRPC.Client.Boost.Connection
             EncodeTuple(tuple, tuple.GetType(), stream);
         }
 
-        private static object DecodeQuaternion(CodedInputStream stream, ConnectionMultiplexer client)
+        private static object DecodeQuaternion(CodedInputStream stream, IConnectionMultiplexer client)
         {
             var tuple = DecodeTuple(stream, typeof(Tuple<double, double, double, double>), client);
             

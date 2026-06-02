@@ -14,11 +14,11 @@ namespace kRPC.Client.Boost.Services.SpaceCenter;
 /// </summary>
 public class SpaceCenter
 {
-    private readonly ConnectionMultiplexer _connection;
+    private readonly IConnectionMultiplexer _connection;
 
-    internal SpaceCenter(ConnectionMultiplexer serverConnection)
+    internal SpaceCenter(IConnectionMultiplexer connection)
     {
-        _connection = serverConnection;
+        _connection = connection;
     }
 
     /// <summary>

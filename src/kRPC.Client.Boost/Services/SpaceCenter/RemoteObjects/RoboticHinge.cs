@@ -12,7 +12,7 @@ public class RoboticHinge : RemoteObject
     /// <summary>
     /// Construct an instance of this remote object. Should not be called directly. This interface is intended for internal decoding.
     /// </summary>
-    public RoboticHinge(ConnectionMultiplexer connection, ulong id) : base(connection, id)
+    public RoboticHinge(IConnectionMultiplexer connection, ulong id) : base(connection, id)
     {
     }
 

@@ -11,7 +11,7 @@ public class Sensor : RemoteObject
     /// <summary>
     /// Construct an instance of this remote object. Should not be called directly. This interface is intended for internal decoding.
     /// </summary>
-    public Sensor(ConnectionMultiplexer connection, ulong id) : base(connection, id)
+    public Sensor(IConnectionMultiplexer connection, ulong id) : base(connection, id)
     {
     }
 

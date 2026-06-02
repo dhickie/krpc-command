@@ -11,7 +11,7 @@ public class CommLink : RemoteObject
     /// <summary>
     /// Construct an instance of this remote object. Should not be called directly. This interface is intended for internal decoding.
     /// </summary>
-    public CommLink(ConnectionMultiplexer connection, ulong id) : base(connection, id)
+    public CommLink(IConnectionMultiplexer connection, ulong id) : base(connection, id)
     {
     }
 

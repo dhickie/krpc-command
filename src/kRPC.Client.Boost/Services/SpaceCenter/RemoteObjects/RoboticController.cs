@@ -11,7 +11,7 @@ public class RoboticController : RemoteObject
     /// <summary>
     /// Construct an instance of this remote object. Should not be called directly. This interface is intended for internal decoding.
     /// </summary>
-    public RoboticController(ConnectionMultiplexer connection, ulong id) : base(connection, id)
+    public RoboticController(IConnectionMultiplexer connection, ulong id) : base(connection, id)
     {
     }
 

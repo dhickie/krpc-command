@@ -11,7 +11,7 @@ public class Intake : RemoteObject
     /// <summary>
     /// Construct an instance of this remote object. Should not be called directly. This interface is intended for internal decoding.
     /// </summary>
-    public Intake(ConnectionMultiplexer connection, ulong id) : base(connection, id)
+    public Intake(IConnectionMultiplexer connection, ulong id) : base(connection, id)
     {
     }
 

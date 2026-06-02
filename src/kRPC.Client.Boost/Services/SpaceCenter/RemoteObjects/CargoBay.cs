@@ -11,7 +11,7 @@ public class CargoBay : RemoteObject
     /// <summary>
     /// Construct an instance of this remote object. Should not be called directly. This interface is intended for internal decoding.
     /// </summary>
-    public CargoBay(ConnectionMultiplexer connection, ulong id) : base(connection, id)
+    public CargoBay(IConnectionMultiplexer connection, ulong id) : base(connection, id)
     {
     }
 

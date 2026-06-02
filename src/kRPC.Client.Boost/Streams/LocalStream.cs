@@ -16,7 +16,7 @@ internal sealed class LocalStream<T> : LocalStream where T : class
 {
     private bool _initialised;
     private readonly ReaderWriterLockSlim _initLock = new();
-    private readonly ConnectionMultiplexer _connection;
+    private readonly IConnectionMultiplexer _connection;
     private readonly Expression<Func<T>> _expression;
     private T? _value;
     
@@ -25,7 +25,7 @@ internal sealed class LocalStream<T> : LocalStream where T : class
     /// </summary>
     /// <param name="connection">The kRPC connection.</param>
     /// <param name="expression">The expression to register</param>
-    public LocalStream(ConnectionMultiplexer connection, Expression<Func<T>> expression) : base(typeof(T))
+    public LocalStream(IConnectionMultiplexer connection, Expression<Func<T>> expression) : base(typeof(T))
     {
         _connection = connection;
         _expression = expression;

@@ -13,7 +13,7 @@ public class Part : RemoteObject
     /// <summary>
     /// Construct an instance of this remote object. Should not be called directly. This interface is intended for internal decoding.
     /// </summary>
-    public Part(ConnectionMultiplexer connection, ulong id) : base(connection, id)
+    public Part(IConnectionMultiplexer connection, ulong id) : base(connection, id)
     {
     }
 

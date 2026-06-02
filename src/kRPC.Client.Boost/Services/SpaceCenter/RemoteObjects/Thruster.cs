@@ -19,7 +19,7 @@ public class Thruster : RemoteObject
     /// <summary>
     /// Construct an instance of this remote object. Should not be called directly. This interface is intended for internal decoding.
     /// </summary>
-    public Thruster(ConnectionMultiplexer connection, ulong id) : base(connection, id)
+    public Thruster(IConnectionMultiplexer connection, ulong id) : base(connection, id)
     {
     }
 

@@ -10,7 +10,7 @@ public static class ExtensionMethods
     /// <summary>
     /// Create an instance of the SpaceCenter service.
     /// </summary>
-    public static SpaceCenter SpaceCenter(this ConnectionMultiplexer connection)
+    public static SpaceCenter SpaceCenter(this IConnectionMultiplexer connection)
     {
         return new SpaceCenter(connection);
     }

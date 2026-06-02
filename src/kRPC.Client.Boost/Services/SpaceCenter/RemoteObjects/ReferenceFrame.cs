@@ -17,7 +17,7 @@ public class ReferenceFrame : RemoteObject
     /// <summary>
     /// Construct an instance of this remote object. Should not be called directly. This interface is intended for internal decoding.
     /// </summary>
-    public ReferenceFrame(ConnectionMultiplexer connection, ulong id) : base(connection, id)
+    public ReferenceFrame(IConnectionMultiplexer connection, ulong id) : base(connection, id)
     {
     }
 

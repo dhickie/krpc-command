@@ -10,7 +10,7 @@ public class Decoupler : RemoteObject
     /// <summary>
     /// Construct an instance of this remote object. Should not be called directly. This interface is intended for internal decoding.
     /// </summary>
-    public Decoupler(ConnectionMultiplexer connection, ulong id) : base(connection, id)
+    public Decoupler(IConnectionMultiplexer connection, ulong id) : base(connection, id)
     {
     }
 
