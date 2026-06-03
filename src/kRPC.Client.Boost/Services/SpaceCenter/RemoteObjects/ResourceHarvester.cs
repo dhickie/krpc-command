@@ -11,7 +11,7 @@ public class ResourceHarvester : RemoteObject
     /// <summary>
     /// Construct an instance of this remote object. Should not be called directly. This interface is intended for internal decoding.
     /// </summary>
-    public ResourceHarvester(IConnectionMultiplexer connection, ulong id) : base(connection, id)
+    internal ResourceHarvester(IConnectionMultiplexer connection, ulong id) : base(connection, id)
     {
     }
 

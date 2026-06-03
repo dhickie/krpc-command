@@ -11,7 +11,7 @@ public class SolarPanel : RemoteObject
     /// <summary>
     /// Construct an instance of this remote object. Should not be called directly. This interface is intended for internal decoding.
     /// </summary>
-    public SolarPanel(IConnectionMultiplexer connection, ulong id) : base(connection, id)
+    internal SolarPanel(IConnectionMultiplexer connection, ulong id) : base(connection, id)
     {
     }
 

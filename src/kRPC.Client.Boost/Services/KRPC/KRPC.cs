@@ -4,13 +4,24 @@ using kRPC.Client.Boost.Services.KRPC.RemoteObjects;
 
 namespace kRPC.Client.Boost.Services.KRPC;
 
+
 /// <summary>
 /// Provides top level access to the KRPC service.
 /// </summary>
-/// <param name="connection">The connection multiplexer that provides access to the server</param>
 // ReSharper disable once InconsistentNaming
-public class KRPC(IConnectionMultiplexer connection)
+public class KRPC
 {
+    private readonly IConnectionMultiplexer _connection;
+    
+    /// <summary>
+    /// Creates a KRPC object for accessing KRPC procedures.
+    /// </summary>
+    /// <param name="connection">The connection multiplexer that provides access to the server</param>
+    internal KRPC(IConnectionMultiplexer connection)
+    {
+        _connection = connection;
+    }
+    
     /// <summary>
     /// Synchronously dds a stream to the server.
     /// </summary>
@@ -20,7 +31,7 @@ public class KRPC(IConnectionMultiplexer connection)
     /// <returns>The created remote stream object</returns>
     internal RemoteStream AddStream<T>(Expression<Func<T>> expression, bool start)
     {
-        return connection.AddStream(expression, start);
+        return _connection.AddStream(expression, start);
     }
 
     /// <summary>
@@ -32,6 +43,6 @@ public class KRPC(IConnectionMultiplexer connection)
     /// <returns>The created remote stream object</returns>
     internal async Task<RemoteStream> AddStreamAsync<T>(Expression<Func<T>> expression, bool start)
     {
-        return await connection.AddStreamAsync(expression, start);
+        return await _connection.AddStreamAsync(expression, start);
     }
 }

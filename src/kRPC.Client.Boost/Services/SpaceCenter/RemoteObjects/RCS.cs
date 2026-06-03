@@ -12,7 +12,7 @@ public class RCS : RemoteObject
     /// <summary>
     /// Construct an instance of this remote object. Should not be called directly. This interface is intended for internal decoding.
     /// </summary>
-    public RCS(IConnectionMultiplexer connection, ulong id) : base(connection, id)
+    internal RCS(IConnectionMultiplexer connection, ulong id) : base(connection, id)
     {
     }
 

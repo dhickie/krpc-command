@@ -11,7 +11,7 @@ public class ResourceConverter : RemoteObject
     /// <summary>
     /// Construct an instance of this remote object. Should not be called directly. This interface is intended for internal decoding.
     /// </summary>
-    public ResourceConverter(IConnectionMultiplexer connection, ulong id) : base(connection, id)
+    internal ResourceConverter(IConnectionMultiplexer connection, ulong id) : base(connection, id)
     {
     }
 

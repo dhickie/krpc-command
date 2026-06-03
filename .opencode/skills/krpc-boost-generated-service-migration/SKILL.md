@@ -1,6 +1,6 @@
 ---
 name: krpc-boost-generated-service-migration
-description: "Use when migrating generated kRPC C# service client code to kRPC.Client.Boost conventions. Use this skill whenever the user mentions repeating CONTEXT.md updates, generated kRPC service migrations, kRPC.Client.Boost generated services, ConnectionMultiplexer, RemoteObject, RPCAttribute/Rpc cleanup, Encoder/Decode removal, property-to-method conversion, async RPC wrappers, nullable generated RPCs, or Vector3D/Quaternion/Angle conversions for generated kRPC clients, even if they name a service other than SpaceCenter."
+description: "Use when migrating generated kRPC C# service client code to kRPC.Client.Boost conventions. Use this skill whenever the user mentions repeating CONTEXT.md updates, generated kRPC service migrations, kRPC.Client.Boost generated services, ConnectionMultiplexer/IConnectionMultiplexer, RemoteObject constructor access, RPCAttribute/Rpc cleanup, Encoder/Decode removal, property-to-method conversion, async RPC wrappers, nullable generated RPCs, or Vector3D/Quaternion/Angle conversions for generated kRPC clients, even if they name a service other than SpaceCenter."
 ---
 
 # kRPC Boost Generated Service Migration
@@ -39,7 +39,8 @@ For generated remote object classes:
 
 - Inherit from project-local `RemoteObject` instead of `global::KRPC.Client.RemoteObject`.
 - Add `using kRPC.Client.Boost.Services;` where needed.
-- Change constructors to take `ConnectionMultiplexer connection, ulong id`.
+- Change constructors to take `IConnectionMultiplexer connection, ulong id`.
+- Mark generated `RemoteObject` constructors that accept `IConnectionMultiplexer` as `internal`, not `public`, so callers cannot directly construct remote object handles with transport internals.
 - Call `base(connection, id)`.
 - Add `using kRPC.Client.Boost.Connection;` where needed.
 
@@ -48,6 +49,7 @@ For generated service facade classes:
 - Store and accept `ConnectionMultiplexer` instead of `global::KRPC.Client.IConnection`.
 - Keep the field name already used by the file when possible, commonly `_connection`.
 - Update extension methods so they extend `ConnectionMultiplexer` and return the project-local service type.
+- If an extension method or generated helper must accept the internal `IConnectionMultiplexer` interface, do not leave that method public; keep its accessibility no wider than the interface it exposes.
 
 For generated helper methods on remote object classes:
 
@@ -168,7 +170,8 @@ _Connection
 
 Check structural invariants:
 
-- Remote object constructors take `ConnectionMultiplexer connection, ulong id` and call `base(connection, id)`.
+- Remote object constructors take `IConnectionMultiplexer connection, ulong id`, are `internal`, and call `base(connection, id)`.
+- No generated `RemoteObject` subclass has a public constructor that accepts `IConnectionMultiplexer`.
 - Non-constructor remote object methods no longer accept `ConnectionMultiplexer connection` unless the method genuinely needs an external connection rather than the instance connection.
 - There are no leftover generated properties where the selected migration requires method pairs.
 - Every generated getter, setter, synchronous RPC wrapper, and async RPC wrapper has an immediate `[Rpc(...)]` attribute with the same procedure name used by the body.
