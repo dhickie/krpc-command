@@ -6,6 +6,7 @@ using kRPC.Client.Boost.Connection.Schema;
 using kRPC.Client.Boost.Services;
 using kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects;
 using kRPC.Client.Boost.UnitTests.Fakes;
+using kRPC.Client.Boost.UnitTests.Helpers;
 using MathNet.Spatial.Euclidean;
 using Type = System.Type;
 
@@ -50,8 +51,8 @@ public class CodecTests
         const FakeEnum enumValue = FakeEnum.Value2;
         var byteString = Codec.Encode(enumValue);
         var decodedValue = Codec.Decode(byteString, typeof(FakeEnum), _connection);
-
-        Assert.Equal(enumValue, decodedValue);
+        Assert.NotNull(decodedValue);
+        Assert.Equal(enumValue, (FakeEnum)decodedValue);
     }
 
     [Fact]
@@ -215,7 +216,7 @@ public class CodecTests
     [Fact]
     public void DoesntThrow_WhenEncodingMessageTypes()
     {
-        var arg1 = _fixture.Create<Vessel>();
+        var arg1 = RemoteObjectFixture.Create<Vessel>();
         var arg2 = _fixture.Create<bool>();
         var call = new ProcedureCall
         {

@@ -154,7 +154,7 @@ internal abstract class Connection : IDisposable
     /// <param name="procedure">The name of the procedure</param>
     /// <param name="arguments">Arguments to the procedure</param>
     /// <returns>The result object</returns>
-    protected object? Invoke(System.Type resultType, string service, string procedure, IList<object?>? arguments = null)
+    protected object? Invoke(System.Type resultType, string service, string procedure, IList<ProcedureArgument>? arguments = null)
     {
         var result = Invoke(GetCall(service, procedure, arguments));
         return Codec.Decode(result, resultType, _connection);
@@ -166,7 +166,7 @@ internal abstract class Connection : IDisposable
     /// <param name="service">The service the procedure is in</param>
     /// <param name="procedure">The name of the procedure</param>
     /// <param name="arguments">Arguments to the procedure</param>
-    protected void Invoke(string service, string procedure, IEnumerable<object?>? arguments = null)
+    protected void Invoke(string service, string procedure, IEnumerable<ProcedureArgument>? arguments = null)
     {
         Invoke(GetCall(service, procedure, arguments));
     }
@@ -247,7 +247,7 @@ internal abstract class Connection : IDisposable
         return response.Results[0].Value;
     }
 
-    private static ProcedureCall GetCall(string service, string procedure, IEnumerable<object?>? arguments = null)
+    private static ProcedureCall GetCall(string service, string procedure, IEnumerable<ProcedureArgument>? arguments = null)
     {
         var call = new ProcedureCall
         {
@@ -259,15 +259,15 @@ internal abstract class Connection : IDisposable
             return call;
         
         uint position = 0;
-        foreach (var value in arguments)
+        foreach (var argument in arguments)
         {
-            var encodedValue = Codec.Encode(value);
-            var argument = new Argument
+            var encodedValue = Codec.Encode(argument.Value, argument.Type);
+            var procArgument = new Argument
             {
                 Position = position,
                 Value = encodedValue
             };
-            call.Arguments.Add(argument);
+            call.Arguments.Add(procArgument);
             position++;
         }
 

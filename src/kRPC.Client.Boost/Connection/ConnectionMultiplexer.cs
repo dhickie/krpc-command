@@ -149,7 +149,7 @@ internal class ConnectionMultiplexer : IDisposable, IConnectionMultiplexer
     }
 
     /// <inheritdoc/>
-    public void Invoke(string service, string procedure, object?[]? arguments = null)
+    public void Invoke(string service, string procedure, ProcedureArgument[]? arguments = null)
     {
         CheckDisposed();
         var result = AddRpcRequestToQueue(service, procedure, arguments);
@@ -157,7 +157,7 @@ internal class ConnectionMultiplexer : IDisposable, IConnectionMultiplexer
     }
     
     /// <inheritdoc/>
-    public TResponse? Invoke<TResponse>(string service, string procedure, object?[]? arguments = null)
+    public TResponse? Invoke<TResponse>(string service, string procedure, ProcedureArgument[]? arguments = null)
     {
         CheckDisposed();
         var result = AddRpcRequestToQueue<TResponse>(service, procedure, arguments);
@@ -165,7 +165,7 @@ internal class ConnectionMultiplexer : IDisposable, IConnectionMultiplexer
     }
 
     /// <inheritdoc/>
-    public async Task InvokeAsync(string service, string procedure, object?[]? arguments = null)
+    public async Task InvokeAsync(string service, string procedure, ProcedureArgument[]? arguments = null)
     {
         CheckDisposed();
         var result = AddRpcRequestToQueue(service, procedure, arguments);
@@ -173,14 +173,14 @@ internal class ConnectionMultiplexer : IDisposable, IConnectionMultiplexer
     }
 
     /// <inheritdoc/>
-    public async Task<TResponse?> InvokeAsync<TResponse>(string service, string procedure, object?[]? arguments = null)
+    public async Task<TResponse?> InvokeAsync<TResponse>(string service, string procedure, ProcedureArgument[]? arguments = null)
     {
         CheckDisposed();
         var result = AddRpcRequestToQueue<TResponse>(service, procedure, arguments);
         return await result.WaitForResultAsync(_disposalTokenSource.Token);
     }
 
-    private ProcedureResult<T> AddRpcRequestToQueue<T>(string service, string procedure, object?[]? arguments = null)
+    private ProcedureResult<T> AddRpcRequestToQueue<T>(string service, string procedure, ProcedureArgument[]? arguments = null)
     {
         // Set up the request and result object
         var request = new ReturningProcedureRequest(typeof(T), service, procedure, arguments);
@@ -196,7 +196,7 @@ internal class ConnectionMultiplexer : IDisposable, IConnectionMultiplexer
         return result;
     }
 
-    private ProcedureResult AddRpcRequestToQueue(string service, string procedure, object?[]? arguments = null)
+    private ProcedureResult AddRpcRequestToQueue(string service, string procedure, ProcedureArgument[]? arguments = null)
     {
         var request = new ProcedureRequest(service, procedure, arguments);
         var result = new ProcedureResult();

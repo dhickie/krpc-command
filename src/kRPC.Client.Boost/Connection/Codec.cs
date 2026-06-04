@@ -18,14 +18,26 @@ namespace kRPC.Client.Boost.Connection
     internal static class Codec
     {
         /// <summary>
-        /// Encode an object of the given type using the protocol buffer encoding scheme.
-        /// Should not be called directly. This interface is used by service client stubs.
+        /// Encodes a non-null object using the protocol buffer encoding scheme.
         /// </summary>
-        public static ByteString Encode(object? value)
+        /// <param name="value">The value to encode</param>
+        /// <returns>The encoded value as a ByteString</returns>
+        public static ByteString Encode(object value)
+        {
+            return Encode(value, value.GetType());
+        }
+
+        /// <summary>
+        /// Encodes a potentially null object using the protocol buffer encoding scheme.
+        /// </summary>
+        /// <param name="value">The value to encode</param>
+        /// <param name="type">The type of the value</param>
+        /// <returns>The encoded value as a ByteString</returns>
+        public static ByteString Encode(object? value, Type type)
         {
             using var buffer = new MemoryStream();
             var stream = new CodedOutputStream(buffer, true);
-            return EncodeObject(value, value?.GetType(), buffer, stream);
+            return EncodeObject(value, type, buffer, stream);
         }
         
         /// <summary>
@@ -62,7 +74,7 @@ namespace kRPC.Client.Boost.Connection
             if (type == typeof(byte[]))
                 return stream.ReadBytes().ToByteArray();
             
-            if (IsAClassType(type))
+            if (IsARemoteObjectType(type))
             {
                 if (client == null)
                     throw new ArgumentException("Client not passed when decoding remote object");
@@ -76,6 +88,8 @@ namespace kRPC.Client.Boost.Connection
 
             if (IsATupleType(type))
                 return DecodeTuple(stream, type, client);
+            if (IsAnArrayType(type))
+                return DecodeArray(stream, type, client);
             if (IsAListType(type))
                 return DecodeList(stream, type, client);
             if (IsASetType(type))
@@ -102,7 +116,7 @@ namespace kRPC.Client.Boost.Connection
             return null; // return new Event((Connection)client, @event); TODO sort this - presumably needs an event type to exist in the public API
         }
 
-        private static ByteString EncodeObject(object? value, Type? type, MemoryStream buffer, CodedOutputStream stream)
+        private static ByteString EncodeObject(object? value, Type type, MemoryStream buffer, CodedOutputStream stream)
         {
             buffer.SetLength(0);
 
@@ -112,7 +126,7 @@ namespace kRPC.Client.Boost.Connection
             if (value != null && !type!.IsInstanceOfType(value))
                 throw new CodecException("Value of type " + value.GetType() + " cannot be encoded to type " + type);
             
-            if (value == null && type != null && !IsAClassType(type) && !IsACollectionType(type))
+            if (value == null && !IsARemoteObjectType(type) && !IsACollectionType(type))
                 throw new ArgumentException($"Null cannot be encoded to type {type}");
             
             switch (value)
@@ -153,23 +167,23 @@ namespace kRPC.Client.Boost.Connection
                         default:
                             if (type == typeof(byte[]))
                                 stream.WriteBytes(ByteString.CopyFrom((byte[])value));
-                            else if (IsAClassType(type!))
+                            else if (IsARemoteObjectType(type))
                                 stream.WriteUInt64(((RemoteObject)value).Id);
-                            else if (IsLambdaExpressionType(type!))
+                            else if (IsLambdaExpressionType(type))
                                 EncodeLambdaExpression(value, buffer);
-                            else if (IsATupleType(type!))
-                                EncodeTuple(value, type!, buffer);
-                            else if (IsAListType(type!))
-                                EncodeList(value, type!, buffer);
-                            else if (IsASetType(type!))
-                                EncodeSet(value, type!, buffer);
-                            else if (IsADictionaryType(type!))
-                                EncodeDictionary(value, type!, buffer);
-                            else if (IsAVectorType(type!))
+                            else if (IsATupleType(type))
+                                EncodeTuple(value, type, buffer);
+                            else if (IsAnArrayType(type) || IsAListType(type))
+                                EncodeList(value, type, buffer); // Works because array types also implement IList
+                            else if (IsASetType(type))
+                                EncodeSet(value, type, buffer);
+                            else if (IsADictionaryType(type))
+                                EncodeDictionary(value, type, buffer);
+                            else if (IsAVectorType(type))
                                 EncodeVector(value, buffer);
-                            else if (IsAQuaternionType(type!))
+                            else if (IsAQuaternionType(type))
                                 EncodeQuaternion(value, buffer);
-                            else if (IsAMessageType(type!))
+                            else if (IsAMessageType(type))
                                 ((IMessage)value).WriteTo(buffer);
                             else
                                 throw new ArgumentException(type + " is not a serializable type");
@@ -200,7 +214,7 @@ namespace kRPC.Client.Boost.Connection
             return false;
         }
 
-        private static bool IsAClassType(Type type)
+        private static bool IsARemoteObjectType(Type type)
         {
             return type.IsSubclassOf(typeof(RemoteObject));
         }
@@ -277,7 +291,7 @@ namespace kRPC.Client.Boost.Connection
                 throw new CodecException($"Unable to find tuple type with {genericArgs.Length} generic arguments");
             
             var values = new object?[genericArgs.Length];
-            for (var i = 0; i < genericArgs.Length; i++) 
+            for (var i = 0; i < genericArgs.Length; i++)
             {
                 var item = encodedTuple.Items[i];
                 values[i] = Decode(item, genericArgs[i], client);
@@ -290,15 +304,22 @@ namespace kRPC.Client.Boost.Connection
         
         private static bool IsAListType(Type type)
         {
-            return IsAGenericType(type, typeof(IList<>));
+            return IsAGenericType(type, typeof(IList<>)) && !IsAnArrayType(type);
+        }
+
+        private static bool IsAnArrayType(Type type)
+        {
+            return type.IsAssignableTo(typeof(Array));
         }
         
         private static void EncodeList(object value, Type type, Stream stream)
         {
             var encodedList = new Schema.List();
             var list = (IList)value;
-            var valueType = type.GetGenericArguments().Single();
-            using (var internalBuffer = new MemoryStream()) 
+            var listInterface = type.GetInterface("IList`1") 
+                                ?? throw new CodecException("Unable to find generic IList interface on type");
+            var valueType = listInterface.GetGenericArguments().Single();
+            using (var internalBuffer = new MemoryStream())
             {
                 var internalStream = new CodedOutputStream(internalBuffer);
                 foreach (var item in list)
@@ -309,7 +330,7 @@ namespace kRPC.Client.Boost.Connection
 
         private static object DecodeList(CodedInputStream stream, Type type, IConnectionMultiplexer client)
         {
-            var constructor = GetGenericConstructor(type, typeof(List<>), true);
+            var constructor = GetGenericConstructor(type, typeof(IList<>), true);
             var encodedList = ParseEncodedStream(Schema.List.Parser, stream);
             var itemType = type.GetGenericArguments().Single();
             
@@ -318,7 +339,26 @@ namespace kRPC.Client.Boost.Connection
             
             foreach (var item in encodedList.Items)
                 list.Add(Decode(item, itemType, client));
+            
             return list;
+        }
+
+        private static object DecodeArray(CodedInputStream stream, Type type, IConnectionMultiplexer client)
+        {
+            // Array constructors have a single parameter for capacity
+            var constructor = type.GetConstructor([typeof(int)])
+                ?? throw new CodecException("Unable to find array constructor");
+
+            var encodedArray = ParseEncodedStream(Schema.List.Parser, stream);
+            var array = (IList)constructor.Invoke([encodedArray.Items.Count]);
+            var listInterface = type.GetInterface("IList`1")
+                ?? throw new CodecException("Unable to find generic IList interface on array type");
+            var itemType = listInterface.GetGenericArguments().Single();
+
+            for (var i = 0; i < encodedArray.Items.Count; i++)
+                array[i] = Decode(encodedArray.Items[i], itemType, client);
+
+            return array;
         }
         
         private static bool IsASetType(Type type)
@@ -365,7 +405,7 @@ namespace kRPC.Client.Boost.Connection
         
         private static void EncodeDictionary(object value, Type type, Stream stream)
         {
-            if (!type.IsInstanceOfType(value) || typeof(IDictionary).IsAssignableFrom(type))
+            if (!type.IsInstanceOfType(value) || !typeof(IDictionary).IsAssignableFrom(type))
                 throw new CodecException($"{value.GetType().Name} and {type.Name} are not compatible with writing a dictionary");
                 
             var keyType = type.GetGenericArguments()[0];

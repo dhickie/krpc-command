@@ -42,7 +42,7 @@ internal interface IConnectionMultiplexer : IConnection
     /// <param name="service">The service the procedure is part of</param>
     /// <param name="procedure">The procedure to invoke</param>
     /// <param name="arguments">The arguments to the procedure</param>
-    void Invoke(string service, string procedure, object?[]? arguments = null);
+    void Invoke(string service, string procedure, ProcedureArgument[]? arguments = null);
 
     /// <summary>
     /// Synchronously invokes a procedure that returns a result object.
@@ -52,7 +52,7 @@ internal interface IConnectionMultiplexer : IConnection
     /// <param name="arguments">The arguments to the procedure</param>
     /// <typeparam name="TResponse">The type of the response object</typeparam>
     /// <returns>The result object from the procedure.</returns>
-    TResponse? Invoke<TResponse>(string service, string procedure, object?[]? arguments = null);
+    TResponse? Invoke<TResponse>(string service, string procedure, ProcedureArgument[]? arguments = null);
 
     /// <summary>
     /// Asynchronously invokes a procedure that doesn't have a result object.
@@ -60,7 +60,7 @@ internal interface IConnectionMultiplexer : IConnection
     /// <param name="service">The service the procedure is part of</param>
     /// <param name="procedure">The procedure to invoke</param>
     /// <param name="arguments">The arguments to the procedure</param>
-    Task InvokeAsync(string service, string procedure, object?[]? arguments = null);
+    Task InvokeAsync(string service, string procedure, ProcedureArgument[]? arguments = null);
 
     /// <summary>
     /// Asynchronously invokes a procedure that returns a result object.
@@ -70,5 +70,5 @@ internal interface IConnectionMultiplexer : IConnection
     /// <param name="arguments">The arguments to the procedure</param>
     /// <typeparam name="TResponse">The type of the response object</typeparam>
     /// <returns>The result object from the procedure.</returns>
-    Task<TResponse?> InvokeAsync<TResponse>(string service, string procedure, object?[]? arguments = null);
+    Task<TResponse?> InvokeAsync<TResponse>(string service, string procedure, ProcedureArgument[]? arguments = null);
 }
