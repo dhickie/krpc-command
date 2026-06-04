@@ -139,7 +139,6 @@ public class Camera : RemoteObject
 
     /// <summary>
     /// Sets in map mode, the celestial body that the camera is focussed on.
-    /// Returns <c>null</c> if the camera is not focussed on a celestial body.
     /// Returns an error is the camera is not in map mode.
     /// </summary>
     /// <param name="value">The value to set.</param>
@@ -156,7 +155,6 @@ public class Camera : RemoteObject
 
     /// <summary>
     /// Sets in map mode, the celestial body that the camera is focussed on.
-    /// Returns <c>null</c> if the camera is not focussed on a celestial body.
     /// Returns an error is the camera is not in map mode.
     /// Executes asynchronously.
     /// </summary>
@@ -205,7 +203,6 @@ public class Camera : RemoteObject
 
     /// <summary>
     /// Sets in map mode, the maneuver node that the camera is focussed on.
-    /// Returns <c>null</c> if the camera is not focussed on a maneuver node.
     /// Returns an error is the camera is not in map mode.
     /// </summary>
     /// <param name="value">The value to set.</param>
@@ -222,7 +219,6 @@ public class Camera : RemoteObject
 
     /// <summary>
     /// Sets in map mode, the maneuver node that the camera is focussed on.
-    /// Returns <c>null</c> if the camera is not focussed on a maneuver node.
     /// Returns an error is the camera is not in map mode.
     /// Executes asynchronously.
     /// </summary>
@@ -271,7 +267,6 @@ public class Camera : RemoteObject
 
     /// <summary>
     /// Sets in map mode, the vessel that the camera is focussed on.
-    /// Returns <c>null</c> if the camera is not focussed on a vessel.
     /// Returns an error is the camera is not in map mode.
     /// </summary>
     /// <param name="value">The value to set.</param>
@@ -288,7 +283,6 @@ public class Camera : RemoteObject
 
     /// <summary>
     /// Sets in map mode, the vessel that the camera is focussed on.
-    /// Returns <c>null</c> if the camera is not focussed on a vessel.
     /// Returns an error is the camera is not in map mode.
     /// Executes asynchronously.
     /// </summary>

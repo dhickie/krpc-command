@@ -1,6 +1,6 @@
 ---
 name: krpc-boost-generated-service-migration
-description: "Use when migrating generated kRPC C# service client code to kRPC.Client.Boost conventions. Use this skill whenever the user mentions repeating CONTEXT.md updates, generated kRPC service migrations, kRPC.Client.Boost generated services, ConnectionMultiplexer/IConnectionMultiplexer, RemoteObject constructor access, RPCAttribute/Rpc cleanup, Encoder/Decode removal, property-to-method conversion, async RPC wrappers, nullable generated RPCs, or Vector3D/Quaternion/Angle conversions for generated kRPC clients, even if they name a service other than SpaceCenter."
+description: "Use when migrating generated kRPC C# service client code to kRPC.Client.Boost conventions. Use this skill whenever the user mentions repeating CONTEXT.md updates, generated kRPC service migrations, kRPC.Client.Boost generated services, ConnectionMultiplexer/IConnectionMultiplexer, RemoteObject constructor access, RPCAttribute/Rpc cleanup, Encoder/Decode removal, property-to-method conversion, async RPC wrappers, nullable generated RPCs, XML comment cleanup, see cref namespace fixes, or Vector3D/Quaternion/Angle conversions for generated kRPC clients, even if they name a service other than SpaceCenter."
 ---
 
 # kRPC Boost Generated Service Migration
@@ -89,6 +89,8 @@ When splitting XML documentation:
 - Getter summaries should read as retrieval docs, typically `Gets ...` or `Returns ...`.
 - Setter summaries should describe mutation using the paired getter context, not generic placeholders such as `Sets the X value.`.
 - If original docs described both read and write behavior, split them so the getter only describes retrieval and the setter only describes mutation.
+- Do not leave getter return-value details on setter docs. For example, remove `Returns <c>null</c>...` wording from a setter whose `value` parameter is non-nullable and has no `null` default.
+- When XML comments mention null values for parameters, compare the comment to the method signature. If the parameter default is non-null, such as `""`, update the wording to name that default and make the parameter non-nullable unless the generated contract explicitly allows null.
 - Place XML comments before attributes, not between an attribute and the method declaration.
 
 ### 5. Add Async Counterparts
@@ -110,6 +112,7 @@ Async wrappers should not call synchronous `Invoke(...)` methods.
 Infer nullability from generated defaults and XML documentation:
 
 - Parameters with `null` defaults should use nullable annotations, such as `SomeRemoteObject? value = null`, `IList<string>? names = null`, or `string? text = ""` when the generated default allows null.
+- Parameters with non-null defaults should not be nullable merely because older XML docs mentioned null. Update the XML docs to reflect the actual default value and remove the nullable marker unless the generated contract explicitly allows null.
 - Methods documented as returning `<c>null</c>` should use nullable public return types.
 - Nullable return wrappers should call nullable `Invoke<T?>` / `InvokeAsync<T?>` generic arguments.
 - Use `object?[]` for argument arrays that can contain nullable values.
@@ -150,6 +153,15 @@ Angles:
 - Preserve normal control-flow spacing such as `if (...)`.
 - Do not churn formatting outside the scoped generated files.
 
+### 9. Validate XML Code References
+
+Generated XML docs often contain `<see cref="..." />` references that become stale after classes move namespaces or properties convert to methods:
+
+- Check every changed XML `<see cref="..." />` reference in scoped files, especially `T:` and `M:` references.
+- Ensure referenced classes use their current namespace, not the original generated namespace when the type has moved.
+- Update property references to the converted method names, such as `Get...` or `Set...`, when properties are no longer present.
+- Prefer accurate references over preserving generated text. If the correct target is ambiguous, leave the wording as plain text rather than adding a misleading cref.
+
 ## Verification Checklist
 
 Run focused checks after editing. Adapt paths to the user-supplied scope.
@@ -177,6 +189,8 @@ Check structural invariants:
 - Every generated getter, setter, synchronous RPC wrapper, and async RPC wrapper has an immediate `[Rpc(...)]` attribute with the same procedure name used by the body.
 - Every synchronous generated RPC wrapper has an async counterpart, and async bodies use `InvokeAsync` with `await`.
 - Nullable public return types use nullable invoke generic arguments.
+- Setter XML docs do not describe nullable getter return behavior, and parameter docs mentioning null match the signature default/nullability.
+- XML `<see cref="..." />` references point to existing members/types in their current namespaces after the migration.
 - Type conversions happen only at the RPC boundary; public method signatures should expose `Vector3D`, `Quaternion`, or `Angle` where the migration selected those types.
 
 Build when feasible:
