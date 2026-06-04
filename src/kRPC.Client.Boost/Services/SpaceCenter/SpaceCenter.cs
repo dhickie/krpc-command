@@ -32,7 +32,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "CanRailsWarpAt")]
     public bool CanRailsWarpAt(int factor = 1)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             factor
         };
@@ -51,7 +51,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "CanRailsWarpAt")]
     public async Task<bool> CanRailsWarpAtAsync(int factor = 1)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             factor
         };
@@ -105,7 +105,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "CreateKerbal")]
     public void CreateKerbal(string name, string job, bool male)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             name,
             job,
@@ -124,7 +124,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "CreateKerbal")]
     public async Task CreateKerbalAsync(string name, string job, bool male)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             name,
             job,
@@ -141,7 +141,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "GetKerbal")]
     public CrewMember? GetKerbal(string name)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             name
         };
@@ -157,7 +157,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "GetKerbal")]
     public async Task<CrewMember?> GetKerbalAsync(string name)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             name
         };
@@ -182,15 +182,15 @@ public class SpaceCenter
     /// Throws an exception if any of the games pre-flight checks fail.
     /// </remarks>
     [Rpc("SpaceCenter", "LaunchVessel")]
-    public void LaunchVessel(string craftDirectory, string name, string launchSite, bool recover = true, IList<string>? crew = null, string? flagUrl = "")
+    public void LaunchVessel(string craftDirectory, string name, string launchSite, bool recover = true, IList<string>? crew = null, string flagUrl = "")
     {
-        var args = new object?[]
+        var args = new ProcedureArgument[]
         {
             craftDirectory,
             name,
             launchSite,
             recover,
-            crew ?? null,
+            new(crew, typeof(List<string>)),
             flagUrl
         };
         _connection.Invoke("SpaceCenter", "LaunchVessel", args);
@@ -215,15 +215,15 @@ public class SpaceCenter
     /// Throws an exception if any of the games pre-flight checks fail.
     /// </remarks>
     [Rpc("SpaceCenter", "LaunchVessel")]
-    public async Task LaunchVesselAsync(string craftDirectory, string name, string launchSite, bool recover = true, IList<string>? crew = null, string? flagUrl = "")
+    public async Task LaunchVesselAsync(string craftDirectory, string name, string launchSite, bool recover = true, IList<string>? crew = null, string flagUrl = "")
     {
-        var args = new object?[]
+        var args = new ProcedureArgument[]
         {
             craftDirectory,
             name,
             launchSite,
             recover,
-            crew ?? null,
+            new(crew, typeof(List<string>)),
             flagUrl
         };
         await _connection.InvokeAsync("SpaceCenter", "LaunchVessel", args);
@@ -243,7 +243,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "LaunchVesselFromSPH")]
     public void LaunchVesselFromSPH(string name, bool recover = true)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             name,
             recover
@@ -266,7 +266,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "LaunchVesselFromSPH")]
     public async Task LaunchVesselFromSPHAsync(string name, bool recover = true)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             name,
             recover
@@ -288,7 +288,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "LaunchVesselFromVAB")]
     public void LaunchVesselFromVAB(string name, bool recover = true)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             name,
             recover
@@ -311,7 +311,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "LaunchVesselFromVAB")]
     public async Task LaunchVesselFromVABAsync(string name, bool recover = true)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             name,
             recover
@@ -328,7 +328,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "LaunchableVessels")]
     public IList<string> LaunchableVessels(string craftDirectory)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             craftDirectory
         };
@@ -345,7 +345,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "LaunchableVessels")]
     public async Task<IList<string>> LaunchableVesselsAsync(string craftDirectory)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             craftDirectory
         };
@@ -361,7 +361,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "Load")]
     public void Load(string name)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             name
         };
@@ -378,7 +378,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "Load")]
     public async Task LoadAsync(string name)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             name
         };
@@ -465,7 +465,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "RaycastDistance")]
     public double RaycastDistance(Vector3D position, Vector3D direction, ReferenceFrame referenceFrame)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             position,
             direction,
@@ -486,7 +486,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "RaycastDistance")]
     public async Task<double> RaycastDistanceAsync(Vector3D position, Vector3D direction, ReferenceFrame referenceFrame)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             position,
             direction,
@@ -506,7 +506,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "RaycastPart")]
     public Part? RaycastPart(Vector3D position, Vector3D direction, ReferenceFrame referenceFrame)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             position,
             direction,
@@ -527,7 +527,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "RaycastPart")]
     public async Task<Part?> RaycastPartAsync(Vector3D position, Vector3D direction, ReferenceFrame referenceFrame)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             position,
             direction,
@@ -564,7 +564,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "Save")]
     public void Save(string name)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             name
         };
@@ -581,7 +581,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "Save")]
     public async Task SaveAsync(string name)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             name
         };
@@ -596,7 +596,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "Screenshot")]
     public void Screenshot(string filePath, int scale = 1)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             filePath,
             scale
@@ -613,7 +613,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "Screenshot")]
     public async Task ScreenshotAsync(string filePath, int scale = 1)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             filePath,
             scale
@@ -629,7 +629,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "TransferCrew")]
     public void TransferCrew(CrewMember crewMember, Part targetPart)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             crewMember,
             targetPart
@@ -646,7 +646,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "TransferCrew")]
     public async Task TransferCrewAsync(CrewMember crewMember, Part targetPart)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             crewMember,
             targetPart
@@ -666,7 +666,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "TransformDirection")]
     public Vector3D TransformDirection(Vector3D direction, ReferenceFrame from, ReferenceFrame to)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             direction,
             from,
@@ -688,7 +688,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "TransformDirection")]
     public async Task<Vector3D> TransformDirectionAsync(Vector3D direction, ReferenceFrame from, ReferenceFrame to)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             direction,
             from,
@@ -709,7 +709,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "TransformPosition")]
     public Vector3D TransformPosition(Vector3D position, ReferenceFrame from, ReferenceFrame to)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             position,
             from,
@@ -731,7 +731,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "TransformPosition")]
     public async Task<Vector3D> TransformPositionAsync(Vector3D position, ReferenceFrame from, ReferenceFrame to)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             position,
             from,
@@ -752,7 +752,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "TransformRotation")]
     public Quaternion TransformRotation(Quaternion rotation, ReferenceFrame from, ReferenceFrame to)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             rotation,
             from,
@@ -774,7 +774,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "TransformRotation")]
     public async Task<Quaternion> TransformRotationAsync(Quaternion rotation, ReferenceFrame from, ReferenceFrame to)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             rotation,
             from,
@@ -800,7 +800,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "TransformVelocity")]
     public Vector3D TransformVelocity(Vector3D position, Vector3D velocity, ReferenceFrame from, ReferenceFrame to)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             position,
             velocity,
@@ -828,7 +828,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "TransformVelocity")]
     public async Task<Vector3D> TransformVelocityAsync(Vector3D position, Vector3D velocity, ReferenceFrame from, ReferenceFrame to)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             position,
             velocity,
@@ -855,7 +855,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "WarpTo")]
     public void WarpTo(double ut, float maxRailsRate = 100000.0f, float maxPhysicsRate = 2.0f)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             ut,
             maxRailsRate,
@@ -882,7 +882,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "WarpTo")]
     public async Task WarpToAsync(double ut, float maxRailsRate = 100000.0f, float maxPhysicsRate = 2.0f)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             ut,
             maxRailsRate,
@@ -917,7 +917,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "set_ActiveVessel")]
     public void SetActiveVessel(Vessel value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             value
         };
@@ -932,7 +932,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "set_ActiveVessel")]
     public async Task SetActiveVesselAsync(Vessel value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             value
         };
@@ -1140,7 +1140,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "set_MapFilter")]
     public void SetMapFilter(MapFilterType value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             value
         };
@@ -1155,7 +1155,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "set_MapFilter")]
     public async Task SetMapFilterAsync(MapFilterType value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             value
         };
@@ -1213,7 +1213,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "set_Navball")]
     public void SetNavball(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             value
         };
@@ -1228,7 +1228,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "set_Navball")]
     public async Task SetNavballAsync(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             value
         };
@@ -1264,7 +1264,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "set_PhysicsWarpFactor")]
     public void SetPhysicsWarpFactor(int value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             value
         };
@@ -1280,7 +1280,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "set_PhysicsWarpFactor")]
     public async Task SetPhysicsWarpFactorAsync(int value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             value
         };
@@ -1334,7 +1334,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "set_RailsWarpFactor")]
     public void SetRailsWarpFactor(int value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             value
         };
@@ -1356,7 +1356,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "set_RailsWarpFactor")]
     public async Task SetRailsWarpFactorAsync(int value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             value
         };
@@ -1427,7 +1427,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "set_TargetBody")]
     public void SetTargetBody(CelestialBody value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             value
         };
@@ -1442,7 +1442,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "set_TargetBody")]
     public async Task SetTargetBodyAsync(CelestialBody value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             value
         };
@@ -1475,7 +1475,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "set_TargetDockingPort")]
     public void SetTargetDockingPort(DockingPort value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             value
         };
@@ -1490,7 +1490,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "set_TargetDockingPort")]
     public async Task SetTargetDockingPortAsync(DockingPort value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             value
         };
@@ -1523,7 +1523,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "set_TargetVessel")]
     public void SetTargetVessel(Vessel value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             value
         };
@@ -1538,7 +1538,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "set_TargetVessel")]
     public async Task SetTargetVesselAsync(Vessel value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             value
         };
@@ -1571,7 +1571,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "set_UIVisible")]
     public void SetUIVisible(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             value
         };
@@ -1586,7 +1586,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "set_UIVisible")]
     public async Task SetUIVisibleAsync(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             value
         };

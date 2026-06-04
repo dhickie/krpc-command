@@ -1,4 +1,6 @@
 using System.Linq.Expressions;
+using kRPC.Client.Boost.Services;
+using MathNet.Spatial.Euclidean;
 
 namespace kRPC.Client.Boost.Connection;
 
@@ -29,4 +31,8 @@ internal class ProcedureArgument(object? value, Type type)
     public static implicit operator ProcedureArgument(string value) => new(value, typeof(string));
     public static implicit operator ProcedureArgument(bool value) => new(value, typeof(bool));
     public static implicit operator ProcedureArgument(LambdaExpression value) => new(value, typeof(LambdaExpression));
+    public static implicit operator ProcedureArgument(Vector3D value) => new(value, typeof(Vector3D));
+    public static implicit operator ProcedureArgument(Quaternion value) => new(value, typeof(Quaternion));
+    public static implicit operator ProcedureArgument(RemoteObject? value) => new(value, typeof(RemoteObject));
+    public static implicit operator ProcedureArgument(Enum value) => new(value, value.GetType());
 }
