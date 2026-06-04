@@ -80,10 +80,10 @@ namespace kRPC.Client.Boost.Connection
                     throw new ArgumentException("Client not passed when decoding remote object");
 
                 var id = stream.ReadUInt64();
-                var instance = id != 0
-                    ? Activator.CreateInstance(type, id, client)
-                    : null;
-                return instance ?? throw new CodecException($"Failed to create remote object of type {type.Name}");
+                if (id == 0)
+                    return null;
+
+                return RemoteObjectFactory.Create(type, client, id);
             }
 
             if (IsATupleType(type))
@@ -127,7 +127,7 @@ namespace kRPC.Client.Boost.Connection
                 throw new CodecException("Value of type " + value.GetType() + " cannot be encoded to type " + type);
             
             if (value == null && !IsARemoteObjectType(type) && !IsACollectionType(type))
-                throw new ArgumentException($"Null cannot be encoded to type {type}");
+                throw new CodecException($"Null cannot be encoded to type {type}");
             
             switch (value)
             {
@@ -226,7 +226,11 @@ namespace kRPC.Client.Boost.Connection
         
         private static bool IsACollectionType(Type type)
         {
-            return IsATupleType(type) || IsAListType(type) || IsASetType(type) || IsADictionaryType(type);
+            return IsATupleType(type) 
+                   || IsAnArrayType(type) 
+                   || IsAListType(type) 
+                   || IsASetType(type) 
+                   || IsADictionaryType(type);
         }
 
         private static bool IsLambdaExpressionType(Type type)

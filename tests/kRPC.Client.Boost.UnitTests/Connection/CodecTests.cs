@@ -36,13 +36,32 @@ public class CodecTests
     }
 
     [Fact]
-    public void ReturnsCorrectValue_WhenWorkingWithNullValues()
+    public void ReturnsCorrectValue_WhenWorkingWithNullRemoteObjects()
     {
-        int? value = null;
-        var byteString = Codec.Encode(value);
-        var decodedValue = Codec.Decode(byteString, typeof(int), _connection);
+        Vessel? value = null;
+        var byteString = Codec.Encode(value, typeof(Vessel));
+        var decodedValue = Codec.Decode(byteString, typeof(Vessel), _connection);
         
         Assert.Null(decodedValue);
+    }
+
+    [Fact]
+    public void DoesntThrow_WhenEncodingNullCollections()
+    {
+        Type[] types =
+        [
+            typeof(Tuple<Vessel, int, FakeEnum>),
+            typeof(List<bool>),
+            typeof(long[]),
+            typeof(HashSet<Vector3D>),
+            typeof(Dictionary<string, Quaternion>)
+        ];
+
+        foreach (var type in types)
+        {
+            // The protocol supports encoding null collections, but not decoding them in clients
+            Codec.Encode(null, type);
+        }
     }
 
     [Fact]
@@ -75,16 +94,13 @@ public class CodecTests
 
         foreach (var remoteObject in remoteObjects)
         {
-            var id = _fixture.Create<ulong>();
-            var instance = Activator.CreateInstance(remoteObject, _connection, id);
-            Assert.NotNull(instance);
-            
+            var instance = (RemoteObject)RemoteObjectFixture.Create(remoteObject);
             var byteString = Codec.Encode(instance);
             var decodedValue = Codec.Decode(byteString, remoteObject, _connection);
             Assert.NotNull(decodedValue);
             
             var decodedInstance = decodedValue as RemoteObject;
-            Assert.Equal(id, decodedInstance?.Id);
+            Assert.Equal(instance.Id, decodedInstance?.Id);
         }
     }
     
@@ -200,7 +216,12 @@ public class CodecTests
     [Fact]
     public void ReturnsCorrectValue_WhenWorkingWithQuaternions()
     {
-        var quaternion = _fixture.Create<Quaternion>();
+        var quaternion = new Quaternion(
+            _fixture.Create<double>(),
+            _fixture.Create<double>(),
+            _fixture.Create<double>(),
+            _fixture.Create<double>()
+        );
         var encodedQuaternion = Codec.Encode(quaternion);
         var decodedQuaternionObject = Codec.Decode(encodedQuaternion, quaternion.GetType(), _connection);
         Assert.NotNull(decodedQuaternionObject);

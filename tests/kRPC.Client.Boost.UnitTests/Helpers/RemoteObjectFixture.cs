@@ -1,5 +1,6 @@
 using System.Reflection;
 using AutoFixture;
+using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
 using kRPC.Client.Boost.UnitTests.Fakes;
 
@@ -16,19 +17,15 @@ public static class RemoteObjectFixture
 
     public static T Create<T>() where T : RemoteObject
     {
-        var id = Fixture.Create<ulong>();
-
-        var ctor = typeof(T)
-            .GetTypeInfo()
-            .GetConstructors(BindingFlags.Instance | BindingFlags.NonPublic)
-            .FirstOrDefault(c => c.GetParameters().Length == 2);
-
-        if (ctor == null)
-            throw new ArgumentException($"No valid constructor found for {typeof(T).Name}");
-
-        var remoteObject = ctor.Invoke([Connection, id]) as T;
+        var remoteObject = Create(typeof(T)) as T;
         return remoteObject 
                ?? throw new InvalidOperationException(
                    "Requested type didn't have a constructor with the expected signature");
+    }
+
+    public static object Create(Type type)
+    {
+        var id = Fixture.Create<ulong>();
+        return RemoteObjectFactory.Create(type, Connection, id);
     }
 }
