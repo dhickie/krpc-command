@@ -33,7 +33,7 @@ public class Flight : RemoteObject
     [Rpc("SpaceCenter", "Flight_SimulateAerodynamicForceAt")]
     public Vector3D SimulateAerodynamicForceAt(CelestialBody body, Vector3D position, Vector3D velocity)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             body,
@@ -54,7 +54,7 @@ public class Flight : RemoteObject
     [Rpc("SpaceCenter", "Flight_SimulateAerodynamicForceAt")]
     public async Task<Vector3D> SimulateAerodynamicForceAtAsync(CelestialBody body, Vector3D position, Vector3D velocity)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             body,
@@ -73,7 +73,7 @@ public class Flight : RemoteObject
     [Rpc("SpaceCenter", "Flight_get_AerodynamicForce")]
     public Vector3D GetAerodynamicForce()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -90,7 +90,7 @@ public class Flight : RemoteObject
     [Rpc("SpaceCenter", "Flight_get_AerodynamicForce")]
     public async Task<Vector3D> GetAerodynamicForceAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -103,7 +103,7 @@ public class Flight : RemoteObject
     [Rpc("SpaceCenter", "Flight_get_AngleOfAttack")]
     public Angle GetAngleOfAttack()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -118,7 +118,7 @@ public class Flight : RemoteObject
     [Rpc("SpaceCenter", "Flight_get_AngleOfAttack")]
     public async Task<Angle> GetAngleOfAttackAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -134,7 +134,7 @@ public class Flight : RemoteObject
     [Rpc("SpaceCenter", "Flight_get_AntiNormal")]
     public Vector3D GetAntiNormal()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -150,7 +150,7 @@ public class Flight : RemoteObject
     [Rpc("SpaceCenter", "Flight_get_AntiNormal")]
     public async Task<Vector3D> GetAntiNormalAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -165,7 +165,7 @@ public class Flight : RemoteObject
     [Rpc("SpaceCenter", "Flight_get_AntiRadial")]
     public Vector3D GetAntiRadial()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -181,7 +181,7 @@ public class Flight : RemoteObject
     [Rpc("SpaceCenter", "Flight_get_AntiRadial")]
     public async Task<Vector3D> GetAntiRadialAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -194,7 +194,7 @@ public class Flight : RemoteObject
     [Rpc("SpaceCenter", "Flight_get_AtmosphereDensity")]
     public float GetAtmosphereDensity()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -208,7 +208,7 @@ public class Flight : RemoteObject
     [Rpc("SpaceCenter", "Flight_get_AtmosphereDensity")]
     public async Task<float> GetAtmosphereDensityAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -224,7 +224,7 @@ public class Flight : RemoteObject
     [Rpc("SpaceCenter", "Flight_get_BallisticCoefficient")]
     public float GetBallisticCoefficient()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -241,7 +241,7 @@ public class Flight : RemoteObject
     [Rpc("SpaceCenter", "Flight_get_BallisticCoefficient")]
     public async Task<float> GetBallisticCoefficientAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -255,7 +255,7 @@ public class Flight : RemoteObject
     [Rpc("SpaceCenter", "Flight_get_BedrockAltitude")]
     public double GetBedrockAltitude()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -270,7 +270,7 @@ public class Flight : RemoteObject
     [Rpc("SpaceCenter", "Flight_get_BedrockAltitude")]
     public async Task<double> GetBedrockAltitudeAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -285,7 +285,7 @@ public class Flight : RemoteObject
     [Rpc("SpaceCenter", "Flight_get_CenterOfMass")]
     public Vector3D GetCenterOfMass()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -301,7 +301,7 @@ public class Flight : RemoteObject
     [Rpc("SpaceCenter", "Flight_get_CenterOfMass")]
     public async Task<Vector3D> GetCenterOfMassAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -316,7 +316,7 @@ public class Flight : RemoteObject
     [Rpc("SpaceCenter", "Flight_get_Direction")]
     public Vector3D GetDirection()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -332,7 +332,7 @@ public class Flight : RemoteObject
     [Rpc("SpaceCenter", "Flight_get_Direction")]
     public async Task<Vector3D> GetDirectionAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -347,7 +347,7 @@ public class Flight : RemoteObject
     [Rpc("SpaceCenter", "Flight_get_Drag")]
     public Vector3D GetDrag()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -363,7 +363,7 @@ public class Flight : RemoteObject
     [Rpc("SpaceCenter", "Flight_get_Drag")]
     public async Task<Vector3D> GetDragAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -380,7 +380,7 @@ public class Flight : RemoteObject
     [Rpc("SpaceCenter", "Flight_get_DragCoefficient")]
     public float GetDragCoefficient()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -398,7 +398,7 @@ public class Flight : RemoteObject
     [Rpc("SpaceCenter", "Flight_get_DragCoefficient")]
     public async Task<float> GetDragCoefficientAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -414,7 +414,7 @@ public class Flight : RemoteObject
     [Rpc("SpaceCenter", "Flight_get_DynamicPressure")]
     public float GetDynamicPressure()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -431,7 +431,7 @@ public class Flight : RemoteObject
     [Rpc("SpaceCenter", "Flight_get_DynamicPressure")]
     public async Task<float> GetDynamicPressureAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -445,7 +445,7 @@ public class Flight : RemoteObject
     [Rpc("SpaceCenter", "Flight_get_Elevation")]
     public double GetElevation()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -460,7 +460,7 @@ public class Flight : RemoteObject
     [Rpc("SpaceCenter", "Flight_get_Elevation")]
     public async Task<double> GetElevationAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -474,7 +474,7 @@ public class Flight : RemoteObject
     [Rpc("SpaceCenter", "Flight_get_EquivalentAirSpeed")]
     public float GetEquivalentAirSpeed()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -489,7 +489,7 @@ public class Flight : RemoteObject
     [Rpc("SpaceCenter", "Flight_get_EquivalentAirSpeed")]
     public async Task<float> GetEquivalentAirSpeedAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -502,7 +502,7 @@ public class Flight : RemoteObject
     [Rpc("SpaceCenter", "Flight_get_GForce")]
     public float GetGForce()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -516,7 +516,7 @@ public class Flight : RemoteObject
     [Rpc("SpaceCenter", "Flight_get_GForce")]
     public async Task<float> GetGForceAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -530,7 +530,7 @@ public class Flight : RemoteObject
     [Rpc("SpaceCenter", "Flight_get_Heading")]
     public Angle GetHeading()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -546,7 +546,7 @@ public class Flight : RemoteObject
     [Rpc("SpaceCenter", "Flight_get_Heading")]
     public async Task<Angle> GetHeadingAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -561,7 +561,7 @@ public class Flight : RemoteObject
     [Rpc("SpaceCenter", "Flight_get_HorizontalSpeed")]
     public double GetHorizontalSpeed()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -576,7 +576,7 @@ public class Flight : RemoteObject
     [Rpc("SpaceCenter", "Flight_get_HorizontalSpeed")]
     public async Task<double> GetHorizontalSpeedAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -589,7 +589,7 @@ public class Flight : RemoteObject
     [Rpc("SpaceCenter", "Flight_get_Latitude")]
     public Angle GetLatitude()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -604,7 +604,7 @@ public class Flight : RemoteObject
     [Rpc("SpaceCenter", "Flight_get_Latitude")]
     public async Task<Angle> GetLatitudeAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -621,7 +621,7 @@ public class Flight : RemoteObject
     [Rpc("SpaceCenter", "Flight_get_Lift")]
     public Vector3D GetLift()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -638,7 +638,7 @@ public class Flight : RemoteObject
     [Rpc("SpaceCenter", "Flight_get_Lift")]
     public async Task<Vector3D> GetLiftAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -655,7 +655,7 @@ public class Flight : RemoteObject
     [Rpc("SpaceCenter", "Flight_get_LiftCoefficient")]
     public float GetLiftCoefficient()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -673,7 +673,7 @@ public class Flight : RemoteObject
     [Rpc("SpaceCenter", "Flight_get_LiftCoefficient")]
     public async Task<float> GetLiftCoefficientAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -686,7 +686,7 @@ public class Flight : RemoteObject
     [Rpc("SpaceCenter", "Flight_get_Longitude")]
     public Angle GetLongitude()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -701,7 +701,7 @@ public class Flight : RemoteObject
     [Rpc("SpaceCenter", "Flight_get_Longitude")]
     public async Task<Angle> GetLongitudeAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -715,7 +715,7 @@ public class Flight : RemoteObject
     [Rpc("SpaceCenter", "Flight_get_Mach")]
     public float GetMach()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -729,7 +729,7 @@ public class Flight : RemoteObject
     [Rpc("SpaceCenter", "Flight_get_Mach")]
     public async Task<float> GetMachAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -743,7 +743,7 @@ public class Flight : RemoteObject
     [Rpc("SpaceCenter", "Flight_get_MeanAltitude")]
     public double GetMeanAltitude()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -758,7 +758,7 @@ public class Flight : RemoteObject
     [Rpc("SpaceCenter", "Flight_get_MeanAltitude")]
     public async Task<double> GetMeanAltitudeAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -773,7 +773,7 @@ public class Flight : RemoteObject
     [Rpc("SpaceCenter", "Flight_get_Normal")]
     public Vector3D GetNormal()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -789,7 +789,7 @@ public class Flight : RemoteObject
     [Rpc("SpaceCenter", "Flight_get_Normal")]
     public async Task<Vector3D> GetNormalAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -803,7 +803,7 @@ public class Flight : RemoteObject
     [Rpc("SpaceCenter", "Flight_get_Pitch")]
     public Angle GetPitch()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -819,7 +819,7 @@ public class Flight : RemoteObject
     [Rpc("SpaceCenter", "Flight_get_Pitch")]
     public async Task<Angle> GetPitchAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -835,7 +835,7 @@ public class Flight : RemoteObject
     [Rpc("SpaceCenter", "Flight_get_Prograde")]
     public Vector3D GetPrograde()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -851,7 +851,7 @@ public class Flight : RemoteObject
     [Rpc("SpaceCenter", "Flight_get_Prograde")]
     public async Task<Vector3D> GetProgradeAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -866,7 +866,7 @@ public class Flight : RemoteObject
     [Rpc("SpaceCenter", "Flight_get_Radial")]
     public Vector3D GetRadial()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -882,7 +882,7 @@ public class Flight : RemoteObject
     [Rpc("SpaceCenter", "Flight_get_Radial")]
     public async Task<Vector3D> GetRadialAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -897,7 +897,7 @@ public class Flight : RemoteObject
     [Rpc("SpaceCenter", "Flight_get_Retrograde")]
     public Vector3D GetRetrograde()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -913,7 +913,7 @@ public class Flight : RemoteObject
     [Rpc("SpaceCenter", "Flight_get_Retrograde")]
     public async Task<Vector3D> GetRetrogradeAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -929,7 +929,7 @@ public class Flight : RemoteObject
     [Rpc("SpaceCenter", "Flight_get_ReynoldsNumber")]
     public float GetReynoldsNumber()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -946,7 +946,7 @@ public class Flight : RemoteObject
     [Rpc("SpaceCenter", "Flight_get_ReynoldsNumber")]
     public async Task<float> GetReynoldsNumberAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -960,7 +960,7 @@ public class Flight : RemoteObject
     [Rpc("SpaceCenter", "Flight_get_Roll")]
     public Angle GetRoll()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -976,7 +976,7 @@ public class Flight : RemoteObject
     [Rpc("SpaceCenter", "Flight_get_Roll")]
     public async Task<Angle> GetRollAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -991,7 +991,7 @@ public class Flight : RemoteObject
     [Rpc("SpaceCenter", "Flight_get_Rotation")]
     public Quaternion GetRotation()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1006,7 +1006,7 @@ public class Flight : RemoteObject
     [Rpc("SpaceCenter", "Flight_get_Rotation")]
     public async Task<Quaternion> GetRotationAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1019,7 +1019,7 @@ public class Flight : RemoteObject
     [Rpc("SpaceCenter", "Flight_get_SideslipAngle")]
     public Angle GetSideslipAngle()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1034,7 +1034,7 @@ public class Flight : RemoteObject
     [Rpc("SpaceCenter", "Flight_get_SideslipAngle")]
     public async Task<Angle> GetSideslipAngleAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1049,7 +1049,7 @@ public class Flight : RemoteObject
     [Rpc("SpaceCenter", "Flight_get_Speed")]
     public double GetSpeed()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1064,7 +1064,7 @@ public class Flight : RemoteObject
     [Rpc("SpaceCenter", "Flight_get_Speed")]
     public async Task<double> GetSpeedAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1077,7 +1077,7 @@ public class Flight : RemoteObject
     [Rpc("SpaceCenter", "Flight_get_SpeedOfSound")]
     public float GetSpeedOfSound()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1091,7 +1091,7 @@ public class Flight : RemoteObject
     [Rpc("SpaceCenter", "Flight_get_SpeedOfSound")]
     public async Task<float> GetSpeedOfSoundAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1108,7 +1108,7 @@ public class Flight : RemoteObject
     [Rpc("SpaceCenter", "Flight_get_StallFraction")]
     public float GetStallFraction()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1126,7 +1126,7 @@ public class Flight : RemoteObject
     [Rpc("SpaceCenter", "Flight_get_StallFraction")]
     public async Task<float> GetStallFractionAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1140,7 +1140,7 @@ public class Flight : RemoteObject
     [Rpc("SpaceCenter", "Flight_get_StaticAirTemperature")]
     public float GetStaticAirTemperature()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1155,7 +1155,7 @@ public class Flight : RemoteObject
     [Rpc("SpaceCenter", "Flight_get_StaticAirTemperature")]
     public async Task<float> GetStaticAirTemperatureAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1168,7 +1168,7 @@ public class Flight : RemoteObject
     [Rpc("SpaceCenter", "Flight_get_StaticPressure")]
     public float GetStaticPressure()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1182,7 +1182,7 @@ public class Flight : RemoteObject
     [Rpc("SpaceCenter", "Flight_get_StaticPressure")]
     public async Task<float> GetStaticPressureAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1195,7 +1195,7 @@ public class Flight : RemoteObject
     [Rpc("SpaceCenter", "Flight_get_StaticPressureAtMSL")]
     public float GetStaticPressureAtMSL()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1209,7 +1209,7 @@ public class Flight : RemoteObject
     [Rpc("SpaceCenter", "Flight_get_StaticPressureAtMSL")]
     public async Task<float> GetStaticPressureAtMSLAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1223,7 +1223,7 @@ public class Flight : RemoteObject
     [Rpc("SpaceCenter", "Flight_get_SurfaceAltitude")]
     public double GetSurfaceAltitude()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1238,7 +1238,7 @@ public class Flight : RemoteObject
     [Rpc("SpaceCenter", "Flight_get_SurfaceAltitude")]
     public async Task<double> GetSurfaceAltitudeAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1252,7 +1252,7 @@ public class Flight : RemoteObject
     [Rpc("SpaceCenter", "Flight_get_TerminalVelocity")]
     public float GetTerminalVelocity()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1267,7 +1267,7 @@ public class Flight : RemoteObject
     [Rpc("SpaceCenter", "Flight_get_TerminalVelocity")]
     public async Task<float> GetTerminalVelocityAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1286,7 +1286,7 @@ public class Flight : RemoteObject
     [Rpc("SpaceCenter", "Flight_get_ThrustSpecificFuelConsumption")]
     public float GetThrustSpecificFuelConsumption()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1306,7 +1306,7 @@ public class Flight : RemoteObject
     [Rpc("SpaceCenter", "Flight_get_ThrustSpecificFuelConsumption")]
     public async Task<float> GetThrustSpecificFuelConsumptionAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1321,7 +1321,7 @@ public class Flight : RemoteObject
     [Rpc("SpaceCenter", "Flight_get_TotalAirTemperature")]
     public float GetTotalAirTemperature()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1337,7 +1337,7 @@ public class Flight : RemoteObject
     [Rpc("SpaceCenter", "Flight_get_TotalAirTemperature")]
     public async Task<float> GetTotalAirTemperatureAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1351,7 +1351,7 @@ public class Flight : RemoteObject
     [Rpc("SpaceCenter", "Flight_get_TrueAirSpeed")]
     public float GetTrueAirSpeed()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1366,7 +1366,7 @@ public class Flight : RemoteObject
     [Rpc("SpaceCenter", "Flight_get_TrueAirSpeed")]
     public async Task<float> GetTrueAirSpeedAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1381,7 +1381,7 @@ public class Flight : RemoteObject
     [Rpc("SpaceCenter", "Flight_get_Velocity")]
     public Vector3D GetVelocity()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1397,7 +1397,7 @@ public class Flight : RemoteObject
     [Rpc("SpaceCenter", "Flight_get_Velocity")]
     public async Task<Vector3D> GetVelocityAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1411,7 +1411,7 @@ public class Flight : RemoteObject
     [Rpc("SpaceCenter", "Flight_get_VerticalSpeed")]
     public double GetVerticalSpeed()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1426,7 +1426,7 @@ public class Flight : RemoteObject
     [Rpc("SpaceCenter", "Flight_get_VerticalSpeed")]
     public async Task<double> GetVerticalSpeedAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };

@@ -22,7 +22,7 @@ public class ReactionWheel : RemoteObject
     [Rpc("SpaceCenter", "ReactionWheel_get_Active")]
     public bool GetActive()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -36,7 +36,7 @@ public class ReactionWheel : RemoteObject
     [Rpc("SpaceCenter", "ReactionWheel_get_Active")]
     public async Task<bool> GetActiveAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -50,7 +50,7 @@ public class ReactionWheel : RemoteObject
     [Rpc("SpaceCenter", "ReactionWheel_set_Active")]
     public void SetActive(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -66,7 +66,7 @@ public class ReactionWheel : RemoteObject
     [Rpc("SpaceCenter", "ReactionWheel_set_Active")]
     public async Task SetActiveAsync(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -83,7 +83,7 @@ public class ReactionWheel : RemoteObject
     [Rpc("SpaceCenter", "ReactionWheel_get_AvailableTorque")]
     public Tuple<Vector3D,Vector3D> GetAvailableTorque()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -100,7 +100,7 @@ public class ReactionWheel : RemoteObject
     [Rpc("SpaceCenter", "ReactionWheel_get_AvailableTorque")]
     public async Task<Tuple<Vector3D,Vector3D>> GetAvailableTorqueAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -113,7 +113,7 @@ public class ReactionWheel : RemoteObject
     [Rpc("SpaceCenter", "ReactionWheel_get_Broken")]
     public bool GetBroken()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -127,7 +127,7 @@ public class ReactionWheel : RemoteObject
     [Rpc("SpaceCenter", "ReactionWheel_get_Broken")]
     public async Task<bool> GetBrokenAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -142,7 +142,7 @@ public class ReactionWheel : RemoteObject
     [Rpc("SpaceCenter", "ReactionWheel_get_MaxTorque")]
     public Tuple<Vector3D,Vector3D> GetMaxTorque()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -158,7 +158,7 @@ public class ReactionWheel : RemoteObject
     [Rpc("SpaceCenter", "ReactionWheel_get_MaxTorque")]
     public async Task<Tuple<Vector3D,Vector3D>> GetMaxTorqueAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -171,7 +171,7 @@ public class ReactionWheel : RemoteObject
     [Rpc("SpaceCenter", "ReactionWheel_get_Part")]
     public Part GetPart()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -185,7 +185,7 @@ public class ReactionWheel : RemoteObject
     [Rpc("SpaceCenter", "ReactionWheel_get_Part")]
     public async Task<Part> GetPartAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };

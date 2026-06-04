@@ -29,7 +29,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_AngularVelocity")]
     public Vector3D AngularVelocity(ReferenceFrame referenceFrame)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             referenceFrame
@@ -49,7 +49,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_AngularVelocity")]
     public async Task<Vector3D> AngularVelocityAsync(ReferenceFrame referenceFrame)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             referenceFrame
@@ -67,7 +67,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_AvailableThrustAt")]
     public float AvailableThrustAt(double pressure)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             pressure
@@ -86,7 +86,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_AvailableThrustAt")]
     public async Task<float> AvailableThrustAtAsync(double pressure)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             pressure
@@ -104,7 +104,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_BoundingBox")]
     public Tuple<Vector3D,Vector3D> BoundingBox(ReferenceFrame referenceFrame)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             referenceFrame
@@ -123,7 +123,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_BoundingBox")]
     public async Task<Tuple<Vector3D,Vector3D>> BoundingBoxAsync(ReferenceFrame referenceFrame)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             referenceFrame
@@ -140,7 +140,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_Direction")]
     public Vector3D Direction(ReferenceFrame referenceFrame)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             referenceFrame
@@ -158,7 +158,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_Direction")]
     public async Task<Vector3D> DirectionAsync(ReferenceFrame referenceFrame)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             referenceFrame
@@ -177,7 +177,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_Flight")]
     public Flight Flight(ReferenceFrame? referenceFrame = null)
     {
-        var args = new object?[]
+        var args = new ProcedureArgument[]
         {
             this,
             referenceFrame
@@ -197,7 +197,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_Flight")]
     public async Task<Flight> FlightAsync(ReferenceFrame? referenceFrame = null)
     {
-        var args = new object?[]
+        var args = new ProcedureArgument[]
         {
             this,
             referenceFrame
@@ -215,7 +215,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_MaxThrustAt")]
     public float MaxThrustAt(double pressure)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             pressure
@@ -234,7 +234,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_MaxThrustAt")]
     public async Task<float> MaxThrustAtAsync(double pressure)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             pressure
@@ -251,7 +251,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_Position")]
     public Vector3D Position(ReferenceFrame referenceFrame)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             referenceFrame
@@ -269,7 +269,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_Position")]
     public async Task<Vector3D> PositionAsync(ReferenceFrame referenceFrame)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             referenceFrame
@@ -283,7 +283,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_Recover")]
     public void Recover()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -297,7 +297,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_Recover")]
     public async Task RecoverAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -315,7 +315,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_ResourcesInDecoupleStage")]
     public Resources ResourcesInDecoupleStage(int stage, bool cumulative = true)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             stage,
@@ -336,7 +336,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_ResourcesInDecoupleStage")]
     public async Task<Resources> ResourcesInDecoupleStageAsync(int stage, bool cumulative = true)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             stage,
@@ -354,7 +354,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_Rotation")]
     public Quaternion Rotation(ReferenceFrame referenceFrame)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             referenceFrame
@@ -372,7 +372,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_Rotation")]
     public async Task<Quaternion> RotationAsync(ReferenceFrame referenceFrame)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             referenceFrame
@@ -389,7 +389,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_SpecificImpulseAt")]
     public float SpecificImpulseAt(double pressure)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             pressure
@@ -407,7 +407,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_SpecificImpulseAt")]
     public async Task<float> SpecificImpulseAtAsync(double pressure)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             pressure
@@ -425,7 +425,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_Velocity")]
     public Vector3D Velocity(ReferenceFrame referenceFrame)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             referenceFrame
@@ -444,7 +444,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_Velocity")]
     public async Task<Vector3D> VelocityAsync(ReferenceFrame referenceFrame)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             referenceFrame
@@ -459,7 +459,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_get_AutoPilot")]
     public AutoPilot GetAutoPilot()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -474,7 +474,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_get_AutoPilot")]
     public async Task<AutoPilot> GetAutoPilotAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -490,7 +490,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_get_AvailableControlSurfaceTorque")]
     public Tuple<Vector3D,Vector3D> GetAvailableControlSurfaceTorque()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -507,7 +507,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_get_AvailableControlSurfaceTorque")]
     public async Task<Tuple<Vector3D,Vector3D>> GetAvailableControlSurfaceTorqueAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -523,7 +523,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_get_AvailableEngineTorque")]
     public Tuple<Vector3D,Vector3D> GetAvailableEngineTorque()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -540,7 +540,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_get_AvailableEngineTorque")]
     public async Task<Tuple<Vector3D,Vector3D>> GetAvailableEngineTorqueAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -557,7 +557,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_get_AvailableOtherTorque")]
     public Tuple<Vector3D,Vector3D> GetAvailableOtherTorque()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -575,7 +575,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_get_AvailableOtherTorque")]
     public async Task<Tuple<Vector3D,Vector3D>> GetAvailableOtherTorqueAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -591,7 +591,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_get_AvailableRCSForce")]
     public Tuple<Vector3D,Vector3D> GetAvailableRCSForce()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -608,7 +608,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_get_AvailableRCSForce")]
     public async Task<Tuple<Vector3D,Vector3D>> GetAvailableRCSForceAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -624,7 +624,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_get_AvailableRCSTorque")]
     public Tuple<Vector3D,Vector3D> GetAvailableRCSTorque()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -641,7 +641,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_get_AvailableRCSTorque")]
     public async Task<Tuple<Vector3D,Vector3D>> GetAvailableRCSTorqueAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -657,7 +657,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_get_AvailableReactionWheelTorque")]
     public Tuple<Vector3D,Vector3D> GetAvailableReactionWheelTorque()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -674,7 +674,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_get_AvailableReactionWheelTorque")]
     public async Task<Tuple<Vector3D,Vector3D>> GetAvailableReactionWheelTorqueAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -689,7 +689,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_get_AvailableThrust")]
     public float GetAvailableThrust()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -705,7 +705,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_get_AvailableThrust")]
     public async Task<float> GetAvailableThrustAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -722,7 +722,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_get_AvailableTorque")]
     public Tuple<Vector3D,Vector3D> GetAvailableTorque()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -740,7 +740,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_get_AvailableTorque")]
     public async Task<Tuple<Vector3D,Vector3D>> GetAvailableTorqueAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -753,7 +753,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_get_Biome")]
     public string GetBiome()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -767,7 +767,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_get_Biome")]
     public async Task<string> GetBiomeAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -781,7 +781,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_get_Comms")]
     public Comms GetComms()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -796,7 +796,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_get_Comms")]
     public async Task<Comms> GetCommsAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -811,7 +811,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_get_Control")]
     public Control GetControl()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -827,7 +827,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_get_Control")]
     public async Task<Control> GetControlAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -840,7 +840,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_get_Crew")]
     public IList<CrewMember> GetCrew()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -854,7 +854,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_get_Crew")]
     public async Task<IList<CrewMember>> GetCrewAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -867,7 +867,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_get_CrewCapacity")]
     public int GetCrewCapacity()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -881,7 +881,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_get_CrewCapacity")]
     public async Task<int> GetCrewCapacityAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -894,7 +894,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_get_CrewCount")]
     public int GetCrewCount()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -908,7 +908,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_get_CrewCount")]
     public async Task<int> GetCrewCountAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -921,7 +921,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_get_DryMass")]
     public float GetDryMass()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -935,7 +935,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_get_DryMass")]
     public async Task<float> GetDryMassAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -950,7 +950,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_get_InertiaTensor")]
     public IList<double> GetInertiaTensor()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -966,7 +966,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_get_InertiaTensor")]
     public async Task<IList<double>> GetInertiaTensorAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -981,7 +981,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_get_KerbinSeaLevelSpecificImpulse")]
     public float GetKerbinSeaLevelSpecificImpulse()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -997,7 +997,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_get_KerbinSeaLevelSpecificImpulse")]
     public async Task<float> GetKerbinSeaLevelSpecificImpulseAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1010,7 +1010,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_get_MET")]
     public double GetMET()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1024,7 +1024,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_get_MET")]
     public async Task<double> GetMETAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1037,7 +1037,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_get_Mass")]
     public float GetMass()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1051,7 +1051,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_get_Mass")]
     public async Task<float> GetMassAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1066,7 +1066,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_get_MaxThrust")]
     public float GetMaxThrust()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1082,7 +1082,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_get_MaxThrust")]
     public async Task<float> GetMaxThrustAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1097,7 +1097,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_get_MaxVacuumThrust")]
     public float GetMaxVacuumThrust()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1113,7 +1113,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_get_MaxVacuumThrust")]
     public async Task<float> GetMaxVacuumThrustAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1129,7 +1129,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_get_MomentOfInertia")]
     public Tuple<double,double,double> GetMomentOfInertia()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1146,7 +1146,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_get_MomentOfInertia")]
     public async Task<Tuple<double,double,double>> GetMomentOfInertiaAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1159,7 +1159,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_get_Name")]
     public string GetName()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1173,7 +1173,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_get_Name")]
     public async Task<string> GetNameAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1187,7 +1187,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_set_Name")]
     public void SetName(string value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -1203,7 +1203,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_set_Name")]
     public async Task SetNameAsync(string value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -1217,7 +1217,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_get_Orbit")]
     public Orbit GetOrbit()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1231,7 +1231,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_get_Orbit")]
     public async Task<Orbit> GetOrbitAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1249,7 +1249,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_get_OrbitalReferenceFrame")]
     public ReferenceFrame GetOrbitalReferenceFrame()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1268,7 +1268,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_get_OrbitalReferenceFrame")]
     public async Task<ReferenceFrame> GetOrbitalReferenceFrameAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1281,7 +1281,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_get_Parts")]
     public Parts GetParts()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1295,7 +1295,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_get_Parts")]
     public async Task<Parts> GetPartsAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1308,7 +1308,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_get_Recoverable")]
     public bool GetRecoverable()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1322,7 +1322,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_get_Recoverable")]
     public async Task<bool> GetRecoverableAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1337,7 +1337,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_get_ReferenceFrame")]
     public ReferenceFrame GetReferenceFrame()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1353,7 +1353,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_get_ReferenceFrame")]
     public async Task<ReferenceFrame> GetReferenceFrameAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1367,7 +1367,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_get_Resources")]
     public Resources GetResources()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1382,7 +1382,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_get_Resources")]
     public async Task<Resources> GetResourcesAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1395,7 +1395,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_get_Situation")]
     public VesselSituation GetSituation()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1409,7 +1409,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_get_Situation")]
     public async Task<VesselSituation> GetSituationAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1423,7 +1423,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_get_SpecificImpulse")]
     public float GetSpecificImpulse()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1438,7 +1438,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_get_SpecificImpulse")]
     public async Task<float> GetSpecificImpulseAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1462,7 +1462,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_get_SurfaceReferenceFrame")]
     public ReferenceFrame GetSurfaceReferenceFrame()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1487,7 +1487,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_get_SurfaceReferenceFrame")]
     public async Task<ReferenceFrame> GetSurfaceReferenceFrameAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1505,7 +1505,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_get_SurfaceVelocityReferenceFrame")]
     public ReferenceFrame GetSurfaceVelocityReferenceFrame()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1524,7 +1524,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_get_SurfaceVelocityReferenceFrame")]
     public async Task<ReferenceFrame> GetSurfaceVelocityReferenceFrameAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1539,7 +1539,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_get_Thrust")]
     public float GetThrust()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1555,7 +1555,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_get_Thrust")]
     public async Task<float> GetThrustAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1568,7 +1568,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_get_Type")]
     public VesselType GetVesselType()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1582,7 +1582,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_get_Type")]
     public async Task<VesselType> GetVesselTypeAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1596,7 +1596,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_set_Type")]
     public void SetType(VesselType value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -1612,7 +1612,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_set_Type")]
     public async Task SetTypeAsync(VesselType value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -1627,7 +1627,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_get_VacuumSpecificImpulse")]
     public float GetVacuumSpecificImpulse()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1642,7 +1642,7 @@ public class Vessel : RemoteObject
     [Rpc("SpaceCenter", "Vessel_get_VacuumSpecificImpulse")]
     public async Task<float> GetVacuumSpecificImpulseAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };

@@ -21,7 +21,7 @@ public class Contract : RemoteObject
     [Rpc("SpaceCenter", "Contract_Accept")]
     public void Accept()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -35,7 +35,7 @@ public class Contract : RemoteObject
     [Rpc("SpaceCenter", "Contract_Accept")]
     public async Task AcceptAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -48,7 +48,7 @@ public class Contract : RemoteObject
     [Rpc("SpaceCenter", "Contract_Cancel")]
     public void Cancel()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -62,7 +62,7 @@ public class Contract : RemoteObject
     [Rpc("SpaceCenter", "Contract_Cancel")]
     public async Task CancelAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -75,7 +75,7 @@ public class Contract : RemoteObject
     [Rpc("SpaceCenter", "Contract_Decline")]
     public void Decline()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -89,7 +89,7 @@ public class Contract : RemoteObject
     [Rpc("SpaceCenter", "Contract_Decline")]
     public async Task DeclineAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -102,7 +102,7 @@ public class Contract : RemoteObject
     [Rpc("SpaceCenter", "Contract_get_Active")]
     public bool GetActive()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -116,7 +116,7 @@ public class Contract : RemoteObject
     [Rpc("SpaceCenter", "Contract_get_Active")]
     public async Task<bool> GetActiveAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -129,7 +129,7 @@ public class Contract : RemoteObject
     [Rpc("SpaceCenter", "Contract_get_CanBeCanceled")]
     public bool GetCanBeCanceled()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -143,7 +143,7 @@ public class Contract : RemoteObject
     [Rpc("SpaceCenter", "Contract_get_CanBeCanceled")]
     public async Task<bool> GetCanBeCanceledAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -156,7 +156,7 @@ public class Contract : RemoteObject
     [Rpc("SpaceCenter", "Contract_get_CanBeDeclined")]
     public bool GetCanBeDeclined()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -170,7 +170,7 @@ public class Contract : RemoteObject
     [Rpc("SpaceCenter", "Contract_get_CanBeDeclined")]
     public async Task<bool> GetCanBeDeclinedAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -183,7 +183,7 @@ public class Contract : RemoteObject
     [Rpc("SpaceCenter", "Contract_get_CanBeFailed")]
     public bool GetCanBeFailed()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -197,7 +197,7 @@ public class Contract : RemoteObject
     [Rpc("SpaceCenter", "Contract_get_CanBeFailed")]
     public async Task<bool> GetCanBeFailedAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -210,7 +210,7 @@ public class Contract : RemoteObject
     [Rpc("SpaceCenter", "Contract_get_Description")]
     public string GetDescription()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -224,7 +224,7 @@ public class Contract : RemoteObject
     [Rpc("SpaceCenter", "Contract_get_Description")]
     public async Task<string> GetDescriptionAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -237,7 +237,7 @@ public class Contract : RemoteObject
     [Rpc("SpaceCenter", "Contract_get_Failed")]
     public bool GetFailed()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -251,7 +251,7 @@ public class Contract : RemoteObject
     [Rpc("SpaceCenter", "Contract_get_Failed")]
     public async Task<bool> GetFailedAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -264,7 +264,7 @@ public class Contract : RemoteObject
     [Rpc("SpaceCenter", "Contract_get_FundsAdvance")]
     public double GetFundsAdvance()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -278,7 +278,7 @@ public class Contract : RemoteObject
     [Rpc("SpaceCenter", "Contract_get_FundsAdvance")]
     public async Task<double> GetFundsAdvanceAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -291,7 +291,7 @@ public class Contract : RemoteObject
     [Rpc("SpaceCenter", "Contract_get_FundsCompletion")]
     public double GetFundsCompletion()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -305,7 +305,7 @@ public class Contract : RemoteObject
     [Rpc("SpaceCenter", "Contract_get_FundsCompletion")]
     public async Task<double> GetFundsCompletionAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -318,7 +318,7 @@ public class Contract : RemoteObject
     [Rpc("SpaceCenter", "Contract_get_FundsFailure")]
     public double GetFundsFailure()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -332,7 +332,7 @@ public class Contract : RemoteObject
     [Rpc("SpaceCenter", "Contract_get_FundsFailure")]
     public async Task<double> GetFundsFailureAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -345,7 +345,7 @@ public class Contract : RemoteObject
     [Rpc("SpaceCenter", "Contract_get_Keywords")]
     public IList<string> GetKeywords()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -359,7 +359,7 @@ public class Contract : RemoteObject
     [Rpc("SpaceCenter", "Contract_get_Keywords")]
     public async Task<IList<string>> GetKeywordsAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -372,7 +372,7 @@ public class Contract : RemoteObject
     [Rpc("SpaceCenter", "Contract_get_Notes")]
     public string GetNotes()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -386,7 +386,7 @@ public class Contract : RemoteObject
     [Rpc("SpaceCenter", "Contract_get_Notes")]
     public async Task<string> GetNotesAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -399,7 +399,7 @@ public class Contract : RemoteObject
     [Rpc("SpaceCenter", "Contract_get_Parameters")]
     public IList<ContractParameter> GetParameters()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -413,7 +413,7 @@ public class Contract : RemoteObject
     [Rpc("SpaceCenter", "Contract_get_Parameters")]
     public async Task<IList<ContractParameter>> GetParametersAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -426,7 +426,7 @@ public class Contract : RemoteObject
     [Rpc("SpaceCenter", "Contract_get_Read")]
     public bool GetRead()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -440,7 +440,7 @@ public class Contract : RemoteObject
     [Rpc("SpaceCenter", "Contract_get_Read")]
     public async Task<bool> GetReadAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -453,7 +453,7 @@ public class Contract : RemoteObject
     [Rpc("SpaceCenter", "Contract_get_ReputationCompletion")]
     public double GetReputationCompletion()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -467,7 +467,7 @@ public class Contract : RemoteObject
     [Rpc("SpaceCenter", "Contract_get_ReputationCompletion")]
     public async Task<double> GetReputationCompletionAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -480,7 +480,7 @@ public class Contract : RemoteObject
     [Rpc("SpaceCenter", "Contract_get_ReputationFailure")]
     public double GetReputationFailure()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -494,7 +494,7 @@ public class Contract : RemoteObject
     [Rpc("SpaceCenter", "Contract_get_ReputationFailure")]
     public async Task<double> GetReputationFailureAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -507,7 +507,7 @@ public class Contract : RemoteObject
     [Rpc("SpaceCenter", "Contract_get_ScienceCompletion")]
     public double GetScienceCompletion()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -521,7 +521,7 @@ public class Contract : RemoteObject
     [Rpc("SpaceCenter", "Contract_get_ScienceCompletion")]
     public async Task<double> GetScienceCompletionAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -534,7 +534,7 @@ public class Contract : RemoteObject
     [Rpc("SpaceCenter", "Contract_get_Seen")]
     public bool GetSeen()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -548,7 +548,7 @@ public class Contract : RemoteObject
     [Rpc("SpaceCenter", "Contract_get_Seen")]
     public async Task<bool> GetSeenAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -561,7 +561,7 @@ public class Contract : RemoteObject
     [Rpc("SpaceCenter", "Contract_get_State")]
     public ContractState GetState()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -575,7 +575,7 @@ public class Contract : RemoteObject
     [Rpc("SpaceCenter", "Contract_get_State")]
     public async Task<ContractState> GetStateAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -588,7 +588,7 @@ public class Contract : RemoteObject
     [Rpc("SpaceCenter", "Contract_get_Synopsis")]
     public string GetSynopsis()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -602,7 +602,7 @@ public class Contract : RemoteObject
     [Rpc("SpaceCenter", "Contract_get_Synopsis")]
     public async Task<string> GetSynopsisAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -615,7 +615,7 @@ public class Contract : RemoteObject
     [Rpc("SpaceCenter", "Contract_get_Title")]
     public string GetTitle()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -629,7 +629,7 @@ public class Contract : RemoteObject
     [Rpc("SpaceCenter", "Contract_get_Title")]
     public async Task<string> GetTitleAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -642,7 +642,7 @@ public class Contract : RemoteObject
     [Rpc("SpaceCenter", "Contract_get_Type")]
     public string GetContractType()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -656,7 +656,7 @@ public class Contract : RemoteObject
     [Rpc("SpaceCenter", "Contract_get_Type")]
     public async Task<string> GetContractTypeAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };

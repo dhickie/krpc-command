@@ -39,7 +39,7 @@ public class ReferenceFrame : RemoteObject
     [Rpc("SpaceCenter", "ReferenceFrame_static_CreateHybrid")]
     public ReferenceFrame CreateHybrid(ReferenceFrame position, ReferenceFrame? rotation = null, ReferenceFrame? velocity = null, ReferenceFrame? angularVelocity = null)
     {
-        var args = new object?[]
+        var args = new ProcedureArgument[]
         {
             position,
             rotation,
@@ -68,7 +68,7 @@ public class ReferenceFrame : RemoteObject
     [Rpc("SpaceCenter", "ReferenceFrame_static_CreateHybrid")]
     public async Task<ReferenceFrame> CreateHybridAsync(ReferenceFrame position, ReferenceFrame? rotation = null, ReferenceFrame? velocity = null, ReferenceFrame? angularVelocity = null)
     {
-        var args = new object?[]
+        var args = new ProcedureArgument[]
         {
             position,
             rotation,
@@ -99,7 +99,7 @@ public class ReferenceFrame : RemoteObject
     [Rpc("SpaceCenter", "ReferenceFrame_static_CreateRelative")]
     public ReferenceFrame CreateRelative(ReferenceFrame referenceFrame, Vector3D? position = null, Quaternion? rotation = null, Vector3D? velocity = null, Vector3D? angularVelocity = null)
     {
-        var args = new object?[]
+        var args = new ProcedureArgument[]
         {
             referenceFrame,
             position ?? new Vector3D(0.0, 0.0, 0.0),
@@ -132,7 +132,7 @@ public class ReferenceFrame : RemoteObject
     [Rpc("SpaceCenter", "ReferenceFrame_static_CreateRelative")]
     public async Task<ReferenceFrame> CreateRelativeAsync(ReferenceFrame referenceFrame, Vector3D? position = null, Quaternion? rotation = null, Vector3D? velocity = null, Vector3D? angularVelocity = null)
     {
-        var args = new object?[]
+        var args = new ProcedureArgument[]
         {
             referenceFrame,
             position ?? new Vector3D(0.0, 0.0, 0.0),

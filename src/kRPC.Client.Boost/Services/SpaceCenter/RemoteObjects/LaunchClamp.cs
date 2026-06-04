@@ -21,7 +21,7 @@ public class LaunchClamp : RemoteObject
     [Rpc("SpaceCenter", "LaunchClamp_Release")]
     public void Release()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -35,7 +35,7 @@ public class LaunchClamp : RemoteObject
     [Rpc("SpaceCenter", "LaunchClamp_Release")]
     public async Task ReleaseAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -48,7 +48,7 @@ public class LaunchClamp : RemoteObject
     [Rpc("SpaceCenter", "LaunchClamp_get_Part")]
     public Part GetPart()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -62,7 +62,7 @@ public class LaunchClamp : RemoteObject
     [Rpc("SpaceCenter", "LaunchClamp_get_Part")]
     public async Task<Part> GetPartAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };

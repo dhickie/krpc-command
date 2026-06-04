@@ -23,7 +23,7 @@ public class ControlSurface : RemoteObject
     [Rpc("SpaceCenter", "ControlSurface_get_AuthorityLimiter")]
     public float GetAuthorityLimiter()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -38,7 +38,7 @@ public class ControlSurface : RemoteObject
     [Rpc("SpaceCenter", "ControlSurface_get_AuthorityLimiter")]
     public async Task<float> GetAuthorityLimiterAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -53,7 +53,7 @@ public class ControlSurface : RemoteObject
     [Rpc("SpaceCenter", "ControlSurface_set_AuthorityLimiter")]
     public void SetAuthorityLimiter(float value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -70,7 +70,7 @@ public class ControlSurface : RemoteObject
     [Rpc("SpaceCenter", "ControlSurface_set_AuthorityLimiter")]
     public async Task SetAuthorityLimiterAsync(float value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -86,7 +86,7 @@ public class ControlSurface : RemoteObject
     [Rpc("SpaceCenter", "ControlSurface_get_AvailableTorque")]
     public Tuple<Vector3D,Vector3D> GetAvailableTorque()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -102,7 +102,7 @@ public class ControlSurface : RemoteObject
     [Rpc("SpaceCenter", "ControlSurface_get_AvailableTorque")]
     public async Task<Tuple<Vector3D,Vector3D>> GetAvailableTorqueAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -115,7 +115,7 @@ public class ControlSurface : RemoteObject
     [Rpc("SpaceCenter", "ControlSurface_get_Deployed")]
     public bool GetDeployed()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -129,7 +129,7 @@ public class ControlSurface : RemoteObject
     [Rpc("SpaceCenter", "ControlSurface_get_Deployed")]
     public async Task<bool> GetDeployedAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -143,7 +143,7 @@ public class ControlSurface : RemoteObject
     [Rpc("SpaceCenter", "ControlSurface_set_Deployed")]
     public void SetDeployed(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -159,7 +159,7 @@ public class ControlSurface : RemoteObject
     [Rpc("SpaceCenter", "ControlSurface_set_Deployed")]
     public async Task SetDeployedAsync(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -173,7 +173,7 @@ public class ControlSurface : RemoteObject
     [Rpc("SpaceCenter", "ControlSurface_get_Inverted")]
     public bool GetInverted()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -187,7 +187,7 @@ public class ControlSurface : RemoteObject
     [Rpc("SpaceCenter", "ControlSurface_get_Inverted")]
     public async Task<bool> GetInvertedAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -201,7 +201,7 @@ public class ControlSurface : RemoteObject
     [Rpc("SpaceCenter", "ControlSurface_set_Inverted")]
     public void SetInverted(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -217,7 +217,7 @@ public class ControlSurface : RemoteObject
     [Rpc("SpaceCenter", "ControlSurface_set_Inverted")]
     public async Task SetInvertedAsync(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -231,7 +231,7 @@ public class ControlSurface : RemoteObject
     [Rpc("SpaceCenter", "ControlSurface_get_Part")]
     public Part GetPart()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -245,7 +245,7 @@ public class ControlSurface : RemoteObject
     [Rpc("SpaceCenter", "ControlSurface_get_Part")]
     public async Task<Part> GetPartAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -258,7 +258,7 @@ public class ControlSurface : RemoteObject
     [Rpc("SpaceCenter", "ControlSurface_get_PitchEnabled")]
     public bool GetPitchEnabled()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -272,7 +272,7 @@ public class ControlSurface : RemoteObject
     [Rpc("SpaceCenter", "ControlSurface_get_PitchEnabled")]
     public async Task<bool> GetPitchEnabledAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -286,7 +286,7 @@ public class ControlSurface : RemoteObject
     [Rpc("SpaceCenter", "ControlSurface_set_PitchEnabled")]
     public void SetPitchEnabled(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -302,7 +302,7 @@ public class ControlSurface : RemoteObject
     [Rpc("SpaceCenter", "ControlSurface_set_PitchEnabled")]
     public async Task SetPitchEnabledAsync(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -316,7 +316,7 @@ public class ControlSurface : RemoteObject
     [Rpc("SpaceCenter", "ControlSurface_get_RollEnabled")]
     public bool GetRollEnabled()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -330,7 +330,7 @@ public class ControlSurface : RemoteObject
     [Rpc("SpaceCenter", "ControlSurface_get_RollEnabled")]
     public async Task<bool> GetRollEnabledAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -344,7 +344,7 @@ public class ControlSurface : RemoteObject
     [Rpc("SpaceCenter", "ControlSurface_set_RollEnabled")]
     public void SetRollEnabled(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -360,7 +360,7 @@ public class ControlSurface : RemoteObject
     [Rpc("SpaceCenter", "ControlSurface_set_RollEnabled")]
     public async Task SetRollEnabledAsync(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -374,7 +374,7 @@ public class ControlSurface : RemoteObject
     [Rpc("SpaceCenter", "ControlSurface_get_SurfaceArea")]
     public float GetSurfaceArea()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -388,7 +388,7 @@ public class ControlSurface : RemoteObject
     [Rpc("SpaceCenter", "ControlSurface_get_SurfaceArea")]
     public async Task<float> GetSurfaceAreaAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -401,7 +401,7 @@ public class ControlSurface : RemoteObject
     [Rpc("SpaceCenter", "ControlSurface_get_YawEnabled")]
     public bool GetYawEnabled()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -415,7 +415,7 @@ public class ControlSurface : RemoteObject
     [Rpc("SpaceCenter", "ControlSurface_get_YawEnabled")]
     public async Task<bool> GetYawEnabledAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -429,7 +429,7 @@ public class ControlSurface : RemoteObject
     [Rpc("SpaceCenter", "ControlSurface_set_YawEnabled")]
     public void SetYawEnabled(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -445,7 +445,7 @@ public class ControlSurface : RemoteObject
     [Rpc("SpaceCenter", "ControlSurface_set_YawEnabled")]
     public async Task SetYawEnabledAsync(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value

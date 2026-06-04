@@ -24,7 +24,7 @@ public class Wheel : RemoteObject
     [Rpc("SpaceCenter", "Wheel_get_AutoFrictionControl")]
     public bool GetAutoFrictionControl()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -38,7 +38,7 @@ public class Wheel : RemoteObject
     [Rpc("SpaceCenter", "Wheel_get_AutoFrictionControl")]
     public async Task<bool> GetAutoFrictionControlAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -52,7 +52,7 @@ public class Wheel : RemoteObject
     [Rpc("SpaceCenter", "Wheel_set_AutoFrictionControl")]
     public void SetAutoFrictionControl(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -68,7 +68,7 @@ public class Wheel : RemoteObject
     [Rpc("SpaceCenter", "Wheel_set_AutoFrictionControl")]
     public async Task SetAutoFrictionControlAsync(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -82,7 +82,7 @@ public class Wheel : RemoteObject
     [Rpc("SpaceCenter", "Wheel_get_Brakes")]
     public float GetBrakes()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -96,7 +96,7 @@ public class Wheel : RemoteObject
     [Rpc("SpaceCenter", "Wheel_get_Brakes")]
     public async Task<float> GetBrakesAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -110,7 +110,7 @@ public class Wheel : RemoteObject
     [Rpc("SpaceCenter", "Wheel_set_Brakes")]
     public void SetBrakes(float value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -126,7 +126,7 @@ public class Wheel : RemoteObject
     [Rpc("SpaceCenter", "Wheel_set_Brakes")]
     public async Task SetBrakesAsync(float value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -140,7 +140,7 @@ public class Wheel : RemoteObject
     [Rpc("SpaceCenter", "Wheel_get_Broken")]
     public bool GetBroken()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -154,7 +154,7 @@ public class Wheel : RemoteObject
     [Rpc("SpaceCenter", "Wheel_get_Broken")]
     public async Task<bool> GetBrokenAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -167,7 +167,7 @@ public class Wheel : RemoteObject
     [Rpc("SpaceCenter", "Wheel_get_Deflection")]
     public float GetDeflection()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -181,7 +181,7 @@ public class Wheel : RemoteObject
     [Rpc("SpaceCenter", "Wheel_get_Deflection")]
     public async Task<float> GetDeflectionAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -194,7 +194,7 @@ public class Wheel : RemoteObject
     [Rpc("SpaceCenter", "Wheel_get_Deployable")]
     public bool GetDeployable()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -208,7 +208,7 @@ public class Wheel : RemoteObject
     [Rpc("SpaceCenter", "Wheel_get_Deployable")]
     public async Task<bool> GetDeployableAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -221,7 +221,7 @@ public class Wheel : RemoteObject
     [Rpc("SpaceCenter", "Wheel_get_Deployed")]
     public bool GetDeployed()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -235,7 +235,7 @@ public class Wheel : RemoteObject
     [Rpc("SpaceCenter", "Wheel_get_Deployed")]
     public async Task<bool> GetDeployedAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -249,7 +249,7 @@ public class Wheel : RemoteObject
     [Rpc("SpaceCenter", "Wheel_set_Deployed")]
     public void SetDeployed(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -265,7 +265,7 @@ public class Wheel : RemoteObject
     [Rpc("SpaceCenter", "Wheel_set_Deployed")]
     public async Task SetDeployedAsync(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -281,7 +281,7 @@ public class Wheel : RemoteObject
     [Rpc("SpaceCenter", "Wheel_get_DriveLimiter")]
     public float GetDriveLimiter()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -297,7 +297,7 @@ public class Wheel : RemoteObject
     [Rpc("SpaceCenter", "Wheel_get_DriveLimiter")]
     public async Task<float> GetDriveLimiterAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -313,7 +313,7 @@ public class Wheel : RemoteObject
     [Rpc("SpaceCenter", "Wheel_set_DriveLimiter")]
     public void SetDriveLimiter(float value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -331,7 +331,7 @@ public class Wheel : RemoteObject
     [Rpc("SpaceCenter", "Wheel_set_DriveLimiter")]
     public async Task SetDriveLimiterAsync(float value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -345,7 +345,7 @@ public class Wheel : RemoteObject
     [Rpc("SpaceCenter", "Wheel_get_Grounded")]
     public bool GetGrounded()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -359,7 +359,7 @@ public class Wheel : RemoteObject
     [Rpc("SpaceCenter", "Wheel_get_Grounded")]
     public async Task<bool> GetGroundedAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -372,7 +372,7 @@ public class Wheel : RemoteObject
     [Rpc("SpaceCenter", "Wheel_get_HasBrakes")]
     public bool GetHasBrakes()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -386,7 +386,7 @@ public class Wheel : RemoteObject
     [Rpc("SpaceCenter", "Wheel_get_HasBrakes")]
     public async Task<bool> GetHasBrakesAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -399,7 +399,7 @@ public class Wheel : RemoteObject
     [Rpc("SpaceCenter", "Wheel_get_HasSuspension")]
     public bool GetHasSuspension()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -413,7 +413,7 @@ public class Wheel : RemoteObject
     [Rpc("SpaceCenter", "Wheel_get_HasSuspension")]
     public async Task<bool> GetHasSuspensionAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -427,7 +427,7 @@ public class Wheel : RemoteObject
     [Rpc("SpaceCenter", "Wheel_get_ManualFrictionControl")]
     public float GetManualFrictionControl()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -442,7 +442,7 @@ public class Wheel : RemoteObject
     [Rpc("SpaceCenter", "Wheel_get_ManualFrictionControl")]
     public async Task<float> GetManualFrictionControlAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -457,7 +457,7 @@ public class Wheel : RemoteObject
     [Rpc("SpaceCenter", "Wheel_set_ManualFrictionControl")]
     public void SetManualFrictionControl(float value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -474,7 +474,7 @@ public class Wheel : RemoteObject
     [Rpc("SpaceCenter", "Wheel_set_ManualFrictionControl")]
     public async Task SetManualFrictionControlAsync(float value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -488,7 +488,7 @@ public class Wheel : RemoteObject
     [Rpc("SpaceCenter", "Wheel_get_MotorEnabled")]
     public bool GetMotorEnabled()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -502,7 +502,7 @@ public class Wheel : RemoteObject
     [Rpc("SpaceCenter", "Wheel_get_MotorEnabled")]
     public async Task<bool> GetMotorEnabledAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -516,7 +516,7 @@ public class Wheel : RemoteObject
     [Rpc("SpaceCenter", "Wheel_set_MotorEnabled")]
     public void SetMotorEnabled(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -532,7 +532,7 @@ public class Wheel : RemoteObject
     [Rpc("SpaceCenter", "Wheel_set_MotorEnabled")]
     public async Task SetMotorEnabledAsync(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -546,7 +546,7 @@ public class Wheel : RemoteObject
     [Rpc("SpaceCenter", "Wheel_get_MotorInverted")]
     public bool GetMotorInverted()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -560,7 +560,7 @@ public class Wheel : RemoteObject
     [Rpc("SpaceCenter", "Wheel_get_MotorInverted")]
     public async Task<bool> GetMotorInvertedAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -574,7 +574,7 @@ public class Wheel : RemoteObject
     [Rpc("SpaceCenter", "Wheel_set_MotorInverted")]
     public void SetMotorInverted(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -590,7 +590,7 @@ public class Wheel : RemoteObject
     [Rpc("SpaceCenter", "Wheel_set_MotorInverted")]
     public async Task SetMotorInvertedAsync(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -604,7 +604,7 @@ public class Wheel : RemoteObject
     [Rpc("SpaceCenter", "Wheel_get_MotorOutput")]
     public float GetMotorOutput()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -618,7 +618,7 @@ public class Wheel : RemoteObject
     [Rpc("SpaceCenter", "Wheel_get_MotorOutput")]
     public async Task<float> GetMotorOutputAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -631,7 +631,7 @@ public class Wheel : RemoteObject
     [Rpc("SpaceCenter", "Wheel_get_MotorState")]
     public MotorState GetMotorState()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -645,7 +645,7 @@ public class Wheel : RemoteObject
     [Rpc("SpaceCenter", "Wheel_get_MotorState")]
     public async Task<MotorState> GetMotorStateAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -658,7 +658,7 @@ public class Wheel : RemoteObject
     [Rpc("SpaceCenter", "Wheel_get_Part")]
     public Part GetPart()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -672,7 +672,7 @@ public class Wheel : RemoteObject
     [Rpc("SpaceCenter", "Wheel_get_Part")]
     public async Task<Part> GetPartAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -685,7 +685,7 @@ public class Wheel : RemoteObject
     [Rpc("SpaceCenter", "Wheel_get_Powered")]
     public bool GetPowered()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -699,7 +699,7 @@ public class Wheel : RemoteObject
     [Rpc("SpaceCenter", "Wheel_get_Powered")]
     public async Task<bool> GetPoweredAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -712,7 +712,7 @@ public class Wheel : RemoteObject
     [Rpc("SpaceCenter", "Wheel_get_Radius")]
     public float GetRadius()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -726,7 +726,7 @@ public class Wheel : RemoteObject
     [Rpc("SpaceCenter", "Wheel_get_Radius")]
     public async Task<float> GetRadiusAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -739,7 +739,7 @@ public class Wheel : RemoteObject
     [Rpc("SpaceCenter", "Wheel_get_Repairable")]
     public bool GetRepairable()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -753,7 +753,7 @@ public class Wheel : RemoteObject
     [Rpc("SpaceCenter", "Wheel_get_Repairable")]
     public async Task<bool> GetRepairableAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -766,7 +766,7 @@ public class Wheel : RemoteObject
     [Rpc("SpaceCenter", "Wheel_get_Slip")]
     public float GetSlip()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -780,7 +780,7 @@ public class Wheel : RemoteObject
     [Rpc("SpaceCenter", "Wheel_get_Slip")]
     public async Task<float> GetSlipAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -793,7 +793,7 @@ public class Wheel : RemoteObject
     [Rpc("SpaceCenter", "Wheel_get_State")]
     public WheelState GetState()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -807,7 +807,7 @@ public class Wheel : RemoteObject
     [Rpc("SpaceCenter", "Wheel_get_State")]
     public async Task<WheelState> GetStateAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -820,7 +820,7 @@ public class Wheel : RemoteObject
     [Rpc("SpaceCenter", "Wheel_get_Steerable")]
     public bool GetSteerable()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -834,7 +834,7 @@ public class Wheel : RemoteObject
     [Rpc("SpaceCenter", "Wheel_get_Steerable")]
     public async Task<bool> GetSteerableAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -847,7 +847,7 @@ public class Wheel : RemoteObject
     [Rpc("SpaceCenter", "Wheel_get_SteeringAngleLimit")]
     public Angle GetSteeringAngleLimit()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -862,7 +862,7 @@ public class Wheel : RemoteObject
     [Rpc("SpaceCenter", "Wheel_get_SteeringAngleLimit")]
     public async Task<Angle> GetSteeringAngleLimitAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -877,7 +877,7 @@ public class Wheel : RemoteObject
     [Rpc("SpaceCenter", "Wheel_set_SteeringAngleLimit")]
     public void SetSteeringAngleLimit(Angle value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             (float)value.Degrees
@@ -893,7 +893,7 @@ public class Wheel : RemoteObject
     [Rpc("SpaceCenter", "Wheel_set_SteeringAngleLimit")]
     public async Task SetSteeringAngleLimitAsync(Angle value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             (float)value.Degrees
@@ -907,7 +907,7 @@ public class Wheel : RemoteObject
     [Rpc("SpaceCenter", "Wheel_get_SteeringEnabled")]
     public bool GetSteeringEnabled()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -921,7 +921,7 @@ public class Wheel : RemoteObject
     [Rpc("SpaceCenter", "Wheel_get_SteeringEnabled")]
     public async Task<bool> GetSteeringEnabledAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -935,7 +935,7 @@ public class Wheel : RemoteObject
     [Rpc("SpaceCenter", "Wheel_set_SteeringEnabled")]
     public void SetSteeringEnabled(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -951,7 +951,7 @@ public class Wheel : RemoteObject
     [Rpc("SpaceCenter", "Wheel_set_SteeringEnabled")]
     public async Task SetSteeringEnabledAsync(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -965,7 +965,7 @@ public class Wheel : RemoteObject
     [Rpc("SpaceCenter", "Wheel_get_SteeringInverted")]
     public bool GetSteeringInverted()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -979,7 +979,7 @@ public class Wheel : RemoteObject
     [Rpc("SpaceCenter", "Wheel_get_SteeringInverted")]
     public async Task<bool> GetSteeringInvertedAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -993,7 +993,7 @@ public class Wheel : RemoteObject
     [Rpc("SpaceCenter", "Wheel_set_SteeringInverted")]
     public void SetSteeringInverted(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -1009,7 +1009,7 @@ public class Wheel : RemoteObject
     [Rpc("SpaceCenter", "Wheel_set_SteeringInverted")]
     public async Task SetSteeringInvertedAsync(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -1023,7 +1023,7 @@ public class Wheel : RemoteObject
     [Rpc("SpaceCenter", "Wheel_get_SteeringResponseTime")]
     public float GetSteeringResponseTime()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1037,7 +1037,7 @@ public class Wheel : RemoteObject
     [Rpc("SpaceCenter", "Wheel_get_SteeringResponseTime")]
     public async Task<float> GetSteeringResponseTimeAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1051,7 +1051,7 @@ public class Wheel : RemoteObject
     [Rpc("SpaceCenter", "Wheel_set_SteeringResponseTime")]
     public void SetSteeringResponseTime(float value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -1067,7 +1067,7 @@ public class Wheel : RemoteObject
     [Rpc("SpaceCenter", "Wheel_set_SteeringResponseTime")]
     public async Task SetSteeringResponseTimeAsync(float value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -1081,7 +1081,7 @@ public class Wheel : RemoteObject
     [Rpc("SpaceCenter", "Wheel_get_Stress")]
     public float GetStress()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1095,7 +1095,7 @@ public class Wheel : RemoteObject
     [Rpc("SpaceCenter", "Wheel_get_Stress")]
     public async Task<float> GetStressAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1108,7 +1108,7 @@ public class Wheel : RemoteObject
     [Rpc("SpaceCenter", "Wheel_get_StressPercentage")]
     public float GetStressPercentage()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1122,7 +1122,7 @@ public class Wheel : RemoteObject
     [Rpc("SpaceCenter", "Wheel_get_StressPercentage")]
     public async Task<float> GetStressPercentageAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1135,7 +1135,7 @@ public class Wheel : RemoteObject
     [Rpc("SpaceCenter", "Wheel_get_StressTolerance")]
     public float GetStressTolerance()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1149,7 +1149,7 @@ public class Wheel : RemoteObject
     [Rpc("SpaceCenter", "Wheel_get_StressTolerance")]
     public async Task<float> GetStressToleranceAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1162,7 +1162,7 @@ public class Wheel : RemoteObject
     [Rpc("SpaceCenter", "Wheel_get_SuspensionDamperStrength")]
     public float GetSuspensionDamperStrength()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1176,7 +1176,7 @@ public class Wheel : RemoteObject
     [Rpc("SpaceCenter", "Wheel_get_SuspensionDamperStrength")]
     public async Task<float> GetSuspensionDamperStrengthAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1189,7 +1189,7 @@ public class Wheel : RemoteObject
     [Rpc("SpaceCenter", "Wheel_get_SuspensionSpringStrength")]
     public float GetSuspensionSpringStrength()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1203,7 +1203,7 @@ public class Wheel : RemoteObject
     [Rpc("SpaceCenter", "Wheel_get_SuspensionSpringStrength")]
     public async Task<float> GetSuspensionSpringStrengthAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1218,7 +1218,7 @@ public class Wheel : RemoteObject
     [Rpc("SpaceCenter", "Wheel_get_TractionControl")]
     public float GetTractionControl()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1234,7 +1234,7 @@ public class Wheel : RemoteObject
     [Rpc("SpaceCenter", "Wheel_get_TractionControl")]
     public async Task<float> GetTractionControlAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1250,7 +1250,7 @@ public class Wheel : RemoteObject
     [Rpc("SpaceCenter", "Wheel_set_TractionControl")]
     public void SetTractionControl(float value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -1268,7 +1268,7 @@ public class Wheel : RemoteObject
     [Rpc("SpaceCenter", "Wheel_set_TractionControl")]
     public async Task SetTractionControlAsync(float value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -1283,7 +1283,7 @@ public class Wheel : RemoteObject
     [Rpc("SpaceCenter", "Wheel_get_TractionControlEnabled")]
     public bool GetTractionControlEnabled()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1298,7 +1298,7 @@ public class Wheel : RemoteObject
     [Rpc("SpaceCenter", "Wheel_get_TractionControlEnabled")]
     public async Task<bool> GetTractionControlEnabledAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1313,7 +1313,7 @@ public class Wheel : RemoteObject
     [Rpc("SpaceCenter", "Wheel_set_TractionControlEnabled")]
     public void SetTractionControlEnabled(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -1330,7 +1330,7 @@ public class Wheel : RemoteObject
     [Rpc("SpaceCenter", "Wheel_set_TractionControlEnabled")]
     public async Task SetTractionControlEnabledAsync(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value

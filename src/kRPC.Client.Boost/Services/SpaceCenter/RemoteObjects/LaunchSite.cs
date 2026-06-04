@@ -22,7 +22,7 @@ public class LaunchSite : RemoteObject
     [Rpc("SpaceCenter", "LaunchSite_get_Body")]
     public CelestialBody GetBody()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -36,7 +36,7 @@ public class LaunchSite : RemoteObject
     [Rpc("SpaceCenter", "LaunchSite_get_Body")]
     public async Task<CelestialBody> GetBodyAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -49,7 +49,7 @@ public class LaunchSite : RemoteObject
     [Rpc("SpaceCenter", "LaunchSite_get_EditorFacility")]
     public EditorFacility GetEditorFacility()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -63,7 +63,7 @@ public class LaunchSite : RemoteObject
     [Rpc("SpaceCenter", "LaunchSite_get_EditorFacility")]
     public async Task<EditorFacility> GetEditorFacilityAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -76,7 +76,7 @@ public class LaunchSite : RemoteObject
     [Rpc("SpaceCenter", "LaunchSite_get_Name")]
     public string GetName()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -90,7 +90,7 @@ public class LaunchSite : RemoteObject
     [Rpc("SpaceCenter", "LaunchSite_get_Name")]
     public async Task<string> GetNameAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };

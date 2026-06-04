@@ -21,7 +21,7 @@ public class ScienceData : RemoteObject
     [Rpc("SpaceCenter", "ScienceData_get_DataAmount")]
     public float GetDataAmount()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -35,7 +35,7 @@ public class ScienceData : RemoteObject
     [Rpc("SpaceCenter", "ScienceData_get_DataAmount")]
     public async Task<float> GetDataAmountAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -48,7 +48,7 @@ public class ScienceData : RemoteObject
     [Rpc("SpaceCenter", "ScienceData_get_ScienceValue")]
     public float GetScienceValue()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -62,7 +62,7 @@ public class ScienceData : RemoteObject
     [Rpc("SpaceCenter", "ScienceData_get_ScienceValue")]
     public async Task<float> GetScienceValueAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -75,7 +75,7 @@ public class ScienceData : RemoteObject
     [Rpc("SpaceCenter", "ScienceData_get_TransmitValue")]
     public float GetTransmitValue()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -89,7 +89,7 @@ public class ScienceData : RemoteObject
     [Rpc("SpaceCenter", "ScienceData_get_TransmitValue")]
     public async Task<float> GetTransmitValueAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };

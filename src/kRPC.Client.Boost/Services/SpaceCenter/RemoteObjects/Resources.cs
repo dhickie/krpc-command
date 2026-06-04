@@ -25,7 +25,7 @@ public class Resources : RemoteObject
     [Rpc("SpaceCenter", "Resources_Amount")]
     public float Amount(string name)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             name
@@ -41,7 +41,7 @@ public class Resources : RemoteObject
     [Rpc("SpaceCenter", "Resources_Amount")]
     public async Task<float> AmountAsync(string name)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             name
@@ -56,7 +56,7 @@ public class Resources : RemoteObject
     [Rpc("SpaceCenter", "Resources_HasResource")]
     public bool HasResource(string name)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             name
@@ -72,7 +72,7 @@ public class Resources : RemoteObject
     [Rpc("SpaceCenter", "Resources_HasResource")]
     public async Task<bool> HasResourceAsync(string name)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             name
@@ -87,7 +87,7 @@ public class Resources : RemoteObject
     [Rpc("SpaceCenter", "Resources_Max")]
     public float Max(string name)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             name
@@ -103,7 +103,7 @@ public class Resources : RemoteObject
     [Rpc("SpaceCenter", "Resources_Max")]
     public async Task<float> MaxAsync(string name)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             name
@@ -117,7 +117,7 @@ public class Resources : RemoteObject
     [Rpc("SpaceCenter", "Resources_WithResource")]
     public IList<Resource> WithResource(string name)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             name
@@ -132,7 +132,7 @@ public class Resources : RemoteObject
     [Rpc("SpaceCenter", "Resources_WithResource")]
     public async Task<IList<Resource>> WithResourceAsync(string name)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             name
@@ -147,7 +147,7 @@ public class Resources : RemoteObject
     [Rpc("SpaceCenter", "Resources_static_Density")]
     public float Density(string name)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             name
         };
@@ -162,7 +162,7 @@ public class Resources : RemoteObject
     [Rpc("SpaceCenter", "Resources_static_Density")]
     public async Task<float> DensityAsync(string name)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             name
         };
@@ -176,7 +176,7 @@ public class Resources : RemoteObject
     [Rpc("SpaceCenter", "Resources_static_FlowMode")]
     public ResourceFlowMode FlowMode(string name)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             name
         };
@@ -191,7 +191,7 @@ public class Resources : RemoteObject
     [Rpc("SpaceCenter", "Resources_static_FlowMode")]
     public async Task<ResourceFlowMode> FlowModeAsync(string name)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             name
         };
@@ -204,7 +204,7 @@ public class Resources : RemoteObject
     [Rpc("SpaceCenter", "Resources_get_All")]
     public IList<Resource> GetAll()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -218,7 +218,7 @@ public class Resources : RemoteObject
     [Rpc("SpaceCenter", "Resources_get_All")]
     public async Task<IList<Resource>> GetAllAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -235,7 +235,7 @@ public class Resources : RemoteObject
     [Rpc("SpaceCenter", "Resources_get_Enabled")]
     public bool GetEnabled()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -253,7 +253,7 @@ public class Resources : RemoteObject
     [Rpc("SpaceCenter", "Resources_get_Enabled")]
     public async Task<bool> GetEnabledAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -267,7 +267,7 @@ public class Resources : RemoteObject
     [Rpc("SpaceCenter", "Resources_set_Enabled")]
     public void SetEnabled(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -283,7 +283,7 @@ public class Resources : RemoteObject
     [Rpc("SpaceCenter", "Resources_set_Enabled")]
     public async Task SetEnabledAsync(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -297,7 +297,7 @@ public class Resources : RemoteObject
     [Rpc("SpaceCenter", "Resources_get_Names")]
     public IList<string> GetNames()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -311,7 +311,7 @@ public class Resources : RemoteObject
     [Rpc("SpaceCenter", "Resources_get_Names")]
     public async Task<IList<string>> GetNamesAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };

@@ -22,7 +22,7 @@ public class Force : RemoteObject
     [Rpc("SpaceCenter", "Force_Remove")]
     public void Remove()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -36,7 +36,7 @@ public class Force : RemoteObject
     [Rpc("SpaceCenter", "Force_Remove")]
     public async Task RemoveAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -51,7 +51,7 @@ public class Force : RemoteObject
     [Rpc("SpaceCenter", "Force_get_ForceVector")]
     public Vector3D GetForceVector()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -67,7 +67,7 @@ public class Force : RemoteObject
     [Rpc("SpaceCenter", "Force_get_ForceVector")]
     public async Task<Vector3D> GetForceVectorAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -81,7 +81,7 @@ public class Force : RemoteObject
     [Rpc("SpaceCenter", "Force_set_ForceVector")]
     public void SetForceVector(Vector3D value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -97,7 +97,7 @@ public class Force : RemoteObject
     [Rpc("SpaceCenter", "Force_set_ForceVector")]
     public async Task SetForceVectorAsync(Vector3D value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -111,7 +111,7 @@ public class Force : RemoteObject
     [Rpc("SpaceCenter", "Force_get_Part")]
     public Part GetPart()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -125,7 +125,7 @@ public class Force : RemoteObject
     [Rpc("SpaceCenter", "Force_get_Part")]
     public async Task<Part> GetPartAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -139,7 +139,7 @@ public class Force : RemoteObject
     [Rpc("SpaceCenter", "Force_get_Position")]
     public Vector3D GetPosition()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -154,7 +154,7 @@ public class Force : RemoteObject
     [Rpc("SpaceCenter", "Force_get_Position")]
     public async Task<Vector3D> GetPositionAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -168,7 +168,7 @@ public class Force : RemoteObject
     [Rpc("SpaceCenter", "Force_set_Position")]
     public void SetPosition(Vector3D value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -184,7 +184,7 @@ public class Force : RemoteObject
     [Rpc("SpaceCenter", "Force_set_Position")]
     public async Task SetPositionAsync(Vector3D value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -198,7 +198,7 @@ public class Force : RemoteObject
     [Rpc("SpaceCenter", "Force_get_ReferenceFrame")]
     public ReferenceFrame GetReferenceFrame()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -212,7 +212,7 @@ public class Force : RemoteObject
     [Rpc("SpaceCenter", "Force_get_ReferenceFrame")]
     public async Task<ReferenceFrame> GetReferenceFrameAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -226,7 +226,7 @@ public class Force : RemoteObject
     [Rpc("SpaceCenter", "Force_set_ReferenceFrame")]
     public void SetReferenceFrame(ReferenceFrame value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -242,7 +242,7 @@ public class Force : RemoteObject
     [Rpc("SpaceCenter", "Force_set_ReferenceFrame")]
     public async Task SetReferenceFrameAsync(ReferenceFrame value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value

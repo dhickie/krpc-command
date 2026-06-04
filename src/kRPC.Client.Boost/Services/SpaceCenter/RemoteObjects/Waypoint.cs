@@ -22,7 +22,7 @@ public class Waypoint : RemoteObject
     [Rpc("SpaceCenter", "Waypoint_Remove")]
     public void Remove()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -36,7 +36,7 @@ public class Waypoint : RemoteObject
     [Rpc("SpaceCenter", "Waypoint_Remove")]
     public async Task RemoveAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -50,7 +50,7 @@ public class Waypoint : RemoteObject
     [Rpc("SpaceCenter", "Waypoint_get_BedrockAltitude")]
     public double GetBedrockAltitude()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -65,7 +65,7 @@ public class Waypoint : RemoteObject
     [Rpc("SpaceCenter", "Waypoint_get_BedrockAltitude")]
     public async Task<double> GetBedrockAltitudeAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -80,7 +80,7 @@ public class Waypoint : RemoteObject
     [Rpc("SpaceCenter", "Waypoint_set_BedrockAltitude")]
     public void SetBedrockAltitude(double value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -97,7 +97,7 @@ public class Waypoint : RemoteObject
     [Rpc("SpaceCenter", "Waypoint_set_BedrockAltitude")]
     public async Task SetBedrockAltitudeAsync(double value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -111,7 +111,7 @@ public class Waypoint : RemoteObject
     [Rpc("SpaceCenter", "Waypoint_get_Body")]
     public CelestialBody GetBody()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -125,7 +125,7 @@ public class Waypoint : RemoteObject
     [Rpc("SpaceCenter", "Waypoint_get_Body")]
     public async Task<CelestialBody> GetBodyAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -139,7 +139,7 @@ public class Waypoint : RemoteObject
     [Rpc("SpaceCenter", "Waypoint_set_Body")]
     public void SetBody(CelestialBody value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -155,7 +155,7 @@ public class Waypoint : RemoteObject
     [Rpc("SpaceCenter", "Waypoint_set_Body")]
     public async Task SetBodyAsync(CelestialBody value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -172,7 +172,7 @@ public class Waypoint : RemoteObject
     [Rpc("SpaceCenter", "Waypoint_get_Clustered")]
     public bool GetClustered()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -189,7 +189,7 @@ public class Waypoint : RemoteObject
     [Rpc("SpaceCenter", "Waypoint_get_Clustered")]
     public async Task<bool> GetClusteredAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -202,7 +202,7 @@ public class Waypoint : RemoteObject
     [Rpc("SpaceCenter", "Waypoint_get_Color")]
     public int GetColor()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -216,7 +216,7 @@ public class Waypoint : RemoteObject
     [Rpc("SpaceCenter", "Waypoint_get_Color")]
     public async Task<int> GetColorAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -230,7 +230,7 @@ public class Waypoint : RemoteObject
     [Rpc("SpaceCenter", "Waypoint_set_Color")]
     public void SetColor(int value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -246,7 +246,7 @@ public class Waypoint : RemoteObject
     [Rpc("SpaceCenter", "Waypoint_set_Color")]
     public async Task SetColorAsync(int value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -260,7 +260,7 @@ public class Waypoint : RemoteObject
     [Rpc("SpaceCenter", "Waypoint_get_Contract")]
     public Contract GetContract()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -274,7 +274,7 @@ public class Waypoint : RemoteObject
     [Rpc("SpaceCenter", "Waypoint_get_Contract")]
     public async Task<Contract> GetContractAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -287,7 +287,7 @@ public class Waypoint : RemoteObject
     [Rpc("SpaceCenter", "Waypoint_get_Grounded")]
     public bool GetGrounded()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -301,7 +301,7 @@ public class Waypoint : RemoteObject
     [Rpc("SpaceCenter", "Waypoint_get_Grounded")]
     public async Task<bool> GetGroundedAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -314,7 +314,7 @@ public class Waypoint : RemoteObject
     [Rpc("SpaceCenter", "Waypoint_get_HasContract")]
     public bool GetHasContract()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -328,7 +328,7 @@ public class Waypoint : RemoteObject
     [Rpc("SpaceCenter", "Waypoint_get_HasContract")]
     public async Task<bool> GetHasContractAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -341,7 +341,7 @@ public class Waypoint : RemoteObject
     [Rpc("SpaceCenter", "Waypoint_get_Icon")]
     public string GetIcon()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -355,7 +355,7 @@ public class Waypoint : RemoteObject
     [Rpc("SpaceCenter", "Waypoint_get_Icon")]
     public async Task<string> GetIconAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -369,7 +369,7 @@ public class Waypoint : RemoteObject
     [Rpc("SpaceCenter", "Waypoint_set_Icon")]
     public void SetIcon(string value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -385,7 +385,7 @@ public class Waypoint : RemoteObject
     [Rpc("SpaceCenter", "Waypoint_set_Icon")]
     public async Task SetIconAsync(string value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -403,7 +403,7 @@ public class Waypoint : RemoteObject
     [Rpc("SpaceCenter", "Waypoint_get_Index")]
     public int GetIndex()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -421,7 +421,7 @@ public class Waypoint : RemoteObject
     [Rpc("SpaceCenter", "Waypoint_get_Index")]
     public async Task<int> GetIndexAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -434,7 +434,7 @@ public class Waypoint : RemoteObject
     [Rpc("SpaceCenter", "Waypoint_get_Latitude")]
     public Angle GetLatitude()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -449,7 +449,7 @@ public class Waypoint : RemoteObject
     [Rpc("SpaceCenter", "Waypoint_get_Latitude")]
     public async Task<Angle> GetLatitudeAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -464,7 +464,7 @@ public class Waypoint : RemoteObject
     [Rpc("SpaceCenter", "Waypoint_set_Latitude")]
     public void SetLatitude(Angle value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value.Degrees
@@ -480,7 +480,7 @@ public class Waypoint : RemoteObject
     [Rpc("SpaceCenter", "Waypoint_set_Latitude")]
     public async Task SetLatitudeAsync(Angle value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value.Degrees
@@ -494,7 +494,7 @@ public class Waypoint : RemoteObject
     [Rpc("SpaceCenter", "Waypoint_get_Longitude")]
     public Angle GetLongitude()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -509,7 +509,7 @@ public class Waypoint : RemoteObject
     [Rpc("SpaceCenter", "Waypoint_get_Longitude")]
     public async Task<Angle> GetLongitudeAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -524,7 +524,7 @@ public class Waypoint : RemoteObject
     [Rpc("SpaceCenter", "Waypoint_set_Longitude")]
     public void SetLongitude(Angle value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value.Degrees
@@ -540,7 +540,7 @@ public class Waypoint : RemoteObject
     [Rpc("SpaceCenter", "Waypoint_set_Longitude")]
     public async Task SetLongitudeAsync(Angle value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value.Degrees
@@ -554,7 +554,7 @@ public class Waypoint : RemoteObject
     [Rpc("SpaceCenter", "Waypoint_get_MeanAltitude")]
     public double GetMeanAltitude()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -568,7 +568,7 @@ public class Waypoint : RemoteObject
     [Rpc("SpaceCenter", "Waypoint_get_MeanAltitude")]
     public async Task<double> GetMeanAltitudeAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -582,7 +582,7 @@ public class Waypoint : RemoteObject
     [Rpc("SpaceCenter", "Waypoint_set_MeanAltitude")]
     public void SetMeanAltitude(double value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -598,7 +598,7 @@ public class Waypoint : RemoteObject
     [Rpc("SpaceCenter", "Waypoint_set_MeanAltitude")]
     public async Task SetMeanAltitudeAsync(double value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -612,7 +612,7 @@ public class Waypoint : RemoteObject
     [Rpc("SpaceCenter", "Waypoint_get_Name")]
     public string GetName()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -626,7 +626,7 @@ public class Waypoint : RemoteObject
     [Rpc("SpaceCenter", "Waypoint_get_Name")]
     public async Task<string> GetNameAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -640,7 +640,7 @@ public class Waypoint : RemoteObject
     [Rpc("SpaceCenter", "Waypoint_set_Name")]
     public void SetName(string value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -656,7 +656,7 @@ public class Waypoint : RemoteObject
     [Rpc("SpaceCenter", "Waypoint_set_Name")]
     public async Task SetNameAsync(string value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -670,7 +670,7 @@ public class Waypoint : RemoteObject
     [Rpc("SpaceCenter", "Waypoint_get_NearSurface")]
     public bool GetNearSurface()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -684,7 +684,7 @@ public class Waypoint : RemoteObject
     [Rpc("SpaceCenter", "Waypoint_get_NearSurface")]
     public async Task<bool> GetNearSurfaceAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -698,7 +698,7 @@ public class Waypoint : RemoteObject
     [Rpc("SpaceCenter", "Waypoint_get_SurfaceAltitude")]
     public double GetSurfaceAltitude()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -713,7 +713,7 @@ public class Waypoint : RemoteObject
     [Rpc("SpaceCenter", "Waypoint_get_SurfaceAltitude")]
     public async Task<double> GetSurfaceAltitudeAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -728,7 +728,7 @@ public class Waypoint : RemoteObject
     [Rpc("SpaceCenter", "Waypoint_set_SurfaceAltitude")]
     public void SetSurfaceAltitude(double value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -745,7 +745,7 @@ public class Waypoint : RemoteObject
     [Rpc("SpaceCenter", "Waypoint_set_SurfaceAltitude")]
     public async Task SetSurfaceAltitudeAsync(double value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value

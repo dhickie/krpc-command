@@ -21,7 +21,7 @@ public class Sensor : RemoteObject
     [Rpc("SpaceCenter", "Sensor_get_Active")]
     public bool GetActive()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -35,7 +35,7 @@ public class Sensor : RemoteObject
     [Rpc("SpaceCenter", "Sensor_get_Active")]
     public async Task<bool> GetActiveAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -49,7 +49,7 @@ public class Sensor : RemoteObject
     [Rpc("SpaceCenter", "Sensor_set_Active")]
     public void SetActive(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -65,7 +65,7 @@ public class Sensor : RemoteObject
     [Rpc("SpaceCenter", "Sensor_set_Active")]
     public async Task SetActiveAsync(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -79,7 +79,7 @@ public class Sensor : RemoteObject
     [Rpc("SpaceCenter", "Sensor_get_Part")]
     public Part GetPart()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -93,7 +93,7 @@ public class Sensor : RemoteObject
     [Rpc("SpaceCenter", "Sensor_get_Part")]
     public async Task<Part> GetPartAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -106,7 +106,7 @@ public class Sensor : RemoteObject
     [Rpc("SpaceCenter", "Sensor_get_Value")]
     public string GetValue()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -120,7 +120,7 @@ public class Sensor : RemoteObject
     [Rpc("SpaceCenter", "Sensor_get_Value")]
     public async Task<string> GetValueAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };

@@ -21,7 +21,7 @@ public class Alarm : RemoteObject
     [Rpc("SpaceCenter", "Alarm_get_Description")]
     public string GetDescription()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -35,7 +35,7 @@ public class Alarm : RemoteObject
     [Rpc("SpaceCenter", "Alarm_get_Description")]
     public async Task<string> GetDescriptionAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -48,7 +48,7 @@ public class Alarm : RemoteObject
     [Rpc("SpaceCenter", "Alarm_get_EventOffset")]
     public double GetEventOffset()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -62,7 +62,7 @@ public class Alarm : RemoteObject
     [Rpc("SpaceCenter", "Alarm_get_EventOffset")]
     public async Task<double> GetEventOffsetAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -77,7 +77,7 @@ public class Alarm : RemoteObject
     [Rpc("SpaceCenter", "Alarm_get_ID")]
     public uint GetID()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -93,7 +93,7 @@ public class Alarm : RemoteObject
     [Rpc("SpaceCenter", "Alarm_get_ID")]
     public async Task<uint> GetIDAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -106,7 +106,7 @@ public class Alarm : RemoteObject
     [Rpc("SpaceCenter", "Alarm_get_Time")]
     public double GetTime()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -120,7 +120,7 @@ public class Alarm : RemoteObject
     [Rpc("SpaceCenter", "Alarm_get_Time")]
     public async Task<double> GetTimeAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -133,7 +133,7 @@ public class Alarm : RemoteObject
     [Rpc("SpaceCenter", "Alarm_get_TimeUntil")]
     public double GetTimeUntil()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -147,7 +147,7 @@ public class Alarm : RemoteObject
     [Rpc("SpaceCenter", "Alarm_get_TimeUntil")]
     public async Task<double> GetTimeUntilAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -160,7 +160,7 @@ public class Alarm : RemoteObject
     [Rpc("SpaceCenter", "Alarm_get_Title")]
     public string GetTitle()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -174,7 +174,7 @@ public class Alarm : RemoteObject
     [Rpc("SpaceCenter", "Alarm_get_Title")]
     public async Task<string> GetTitleAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -187,7 +187,7 @@ public class Alarm : RemoteObject
     [Rpc("SpaceCenter", "Alarm_get_Type")]
     public string GetAlarmType()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -201,7 +201,7 @@ public class Alarm : RemoteObject
     [Rpc("SpaceCenter", "Alarm_get_Type")]
     public async Task<string> GetAlarmTypeAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -214,7 +214,7 @@ public class Alarm : RemoteObject
     [Rpc("SpaceCenter", "Alarm_get_Vessel")]
     public Vessel? GetVessel()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -228,7 +228,7 @@ public class Alarm : RemoteObject
     [Rpc("SpaceCenter", "Alarm_get_Vessel")]
     public async Task<Vessel?> GetVesselAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };

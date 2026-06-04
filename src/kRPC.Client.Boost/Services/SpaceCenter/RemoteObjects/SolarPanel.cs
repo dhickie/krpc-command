@@ -21,7 +21,7 @@ public class SolarPanel : RemoteObject
     [Rpc("SpaceCenter", "SolarPanel_get_Deployable")]
     public bool GetDeployable()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -35,7 +35,7 @@ public class SolarPanel : RemoteObject
     [Rpc("SpaceCenter", "SolarPanel_get_Deployable")]
     public async Task<bool> GetDeployableAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -48,7 +48,7 @@ public class SolarPanel : RemoteObject
     [Rpc("SpaceCenter", "SolarPanel_get_Deployed")]
     public bool GetDeployed()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -62,7 +62,7 @@ public class SolarPanel : RemoteObject
     [Rpc("SpaceCenter", "SolarPanel_get_Deployed")]
     public async Task<bool> GetDeployedAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -76,7 +76,7 @@ public class SolarPanel : RemoteObject
     [Rpc("SpaceCenter", "SolarPanel_set_Deployed")]
     public void SetDeployed(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -92,7 +92,7 @@ public class SolarPanel : RemoteObject
     [Rpc("SpaceCenter", "SolarPanel_set_Deployed")]
     public async Task SetDeployedAsync(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -107,7 +107,7 @@ public class SolarPanel : RemoteObject
     [Rpc("SpaceCenter", "SolarPanel_get_EnergyFlow")]
     public float GetEnergyFlow()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -122,7 +122,7 @@ public class SolarPanel : RemoteObject
     [Rpc("SpaceCenter", "SolarPanel_get_EnergyFlow")]
     public async Task<float> GetEnergyFlowAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -135,7 +135,7 @@ public class SolarPanel : RemoteObject
     [Rpc("SpaceCenter", "SolarPanel_get_Part")]
     public Part GetPart()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -149,7 +149,7 @@ public class SolarPanel : RemoteObject
     [Rpc("SpaceCenter", "SolarPanel_get_Part")]
     public async Task<Part> GetPartAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -162,7 +162,7 @@ public class SolarPanel : RemoteObject
     [Rpc("SpaceCenter", "SolarPanel_get_State")]
     public SolarPanelState GetState()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -176,7 +176,7 @@ public class SolarPanel : RemoteObject
     [Rpc("SpaceCenter", "SolarPanel_get_State")]
     public async Task<SolarPanelState> GetStateAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -190,7 +190,7 @@ public class SolarPanel : RemoteObject
     [Rpc("SpaceCenter", "SolarPanel_get_SunExposure")]
     public float GetSunExposure()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -205,7 +205,7 @@ public class SolarPanel : RemoteObject
     [Rpc("SpaceCenter", "SolarPanel_get_SunExposure")]
     public async Task<float> GetSunExposureAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };

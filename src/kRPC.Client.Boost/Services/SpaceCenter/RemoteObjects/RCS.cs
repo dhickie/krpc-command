@@ -25,7 +25,7 @@ public class RCS : RemoteObject
     [Rpc("SpaceCenter", "RCS_get_Active")]
     public bool GetActive()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -42,7 +42,7 @@ public class RCS : RemoteObject
     [Rpc("SpaceCenter", "RCS_get_Active")]
     public async Task<bool> GetActiveAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -58,7 +58,7 @@ public class RCS : RemoteObject
     [Rpc("SpaceCenter", "RCS_get_AvailableForce")]
     public Tuple<Vector3D,Vector3D> GetAvailableForce()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -75,7 +75,7 @@ public class RCS : RemoteObject
     [Rpc("SpaceCenter", "RCS_get_AvailableForce")]
     public async Task<Tuple<Vector3D,Vector3D>> GetAvailableForceAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -91,7 +91,7 @@ public class RCS : RemoteObject
     [Rpc("SpaceCenter", "RCS_get_AvailableThrust")]
     public float GetAvailableThrust()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -108,7 +108,7 @@ public class RCS : RemoteObject
     [Rpc("SpaceCenter", "RCS_get_AvailableThrust")]
     public async Task<float> GetAvailableThrustAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -124,7 +124,7 @@ public class RCS : RemoteObject
     [Rpc("SpaceCenter", "RCS_get_AvailableTorque")]
     public Tuple<Vector3D,Vector3D> GetAvailableTorque()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -141,7 +141,7 @@ public class RCS : RemoteObject
     [Rpc("SpaceCenter", "RCS_get_AvailableTorque")]
     public async Task<Tuple<Vector3D,Vector3D>> GetAvailableTorqueAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -154,7 +154,7 @@ public class RCS : RemoteObject
     [Rpc("SpaceCenter", "RCS_get_Enabled")]
     public bool GetEnabled()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -168,7 +168,7 @@ public class RCS : RemoteObject
     [Rpc("SpaceCenter", "RCS_get_Enabled")]
     public async Task<bool> GetEnabledAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -182,7 +182,7 @@ public class RCS : RemoteObject
     [Rpc("SpaceCenter", "RCS_set_Enabled")]
     public void SetEnabled(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -198,7 +198,7 @@ public class RCS : RemoteObject
     [Rpc("SpaceCenter", "RCS_set_Enabled")]
     public async Task SetEnabledAsync(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -212,7 +212,7 @@ public class RCS : RemoteObject
     [Rpc("SpaceCenter", "RCS_get_ForwardEnabled")]
     public bool GetForwardEnabled()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -226,7 +226,7 @@ public class RCS : RemoteObject
     [Rpc("SpaceCenter", "RCS_get_ForwardEnabled")]
     public async Task<bool> GetForwardEnabledAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -240,7 +240,7 @@ public class RCS : RemoteObject
     [Rpc("SpaceCenter", "RCS_set_ForwardEnabled")]
     public void SetForwardEnabled(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -256,7 +256,7 @@ public class RCS : RemoteObject
     [Rpc("SpaceCenter", "RCS_set_ForwardEnabled")]
     public async Task SetForwardEnabledAsync(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -270,7 +270,7 @@ public class RCS : RemoteObject
     [Rpc("SpaceCenter", "RCS_get_HasFuel")]
     public bool GetHasFuel()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -284,7 +284,7 @@ public class RCS : RemoteObject
     [Rpc("SpaceCenter", "RCS_get_HasFuel")]
     public async Task<bool> GetHasFuelAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -297,7 +297,7 @@ public class RCS : RemoteObject
     [Rpc("SpaceCenter", "RCS_get_KerbinSeaLevelSpecificImpulse")]
     public float GetKerbinSeaLevelSpecificImpulse()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -311,7 +311,7 @@ public class RCS : RemoteObject
     [Rpc("SpaceCenter", "RCS_get_KerbinSeaLevelSpecificImpulse")]
     public async Task<float> GetKerbinSeaLevelSpecificImpulseAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -327,7 +327,7 @@ public class RCS : RemoteObject
     [Rpc("SpaceCenter", "RCS_get_MaxThrust")]
     public float GetMaxThrust()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -344,7 +344,7 @@ public class RCS : RemoteObject
     [Rpc("SpaceCenter", "RCS_get_MaxThrust")]
     public async Task<float> GetMaxThrustAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -358,7 +358,7 @@ public class RCS : RemoteObject
     [Rpc("SpaceCenter", "RCS_get_MaxVacuumThrust")]
     public float GetMaxVacuumThrust()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -373,7 +373,7 @@ public class RCS : RemoteObject
     [Rpc("SpaceCenter", "RCS_get_MaxVacuumThrust")]
     public async Task<float> GetMaxVacuumThrustAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -386,7 +386,7 @@ public class RCS : RemoteObject
     [Rpc("SpaceCenter", "RCS_get_Part")]
     public Part GetPart()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -400,7 +400,7 @@ public class RCS : RemoteObject
     [Rpc("SpaceCenter", "RCS_get_Part")]
     public async Task<Part> GetPartAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -413,7 +413,7 @@ public class RCS : RemoteObject
     [Rpc("SpaceCenter", "RCS_get_PitchEnabled")]
     public bool GetPitchEnabled()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -427,7 +427,7 @@ public class RCS : RemoteObject
     [Rpc("SpaceCenter", "RCS_get_PitchEnabled")]
     public async Task<bool> GetPitchEnabledAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -441,7 +441,7 @@ public class RCS : RemoteObject
     [Rpc("SpaceCenter", "RCS_set_PitchEnabled")]
     public void SetPitchEnabled(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -457,7 +457,7 @@ public class RCS : RemoteObject
     [Rpc("SpaceCenter", "RCS_set_PitchEnabled")]
     public async Task SetPitchEnabledAsync(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -472,7 +472,7 @@ public class RCS : RemoteObject
     [Rpc("SpaceCenter", "RCS_get_PropellantRatios")]
     public IDictionary<string,float> GetPropellantRatios()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -487,7 +487,7 @@ public class RCS : RemoteObject
     [Rpc("SpaceCenter", "RCS_get_PropellantRatios")]
     public async Task<IDictionary<string,float>> GetPropellantRatiosAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -500,7 +500,7 @@ public class RCS : RemoteObject
     [Rpc("SpaceCenter", "RCS_get_Propellants")]
     public IList<string> GetPropellants()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -514,7 +514,7 @@ public class RCS : RemoteObject
     [Rpc("SpaceCenter", "RCS_get_Propellants")]
     public async Task<IList<string>> GetPropellantsAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -527,7 +527,7 @@ public class RCS : RemoteObject
     [Rpc("SpaceCenter", "RCS_get_RightEnabled")]
     public bool GetRightEnabled()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -541,7 +541,7 @@ public class RCS : RemoteObject
     [Rpc("SpaceCenter", "RCS_get_RightEnabled")]
     public async Task<bool> GetRightEnabledAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -555,7 +555,7 @@ public class RCS : RemoteObject
     [Rpc("SpaceCenter", "RCS_set_RightEnabled")]
     public void SetRightEnabled(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -571,7 +571,7 @@ public class RCS : RemoteObject
     [Rpc("SpaceCenter", "RCS_set_RightEnabled")]
     public async Task SetRightEnabledAsync(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -585,7 +585,7 @@ public class RCS : RemoteObject
     [Rpc("SpaceCenter", "RCS_get_RollEnabled")]
     public bool GetRollEnabled()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -599,7 +599,7 @@ public class RCS : RemoteObject
     [Rpc("SpaceCenter", "RCS_get_RollEnabled")]
     public async Task<bool> GetRollEnabledAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -613,7 +613,7 @@ public class RCS : RemoteObject
     [Rpc("SpaceCenter", "RCS_set_RollEnabled")]
     public void SetRollEnabled(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -629,7 +629,7 @@ public class RCS : RemoteObject
     [Rpc("SpaceCenter", "RCS_set_RollEnabled")]
     public async Task SetRollEnabledAsync(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -644,7 +644,7 @@ public class RCS : RemoteObject
     [Rpc("SpaceCenter", "RCS_get_SpecificImpulse")]
     public float GetSpecificImpulse()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -659,7 +659,7 @@ public class RCS : RemoteObject
     [Rpc("SpaceCenter", "RCS_get_SpecificImpulse")]
     public async Task<float> GetSpecificImpulseAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -672,7 +672,7 @@ public class RCS : RemoteObject
     [Rpc("SpaceCenter", "RCS_get_ThrustLimit")]
     public float GetThrustLimit()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -686,7 +686,7 @@ public class RCS : RemoteObject
     [Rpc("SpaceCenter", "RCS_get_ThrustLimit")]
     public async Task<float> GetThrustLimitAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -700,7 +700,7 @@ public class RCS : RemoteObject
     [Rpc("SpaceCenter", "RCS_set_ThrustLimit")]
     public void SetThrustLimit(float value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -716,7 +716,7 @@ public class RCS : RemoteObject
     [Rpc("SpaceCenter", "RCS_set_ThrustLimit")]
     public async Task SetThrustLimitAsync(float value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -730,7 +730,7 @@ public class RCS : RemoteObject
     [Rpc("SpaceCenter", "RCS_get_Thrusters")]
     public IList<Thruster> GetThrusters()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -744,7 +744,7 @@ public class RCS : RemoteObject
     [Rpc("SpaceCenter", "RCS_get_Thrusters")]
     public async Task<IList<Thruster>> GetThrustersAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -757,7 +757,7 @@ public class RCS : RemoteObject
     [Rpc("SpaceCenter", "RCS_get_UpEnabled")]
     public bool GetUpEnabled()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -771,7 +771,7 @@ public class RCS : RemoteObject
     [Rpc("SpaceCenter", "RCS_get_UpEnabled")]
     public async Task<bool> GetUpEnabledAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -785,7 +785,7 @@ public class RCS : RemoteObject
     [Rpc("SpaceCenter", "RCS_set_UpEnabled")]
     public void SetUpEnabled(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -801,7 +801,7 @@ public class RCS : RemoteObject
     [Rpc("SpaceCenter", "RCS_set_UpEnabled")]
     public async Task SetUpEnabledAsync(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -815,7 +815,7 @@ public class RCS : RemoteObject
     [Rpc("SpaceCenter", "RCS_get_VacuumSpecificImpulse")]
     public float GetVacuumSpecificImpulse()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -829,7 +829,7 @@ public class RCS : RemoteObject
     [Rpc("SpaceCenter", "RCS_get_VacuumSpecificImpulse")]
     public async Task<float> GetVacuumSpecificImpulseAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -842,7 +842,7 @@ public class RCS : RemoteObject
     [Rpc("SpaceCenter", "RCS_get_YawEnabled")]
     public bool GetYawEnabled()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -856,7 +856,7 @@ public class RCS : RemoteObject
     [Rpc("SpaceCenter", "RCS_get_YawEnabled")]
     public async Task<bool> GetYawEnabledAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -870,7 +870,7 @@ public class RCS : RemoteObject
     [Rpc("SpaceCenter", "RCS_set_YawEnabled")]
     public void SetYawEnabled(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -886,7 +886,7 @@ public class RCS : RemoteObject
     [Rpc("SpaceCenter", "RCS_set_YawEnabled")]
     public async Task SetYawEnabledAsync(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value

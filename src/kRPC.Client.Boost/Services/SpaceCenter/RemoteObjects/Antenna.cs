@@ -21,7 +21,7 @@ public class Antenna : RemoteObject
     [Rpc("SpaceCenter", "Antenna_Cancel")]
     public void Cancel()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -35,7 +35,7 @@ public class Antenna : RemoteObject
     [Rpc("SpaceCenter", "Antenna_Cancel")]
     public async Task CancelAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -48,7 +48,7 @@ public class Antenna : RemoteObject
     [Rpc("SpaceCenter", "Antenna_Transmit")]
     public void Transmit()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -62,7 +62,7 @@ public class Antenna : RemoteObject
     [Rpc("SpaceCenter", "Antenna_Transmit")]
     public async Task TransmitAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -75,7 +75,7 @@ public class Antenna : RemoteObject
     [Rpc("SpaceCenter", "Antenna_get_AllowPartial")]
     public bool GetAllowPartial()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -89,7 +89,7 @@ public class Antenna : RemoteObject
     [Rpc("SpaceCenter", "Antenna_get_AllowPartial")]
     public async Task<bool> GetAllowPartialAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -103,7 +103,7 @@ public class Antenna : RemoteObject
     [Rpc("SpaceCenter", "Antenna_set_AllowPartial")]
     public void SetAllowPartial(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -119,7 +119,7 @@ public class Antenna : RemoteObject
     [Rpc("SpaceCenter", "Antenna_set_AllowPartial")]
     public async Task SetAllowPartialAsync(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -133,7 +133,7 @@ public class Antenna : RemoteObject
     [Rpc("SpaceCenter", "Antenna_get_CanTransmit")]
     public bool GetCanTransmit()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -147,7 +147,7 @@ public class Antenna : RemoteObject
     [Rpc("SpaceCenter", "Antenna_get_CanTransmit")]
     public async Task<bool> GetCanTransmitAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -161,7 +161,7 @@ public class Antenna : RemoteObject
     [Rpc("SpaceCenter", "Antenna_get_Combinable")]
     public bool GetCombinable()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -176,7 +176,7 @@ public class Antenna : RemoteObject
     [Rpc("SpaceCenter", "Antenna_get_Combinable")]
     public async Task<bool> GetCombinableAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -189,7 +189,7 @@ public class Antenna : RemoteObject
     [Rpc("SpaceCenter", "Antenna_get_CombinableExponent")]
     public double GetCombinableExponent()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -203,7 +203,7 @@ public class Antenna : RemoteObject
     [Rpc("SpaceCenter", "Antenna_get_CombinableExponent")]
     public async Task<double> GetCombinableExponentAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -216,7 +216,7 @@ public class Antenna : RemoteObject
     [Rpc("SpaceCenter", "Antenna_get_Deployable")]
     public bool GetDeployable()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -230,7 +230,7 @@ public class Antenna : RemoteObject
     [Rpc("SpaceCenter", "Antenna_get_Deployable")]
     public async Task<bool> GetDeployableAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -247,7 +247,7 @@ public class Antenna : RemoteObject
     [Rpc("SpaceCenter", "Antenna_get_Deployed")]
     public bool GetDeployed()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -265,7 +265,7 @@ public class Antenna : RemoteObject
     [Rpc("SpaceCenter", "Antenna_get_Deployed")]
     public async Task<bool> GetDeployedAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -279,7 +279,7 @@ public class Antenna : RemoteObject
     [Rpc("SpaceCenter", "Antenna_set_Deployed")]
     public void SetDeployed(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -295,7 +295,7 @@ public class Antenna : RemoteObject
     [Rpc("SpaceCenter", "Antenna_set_Deployed")]
     public async Task SetDeployedAsync(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -309,7 +309,7 @@ public class Antenna : RemoteObject
     [Rpc("SpaceCenter", "Antenna_get_PacketInterval")]
     public float GetPacketInterval()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -323,7 +323,7 @@ public class Antenna : RemoteObject
     [Rpc("SpaceCenter", "Antenna_get_PacketInterval")]
     public async Task<float> GetPacketIntervalAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -336,7 +336,7 @@ public class Antenna : RemoteObject
     [Rpc("SpaceCenter", "Antenna_get_PacketResourceCost")]
     public double GetPacketResourceCost()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -350,7 +350,7 @@ public class Antenna : RemoteObject
     [Rpc("SpaceCenter", "Antenna_get_PacketResourceCost")]
     public async Task<double> GetPacketResourceCostAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -363,7 +363,7 @@ public class Antenna : RemoteObject
     [Rpc("SpaceCenter", "Antenna_get_PacketSize")]
     public float GetPacketSize()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -377,7 +377,7 @@ public class Antenna : RemoteObject
     [Rpc("SpaceCenter", "Antenna_get_PacketSize")]
     public async Task<float> GetPacketSizeAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -390,7 +390,7 @@ public class Antenna : RemoteObject
     [Rpc("SpaceCenter", "Antenna_get_Part")]
     public Part GetPart()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -404,7 +404,7 @@ public class Antenna : RemoteObject
     [Rpc("SpaceCenter", "Antenna_get_Part")]
     public async Task<Part> GetPartAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -417,7 +417,7 @@ public class Antenna : RemoteObject
     [Rpc("SpaceCenter", "Antenna_get_Power")]
     public double GetPower()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -431,7 +431,7 @@ public class Antenna : RemoteObject
     [Rpc("SpaceCenter", "Antenna_get_Power")]
     public async Task<double> GetPowerAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -444,7 +444,7 @@ public class Antenna : RemoteObject
     [Rpc("SpaceCenter", "Antenna_get_State")]
     public AntennaState GetState()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -458,7 +458,7 @@ public class Antenna : RemoteObject
     [Rpc("SpaceCenter", "Antenna_get_State")]
     public async Task<AntennaState> GetStateAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };

@@ -22,7 +22,7 @@ public class ContractManager : RemoteObject
     [Rpc("SpaceCenter", "ContractManager_get_ActiveContracts")]
     public IList<Contract> GetActiveContracts()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -36,7 +36,7 @@ public class ContractManager : RemoteObject
     [Rpc("SpaceCenter", "ContractManager_get_ActiveContracts")]
     public async Task<IList<Contract>> GetActiveContractsAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -49,7 +49,7 @@ public class ContractManager : RemoteObject
     [Rpc("SpaceCenter", "ContractManager_get_AllContracts")]
     public IList<Contract> GetAllContracts()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -63,7 +63,7 @@ public class ContractManager : RemoteObject
     [Rpc("SpaceCenter", "ContractManager_get_AllContracts")]
     public async Task<IList<Contract>> GetAllContractsAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -76,7 +76,7 @@ public class ContractManager : RemoteObject
     [Rpc("SpaceCenter", "ContractManager_get_CompletedContracts")]
     public IList<Contract> GetCompletedContracts()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -90,7 +90,7 @@ public class ContractManager : RemoteObject
     [Rpc("SpaceCenter", "ContractManager_get_CompletedContracts")]
     public async Task<IList<Contract>> GetCompletedContractsAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -103,7 +103,7 @@ public class ContractManager : RemoteObject
     [Rpc("SpaceCenter", "ContractManager_get_FailedContracts")]
     public IList<Contract> GetFailedContracts()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -117,7 +117,7 @@ public class ContractManager : RemoteObject
     [Rpc("SpaceCenter", "ContractManager_get_FailedContracts")]
     public async Task<IList<Contract>> GetFailedContractsAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -130,7 +130,7 @@ public class ContractManager : RemoteObject
     [Rpc("SpaceCenter", "ContractManager_get_OfferedContracts")]
     public IList<Contract> GetOfferedContracts()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -144,7 +144,7 @@ public class ContractManager : RemoteObject
     [Rpc("SpaceCenter", "ContractManager_get_OfferedContracts")]
     public async Task<IList<Contract>> GetOfferedContractsAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -157,7 +157,7 @@ public class ContractManager : RemoteObject
     [Rpc("SpaceCenter", "ContractManager_get_Types")]
     public ISet<string> GetTypes()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -171,7 +171,7 @@ public class ContractManager : RemoteObject
     [Rpc("SpaceCenter", "ContractManager_get_Types")]
     public async Task<ISet<string>> GetTypesAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };

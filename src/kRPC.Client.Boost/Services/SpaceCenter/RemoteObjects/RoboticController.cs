@@ -22,7 +22,7 @@ public class RoboticController : RemoteObject
     [Rpc("SpaceCenter", "RoboticController_AddAxis")]
     public bool AddAxis(Module module, string fieldName)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             module,
@@ -39,7 +39,7 @@ public class RoboticController : RemoteObject
     [Rpc("SpaceCenter", "RoboticController_AddAxis")]
     public async Task<bool> AddAxisAsync(Module module, string fieldName)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             module,
@@ -55,7 +55,7 @@ public class RoboticController : RemoteObject
     [Rpc("SpaceCenter", "RoboticController_AddKeyFrame")]
     public bool AddKeyFrame(Module module, string fieldName, float time, float value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             module,
@@ -74,7 +74,7 @@ public class RoboticController : RemoteObject
     [Rpc("SpaceCenter", "RoboticController_AddKeyFrame")]
     public async Task<bool> AddKeyFrameAsync(Module module, string fieldName, float time, float value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             module,
@@ -91,7 +91,7 @@ public class RoboticController : RemoteObject
     [Rpc("SpaceCenter", "RoboticController_Axes")]
     public IList<IList<string>> Axes()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -105,7 +105,7 @@ public class RoboticController : RemoteObject
     [Rpc("SpaceCenter", "RoboticController_Axes")]
     public async Task<IList<IList<string>>> AxesAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -119,7 +119,7 @@ public class RoboticController : RemoteObject
     [Rpc("SpaceCenter", "RoboticController_ClearAxis")]
     public bool ClearAxis(Module module, string fieldName)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             module,
@@ -136,7 +136,7 @@ public class RoboticController : RemoteObject
     [Rpc("SpaceCenter", "RoboticController_ClearAxis")]
     public async Task<bool> ClearAxisAsync(Module module, string fieldName)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             module,
@@ -151,7 +151,7 @@ public class RoboticController : RemoteObject
     [Rpc("SpaceCenter", "RoboticController_HasPart")]
     public bool HasPart(Part part)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             part
@@ -166,7 +166,7 @@ public class RoboticController : RemoteObject
     [Rpc("SpaceCenter", "RoboticController_HasPart")]
     public async Task<bool> HasPartAsync(Part part)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             part
@@ -180,7 +180,7 @@ public class RoboticController : RemoteObject
     [Rpc("SpaceCenter", "RoboticController_get_Part")]
     public Part GetPart()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -194,7 +194,7 @@ public class RoboticController : RemoteObject
     [Rpc("SpaceCenter", "RoboticController_get_Part")]
     public async Task<Part> GetPartAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };

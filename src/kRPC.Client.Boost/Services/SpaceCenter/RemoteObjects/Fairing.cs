@@ -22,7 +22,7 @@ public class Fairing : RemoteObject
     [Rpc("SpaceCenter", "Fairing_Jettison")]
     public void Jettison()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -36,7 +36,7 @@ public class Fairing : RemoteObject
     [Rpc("SpaceCenter", "Fairing_Jettison")]
     public async Task JettisonAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -49,7 +49,7 @@ public class Fairing : RemoteObject
     [Rpc("SpaceCenter", "Fairing_get_Jettisoned")]
     public bool GetJettisoned()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -63,7 +63,7 @@ public class Fairing : RemoteObject
     [Rpc("SpaceCenter", "Fairing_get_Jettisoned")]
     public async Task<bool> GetJettisonedAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -76,7 +76,7 @@ public class Fairing : RemoteObject
     [Rpc("SpaceCenter", "Fairing_get_Part")]
     public Part GetPart()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -90,7 +90,7 @@ public class Fairing : RemoteObject
     [Rpc("SpaceCenter", "Fairing_get_Part")]
     public async Task<Part> GetPartAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };

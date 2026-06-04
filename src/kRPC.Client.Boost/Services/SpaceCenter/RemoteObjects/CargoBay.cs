@@ -21,7 +21,7 @@ public class CargoBay : RemoteObject
     [Rpc("SpaceCenter", "CargoBay_get_Open")]
     public bool GetOpen()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -35,7 +35,7 @@ public class CargoBay : RemoteObject
     [Rpc("SpaceCenter", "CargoBay_get_Open")]
     public async Task<bool> GetOpenAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -49,7 +49,7 @@ public class CargoBay : RemoteObject
     [Rpc("SpaceCenter", "CargoBay_set_Open")]
     public void SetOpen(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -65,7 +65,7 @@ public class CargoBay : RemoteObject
     [Rpc("SpaceCenter", "CargoBay_set_Open")]
     public async Task SetOpenAsync(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -79,7 +79,7 @@ public class CargoBay : RemoteObject
     [Rpc("SpaceCenter", "CargoBay_get_Part")]
     public Part GetPart()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -93,7 +93,7 @@ public class CargoBay : RemoteObject
     [Rpc("SpaceCenter", "CargoBay_get_Part")]
     public async Task<Part> GetPartAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -106,7 +106,7 @@ public class CargoBay : RemoteObject
     [Rpc("SpaceCenter", "CargoBay_get_State")]
     public CargoBayState GetState()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -120,7 +120,7 @@ public class CargoBay : RemoteObject
     [Rpc("SpaceCenter", "CargoBay_get_State")]
     public async Task<CargoBayState> GetStateAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };

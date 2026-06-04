@@ -30,7 +30,7 @@ public class Node : RemoteObject
     [Rpc("SpaceCenter", "Node_BurnVector")]
     public Vector3D BurnVector(ReferenceFrame? referenceFrame = null)
     {
-        var args = new object?[]
+        var args = new ProcedureArgument[]
         {
             this,
             referenceFrame
@@ -53,7 +53,7 @@ public class Node : RemoteObject
     [Rpc("SpaceCenter", "Node_BurnVector")]
     public async Task<Vector3D> BurnVectorAsync(ReferenceFrame? referenceFrame = null)
     {
-        var args = new object?[]
+        var args = new ProcedureArgument[]
         {
             this,
             referenceFrame
@@ -70,7 +70,7 @@ public class Node : RemoteObject
     [Rpc("SpaceCenter", "Node_Direction")]
     public Vector3D Direction(ReferenceFrame referenceFrame)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             referenceFrame
@@ -88,7 +88,7 @@ public class Node : RemoteObject
     [Rpc("SpaceCenter", "Node_Direction")]
     public async Task<Vector3D> DirectionAsync(ReferenceFrame referenceFrame)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             referenceFrame
@@ -105,7 +105,7 @@ public class Node : RemoteObject
     [Rpc("SpaceCenter", "Node_Position")]
     public Vector3D Position(ReferenceFrame referenceFrame)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             referenceFrame
@@ -123,7 +123,7 @@ public class Node : RemoteObject
     [Rpc("SpaceCenter", "Node_Position")]
     public async Task<Vector3D> PositionAsync(ReferenceFrame referenceFrame)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             referenceFrame
@@ -145,7 +145,7 @@ public class Node : RemoteObject
     [Rpc("SpaceCenter", "Node_RemainingBurnVector")]
     public Vector3D RemainingBurnVector(ReferenceFrame? referenceFrame = null)
     {
-        var args = new object?[]
+        var args = new ProcedureArgument[]
         {
             this,
             referenceFrame
@@ -168,7 +168,7 @@ public class Node : RemoteObject
     [Rpc("SpaceCenter", "Node_RemainingBurnVector")]
     public async Task<Vector3D> RemainingBurnVectorAsync(ReferenceFrame? referenceFrame = null)
     {
-        var args = new object?[]
+        var args = new ProcedureArgument[]
         {
             this,
             referenceFrame
@@ -182,7 +182,7 @@ public class Node : RemoteObject
     [Rpc("SpaceCenter", "Node_Remove")]
     public void Remove()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -196,7 +196,7 @@ public class Node : RemoteObject
     [Rpc("SpaceCenter", "Node_Remove")]
     public async Task RemoveAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -212,7 +212,7 @@ public class Node : RemoteObject
     [Rpc("SpaceCenter", "Node_get_DeltaV")]
     public double GetDeltaV()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -229,7 +229,7 @@ public class Node : RemoteObject
     [Rpc("SpaceCenter", "Node_get_DeltaV")]
     public async Task<double> GetDeltaVAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -243,7 +243,7 @@ public class Node : RemoteObject
     [Rpc("SpaceCenter", "Node_set_DeltaV")]
     public void SetDeltaV(double value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -259,7 +259,7 @@ public class Node : RemoteObject
     [Rpc("SpaceCenter", "Node_set_DeltaV")]
     public async Task SetDeltaVAsync(double value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -274,7 +274,7 @@ public class Node : RemoteObject
     [Rpc("SpaceCenter", "Node_get_Normal")]
     public double GetNormal()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -289,7 +289,7 @@ public class Node : RemoteObject
     [Rpc("SpaceCenter", "Node_get_Normal")]
     public async Task<double> GetNormalAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -304,7 +304,7 @@ public class Node : RemoteObject
     [Rpc("SpaceCenter", "Node_set_Normal")]
     public void SetNormal(double value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -321,7 +321,7 @@ public class Node : RemoteObject
     [Rpc("SpaceCenter", "Node_set_Normal")]
     public async Task SetNormalAsync(double value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -335,7 +335,7 @@ public class Node : RemoteObject
     [Rpc("SpaceCenter", "Node_get_Orbit")]
     public Orbit GetOrbit()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -349,7 +349,7 @@ public class Node : RemoteObject
     [Rpc("SpaceCenter", "Node_get_Orbit")]
     public async Task<Orbit> GetOrbitAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -368,7 +368,7 @@ public class Node : RemoteObject
     [Rpc("SpaceCenter", "Node_get_OrbitalReferenceFrame")]
     public ReferenceFrame GetOrbitalReferenceFrame()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -388,7 +388,7 @@ public class Node : RemoteObject
     [Rpc("SpaceCenter", "Node_get_OrbitalReferenceFrame")]
     public async Task<ReferenceFrame> GetOrbitalReferenceFrameAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -402,7 +402,7 @@ public class Node : RemoteObject
     [Rpc("SpaceCenter", "Node_get_Prograde")]
     public double GetPrograde()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -417,7 +417,7 @@ public class Node : RemoteObject
     [Rpc("SpaceCenter", "Node_get_Prograde")]
     public async Task<double> GetProgradeAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -432,7 +432,7 @@ public class Node : RemoteObject
     [Rpc("SpaceCenter", "Node_set_Prograde")]
     public void SetPrograde(double value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -449,7 +449,7 @@ public class Node : RemoteObject
     [Rpc("SpaceCenter", "Node_set_Prograde")]
     public async Task SetProgradeAsync(double value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -464,7 +464,7 @@ public class Node : RemoteObject
     [Rpc("SpaceCenter", "Node_get_Radial")]
     public double GetRadial()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -479,7 +479,7 @@ public class Node : RemoteObject
     [Rpc("SpaceCenter", "Node_get_Radial")]
     public async Task<double> GetRadialAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -494,7 +494,7 @@ public class Node : RemoteObject
     [Rpc("SpaceCenter", "Node_set_Radial")]
     public void SetRadial(double value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -511,7 +511,7 @@ public class Node : RemoteObject
     [Rpc("SpaceCenter", "Node_set_Radial")]
     public async Task SetRadialAsync(double value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -526,7 +526,7 @@ public class Node : RemoteObject
     [Rpc("SpaceCenter", "Node_get_ReferenceFrame")]
     public ReferenceFrame GetReferenceFrame()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -541,7 +541,7 @@ public class Node : RemoteObject
     [Rpc("SpaceCenter", "Node_get_ReferenceFrame")]
     public async Task<ReferenceFrame> GetReferenceFrameAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -555,7 +555,7 @@ public class Node : RemoteObject
     [Rpc("SpaceCenter", "Node_get_RemainingDeltaV")]
     public double GetRemainingDeltaV()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -570,7 +570,7 @@ public class Node : RemoteObject
     [Rpc("SpaceCenter", "Node_get_RemainingDeltaV")]
     public async Task<double> GetRemainingDeltaVAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -583,7 +583,7 @@ public class Node : RemoteObject
     [Rpc("SpaceCenter", "Node_get_TimeTo")]
     public double GetTimeTo()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -597,7 +597,7 @@ public class Node : RemoteObject
     [Rpc("SpaceCenter", "Node_get_TimeTo")]
     public async Task<double> GetTimeToAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -610,7 +610,7 @@ public class Node : RemoteObject
     [Rpc("SpaceCenter", "Node_get_UT")]
     public double GetUT()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -624,7 +624,7 @@ public class Node : RemoteObject
     [Rpc("SpaceCenter", "Node_get_UT")]
     public async Task<double> GetUTAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -638,7 +638,7 @@ public class Node : RemoteObject
     [Rpc("SpaceCenter", "Node_set_UT")]
     public void SetUT(double value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -654,7 +654,7 @@ public class Node : RemoteObject
     [Rpc("SpaceCenter", "Node_set_UT")]
     public async Task SetUTAsync(double value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value

@@ -21,7 +21,7 @@ public class ResourceHarvester : RemoteObject
     [Rpc("SpaceCenter", "ResourceHarvester_get_Active")]
     public bool GetActive()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -35,7 +35,7 @@ public class ResourceHarvester : RemoteObject
     [Rpc("SpaceCenter", "ResourceHarvester_get_Active")]
     public async Task<bool> GetActiveAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -49,7 +49,7 @@ public class ResourceHarvester : RemoteObject
     [Rpc("SpaceCenter", "ResourceHarvester_set_Active")]
     public void SetActive(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -65,7 +65,7 @@ public class ResourceHarvester : RemoteObject
     [Rpc("SpaceCenter", "ResourceHarvester_set_Active")]
     public async Task SetActiveAsync(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -79,7 +79,7 @@ public class ResourceHarvester : RemoteObject
     [Rpc("SpaceCenter", "ResourceHarvester_get_CoreTemperature")]
     public float GetCoreTemperature()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -93,7 +93,7 @@ public class ResourceHarvester : RemoteObject
     [Rpc("SpaceCenter", "ResourceHarvester_get_CoreTemperature")]
     public async Task<float> GetCoreTemperatureAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -106,7 +106,7 @@ public class ResourceHarvester : RemoteObject
     [Rpc("SpaceCenter", "ResourceHarvester_get_Deployed")]
     public bool GetDeployed()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -120,7 +120,7 @@ public class ResourceHarvester : RemoteObject
     [Rpc("SpaceCenter", "ResourceHarvester_get_Deployed")]
     public async Task<bool> GetDeployedAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -134,7 +134,7 @@ public class ResourceHarvester : RemoteObject
     [Rpc("SpaceCenter", "ResourceHarvester_set_Deployed")]
     public void SetDeployed(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -150,7 +150,7 @@ public class ResourceHarvester : RemoteObject
     [Rpc("SpaceCenter", "ResourceHarvester_set_Deployed")]
     public async Task SetDeployedAsync(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -164,7 +164,7 @@ public class ResourceHarvester : RemoteObject
     [Rpc("SpaceCenter", "ResourceHarvester_get_ExtractionRate")]
     public float GetExtractionRate()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -178,7 +178,7 @@ public class ResourceHarvester : RemoteObject
     [Rpc("SpaceCenter", "ResourceHarvester_get_ExtractionRate")]
     public async Task<float> GetExtractionRateAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -191,7 +191,7 @@ public class ResourceHarvester : RemoteObject
     [Rpc("SpaceCenter", "ResourceHarvester_get_OptimumCoreTemperature")]
     public float GetOptimumCoreTemperature()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -205,7 +205,7 @@ public class ResourceHarvester : RemoteObject
     [Rpc("SpaceCenter", "ResourceHarvester_get_OptimumCoreTemperature")]
     public async Task<float> GetOptimumCoreTemperatureAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -218,7 +218,7 @@ public class ResourceHarvester : RemoteObject
     [Rpc("SpaceCenter", "ResourceHarvester_get_Part")]
     public Part GetPart()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -232,7 +232,7 @@ public class ResourceHarvester : RemoteObject
     [Rpc("SpaceCenter", "ResourceHarvester_get_Part")]
     public async Task<Part> GetPartAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -245,7 +245,7 @@ public class ResourceHarvester : RemoteObject
     [Rpc("SpaceCenter", "ResourceHarvester_get_State")]
     public ResourceHarvesterState GetState()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -259,7 +259,7 @@ public class ResourceHarvester : RemoteObject
     [Rpc("SpaceCenter", "ResourceHarvester_get_State")]
     public async Task<ResourceHarvesterState> GetStateAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -272,7 +272,7 @@ public class ResourceHarvester : RemoteObject
     [Rpc("SpaceCenter", "ResourceHarvester_get_ThermalEfficiency")]
     public float GetThermalEfficiency()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -286,7 +286,7 @@ public class ResourceHarvester : RemoteObject
     [Rpc("SpaceCenter", "ResourceHarvester_get_ThermalEfficiency")]
     public async Task<float> GetThermalEfficiencyAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };

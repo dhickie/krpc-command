@@ -30,7 +30,7 @@ public class ResourceTransfer : RemoteObject
     [Rpc("SpaceCenter", "ResourceTransfer_static_Start")]
     public ResourceTransfer Start(Part fromPart, Part toPart, string resource, float maxAmount)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             fromPart,
             toPart,
@@ -56,7 +56,7 @@ public class ResourceTransfer : RemoteObject
     [Rpc("SpaceCenter", "ResourceTransfer_static_Start")]
     public async Task<ResourceTransfer> StartAsync(Part fromPart, Part toPart, string resource, float maxAmount)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             fromPart,
             toPart,
@@ -72,7 +72,7 @@ public class ResourceTransfer : RemoteObject
     [Rpc("SpaceCenter", "ResourceTransfer_get_Amount")]
     public float GetAmount()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -86,7 +86,7 @@ public class ResourceTransfer : RemoteObject
     [Rpc("SpaceCenter", "ResourceTransfer_get_Amount")]
     public async Task<float> GetAmountAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -99,7 +99,7 @@ public class ResourceTransfer : RemoteObject
     [Rpc("SpaceCenter", "ResourceTransfer_get_Complete")]
     public bool GetComplete()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -113,7 +113,7 @@ public class ResourceTransfer : RemoteObject
     [Rpc("SpaceCenter", "ResourceTransfer_get_Complete")]
     public async Task<bool> GetCompleteAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };

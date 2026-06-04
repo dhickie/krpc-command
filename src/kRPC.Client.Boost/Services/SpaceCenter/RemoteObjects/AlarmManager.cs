@@ -25,7 +25,7 @@ public class AlarmManager : RemoteObject
     [Rpc("SpaceCenter", "AlarmManager_static_AddAlarm")]
     public Alarm AddAlarm(double time, string title = "Alarm", string description = "")
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             time,
             title,
@@ -44,7 +44,7 @@ public class AlarmManager : RemoteObject
     [Rpc("SpaceCenter", "AlarmManager_static_AddAlarm")]
     public async Task<Alarm> AddAlarmAsync(double time, string title = "Alarm", string description = "")
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             time,
             title,
@@ -63,7 +63,7 @@ public class AlarmManager : RemoteObject
     [Rpc("SpaceCenter", "AlarmManager_static_AddApoapsisAlarm")]
     public Alarm AddApoapsisAlarm(Vessel vessel, double offset = 60.0, string title = "Apoapsis Alarm", string description = "")
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             vessel,
             offset,
@@ -84,7 +84,7 @@ public class AlarmManager : RemoteObject
     [Rpc("SpaceCenter", "AlarmManager_static_AddApoapsisAlarm")]
     public async Task<Alarm> AddApoapsisAlarmAsync(Vessel vessel, double offset = 60.0, string title = "Apoapsis Alarm", string description = "")
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             vessel,
             offset,
@@ -106,7 +106,7 @@ public class AlarmManager : RemoteObject
     [Rpc("SpaceCenter", "AlarmManager_static_AddManeuverNodeAlarm")]
     public Alarm AddManeuverNodeAlarm(Vessel vessel, Node node, double offset = 60.0, bool addBurnTime = true, string title = "Maneuver Node Alarm", string description = "")
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             vessel,
             node,
@@ -131,7 +131,7 @@ public class AlarmManager : RemoteObject
     [Rpc("SpaceCenter", "AlarmManager_static_AddManeuverNodeAlarm")]
     public async Task<Alarm> AddManeuverNodeAlarmAsync(Vessel vessel, Node node, double offset = 60.0, bool addBurnTime = true, string title = "Maneuver Node Alarm", string description = "")
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             vessel,
             node,
@@ -153,7 +153,7 @@ public class AlarmManager : RemoteObject
     [Rpc("SpaceCenter", "AlarmManager_static_AddPeriapsisAlarm")]
     public Alarm AddPeriapsisAlarm(Vessel vessel, double offset = 60.0, string title = "Periapsis Alarm", string description = "")
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             vessel,
             offset,
@@ -174,7 +174,7 @@ public class AlarmManager : RemoteObject
     [Rpc("SpaceCenter", "AlarmManager_static_AddPeriapsisAlarm")]
     public async Task<Alarm> AddPeriapsisAlarmAsync(Vessel vessel, double offset = 60.0, string title = "Periapsis Alarm", string description = "")
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             vessel,
             offset,
@@ -194,7 +194,7 @@ public class AlarmManager : RemoteObject
     [Rpc("SpaceCenter", "AlarmManager_static_AddSOIAlarm")]
     public Alarm AddSOIAlarm(Vessel vessel, double offset = 60.0, string title = "SOI Change Alarm", string description = "")
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             vessel,
             offset,
@@ -215,7 +215,7 @@ public class AlarmManager : RemoteObject
     [Rpc("SpaceCenter", "AlarmManager_static_AddSOIAlarm")]
     public async Task<Alarm> AddSOIAlarmAsync(Vessel vessel, double offset = 60.0, string title = "SOI Change Alarm", string description = "")
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             vessel,
             offset,
@@ -235,7 +235,7 @@ public class AlarmManager : RemoteObject
     [Rpc("SpaceCenter", "AlarmManager_static_AddVesselAlarm")]
     public Alarm AddVesselAlarm(double time, Vessel vessel, string title = "Vessel Alarm", string description = "")
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             time,
             vessel,
@@ -256,7 +256,7 @@ public class AlarmManager : RemoteObject
     [Rpc("SpaceCenter", "AlarmManager_static_AddVesselAlarm")]
     public async Task<Alarm> AddVesselAlarmAsync(double time, Vessel vessel, string title = "Vessel Alarm", string description = "")
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             time,
             vessel,
@@ -272,7 +272,7 @@ public class AlarmManager : RemoteObject
     [Rpc("SpaceCenter", "AlarmManager_get_Alarms")]
     public IList<Alarm> GetAlarms()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -286,7 +286,7 @@ public class AlarmManager : RemoteObject
     [Rpc("SpaceCenter", "AlarmManager_get_Alarms")]
     public async Task<IList<Alarm>> GetAlarmsAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };

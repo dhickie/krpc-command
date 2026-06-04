@@ -21,7 +21,7 @@ public class Radiator : RemoteObject
     [Rpc("SpaceCenter", "Radiator_get_Deployable")]
     public bool GetDeployable()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -35,7 +35,7 @@ public class Radiator : RemoteObject
     [Rpc("SpaceCenter", "Radiator_get_Deployable")]
     public async Task<bool> GetDeployableAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -49,7 +49,7 @@ public class Radiator : RemoteObject
     [Rpc("SpaceCenter", "Radiator_get_Deployed")]
     public bool GetDeployed()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -64,7 +64,7 @@ public class Radiator : RemoteObject
     [Rpc("SpaceCenter", "Radiator_get_Deployed")]
     public async Task<bool> GetDeployedAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -79,7 +79,7 @@ public class Radiator : RemoteObject
     [Rpc("SpaceCenter", "Radiator_set_Deployed")]
     public void SetDeployed(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -96,7 +96,7 @@ public class Radiator : RemoteObject
     [Rpc("SpaceCenter", "Radiator_set_Deployed")]
     public async Task SetDeployedAsync(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -110,7 +110,7 @@ public class Radiator : RemoteObject
     [Rpc("SpaceCenter", "Radiator_get_Part")]
     public Part GetPart()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -124,7 +124,7 @@ public class Radiator : RemoteObject
     [Rpc("SpaceCenter", "Radiator_get_Part")]
     public async Task<Part> GetPartAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -140,7 +140,7 @@ public class Radiator : RemoteObject
     [Rpc("SpaceCenter", "Radiator_get_State")]
     public RadiatorState GetState()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -157,7 +157,7 @@ public class Radiator : RemoteObject
     [Rpc("SpaceCenter", "Radiator_get_State")]
     public async Task<RadiatorState> GetStateAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };

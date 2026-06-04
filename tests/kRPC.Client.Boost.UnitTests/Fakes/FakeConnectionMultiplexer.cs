@@ -6,7 +6,7 @@ using kRPC.Client.Boost.Services.SpaceCenter;
 
 namespace kRPC.Client.Boost.UnitTests.Fakes;
 
-public class FakeConnectionMultiplexer : IConnectionMultiplexer
+internal class FakeConnectionMultiplexer : IConnectionMultiplexer
 {
     public KRPC KRPC { get; }
     public SpaceCenter SpaceCenter { get; }
@@ -31,22 +31,22 @@ public class FakeConnectionMultiplexer : IConnectionMultiplexer
         throw new NotImplementedException();
     }
 
-    public void Invoke(string service, string procedure, object?[]? arguments = null)
+    public void Invoke(string service, string procedure, ProcedureArgument[]? arguments = null)
     {
         throw new NotImplementedException();
     }
 
-    public TResponse? Invoke<TResponse>(string service, string procedure, object?[]? arguments = null)
+    public TResponse? Invoke<TResponse>(string service, string procedure, ProcedureArgument[]? arguments = null)
     {
         throw new NotImplementedException();
     }
 
-    public Task InvokeAsync(string service, string procedure, object?[]? arguments = null)
+    public Task InvokeAsync(string service, string procedure, ProcedureArgument[]? arguments = null)
     {
         throw new NotImplementedException();
     }
 
-    public Task<TResponse?> InvokeAsync<TResponse>(string service, string procedure, object?[]? arguments = null)
+    public Task<TResponse?> InvokeAsync<TResponse>(string service, string procedure, ProcedureArgument[]? arguments = null)
     {
         throw new NotImplementedException();
     }

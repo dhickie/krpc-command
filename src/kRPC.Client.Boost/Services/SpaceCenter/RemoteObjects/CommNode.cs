@@ -21,7 +21,7 @@ public class CommNode : RemoteObject
     [Rpc("SpaceCenter", "CommNode_get_IsControlPoint")]
     public bool GetIsControlPoint()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -35,7 +35,7 @@ public class CommNode : RemoteObject
     [Rpc("SpaceCenter", "CommNode_get_IsControlPoint")]
     public async Task<bool> GetIsControlPointAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -48,7 +48,7 @@ public class CommNode : RemoteObject
     [Rpc("SpaceCenter", "CommNode_get_IsHome")]
     public bool GetIsHome()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -62,7 +62,7 @@ public class CommNode : RemoteObject
     [Rpc("SpaceCenter", "CommNode_get_IsHome")]
     public async Task<bool> GetIsHomeAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -75,7 +75,7 @@ public class CommNode : RemoteObject
     [Rpc("SpaceCenter", "CommNode_get_IsVessel")]
     public bool GetIsVessel()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -89,7 +89,7 @@ public class CommNode : RemoteObject
     [Rpc("SpaceCenter", "CommNode_get_IsVessel")]
     public async Task<bool> GetIsVesselAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -102,7 +102,7 @@ public class CommNode : RemoteObject
     [Rpc("SpaceCenter", "CommNode_get_Name")]
     public string GetName()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -116,7 +116,7 @@ public class CommNode : RemoteObject
     [Rpc("SpaceCenter", "CommNode_get_Name")]
     public async Task<string> GetNameAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -129,7 +129,7 @@ public class CommNode : RemoteObject
     [Rpc("SpaceCenter", "CommNode_get_Vessel")]
     public Vessel GetVessel()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -143,7 +143,7 @@ public class CommNode : RemoteObject
     [Rpc("SpaceCenter", "CommNode_get_Vessel")]
     public async Task<Vessel> GetVesselAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };

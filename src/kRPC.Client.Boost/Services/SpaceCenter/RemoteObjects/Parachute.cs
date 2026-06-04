@@ -22,7 +22,7 @@ public class Parachute : RemoteObject
     [Rpc("SpaceCenter", "Parachute_Arm")]
     public void Arm()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -37,7 +37,7 @@ public class Parachute : RemoteObject
     [Rpc("SpaceCenter", "Parachute_Arm")]
     public async Task ArmAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -50,7 +50,7 @@ public class Parachute : RemoteObject
     [Rpc("SpaceCenter", "Parachute_Cut")]
     public void Cut()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -64,7 +64,7 @@ public class Parachute : RemoteObject
     [Rpc("SpaceCenter", "Parachute_Cut")]
     public async Task CutAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -78,7 +78,7 @@ public class Parachute : RemoteObject
     [Rpc("SpaceCenter", "Parachute_Deploy")]
     public void Deploy()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -93,7 +93,7 @@ public class Parachute : RemoteObject
     [Rpc("SpaceCenter", "Parachute_Deploy")]
     public async Task DeployAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -106,7 +106,7 @@ public class Parachute : RemoteObject
     [Rpc("SpaceCenter", "Parachute_get_Armed")]
     public bool GetArmed()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -120,7 +120,7 @@ public class Parachute : RemoteObject
     [Rpc("SpaceCenter", "Parachute_get_Armed")]
     public async Task<bool> GetArmedAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -134,7 +134,7 @@ public class Parachute : RemoteObject
     [Rpc("SpaceCenter", "Parachute_get_DeployAltitude")]
     public float GetDeployAltitude()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -149,7 +149,7 @@ public class Parachute : RemoteObject
     [Rpc("SpaceCenter", "Parachute_get_DeployAltitude")]
     public async Task<float> GetDeployAltitudeAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -164,7 +164,7 @@ public class Parachute : RemoteObject
     [Rpc("SpaceCenter", "Parachute_set_DeployAltitude")]
     public void SetDeployAltitude(float value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -181,7 +181,7 @@ public class Parachute : RemoteObject
     [Rpc("SpaceCenter", "Parachute_set_DeployAltitude")]
     public async Task SetDeployAltitudeAsync(float value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -196,7 +196,7 @@ public class Parachute : RemoteObject
     [Rpc("SpaceCenter", "Parachute_get_DeployMinPressure")]
     public float GetDeployMinPressure()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -211,7 +211,7 @@ public class Parachute : RemoteObject
     [Rpc("SpaceCenter", "Parachute_get_DeployMinPressure")]
     public async Task<float> GetDeployMinPressureAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -226,7 +226,7 @@ public class Parachute : RemoteObject
     [Rpc("SpaceCenter", "Parachute_set_DeployMinPressure")]
     public void SetDeployMinPressure(float value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -243,7 +243,7 @@ public class Parachute : RemoteObject
     [Rpc("SpaceCenter", "Parachute_set_DeployMinPressure")]
     public async Task SetDeployMinPressureAsync(float value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -257,7 +257,7 @@ public class Parachute : RemoteObject
     [Rpc("SpaceCenter", "Parachute_get_Deployed")]
     public bool GetDeployed()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -271,7 +271,7 @@ public class Parachute : RemoteObject
     [Rpc("SpaceCenter", "Parachute_get_Deployed")]
     public async Task<bool> GetDeployedAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -284,7 +284,7 @@ public class Parachute : RemoteObject
     [Rpc("SpaceCenter", "Parachute_get_Part")]
     public Part GetPart()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -298,7 +298,7 @@ public class Parachute : RemoteObject
     [Rpc("SpaceCenter", "Parachute_get_Part")]
     public async Task<Part> GetPartAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -311,7 +311,7 @@ public class Parachute : RemoteObject
     [Rpc("SpaceCenter", "Parachute_get_State")]
     public ParachuteState GetState()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -325,7 +325,7 @@ public class Parachute : RemoteObject
     [Rpc("SpaceCenter", "Parachute_get_State")]
     public async Task<ParachuteState> GetStateAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };

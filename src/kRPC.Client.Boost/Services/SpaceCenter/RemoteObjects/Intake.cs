@@ -21,7 +21,7 @@ public class Intake : RemoteObject
     [Rpc("SpaceCenter", "Intake_get_Area")]
     public float GetArea()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -35,7 +35,7 @@ public class Intake : RemoteObject
     [Rpc("SpaceCenter", "Intake_get_Area")]
     public async Task<float> GetAreaAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -48,7 +48,7 @@ public class Intake : RemoteObject
     [Rpc("SpaceCenter", "Intake_get_Flow")]
     public float GetFlow()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -62,7 +62,7 @@ public class Intake : RemoteObject
     [Rpc("SpaceCenter", "Intake_get_Flow")]
     public async Task<float> GetFlowAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -75,7 +75,7 @@ public class Intake : RemoteObject
     [Rpc("SpaceCenter", "Intake_get_Open")]
     public bool GetOpen()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -89,7 +89,7 @@ public class Intake : RemoteObject
     [Rpc("SpaceCenter", "Intake_get_Open")]
     public async Task<bool> GetOpenAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -103,7 +103,7 @@ public class Intake : RemoteObject
     [Rpc("SpaceCenter", "Intake_set_Open")]
     public void SetOpen(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -119,7 +119,7 @@ public class Intake : RemoteObject
     [Rpc("SpaceCenter", "Intake_set_Open")]
     public async Task SetOpenAsync(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -133,7 +133,7 @@ public class Intake : RemoteObject
     [Rpc("SpaceCenter", "Intake_get_Part")]
     public Part GetPart()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -147,7 +147,7 @@ public class Intake : RemoteObject
     [Rpc("SpaceCenter", "Intake_get_Part")]
     public async Task<Part> GetPartAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -160,7 +160,7 @@ public class Intake : RemoteObject
     [Rpc("SpaceCenter", "Intake_get_Speed")]
     public float GetSpeed()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -174,7 +174,7 @@ public class Intake : RemoteObject
     [Rpc("SpaceCenter", "Intake_get_Speed")]
     public async Task<float> GetSpeedAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };

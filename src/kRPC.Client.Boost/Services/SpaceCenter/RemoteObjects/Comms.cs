@@ -22,7 +22,7 @@ public class Comms : RemoteObject
     [Rpc("SpaceCenter", "Comms_get_CanCommunicate")]
     public bool GetCanCommunicate()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -36,7 +36,7 @@ public class Comms : RemoteObject
     [Rpc("SpaceCenter", "Comms_get_CanCommunicate")]
     public async Task<bool> GetCanCommunicateAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -49,7 +49,7 @@ public class Comms : RemoteObject
     [Rpc("SpaceCenter", "Comms_get_CanTransmitScience")]
     public bool GetCanTransmitScience()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -63,7 +63,7 @@ public class Comms : RemoteObject
     [Rpc("SpaceCenter", "Comms_get_CanTransmitScience")]
     public async Task<bool> GetCanTransmitScienceAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -76,7 +76,7 @@ public class Comms : RemoteObject
     [Rpc("SpaceCenter", "Comms_get_ControlPath")]
     public IList<CommLink> GetControlPath()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -90,7 +90,7 @@ public class Comms : RemoteObject
     [Rpc("SpaceCenter", "Comms_get_ControlPath")]
     public async Task<IList<CommLink>> GetControlPathAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -103,7 +103,7 @@ public class Comms : RemoteObject
     [Rpc("SpaceCenter", "Comms_get_Power")]
     public double GetPower()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -117,7 +117,7 @@ public class Comms : RemoteObject
     [Rpc("SpaceCenter", "Comms_get_Power")]
     public async Task<double> GetPowerAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -130,7 +130,7 @@ public class Comms : RemoteObject
     [Rpc("SpaceCenter", "Comms_get_SignalDelay")]
     public double GetSignalDelay()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -144,7 +144,7 @@ public class Comms : RemoteObject
     [Rpc("SpaceCenter", "Comms_get_SignalDelay")]
     public async Task<double> GetSignalDelayAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -157,7 +157,7 @@ public class Comms : RemoteObject
     [Rpc("SpaceCenter", "Comms_get_SignalStrength")]
     public double GetSignalStrength()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -171,7 +171,7 @@ public class Comms : RemoteObject
     [Rpc("SpaceCenter", "Comms_get_SignalStrength")]
     public async Task<double> GetSignalStrengthAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };

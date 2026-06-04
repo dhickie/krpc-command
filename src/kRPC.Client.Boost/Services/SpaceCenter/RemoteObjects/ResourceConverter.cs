@@ -22,7 +22,7 @@ public class ResourceConverter : RemoteObject
     [Rpc("SpaceCenter", "ResourceConverter_Active")]
     public bool Active(int index)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             index
@@ -38,7 +38,7 @@ public class ResourceConverter : RemoteObject
     [Rpc("SpaceCenter", "ResourceConverter_Active")]
     public async Task<bool> ActiveAsync(int index)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             index
@@ -53,7 +53,7 @@ public class ResourceConverter : RemoteObject
     [Rpc("SpaceCenter", "ResourceConverter_Inputs")]
     public IList<string> Inputs(int index)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             index
@@ -69,7 +69,7 @@ public class ResourceConverter : RemoteObject
     [Rpc("SpaceCenter", "ResourceConverter_Inputs")]
     public async Task<IList<string>> InputsAsync(int index)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             index
@@ -84,7 +84,7 @@ public class ResourceConverter : RemoteObject
     [Rpc("SpaceCenter", "ResourceConverter_Name")]
     public string Name(int index)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             index
@@ -100,7 +100,7 @@ public class ResourceConverter : RemoteObject
     [Rpc("SpaceCenter", "ResourceConverter_Name")]
     public async Task<string> NameAsync(int index)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             index
@@ -115,7 +115,7 @@ public class ResourceConverter : RemoteObject
     [Rpc("SpaceCenter", "ResourceConverter_Outputs")]
     public IList<string> Outputs(int index)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             index
@@ -131,7 +131,7 @@ public class ResourceConverter : RemoteObject
     [Rpc("SpaceCenter", "ResourceConverter_Outputs")]
     public async Task<IList<string>> OutputsAsync(int index)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             index
@@ -146,7 +146,7 @@ public class ResourceConverter : RemoteObject
     [Rpc("SpaceCenter", "ResourceConverter_Start")]
     public void Start(int index)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             index
@@ -162,7 +162,7 @@ public class ResourceConverter : RemoteObject
     [Rpc("SpaceCenter", "ResourceConverter_Start")]
     public async Task StartAsync(int index)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             index
@@ -177,7 +177,7 @@ public class ResourceConverter : RemoteObject
     [Rpc("SpaceCenter", "ResourceConverter_State")]
     public ResourceConverterState State(int index)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             index
@@ -193,7 +193,7 @@ public class ResourceConverter : RemoteObject
     [Rpc("SpaceCenter", "ResourceConverter_State")]
     public async Task<ResourceConverterState> StateAsync(int index)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             index
@@ -209,7 +209,7 @@ public class ResourceConverter : RemoteObject
     [Rpc("SpaceCenter", "ResourceConverter_StatusInfo")]
     public string StatusInfo(int index)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             index
@@ -226,7 +226,7 @@ public class ResourceConverter : RemoteObject
     [Rpc("SpaceCenter", "ResourceConverter_StatusInfo")]
     public async Task<string> StatusInfoAsync(int index)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             index
@@ -241,7 +241,7 @@ public class ResourceConverter : RemoteObject
     [Rpc("SpaceCenter", "ResourceConverter_Stop")]
     public void Stop(int index)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             index
@@ -257,7 +257,7 @@ public class ResourceConverter : RemoteObject
     [Rpc("SpaceCenter", "ResourceConverter_Stop")]
     public async Task StopAsync(int index)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             index
@@ -271,7 +271,7 @@ public class ResourceConverter : RemoteObject
     [Rpc("SpaceCenter", "ResourceConverter_get_CoreTemperature")]
     public float GetCoreTemperature()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -285,7 +285,7 @@ public class ResourceConverter : RemoteObject
     [Rpc("SpaceCenter", "ResourceConverter_get_CoreTemperature")]
     public async Task<float> GetCoreTemperatureAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -298,7 +298,7 @@ public class ResourceConverter : RemoteObject
     [Rpc("SpaceCenter", "ResourceConverter_get_Count")]
     public int GetCount()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -312,7 +312,7 @@ public class ResourceConverter : RemoteObject
     [Rpc("SpaceCenter", "ResourceConverter_get_Count")]
     public async Task<int> GetCountAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -325,7 +325,7 @@ public class ResourceConverter : RemoteObject
     [Rpc("SpaceCenter", "ResourceConverter_get_OptimumCoreTemperature")]
     public float GetOptimumCoreTemperature()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -339,7 +339,7 @@ public class ResourceConverter : RemoteObject
     [Rpc("SpaceCenter", "ResourceConverter_get_OptimumCoreTemperature")]
     public async Task<float> GetOptimumCoreTemperatureAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -352,7 +352,7 @@ public class ResourceConverter : RemoteObject
     [Rpc("SpaceCenter", "ResourceConverter_get_Part")]
     public Part GetPart()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -366,7 +366,7 @@ public class ResourceConverter : RemoteObject
     [Rpc("SpaceCenter", "ResourceConverter_get_Part")]
     public async Task<Part> GetPartAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -379,7 +379,7 @@ public class ResourceConverter : RemoteObject
     [Rpc("SpaceCenter", "ResourceConverter_get_ThermalEfficiency")]
     public float GetThermalEfficiency()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -393,7 +393,7 @@ public class ResourceConverter : RemoteObject
     [Rpc("SpaceCenter", "ResourceConverter_get_ThermalEfficiency")]
     public async Task<float> GetThermalEfficiencyAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };

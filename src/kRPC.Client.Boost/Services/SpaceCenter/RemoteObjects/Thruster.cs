@@ -32,7 +32,7 @@ public class Thruster : RemoteObject
     [Rpc("SpaceCenter", "Thruster_GimbalPosition")]
     public Vector3D GimbalPosition(ReferenceFrame referenceFrame)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             referenceFrame
@@ -50,7 +50,7 @@ public class Thruster : RemoteObject
     [Rpc("SpaceCenter", "Thruster_GimbalPosition")]
     public async Task<Vector3D> GimbalPositionAsync(ReferenceFrame referenceFrame)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             referenceFrame
@@ -69,7 +69,7 @@ public class Thruster : RemoteObject
     [Rpc("SpaceCenter", "Thruster_InitialThrustDirection")]
     public Vector3D InitialThrustDirection(ReferenceFrame referenceFrame)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             referenceFrame
@@ -89,7 +89,7 @@ public class Thruster : RemoteObject
     [Rpc("SpaceCenter", "Thruster_InitialThrustDirection")]
     public async Task<Vector3D> InitialThrustDirectionAsync(ReferenceFrame referenceFrame)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             referenceFrame
@@ -111,7 +111,7 @@ public class Thruster : RemoteObject
     [Rpc("SpaceCenter", "Thruster_InitialThrustPosition")]
     public Vector3D InitialThrustPosition(ReferenceFrame referenceFrame)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             referenceFrame
@@ -134,7 +134,7 @@ public class Thruster : RemoteObject
     [Rpc("SpaceCenter", "Thruster_InitialThrustPosition")]
     public async Task<Vector3D> InitialThrustPositionAsync(ReferenceFrame referenceFrame)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             referenceFrame
@@ -153,7 +153,7 @@ public class Thruster : RemoteObject
     [Rpc("SpaceCenter", "Thruster_ThrustDirection")]
     public Vector3D ThrustDirection(ReferenceFrame referenceFrame)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             referenceFrame
@@ -173,7 +173,7 @@ public class Thruster : RemoteObject
     [Rpc("SpaceCenter", "Thruster_ThrustDirection")]
     public async Task<Vector3D> ThrustDirectionAsync(ReferenceFrame referenceFrame)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             referenceFrame
@@ -191,7 +191,7 @@ public class Thruster : RemoteObject
     [Rpc("SpaceCenter", "Thruster_ThrustPosition")]
     public Vector3D ThrustPosition(ReferenceFrame referenceFrame)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             referenceFrame
@@ -210,7 +210,7 @@ public class Thruster : RemoteObject
     [Rpc("SpaceCenter", "Thruster_ThrustPosition")]
     public async Task<Vector3D> ThrustPositionAsync(ReferenceFrame referenceFrame)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             referenceFrame
@@ -224,7 +224,7 @@ public class Thruster : RemoteObject
     [Rpc("SpaceCenter", "Thruster_get_GimbalAngle")]
     public Tuple<Angle,Angle,Angle> GetGimbalAngle()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -239,7 +239,7 @@ public class Thruster : RemoteObject
     [Rpc("SpaceCenter", "Thruster_get_GimbalAngle")]
     public async Task<Tuple<Angle,Angle,Angle>> GetGimbalAngleAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -253,7 +253,7 @@ public class Thruster : RemoteObject
     [Rpc("SpaceCenter", "Thruster_get_Gimballed")]
     public bool GetGimballed()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -267,7 +267,7 @@ public class Thruster : RemoteObject
     [Rpc("SpaceCenter", "Thruster_get_Gimballed")]
     public async Task<bool> GetGimballedAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -280,7 +280,7 @@ public class Thruster : RemoteObject
     [Rpc("SpaceCenter", "Thruster_get_Part")]
     public Part GetPart()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -294,7 +294,7 @@ public class Thruster : RemoteObject
     [Rpc("SpaceCenter", "Thruster_get_Part")]
     public async Task<Part> GetPartAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -316,7 +316,7 @@ public class Thruster : RemoteObject
     [Rpc("SpaceCenter", "Thruster_get_ThrustReferenceFrame")]
     public ReferenceFrame GetThrustReferenceFrame()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -339,7 +339,7 @@ public class Thruster : RemoteObject
     [Rpc("SpaceCenter", "Thruster_get_ThrustReferenceFrame")]
     public async Task<ReferenceFrame> GetThrustReferenceFrameAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };

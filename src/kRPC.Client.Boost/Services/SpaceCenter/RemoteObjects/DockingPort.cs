@@ -25,7 +25,7 @@ public class DockingPort : RemoteObject
     [Rpc("SpaceCenter", "DockingPort_Direction")]
     public Vector3D Direction(ReferenceFrame referenceFrame)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             referenceFrame
@@ -43,7 +43,7 @@ public class DockingPort : RemoteObject
     [Rpc("SpaceCenter", "DockingPort_Direction")]
     public async Task<Vector3D> DirectionAsync(ReferenceFrame referenceFrame)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             referenceFrame
@@ -60,7 +60,7 @@ public class DockingPort : RemoteObject
     [Rpc("SpaceCenter", "DockingPort_Position")]
     public Vector3D Position(ReferenceFrame referenceFrame)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             referenceFrame
@@ -78,7 +78,7 @@ public class DockingPort : RemoteObject
     [Rpc("SpaceCenter", "DockingPort_Position")]
     public async Task<Vector3D> PositionAsync(ReferenceFrame referenceFrame)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             referenceFrame
@@ -95,7 +95,7 @@ public class DockingPort : RemoteObject
     [Rpc("SpaceCenter", "DockingPort_Rotation")]
     public Quaternion Rotation(ReferenceFrame referenceFrame)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             referenceFrame
@@ -113,7 +113,7 @@ public class DockingPort : RemoteObject
     [Rpc("SpaceCenter", "DockingPort_Rotation")]
     public async Task<Quaternion> RotationAsync(ReferenceFrame referenceFrame)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             referenceFrame
@@ -134,7 +134,7 @@ public class DockingPort : RemoteObject
     [Rpc("SpaceCenter", "DockingPort_Undock")]
     public Vessel Undock()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -155,7 +155,7 @@ public class DockingPort : RemoteObject
     [Rpc("SpaceCenter", "DockingPort_Undock")]
     public async Task<Vessel> UndockAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -168,7 +168,7 @@ public class DockingPort : RemoteObject
     [Rpc("SpaceCenter", "DockingPort_get_CanRotate")]
     public bool GetCanRotate()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -182,7 +182,7 @@ public class DockingPort : RemoteObject
     [Rpc("SpaceCenter", "DockingPort_get_CanRotate")]
     public async Task<bool> GetCanRotateAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -196,7 +196,7 @@ public class DockingPort : RemoteObject
     [Rpc("SpaceCenter", "DockingPort_get_DockedPart")]
     public Part? GetDockedPart()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -211,7 +211,7 @@ public class DockingPort : RemoteObject
     [Rpc("SpaceCenter", "DockingPort_get_DockedPart")]
     public async Task<Part?> GetDockedPartAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -224,7 +224,7 @@ public class DockingPort : RemoteObject
     [Rpc("SpaceCenter", "DockingPort_get_HasShield")]
     public bool GetHasShield()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -238,7 +238,7 @@ public class DockingPort : RemoteObject
     [Rpc("SpaceCenter", "DockingPort_get_HasShield")]
     public async Task<bool> GetHasShieldAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -251,7 +251,7 @@ public class DockingPort : RemoteObject
     [Rpc("SpaceCenter", "DockingPort_get_MaximumRotation")]
     public Angle GetMaximumRotation()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -266,7 +266,7 @@ public class DockingPort : RemoteObject
     [Rpc("SpaceCenter", "DockingPort_get_MaximumRotation")]
     public async Task<Angle> GetMaximumRotationAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -280,7 +280,7 @@ public class DockingPort : RemoteObject
     [Rpc("SpaceCenter", "DockingPort_get_MinimumRotation")]
     public Angle GetMinimumRotation()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -295,7 +295,7 @@ public class DockingPort : RemoteObject
     [Rpc("SpaceCenter", "DockingPort_get_MinimumRotation")]
     public async Task<Angle> GetMinimumRotationAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -309,7 +309,7 @@ public class DockingPort : RemoteObject
     [Rpc("SpaceCenter", "DockingPort_get_Part")]
     public Part GetPart()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -323,7 +323,7 @@ public class DockingPort : RemoteObject
     [Rpc("SpaceCenter", "DockingPort_get_Part")]
     public async Task<Part> GetPartAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -337,7 +337,7 @@ public class DockingPort : RemoteObject
     [Rpc("SpaceCenter", "DockingPort_get_ReengageDistance")]
     public float GetReengageDistance()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -352,7 +352,7 @@ public class DockingPort : RemoteObject
     [Rpc("SpaceCenter", "DockingPort_get_ReengageDistance")]
     public async Task<float> GetReengageDistanceAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -375,7 +375,7 @@ public class DockingPort : RemoteObject
     [Rpc("SpaceCenter", "DockingPort_get_ReferenceFrame")]
     public ReferenceFrame GetReferenceFrame()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -399,7 +399,7 @@ public class DockingPort : RemoteObject
     [Rpc("SpaceCenter", "DockingPort_get_ReferenceFrame")]
     public async Task<ReferenceFrame> GetReferenceFrameAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -412,7 +412,7 @@ public class DockingPort : RemoteObject
     [Rpc("SpaceCenter", "DockingPort_get_RotationLocked")]
     public bool GetRotationLocked()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -426,7 +426,7 @@ public class DockingPort : RemoteObject
     [Rpc("SpaceCenter", "DockingPort_get_RotationLocked")]
     public async Task<bool> GetRotationLockedAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -440,7 +440,7 @@ public class DockingPort : RemoteObject
     [Rpc("SpaceCenter", "DockingPort_set_RotationLocked")]
     public void SetRotationLocked(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -456,7 +456,7 @@ public class DockingPort : RemoteObject
     [Rpc("SpaceCenter", "DockingPort_set_RotationLocked")]
     public async Task SetRotationLockedAsync(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -470,7 +470,7 @@ public class DockingPort : RemoteObject
     [Rpc("SpaceCenter", "DockingPort_get_RotationTarget")]
     public Angle GetRotationTarget()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -485,7 +485,7 @@ public class DockingPort : RemoteObject
     [Rpc("SpaceCenter", "DockingPort_get_RotationTarget")]
     public async Task<Angle> GetRotationTargetAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -500,7 +500,7 @@ public class DockingPort : RemoteObject
     [Rpc("SpaceCenter", "DockingPort_set_RotationTarget")]
     public void SetRotationTarget(Angle value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             (float)value.Degrees
@@ -516,7 +516,7 @@ public class DockingPort : RemoteObject
     [Rpc("SpaceCenter", "DockingPort_set_RotationTarget")]
     public async Task SetRotationTargetAsync(Angle value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             (float)value.Degrees
@@ -535,7 +535,7 @@ public class DockingPort : RemoteObject
     [Rpc("SpaceCenter", "DockingPort_get_Shielded")]
     public bool GetShielded()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -554,7 +554,7 @@ public class DockingPort : RemoteObject
     [Rpc("SpaceCenter", "DockingPort_get_Shielded")]
     public async Task<bool> GetShieldedAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -573,7 +573,7 @@ public class DockingPort : RemoteObject
     [Rpc("SpaceCenter", "DockingPort_set_Shielded")]
     public void SetShielded(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -594,7 +594,7 @@ public class DockingPort : RemoteObject
     [Rpc("SpaceCenter", "DockingPort_set_Shielded")]
     public async Task SetShieldedAsync(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -608,7 +608,7 @@ public class DockingPort : RemoteObject
     [Rpc("SpaceCenter", "DockingPort_get_State")]
     public DockingPortState GetState()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -622,7 +622,7 @@ public class DockingPort : RemoteObject
     [Rpc("SpaceCenter", "DockingPort_get_State")]
     public async Task<DockingPortState> GetStateAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };

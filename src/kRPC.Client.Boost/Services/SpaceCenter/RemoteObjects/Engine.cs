@@ -32,7 +32,7 @@ public class Engine : RemoteObject
     [Rpc("SpaceCenter", "Engine_AvailableThrustAt")]
     public float AvailableThrustAt(double pressure)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             pressure
@@ -51,7 +51,7 @@ public class Engine : RemoteObject
     [Rpc("SpaceCenter", "Engine_AvailableThrustAt")]
     public async Task<float> AvailableThrustAtAsync(double pressure)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             pressure
@@ -68,7 +68,7 @@ public class Engine : RemoteObject
     [Rpc("SpaceCenter", "Engine_MaxThrustAt")]
     public float MaxThrustAt(double pressure)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             pressure
@@ -86,7 +86,7 @@ public class Engine : RemoteObject
     [Rpc("SpaceCenter", "Engine_MaxThrustAt")]
     public async Task<float> MaxThrustAtAsync(double pressure)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             pressure
@@ -102,7 +102,7 @@ public class Engine : RemoteObject
     [Rpc("SpaceCenter", "Engine_SpecificImpulseAt")]
     public float SpecificImpulseAt(double pressure)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             pressure
@@ -119,7 +119,7 @@ public class Engine : RemoteObject
     [Rpc("SpaceCenter", "Engine_SpecificImpulseAt")]
     public async Task<float> SpecificImpulseAtAsync(double pressure)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             pressure
@@ -133,7 +133,7 @@ public class Engine : RemoteObject
     [Rpc("SpaceCenter", "Engine_ToggleMode")]
     public void ToggleMode()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -147,7 +147,7 @@ public class Engine : RemoteObject
     [Rpc("SpaceCenter", "Engine_ToggleMode")]
     public async Task ToggleModeAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -161,7 +161,7 @@ public class Engine : RemoteObject
     [Rpc("SpaceCenter", "Engine_get_Active")]
     public bool GetActive()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -176,7 +176,7 @@ public class Engine : RemoteObject
     [Rpc("SpaceCenter", "Engine_get_Active")]
     public async Task<bool> GetActiveAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -191,7 +191,7 @@ public class Engine : RemoteObject
     [Rpc("SpaceCenter", "Engine_set_Active")]
     public void SetActive(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -208,7 +208,7 @@ public class Engine : RemoteObject
     [Rpc("SpaceCenter", "Engine_set_Active")]
     public async Task SetActiveAsync(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -222,7 +222,7 @@ public class Engine : RemoteObject
     [Rpc("SpaceCenter", "Engine_get_AutoModeSwitch")]
     public bool GetAutoModeSwitch()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -236,7 +236,7 @@ public class Engine : RemoteObject
     [Rpc("SpaceCenter", "Engine_get_AutoModeSwitch")]
     public async Task<bool> GetAutoModeSwitchAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -250,7 +250,7 @@ public class Engine : RemoteObject
     [Rpc("SpaceCenter", "Engine_set_AutoModeSwitch")]
     public void SetAutoModeSwitch(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -266,7 +266,7 @@ public class Engine : RemoteObject
     [Rpc("SpaceCenter", "Engine_set_AutoModeSwitch")]
     public async Task SetAutoModeSwitchAsync(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -284,7 +284,7 @@ public class Engine : RemoteObject
     [Rpc("SpaceCenter", "Engine_get_AvailableThrust")]
     public float GetAvailableThrust()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -302,7 +302,7 @@ public class Engine : RemoteObject
     [Rpc("SpaceCenter", "Engine_get_AvailableThrust")]
     public async Task<float> GetAvailableThrustAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -318,7 +318,7 @@ public class Engine : RemoteObject
     [Rpc("SpaceCenter", "Engine_get_AvailableTorque")]
     public Tuple<Vector3D,Vector3D> GetAvailableTorque()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -335,7 +335,7 @@ public class Engine : RemoteObject
     [Rpc("SpaceCenter", "Engine_get_AvailableTorque")]
     public async Task<Tuple<Vector3D,Vector3D>> GetAvailableTorqueAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -350,7 +350,7 @@ public class Engine : RemoteObject
     [Rpc("SpaceCenter", "Engine_get_CanRestart")]
     public bool GetCanRestart()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -366,7 +366,7 @@ public class Engine : RemoteObject
     [Rpc("SpaceCenter", "Engine_get_CanRestart")]
     public async Task<bool> GetCanRestartAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -380,7 +380,7 @@ public class Engine : RemoteObject
     [Rpc("SpaceCenter", "Engine_get_CanShutdown")]
     public bool GetCanShutdown()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -395,7 +395,7 @@ public class Engine : RemoteObject
     [Rpc("SpaceCenter", "Engine_get_CanShutdown")]
     public async Task<bool> GetCanShutdownAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -409,7 +409,7 @@ public class Engine : RemoteObject
     [Rpc("SpaceCenter", "Engine_get_GimbalLimit")]
     public float GetGimbalLimit()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -424,7 +424,7 @@ public class Engine : RemoteObject
     [Rpc("SpaceCenter", "Engine_get_GimbalLimit")]
     public async Task<float> GetGimbalLimitAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -439,7 +439,7 @@ public class Engine : RemoteObject
     [Rpc("SpaceCenter", "Engine_set_GimbalLimit")]
     public void SetGimbalLimit(float value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -456,7 +456,7 @@ public class Engine : RemoteObject
     [Rpc("SpaceCenter", "Engine_set_GimbalLimit")]
     public async Task SetGimbalLimitAsync(float value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -471,7 +471,7 @@ public class Engine : RemoteObject
     [Rpc("SpaceCenter", "Engine_get_GimbalLocked")]
     public bool GetGimbalLocked()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -486,7 +486,7 @@ public class Engine : RemoteObject
     [Rpc("SpaceCenter", "Engine_get_GimbalLocked")]
     public async Task<bool> GetGimbalLockedAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -501,7 +501,7 @@ public class Engine : RemoteObject
     [Rpc("SpaceCenter", "Engine_set_GimbalLocked")]
     public void SetGimbalLocked(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -518,7 +518,7 @@ public class Engine : RemoteObject
     [Rpc("SpaceCenter", "Engine_set_GimbalLocked")]
     public async Task SetGimbalLockedAsync(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -533,7 +533,7 @@ public class Engine : RemoteObject
     [Rpc("SpaceCenter", "Engine_get_GimbalRange")]
     public Angle GetGimbalRange()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -549,7 +549,7 @@ public class Engine : RemoteObject
     [Rpc("SpaceCenter", "Engine_get_GimbalRange")]
     public async Task<Angle> GetGimbalRangeAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -563,7 +563,7 @@ public class Engine : RemoteObject
     [Rpc("SpaceCenter", "Engine_get_Gimballed")]
     public bool GetGimballed()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -577,7 +577,7 @@ public class Engine : RemoteObject
     [Rpc("SpaceCenter", "Engine_get_Gimballed")]
     public async Task<bool> GetGimballedAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -590,7 +590,7 @@ public class Engine : RemoteObject
     [Rpc("SpaceCenter", "Engine_get_HasFuel")]
     public bool GetHasFuel()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -604,7 +604,7 @@ public class Engine : RemoteObject
     [Rpc("SpaceCenter", "Engine_get_HasFuel")]
     public async Task<bool> GetHasFuelAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -617,7 +617,7 @@ public class Engine : RemoteObject
     [Rpc("SpaceCenter", "Engine_get_HasModes")]
     public bool GetHasModes()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -631,7 +631,7 @@ public class Engine : RemoteObject
     [Rpc("SpaceCenter", "Engine_get_HasModes")]
     public async Task<bool> GetHasModesAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -644,7 +644,7 @@ public class Engine : RemoteObject
     [Rpc("SpaceCenter", "Engine_get_IndependentThrottle")]
     public bool GetIndependentThrottle()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -658,7 +658,7 @@ public class Engine : RemoteObject
     [Rpc("SpaceCenter", "Engine_get_IndependentThrottle")]
     public async Task<bool> GetIndependentThrottleAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -672,7 +672,7 @@ public class Engine : RemoteObject
     [Rpc("SpaceCenter", "Engine_set_IndependentThrottle")]
     public void SetIndependentThrottle(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -688,7 +688,7 @@ public class Engine : RemoteObject
     [Rpc("SpaceCenter", "Engine_set_IndependentThrottle")]
     public async Task SetIndependentThrottleAsync(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -702,7 +702,7 @@ public class Engine : RemoteObject
     [Rpc("SpaceCenter", "Engine_get_KerbinSeaLevelSpecificImpulse")]
     public float GetKerbinSeaLevelSpecificImpulse()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -716,7 +716,7 @@ public class Engine : RemoteObject
     [Rpc("SpaceCenter", "Engine_get_KerbinSeaLevelSpecificImpulse")]
     public async Task<float> GetKerbinSeaLevelSpecificImpulseAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -730,7 +730,7 @@ public class Engine : RemoteObject
     [Rpc("SpaceCenter", "Engine_get_MaxThrust")]
     public float GetMaxThrust()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -745,7 +745,7 @@ public class Engine : RemoteObject
     [Rpc("SpaceCenter", "Engine_get_MaxThrust")]
     public async Task<float> GetMaxThrustAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -761,7 +761,7 @@ public class Engine : RemoteObject
     [Rpc("SpaceCenter", "Engine_get_MaxVacuumThrust")]
     public float GetMaxVacuumThrust()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -778,7 +778,7 @@ public class Engine : RemoteObject
     [Rpc("SpaceCenter", "Engine_get_MaxVacuumThrust")]
     public async Task<float> GetMaxVacuumThrustAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -791,7 +791,7 @@ public class Engine : RemoteObject
     [Rpc("SpaceCenter", "Engine_get_Mode")]
     public string GetMode()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -805,7 +805,7 @@ public class Engine : RemoteObject
     [Rpc("SpaceCenter", "Engine_get_Mode")]
     public async Task<string> GetModeAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -819,7 +819,7 @@ public class Engine : RemoteObject
     [Rpc("SpaceCenter", "Engine_set_Mode")]
     public void SetMode(string value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -835,7 +835,7 @@ public class Engine : RemoteObject
     [Rpc("SpaceCenter", "Engine_set_Mode")]
     public async Task SetModeAsync(string value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -850,7 +850,7 @@ public class Engine : RemoteObject
     [Rpc("SpaceCenter", "Engine_get_Modes")]
     public IDictionary<string,Engine> GetModes()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -865,7 +865,7 @@ public class Engine : RemoteObject
     [Rpc("SpaceCenter", "Engine_get_Modes")]
     public async Task<IDictionary<string,Engine>> GetModesAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -878,7 +878,7 @@ public class Engine : RemoteObject
     [Rpc("SpaceCenter", "Engine_get_Part")]
     public Part GetPart()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -892,7 +892,7 @@ public class Engine : RemoteObject
     [Rpc("SpaceCenter", "Engine_get_Part")]
     public async Task<Part> GetPartAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -905,7 +905,7 @@ public class Engine : RemoteObject
     [Rpc("SpaceCenter", "Engine_get_PropellantNames")]
     public IList<string> GetPropellantNames()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -919,7 +919,7 @@ public class Engine : RemoteObject
     [Rpc("SpaceCenter", "Engine_get_PropellantNames")]
     public async Task<IList<string>> GetPropellantNamesAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -937,7 +937,7 @@ public class Engine : RemoteObject
     [Rpc("SpaceCenter", "Engine_get_PropellantRatios")]
     public IDictionary<string,float> GetPropellantRatios()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -956,7 +956,7 @@ public class Engine : RemoteObject
     [Rpc("SpaceCenter", "Engine_get_PropellantRatios")]
     public async Task<IDictionary<string,float>> GetPropellantRatiosAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -969,7 +969,7 @@ public class Engine : RemoteObject
     [Rpc("SpaceCenter", "Engine_get_Propellants")]
     public IList<Propellant> GetPropellants()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -983,7 +983,7 @@ public class Engine : RemoteObject
     [Rpc("SpaceCenter", "Engine_get_Propellants")]
     public async Task<IList<Propellant>> GetPropellantsAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -997,7 +997,7 @@ public class Engine : RemoteObject
     [Rpc("SpaceCenter", "Engine_get_SpecificImpulse")]
     public float GetSpecificImpulse()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1012,7 +1012,7 @@ public class Engine : RemoteObject
     [Rpc("SpaceCenter", "Engine_get_SpecificImpulse")]
     public async Task<float> GetSpecificImpulseAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1031,7 +1031,7 @@ public class Engine : RemoteObject
     [Rpc("SpaceCenter", "Engine_get_Throttle")]
     public float GetThrottle()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1051,7 +1051,7 @@ public class Engine : RemoteObject
     [Rpc("SpaceCenter", "Engine_get_Throttle")]
     public async Task<float> GetThrottleAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1071,7 +1071,7 @@ public class Engine : RemoteObject
     [Rpc("SpaceCenter", "Engine_set_Throttle")]
     public void SetThrottle(float value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -1093,7 +1093,7 @@ public class Engine : RemoteObject
     [Rpc("SpaceCenter", "Engine_set_Throttle")]
     public async Task SetThrottleAsync(float value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -1109,7 +1109,7 @@ public class Engine : RemoteObject
     [Rpc("SpaceCenter", "Engine_get_ThrottleLocked")]
     public bool GetThrottleLocked()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1125,7 +1125,7 @@ public class Engine : RemoteObject
     [Rpc("SpaceCenter", "Engine_get_ThrottleLocked")]
     public async Task<bool> GetThrottleLockedAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1138,7 +1138,7 @@ public class Engine : RemoteObject
     [Rpc("SpaceCenter", "Engine_get_Thrust")]
     public float GetThrust()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1152,7 +1152,7 @@ public class Engine : RemoteObject
     [Rpc("SpaceCenter", "Engine_get_Thrust")]
     public async Task<float> GetThrustAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1167,7 +1167,7 @@ public class Engine : RemoteObject
     [Rpc("SpaceCenter", "Engine_get_ThrustLimit")]
     public float GetThrustLimit()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1183,7 +1183,7 @@ public class Engine : RemoteObject
     [Rpc("SpaceCenter", "Engine_get_ThrustLimit")]
     public async Task<float> GetThrustLimitAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1199,7 +1199,7 @@ public class Engine : RemoteObject
     [Rpc("SpaceCenter", "Engine_set_ThrustLimit")]
     public void SetThrustLimit(float value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -1217,7 +1217,7 @@ public class Engine : RemoteObject
     [Rpc("SpaceCenter", "Engine_set_ThrustLimit")]
     public async Task SetThrustLimitAsync(float value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -1237,7 +1237,7 @@ public class Engine : RemoteObject
     [Rpc("SpaceCenter", "Engine_get_Thrusters")]
     public IList<Thruster> GetThrusters()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1257,7 +1257,7 @@ public class Engine : RemoteObject
     [Rpc("SpaceCenter", "Engine_get_Thrusters")]
     public async Task<IList<Thruster>> GetThrustersAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1270,7 +1270,7 @@ public class Engine : RemoteObject
     [Rpc("SpaceCenter", "Engine_get_VacuumSpecificImpulse")]
     public float GetVacuumSpecificImpulse()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1284,7 +1284,7 @@ public class Engine : RemoteObject
     [Rpc("SpaceCenter", "Engine_get_VacuumSpecificImpulse")]
     public async Task<float> GetVacuumSpecificImpulseAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };

@@ -21,7 +21,7 @@ public class Leg : RemoteObject
     [Rpc("SpaceCenter", "Leg_get_Deployable")]
     public bool GetDeployable()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -35,7 +35,7 @@ public class Leg : RemoteObject
     [Rpc("SpaceCenter", "Leg_get_Deployable")]
     public async Task<bool> GetDeployableAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -52,7 +52,7 @@ public class Leg : RemoteObject
     [Rpc("SpaceCenter", "Leg_get_Deployed")]
     public bool GetDeployed()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -70,7 +70,7 @@ public class Leg : RemoteObject
     [Rpc("SpaceCenter", "Leg_get_Deployed")]
     public async Task<bool> GetDeployedAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -84,7 +84,7 @@ public class Leg : RemoteObject
     [Rpc("SpaceCenter", "Leg_set_Deployed")]
     public void SetDeployed(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -100,7 +100,7 @@ public class Leg : RemoteObject
     [Rpc("SpaceCenter", "Leg_set_Deployed")]
     public async Task SetDeployedAsync(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -114,7 +114,7 @@ public class Leg : RemoteObject
     [Rpc("SpaceCenter", "Leg_get_IsGrounded")]
     public bool GetIsGrounded()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -128,7 +128,7 @@ public class Leg : RemoteObject
     [Rpc("SpaceCenter", "Leg_get_IsGrounded")]
     public async Task<bool> GetIsGroundedAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -141,7 +141,7 @@ public class Leg : RemoteObject
     [Rpc("SpaceCenter", "Leg_get_Part")]
     public Part GetPart()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -155,7 +155,7 @@ public class Leg : RemoteObject
     [Rpc("SpaceCenter", "Leg_get_Part")]
     public async Task<Part> GetPartAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -168,7 +168,7 @@ public class Leg : RemoteObject
     [Rpc("SpaceCenter", "Leg_get_State")]
     public LegState GetState()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -182,7 +182,7 @@ public class Leg : RemoteObject
     [Rpc("SpaceCenter", "Leg_get_State")]
     public async Task<LegState> GetStateAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };

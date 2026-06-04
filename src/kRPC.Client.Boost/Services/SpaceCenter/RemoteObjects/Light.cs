@@ -21,7 +21,7 @@ public class Light : RemoteObject
     [Rpc("SpaceCenter", "Light_get_Active")]
     public bool GetActive()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -35,7 +35,7 @@ public class Light : RemoteObject
     [Rpc("SpaceCenter", "Light_get_Active")]
     public async Task<bool> GetActiveAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -49,10 +49,10 @@ public class Light : RemoteObject
     [Rpc("SpaceCenter", "Light_set_Active")]
     public void SetActive(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
-            value
+            new(value)
         };
         Connection.Invoke("SpaceCenter", "Light_set_Active", args);
     }
@@ -65,10 +65,10 @@ public class Light : RemoteObject
     [Rpc("SpaceCenter", "Light_set_Active")]
     public async Task SetActiveAsync(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
-            value
+            new(value)
         };
         await Connection.InvokeAsync("SpaceCenter", "Light_set_Active", args);
     }
@@ -79,7 +79,7 @@ public class Light : RemoteObject
     [Rpc("SpaceCenter", "Light_get_Blink")]
     public bool GetBlink()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -93,7 +93,7 @@ public class Light : RemoteObject
     [Rpc("SpaceCenter", "Light_get_Blink")]
     public async Task<bool> GetBlinkAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -107,10 +107,10 @@ public class Light : RemoteObject
     [Rpc("SpaceCenter", "Light_set_Blink")]
     public void SetBlink(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
-            value
+            new(value)
         };
         Connection.Invoke("SpaceCenter", "Light_set_Blink", args);
     }
@@ -123,10 +123,10 @@ public class Light : RemoteObject
     [Rpc("SpaceCenter", "Light_set_Blink")]
     public async Task SetBlinkAsync(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
-            value
+            new(value)
         };
         await Connection.InvokeAsync("SpaceCenter", "Light_set_Blink", args);
     }
@@ -137,7 +137,7 @@ public class Light : RemoteObject
     [Rpc("SpaceCenter", "Light_get_BlinkRate")]
     public float GetBlinkRate()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -151,7 +151,7 @@ public class Light : RemoteObject
     [Rpc("SpaceCenter", "Light_get_BlinkRate")]
     public async Task<float> GetBlinkRateAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -165,7 +165,7 @@ public class Light : RemoteObject
     [Rpc("SpaceCenter", "Light_set_BlinkRate")]
     public void SetBlinkRate(float value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -181,7 +181,7 @@ public class Light : RemoteObject
     [Rpc("SpaceCenter", "Light_set_BlinkRate")]
     public async Task SetBlinkRateAsync(float value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -195,7 +195,7 @@ public class Light : RemoteObject
     [Rpc("SpaceCenter", "Light_get_Color")]
     public Tuple<float,float,float> GetColor()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -209,7 +209,7 @@ public class Light : RemoteObject
     [Rpc("SpaceCenter", "Light_get_Color")]
     public async Task<Tuple<float,float,float>> GetColorAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -223,10 +223,10 @@ public class Light : RemoteObject
     [Rpc("SpaceCenter", "Light_set_Color")]
     public void SetColor(Tuple<float,float,float> value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
-            value
+            new(value)
         };
         Connection.Invoke("SpaceCenter", "Light_set_Color", args);
     }
@@ -239,10 +239,10 @@ public class Light : RemoteObject
     [Rpc("SpaceCenter", "Light_set_Color")]
     public async Task SetColorAsync(Tuple<float,float,float> value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
-            value
+            new(value)
         };
         await Connection.InvokeAsync("SpaceCenter", "Light_set_Color", args);
     }
@@ -253,7 +253,7 @@ public class Light : RemoteObject
     [Rpc("SpaceCenter", "Light_get_Part")]
     public Part GetPart()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -267,7 +267,7 @@ public class Light : RemoteObject
     [Rpc("SpaceCenter", "Light_get_Part")]
     public async Task<Part> GetPartAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -280,7 +280,7 @@ public class Light : RemoteObject
     [Rpc("SpaceCenter", "Light_get_PowerUsage")]
     public float GetPowerUsage()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -294,7 +294,7 @@ public class Light : RemoteObject
     [Rpc("SpaceCenter", "Light_get_PowerUsage")]
     public async Task<float> GetPowerUsageAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };

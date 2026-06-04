@@ -29,7 +29,7 @@ public class Module : RemoteObject
     [Rpc("SpaceCenter", "Module_GetField")]
     public string GetField(string name)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             name
@@ -45,7 +45,7 @@ public class Module : RemoteObject
     [Rpc("SpaceCenter", "Module_GetField")]
     public async Task<string> GetFieldAsync(string name)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             name
@@ -60,7 +60,7 @@ public class Module : RemoteObject
     [Rpc("SpaceCenter", "Module_GetFieldById")]
     public string GetFieldById(string id)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             id
@@ -76,7 +76,7 @@ public class Module : RemoteObject
     [Rpc("SpaceCenter", "Module_GetFieldById")]
     public async Task<string> GetFieldByIdAsync(string id)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             id
@@ -90,7 +90,7 @@ public class Module : RemoteObject
     [Rpc("SpaceCenter", "Module_HasAction")]
     public bool HasAction(string name)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             name
@@ -105,7 +105,7 @@ public class Module : RemoteObject
     [Rpc("SpaceCenter", "Module_HasAction")]
     public async Task<bool> HasActionAsync(string name)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             name
@@ -119,7 +119,7 @@ public class Module : RemoteObject
     [Rpc("SpaceCenter", "Module_HasActionWithId")]
     public bool HasActionWithId(string id)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             id
@@ -134,7 +134,7 @@ public class Module : RemoteObject
     [Rpc("SpaceCenter", "Module_HasActionWithId")]
     public async Task<bool> HasActionWithIdAsync(string id)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             id
@@ -148,7 +148,7 @@ public class Module : RemoteObject
     [Rpc("SpaceCenter", "Module_HasEvent")]
     public bool HasEvent(string name)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             name
@@ -163,7 +163,7 @@ public class Module : RemoteObject
     [Rpc("SpaceCenter", "Module_HasEvent")]
     public async Task<bool> HasEventAsync(string name)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             name
@@ -177,7 +177,7 @@ public class Module : RemoteObject
     [Rpc("SpaceCenter", "Module_HasEventWithId")]
     public bool HasEventWithId(string id)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             id
@@ -192,7 +192,7 @@ public class Module : RemoteObject
     [Rpc("SpaceCenter", "Module_HasEventWithId")]
     public async Task<bool> HasEventWithIdAsync(string id)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             id
@@ -207,7 +207,7 @@ public class Module : RemoteObject
     [Rpc("SpaceCenter", "Module_HasField")]
     public bool HasField(string name)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             name
@@ -223,7 +223,7 @@ public class Module : RemoteObject
     [Rpc("SpaceCenter", "Module_HasField")]
     public async Task<bool> HasFieldAsync(string name)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             name
@@ -238,7 +238,7 @@ public class Module : RemoteObject
     [Rpc("SpaceCenter", "Module_HasFieldWithId")]
     public bool HasFieldWithId(string id)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             id
@@ -254,7 +254,7 @@ public class Module : RemoteObject
     [Rpc("SpaceCenter", "Module_HasFieldWithId")]
     public async Task<bool> HasFieldWithIdAsync(string id)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             id
@@ -269,7 +269,7 @@ public class Module : RemoteObject
     [Rpc("SpaceCenter", "Module_ResetField")]
     public void ResetField(string name)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             name
@@ -285,7 +285,7 @@ public class Module : RemoteObject
     [Rpc("SpaceCenter", "Module_ResetField")]
     public async Task ResetFieldAsync(string name)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             name
@@ -300,7 +300,7 @@ public class Module : RemoteObject
     [Rpc("SpaceCenter", "Module_ResetFieldById")]
     public void ResetFieldById(string id)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             id
@@ -316,7 +316,7 @@ public class Module : RemoteObject
     [Rpc("SpaceCenter", "Module_ResetFieldById")]
     public async Task ResetFieldByIdAsync(string id)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             id
@@ -332,7 +332,7 @@ public class Module : RemoteObject
     [Rpc("SpaceCenter", "Module_SetAction")]
     public void SetAction(string name, bool value = true)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             name,
@@ -350,7 +350,7 @@ public class Module : RemoteObject
     [Rpc("SpaceCenter", "Module_SetAction")]
     public async Task SetActionAsync(string name, bool value = true)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             name,
@@ -367,7 +367,7 @@ public class Module : RemoteObject
     [Rpc("SpaceCenter", "Module_SetActionById")]
     public void SetActionById(string id, bool value = true)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             id,
@@ -385,7 +385,7 @@ public class Module : RemoteObject
     [Rpc("SpaceCenter", "Module_SetActionById")]
     public async Task SetActionByIdAsync(string id, bool value = true)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             id,
@@ -402,7 +402,7 @@ public class Module : RemoteObject
     [Rpc("SpaceCenter", "Module_SetFieldBool")]
     public void SetFieldBool(string name, bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             name,
@@ -420,7 +420,7 @@ public class Module : RemoteObject
     [Rpc("SpaceCenter", "Module_SetFieldBool")]
     public async Task SetFieldBoolAsync(string name, bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             name,
@@ -437,7 +437,7 @@ public class Module : RemoteObject
     [Rpc("SpaceCenter", "Module_SetFieldBoolById")]
     public void SetFieldBoolById(string id, bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             id,
@@ -455,7 +455,7 @@ public class Module : RemoteObject
     [Rpc("SpaceCenter", "Module_SetFieldBoolById")]
     public async Task SetFieldBoolByIdAsync(string id, bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             id,
@@ -472,7 +472,7 @@ public class Module : RemoteObject
     [Rpc("SpaceCenter", "Module_SetFieldFloat")]
     public void SetFieldFloat(string name, float value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             name,
@@ -490,7 +490,7 @@ public class Module : RemoteObject
     [Rpc("SpaceCenter", "Module_SetFieldFloat")]
     public async Task SetFieldFloatAsync(string name, float value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             name,
@@ -507,7 +507,7 @@ public class Module : RemoteObject
     [Rpc("SpaceCenter", "Module_SetFieldFloatById")]
     public void SetFieldFloatById(string id, float value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             id,
@@ -525,7 +525,7 @@ public class Module : RemoteObject
     [Rpc("SpaceCenter", "Module_SetFieldFloatById")]
     public async Task SetFieldFloatByIdAsync(string id, float value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             id,
@@ -542,7 +542,7 @@ public class Module : RemoteObject
     [Rpc("SpaceCenter", "Module_SetFieldInt")]
     public void SetFieldInt(string name, int value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             name,
@@ -560,7 +560,7 @@ public class Module : RemoteObject
     [Rpc("SpaceCenter", "Module_SetFieldInt")]
     public async Task SetFieldIntAsync(string name, int value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             name,
@@ -577,7 +577,7 @@ public class Module : RemoteObject
     [Rpc("SpaceCenter", "Module_SetFieldIntById")]
     public void SetFieldIntById(string id, int value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             id,
@@ -595,7 +595,7 @@ public class Module : RemoteObject
     [Rpc("SpaceCenter", "Module_SetFieldIntById")]
     public async Task SetFieldIntByIdAsync(string id, int value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             id,
@@ -612,7 +612,7 @@ public class Module : RemoteObject
     [Rpc("SpaceCenter", "Module_SetFieldString")]
     public void SetFieldString(string name, string value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             name,
@@ -630,7 +630,7 @@ public class Module : RemoteObject
     [Rpc("SpaceCenter", "Module_SetFieldString")]
     public async Task SetFieldStringAsync(string name, string value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             name,
@@ -647,7 +647,7 @@ public class Module : RemoteObject
     [Rpc("SpaceCenter", "Module_SetFieldStringById")]
     public void SetFieldStringById(string id, string value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             id,
@@ -665,7 +665,7 @@ public class Module : RemoteObject
     [Rpc("SpaceCenter", "Module_SetFieldStringById")]
     public async Task SetFieldStringByIdAsync(string id, string value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             id,
@@ -682,7 +682,7 @@ public class Module : RemoteObject
     [Rpc("SpaceCenter", "Module_TriggerEvent")]
     public void TriggerEvent(string name)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             name
@@ -699,7 +699,7 @@ public class Module : RemoteObject
     [Rpc("SpaceCenter", "Module_TriggerEvent")]
     public async Task TriggerEventAsync(string name)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             name
@@ -715,7 +715,7 @@ public class Module : RemoteObject
     [Rpc("SpaceCenter", "Module_TriggerEventById")]
     public void TriggerEventById(string id)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             id
@@ -732,7 +732,7 @@ public class Module : RemoteObject
     [Rpc("SpaceCenter", "Module_TriggerEventById")]
     public async Task TriggerEventByIdAsync(string id)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             id
@@ -747,7 +747,7 @@ public class Module : RemoteObject
     [Rpc("SpaceCenter", "Module_get_Actions")]
     public IList<string> GetActions()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -762,7 +762,7 @@ public class Module : RemoteObject
     [Rpc("SpaceCenter", "Module_get_Actions")]
     public async Task<IList<string>> GetActionsAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -776,7 +776,7 @@ public class Module : RemoteObject
     [Rpc("SpaceCenter", "Module_get_ActionsById")]
     public IList<string> GetActionsById()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -791,7 +791,7 @@ public class Module : RemoteObject
     [Rpc("SpaceCenter", "Module_get_ActionsById")]
     public async Task<IList<string>> GetActionsByIdAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -805,7 +805,7 @@ public class Module : RemoteObject
     [Rpc("SpaceCenter", "Module_get_Events")]
     public IList<string> GetEvents()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -820,7 +820,7 @@ public class Module : RemoteObject
     [Rpc("SpaceCenter", "Module_get_Events")]
     public async Task<IList<string>> GetEventsAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -834,7 +834,7 @@ public class Module : RemoteObject
     [Rpc("SpaceCenter", "Module_get_EventsById")]
     public IList<string> GetEventsById()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -849,7 +849,7 @@ public class Module : RemoteObject
     [Rpc("SpaceCenter", "Module_get_EventsById")]
     public async Task<IList<string>> GetEventsByIdAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -867,7 +867,7 @@ public class Module : RemoteObject
     [Rpc("SpaceCenter", "Module_get_Fields")]
     public IDictionary<string,string> GetFields()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -886,7 +886,7 @@ public class Module : RemoteObject
     [Rpc("SpaceCenter", "Module_get_Fields")]
     public async Task<IDictionary<string,string>> GetFieldsAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -900,7 +900,7 @@ public class Module : RemoteObject
     [Rpc("SpaceCenter", "Module_get_FieldsById")]
     public IDictionary<string,string> GetFieldsById()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -915,7 +915,7 @@ public class Module : RemoteObject
     [Rpc("SpaceCenter", "Module_get_FieldsById")]
     public async Task<IDictionary<string,string>> GetFieldsByIdAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -928,7 +928,7 @@ public class Module : RemoteObject
     [Rpc("SpaceCenter", "Module_get_Name")]
     public string GetName()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -942,7 +942,7 @@ public class Module : RemoteObject
     [Rpc("SpaceCenter", "Module_get_Name")]
     public async Task<string> GetNameAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -955,7 +955,7 @@ public class Module : RemoteObject
     [Rpc("SpaceCenter", "Module_get_Part")]
     public Part GetPart()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -969,7 +969,7 @@ public class Module : RemoteObject
     [Rpc("SpaceCenter", "Module_get_Part")]
     public async Task<Part> GetPartAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };

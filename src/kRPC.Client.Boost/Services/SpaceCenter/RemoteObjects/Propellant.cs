@@ -21,7 +21,7 @@ public class Propellant : RemoteObject
     [Rpc("SpaceCenter", "Propellant_get_CurrentAmount")]
     public double GetCurrentAmount()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -35,7 +35,7 @@ public class Propellant : RemoteObject
     [Rpc("SpaceCenter", "Propellant_get_CurrentAmount")]
     public async Task<double> GetCurrentAmountAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -48,7 +48,7 @@ public class Propellant : RemoteObject
     [Rpc("SpaceCenter", "Propellant_get_CurrentRequirement")]
     public double GetCurrentRequirement()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -62,7 +62,7 @@ public class Propellant : RemoteObject
     [Rpc("SpaceCenter", "Propellant_get_CurrentRequirement")]
     public async Task<double> GetCurrentRequirementAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -75,7 +75,7 @@ public class Propellant : RemoteObject
     [Rpc("SpaceCenter", "Propellant_get_DrawStackGauge")]
     public bool GetDrawStackGauge()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -89,7 +89,7 @@ public class Propellant : RemoteObject
     [Rpc("SpaceCenter", "Propellant_get_DrawStackGauge")]
     public async Task<bool> GetDrawStackGaugeAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -103,7 +103,7 @@ public class Propellant : RemoteObject
     [Rpc("SpaceCenter", "Propellant_get_IgnoreForIsp")]
     public bool GetIgnoreForIsp()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -118,7 +118,7 @@ public class Propellant : RemoteObject
     [Rpc("SpaceCenter", "Propellant_get_IgnoreForIsp")]
     public async Task<bool> GetIgnoreForIspAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -131,7 +131,7 @@ public class Propellant : RemoteObject
     [Rpc("SpaceCenter", "Propellant_get_IgnoreForThrustCurve")]
     public bool GetIgnoreForThrustCurve()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -145,7 +145,7 @@ public class Propellant : RemoteObject
     [Rpc("SpaceCenter", "Propellant_get_IgnoreForThrustCurve")]
     public async Task<bool> GetIgnoreForThrustCurveAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -158,7 +158,7 @@ public class Propellant : RemoteObject
     [Rpc("SpaceCenter", "Propellant_get_IsDeprived")]
     public bool GetIsDeprived()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -172,7 +172,7 @@ public class Propellant : RemoteObject
     [Rpc("SpaceCenter", "Propellant_get_IsDeprived")]
     public async Task<bool> GetIsDeprivedAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -185,7 +185,7 @@ public class Propellant : RemoteObject
     [Rpc("SpaceCenter", "Propellant_get_Name")]
     public string GetName()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -199,7 +199,7 @@ public class Propellant : RemoteObject
     [Rpc("SpaceCenter", "Propellant_get_Name")]
     public async Task<string> GetNameAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -212,7 +212,7 @@ public class Propellant : RemoteObject
     [Rpc("SpaceCenter", "Propellant_get_Ratio")]
     public float GetRatio()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -226,7 +226,7 @@ public class Propellant : RemoteObject
     [Rpc("SpaceCenter", "Propellant_get_Ratio")]
     public async Task<float> GetRatioAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -240,7 +240,7 @@ public class Propellant : RemoteObject
     [Rpc("SpaceCenter", "Propellant_get_TotalResourceAvailable")]
     public double GetTotalResourceAvailable()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -255,7 +255,7 @@ public class Propellant : RemoteObject
     [Rpc("SpaceCenter", "Propellant_get_TotalResourceAvailable")]
     public async Task<double> GetTotalResourceAvailableAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -269,7 +269,7 @@ public class Propellant : RemoteObject
     [Rpc("SpaceCenter", "Propellant_get_TotalResourceCapacity")]
     public double GetTotalResourceCapacity()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -284,7 +284,7 @@ public class Propellant : RemoteObject
     [Rpc("SpaceCenter", "Propellant_get_TotalResourceCapacity")]
     public async Task<double> GetTotalResourceCapacityAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };

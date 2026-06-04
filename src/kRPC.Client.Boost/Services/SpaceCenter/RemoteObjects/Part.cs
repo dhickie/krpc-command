@@ -29,7 +29,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_AddForce")]
     public Force AddForce(Vector3D force, Vector3D position, ReferenceFrame referenceFrame)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             force,
@@ -52,7 +52,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_AddForce")]
     public async Task<Force> AddForceAsync(Vector3D force, Vector3D position, ReferenceFrame referenceFrame)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             force,
@@ -77,7 +77,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_BoundingBox")]
     public Tuple<Vector3D,Vector3D> BoundingBox(ReferenceFrame referenceFrame)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             referenceFrame
@@ -101,7 +101,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_BoundingBox")]
     public async Task<Tuple<Vector3D,Vector3D>> BoundingBoxAsync(ReferenceFrame referenceFrame)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             referenceFrame
@@ -119,7 +119,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_CenterOfMass")]
     public Vector3D CenterOfMass(ReferenceFrame referenceFrame)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             referenceFrame
@@ -138,7 +138,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_CenterOfMass")]
     public async Task<Vector3D> CenterOfMassAsync(ReferenceFrame referenceFrame)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             referenceFrame
@@ -155,7 +155,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_Direction")]
     public Vector3D Direction(ReferenceFrame referenceFrame)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             referenceFrame
@@ -173,7 +173,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_Direction")]
     public async Task<Vector3D> DirectionAsync(ReferenceFrame referenceFrame)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             referenceFrame
@@ -193,7 +193,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_InstantaneousForce")]
     public void InstantaneousForce(Vector3D force, Vector3D position, ReferenceFrame referenceFrame)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             force,
@@ -216,7 +216,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_InstantaneousForce")]
     public async Task InstantaneousForceAsync(Vector3D force, Vector3D position, ReferenceFrame referenceFrame)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             force,
@@ -240,7 +240,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_Position")]
     public Vector3D Position(ReferenceFrame referenceFrame)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             referenceFrame
@@ -263,7 +263,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_Position")]
     public async Task<Vector3D> PositionAsync(ReferenceFrame referenceFrame)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             referenceFrame
@@ -280,7 +280,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_Rotation")]
     public Quaternion Rotation(ReferenceFrame referenceFrame)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             referenceFrame
@@ -298,7 +298,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_Rotation")]
     public async Task<Quaternion> RotationAsync(ReferenceFrame referenceFrame)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             referenceFrame
@@ -316,7 +316,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_Velocity")]
     public Vector3D Velocity(ReferenceFrame referenceFrame)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             referenceFrame
@@ -335,7 +335,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_Velocity")]
     public async Task<Vector3D> VelocityAsync(ReferenceFrame referenceFrame)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             referenceFrame
@@ -353,7 +353,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_Antenna")]
     public Antenna? GetAntenna()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -371,7 +371,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_Antenna")]
     public async Task<Antenna?> GetAntennaAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -384,7 +384,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_AutoStrutMode")]
     public AutoStrutMode GetAutoStrutMode()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -398,7 +398,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_AutoStrutMode")]
     public async Task<AutoStrutMode> GetAutoStrutModeAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -411,7 +411,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_AvailableSeats")]
     public uint GetAvailableSeats()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -425,7 +425,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_AvailableSeats")]
     public async Task<uint> GetAvailableSeatsAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -439,7 +439,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_AxiallyAttached")]
     public bool GetAxiallyAttached()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -454,7 +454,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_AxiallyAttached")]
     public async Task<bool> GetAxiallyAttachedAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -467,7 +467,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_CargoBay")]
     public CargoBay? GetCargoBay()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -481,7 +481,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_CargoBay")]
     public async Task<CargoBay?> GetCargoBayAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -503,7 +503,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_CenterOfMassReferenceFrame")]
     public ReferenceFrame GetCenterOfMassReferenceFrame()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -526,7 +526,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_CenterOfMassReferenceFrame")]
     public async Task<ReferenceFrame> GetCenterOfMassReferenceFrameAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -541,7 +541,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_Children")]
     public IList<Part> GetChildren()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -557,7 +557,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_Children")]
     public async Task<IList<Part>> GetChildrenAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -571,7 +571,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_ControlSurface")]
     public ControlSurface? GetControlSurface()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -586,7 +586,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_ControlSurface")]
     public async Task<ControlSurface?> GetControlSurfaceAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -599,7 +599,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_Cost")]
     public double GetCost()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -613,7 +613,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_Cost")]
     public async Task<double> GetCostAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -626,7 +626,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_Crossfeed")]
     public bool GetCrossfeed()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -640,7 +640,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_Crossfeed")]
     public async Task<bool> GetCrossfeedAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -654,7 +654,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_DecoupleStage")]
     public int GetDecoupleStage()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -669,7 +669,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_DecoupleStage")]
     public async Task<int> GetDecoupleStageAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -682,7 +682,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_Decoupler")]
     public Decoupler? GetDecoupler()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -696,7 +696,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_Decoupler")]
     public async Task<Decoupler?> GetDecouplerAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -709,7 +709,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_DockingPort")]
     public DockingPort? GetDockingPort()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -723,7 +723,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_DockingPort")]
     public async Task<DockingPort?> GetDockingPortAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -737,7 +737,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_DryMass")]
     public double GetDryMass()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -752,7 +752,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_DryMass")]
     public async Task<double> GetDryMassAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -765,7 +765,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_DynamicPressure")]
     public float GetDynamicPressure()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -779,7 +779,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_DynamicPressure")]
     public async Task<float> GetDynamicPressureAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -792,7 +792,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_Engine")]
     public Engine? GetEngine()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -806,7 +806,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_Engine")]
     public async Task<Engine?> GetEngineAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -824,7 +824,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_Experiment")]
     public Experiment? GetExperiment()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -843,7 +843,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_Experiment")]
     public async Task<Experiment?> GetExperimentAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -856,7 +856,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_Experiments")]
     public IList<Experiment> GetExperiments()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -870,7 +870,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_Experiments")]
     public async Task<IList<Experiment>> GetExperimentsAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -883,7 +883,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_Fairing")]
     public Fairing? GetFairing()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -897,7 +897,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_Fairing")]
     public async Task<Fairing?> GetFairingAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -910,7 +910,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_FlagURL")]
     public string GetFlagURL()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -924,7 +924,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_FlagURL")]
     public async Task<string> GetFlagURLAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -938,10 +938,10 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_set_FlagURL")]
     public void SetFlagURL(string value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
-            value
+            new(value)
         };
         Connection.Invoke("SpaceCenter", "Part_set_FlagURL", args);
     }
@@ -954,10 +954,10 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_set_FlagURL")]
     public async Task SetFlagURLAsync(string value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
-            value
+            new(value)
         };
         await Connection.InvokeAsync("SpaceCenter", "Part_set_FlagURL", args);
     }
@@ -969,7 +969,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_FuelLinesFrom")]
     public IList<Part> GetFuelLinesFrom()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -984,7 +984,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_FuelLinesFrom")]
     public async Task<IList<Part>> GetFuelLinesFromAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -998,7 +998,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_FuelLinesTo")]
     public IList<Part> GetFuelLinesTo()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1013,7 +1013,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_FuelLinesTo")]
     public async Task<IList<Part>> GetFuelLinesToAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1026,10 +1026,10 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_set_Glow")]
     public void SetGlow(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
-            value
+            new(value)
         };
         Connection.Invoke("SpaceCenter", "Part_set_Glow", args);
     }
@@ -1041,10 +1041,10 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_set_Glow")]
     public async Task SetGlowAsync(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
-            value
+            new(value)
         };
         await Connection.InvokeAsync("SpaceCenter", "Part_set_Glow", args);
     }
@@ -1055,7 +1055,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_HighlightColor")]
     public Tuple<double,double,double> GetHighlightColor()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1069,7 +1069,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_HighlightColor")]
     public async Task<Tuple<double,double,double>> GetHighlightColorAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1083,10 +1083,10 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_set_HighlightColor")]
     public void SetHighlightColor(Tuple<double,double,double> value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
-            value
+            new(value)
         };
         Connection.Invoke("SpaceCenter", "Part_set_HighlightColor", args);
     }
@@ -1099,10 +1099,10 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_set_HighlightColor")]
     public async Task SetHighlightColorAsync(Tuple<double,double,double> value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
-            value
+            new(value)
         };
         await Connection.InvokeAsync("SpaceCenter", "Part_set_HighlightColor", args);
     }
@@ -1113,7 +1113,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_Highlighted")]
     public bool GetHighlighted()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1127,7 +1127,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_Highlighted")]
     public async Task<bool> GetHighlightedAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1141,7 +1141,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_set_Highlighted")]
     public void SetHighlighted(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -1157,7 +1157,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_set_Highlighted")]
     public async Task SetHighlightedAsync(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -1171,7 +1171,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_ImpactTolerance")]
     public double GetImpactTolerance()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1185,7 +1185,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_ImpactTolerance")]
     public async Task<double> GetImpactToleranceAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1200,7 +1200,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_InertiaTensor")]
     public IList<double> GetInertiaTensor()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1216,7 +1216,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_InertiaTensor")]
     public async Task<IList<double>> GetInertiaTensorAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1234,7 +1234,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_Intake")]
     public Intake? GetIntake()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1253,7 +1253,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_Intake")]
     public async Task<Intake?> GetIntakeAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1266,7 +1266,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_IsFuelLine")]
     public bool GetIsFuelLine()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1280,7 +1280,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_IsFuelLine")]
     public async Task<bool> GetIsFuelLineAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1293,7 +1293,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_LaunchClamp")]
     public LaunchClamp? GetLaunchClamp()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1307,7 +1307,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_LaunchClamp")]
     public async Task<LaunchClamp?> GetLaunchClampAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1320,7 +1320,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_Leg")]
     public Leg? GetLeg()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1334,7 +1334,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_Leg")]
     public async Task<Leg?> GetLegAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1347,7 +1347,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_Light")]
     public Light? GetLight()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1361,7 +1361,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_Light")]
     public async Task<Light?> GetLightAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1375,7 +1375,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_Mass")]
     public double GetMass()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1390,7 +1390,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_Mass")]
     public async Task<double> GetMassAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1404,7 +1404,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_Massless")]
     public bool GetMassless()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1419,7 +1419,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_Massless")]
     public async Task<bool> GetMasslessAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1432,7 +1432,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_MaxSkinTemperature")]
     public double GetMaxSkinTemperature()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1446,7 +1446,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_MaxSkinTemperature")]
     public async Task<double> GetMaxSkinTemperatureAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1459,7 +1459,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_MaxTemperature")]
     public double GetMaxTemperature()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1473,7 +1473,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_MaxTemperature")]
     public async Task<double> GetMaxTemperatureAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1486,7 +1486,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_Modules")]
     public IList<Module> GetModules()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1500,7 +1500,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_Modules")]
     public async Task<IList<Module>> GetModulesAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1514,7 +1514,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_MomentOfInertia")]
     public Tuple<double,double,double> GetMomentOfInertia()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1529,7 +1529,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_MomentOfInertia")]
     public async Task<Tuple<double,double,double>> GetMomentOfInertiaAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1544,7 +1544,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_Name")]
     public string GetName()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1560,7 +1560,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_Name")]
     public async Task<string> GetNameAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1573,7 +1573,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_Parachute")]
     public Parachute? GetParachute()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1587,7 +1587,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_Parachute")]
     public async Task<Parachute?> GetParachuteAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1602,7 +1602,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_Parent")]
     public Part? GetParent()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1618,7 +1618,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_Parent")]
     public async Task<Part?> GetParentAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1631,7 +1631,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_RCS")]
     public RCS? GetRCS()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1645,7 +1645,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_RCS")]
     public async Task<RCS?> GetRCSAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1659,7 +1659,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_RadiallyAttached")]
     public bool GetRadiallyAttached()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1674,7 +1674,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_RadiallyAttached")]
     public async Task<bool> GetRadiallyAttachedAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1687,7 +1687,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_Radiator")]
     public Radiator? GetRadiator()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1701,7 +1701,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_Radiator")]
     public async Task<Radiator?> GetRadiatorAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1714,7 +1714,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_ReactionWheel")]
     public ReactionWheel? GetReactionWheel()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1728,7 +1728,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_ReactionWheel")]
     public async Task<ReactionWheel?> GetReactionWheelAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1750,7 +1750,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_ReferenceFrame")]
     public ReferenceFrame GetReferenceFrame()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1773,7 +1773,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_ReferenceFrame")]
     public async Task<ReferenceFrame> GetReferenceFrameAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1787,7 +1787,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_ResourceConverter")]
     public ResourceConverter? GetResourceConverter()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1802,7 +1802,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_ResourceConverter")]
     public async Task<ResourceConverter?> GetResourceConverterAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1815,7 +1815,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_ResourceDrain")]
     public ResourceDrain? GetResourceDrain()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1829,7 +1829,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_ResourceDrain")]
     public async Task<ResourceDrain?> GetResourceDrainAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1843,7 +1843,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_ResourceHarvester")]
     public ResourceHarvester? GetResourceHarvester()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1858,7 +1858,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_ResourceHarvester")]
     public async Task<ResourceHarvester?> GetResourceHarvesterAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1871,7 +1871,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_Resources")]
     public Resources GetResources()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1885,7 +1885,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_Resources")]
     public async Task<Resources> GetResourcesAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1899,7 +1899,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_RoboticController")]
     public RoboticController? GetRoboticController()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1914,7 +1914,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_RoboticController")]
     public async Task<RoboticController?> GetRoboticControllerAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1927,7 +1927,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_RoboticHinge")]
     public RoboticHinge? GetRoboticHinge()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1941,7 +1941,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_RoboticHinge")]
     public async Task<RoboticHinge?> GetRoboticHingeAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1954,7 +1954,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_RoboticPiston")]
     public RoboticPiston? GetRoboticPiston()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1968,7 +1968,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_RoboticPiston")]
     public async Task<RoboticPiston?> GetRoboticPistonAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1981,7 +1981,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_RoboticRotation")]
     public RoboticRotation? GetRoboticRotation()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1995,7 +1995,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_RoboticRotation")]
     public async Task<RoboticRotation?> GetRoboticRotationAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -2008,7 +2008,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_RoboticRotor")]
     public RoboticRotor? GetRoboticRotor()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -2022,7 +2022,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_RoboticRotor")]
     public async Task<RoboticRotor?> GetRoboticRotorAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -2035,7 +2035,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_Sensor")]
     public Sensor? GetSensor()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -2049,7 +2049,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_Sensor")]
     public async Task<Sensor?> GetSensorAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -2062,7 +2062,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_Shielded")]
     public bool GetShielded()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -2076,7 +2076,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_Shielded")]
     public async Task<bool> GetShieldedAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -2089,7 +2089,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_SkinTemperature")]
     public double GetSkinTemperature()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -2103,7 +2103,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_SkinTemperature")]
     public async Task<double> GetSkinTemperatureAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -2116,7 +2116,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_SolarPanel")]
     public SolarPanel? GetSolarPanel()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -2130,7 +2130,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_SolarPanel")]
     public async Task<SolarPanel?> GetSolarPanelAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -2144,7 +2144,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_Stage")]
     public int GetStage()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -2159,7 +2159,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_Stage")]
     public async Task<int> GetStageAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -2178,7 +2178,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_Tag")]
     public string GetTag()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -2198,7 +2198,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_Tag")]
     public async Task<string> GetTagAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -2213,7 +2213,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_set_Tag")]
     public void SetTag(string value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -2230,7 +2230,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_set_Tag")]
     public async Task SetTagAsync(string value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -2244,7 +2244,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_Temperature")]
     public double GetTemperature()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -2258,7 +2258,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_Temperature")]
     public async Task<double> GetTemperatureAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -2274,7 +2274,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_ThermalConductionFlux")]
     public float GetThermalConductionFlux()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -2291,7 +2291,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_ThermalConductionFlux")]
     public async Task<float> GetThermalConductionFluxAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -2307,7 +2307,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_ThermalConvectionFlux")]
     public float GetThermalConvectionFlux()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -2324,7 +2324,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_ThermalConvectionFlux")]
     public async Task<float> GetThermalConvectionFluxAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -2341,7 +2341,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_ThermalInternalFlux")]
     public float GetThermalInternalFlux()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -2359,7 +2359,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_ThermalInternalFlux")]
     public async Task<float> GetThermalInternalFluxAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -2373,7 +2373,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_ThermalMass")]
     public float GetThermalMass()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -2388,7 +2388,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_ThermalMass")]
     public async Task<float> GetThermalMassAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -2404,7 +2404,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_ThermalRadiationFlux")]
     public float GetThermalRadiationFlux()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -2421,7 +2421,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_ThermalRadiationFlux")]
     public async Task<float> GetThermalRadiationFluxAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -2435,7 +2435,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_ThermalResourceMass")]
     public float GetThermalResourceMass()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -2450,7 +2450,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_ThermalResourceMass")]
     public async Task<float> GetThermalResourceMassAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -2464,7 +2464,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_ThermalSkinMass")]
     public float GetThermalSkinMass()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -2479,7 +2479,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_ThermalSkinMass")]
     public async Task<float> GetThermalSkinMassAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -2495,7 +2495,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_ThermalSkinToInternalFlux")]
     public float GetThermalSkinToInternalFlux()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -2512,7 +2512,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_ThermalSkinToInternalFlux")]
     public async Task<float> GetThermalSkinToInternalFluxAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -2525,7 +2525,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_Title")]
     public string GetTitle()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -2539,7 +2539,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_Title")]
     public async Task<string> GetTitleAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -2552,7 +2552,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_Vessel")]
     public Vessel GetVessel()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -2566,7 +2566,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_Vessel")]
     public async Task<Vessel> GetVesselAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -2579,7 +2579,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_Wheel")]
     public Wheel? GetWheel()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -2593,7 +2593,7 @@ public class Part : RemoteObject
     [Rpc("SpaceCenter", "Part_get_Wheel")]
     public async Task<Wheel?> GetWheelAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };

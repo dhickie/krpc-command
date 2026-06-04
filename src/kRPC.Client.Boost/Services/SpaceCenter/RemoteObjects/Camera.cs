@@ -23,7 +23,7 @@ public class Camera : RemoteObject
     [Rpc("SpaceCenter", "Camera_get_DefaultDistance")]
     public float GetDefaultDistance()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -37,7 +37,7 @@ public class Camera : RemoteObject
     [Rpc("SpaceCenter", "Camera_get_DefaultDistance")]
     public async Task<float> GetDefaultDistanceAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -51,7 +51,7 @@ public class Camera : RemoteObject
     [Rpc("SpaceCenter", "Camera_get_Distance")]
     public float GetDistance()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -66,7 +66,7 @@ public class Camera : RemoteObject
     [Rpc("SpaceCenter", "Camera_get_Distance")]
     public async Task<float> GetDistanceAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -81,7 +81,7 @@ public class Camera : RemoteObject
     [Rpc("SpaceCenter", "Camera_set_Distance")]
     public void SetDistance(float value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -98,7 +98,7 @@ public class Camera : RemoteObject
     [Rpc("SpaceCenter", "Camera_set_Distance")]
     public async Task SetDistanceAsync(float value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -114,7 +114,7 @@ public class Camera : RemoteObject
     [Rpc("SpaceCenter", "Camera_get_FocussedBody")]
     public CelestialBody? GetFocussedBody()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -130,7 +130,7 @@ public class Camera : RemoteObject
     [Rpc("SpaceCenter", "Camera_get_FocussedBody")]
     public async Task<CelestialBody?> GetFocussedBodyAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -145,7 +145,7 @@ public class Camera : RemoteObject
     [Rpc("SpaceCenter", "Camera_set_FocussedBody")]
     public void SetFocussedBody(CelestialBody value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -162,7 +162,7 @@ public class Camera : RemoteObject
     [Rpc("SpaceCenter", "Camera_set_FocussedBody")]
     public async Task SetFocussedBodyAsync(CelestialBody value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -178,7 +178,7 @@ public class Camera : RemoteObject
     [Rpc("SpaceCenter", "Camera_get_FocussedNode")]
     public Node? GetFocussedNode()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -194,7 +194,7 @@ public class Camera : RemoteObject
     [Rpc("SpaceCenter", "Camera_get_FocussedNode")]
     public async Task<Node?> GetFocussedNodeAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -209,7 +209,7 @@ public class Camera : RemoteObject
     [Rpc("SpaceCenter", "Camera_set_FocussedNode")]
     public void SetFocussedNode(Node value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -226,7 +226,7 @@ public class Camera : RemoteObject
     [Rpc("SpaceCenter", "Camera_set_FocussedNode")]
     public async Task SetFocussedNodeAsync(Node value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -242,7 +242,7 @@ public class Camera : RemoteObject
     [Rpc("SpaceCenter", "Camera_get_FocussedVessel")]
     public Vessel? GetFocussedVessel()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -258,7 +258,7 @@ public class Camera : RemoteObject
     [Rpc("SpaceCenter", "Camera_get_FocussedVessel")]
     public async Task<Vessel?> GetFocussedVesselAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -273,7 +273,7 @@ public class Camera : RemoteObject
     [Rpc("SpaceCenter", "Camera_set_FocussedVessel")]
     public void SetFocussedVessel(Vessel value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -290,7 +290,7 @@ public class Camera : RemoteObject
     [Rpc("SpaceCenter", "Camera_set_FocussedVessel")]
     public async Task SetFocussedVesselAsync(Vessel value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -304,7 +304,7 @@ public class Camera : RemoteObject
     [Rpc("SpaceCenter", "Camera_get_Heading")]
     public Angle GetHeading()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -319,7 +319,7 @@ public class Camera : RemoteObject
     [Rpc("SpaceCenter", "Camera_get_Heading")]
     public async Task<Angle> GetHeadingAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -334,7 +334,7 @@ public class Camera : RemoteObject
     [Rpc("SpaceCenter", "Camera_set_Heading")]
     public void SetHeading(Angle value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             (float)value.Degrees
@@ -350,7 +350,7 @@ public class Camera : RemoteObject
     [Rpc("SpaceCenter", "Camera_set_Heading")]
     public async Task SetHeadingAsync(Angle value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             (float)value.Degrees
@@ -364,7 +364,7 @@ public class Camera : RemoteObject
     [Rpc("SpaceCenter", "Camera_get_MaxDistance")]
     public float GetMaxDistance()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -378,7 +378,7 @@ public class Camera : RemoteObject
     [Rpc("SpaceCenter", "Camera_get_MaxDistance")]
     public async Task<float> GetMaxDistanceAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -391,7 +391,7 @@ public class Camera : RemoteObject
     [Rpc("SpaceCenter", "Camera_get_MaxPitch")]
     public Angle GetMaxPitch()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -406,7 +406,7 @@ public class Camera : RemoteObject
     [Rpc("SpaceCenter", "Camera_get_MaxPitch")]
     public async Task<Angle> GetMaxPitchAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -420,7 +420,7 @@ public class Camera : RemoteObject
     [Rpc("SpaceCenter", "Camera_get_MinDistance")]
     public float GetMinDistance()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -434,7 +434,7 @@ public class Camera : RemoteObject
     [Rpc("SpaceCenter", "Camera_get_MinDistance")]
     public async Task<float> GetMinDistanceAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -447,7 +447,7 @@ public class Camera : RemoteObject
     [Rpc("SpaceCenter", "Camera_get_MinPitch")]
     public Angle GetMinPitch()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -462,7 +462,7 @@ public class Camera : RemoteObject
     [Rpc("SpaceCenter", "Camera_get_MinPitch")]
     public async Task<Angle> GetMinPitchAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -476,7 +476,7 @@ public class Camera : RemoteObject
     [Rpc("SpaceCenter", "Camera_get_Mode")]
     public CameraMode GetMode()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -490,7 +490,7 @@ public class Camera : RemoteObject
     [Rpc("SpaceCenter", "Camera_get_Mode")]
     public async Task<CameraMode> GetModeAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -504,7 +504,7 @@ public class Camera : RemoteObject
     [Rpc("SpaceCenter", "Camera_set_Mode")]
     public void SetMode(CameraMode value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -520,7 +520,7 @@ public class Camera : RemoteObject
     [Rpc("SpaceCenter", "Camera_set_Mode")]
     public async Task SetModeAsync(CameraMode value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -535,7 +535,7 @@ public class Camera : RemoteObject
     [Rpc("SpaceCenter", "Camera_get_Pitch")]
     public Angle GetPitch()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -551,7 +551,7 @@ public class Camera : RemoteObject
     [Rpc("SpaceCenter", "Camera_get_Pitch")]
     public async Task<Angle> GetPitchAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -567,7 +567,7 @@ public class Camera : RemoteObject
     [Rpc("SpaceCenter", "Camera_set_Pitch")]
     public void SetPitch(Angle value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             (float)value.Degrees
@@ -584,7 +584,7 @@ public class Camera : RemoteObject
     [Rpc("SpaceCenter", "Camera_set_Pitch")]
     public async Task SetPitchAsync(Angle value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             (float)value.Degrees

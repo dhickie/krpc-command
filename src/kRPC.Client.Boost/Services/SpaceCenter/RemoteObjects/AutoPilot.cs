@@ -29,7 +29,7 @@ public class AutoPilot : RemoteObject
     [Rpc("SpaceCenter", "AutoPilot_Disengage")]
     public void Disengage()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -43,7 +43,7 @@ public class AutoPilot : RemoteObject
     [Rpc("SpaceCenter", "AutoPilot_Disengage")]
     public async Task DisengageAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -56,7 +56,7 @@ public class AutoPilot : RemoteObject
     [Rpc("SpaceCenter", "AutoPilot_Engage")]
     public void Engage()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -70,7 +70,7 @@ public class AutoPilot : RemoteObject
     [Rpc("SpaceCenter", "AutoPilot_Engage")]
     public async Task EngageAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -85,7 +85,7 @@ public class AutoPilot : RemoteObject
     [Rpc("SpaceCenter", "AutoPilot_TargetPitchAndHeading")]
     public void TargetPitchAndHeading(Angle pitch, Angle heading)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             (float)pitch.Degrees,
@@ -103,7 +103,7 @@ public class AutoPilot : RemoteObject
     [Rpc("SpaceCenter", "AutoPilot_TargetPitchAndHeading")]
     public async Task TargetPitchAndHeadingAsync(Angle pitch, Angle heading)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             (float)pitch.Degrees,
@@ -119,7 +119,7 @@ public class AutoPilot : RemoteObject
     [Rpc("SpaceCenter", "AutoPilot_Wait")]
     public void Wait()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -134,7 +134,7 @@ public class AutoPilot : RemoteObject
     [Rpc("SpaceCenter", "AutoPilot_Wait")]
     public async Task WaitAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -151,7 +151,7 @@ public class AutoPilot : RemoteObject
     [Rpc("SpaceCenter", "AutoPilot_get_AttenuationAngle")]
     public Tuple<Angle,Angle,Angle> GetAttenuationAngle()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -170,7 +170,7 @@ public class AutoPilot : RemoteObject
     [Rpc("SpaceCenter", "AutoPilot_get_AttenuationAngle")]
     public async Task<Tuple<Angle,Angle,Angle>> GetAttenuationAngleAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -189,10 +189,10 @@ public class AutoPilot : RemoteObject
     [Rpc("SpaceCenter", "AutoPilot_set_AttenuationAngle")]
     public void SetAttenuationAngle(Tuple<Angle,Angle,Angle> value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
-            Tuple.Create(value.Item1.Degrees, value.Item2.Degrees, value.Item3.Degrees)
+            new(Tuple.Create(value.Item1.Degrees, value.Item2.Degrees, value.Item3.Degrees))
         };
         Connection.Invoke("SpaceCenter", "AutoPilot_set_AttenuationAngle", args);
     }
@@ -209,10 +209,10 @@ public class AutoPilot : RemoteObject
     [Rpc("SpaceCenter", "AutoPilot_set_AttenuationAngle")]
     public async Task SetAttenuationAngleAsync(Tuple<Angle,Angle,Angle> value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
-            Tuple.Create(value.Item1.Degrees, value.Item2.Degrees, value.Item3.Degrees)
+            new(Tuple.Create(value.Item1.Degrees, value.Item2.Degrees, value.Item3.Degrees))
         };
         await Connection.InvokeAsync("SpaceCenter", "AutoPilot_set_AttenuationAngle", args);
     }
@@ -225,7 +225,7 @@ public class AutoPilot : RemoteObject
     [Rpc("SpaceCenter", "AutoPilot_get_AutoTune")]
     public bool GetAutoTune()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -241,7 +241,7 @@ public class AutoPilot : RemoteObject
     [Rpc("SpaceCenter", "AutoPilot_get_AutoTune")]
     public async Task<bool> GetAutoTuneAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -257,10 +257,10 @@ public class AutoPilot : RemoteObject
     [Rpc("SpaceCenter", "AutoPilot_set_AutoTune")]
     public void SetAutoTune(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
-            value
+            new(value)
         };
         Connection.Invoke("SpaceCenter", "AutoPilot_set_AutoTune", args);
     }
@@ -275,10 +275,10 @@ public class AutoPilot : RemoteObject
     [Rpc("SpaceCenter", "AutoPilot_set_AutoTune")]
     public async Task SetAutoTuneAsync(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
-            value
+            new(value)
         };
         await Connection.InvokeAsync("SpaceCenter", "AutoPilot_set_AutoTune", args);
     }
@@ -292,7 +292,7 @@ public class AutoPilot : RemoteObject
     [Rpc("SpaceCenter", "AutoPilot_get_DecelerationTime")]
     public Tuple<double,double,double> GetDecelerationTime()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -309,7 +309,7 @@ public class AutoPilot : RemoteObject
     [Rpc("SpaceCenter", "AutoPilot_get_DecelerationTime")]
     public async Task<Tuple<double,double,double>> GetDecelerationTimeAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -326,10 +326,10 @@ public class AutoPilot : RemoteObject
     [Rpc("SpaceCenter", "AutoPilot_set_DecelerationTime")]
     public void SetDecelerationTime(Tuple<double,double,double> value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
-            value
+            new(value)
         };
         Connection.Invoke("SpaceCenter", "AutoPilot_set_DecelerationTime", args);
     }
@@ -345,10 +345,10 @@ public class AutoPilot : RemoteObject
     [Rpc("SpaceCenter", "AutoPilot_set_DecelerationTime")]
     public async Task SetDecelerationTimeAsync(Tuple<double,double,double> value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
-            value
+            new(value)
         };
         await Connection.InvokeAsync("SpaceCenter", "AutoPilot_set_DecelerationTime", args);
     }
@@ -361,7 +361,7 @@ public class AutoPilot : RemoteObject
     [Rpc("SpaceCenter", "AutoPilot_get_Error")]
     public Angle GetError()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -378,7 +378,7 @@ public class AutoPilot : RemoteObject
     [Rpc("SpaceCenter", "AutoPilot_get_Error")]
     public async Task<Angle> GetErrorAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -393,7 +393,7 @@ public class AutoPilot : RemoteObject
     [Rpc("SpaceCenter", "AutoPilot_get_HeadingError")]
     public Angle GetHeadingError()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -409,7 +409,7 @@ public class AutoPilot : RemoteObject
     [Rpc("SpaceCenter", "AutoPilot_get_HeadingError")]
     public async Task<Angle> GetHeadingErrorAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -425,7 +425,7 @@ public class AutoPilot : RemoteObject
     [Rpc("SpaceCenter", "AutoPilot_get_Overshoot")]
     public Tuple<double,double,double> GetOvershoot()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -441,7 +441,7 @@ public class AutoPilot : RemoteObject
     [Rpc("SpaceCenter", "AutoPilot_get_Overshoot")]
     public async Task<Tuple<double,double,double>> GetOvershootAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -457,10 +457,10 @@ public class AutoPilot : RemoteObject
     [Rpc("SpaceCenter", "AutoPilot_set_Overshoot")]
     public void SetOvershoot(Tuple<double,double,double> value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
-            value
+            new(value)
         };
         Connection.Invoke("SpaceCenter", "AutoPilot_set_Overshoot", args);
     }
@@ -475,10 +475,10 @@ public class AutoPilot : RemoteObject
     [Rpc("SpaceCenter", "AutoPilot_set_Overshoot")]
     public async Task SetOvershootAsync(Tuple<double,double,double> value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
-            value
+            new(value)
         };
         await Connection.InvokeAsync("SpaceCenter", "AutoPilot_set_Overshoot", args);
     }
@@ -490,7 +490,7 @@ public class AutoPilot : RemoteObject
     [Rpc("SpaceCenter", "AutoPilot_get_PitchError")]
     public Angle GetPitchError()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -506,7 +506,7 @@ public class AutoPilot : RemoteObject
     [Rpc("SpaceCenter", "AutoPilot_get_PitchError")]
     public async Task<Angle> GetPitchErrorAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -524,7 +524,7 @@ public class AutoPilot : RemoteObject
     [Rpc("SpaceCenter", "AutoPilot_get_PitchPIDGains")]
     public Tuple<double,double,double> GetPitchPIDGains()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -542,7 +542,7 @@ public class AutoPilot : RemoteObject
     [Rpc("SpaceCenter", "AutoPilot_get_PitchPIDGains")]
     public async Task<Tuple<double,double,double>> GetPitchPIDGainsAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -556,10 +556,10 @@ public class AutoPilot : RemoteObject
     [Rpc("SpaceCenter", "AutoPilot_set_PitchPIDGains")]
     public void SetPitchPIDGains(Tuple<double,double,double> value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
-            value
+            new(value)
         };
         Connection.Invoke("SpaceCenter", "AutoPilot_set_PitchPIDGains", args);
     }
@@ -572,10 +572,10 @@ public class AutoPilot : RemoteObject
     [Rpc("SpaceCenter", "AutoPilot_set_PitchPIDGains")]
     public async Task SetPitchPIDGainsAsync(Tuple<double,double,double> value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
-            value
+            new(value)
         };
         await Connection.InvokeAsync("SpaceCenter", "AutoPilot_set_PitchPIDGains", args);
     }
@@ -591,7 +591,7 @@ public class AutoPilot : RemoteObject
     [Rpc("SpaceCenter", "AutoPilot_get_ReferenceFrame")]
     public ReferenceFrame GetReferenceFrame()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -610,7 +610,7 @@ public class AutoPilot : RemoteObject
     [Rpc("SpaceCenter", "AutoPilot_get_ReferenceFrame")]
     public async Task<ReferenceFrame> GetReferenceFrameAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -624,10 +624,10 @@ public class AutoPilot : RemoteObject
     [Rpc("SpaceCenter", "AutoPilot_set_ReferenceFrame")]
     public void SetReferenceFrame(ReferenceFrame value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
-            value
+            new(value)
         };
         Connection.Invoke("SpaceCenter", "AutoPilot_set_ReferenceFrame", args);
     }
@@ -640,10 +640,10 @@ public class AutoPilot : RemoteObject
     [Rpc("SpaceCenter", "AutoPilot_set_ReferenceFrame")]
     public async Task SetReferenceFrameAsync(ReferenceFrame value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
-            value
+            new(value)
         };
         await Connection.InvokeAsync("SpaceCenter", "AutoPilot_set_ReferenceFrame", args);
     }
@@ -655,7 +655,7 @@ public class AutoPilot : RemoteObject
     [Rpc("SpaceCenter", "AutoPilot_get_RollError")]
     public Angle GetRollError()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -671,7 +671,7 @@ public class AutoPilot : RemoteObject
     [Rpc("SpaceCenter", "AutoPilot_get_RollError")]
     public async Task<Angle> GetRollErrorAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -689,7 +689,7 @@ public class AutoPilot : RemoteObject
     [Rpc("SpaceCenter", "AutoPilot_get_RollPIDGains")]
     public Tuple<double,double,double> GetRollPIDGains()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -707,7 +707,7 @@ public class AutoPilot : RemoteObject
     [Rpc("SpaceCenter", "AutoPilot_get_RollPIDGains")]
     public async Task<Tuple<double,double,double>> GetRollPIDGainsAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -721,10 +721,10 @@ public class AutoPilot : RemoteObject
     [Rpc("SpaceCenter", "AutoPilot_set_RollPIDGains")]
     public void SetRollPIDGains(Tuple<double,double,double> value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
-            value
+            new(value)
         };
         Connection.Invoke("SpaceCenter", "AutoPilot_set_RollPIDGains", args);
     }
@@ -737,10 +737,10 @@ public class AutoPilot : RemoteObject
     [Rpc("SpaceCenter", "AutoPilot_set_RollPIDGains")]
     public async Task SetRollPIDGainsAsync(Tuple<double,double,double> value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
-            value
+            new(value)
         };
         await Connection.InvokeAsync("SpaceCenter", "AutoPilot_set_RollPIDGains", args);
     }
@@ -752,7 +752,7 @@ public class AutoPilot : RemoteObject
     [Rpc("SpaceCenter", "AutoPilot_get_RollThreshold")]
     public Angle GetRollThreshold()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -768,7 +768,7 @@ public class AutoPilot : RemoteObject
     [Rpc("SpaceCenter", "AutoPilot_get_RollThreshold")]
     public async Task<Angle> GetRollThresholdAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -784,7 +784,7 @@ public class AutoPilot : RemoteObject
     [Rpc("SpaceCenter", "AutoPilot_set_RollThreshold")]
     public void SetRollThreshold(Angle value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value.Degrees
@@ -801,7 +801,7 @@ public class AutoPilot : RemoteObject
     [Rpc("SpaceCenter", "AutoPilot_set_RollThreshold")]
     public async Task SetRollThresholdAsync(Angle value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value.Degrees
@@ -816,7 +816,7 @@ public class AutoPilot : RemoteObject
     [Rpc("SpaceCenter", "AutoPilot_get_SAS")]
     public bool GetSAS()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -831,7 +831,7 @@ public class AutoPilot : RemoteObject
     [Rpc("SpaceCenter", "AutoPilot_get_SAS")]
     public async Task<bool> GetSASAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -845,10 +845,10 @@ public class AutoPilot : RemoteObject
     [Rpc("SpaceCenter", "AutoPilot_set_SAS")]
     public void SetSAS(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
-            value
+            new(value)
         };
         Connection.Invoke("SpaceCenter", "AutoPilot_set_SAS", args);
     }
@@ -861,10 +861,10 @@ public class AutoPilot : RemoteObject
     [Rpc("SpaceCenter", "AutoPilot_set_SAS")]
     public async Task SetSASAsync(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
-            value
+            new(value)
         };
         await Connection.InvokeAsync("SpaceCenter", "AutoPilot_set_SAS", args);
     }
@@ -878,7 +878,7 @@ public class AutoPilot : RemoteObject
     [Rpc("SpaceCenter", "AutoPilot_get_SASMode")]
     public SASMode GetSASMode()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -895,7 +895,7 @@ public class AutoPilot : RemoteObject
     [Rpc("SpaceCenter", "AutoPilot_get_SASMode")]
     public async Task<SASMode> GetSASModeAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -911,10 +911,10 @@ public class AutoPilot : RemoteObject
     [Rpc("SpaceCenter", "AutoPilot_set_SASMode")]
     public void SetSASMode(SASMode value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
-            value
+            new(value)
         };
         Connection.Invoke("SpaceCenter", "AutoPilot_set_SASMode", args);
     }
@@ -929,10 +929,10 @@ public class AutoPilot : RemoteObject
     [Rpc("SpaceCenter", "AutoPilot_set_SASMode")]
     public async Task SetSASModeAsync(SASMode value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
-            value
+            new(value)
         };
         await Connection.InvokeAsync("SpaceCenter", "AutoPilot_set_SASMode", args);
     }
@@ -946,7 +946,7 @@ public class AutoPilot : RemoteObject
     [Rpc("SpaceCenter", "AutoPilot_get_StoppingTime")]
     public Tuple<double,double,double> GetStoppingTime()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -963,7 +963,7 @@ public class AutoPilot : RemoteObject
     [Rpc("SpaceCenter", "AutoPilot_get_StoppingTime")]
     public async Task<Tuple<double,double,double>> GetStoppingTimeAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -980,10 +980,10 @@ public class AutoPilot : RemoteObject
     [Rpc("SpaceCenter", "AutoPilot_set_StoppingTime")]
     public void SetStoppingTime(Tuple<double,double,double> value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
-            value
+            new(value)
         };
         Connection.Invoke("SpaceCenter", "AutoPilot_set_StoppingTime", args);
     }
@@ -999,10 +999,10 @@ public class AutoPilot : RemoteObject
     [Rpc("SpaceCenter", "AutoPilot_set_StoppingTime")]
     public async Task SetStoppingTimeAsync(Tuple<double,double,double> value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
-            value
+            new(value)
         };
         await Connection.InvokeAsync("SpaceCenter", "AutoPilot_set_StoppingTime", args);
     }
@@ -1014,7 +1014,7 @@ public class AutoPilot : RemoteObject
     [Rpc("SpaceCenter", "AutoPilot_get_TargetDirection")]
     public Vector3D GetTargetDirection()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1029,7 +1029,7 @@ public class AutoPilot : RemoteObject
     [Rpc("SpaceCenter", "AutoPilot_get_TargetDirection")]
     public async Task<Vector3D> GetTargetDirectionAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1044,10 +1044,10 @@ public class AutoPilot : RemoteObject
     [Rpc("SpaceCenter", "AutoPilot_set_TargetDirection")]
     public void SetTargetDirection(Vector3D value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
-            value
+            new(value)
         };
         Connection.Invoke("SpaceCenter", "AutoPilot_set_TargetDirection", args);
     }
@@ -1061,10 +1061,10 @@ public class AutoPilot : RemoteObject
     [Rpc("SpaceCenter", "AutoPilot_set_TargetDirection")]
     public async Task SetTargetDirectionAsync(Vector3D value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
-            value
+            new(value)
         };
         await Connection.InvokeAsync("SpaceCenter", "AutoPilot_set_TargetDirection", args);
     }
@@ -1075,7 +1075,7 @@ public class AutoPilot : RemoteObject
     [Rpc("SpaceCenter", "AutoPilot_get_TargetHeading")]
     public Angle GetTargetHeading()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1090,7 +1090,7 @@ public class AutoPilot : RemoteObject
     [Rpc("SpaceCenter", "AutoPilot_get_TargetHeading")]
     public async Task<Angle> GetTargetHeadingAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1105,7 +1105,7 @@ public class AutoPilot : RemoteObject
     [Rpc("SpaceCenter", "AutoPilot_set_TargetHeading")]
     public void SetTargetHeading(Angle value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             (float)value.Degrees
@@ -1121,7 +1121,7 @@ public class AutoPilot : RemoteObject
     [Rpc("SpaceCenter", "AutoPilot_set_TargetHeading")]
     public async Task SetTargetHeadingAsync(Angle value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             (float)value.Degrees
@@ -1135,7 +1135,7 @@ public class AutoPilot : RemoteObject
     [Rpc("SpaceCenter", "AutoPilot_get_TargetPitch")]
     public Angle GetTargetPitch()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1150,7 +1150,7 @@ public class AutoPilot : RemoteObject
     [Rpc("SpaceCenter", "AutoPilot_get_TargetPitch")]
     public async Task<Angle> GetTargetPitchAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1165,7 +1165,7 @@ public class AutoPilot : RemoteObject
     [Rpc("SpaceCenter", "AutoPilot_set_TargetPitch")]
     public void SetTargetPitch(Angle value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             (float)value.Degrees
@@ -1181,7 +1181,7 @@ public class AutoPilot : RemoteObject
     [Rpc("SpaceCenter", "AutoPilot_set_TargetPitch")]
     public async Task SetTargetPitchAsync(Angle value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             (float)value.Degrees
@@ -1195,7 +1195,7 @@ public class AutoPilot : RemoteObject
     [Rpc("SpaceCenter", "AutoPilot_get_TargetRoll")]
     public Angle GetTargetRoll()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1210,7 +1210,7 @@ public class AutoPilot : RemoteObject
     [Rpc("SpaceCenter", "AutoPilot_get_TargetRoll")]
     public async Task<Angle> GetTargetRollAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1225,7 +1225,7 @@ public class AutoPilot : RemoteObject
     [Rpc("SpaceCenter", "AutoPilot_set_TargetRoll")]
     public void SetTargetRoll(Angle value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             (float)value.Degrees
@@ -1241,7 +1241,7 @@ public class AutoPilot : RemoteObject
     [Rpc("SpaceCenter", "AutoPilot_set_TargetRoll")]
     public async Task SetTargetRollAsync(Angle value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             (float)value.Degrees
@@ -1257,7 +1257,7 @@ public class AutoPilot : RemoteObject
     [Rpc("SpaceCenter", "AutoPilot_get_TimeToPeak")]
     public Tuple<double,double,double> GetTimeToPeak()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1273,7 +1273,7 @@ public class AutoPilot : RemoteObject
     [Rpc("SpaceCenter", "AutoPilot_get_TimeToPeak")]
     public async Task<Tuple<double,double,double>> GetTimeToPeakAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1289,10 +1289,10 @@ public class AutoPilot : RemoteObject
     [Rpc("SpaceCenter", "AutoPilot_set_TimeToPeak")]
     public void SetTimeToPeak(Tuple<double,double,double> value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
-            value
+            new(value)
         };
         Connection.Invoke("SpaceCenter", "AutoPilot_set_TimeToPeak", args);
     }
@@ -1307,10 +1307,10 @@ public class AutoPilot : RemoteObject
     [Rpc("SpaceCenter", "AutoPilot_set_TimeToPeak")]
     public async Task SetTimeToPeakAsync(Tuple<double,double,double> value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
-            value
+            new(value)
         };
         await Connection.InvokeAsync("SpaceCenter", "AutoPilot_set_TimeToPeak", args);
     }
@@ -1325,7 +1325,7 @@ public class AutoPilot : RemoteObject
     [Rpc("SpaceCenter", "AutoPilot_get_YawPIDGains")]
     public Tuple<double,double,double> GetYawPIDGains()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1343,7 +1343,7 @@ public class AutoPilot : RemoteObject
     [Rpc("SpaceCenter", "AutoPilot_get_YawPIDGains")]
     public async Task<Tuple<double,double,double>> GetYawPIDGainsAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1357,10 +1357,10 @@ public class AutoPilot : RemoteObject
     [Rpc("SpaceCenter", "AutoPilot_set_YawPIDGains")]
     public void SetYawPIDGains(Tuple<double,double,double> value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
-            value
+            new(value)
         };
         Connection.Invoke("SpaceCenter", "AutoPilot_set_YawPIDGains", args);
     }
@@ -1373,10 +1373,10 @@ public class AutoPilot : RemoteObject
     [Rpc("SpaceCenter", "AutoPilot_set_YawPIDGains")]
     public async Task SetYawPIDGainsAsync(Tuple<double,double,double> value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
-            value
+            new(value)
         };
         await Connection.InvokeAsync("SpaceCenter", "AutoPilot_set_YawPIDGains", args);
     }

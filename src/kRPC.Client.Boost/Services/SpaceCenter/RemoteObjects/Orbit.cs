@@ -26,7 +26,7 @@ public class Orbit : RemoteObject
     [Rpc("SpaceCenter", "Orbit_DistanceAtClosestApproach")]
     public double DistanceAtClosestApproach(Orbit target)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             target
@@ -42,7 +42,7 @@ public class Orbit : RemoteObject
     [Rpc("SpaceCenter", "Orbit_DistanceAtClosestApproach")]
     public async Task<double> DistanceAtClosestApproachAsync(Orbit target)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             target
@@ -57,7 +57,7 @@ public class Orbit : RemoteObject
     [Rpc("SpaceCenter", "Orbit_EccentricAnomalyAtUT")]
     public Angle EccentricAnomalyAtUT(double ut)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             ut
@@ -74,7 +74,7 @@ public class Orbit : RemoteObject
     [Rpc("SpaceCenter", "Orbit_EccentricAnomalyAtUT")]
     public async Task<Angle> EccentricAnomalyAtUTAsync(double ut)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             ut
@@ -96,7 +96,7 @@ public class Orbit : RemoteObject
     [Rpc("SpaceCenter", "Orbit_ListClosestApproaches")]
     public IList<IList<double>> ListClosestApproaches(Orbit target, int orbits)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             target,
@@ -119,7 +119,7 @@ public class Orbit : RemoteObject
     [Rpc("SpaceCenter", "Orbit_ListClosestApproaches")]
     public async Task<IList<IList<double>>> ListClosestApproachesAsync(Orbit target, int orbits)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             target,
@@ -135,7 +135,7 @@ public class Orbit : RemoteObject
     [Rpc("SpaceCenter", "Orbit_MeanAnomalyAtUT")]
     public Angle MeanAnomalyAtUT(double ut)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             ut
@@ -152,7 +152,7 @@ public class Orbit : RemoteObject
     [Rpc("SpaceCenter", "Orbit_MeanAnomalyAtUT")]
     public async Task<Angle> MeanAnomalyAtUTAsync(double ut)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             ut
@@ -168,7 +168,7 @@ public class Orbit : RemoteObject
     [Rpc("SpaceCenter", "Orbit_OrbitalSpeedAt")]
     public double OrbitalSpeedAt(double time)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             time
@@ -184,7 +184,7 @@ public class Orbit : RemoteObject
     [Rpc("SpaceCenter", "Orbit_OrbitalSpeedAt")]
     public async Task<double> OrbitalSpeedAtAsync(double time)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             time
@@ -202,7 +202,7 @@ public class Orbit : RemoteObject
     [Rpc("SpaceCenter", "Orbit_PositionAt")]
     public Vector3D PositionAt(double ut, ReferenceFrame referenceFrame)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             ut,
@@ -222,7 +222,7 @@ public class Orbit : RemoteObject
     [Rpc("SpaceCenter", "Orbit_PositionAt")]
     public async Task<Vector3D> PositionAtAsync(double ut, ReferenceFrame referenceFrame)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             ut,
@@ -238,7 +238,7 @@ public class Orbit : RemoteObject
     [Rpc("SpaceCenter", "Orbit_RadiusAt")]
     public double RadiusAt(double ut)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             ut
@@ -254,7 +254,7 @@ public class Orbit : RemoteObject
     [Rpc("SpaceCenter", "Orbit_RadiusAt")]
     public async Task<double> RadiusAtAsync(double ut)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             ut
@@ -269,7 +269,7 @@ public class Orbit : RemoteObject
     [Rpc("SpaceCenter", "Orbit_RadiusAtTrueAnomaly")]
     public double RadiusAtTrueAnomaly(Angle trueAnomaly)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             trueAnomaly.Radians
@@ -285,7 +285,7 @@ public class Orbit : RemoteObject
     [Rpc("SpaceCenter", "Orbit_RadiusAtTrueAnomaly")]
     public async Task<double> RadiusAtTrueAnomalyAsync(Angle trueAnomaly)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             trueAnomaly.Radians
@@ -300,7 +300,7 @@ public class Orbit : RemoteObject
     [Rpc("SpaceCenter", "Orbit_RelativeInclination")]
     public Angle RelativeInclination(Orbit target)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             target
@@ -317,7 +317,7 @@ public class Orbit : RemoteObject
     [Rpc("SpaceCenter", "Orbit_RelativeInclination")]
     public async Task<Angle> RelativeInclinationAsync(Orbit target)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             target
@@ -334,7 +334,7 @@ public class Orbit : RemoteObject
     [Rpc("SpaceCenter", "Orbit_TimeOfClosestApproach")]
     public double TimeOfClosestApproach(Orbit target)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             target
@@ -351,7 +351,7 @@ public class Orbit : RemoteObject
     [Rpc("SpaceCenter", "Orbit_TimeOfClosestApproach")]
     public async Task<double> TimeOfClosestApproachAsync(Orbit target)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             target
@@ -366,7 +366,7 @@ public class Orbit : RemoteObject
     [Rpc("SpaceCenter", "Orbit_TrueAnomalyAtAN")]
     public Angle TrueAnomalyAtAN(Orbit target)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             target
@@ -383,7 +383,7 @@ public class Orbit : RemoteObject
     [Rpc("SpaceCenter", "Orbit_TrueAnomalyAtAN")]
     public async Task<Angle> TrueAnomalyAtANAsync(Orbit target)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             target
@@ -399,7 +399,7 @@ public class Orbit : RemoteObject
     [Rpc("SpaceCenter", "Orbit_TrueAnomalyAtDN")]
     public Angle TrueAnomalyAtDN(Orbit target)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             target
@@ -416,7 +416,7 @@ public class Orbit : RemoteObject
     [Rpc("SpaceCenter", "Orbit_TrueAnomalyAtDN")]
     public async Task<Angle> TrueAnomalyAtDNAsync(Orbit target)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             target
@@ -432,7 +432,7 @@ public class Orbit : RemoteObject
     [Rpc("SpaceCenter", "Orbit_TrueAnomalyAtRadius")]
     public Angle TrueAnomalyAtRadius(double radius)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             radius
@@ -449,7 +449,7 @@ public class Orbit : RemoteObject
     [Rpc("SpaceCenter", "Orbit_TrueAnomalyAtRadius")]
     public async Task<Angle> TrueAnomalyAtRadiusAsync(double radius)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             radius
@@ -465,7 +465,7 @@ public class Orbit : RemoteObject
     [Rpc("SpaceCenter", "Orbit_TrueAnomalyAtUT")]
     public Angle TrueAnomalyAtUT(double ut)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             ut
@@ -482,7 +482,7 @@ public class Orbit : RemoteObject
     [Rpc("SpaceCenter", "Orbit_TrueAnomalyAtUT")]
     public async Task<Angle> TrueAnomalyAtUTAsync(double ut)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             ut
@@ -498,7 +498,7 @@ public class Orbit : RemoteObject
     [Rpc("SpaceCenter", "Orbit_UTAtTrueAnomaly")]
     public double UTAtTrueAnomaly(Angle trueAnomaly)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             trueAnomaly.Radians
@@ -514,7 +514,7 @@ public class Orbit : RemoteObject
     [Rpc("SpaceCenter", "Orbit_UTAtTrueAnomaly")]
     public async Task<double> UTAtTrueAnomalyAsync(Angle trueAnomaly)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             trueAnomaly.Radians
@@ -532,7 +532,7 @@ public class Orbit : RemoteObject
     [Rpc("SpaceCenter", "Orbit_static_ReferencePlaneDirection")]
     public Vector3D ReferencePlaneDirection(ReferenceFrame referenceFrame)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             referenceFrame
         };
@@ -550,7 +550,7 @@ public class Orbit : RemoteObject
     [Rpc("SpaceCenter", "Orbit_static_ReferencePlaneDirection")]
     public async Task<Vector3D> ReferencePlaneDirectionAsync(ReferenceFrame referenceFrame)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             referenceFrame
         };
@@ -568,7 +568,7 @@ public class Orbit : RemoteObject
     [Rpc("SpaceCenter", "Orbit_static_ReferencePlaneNormal")]
     public Vector3D ReferencePlaneNormal(ReferenceFrame referenceFrame)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             referenceFrame
         };
@@ -587,7 +587,7 @@ public class Orbit : RemoteObject
     [Rpc("SpaceCenter", "Orbit_static_ReferencePlaneNormal")]
     public async Task<Vector3D> ReferencePlaneNormalAsync(ReferenceFrame referenceFrame)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             referenceFrame
         };
@@ -605,7 +605,7 @@ public class Orbit : RemoteObject
     [Rpc("SpaceCenter", "Orbit_get_Apoapsis")]
     public double GetApoapsis()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -624,7 +624,7 @@ public class Orbit : RemoteObject
     [Rpc("SpaceCenter", "Orbit_get_Apoapsis")]
     public async Task<double> GetApoapsisAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -640,7 +640,7 @@ public class Orbit : RemoteObject
     [Rpc("SpaceCenter", "Orbit_get_ApoapsisAltitude")]
     public double GetApoapsisAltitude()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -657,7 +657,7 @@ public class Orbit : RemoteObject
     [Rpc("SpaceCenter", "Orbit_get_ApoapsisAltitude")]
     public async Task<double> GetApoapsisAltitudeAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -671,7 +671,7 @@ public class Orbit : RemoteObject
     [Rpc("SpaceCenter", "Orbit_get_ArgumentOfPeriapsis")]
     public Angle GetArgumentOfPeriapsis()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -687,7 +687,7 @@ public class Orbit : RemoteObject
     [Rpc("SpaceCenter", "Orbit_get_ArgumentOfPeriapsis")]
     public async Task<Angle> GetArgumentOfPeriapsisAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -701,7 +701,7 @@ public class Orbit : RemoteObject
     [Rpc("SpaceCenter", "Orbit_get_Body")]
     public CelestialBody GetBody()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -715,7 +715,7 @@ public class Orbit : RemoteObject
     [Rpc("SpaceCenter", "Orbit_get_Body")]
     public async Task<CelestialBody> GetBodyAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -728,7 +728,7 @@ public class Orbit : RemoteObject
     [Rpc("SpaceCenter", "Orbit_get_EccentricAnomaly")]
     public Angle GetEccentricAnomaly()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -743,7 +743,7 @@ public class Orbit : RemoteObject
     [Rpc("SpaceCenter", "Orbit_get_EccentricAnomaly")]
     public async Task<Angle> GetEccentricAnomalyAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -758,7 +758,7 @@ public class Orbit : RemoteObject
     [Rpc("SpaceCenter", "Orbit_get_Eccentricity")]
     public double GetEccentricity()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -773,7 +773,7 @@ public class Orbit : RemoteObject
     [Rpc("SpaceCenter", "Orbit_get_Eccentricity")]
     public async Task<double> GetEccentricityAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -788,7 +788,7 @@ public class Orbit : RemoteObject
     [Rpc("SpaceCenter", "Orbit_get_Epoch")]
     public double GetEpoch()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -804,7 +804,7 @@ public class Orbit : RemoteObject
     [Rpc("SpaceCenter", "Orbit_get_Epoch")]
     public async Task<double> GetEpochAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -818,7 +818,7 @@ public class Orbit : RemoteObject
     [Rpc("SpaceCenter", "Orbit_get_Inclination")]
     public Angle GetInclination()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -834,7 +834,7 @@ public class Orbit : RemoteObject
     [Rpc("SpaceCenter", "Orbit_get_Inclination")]
     public async Task<Angle> GetInclinationAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -849,7 +849,7 @@ public class Orbit : RemoteObject
     [Rpc("SpaceCenter", "Orbit_get_LongitudeOfAscendingNode")]
     public Angle GetLongitudeOfAscendingNode()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -865,7 +865,7 @@ public class Orbit : RemoteObject
     [Rpc("SpaceCenter", "Orbit_get_LongitudeOfAscendingNode")]
     public async Task<Angle> GetLongitudeOfAscendingNodeAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -879,7 +879,7 @@ public class Orbit : RemoteObject
     [Rpc("SpaceCenter", "Orbit_get_MeanAnomaly")]
     public Angle GetMeanAnomaly()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -894,7 +894,7 @@ public class Orbit : RemoteObject
     [Rpc("SpaceCenter", "Orbit_get_MeanAnomaly")]
     public async Task<Angle> GetMeanAnomalyAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -908,7 +908,7 @@ public class Orbit : RemoteObject
     [Rpc("SpaceCenter", "Orbit_get_MeanAnomalyAtEpoch")]
     public Angle GetMeanAnomalyAtEpoch()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -923,7 +923,7 @@ public class Orbit : RemoteObject
     [Rpc("SpaceCenter", "Orbit_get_MeanAnomalyAtEpoch")]
     public async Task<Angle> GetMeanAnomalyAtEpochAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -938,7 +938,7 @@ public class Orbit : RemoteObject
     [Rpc("SpaceCenter", "Orbit_get_NextOrbit")]
     public Orbit? GetNextOrbit()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -953,7 +953,7 @@ public class Orbit : RemoteObject
     [Rpc("SpaceCenter", "Orbit_get_NextOrbit")]
     public async Task<Orbit?> GetNextOrbitAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -966,7 +966,7 @@ public class Orbit : RemoteObject
     [Rpc("SpaceCenter", "Orbit_get_OrbitalSpeed")]
     public double GetOrbitalSpeed()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -980,7 +980,7 @@ public class Orbit : RemoteObject
     [Rpc("SpaceCenter", "Orbit_get_OrbitalSpeed")]
     public async Task<double> GetOrbitalSpeedAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -998,7 +998,7 @@ public class Orbit : RemoteObject
     [Rpc("SpaceCenter", "Orbit_get_Periapsis")]
     public double GetPeriapsis()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1017,7 +1017,7 @@ public class Orbit : RemoteObject
     [Rpc("SpaceCenter", "Orbit_get_Periapsis")]
     public async Task<double> GetPeriapsisAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1033,7 +1033,7 @@ public class Orbit : RemoteObject
     [Rpc("SpaceCenter", "Orbit_get_PeriapsisAltitude")]
     public double GetPeriapsisAltitude()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1050,7 +1050,7 @@ public class Orbit : RemoteObject
     [Rpc("SpaceCenter", "Orbit_get_PeriapsisAltitude")]
     public async Task<double> GetPeriapsisAltitudeAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1063,7 +1063,7 @@ public class Orbit : RemoteObject
     [Rpc("SpaceCenter", "Orbit_get_Period")]
     public double GetPeriod()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1077,7 +1077,7 @@ public class Orbit : RemoteObject
     [Rpc("SpaceCenter", "Orbit_get_Period")]
     public async Task<double> GetPeriodAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1095,7 +1095,7 @@ public class Orbit : RemoteObject
     [Rpc("SpaceCenter", "Orbit_get_Radius")]
     public double GetRadius()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1114,7 +1114,7 @@ public class Orbit : RemoteObject
     [Rpc("SpaceCenter", "Orbit_get_Radius")]
     public async Task<double> GetRadiusAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1127,7 +1127,7 @@ public class Orbit : RemoteObject
     [Rpc("SpaceCenter", "Orbit_get_SemiMajorAxis")]
     public double GetSemiMajorAxis()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1141,7 +1141,7 @@ public class Orbit : RemoteObject
     [Rpc("SpaceCenter", "Orbit_get_SemiMajorAxis")]
     public async Task<double> GetSemiMajorAxisAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1154,7 +1154,7 @@ public class Orbit : RemoteObject
     [Rpc("SpaceCenter", "Orbit_get_SemiMinorAxis")]
     public double GetSemiMinorAxis()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1168,7 +1168,7 @@ public class Orbit : RemoteObject
     [Rpc("SpaceCenter", "Orbit_get_SemiMinorAxis")]
     public async Task<double> GetSemiMinorAxisAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1184,7 +1184,7 @@ public class Orbit : RemoteObject
     [Rpc("SpaceCenter", "Orbit_get_Speed")]
     public double GetSpeed()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1201,7 +1201,7 @@ public class Orbit : RemoteObject
     [Rpc("SpaceCenter", "Orbit_get_Speed")]
     public async Task<double> GetSpeedAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1214,7 +1214,7 @@ public class Orbit : RemoteObject
     [Rpc("SpaceCenter", "Orbit_get_TimeToApoapsis")]
     public double GetTimeToApoapsis()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1228,7 +1228,7 @@ public class Orbit : RemoteObject
     [Rpc("SpaceCenter", "Orbit_get_TimeToApoapsis")]
     public async Task<double> GetTimeToApoapsisAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1241,7 +1241,7 @@ public class Orbit : RemoteObject
     [Rpc("SpaceCenter", "Orbit_get_TimeToPeriapsis")]
     public double GetTimeToPeriapsis()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1255,7 +1255,7 @@ public class Orbit : RemoteObject
     [Rpc("SpaceCenter", "Orbit_get_TimeToPeriapsis")]
     public async Task<double> GetTimeToPeriapsisAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1269,7 +1269,7 @@ public class Orbit : RemoteObject
     [Rpc("SpaceCenter", "Orbit_get_TimeToSOIChange")]
     public double GetTimeToSOIChange()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1284,7 +1284,7 @@ public class Orbit : RemoteObject
     [Rpc("SpaceCenter", "Orbit_get_TimeToSOIChange")]
     public async Task<double> GetTimeToSOIChangeAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1297,7 +1297,7 @@ public class Orbit : RemoteObject
     [Rpc("SpaceCenter", "Orbit_get_TrueAnomaly")]
     public Angle GetTrueAnomaly()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -1312,7 +1312,7 @@ public class Orbit : RemoteObject
     [Rpc("SpaceCenter", "Orbit_get_TrueAnomaly")]
     public async Task<Angle> GetTrueAnomalyAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };

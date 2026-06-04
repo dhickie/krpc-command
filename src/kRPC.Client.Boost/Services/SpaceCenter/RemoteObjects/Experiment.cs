@@ -21,7 +21,7 @@ public class Experiment : RemoteObject
     [Rpc("SpaceCenter", "Experiment_Dump")]
     public void Dump()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -35,7 +35,7 @@ public class Experiment : RemoteObject
     [Rpc("SpaceCenter", "Experiment_Dump")]
     public async Task DumpAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -48,7 +48,7 @@ public class Experiment : RemoteObject
     [Rpc("SpaceCenter", "Experiment_Reset")]
     public void Reset()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -62,7 +62,7 @@ public class Experiment : RemoteObject
     [Rpc("SpaceCenter", "Experiment_Reset")]
     public async Task ResetAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -75,7 +75,7 @@ public class Experiment : RemoteObject
     [Rpc("SpaceCenter", "Experiment_Run")]
     public void Run()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -89,7 +89,7 @@ public class Experiment : RemoteObject
     [Rpc("SpaceCenter", "Experiment_Run")]
     public async Task RunAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -102,7 +102,7 @@ public class Experiment : RemoteObject
     [Rpc("SpaceCenter", "Experiment_Transmit")]
     public void Transmit()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -116,7 +116,7 @@ public class Experiment : RemoteObject
     [Rpc("SpaceCenter", "Experiment_Transmit")]
     public async Task TransmitAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -129,7 +129,7 @@ public class Experiment : RemoteObject
     [Rpc("SpaceCenter", "Experiment_get_Available")]
     public bool GetAvailable()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -143,7 +143,7 @@ public class Experiment : RemoteObject
     [Rpc("SpaceCenter", "Experiment_get_Available")]
     public async Task<bool> GetAvailableAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -156,7 +156,7 @@ public class Experiment : RemoteObject
     [Rpc("SpaceCenter", "Experiment_get_Biome")]
     public string GetBiome()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -170,7 +170,7 @@ public class Experiment : RemoteObject
     [Rpc("SpaceCenter", "Experiment_get_Biome")]
     public async Task<string> GetBiomeAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -183,7 +183,7 @@ public class Experiment : RemoteObject
     [Rpc("SpaceCenter", "Experiment_get_Data")]
     public IList<ScienceData> GetData()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -197,7 +197,7 @@ public class Experiment : RemoteObject
     [Rpc("SpaceCenter", "Experiment_get_Data")]
     public async Task<IList<ScienceData>> GetDataAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -210,7 +210,7 @@ public class Experiment : RemoteObject
     [Rpc("SpaceCenter", "Experiment_get_Deployed")]
     public bool GetDeployed()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -224,7 +224,7 @@ public class Experiment : RemoteObject
     [Rpc("SpaceCenter", "Experiment_get_Deployed")]
     public async Task<bool> GetDeployedAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -237,7 +237,7 @@ public class Experiment : RemoteObject
     [Rpc("SpaceCenter", "Experiment_get_HasData")]
     public bool GetHasData()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -251,7 +251,7 @@ public class Experiment : RemoteObject
     [Rpc("SpaceCenter", "Experiment_get_HasData")]
     public async Task<bool> GetHasDataAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -264,7 +264,7 @@ public class Experiment : RemoteObject
     [Rpc("SpaceCenter", "Experiment_get_Inoperable")]
     public bool GetInoperable()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -278,7 +278,7 @@ public class Experiment : RemoteObject
     [Rpc("SpaceCenter", "Experiment_get_Inoperable")]
     public async Task<bool> GetInoperableAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -292,7 +292,7 @@ public class Experiment : RemoteObject
     [Rpc("SpaceCenter", "Experiment_get_Name")]
     public string GetName()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -307,7 +307,7 @@ public class Experiment : RemoteObject
     [Rpc("SpaceCenter", "Experiment_get_Name")]
     public async Task<string> GetNameAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -320,7 +320,7 @@ public class Experiment : RemoteObject
     [Rpc("SpaceCenter", "Experiment_get_Part")]
     public Part GetPart()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -334,7 +334,7 @@ public class Experiment : RemoteObject
     [Rpc("SpaceCenter", "Experiment_get_Part")]
     public async Task<Part> GetPartAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -347,7 +347,7 @@ public class Experiment : RemoteObject
     [Rpc("SpaceCenter", "Experiment_get_Rerunnable")]
     public bool GetRerunnable()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -361,7 +361,7 @@ public class Experiment : RemoteObject
     [Rpc("SpaceCenter", "Experiment_get_Rerunnable")]
     public async Task<bool> GetRerunnableAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -375,7 +375,7 @@ public class Experiment : RemoteObject
     [Rpc("SpaceCenter", "Experiment_get_ScienceSubject")]
     public ScienceSubject? GetScienceSubject()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -390,7 +390,7 @@ public class Experiment : RemoteObject
     [Rpc("SpaceCenter", "Experiment_get_ScienceSubject")]
     public async Task<ScienceSubject?> GetScienceSubjectAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -403,7 +403,7 @@ public class Experiment : RemoteObject
     [Rpc("SpaceCenter", "Experiment_get_Title")]
     public string GetTitle()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -417,7 +417,7 @@ public class Experiment : RemoteObject
     [Rpc("SpaceCenter", "Experiment_get_Title")]
     public async Task<string> GetTitleAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };

@@ -26,7 +26,7 @@ public class Decoupler : RemoteObject
     [Rpc("SpaceCenter", "Decoupler_Decouple")]
     public Vessel Decouple()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -46,7 +46,7 @@ public class Decoupler : RemoteObject
     [Rpc("SpaceCenter", "Decoupler_Decouple")]
     public async Task<Vessel> DecoupleAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -59,7 +59,7 @@ public class Decoupler : RemoteObject
     [Rpc("SpaceCenter", "Decoupler_get_AttachedPart")]
     public Part GetAttachedPart()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -73,7 +73,7 @@ public class Decoupler : RemoteObject
     [Rpc("SpaceCenter", "Decoupler_get_AttachedPart")]
     public async Task<Part> GetAttachedPartAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -86,7 +86,7 @@ public class Decoupler : RemoteObject
     [Rpc("SpaceCenter", "Decoupler_get_Decoupled")]
     public bool GetDecoupled()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -100,7 +100,7 @@ public class Decoupler : RemoteObject
     [Rpc("SpaceCenter", "Decoupler_get_Decoupled")]
     public async Task<bool> GetDecoupledAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -113,7 +113,7 @@ public class Decoupler : RemoteObject
     [Rpc("SpaceCenter", "Decoupler_get_Impulse")]
     public float GetImpulse()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -127,7 +127,7 @@ public class Decoupler : RemoteObject
     [Rpc("SpaceCenter", "Decoupler_get_Impulse")]
     public async Task<float> GetImpulseAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -140,7 +140,7 @@ public class Decoupler : RemoteObject
     [Rpc("SpaceCenter", "Decoupler_get_IsOmniDecoupler")]
     public bool GetIsOmniDecoupler()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -154,7 +154,7 @@ public class Decoupler : RemoteObject
     [Rpc("SpaceCenter", "Decoupler_get_IsOmniDecoupler")]
     public async Task<bool> GetIsOmniDecouplerAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -167,7 +167,7 @@ public class Decoupler : RemoteObject
     [Rpc("SpaceCenter", "Decoupler_get_Part")]
     public Part GetPart()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -181,7 +181,7 @@ public class Decoupler : RemoteObject
     [Rpc("SpaceCenter", "Decoupler_get_Part")]
     public async Task<Part> GetPartAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -194,7 +194,7 @@ public class Decoupler : RemoteObject
     [Rpc("SpaceCenter", "Decoupler_get_Staged")]
     public bool GetStaged()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -208,7 +208,7 @@ public class Decoupler : RemoteObject
     [Rpc("SpaceCenter", "Decoupler_get_Staged")]
     public async Task<bool> GetStagedAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };

@@ -22,7 +22,7 @@ public class RoboticPiston : RemoteObject
     [Rpc("SpaceCenter", "RoboticPiston_MoveHome")]
     public void MoveHome()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -36,7 +36,7 @@ public class RoboticPiston : RemoteObject
     [Rpc("SpaceCenter", "RoboticPiston_MoveHome")]
     public async Task MoveHomeAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -49,7 +49,7 @@ public class RoboticPiston : RemoteObject
     [Rpc("SpaceCenter", "RoboticPiston_get_CurrentExtension")]
     public float GetCurrentExtension()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -63,7 +63,7 @@ public class RoboticPiston : RemoteObject
     [Rpc("SpaceCenter", "RoboticPiston_get_CurrentExtension")]
     public async Task<float> GetCurrentExtensionAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -76,7 +76,7 @@ public class RoboticPiston : RemoteObject
     [Rpc("SpaceCenter", "RoboticPiston_get_Damping")]
     public float GetDamping()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -90,7 +90,7 @@ public class RoboticPiston : RemoteObject
     [Rpc("SpaceCenter", "RoboticPiston_get_Damping")]
     public async Task<float> GetDampingAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -104,7 +104,7 @@ public class RoboticPiston : RemoteObject
     [Rpc("SpaceCenter", "RoboticPiston_set_Damping")]
     public void SetDamping(float value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -120,7 +120,7 @@ public class RoboticPiston : RemoteObject
     [Rpc("SpaceCenter", "RoboticPiston_set_Damping")]
     public async Task SetDampingAsync(float value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -134,7 +134,7 @@ public class RoboticPiston : RemoteObject
     [Rpc("SpaceCenter", "RoboticPiston_get_Locked")]
     public bool GetLocked()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -148,7 +148,7 @@ public class RoboticPiston : RemoteObject
     [Rpc("SpaceCenter", "RoboticPiston_get_Locked")]
     public async Task<bool> GetLockedAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -162,7 +162,7 @@ public class RoboticPiston : RemoteObject
     [Rpc("SpaceCenter", "RoboticPiston_set_Locked")]
     public void SetLocked(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -178,7 +178,7 @@ public class RoboticPiston : RemoteObject
     [Rpc("SpaceCenter", "RoboticPiston_set_Locked")]
     public async Task SetLockedAsync(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -192,7 +192,7 @@ public class RoboticPiston : RemoteObject
     [Rpc("SpaceCenter", "RoboticPiston_get_MotorEngaged")]
     public bool GetMotorEngaged()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -206,7 +206,7 @@ public class RoboticPiston : RemoteObject
     [Rpc("SpaceCenter", "RoboticPiston_get_MotorEngaged")]
     public async Task<bool> GetMotorEngagedAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -220,7 +220,7 @@ public class RoboticPiston : RemoteObject
     [Rpc("SpaceCenter", "RoboticPiston_set_MotorEngaged")]
     public void SetMotorEngaged(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -236,7 +236,7 @@ public class RoboticPiston : RemoteObject
     [Rpc("SpaceCenter", "RoboticPiston_set_MotorEngaged")]
     public async Task SetMotorEngagedAsync(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -250,7 +250,7 @@ public class RoboticPiston : RemoteObject
     [Rpc("SpaceCenter", "RoboticPiston_get_Part")]
     public Part GetPart()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -264,7 +264,7 @@ public class RoboticPiston : RemoteObject
     [Rpc("SpaceCenter", "RoboticPiston_get_Part")]
     public async Task<Part> GetPartAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -277,7 +277,7 @@ public class RoboticPiston : RemoteObject
     [Rpc("SpaceCenter", "RoboticPiston_get_Rate")]
     public Angle GetRate()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -292,7 +292,7 @@ public class RoboticPiston : RemoteObject
     [Rpc("SpaceCenter", "RoboticPiston_get_Rate")]
     public async Task<Angle> GetRateAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -307,7 +307,7 @@ public class RoboticPiston : RemoteObject
     [Rpc("SpaceCenter", "RoboticPiston_set_Rate")]
     public void SetRate(Angle value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             (float)value.Degrees
@@ -323,7 +323,7 @@ public class RoboticPiston : RemoteObject
     [Rpc("SpaceCenter", "RoboticPiston_set_Rate")]
     public async Task SetRateAsync(Angle value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             (float)value.Degrees
@@ -337,7 +337,7 @@ public class RoboticPiston : RemoteObject
     [Rpc("SpaceCenter", "RoboticPiston_get_TargetExtension")]
     public float GetTargetExtension()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -351,7 +351,7 @@ public class RoboticPiston : RemoteObject
     [Rpc("SpaceCenter", "RoboticPiston_get_TargetExtension")]
     public async Task<float> GetTargetExtensionAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -365,7 +365,7 @@ public class RoboticPiston : RemoteObject
     [Rpc("SpaceCenter", "RoboticPiston_set_TargetExtension")]
     public void SetTargetExtension(float value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
@@ -381,7 +381,7 @@ public class RoboticPiston : RemoteObject
     [Rpc("SpaceCenter", "RoboticPiston_set_TargetExtension")]
     public async Task SetTargetExtensionAsync(float value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value

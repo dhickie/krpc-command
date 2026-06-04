@@ -21,7 +21,7 @@ public class CommLink : RemoteObject
     [Rpc("SpaceCenter", "CommLink_get_End")]
     public CommNode GetEnd()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -35,7 +35,7 @@ public class CommLink : RemoteObject
     [Rpc("SpaceCenter", "CommLink_get_End")]
     public async Task<CommNode> GetEndAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -48,7 +48,7 @@ public class CommLink : RemoteObject
     [Rpc("SpaceCenter", "CommLink_get_SignalStrength")]
     public double GetSignalStrength()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -62,7 +62,7 @@ public class CommLink : RemoteObject
     [Rpc("SpaceCenter", "CommLink_get_SignalStrength")]
     public async Task<double> GetSignalStrengthAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -75,7 +75,7 @@ public class CommLink : RemoteObject
     [Rpc("SpaceCenter", "CommLink_get_Start")]
     public CommNode GetStart()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -89,7 +89,7 @@ public class CommLink : RemoteObject
     [Rpc("SpaceCenter", "CommLink_get_Start")]
     public async Task<CommNode> GetStartAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -102,7 +102,7 @@ public class CommLink : RemoteObject
     [Rpc("SpaceCenter", "CommLink_get_Type")]
     public CommLinkType GetComLinkType()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
@@ -116,7 +116,7 @@ public class CommLink : RemoteObject
     [Rpc("SpaceCenter", "CommLink_get_Type")]
     public async Task<CommLinkType> GetComLinkTypeAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };

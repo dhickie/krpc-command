@@ -1,6 +1,6 @@
 ---
 name: krpc-boost-generated-service-migration
-description: "Use when migrating generated kRPC C# service client code to kRPC.Client.Boost conventions. Use this skill whenever the user mentions repeating CONTEXT.md updates, generated kRPC service migrations, kRPC.Client.Boost generated services, ConnectionMultiplexer/IConnectionMultiplexer, RemoteObject constructor access, RPCAttribute/Rpc cleanup, Encoder/Decode removal, property-to-method conversion, async RPC wrappers, nullable generated RPCs, XML comment cleanup, see cref namespace fixes, or Vector3D/Quaternion/Angle conversions for generated kRPC clients, even if they name a service other than SpaceCenter."
+description: "Use when migrating generated kRPC C# service client code to kRPC.Client.Boost conventions. Use this skill whenever the user mentions repeating CONTEXT.md updates, generated kRPC service migrations, kRPC.Client.Boost generated services, ConnectionMultiplexer/IConnectionMultiplexer, RemoteObject constructor access, RPCAttribute/Rpc cleanup, Encoder/Decode removal, ProcedureArgument arrays, property-to-method conversion, async RPC wrappers, nullable generated RPCs, XML comment cleanup, see cref namespace fixes, or Vector3D/Quaternion/Angle conversions for generated kRPC clients, even if they name a service other than SpaceCenter."
 ---
 
 # kRPC Boost Generated Service Migration
@@ -68,8 +68,12 @@ For generated helper methods on remote object classes:
 ### 3. Remove Direct Encoder and ByteString Usage
 
 - Do not call `global::KRPC.Client.Encoder.Encode` or `global::KRPC.Client.Encoder.Decode` from generated wrappers.
-- Build argument arrays from raw values and pass them to `Invoke`/`InvokeAsync`.
-- Use `object[]` for non-nullable arguments and `object?[]` when any argument can be null.
+- Build argument arrays as `ProcedureArgument[]` and pass them to `Invoke`/`InvokeAsync`.
+- Put raw argument values directly in `ProcedureArgument[]` initializers whenever an implicit conversion exists.
+- For arguments that do not implicitly convert, construct a `ProcedureArgument` explicitly.
+- Use `new(value)` for explicit non-null argument values so the runtime type is preserved.
+- Use `new(value, typeof(ExpectedType))` only when the argument value can be null or when the procedure contract requires a type different from the runtime value type.
+- Do not use `object[]` or `object?[]` argument arrays in generated service wrappers.
 - For return values, call `Invoke<T>(...)` or `InvokeAsync<T>(...)` with the public return type unless a unit/type conversion is required at the boundary.
 - For methods with no return value, use non-generic `Invoke(...)` or `InvokeAsync(...)`.
 - Remote object generated code should call the inherited `Connection` property; service facade code should call the service field or parameter.
@@ -115,7 +119,7 @@ Infer nullability from generated defaults and XML documentation:
 - Parameters with non-null defaults should not be nullable merely because older XML docs mentioned null. Update the XML docs to reflect the actual default value and remove the nullable marker unless the generated contract explicitly allows null.
 - Methods documented as returning `<c>null</c>` should use nullable public return types.
 - Nullable return wrappers should call nullable `Invoke<T?>` / `InvokeAsync<T?>` generic arguments.
-- Use `object?[]` for argument arrays that can contain nullable values.
+- Use `ProcedureArgument[]` for argument arrays, including arrays that contain nullable values. Nullable argument entries that cannot rely on an implicit conversion should be wrapped with `new(value, typeof(ExpectedType))` so null values still carry the procedure contract type.
 
 Do not remove nullable markers merely because the RPC transport type is non-nullable internally. The public generated API should reflect documented null behavior.
 
@@ -149,7 +153,7 @@ Angles:
 ### 8. Normalize Generated Formatting
 
 - Remove extra whitespace before method declaration and invocation parentheses.
-- Put initializer braces such as `new object[]` and `new object?[]` on their own line.
+- Put initializer braces such as `new ProcedureArgument[]` on their own line.
 - Preserve normal control-flow spacing such as `if (...)`.
 - Do not churn formatting outside the scoped generated files.
 
@@ -178,6 +182,8 @@ IConnection
 systemAlias
 genericCollectionsAlias
 _Connection
+new object[]
+new object?[]
 ```
 
 Check structural invariants:
@@ -189,6 +195,8 @@ Check structural invariants:
 - Every generated getter, setter, synchronous RPC wrapper, and async RPC wrapper has an immediate `[Rpc(...)]` attribute with the same procedure name used by the body.
 - Every synchronous generated RPC wrapper has an async counterpart, and async bodies use `InvokeAsync` with `await`.
 - Nullable public return types use nullable invoke generic arguments.
+- Generated wrappers use `ProcedureArgument[]` argument arrays, not `object[]` or `object?[]`.
+- Explicit `ProcedureArgument` construction uses `new(value)` for non-null values and reserves `new(value, typeof(ExpectedType))` for nullable values or intentionally different contract types.
 - Setter XML docs do not describe nullable getter return behavior, and parameter docs mentioning null match the signature default/nullability.
 - XML `<see cref="..." />` references point to existing members/types in their current namespaces after the migration.
 - Type conversions happen only at the RPC boundary; public method signatures should expose `Vector3D`, `Quaternion`, or `Angle` where the migration selected those types.
