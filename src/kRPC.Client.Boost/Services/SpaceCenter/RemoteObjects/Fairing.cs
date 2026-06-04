@@ -26,7 +26,7 @@ public class Fairing : RemoteObject
         {
             this
         };
-        Connection.Invoke("SpaceCenter", "Fairing_Jettison", args);
+        InvokeVoid("SpaceCenter", "Fairing_Jettison", args);
     }
 
     /// <summary>
@@ -40,7 +40,7 @@ public class Fairing : RemoteObject
         {
             this
         };
-        await Connection.InvokeAsync("SpaceCenter", "Fairing_Jettison", args);
+        await InvokeVoidAsync("SpaceCenter", "Fairing_Jettison", args);
     }
 
     /// <summary>
@@ -53,7 +53,7 @@ public class Fairing : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "Fairing_get_Jettisoned", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "Fairing_get_Jettisoned", args);
     }
 
     /// <summary>
@@ -67,7 +67,7 @@ public class Fairing : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "Fairing_get_Jettisoned", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "Fairing_get_Jettisoned", args);
     }
 
     /// <summary>
@@ -80,7 +80,7 @@ public class Fairing : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Part>("SpaceCenter", "Fairing_get_Part", args);
+        return InvokeNonNullable<Part>("SpaceCenter", "Fairing_get_Part", args);
     }
 
     /// <summary>
@@ -94,6 +94,6 @@ public class Fairing : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Part>("SpaceCenter", "Fairing_get_Part", args);
+        return await InvokeNonNullableAsync<Part>("SpaceCenter", "Fairing_get_Part", args);
     }
 }

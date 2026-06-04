@@ -40,7 +40,7 @@ public class Flight : RemoteObject
             position,
             velocity
         };
-        return Connection.Invoke<Vector3D>("SpaceCenter", "Flight_SimulateAerodynamicForceAt", args);
+        return InvokeNonNullable<Vector3D>("SpaceCenter", "Flight_SimulateAerodynamicForceAt", args);
     }
 
     /// <summary>
@@ -61,7 +61,7 @@ public class Flight : RemoteObject
             position,
             velocity
         };
-        return await Connection.InvokeAsync<Vector3D>("SpaceCenter", "Flight_SimulateAerodynamicForceAt", args);
+        return await InvokeNonNullableAsync<Vector3D>("SpaceCenter", "Flight_SimulateAerodynamicForceAt", args);
     }
 
     /// <summary>
@@ -77,7 +77,7 @@ public class Flight : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Vector3D>("SpaceCenter", "Flight_get_AerodynamicForce", args);
+        return InvokeNonNullable<Vector3D>("SpaceCenter", "Flight_get_AerodynamicForce", args);
     }
 
     /// <summary>
@@ -94,7 +94,7 @@ public class Flight : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Vector3D>("SpaceCenter", "Flight_get_AerodynamicForce", args);
+        return await InvokeNonNullableAsync<Vector3D>("SpaceCenter", "Flight_get_AerodynamicForce", args);
     }
 
     /// <summary>
@@ -107,7 +107,7 @@ public class Flight : RemoteObject
         {
             this
         };
-        var result = Connection.Invoke<float>("SpaceCenter", "Flight_get_AngleOfAttack", args);
+        var result = InvokeNonNullable<float>("SpaceCenter", "Flight_get_AngleOfAttack", args);
         return Angle.FromDegrees(result);
     }
 
@@ -122,7 +122,7 @@ public class Flight : RemoteObject
         {
             this
         };
-        var result = await Connection.InvokeAsync<float>("SpaceCenter", "Flight_get_AngleOfAttack", args);
+        var result = await InvokeNonNullableAsync<float>("SpaceCenter", "Flight_get_AngleOfAttack", args);
         return Angle.FromDegrees(result);
     }
 
@@ -138,7 +138,7 @@ public class Flight : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Vector3D>("SpaceCenter", "Flight_get_AntiNormal", args);
+        return InvokeNonNullable<Vector3D>("SpaceCenter", "Flight_get_AntiNormal", args);
     }
 
     /// <summary>
@@ -154,7 +154,7 @@ public class Flight : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Vector3D>("SpaceCenter", "Flight_get_AntiNormal", args);
+        return await InvokeNonNullableAsync<Vector3D>("SpaceCenter", "Flight_get_AntiNormal", args);
     }
 
     /// <summary>
@@ -169,7 +169,7 @@ public class Flight : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Vector3D>("SpaceCenter", "Flight_get_AntiRadial", args);
+        return InvokeNonNullable<Vector3D>("SpaceCenter", "Flight_get_AntiRadial", args);
     }
 
     /// <summary>
@@ -185,7 +185,7 @@ public class Flight : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Vector3D>("SpaceCenter", "Flight_get_AntiRadial", args);
+        return await InvokeNonNullableAsync<Vector3D>("SpaceCenter", "Flight_get_AntiRadial", args);
     }
 
     /// <summary>
@@ -198,7 +198,7 @@ public class Flight : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "Flight_get_AtmosphereDensity", args);
+        return InvokeNonNullable<float>("SpaceCenter", "Flight_get_AtmosphereDensity", args);
     }
 
     /// <summary>
@@ -212,7 +212,7 @@ public class Flight : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "Flight_get_AtmosphereDensity", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "Flight_get_AtmosphereDensity", args);
     }
 
     /// <summary>
@@ -228,7 +228,7 @@ public class Flight : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "Flight_get_BallisticCoefficient", args);
+        return InvokeNonNullable<float>("SpaceCenter", "Flight_get_BallisticCoefficient", args);
     }
 
     /// <summary>
@@ -245,7 +245,7 @@ public class Flight : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "Flight_get_BallisticCoefficient", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "Flight_get_BallisticCoefficient", args);
     }
 
     /// <summary>
@@ -259,7 +259,7 @@ public class Flight : RemoteObject
         {
             this
         };
-        return Connection.Invoke<double>("SpaceCenter", "Flight_get_BedrockAltitude", args);
+        return InvokeNonNullable<double>("SpaceCenter", "Flight_get_BedrockAltitude", args);
     }
 
     /// <summary>
@@ -274,7 +274,7 @@ public class Flight : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<double>("SpaceCenter", "Flight_get_BedrockAltitude", args);
+        return await InvokeNonNullableAsync<double>("SpaceCenter", "Flight_get_BedrockAltitude", args);
     }
 
     /// <summary>
@@ -289,7 +289,7 @@ public class Flight : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Vector3D>("SpaceCenter", "Flight_get_CenterOfMass", args);
+        return InvokeNonNullable<Vector3D>("SpaceCenter", "Flight_get_CenterOfMass", args);
     }
 
     /// <summary>
@@ -305,7 +305,7 @@ public class Flight : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Vector3D>("SpaceCenter", "Flight_get_CenterOfMass", args);
+        return await InvokeNonNullableAsync<Vector3D>("SpaceCenter", "Flight_get_CenterOfMass", args);
     }
 
     /// <summary>
@@ -320,7 +320,7 @@ public class Flight : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Vector3D>("SpaceCenter", "Flight_get_Direction", args);
+        return InvokeNonNullable<Vector3D>("SpaceCenter", "Flight_get_Direction", args);
     }
 
     /// <summary>
@@ -336,7 +336,7 @@ public class Flight : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Vector3D>("SpaceCenter", "Flight_get_Direction", args);
+        return await InvokeNonNullableAsync<Vector3D>("SpaceCenter", "Flight_get_Direction", args);
     }
 
     /// <summary>
@@ -351,7 +351,7 @@ public class Flight : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Vector3D>("SpaceCenter", "Flight_get_Drag", args);
+        return InvokeNonNullable<Vector3D>("SpaceCenter", "Flight_get_Drag", args);
     }
 
     /// <summary>
@@ -367,7 +367,7 @@ public class Flight : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Vector3D>("SpaceCenter", "Flight_get_Drag", args);
+        return await InvokeNonNullableAsync<Vector3D>("SpaceCenter", "Flight_get_Drag", args);
     }
 
     /// <summary>
@@ -384,7 +384,7 @@ public class Flight : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "Flight_get_DragCoefficient", args);
+        return InvokeNonNullable<float>("SpaceCenter", "Flight_get_DragCoefficient", args);
     }
 
     /// <summary>
@@ -402,7 +402,7 @@ public class Flight : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "Flight_get_DragCoefficient", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "Flight_get_DragCoefficient", args);
     }
 
     /// <summary>
@@ -418,7 +418,7 @@ public class Flight : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "Flight_get_DynamicPressure", args);
+        return InvokeNonNullable<float>("SpaceCenter", "Flight_get_DynamicPressure", args);
     }
 
     /// <summary>
@@ -435,7 +435,7 @@ public class Flight : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "Flight_get_DynamicPressure", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "Flight_get_DynamicPressure", args);
     }
 
     /// <summary>
@@ -449,7 +449,7 @@ public class Flight : RemoteObject
         {
             this
         };
-        return Connection.Invoke<double>("SpaceCenter", "Flight_get_Elevation", args);
+        return InvokeNonNullable<double>("SpaceCenter", "Flight_get_Elevation", args);
     }
 
     /// <summary>
@@ -464,7 +464,7 @@ public class Flight : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<double>("SpaceCenter", "Flight_get_Elevation", args);
+        return await InvokeNonNullableAsync<double>("SpaceCenter", "Flight_get_Elevation", args);
     }
 
     /// <summary>
@@ -478,7 +478,7 @@ public class Flight : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "Flight_get_EquivalentAirSpeed", args);
+        return InvokeNonNullable<float>("SpaceCenter", "Flight_get_EquivalentAirSpeed", args);
     }
 
     /// <summary>
@@ -493,7 +493,7 @@ public class Flight : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "Flight_get_EquivalentAirSpeed", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "Flight_get_EquivalentAirSpeed", args);
     }
 
     /// <summary>
@@ -506,7 +506,7 @@ public class Flight : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "Flight_get_GForce", args);
+        return InvokeNonNullable<float>("SpaceCenter", "Flight_get_GForce", args);
     }
 
     /// <summary>
@@ -520,7 +520,7 @@ public class Flight : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "Flight_get_GForce", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "Flight_get_GForce", args);
     }
 
     /// <summary>
@@ -534,7 +534,7 @@ public class Flight : RemoteObject
         {
             this
         };
-        var result = Connection.Invoke<float>("SpaceCenter", "Flight_get_Heading", args);
+        var result = InvokeNonNullable<float>("SpaceCenter", "Flight_get_Heading", args);
         return Angle.FromDegrees(result);
     }
 
@@ -550,7 +550,7 @@ public class Flight : RemoteObject
         {
             this
         };
-        var result = await Connection.InvokeAsync<float>("SpaceCenter", "Flight_get_Heading", args);
+        var result = await InvokeNonNullableAsync<float>("SpaceCenter", "Flight_get_Heading", args);
         return Angle.FromDegrees(result);
     }
 
@@ -565,7 +565,7 @@ public class Flight : RemoteObject
         {
             this
         };
-        return Connection.Invoke<double>("SpaceCenter", "Flight_get_HorizontalSpeed", args);
+        return InvokeNonNullable<double>("SpaceCenter", "Flight_get_HorizontalSpeed", args);
     }
 
     /// <summary>
@@ -580,7 +580,7 @@ public class Flight : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<double>("SpaceCenter", "Flight_get_HorizontalSpeed", args);
+        return await InvokeNonNullableAsync<double>("SpaceCenter", "Flight_get_HorizontalSpeed", args);
     }
 
     /// <summary>
@@ -593,7 +593,7 @@ public class Flight : RemoteObject
         {
             this
         };
-        var result = Connection.Invoke<double>("SpaceCenter", "Flight_get_Latitude", args);
+        var result = InvokeNonNullable<double>("SpaceCenter", "Flight_get_Latitude", args);
         return Angle.FromDegrees(result);
     }
 
@@ -608,7 +608,7 @@ public class Flight : RemoteObject
         {
             this
         };
-        var result = await Connection.InvokeAsync<double>("SpaceCenter", "Flight_get_Latitude", args);
+        var result = await InvokeNonNullableAsync<double>("SpaceCenter", "Flight_get_Latitude", args);
         return Angle.FromDegrees(result);
     }
 
@@ -625,7 +625,7 @@ public class Flight : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Vector3D>("SpaceCenter", "Flight_get_Lift", args);
+        return InvokeNonNullable<Vector3D>("SpaceCenter", "Flight_get_Lift", args);
     }
 
     /// <summary>
@@ -642,7 +642,7 @@ public class Flight : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Vector3D>("SpaceCenter", "Flight_get_Lift", args);
+        return await InvokeNonNullableAsync<Vector3D>("SpaceCenter", "Flight_get_Lift", args);
     }
 
     /// <summary>
@@ -659,7 +659,7 @@ public class Flight : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "Flight_get_LiftCoefficient", args);
+        return InvokeNonNullable<float>("SpaceCenter", "Flight_get_LiftCoefficient", args);
     }
 
     /// <summary>
@@ -677,7 +677,7 @@ public class Flight : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "Flight_get_LiftCoefficient", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "Flight_get_LiftCoefficient", args);
     }
 
     /// <summary>
@@ -690,7 +690,7 @@ public class Flight : RemoteObject
         {
             this
         };
-        var result = Connection.Invoke<double>("SpaceCenter", "Flight_get_Longitude", args);
+        var result = InvokeNonNullable<double>("SpaceCenter", "Flight_get_Longitude", args);
         return Angle.FromDegrees(result);
     }
 
@@ -705,7 +705,7 @@ public class Flight : RemoteObject
         {
             this
         };
-        var result = await Connection.InvokeAsync<double>("SpaceCenter", "Flight_get_Longitude", args);
+        var result = await InvokeNonNullableAsync<double>("SpaceCenter", "Flight_get_Longitude", args);
         return Angle.FromDegrees(result);
     }
 
@@ -719,7 +719,7 @@ public class Flight : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "Flight_get_Mach", args);
+        return InvokeNonNullable<float>("SpaceCenter", "Flight_get_Mach", args);
     }
 
     /// <summary>
@@ -733,7 +733,7 @@ public class Flight : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "Flight_get_Mach", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "Flight_get_Mach", args);
     }
 
     /// <summary>
@@ -747,7 +747,7 @@ public class Flight : RemoteObject
         {
             this
         };
-        return Connection.Invoke<double>("SpaceCenter", "Flight_get_MeanAltitude", args);
+        return InvokeNonNullable<double>("SpaceCenter", "Flight_get_MeanAltitude", args);
     }
 
     /// <summary>
@@ -762,7 +762,7 @@ public class Flight : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<double>("SpaceCenter", "Flight_get_MeanAltitude", args);
+        return await InvokeNonNullableAsync<double>("SpaceCenter", "Flight_get_MeanAltitude", args);
     }
 
     /// <summary>
@@ -777,7 +777,7 @@ public class Flight : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Vector3D>("SpaceCenter", "Flight_get_Normal", args);
+        return InvokeNonNullable<Vector3D>("SpaceCenter", "Flight_get_Normal", args);
     }
 
     /// <summary>
@@ -793,7 +793,7 @@ public class Flight : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Vector3D>("SpaceCenter", "Flight_get_Normal", args);
+        return await InvokeNonNullableAsync<Vector3D>("SpaceCenter", "Flight_get_Normal", args);
     }
 
     /// <summary>
@@ -807,7 +807,7 @@ public class Flight : RemoteObject
         {
             this
         };
-        var result = Connection.Invoke<float>("SpaceCenter", "Flight_get_Pitch", args);
+        var result = InvokeNonNullable<float>("SpaceCenter", "Flight_get_Pitch", args);
         return Angle.FromDegrees(result);
     }
 
@@ -823,7 +823,7 @@ public class Flight : RemoteObject
         {
             this
         };
-        var result = await Connection.InvokeAsync<float>("SpaceCenter", "Flight_get_Pitch", args);
+        var result = await InvokeNonNullableAsync<float>("SpaceCenter", "Flight_get_Pitch", args);
         return Angle.FromDegrees(result);
     }
 
@@ -839,7 +839,7 @@ public class Flight : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Vector3D>("SpaceCenter", "Flight_get_Prograde", args);
+        return InvokeNonNullable<Vector3D>("SpaceCenter", "Flight_get_Prograde", args);
     }
 
     /// <summary>
@@ -855,7 +855,7 @@ public class Flight : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Vector3D>("SpaceCenter", "Flight_get_Prograde", args);
+        return await InvokeNonNullableAsync<Vector3D>("SpaceCenter", "Flight_get_Prograde", args);
     }
 
     /// <summary>
@@ -870,7 +870,7 @@ public class Flight : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Vector3D>("SpaceCenter", "Flight_get_Radial", args);
+        return InvokeNonNullable<Vector3D>("SpaceCenter", "Flight_get_Radial", args);
     }
 
     /// <summary>
@@ -886,7 +886,7 @@ public class Flight : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Vector3D>("SpaceCenter", "Flight_get_Radial", args);
+        return await InvokeNonNullableAsync<Vector3D>("SpaceCenter", "Flight_get_Radial", args);
     }
 
     /// <summary>
@@ -901,7 +901,7 @@ public class Flight : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Vector3D>("SpaceCenter", "Flight_get_Retrograde", args);
+        return InvokeNonNullable<Vector3D>("SpaceCenter", "Flight_get_Retrograde", args);
     }
 
     /// <summary>
@@ -917,7 +917,7 @@ public class Flight : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Vector3D>("SpaceCenter", "Flight_get_Retrograde", args);
+        return await InvokeNonNullableAsync<Vector3D>("SpaceCenter", "Flight_get_Retrograde", args);
     }
 
     /// <summary>
@@ -933,7 +933,7 @@ public class Flight : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "Flight_get_ReynoldsNumber", args);
+        return InvokeNonNullable<float>("SpaceCenter", "Flight_get_ReynoldsNumber", args);
     }
 
     /// <summary>
@@ -950,7 +950,7 @@ public class Flight : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "Flight_get_ReynoldsNumber", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "Flight_get_ReynoldsNumber", args);
     }
 
     /// <summary>
@@ -964,7 +964,7 @@ public class Flight : RemoteObject
         {
             this
         };
-        var result = Connection.Invoke<float>("SpaceCenter", "Flight_get_Roll", args);
+        var result = InvokeNonNullable<float>("SpaceCenter", "Flight_get_Roll", args);
         return Angle.FromDegrees(result);
     }
 
@@ -980,7 +980,7 @@ public class Flight : RemoteObject
         {
             this
         };
-        var result = await Connection.InvokeAsync<float>("SpaceCenter", "Flight_get_Roll", args);
+        var result = await InvokeNonNullableAsync<float>("SpaceCenter", "Flight_get_Roll", args);
         return Angle.FromDegrees(result);
     }
 
@@ -995,7 +995,7 @@ public class Flight : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Quaternion>("SpaceCenter", "Flight_get_Rotation", args);
+        return InvokeNonNullable<Quaternion>("SpaceCenter", "Flight_get_Rotation", args);
     }
 
     /// <summary>
@@ -1010,7 +1010,7 @@ public class Flight : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Quaternion>("SpaceCenter", "Flight_get_Rotation", args);
+        return await InvokeNonNullableAsync<Quaternion>("SpaceCenter", "Flight_get_Rotation", args);
     }
 
     /// <summary>
@@ -1023,7 +1023,7 @@ public class Flight : RemoteObject
         {
             this
         };
-        var result = Connection.Invoke<float>("SpaceCenter", "Flight_get_SideslipAngle", args);
+        var result = InvokeNonNullable<float>("SpaceCenter", "Flight_get_SideslipAngle", args);
         return Angle.FromDegrees(result);
     }
 
@@ -1038,7 +1038,7 @@ public class Flight : RemoteObject
         {
             this
         };
-        var result = await Connection.InvokeAsync<float>("SpaceCenter", "Flight_get_SideslipAngle", args);
+        var result = await InvokeNonNullableAsync<float>("SpaceCenter", "Flight_get_SideslipAngle", args);
         return Angle.FromDegrees(result);
     }
 
@@ -1053,7 +1053,7 @@ public class Flight : RemoteObject
         {
             this
         };
-        return Connection.Invoke<double>("SpaceCenter", "Flight_get_Speed", args);
+        return InvokeNonNullable<double>("SpaceCenter", "Flight_get_Speed", args);
     }
 
     /// <summary>
@@ -1068,7 +1068,7 @@ public class Flight : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<double>("SpaceCenter", "Flight_get_Speed", args);
+        return await InvokeNonNullableAsync<double>("SpaceCenter", "Flight_get_Speed", args);
     }
 
     /// <summary>
@@ -1081,7 +1081,7 @@ public class Flight : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "Flight_get_SpeedOfSound", args);
+        return InvokeNonNullable<float>("SpaceCenter", "Flight_get_SpeedOfSound", args);
     }
 
     /// <summary>
@@ -1095,7 +1095,7 @@ public class Flight : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "Flight_get_SpeedOfSound", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "Flight_get_SpeedOfSound", args);
     }
 
     /// <summary>
@@ -1112,7 +1112,7 @@ public class Flight : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "Flight_get_StallFraction", args);
+        return InvokeNonNullable<float>("SpaceCenter", "Flight_get_StallFraction", args);
     }
 
     /// <summary>
@@ -1130,7 +1130,7 @@ public class Flight : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "Flight_get_StallFraction", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "Flight_get_StallFraction", args);
     }
 
     /// <summary>
@@ -1144,7 +1144,7 @@ public class Flight : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "Flight_get_StaticAirTemperature", args);
+        return InvokeNonNullable<float>("SpaceCenter", "Flight_get_StaticAirTemperature", args);
     }
 
     /// <summary>
@@ -1159,7 +1159,7 @@ public class Flight : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "Flight_get_StaticAirTemperature", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "Flight_get_StaticAirTemperature", args);
     }
 
     /// <summary>
@@ -1172,7 +1172,7 @@ public class Flight : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "Flight_get_StaticPressure", args);
+        return InvokeNonNullable<float>("SpaceCenter", "Flight_get_StaticPressure", args);
     }
 
     /// <summary>
@@ -1186,7 +1186,7 @@ public class Flight : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "Flight_get_StaticPressure", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "Flight_get_StaticPressure", args);
     }
 
     /// <summary>
@@ -1199,7 +1199,7 @@ public class Flight : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "Flight_get_StaticPressureAtMSL", args);
+        return InvokeNonNullable<float>("SpaceCenter", "Flight_get_StaticPressureAtMSL", args);
     }
 
     /// <summary>
@@ -1213,7 +1213,7 @@ public class Flight : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "Flight_get_StaticPressureAtMSL", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "Flight_get_StaticPressureAtMSL", args);
     }
 
     /// <summary>
@@ -1227,7 +1227,7 @@ public class Flight : RemoteObject
         {
             this
         };
-        return Connection.Invoke<double>("SpaceCenter", "Flight_get_SurfaceAltitude", args);
+        return InvokeNonNullable<double>("SpaceCenter", "Flight_get_SurfaceAltitude", args);
     }
 
     /// <summary>
@@ -1242,7 +1242,7 @@ public class Flight : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<double>("SpaceCenter", "Flight_get_SurfaceAltitude", args);
+        return await InvokeNonNullableAsync<double>("SpaceCenter", "Flight_get_SurfaceAltitude", args);
     }
 
     /// <summary>
@@ -1256,7 +1256,7 @@ public class Flight : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "Flight_get_TerminalVelocity", args);
+        return InvokeNonNullable<float>("SpaceCenter", "Flight_get_TerminalVelocity", args);
     }
 
     /// <summary>
@@ -1271,7 +1271,7 @@ public class Flight : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "Flight_get_TerminalVelocity", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "Flight_get_TerminalVelocity", args);
     }
 
     /// <summary>
@@ -1290,7 +1290,7 @@ public class Flight : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "Flight_get_ThrustSpecificFuelConsumption", args);
+        return InvokeNonNullable<float>("SpaceCenter", "Flight_get_ThrustSpecificFuelConsumption", args);
     }
 
     /// <summary>
@@ -1310,7 +1310,7 @@ public class Flight : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "Flight_get_ThrustSpecificFuelConsumption", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "Flight_get_ThrustSpecificFuelConsumption", args);
     }
 
     /// <summary>
@@ -1325,7 +1325,7 @@ public class Flight : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "Flight_get_TotalAirTemperature", args);
+        return InvokeNonNullable<float>("SpaceCenter", "Flight_get_TotalAirTemperature", args);
     }
 
     /// <summary>
@@ -1341,7 +1341,7 @@ public class Flight : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "Flight_get_TotalAirTemperature", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "Flight_get_TotalAirTemperature", args);
     }
 
     /// <summary>
@@ -1355,7 +1355,7 @@ public class Flight : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "Flight_get_TrueAirSpeed", args);
+        return InvokeNonNullable<float>("SpaceCenter", "Flight_get_TrueAirSpeed", args);
     }
 
     /// <summary>
@@ -1370,7 +1370,7 @@ public class Flight : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "Flight_get_TrueAirSpeed", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "Flight_get_TrueAirSpeed", args);
     }
 
     /// <summary>
@@ -1385,7 +1385,7 @@ public class Flight : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Vector3D>("SpaceCenter", "Flight_get_Velocity", args);
+        return InvokeNonNullable<Vector3D>("SpaceCenter", "Flight_get_Velocity", args);
     }
 
     /// <summary>
@@ -1401,7 +1401,7 @@ public class Flight : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Vector3D>("SpaceCenter", "Flight_get_Velocity", args);
+        return await InvokeNonNullableAsync<Vector3D>("SpaceCenter", "Flight_get_Velocity", args);
     }
 
     /// <summary>
@@ -1415,7 +1415,7 @@ public class Flight : RemoteObject
         {
             this
         };
-        return Connection.Invoke<double>("SpaceCenter", "Flight_get_VerticalSpeed", args);
+        return InvokeNonNullable<double>("SpaceCenter", "Flight_get_VerticalSpeed", args);
     }
 
     /// <summary>
@@ -1430,6 +1430,6 @@ public class Flight : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<double>("SpaceCenter", "Flight_get_VerticalSpeed", args);
+        return await InvokeNonNullableAsync<double>("SpaceCenter", "Flight_get_VerticalSpeed", args);
     }
 }

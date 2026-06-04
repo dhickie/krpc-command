@@ -28,7 +28,7 @@ public class RoboticController : RemoteObject
             module,
             fieldName
         };
-        return Connection.Invoke<bool>("SpaceCenter", "RoboticController_AddAxis", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "RoboticController_AddAxis", args);
     }
 
     /// <summary>
@@ -45,7 +45,7 @@ public class RoboticController : RemoteObject
             module,
             fieldName
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "RoboticController_AddAxis", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "RoboticController_AddAxis", args);
     }
 
     /// <summary>
@@ -63,7 +63,7 @@ public class RoboticController : RemoteObject
             time,
             value
         };
-        return Connection.Invoke<bool>("SpaceCenter", "RoboticController_AddKeyFrame", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "RoboticController_AddKeyFrame", args);
     }
 
     /// <summary>
@@ -82,7 +82,7 @@ public class RoboticController : RemoteObject
             time,
             value
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "RoboticController_AddKeyFrame", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "RoboticController_AddKeyFrame", args);
     }
 
     /// <summary>
@@ -95,7 +95,7 @@ public class RoboticController : RemoteObject
         {
             this
         };
-        return Connection.Invoke<IList<IList<string>>>("SpaceCenter", "RoboticController_Axes", args);
+        return InvokeNonNullable<IList<IList<string>>>("SpaceCenter", "RoboticController_Axes", args);
     }
 
     /// <summary>
@@ -109,7 +109,7 @@ public class RoboticController : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<IList<IList<string>>>("SpaceCenter", "RoboticController_Axes", args);
+        return await InvokeNonNullableAsync<IList<IList<string>>>("SpaceCenter", "RoboticController_Axes", args);
     }
 
     /// <summary>
@@ -125,7 +125,7 @@ public class RoboticController : RemoteObject
             module,
             fieldName
         };
-        return Connection.Invoke<bool>("SpaceCenter", "RoboticController_ClearAxis", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "RoboticController_ClearAxis", args);
     }
 
     /// <summary>
@@ -142,7 +142,7 @@ public class RoboticController : RemoteObject
             module,
             fieldName
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "RoboticController_ClearAxis", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "RoboticController_ClearAxis", args);
     }
 
     /// <summary>
@@ -156,7 +156,7 @@ public class RoboticController : RemoteObject
             this,
             part
         };
-        return Connection.Invoke<bool>("SpaceCenter", "RoboticController_HasPart", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "RoboticController_HasPart", args);
     }
 
     /// <summary>
@@ -171,7 +171,7 @@ public class RoboticController : RemoteObject
             this,
             part
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "RoboticController_HasPart", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "RoboticController_HasPart", args);
     }
 
     /// <summary>
@@ -184,7 +184,7 @@ public class RoboticController : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Part>("SpaceCenter", "RoboticController_get_Part", args);
+        return InvokeNonNullable<Part>("SpaceCenter", "RoboticController_get_Part", args);
     }
 
     /// <summary>
@@ -198,6 +198,6 @@ public class RoboticController : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Part>("SpaceCenter", "RoboticController_get_Part", args);
+        return await InvokeNonNullableAsync<Part>("SpaceCenter", "RoboticController_get_Part", args);
     }
 }

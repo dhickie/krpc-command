@@ -33,7 +33,7 @@ public class AutoPilot : RemoteObject
         {
             this
         };
-        Connection.Invoke("SpaceCenter", "AutoPilot_Disengage", args);
+        InvokeVoid("SpaceCenter", "AutoPilot_Disengage", args);
     }
 
     /// <summary>
@@ -47,7 +47,7 @@ public class AutoPilot : RemoteObject
         {
             this
         };
-        await Connection.InvokeAsync("SpaceCenter", "AutoPilot_Disengage", args);
+        await InvokeVoidAsync("SpaceCenter", "AutoPilot_Disengage", args);
     }
 
     /// <summary>
@@ -60,7 +60,7 @@ public class AutoPilot : RemoteObject
         {
             this
         };
-        Connection.Invoke("SpaceCenter", "AutoPilot_Engage", args);
+        InvokeVoid("SpaceCenter", "AutoPilot_Engage", args);
     }
 
     /// <summary>
@@ -74,7 +74,7 @@ public class AutoPilot : RemoteObject
         {
             this
         };
-        await Connection.InvokeAsync("SpaceCenter", "AutoPilot_Engage", args);
+        await InvokeVoidAsync("SpaceCenter", "AutoPilot_Engage", args);
     }
 
     /// <summary>
@@ -91,7 +91,7 @@ public class AutoPilot : RemoteObject
             (float)pitch.Degrees,
             (float)heading.Degrees
         };
-        Connection.Invoke("SpaceCenter", "AutoPilot_TargetPitchAndHeading", args);
+        InvokeVoid("SpaceCenter", "AutoPilot_TargetPitchAndHeading", args);
     }
 
     /// <summary>
@@ -109,7 +109,7 @@ public class AutoPilot : RemoteObject
             (float)pitch.Degrees,
             (float)heading.Degrees
         };
-        await Connection.InvokeAsync("SpaceCenter", "AutoPilot_TargetPitchAndHeading", args);
+        await InvokeVoidAsync("SpaceCenter", "AutoPilot_TargetPitchAndHeading", args);
     }
 
     /// <summary>
@@ -123,7 +123,7 @@ public class AutoPilot : RemoteObject
         {
             this
         };
-        Connection.Invoke("SpaceCenter", "AutoPilot_Wait", args);
+        InvokeVoid("SpaceCenter", "AutoPilot_Wait", args);
     }
 
     /// <summary>
@@ -138,7 +138,7 @@ public class AutoPilot : RemoteObject
         {
             this
         };
-        await Connection.InvokeAsync("SpaceCenter", "AutoPilot_Wait", args);
+        await InvokeVoidAsync("SpaceCenter", "AutoPilot_Wait", args);
     }
 
     /// <summary>
@@ -155,7 +155,7 @@ public class AutoPilot : RemoteObject
         {
             this
         };
-        var result = Connection.Invoke<Tuple<double,double,double>>("SpaceCenter", "AutoPilot_get_AttenuationAngle", args);
+        var result = InvokeNonNullable<Tuple<double,double,double>>("SpaceCenter", "AutoPilot_get_AttenuationAngle", args);
         return Tuple.Create(Angle.FromDegrees(result.Item1), Angle.FromDegrees(result.Item2), Angle.FromDegrees(result.Item3));
     }
 
@@ -174,7 +174,7 @@ public class AutoPilot : RemoteObject
         {
             this
         };
-        var result = await Connection.InvokeAsync<Tuple<double,double,double>>("SpaceCenter", "AutoPilot_get_AttenuationAngle", args);
+        var result = await InvokeNonNullableAsync<Tuple<double,double,double>>("SpaceCenter", "AutoPilot_get_AttenuationAngle", args);
         return Tuple.Create(Angle.FromDegrees(result.Item1), Angle.FromDegrees(result.Item2), Angle.FromDegrees(result.Item3));
     }
 
@@ -194,7 +194,7 @@ public class AutoPilot : RemoteObject
             this,
             new(Tuple.Create(value.Item1.Degrees, value.Item2.Degrees, value.Item3.Degrees))
         };
-        Connection.Invoke("SpaceCenter", "AutoPilot_set_AttenuationAngle", args);
+        InvokeVoid("SpaceCenter", "AutoPilot_set_AttenuationAngle", args);
     }
 
     /// <summary>
@@ -214,7 +214,7 @@ public class AutoPilot : RemoteObject
             this,
             new(Tuple.Create(value.Item1.Degrees, value.Item2.Degrees, value.Item3.Degrees))
         };
-        await Connection.InvokeAsync("SpaceCenter", "AutoPilot_set_AttenuationAngle", args);
+        await InvokeVoidAsync("SpaceCenter", "AutoPilot_set_AttenuationAngle", args);
     }
 
     /// <summary>
@@ -229,7 +229,7 @@ public class AutoPilot : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "AutoPilot_get_AutoTune", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "AutoPilot_get_AutoTune", args);
     }
 
     /// <summary>
@@ -245,7 +245,7 @@ public class AutoPilot : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "AutoPilot_get_AutoTune", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "AutoPilot_get_AutoTune", args);
     }
 
     /// <summary>
@@ -262,7 +262,7 @@ public class AutoPilot : RemoteObject
             this,
             new(value)
         };
-        Connection.Invoke("SpaceCenter", "AutoPilot_set_AutoTune", args);
+        InvokeVoid("SpaceCenter", "AutoPilot_set_AutoTune", args);
     }
 
     /// <summary>
@@ -280,7 +280,7 @@ public class AutoPilot : RemoteObject
             this,
             new(value)
         };
-        await Connection.InvokeAsync("SpaceCenter", "AutoPilot_set_AutoTune", args);
+        await InvokeVoidAsync("SpaceCenter", "AutoPilot_set_AutoTune", args);
     }
 
     /// <summary>
@@ -296,7 +296,7 @@ public class AutoPilot : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Tuple<double,double,double>>("SpaceCenter", "AutoPilot_get_DecelerationTime", args);
+        return InvokeNonNullable<Tuple<double,double,double>>("SpaceCenter", "AutoPilot_get_DecelerationTime", args);
     }
 
     /// <summary>
@@ -313,7 +313,7 @@ public class AutoPilot : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Tuple<double,double,double>>("SpaceCenter", "AutoPilot_get_DecelerationTime", args);
+        return await InvokeNonNullableAsync<Tuple<double,double,double>>("SpaceCenter", "AutoPilot_get_DecelerationTime", args);
     }
 
     /// <summary>
@@ -331,7 +331,7 @@ public class AutoPilot : RemoteObject
             this,
             new(value)
         };
-        Connection.Invoke("SpaceCenter", "AutoPilot_set_DecelerationTime", args);
+        InvokeVoid("SpaceCenter", "AutoPilot_set_DecelerationTime", args);
     }
 
     /// <summary>
@@ -350,7 +350,7 @@ public class AutoPilot : RemoteObject
             this,
             new(value)
         };
-        await Connection.InvokeAsync("SpaceCenter", "AutoPilot_set_DecelerationTime", args);
+        await InvokeVoidAsync("SpaceCenter", "AutoPilot_set_DecelerationTime", args);
     }
 
     /// <summary>
@@ -365,7 +365,7 @@ public class AutoPilot : RemoteObject
         {
             this
         };
-        var result = Connection.Invoke<float>("SpaceCenter", "AutoPilot_get_Error", args);
+        var result = InvokeNonNullable<float>("SpaceCenter", "AutoPilot_get_Error", args);
         return Angle.FromDegrees(result);
     }
 
@@ -382,7 +382,7 @@ public class AutoPilot : RemoteObject
         {
             this
         };
-        var result = await Connection.InvokeAsync<float>("SpaceCenter", "AutoPilot_get_Error", args);
+        var result = await InvokeNonNullableAsync<float>("SpaceCenter", "AutoPilot_get_Error", args);
         return Angle.FromDegrees(result);
     }
 
@@ -397,7 +397,7 @@ public class AutoPilot : RemoteObject
         {
             this
         };
-        var result = Connection.Invoke<float>("SpaceCenter", "AutoPilot_get_HeadingError", args);
+        var result = InvokeNonNullable<float>("SpaceCenter", "AutoPilot_get_HeadingError", args);
         return Angle.FromDegrees(result);
     }
 
@@ -413,7 +413,7 @@ public class AutoPilot : RemoteObject
         {
             this
         };
-        var result = await Connection.InvokeAsync<float>("SpaceCenter", "AutoPilot_get_HeadingError", args);
+        var result = await InvokeNonNullableAsync<float>("SpaceCenter", "AutoPilot_get_HeadingError", args);
         return Angle.FromDegrees(result);
     }
 
@@ -429,7 +429,7 @@ public class AutoPilot : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Tuple<double,double,double>>("SpaceCenter", "AutoPilot_get_Overshoot", args);
+        return InvokeNonNullable<Tuple<double,double,double>>("SpaceCenter", "AutoPilot_get_Overshoot", args);
     }
 
     /// <summary>
@@ -445,7 +445,7 @@ public class AutoPilot : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Tuple<double,double,double>>("SpaceCenter", "AutoPilot_get_Overshoot", args);
+        return await InvokeNonNullableAsync<Tuple<double,double,double>>("SpaceCenter", "AutoPilot_get_Overshoot", args);
     }
 
     /// <summary>
@@ -462,7 +462,7 @@ public class AutoPilot : RemoteObject
             this,
             new(value)
         };
-        Connection.Invoke("SpaceCenter", "AutoPilot_set_Overshoot", args);
+        InvokeVoid("SpaceCenter", "AutoPilot_set_Overshoot", args);
     }
 
     /// <summary>
@@ -480,7 +480,7 @@ public class AutoPilot : RemoteObject
             this,
             new(value)
         };
-        await Connection.InvokeAsync("SpaceCenter", "AutoPilot_set_Overshoot", args);
+        await InvokeVoidAsync("SpaceCenter", "AutoPilot_set_Overshoot", args);
     }
 
     /// <summary>
@@ -494,7 +494,7 @@ public class AutoPilot : RemoteObject
         {
             this
         };
-        var result = Connection.Invoke<float>("SpaceCenter", "AutoPilot_get_PitchError", args);
+        var result = InvokeNonNullable<float>("SpaceCenter", "AutoPilot_get_PitchError", args);
         return Angle.FromDegrees(result);
     }
 
@@ -510,7 +510,7 @@ public class AutoPilot : RemoteObject
         {
             this
         };
-        var result = await Connection.InvokeAsync<float>("SpaceCenter", "AutoPilot_get_PitchError", args);
+        var result = await InvokeNonNullableAsync<float>("SpaceCenter", "AutoPilot_get_PitchError", args);
         return Angle.FromDegrees(result);
     }
 
@@ -528,7 +528,7 @@ public class AutoPilot : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Tuple<double,double,double>>("SpaceCenter", "AutoPilot_get_PitchPIDGains", args);
+        return InvokeNonNullable<Tuple<double,double,double>>("SpaceCenter", "AutoPilot_get_PitchPIDGains", args);
     }
 
     /// <summary>
@@ -546,7 +546,7 @@ public class AutoPilot : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Tuple<double,double,double>>("SpaceCenter", "AutoPilot_get_PitchPIDGains", args);
+        return await InvokeNonNullableAsync<Tuple<double,double,double>>("SpaceCenter", "AutoPilot_get_PitchPIDGains", args);
     }
 
     /// <summary>
@@ -561,7 +561,7 @@ public class AutoPilot : RemoteObject
             this,
             new(value)
         };
-        Connection.Invoke("SpaceCenter", "AutoPilot_set_PitchPIDGains", args);
+        InvokeVoid("SpaceCenter", "AutoPilot_set_PitchPIDGains", args);
     }
 
     /// <summary>
@@ -577,7 +577,7 @@ public class AutoPilot : RemoteObject
             this,
             new(value)
         };
-        await Connection.InvokeAsync("SpaceCenter", "AutoPilot_set_PitchPIDGains", args);
+        await InvokeVoidAsync("SpaceCenter", "AutoPilot_set_PitchPIDGains", args);
     }
 
     /// <summary>
@@ -595,7 +595,7 @@ public class AutoPilot : RemoteObject
         {
             this
         };
-        return Connection.Invoke<ReferenceFrame>("SpaceCenter", "AutoPilot_get_ReferenceFrame", args);
+        return InvokeNonNullable<ReferenceFrame>("SpaceCenter", "AutoPilot_get_ReferenceFrame", args);
     }
 
     /// <summary>
@@ -614,7 +614,7 @@ public class AutoPilot : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<ReferenceFrame>("SpaceCenter", "AutoPilot_get_ReferenceFrame", args);
+        return await InvokeNonNullableAsync<ReferenceFrame>("SpaceCenter", "AutoPilot_get_ReferenceFrame", args);
     }
 
     /// <summary>
@@ -629,7 +629,7 @@ public class AutoPilot : RemoteObject
             this,
             new(value)
         };
-        Connection.Invoke("SpaceCenter", "AutoPilot_set_ReferenceFrame", args);
+        InvokeVoid("SpaceCenter", "AutoPilot_set_ReferenceFrame", args);
     }
 
     /// <summary>
@@ -645,7 +645,7 @@ public class AutoPilot : RemoteObject
             this,
             new(value)
         };
-        await Connection.InvokeAsync("SpaceCenter", "AutoPilot_set_ReferenceFrame", args);
+        await InvokeVoidAsync("SpaceCenter", "AutoPilot_set_ReferenceFrame", args);
     }
 
     /// <summary>
@@ -659,7 +659,7 @@ public class AutoPilot : RemoteObject
         {
             this
         };
-        var result = Connection.Invoke<float>("SpaceCenter", "AutoPilot_get_RollError", args);
+        var result = InvokeNonNullable<float>("SpaceCenter", "AutoPilot_get_RollError", args);
         return Angle.FromDegrees(result);
     }
 
@@ -675,7 +675,7 @@ public class AutoPilot : RemoteObject
         {
             this
         };
-        var result = await Connection.InvokeAsync<float>("SpaceCenter", "AutoPilot_get_RollError", args);
+        var result = await InvokeNonNullableAsync<float>("SpaceCenter", "AutoPilot_get_RollError", args);
         return Angle.FromDegrees(result);
     }
 
@@ -693,7 +693,7 @@ public class AutoPilot : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Tuple<double,double,double>>("SpaceCenter", "AutoPilot_get_RollPIDGains", args);
+        return InvokeNonNullable<Tuple<double,double,double>>("SpaceCenter", "AutoPilot_get_RollPIDGains", args);
     }
 
     /// <summary>
@@ -711,7 +711,7 @@ public class AutoPilot : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Tuple<double,double,double>>("SpaceCenter", "AutoPilot_get_RollPIDGains", args);
+        return await InvokeNonNullableAsync<Tuple<double,double,double>>("SpaceCenter", "AutoPilot_get_RollPIDGains", args);
     }
 
     /// <summary>
@@ -726,7 +726,7 @@ public class AutoPilot : RemoteObject
             this,
             new(value)
         };
-        Connection.Invoke("SpaceCenter", "AutoPilot_set_RollPIDGains", args);
+        InvokeVoid("SpaceCenter", "AutoPilot_set_RollPIDGains", args);
     }
 
     /// <summary>
@@ -742,7 +742,7 @@ public class AutoPilot : RemoteObject
             this,
             new(value)
         };
-        await Connection.InvokeAsync("SpaceCenter", "AutoPilot_set_RollPIDGains", args);
+        await InvokeVoidAsync("SpaceCenter", "AutoPilot_set_RollPIDGains", args);
     }
 
     /// <summary>
@@ -756,7 +756,7 @@ public class AutoPilot : RemoteObject
         {
             this
         };
-        var result = Connection.Invoke<double>("SpaceCenter", "AutoPilot_get_RollThreshold", args);
+        var result = InvokeNonNullable<double>("SpaceCenter", "AutoPilot_get_RollThreshold", args);
         return Angle.FromDegrees(result);
     }
 
@@ -772,7 +772,7 @@ public class AutoPilot : RemoteObject
         {
             this
         };
-        var result = await Connection.InvokeAsync<double>("SpaceCenter", "AutoPilot_get_RollThreshold", args);
+        var result = await InvokeNonNullableAsync<double>("SpaceCenter", "AutoPilot_get_RollThreshold", args);
         return Angle.FromDegrees(result);
     }
 
@@ -789,7 +789,7 @@ public class AutoPilot : RemoteObject
             this,
             value.Degrees
         };
-        Connection.Invoke("SpaceCenter", "AutoPilot_set_RollThreshold", args);
+        InvokeVoid("SpaceCenter", "AutoPilot_set_RollThreshold", args);
     }
 
     /// <summary>
@@ -806,7 +806,7 @@ public class AutoPilot : RemoteObject
             this,
             value.Degrees
         };
-        await Connection.InvokeAsync("SpaceCenter", "AutoPilot_set_RollThreshold", args);
+        await InvokeVoidAsync("SpaceCenter", "AutoPilot_set_RollThreshold", args);
     }
 
     /// <summary>
@@ -820,7 +820,7 @@ public class AutoPilot : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "AutoPilot_get_SAS", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "AutoPilot_get_SAS", args);
     }
 
     /// <summary>
@@ -835,7 +835,7 @@ public class AutoPilot : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "AutoPilot_get_SAS", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "AutoPilot_get_SAS", args);
     }
 
     /// <summary>
@@ -850,7 +850,7 @@ public class AutoPilot : RemoteObject
             this,
             new(value)
         };
-        Connection.Invoke("SpaceCenter", "AutoPilot_set_SAS", args);
+        InvokeVoid("SpaceCenter", "AutoPilot_set_SAS", args);
     }
 
     /// <summary>
@@ -866,7 +866,7 @@ public class AutoPilot : RemoteObject
             this,
             new(value)
         };
-        await Connection.InvokeAsync("SpaceCenter", "AutoPilot_set_SAS", args);
+        await InvokeVoidAsync("SpaceCenter", "AutoPilot_set_SAS", args);
     }
 
     /// <summary>
@@ -882,7 +882,7 @@ public class AutoPilot : RemoteObject
         {
             this
         };
-        return Connection.Invoke<SASMode>("SpaceCenter", "AutoPilot_get_SASMode", args);
+        return InvokeNonNullable<SASMode>("SpaceCenter", "AutoPilot_get_SASMode", args);
     }
 
     /// <summary>
@@ -899,7 +899,7 @@ public class AutoPilot : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<SASMode>("SpaceCenter", "AutoPilot_get_SASMode", args);
+        return await InvokeNonNullableAsync<SASMode>("SpaceCenter", "AutoPilot_get_SASMode", args);
     }
 
     /// <summary>
@@ -916,7 +916,7 @@ public class AutoPilot : RemoteObject
             this,
             new(value)
         };
-        Connection.Invoke("SpaceCenter", "AutoPilot_set_SASMode", args);
+        InvokeVoid("SpaceCenter", "AutoPilot_set_SASMode", args);
     }
 
     /// <summary>
@@ -934,7 +934,7 @@ public class AutoPilot : RemoteObject
             this,
             new(value)
         };
-        await Connection.InvokeAsync("SpaceCenter", "AutoPilot_set_SASMode", args);
+        await InvokeVoidAsync("SpaceCenter", "AutoPilot_set_SASMode", args);
     }
 
     /// <summary>
@@ -950,7 +950,7 @@ public class AutoPilot : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Tuple<double,double,double>>("SpaceCenter", "AutoPilot_get_StoppingTime", args);
+        return InvokeNonNullable<Tuple<double,double,double>>("SpaceCenter", "AutoPilot_get_StoppingTime", args);
     }
 
     /// <summary>
@@ -967,7 +967,7 @@ public class AutoPilot : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Tuple<double,double,double>>("SpaceCenter", "AutoPilot_get_StoppingTime", args);
+        return await InvokeNonNullableAsync<Tuple<double,double,double>>("SpaceCenter", "AutoPilot_get_StoppingTime", args);
     }
 
     /// <summary>
@@ -985,7 +985,7 @@ public class AutoPilot : RemoteObject
             this,
             new(value)
         };
-        Connection.Invoke("SpaceCenter", "AutoPilot_set_StoppingTime", args);
+        InvokeVoid("SpaceCenter", "AutoPilot_set_StoppingTime", args);
     }
 
     /// <summary>
@@ -1004,7 +1004,7 @@ public class AutoPilot : RemoteObject
             this,
             new(value)
         };
-        await Connection.InvokeAsync("SpaceCenter", "AutoPilot_set_StoppingTime", args);
+        await InvokeVoidAsync("SpaceCenter", "AutoPilot_set_StoppingTime", args);
     }
 
     /// <summary>
@@ -1018,7 +1018,7 @@ public class AutoPilot : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Vector3D>("SpaceCenter", "AutoPilot_get_TargetDirection", args);
+        return InvokeNonNullable<Vector3D>("SpaceCenter", "AutoPilot_get_TargetDirection", args);
     }
 
     /// <summary>
@@ -1033,7 +1033,7 @@ public class AutoPilot : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Vector3D>("SpaceCenter", "AutoPilot_get_TargetDirection", args);
+        return await InvokeNonNullableAsync<Vector3D>("SpaceCenter", "AutoPilot_get_TargetDirection", args);
     }
 
     /// <summary>
@@ -1049,7 +1049,7 @@ public class AutoPilot : RemoteObject
             this,
             new(value)
         };
-        Connection.Invoke("SpaceCenter", "AutoPilot_set_TargetDirection", args);
+        InvokeVoid("SpaceCenter", "AutoPilot_set_TargetDirection", args);
     }
 
     /// <summary>
@@ -1066,7 +1066,7 @@ public class AutoPilot : RemoteObject
             this,
             new(value)
         };
-        await Connection.InvokeAsync("SpaceCenter", "AutoPilot_set_TargetDirection", args);
+        await InvokeVoidAsync("SpaceCenter", "AutoPilot_set_TargetDirection", args);
     }
 
     /// <summary>
@@ -1079,7 +1079,7 @@ public class AutoPilot : RemoteObject
         {
             this
         };
-        var result = Connection.Invoke<float>("SpaceCenter", "AutoPilot_get_TargetHeading", args);
+        var result = InvokeNonNullable<float>("SpaceCenter", "AutoPilot_get_TargetHeading", args);
         return Angle.FromDegrees(result);
     }
 
@@ -1094,7 +1094,7 @@ public class AutoPilot : RemoteObject
         {
             this
         };
-        var result = await Connection.InvokeAsync<float>("SpaceCenter", "AutoPilot_get_TargetHeading", args);
+        var result = await InvokeNonNullableAsync<float>("SpaceCenter", "AutoPilot_get_TargetHeading", args);
         return Angle.FromDegrees(result);
     }
 
@@ -1110,7 +1110,7 @@ public class AutoPilot : RemoteObject
             this,
             (float)value.Degrees
         };
-        Connection.Invoke("SpaceCenter", "AutoPilot_set_TargetHeading", args);
+        InvokeVoid("SpaceCenter", "AutoPilot_set_TargetHeading", args);
     }
 
     /// <summary>
@@ -1126,7 +1126,7 @@ public class AutoPilot : RemoteObject
             this,
             (float)value.Degrees
         };
-        await Connection.InvokeAsync("SpaceCenter", "AutoPilot_set_TargetHeading", args);
+        await InvokeVoidAsync("SpaceCenter", "AutoPilot_set_TargetHeading", args);
     }
 
     /// <summary>
@@ -1139,7 +1139,7 @@ public class AutoPilot : RemoteObject
         {
             this
         };
-        var result = Connection.Invoke<float>("SpaceCenter", "AutoPilot_get_TargetPitch", args);
+        var result = InvokeNonNullable<float>("SpaceCenter", "AutoPilot_get_TargetPitch", args);
         return Angle.FromDegrees(result);
     }
 
@@ -1154,7 +1154,7 @@ public class AutoPilot : RemoteObject
         {
             this
         };
-        var result = await Connection.InvokeAsync<float>("SpaceCenter", "AutoPilot_get_TargetPitch", args);
+        var result = await InvokeNonNullableAsync<float>("SpaceCenter", "AutoPilot_get_TargetPitch", args);
         return Angle.FromDegrees(result);
     }
 
@@ -1170,7 +1170,7 @@ public class AutoPilot : RemoteObject
             this,
             (float)value.Degrees
         };
-        Connection.Invoke("SpaceCenter", "AutoPilot_set_TargetPitch", args);
+        InvokeVoid("SpaceCenter", "AutoPilot_set_TargetPitch", args);
     }
 
     /// <summary>
@@ -1186,7 +1186,7 @@ public class AutoPilot : RemoteObject
             this,
             (float)value.Degrees
         };
-        await Connection.InvokeAsync("SpaceCenter", "AutoPilot_set_TargetPitch", args);
+        await InvokeVoidAsync("SpaceCenter", "AutoPilot_set_TargetPitch", args);
     }
 
     /// <summary>
@@ -1199,7 +1199,7 @@ public class AutoPilot : RemoteObject
         {
             this
         };
-        var result = Connection.Invoke<float>("SpaceCenter", "AutoPilot_get_TargetRoll", args);
+        var result = InvokeNonNullable<float>("SpaceCenter", "AutoPilot_get_TargetRoll", args);
         return Angle.FromDegrees(result);
     }
 
@@ -1214,7 +1214,7 @@ public class AutoPilot : RemoteObject
         {
             this
         };
-        var result = await Connection.InvokeAsync<float>("SpaceCenter", "AutoPilot_get_TargetRoll", args);
+        var result = await InvokeNonNullableAsync<float>("SpaceCenter", "AutoPilot_get_TargetRoll", args);
         return Angle.FromDegrees(result);
     }
 
@@ -1230,7 +1230,7 @@ public class AutoPilot : RemoteObject
             this,
             (float)value.Degrees
         };
-        Connection.Invoke("SpaceCenter", "AutoPilot_set_TargetRoll", args);
+        InvokeVoid("SpaceCenter", "AutoPilot_set_TargetRoll", args);
     }
 
     /// <summary>
@@ -1246,7 +1246,7 @@ public class AutoPilot : RemoteObject
             this,
             (float)value.Degrees
         };
-        await Connection.InvokeAsync("SpaceCenter", "AutoPilot_set_TargetRoll", args);
+        await InvokeVoidAsync("SpaceCenter", "AutoPilot_set_TargetRoll", args);
     }
 
     /// <summary>
@@ -1261,7 +1261,7 @@ public class AutoPilot : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Tuple<double,double,double>>("SpaceCenter", "AutoPilot_get_TimeToPeak", args);
+        return InvokeNonNullable<Tuple<double,double,double>>("SpaceCenter", "AutoPilot_get_TimeToPeak", args);
     }
 
     /// <summary>
@@ -1277,7 +1277,7 @@ public class AutoPilot : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Tuple<double,double,double>>("SpaceCenter", "AutoPilot_get_TimeToPeak", args);
+        return await InvokeNonNullableAsync<Tuple<double,double,double>>("SpaceCenter", "AutoPilot_get_TimeToPeak", args);
     }
 
     /// <summary>
@@ -1294,7 +1294,7 @@ public class AutoPilot : RemoteObject
             this,
             new(value)
         };
-        Connection.Invoke("SpaceCenter", "AutoPilot_set_TimeToPeak", args);
+        InvokeVoid("SpaceCenter", "AutoPilot_set_TimeToPeak", args);
     }
 
     /// <summary>
@@ -1312,7 +1312,7 @@ public class AutoPilot : RemoteObject
             this,
             new(value)
         };
-        await Connection.InvokeAsync("SpaceCenter", "AutoPilot_set_TimeToPeak", args);
+        await InvokeVoidAsync("SpaceCenter", "AutoPilot_set_TimeToPeak", args);
     }
 
     /// <summary>
@@ -1329,7 +1329,7 @@ public class AutoPilot : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Tuple<double,double,double>>("SpaceCenter", "AutoPilot_get_YawPIDGains", args);
+        return InvokeNonNullable<Tuple<double,double,double>>("SpaceCenter", "AutoPilot_get_YawPIDGains", args);
     }
 
     /// <summary>
@@ -1347,7 +1347,7 @@ public class AutoPilot : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Tuple<double,double,double>>("SpaceCenter", "AutoPilot_get_YawPIDGains", args);
+        return await InvokeNonNullableAsync<Tuple<double,double,double>>("SpaceCenter", "AutoPilot_get_YawPIDGains", args);
     }
 
     /// <summary>
@@ -1362,7 +1362,7 @@ public class AutoPilot : RemoteObject
             this,
             new(value)
         };
-        Connection.Invoke("SpaceCenter", "AutoPilot_set_YawPIDGains", args);
+        InvokeVoid("SpaceCenter", "AutoPilot_set_YawPIDGains", args);
     }
 
     /// <summary>
@@ -1378,6 +1378,6 @@ public class AutoPilot : RemoteObject
             this,
             new(value)
         };
-        await Connection.InvokeAsync("SpaceCenter", "AutoPilot_set_YawPIDGains", args);
+        await InvokeVoidAsync("SpaceCenter", "AutoPilot_set_YawPIDGains", args);
     }
 }

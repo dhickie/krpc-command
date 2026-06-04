@@ -26,7 +26,7 @@ public class RoboticRotation : RemoteObject
         {
             this
         };
-        Connection.Invoke("SpaceCenter", "RoboticRotation_MoveHome", args);
+        InvokeVoid("SpaceCenter", "RoboticRotation_MoveHome", args);
     }
 
     /// <summary>
@@ -40,7 +40,7 @@ public class RoboticRotation : RemoteObject
         {
             this
         };
-        await Connection.InvokeAsync("SpaceCenter", "RoboticRotation_MoveHome", args);
+        await InvokeVoidAsync("SpaceCenter", "RoboticRotation_MoveHome", args);
     }
 
     /// <summary>
@@ -53,7 +53,7 @@ public class RoboticRotation : RemoteObject
         {
             this
         };
-        var result = Connection.Invoke<float>("SpaceCenter", "RoboticRotation_get_CurrentAngle", args);
+        var result = InvokeNonNullable<float>("SpaceCenter", "RoboticRotation_get_CurrentAngle", args);
         return Angle.FromDegrees(result);
     }
 
@@ -68,7 +68,7 @@ public class RoboticRotation : RemoteObject
         {
             this
         };
-        var result = await Connection.InvokeAsync<float>("SpaceCenter", "RoboticRotation_get_CurrentAngle", args);
+        var result = await InvokeNonNullableAsync<float>("SpaceCenter", "RoboticRotation_get_CurrentAngle", args);
         return Angle.FromDegrees(result);
     }
 
@@ -82,7 +82,7 @@ public class RoboticRotation : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "RoboticRotation_get_Damping", args);
+        return InvokeNonNullable<float>("SpaceCenter", "RoboticRotation_get_Damping", args);
     }
 
     /// <summary>
@@ -96,7 +96,7 @@ public class RoboticRotation : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "RoboticRotation_get_Damping", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "RoboticRotation_get_Damping", args);
     }
 
     /// <summary>
@@ -111,7 +111,7 @@ public class RoboticRotation : RemoteObject
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "RoboticRotation_set_Damping", args);
+        InvokeVoid("SpaceCenter", "RoboticRotation_set_Damping", args);
     }
 
     /// <summary>
@@ -127,7 +127,7 @@ public class RoboticRotation : RemoteObject
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "RoboticRotation_set_Damping", args);
+        await InvokeVoidAsync("SpaceCenter", "RoboticRotation_set_Damping", args);
     }
 
     /// <summary>
@@ -140,7 +140,7 @@ public class RoboticRotation : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "RoboticRotation_get_Locked", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "RoboticRotation_get_Locked", args);
     }
 
     /// <summary>
@@ -154,7 +154,7 @@ public class RoboticRotation : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "RoboticRotation_get_Locked", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "RoboticRotation_get_Locked", args);
     }
 
     /// <summary>
@@ -169,7 +169,7 @@ public class RoboticRotation : RemoteObject
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "RoboticRotation_set_Locked", args);
+        InvokeVoid("SpaceCenter", "RoboticRotation_set_Locked", args);
     }
 
     /// <summary>
@@ -185,7 +185,7 @@ public class RoboticRotation : RemoteObject
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "RoboticRotation_set_Locked", args);
+        await InvokeVoidAsync("SpaceCenter", "RoboticRotation_set_Locked", args);
     }
 
     /// <summary>
@@ -198,7 +198,7 @@ public class RoboticRotation : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "RoboticRotation_get_MotorEngaged", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "RoboticRotation_get_MotorEngaged", args);
     }
 
     /// <summary>
@@ -212,7 +212,7 @@ public class RoboticRotation : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "RoboticRotation_get_MotorEngaged", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "RoboticRotation_get_MotorEngaged", args);
     }
 
     /// <summary>
@@ -227,7 +227,7 @@ public class RoboticRotation : RemoteObject
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "RoboticRotation_set_MotorEngaged", args);
+        InvokeVoid("SpaceCenter", "RoboticRotation_set_MotorEngaged", args);
     }
 
     /// <summary>
@@ -243,7 +243,7 @@ public class RoboticRotation : RemoteObject
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "RoboticRotation_set_MotorEngaged", args);
+        await InvokeVoidAsync("SpaceCenter", "RoboticRotation_set_MotorEngaged", args);
     }
 
     /// <summary>
@@ -256,7 +256,7 @@ public class RoboticRotation : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Part>("SpaceCenter", "RoboticRotation_get_Part", args);
+        return InvokeNonNullable<Part>("SpaceCenter", "RoboticRotation_get_Part", args);
     }
 
     /// <summary>
@@ -270,7 +270,7 @@ public class RoboticRotation : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Part>("SpaceCenter", "RoboticRotation_get_Part", args);
+        return await InvokeNonNullableAsync<Part>("SpaceCenter", "RoboticRotation_get_Part", args);
     }
 
     /// <summary>
@@ -283,7 +283,7 @@ public class RoboticRotation : RemoteObject
         {
             this
         };
-        var result = Connection.Invoke<float>("SpaceCenter", "RoboticRotation_get_Rate", args);
+        var result = InvokeNonNullable<float>("SpaceCenter", "RoboticRotation_get_Rate", args);
         return Angle.FromDegrees(result);
     }
 
@@ -298,7 +298,7 @@ public class RoboticRotation : RemoteObject
         {
             this
         };
-        var result = await Connection.InvokeAsync<float>("SpaceCenter", "RoboticRotation_get_Rate", args);
+        var result = await InvokeNonNullableAsync<float>("SpaceCenter", "RoboticRotation_get_Rate", args);
         return Angle.FromDegrees(result);
     }
 
@@ -314,7 +314,7 @@ public class RoboticRotation : RemoteObject
             this,
             (float)value.Degrees
         };
-        Connection.Invoke("SpaceCenter", "RoboticRotation_set_Rate", args);
+        InvokeVoid("SpaceCenter", "RoboticRotation_set_Rate", args);
     }
 
     /// <summary>
@@ -330,7 +330,7 @@ public class RoboticRotation : RemoteObject
             this,
             (float)value.Degrees
         };
-        await Connection.InvokeAsync("SpaceCenter", "RoboticRotation_set_Rate", args);
+        await InvokeVoidAsync("SpaceCenter", "RoboticRotation_set_Rate", args);
     }
 
     /// <summary>
@@ -343,7 +343,7 @@ public class RoboticRotation : RemoteObject
         {
             this
         };
-        var result = Connection.Invoke<float>("SpaceCenter", "RoboticRotation_get_TargetAngle", args);
+        var result = InvokeNonNullable<float>("SpaceCenter", "RoboticRotation_get_TargetAngle", args);
         return Angle.FromDegrees(result);
     }
 
@@ -358,7 +358,7 @@ public class RoboticRotation : RemoteObject
         {
             this
         };
-        var result = await Connection.InvokeAsync<float>("SpaceCenter", "RoboticRotation_get_TargetAngle", args);
+        var result = await InvokeNonNullableAsync<float>("SpaceCenter", "RoboticRotation_get_TargetAngle", args);
         return Angle.FromDegrees(result);
     }
 
@@ -374,7 +374,7 @@ public class RoboticRotation : RemoteObject
             this,
             (float)value.Degrees
         };
-        Connection.Invoke("SpaceCenter", "RoboticRotation_set_TargetAngle", args);
+        InvokeVoid("SpaceCenter", "RoboticRotation_set_TargetAngle", args);
     }
 
     /// <summary>
@@ -390,6 +390,6 @@ public class RoboticRotation : RemoteObject
             this,
             (float)value.Degrees
         };
-        await Connection.InvokeAsync("SpaceCenter", "RoboticRotation_set_TargetAngle", args);
+        await InvokeVoidAsync("SpaceCenter", "RoboticRotation_set_TargetAngle", args);
     }
 }

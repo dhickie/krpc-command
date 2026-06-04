@@ -26,7 +26,7 @@ public class ResourceDrain : RemoteObject
             this,
             resource
         };
-        return Connection.Invoke<bool>("SpaceCenter", "ResourceDrain_CheckResource", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "ResourceDrain_CheckResource", args);
     }
 
     /// <summary>
@@ -41,7 +41,7 @@ public class ResourceDrain : RemoteObject
             this,
             resource
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "ResourceDrain_CheckResource", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "ResourceDrain_CheckResource", args);
     }
 
     /// <summary>
@@ -56,7 +56,7 @@ public class ResourceDrain : RemoteObject
             resource,
             enabled
         };
-        Connection.Invoke("SpaceCenter", "ResourceDrain_SetResource", args);
+        InvokeVoid("SpaceCenter", "ResourceDrain_SetResource", args);
     }
 
     /// <summary>
@@ -72,7 +72,7 @@ public class ResourceDrain : RemoteObject
             resource,
             enabled
         };
-        await Connection.InvokeAsync("SpaceCenter", "ResourceDrain_SetResource", args);
+        await InvokeVoidAsync("SpaceCenter", "ResourceDrain_SetResource", args);
     }
 
     /// <summary>
@@ -85,7 +85,7 @@ public class ResourceDrain : RemoteObject
         {
             this
         };
-        Connection.Invoke("SpaceCenter", "ResourceDrain_Start", args);
+        InvokeVoid("SpaceCenter", "ResourceDrain_Start", args);
     }
 
     /// <summary>
@@ -99,7 +99,7 @@ public class ResourceDrain : RemoteObject
         {
             this
         };
-        await Connection.InvokeAsync("SpaceCenter", "ResourceDrain_Start", args);
+        await InvokeVoidAsync("SpaceCenter", "ResourceDrain_Start", args);
     }
 
     /// <summary>
@@ -112,7 +112,7 @@ public class ResourceDrain : RemoteObject
         {
             this
         };
-        Connection.Invoke("SpaceCenter", "ResourceDrain_Stop", args);
+        InvokeVoid("SpaceCenter", "ResourceDrain_Stop", args);
     }
 
     /// <summary>
@@ -126,7 +126,7 @@ public class ResourceDrain : RemoteObject
         {
             this
         };
-        await Connection.InvokeAsync("SpaceCenter", "ResourceDrain_Stop", args);
+        await InvokeVoidAsync("SpaceCenter", "ResourceDrain_Stop", args);
     }
 
     /// <summary>
@@ -139,7 +139,7 @@ public class ResourceDrain : RemoteObject
         {
             this
         };
-        return Connection.Invoke<IList<Resource>>("SpaceCenter", "ResourceDrain_get_AvailableResources", args);
+        return InvokeNonNullable<IList<Resource>>("SpaceCenter", "ResourceDrain_get_AvailableResources", args);
     }
 
     /// <summary>
@@ -153,7 +153,7 @@ public class ResourceDrain : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<IList<Resource>>("SpaceCenter", "ResourceDrain_get_AvailableResources", args);
+        return await InvokeNonNullableAsync<IList<Resource>>("SpaceCenter", "ResourceDrain_get_AvailableResources", args);
     }
 
     /// <summary>
@@ -166,7 +166,7 @@ public class ResourceDrain : RemoteObject
         {
             this
         };
-        return Connection.Invoke<DrainMode>("SpaceCenter", "ResourceDrain_get_DrainMode", args);
+        return InvokeNonNullable<DrainMode>("SpaceCenter", "ResourceDrain_get_DrainMode", args);
     }
 
     /// <summary>
@@ -180,7 +180,7 @@ public class ResourceDrain : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<DrainMode>("SpaceCenter", "ResourceDrain_get_DrainMode", args);
+        return await InvokeNonNullableAsync<DrainMode>("SpaceCenter", "ResourceDrain_get_DrainMode", args);
     }
 
     /// <summary>
@@ -195,7 +195,7 @@ public class ResourceDrain : RemoteObject
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "ResourceDrain_set_DrainMode", args);
+        InvokeVoid("SpaceCenter", "ResourceDrain_set_DrainMode", args);
     }
 
     /// <summary>
@@ -211,7 +211,7 @@ public class ResourceDrain : RemoteObject
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "ResourceDrain_set_DrainMode", args);
+        await InvokeVoidAsync("SpaceCenter", "ResourceDrain_set_DrainMode", args);
     }
 
     /// <summary>
@@ -224,7 +224,7 @@ public class ResourceDrain : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "ResourceDrain_get_MaxRate", args);
+        return InvokeNonNullable<float>("SpaceCenter", "ResourceDrain_get_MaxRate", args);
     }
 
     /// <summary>
@@ -238,7 +238,7 @@ public class ResourceDrain : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "ResourceDrain_get_MaxRate", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "ResourceDrain_get_MaxRate", args);
     }
 
     /// <summary>
@@ -251,7 +251,7 @@ public class ResourceDrain : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "ResourceDrain_get_MinRate", args);
+        return InvokeNonNullable<float>("SpaceCenter", "ResourceDrain_get_MinRate", args);
     }
 
     /// <summary>
@@ -265,7 +265,7 @@ public class ResourceDrain : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "ResourceDrain_get_MinRate", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "ResourceDrain_get_MinRate", args);
     }
 
     /// <summary>
@@ -278,7 +278,7 @@ public class ResourceDrain : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Part>("SpaceCenter", "ResourceDrain_get_Part", args);
+        return InvokeNonNullable<Part>("SpaceCenter", "ResourceDrain_get_Part", args);
     }
 
     /// <summary>
@@ -292,7 +292,7 @@ public class ResourceDrain : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Part>("SpaceCenter", "ResourceDrain_get_Part", args);
+        return await InvokeNonNullableAsync<Part>("SpaceCenter", "ResourceDrain_get_Part", args);
     }
 
     /// <summary>
@@ -305,7 +305,7 @@ public class ResourceDrain : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "ResourceDrain_get_Rate", args);
+        return InvokeNonNullable<float>("SpaceCenter", "ResourceDrain_get_Rate", args);
     }
 
     /// <summary>
@@ -319,7 +319,7 @@ public class ResourceDrain : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "ResourceDrain_get_Rate", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "ResourceDrain_get_Rate", args);
     }
 
     /// <summary>
@@ -334,7 +334,7 @@ public class ResourceDrain : RemoteObject
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "ResourceDrain_set_Rate", args);
+        InvokeVoid("SpaceCenter", "ResourceDrain_set_Rate", args);
     }
 
     /// <summary>
@@ -350,6 +350,6 @@ public class ResourceDrain : RemoteObject
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "ResourceDrain_set_Rate", args);
+        await InvokeVoidAsync("SpaceCenter", "ResourceDrain_set_Rate", args);
     }
 }

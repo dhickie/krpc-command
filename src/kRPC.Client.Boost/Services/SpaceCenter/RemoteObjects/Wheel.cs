@@ -28,7 +28,7 @@ public class Wheel : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "Wheel_get_AutoFrictionControl", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "Wheel_get_AutoFrictionControl", args);
     }
 
     /// <summary>
@@ -42,7 +42,7 @@ public class Wheel : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "Wheel_get_AutoFrictionControl", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "Wheel_get_AutoFrictionControl", args);
     }
 
     /// <summary>
@@ -57,7 +57,7 @@ public class Wheel : RemoteObject
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "Wheel_set_AutoFrictionControl", args);
+        InvokeVoid("SpaceCenter", "Wheel_set_AutoFrictionControl", args);
     }
 
     /// <summary>
@@ -73,7 +73,7 @@ public class Wheel : RemoteObject
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "Wheel_set_AutoFrictionControl", args);
+        await InvokeVoidAsync("SpaceCenter", "Wheel_set_AutoFrictionControl", args);
     }
 
     /// <summary>
@@ -86,7 +86,7 @@ public class Wheel : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "Wheel_get_Brakes", args);
+        return InvokeNonNullable<float>("SpaceCenter", "Wheel_get_Brakes", args);
     }
 
     /// <summary>
@@ -100,7 +100,7 @@ public class Wheel : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "Wheel_get_Brakes", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "Wheel_get_Brakes", args);
     }
 
     /// <summary>
@@ -115,7 +115,7 @@ public class Wheel : RemoteObject
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "Wheel_set_Brakes", args);
+        InvokeVoid("SpaceCenter", "Wheel_set_Brakes", args);
     }
 
     /// <summary>
@@ -131,7 +131,7 @@ public class Wheel : RemoteObject
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "Wheel_set_Brakes", args);
+        await InvokeVoidAsync("SpaceCenter", "Wheel_set_Brakes", args);
     }
 
     /// <summary>
@@ -144,7 +144,7 @@ public class Wheel : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "Wheel_get_Broken", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "Wheel_get_Broken", args);
     }
 
     /// <summary>
@@ -158,7 +158,7 @@ public class Wheel : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "Wheel_get_Broken", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "Wheel_get_Broken", args);
     }
 
     /// <summary>
@@ -171,7 +171,7 @@ public class Wheel : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "Wheel_get_Deflection", args);
+        return InvokeNonNullable<float>("SpaceCenter", "Wheel_get_Deflection", args);
     }
 
     /// <summary>
@@ -185,7 +185,7 @@ public class Wheel : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "Wheel_get_Deflection", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "Wheel_get_Deflection", args);
     }
 
     /// <summary>
@@ -198,7 +198,7 @@ public class Wheel : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "Wheel_get_Deployable", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "Wheel_get_Deployable", args);
     }
 
     /// <summary>
@@ -212,7 +212,7 @@ public class Wheel : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "Wheel_get_Deployable", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "Wheel_get_Deployable", args);
     }
 
     /// <summary>
@@ -225,7 +225,7 @@ public class Wheel : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "Wheel_get_Deployed", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "Wheel_get_Deployed", args);
     }
 
     /// <summary>
@@ -239,7 +239,7 @@ public class Wheel : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "Wheel_get_Deployed", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "Wheel_get_Deployed", args);
     }
 
     /// <summary>
@@ -254,7 +254,7 @@ public class Wheel : RemoteObject
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "Wheel_set_Deployed", args);
+        InvokeVoid("SpaceCenter", "Wheel_set_Deployed", args);
     }
 
     /// <summary>
@@ -270,7 +270,7 @@ public class Wheel : RemoteObject
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "Wheel_set_Deployed", args);
+        await InvokeVoidAsync("SpaceCenter", "Wheel_set_Deployed", args);
     }
 
     /// <summary>
@@ -285,7 +285,7 @@ public class Wheel : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "Wheel_get_DriveLimiter", args);
+        return InvokeNonNullable<float>("SpaceCenter", "Wheel_get_DriveLimiter", args);
     }
 
     /// <summary>
@@ -301,7 +301,7 @@ public class Wheel : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "Wheel_get_DriveLimiter", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "Wheel_get_DriveLimiter", args);
     }
 
     /// <summary>
@@ -318,7 +318,7 @@ public class Wheel : RemoteObject
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "Wheel_set_DriveLimiter", args);
+        InvokeVoid("SpaceCenter", "Wheel_set_DriveLimiter", args);
     }
 
     /// <summary>
@@ -336,7 +336,7 @@ public class Wheel : RemoteObject
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "Wheel_set_DriveLimiter", args);
+        await InvokeVoidAsync("SpaceCenter", "Wheel_set_DriveLimiter", args);
     }
 
     /// <summary>
@@ -349,7 +349,7 @@ public class Wheel : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "Wheel_get_Grounded", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "Wheel_get_Grounded", args);
     }
 
     /// <summary>
@@ -363,7 +363,7 @@ public class Wheel : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "Wheel_get_Grounded", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "Wheel_get_Grounded", args);
     }
 
     /// <summary>
@@ -376,7 +376,7 @@ public class Wheel : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "Wheel_get_HasBrakes", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "Wheel_get_HasBrakes", args);
     }
 
     /// <summary>
@@ -390,7 +390,7 @@ public class Wheel : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "Wheel_get_HasBrakes", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "Wheel_get_HasBrakes", args);
     }
 
     /// <summary>
@@ -403,7 +403,7 @@ public class Wheel : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "Wheel_get_HasSuspension", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "Wheel_get_HasSuspension", args);
     }
 
     /// <summary>
@@ -417,7 +417,7 @@ public class Wheel : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "Wheel_get_HasSuspension", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "Wheel_get_HasSuspension", args);
     }
 
     /// <summary>
@@ -431,7 +431,7 @@ public class Wheel : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "Wheel_get_ManualFrictionControl", args);
+        return InvokeNonNullable<float>("SpaceCenter", "Wheel_get_ManualFrictionControl", args);
     }
 
     /// <summary>
@@ -446,7 +446,7 @@ public class Wheel : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "Wheel_get_ManualFrictionControl", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "Wheel_get_ManualFrictionControl", args);
     }
 
     /// <summary>
@@ -462,7 +462,7 @@ public class Wheel : RemoteObject
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "Wheel_set_ManualFrictionControl", args);
+        InvokeVoid("SpaceCenter", "Wheel_set_ManualFrictionControl", args);
     }
 
     /// <summary>
@@ -479,7 +479,7 @@ public class Wheel : RemoteObject
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "Wheel_set_ManualFrictionControl", args);
+        await InvokeVoidAsync("SpaceCenter", "Wheel_set_ManualFrictionControl", args);
     }
 
     /// <summary>
@@ -492,7 +492,7 @@ public class Wheel : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "Wheel_get_MotorEnabled", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "Wheel_get_MotorEnabled", args);
     }
 
     /// <summary>
@@ -506,7 +506,7 @@ public class Wheel : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "Wheel_get_MotorEnabled", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "Wheel_get_MotorEnabled", args);
     }
 
     /// <summary>
@@ -521,7 +521,7 @@ public class Wheel : RemoteObject
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "Wheel_set_MotorEnabled", args);
+        InvokeVoid("SpaceCenter", "Wheel_set_MotorEnabled", args);
     }
 
     /// <summary>
@@ -537,7 +537,7 @@ public class Wheel : RemoteObject
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "Wheel_set_MotorEnabled", args);
+        await InvokeVoidAsync("SpaceCenter", "Wheel_set_MotorEnabled", args);
     }
 
     /// <summary>
@@ -550,7 +550,7 @@ public class Wheel : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "Wheel_get_MotorInverted", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "Wheel_get_MotorInverted", args);
     }
 
     /// <summary>
@@ -564,7 +564,7 @@ public class Wheel : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "Wheel_get_MotorInverted", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "Wheel_get_MotorInverted", args);
     }
 
     /// <summary>
@@ -579,7 +579,7 @@ public class Wheel : RemoteObject
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "Wheel_set_MotorInverted", args);
+        InvokeVoid("SpaceCenter", "Wheel_set_MotorInverted", args);
     }
 
     /// <summary>
@@ -595,7 +595,7 @@ public class Wheel : RemoteObject
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "Wheel_set_MotorInverted", args);
+        await InvokeVoidAsync("SpaceCenter", "Wheel_set_MotorInverted", args);
     }
 
     /// <summary>
@@ -608,7 +608,7 @@ public class Wheel : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "Wheel_get_MotorOutput", args);
+        return InvokeNonNullable<float>("SpaceCenter", "Wheel_get_MotorOutput", args);
     }
 
     /// <summary>
@@ -622,7 +622,7 @@ public class Wheel : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "Wheel_get_MotorOutput", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "Wheel_get_MotorOutput", args);
     }
 
     /// <summary>
@@ -635,7 +635,7 @@ public class Wheel : RemoteObject
         {
             this
         };
-        return Connection.Invoke<MotorState>("SpaceCenter", "Wheel_get_MotorState", args);
+        return InvokeNonNullable<MotorState>("SpaceCenter", "Wheel_get_MotorState", args);
     }
 
     /// <summary>
@@ -649,7 +649,7 @@ public class Wheel : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<MotorState>("SpaceCenter", "Wheel_get_MotorState", args);
+        return await InvokeNonNullableAsync<MotorState>("SpaceCenter", "Wheel_get_MotorState", args);
     }
 
     /// <summary>
@@ -662,7 +662,7 @@ public class Wheel : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Part>("SpaceCenter", "Wheel_get_Part", args);
+        return InvokeNonNullable<Part>("SpaceCenter", "Wheel_get_Part", args);
     }
 
     /// <summary>
@@ -676,7 +676,7 @@ public class Wheel : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Part>("SpaceCenter", "Wheel_get_Part", args);
+        return await InvokeNonNullableAsync<Part>("SpaceCenter", "Wheel_get_Part", args);
     }
 
     /// <summary>
@@ -689,7 +689,7 @@ public class Wheel : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "Wheel_get_Powered", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "Wheel_get_Powered", args);
     }
 
     /// <summary>
@@ -703,7 +703,7 @@ public class Wheel : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "Wheel_get_Powered", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "Wheel_get_Powered", args);
     }
 
     /// <summary>
@@ -716,7 +716,7 @@ public class Wheel : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "Wheel_get_Radius", args);
+        return InvokeNonNullable<float>("SpaceCenter", "Wheel_get_Radius", args);
     }
 
     /// <summary>
@@ -730,7 +730,7 @@ public class Wheel : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "Wheel_get_Radius", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "Wheel_get_Radius", args);
     }
 
     /// <summary>
@@ -743,7 +743,7 @@ public class Wheel : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "Wheel_get_Repairable", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "Wheel_get_Repairable", args);
     }
 
     /// <summary>
@@ -757,7 +757,7 @@ public class Wheel : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "Wheel_get_Repairable", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "Wheel_get_Repairable", args);
     }
 
     /// <summary>
@@ -770,7 +770,7 @@ public class Wheel : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "Wheel_get_Slip", args);
+        return InvokeNonNullable<float>("SpaceCenter", "Wheel_get_Slip", args);
     }
 
     /// <summary>
@@ -784,7 +784,7 @@ public class Wheel : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "Wheel_get_Slip", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "Wheel_get_Slip", args);
     }
 
     /// <summary>
@@ -797,7 +797,7 @@ public class Wheel : RemoteObject
         {
             this
         };
-        return Connection.Invoke<WheelState>("SpaceCenter", "Wheel_get_State", args);
+        return InvokeNonNullable<WheelState>("SpaceCenter", "Wheel_get_State", args);
     }
 
     /// <summary>
@@ -811,7 +811,7 @@ public class Wheel : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<WheelState>("SpaceCenter", "Wheel_get_State", args);
+        return await InvokeNonNullableAsync<WheelState>("SpaceCenter", "Wheel_get_State", args);
     }
 
     /// <summary>
@@ -824,7 +824,7 @@ public class Wheel : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "Wheel_get_Steerable", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "Wheel_get_Steerable", args);
     }
 
     /// <summary>
@@ -838,7 +838,7 @@ public class Wheel : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "Wheel_get_Steerable", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "Wheel_get_Steerable", args);
     }
 
     /// <summary>
@@ -851,7 +851,7 @@ public class Wheel : RemoteObject
         {
             this
         };
-        var result = Connection.Invoke<float>("SpaceCenter", "Wheel_get_SteeringAngleLimit", args);
+        var result = InvokeNonNullable<float>("SpaceCenter", "Wheel_get_SteeringAngleLimit", args);
         return Angle.FromDegrees(result);
     }
 
@@ -866,7 +866,7 @@ public class Wheel : RemoteObject
         {
             this
         };
-        var result = await Connection.InvokeAsync<float>("SpaceCenter", "Wheel_get_SteeringAngleLimit", args);
+        var result = await InvokeNonNullableAsync<float>("SpaceCenter", "Wheel_get_SteeringAngleLimit", args);
         return Angle.FromDegrees(result);
     }
 
@@ -882,7 +882,7 @@ public class Wheel : RemoteObject
             this,
             (float)value.Degrees
         };
-        Connection.Invoke("SpaceCenter", "Wheel_set_SteeringAngleLimit", args);
+        InvokeVoid("SpaceCenter", "Wheel_set_SteeringAngleLimit", args);
     }
 
     /// <summary>
@@ -898,7 +898,7 @@ public class Wheel : RemoteObject
             this,
             (float)value.Degrees
         };
-        await Connection.InvokeAsync("SpaceCenter", "Wheel_set_SteeringAngleLimit", args);
+        await InvokeVoidAsync("SpaceCenter", "Wheel_set_SteeringAngleLimit", args);
     }
 
     /// <summary>
@@ -911,7 +911,7 @@ public class Wheel : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "Wheel_get_SteeringEnabled", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "Wheel_get_SteeringEnabled", args);
     }
 
     /// <summary>
@@ -925,7 +925,7 @@ public class Wheel : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "Wheel_get_SteeringEnabled", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "Wheel_get_SteeringEnabled", args);
     }
 
     /// <summary>
@@ -940,7 +940,7 @@ public class Wheel : RemoteObject
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "Wheel_set_SteeringEnabled", args);
+        InvokeVoid("SpaceCenter", "Wheel_set_SteeringEnabled", args);
     }
 
     /// <summary>
@@ -956,7 +956,7 @@ public class Wheel : RemoteObject
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "Wheel_set_SteeringEnabled", args);
+        await InvokeVoidAsync("SpaceCenter", "Wheel_set_SteeringEnabled", args);
     }
 
     /// <summary>
@@ -969,7 +969,7 @@ public class Wheel : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "Wheel_get_SteeringInverted", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "Wheel_get_SteeringInverted", args);
     }
 
     /// <summary>
@@ -983,7 +983,7 @@ public class Wheel : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "Wheel_get_SteeringInverted", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "Wheel_get_SteeringInverted", args);
     }
 
     /// <summary>
@@ -998,7 +998,7 @@ public class Wheel : RemoteObject
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "Wheel_set_SteeringInverted", args);
+        InvokeVoid("SpaceCenter", "Wheel_set_SteeringInverted", args);
     }
 
     /// <summary>
@@ -1014,7 +1014,7 @@ public class Wheel : RemoteObject
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "Wheel_set_SteeringInverted", args);
+        await InvokeVoidAsync("SpaceCenter", "Wheel_set_SteeringInverted", args);
     }
 
     /// <summary>
@@ -1027,7 +1027,7 @@ public class Wheel : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "Wheel_get_SteeringResponseTime", args);
+        return InvokeNonNullable<float>("SpaceCenter", "Wheel_get_SteeringResponseTime", args);
     }
 
     /// <summary>
@@ -1041,7 +1041,7 @@ public class Wheel : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "Wheel_get_SteeringResponseTime", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "Wheel_get_SteeringResponseTime", args);
     }
 
     /// <summary>
@@ -1056,7 +1056,7 @@ public class Wheel : RemoteObject
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "Wheel_set_SteeringResponseTime", args);
+        InvokeVoid("SpaceCenter", "Wheel_set_SteeringResponseTime", args);
     }
 
     /// <summary>
@@ -1072,7 +1072,7 @@ public class Wheel : RemoteObject
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "Wheel_set_SteeringResponseTime", args);
+        await InvokeVoidAsync("SpaceCenter", "Wheel_set_SteeringResponseTime", args);
     }
 
     /// <summary>
@@ -1085,7 +1085,7 @@ public class Wheel : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "Wheel_get_Stress", args);
+        return InvokeNonNullable<float>("SpaceCenter", "Wheel_get_Stress", args);
     }
 
     /// <summary>
@@ -1099,7 +1099,7 @@ public class Wheel : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "Wheel_get_Stress", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "Wheel_get_Stress", args);
     }
 
     /// <summary>
@@ -1112,7 +1112,7 @@ public class Wheel : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "Wheel_get_StressPercentage", args);
+        return InvokeNonNullable<float>("SpaceCenter", "Wheel_get_StressPercentage", args);
     }
 
     /// <summary>
@@ -1126,7 +1126,7 @@ public class Wheel : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "Wheel_get_StressPercentage", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "Wheel_get_StressPercentage", args);
     }
 
     /// <summary>
@@ -1139,7 +1139,7 @@ public class Wheel : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "Wheel_get_StressTolerance", args);
+        return InvokeNonNullable<float>("SpaceCenter", "Wheel_get_StressTolerance", args);
     }
 
     /// <summary>
@@ -1153,7 +1153,7 @@ public class Wheel : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "Wheel_get_StressTolerance", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "Wheel_get_StressTolerance", args);
     }
 
     /// <summary>
@@ -1166,7 +1166,7 @@ public class Wheel : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "Wheel_get_SuspensionDamperStrength", args);
+        return InvokeNonNullable<float>("SpaceCenter", "Wheel_get_SuspensionDamperStrength", args);
     }
 
     /// <summary>
@@ -1180,7 +1180,7 @@ public class Wheel : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "Wheel_get_SuspensionDamperStrength", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "Wheel_get_SuspensionDamperStrength", args);
     }
 
     /// <summary>
@@ -1193,7 +1193,7 @@ public class Wheel : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "Wheel_get_SuspensionSpringStrength", args);
+        return InvokeNonNullable<float>("SpaceCenter", "Wheel_get_SuspensionSpringStrength", args);
     }
 
     /// <summary>
@@ -1207,7 +1207,7 @@ public class Wheel : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "Wheel_get_SuspensionSpringStrength", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "Wheel_get_SuspensionSpringStrength", args);
     }
 
     /// <summary>
@@ -1222,7 +1222,7 @@ public class Wheel : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "Wheel_get_TractionControl", args);
+        return InvokeNonNullable<float>("SpaceCenter", "Wheel_get_TractionControl", args);
     }
 
     /// <summary>
@@ -1238,7 +1238,7 @@ public class Wheel : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "Wheel_get_TractionControl", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "Wheel_get_TractionControl", args);
     }
 
     /// <summary>
@@ -1255,7 +1255,7 @@ public class Wheel : RemoteObject
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "Wheel_set_TractionControl", args);
+        InvokeVoid("SpaceCenter", "Wheel_set_TractionControl", args);
     }
 
     /// <summary>
@@ -1273,7 +1273,7 @@ public class Wheel : RemoteObject
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "Wheel_set_TractionControl", args);
+        await InvokeVoidAsync("SpaceCenter", "Wheel_set_TractionControl", args);
     }
 
     /// <summary>
@@ -1287,7 +1287,7 @@ public class Wheel : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "Wheel_get_TractionControlEnabled", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "Wheel_get_TractionControlEnabled", args);
     }
 
     /// <summary>
@@ -1302,7 +1302,7 @@ public class Wheel : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "Wheel_get_TractionControlEnabled", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "Wheel_get_TractionControlEnabled", args);
     }
 
     /// <summary>
@@ -1318,7 +1318,7 @@ public class Wheel : RemoteObject
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "Wheel_set_TractionControlEnabled", args);
+        InvokeVoid("SpaceCenter", "Wheel_set_TractionControlEnabled", args);
     }
 
     /// <summary>
@@ -1335,6 +1335,6 @@ public class Wheel : RemoteObject
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "Wheel_set_TractionControlEnabled", args);
+        await InvokeVoidAsync("SpaceCenter", "Wheel_set_TractionControlEnabled", args);
     }
 }

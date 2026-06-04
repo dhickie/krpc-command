@@ -26,7 +26,7 @@ public class ReactionWheel : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "ReactionWheel_get_Active", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "ReactionWheel_get_Active", args);
     }
 
     /// <summary>
@@ -40,7 +40,7 @@ public class ReactionWheel : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "ReactionWheel_get_Active", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "ReactionWheel_get_Active", args);
     }
 
     /// <summary>
@@ -55,7 +55,7 @@ public class ReactionWheel : RemoteObject
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "ReactionWheel_set_Active", args);
+        InvokeVoid("SpaceCenter", "ReactionWheel_set_Active", args);
     }
 
     /// <summary>
@@ -71,7 +71,7 @@ public class ReactionWheel : RemoteObject
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "ReactionWheel_set_Active", args);
+        await InvokeVoidAsync("SpaceCenter", "ReactionWheel_set_Active", args);
     }
 
     /// <summary>
@@ -87,7 +87,7 @@ public class ReactionWheel : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Tuple<Vector3D,Vector3D>>("SpaceCenter", "ReactionWheel_get_AvailableTorque", args);
+        return InvokeNonNullable<Tuple<Vector3D,Vector3D>>("SpaceCenter", "ReactionWheel_get_AvailableTorque", args);
     }
 
     /// <summary>
@@ -104,7 +104,7 @@ public class ReactionWheel : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Tuple<Vector3D,Vector3D>>("SpaceCenter", "ReactionWheel_get_AvailableTorque", args);
+        return await InvokeNonNullableAsync<Tuple<Vector3D,Vector3D>>("SpaceCenter", "ReactionWheel_get_AvailableTorque", args);
     }
 
     /// <summary>
@@ -117,7 +117,7 @@ public class ReactionWheel : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "ReactionWheel_get_Broken", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "ReactionWheel_get_Broken", args);
     }
 
     /// <summary>
@@ -131,7 +131,7 @@ public class ReactionWheel : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "ReactionWheel_get_Broken", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "ReactionWheel_get_Broken", args);
     }
 
     /// <summary>
@@ -146,7 +146,7 @@ public class ReactionWheel : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Tuple<Vector3D,Vector3D>>("SpaceCenter", "ReactionWheel_get_MaxTorque", args);
+        return InvokeNonNullable<Tuple<Vector3D,Vector3D>>("SpaceCenter", "ReactionWheel_get_MaxTorque", args);
     }
 
     /// <summary>
@@ -162,7 +162,7 @@ public class ReactionWheel : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Tuple<Vector3D,Vector3D>>("SpaceCenter", "ReactionWheel_get_MaxTorque", args);
+        return await InvokeNonNullableAsync<Tuple<Vector3D,Vector3D>>("SpaceCenter", "ReactionWheel_get_MaxTorque", args);
     }
 
     /// <summary>
@@ -175,7 +175,7 @@ public class ReactionWheel : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Part>("SpaceCenter", "ReactionWheel_get_Part", args);
+        return InvokeNonNullable<Part>("SpaceCenter", "ReactionWheel_get_Part", args);
     }
 
     /// <summary>
@@ -189,6 +189,6 @@ public class ReactionWheel : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Part>("SpaceCenter", "ReactionWheel_get_Part", args);
+        return await InvokeNonNullableAsync<Part>("SpaceCenter", "ReactionWheel_get_Part", args);
     }
 }

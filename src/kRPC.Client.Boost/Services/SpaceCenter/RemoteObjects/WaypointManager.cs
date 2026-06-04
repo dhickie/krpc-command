@@ -38,7 +38,7 @@ public class WaypointManager : RemoteObject
             body,
             name
         };
-        return Connection.Invoke<Waypoint>("SpaceCenter", "WaypointManager_AddWaypoint", args);
+        return InvokeNonNullable<Waypoint>("SpaceCenter", "WaypointManager_AddWaypoint", args);
     }
 
     /// <summary>
@@ -62,7 +62,7 @@ public class WaypointManager : RemoteObject
             body,
             name
         };
-        return await Connection.InvokeAsync<Waypoint>("SpaceCenter", "WaypointManager_AddWaypoint", args);
+        return await InvokeNonNullableAsync<Waypoint>("SpaceCenter", "WaypointManager_AddWaypoint", args);
     }
 
     /// <summary>
@@ -87,7 +87,7 @@ public class WaypointManager : RemoteObject
             body,
             name
         };
-        return Connection.Invoke<Waypoint>("SpaceCenter", "WaypointManager_AddWaypointAtAltitude", args);
+        return InvokeNonNullable<Waypoint>("SpaceCenter", "WaypointManager_AddWaypointAtAltitude", args);
     }
 
     /// <summary>
@@ -113,7 +113,7 @@ public class WaypointManager : RemoteObject
             body,
             name
         };
-        return await Connection.InvokeAsync<Waypoint>("SpaceCenter", "WaypointManager_AddWaypointAtAltitude", args);
+        return await InvokeNonNullableAsync<Waypoint>("SpaceCenter", "WaypointManager_AddWaypointAtAltitude", args);
     }
 
     /// <summary>
@@ -127,7 +127,7 @@ public class WaypointManager : RemoteObject
         {
             this
         };
-        return Connection.Invoke<IDictionary<string,int>>("SpaceCenter", "WaypointManager_get_Colors", args);
+        return InvokeNonNullable<IDictionary<string,int>>("SpaceCenter", "WaypointManager_get_Colors", args);
     }
 
     /// <summary>
@@ -142,7 +142,7 @@ public class WaypointManager : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<IDictionary<string,int>>("SpaceCenter", "WaypointManager_get_Colors", args);
+        return await InvokeNonNullableAsync<IDictionary<string,int>>("SpaceCenter", "WaypointManager_get_Colors", args);
     }
 
     /// <summary>
@@ -155,7 +155,7 @@ public class WaypointManager : RemoteObject
         {
             this
         };
-        return Connection.Invoke<IList<string>>("SpaceCenter", "WaypointManager_get_Icons", args);
+        return InvokeNonNullable<IList<string>>("SpaceCenter", "WaypointManager_get_Icons", args);
     }
 
     /// <summary>
@@ -169,7 +169,7 @@ public class WaypointManager : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<IList<string>>("SpaceCenter", "WaypointManager_get_Icons", args);
+        return await InvokeNonNullableAsync<IList<string>>("SpaceCenter", "WaypointManager_get_Icons", args);
     }
 
     /// <summary>
@@ -182,7 +182,7 @@ public class WaypointManager : RemoteObject
         {
             this
         };
-        return Connection.Invoke<IList<Waypoint>>("SpaceCenter", "WaypointManager_get_Waypoints", args);
+        return InvokeNonNullable<IList<Waypoint>>("SpaceCenter", "WaypointManager_get_Waypoints", args);
     }
 
     /// <summary>
@@ -196,6 +196,6 @@ public class WaypointManager : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<IList<Waypoint>>("SpaceCenter", "WaypointManager_get_Waypoints", args);
+        return await InvokeNonNullableAsync<IList<Waypoint>>("SpaceCenter", "WaypointManager_get_Waypoints", args);
     }
 }

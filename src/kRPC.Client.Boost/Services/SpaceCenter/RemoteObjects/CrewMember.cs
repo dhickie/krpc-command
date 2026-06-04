@@ -25,7 +25,7 @@ public class CrewMember : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "CrewMember_get_Badass", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "CrewMember_get_Badass", args);
     }
 
     /// <summary>
@@ -39,7 +39,7 @@ public class CrewMember : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "CrewMember_get_Badass", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "CrewMember_get_Badass", args);
     }
 
     /// <summary>
@@ -54,7 +54,7 @@ public class CrewMember : RemoteObject
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "CrewMember_set_Badass", args);
+        InvokeVoid("SpaceCenter", "CrewMember_set_Badass", args);
     }
 
     /// <summary>
@@ -70,7 +70,7 @@ public class CrewMember : RemoteObject
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "CrewMember_set_Badass", args);
+        await InvokeVoidAsync("SpaceCenter", "CrewMember_set_Badass", args);
     }
 
     /// <summary>
@@ -83,7 +83,7 @@ public class CrewMember : RemoteObject
         {
             this
         };
-        return Connection.Invoke<IList<int>>("SpaceCenter", "CrewMember_get_CareerLogFlights", args);
+        return InvokeNonNullable<IList<int>>("SpaceCenter", "CrewMember_get_CareerLogFlights", args);
     }
 
     /// <summary>
@@ -97,7 +97,7 @@ public class CrewMember : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<IList<int>>("SpaceCenter", "CrewMember_get_CareerLogFlights", args);
+        return await InvokeNonNullableAsync<IList<int>>("SpaceCenter", "CrewMember_get_CareerLogFlights", args);
     }
 
     /// <summary>
@@ -110,7 +110,7 @@ public class CrewMember : RemoteObject
         {
             this
         };
-        return Connection.Invoke<IList<string>>("SpaceCenter", "CrewMember_get_CareerLogTargets", args);
+        return InvokeNonNullable<IList<string>>("SpaceCenter", "CrewMember_get_CareerLogTargets", args);
     }
 
     /// <summary>
@@ -124,7 +124,7 @@ public class CrewMember : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<IList<string>>("SpaceCenter", "CrewMember_get_CareerLogTargets", args);
+        return await InvokeNonNullableAsync<IList<string>>("SpaceCenter", "CrewMember_get_CareerLogTargets", args);
     }
 
     /// <summary>
@@ -137,7 +137,7 @@ public class CrewMember : RemoteObject
         {
             this
         };
-        return Connection.Invoke<IList<string>>("SpaceCenter", "CrewMember_get_CareerLogTypes", args);
+        return InvokeNonNullable<IList<string>>("SpaceCenter", "CrewMember_get_CareerLogTypes", args);
     }
 
     /// <summary>
@@ -151,7 +151,7 @@ public class CrewMember : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<IList<string>>("SpaceCenter", "CrewMember_get_CareerLogTypes", args);
+        return await InvokeNonNullableAsync<IList<string>>("SpaceCenter", "CrewMember_get_CareerLogTypes", args);
     }
 
     /// <summary>
@@ -164,7 +164,7 @@ public class CrewMember : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "CrewMember_get_Courage", args);
+        return InvokeNonNullable<float>("SpaceCenter", "CrewMember_get_Courage", args);
     }
 
     /// <summary>
@@ -178,7 +178,7 @@ public class CrewMember : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "CrewMember_get_Courage", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "CrewMember_get_Courage", args);
     }
 
     /// <summary>
@@ -193,7 +193,7 @@ public class CrewMember : RemoteObject
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "CrewMember_set_Courage", args);
+        InvokeVoid("SpaceCenter", "CrewMember_set_Courage", args);
     }
 
     /// <summary>
@@ -209,7 +209,7 @@ public class CrewMember : RemoteObject
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "CrewMember_set_Courage", args);
+        await InvokeVoidAsync("SpaceCenter", "CrewMember_set_Courage", args);
     }
 
     /// <summary>
@@ -222,7 +222,7 @@ public class CrewMember : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "CrewMember_get_Experience", args);
+        return InvokeNonNullable<float>("SpaceCenter", "CrewMember_get_Experience", args);
     }
 
     /// <summary>
@@ -236,7 +236,7 @@ public class CrewMember : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "CrewMember_get_Experience", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "CrewMember_get_Experience", args);
     }
 
     /// <summary>
@@ -251,7 +251,7 @@ public class CrewMember : RemoteObject
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "CrewMember_set_Experience", args);
+        InvokeVoid("SpaceCenter", "CrewMember_set_Experience", args);
     }
 
     /// <summary>
@@ -267,7 +267,7 @@ public class CrewMember : RemoteObject
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "CrewMember_set_Experience", args);
+        await InvokeVoidAsync("SpaceCenter", "CrewMember_set_Experience", args);
     }
 
     /// <summary>
@@ -280,7 +280,7 @@ public class CrewMember : RemoteObject
         {
             this
         };
-        return Connection.Invoke<CrewMemberGender>("SpaceCenter", "CrewMember_get_Gender", args);
+        return InvokeNonNullable<CrewMemberGender>("SpaceCenter", "CrewMember_get_Gender", args);
     }
 
     /// <summary>
@@ -294,7 +294,7 @@ public class CrewMember : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<CrewMemberGender>("SpaceCenter", "CrewMember_get_Gender", args);
+        return await InvokeNonNullableAsync<CrewMemberGender>("SpaceCenter", "CrewMember_get_Gender", args);
     }
 
     /// <summary>
@@ -307,7 +307,7 @@ public class CrewMember : RemoteObject
         {
             this
         };
-        return Connection.Invoke<string>("SpaceCenter", "CrewMember_get_Name", args);
+        return InvokeNonNullable<string>("SpaceCenter", "CrewMember_get_Name", args);
     }
 
     /// <summary>
@@ -321,7 +321,7 @@ public class CrewMember : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<string>("SpaceCenter", "CrewMember_get_Name", args);
+        return await InvokeNonNullableAsync<string>("SpaceCenter", "CrewMember_get_Name", args);
     }
 
     /// <summary>
@@ -336,7 +336,7 @@ public class CrewMember : RemoteObject
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "CrewMember_set_Name", args);
+        InvokeVoid("SpaceCenter", "CrewMember_set_Name", args);
     }
 
     /// <summary>
@@ -352,7 +352,7 @@ public class CrewMember : RemoteObject
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "CrewMember_set_Name", args);
+        await InvokeVoidAsync("SpaceCenter", "CrewMember_set_Name", args);
     }
 
     /// <summary>
@@ -365,7 +365,7 @@ public class CrewMember : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "CrewMember_get_OnMission", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "CrewMember_get_OnMission", args);
     }
 
     /// <summary>
@@ -379,7 +379,7 @@ public class CrewMember : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "CrewMember_get_OnMission", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "CrewMember_get_OnMission", args);
     }
 
     /// <summary>
@@ -392,7 +392,7 @@ public class CrewMember : RemoteObject
         {
             this
         };
-        return Connection.Invoke<RosterStatus>("SpaceCenter", "CrewMember_get_RosterStatus", args);
+        return InvokeNonNullable<RosterStatus>("SpaceCenter", "CrewMember_get_RosterStatus", args);
     }
 
     /// <summary>
@@ -406,7 +406,7 @@ public class CrewMember : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<RosterStatus>("SpaceCenter", "CrewMember_get_RosterStatus", args);
+        return await InvokeNonNullableAsync<RosterStatus>("SpaceCenter", "CrewMember_get_RosterStatus", args);
     }
 
     /// <summary>
@@ -419,7 +419,7 @@ public class CrewMember : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "CrewMember_get_Stupidity", args);
+        return InvokeNonNullable<float>("SpaceCenter", "CrewMember_get_Stupidity", args);
     }
 
     /// <summary>
@@ -433,7 +433,7 @@ public class CrewMember : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "CrewMember_get_Stupidity", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "CrewMember_get_Stupidity", args);
     }
 
     /// <summary>
@@ -448,7 +448,7 @@ public class CrewMember : RemoteObject
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "CrewMember_set_Stupidity", args);
+        InvokeVoid("SpaceCenter", "CrewMember_set_Stupidity", args);
     }
 
     /// <summary>
@@ -464,7 +464,7 @@ public class CrewMember : RemoteObject
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "CrewMember_set_Stupidity", args);
+        await InvokeVoidAsync("SpaceCenter", "CrewMember_set_Stupidity", args);
     }
 
     /// <summary>
@@ -477,7 +477,7 @@ public class CrewMember : RemoteObject
         {
             this
         };
-        return Connection.Invoke<SuitType>("SpaceCenter", "CrewMember_get_SuitType", args);
+        return InvokeNonNullable<SuitType>("SpaceCenter", "CrewMember_get_SuitType", args);
     }
 
     /// <summary>
@@ -491,7 +491,7 @@ public class CrewMember : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<SuitType>("SpaceCenter", "CrewMember_get_SuitType", args);
+        return await InvokeNonNullableAsync<SuitType>("SpaceCenter", "CrewMember_get_SuitType", args);
     }
 
     /// <summary>
@@ -506,7 +506,7 @@ public class CrewMember : RemoteObject
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "CrewMember_set_SuitType", args);
+        InvokeVoid("SpaceCenter", "CrewMember_set_SuitType", args);
     }
 
     /// <summary>
@@ -522,7 +522,7 @@ public class CrewMember : RemoteObject
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "CrewMember_set_SuitType", args);
+        await InvokeVoidAsync("SpaceCenter", "CrewMember_set_SuitType", args);
     }
 
     /// <summary>
@@ -535,7 +535,7 @@ public class CrewMember : RemoteObject
         {
             this
         };
-        return Connection.Invoke<string>("SpaceCenter", "CrewMember_get_Trait", args);
+        return InvokeNonNullable<string>("SpaceCenter", "CrewMember_get_Trait", args);
     }
 
     /// <summary>
@@ -549,7 +549,7 @@ public class CrewMember : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<string>("SpaceCenter", "CrewMember_get_Trait", args);
+        return await InvokeNonNullableAsync<string>("SpaceCenter", "CrewMember_get_Trait", args);
     }
 
     /// <summary>
@@ -562,7 +562,7 @@ public class CrewMember : RemoteObject
         {
             this
         };
-        return Connection.Invoke<CrewMemberType>("SpaceCenter", "CrewMember_get_Type", args);
+        return InvokeNonNullable<CrewMemberType>("SpaceCenter", "CrewMember_get_Type", args);
     }
 
     /// <summary>
@@ -576,7 +576,7 @@ public class CrewMember : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<CrewMemberType>("SpaceCenter", "CrewMember_get_Type", args);
+        return await InvokeNonNullableAsync<CrewMemberType>("SpaceCenter", "CrewMember_get_Type", args);
     }
 
     /// <summary>
@@ -589,7 +589,7 @@ public class CrewMember : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "CrewMember_get_Veteran", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "CrewMember_get_Veteran", args);
     }
 
     /// <summary>
@@ -603,7 +603,7 @@ public class CrewMember : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "CrewMember_get_Veteran", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "CrewMember_get_Veteran", args);
     }
 
     /// <summary>
@@ -618,7 +618,7 @@ public class CrewMember : RemoteObject
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "CrewMember_set_Veteran", args);
+        InvokeVoid("SpaceCenter", "CrewMember_set_Veteran", args);
     }
 
     /// <summary>
@@ -634,6 +634,6 @@ public class CrewMember : RemoteObject
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "CrewMember_set_Veteran", args);
+        await InvokeVoidAsync("SpaceCenter", "CrewMember_set_Veteran", args);
     }
 }

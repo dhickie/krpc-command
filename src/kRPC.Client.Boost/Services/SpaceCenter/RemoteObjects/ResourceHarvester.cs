@@ -25,7 +25,7 @@ public class ResourceHarvester : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "ResourceHarvester_get_Active", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "ResourceHarvester_get_Active", args);
     }
 
     /// <summary>
@@ -39,7 +39,7 @@ public class ResourceHarvester : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "ResourceHarvester_get_Active", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "ResourceHarvester_get_Active", args);
     }
 
     /// <summary>
@@ -54,7 +54,7 @@ public class ResourceHarvester : RemoteObject
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "ResourceHarvester_set_Active", args);
+        InvokeVoid("SpaceCenter", "ResourceHarvester_set_Active", args);
     }
 
     /// <summary>
@@ -70,7 +70,7 @@ public class ResourceHarvester : RemoteObject
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "ResourceHarvester_set_Active", args);
+        await InvokeVoidAsync("SpaceCenter", "ResourceHarvester_set_Active", args);
     }
 
     /// <summary>
@@ -83,7 +83,7 @@ public class ResourceHarvester : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "ResourceHarvester_get_CoreTemperature", args);
+        return InvokeNonNullable<float>("SpaceCenter", "ResourceHarvester_get_CoreTemperature", args);
     }
 
     /// <summary>
@@ -97,7 +97,7 @@ public class ResourceHarvester : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "ResourceHarvester_get_CoreTemperature", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "ResourceHarvester_get_CoreTemperature", args);
     }
 
     /// <summary>
@@ -110,7 +110,7 @@ public class ResourceHarvester : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "ResourceHarvester_get_Deployed", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "ResourceHarvester_get_Deployed", args);
     }
 
     /// <summary>
@@ -124,7 +124,7 @@ public class ResourceHarvester : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "ResourceHarvester_get_Deployed", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "ResourceHarvester_get_Deployed", args);
     }
 
     /// <summary>
@@ -139,7 +139,7 @@ public class ResourceHarvester : RemoteObject
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "ResourceHarvester_set_Deployed", args);
+        InvokeVoid("SpaceCenter", "ResourceHarvester_set_Deployed", args);
     }
 
     /// <summary>
@@ -155,7 +155,7 @@ public class ResourceHarvester : RemoteObject
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "ResourceHarvester_set_Deployed", args);
+        await InvokeVoidAsync("SpaceCenter", "ResourceHarvester_set_Deployed", args);
     }
 
     /// <summary>
@@ -168,7 +168,7 @@ public class ResourceHarvester : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "ResourceHarvester_get_ExtractionRate", args);
+        return InvokeNonNullable<float>("SpaceCenter", "ResourceHarvester_get_ExtractionRate", args);
     }
 
     /// <summary>
@@ -182,7 +182,7 @@ public class ResourceHarvester : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "ResourceHarvester_get_ExtractionRate", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "ResourceHarvester_get_ExtractionRate", args);
     }
 
     /// <summary>
@@ -195,7 +195,7 @@ public class ResourceHarvester : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "ResourceHarvester_get_OptimumCoreTemperature", args);
+        return InvokeNonNullable<float>("SpaceCenter", "ResourceHarvester_get_OptimumCoreTemperature", args);
     }
 
     /// <summary>
@@ -209,7 +209,7 @@ public class ResourceHarvester : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "ResourceHarvester_get_OptimumCoreTemperature", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "ResourceHarvester_get_OptimumCoreTemperature", args);
     }
 
     /// <summary>
@@ -222,7 +222,7 @@ public class ResourceHarvester : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Part>("SpaceCenter", "ResourceHarvester_get_Part", args);
+        return InvokeNonNullable<Part>("SpaceCenter", "ResourceHarvester_get_Part", args);
     }
 
     /// <summary>
@@ -236,7 +236,7 @@ public class ResourceHarvester : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Part>("SpaceCenter", "ResourceHarvester_get_Part", args);
+        return await InvokeNonNullableAsync<Part>("SpaceCenter", "ResourceHarvester_get_Part", args);
     }
 
     /// <summary>
@@ -249,7 +249,7 @@ public class ResourceHarvester : RemoteObject
         {
             this
         };
-        return Connection.Invoke<ResourceHarvesterState>("SpaceCenter", "ResourceHarvester_get_State", args);
+        return InvokeNonNullable<ResourceHarvesterState>("SpaceCenter", "ResourceHarvester_get_State", args);
     }
 
     /// <summary>
@@ -263,7 +263,7 @@ public class ResourceHarvester : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<ResourceHarvesterState>("SpaceCenter", "ResourceHarvester_get_State", args);
+        return await InvokeNonNullableAsync<ResourceHarvesterState>("SpaceCenter", "ResourceHarvester_get_State", args);
     }
 
     /// <summary>
@@ -276,7 +276,7 @@ public class ResourceHarvester : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "ResourceHarvester_get_ThermalEfficiency", args);
+        return InvokeNonNullable<float>("SpaceCenter", "ResourceHarvester_get_ThermalEfficiency", args);
     }
 
     /// <summary>
@@ -290,6 +290,6 @@ public class ResourceHarvester : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "ResourceHarvester_get_ThermalEfficiency", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "ResourceHarvester_get_ThermalEfficiency", args);
     }
 }

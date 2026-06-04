@@ -25,7 +25,7 @@ public class CommNode : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "CommNode_get_IsControlPoint", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "CommNode_get_IsControlPoint", args);
     }
 
     /// <summary>
@@ -39,7 +39,7 @@ public class CommNode : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "CommNode_get_IsControlPoint", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "CommNode_get_IsControlPoint", args);
     }
 
     /// <summary>
@@ -52,7 +52,7 @@ public class CommNode : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "CommNode_get_IsHome", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "CommNode_get_IsHome", args);
     }
 
     /// <summary>
@@ -66,7 +66,7 @@ public class CommNode : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "CommNode_get_IsHome", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "CommNode_get_IsHome", args);
     }
 
     /// <summary>
@@ -79,7 +79,7 @@ public class CommNode : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "CommNode_get_IsVessel", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "CommNode_get_IsVessel", args);
     }
 
     /// <summary>
@@ -93,7 +93,7 @@ public class CommNode : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "CommNode_get_IsVessel", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "CommNode_get_IsVessel", args);
     }
 
     /// <summary>
@@ -106,7 +106,7 @@ public class CommNode : RemoteObject
         {
             this
         };
-        return Connection.Invoke<string>("SpaceCenter", "CommNode_get_Name", args);
+        return InvokeNonNullable<string>("SpaceCenter", "CommNode_get_Name", args);
     }
 
     /// <summary>
@@ -120,7 +120,7 @@ public class CommNode : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<string>("SpaceCenter", "CommNode_get_Name", args);
+        return await InvokeNonNullableAsync<string>("SpaceCenter", "CommNode_get_Name", args);
     }
 
     /// <summary>
@@ -133,7 +133,7 @@ public class CommNode : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Vessel>("SpaceCenter", "CommNode_get_Vessel", args);
+        return InvokeNonNullable<Vessel>("SpaceCenter", "CommNode_get_Vessel", args);
     }
 
     /// <summary>
@@ -147,6 +147,6 @@ public class CommNode : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Vessel>("SpaceCenter", "CommNode_get_Vessel", args);
+        return await InvokeNonNullableAsync<Vessel>("SpaceCenter", "CommNode_get_Vessel", args);
     }
 }

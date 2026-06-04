@@ -30,7 +30,7 @@ public class Decoupler : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Vessel>("SpaceCenter", "Decoupler_Decouple", args);
+        return InvokeNonNullable<Vessel>("SpaceCenter", "Decoupler_Decouple", args);
     }
 
     /// <summary>
@@ -50,7 +50,7 @@ public class Decoupler : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Vessel>("SpaceCenter", "Decoupler_Decouple", args);
+        return await InvokeNonNullableAsync<Vessel>("SpaceCenter", "Decoupler_Decouple", args);
     }
 
     /// <summary>
@@ -63,7 +63,7 @@ public class Decoupler : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Part>("SpaceCenter", "Decoupler_get_AttachedPart", args);
+        return InvokeNonNullable<Part>("SpaceCenter", "Decoupler_get_AttachedPart", args);
     }
 
     /// <summary>
@@ -77,7 +77,7 @@ public class Decoupler : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Part>("SpaceCenter", "Decoupler_get_AttachedPart", args);
+        return await InvokeNonNullableAsync<Part>("SpaceCenter", "Decoupler_get_AttachedPart", args);
     }
 
     /// <summary>
@@ -90,7 +90,7 @@ public class Decoupler : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "Decoupler_get_Decoupled", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "Decoupler_get_Decoupled", args);
     }
 
     /// <summary>
@@ -104,7 +104,7 @@ public class Decoupler : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "Decoupler_get_Decoupled", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "Decoupler_get_Decoupled", args);
     }
 
     /// <summary>
@@ -117,7 +117,7 @@ public class Decoupler : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "Decoupler_get_Impulse", args);
+        return InvokeNonNullable<float>("SpaceCenter", "Decoupler_get_Impulse", args);
     }
 
     /// <summary>
@@ -131,7 +131,7 @@ public class Decoupler : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "Decoupler_get_Impulse", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "Decoupler_get_Impulse", args);
     }
 
     /// <summary>
@@ -144,7 +144,7 @@ public class Decoupler : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "Decoupler_get_IsOmniDecoupler", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "Decoupler_get_IsOmniDecoupler", args);
     }
 
     /// <summary>
@@ -158,7 +158,7 @@ public class Decoupler : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "Decoupler_get_IsOmniDecoupler", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "Decoupler_get_IsOmniDecoupler", args);
     }
 
     /// <summary>
@@ -171,7 +171,7 @@ public class Decoupler : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Part>("SpaceCenter", "Decoupler_get_Part", args);
+        return InvokeNonNullable<Part>("SpaceCenter", "Decoupler_get_Part", args);
     }
 
     /// <summary>
@@ -185,7 +185,7 @@ public class Decoupler : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Part>("SpaceCenter", "Decoupler_get_Part", args);
+        return await InvokeNonNullableAsync<Part>("SpaceCenter", "Decoupler_get_Part", args);
     }
 
     /// <summary>
@@ -198,7 +198,7 @@ public class Decoupler : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "Decoupler_get_Staged", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "Decoupler_get_Staged", args);
     }
 
     /// <summary>
@@ -212,6 +212,6 @@ public class Decoupler : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "Decoupler_get_Staged", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "Decoupler_get_Staged", args);
     }
 }

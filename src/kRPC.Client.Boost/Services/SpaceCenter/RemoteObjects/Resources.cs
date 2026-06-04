@@ -30,7 +30,7 @@ public class Resources : RemoteObject
             this,
             name
         };
-        return Connection.Invoke<float>("SpaceCenter", "Resources_Amount", args);
+        return InvokeNonNullable<float>("SpaceCenter", "Resources_Amount", args);
     }
 
     /// <summary>
@@ -46,7 +46,7 @@ public class Resources : RemoteObject
             this,
             name
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "Resources_Amount", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "Resources_Amount", args);
     }
 
     /// <summary>
@@ -61,7 +61,7 @@ public class Resources : RemoteObject
             this,
             name
         };
-        return Connection.Invoke<bool>("SpaceCenter", "Resources_HasResource", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "Resources_HasResource", args);
     }
 
     /// <summary>
@@ -77,7 +77,7 @@ public class Resources : RemoteObject
             this,
             name
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "Resources_HasResource", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "Resources_HasResource", args);
     }
 
     /// <summary>
@@ -92,7 +92,7 @@ public class Resources : RemoteObject
             this,
             name
         };
-        return Connection.Invoke<float>("SpaceCenter", "Resources_Max", args);
+        return InvokeNonNullable<float>("SpaceCenter", "Resources_Max", args);
     }
 
     /// <summary>
@@ -108,7 +108,7 @@ public class Resources : RemoteObject
             this,
             name
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "Resources_Max", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "Resources_Max", args);
     }
 
     /// <summary>
@@ -122,7 +122,7 @@ public class Resources : RemoteObject
             this,
             name
         };
-        return Connection.Invoke<IList<Resource>>("SpaceCenter", "Resources_WithResource", args);
+        return InvokeNonNullable<IList<Resource>>("SpaceCenter", "Resources_WithResource", args);
     }
 
     /// <summary>
@@ -137,7 +137,7 @@ public class Resources : RemoteObject
             this,
             name
         };
-        return await Connection.InvokeAsync<IList<Resource>>("SpaceCenter", "Resources_WithResource", args);
+        return await InvokeNonNullableAsync<IList<Resource>>("SpaceCenter", "Resources_WithResource", args);
     }
 
     /// <summary>
@@ -151,7 +151,7 @@ public class Resources : RemoteObject
         {
             name
         };
-        return Connection.Invoke<float>("SpaceCenter", "Resources_static_Density", args);
+        return InvokeNonNullable<float>("SpaceCenter", "Resources_static_Density", args);
     }
 
     /// <summary>
@@ -166,7 +166,7 @@ public class Resources : RemoteObject
         {
             name
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "Resources_static_Density", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "Resources_static_Density", args);
     }
 
     /// <summary>
@@ -180,7 +180,7 @@ public class Resources : RemoteObject
         {
             name
         };
-        return Connection.Invoke<ResourceFlowMode>("SpaceCenter", "Resources_static_FlowMode", args);
+        return InvokeNonNullable<ResourceFlowMode>("SpaceCenter", "Resources_static_FlowMode", args);
     }
 
     /// <summary>
@@ -195,7 +195,7 @@ public class Resources : RemoteObject
         {
             name
         };
-        return await Connection.InvokeAsync<ResourceFlowMode>("SpaceCenter", "Resources_static_FlowMode", args);
+        return await InvokeNonNullableAsync<ResourceFlowMode>("SpaceCenter", "Resources_static_FlowMode", args);
     }
 
     /// <summary>
@@ -208,7 +208,7 @@ public class Resources : RemoteObject
         {
             this
         };
-        return Connection.Invoke<IList<Resource>>("SpaceCenter", "Resources_get_All", args);
+        return InvokeNonNullable<IList<Resource>>("SpaceCenter", "Resources_get_All", args);
     }
 
     /// <summary>
@@ -222,7 +222,7 @@ public class Resources : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<IList<Resource>>("SpaceCenter", "Resources_get_All", args);
+        return await InvokeNonNullableAsync<IList<Resource>>("SpaceCenter", "Resources_get_All", args);
     }
 
     /// <summary>
@@ -239,7 +239,7 @@ public class Resources : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "Resources_get_Enabled", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "Resources_get_Enabled", args);
     }
 
     /// <summary>
@@ -257,7 +257,7 @@ public class Resources : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "Resources_get_Enabled", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "Resources_get_Enabled", args);
     }
 
     /// <summary>
@@ -272,7 +272,7 @@ public class Resources : RemoteObject
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "Resources_set_Enabled", args);
+        InvokeVoid("SpaceCenter", "Resources_set_Enabled", args);
     }
 
     /// <summary>
@@ -288,7 +288,7 @@ public class Resources : RemoteObject
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "Resources_set_Enabled", args);
+        await InvokeVoidAsync("SpaceCenter", "Resources_set_Enabled", args);
     }
 
     /// <summary>
@@ -301,7 +301,7 @@ public class Resources : RemoteObject
         {
             this
         };
-        return Connection.Invoke<IList<string>>("SpaceCenter", "Resources_get_Names", args);
+        return InvokeNonNullable<IList<string>>("SpaceCenter", "Resources_get_Names", args);
     }
 
     /// <summary>
@@ -315,6 +315,6 @@ public class Resources : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<IList<string>>("SpaceCenter", "Resources_get_Names", args);
+        return await InvokeNonNullableAsync<IList<string>>("SpaceCenter", "Resources_get_Names", args);
     }
 }

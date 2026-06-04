@@ -25,7 +25,7 @@ public class Intake : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "Intake_get_Area", args);
+        return InvokeNonNullable<float>("SpaceCenter", "Intake_get_Area", args);
     }
 
     /// <summary>
@@ -39,7 +39,7 @@ public class Intake : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "Intake_get_Area", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "Intake_get_Area", args);
     }
 
     /// <summary>
@@ -52,7 +52,7 @@ public class Intake : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "Intake_get_Flow", args);
+        return InvokeNonNullable<float>("SpaceCenter", "Intake_get_Flow", args);
     }
 
     /// <summary>
@@ -66,7 +66,7 @@ public class Intake : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "Intake_get_Flow", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "Intake_get_Flow", args);
     }
 
     /// <summary>
@@ -79,7 +79,7 @@ public class Intake : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "Intake_get_Open", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "Intake_get_Open", args);
     }
 
     /// <summary>
@@ -93,7 +93,7 @@ public class Intake : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "Intake_get_Open", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "Intake_get_Open", args);
     }
 
     /// <summary>
@@ -108,7 +108,7 @@ public class Intake : RemoteObject
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "Intake_set_Open", args);
+        InvokeVoid("SpaceCenter", "Intake_set_Open", args);
     }
 
     /// <summary>
@@ -124,7 +124,7 @@ public class Intake : RemoteObject
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "Intake_set_Open", args);
+        await InvokeVoidAsync("SpaceCenter", "Intake_set_Open", args);
     }
 
     /// <summary>
@@ -137,7 +137,7 @@ public class Intake : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Part>("SpaceCenter", "Intake_get_Part", args);
+        return InvokeNonNullable<Part>("SpaceCenter", "Intake_get_Part", args);
     }
 
     /// <summary>
@@ -151,7 +151,7 @@ public class Intake : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Part>("SpaceCenter", "Intake_get_Part", args);
+        return await InvokeNonNullableAsync<Part>("SpaceCenter", "Intake_get_Part", args);
     }
 
     /// <summary>
@@ -164,7 +164,7 @@ public class Intake : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "Intake_get_Speed", args);
+        return InvokeNonNullable<float>("SpaceCenter", "Intake_get_Speed", args);
     }
 
     /// <summary>
@@ -178,6 +178,6 @@ public class Intake : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "Intake_get_Speed", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "Intake_get_Speed", args);
     }
 }

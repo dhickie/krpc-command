@@ -25,7 +25,7 @@ public class SolarPanel : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "SolarPanel_get_Deployable", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "SolarPanel_get_Deployable", args);
     }
 
     /// <summary>
@@ -39,7 +39,7 @@ public class SolarPanel : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "SolarPanel_get_Deployable", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "SolarPanel_get_Deployable", args);
     }
 
     /// <summary>
@@ -52,7 +52,7 @@ public class SolarPanel : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "SolarPanel_get_Deployed", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "SolarPanel_get_Deployed", args);
     }
 
     /// <summary>
@@ -66,7 +66,7 @@ public class SolarPanel : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "SolarPanel_get_Deployed", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "SolarPanel_get_Deployed", args);
     }
 
     /// <summary>
@@ -81,7 +81,7 @@ public class SolarPanel : RemoteObject
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "SolarPanel_set_Deployed", args);
+        InvokeVoid("SpaceCenter", "SolarPanel_set_Deployed", args);
     }
 
     /// <summary>
@@ -97,7 +97,7 @@ public class SolarPanel : RemoteObject
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "SolarPanel_set_Deployed", args);
+        await InvokeVoidAsync("SpaceCenter", "SolarPanel_set_Deployed", args);
     }
 
     /// <summary>
@@ -111,7 +111,7 @@ public class SolarPanel : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "SolarPanel_get_EnergyFlow", args);
+        return InvokeNonNullable<float>("SpaceCenter", "SolarPanel_get_EnergyFlow", args);
     }
 
     /// <summary>
@@ -126,7 +126,7 @@ public class SolarPanel : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "SolarPanel_get_EnergyFlow", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "SolarPanel_get_EnergyFlow", args);
     }
 
     /// <summary>
@@ -139,7 +139,7 @@ public class SolarPanel : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Part>("SpaceCenter", "SolarPanel_get_Part", args);
+        return InvokeNonNullable<Part>("SpaceCenter", "SolarPanel_get_Part", args);
     }
 
     /// <summary>
@@ -153,7 +153,7 @@ public class SolarPanel : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Part>("SpaceCenter", "SolarPanel_get_Part", args);
+        return await InvokeNonNullableAsync<Part>("SpaceCenter", "SolarPanel_get_Part", args);
     }
 
     /// <summary>
@@ -166,7 +166,7 @@ public class SolarPanel : RemoteObject
         {
             this
         };
-        return Connection.Invoke<SolarPanelState>("SpaceCenter", "SolarPanel_get_State", args);
+        return InvokeNonNullable<SolarPanelState>("SpaceCenter", "SolarPanel_get_State", args);
     }
 
     /// <summary>
@@ -180,7 +180,7 @@ public class SolarPanel : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<SolarPanelState>("SpaceCenter", "SolarPanel_get_State", args);
+        return await InvokeNonNullableAsync<SolarPanelState>("SpaceCenter", "SolarPanel_get_State", args);
     }
 
     /// <summary>
@@ -194,7 +194,7 @@ public class SolarPanel : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "SolarPanel_get_SunExposure", args);
+        return InvokeNonNullable<float>("SpaceCenter", "SolarPanel_get_SunExposure", args);
     }
 
     /// <summary>
@@ -209,6 +209,6 @@ public class SolarPanel : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "SolarPanel_get_SunExposure", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "SolarPanel_get_SunExposure", args);
     }
 }

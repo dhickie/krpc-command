@@ -25,7 +25,7 @@ public class Experiment : RemoteObject
         {
             this
         };
-        Connection.Invoke("SpaceCenter", "Experiment_Dump", args);
+        InvokeVoid("SpaceCenter", "Experiment_Dump", args);
     }
 
     /// <summary>
@@ -39,7 +39,7 @@ public class Experiment : RemoteObject
         {
             this
         };
-        await Connection.InvokeAsync("SpaceCenter", "Experiment_Dump", args);
+        await InvokeVoidAsync("SpaceCenter", "Experiment_Dump", args);
     }
 
     /// <summary>
@@ -52,7 +52,7 @@ public class Experiment : RemoteObject
         {
             this
         };
-        Connection.Invoke("SpaceCenter", "Experiment_Reset", args);
+        InvokeVoid("SpaceCenter", "Experiment_Reset", args);
     }
 
     /// <summary>
@@ -66,7 +66,7 @@ public class Experiment : RemoteObject
         {
             this
         };
-        await Connection.InvokeAsync("SpaceCenter", "Experiment_Reset", args);
+        await InvokeVoidAsync("SpaceCenter", "Experiment_Reset", args);
     }
 
     /// <summary>
@@ -79,7 +79,7 @@ public class Experiment : RemoteObject
         {
             this
         };
-        Connection.Invoke("SpaceCenter", "Experiment_Run", args);
+        InvokeVoid("SpaceCenter", "Experiment_Run", args);
     }
 
     /// <summary>
@@ -93,7 +93,7 @@ public class Experiment : RemoteObject
         {
             this
         };
-        await Connection.InvokeAsync("SpaceCenter", "Experiment_Run", args);
+        await InvokeVoidAsync("SpaceCenter", "Experiment_Run", args);
     }
 
     /// <summary>
@@ -106,7 +106,7 @@ public class Experiment : RemoteObject
         {
             this
         };
-        Connection.Invoke("SpaceCenter", "Experiment_Transmit", args);
+        InvokeVoid("SpaceCenter", "Experiment_Transmit", args);
     }
 
     /// <summary>
@@ -120,7 +120,7 @@ public class Experiment : RemoteObject
         {
             this
         };
-        await Connection.InvokeAsync("SpaceCenter", "Experiment_Transmit", args);
+        await InvokeVoidAsync("SpaceCenter", "Experiment_Transmit", args);
     }
 
     /// <summary>
@@ -133,7 +133,7 @@ public class Experiment : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "Experiment_get_Available", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "Experiment_get_Available", args);
     }
 
     /// <summary>
@@ -147,7 +147,7 @@ public class Experiment : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "Experiment_get_Available", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "Experiment_get_Available", args);
     }
 
     /// <summary>
@@ -160,7 +160,7 @@ public class Experiment : RemoteObject
         {
             this
         };
-        return Connection.Invoke<string>("SpaceCenter", "Experiment_get_Biome", args);
+        return InvokeNonNullable<string>("SpaceCenter", "Experiment_get_Biome", args);
     }
 
     /// <summary>
@@ -174,7 +174,7 @@ public class Experiment : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<string>("SpaceCenter", "Experiment_get_Biome", args);
+        return await InvokeNonNullableAsync<string>("SpaceCenter", "Experiment_get_Biome", args);
     }
 
     /// <summary>
@@ -187,7 +187,7 @@ public class Experiment : RemoteObject
         {
             this
         };
-        return Connection.Invoke<IList<ScienceData>>("SpaceCenter", "Experiment_get_Data", args);
+        return InvokeNonNullable<IList<ScienceData>>("SpaceCenter", "Experiment_get_Data", args);
     }
 
     /// <summary>
@@ -201,7 +201,7 @@ public class Experiment : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<IList<ScienceData>>("SpaceCenter", "Experiment_get_Data", args);
+        return await InvokeNonNullableAsync<IList<ScienceData>>("SpaceCenter", "Experiment_get_Data", args);
     }
 
     /// <summary>
@@ -214,7 +214,7 @@ public class Experiment : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "Experiment_get_Deployed", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "Experiment_get_Deployed", args);
     }
 
     /// <summary>
@@ -228,7 +228,7 @@ public class Experiment : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "Experiment_get_Deployed", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "Experiment_get_Deployed", args);
     }
 
     /// <summary>
@@ -241,7 +241,7 @@ public class Experiment : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "Experiment_get_HasData", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "Experiment_get_HasData", args);
     }
 
     /// <summary>
@@ -255,7 +255,7 @@ public class Experiment : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "Experiment_get_HasData", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "Experiment_get_HasData", args);
     }
 
     /// <summary>
@@ -268,7 +268,7 @@ public class Experiment : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "Experiment_get_Inoperable", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "Experiment_get_Inoperable", args);
     }
 
     /// <summary>
@@ -282,7 +282,7 @@ public class Experiment : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "Experiment_get_Inoperable", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "Experiment_get_Inoperable", args);
     }
 
     /// <summary>
@@ -296,7 +296,7 @@ public class Experiment : RemoteObject
         {
             this
         };
-        return Connection.Invoke<string>("SpaceCenter", "Experiment_get_Name", args);
+        return InvokeNonNullable<string>("SpaceCenter", "Experiment_get_Name", args);
     }
 
     /// <summary>
@@ -311,7 +311,7 @@ public class Experiment : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<string>("SpaceCenter", "Experiment_get_Name", args);
+        return await InvokeNonNullableAsync<string>("SpaceCenter", "Experiment_get_Name", args);
     }
 
     /// <summary>
@@ -324,7 +324,7 @@ public class Experiment : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Part>("SpaceCenter", "Experiment_get_Part", args);
+        return InvokeNonNullable<Part>("SpaceCenter", "Experiment_get_Part", args);
     }
 
     /// <summary>
@@ -338,7 +338,7 @@ public class Experiment : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Part>("SpaceCenter", "Experiment_get_Part", args);
+        return await InvokeNonNullableAsync<Part>("SpaceCenter", "Experiment_get_Part", args);
     }
 
     /// <summary>
@@ -351,7 +351,7 @@ public class Experiment : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "Experiment_get_Rerunnable", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "Experiment_get_Rerunnable", args);
     }
 
     /// <summary>
@@ -365,7 +365,7 @@ public class Experiment : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "Experiment_get_Rerunnable", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "Experiment_get_Rerunnable", args);
     }
 
     /// <summary>
@@ -379,7 +379,7 @@ public class Experiment : RemoteObject
         {
             this
         };
-        return Connection.Invoke<ScienceSubject?>("SpaceCenter", "Experiment_get_ScienceSubject", args);
+        return InvokeNullable<ScienceSubject>("SpaceCenter", "Experiment_get_ScienceSubject", args);
     }
 
     /// <summary>
@@ -394,7 +394,7 @@ public class Experiment : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<ScienceSubject?>("SpaceCenter", "Experiment_get_ScienceSubject", args);
+        return await InvokeNullableAsync<ScienceSubject>("SpaceCenter", "Experiment_get_ScienceSubject", args);
     }
 
     /// <summary>
@@ -407,7 +407,7 @@ public class Experiment : RemoteObject
         {
             this
         };
-        return Connection.Invoke<string>("SpaceCenter", "Experiment_get_Title", args);
+        return InvokeNonNullable<string>("SpaceCenter", "Experiment_get_Title", args);
     }
 
     /// <summary>
@@ -421,6 +421,6 @@ public class Experiment : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<string>("SpaceCenter", "Experiment_get_Title", args);
+        return await InvokeNonNullableAsync<string>("SpaceCenter", "Experiment_get_Title", args);
     }
 }

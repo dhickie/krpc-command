@@ -26,7 +26,7 @@ public class Waypoint : RemoteObject
         {
             this
         };
-        Connection.Invoke("SpaceCenter", "Waypoint_Remove", args);
+        InvokeVoid("SpaceCenter", "Waypoint_Remove", args);
     }
 
     /// <summary>
@@ -40,7 +40,7 @@ public class Waypoint : RemoteObject
         {
             this
         };
-        await Connection.InvokeAsync("SpaceCenter", "Waypoint_Remove", args);
+        await InvokeVoidAsync("SpaceCenter", "Waypoint_Remove", args);
     }
 
     /// <summary>
@@ -54,7 +54,7 @@ public class Waypoint : RemoteObject
         {
             this
         };
-        return Connection.Invoke<double>("SpaceCenter", "Waypoint_get_BedrockAltitude", args);
+        return InvokeNonNullable<double>("SpaceCenter", "Waypoint_get_BedrockAltitude", args);
     }
 
     /// <summary>
@@ -69,7 +69,7 @@ public class Waypoint : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<double>("SpaceCenter", "Waypoint_get_BedrockAltitude", args);
+        return await InvokeNonNullableAsync<double>("SpaceCenter", "Waypoint_get_BedrockAltitude", args);
     }
 
     /// <summary>
@@ -85,7 +85,7 @@ public class Waypoint : RemoteObject
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "Waypoint_set_BedrockAltitude", args);
+        InvokeVoid("SpaceCenter", "Waypoint_set_BedrockAltitude", args);
     }
 
     /// <summary>
@@ -102,7 +102,7 @@ public class Waypoint : RemoteObject
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "Waypoint_set_BedrockAltitude", args);
+        await InvokeVoidAsync("SpaceCenter", "Waypoint_set_BedrockAltitude", args);
     }
 
     /// <summary>
@@ -115,7 +115,7 @@ public class Waypoint : RemoteObject
         {
             this
         };
-        return Connection.Invoke<CelestialBody>("SpaceCenter", "Waypoint_get_Body", args);
+        return InvokeNonNullable<CelestialBody>("SpaceCenter", "Waypoint_get_Body", args);
     }
 
     /// <summary>
@@ -129,7 +129,7 @@ public class Waypoint : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<CelestialBody>("SpaceCenter", "Waypoint_get_Body", args);
+        return await InvokeNonNullableAsync<CelestialBody>("SpaceCenter", "Waypoint_get_Body", args);
     }
 
     /// <summary>
@@ -144,7 +144,7 @@ public class Waypoint : RemoteObject
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "Waypoint_set_Body", args);
+        InvokeVoid("SpaceCenter", "Waypoint_set_Body", args);
     }
 
     /// <summary>
@@ -160,7 +160,7 @@ public class Waypoint : RemoteObject
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "Waypoint_set_Body", args);
+        await InvokeVoidAsync("SpaceCenter", "Waypoint_set_Body", args);
     }
 
     /// <summary>
@@ -176,7 +176,7 @@ public class Waypoint : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "Waypoint_get_Clustered", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "Waypoint_get_Clustered", args);
     }
 
     /// <summary>
@@ -193,7 +193,7 @@ public class Waypoint : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "Waypoint_get_Clustered", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "Waypoint_get_Clustered", args);
     }
 
     /// <summary>
@@ -206,7 +206,7 @@ public class Waypoint : RemoteObject
         {
             this
         };
-        return Connection.Invoke<int>("SpaceCenter", "Waypoint_get_Color", args);
+        return InvokeNonNullable<int>("SpaceCenter", "Waypoint_get_Color", args);
     }
 
     /// <summary>
@@ -220,7 +220,7 @@ public class Waypoint : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<int>("SpaceCenter", "Waypoint_get_Color", args);
+        return await InvokeNonNullableAsync<int>("SpaceCenter", "Waypoint_get_Color", args);
     }
 
     /// <summary>
@@ -235,7 +235,7 @@ public class Waypoint : RemoteObject
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "Waypoint_set_Color", args);
+        InvokeVoid("SpaceCenter", "Waypoint_set_Color", args);
     }
 
     /// <summary>
@@ -251,7 +251,7 @@ public class Waypoint : RemoteObject
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "Waypoint_set_Color", args);
+        await InvokeVoidAsync("SpaceCenter", "Waypoint_set_Color", args);
     }
 
     /// <summary>
@@ -264,7 +264,7 @@ public class Waypoint : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Contract>("SpaceCenter", "Waypoint_get_Contract", args);
+        return InvokeNonNullable<Contract>("SpaceCenter", "Waypoint_get_Contract", args);
     }
 
     /// <summary>
@@ -278,7 +278,7 @@ public class Waypoint : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Contract>("SpaceCenter", "Waypoint_get_Contract", args);
+        return await InvokeNonNullableAsync<Contract>("SpaceCenter", "Waypoint_get_Contract", args);
     }
 
     /// <summary>
@@ -291,7 +291,7 @@ public class Waypoint : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "Waypoint_get_Grounded", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "Waypoint_get_Grounded", args);
     }
 
     /// <summary>
@@ -305,7 +305,7 @@ public class Waypoint : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "Waypoint_get_Grounded", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "Waypoint_get_Grounded", args);
     }
 
     /// <summary>
@@ -318,7 +318,7 @@ public class Waypoint : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "Waypoint_get_HasContract", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "Waypoint_get_HasContract", args);
     }
 
     /// <summary>
@@ -332,7 +332,7 @@ public class Waypoint : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "Waypoint_get_HasContract", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "Waypoint_get_HasContract", args);
     }
 
     /// <summary>
@@ -345,7 +345,7 @@ public class Waypoint : RemoteObject
         {
             this
         };
-        return Connection.Invoke<string>("SpaceCenter", "Waypoint_get_Icon", args);
+        return InvokeNonNullable<string>("SpaceCenter", "Waypoint_get_Icon", args);
     }
 
     /// <summary>
@@ -359,7 +359,7 @@ public class Waypoint : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<string>("SpaceCenter", "Waypoint_get_Icon", args);
+        return await InvokeNonNullableAsync<string>("SpaceCenter", "Waypoint_get_Icon", args);
     }
 
     /// <summary>
@@ -374,7 +374,7 @@ public class Waypoint : RemoteObject
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "Waypoint_set_Icon", args);
+        InvokeVoid("SpaceCenter", "Waypoint_set_Icon", args);
     }
 
     /// <summary>
@@ -390,7 +390,7 @@ public class Waypoint : RemoteObject
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "Waypoint_set_Icon", args);
+        await InvokeVoidAsync("SpaceCenter", "Waypoint_set_Icon", args);
     }
 
     /// <summary>
@@ -407,7 +407,7 @@ public class Waypoint : RemoteObject
         {
             this
         };
-        return Connection.Invoke<int>("SpaceCenter", "Waypoint_get_Index", args);
+        return InvokeNonNullable<int>("SpaceCenter", "Waypoint_get_Index", args);
     }
 
     /// <summary>
@@ -425,7 +425,7 @@ public class Waypoint : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<int>("SpaceCenter", "Waypoint_get_Index", args);
+        return await InvokeNonNullableAsync<int>("SpaceCenter", "Waypoint_get_Index", args);
     }
 
     /// <summary>
@@ -438,7 +438,7 @@ public class Waypoint : RemoteObject
         {
             this
         };
-        var result = Connection.Invoke<double>("SpaceCenter", "Waypoint_get_Latitude", args);
+        var result = InvokeNonNullable<double>("SpaceCenter", "Waypoint_get_Latitude", args);
         return Angle.FromDegrees(result);
     }
 
@@ -453,7 +453,7 @@ public class Waypoint : RemoteObject
         {
             this
         };
-        var result = await Connection.InvokeAsync<double>("SpaceCenter", "Waypoint_get_Latitude", args);
+        var result = await InvokeNonNullableAsync<double>("SpaceCenter", "Waypoint_get_Latitude", args);
         return Angle.FromDegrees(result);
     }
 
@@ -469,7 +469,7 @@ public class Waypoint : RemoteObject
             this,
             value.Degrees
         };
-        Connection.Invoke("SpaceCenter", "Waypoint_set_Latitude", args);
+        InvokeVoid("SpaceCenter", "Waypoint_set_Latitude", args);
     }
 
     /// <summary>
@@ -485,7 +485,7 @@ public class Waypoint : RemoteObject
             this,
             value.Degrees
         };
-        await Connection.InvokeAsync("SpaceCenter", "Waypoint_set_Latitude", args);
+        await InvokeVoidAsync("SpaceCenter", "Waypoint_set_Latitude", args);
     }
 
     /// <summary>
@@ -498,7 +498,7 @@ public class Waypoint : RemoteObject
         {
             this
         };
-        var result = Connection.Invoke<double>("SpaceCenter", "Waypoint_get_Longitude", args);
+        var result = InvokeNonNullable<double>("SpaceCenter", "Waypoint_get_Longitude", args);
         return Angle.FromDegrees(result);
     }
 
@@ -513,7 +513,7 @@ public class Waypoint : RemoteObject
         {
             this
         };
-        var result = await Connection.InvokeAsync<double>("SpaceCenter", "Waypoint_get_Longitude", args);
+        var result = await InvokeNonNullableAsync<double>("SpaceCenter", "Waypoint_get_Longitude", args);
         return Angle.FromDegrees(result);
     }
 
@@ -529,7 +529,7 @@ public class Waypoint : RemoteObject
             this,
             value.Degrees
         };
-        Connection.Invoke("SpaceCenter", "Waypoint_set_Longitude", args);
+        InvokeVoid("SpaceCenter", "Waypoint_set_Longitude", args);
     }
 
     /// <summary>
@@ -545,7 +545,7 @@ public class Waypoint : RemoteObject
             this,
             value.Degrees
         };
-        await Connection.InvokeAsync("SpaceCenter", "Waypoint_set_Longitude", args);
+        await InvokeVoidAsync("SpaceCenter", "Waypoint_set_Longitude", args);
     }
 
     /// <summary>
@@ -558,7 +558,7 @@ public class Waypoint : RemoteObject
         {
             this
         };
-        return Connection.Invoke<double>("SpaceCenter", "Waypoint_get_MeanAltitude", args);
+        return InvokeNonNullable<double>("SpaceCenter", "Waypoint_get_MeanAltitude", args);
     }
 
     /// <summary>
@@ -572,7 +572,7 @@ public class Waypoint : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<double>("SpaceCenter", "Waypoint_get_MeanAltitude", args);
+        return await InvokeNonNullableAsync<double>("SpaceCenter", "Waypoint_get_MeanAltitude", args);
     }
 
     /// <summary>
@@ -587,7 +587,7 @@ public class Waypoint : RemoteObject
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "Waypoint_set_MeanAltitude", args);
+        InvokeVoid("SpaceCenter", "Waypoint_set_MeanAltitude", args);
     }
 
     /// <summary>
@@ -603,7 +603,7 @@ public class Waypoint : RemoteObject
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "Waypoint_set_MeanAltitude", args);
+        await InvokeVoidAsync("SpaceCenter", "Waypoint_set_MeanAltitude", args);
     }
 
     /// <summary>
@@ -616,7 +616,7 @@ public class Waypoint : RemoteObject
         {
             this
         };
-        return Connection.Invoke<string>("SpaceCenter", "Waypoint_get_Name", args);
+        return InvokeNonNullable<string>("SpaceCenter", "Waypoint_get_Name", args);
     }
 
     /// <summary>
@@ -630,7 +630,7 @@ public class Waypoint : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<string>("SpaceCenter", "Waypoint_get_Name", args);
+        return await InvokeNonNullableAsync<string>("SpaceCenter", "Waypoint_get_Name", args);
     }
 
     /// <summary>
@@ -645,7 +645,7 @@ public class Waypoint : RemoteObject
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "Waypoint_set_Name", args);
+        InvokeVoid("SpaceCenter", "Waypoint_set_Name", args);
     }
 
     /// <summary>
@@ -661,7 +661,7 @@ public class Waypoint : RemoteObject
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "Waypoint_set_Name", args);
+        await InvokeVoidAsync("SpaceCenter", "Waypoint_set_Name", args);
     }
 
     /// <summary>
@@ -674,7 +674,7 @@ public class Waypoint : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "Waypoint_get_NearSurface", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "Waypoint_get_NearSurface", args);
     }
 
     /// <summary>
@@ -688,7 +688,7 @@ public class Waypoint : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "Waypoint_get_NearSurface", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "Waypoint_get_NearSurface", args);
     }
 
     /// <summary>
@@ -702,7 +702,7 @@ public class Waypoint : RemoteObject
         {
             this
         };
-        return Connection.Invoke<double>("SpaceCenter", "Waypoint_get_SurfaceAltitude", args);
+        return InvokeNonNullable<double>("SpaceCenter", "Waypoint_get_SurfaceAltitude", args);
     }
 
     /// <summary>
@@ -717,7 +717,7 @@ public class Waypoint : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<double>("SpaceCenter", "Waypoint_get_SurfaceAltitude", args);
+        return await InvokeNonNullableAsync<double>("SpaceCenter", "Waypoint_get_SurfaceAltitude", args);
     }
 
     /// <summary>
@@ -733,7 +733,7 @@ public class Waypoint : RemoteObject
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "Waypoint_set_SurfaceAltitude", args);
+        InvokeVoid("SpaceCenter", "Waypoint_set_SurfaceAltitude", args);
     }
 
     /// <summary>
@@ -750,6 +750,6 @@ public class Waypoint : RemoteObject
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "Waypoint_set_SurfaceAltitude", args);
+        await InvokeVoidAsync("SpaceCenter", "Waypoint_set_SurfaceAltitude", args);
     }
 }

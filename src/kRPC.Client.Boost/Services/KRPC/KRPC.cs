@@ -9,7 +9,7 @@ namespace kRPC.Client.Boost.Services.KRPC;
 /// Provides top level access to the KRPC service.
 /// </summary>
 // ReSharper disable once InconsistentNaming
-public class KRPC
+public class KRPC : ServiceObject
 {
     private readonly IConnectionMultiplexer _connection;
     
@@ -17,7 +17,7 @@ public class KRPC
     /// Creates a KRPC object for accessing KRPC procedures.
     /// </summary>
     /// <param name="connection">The connection multiplexer that provides access to the server</param>
-    internal KRPC(IConnectionMultiplexer connection)
+    internal KRPC(IConnectionMultiplexer connection) : base(connection)
     {
         _connection = connection;
     }

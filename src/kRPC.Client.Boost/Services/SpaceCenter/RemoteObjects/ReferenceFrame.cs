@@ -46,7 +46,7 @@ public class ReferenceFrame : RemoteObject
             velocity,
             angularVelocity
         };
-        return Connection.Invoke<ReferenceFrame>("SpaceCenter", "ReferenceFrame_static_CreateHybrid", args);
+        return InvokeNonNullable<ReferenceFrame>("SpaceCenter", "ReferenceFrame_static_CreateHybrid", args);
     }
 
     /// <summary>
@@ -75,7 +75,7 @@ public class ReferenceFrame : RemoteObject
             velocity,
             angularVelocity
         };
-        return await Connection.InvokeAsync<ReferenceFrame>("SpaceCenter", "ReferenceFrame_static_CreateHybrid", args);
+        return await InvokeNonNullableAsync<ReferenceFrame>("SpaceCenter", "ReferenceFrame_static_CreateHybrid", args);
     }
 
     /// <summary>
@@ -107,7 +107,7 @@ public class ReferenceFrame : RemoteObject
             velocity ?? new Vector3D(0.0, 0.0, 0.0),
             angularVelocity ?? new Vector3D(0.0, 0.0, 0.0)
         };
-        return Connection.Invoke<ReferenceFrame>("SpaceCenter", "ReferenceFrame_static_CreateRelative", args);
+        return InvokeNonNullable<ReferenceFrame>("SpaceCenter", "ReferenceFrame_static_CreateRelative", args);
     }
 
     /// <summary>
@@ -140,6 +140,6 @@ public class ReferenceFrame : RemoteObject
             velocity ?? new Vector3D(0.0, 0.0, 0.0),
             angularVelocity ?? new Vector3D(0.0, 0.0, 0.0)
         };
-        return await Connection.InvokeAsync<ReferenceFrame>("SpaceCenter", "ReferenceFrame_static_CreateRelative", args);
+        return await InvokeNonNullableAsync<ReferenceFrame>("SpaceCenter", "ReferenceFrame_static_CreateRelative", args);
     }
 }

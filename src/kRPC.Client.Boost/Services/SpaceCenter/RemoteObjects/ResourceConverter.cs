@@ -27,7 +27,7 @@ public class ResourceConverter : RemoteObject
             this,
             index
         };
-        return Connection.Invoke<bool>("SpaceCenter", "ResourceConverter_Active", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "ResourceConverter_Active", args);
     }
 
     /// <summary>
@@ -43,7 +43,7 @@ public class ResourceConverter : RemoteObject
             this,
             index
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "ResourceConverter_Active", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "ResourceConverter_Active", args);
     }
 
     /// <summary>
@@ -58,7 +58,7 @@ public class ResourceConverter : RemoteObject
             this,
             index
         };
-        return Connection.Invoke<IList<string>>("SpaceCenter", "ResourceConverter_Inputs", args);
+        return InvokeNonNullable<IList<string>>("SpaceCenter", "ResourceConverter_Inputs", args);
     }
 
     /// <summary>
@@ -74,7 +74,7 @@ public class ResourceConverter : RemoteObject
             this,
             index
         };
-        return await Connection.InvokeAsync<IList<string>>("SpaceCenter", "ResourceConverter_Inputs", args);
+        return await InvokeNonNullableAsync<IList<string>>("SpaceCenter", "ResourceConverter_Inputs", args);
     }
 
     /// <summary>
@@ -89,7 +89,7 @@ public class ResourceConverter : RemoteObject
             this,
             index
         };
-        return Connection.Invoke<string>("SpaceCenter", "ResourceConverter_Name", args);
+        return InvokeNonNullable<string>("SpaceCenter", "ResourceConverter_Name", args);
     }
 
     /// <summary>
@@ -105,7 +105,7 @@ public class ResourceConverter : RemoteObject
             this,
             index
         };
-        return await Connection.InvokeAsync<string>("SpaceCenter", "ResourceConverter_Name", args);
+        return await InvokeNonNullableAsync<string>("SpaceCenter", "ResourceConverter_Name", args);
     }
 
     /// <summary>
@@ -120,7 +120,7 @@ public class ResourceConverter : RemoteObject
             this,
             index
         };
-        return Connection.Invoke<IList<string>>("SpaceCenter", "ResourceConverter_Outputs", args);
+        return InvokeNonNullable<IList<string>>("SpaceCenter", "ResourceConverter_Outputs", args);
     }
 
     /// <summary>
@@ -136,7 +136,7 @@ public class ResourceConverter : RemoteObject
             this,
             index
         };
-        return await Connection.InvokeAsync<IList<string>>("SpaceCenter", "ResourceConverter_Outputs", args);
+        return await InvokeNonNullableAsync<IList<string>>("SpaceCenter", "ResourceConverter_Outputs", args);
     }
 
     /// <summary>
@@ -151,7 +151,7 @@ public class ResourceConverter : RemoteObject
             this,
             index
         };
-        Connection.Invoke("SpaceCenter", "ResourceConverter_Start", args);
+        InvokeVoid("SpaceCenter", "ResourceConverter_Start", args);
     }
 
     /// <summary>
@@ -167,7 +167,7 @@ public class ResourceConverter : RemoteObject
             this,
             index
         };
-        await Connection.InvokeAsync("SpaceCenter", "ResourceConverter_Start", args);
+        await InvokeVoidAsync("SpaceCenter", "ResourceConverter_Start", args);
     }
 
     /// <summary>
@@ -182,7 +182,7 @@ public class ResourceConverter : RemoteObject
             this,
             index
         };
-        return Connection.Invoke<ResourceConverterState>("SpaceCenter", "ResourceConverter_State", args);
+        return InvokeNonNullable<ResourceConverterState>("SpaceCenter", "ResourceConverter_State", args);
     }
 
     /// <summary>
@@ -198,7 +198,7 @@ public class ResourceConverter : RemoteObject
             this,
             index
         };
-        return await Connection.InvokeAsync<ResourceConverterState>("SpaceCenter", "ResourceConverter_State", args);
+        return await InvokeNonNullableAsync<ResourceConverterState>("SpaceCenter", "ResourceConverter_State", args);
     }
 
     /// <summary>
@@ -214,7 +214,7 @@ public class ResourceConverter : RemoteObject
             this,
             index
         };
-        return Connection.Invoke<string>("SpaceCenter", "ResourceConverter_StatusInfo", args);
+        return InvokeNonNullable<string>("SpaceCenter", "ResourceConverter_StatusInfo", args);
     }
 
     /// <summary>
@@ -231,7 +231,7 @@ public class ResourceConverter : RemoteObject
             this,
             index
         };
-        return await Connection.InvokeAsync<string>("SpaceCenter", "ResourceConverter_StatusInfo", args);
+        return await InvokeNonNullableAsync<string>("SpaceCenter", "ResourceConverter_StatusInfo", args);
     }
 
     /// <summary>
@@ -246,7 +246,7 @@ public class ResourceConverter : RemoteObject
             this,
             index
         };
-        Connection.Invoke("SpaceCenter", "ResourceConverter_Stop", args);
+        InvokeVoid("SpaceCenter", "ResourceConverter_Stop", args);
     }
 
     /// <summary>
@@ -262,7 +262,7 @@ public class ResourceConverter : RemoteObject
             this,
             index
         };
-        await Connection.InvokeAsync("SpaceCenter", "ResourceConverter_Stop", args);
+        await InvokeVoidAsync("SpaceCenter", "ResourceConverter_Stop", args);
     }
 
     /// <summary>
@@ -275,7 +275,7 @@ public class ResourceConverter : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "ResourceConverter_get_CoreTemperature", args);
+        return InvokeNonNullable<float>("SpaceCenter", "ResourceConverter_get_CoreTemperature", args);
     }
 
     /// <summary>
@@ -289,7 +289,7 @@ public class ResourceConverter : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "ResourceConverter_get_CoreTemperature", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "ResourceConverter_get_CoreTemperature", args);
     }
 
     /// <summary>
@@ -302,7 +302,7 @@ public class ResourceConverter : RemoteObject
         {
             this
         };
-        return Connection.Invoke<int>("SpaceCenter", "ResourceConverter_get_Count", args);
+        return InvokeNonNullable<int>("SpaceCenter", "ResourceConverter_get_Count", args);
     }
 
     /// <summary>
@@ -316,7 +316,7 @@ public class ResourceConverter : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<int>("SpaceCenter", "ResourceConverter_get_Count", args);
+        return await InvokeNonNullableAsync<int>("SpaceCenter", "ResourceConverter_get_Count", args);
     }
 
     /// <summary>
@@ -329,7 +329,7 @@ public class ResourceConverter : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "ResourceConverter_get_OptimumCoreTemperature", args);
+        return InvokeNonNullable<float>("SpaceCenter", "ResourceConverter_get_OptimumCoreTemperature", args);
     }
 
     /// <summary>
@@ -343,7 +343,7 @@ public class ResourceConverter : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "ResourceConverter_get_OptimumCoreTemperature", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "ResourceConverter_get_OptimumCoreTemperature", args);
     }
 
     /// <summary>
@@ -356,7 +356,7 @@ public class ResourceConverter : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Part>("SpaceCenter", "ResourceConverter_get_Part", args);
+        return InvokeNonNullable<Part>("SpaceCenter", "ResourceConverter_get_Part", args);
     }
 
     /// <summary>
@@ -370,7 +370,7 @@ public class ResourceConverter : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Part>("SpaceCenter", "ResourceConverter_get_Part", args);
+        return await InvokeNonNullableAsync<Part>("SpaceCenter", "ResourceConverter_get_Part", args);
     }
 
     /// <summary>
@@ -383,7 +383,7 @@ public class ResourceConverter : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "ResourceConverter_get_ThermalEfficiency", args);
+        return InvokeNonNullable<float>("SpaceCenter", "ResourceConverter_get_ThermalEfficiency", args);
     }
 
     /// <summary>
@@ -397,6 +397,6 @@ public class ResourceConverter : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "ResourceConverter_get_ThermalEfficiency", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "ResourceConverter_get_ThermalEfficiency", args);
     }
 }

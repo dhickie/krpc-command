@@ -25,7 +25,7 @@ public class Leg : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "Leg_get_Deployable", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "Leg_get_Deployable", args);
     }
 
     /// <summary>
@@ -39,7 +39,7 @@ public class Leg : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "Leg_get_Deployable", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "Leg_get_Deployable", args);
     }
 
     /// <summary>
@@ -56,7 +56,7 @@ public class Leg : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "Leg_get_Deployed", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "Leg_get_Deployed", args);
     }
 
     /// <summary>
@@ -74,7 +74,7 @@ public class Leg : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "Leg_get_Deployed", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "Leg_get_Deployed", args);
     }
 
     /// <summary>
@@ -89,7 +89,7 @@ public class Leg : RemoteObject
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "Leg_set_Deployed", args);
+        InvokeVoid("SpaceCenter", "Leg_set_Deployed", args);
     }
 
     /// <summary>
@@ -105,7 +105,7 @@ public class Leg : RemoteObject
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "Leg_set_Deployed", args);
+        await InvokeVoidAsync("SpaceCenter", "Leg_set_Deployed", args);
     }
 
     /// <summary>
@@ -118,7 +118,7 @@ public class Leg : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "Leg_get_IsGrounded", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "Leg_get_IsGrounded", args);
     }
 
     /// <summary>
@@ -132,7 +132,7 @@ public class Leg : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "Leg_get_IsGrounded", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "Leg_get_IsGrounded", args);
     }
 
     /// <summary>
@@ -145,7 +145,7 @@ public class Leg : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Part>("SpaceCenter", "Leg_get_Part", args);
+        return InvokeNonNullable<Part>("SpaceCenter", "Leg_get_Part", args);
     }
 
     /// <summary>
@@ -159,7 +159,7 @@ public class Leg : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Part>("SpaceCenter", "Leg_get_Part", args);
+        return await InvokeNonNullableAsync<Part>("SpaceCenter", "Leg_get_Part", args);
     }
 
     /// <summary>
@@ -172,7 +172,7 @@ public class Leg : RemoteObject
         {
             this
         };
-        return Connection.Invoke<LegState>("SpaceCenter", "Leg_get_State", args);
+        return InvokeNonNullable<LegState>("SpaceCenter", "Leg_get_State", args);
     }
 
     /// <summary>
@@ -186,6 +186,6 @@ public class Leg : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<LegState>("SpaceCenter", "Leg_get_State", args);
+        return await InvokeNonNullableAsync<LegState>("SpaceCenter", "Leg_get_State", args);
     }
 }

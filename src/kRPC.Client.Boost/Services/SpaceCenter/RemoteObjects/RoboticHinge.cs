@@ -26,7 +26,7 @@ public class RoboticHinge : RemoteObject
         {
             this
         };
-        Connection.Invoke("SpaceCenter", "RoboticHinge_MoveHome", args);
+        InvokeVoid("SpaceCenter", "RoboticHinge_MoveHome", args);
     }
 
     /// <summary>
@@ -40,7 +40,7 @@ public class RoboticHinge : RemoteObject
         {
             this
         };
-        await Connection.InvokeAsync("SpaceCenter", "RoboticHinge_MoveHome", args);
+        await InvokeVoidAsync("SpaceCenter", "RoboticHinge_MoveHome", args);
     }
 
     /// <summary>
@@ -53,7 +53,7 @@ public class RoboticHinge : RemoteObject
         {
             this
         };
-        var result = Connection.Invoke<float>("SpaceCenter", "RoboticHinge_get_CurrentAngle", args);
+        var result = InvokeNonNullable<float>("SpaceCenter", "RoboticHinge_get_CurrentAngle", args);
         return Angle.FromDegrees(result);
     }
 
@@ -68,7 +68,7 @@ public class RoboticHinge : RemoteObject
         {
             this
         };
-        var result = await Connection.InvokeAsync<float>("SpaceCenter", "RoboticHinge_get_CurrentAngle", args);
+        var result = await InvokeNonNullableAsync<float>("SpaceCenter", "RoboticHinge_get_CurrentAngle", args);
         return Angle.FromDegrees(result);
     }
 
@@ -82,7 +82,7 @@ public class RoboticHinge : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "RoboticHinge_get_Damping", args);
+        return InvokeNonNullable<float>("SpaceCenter", "RoboticHinge_get_Damping", args);
     }
 
     /// <summary>
@@ -96,7 +96,7 @@ public class RoboticHinge : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "RoboticHinge_get_Damping", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "RoboticHinge_get_Damping", args);
     }
 
     /// <summary>
@@ -111,7 +111,7 @@ public class RoboticHinge : RemoteObject
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "RoboticHinge_set_Damping", args);
+        InvokeVoid("SpaceCenter", "RoboticHinge_set_Damping", args);
     }
 
     /// <summary>
@@ -127,7 +127,7 @@ public class RoboticHinge : RemoteObject
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "RoboticHinge_set_Damping", args);
+        await InvokeVoidAsync("SpaceCenter", "RoboticHinge_set_Damping", args);
     }
 
     /// <summary>
@@ -140,7 +140,7 @@ public class RoboticHinge : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "RoboticHinge_get_Locked", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "RoboticHinge_get_Locked", args);
     }
 
     /// <summary>
@@ -154,7 +154,7 @@ public class RoboticHinge : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "RoboticHinge_get_Locked", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "RoboticHinge_get_Locked", args);
     }
 
     /// <summary>
@@ -169,7 +169,7 @@ public class RoboticHinge : RemoteObject
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "RoboticHinge_set_Locked", args);
+        InvokeVoid("SpaceCenter", "RoboticHinge_set_Locked", args);
     }
 
     /// <summary>
@@ -185,7 +185,7 @@ public class RoboticHinge : RemoteObject
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "RoboticHinge_set_Locked", args);
+        await InvokeVoidAsync("SpaceCenter", "RoboticHinge_set_Locked", args);
     }
 
     /// <summary>
@@ -198,7 +198,7 @@ public class RoboticHinge : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "RoboticHinge_get_MotorEngaged", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "RoboticHinge_get_MotorEngaged", args);
     }
 
     /// <summary>
@@ -212,7 +212,7 @@ public class RoboticHinge : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "RoboticHinge_get_MotorEngaged", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "RoboticHinge_get_MotorEngaged", args);
     }
 
     /// <summary>
@@ -227,7 +227,7 @@ public class RoboticHinge : RemoteObject
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "RoboticHinge_set_MotorEngaged", args);
+        InvokeVoid("SpaceCenter", "RoboticHinge_set_MotorEngaged", args);
     }
 
     /// <summary>
@@ -243,7 +243,7 @@ public class RoboticHinge : RemoteObject
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "RoboticHinge_set_MotorEngaged", args);
+        await InvokeVoidAsync("SpaceCenter", "RoboticHinge_set_MotorEngaged", args);
     }
 
     /// <summary>
@@ -256,7 +256,7 @@ public class RoboticHinge : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Part>("SpaceCenter", "RoboticHinge_get_Part", args);
+        return InvokeNonNullable<Part>("SpaceCenter", "RoboticHinge_get_Part", args);
     }
 
     /// <summary>
@@ -270,7 +270,7 @@ public class RoboticHinge : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Part>("SpaceCenter", "RoboticHinge_get_Part", args);
+        return await InvokeNonNullableAsync<Part>("SpaceCenter", "RoboticHinge_get_Part", args);
     }
 
     /// <summary>
@@ -283,7 +283,7 @@ public class RoboticHinge : RemoteObject
         {
             this
         };
-        var result = Connection.Invoke<float>("SpaceCenter", "RoboticHinge_get_Rate", args);
+        var result = InvokeNonNullable<float>("SpaceCenter", "RoboticHinge_get_Rate", args);
         return Angle.FromDegrees(result);
     }
 
@@ -298,7 +298,7 @@ public class RoboticHinge : RemoteObject
         {
             this
         };
-        var result = await Connection.InvokeAsync<float>("SpaceCenter", "RoboticHinge_get_Rate", args);
+        var result = await InvokeNonNullableAsync<float>("SpaceCenter", "RoboticHinge_get_Rate", args);
         return Angle.FromDegrees(result);
     }
 
@@ -314,7 +314,7 @@ public class RoboticHinge : RemoteObject
             this,
             (float)value.Degrees
         };
-        Connection.Invoke("SpaceCenter", "RoboticHinge_set_Rate", args);
+        InvokeVoid("SpaceCenter", "RoboticHinge_set_Rate", args);
     }
 
     /// <summary>
@@ -330,7 +330,7 @@ public class RoboticHinge : RemoteObject
             this,
             (float)value.Degrees
         };
-        await Connection.InvokeAsync("SpaceCenter", "RoboticHinge_set_Rate", args);
+        await InvokeVoidAsync("SpaceCenter", "RoboticHinge_set_Rate", args);
     }
 
     /// <summary>
@@ -343,7 +343,7 @@ public class RoboticHinge : RemoteObject
         {
             this
         };
-        var result = Connection.Invoke<float>("SpaceCenter", "RoboticHinge_get_TargetAngle", args);
+        var result = InvokeNonNullable<float>("SpaceCenter", "RoboticHinge_get_TargetAngle", args);
         return Angle.FromDegrees(result);
     }
 
@@ -358,7 +358,7 @@ public class RoboticHinge : RemoteObject
         {
             this
         };
-        var result = await Connection.InvokeAsync<float>("SpaceCenter", "RoboticHinge_get_TargetAngle", args);
+        var result = await InvokeNonNullableAsync<float>("SpaceCenter", "RoboticHinge_get_TargetAngle", args);
         return Angle.FromDegrees(result);
     }
 
@@ -374,7 +374,7 @@ public class RoboticHinge : RemoteObject
             this,
             (float)value.Degrees
         };
-        Connection.Invoke("SpaceCenter", "RoboticHinge_set_TargetAngle", args);
+        InvokeVoid("SpaceCenter", "RoboticHinge_set_TargetAngle", args);
     }
 
     /// <summary>
@@ -390,6 +390,6 @@ public class RoboticHinge : RemoteObject
             this,
             (float)value.Degrees
         };
-        await Connection.InvokeAsync("SpaceCenter", "RoboticHinge_set_TargetAngle", args);
+        await InvokeVoidAsync("SpaceCenter", "RoboticHinge_set_TargetAngle", args);
     }
 }

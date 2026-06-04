@@ -25,7 +25,7 @@ public class CargoBay : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "CargoBay_get_Open", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "CargoBay_get_Open", args);
     }
 
     /// <summary>
@@ -39,7 +39,7 @@ public class CargoBay : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "CargoBay_get_Open", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "CargoBay_get_Open", args);
     }
 
     /// <summary>
@@ -54,7 +54,7 @@ public class CargoBay : RemoteObject
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "CargoBay_set_Open", args);
+        InvokeVoid("SpaceCenter", "CargoBay_set_Open", args);
     }
 
     /// <summary>
@@ -70,7 +70,7 @@ public class CargoBay : RemoteObject
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "CargoBay_set_Open", args);
+        await InvokeVoidAsync("SpaceCenter", "CargoBay_set_Open", args);
     }
 
     /// <summary>
@@ -83,7 +83,7 @@ public class CargoBay : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Part>("SpaceCenter", "CargoBay_get_Part", args);
+        return InvokeNonNullable<Part>("SpaceCenter", "CargoBay_get_Part", args);
     }
 
     /// <summary>
@@ -97,7 +97,7 @@ public class CargoBay : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Part>("SpaceCenter", "CargoBay_get_Part", args);
+        return await InvokeNonNullableAsync<Part>("SpaceCenter", "CargoBay_get_Part", args);
     }
 
     /// <summary>
@@ -110,7 +110,7 @@ public class CargoBay : RemoteObject
         {
             this
         };
-        return Connection.Invoke<CargoBayState>("SpaceCenter", "CargoBay_get_State", args);
+        return InvokeNonNullable<CargoBayState>("SpaceCenter", "CargoBay_get_State", args);
     }
 
     /// <summary>
@@ -124,6 +124,6 @@ public class CargoBay : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<CargoBayState>("SpaceCenter", "CargoBay_get_State", args);
+        return await InvokeNonNullableAsync<CargoBayState>("SpaceCenter", "CargoBay_get_State", args);
     }
 }

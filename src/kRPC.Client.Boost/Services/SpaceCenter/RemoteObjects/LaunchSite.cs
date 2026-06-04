@@ -26,7 +26,7 @@ public class LaunchSite : RemoteObject
         {
             this
         };
-        return Connection.Invoke<CelestialBody>("SpaceCenter", "LaunchSite_get_Body", args);
+        return InvokeNonNullable<CelestialBody>("SpaceCenter", "LaunchSite_get_Body", args);
     }
 
     /// <summary>
@@ -40,7 +40,7 @@ public class LaunchSite : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<CelestialBody>("SpaceCenter", "LaunchSite_get_Body", args);
+        return await InvokeNonNullableAsync<CelestialBody>("SpaceCenter", "LaunchSite_get_Body", args);
     }
 
     /// <summary>
@@ -53,7 +53,7 @@ public class LaunchSite : RemoteObject
         {
             this
         };
-        return Connection.Invoke<EditorFacility>("SpaceCenter", "LaunchSite_get_EditorFacility", args);
+        return InvokeNonNullable<EditorFacility>("SpaceCenter", "LaunchSite_get_EditorFacility", args);
     }
 
     /// <summary>
@@ -67,7 +67,7 @@ public class LaunchSite : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<EditorFacility>("SpaceCenter", "LaunchSite_get_EditorFacility", args);
+        return await InvokeNonNullableAsync<EditorFacility>("SpaceCenter", "LaunchSite_get_EditorFacility", args);
     }
 
     /// <summary>
@@ -80,7 +80,7 @@ public class LaunchSite : RemoteObject
         {
             this
         };
-        return Connection.Invoke<string>("SpaceCenter", "LaunchSite_get_Name", args);
+        return InvokeNonNullable<string>("SpaceCenter", "LaunchSite_get_Name", args);
     }
 
     /// <summary>
@@ -94,6 +94,6 @@ public class LaunchSite : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<string>("SpaceCenter", "LaunchSite_get_Name", args);
+        return await InvokeNonNullableAsync<string>("SpaceCenter", "LaunchSite_get_Name", args);
     }
 }

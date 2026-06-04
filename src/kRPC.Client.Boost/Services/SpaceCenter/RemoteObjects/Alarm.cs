@@ -25,7 +25,7 @@ public class Alarm : RemoteObject
         {
             this
         };
-        return Connection.Invoke<string>("SpaceCenter", "Alarm_get_Description", args);
+        return InvokeNonNullable<string>("SpaceCenter", "Alarm_get_Description", args);
     }
 
     /// <summary>
@@ -39,7 +39,7 @@ public class Alarm : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<string>("SpaceCenter", "Alarm_get_Description", args);
+        return await InvokeNonNullableAsync<string>("SpaceCenter", "Alarm_get_Description", args);
     }
 
     /// <summary>
@@ -52,7 +52,7 @@ public class Alarm : RemoteObject
         {
             this
         };
-        return Connection.Invoke<double>("SpaceCenter", "Alarm_get_EventOffset", args);
+        return InvokeNonNullable<double>("SpaceCenter", "Alarm_get_EventOffset", args);
     }
 
     /// <summary>
@@ -66,7 +66,7 @@ public class Alarm : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<double>("SpaceCenter", "Alarm_get_EventOffset", args);
+        return await InvokeNonNullableAsync<double>("SpaceCenter", "Alarm_get_EventOffset", args);
     }
 
     /// <summary>
@@ -81,7 +81,7 @@ public class Alarm : RemoteObject
         {
             this
         };
-        return Connection.Invoke<uint>("SpaceCenter", "Alarm_get_ID", args);
+        return InvokeNonNullable<uint>("SpaceCenter", "Alarm_get_ID", args);
     }
 
     /// <summary>
@@ -97,7 +97,7 @@ public class Alarm : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<uint>("SpaceCenter", "Alarm_get_ID", args);
+        return await InvokeNonNullableAsync<uint>("SpaceCenter", "Alarm_get_ID", args);
     }
 
     /// <summary>
@@ -110,7 +110,7 @@ public class Alarm : RemoteObject
         {
             this
         };
-        return Connection.Invoke<double>("SpaceCenter", "Alarm_get_Time", args);
+        return InvokeNonNullable<double>("SpaceCenter", "Alarm_get_Time", args);
     }
 
     /// <summary>
@@ -124,7 +124,7 @@ public class Alarm : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<double>("SpaceCenter", "Alarm_get_Time", args);
+        return await InvokeNonNullableAsync<double>("SpaceCenter", "Alarm_get_Time", args);
     }
 
     /// <summary>
@@ -137,7 +137,7 @@ public class Alarm : RemoteObject
         {
             this
         };
-        return Connection.Invoke<double>("SpaceCenter", "Alarm_get_TimeUntil", args);
+        return InvokeNonNullable<double>("SpaceCenter", "Alarm_get_TimeUntil", args);
     }
 
     /// <summary>
@@ -151,7 +151,7 @@ public class Alarm : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<double>("SpaceCenter", "Alarm_get_TimeUntil", args);
+        return await InvokeNonNullableAsync<double>("SpaceCenter", "Alarm_get_TimeUntil", args);
     }
 
     /// <summary>
@@ -164,7 +164,7 @@ public class Alarm : RemoteObject
         {
             this
         };
-        return Connection.Invoke<string>("SpaceCenter", "Alarm_get_Title", args);
+        return InvokeNonNullable<string>("SpaceCenter", "Alarm_get_Title", args);
     }
 
     /// <summary>
@@ -178,7 +178,7 @@ public class Alarm : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<string>("SpaceCenter", "Alarm_get_Title", args);
+        return await InvokeNonNullableAsync<string>("SpaceCenter", "Alarm_get_Title", args);
     }
 
     /// <summary>
@@ -191,7 +191,7 @@ public class Alarm : RemoteObject
         {
             this
         };
-        return Connection.Invoke<string>("SpaceCenter", "Alarm_get_Type", args);
+        return InvokeNonNullable<string>("SpaceCenter", "Alarm_get_Type", args);
     }
 
     /// <summary>
@@ -205,7 +205,7 @@ public class Alarm : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<string>("SpaceCenter", "Alarm_get_Type", args);
+        return await InvokeNonNullableAsync<string>("SpaceCenter", "Alarm_get_Type", args);
     }
 
     /// <summary>
@@ -218,7 +218,7 @@ public class Alarm : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Vessel?>("SpaceCenter", "Alarm_get_Vessel", args);
+        return InvokeNullable<Vessel>("SpaceCenter", "Alarm_get_Vessel", args);
     }
 
     /// <summary>
@@ -232,6 +232,6 @@ public class Alarm : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Vessel?>("SpaceCenter", "Alarm_get_Vessel", args);
+        return await InvokeNullableAsync<Vessel>("SpaceCenter", "Alarm_get_Vessel", args);
     }
 }

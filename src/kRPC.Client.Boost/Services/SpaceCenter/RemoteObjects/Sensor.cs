@@ -25,7 +25,7 @@ public class Sensor : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "Sensor_get_Active", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "Sensor_get_Active", args);
     }
 
     /// <summary>
@@ -39,7 +39,7 @@ public class Sensor : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "Sensor_get_Active", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "Sensor_get_Active", args);
     }
 
     /// <summary>
@@ -54,7 +54,7 @@ public class Sensor : RemoteObject
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "Sensor_set_Active", args);
+        InvokeVoid("SpaceCenter", "Sensor_set_Active", args);
     }
 
     /// <summary>
@@ -70,7 +70,7 @@ public class Sensor : RemoteObject
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "Sensor_set_Active", args);
+        await InvokeVoidAsync("SpaceCenter", "Sensor_set_Active", args);
     }
 
     /// <summary>
@@ -83,7 +83,7 @@ public class Sensor : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Part>("SpaceCenter", "Sensor_get_Part", args);
+        return InvokeNonNullable<Part>("SpaceCenter", "Sensor_get_Part", args);
     }
 
     /// <summary>
@@ -97,7 +97,7 @@ public class Sensor : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Part>("SpaceCenter", "Sensor_get_Part", args);
+        return await InvokeNonNullableAsync<Part>("SpaceCenter", "Sensor_get_Part", args);
     }
 
     /// <summary>
@@ -110,7 +110,7 @@ public class Sensor : RemoteObject
         {
             this
         };
-        return Connection.Invoke<string>("SpaceCenter", "Sensor_get_Value", args);
+        return InvokeNonNullable<string>("SpaceCenter", "Sensor_get_Value", args);
     }
 
     /// <summary>
@@ -124,6 +124,6 @@ public class Sensor : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<string>("SpaceCenter", "Sensor_get_Value", args);
+        return await InvokeNonNullableAsync<string>("SpaceCenter", "Sensor_get_Value", args);
     }
 }

@@ -25,7 +25,7 @@ public class Light : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "Light_get_Active", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "Light_get_Active", args);
     }
 
     /// <summary>
@@ -39,7 +39,7 @@ public class Light : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "Light_get_Active", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "Light_get_Active", args);
     }
 
     /// <summary>
@@ -54,7 +54,7 @@ public class Light : RemoteObject
             this,
             new(value)
         };
-        Connection.Invoke("SpaceCenter", "Light_set_Active", args);
+        InvokeVoid("SpaceCenter", "Light_set_Active", args);
     }
 
     /// <summary>
@@ -70,7 +70,7 @@ public class Light : RemoteObject
             this,
             new(value)
         };
-        await Connection.InvokeAsync("SpaceCenter", "Light_set_Active", args);
+        await InvokeVoidAsync("SpaceCenter", "Light_set_Active", args);
     }
 
     /// <summary>
@@ -83,7 +83,7 @@ public class Light : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "Light_get_Blink", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "Light_get_Blink", args);
     }
 
     /// <summary>
@@ -97,7 +97,7 @@ public class Light : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "Light_get_Blink", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "Light_get_Blink", args);
     }
 
     /// <summary>
@@ -112,7 +112,7 @@ public class Light : RemoteObject
             this,
             new(value)
         };
-        Connection.Invoke("SpaceCenter", "Light_set_Blink", args);
+        InvokeVoid("SpaceCenter", "Light_set_Blink", args);
     }
 
     /// <summary>
@@ -128,7 +128,7 @@ public class Light : RemoteObject
             this,
             new(value)
         };
-        await Connection.InvokeAsync("SpaceCenter", "Light_set_Blink", args);
+        await InvokeVoidAsync("SpaceCenter", "Light_set_Blink", args);
     }
 
     /// <summary>
@@ -141,7 +141,7 @@ public class Light : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "Light_get_BlinkRate", args);
+        return InvokeNonNullable<float>("SpaceCenter", "Light_get_BlinkRate", args);
     }
 
     /// <summary>
@@ -155,7 +155,7 @@ public class Light : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "Light_get_BlinkRate", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "Light_get_BlinkRate", args);
     }
 
     /// <summary>
@@ -170,7 +170,7 @@ public class Light : RemoteObject
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "Light_set_BlinkRate", args);
+        InvokeVoid("SpaceCenter", "Light_set_BlinkRate", args);
     }
 
     /// <summary>
@@ -186,7 +186,7 @@ public class Light : RemoteObject
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "Light_set_BlinkRate", args);
+        await InvokeVoidAsync("SpaceCenter", "Light_set_BlinkRate", args);
     }
 
     /// <summary>
@@ -199,7 +199,7 @@ public class Light : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Tuple<float,float,float>>("SpaceCenter", "Light_get_Color", args);
+        return InvokeNonNullable<Tuple<float,float,float>>("SpaceCenter", "Light_get_Color", args);
     }
 
     /// <summary>
@@ -213,7 +213,7 @@ public class Light : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Tuple<float,float,float>>("SpaceCenter", "Light_get_Color", args);
+        return await InvokeNonNullableAsync<Tuple<float,float,float>>("SpaceCenter", "Light_get_Color", args);
     }
 
     /// <summary>
@@ -228,7 +228,7 @@ public class Light : RemoteObject
             this,
             new(value)
         };
-        Connection.Invoke("SpaceCenter", "Light_set_Color", args);
+        InvokeVoid("SpaceCenter", "Light_set_Color", args);
     }
 
     /// <summary>
@@ -244,7 +244,7 @@ public class Light : RemoteObject
             this,
             new(value)
         };
-        await Connection.InvokeAsync("SpaceCenter", "Light_set_Color", args);
+        await InvokeVoidAsync("SpaceCenter", "Light_set_Color", args);
     }
 
     /// <summary>
@@ -257,7 +257,7 @@ public class Light : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Part>("SpaceCenter", "Light_get_Part", args);
+        return InvokeNonNullable<Part>("SpaceCenter", "Light_get_Part", args);
     }
 
     /// <summary>
@@ -271,7 +271,7 @@ public class Light : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Part>("SpaceCenter", "Light_get_Part", args);
+        return await InvokeNonNullableAsync<Part>("SpaceCenter", "Light_get_Part", args);
     }
 
     /// <summary>
@@ -284,7 +284,7 @@ public class Light : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "Light_get_PowerUsage", args);
+        return InvokeNonNullable<float>("SpaceCenter", "Light_get_PowerUsage", args);
     }
 
     /// <summary>
@@ -298,6 +298,6 @@ public class Light : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "Light_get_PowerUsage", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "Light_get_PowerUsage", args);
     }
 }

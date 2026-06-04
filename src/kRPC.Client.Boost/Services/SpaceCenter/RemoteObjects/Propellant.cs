@@ -25,7 +25,7 @@ public class Propellant : RemoteObject
         {
             this
         };
-        return Connection.Invoke<double>("SpaceCenter", "Propellant_get_CurrentAmount", args);
+        return InvokeNonNullable<double>("SpaceCenter", "Propellant_get_CurrentAmount", args);
     }
 
     /// <summary>
@@ -39,7 +39,7 @@ public class Propellant : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<double>("SpaceCenter", "Propellant_get_CurrentAmount", args);
+        return await InvokeNonNullableAsync<double>("SpaceCenter", "Propellant_get_CurrentAmount", args);
     }
 
     /// <summary>
@@ -52,7 +52,7 @@ public class Propellant : RemoteObject
         {
             this
         };
-        return Connection.Invoke<double>("SpaceCenter", "Propellant_get_CurrentRequirement", args);
+        return InvokeNonNullable<double>("SpaceCenter", "Propellant_get_CurrentRequirement", args);
     }
 
     /// <summary>
@@ -66,7 +66,7 @@ public class Propellant : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<double>("SpaceCenter", "Propellant_get_CurrentRequirement", args);
+        return await InvokeNonNullableAsync<double>("SpaceCenter", "Propellant_get_CurrentRequirement", args);
     }
 
     /// <summary>
@@ -79,7 +79,7 @@ public class Propellant : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "Propellant_get_DrawStackGauge", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "Propellant_get_DrawStackGauge", args);
     }
 
     /// <summary>
@@ -93,7 +93,7 @@ public class Propellant : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "Propellant_get_DrawStackGauge", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "Propellant_get_DrawStackGauge", args);
     }
 
     /// <summary>
@@ -107,7 +107,7 @@ public class Propellant : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "Propellant_get_IgnoreForIsp", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "Propellant_get_IgnoreForIsp", args);
     }
 
     /// <summary>
@@ -122,7 +122,7 @@ public class Propellant : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "Propellant_get_IgnoreForIsp", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "Propellant_get_IgnoreForIsp", args);
     }
 
     /// <summary>
@@ -135,7 +135,7 @@ public class Propellant : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "Propellant_get_IgnoreForThrustCurve", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "Propellant_get_IgnoreForThrustCurve", args);
     }
 
     /// <summary>
@@ -149,7 +149,7 @@ public class Propellant : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "Propellant_get_IgnoreForThrustCurve", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "Propellant_get_IgnoreForThrustCurve", args);
     }
 
     /// <summary>
@@ -162,7 +162,7 @@ public class Propellant : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "Propellant_get_IsDeprived", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "Propellant_get_IsDeprived", args);
     }
 
     /// <summary>
@@ -176,7 +176,7 @@ public class Propellant : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "Propellant_get_IsDeprived", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "Propellant_get_IsDeprived", args);
     }
 
     /// <summary>
@@ -189,7 +189,7 @@ public class Propellant : RemoteObject
         {
             this
         };
-        return Connection.Invoke<string>("SpaceCenter", "Propellant_get_Name", args);
+        return InvokeNonNullable<string>("SpaceCenter", "Propellant_get_Name", args);
     }
 
     /// <summary>
@@ -203,7 +203,7 @@ public class Propellant : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<string>("SpaceCenter", "Propellant_get_Name", args);
+        return await InvokeNonNullableAsync<string>("SpaceCenter", "Propellant_get_Name", args);
     }
 
     /// <summary>
@@ -216,7 +216,7 @@ public class Propellant : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "Propellant_get_Ratio", args);
+        return InvokeNonNullable<float>("SpaceCenter", "Propellant_get_Ratio", args);
     }
 
     /// <summary>
@@ -230,7 +230,7 @@ public class Propellant : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "Propellant_get_Ratio", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "Propellant_get_Ratio", args);
     }
 
     /// <summary>
@@ -244,7 +244,7 @@ public class Propellant : RemoteObject
         {
             this
         };
-        return Connection.Invoke<double>("SpaceCenter", "Propellant_get_TotalResourceAvailable", args);
+        return InvokeNonNullable<double>("SpaceCenter", "Propellant_get_TotalResourceAvailable", args);
     }
 
     /// <summary>
@@ -259,7 +259,7 @@ public class Propellant : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<double>("SpaceCenter", "Propellant_get_TotalResourceAvailable", args);
+        return await InvokeNonNullableAsync<double>("SpaceCenter", "Propellant_get_TotalResourceAvailable", args);
     }
 
     /// <summary>
@@ -273,7 +273,7 @@ public class Propellant : RemoteObject
         {
             this
         };
-        return Connection.Invoke<double>("SpaceCenter", "Propellant_get_TotalResourceCapacity", args);
+        return InvokeNonNullable<double>("SpaceCenter", "Propellant_get_TotalResourceCapacity", args);
     }
 
     /// <summary>
@@ -288,6 +288,6 @@ public class Propellant : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<double>("SpaceCenter", "Propellant_get_TotalResourceCapacity", args);
+        return await InvokeNonNullableAsync<double>("SpaceCenter", "Propellant_get_TotalResourceCapacity", args);
     }
 }

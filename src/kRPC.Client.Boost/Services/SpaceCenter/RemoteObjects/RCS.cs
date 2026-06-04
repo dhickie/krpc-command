@@ -29,7 +29,7 @@ public class RCS : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "RCS_get_Active", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "RCS_get_Active", args);
     }
 
     /// <summary>
@@ -46,7 +46,7 @@ public class RCS : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "RCS_get_Active", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "RCS_get_Active", args);
     }
 
     /// <summary>
@@ -62,7 +62,7 @@ public class RCS : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Tuple<Vector3D,Vector3D>>("SpaceCenter", "RCS_get_AvailableForce", args);
+        return InvokeNonNullable<Tuple<Vector3D,Vector3D>>("SpaceCenter", "RCS_get_AvailableForce", args);
     }
 
     /// <summary>
@@ -79,7 +79,7 @@ public class RCS : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Tuple<Vector3D,Vector3D>>("SpaceCenter", "RCS_get_AvailableForce", args);
+        return await InvokeNonNullableAsync<Tuple<Vector3D,Vector3D>>("SpaceCenter", "RCS_get_AvailableForce", args);
     }
 
     /// <summary>
@@ -95,7 +95,7 @@ public class RCS : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "RCS_get_AvailableThrust", args);
+        return InvokeNonNullable<float>("SpaceCenter", "RCS_get_AvailableThrust", args);
     }
 
     /// <summary>
@@ -112,7 +112,7 @@ public class RCS : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "RCS_get_AvailableThrust", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "RCS_get_AvailableThrust", args);
     }
 
     /// <summary>
@@ -128,7 +128,7 @@ public class RCS : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Tuple<Vector3D,Vector3D>>("SpaceCenter", "RCS_get_AvailableTorque", args);
+        return InvokeNonNullable<Tuple<Vector3D,Vector3D>>("SpaceCenter", "RCS_get_AvailableTorque", args);
     }
 
     /// <summary>
@@ -145,7 +145,7 @@ public class RCS : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Tuple<Vector3D,Vector3D>>("SpaceCenter", "RCS_get_AvailableTorque", args);
+        return await InvokeNonNullableAsync<Tuple<Vector3D,Vector3D>>("SpaceCenter", "RCS_get_AvailableTorque", args);
     }
 
     /// <summary>
@@ -158,7 +158,7 @@ public class RCS : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "RCS_get_Enabled", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "RCS_get_Enabled", args);
     }
 
     /// <summary>
@@ -172,7 +172,7 @@ public class RCS : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "RCS_get_Enabled", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "RCS_get_Enabled", args);
     }
 
     /// <summary>
@@ -187,7 +187,7 @@ public class RCS : RemoteObject
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "RCS_set_Enabled", args);
+        InvokeVoid("SpaceCenter", "RCS_set_Enabled", args);
     }
 
     /// <summary>
@@ -203,7 +203,7 @@ public class RCS : RemoteObject
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "RCS_set_Enabled", args);
+        await InvokeVoidAsync("SpaceCenter", "RCS_set_Enabled", args);
     }
 
     /// <summary>
@@ -216,7 +216,7 @@ public class RCS : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "RCS_get_ForwardEnabled", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "RCS_get_ForwardEnabled", args);
     }
 
     /// <summary>
@@ -230,7 +230,7 @@ public class RCS : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "RCS_get_ForwardEnabled", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "RCS_get_ForwardEnabled", args);
     }
 
     /// <summary>
@@ -245,7 +245,7 @@ public class RCS : RemoteObject
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "RCS_set_ForwardEnabled", args);
+        InvokeVoid("SpaceCenter", "RCS_set_ForwardEnabled", args);
     }
 
     /// <summary>
@@ -261,7 +261,7 @@ public class RCS : RemoteObject
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "RCS_set_ForwardEnabled", args);
+        await InvokeVoidAsync("SpaceCenter", "RCS_set_ForwardEnabled", args);
     }
 
     /// <summary>
@@ -274,7 +274,7 @@ public class RCS : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "RCS_get_HasFuel", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "RCS_get_HasFuel", args);
     }
 
     /// <summary>
@@ -288,7 +288,7 @@ public class RCS : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "RCS_get_HasFuel", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "RCS_get_HasFuel", args);
     }
 
     /// <summary>
@@ -301,7 +301,7 @@ public class RCS : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "RCS_get_KerbinSeaLevelSpecificImpulse", args);
+        return InvokeNonNullable<float>("SpaceCenter", "RCS_get_KerbinSeaLevelSpecificImpulse", args);
     }
 
     /// <summary>
@@ -315,7 +315,7 @@ public class RCS : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "RCS_get_KerbinSeaLevelSpecificImpulse", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "RCS_get_KerbinSeaLevelSpecificImpulse", args);
     }
 
     /// <summary>
@@ -331,7 +331,7 @@ public class RCS : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "RCS_get_MaxThrust", args);
+        return InvokeNonNullable<float>("SpaceCenter", "RCS_get_MaxThrust", args);
     }
 
     /// <summary>
@@ -348,7 +348,7 @@ public class RCS : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "RCS_get_MaxThrust", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "RCS_get_MaxThrust", args);
     }
 
     /// <summary>
@@ -362,7 +362,7 @@ public class RCS : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "RCS_get_MaxVacuumThrust", args);
+        return InvokeNonNullable<float>("SpaceCenter", "RCS_get_MaxVacuumThrust", args);
     }
 
     /// <summary>
@@ -377,7 +377,7 @@ public class RCS : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "RCS_get_MaxVacuumThrust", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "RCS_get_MaxVacuumThrust", args);
     }
 
     /// <summary>
@@ -390,7 +390,7 @@ public class RCS : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Part>("SpaceCenter", "RCS_get_Part", args);
+        return InvokeNonNullable<Part>("SpaceCenter", "RCS_get_Part", args);
     }
 
     /// <summary>
@@ -404,7 +404,7 @@ public class RCS : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Part>("SpaceCenter", "RCS_get_Part", args);
+        return await InvokeNonNullableAsync<Part>("SpaceCenter", "RCS_get_Part", args);
     }
 
     /// <summary>
@@ -417,7 +417,7 @@ public class RCS : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "RCS_get_PitchEnabled", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "RCS_get_PitchEnabled", args);
     }
 
     /// <summary>
@@ -431,7 +431,7 @@ public class RCS : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "RCS_get_PitchEnabled", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "RCS_get_PitchEnabled", args);
     }
 
     /// <summary>
@@ -446,7 +446,7 @@ public class RCS : RemoteObject
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "RCS_set_PitchEnabled", args);
+        InvokeVoid("SpaceCenter", "RCS_set_PitchEnabled", args);
     }
 
     /// <summary>
@@ -462,7 +462,7 @@ public class RCS : RemoteObject
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "RCS_set_PitchEnabled", args);
+        await InvokeVoidAsync("SpaceCenter", "RCS_set_PitchEnabled", args);
     }
 
     /// <summary>
@@ -476,7 +476,7 @@ public class RCS : RemoteObject
         {
             this
         };
-        return Connection.Invoke<IDictionary<string,float>>("SpaceCenter", "RCS_get_PropellantRatios", args);
+        return InvokeNonNullable<IDictionary<string,float>>("SpaceCenter", "RCS_get_PropellantRatios", args);
     }
 
     /// <summary>
@@ -491,7 +491,7 @@ public class RCS : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<IDictionary<string,float>>("SpaceCenter", "RCS_get_PropellantRatios", args);
+        return await InvokeNonNullableAsync<IDictionary<string,float>>("SpaceCenter", "RCS_get_PropellantRatios", args);
     }
 
     /// <summary>
@@ -504,7 +504,7 @@ public class RCS : RemoteObject
         {
             this
         };
-        return Connection.Invoke<IList<string>>("SpaceCenter", "RCS_get_Propellants", args);
+        return InvokeNonNullable<IList<string>>("SpaceCenter", "RCS_get_Propellants", args);
     }
 
     /// <summary>
@@ -518,7 +518,7 @@ public class RCS : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<IList<string>>("SpaceCenter", "RCS_get_Propellants", args);
+        return await InvokeNonNullableAsync<IList<string>>("SpaceCenter", "RCS_get_Propellants", args);
     }
 
     /// <summary>
@@ -531,7 +531,7 @@ public class RCS : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "RCS_get_RightEnabled", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "RCS_get_RightEnabled", args);
     }
 
     /// <summary>
@@ -545,7 +545,7 @@ public class RCS : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "RCS_get_RightEnabled", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "RCS_get_RightEnabled", args);
     }
 
     /// <summary>
@@ -560,7 +560,7 @@ public class RCS : RemoteObject
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "RCS_set_RightEnabled", args);
+        InvokeVoid("SpaceCenter", "RCS_set_RightEnabled", args);
     }
 
     /// <summary>
@@ -576,7 +576,7 @@ public class RCS : RemoteObject
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "RCS_set_RightEnabled", args);
+        await InvokeVoidAsync("SpaceCenter", "RCS_set_RightEnabled", args);
     }
 
     /// <summary>
@@ -589,7 +589,7 @@ public class RCS : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "RCS_get_RollEnabled", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "RCS_get_RollEnabled", args);
     }
 
     /// <summary>
@@ -603,7 +603,7 @@ public class RCS : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "RCS_get_RollEnabled", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "RCS_get_RollEnabled", args);
     }
 
     /// <summary>
@@ -618,7 +618,7 @@ public class RCS : RemoteObject
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "RCS_set_RollEnabled", args);
+        InvokeVoid("SpaceCenter", "RCS_set_RollEnabled", args);
     }
 
     /// <summary>
@@ -634,7 +634,7 @@ public class RCS : RemoteObject
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "RCS_set_RollEnabled", args);
+        await InvokeVoidAsync("SpaceCenter", "RCS_set_RollEnabled", args);
     }
 
     /// <summary>
@@ -648,7 +648,7 @@ public class RCS : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "RCS_get_SpecificImpulse", args);
+        return InvokeNonNullable<float>("SpaceCenter", "RCS_get_SpecificImpulse", args);
     }
 
     /// <summary>
@@ -663,7 +663,7 @@ public class RCS : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "RCS_get_SpecificImpulse", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "RCS_get_SpecificImpulse", args);
     }
 
     /// <summary>
@@ -676,7 +676,7 @@ public class RCS : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "RCS_get_ThrustLimit", args);
+        return InvokeNonNullable<float>("SpaceCenter", "RCS_get_ThrustLimit", args);
     }
 
     /// <summary>
@@ -690,7 +690,7 @@ public class RCS : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "RCS_get_ThrustLimit", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "RCS_get_ThrustLimit", args);
     }
 
     /// <summary>
@@ -705,7 +705,7 @@ public class RCS : RemoteObject
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "RCS_set_ThrustLimit", args);
+        InvokeVoid("SpaceCenter", "RCS_set_ThrustLimit", args);
     }
 
     /// <summary>
@@ -721,7 +721,7 @@ public class RCS : RemoteObject
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "RCS_set_ThrustLimit", args);
+        await InvokeVoidAsync("SpaceCenter", "RCS_set_ThrustLimit", args);
     }
 
     /// <summary>
@@ -734,7 +734,7 @@ public class RCS : RemoteObject
         {
             this
         };
-        return Connection.Invoke<IList<Thruster>>("SpaceCenter", "RCS_get_Thrusters", args);
+        return InvokeNonNullable<IList<Thruster>>("SpaceCenter", "RCS_get_Thrusters", args);
     }
 
     /// <summary>
@@ -748,7 +748,7 @@ public class RCS : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<IList<Thruster>>("SpaceCenter", "RCS_get_Thrusters", args);
+        return await InvokeNonNullableAsync<IList<Thruster>>("SpaceCenter", "RCS_get_Thrusters", args);
     }
 
     /// <summary>
@@ -761,7 +761,7 @@ public class RCS : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "RCS_get_UpEnabled", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "RCS_get_UpEnabled", args);
     }
 
     /// <summary>
@@ -775,7 +775,7 @@ public class RCS : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "RCS_get_UpEnabled", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "RCS_get_UpEnabled", args);
     }
 
     /// <summary>
@@ -790,7 +790,7 @@ public class RCS : RemoteObject
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "RCS_set_UpEnabled", args);
+        InvokeVoid("SpaceCenter", "RCS_set_UpEnabled", args);
     }
 
     /// <summary>
@@ -806,7 +806,7 @@ public class RCS : RemoteObject
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "RCS_set_UpEnabled", args);
+        await InvokeVoidAsync("SpaceCenter", "RCS_set_UpEnabled", args);
     }
 
     /// <summary>
@@ -819,7 +819,7 @@ public class RCS : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "RCS_get_VacuumSpecificImpulse", args);
+        return InvokeNonNullable<float>("SpaceCenter", "RCS_get_VacuumSpecificImpulse", args);
     }
 
     /// <summary>
@@ -833,7 +833,7 @@ public class RCS : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "RCS_get_VacuumSpecificImpulse", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "RCS_get_VacuumSpecificImpulse", args);
     }
 
     /// <summary>
@@ -846,7 +846,7 @@ public class RCS : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "RCS_get_YawEnabled", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "RCS_get_YawEnabled", args);
     }
 
     /// <summary>
@@ -860,7 +860,7 @@ public class RCS : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "RCS_get_YawEnabled", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "RCS_get_YawEnabled", args);
     }
 
     /// <summary>
@@ -875,7 +875,7 @@ public class RCS : RemoteObject
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "RCS_set_YawEnabled", args);
+        InvokeVoid("SpaceCenter", "RCS_set_YawEnabled", args);
     }
 
     /// <summary>
@@ -891,6 +891,6 @@ public class RCS : RemoteObject
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "RCS_set_YawEnabled", args);
+        await InvokeVoidAsync("SpaceCenter", "RCS_set_YawEnabled", args);
     }
 }

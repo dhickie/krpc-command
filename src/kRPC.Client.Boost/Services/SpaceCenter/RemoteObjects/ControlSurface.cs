@@ -27,7 +27,7 @@ public class ControlSurface : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "ControlSurface_get_AuthorityLimiter", args);
+        return InvokeNonNullable<float>("SpaceCenter", "ControlSurface_get_AuthorityLimiter", args);
     }
 
     /// <summary>
@@ -42,7 +42,7 @@ public class ControlSurface : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "ControlSurface_get_AuthorityLimiter", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "ControlSurface_get_AuthorityLimiter", args);
     }
 
     /// <summary>
@@ -58,7 +58,7 @@ public class ControlSurface : RemoteObject
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "ControlSurface_set_AuthorityLimiter", args);
+        InvokeVoid("SpaceCenter", "ControlSurface_set_AuthorityLimiter", args);
     }
 
     /// <summary>
@@ -75,7 +75,7 @@ public class ControlSurface : RemoteObject
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "ControlSurface_set_AuthorityLimiter", args);
+        await InvokeVoidAsync("SpaceCenter", "ControlSurface_set_AuthorityLimiter", args);
     }
 
     /// <summary>
@@ -90,7 +90,7 @@ public class ControlSurface : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Tuple<Vector3D,Vector3D>>("SpaceCenter", "ControlSurface_get_AvailableTorque", args);
+        return InvokeNonNullable<Tuple<Vector3D,Vector3D>>("SpaceCenter", "ControlSurface_get_AvailableTorque", args);
     }
 
     /// <summary>
@@ -106,7 +106,7 @@ public class ControlSurface : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Tuple<Vector3D,Vector3D>>("SpaceCenter", "ControlSurface_get_AvailableTorque", args);
+        return await InvokeNonNullableAsync<Tuple<Vector3D,Vector3D>>("SpaceCenter", "ControlSurface_get_AvailableTorque", args);
     }
 
     /// <summary>
@@ -119,7 +119,7 @@ public class ControlSurface : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "ControlSurface_get_Deployed", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "ControlSurface_get_Deployed", args);
     }
 
     /// <summary>
@@ -133,7 +133,7 @@ public class ControlSurface : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "ControlSurface_get_Deployed", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "ControlSurface_get_Deployed", args);
     }
 
     /// <summary>
@@ -148,7 +148,7 @@ public class ControlSurface : RemoteObject
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "ControlSurface_set_Deployed", args);
+        InvokeVoid("SpaceCenter", "ControlSurface_set_Deployed", args);
     }
 
     /// <summary>
@@ -164,7 +164,7 @@ public class ControlSurface : RemoteObject
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "ControlSurface_set_Deployed", args);
+        await InvokeVoidAsync("SpaceCenter", "ControlSurface_set_Deployed", args);
     }
 
     /// <summary>
@@ -177,7 +177,7 @@ public class ControlSurface : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "ControlSurface_get_Inverted", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "ControlSurface_get_Inverted", args);
     }
 
     /// <summary>
@@ -191,7 +191,7 @@ public class ControlSurface : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "ControlSurface_get_Inverted", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "ControlSurface_get_Inverted", args);
     }
 
     /// <summary>
@@ -206,7 +206,7 @@ public class ControlSurface : RemoteObject
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "ControlSurface_set_Inverted", args);
+        InvokeVoid("SpaceCenter", "ControlSurface_set_Inverted", args);
     }
 
     /// <summary>
@@ -222,7 +222,7 @@ public class ControlSurface : RemoteObject
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "ControlSurface_set_Inverted", args);
+        await InvokeVoidAsync("SpaceCenter", "ControlSurface_set_Inverted", args);
     }
 
     /// <summary>
@@ -235,7 +235,7 @@ public class ControlSurface : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Part>("SpaceCenter", "ControlSurface_get_Part", args);
+        return InvokeNonNullable<Part>("SpaceCenter", "ControlSurface_get_Part", args);
     }
 
     /// <summary>
@@ -249,7 +249,7 @@ public class ControlSurface : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Part>("SpaceCenter", "ControlSurface_get_Part", args);
+        return await InvokeNonNullableAsync<Part>("SpaceCenter", "ControlSurface_get_Part", args);
     }
 
     /// <summary>
@@ -262,7 +262,7 @@ public class ControlSurface : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "ControlSurface_get_PitchEnabled", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "ControlSurface_get_PitchEnabled", args);
     }
 
     /// <summary>
@@ -276,7 +276,7 @@ public class ControlSurface : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "ControlSurface_get_PitchEnabled", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "ControlSurface_get_PitchEnabled", args);
     }
 
     /// <summary>
@@ -291,7 +291,7 @@ public class ControlSurface : RemoteObject
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "ControlSurface_set_PitchEnabled", args);
+        InvokeVoid("SpaceCenter", "ControlSurface_set_PitchEnabled", args);
     }
 
     /// <summary>
@@ -307,7 +307,7 @@ public class ControlSurface : RemoteObject
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "ControlSurface_set_PitchEnabled", args);
+        await InvokeVoidAsync("SpaceCenter", "ControlSurface_set_PitchEnabled", args);
     }
 
     /// <summary>
@@ -320,7 +320,7 @@ public class ControlSurface : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "ControlSurface_get_RollEnabled", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "ControlSurface_get_RollEnabled", args);
     }
 
     /// <summary>
@@ -334,7 +334,7 @@ public class ControlSurface : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "ControlSurface_get_RollEnabled", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "ControlSurface_get_RollEnabled", args);
     }
 
     /// <summary>
@@ -349,7 +349,7 @@ public class ControlSurface : RemoteObject
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "ControlSurface_set_RollEnabled", args);
+        InvokeVoid("SpaceCenter", "ControlSurface_set_RollEnabled", args);
     }
 
     /// <summary>
@@ -365,7 +365,7 @@ public class ControlSurface : RemoteObject
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "ControlSurface_set_RollEnabled", args);
+        await InvokeVoidAsync("SpaceCenter", "ControlSurface_set_RollEnabled", args);
     }
 
     /// <summary>
@@ -378,7 +378,7 @@ public class ControlSurface : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "ControlSurface_get_SurfaceArea", args);
+        return InvokeNonNullable<float>("SpaceCenter", "ControlSurface_get_SurfaceArea", args);
     }
 
     /// <summary>
@@ -392,7 +392,7 @@ public class ControlSurface : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "ControlSurface_get_SurfaceArea", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "ControlSurface_get_SurfaceArea", args);
     }
 
     /// <summary>
@@ -405,7 +405,7 @@ public class ControlSurface : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "ControlSurface_get_YawEnabled", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "ControlSurface_get_YawEnabled", args);
     }
 
     /// <summary>
@@ -419,7 +419,7 @@ public class ControlSurface : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "ControlSurface_get_YawEnabled", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "ControlSurface_get_YawEnabled", args);
     }
 
     /// <summary>
@@ -434,7 +434,7 @@ public class ControlSurface : RemoteObject
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "ControlSurface_set_YawEnabled", args);
+        InvokeVoid("SpaceCenter", "ControlSurface_set_YawEnabled", args);
     }
 
     /// <summary>
@@ -450,6 +450,6 @@ public class ControlSurface : RemoteObject
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "ControlSurface_set_YawEnabled", args);
+        await InvokeVoidAsync("SpaceCenter", "ControlSurface_set_YawEnabled", args);
     }
 }

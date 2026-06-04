@@ -26,7 +26,7 @@ public class RoboticPiston : RemoteObject
         {
             this
         };
-        Connection.Invoke("SpaceCenter", "RoboticPiston_MoveHome", args);
+        InvokeVoid("SpaceCenter", "RoboticPiston_MoveHome", args);
     }
 
     /// <summary>
@@ -40,7 +40,7 @@ public class RoboticPiston : RemoteObject
         {
             this
         };
-        await Connection.InvokeAsync("SpaceCenter", "RoboticPiston_MoveHome", args);
+        await InvokeVoidAsync("SpaceCenter", "RoboticPiston_MoveHome", args);
     }
 
     /// <summary>
@@ -53,7 +53,7 @@ public class RoboticPiston : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "RoboticPiston_get_CurrentExtension", args);
+        return InvokeNonNullable<float>("SpaceCenter", "RoboticPiston_get_CurrentExtension", args);
     }
 
     /// <summary>
@@ -67,7 +67,7 @@ public class RoboticPiston : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "RoboticPiston_get_CurrentExtension", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "RoboticPiston_get_CurrentExtension", args);
     }
 
     /// <summary>
@@ -80,7 +80,7 @@ public class RoboticPiston : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "RoboticPiston_get_Damping", args);
+        return InvokeNonNullable<float>("SpaceCenter", "RoboticPiston_get_Damping", args);
     }
 
     /// <summary>
@@ -94,7 +94,7 @@ public class RoboticPiston : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "RoboticPiston_get_Damping", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "RoboticPiston_get_Damping", args);
     }
 
     /// <summary>
@@ -109,7 +109,7 @@ public class RoboticPiston : RemoteObject
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "RoboticPiston_set_Damping", args);
+        InvokeVoid("SpaceCenter", "RoboticPiston_set_Damping", args);
     }
 
     /// <summary>
@@ -125,7 +125,7 @@ public class RoboticPiston : RemoteObject
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "RoboticPiston_set_Damping", args);
+        await InvokeVoidAsync("SpaceCenter", "RoboticPiston_set_Damping", args);
     }
 
     /// <summary>
@@ -138,7 +138,7 @@ public class RoboticPiston : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "RoboticPiston_get_Locked", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "RoboticPiston_get_Locked", args);
     }
 
     /// <summary>
@@ -152,7 +152,7 @@ public class RoboticPiston : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "RoboticPiston_get_Locked", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "RoboticPiston_get_Locked", args);
     }
 
     /// <summary>
@@ -167,7 +167,7 @@ public class RoboticPiston : RemoteObject
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "RoboticPiston_set_Locked", args);
+        InvokeVoid("SpaceCenter", "RoboticPiston_set_Locked", args);
     }
 
     /// <summary>
@@ -183,7 +183,7 @@ public class RoboticPiston : RemoteObject
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "RoboticPiston_set_Locked", args);
+        await InvokeVoidAsync("SpaceCenter", "RoboticPiston_set_Locked", args);
     }
 
     /// <summary>
@@ -196,7 +196,7 @@ public class RoboticPiston : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "RoboticPiston_get_MotorEngaged", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "RoboticPiston_get_MotorEngaged", args);
     }
 
     /// <summary>
@@ -210,7 +210,7 @@ public class RoboticPiston : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "RoboticPiston_get_MotorEngaged", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "RoboticPiston_get_MotorEngaged", args);
     }
 
     /// <summary>
@@ -225,7 +225,7 @@ public class RoboticPiston : RemoteObject
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "RoboticPiston_set_MotorEngaged", args);
+        InvokeVoid("SpaceCenter", "RoboticPiston_set_MotorEngaged", args);
     }
 
     /// <summary>
@@ -241,7 +241,7 @@ public class RoboticPiston : RemoteObject
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "RoboticPiston_set_MotorEngaged", args);
+        await InvokeVoidAsync("SpaceCenter", "RoboticPiston_set_MotorEngaged", args);
     }
 
     /// <summary>
@@ -254,7 +254,7 @@ public class RoboticPiston : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Part>("SpaceCenter", "RoboticPiston_get_Part", args);
+        return InvokeNonNullable<Part>("SpaceCenter", "RoboticPiston_get_Part", args);
     }
 
     /// <summary>
@@ -268,7 +268,7 @@ public class RoboticPiston : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Part>("SpaceCenter", "RoboticPiston_get_Part", args);
+        return await InvokeNonNullableAsync<Part>("SpaceCenter", "RoboticPiston_get_Part", args);
     }
 
     /// <summary>
@@ -281,7 +281,7 @@ public class RoboticPiston : RemoteObject
         {
             this
         };
-        var result = Connection.Invoke<float>("SpaceCenter", "RoboticPiston_get_Rate", args);
+        var result = InvokeNonNullable<float>("SpaceCenter", "RoboticPiston_get_Rate", args);
         return Angle.FromDegrees(result);
     }
 
@@ -296,7 +296,7 @@ public class RoboticPiston : RemoteObject
         {
             this
         };
-        var result = await Connection.InvokeAsync<float>("SpaceCenter", "RoboticPiston_get_Rate", args);
+        var result = await InvokeNonNullableAsync<float>("SpaceCenter", "RoboticPiston_get_Rate", args);
         return Angle.FromDegrees(result);
     }
 
@@ -312,7 +312,7 @@ public class RoboticPiston : RemoteObject
             this,
             (float)value.Degrees
         };
-        Connection.Invoke("SpaceCenter", "RoboticPiston_set_Rate", args);
+        InvokeVoid("SpaceCenter", "RoboticPiston_set_Rate", args);
     }
 
     /// <summary>
@@ -328,7 +328,7 @@ public class RoboticPiston : RemoteObject
             this,
             (float)value.Degrees
         };
-        await Connection.InvokeAsync("SpaceCenter", "RoboticPiston_set_Rate", args);
+        await InvokeVoidAsync("SpaceCenter", "RoboticPiston_set_Rate", args);
     }
 
     /// <summary>
@@ -341,7 +341,7 @@ public class RoboticPiston : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "RoboticPiston_get_TargetExtension", args);
+        return InvokeNonNullable<float>("SpaceCenter", "RoboticPiston_get_TargetExtension", args);
     }
 
     /// <summary>
@@ -355,7 +355,7 @@ public class RoboticPiston : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "RoboticPiston_get_TargetExtension", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "RoboticPiston_get_TargetExtension", args);
     }
 
     /// <summary>
@@ -370,7 +370,7 @@ public class RoboticPiston : RemoteObject
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "RoboticPiston_set_TargetExtension", args);
+        InvokeVoid("SpaceCenter", "RoboticPiston_set_TargetExtension", args);
     }
 
     /// <summary>
@@ -386,6 +386,6 @@ public class RoboticPiston : RemoteObject
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "RoboticPiston_set_TargetExtension", args);
+        await InvokeVoidAsync("SpaceCenter", "RoboticPiston_set_TargetExtension", args);
     }
 }

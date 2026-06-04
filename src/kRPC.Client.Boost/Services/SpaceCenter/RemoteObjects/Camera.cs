@@ -27,7 +27,7 @@ public class Camera : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "Camera_get_DefaultDistance", args);
+        return InvokeNonNullable<float>("SpaceCenter", "Camera_get_DefaultDistance", args);
     }
 
     /// <summary>
@@ -41,7 +41,7 @@ public class Camera : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "Camera_get_DefaultDistance", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "Camera_get_DefaultDistance", args);
     }
 
     /// <summary>
@@ -55,7 +55,7 @@ public class Camera : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "Camera_get_Distance", args);
+        return InvokeNonNullable<float>("SpaceCenter", "Camera_get_Distance", args);
     }
 
     /// <summary>
@@ -70,7 +70,7 @@ public class Camera : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "Camera_get_Distance", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "Camera_get_Distance", args);
     }
 
     /// <summary>
@@ -86,7 +86,7 @@ public class Camera : RemoteObject
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "Camera_set_Distance", args);
+        InvokeVoid("SpaceCenter", "Camera_set_Distance", args);
     }
 
     /// <summary>
@@ -103,7 +103,7 @@ public class Camera : RemoteObject
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "Camera_set_Distance", args);
+        await InvokeVoidAsync("SpaceCenter", "Camera_set_Distance", args);
     }
 
     /// <summary>
@@ -118,7 +118,7 @@ public class Camera : RemoteObject
         {
             this
         };
-        return Connection.Invoke<CelestialBody?>("SpaceCenter", "Camera_get_FocussedBody", args);
+        return InvokeNullable<CelestialBody>("SpaceCenter", "Camera_get_FocussedBody", args);
     }
 
     /// <summary>
@@ -134,7 +134,7 @@ public class Camera : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<CelestialBody?>("SpaceCenter", "Camera_get_FocussedBody", args);
+        return await InvokeNullableAsync<CelestialBody>("SpaceCenter", "Camera_get_FocussedBody", args);
     }
 
     /// <summary>
@@ -150,7 +150,7 @@ public class Camera : RemoteObject
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "Camera_set_FocussedBody", args);
+        InvokeVoid("SpaceCenter", "Camera_set_FocussedBody", args);
     }
 
     /// <summary>
@@ -167,7 +167,7 @@ public class Camera : RemoteObject
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "Camera_set_FocussedBody", args);
+        await InvokeVoidAsync("SpaceCenter", "Camera_set_FocussedBody", args);
     }
 
     /// <summary>
@@ -182,7 +182,7 @@ public class Camera : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Node?>("SpaceCenter", "Camera_get_FocussedNode", args);
+        return InvokeNullable<Node>("SpaceCenter", "Camera_get_FocussedNode", args);
     }
 
     /// <summary>
@@ -198,7 +198,7 @@ public class Camera : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Node?>("SpaceCenter", "Camera_get_FocussedNode", args);
+        return await InvokeNullableAsync<Node>("SpaceCenter", "Camera_get_FocussedNode", args);
     }
 
     /// <summary>
@@ -214,7 +214,7 @@ public class Camera : RemoteObject
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "Camera_set_FocussedNode", args);
+        InvokeVoid("SpaceCenter", "Camera_set_FocussedNode", args);
     }
 
     /// <summary>
@@ -231,7 +231,7 @@ public class Camera : RemoteObject
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "Camera_set_FocussedNode", args);
+        await InvokeVoidAsync("SpaceCenter", "Camera_set_FocussedNode", args);
     }
 
     /// <summary>
@@ -246,7 +246,7 @@ public class Camera : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Vessel?>("SpaceCenter", "Camera_get_FocussedVessel", args);
+        return InvokeNullable<Vessel>("SpaceCenter", "Camera_get_FocussedVessel", args);
     }
 
     /// <summary>
@@ -262,7 +262,7 @@ public class Camera : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Vessel?>("SpaceCenter", "Camera_get_FocussedVessel", args);
+        return await InvokeNullableAsync<Vessel>("SpaceCenter", "Camera_get_FocussedVessel", args);
     }
 
     /// <summary>
@@ -278,7 +278,7 @@ public class Camera : RemoteObject
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "Camera_set_FocussedVessel", args);
+        InvokeVoid("SpaceCenter", "Camera_set_FocussedVessel", args);
     }
 
     /// <summary>
@@ -295,7 +295,7 @@ public class Camera : RemoteObject
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "Camera_set_FocussedVessel", args);
+        await InvokeVoidAsync("SpaceCenter", "Camera_set_FocussedVessel", args);
     }
 
     /// <summary>
@@ -308,7 +308,7 @@ public class Camera : RemoteObject
         {
             this
         };
-        var result = Connection.Invoke<float>("SpaceCenter", "Camera_get_Heading", args);
+        var result = InvokeNonNullable<float>("SpaceCenter", "Camera_get_Heading", args);
         return Angle.FromDegrees(result);
     }
 
@@ -323,7 +323,7 @@ public class Camera : RemoteObject
         {
             this
         };
-        var result = await Connection.InvokeAsync<float>("SpaceCenter", "Camera_get_Heading", args);
+        var result = await InvokeNonNullableAsync<float>("SpaceCenter", "Camera_get_Heading", args);
         return Angle.FromDegrees(result);
     }
 
@@ -339,7 +339,7 @@ public class Camera : RemoteObject
             this,
             (float)value.Degrees
         };
-        Connection.Invoke("SpaceCenter", "Camera_set_Heading", args);
+        InvokeVoid("SpaceCenter", "Camera_set_Heading", args);
     }
 
     /// <summary>
@@ -355,7 +355,7 @@ public class Camera : RemoteObject
             this,
             (float)value.Degrees
         };
-        await Connection.InvokeAsync("SpaceCenter", "Camera_set_Heading", args);
+        await InvokeVoidAsync("SpaceCenter", "Camera_set_Heading", args);
     }
 
     /// <summary>
@@ -368,7 +368,7 @@ public class Camera : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "Camera_get_MaxDistance", args);
+        return InvokeNonNullable<float>("SpaceCenter", "Camera_get_MaxDistance", args);
     }
 
     /// <summary>
@@ -382,7 +382,7 @@ public class Camera : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "Camera_get_MaxDistance", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "Camera_get_MaxDistance", args);
     }
 
     /// <summary>
@@ -395,7 +395,7 @@ public class Camera : RemoteObject
         {
             this
         };
-        var result = Connection.Invoke<float>("SpaceCenter", "Camera_get_MaxPitch", args);
+        var result = InvokeNonNullable<float>("SpaceCenter", "Camera_get_MaxPitch", args);
         return Angle.FromDegrees(result);
     }
 
@@ -410,7 +410,7 @@ public class Camera : RemoteObject
         {
             this
         };
-        var result = await Connection.InvokeAsync<float>("SpaceCenter", "Camera_get_MaxPitch", args);
+        var result = await InvokeNonNullableAsync<float>("SpaceCenter", "Camera_get_MaxPitch", args);
         return Angle.FromDegrees(result);
     }
 
@@ -424,7 +424,7 @@ public class Camera : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "Camera_get_MinDistance", args);
+        return InvokeNonNullable<float>("SpaceCenter", "Camera_get_MinDistance", args);
     }
 
     /// <summary>
@@ -438,7 +438,7 @@ public class Camera : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "Camera_get_MinDistance", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "Camera_get_MinDistance", args);
     }
 
     /// <summary>
@@ -451,7 +451,7 @@ public class Camera : RemoteObject
         {
             this
         };
-        var result = Connection.Invoke<float>("SpaceCenter", "Camera_get_MinPitch", args);
+        var result = InvokeNonNullable<float>("SpaceCenter", "Camera_get_MinPitch", args);
         return Angle.FromDegrees(result);
     }
 
@@ -466,7 +466,7 @@ public class Camera : RemoteObject
         {
             this
         };
-        var result = await Connection.InvokeAsync<float>("SpaceCenter", "Camera_get_MinPitch", args);
+        var result = await InvokeNonNullableAsync<float>("SpaceCenter", "Camera_get_MinPitch", args);
         return Angle.FromDegrees(result);
     }
 
@@ -480,7 +480,7 @@ public class Camera : RemoteObject
         {
             this
         };
-        return Connection.Invoke<CameraMode>("SpaceCenter", "Camera_get_Mode", args);
+        return InvokeNonNullable<CameraMode>("SpaceCenter", "Camera_get_Mode", args);
     }
 
     /// <summary>
@@ -494,7 +494,7 @@ public class Camera : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<CameraMode>("SpaceCenter", "Camera_get_Mode", args);
+        return await InvokeNonNullableAsync<CameraMode>("SpaceCenter", "Camera_get_Mode", args);
     }
 
     /// <summary>
@@ -509,7 +509,7 @@ public class Camera : RemoteObject
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "Camera_set_Mode", args);
+        InvokeVoid("SpaceCenter", "Camera_set_Mode", args);
     }
 
     /// <summary>
@@ -525,7 +525,7 @@ public class Camera : RemoteObject
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "Camera_set_Mode", args);
+        await InvokeVoidAsync("SpaceCenter", "Camera_set_Mode", args);
     }
 
     /// <summary>
@@ -539,7 +539,7 @@ public class Camera : RemoteObject
         {
             this
         };
-        var result = Connection.Invoke<float>("SpaceCenter", "Camera_get_Pitch", args);
+        var result = InvokeNonNullable<float>("SpaceCenter", "Camera_get_Pitch", args);
         return Angle.FromDegrees(result);
     }
 
@@ -555,7 +555,7 @@ public class Camera : RemoteObject
         {
             this
         };
-        var result = await Connection.InvokeAsync<float>("SpaceCenter", "Camera_get_Pitch", args);
+        var result = await InvokeNonNullableAsync<float>("SpaceCenter", "Camera_get_Pitch", args);
         return Angle.FromDegrees(result);
     }
 
@@ -572,7 +572,7 @@ public class Camera : RemoteObject
             this,
             (float)value.Degrees
         };
-        Connection.Invoke("SpaceCenter", "Camera_set_Pitch", args);
+        InvokeVoid("SpaceCenter", "Camera_set_Pitch", args);
     }
 
     /// <summary>
@@ -589,6 +589,6 @@ public class Camera : RemoteObject
             this,
             (float)value.Degrees
         };
-        await Connection.InvokeAsync("SpaceCenter", "Camera_set_Pitch", args);
+        await InvokeVoidAsync("SpaceCenter", "Camera_set_Pitch", args);
     }
 }

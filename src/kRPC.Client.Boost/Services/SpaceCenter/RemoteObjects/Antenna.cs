@@ -25,7 +25,7 @@ public class Antenna : RemoteObject
         {
             this
         };
-        Connection.Invoke("SpaceCenter", "Antenna_Cancel", args);
+        InvokeVoid("SpaceCenter", "Antenna_Cancel", args);
     }
 
     /// <summary>
@@ -39,7 +39,7 @@ public class Antenna : RemoteObject
         {
             this
         };
-        await Connection.InvokeAsync("SpaceCenter", "Antenna_Cancel", args);
+        await InvokeVoidAsync("SpaceCenter", "Antenna_Cancel", args);
     }
 
     /// <summary>
@@ -52,7 +52,7 @@ public class Antenna : RemoteObject
         {
             this
         };
-        Connection.Invoke("SpaceCenter", "Antenna_Transmit", args);
+        InvokeVoid("SpaceCenter", "Antenna_Transmit", args);
     }
 
     /// <summary>
@@ -66,7 +66,7 @@ public class Antenna : RemoteObject
         {
             this
         };
-        await Connection.InvokeAsync("SpaceCenter", "Antenna_Transmit", args);
+        await InvokeVoidAsync("SpaceCenter", "Antenna_Transmit", args);
     }
 
     /// <summary>
@@ -79,7 +79,7 @@ public class Antenna : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "Antenna_get_AllowPartial", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "Antenna_get_AllowPartial", args);
     }
 
     /// <summary>
@@ -93,7 +93,7 @@ public class Antenna : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "Antenna_get_AllowPartial", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "Antenna_get_AllowPartial", args);
     }
 
     /// <summary>
@@ -108,7 +108,7 @@ public class Antenna : RemoteObject
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "Antenna_set_AllowPartial", args);
+        InvokeVoid("SpaceCenter", "Antenna_set_AllowPartial", args);
     }
 
     /// <summary>
@@ -124,7 +124,7 @@ public class Antenna : RemoteObject
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "Antenna_set_AllowPartial", args);
+        await InvokeVoidAsync("SpaceCenter", "Antenna_set_AllowPartial", args);
     }
 
     /// <summary>
@@ -137,7 +137,7 @@ public class Antenna : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "Antenna_get_CanTransmit", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "Antenna_get_CanTransmit", args);
     }
 
     /// <summary>
@@ -151,7 +151,7 @@ public class Antenna : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "Antenna_get_CanTransmit", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "Antenna_get_CanTransmit", args);
     }
 
     /// <summary>
@@ -165,7 +165,7 @@ public class Antenna : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "Antenna_get_Combinable", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "Antenna_get_Combinable", args);
     }
 
     /// <summary>
@@ -180,7 +180,7 @@ public class Antenna : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "Antenna_get_Combinable", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "Antenna_get_Combinable", args);
     }
 
     /// <summary>
@@ -193,7 +193,7 @@ public class Antenna : RemoteObject
         {
             this
         };
-        return Connection.Invoke<double>("SpaceCenter", "Antenna_get_CombinableExponent", args);
+        return InvokeNonNullable<double>("SpaceCenter", "Antenna_get_CombinableExponent", args);
     }
 
     /// <summary>
@@ -207,7 +207,7 @@ public class Antenna : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<double>("SpaceCenter", "Antenna_get_CombinableExponent", args);
+        return await InvokeNonNullableAsync<double>("SpaceCenter", "Antenna_get_CombinableExponent", args);
     }
 
     /// <summary>
@@ -220,7 +220,7 @@ public class Antenna : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "Antenna_get_Deployable", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "Antenna_get_Deployable", args);
     }
 
     /// <summary>
@@ -234,7 +234,7 @@ public class Antenna : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "Antenna_get_Deployable", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "Antenna_get_Deployable", args);
     }
 
     /// <summary>
@@ -251,7 +251,7 @@ public class Antenna : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "Antenna_get_Deployed", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "Antenna_get_Deployed", args);
     }
 
     /// <summary>
@@ -269,7 +269,7 @@ public class Antenna : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "Antenna_get_Deployed", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "Antenna_get_Deployed", args);
     }
 
     /// <summary>
@@ -284,7 +284,7 @@ public class Antenna : RemoteObject
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "Antenna_set_Deployed", args);
+        InvokeVoid("SpaceCenter", "Antenna_set_Deployed", args);
     }
 
     /// <summary>
@@ -300,7 +300,7 @@ public class Antenna : RemoteObject
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "Antenna_set_Deployed", args);
+        await InvokeVoidAsync("SpaceCenter", "Antenna_set_Deployed", args);
     }
 
     /// <summary>
@@ -313,7 +313,7 @@ public class Antenna : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "Antenna_get_PacketInterval", args);
+        return InvokeNonNullable<float>("SpaceCenter", "Antenna_get_PacketInterval", args);
     }
 
     /// <summary>
@@ -327,7 +327,7 @@ public class Antenna : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "Antenna_get_PacketInterval", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "Antenna_get_PacketInterval", args);
     }
 
     /// <summary>
@@ -340,7 +340,7 @@ public class Antenna : RemoteObject
         {
             this
         };
-        return Connection.Invoke<double>("SpaceCenter", "Antenna_get_PacketResourceCost", args);
+        return InvokeNonNullable<double>("SpaceCenter", "Antenna_get_PacketResourceCost", args);
     }
 
     /// <summary>
@@ -354,7 +354,7 @@ public class Antenna : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<double>("SpaceCenter", "Antenna_get_PacketResourceCost", args);
+        return await InvokeNonNullableAsync<double>("SpaceCenter", "Antenna_get_PacketResourceCost", args);
     }
 
     /// <summary>
@@ -367,7 +367,7 @@ public class Antenna : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "Antenna_get_PacketSize", args);
+        return InvokeNonNullable<float>("SpaceCenter", "Antenna_get_PacketSize", args);
     }
 
     /// <summary>
@@ -381,7 +381,7 @@ public class Antenna : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "Antenna_get_PacketSize", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "Antenna_get_PacketSize", args);
     }
 
     /// <summary>
@@ -394,7 +394,7 @@ public class Antenna : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Part>("SpaceCenter", "Antenna_get_Part", args);
+        return InvokeNonNullable<Part>("SpaceCenter", "Antenna_get_Part", args);
     }
 
     /// <summary>
@@ -408,7 +408,7 @@ public class Antenna : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Part>("SpaceCenter", "Antenna_get_Part", args);
+        return await InvokeNonNullableAsync<Part>("SpaceCenter", "Antenna_get_Part", args);
     }
 
     /// <summary>
@@ -421,7 +421,7 @@ public class Antenna : RemoteObject
         {
             this
         };
-        return Connection.Invoke<double>("SpaceCenter", "Antenna_get_Power", args);
+        return InvokeNonNullable<double>("SpaceCenter", "Antenna_get_Power", args);
     }
 
     /// <summary>
@@ -435,7 +435,7 @@ public class Antenna : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<double>("SpaceCenter", "Antenna_get_Power", args);
+        return await InvokeNonNullableAsync<double>("SpaceCenter", "Antenna_get_Power", args);
     }
 
     /// <summary>
@@ -448,7 +448,7 @@ public class Antenna : RemoteObject
         {
             this
         };
-        return Connection.Invoke<AntennaState>("SpaceCenter", "Antenna_get_State", args);
+        return InvokeNonNullable<AntennaState>("SpaceCenter", "Antenna_get_State", args);
     }
 
     /// <summary>
@@ -462,6 +462,6 @@ public class Antenna : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<AntennaState>("SpaceCenter", "Antenna_get_State", args);
+        return await InvokeNonNullableAsync<AntennaState>("SpaceCenter", "Antenna_get_State", args);
     }
 }

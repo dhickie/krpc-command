@@ -32,7 +32,7 @@ public class CelestialBody : RemoteObject
             position,
             referenceFrame
         };
-        return Connection.Invoke<double>("SpaceCenter", "CelestialBody_AltitudeAtPosition", args);
+        return InvokeNonNullable<double>("SpaceCenter", "CelestialBody_AltitudeAtPosition", args);
     }
 
     /// <summary>
@@ -50,7 +50,7 @@ public class CelestialBody : RemoteObject
             position,
             referenceFrame
         };
-        return await Connection.InvokeAsync<double>("SpaceCenter", "CelestialBody_AltitudeAtPosition", args);
+        return await InvokeNonNullableAsync<double>("SpaceCenter", "CelestialBody_AltitudeAtPosition", args);
     }
 
     /// <summary>
@@ -69,7 +69,7 @@ public class CelestialBody : RemoteObject
             this,
             referenceFrame
         };
-        return Connection.Invoke<Vector3D>("SpaceCenter", "CelestialBody_AngularVelocity", args);
+        return InvokeNonNullable<Vector3D>("SpaceCenter", "CelestialBody_AngularVelocity", args);
     }
 
     /// <summary>
@@ -89,7 +89,7 @@ public class CelestialBody : RemoteObject
             this,
             referenceFrame
         };
-        return await Connection.InvokeAsync<Vector3D>("SpaceCenter", "CelestialBody_AngularVelocity", args);
+        return await InvokeNonNullableAsync<Vector3D>("SpaceCenter", "CelestialBody_AngularVelocity", args);
     }
 
     /// <summary>
@@ -107,7 +107,7 @@ public class CelestialBody : RemoteObject
             position,
             referenceFrame
         };
-        return Connection.Invoke<double>("SpaceCenter", "CelestialBody_AtmosphericDensityAtPosition", args);
+        return InvokeNonNullable<double>("SpaceCenter", "CelestialBody_AtmosphericDensityAtPosition", args);
     }
 
     /// <summary>
@@ -126,7 +126,7 @@ public class CelestialBody : RemoteObject
             position,
             referenceFrame
         };
-        return await Connection.InvokeAsync<double>("SpaceCenter", "CelestialBody_AtmosphericDensityAtPosition", args);
+        return await InvokeNonNullableAsync<double>("SpaceCenter", "CelestialBody_AtmosphericDensityAtPosition", args);
     }
 
     /// <summary>
@@ -145,7 +145,7 @@ public class CelestialBody : RemoteObject
             latitude.Degrees,
             longitude.Degrees
         };
-        return Connection.Invoke<double>("SpaceCenter", "CelestialBody_BedrockHeight", args);
+        return InvokeNonNullable<double>("SpaceCenter", "CelestialBody_BedrockHeight", args);
     }
 
     /// <summary>
@@ -165,7 +165,7 @@ public class CelestialBody : RemoteObject
             latitude.Degrees,
             longitude.Degrees
         };
-        return await Connection.InvokeAsync<double>("SpaceCenter", "CelestialBody_BedrockHeight", args);
+        return await InvokeNonNullableAsync<double>("SpaceCenter", "CelestialBody_BedrockHeight", args);
     }
 
     /// <summary>
@@ -186,7 +186,7 @@ public class CelestialBody : RemoteObject
             longitude.Degrees,
             referenceFrame
         };
-        return Connection.Invoke<Vector3D>("SpaceCenter", "CelestialBody_BedrockPosition", args);
+        return InvokeNonNullable<Vector3D>("SpaceCenter", "CelestialBody_BedrockPosition", args);
     }
 
     /// <summary>
@@ -208,7 +208,7 @@ public class CelestialBody : RemoteObject
             longitude.Degrees,
             referenceFrame
         };
-        return await Connection.InvokeAsync<Vector3D>("SpaceCenter", "CelestialBody_BedrockPosition", args);
+        return await InvokeNonNullableAsync<Vector3D>("SpaceCenter", "CelestialBody_BedrockPosition", args);
     }
 
     /// <summary>
@@ -223,7 +223,7 @@ public class CelestialBody : RemoteObject
             latitude.Degrees,
             longitude.Degrees
         };
-        return Connection.Invoke<string>("SpaceCenter", "CelestialBody_BiomeAt", args);
+        return InvokeNonNullable<string>("SpaceCenter", "CelestialBody_BiomeAt", args);
     }
 
     /// <summary>
@@ -239,7 +239,7 @@ public class CelestialBody : RemoteObject
             latitude.Degrees,
             longitude.Degrees
         };
-        return await Connection.InvokeAsync<string>("SpaceCenter", "CelestialBody_BiomeAt", args);
+        return await InvokeNonNullableAsync<string>("SpaceCenter", "CelestialBody_BiomeAt", args);
     }
 
     /// <summary>
@@ -261,7 +261,7 @@ public class CelestialBody : RemoteObject
             this,
             altitude
         };
-        return Connection.Invoke<double>("SpaceCenter", "CelestialBody_DensityAt", args);
+        return InvokeNonNullable<double>("SpaceCenter", "CelestialBody_DensityAt", args);
     }
 
     /// <summary>
@@ -284,7 +284,7 @@ public class CelestialBody : RemoteObject
             this,
             altitude
         };
-        return await Connection.InvokeAsync<double>("SpaceCenter", "CelestialBody_DensityAt", args);
+        return await InvokeNonNullableAsync<double>("SpaceCenter", "CelestialBody_DensityAt", args);
     }
 
     /// <summary>
@@ -302,7 +302,7 @@ public class CelestialBody : RemoteObject
             this,
             referenceFrame
         };
-        return Connection.Invoke<Vector3D>("SpaceCenter", "CelestialBody_Direction", args);
+        return InvokeNonNullable<Vector3D>("SpaceCenter", "CelestialBody_Direction", args);
     }
 
     /// <summary>
@@ -321,7 +321,7 @@ public class CelestialBody : RemoteObject
             this,
             referenceFrame
         };
-        return await Connection.InvokeAsync<Vector3D>("SpaceCenter", "CelestialBody_Direction", args);
+        return await InvokeNonNullableAsync<Vector3D>("SpaceCenter", "CelestialBody_Direction", args);
     }
 
     /// <summary>
@@ -338,7 +338,7 @@ public class CelestialBody : RemoteObject
             position,
             referenceFrame
         };
-        var result = Connection.Invoke<double>("SpaceCenter", "CelestialBody_LatitudeAtPosition", args);
+        var result = InvokeNonNullable<double>("SpaceCenter", "CelestialBody_LatitudeAtPosition", args);
         return Angle.FromDegrees(result);
     }
 
@@ -357,7 +357,7 @@ public class CelestialBody : RemoteObject
             position,
             referenceFrame
         };
-        var result = await Connection.InvokeAsync<double>("SpaceCenter", "CelestialBody_LatitudeAtPosition", args);
+        var result = await InvokeNonNullableAsync<double>("SpaceCenter", "CelestialBody_LatitudeAtPosition", args);
         return Angle.FromDegrees(result);
     }
 
@@ -375,7 +375,7 @@ public class CelestialBody : RemoteObject
             position,
             referenceFrame
         };
-        var result = Connection.Invoke<double>("SpaceCenter", "CelestialBody_LongitudeAtPosition", args);
+        var result = InvokeNonNullable<double>("SpaceCenter", "CelestialBody_LongitudeAtPosition", args);
         return Angle.FromDegrees(result);
     }
 
@@ -394,7 +394,7 @@ public class CelestialBody : RemoteObject
             position,
             referenceFrame
         };
-        var result = await Connection.InvokeAsync<double>("SpaceCenter", "CelestialBody_LongitudeAtPosition", args);
+        var result = await InvokeNonNullableAsync<double>("SpaceCenter", "CelestialBody_LongitudeAtPosition", args);
         return Angle.FromDegrees(result);
     }
 
@@ -416,7 +416,7 @@ public class CelestialBody : RemoteObject
             longitude.Degrees,
             referenceFrame
         };
-        return Connection.Invoke<Vector3D>("SpaceCenter", "CelestialBody_MSLPosition", args);
+        return InvokeNonNullable<Vector3D>("SpaceCenter", "CelestialBody_MSLPosition", args);
     }
 
     /// <summary>
@@ -438,7 +438,7 @@ public class CelestialBody : RemoteObject
             longitude.Degrees,
             referenceFrame
         };
-        return await Connection.InvokeAsync<Vector3D>("SpaceCenter", "CelestialBody_MSLPosition", args);
+        return await InvokeNonNullableAsync<Vector3D>("SpaceCenter", "CelestialBody_MSLPosition", args);
     }
 
     /// <summary>
@@ -455,7 +455,7 @@ public class CelestialBody : RemoteObject
             this,
             referenceFrame
         };
-        return Connection.Invoke<Vector3D>("SpaceCenter", "CelestialBody_Position", args);
+        return InvokeNonNullable<Vector3D>("SpaceCenter", "CelestialBody_Position", args);
     }
 
     /// <summary>
@@ -473,7 +473,7 @@ public class CelestialBody : RemoteObject
             this,
             referenceFrame
         };
-        return await Connection.InvokeAsync<Vector3D>("SpaceCenter", "CelestialBody_Position", args);
+        return await InvokeNonNullableAsync<Vector3D>("SpaceCenter", "CelestialBody_Position", args);
     }
 
     /// <summary>
@@ -495,7 +495,7 @@ public class CelestialBody : RemoteObject
             altitude,
             referenceFrame
         };
-        return Connection.Invoke<Vector3D>("SpaceCenter", "CelestialBody_PositionAtAltitude", args);
+        return InvokeNonNullable<Vector3D>("SpaceCenter", "CelestialBody_PositionAtAltitude", args);
     }
 
     /// <summary>
@@ -518,7 +518,7 @@ public class CelestialBody : RemoteObject
             altitude,
             referenceFrame
         };
-        return await Connection.InvokeAsync<Vector3D>("SpaceCenter", "CelestialBody_PositionAtAltitude", args);
+        return await InvokeNonNullableAsync<Vector3D>("SpaceCenter", "CelestialBody_PositionAtAltitude", args);
     }
 
     /// <summary>
@@ -533,7 +533,7 @@ public class CelestialBody : RemoteObject
             this,
             altitude
         };
-        return Connection.Invoke<double>("SpaceCenter", "CelestialBody_PressureAt", args);
+        return InvokeNonNullable<double>("SpaceCenter", "CelestialBody_PressureAt", args);
     }
 
     /// <summary>
@@ -549,7 +549,7 @@ public class CelestialBody : RemoteObject
             this,
             altitude
         };
-        return await Connection.InvokeAsync<double>("SpaceCenter", "CelestialBody_PressureAt", args);
+        return await InvokeNonNullableAsync<double>("SpaceCenter", "CelestialBody_PressureAt", args);
     }
 
     /// <summary>
@@ -566,7 +566,7 @@ public class CelestialBody : RemoteObject
             this,
             referenceFrame
         };
-        return Connection.Invoke<Quaternion>("SpaceCenter", "CelestialBody_Rotation", args);
+        return InvokeNonNullable<Quaternion>("SpaceCenter", "CelestialBody_Rotation", args);
     }
 
     /// <summary>
@@ -584,7 +584,7 @@ public class CelestialBody : RemoteObject
             this,
             referenceFrame
         };
-        return await Connection.InvokeAsync<Quaternion>("SpaceCenter", "CelestialBody_Rotation", args);
+        return await InvokeNonNullableAsync<Quaternion>("SpaceCenter", "CelestialBody_Rotation", args);
     }
 
     /// <summary>
@@ -602,7 +602,7 @@ public class CelestialBody : RemoteObject
             latitude.Degrees,
             longitude.Degrees
         };
-        return Connection.Invoke<double>("SpaceCenter", "CelestialBody_SurfaceHeight", args);
+        return InvokeNonNullable<double>("SpaceCenter", "CelestialBody_SurfaceHeight", args);
     }
 
     /// <summary>
@@ -621,7 +621,7 @@ public class CelestialBody : RemoteObject
             latitude.Degrees,
             longitude.Degrees
         };
-        return await Connection.InvokeAsync<double>("SpaceCenter", "CelestialBody_SurfaceHeight", args);
+        return await InvokeNonNullableAsync<double>("SpaceCenter", "CelestialBody_SurfaceHeight", args);
     }
 
     /// <summary>
@@ -642,7 +642,7 @@ public class CelestialBody : RemoteObject
             longitude.Degrees,
             referenceFrame
         };
-        return Connection.Invoke<Vector3D>("SpaceCenter", "CelestialBody_SurfacePosition", args);
+        return InvokeNonNullable<Vector3D>("SpaceCenter", "CelestialBody_SurfacePosition", args);
     }
 
     /// <summary>
@@ -664,7 +664,7 @@ public class CelestialBody : RemoteObject
             longitude.Degrees,
             referenceFrame
         };
-        return await Connection.InvokeAsync<Vector3D>("SpaceCenter", "CelestialBody_SurfacePosition", args);
+        return await InvokeNonNullableAsync<Vector3D>("SpaceCenter", "CelestialBody_SurfacePosition", args);
     }
 
     /// <summary>
@@ -685,7 +685,7 @@ public class CelestialBody : RemoteObject
             position,
             referenceFrame
         };
-        return Connection.Invoke<double>("SpaceCenter", "CelestialBody_TemperatureAt", args);
+        return InvokeNonNullable<double>("SpaceCenter", "CelestialBody_TemperatureAt", args);
     }
 
     /// <summary>
@@ -707,7 +707,7 @@ public class CelestialBody : RemoteObject
             position,
             referenceFrame
         };
-        return await Connection.InvokeAsync<double>("SpaceCenter", "CelestialBody_TemperatureAt", args);
+        return await InvokeNonNullableAsync<double>("SpaceCenter", "CelestialBody_TemperatureAt", args);
     }
 
     /// <summary>
@@ -725,7 +725,7 @@ public class CelestialBody : RemoteObject
             this,
             referenceFrame
         };
-        return Connection.Invoke<Vector3D>("SpaceCenter", "CelestialBody_Velocity", args);
+        return InvokeNonNullable<Vector3D>("SpaceCenter", "CelestialBody_Velocity", args);
     }
 
     /// <summary>
@@ -744,7 +744,7 @@ public class CelestialBody : RemoteObject
             this,
             referenceFrame
         };
-        return await Connection.InvokeAsync<Vector3D>("SpaceCenter", "CelestialBody_Velocity", args);
+        return await InvokeNonNullableAsync<Vector3D>("SpaceCenter", "CelestialBody_Velocity", args);
     }
 
     /// <summary>
@@ -757,7 +757,7 @@ public class CelestialBody : RemoteObject
         {
             this
         };
-        return Connection.Invoke<double>("SpaceCenter", "CelestialBody_get_AtmosphereDepth", args);
+        return InvokeNonNullable<double>("SpaceCenter", "CelestialBody_get_AtmosphereDepth", args);
     }
 
     /// <summary>
@@ -771,7 +771,7 @@ public class CelestialBody : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<double>("SpaceCenter", "CelestialBody_get_AtmosphereDepth", args);
+        return await InvokeNonNullableAsync<double>("SpaceCenter", "CelestialBody_get_AtmosphereDepth", args);
     }
 
     /// <summary>
@@ -784,7 +784,7 @@ public class CelestialBody : RemoteObject
         {
             this
         };
-        return Connection.Invoke<ISet<string>>("SpaceCenter", "CelestialBody_get_Biomes", args);
+        return InvokeNonNullable<ISet<string>>("SpaceCenter", "CelestialBody_get_Biomes", args);
     }
 
     /// <summary>
@@ -798,7 +798,7 @@ public class CelestialBody : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<ISet<string>>("SpaceCenter", "CelestialBody_get_Biomes", args);
+        return await InvokeNonNullableAsync<ISet<string>>("SpaceCenter", "CelestialBody_get_Biomes", args);
     }
 
     /// <summary>
@@ -811,7 +811,7 @@ public class CelestialBody : RemoteObject
         {
             this
         };
-        return Connection.Invoke<double>("SpaceCenter", "CelestialBody_get_EquatorialRadius", args);
+        return InvokeNonNullable<double>("SpaceCenter", "CelestialBody_get_EquatorialRadius", args);
     }
 
     /// <summary>
@@ -825,7 +825,7 @@ public class CelestialBody : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<double>("SpaceCenter", "CelestialBody_get_EquatorialRadius", args);
+        return await InvokeNonNullableAsync<double>("SpaceCenter", "CelestialBody_get_EquatorialRadius", args);
     }
 
     /// <summary>
@@ -839,7 +839,7 @@ public class CelestialBody : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "CelestialBody_get_FlyingHighAltitudeThreshold", args);
+        return InvokeNonNullable<float>("SpaceCenter", "CelestialBody_get_FlyingHighAltitudeThreshold", args);
     }
 
     /// <summary>
@@ -854,7 +854,7 @@ public class CelestialBody : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "CelestialBody_get_FlyingHighAltitudeThreshold", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "CelestialBody_get_FlyingHighAltitudeThreshold", args);
     }
 
     /// <summary>
@@ -868,7 +868,7 @@ public class CelestialBody : RemoteObject
         {
             this
         };
-        return Connection.Invoke<double>("SpaceCenter", "CelestialBody_get_GravitationalParameter", args);
+        return InvokeNonNullable<double>("SpaceCenter", "CelestialBody_get_GravitationalParameter", args);
     }
 
     /// <summary>
@@ -883,7 +883,7 @@ public class CelestialBody : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<double>("SpaceCenter", "CelestialBody_get_GravitationalParameter", args);
+        return await InvokeNonNullableAsync<double>("SpaceCenter", "CelestialBody_get_GravitationalParameter", args);
     }
 
     /// <summary>
@@ -896,7 +896,7 @@ public class CelestialBody : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "CelestialBody_get_HasAtmosphere", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "CelestialBody_get_HasAtmosphere", args);
     }
 
     /// <summary>
@@ -910,7 +910,7 @@ public class CelestialBody : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "CelestialBody_get_HasAtmosphere", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "CelestialBody_get_HasAtmosphere", args);
     }
 
     /// <summary>
@@ -923,7 +923,7 @@ public class CelestialBody : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "CelestialBody_get_HasAtmosphericOxygen", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "CelestialBody_get_HasAtmosphericOxygen", args);
     }
 
     /// <summary>
@@ -937,7 +937,7 @@ public class CelestialBody : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "CelestialBody_get_HasAtmosphericOxygen", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "CelestialBody_get_HasAtmosphericOxygen", args);
     }
 
     /// <summary>
@@ -950,7 +950,7 @@ public class CelestialBody : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "CelestialBody_get_HasSolidSurface", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "CelestialBody_get_HasSolidSurface", args);
     }
 
     /// <summary>
@@ -964,7 +964,7 @@ public class CelestialBody : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "CelestialBody_get_HasSolidSurface", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "CelestialBody_get_HasSolidSurface", args);
     }
 
     /// <summary>
@@ -978,7 +978,7 @@ public class CelestialBody : RemoteObject
         {
             this
         };
-        var result = Connection.Invoke<double>("SpaceCenter", "CelestialBody_get_InitialRotation", args);
+        var result = InvokeNonNullable<double>("SpaceCenter", "CelestialBody_get_InitialRotation", args);
         return Angle.FromRadians(result);
     }
 
@@ -994,7 +994,7 @@ public class CelestialBody : RemoteObject
         {
             this
         };
-        var result = await Connection.InvokeAsync<double>("SpaceCenter", "CelestialBody_get_InitialRotation", args);
+        var result = await InvokeNonNullableAsync<double>("SpaceCenter", "CelestialBody_get_InitialRotation", args);
         return Angle.FromRadians(result);
     }
 
@@ -1008,7 +1008,7 @@ public class CelestialBody : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "CelestialBody_get_IsStar", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "CelestialBody_get_IsStar", args);
     }
 
     /// <summary>
@@ -1022,7 +1022,7 @@ public class CelestialBody : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "CelestialBody_get_IsStar", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "CelestialBody_get_IsStar", args);
     }
 
     /// <summary>
@@ -1035,7 +1035,7 @@ public class CelestialBody : RemoteObject
         {
             this
         };
-        return Connection.Invoke<double>("SpaceCenter", "CelestialBody_get_Mass", args);
+        return InvokeNonNullable<double>("SpaceCenter", "CelestialBody_get_Mass", args);
     }
 
     /// <summary>
@@ -1049,7 +1049,7 @@ public class CelestialBody : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<double>("SpaceCenter", "CelestialBody_get_Mass", args);
+        return await InvokeNonNullableAsync<double>("SpaceCenter", "CelestialBody_get_Mass", args);
     }
 
     /// <summary>
@@ -1062,7 +1062,7 @@ public class CelestialBody : RemoteObject
         {
             this
         };
-        return Connection.Invoke<string>("SpaceCenter", "CelestialBody_get_Name", args);
+        return InvokeNonNullable<string>("SpaceCenter", "CelestialBody_get_Name", args);
     }
 
     /// <summary>
@@ -1076,7 +1076,7 @@ public class CelestialBody : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<string>("SpaceCenter", "CelestialBody_get_Name", args);
+        return await InvokeNonNullableAsync<string>("SpaceCenter", "CelestialBody_get_Name", args);
     }
 
     /// <summary>
@@ -1094,7 +1094,7 @@ public class CelestialBody : RemoteObject
         {
             this
         };
-        return Connection.Invoke<ReferenceFrame>("SpaceCenter", "CelestialBody_get_NonRotatingReferenceFrame", args);
+        return InvokeNonNullable<ReferenceFrame>("SpaceCenter", "CelestialBody_get_NonRotatingReferenceFrame", args);
     }
 
     /// <summary>
@@ -1113,7 +1113,7 @@ public class CelestialBody : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<ReferenceFrame>("SpaceCenter", "CelestialBody_get_NonRotatingReferenceFrame", args);
+        return await InvokeNonNullableAsync<ReferenceFrame>("SpaceCenter", "CelestialBody_get_NonRotatingReferenceFrame", args);
     }
 
     /// <summary>
@@ -1126,7 +1126,7 @@ public class CelestialBody : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Orbit>("SpaceCenter", "CelestialBody_get_Orbit", args);
+        return InvokeNonNullable<Orbit>("SpaceCenter", "CelestialBody_get_Orbit", args);
     }
 
     /// <summary>
@@ -1140,7 +1140,7 @@ public class CelestialBody : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Orbit>("SpaceCenter", "CelestialBody_get_Orbit", args);
+        return await InvokeNonNullableAsync<Orbit>("SpaceCenter", "CelestialBody_get_Orbit", args);
     }
 
     /// <summary>
@@ -1160,7 +1160,7 @@ public class CelestialBody : RemoteObject
         {
             this
         };
-        return Connection.Invoke<ReferenceFrame>("SpaceCenter", "CelestialBody_get_OrbitalReferenceFrame", args);
+        return InvokeNonNullable<ReferenceFrame>("SpaceCenter", "CelestialBody_get_OrbitalReferenceFrame", args);
     }
 
     /// <summary>
@@ -1181,7 +1181,7 @@ public class CelestialBody : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<ReferenceFrame>("SpaceCenter", "CelestialBody_get_OrbitalReferenceFrame", args);
+        return await InvokeNonNullableAsync<ReferenceFrame>("SpaceCenter", "CelestialBody_get_OrbitalReferenceFrame", args);
     }
 
     /// <summary>
@@ -1200,7 +1200,7 @@ public class CelestialBody : RemoteObject
         {
             this
         };
-        return Connection.Invoke<ReferenceFrame>("SpaceCenter", "CelestialBody_get_ReferenceFrame", args);
+        return InvokeNonNullable<ReferenceFrame>("SpaceCenter", "CelestialBody_get_ReferenceFrame", args);
     }
 
     /// <summary>
@@ -1220,7 +1220,7 @@ public class CelestialBody : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<ReferenceFrame>("SpaceCenter", "CelestialBody_get_ReferenceFrame", args);
+        return await InvokeNonNullableAsync<ReferenceFrame>("SpaceCenter", "CelestialBody_get_ReferenceFrame", args);
     }
 
     /// <summary>
@@ -1234,7 +1234,7 @@ public class CelestialBody : RemoteObject
         {
             this
         };
-        var result = Connection.Invoke<double>("SpaceCenter", "CelestialBody_get_RotationAngle", args);
+        var result = InvokeNonNullable<double>("SpaceCenter", "CelestialBody_get_RotationAngle", args);
         return Angle.FromRadians(result);
     }
 
@@ -1250,7 +1250,7 @@ public class CelestialBody : RemoteObject
         {
             this
         };
-        var result = await Connection.InvokeAsync<double>("SpaceCenter", "CelestialBody_get_RotationAngle", args);
+        var result = await InvokeNonNullableAsync<double>("SpaceCenter", "CelestialBody_get_RotationAngle", args);
         return Angle.FromRadians(result);
     }
 
@@ -1264,7 +1264,7 @@ public class CelestialBody : RemoteObject
         {
             this
         };
-        return Connection.Invoke<double>("SpaceCenter", "CelestialBody_get_RotationalPeriod", args);
+        return InvokeNonNullable<double>("SpaceCenter", "CelestialBody_get_RotationalPeriod", args);
     }
 
     /// <summary>
@@ -1278,7 +1278,7 @@ public class CelestialBody : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<double>("SpaceCenter", "CelestialBody_get_RotationalPeriod", args);
+        return await InvokeNonNullableAsync<double>("SpaceCenter", "CelestialBody_get_RotationalPeriod", args);
     }
 
     /// <summary>
@@ -1291,7 +1291,7 @@ public class CelestialBody : RemoteObject
         {
             this
         };
-        var result = Connection.Invoke<double>("SpaceCenter", "CelestialBody_get_RotationalSpeed", args);
+        var result = InvokeNonNullable<double>("SpaceCenter", "CelestialBody_get_RotationalSpeed", args);
         return Angle.FromRadians(result);
     }
 
@@ -1306,7 +1306,7 @@ public class CelestialBody : RemoteObject
         {
             this
         };
-        var result = await Connection.InvokeAsync<double>("SpaceCenter", "CelestialBody_get_RotationalSpeed", args);
+        var result = await InvokeNonNullableAsync<double>("SpaceCenter", "CelestialBody_get_RotationalSpeed", args);
         return Angle.FromRadians(result);
     }
 
@@ -1320,7 +1320,7 @@ public class CelestialBody : RemoteObject
         {
             this
         };
-        return Connection.Invoke<IList<CelestialBody>>("SpaceCenter", "CelestialBody_get_Satellites", args);
+        return InvokeNonNullable<IList<CelestialBody>>("SpaceCenter", "CelestialBody_get_Satellites", args);
     }
 
     /// <summary>
@@ -1334,7 +1334,7 @@ public class CelestialBody : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<IList<CelestialBody>>("SpaceCenter", "CelestialBody_get_Satellites", args);
+        return await InvokeNonNullableAsync<IList<CelestialBody>>("SpaceCenter", "CelestialBody_get_Satellites", args);
     }
 
     /// <summary>
@@ -1348,7 +1348,7 @@ public class CelestialBody : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "CelestialBody_get_SpaceHighAltitudeThreshold", args);
+        return InvokeNonNullable<float>("SpaceCenter", "CelestialBody_get_SpaceHighAltitudeThreshold", args);
     }
 
     /// <summary>
@@ -1363,7 +1363,7 @@ public class CelestialBody : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "CelestialBody_get_SpaceHighAltitudeThreshold", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "CelestialBody_get_SpaceHighAltitudeThreshold", args);
     }
 
     /// <summary>
@@ -1376,7 +1376,7 @@ public class CelestialBody : RemoteObject
         {
             this
         };
-        return Connection.Invoke<double>("SpaceCenter", "CelestialBody_get_SphereOfInfluence", args);
+        return InvokeNonNullable<double>("SpaceCenter", "CelestialBody_get_SphereOfInfluence", args);
     }
 
     /// <summary>
@@ -1390,7 +1390,7 @@ public class CelestialBody : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<double>("SpaceCenter", "CelestialBody_get_SphereOfInfluence", args);
+        return await InvokeNonNullableAsync<double>("SpaceCenter", "CelestialBody_get_SphereOfInfluence", args);
     }
 
     /// <summary>
@@ -1404,7 +1404,7 @@ public class CelestialBody : RemoteObject
         {
             this
         };
-        return Connection.Invoke<double>("SpaceCenter", "CelestialBody_get_SurfaceGravity", args);
+        return InvokeNonNullable<double>("SpaceCenter", "CelestialBody_get_SurfaceGravity", args);
     }
 
     /// <summary>
@@ -1419,6 +1419,6 @@ public class CelestialBody : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<double>("SpaceCenter", "CelestialBody_get_SurfaceGravity", args);
+        return await InvokeNonNullableAsync<double>("SpaceCenter", "CelestialBody_get_SurfaceGravity", args);
     }
 }

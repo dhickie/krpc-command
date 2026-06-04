@@ -30,7 +30,7 @@ public class DockingPort : RemoteObject
             this,
             referenceFrame
         };
-        return Connection.Invoke<Vector3D>("SpaceCenter", "DockingPort_Direction", args);
+        return InvokeNonNullable<Vector3D>("SpaceCenter", "DockingPort_Direction", args);
     }
 
     /// <summary>
@@ -48,7 +48,7 @@ public class DockingPort : RemoteObject
             this,
             referenceFrame
         };
-        return await Connection.InvokeAsync<Vector3D>("SpaceCenter", "DockingPort_Direction", args);
+        return await InvokeNonNullableAsync<Vector3D>("SpaceCenter", "DockingPort_Direction", args);
     }
 
     /// <summary>
@@ -65,7 +65,7 @@ public class DockingPort : RemoteObject
             this,
             referenceFrame
         };
-        return Connection.Invoke<Vector3D>("SpaceCenter", "DockingPort_Position", args);
+        return InvokeNonNullable<Vector3D>("SpaceCenter", "DockingPort_Position", args);
     }
 
     /// <summary>
@@ -83,7 +83,7 @@ public class DockingPort : RemoteObject
             this,
             referenceFrame
         };
-        return await Connection.InvokeAsync<Vector3D>("SpaceCenter", "DockingPort_Position", args);
+        return await InvokeNonNullableAsync<Vector3D>("SpaceCenter", "DockingPort_Position", args);
     }
 
     /// <summary>
@@ -100,7 +100,7 @@ public class DockingPort : RemoteObject
             this,
             referenceFrame
         };
-        return Connection.Invoke<Quaternion>("SpaceCenter", "DockingPort_Rotation", args);
+        return InvokeNonNullable<Quaternion>("SpaceCenter", "DockingPort_Rotation", args);
     }
 
     /// <summary>
@@ -118,7 +118,7 @@ public class DockingPort : RemoteObject
             this,
             referenceFrame
         };
-        return await Connection.InvokeAsync<Quaternion>("SpaceCenter", "DockingPort_Rotation", args);
+        return await InvokeNonNullableAsync<Quaternion>("SpaceCenter", "DockingPort_Rotation", args);
     }
 
     /// <summary>
@@ -138,7 +138,7 @@ public class DockingPort : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Vessel>("SpaceCenter", "DockingPort_Undock", args);
+        return InvokeNonNullable<Vessel>("SpaceCenter", "DockingPort_Undock", args);
     }
 
     /// <summary>
@@ -159,7 +159,7 @@ public class DockingPort : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Vessel>("SpaceCenter", "DockingPort_Undock", args);
+        return await InvokeNonNullableAsync<Vessel>("SpaceCenter", "DockingPort_Undock", args);
     }
 
     /// <summary>
@@ -172,7 +172,7 @@ public class DockingPort : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "DockingPort_get_CanRotate", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "DockingPort_get_CanRotate", args);
     }
 
     /// <summary>
@@ -186,7 +186,7 @@ public class DockingPort : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "DockingPort_get_CanRotate", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "DockingPort_get_CanRotate", args);
     }
 
     /// <summary>
@@ -200,7 +200,7 @@ public class DockingPort : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Part?>("SpaceCenter", "DockingPort_get_DockedPart", args);
+        return InvokeNullable<Part>("SpaceCenter", "DockingPort_get_DockedPart", args);
     }
 
     /// <summary>
@@ -215,7 +215,7 @@ public class DockingPort : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Part?>("SpaceCenter", "DockingPort_get_DockedPart", args);
+        return await InvokeNullableAsync<Part>("SpaceCenter", "DockingPort_get_DockedPart", args);
     }
 
     /// <summary>
@@ -228,7 +228,7 @@ public class DockingPort : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "DockingPort_get_HasShield", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "DockingPort_get_HasShield", args);
     }
 
     /// <summary>
@@ -242,7 +242,7 @@ public class DockingPort : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "DockingPort_get_HasShield", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "DockingPort_get_HasShield", args);
     }
 
     /// <summary>
@@ -255,7 +255,7 @@ public class DockingPort : RemoteObject
         {
             this
         };
-        var result = Connection.Invoke<float>("SpaceCenter", "DockingPort_get_MaximumRotation", args);
+        var result = InvokeNonNullable<float>("SpaceCenter", "DockingPort_get_MaximumRotation", args);
         return Angle.FromDegrees(result);
     }
 
@@ -270,7 +270,7 @@ public class DockingPort : RemoteObject
         {
             this
         };
-        var result = await Connection.InvokeAsync<float>("SpaceCenter", "DockingPort_get_MaximumRotation", args);
+        var result = await InvokeNonNullableAsync<float>("SpaceCenter", "DockingPort_get_MaximumRotation", args);
         return Angle.FromDegrees(result);
     }
 
@@ -284,7 +284,7 @@ public class DockingPort : RemoteObject
         {
             this
         };
-        var result = Connection.Invoke<float>("SpaceCenter", "DockingPort_get_MinimumRotation", args);
+        var result = InvokeNonNullable<float>("SpaceCenter", "DockingPort_get_MinimumRotation", args);
         return Angle.FromDegrees(result);
     }
 
@@ -299,7 +299,7 @@ public class DockingPort : RemoteObject
         {
             this
         };
-        var result = await Connection.InvokeAsync<float>("SpaceCenter", "DockingPort_get_MinimumRotation", args);
+        var result = await InvokeNonNullableAsync<float>("SpaceCenter", "DockingPort_get_MinimumRotation", args);
         return Angle.FromDegrees(result);
     }
 
@@ -313,7 +313,7 @@ public class DockingPort : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Part>("SpaceCenter", "DockingPort_get_Part", args);
+        return InvokeNonNullable<Part>("SpaceCenter", "DockingPort_get_Part", args);
     }
 
     /// <summary>
@@ -327,7 +327,7 @@ public class DockingPort : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Part>("SpaceCenter", "DockingPort_get_Part", args);
+        return await InvokeNonNullableAsync<Part>("SpaceCenter", "DockingPort_get_Part", args);
     }
 
     /// <summary>
@@ -341,7 +341,7 @@ public class DockingPort : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "DockingPort_get_ReengageDistance", args);
+        return InvokeNonNullable<float>("SpaceCenter", "DockingPort_get_ReengageDistance", args);
     }
 
     /// <summary>
@@ -356,7 +356,7 @@ public class DockingPort : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "DockingPort_get_ReengageDistance", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "DockingPort_get_ReengageDistance", args);
     }
 
     /// <summary>
@@ -379,7 +379,7 @@ public class DockingPort : RemoteObject
         {
             this
         };
-        return Connection.Invoke<ReferenceFrame>("SpaceCenter", "DockingPort_get_ReferenceFrame", args);
+        return InvokeNonNullable<ReferenceFrame>("SpaceCenter", "DockingPort_get_ReferenceFrame", args);
     }
 
     /// <summary>
@@ -403,7 +403,7 @@ public class DockingPort : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<ReferenceFrame>("SpaceCenter", "DockingPort_get_ReferenceFrame", args);
+        return await InvokeNonNullableAsync<ReferenceFrame>("SpaceCenter", "DockingPort_get_ReferenceFrame", args);
     }
 
     /// <summary>
@@ -416,7 +416,7 @@ public class DockingPort : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "DockingPort_get_RotationLocked", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "DockingPort_get_RotationLocked", args);
     }
 
     /// <summary>
@@ -430,7 +430,7 @@ public class DockingPort : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "DockingPort_get_RotationLocked", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "DockingPort_get_RotationLocked", args);
     }
 
     /// <summary>
@@ -445,7 +445,7 @@ public class DockingPort : RemoteObject
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "DockingPort_set_RotationLocked", args);
+        InvokeVoid("SpaceCenter", "DockingPort_set_RotationLocked", args);
     }
 
     /// <summary>
@@ -461,7 +461,7 @@ public class DockingPort : RemoteObject
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "DockingPort_set_RotationLocked", args);
+        await InvokeVoidAsync("SpaceCenter", "DockingPort_set_RotationLocked", args);
     }
 
     /// <summary>
@@ -474,7 +474,7 @@ public class DockingPort : RemoteObject
         {
             this
         };
-        var result = Connection.Invoke<float>("SpaceCenter", "DockingPort_get_RotationTarget", args);
+        var result = InvokeNonNullable<float>("SpaceCenter", "DockingPort_get_RotationTarget", args);
         return Angle.FromDegrees(result);
     }
 
@@ -489,7 +489,7 @@ public class DockingPort : RemoteObject
         {
             this
         };
-        var result = await Connection.InvokeAsync<float>("SpaceCenter", "DockingPort_get_RotationTarget", args);
+        var result = await InvokeNonNullableAsync<float>("SpaceCenter", "DockingPort_get_RotationTarget", args);
         return Angle.FromDegrees(result);
     }
 
@@ -505,7 +505,7 @@ public class DockingPort : RemoteObject
             this,
             (float)value.Degrees
         };
-        Connection.Invoke("SpaceCenter", "DockingPort_set_RotationTarget", args);
+        InvokeVoid("SpaceCenter", "DockingPort_set_RotationTarget", args);
     }
 
     /// <summary>
@@ -521,7 +521,7 @@ public class DockingPort : RemoteObject
             this,
             (float)value.Degrees
         };
-        await Connection.InvokeAsync("SpaceCenter", "DockingPort_set_RotationTarget", args);
+        await InvokeVoidAsync("SpaceCenter", "DockingPort_set_RotationTarget", args);
     }
 
     /// <summary>
@@ -539,7 +539,7 @@ public class DockingPort : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "DockingPort_get_Shielded", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "DockingPort_get_Shielded", args);
     }
 
     /// <summary>
@@ -558,7 +558,7 @@ public class DockingPort : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "DockingPort_get_Shielded", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "DockingPort_get_Shielded", args);
     }
 
     /// <summary>
@@ -578,7 +578,7 @@ public class DockingPort : RemoteObject
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "DockingPort_set_Shielded", args);
+        InvokeVoid("SpaceCenter", "DockingPort_set_Shielded", args);
     }
 
     /// <summary>
@@ -599,7 +599,7 @@ public class DockingPort : RemoteObject
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "DockingPort_set_Shielded", args);
+        await InvokeVoidAsync("SpaceCenter", "DockingPort_set_Shielded", args);
     }
 
     /// <summary>
@@ -612,7 +612,7 @@ public class DockingPort : RemoteObject
         {
             this
         };
-        return Connection.Invoke<DockingPortState>("SpaceCenter", "DockingPort_get_State", args);
+        return InvokeNonNullable<DockingPortState>("SpaceCenter", "DockingPort_get_State", args);
     }
 
     /// <summary>
@@ -626,6 +626,6 @@ public class DockingPort : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<DockingPortState>("SpaceCenter", "DockingPort_get_State", args);
+        return await InvokeNonNullableAsync<DockingPortState>("SpaceCenter", "DockingPort_get_State", args);
     }
 }

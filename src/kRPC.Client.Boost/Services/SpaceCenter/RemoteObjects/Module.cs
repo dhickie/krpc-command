@@ -34,7 +34,7 @@ public class Module : RemoteObject
             this,
             name
         };
-        return Connection.Invoke<string>("SpaceCenter", "Module_GetField", args);
+        return InvokeNonNullable<string>("SpaceCenter", "Module_GetField", args);
     }
 
     /// <summary>
@@ -50,7 +50,7 @@ public class Module : RemoteObject
             this,
             name
         };
-        return await Connection.InvokeAsync<string>("SpaceCenter", "Module_GetField", args);
+        return await InvokeNonNullableAsync<string>("SpaceCenter", "Module_GetField", args);
     }
 
     /// <summary>
@@ -65,7 +65,7 @@ public class Module : RemoteObject
             this,
             id
         };
-        return Connection.Invoke<string>("SpaceCenter", "Module_GetFieldById", args);
+        return InvokeNonNullable<string>("SpaceCenter", "Module_GetFieldById", args);
     }
 
     /// <summary>
@@ -81,7 +81,7 @@ public class Module : RemoteObject
             this,
             id
         };
-        return await Connection.InvokeAsync<string>("SpaceCenter", "Module_GetFieldById", args);
+        return await InvokeNonNullableAsync<string>("SpaceCenter", "Module_GetFieldById", args);
     }
 
     /// <summary><c>true</c> if the part has an action with the given name.
@@ -95,7 +95,7 @@ public class Module : RemoteObject
             this,
             name
         };
-        return Connection.Invoke<bool>("SpaceCenter", "Module_HasAction", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "Module_HasAction", args);
     }
 
     /// <summary><c>true</c> if the part has an action with the given name.
@@ -110,7 +110,7 @@ public class Module : RemoteObject
             this,
             name
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "Module_HasAction", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "Module_HasAction", args);
     }
 
     /// <summary><c>true</c> if the part has an action with the given identifier.
@@ -124,7 +124,7 @@ public class Module : RemoteObject
             this,
             id
         };
-        return Connection.Invoke<bool>("SpaceCenter", "Module_HasActionWithId", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "Module_HasActionWithId", args);
     }
 
     /// <summary><c>true</c> if the part has an action with the given identifier.
@@ -139,7 +139,7 @@ public class Module : RemoteObject
             this,
             id
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "Module_HasActionWithId", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "Module_HasActionWithId", args);
     }
 
     /// <summary><c>true</c> if the module has an event with the given name.
@@ -153,7 +153,7 @@ public class Module : RemoteObject
             this,
             name
         };
-        return Connection.Invoke<bool>("SpaceCenter", "Module_HasEvent", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "Module_HasEvent", args);
     }
 
     /// <summary><c>true</c> if the module has an event with the given name.
@@ -168,7 +168,7 @@ public class Module : RemoteObject
             this,
             name
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "Module_HasEvent", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "Module_HasEvent", args);
     }
 
     /// <summary><c>true</c> if the module has an event with the given identifier.
@@ -182,7 +182,7 @@ public class Module : RemoteObject
             this,
             id
         };
-        return Connection.Invoke<bool>("SpaceCenter", "Module_HasEventWithId", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "Module_HasEventWithId", args);
     }
 
     /// <summary><c>true</c> if the module has an event with the given identifier.
@@ -197,7 +197,7 @@ public class Module : RemoteObject
             this,
             id
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "Module_HasEventWithId", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "Module_HasEventWithId", args);
     }
 
     /// <summary>
@@ -212,7 +212,7 @@ public class Module : RemoteObject
             this,
             name
         };
-        return Connection.Invoke<bool>("SpaceCenter", "Module_HasField", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "Module_HasField", args);
     }
 
     /// <summary>
@@ -228,7 +228,7 @@ public class Module : RemoteObject
             this,
             name
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "Module_HasField", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "Module_HasField", args);
     }
 
     /// <summary>
@@ -243,7 +243,7 @@ public class Module : RemoteObject
             this,
             id
         };
-        return Connection.Invoke<bool>("SpaceCenter", "Module_HasFieldWithId", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "Module_HasFieldWithId", args);
     }
 
     /// <summary>
@@ -259,7 +259,7 @@ public class Module : RemoteObject
             this,
             id
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "Module_HasFieldWithId", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "Module_HasFieldWithId", args);
     }
 
     /// <summary>
@@ -274,7 +274,7 @@ public class Module : RemoteObject
             this,
             name
         };
-        Connection.Invoke("SpaceCenter", "Module_ResetField", args);
+        InvokeVoid("SpaceCenter", "Module_ResetField", args);
     }
 
     /// <summary>
@@ -290,7 +290,7 @@ public class Module : RemoteObject
             this,
             name
         };
-        await Connection.InvokeAsync("SpaceCenter", "Module_ResetField", args);
+        await InvokeVoidAsync("SpaceCenter", "Module_ResetField", args);
     }
 
     /// <summary>
@@ -305,7 +305,7 @@ public class Module : RemoteObject
             this,
             id
         };
-        Connection.Invoke("SpaceCenter", "Module_ResetFieldById", args);
+        InvokeVoid("SpaceCenter", "Module_ResetFieldById", args);
     }
 
     /// <summary>
@@ -321,7 +321,7 @@ public class Module : RemoteObject
             this,
             id
         };
-        await Connection.InvokeAsync("SpaceCenter", "Module_ResetFieldById", args);
+        await InvokeVoidAsync("SpaceCenter", "Module_ResetFieldById", args);
     }
 
     /// <summary>
@@ -338,7 +338,7 @@ public class Module : RemoteObject
             name,
             value
         };
-        Connection.Invoke("SpaceCenter", "Module_SetAction", args);
+        InvokeVoid("SpaceCenter", "Module_SetAction", args);
     }
 
     /// <summary>
@@ -356,7 +356,7 @@ public class Module : RemoteObject
             name,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "Module_SetAction", args);
+        await InvokeVoidAsync("SpaceCenter", "Module_SetAction", args);
     }
 
     /// <summary>
@@ -373,7 +373,7 @@ public class Module : RemoteObject
             id,
             value
         };
-        Connection.Invoke("SpaceCenter", "Module_SetActionById", args);
+        InvokeVoid("SpaceCenter", "Module_SetActionById", args);
     }
 
     /// <summary>
@@ -391,7 +391,7 @@ public class Module : RemoteObject
             id,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "Module_SetActionById", args);
+        await InvokeVoidAsync("SpaceCenter", "Module_SetActionById", args);
     }
 
     /// <summary>
@@ -408,7 +408,7 @@ public class Module : RemoteObject
             name,
             value
         };
-        Connection.Invoke("SpaceCenter", "Module_SetFieldBool", args);
+        InvokeVoid("SpaceCenter", "Module_SetFieldBool", args);
     }
 
     /// <summary>
@@ -426,7 +426,7 @@ public class Module : RemoteObject
             name,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "Module_SetFieldBool", args);
+        await InvokeVoidAsync("SpaceCenter", "Module_SetFieldBool", args);
     }
 
     /// <summary>
@@ -443,7 +443,7 @@ public class Module : RemoteObject
             id,
             value
         };
-        Connection.Invoke("SpaceCenter", "Module_SetFieldBoolById", args);
+        InvokeVoid("SpaceCenter", "Module_SetFieldBoolById", args);
     }
 
     /// <summary>
@@ -461,7 +461,7 @@ public class Module : RemoteObject
             id,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "Module_SetFieldBoolById", args);
+        await InvokeVoidAsync("SpaceCenter", "Module_SetFieldBoolById", args);
     }
 
     /// <summary>
@@ -478,7 +478,7 @@ public class Module : RemoteObject
             name,
             value
         };
-        Connection.Invoke("SpaceCenter", "Module_SetFieldFloat", args);
+        InvokeVoid("SpaceCenter", "Module_SetFieldFloat", args);
     }
 
     /// <summary>
@@ -496,7 +496,7 @@ public class Module : RemoteObject
             name,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "Module_SetFieldFloat", args);
+        await InvokeVoidAsync("SpaceCenter", "Module_SetFieldFloat", args);
     }
 
     /// <summary>
@@ -513,7 +513,7 @@ public class Module : RemoteObject
             id,
             value
         };
-        Connection.Invoke("SpaceCenter", "Module_SetFieldFloatById", args);
+        InvokeVoid("SpaceCenter", "Module_SetFieldFloatById", args);
     }
 
     /// <summary>
@@ -531,7 +531,7 @@ public class Module : RemoteObject
             id,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "Module_SetFieldFloatById", args);
+        await InvokeVoidAsync("SpaceCenter", "Module_SetFieldFloatById", args);
     }
 
     /// <summary>
@@ -548,7 +548,7 @@ public class Module : RemoteObject
             name,
             value
         };
-        Connection.Invoke("SpaceCenter", "Module_SetFieldInt", args);
+        InvokeVoid("SpaceCenter", "Module_SetFieldInt", args);
     }
 
     /// <summary>
@@ -566,7 +566,7 @@ public class Module : RemoteObject
             name,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "Module_SetFieldInt", args);
+        await InvokeVoidAsync("SpaceCenter", "Module_SetFieldInt", args);
     }
 
     /// <summary>
@@ -583,7 +583,7 @@ public class Module : RemoteObject
             id,
             value
         };
-        Connection.Invoke("SpaceCenter", "Module_SetFieldIntById", args);
+        InvokeVoid("SpaceCenter", "Module_SetFieldIntById", args);
     }
 
     /// <summary>
@@ -601,7 +601,7 @@ public class Module : RemoteObject
             id,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "Module_SetFieldIntById", args);
+        await InvokeVoidAsync("SpaceCenter", "Module_SetFieldIntById", args);
     }
 
     /// <summary>
@@ -618,7 +618,7 @@ public class Module : RemoteObject
             name,
             value
         };
-        Connection.Invoke("SpaceCenter", "Module_SetFieldString", args);
+        InvokeVoid("SpaceCenter", "Module_SetFieldString", args);
     }
 
     /// <summary>
@@ -636,7 +636,7 @@ public class Module : RemoteObject
             name,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "Module_SetFieldString", args);
+        await InvokeVoidAsync("SpaceCenter", "Module_SetFieldString", args);
     }
 
     /// <summary>
@@ -653,7 +653,7 @@ public class Module : RemoteObject
             id,
             value
         };
-        Connection.Invoke("SpaceCenter", "Module_SetFieldStringById", args);
+        InvokeVoid("SpaceCenter", "Module_SetFieldStringById", args);
     }
 
     /// <summary>
@@ -671,7 +671,7 @@ public class Module : RemoteObject
             id,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "Module_SetFieldStringById", args);
+        await InvokeVoidAsync("SpaceCenter", "Module_SetFieldStringById", args);
     }
 
     /// <summary>
@@ -687,7 +687,7 @@ public class Module : RemoteObject
             this,
             name
         };
-        Connection.Invoke("SpaceCenter", "Module_TriggerEvent", args);
+        InvokeVoid("SpaceCenter", "Module_TriggerEvent", args);
     }
 
     /// <summary>
@@ -704,7 +704,7 @@ public class Module : RemoteObject
             this,
             name
         };
-        await Connection.InvokeAsync("SpaceCenter", "Module_TriggerEvent", args);
+        await InvokeVoidAsync("SpaceCenter", "Module_TriggerEvent", args);
     }
 
     /// <summary>
@@ -720,7 +720,7 @@ public class Module : RemoteObject
             this,
             id
         };
-        Connection.Invoke("SpaceCenter", "Module_TriggerEventById", args);
+        InvokeVoid("SpaceCenter", "Module_TriggerEventById", args);
     }
 
     /// <summary>
@@ -737,7 +737,7 @@ public class Module : RemoteObject
             this,
             id
         };
-        await Connection.InvokeAsync("SpaceCenter", "Module_TriggerEventById", args);
+        await InvokeVoidAsync("SpaceCenter", "Module_TriggerEventById", args);
     }
 
     /// <summary>
@@ -751,7 +751,7 @@ public class Module : RemoteObject
         {
             this
         };
-        return Connection.Invoke<IList<string>>("SpaceCenter", "Module_get_Actions", args);
+        return InvokeNonNullable<IList<string>>("SpaceCenter", "Module_get_Actions", args);
     }
 
     /// <summary>
@@ -766,7 +766,7 @@ public class Module : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<IList<string>>("SpaceCenter", "Module_get_Actions", args);
+        return await InvokeNonNullableAsync<IList<string>>("SpaceCenter", "Module_get_Actions", args);
     }
 
     /// <summary>
@@ -780,7 +780,7 @@ public class Module : RemoteObject
         {
             this
         };
-        return Connection.Invoke<IList<string>>("SpaceCenter", "Module_get_ActionsById", args);
+        return InvokeNonNullable<IList<string>>("SpaceCenter", "Module_get_ActionsById", args);
     }
 
     /// <summary>
@@ -795,7 +795,7 @@ public class Module : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<IList<string>>("SpaceCenter", "Module_get_ActionsById", args);
+        return await InvokeNonNullableAsync<IList<string>>("SpaceCenter", "Module_get_ActionsById", args);
     }
 
     /// <summary>
@@ -809,7 +809,7 @@ public class Module : RemoteObject
         {
             this
         };
-        return Connection.Invoke<IList<string>>("SpaceCenter", "Module_get_Events", args);
+        return InvokeNonNullable<IList<string>>("SpaceCenter", "Module_get_Events", args);
     }
 
     /// <summary>
@@ -824,7 +824,7 @@ public class Module : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<IList<string>>("SpaceCenter", "Module_get_Events", args);
+        return await InvokeNonNullableAsync<IList<string>>("SpaceCenter", "Module_get_Events", args);
     }
 
     /// <summary>
@@ -838,7 +838,7 @@ public class Module : RemoteObject
         {
             this
         };
-        return Connection.Invoke<IList<string>>("SpaceCenter", "Module_get_EventsById", args);
+        return InvokeNonNullable<IList<string>>("SpaceCenter", "Module_get_EventsById", args);
     }
 
     /// <summary>
@@ -853,7 +853,7 @@ public class Module : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<IList<string>>("SpaceCenter", "Module_get_EventsById", args);
+        return await InvokeNonNullableAsync<IList<string>>("SpaceCenter", "Module_get_EventsById", args);
     }
 
     /// <summary>
@@ -871,7 +871,7 @@ public class Module : RemoteObject
         {
             this
         };
-        return Connection.Invoke<IDictionary<string,string>>("SpaceCenter", "Module_get_Fields", args);
+        return InvokeNonNullable<IDictionary<string,string>>("SpaceCenter", "Module_get_Fields", args);
     }
 
     /// <summary>
@@ -890,7 +890,7 @@ public class Module : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<IDictionary<string,string>>("SpaceCenter", "Module_get_Fields", args);
+        return await InvokeNonNullableAsync<IDictionary<string,string>>("SpaceCenter", "Module_get_Fields", args);
     }
 
     /// <summary>
@@ -904,7 +904,7 @@ public class Module : RemoteObject
         {
             this
         };
-        return Connection.Invoke<IDictionary<string,string>>("SpaceCenter", "Module_get_FieldsById", args);
+        return InvokeNonNullable<IDictionary<string,string>>("SpaceCenter", "Module_get_FieldsById", args);
     }
 
     /// <summary>
@@ -919,7 +919,7 @@ public class Module : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<IDictionary<string,string>>("SpaceCenter", "Module_get_FieldsById", args);
+        return await InvokeNonNullableAsync<IDictionary<string,string>>("SpaceCenter", "Module_get_FieldsById", args);
     }
 
     /// <summary>
@@ -932,7 +932,7 @@ public class Module : RemoteObject
         {
             this
         };
-        return Connection.Invoke<string>("SpaceCenter", "Module_get_Name", args);
+        return InvokeNonNullable<string>("SpaceCenter", "Module_get_Name", args);
     }
 
     /// <summary>
@@ -946,7 +946,7 @@ public class Module : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<string>("SpaceCenter", "Module_get_Name", args);
+        return await InvokeNonNullableAsync<string>("SpaceCenter", "Module_get_Name", args);
     }
 
     /// <summary>
@@ -959,7 +959,7 @@ public class Module : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Part>("SpaceCenter", "Module_get_Part", args);
+        return InvokeNonNullable<Part>("SpaceCenter", "Module_get_Part", args);
     }
 
     /// <summary>
@@ -973,6 +973,6 @@ public class Module : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Part>("SpaceCenter", "Module_get_Part", args);
+        return await InvokeNonNullableAsync<Part>("SpaceCenter", "Module_get_Part", args);
     }
 }

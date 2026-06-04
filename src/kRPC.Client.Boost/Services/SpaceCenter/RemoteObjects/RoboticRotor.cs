@@ -25,7 +25,7 @@ public class RoboticRotor : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "RoboticRotor_get_CurrentRPM", args);
+        return InvokeNonNullable<float>("SpaceCenter", "RoboticRotor_get_CurrentRPM", args);
     }
 
     /// <summary>
@@ -39,7 +39,7 @@ public class RoboticRotor : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "RoboticRotor_get_CurrentRPM", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "RoboticRotor_get_CurrentRPM", args);
     }
 
     /// <summary>
@@ -52,7 +52,7 @@ public class RoboticRotor : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "RoboticRotor_get_Inverted", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "RoboticRotor_get_Inverted", args);
     }
 
     /// <summary>
@@ -66,7 +66,7 @@ public class RoboticRotor : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "RoboticRotor_get_Inverted", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "RoboticRotor_get_Inverted", args);
     }
 
     /// <summary>
@@ -81,7 +81,7 @@ public class RoboticRotor : RemoteObject
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "RoboticRotor_set_Inverted", args);
+        InvokeVoid("SpaceCenter", "RoboticRotor_set_Inverted", args);
     }
 
     /// <summary>
@@ -97,7 +97,7 @@ public class RoboticRotor : RemoteObject
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "RoboticRotor_set_Inverted", args);
+        await InvokeVoidAsync("SpaceCenter", "RoboticRotor_set_Inverted", args);
     }
 
     /// <summary>
@@ -110,7 +110,7 @@ public class RoboticRotor : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "RoboticRotor_get_Locked", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "RoboticRotor_get_Locked", args);
     }
 
     /// <summary>
@@ -124,7 +124,7 @@ public class RoboticRotor : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "RoboticRotor_get_Locked", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "RoboticRotor_get_Locked", args);
     }
 
     /// <summary>
@@ -139,7 +139,7 @@ public class RoboticRotor : RemoteObject
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "RoboticRotor_set_Locked", args);
+        InvokeVoid("SpaceCenter", "RoboticRotor_set_Locked", args);
     }
 
     /// <summary>
@@ -155,7 +155,7 @@ public class RoboticRotor : RemoteObject
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "RoboticRotor_set_Locked", args);
+        await InvokeVoidAsync("SpaceCenter", "RoboticRotor_set_Locked", args);
     }
 
     /// <summary>
@@ -168,7 +168,7 @@ public class RoboticRotor : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "RoboticRotor_get_MotorEngaged", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "RoboticRotor_get_MotorEngaged", args);
     }
 
     /// <summary>
@@ -182,7 +182,7 @@ public class RoboticRotor : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "RoboticRotor_get_MotorEngaged", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "RoboticRotor_get_MotorEngaged", args);
     }
 
     /// <summary>
@@ -197,7 +197,7 @@ public class RoboticRotor : RemoteObject
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "RoboticRotor_set_MotorEngaged", args);
+        InvokeVoid("SpaceCenter", "RoboticRotor_set_MotorEngaged", args);
     }
 
     /// <summary>
@@ -213,7 +213,7 @@ public class RoboticRotor : RemoteObject
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "RoboticRotor_set_MotorEngaged", args);
+        await InvokeVoidAsync("SpaceCenter", "RoboticRotor_set_MotorEngaged", args);
     }
 
     /// <summary>
@@ -226,7 +226,7 @@ public class RoboticRotor : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Part>("SpaceCenter", "RoboticRotor_get_Part", args);
+        return InvokeNonNullable<Part>("SpaceCenter", "RoboticRotor_get_Part", args);
     }
 
     /// <summary>
@@ -240,7 +240,7 @@ public class RoboticRotor : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Part>("SpaceCenter", "RoboticRotor_get_Part", args);
+        return await InvokeNonNullableAsync<Part>("SpaceCenter", "RoboticRotor_get_Part", args);
     }
 
     /// <summary>
@@ -253,7 +253,7 @@ public class RoboticRotor : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "RoboticRotor_get_TargetRPM", args);
+        return InvokeNonNullable<float>("SpaceCenter", "RoboticRotor_get_TargetRPM", args);
     }
 
     /// <summary>
@@ -267,7 +267,7 @@ public class RoboticRotor : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "RoboticRotor_get_TargetRPM", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "RoboticRotor_get_TargetRPM", args);
     }
 
     /// <summary>
@@ -282,7 +282,7 @@ public class RoboticRotor : RemoteObject
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "RoboticRotor_set_TargetRPM", args);
+        InvokeVoid("SpaceCenter", "RoboticRotor_set_TargetRPM", args);
     }
 
     /// <summary>
@@ -298,7 +298,7 @@ public class RoboticRotor : RemoteObject
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "RoboticRotor_set_TargetRPM", args);
+        await InvokeVoidAsync("SpaceCenter", "RoboticRotor_set_TargetRPM", args);
     }
 
     /// <summary>
@@ -311,7 +311,7 @@ public class RoboticRotor : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "RoboticRotor_get_TorqueLimit", args);
+        return InvokeNonNullable<float>("SpaceCenter", "RoboticRotor_get_TorqueLimit", args);
     }
 
     /// <summary>
@@ -325,7 +325,7 @@ public class RoboticRotor : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "RoboticRotor_get_TorqueLimit", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "RoboticRotor_get_TorqueLimit", args);
     }
 
     /// <summary>
@@ -340,7 +340,7 @@ public class RoboticRotor : RemoteObject
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "RoboticRotor_set_TorqueLimit", args);
+        InvokeVoid("SpaceCenter", "RoboticRotor_set_TorqueLimit", args);
     }
 
     /// <summary>
@@ -356,6 +356,6 @@ public class RoboticRotor : RemoteObject
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "RoboticRotor_set_TorqueLimit", args);
+        await InvokeVoidAsync("SpaceCenter", "RoboticRotor_set_TorqueLimit", args);
     }
 }

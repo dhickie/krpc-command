@@ -25,7 +25,7 @@ public class CommLink : RemoteObject
         {
             this
         };
-        return Connection.Invoke<CommNode>("SpaceCenter", "CommLink_get_End", args);
+        return InvokeNonNullable<CommNode>("SpaceCenter", "CommLink_get_End", args);
     }
 
     /// <summary>
@@ -39,7 +39,7 @@ public class CommLink : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<CommNode>("SpaceCenter", "CommLink_get_End", args);
+        return await InvokeNonNullableAsync<CommNode>("SpaceCenter", "CommLink_get_End", args);
     }
 
     /// <summary>
@@ -52,7 +52,7 @@ public class CommLink : RemoteObject
         {
             this
         };
-        return Connection.Invoke<double>("SpaceCenter", "CommLink_get_SignalStrength", args);
+        return InvokeNonNullable<double>("SpaceCenter", "CommLink_get_SignalStrength", args);
     }
 
     /// <summary>
@@ -66,7 +66,7 @@ public class CommLink : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<double>("SpaceCenter", "CommLink_get_SignalStrength", args);
+        return await InvokeNonNullableAsync<double>("SpaceCenter", "CommLink_get_SignalStrength", args);
     }
 
     /// <summary>
@@ -79,7 +79,7 @@ public class CommLink : RemoteObject
         {
             this
         };
-        return Connection.Invoke<CommNode>("SpaceCenter", "CommLink_get_Start", args);
+        return InvokeNonNullable<CommNode>("SpaceCenter", "CommLink_get_Start", args);
     }
 
     /// <summary>
@@ -93,7 +93,7 @@ public class CommLink : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<CommNode>("SpaceCenter", "CommLink_get_Start", args);
+        return await InvokeNonNullableAsync<CommNode>("SpaceCenter", "CommLink_get_Start", args);
     }
 
     /// <summary>
@@ -106,7 +106,7 @@ public class CommLink : RemoteObject
         {
             this
         };
-        return Connection.Invoke<CommLinkType>("SpaceCenter", "CommLink_get_Type", args);
+        return InvokeNonNullable<CommLinkType>("SpaceCenter", "CommLink_get_Type", args);
     }
 
     /// <summary>
@@ -120,6 +120,6 @@ public class CommLink : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<CommLinkType>("SpaceCenter", "CommLink_get_Type", args);
+        return await InvokeNonNullableAsync<CommLinkType>("SpaceCenter", "CommLink_get_Type", args);
     }
 }

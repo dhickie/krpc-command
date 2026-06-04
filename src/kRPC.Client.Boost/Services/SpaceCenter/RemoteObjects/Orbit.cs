@@ -31,7 +31,7 @@ public class Orbit : RemoteObject
             this,
             target
         };
-        return Connection.Invoke<double>("SpaceCenter", "Orbit_DistanceAtClosestApproach", args);
+        return InvokeNonNullable<double>("SpaceCenter", "Orbit_DistanceAtClosestApproach", args);
     }
 
     /// <summary>
@@ -47,7 +47,7 @@ public class Orbit : RemoteObject
             this,
             target
         };
-        return await Connection.InvokeAsync<double>("SpaceCenter", "Orbit_DistanceAtClosestApproach", args);
+        return await InvokeNonNullableAsync<double>("SpaceCenter", "Orbit_DistanceAtClosestApproach", args);
     }
 
     /// <summary>
@@ -62,7 +62,7 @@ public class Orbit : RemoteObject
             this,
             ut
         };
-        var result = Connection.Invoke<double>("SpaceCenter", "Orbit_EccentricAnomalyAtUT", args);
+        var result = InvokeNonNullable<double>("SpaceCenter", "Orbit_EccentricAnomalyAtUT", args);
         return Angle.FromRadians(result);
     }
 
@@ -79,7 +79,7 @@ public class Orbit : RemoteObject
             this,
             ut
         };
-        var result = await Connection.InvokeAsync<double>("SpaceCenter", "Orbit_EccentricAnomalyAtUT", args);
+        var result = await InvokeNonNullableAsync<double>("SpaceCenter", "Orbit_EccentricAnomalyAtUT", args);
         return Angle.FromRadians(result);
     }
 
@@ -102,7 +102,7 @@ public class Orbit : RemoteObject
             target,
             orbits
         };
-        return Connection.Invoke<IList<IList<double>>>("SpaceCenter", "Orbit_ListClosestApproaches", args);
+        return InvokeNonNullable<IList<IList<double>>>("SpaceCenter", "Orbit_ListClosestApproaches", args);
     }
 
     /// <summary>
@@ -125,7 +125,7 @@ public class Orbit : RemoteObject
             target,
             orbits
         };
-        return await Connection.InvokeAsync<IList<IList<double>>>("SpaceCenter", "Orbit_ListClosestApproaches", args);
+        return await InvokeNonNullableAsync<IList<IList<double>>>("SpaceCenter", "Orbit_ListClosestApproaches", args);
     }
 
     /// <summary>
@@ -140,7 +140,7 @@ public class Orbit : RemoteObject
             this,
             ut
         };
-        var result = Connection.Invoke<double>("SpaceCenter", "Orbit_MeanAnomalyAtUT", args);
+        var result = InvokeNonNullable<double>("SpaceCenter", "Orbit_MeanAnomalyAtUT", args);
         return Angle.FromRadians(result);
     }
 
@@ -157,7 +157,7 @@ public class Orbit : RemoteObject
             this,
             ut
         };
-        var result = await Connection.InvokeAsync<double>("SpaceCenter", "Orbit_MeanAnomalyAtUT", args);
+        var result = await InvokeNonNullableAsync<double>("SpaceCenter", "Orbit_MeanAnomalyAtUT", args);
         return Angle.FromRadians(result);
     }
 
@@ -173,7 +173,7 @@ public class Orbit : RemoteObject
             this,
             time
         };
-        return Connection.Invoke<double>("SpaceCenter", "Orbit_OrbitalSpeedAt", args);
+        return InvokeNonNullable<double>("SpaceCenter", "Orbit_OrbitalSpeedAt", args);
     }
 
     /// <summary>
@@ -189,7 +189,7 @@ public class Orbit : RemoteObject
             this,
             time
         };
-        return await Connection.InvokeAsync<double>("SpaceCenter", "Orbit_OrbitalSpeedAt", args);
+        return await InvokeNonNullableAsync<double>("SpaceCenter", "Orbit_OrbitalSpeedAt", args);
     }
 
     /// <summary>
@@ -208,7 +208,7 @@ public class Orbit : RemoteObject
             ut,
             referenceFrame
         };
-        return Connection.Invoke<Vector3D>("SpaceCenter", "Orbit_PositionAt", args);
+        return InvokeNonNullable<Vector3D>("SpaceCenter", "Orbit_PositionAt", args);
     }
 
     /// <summary>
@@ -228,7 +228,7 @@ public class Orbit : RemoteObject
             ut,
             referenceFrame
         };
-        return await Connection.InvokeAsync<Vector3D>("SpaceCenter", "Orbit_PositionAt", args);
+        return await InvokeNonNullableAsync<Vector3D>("SpaceCenter", "Orbit_PositionAt", args);
     }
 
     /// <summary>
@@ -243,7 +243,7 @@ public class Orbit : RemoteObject
             this,
             ut
         };
-        return Connection.Invoke<double>("SpaceCenter", "Orbit_RadiusAt", args);
+        return InvokeNonNullable<double>("SpaceCenter", "Orbit_RadiusAt", args);
     }
 
     /// <summary>
@@ -259,7 +259,7 @@ public class Orbit : RemoteObject
             this,
             ut
         };
-        return await Connection.InvokeAsync<double>("SpaceCenter", "Orbit_RadiusAt", args);
+        return await InvokeNonNullableAsync<double>("SpaceCenter", "Orbit_RadiusAt", args);
     }
 
     /// <summary>
@@ -274,7 +274,7 @@ public class Orbit : RemoteObject
             this,
             trueAnomaly.Radians
         };
-        return Connection.Invoke<double>("SpaceCenter", "Orbit_RadiusAtTrueAnomaly", args);
+        return InvokeNonNullable<double>("SpaceCenter", "Orbit_RadiusAtTrueAnomaly", args);
     }
 
     /// <summary>
@@ -290,7 +290,7 @@ public class Orbit : RemoteObject
             this,
             trueAnomaly.Radians
         };
-        return await Connection.InvokeAsync<double>("SpaceCenter", "Orbit_RadiusAtTrueAnomaly", args);
+        return await InvokeNonNullableAsync<double>("SpaceCenter", "Orbit_RadiusAtTrueAnomaly", args);
     }
 
     /// <summary>
@@ -305,7 +305,7 @@ public class Orbit : RemoteObject
             this,
             target
         };
-        var result = Connection.Invoke<double>("SpaceCenter", "Orbit_RelativeInclination", args);
+        var result = InvokeNonNullable<double>("SpaceCenter", "Orbit_RelativeInclination", args);
         return Angle.FromRadians(result);
     }
 
@@ -322,7 +322,7 @@ public class Orbit : RemoteObject
             this,
             target
         };
-        var result = await Connection.InvokeAsync<double>("SpaceCenter", "Orbit_RelativeInclination", args);
+        var result = await InvokeNonNullableAsync<double>("SpaceCenter", "Orbit_RelativeInclination", args);
         return Angle.FromRadians(result);
     }
 
@@ -339,7 +339,7 @@ public class Orbit : RemoteObject
             this,
             target
         };
-        return Connection.Invoke<double>("SpaceCenter", "Orbit_TimeOfClosestApproach", args);
+        return InvokeNonNullable<double>("SpaceCenter", "Orbit_TimeOfClosestApproach", args);
     }
 
     /// <summary>
@@ -356,7 +356,7 @@ public class Orbit : RemoteObject
             this,
             target
         };
-        return await Connection.InvokeAsync<double>("SpaceCenter", "Orbit_TimeOfClosestApproach", args);
+        return await InvokeNonNullableAsync<double>("SpaceCenter", "Orbit_TimeOfClosestApproach", args);
     }
 
     /// <summary>
@@ -371,7 +371,7 @@ public class Orbit : RemoteObject
             this,
             target
         };
-        var result = Connection.Invoke<double>("SpaceCenter", "Orbit_TrueAnomalyAtAN", args);
+        var result = InvokeNonNullable<double>("SpaceCenter", "Orbit_TrueAnomalyAtAN", args);
         return Angle.FromRadians(result);
     }
 
@@ -388,7 +388,7 @@ public class Orbit : RemoteObject
             this,
             target
         };
-        var result = await Connection.InvokeAsync<double>("SpaceCenter", "Orbit_TrueAnomalyAtAN", args);
+        var result = await InvokeNonNullableAsync<double>("SpaceCenter", "Orbit_TrueAnomalyAtAN", args);
         return Angle.FromRadians(result);
     }
 
@@ -404,7 +404,7 @@ public class Orbit : RemoteObject
             this,
             target
         };
-        var result = Connection.Invoke<double>("SpaceCenter", "Orbit_TrueAnomalyAtDN", args);
+        var result = InvokeNonNullable<double>("SpaceCenter", "Orbit_TrueAnomalyAtDN", args);
         return Angle.FromRadians(result);
     }
 
@@ -421,7 +421,7 @@ public class Orbit : RemoteObject
             this,
             target
         };
-        var result = await Connection.InvokeAsync<double>("SpaceCenter", "Orbit_TrueAnomalyAtDN", args);
+        var result = await InvokeNonNullableAsync<double>("SpaceCenter", "Orbit_TrueAnomalyAtDN", args);
         return Angle.FromRadians(result);
     }
 
@@ -437,7 +437,7 @@ public class Orbit : RemoteObject
             this,
             radius
         };
-        var result = Connection.Invoke<double>("SpaceCenter", "Orbit_TrueAnomalyAtRadius", args);
+        var result = InvokeNonNullable<double>("SpaceCenter", "Orbit_TrueAnomalyAtRadius", args);
         return Angle.FromRadians(result);
     }
 
@@ -454,7 +454,7 @@ public class Orbit : RemoteObject
             this,
             radius
         };
-        var result = await Connection.InvokeAsync<double>("SpaceCenter", "Orbit_TrueAnomalyAtRadius", args);
+        var result = await InvokeNonNullableAsync<double>("SpaceCenter", "Orbit_TrueAnomalyAtRadius", args);
         return Angle.FromRadians(result);
     }
 
@@ -470,7 +470,7 @@ public class Orbit : RemoteObject
             this,
             ut
         };
-        var result = Connection.Invoke<double>("SpaceCenter", "Orbit_TrueAnomalyAtUT", args);
+        var result = InvokeNonNullable<double>("SpaceCenter", "Orbit_TrueAnomalyAtUT", args);
         return Angle.FromRadians(result);
     }
 
@@ -487,7 +487,7 @@ public class Orbit : RemoteObject
             this,
             ut
         };
-        var result = await Connection.InvokeAsync<double>("SpaceCenter", "Orbit_TrueAnomalyAtUT", args);
+        var result = await InvokeNonNullableAsync<double>("SpaceCenter", "Orbit_TrueAnomalyAtUT", args);
         return Angle.FromRadians(result);
     }
 
@@ -503,7 +503,7 @@ public class Orbit : RemoteObject
             this,
             trueAnomaly.Radians
         };
-        return Connection.Invoke<double>("SpaceCenter", "Orbit_UTAtTrueAnomaly", args);
+        return InvokeNonNullable<double>("SpaceCenter", "Orbit_UTAtTrueAnomaly", args);
     }
 
     /// <summary>
@@ -519,7 +519,7 @@ public class Orbit : RemoteObject
             this,
             trueAnomaly.Radians
         };
-        return await Connection.InvokeAsync<double>("SpaceCenter", "Orbit_UTAtTrueAnomaly", args);
+        return await InvokeNonNullableAsync<double>("SpaceCenter", "Orbit_UTAtTrueAnomaly", args);
     }
 
     /// <summary>
@@ -536,7 +536,7 @@ public class Orbit : RemoteObject
         {
             referenceFrame
         };
-        return Connection.Invoke<Vector3D>("SpaceCenter", "Orbit_static_ReferencePlaneDirection", args);
+        return InvokeNonNullable<Vector3D>("SpaceCenter", "Orbit_static_ReferencePlaneDirection", args);
     }
 
     /// <summary>
@@ -554,7 +554,7 @@ public class Orbit : RemoteObject
         {
             referenceFrame
         };
-        return await Connection.InvokeAsync<Vector3D>("SpaceCenter", "Orbit_static_ReferencePlaneDirection", args);
+        return await InvokeNonNullableAsync<Vector3D>("SpaceCenter", "Orbit_static_ReferencePlaneDirection", args);
     }
 
     /// <summary>
@@ -572,7 +572,7 @@ public class Orbit : RemoteObject
         {
             referenceFrame
         };
-        return Connection.Invoke<Vector3D>("SpaceCenter", "Orbit_static_ReferencePlaneNormal", args);
+        return InvokeNonNullable<Vector3D>("SpaceCenter", "Orbit_static_ReferencePlaneNormal", args);
     }
 
     /// <summary>
@@ -591,7 +591,7 @@ public class Orbit : RemoteObject
         {
             referenceFrame
         };
-        return await Connection.InvokeAsync<Vector3D>("SpaceCenter", "Orbit_static_ReferencePlaneNormal", args);
+        return await InvokeNonNullableAsync<Vector3D>("SpaceCenter", "Orbit_static_ReferencePlaneNormal", args);
     }
 
     /// <summary>
@@ -609,7 +609,7 @@ public class Orbit : RemoteObject
         {
             this
         };
-        return Connection.Invoke<double>("SpaceCenter", "Orbit_get_Apoapsis", args);
+        return InvokeNonNullable<double>("SpaceCenter", "Orbit_get_Apoapsis", args);
     }
 
     /// <summary>
@@ -628,7 +628,7 @@ public class Orbit : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<double>("SpaceCenter", "Orbit_get_Apoapsis", args);
+        return await InvokeNonNullableAsync<double>("SpaceCenter", "Orbit_get_Apoapsis", args);
     }
 
     /// <summary>
@@ -644,7 +644,7 @@ public class Orbit : RemoteObject
         {
             this
         };
-        return Connection.Invoke<double>("SpaceCenter", "Orbit_get_ApoapsisAltitude", args);
+        return InvokeNonNullable<double>("SpaceCenter", "Orbit_get_ApoapsisAltitude", args);
     }
 
     /// <summary>
@@ -661,7 +661,7 @@ public class Orbit : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<double>("SpaceCenter", "Orbit_get_ApoapsisAltitude", args);
+        return await InvokeNonNullableAsync<double>("SpaceCenter", "Orbit_get_ApoapsisAltitude", args);
     }
 
     /// <summary>
@@ -675,7 +675,7 @@ public class Orbit : RemoteObject
         {
             this
         };
-        var result = Connection.Invoke<double>("SpaceCenter", "Orbit_get_ArgumentOfPeriapsis", args);
+        var result = InvokeNonNullable<double>("SpaceCenter", "Orbit_get_ArgumentOfPeriapsis", args);
         return Angle.FromRadians(result);
     }
 
@@ -691,7 +691,7 @@ public class Orbit : RemoteObject
         {
             this
         };
-        var result = await Connection.InvokeAsync<double>("SpaceCenter", "Orbit_get_ArgumentOfPeriapsis", args);
+        var result = await InvokeNonNullableAsync<double>("SpaceCenter", "Orbit_get_ArgumentOfPeriapsis", args);
         return Angle.FromRadians(result);
     }
 
@@ -705,7 +705,7 @@ public class Orbit : RemoteObject
         {
             this
         };
-        return Connection.Invoke<CelestialBody>("SpaceCenter", "Orbit_get_Body", args);
+        return InvokeNonNullable<CelestialBody>("SpaceCenter", "Orbit_get_Body", args);
     }
 
     /// <summary>
@@ -719,7 +719,7 @@ public class Orbit : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<CelestialBody>("SpaceCenter", "Orbit_get_Body", args);
+        return await InvokeNonNullableAsync<CelestialBody>("SpaceCenter", "Orbit_get_Body", args);
     }
 
     /// <summary>
@@ -732,7 +732,7 @@ public class Orbit : RemoteObject
         {
             this
         };
-        var result = Connection.Invoke<double>("SpaceCenter", "Orbit_get_EccentricAnomaly", args);
+        var result = InvokeNonNullable<double>("SpaceCenter", "Orbit_get_EccentricAnomaly", args);
         return Angle.FromRadians(result);
     }
 
@@ -747,7 +747,7 @@ public class Orbit : RemoteObject
         {
             this
         };
-        var result = await Connection.InvokeAsync<double>("SpaceCenter", "Orbit_get_EccentricAnomaly", args);
+        var result = await InvokeNonNullableAsync<double>("SpaceCenter", "Orbit_get_EccentricAnomaly", args);
         return Angle.FromRadians(result);
     }
 
@@ -762,7 +762,7 @@ public class Orbit : RemoteObject
         {
             this
         };
-        return Connection.Invoke<double>("SpaceCenter", "Orbit_get_Eccentricity", args);
+        return InvokeNonNullable<double>("SpaceCenter", "Orbit_get_Eccentricity", args);
     }
 
     /// <summary>
@@ -777,7 +777,7 @@ public class Orbit : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<double>("SpaceCenter", "Orbit_get_Eccentricity", args);
+        return await InvokeNonNullableAsync<double>("SpaceCenter", "Orbit_get_Eccentricity", args);
     }
 
     /// <summary>
@@ -792,7 +792,7 @@ public class Orbit : RemoteObject
         {
             this
         };
-        return Connection.Invoke<double>("SpaceCenter", "Orbit_get_Epoch", args);
+        return InvokeNonNullable<double>("SpaceCenter", "Orbit_get_Epoch", args);
     }
 
     /// <summary>
@@ -808,7 +808,7 @@ public class Orbit : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<double>("SpaceCenter", "Orbit_get_Epoch", args);
+        return await InvokeNonNullableAsync<double>("SpaceCenter", "Orbit_get_Epoch", args);
     }
 
     /// <summary>
@@ -822,7 +822,7 @@ public class Orbit : RemoteObject
         {
             this
         };
-        var result = Connection.Invoke<double>("SpaceCenter", "Orbit_get_Inclination", args);
+        var result = InvokeNonNullable<double>("SpaceCenter", "Orbit_get_Inclination", args);
         return Angle.FromRadians(result);
     }
 
@@ -838,7 +838,7 @@ public class Orbit : RemoteObject
         {
             this
         };
-        var result = await Connection.InvokeAsync<double>("SpaceCenter", "Orbit_get_Inclination", args);
+        var result = await InvokeNonNullableAsync<double>("SpaceCenter", "Orbit_get_Inclination", args);
         return Angle.FromRadians(result);
     }
 
@@ -853,7 +853,7 @@ public class Orbit : RemoteObject
         {
             this
         };
-        var result = Connection.Invoke<double>("SpaceCenter", "Orbit_get_LongitudeOfAscendingNode", args);
+        var result = InvokeNonNullable<double>("SpaceCenter", "Orbit_get_LongitudeOfAscendingNode", args);
         return Angle.FromRadians(result);
     }
 
@@ -869,7 +869,7 @@ public class Orbit : RemoteObject
         {
             this
         };
-        var result = await Connection.InvokeAsync<double>("SpaceCenter", "Orbit_get_LongitudeOfAscendingNode", args);
+        var result = await InvokeNonNullableAsync<double>("SpaceCenter", "Orbit_get_LongitudeOfAscendingNode", args);
         return Angle.FromRadians(result);
     }
 
@@ -883,7 +883,7 @@ public class Orbit : RemoteObject
         {
             this
         };
-        var result = Connection.Invoke<double>("SpaceCenter", "Orbit_get_MeanAnomaly", args);
+        var result = InvokeNonNullable<double>("SpaceCenter", "Orbit_get_MeanAnomaly", args);
         return Angle.FromRadians(result);
     }
 
@@ -898,7 +898,7 @@ public class Orbit : RemoteObject
         {
             this
         };
-        var result = await Connection.InvokeAsync<double>("SpaceCenter", "Orbit_get_MeanAnomaly", args);
+        var result = await InvokeNonNullableAsync<double>("SpaceCenter", "Orbit_get_MeanAnomaly", args);
         return Angle.FromRadians(result);
     }
 
@@ -912,7 +912,7 @@ public class Orbit : RemoteObject
         {
             this
         };
-        var result = Connection.Invoke<double>("SpaceCenter", "Orbit_get_MeanAnomalyAtEpoch", args);
+        var result = InvokeNonNullable<double>("SpaceCenter", "Orbit_get_MeanAnomalyAtEpoch", args);
         return Angle.FromRadians(result);
     }
 
@@ -927,7 +927,7 @@ public class Orbit : RemoteObject
         {
             this
         };
-        var result = await Connection.InvokeAsync<double>("SpaceCenter", "Orbit_get_MeanAnomalyAtEpoch", args);
+        var result = await InvokeNonNullableAsync<double>("SpaceCenter", "Orbit_get_MeanAnomalyAtEpoch", args);
         return Angle.FromRadians(result);
     }
 
@@ -942,7 +942,7 @@ public class Orbit : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Orbit?>("SpaceCenter", "Orbit_get_NextOrbit", args);
+        return InvokeNullable<Orbit>("SpaceCenter", "Orbit_get_NextOrbit", args);
     }
 
     /// <summary>
@@ -957,7 +957,7 @@ public class Orbit : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Orbit?>("SpaceCenter", "Orbit_get_NextOrbit", args);
+        return await InvokeNullableAsync<Orbit>("SpaceCenter", "Orbit_get_NextOrbit", args);
     }
 
     /// <summary>
@@ -970,7 +970,7 @@ public class Orbit : RemoteObject
         {
             this
         };
-        return Connection.Invoke<double>("SpaceCenter", "Orbit_get_OrbitalSpeed", args);
+        return InvokeNonNullable<double>("SpaceCenter", "Orbit_get_OrbitalSpeed", args);
     }
 
     /// <summary>
@@ -984,7 +984,7 @@ public class Orbit : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<double>("SpaceCenter", "Orbit_get_OrbitalSpeed", args);
+        return await InvokeNonNullableAsync<double>("SpaceCenter", "Orbit_get_OrbitalSpeed", args);
     }
 
     /// <summary>
@@ -1002,7 +1002,7 @@ public class Orbit : RemoteObject
         {
             this
         };
-        return Connection.Invoke<double>("SpaceCenter", "Orbit_get_Periapsis", args);
+        return InvokeNonNullable<double>("SpaceCenter", "Orbit_get_Periapsis", args);
     }
 
     /// <summary>
@@ -1021,7 +1021,7 @@ public class Orbit : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<double>("SpaceCenter", "Orbit_get_Periapsis", args);
+        return await InvokeNonNullableAsync<double>("SpaceCenter", "Orbit_get_Periapsis", args);
     }
 
     /// <summary>
@@ -1037,7 +1037,7 @@ public class Orbit : RemoteObject
         {
             this
         };
-        return Connection.Invoke<double>("SpaceCenter", "Orbit_get_PeriapsisAltitude", args);
+        return InvokeNonNullable<double>("SpaceCenter", "Orbit_get_PeriapsisAltitude", args);
     }
 
     /// <summary>
@@ -1054,7 +1054,7 @@ public class Orbit : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<double>("SpaceCenter", "Orbit_get_PeriapsisAltitude", args);
+        return await InvokeNonNullableAsync<double>("SpaceCenter", "Orbit_get_PeriapsisAltitude", args);
     }
 
     /// <summary>
@@ -1067,7 +1067,7 @@ public class Orbit : RemoteObject
         {
             this
         };
-        return Connection.Invoke<double>("SpaceCenter", "Orbit_get_Period", args);
+        return InvokeNonNullable<double>("SpaceCenter", "Orbit_get_Period", args);
     }
 
     /// <summary>
@@ -1081,7 +1081,7 @@ public class Orbit : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<double>("SpaceCenter", "Orbit_get_Period", args);
+        return await InvokeNonNullableAsync<double>("SpaceCenter", "Orbit_get_Period", args);
     }
 
     /// <summary>
@@ -1099,7 +1099,7 @@ public class Orbit : RemoteObject
         {
             this
         };
-        return Connection.Invoke<double>("SpaceCenter", "Orbit_get_Radius", args);
+        return InvokeNonNullable<double>("SpaceCenter", "Orbit_get_Radius", args);
     }
 
     /// <summary>
@@ -1118,7 +1118,7 @@ public class Orbit : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<double>("SpaceCenter", "Orbit_get_Radius", args);
+        return await InvokeNonNullableAsync<double>("SpaceCenter", "Orbit_get_Radius", args);
     }
 
     /// <summary>
@@ -1131,7 +1131,7 @@ public class Orbit : RemoteObject
         {
             this
         };
-        return Connection.Invoke<double>("SpaceCenter", "Orbit_get_SemiMajorAxis", args);
+        return InvokeNonNullable<double>("SpaceCenter", "Orbit_get_SemiMajorAxis", args);
     }
 
     /// <summary>
@@ -1145,7 +1145,7 @@ public class Orbit : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<double>("SpaceCenter", "Orbit_get_SemiMajorAxis", args);
+        return await InvokeNonNullableAsync<double>("SpaceCenter", "Orbit_get_SemiMajorAxis", args);
     }
 
     /// <summary>
@@ -1158,7 +1158,7 @@ public class Orbit : RemoteObject
         {
             this
         };
-        return Connection.Invoke<double>("SpaceCenter", "Orbit_get_SemiMinorAxis", args);
+        return InvokeNonNullable<double>("SpaceCenter", "Orbit_get_SemiMinorAxis", args);
     }
 
     /// <summary>
@@ -1172,7 +1172,7 @@ public class Orbit : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<double>("SpaceCenter", "Orbit_get_SemiMinorAxis", args);
+        return await InvokeNonNullableAsync<double>("SpaceCenter", "Orbit_get_SemiMinorAxis", args);
     }
 
     /// <summary>
@@ -1188,7 +1188,7 @@ public class Orbit : RemoteObject
         {
             this
         };
-        return Connection.Invoke<double>("SpaceCenter", "Orbit_get_Speed", args);
+        return InvokeNonNullable<double>("SpaceCenter", "Orbit_get_Speed", args);
     }
 
     /// <summary>
@@ -1205,7 +1205,7 @@ public class Orbit : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<double>("SpaceCenter", "Orbit_get_Speed", args);
+        return await InvokeNonNullableAsync<double>("SpaceCenter", "Orbit_get_Speed", args);
     }
 
     /// <summary>
@@ -1218,7 +1218,7 @@ public class Orbit : RemoteObject
         {
             this
         };
-        return Connection.Invoke<double>("SpaceCenter", "Orbit_get_TimeToApoapsis", args);
+        return InvokeNonNullable<double>("SpaceCenter", "Orbit_get_TimeToApoapsis", args);
     }
 
     /// <summary>
@@ -1232,7 +1232,7 @@ public class Orbit : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<double>("SpaceCenter", "Orbit_get_TimeToApoapsis", args);
+        return await InvokeNonNullableAsync<double>("SpaceCenter", "Orbit_get_TimeToApoapsis", args);
     }
 
     /// <summary>
@@ -1245,7 +1245,7 @@ public class Orbit : RemoteObject
         {
             this
         };
-        return Connection.Invoke<double>("SpaceCenter", "Orbit_get_TimeToPeriapsis", args);
+        return InvokeNonNullable<double>("SpaceCenter", "Orbit_get_TimeToPeriapsis", args);
     }
 
     /// <summary>
@@ -1259,7 +1259,7 @@ public class Orbit : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<double>("SpaceCenter", "Orbit_get_TimeToPeriapsis", args);
+        return await InvokeNonNullableAsync<double>("SpaceCenter", "Orbit_get_TimeToPeriapsis", args);
     }
 
     /// <summary>
@@ -1273,7 +1273,7 @@ public class Orbit : RemoteObject
         {
             this
         };
-        return Connection.Invoke<double>("SpaceCenter", "Orbit_get_TimeToSOIChange", args);
+        return InvokeNonNullable<double>("SpaceCenter", "Orbit_get_TimeToSOIChange", args);
     }
 
     /// <summary>
@@ -1288,7 +1288,7 @@ public class Orbit : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<double>("SpaceCenter", "Orbit_get_TimeToSOIChange", args);
+        return await InvokeNonNullableAsync<double>("SpaceCenter", "Orbit_get_TimeToSOIChange", args);
     }
 
     /// <summary>
@@ -1301,7 +1301,7 @@ public class Orbit : RemoteObject
         {
             this
         };
-        var result = Connection.Invoke<double>("SpaceCenter", "Orbit_get_TrueAnomaly", args);
+        var result = InvokeNonNullable<double>("SpaceCenter", "Orbit_get_TrueAnomaly", args);
         return Angle.FromRadians(result);
     }
 
@@ -1316,7 +1316,7 @@ public class Orbit : RemoteObject
         {
             this
         };
-        var result = await Connection.InvokeAsync<double>("SpaceCenter", "Orbit_get_TrueAnomaly", args);
+        var result = await InvokeNonNullableAsync<double>("SpaceCenter", "Orbit_get_TrueAnomaly", args);
         return Angle.FromRadians(result);
     }
 }

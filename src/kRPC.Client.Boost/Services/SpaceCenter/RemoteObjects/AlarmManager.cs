@@ -31,7 +31,7 @@ public class AlarmManager : RemoteObject
             title,
             description
         };
-        return Connection.Invoke<Alarm>("SpaceCenter", "AlarmManager_static_AddAlarm", args);
+        return InvokeNonNullable<Alarm>("SpaceCenter", "AlarmManager_static_AddAlarm", args);
     }
 
     /// <summary>
@@ -50,7 +50,7 @@ public class AlarmManager : RemoteObject
             title,
             description
         };
-        return await Connection.InvokeAsync<Alarm>("SpaceCenter", "AlarmManager_static_AddAlarm", args);
+        return await InvokeNonNullableAsync<Alarm>("SpaceCenter", "AlarmManager_static_AddAlarm", args);
     }
 
     /// <summary>
@@ -70,7 +70,7 @@ public class AlarmManager : RemoteObject
             title,
             description
         };
-        return Connection.Invoke<Alarm>("SpaceCenter", "AlarmManager_static_AddApoapsisAlarm", args);
+        return InvokeNonNullable<Alarm>("SpaceCenter", "AlarmManager_static_AddApoapsisAlarm", args);
     }
 
     /// <summary>
@@ -91,7 +91,7 @@ public class AlarmManager : RemoteObject
             title,
             description
         };
-        return await Connection.InvokeAsync<Alarm>("SpaceCenter", "AlarmManager_static_AddApoapsisAlarm", args);
+        return await InvokeNonNullableAsync<Alarm>("SpaceCenter", "AlarmManager_static_AddApoapsisAlarm", args);
     }
 
     /// <summary>
@@ -115,7 +115,7 @@ public class AlarmManager : RemoteObject
             title,
             description
         };
-        return Connection.Invoke<Alarm>("SpaceCenter", "AlarmManager_static_AddManeuverNodeAlarm", args);
+        return InvokeNonNullable<Alarm>("SpaceCenter", "AlarmManager_static_AddManeuverNodeAlarm", args);
     }
 
     /// <summary>
@@ -140,7 +140,7 @@ public class AlarmManager : RemoteObject
             title,
             description
         };
-        return await Connection.InvokeAsync<Alarm>("SpaceCenter", "AlarmManager_static_AddManeuverNodeAlarm", args);
+        return await InvokeNonNullableAsync<Alarm>("SpaceCenter", "AlarmManager_static_AddManeuverNodeAlarm", args);
     }
 
     /// <summary>
@@ -160,7 +160,7 @@ public class AlarmManager : RemoteObject
             title,
             description
         };
-        return Connection.Invoke<Alarm>("SpaceCenter", "AlarmManager_static_AddPeriapsisAlarm", args);
+        return InvokeNonNullable<Alarm>("SpaceCenter", "AlarmManager_static_AddPeriapsisAlarm", args);
     }
 
     /// <summary>
@@ -181,7 +181,7 @@ public class AlarmManager : RemoteObject
             title,
             description
         };
-        return await Connection.InvokeAsync<Alarm>("SpaceCenter", "AlarmManager_static_AddPeriapsisAlarm", args);
+        return await InvokeNonNullableAsync<Alarm>("SpaceCenter", "AlarmManager_static_AddPeriapsisAlarm", args);
     }
 
     /// <summary>
@@ -201,7 +201,7 @@ public class AlarmManager : RemoteObject
             title,
             description
         };
-        return Connection.Invoke<Alarm>("SpaceCenter", "AlarmManager_static_AddSOIAlarm", args);
+        return InvokeNonNullable<Alarm>("SpaceCenter", "AlarmManager_static_AddSOIAlarm", args);
     }
 
     /// <summary>
@@ -222,7 +222,7 @@ public class AlarmManager : RemoteObject
             title,
             description
         };
-        return await Connection.InvokeAsync<Alarm>("SpaceCenter", "AlarmManager_static_AddSOIAlarm", args);
+        return await InvokeNonNullableAsync<Alarm>("SpaceCenter", "AlarmManager_static_AddSOIAlarm", args);
     }
 
     /// <summary>
@@ -242,7 +242,7 @@ public class AlarmManager : RemoteObject
             title,
             description
         };
-        return Connection.Invoke<Alarm>("SpaceCenter", "AlarmManager_static_AddVesselAlarm", args);
+        return InvokeNonNullable<Alarm>("SpaceCenter", "AlarmManager_static_AddVesselAlarm", args);
     }
 
     /// <summary>
@@ -263,7 +263,7 @@ public class AlarmManager : RemoteObject
             title,
             description
         };
-        return await Connection.InvokeAsync<Alarm>("SpaceCenter", "AlarmManager_static_AddVesselAlarm", args);
+        return await InvokeNonNullableAsync<Alarm>("SpaceCenter", "AlarmManager_static_AddVesselAlarm", args);
     }
 
     /// <summary>
@@ -276,7 +276,7 @@ public class AlarmManager : RemoteObject
         {
             this
         };
-        return Connection.Invoke<IList<Alarm>>("SpaceCenter", "AlarmManager_get_Alarms", args);
+        return InvokeNonNullable<IList<Alarm>>("SpaceCenter", "AlarmManager_get_Alarms", args);
     }
 
     /// <summary>
@@ -290,6 +290,6 @@ public class AlarmManager : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<IList<Alarm>>("SpaceCenter", "AlarmManager_get_Alarms", args);
+        return await InvokeNonNullableAsync<IList<Alarm>>("SpaceCenter", "AlarmManager_get_Alarms", args);
     }
 }

@@ -26,7 +26,7 @@ public class Force : RemoteObject
         {
             this
         };
-        Connection.Invoke("SpaceCenter", "Force_Remove", args);
+        InvokeVoid("SpaceCenter", "Force_Remove", args);
     }
 
     /// <summary>
@@ -40,7 +40,7 @@ public class Force : RemoteObject
         {
             this
         };
-        await Connection.InvokeAsync("SpaceCenter", "Force_Remove", args);
+        await InvokeVoidAsync("SpaceCenter", "Force_Remove", args);
     }
 
     /// <summary>
@@ -55,7 +55,7 @@ public class Force : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Vector3D>("SpaceCenter", "Force_get_ForceVector", args);
+        return InvokeNonNullable<Vector3D>("SpaceCenter", "Force_get_ForceVector", args);
     }
 
     /// <summary>
@@ -71,7 +71,7 @@ public class Force : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Vector3D>("SpaceCenter", "Force_get_ForceVector", args);
+        return await InvokeNonNullableAsync<Vector3D>("SpaceCenter", "Force_get_ForceVector", args);
     }
 
     /// <summary>
@@ -86,7 +86,7 @@ public class Force : RemoteObject
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "Force_set_ForceVector", args);
+        InvokeVoid("SpaceCenter", "Force_set_ForceVector", args);
     }
 
     /// <summary>
@@ -102,7 +102,7 @@ public class Force : RemoteObject
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "Force_set_ForceVector", args);
+        await InvokeVoidAsync("SpaceCenter", "Force_set_ForceVector", args);
     }
 
     /// <summary>
@@ -115,7 +115,7 @@ public class Force : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Part>("SpaceCenter", "Force_get_Part", args);
+        return InvokeNonNullable<Part>("SpaceCenter", "Force_get_Part", args);
     }
 
     /// <summary>
@@ -129,7 +129,7 @@ public class Force : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Part>("SpaceCenter", "Force_get_Part", args);
+        return await InvokeNonNullableAsync<Part>("SpaceCenter", "Force_get_Part", args);
     }
 
     /// <summary>
@@ -143,7 +143,7 @@ public class Force : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Vector3D>("SpaceCenter", "Force_get_Position", args);
+        return InvokeNonNullable<Vector3D>("SpaceCenter", "Force_get_Position", args);
     }
 
     /// <summary>
@@ -158,7 +158,7 @@ public class Force : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Vector3D>("SpaceCenter", "Force_get_Position", args);
+        return await InvokeNonNullableAsync<Vector3D>("SpaceCenter", "Force_get_Position", args);
     }
 
     /// <summary>
@@ -173,7 +173,7 @@ public class Force : RemoteObject
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "Force_set_Position", args);
+        InvokeVoid("SpaceCenter", "Force_set_Position", args);
     }
 
     /// <summary>
@@ -189,7 +189,7 @@ public class Force : RemoteObject
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "Force_set_Position", args);
+        await InvokeVoidAsync("SpaceCenter", "Force_set_Position", args);
     }
 
     /// <summary>
@@ -202,7 +202,7 @@ public class Force : RemoteObject
         {
             this
         };
-        return Connection.Invoke<ReferenceFrame>("SpaceCenter", "Force_get_ReferenceFrame", args);
+        return InvokeNonNullable<ReferenceFrame>("SpaceCenter", "Force_get_ReferenceFrame", args);
     }
 
     /// <summary>
@@ -216,7 +216,7 @@ public class Force : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<ReferenceFrame>("SpaceCenter", "Force_get_ReferenceFrame", args);
+        return await InvokeNonNullableAsync<ReferenceFrame>("SpaceCenter", "Force_get_ReferenceFrame", args);
     }
 
     /// <summary>
@@ -231,7 +231,7 @@ public class Force : RemoteObject
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "Force_set_ReferenceFrame", args);
+        InvokeVoid("SpaceCenter", "Force_set_ReferenceFrame", args);
     }
 
     /// <summary>
@@ -247,6 +247,6 @@ public class Force : RemoteObject
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "Force_set_ReferenceFrame", args);
+        await InvokeVoidAsync("SpaceCenter", "Force_set_ReferenceFrame", args);
     }
 }

@@ -25,7 +25,7 @@ public class Radiator : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "Radiator_get_Deployable", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "Radiator_get_Deployable", args);
     }
 
     /// <summary>
@@ -39,7 +39,7 @@ public class Radiator : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "Radiator_get_Deployable", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "Radiator_get_Deployable", args);
     }
 
     /// <summary>
@@ -53,7 +53,7 @@ public class Radiator : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "Radiator_get_Deployed", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "Radiator_get_Deployed", args);
     }
 
     /// <summary>
@@ -68,7 +68,7 @@ public class Radiator : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "Radiator_get_Deployed", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "Radiator_get_Deployed", args);
     }
 
     /// <summary>
@@ -84,7 +84,7 @@ public class Radiator : RemoteObject
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "Radiator_set_Deployed", args);
+        InvokeVoid("SpaceCenter", "Radiator_set_Deployed", args);
     }
 
     /// <summary>
@@ -101,7 +101,7 @@ public class Radiator : RemoteObject
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "Radiator_set_Deployed", args);
+        await InvokeVoidAsync("SpaceCenter", "Radiator_set_Deployed", args);
     }
 
     /// <summary>
@@ -114,7 +114,7 @@ public class Radiator : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Part>("SpaceCenter", "Radiator_get_Part", args);
+        return InvokeNonNullable<Part>("SpaceCenter", "Radiator_get_Part", args);
     }
 
     /// <summary>
@@ -128,7 +128,7 @@ public class Radiator : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Part>("SpaceCenter", "Radiator_get_Part", args);
+        return await InvokeNonNullableAsync<Part>("SpaceCenter", "Radiator_get_Part", args);
     }
 
     /// <summary>
@@ -144,7 +144,7 @@ public class Radiator : RemoteObject
         {
             this
         };
-        return Connection.Invoke<RadiatorState>("SpaceCenter", "Radiator_get_State", args);
+        return InvokeNonNullable<RadiatorState>("SpaceCenter", "Radiator_get_State", args);
     }
 
     /// <summary>
@@ -161,6 +161,6 @@ public class Radiator : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<RadiatorState>("SpaceCenter", "Radiator_get_State", args);
+        return await InvokeNonNullableAsync<RadiatorState>("SpaceCenter", "Radiator_get_State", args);
     }
 }

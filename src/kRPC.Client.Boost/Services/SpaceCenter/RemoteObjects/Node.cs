@@ -35,7 +35,7 @@ public class Node : RemoteObject
             this,
             referenceFrame
         };
-        return Connection.Invoke<Vector3D>("SpaceCenter", "Node_BurnVector", args);
+        return InvokeNonNullable<Vector3D>("SpaceCenter", "Node_BurnVector", args);
     }
 
     /// <summary>
@@ -58,7 +58,7 @@ public class Node : RemoteObject
             this,
             referenceFrame
         };
-        return await Connection.InvokeAsync<Vector3D>("SpaceCenter", "Node_BurnVector", args);
+        return await InvokeNonNullableAsync<Vector3D>("SpaceCenter", "Node_BurnVector", args);
     }
 
     /// <summary>
@@ -75,7 +75,7 @@ public class Node : RemoteObject
             this,
             referenceFrame
         };
-        return Connection.Invoke<Vector3D>("SpaceCenter", "Node_Direction", args);
+        return InvokeNonNullable<Vector3D>("SpaceCenter", "Node_Direction", args);
     }
 
     /// <summary>
@@ -93,7 +93,7 @@ public class Node : RemoteObject
             this,
             referenceFrame
         };
-        return await Connection.InvokeAsync<Vector3D>("SpaceCenter", "Node_Direction", args);
+        return await InvokeNonNullableAsync<Vector3D>("SpaceCenter", "Node_Direction", args);
     }
 
     /// <summary>
@@ -110,7 +110,7 @@ public class Node : RemoteObject
             this,
             referenceFrame
         };
-        return Connection.Invoke<Vector3D>("SpaceCenter", "Node_Position", args);
+        return InvokeNonNullable<Vector3D>("SpaceCenter", "Node_Position", args);
     }
 
     /// <summary>
@@ -128,7 +128,7 @@ public class Node : RemoteObject
             this,
             referenceFrame
         };
-        return await Connection.InvokeAsync<Vector3D>("SpaceCenter", "Node_Position", args);
+        return await InvokeNonNullableAsync<Vector3D>("SpaceCenter", "Node_Position", args);
     }
 
     /// <summary>
@@ -150,7 +150,7 @@ public class Node : RemoteObject
             this,
             referenceFrame
         };
-        return Connection.Invoke<Vector3D>("SpaceCenter", "Node_RemainingBurnVector", args);
+        return InvokeNonNullable<Vector3D>("SpaceCenter", "Node_RemainingBurnVector", args);
     }
 
     /// <summary>
@@ -173,7 +173,7 @@ public class Node : RemoteObject
             this,
             referenceFrame
         };
-        return await Connection.InvokeAsync<Vector3D>("SpaceCenter", "Node_RemainingBurnVector", args);
+        return await InvokeNonNullableAsync<Vector3D>("SpaceCenter", "Node_RemainingBurnVector", args);
     }
 
     /// <summary>
@@ -186,7 +186,7 @@ public class Node : RemoteObject
         {
             this
         };
-        Connection.Invoke("SpaceCenter", "Node_Remove", args);
+        InvokeVoid("SpaceCenter", "Node_Remove", args);
     }
 
     /// <summary>
@@ -200,7 +200,7 @@ public class Node : RemoteObject
         {
             this
         };
-        await Connection.InvokeAsync("SpaceCenter", "Node_Remove", args);
+        await InvokeVoidAsync("SpaceCenter", "Node_Remove", args);
     }
 
     /// <summary>
@@ -216,7 +216,7 @@ public class Node : RemoteObject
         {
             this
         };
-        return Connection.Invoke<double>("SpaceCenter", "Node_get_DeltaV", args);
+        return InvokeNonNullable<double>("SpaceCenter", "Node_get_DeltaV", args);
     }
 
     /// <summary>
@@ -233,7 +233,7 @@ public class Node : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<double>("SpaceCenter", "Node_get_DeltaV", args);
+        return await InvokeNonNullableAsync<double>("SpaceCenter", "Node_get_DeltaV", args);
     }
 
     /// <summary>
@@ -248,7 +248,7 @@ public class Node : RemoteObject
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "Node_set_DeltaV", args);
+        InvokeVoid("SpaceCenter", "Node_set_DeltaV", args);
     }
 
     /// <summary>
@@ -264,7 +264,7 @@ public class Node : RemoteObject
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "Node_set_DeltaV", args);
+        await InvokeVoidAsync("SpaceCenter", "Node_set_DeltaV", args);
     }
 
     /// <summary>
@@ -278,7 +278,7 @@ public class Node : RemoteObject
         {
             this
         };
-        return Connection.Invoke<double>("SpaceCenter", "Node_get_Normal", args);
+        return InvokeNonNullable<double>("SpaceCenter", "Node_get_Normal", args);
     }
 
     /// <summary>
@@ -293,7 +293,7 @@ public class Node : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<double>("SpaceCenter", "Node_get_Normal", args);
+        return await InvokeNonNullableAsync<double>("SpaceCenter", "Node_get_Normal", args);
     }
 
     /// <summary>
@@ -309,7 +309,7 @@ public class Node : RemoteObject
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "Node_set_Normal", args);
+        InvokeVoid("SpaceCenter", "Node_set_Normal", args);
     }
 
     /// <summary>
@@ -326,7 +326,7 @@ public class Node : RemoteObject
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "Node_set_Normal", args);
+        await InvokeVoidAsync("SpaceCenter", "Node_set_Normal", args);
     }
 
     /// <summary>
@@ -339,7 +339,7 @@ public class Node : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Orbit>("SpaceCenter", "Node_get_Orbit", args);
+        return InvokeNonNullable<Orbit>("SpaceCenter", "Node_get_Orbit", args);
     }
 
     /// <summary>
@@ -353,7 +353,7 @@ public class Node : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Orbit>("SpaceCenter", "Node_get_Orbit", args);
+        return await InvokeNonNullableAsync<Orbit>("SpaceCenter", "Node_get_Orbit", args);
     }
 
     /// <summary>
@@ -372,7 +372,7 @@ public class Node : RemoteObject
         {
             this
         };
-        return Connection.Invoke<ReferenceFrame>("SpaceCenter", "Node_get_OrbitalReferenceFrame", args);
+        return InvokeNonNullable<ReferenceFrame>("SpaceCenter", "Node_get_OrbitalReferenceFrame", args);
     }
 
     /// <summary>
@@ -392,7 +392,7 @@ public class Node : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<ReferenceFrame>("SpaceCenter", "Node_get_OrbitalReferenceFrame", args);
+        return await InvokeNonNullableAsync<ReferenceFrame>("SpaceCenter", "Node_get_OrbitalReferenceFrame", args);
     }
 
     /// <summary>
@@ -406,7 +406,7 @@ public class Node : RemoteObject
         {
             this
         };
-        return Connection.Invoke<double>("SpaceCenter", "Node_get_Prograde", args);
+        return InvokeNonNullable<double>("SpaceCenter", "Node_get_Prograde", args);
     }
 
     /// <summary>
@@ -421,7 +421,7 @@ public class Node : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<double>("SpaceCenter", "Node_get_Prograde", args);
+        return await InvokeNonNullableAsync<double>("SpaceCenter", "Node_get_Prograde", args);
     }
 
     /// <summary>
@@ -437,7 +437,7 @@ public class Node : RemoteObject
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "Node_set_Prograde", args);
+        InvokeVoid("SpaceCenter", "Node_set_Prograde", args);
     }
 
     /// <summary>
@@ -454,7 +454,7 @@ public class Node : RemoteObject
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "Node_set_Prograde", args);
+        await InvokeVoidAsync("SpaceCenter", "Node_set_Prograde", args);
     }
 
     /// <summary>
@@ -468,7 +468,7 @@ public class Node : RemoteObject
         {
             this
         };
-        return Connection.Invoke<double>("SpaceCenter", "Node_get_Radial", args);
+        return InvokeNonNullable<double>("SpaceCenter", "Node_get_Radial", args);
     }
 
     /// <summary>
@@ -483,7 +483,7 @@ public class Node : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<double>("SpaceCenter", "Node_get_Radial", args);
+        return await InvokeNonNullableAsync<double>("SpaceCenter", "Node_get_Radial", args);
     }
 
     /// <summary>
@@ -499,7 +499,7 @@ public class Node : RemoteObject
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "Node_set_Radial", args);
+        InvokeVoid("SpaceCenter", "Node_set_Radial", args);
     }
 
     /// <summary>
@@ -516,7 +516,7 @@ public class Node : RemoteObject
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "Node_set_Radial", args);
+        await InvokeVoidAsync("SpaceCenter", "Node_set_Radial", args);
     }
 
     /// <summary>
@@ -530,7 +530,7 @@ public class Node : RemoteObject
         {
             this
         };
-        return Connection.Invoke<ReferenceFrame>("SpaceCenter", "Node_get_ReferenceFrame", args);
+        return InvokeNonNullable<ReferenceFrame>("SpaceCenter", "Node_get_ReferenceFrame", args);
     }
 
     /// <summary>
@@ -545,7 +545,7 @@ public class Node : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<ReferenceFrame>("SpaceCenter", "Node_get_ReferenceFrame", args);
+        return await InvokeNonNullableAsync<ReferenceFrame>("SpaceCenter", "Node_get_ReferenceFrame", args);
     }
 
     /// <summary>
@@ -559,7 +559,7 @@ public class Node : RemoteObject
         {
             this
         };
-        return Connection.Invoke<double>("SpaceCenter", "Node_get_RemainingDeltaV", args);
+        return InvokeNonNullable<double>("SpaceCenter", "Node_get_RemainingDeltaV", args);
     }
 
     /// <summary>
@@ -574,7 +574,7 @@ public class Node : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<double>("SpaceCenter", "Node_get_RemainingDeltaV", args);
+        return await InvokeNonNullableAsync<double>("SpaceCenter", "Node_get_RemainingDeltaV", args);
     }
 
     /// <summary>
@@ -587,7 +587,7 @@ public class Node : RemoteObject
         {
             this
         };
-        return Connection.Invoke<double>("SpaceCenter", "Node_get_TimeTo", args);
+        return InvokeNonNullable<double>("SpaceCenter", "Node_get_TimeTo", args);
     }
 
     /// <summary>
@@ -601,7 +601,7 @@ public class Node : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<double>("SpaceCenter", "Node_get_TimeTo", args);
+        return await InvokeNonNullableAsync<double>("SpaceCenter", "Node_get_TimeTo", args);
     }
 
     /// <summary>
@@ -614,7 +614,7 @@ public class Node : RemoteObject
         {
             this
         };
-        return Connection.Invoke<double>("SpaceCenter", "Node_get_UT", args);
+        return InvokeNonNullable<double>("SpaceCenter", "Node_get_UT", args);
     }
 
     /// <summary>
@@ -628,7 +628,7 @@ public class Node : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<double>("SpaceCenter", "Node_get_UT", args);
+        return await InvokeNonNullableAsync<double>("SpaceCenter", "Node_get_UT", args);
     }
 
     /// <summary>
@@ -643,7 +643,7 @@ public class Node : RemoteObject
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "Node_set_UT", args);
+        InvokeVoid("SpaceCenter", "Node_set_UT", args);
     }
 
     /// <summary>
@@ -659,6 +659,6 @@ public class Node : RemoteObject
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "Node_set_UT", args);
+        await InvokeVoidAsync("SpaceCenter", "Node_set_UT", args);
     }
 }

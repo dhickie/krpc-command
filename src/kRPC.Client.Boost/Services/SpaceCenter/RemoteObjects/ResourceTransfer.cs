@@ -37,7 +37,7 @@ public class ResourceTransfer : RemoteObject
             resource,
             maxAmount
         };
-        return Connection.Invoke<ResourceTransfer>("SpaceCenter", "ResourceTransfer_static_Start", args);
+        return InvokeNonNullable<ResourceTransfer>("SpaceCenter", "ResourceTransfer_static_Start", args);
     }
 
     /// <summary>
@@ -63,7 +63,7 @@ public class ResourceTransfer : RemoteObject
             resource,
             maxAmount
         };
-        return await Connection.InvokeAsync<ResourceTransfer>("SpaceCenter", "ResourceTransfer_static_Start", args);
+        return await InvokeNonNullableAsync<ResourceTransfer>("SpaceCenter", "ResourceTransfer_static_Start", args);
     }
 
     /// <summary>
@@ -76,7 +76,7 @@ public class ResourceTransfer : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "ResourceTransfer_get_Amount", args);
+        return InvokeNonNullable<float>("SpaceCenter", "ResourceTransfer_get_Amount", args);
     }
 
     /// <summary>
@@ -90,7 +90,7 @@ public class ResourceTransfer : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "ResourceTransfer_get_Amount", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "ResourceTransfer_get_Amount", args);
     }
 
     /// <summary>
@@ -103,7 +103,7 @@ public class ResourceTransfer : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "ResourceTransfer_get_Complete", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "ResourceTransfer_get_Complete", args);
     }
 
     /// <summary>
@@ -117,6 +117,6 @@ public class ResourceTransfer : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "ResourceTransfer_get_Complete", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "ResourceTransfer_get_Complete", args);
     }
 }

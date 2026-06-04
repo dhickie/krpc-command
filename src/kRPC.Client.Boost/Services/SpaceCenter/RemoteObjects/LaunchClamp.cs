@@ -25,7 +25,7 @@ public class LaunchClamp : RemoteObject
         {
             this
         };
-        Connection.Invoke("SpaceCenter", "LaunchClamp_Release", args);
+        InvokeVoid("SpaceCenter", "LaunchClamp_Release", args);
     }
 
     /// <summary>
@@ -39,7 +39,7 @@ public class LaunchClamp : RemoteObject
         {
             this
         };
-        await Connection.InvokeAsync("SpaceCenter", "LaunchClamp_Release", args);
+        await InvokeVoidAsync("SpaceCenter", "LaunchClamp_Release", args);
     }
 
     /// <summary>
@@ -52,7 +52,7 @@ public class LaunchClamp : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Part>("SpaceCenter", "LaunchClamp_get_Part", args);
+        return InvokeNonNullable<Part>("SpaceCenter", "LaunchClamp_get_Part", args);
     }
 
     /// <summary>
@@ -66,6 +66,6 @@ public class LaunchClamp : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Part>("SpaceCenter", "LaunchClamp_get_Part", args);
+        return await InvokeNonNullableAsync<Part>("SpaceCenter", "LaunchClamp_get_Part", args);
     }
 }

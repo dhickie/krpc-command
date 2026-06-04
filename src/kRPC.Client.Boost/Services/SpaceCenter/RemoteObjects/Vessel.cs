@@ -34,7 +34,7 @@ public class Vessel : RemoteObject
             this,
             referenceFrame
         };
-        return Connection.Invoke<Vector3D>("SpaceCenter", "Vessel_AngularVelocity", args);
+        return InvokeNonNullable<Vector3D>("SpaceCenter", "Vessel_AngularVelocity", args);
     }
 
     /// <summary>
@@ -54,7 +54,7 @@ public class Vessel : RemoteObject
             this,
             referenceFrame
         };
-        return await Connection.InvokeAsync<Vector3D>("SpaceCenter", "Vessel_AngularVelocity", args);
+        return await InvokeNonNullableAsync<Vector3D>("SpaceCenter", "Vessel_AngularVelocity", args);
     }
 
     /// <summary>
@@ -72,7 +72,7 @@ public class Vessel : RemoteObject
             this,
             pressure
         };
-        return Connection.Invoke<float>("SpaceCenter", "Vessel_AvailableThrustAt", args);
+        return InvokeNonNullable<float>("SpaceCenter", "Vessel_AvailableThrustAt", args);
     }
 
     /// <summary>
@@ -91,7 +91,7 @@ public class Vessel : RemoteObject
             this,
             pressure
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "Vessel_AvailableThrustAt", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "Vessel_AvailableThrustAt", args);
     }
 
     /// <summary>
@@ -109,7 +109,7 @@ public class Vessel : RemoteObject
             this,
             referenceFrame
         };
-        return Connection.Invoke<Tuple<Vector3D,Vector3D>>("SpaceCenter", "Vessel_BoundingBox", args);
+        return InvokeNonNullable<Tuple<Vector3D,Vector3D>>("SpaceCenter", "Vessel_BoundingBox", args);
     }
 
     /// <summary>
@@ -128,7 +128,7 @@ public class Vessel : RemoteObject
             this,
             referenceFrame
         };
-        return await Connection.InvokeAsync<Tuple<Vector3D,Vector3D>>("SpaceCenter", "Vessel_BoundingBox", args);
+        return await InvokeNonNullableAsync<Tuple<Vector3D,Vector3D>>("SpaceCenter", "Vessel_BoundingBox", args);
     }
 
     /// <summary>
@@ -145,7 +145,7 @@ public class Vessel : RemoteObject
             this,
             referenceFrame
         };
-        return Connection.Invoke<Vector3D>("SpaceCenter", "Vessel_Direction", args);
+        return InvokeNonNullable<Vector3D>("SpaceCenter", "Vessel_Direction", args);
     }
 
     /// <summary>
@@ -163,7 +163,7 @@ public class Vessel : RemoteObject
             this,
             referenceFrame
         };
-        return await Connection.InvokeAsync<Vector3D>("SpaceCenter", "Vessel_Direction", args);
+        return await InvokeNonNullableAsync<Vector3D>("SpaceCenter", "Vessel_Direction", args);
     }
 
     /// <summary>
@@ -182,7 +182,7 @@ public class Vessel : RemoteObject
             this,
             referenceFrame
         };
-        return Connection.Invoke<Flight>("SpaceCenter", "Vessel_Flight", args);
+        return InvokeNonNullable<Flight>("SpaceCenter", "Vessel_Flight", args);
     }
 
     /// <summary>
@@ -202,7 +202,7 @@ public class Vessel : RemoteObject
             this,
             referenceFrame
         };
-        return await Connection.InvokeAsync<Flight>("SpaceCenter", "Vessel_Flight", args);
+        return await InvokeNonNullableAsync<Flight>("SpaceCenter", "Vessel_Flight", args);
     }
 
     /// <summary>
@@ -220,7 +220,7 @@ public class Vessel : RemoteObject
             this,
             pressure
         };
-        return Connection.Invoke<float>("SpaceCenter", "Vessel_MaxThrustAt", args);
+        return InvokeNonNullable<float>("SpaceCenter", "Vessel_MaxThrustAt", args);
     }
 
     /// <summary>
@@ -239,7 +239,7 @@ public class Vessel : RemoteObject
             this,
             pressure
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "Vessel_MaxThrustAt", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "Vessel_MaxThrustAt", args);
     }
 
     /// <summary>
@@ -256,7 +256,7 @@ public class Vessel : RemoteObject
             this,
             referenceFrame
         };
-        return Connection.Invoke<Vector3D>("SpaceCenter", "Vessel_Position", args);
+        return InvokeNonNullable<Vector3D>("SpaceCenter", "Vessel_Position", args);
     }
 
     /// <summary>
@@ -274,7 +274,7 @@ public class Vessel : RemoteObject
             this,
             referenceFrame
         };
-        return await Connection.InvokeAsync<Vector3D>("SpaceCenter", "Vessel_Position", args);
+        return await InvokeNonNullableAsync<Vector3D>("SpaceCenter", "Vessel_Position", args);
     }
 
     /// <summary>
@@ -287,7 +287,7 @@ public class Vessel : RemoteObject
         {
             this
         };
-        Connection.Invoke("SpaceCenter", "Vessel_Recover", args);
+        InvokeVoid("SpaceCenter", "Vessel_Recover", args);
     }
 
     /// <summary>
@@ -301,7 +301,7 @@ public class Vessel : RemoteObject
         {
             this
         };
-        await Connection.InvokeAsync("SpaceCenter", "Vessel_Recover", args);
+        await InvokeVoidAsync("SpaceCenter", "Vessel_Recover", args);
     }
 
     /// <summary>
@@ -321,7 +321,7 @@ public class Vessel : RemoteObject
             stage,
             cumulative
         };
-        return Connection.Invoke<Resources>("SpaceCenter", "Vessel_ResourcesInDecoupleStage", args);
+        return InvokeNonNullable<Resources>("SpaceCenter", "Vessel_ResourcesInDecoupleStage", args);
     }
 
     /// <summary>
@@ -342,7 +342,7 @@ public class Vessel : RemoteObject
             stage,
             cumulative
         };
-        return await Connection.InvokeAsync<Resources>("SpaceCenter", "Vessel_ResourcesInDecoupleStage", args);
+        return await InvokeNonNullableAsync<Resources>("SpaceCenter", "Vessel_ResourcesInDecoupleStage", args);
     }
 
     /// <summary>
@@ -359,7 +359,7 @@ public class Vessel : RemoteObject
             this,
             referenceFrame
         };
-        return Connection.Invoke<Quaternion>("SpaceCenter", "Vessel_Rotation", args);
+        return InvokeNonNullable<Quaternion>("SpaceCenter", "Vessel_Rotation", args);
     }
 
     /// <summary>
@@ -377,7 +377,7 @@ public class Vessel : RemoteObject
             this,
             referenceFrame
         };
-        return await Connection.InvokeAsync<Quaternion>("SpaceCenter", "Vessel_Rotation", args);
+        return await InvokeNonNullableAsync<Quaternion>("SpaceCenter", "Vessel_Rotation", args);
     }
 
     /// <summary>
@@ -394,7 +394,7 @@ public class Vessel : RemoteObject
             this,
             pressure
         };
-        return Connection.Invoke<float>("SpaceCenter", "Vessel_SpecificImpulseAt", args);
+        return InvokeNonNullable<float>("SpaceCenter", "Vessel_SpecificImpulseAt", args);
     }
 
     /// <summary>
@@ -412,7 +412,7 @@ public class Vessel : RemoteObject
             this,
             pressure
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "Vessel_SpecificImpulseAt", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "Vessel_SpecificImpulseAt", args);
     }
 
     /// <summary>
@@ -430,7 +430,7 @@ public class Vessel : RemoteObject
             this,
             referenceFrame
         };
-        return Connection.Invoke<Vector3D>("SpaceCenter", "Vessel_Velocity", args);
+        return InvokeNonNullable<Vector3D>("SpaceCenter", "Vessel_Velocity", args);
     }
 
     /// <summary>
@@ -449,7 +449,7 @@ public class Vessel : RemoteObject
             this,
             referenceFrame
         };
-        return await Connection.InvokeAsync<Vector3D>("SpaceCenter", "Vessel_Velocity", args);
+        return await InvokeNonNullableAsync<Vector3D>("SpaceCenter", "Vessel_Velocity", args);
     }
 
     /// <summary>
@@ -463,7 +463,7 @@ public class Vessel : RemoteObject
         {
             this
         };
-        return Connection.Invoke<AutoPilot>("SpaceCenter", "Vessel_get_AutoPilot", args);
+        return InvokeNonNullable<AutoPilot>("SpaceCenter", "Vessel_get_AutoPilot", args);
     }
 
     /// <summary>
@@ -478,7 +478,7 @@ public class Vessel : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<AutoPilot>("SpaceCenter", "Vessel_get_AutoPilot", args);
+        return await InvokeNonNullableAsync<AutoPilot>("SpaceCenter", "Vessel_get_AutoPilot", args);
     }
 
     /// <summary>
@@ -494,7 +494,7 @@ public class Vessel : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Tuple<Vector3D,Vector3D>>("SpaceCenter", "Vessel_get_AvailableControlSurfaceTorque", args);
+        return InvokeNonNullable<Tuple<Vector3D,Vector3D>>("SpaceCenter", "Vessel_get_AvailableControlSurfaceTorque", args);
     }
 
     /// <summary>
@@ -511,7 +511,7 @@ public class Vessel : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Tuple<Vector3D,Vector3D>>("SpaceCenter", "Vessel_get_AvailableControlSurfaceTorque", args);
+        return await InvokeNonNullableAsync<Tuple<Vector3D,Vector3D>>("SpaceCenter", "Vessel_get_AvailableControlSurfaceTorque", args);
     }
 
     /// <summary>
@@ -527,7 +527,7 @@ public class Vessel : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Tuple<Vector3D,Vector3D>>("SpaceCenter", "Vessel_get_AvailableEngineTorque", args);
+        return InvokeNonNullable<Tuple<Vector3D,Vector3D>>("SpaceCenter", "Vessel_get_AvailableEngineTorque", args);
     }
 
     /// <summary>
@@ -544,7 +544,7 @@ public class Vessel : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Tuple<Vector3D,Vector3D>>("SpaceCenter", "Vessel_get_AvailableEngineTorque", args);
+        return await InvokeNonNullableAsync<Tuple<Vector3D,Vector3D>>("SpaceCenter", "Vessel_get_AvailableEngineTorque", args);
     }
 
     /// <summary>
@@ -561,7 +561,7 @@ public class Vessel : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Tuple<Vector3D,Vector3D>>("SpaceCenter", "Vessel_get_AvailableOtherTorque", args);
+        return InvokeNonNullable<Tuple<Vector3D,Vector3D>>("SpaceCenter", "Vessel_get_AvailableOtherTorque", args);
     }
 
     /// <summary>
@@ -579,7 +579,7 @@ public class Vessel : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Tuple<Vector3D,Vector3D>>("SpaceCenter", "Vessel_get_AvailableOtherTorque", args);
+        return await InvokeNonNullableAsync<Tuple<Vector3D,Vector3D>>("SpaceCenter", "Vessel_get_AvailableOtherTorque", args);
     }
 
     /// <summary>
@@ -595,7 +595,7 @@ public class Vessel : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Tuple<Vector3D,Vector3D>>("SpaceCenter", "Vessel_get_AvailableRCSForce", args);
+        return InvokeNonNullable<Tuple<Vector3D,Vector3D>>("SpaceCenter", "Vessel_get_AvailableRCSForce", args);
     }
 
     /// <summary>
@@ -612,7 +612,7 @@ public class Vessel : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Tuple<Vector3D,Vector3D>>("SpaceCenter", "Vessel_get_AvailableRCSForce", args);
+        return await InvokeNonNullableAsync<Tuple<Vector3D,Vector3D>>("SpaceCenter", "Vessel_get_AvailableRCSForce", args);
     }
 
     /// <summary>
@@ -628,7 +628,7 @@ public class Vessel : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Tuple<Vector3D,Vector3D>>("SpaceCenter", "Vessel_get_AvailableRCSTorque", args);
+        return InvokeNonNullable<Tuple<Vector3D,Vector3D>>("SpaceCenter", "Vessel_get_AvailableRCSTorque", args);
     }
 
     /// <summary>
@@ -645,7 +645,7 @@ public class Vessel : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Tuple<Vector3D,Vector3D>>("SpaceCenter", "Vessel_get_AvailableRCSTorque", args);
+        return await InvokeNonNullableAsync<Tuple<Vector3D,Vector3D>>("SpaceCenter", "Vessel_get_AvailableRCSTorque", args);
     }
 
     /// <summary>
@@ -661,7 +661,7 @@ public class Vessel : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Tuple<Vector3D,Vector3D>>("SpaceCenter", "Vessel_get_AvailableReactionWheelTorque", args);
+        return InvokeNonNullable<Tuple<Vector3D,Vector3D>>("SpaceCenter", "Vessel_get_AvailableReactionWheelTorque", args);
     }
 
     /// <summary>
@@ -678,7 +678,7 @@ public class Vessel : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Tuple<Vector3D,Vector3D>>("SpaceCenter", "Vessel_get_AvailableReactionWheelTorque", args);
+        return await InvokeNonNullableAsync<Tuple<Vector3D,Vector3D>>("SpaceCenter", "Vessel_get_AvailableReactionWheelTorque", args);
     }
 
     /// <summary>
@@ -693,7 +693,7 @@ public class Vessel : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "Vessel_get_AvailableThrust", args);
+        return InvokeNonNullable<float>("SpaceCenter", "Vessel_get_AvailableThrust", args);
     }
 
     /// <summary>
@@ -709,7 +709,7 @@ public class Vessel : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "Vessel_get_AvailableThrust", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "Vessel_get_AvailableThrust", args);
     }
 
     /// <summary>
@@ -726,7 +726,7 @@ public class Vessel : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Tuple<Vector3D,Vector3D>>("SpaceCenter", "Vessel_get_AvailableTorque", args);
+        return InvokeNonNullable<Tuple<Vector3D,Vector3D>>("SpaceCenter", "Vessel_get_AvailableTorque", args);
     }
 
     /// <summary>
@@ -744,7 +744,7 @@ public class Vessel : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Tuple<Vector3D,Vector3D>>("SpaceCenter", "Vessel_get_AvailableTorque", args);
+        return await InvokeNonNullableAsync<Tuple<Vector3D,Vector3D>>("SpaceCenter", "Vessel_get_AvailableTorque", args);
     }
 
     /// <summary>
@@ -757,7 +757,7 @@ public class Vessel : RemoteObject
         {
             this
         };
-        return Connection.Invoke<string>("SpaceCenter", "Vessel_get_Biome", args);
+        return InvokeNonNullable<string>("SpaceCenter", "Vessel_get_Biome", args);
     }
 
     /// <summary>
@@ -771,7 +771,7 @@ public class Vessel : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<string>("SpaceCenter", "Vessel_get_Biome", args);
+        return await InvokeNonNullableAsync<string>("SpaceCenter", "Vessel_get_Biome", args);
     }
 
     /// <summary>
@@ -785,7 +785,7 @@ public class Vessel : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Comms>("SpaceCenter", "Vessel_get_Comms", args);
+        return InvokeNonNullable<Comms>("SpaceCenter", "Vessel_get_Comms", args);
     }
 
     /// <summary>
@@ -800,7 +800,7 @@ public class Vessel : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Comms>("SpaceCenter", "Vessel_get_Comms", args);
+        return await InvokeNonNullableAsync<Comms>("SpaceCenter", "Vessel_get_Comms", args);
     }
 
     /// <summary>
@@ -815,7 +815,7 @@ public class Vessel : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Control>("SpaceCenter", "Vessel_get_Control", args);
+        return InvokeNonNullable<Control>("SpaceCenter", "Vessel_get_Control", args);
     }
 
     /// <summary>
@@ -831,7 +831,7 @@ public class Vessel : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Control>("SpaceCenter", "Vessel_get_Control", args);
+        return await InvokeNonNullableAsync<Control>("SpaceCenter", "Vessel_get_Control", args);
     }
 
     /// <summary>
@@ -844,7 +844,7 @@ public class Vessel : RemoteObject
         {
             this
         };
-        return Connection.Invoke<IList<CrewMember>>("SpaceCenter", "Vessel_get_Crew", args);
+        return InvokeNonNullable<IList<CrewMember>>("SpaceCenter", "Vessel_get_Crew", args);
     }
 
     /// <summary>
@@ -858,7 +858,7 @@ public class Vessel : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<IList<CrewMember>>("SpaceCenter", "Vessel_get_Crew", args);
+        return await InvokeNonNullableAsync<IList<CrewMember>>("SpaceCenter", "Vessel_get_Crew", args);
     }
 
     /// <summary>
@@ -871,7 +871,7 @@ public class Vessel : RemoteObject
         {
             this
         };
-        return Connection.Invoke<int>("SpaceCenter", "Vessel_get_CrewCapacity", args);
+        return InvokeNonNullable<int>("SpaceCenter", "Vessel_get_CrewCapacity", args);
     }
 
     /// <summary>
@@ -885,7 +885,7 @@ public class Vessel : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<int>("SpaceCenter", "Vessel_get_CrewCapacity", args);
+        return await InvokeNonNullableAsync<int>("SpaceCenter", "Vessel_get_CrewCapacity", args);
     }
 
     /// <summary>
@@ -898,7 +898,7 @@ public class Vessel : RemoteObject
         {
             this
         };
-        return Connection.Invoke<int>("SpaceCenter", "Vessel_get_CrewCount", args);
+        return InvokeNonNullable<int>("SpaceCenter", "Vessel_get_CrewCount", args);
     }
 
     /// <summary>
@@ -912,7 +912,7 @@ public class Vessel : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<int>("SpaceCenter", "Vessel_get_CrewCount", args);
+        return await InvokeNonNullableAsync<int>("SpaceCenter", "Vessel_get_CrewCount", args);
     }
 
     /// <summary>
@@ -925,7 +925,7 @@ public class Vessel : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "Vessel_get_DryMass", args);
+        return InvokeNonNullable<float>("SpaceCenter", "Vessel_get_DryMass", args);
     }
 
     /// <summary>
@@ -939,7 +939,7 @@ public class Vessel : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "Vessel_get_DryMass", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "Vessel_get_DryMass", args);
     }
 
     /// <summary>
@@ -954,7 +954,7 @@ public class Vessel : RemoteObject
         {
             this
         };
-        return Connection.Invoke<IList<double>>("SpaceCenter", "Vessel_get_InertiaTensor", args);
+        return InvokeNonNullable<IList<double>>("SpaceCenter", "Vessel_get_InertiaTensor", args);
     }
 
     /// <summary>
@@ -970,7 +970,7 @@ public class Vessel : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<IList<double>>("SpaceCenter", "Vessel_get_InertiaTensor", args);
+        return await InvokeNonNullableAsync<IList<double>>("SpaceCenter", "Vessel_get_InertiaTensor", args);
     }
 
     /// <summary>
@@ -985,7 +985,7 @@ public class Vessel : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "Vessel_get_KerbinSeaLevelSpecificImpulse", args);
+        return InvokeNonNullable<float>("SpaceCenter", "Vessel_get_KerbinSeaLevelSpecificImpulse", args);
     }
 
     /// <summary>
@@ -1001,7 +1001,7 @@ public class Vessel : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "Vessel_get_KerbinSeaLevelSpecificImpulse", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "Vessel_get_KerbinSeaLevelSpecificImpulse", args);
     }
 
     /// <summary>
@@ -1014,7 +1014,7 @@ public class Vessel : RemoteObject
         {
             this
         };
-        return Connection.Invoke<double>("SpaceCenter", "Vessel_get_MET", args);
+        return InvokeNonNullable<double>("SpaceCenter", "Vessel_get_MET", args);
     }
 
     /// <summary>
@@ -1028,7 +1028,7 @@ public class Vessel : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<double>("SpaceCenter", "Vessel_get_MET", args);
+        return await InvokeNonNullableAsync<double>("SpaceCenter", "Vessel_get_MET", args);
     }
 
     /// <summary>
@@ -1041,7 +1041,7 @@ public class Vessel : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "Vessel_get_Mass", args);
+        return InvokeNonNullable<float>("SpaceCenter", "Vessel_get_Mass", args);
     }
 
     /// <summary>
@@ -1055,7 +1055,7 @@ public class Vessel : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "Vessel_get_Mass", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "Vessel_get_Mass", args);
     }
 
     /// <summary>
@@ -1070,7 +1070,7 @@ public class Vessel : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "Vessel_get_MaxThrust", args);
+        return InvokeNonNullable<float>("SpaceCenter", "Vessel_get_MaxThrust", args);
     }
 
     /// <summary>
@@ -1086,7 +1086,7 @@ public class Vessel : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "Vessel_get_MaxThrust", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "Vessel_get_MaxThrust", args);
     }
 
     /// <summary>
@@ -1101,7 +1101,7 @@ public class Vessel : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "Vessel_get_MaxVacuumThrust", args);
+        return InvokeNonNullable<float>("SpaceCenter", "Vessel_get_MaxVacuumThrust", args);
     }
 
     /// <summary>
@@ -1117,7 +1117,7 @@ public class Vessel : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "Vessel_get_MaxVacuumThrust", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "Vessel_get_MaxVacuumThrust", args);
     }
 
     /// <summary>
@@ -1133,7 +1133,7 @@ public class Vessel : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Tuple<double,double,double>>("SpaceCenter", "Vessel_get_MomentOfInertia", args);
+        return InvokeNonNullable<Tuple<double,double,double>>("SpaceCenter", "Vessel_get_MomentOfInertia", args);
     }
 
     /// <summary>
@@ -1150,7 +1150,7 @@ public class Vessel : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Tuple<double,double,double>>("SpaceCenter", "Vessel_get_MomentOfInertia", args);
+        return await InvokeNonNullableAsync<Tuple<double,double,double>>("SpaceCenter", "Vessel_get_MomentOfInertia", args);
     }
 
     /// <summary>
@@ -1163,7 +1163,7 @@ public class Vessel : RemoteObject
         {
             this
         };
-        return Connection.Invoke<string>("SpaceCenter", "Vessel_get_Name", args);
+        return InvokeNonNullable<string>("SpaceCenter", "Vessel_get_Name", args);
     }
 
     /// <summary>
@@ -1177,7 +1177,7 @@ public class Vessel : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<string>("SpaceCenter", "Vessel_get_Name", args);
+        return await InvokeNonNullableAsync<string>("SpaceCenter", "Vessel_get_Name", args);
     }
 
     /// <summary>
@@ -1192,7 +1192,7 @@ public class Vessel : RemoteObject
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "Vessel_set_Name", args);
+        InvokeVoid("SpaceCenter", "Vessel_set_Name", args);
     }
 
     /// <summary>
@@ -1208,7 +1208,7 @@ public class Vessel : RemoteObject
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "Vessel_set_Name", args);
+        await InvokeVoidAsync("SpaceCenter", "Vessel_set_Name", args);
     }
 
     /// <summary>
@@ -1221,7 +1221,7 @@ public class Vessel : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Orbit>("SpaceCenter", "Vessel_get_Orbit", args);
+        return InvokeNonNullable<Orbit>("SpaceCenter", "Vessel_get_Orbit", args);
     }
 
     /// <summary>
@@ -1235,7 +1235,7 @@ public class Vessel : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Orbit>("SpaceCenter", "Vessel_get_Orbit", args);
+        return await InvokeNonNullableAsync<Orbit>("SpaceCenter", "Vessel_get_Orbit", args);
     }
 
     /// <summary>
@@ -1253,7 +1253,7 @@ public class Vessel : RemoteObject
         {
             this
         };
-        return Connection.Invoke<ReferenceFrame>("SpaceCenter", "Vessel_get_OrbitalReferenceFrame", args);
+        return InvokeNonNullable<ReferenceFrame>("SpaceCenter", "Vessel_get_OrbitalReferenceFrame", args);
     }
 
     /// <summary>
@@ -1272,7 +1272,7 @@ public class Vessel : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<ReferenceFrame>("SpaceCenter", "Vessel_get_OrbitalReferenceFrame", args);
+        return await InvokeNonNullableAsync<ReferenceFrame>("SpaceCenter", "Vessel_get_OrbitalReferenceFrame", args);
     }
 
     /// <summary>
@@ -1285,7 +1285,7 @@ public class Vessel : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Parts>("SpaceCenter", "Vessel_get_Parts", args);
+        return InvokeNonNullable<Parts>("SpaceCenter", "Vessel_get_Parts", args);
     }
 
     /// <summary>
@@ -1299,7 +1299,7 @@ public class Vessel : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Parts>("SpaceCenter", "Vessel_get_Parts", args);
+        return await InvokeNonNullableAsync<Parts>("SpaceCenter", "Vessel_get_Parts", args);
     }
 
     /// <summary>
@@ -1312,7 +1312,7 @@ public class Vessel : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "Vessel_get_Recoverable", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "Vessel_get_Recoverable", args);
     }
 
     /// <summary>
@@ -1326,7 +1326,7 @@ public class Vessel : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "Vessel_get_Recoverable", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "Vessel_get_Recoverable", args);
     }
 
     /// <summary>
@@ -1341,7 +1341,7 @@ public class Vessel : RemoteObject
         {
             this
         };
-        return Connection.Invoke<ReferenceFrame>("SpaceCenter", "Vessel_get_ReferenceFrame", args);
+        return InvokeNonNullable<ReferenceFrame>("SpaceCenter", "Vessel_get_ReferenceFrame", args);
     }
 
     /// <summary>
@@ -1357,7 +1357,7 @@ public class Vessel : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<ReferenceFrame>("SpaceCenter", "Vessel_get_ReferenceFrame", args);
+        return await InvokeNonNullableAsync<ReferenceFrame>("SpaceCenter", "Vessel_get_ReferenceFrame", args);
     }
 
     /// <summary>
@@ -1371,7 +1371,7 @@ public class Vessel : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Resources>("SpaceCenter", "Vessel_get_Resources", args);
+        return InvokeNonNullable<Resources>("SpaceCenter", "Vessel_get_Resources", args);
     }
 
     /// <summary>
@@ -1386,7 +1386,7 @@ public class Vessel : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Resources>("SpaceCenter", "Vessel_get_Resources", args);
+        return await InvokeNonNullableAsync<Resources>("SpaceCenter", "Vessel_get_Resources", args);
     }
 
     /// <summary>
@@ -1399,7 +1399,7 @@ public class Vessel : RemoteObject
         {
             this
         };
-        return Connection.Invoke<VesselSituation>("SpaceCenter", "Vessel_get_Situation", args);
+        return InvokeNonNullable<VesselSituation>("SpaceCenter", "Vessel_get_Situation", args);
     }
 
     /// <summary>
@@ -1413,7 +1413,7 @@ public class Vessel : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<VesselSituation>("SpaceCenter", "Vessel_get_Situation", args);
+        return await InvokeNonNullableAsync<VesselSituation>("SpaceCenter", "Vessel_get_Situation", args);
     }
 
     /// <summary>
@@ -1427,7 +1427,7 @@ public class Vessel : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "Vessel_get_SpecificImpulse", args);
+        return InvokeNonNullable<float>("SpaceCenter", "Vessel_get_SpecificImpulse", args);
     }
 
     /// <summary>
@@ -1442,7 +1442,7 @@ public class Vessel : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "Vessel_get_SpecificImpulse", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "Vessel_get_SpecificImpulse", args);
     }
 
     /// <summary>
@@ -1466,7 +1466,7 @@ public class Vessel : RemoteObject
         {
             this
         };
-        return Connection.Invoke<ReferenceFrame>("SpaceCenter", "Vessel_get_SurfaceReferenceFrame", args);
+        return InvokeNonNullable<ReferenceFrame>("SpaceCenter", "Vessel_get_SurfaceReferenceFrame", args);
     }
 
     /// <summary>
@@ -1491,7 +1491,7 @@ public class Vessel : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<ReferenceFrame>("SpaceCenter", "Vessel_get_SurfaceReferenceFrame", args);
+        return await InvokeNonNullableAsync<ReferenceFrame>("SpaceCenter", "Vessel_get_SurfaceReferenceFrame", args);
     }
 
     /// <summary>
@@ -1509,7 +1509,7 @@ public class Vessel : RemoteObject
         {
             this
         };
-        return Connection.Invoke<ReferenceFrame>("SpaceCenter", "Vessel_get_SurfaceVelocityReferenceFrame", args);
+        return InvokeNonNullable<ReferenceFrame>("SpaceCenter", "Vessel_get_SurfaceVelocityReferenceFrame", args);
     }
 
     /// <summary>
@@ -1528,7 +1528,7 @@ public class Vessel : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<ReferenceFrame>("SpaceCenter", "Vessel_get_SurfaceVelocityReferenceFrame", args);
+        return await InvokeNonNullableAsync<ReferenceFrame>("SpaceCenter", "Vessel_get_SurfaceVelocityReferenceFrame", args);
     }
 
     /// <summary>
@@ -1543,7 +1543,7 @@ public class Vessel : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "Vessel_get_Thrust", args);
+        return InvokeNonNullable<float>("SpaceCenter", "Vessel_get_Thrust", args);
     }
 
     /// <summary>
@@ -1559,7 +1559,7 @@ public class Vessel : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "Vessel_get_Thrust", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "Vessel_get_Thrust", args);
     }
 
     /// <summary>
@@ -1572,7 +1572,7 @@ public class Vessel : RemoteObject
         {
             this
         };
-        return Connection.Invoke<VesselType>("SpaceCenter", "Vessel_get_Type", args);
+        return InvokeNonNullable<VesselType>("SpaceCenter", "Vessel_get_Type", args);
     }
 
     /// <summary>
@@ -1586,7 +1586,7 @@ public class Vessel : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<VesselType>("SpaceCenter", "Vessel_get_Type", args);
+        return await InvokeNonNullableAsync<VesselType>("SpaceCenter", "Vessel_get_Type", args);
     }
 
     /// <summary>
@@ -1601,7 +1601,7 @@ public class Vessel : RemoteObject
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "Vessel_set_Type", args);
+        InvokeVoid("SpaceCenter", "Vessel_set_Type", args);
     }
 
     /// <summary>
@@ -1617,7 +1617,7 @@ public class Vessel : RemoteObject
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "Vessel_set_Type", args);
+        await InvokeVoidAsync("SpaceCenter", "Vessel_set_Type", args);
     }
 
     /// <summary>
@@ -1631,7 +1631,7 @@ public class Vessel : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "Vessel_get_VacuumSpecificImpulse", args);
+        return InvokeNonNullable<float>("SpaceCenter", "Vessel_get_VacuumSpecificImpulse", args);
     }
 
     /// <summary>
@@ -1646,6 +1646,6 @@ public class Vessel : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "Vessel_get_VacuumSpecificImpulse", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "Vessel_get_VacuumSpecificImpulse", args);
     }
 }

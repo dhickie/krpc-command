@@ -26,7 +26,7 @@ public class Comms : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "Comms_get_CanCommunicate", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "Comms_get_CanCommunicate", args);
     }
 
     /// <summary>
@@ -40,7 +40,7 @@ public class Comms : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "Comms_get_CanCommunicate", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "Comms_get_CanCommunicate", args);
     }
 
     /// <summary>
@@ -53,7 +53,7 @@ public class Comms : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "Comms_get_CanTransmitScience", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "Comms_get_CanTransmitScience", args);
     }
 
     /// <summary>
@@ -67,7 +67,7 @@ public class Comms : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "Comms_get_CanTransmitScience", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "Comms_get_CanTransmitScience", args);
     }
 
     /// <summary>
@@ -80,7 +80,7 @@ public class Comms : RemoteObject
         {
             this
         };
-        return Connection.Invoke<IList<CommLink>>("SpaceCenter", "Comms_get_ControlPath", args);
+        return InvokeNonNullable<IList<CommLink>>("SpaceCenter", "Comms_get_ControlPath", args);
     }
 
     /// <summary>
@@ -94,7 +94,7 @@ public class Comms : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<IList<CommLink>>("SpaceCenter", "Comms_get_ControlPath", args);
+        return await InvokeNonNullableAsync<IList<CommLink>>("SpaceCenter", "Comms_get_ControlPath", args);
     }
 
     /// <summary>
@@ -107,7 +107,7 @@ public class Comms : RemoteObject
         {
             this
         };
-        return Connection.Invoke<double>("SpaceCenter", "Comms_get_Power", args);
+        return InvokeNonNullable<double>("SpaceCenter", "Comms_get_Power", args);
     }
 
     /// <summary>
@@ -121,7 +121,7 @@ public class Comms : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<double>("SpaceCenter", "Comms_get_Power", args);
+        return await InvokeNonNullableAsync<double>("SpaceCenter", "Comms_get_Power", args);
     }
 
     /// <summary>
@@ -134,7 +134,7 @@ public class Comms : RemoteObject
         {
             this
         };
-        return Connection.Invoke<double>("SpaceCenter", "Comms_get_SignalDelay", args);
+        return InvokeNonNullable<double>("SpaceCenter", "Comms_get_SignalDelay", args);
     }
 
     /// <summary>
@@ -148,7 +148,7 @@ public class Comms : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<double>("SpaceCenter", "Comms_get_SignalDelay", args);
+        return await InvokeNonNullableAsync<double>("SpaceCenter", "Comms_get_SignalDelay", args);
     }
 
     /// <summary>
@@ -161,7 +161,7 @@ public class Comms : RemoteObject
         {
             this
         };
-        return Connection.Invoke<double>("SpaceCenter", "Comms_get_SignalStrength", args);
+        return InvokeNonNullable<double>("SpaceCenter", "Comms_get_SignalStrength", args);
     }
 
     /// <summary>
@@ -175,6 +175,6 @@ public class Comms : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<double>("SpaceCenter", "Comms_get_SignalStrength", args);
+        return await InvokeNonNullableAsync<double>("SpaceCenter", "Comms_get_SignalStrength", args);
     }
 }

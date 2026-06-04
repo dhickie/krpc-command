@@ -25,7 +25,7 @@ public class ScienceData : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "ScienceData_get_DataAmount", args);
+        return InvokeNonNullable<float>("SpaceCenter", "ScienceData_get_DataAmount", args);
     }
 
     /// <summary>
@@ -39,7 +39,7 @@ public class ScienceData : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "ScienceData_get_DataAmount", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "ScienceData_get_DataAmount", args);
     }
 
     /// <summary>
@@ -52,7 +52,7 @@ public class ScienceData : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "ScienceData_get_ScienceValue", args);
+        return InvokeNonNullable<float>("SpaceCenter", "ScienceData_get_ScienceValue", args);
     }
 
     /// <summary>
@@ -66,7 +66,7 @@ public class ScienceData : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "ScienceData_get_ScienceValue", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "ScienceData_get_ScienceValue", args);
     }
 
     /// <summary>
@@ -79,7 +79,7 @@ public class ScienceData : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "ScienceData_get_TransmitValue", args);
+        return InvokeNonNullable<float>("SpaceCenter", "ScienceData_get_TransmitValue", args);
     }
 
     /// <summary>
@@ -93,6 +93,6 @@ public class ScienceData : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "ScienceData_get_TransmitValue", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "ScienceData_get_TransmitValue", args);
     }
 }

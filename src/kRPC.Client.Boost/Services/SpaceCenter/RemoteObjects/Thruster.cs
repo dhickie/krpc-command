@@ -37,7 +37,7 @@ public class Thruster : RemoteObject
             this,
             referenceFrame
         };
-        return Connection.Invoke<Vector3D>("SpaceCenter", "Thruster_GimbalPosition", args);
+        return InvokeNonNullable<Vector3D>("SpaceCenter", "Thruster_GimbalPosition", args);
     }
 
     /// <summary>
@@ -55,7 +55,7 @@ public class Thruster : RemoteObject
             this,
             referenceFrame
         };
-        return await Connection.InvokeAsync<Vector3D>("SpaceCenter", "Thruster_GimbalPosition", args);
+        return await InvokeNonNullableAsync<Vector3D>("SpaceCenter", "Thruster_GimbalPosition", args);
     }
 
     /// <summary>
@@ -74,7 +74,7 @@ public class Thruster : RemoteObject
             this,
             referenceFrame
         };
-        return Connection.Invoke<Vector3D>("SpaceCenter", "Thruster_InitialThrustDirection", args);
+        return InvokeNonNullable<Vector3D>("SpaceCenter", "Thruster_InitialThrustDirection", args);
     }
 
     /// <summary>
@@ -94,7 +94,7 @@ public class Thruster : RemoteObject
             this,
             referenceFrame
         };
-        return await Connection.InvokeAsync<Vector3D>("SpaceCenter", "Thruster_InitialThrustDirection", args);
+        return await InvokeNonNullableAsync<Vector3D>("SpaceCenter", "Thruster_InitialThrustDirection", args);
     }
 
     /// <summary>
@@ -116,7 +116,7 @@ public class Thruster : RemoteObject
             this,
             referenceFrame
         };
-        return Connection.Invoke<Vector3D>("SpaceCenter", "Thruster_InitialThrustPosition", args);
+        return InvokeNonNullable<Vector3D>("SpaceCenter", "Thruster_InitialThrustPosition", args);
     }
 
     /// <summary>
@@ -139,7 +139,7 @@ public class Thruster : RemoteObject
             this,
             referenceFrame
         };
-        return await Connection.InvokeAsync<Vector3D>("SpaceCenter", "Thruster_InitialThrustPosition", args);
+        return await InvokeNonNullableAsync<Vector3D>("SpaceCenter", "Thruster_InitialThrustPosition", args);
     }
 
     /// <summary>
@@ -158,7 +158,7 @@ public class Thruster : RemoteObject
             this,
             referenceFrame
         };
-        return Connection.Invoke<Vector3D>("SpaceCenter", "Thruster_ThrustDirection", args);
+        return InvokeNonNullable<Vector3D>("SpaceCenter", "Thruster_ThrustDirection", args);
     }
 
     /// <summary>
@@ -178,7 +178,7 @@ public class Thruster : RemoteObject
             this,
             referenceFrame
         };
-        return await Connection.InvokeAsync<Vector3D>("SpaceCenter", "Thruster_ThrustDirection", args);
+        return await InvokeNonNullableAsync<Vector3D>("SpaceCenter", "Thruster_ThrustDirection", args);
     }
 
     /// <summary>
@@ -196,7 +196,7 @@ public class Thruster : RemoteObject
             this,
             referenceFrame
         };
-        return Connection.Invoke<Vector3D>("SpaceCenter", "Thruster_ThrustPosition", args);
+        return InvokeNonNullable<Vector3D>("SpaceCenter", "Thruster_ThrustPosition", args);
     }
 
     /// <summary>
@@ -215,7 +215,7 @@ public class Thruster : RemoteObject
             this,
             referenceFrame
         };
-        return await Connection.InvokeAsync<Vector3D>("SpaceCenter", "Thruster_ThrustPosition", args);
+        return await InvokeNonNullableAsync<Vector3D>("SpaceCenter", "Thruster_ThrustPosition", args);
     }
 
     /// <summary>
@@ -228,7 +228,7 @@ public class Thruster : RemoteObject
         {
             this
         };
-        var result = Connection.Invoke<Tuple<double,double,double>>("SpaceCenter", "Thruster_get_GimbalAngle", args);
+        var result = InvokeNonNullable<Tuple<double,double,double>>("SpaceCenter", "Thruster_get_GimbalAngle", args);
         return Tuple.Create(Angle.FromDegrees(result.Item1), Angle.FromDegrees(result.Item2), Angle.FromDegrees(result.Item3));
     }
 
@@ -243,7 +243,7 @@ public class Thruster : RemoteObject
         {
             this
         };
-        var result = await Connection.InvokeAsync<Tuple<double,double,double>>("SpaceCenter", "Thruster_get_GimbalAngle", args);
+        var result = await InvokeNonNullableAsync<Tuple<double,double,double>>("SpaceCenter", "Thruster_get_GimbalAngle", args);
         return Tuple.Create(Angle.FromDegrees(result.Item1), Angle.FromDegrees(result.Item2), Angle.FromDegrees(result.Item3));
     }
 
@@ -257,7 +257,7 @@ public class Thruster : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "Thruster_get_Gimballed", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "Thruster_get_Gimballed", args);
     }
 
     /// <summary>
@@ -271,7 +271,7 @@ public class Thruster : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "Thruster_get_Gimballed", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "Thruster_get_Gimballed", args);
     }
 
     /// <summary>
@@ -284,7 +284,7 @@ public class Thruster : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Part>("SpaceCenter", "Thruster_get_Part", args);
+        return InvokeNonNullable<Part>("SpaceCenter", "Thruster_get_Part", args);
     }
 
     /// <summary>
@@ -298,7 +298,7 @@ public class Thruster : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Part>("SpaceCenter", "Thruster_get_Part", args);
+        return await InvokeNonNullableAsync<Part>("SpaceCenter", "Thruster_get_Part", args);
     }
 
     /// <summary>
@@ -320,7 +320,7 @@ public class Thruster : RemoteObject
         {
             this
         };
-        return Connection.Invoke<ReferenceFrame>("SpaceCenter", "Thruster_get_ThrustReferenceFrame", args);
+        return InvokeNonNullable<ReferenceFrame>("SpaceCenter", "Thruster_get_ThrustReferenceFrame", args);
     }
 
     /// <summary>
@@ -343,6 +343,6 @@ public class Thruster : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<ReferenceFrame>("SpaceCenter", "Thruster_get_ThrustReferenceFrame", args);
+        return await InvokeNonNullableAsync<ReferenceFrame>("SpaceCenter", "Thruster_get_ThrustReferenceFrame", args);
     }
 }

@@ -26,7 +26,7 @@ public class Parachute : RemoteObject
         {
             this
         };
-        Connection.Invoke("SpaceCenter", "Parachute_Arm", args);
+        InvokeVoid("SpaceCenter", "Parachute_Arm", args);
     }
 
     /// <summary>
@@ -41,7 +41,7 @@ public class Parachute : RemoteObject
         {
             this
         };
-        await Connection.InvokeAsync("SpaceCenter", "Parachute_Arm", args);
+        await InvokeVoidAsync("SpaceCenter", "Parachute_Arm", args);
     }
 
     /// <summary>
@@ -54,7 +54,7 @@ public class Parachute : RemoteObject
         {
             this
         };
-        Connection.Invoke("SpaceCenter", "Parachute_Cut", args);
+        InvokeVoid("SpaceCenter", "Parachute_Cut", args);
     }
 
     /// <summary>
@@ -68,7 +68,7 @@ public class Parachute : RemoteObject
         {
             this
         };
-        await Connection.InvokeAsync("SpaceCenter", "Parachute_Cut", args);
+        await InvokeVoidAsync("SpaceCenter", "Parachute_Cut", args);
     }
 
     /// <summary>
@@ -82,7 +82,7 @@ public class Parachute : RemoteObject
         {
             this
         };
-        Connection.Invoke("SpaceCenter", "Parachute_Deploy", args);
+        InvokeVoid("SpaceCenter", "Parachute_Deploy", args);
     }
 
     /// <summary>
@@ -97,7 +97,7 @@ public class Parachute : RemoteObject
         {
             this
         };
-        await Connection.InvokeAsync("SpaceCenter", "Parachute_Deploy", args);
+        await InvokeVoidAsync("SpaceCenter", "Parachute_Deploy", args);
     }
 
     /// <summary>
@@ -110,7 +110,7 @@ public class Parachute : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "Parachute_get_Armed", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "Parachute_get_Armed", args);
     }
 
     /// <summary>
@@ -124,7 +124,7 @@ public class Parachute : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "Parachute_get_Armed", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "Parachute_get_Armed", args);
     }
 
     /// <summary>
@@ -138,7 +138,7 @@ public class Parachute : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "Parachute_get_DeployAltitude", args);
+        return InvokeNonNullable<float>("SpaceCenter", "Parachute_get_DeployAltitude", args);
     }
 
     /// <summary>
@@ -153,7 +153,7 @@ public class Parachute : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "Parachute_get_DeployAltitude", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "Parachute_get_DeployAltitude", args);
     }
 
     /// <summary>
@@ -169,7 +169,7 @@ public class Parachute : RemoteObject
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "Parachute_set_DeployAltitude", args);
+        InvokeVoid("SpaceCenter", "Parachute_set_DeployAltitude", args);
     }
 
     /// <summary>
@@ -186,7 +186,7 @@ public class Parachute : RemoteObject
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "Parachute_set_DeployAltitude", args);
+        await InvokeVoidAsync("SpaceCenter", "Parachute_set_DeployAltitude", args);
     }
 
     /// <summary>
@@ -200,7 +200,7 @@ public class Parachute : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "Parachute_get_DeployMinPressure", args);
+        return InvokeNonNullable<float>("SpaceCenter", "Parachute_get_DeployMinPressure", args);
     }
 
     /// <summary>
@@ -215,7 +215,7 @@ public class Parachute : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "Parachute_get_DeployMinPressure", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "Parachute_get_DeployMinPressure", args);
     }
 
     /// <summary>
@@ -231,7 +231,7 @@ public class Parachute : RemoteObject
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "Parachute_set_DeployMinPressure", args);
+        InvokeVoid("SpaceCenter", "Parachute_set_DeployMinPressure", args);
     }
 
     /// <summary>
@@ -248,7 +248,7 @@ public class Parachute : RemoteObject
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "Parachute_set_DeployMinPressure", args);
+        await InvokeVoidAsync("SpaceCenter", "Parachute_set_DeployMinPressure", args);
     }
 
     /// <summary>
@@ -261,7 +261,7 @@ public class Parachute : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "Parachute_get_Deployed", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "Parachute_get_Deployed", args);
     }
 
     /// <summary>
@@ -275,7 +275,7 @@ public class Parachute : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "Parachute_get_Deployed", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "Parachute_get_Deployed", args);
     }
 
     /// <summary>
@@ -288,7 +288,7 @@ public class Parachute : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Part>("SpaceCenter", "Parachute_get_Part", args);
+        return InvokeNonNullable<Part>("SpaceCenter", "Parachute_get_Part", args);
     }
 
     /// <summary>
@@ -302,7 +302,7 @@ public class Parachute : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Part>("SpaceCenter", "Parachute_get_Part", args);
+        return await InvokeNonNullableAsync<Part>("SpaceCenter", "Parachute_get_Part", args);
     }
 
     /// <summary>
@@ -315,7 +315,7 @@ public class Parachute : RemoteObject
         {
             this
         };
-        return Connection.Invoke<ParachuteState>("SpaceCenter", "Parachute_get_State", args);
+        return InvokeNonNullable<ParachuteState>("SpaceCenter", "Parachute_get_State", args);
     }
 
     /// <summary>
@@ -329,6 +329,6 @@ public class Parachute : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<ParachuteState>("SpaceCenter", "Parachute_get_State", args);
+        return await InvokeNonNullableAsync<ParachuteState>("SpaceCenter", "Parachute_get_State", args);
     }
 }

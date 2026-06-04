@@ -25,7 +25,7 @@ public class ScienceSubject : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "ScienceSubject_get_DataScale", args);
+        return InvokeNonNullable<float>("SpaceCenter", "ScienceSubject_get_DataScale", args);
     }
 
     /// <summary>
@@ -39,7 +39,7 @@ public class ScienceSubject : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "ScienceSubject_get_DataScale", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "ScienceSubject_get_DataScale", args);
     }
 
     /// <summary>
@@ -52,7 +52,7 @@ public class ScienceSubject : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "ScienceSubject_get_IsComplete", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "ScienceSubject_get_IsComplete", args);
     }
 
     /// <summary>
@@ -66,7 +66,7 @@ public class ScienceSubject : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "ScienceSubject_get_IsComplete", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "ScienceSubject_get_IsComplete", args);
     }
 
     /// <summary>
@@ -80,7 +80,7 @@ public class ScienceSubject : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "ScienceSubject_get_Science", args);
+        return InvokeNonNullable<float>("SpaceCenter", "ScienceSubject_get_Science", args);
     }
 
     /// <summary>
@@ -95,7 +95,7 @@ public class ScienceSubject : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "ScienceSubject_get_Science", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "ScienceSubject_get_Science", args);
     }
 
     /// <summary>
@@ -108,7 +108,7 @@ public class ScienceSubject : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "ScienceSubject_get_ScienceCap", args);
+        return InvokeNonNullable<float>("SpaceCenter", "ScienceSubject_get_ScienceCap", args);
     }
 
     /// <summary>
@@ -122,7 +122,7 @@ public class ScienceSubject : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "ScienceSubject_get_ScienceCap", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "ScienceSubject_get_ScienceCap", args);
     }
 
     /// <summary>
@@ -136,7 +136,7 @@ public class ScienceSubject : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "ScienceSubject_get_ScientificValue", args);
+        return InvokeNonNullable<float>("SpaceCenter", "ScienceSubject_get_ScientificValue", args);
     }
 
     /// <summary>
@@ -151,7 +151,7 @@ public class ScienceSubject : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "ScienceSubject_get_ScientificValue", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "ScienceSubject_get_ScientificValue", args);
     }
 
     /// <summary>
@@ -164,7 +164,7 @@ public class ScienceSubject : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "ScienceSubject_get_SubjectValue", args);
+        return InvokeNonNullable<float>("SpaceCenter", "ScienceSubject_get_SubjectValue", args);
     }
 
     /// <summary>
@@ -178,7 +178,7 @@ public class ScienceSubject : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "ScienceSubject_get_SubjectValue", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "ScienceSubject_get_SubjectValue", args);
     }
 
     /// <summary>
@@ -191,7 +191,7 @@ public class ScienceSubject : RemoteObject
         {
             this
         };
-        return Connection.Invoke<string>("SpaceCenter", "ScienceSubject_get_Title", args);
+        return InvokeNonNullable<string>("SpaceCenter", "ScienceSubject_get_Title", args);
     }
 
     /// <summary>
@@ -205,6 +205,6 @@ public class ScienceSubject : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<string>("SpaceCenter", "ScienceSubject_get_Title", args);
+        return await InvokeNonNullableAsync<string>("SpaceCenter", "ScienceSubject_get_Title", args);
     }
 }

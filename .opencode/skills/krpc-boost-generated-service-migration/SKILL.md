@@ -1,6 +1,6 @@
 ---
 name: krpc-boost-generated-service-migration
-description: "Use when migrating generated kRPC C# service client code to kRPC.Client.Boost conventions. Use this skill whenever the user mentions repeating CONTEXT.md updates, generated kRPC service migrations, kRPC.Client.Boost generated services, ConnectionMultiplexer/IConnectionMultiplexer, RemoteObject constructor access, RPCAttribute/Rpc cleanup, Encoder/Decode removal, ProcedureArgument arrays, property-to-method conversion, async RPC wrappers, nullable generated RPCs, XML comment cleanup, see cref namespace fixes, or Vector3D/Quaternion/Angle conversions for generated kRPC clients, even if they name a service other than SpaceCenter."
+description: "Use when migrating generated kRPC C# service client code to kRPC.Client.Boost conventions. Use this skill whenever the user mentions repeating CONTEXT.md updates, generated kRPC service migrations, kRPC.Client.Boost generated services, ConnectionMultiplexer/IConnectionMultiplexer, ServiceObject/RemoteObject invoke helpers, RemoteObject constructor access, RPCAttribute/Rpc cleanup, Encoder/Decode removal, ProcedureArgument arrays, property-to-method conversion, async RPC wrappers, nullable generated RPCs, XML comment cleanup, see cref namespace fixes, or Vector3D/Quaternion/Angle conversions for generated kRPC clients, even if they name a service other than SpaceCenter."
 ---
 
 # kRPC Boost Generated Service Migration
@@ -74,9 +74,10 @@ For generated helper methods on remote object classes:
 - Use `new(value)` for explicit non-null argument values so the runtime type is preserved.
 - Use `new(value, typeof(ExpectedType))` only when the argument value can be null or when the procedure contract requires a type different from the runtime value type.
 - Do not use `object[]` or `object?[]` argument arrays in generated service wrappers.
-- For return values, call `Invoke<T>(...)` or `InvokeAsync<T>(...)` with the public return type unless a unit/type conversion is required at the boundary.
-- For methods with no return value, use non-generic `Invoke(...)` or `InvokeAsync(...)`.
-- Remote object generated code should call the inherited `Connection` property; service facade code should call the service field or parameter.
+- For non-nullable return values, call the inherited `InvokeNonNullable<T>(...)` or `InvokeNonNullableAsync<T>(...)` helper with the non-nullable public return type unless a unit/type conversion is required at the boundary.
+- For nullable return values, call the inherited `InvokeNullable<T>(...)` or `InvokeNullableAsync<T>(...)` helper with the non-nullable generic type argument. For example, a public `Part?` return should call `InvokeNullable<Part>(...)`, not `InvokeNullable<Part?>(...)`.
+- For methods with no return value, call the inherited `InvokeVoid(...)` or `InvokeVoidAsync(...)` helper.
+- Remote object and service facade generated code should use the inherited `ServiceObject`/`RemoteObject` invoke helpers rather than calling `Connection.Invoke...` or `_connection.Invoke...` directly.
 
 ### 4. Convert Generated Properties to Method Pairs
 
@@ -104,7 +105,7 @@ For every generated synchronous RPC wrapper, add an async counterpart unless one
 - Append `Async` to the synchronous method name.
 - Return `Task<T>` when the synchronous method returns `T`.
 - Return `Task` when the synchronous method returns `void`.
-- Mark the method `async` and await `InvokeAsync(...)` or `InvokeAsync<T>(...)`.
+- Mark the method `async` and await `InvokeVoidAsync(...)`, `InvokeNonNullableAsync<T>(...)`, or `InvokeNullableAsync<T>(...)` as appropriate.
 - Copy the same `[Rpc(...)]` metadata.
 - Copy XML docs and add `Executes asynchronously.` to the summary.
 - Add `using System.Threading.Tasks;` where needed.
@@ -118,7 +119,7 @@ Infer nullability from generated defaults and XML documentation:
 - Parameters with `null` defaults should use nullable annotations, such as `SomeRemoteObject? value = null`, `IList<string>? names = null`, or `string? text = ""` when the generated default allows null.
 - Parameters with non-null defaults should not be nullable merely because older XML docs mentioned null. Update the XML docs to reflect the actual default value and remove the nullable marker unless the generated contract explicitly allows null.
 - Methods documented as returning `<c>null</c>` should use nullable public return types.
-- Nullable return wrappers should call nullable `Invoke<T?>` / `InvokeAsync<T?>` generic arguments.
+- Nullable return wrappers should call `InvokeNullable<T>` / `InvokeNullableAsync<T>` with the non-nullable generic type argument. Non-nullable return wrappers should call `InvokeNonNullable<T>` / `InvokeNonNullableAsync<T>` so unexpected null RPC responses are checked centrally.
 - Use `ProcedureArgument[]` for argument arrays, including arrays that contain nullable values. Nullable argument entries that cannot rely on an implicit conversion should be wrapped with `new(value, typeof(ExpectedType))` so null values still carry the procedure contract type.
 
 Do not remove nullable markers merely because the RPC transport type is non-nullable internally. The public generated API should reflect documented null behavior.
@@ -184,6 +185,8 @@ genericCollectionsAlias
 _Connection
 new object[]
 new object?[]
+Connection.Invoke
+_connection.Invoke
 ```
 
 Check structural invariants:
@@ -193,8 +196,9 @@ Check structural invariants:
 - Non-constructor remote object methods no longer accept `ConnectionMultiplexer connection` unless the method genuinely needs an external connection rather than the instance connection.
 - There are no leftover generated properties where the selected migration requires method pairs.
 - Every generated getter, setter, synchronous RPC wrapper, and async RPC wrapper has an immediate `[Rpc(...)]` attribute with the same procedure name used by the body.
-- Every synchronous generated RPC wrapper has an async counterpart, and async bodies use `InvokeAsync` with `await`.
-- Nullable public return types use nullable invoke generic arguments.
+- Every synchronous generated RPC wrapper has an async counterpart, and async bodies use the async `ServiceObject`/`RemoteObject` helper with `await`.
+- Generated remote objects and service facades call inherited invoke helpers: `InvokeNonNullable*` for non-nullable returns, `InvokeNullable*` for nullable returns, and `InvokeVoid*` for void procedures.
+- Nullable public return types use `InvokeNullable<T>` / `InvokeNullableAsync<T>` with non-nullable generic type arguments; non-nullable public return types use `InvokeNonNullable<T>` / `InvokeNonNullableAsync<T>`.
 - Generated wrappers use `ProcedureArgument[]` argument arrays, not `object[]` or `object?[]`.
 - Explicit `ProcedureArgument` construction uses `new(value)` for non-null values and reserves `new(value, typeof(ExpectedType))` for nullable values or intentionally different contract types.
 - Setter XML docs do not describe nullable getter return behavior, and parameter docs mentioning null match the signature default/nullability.

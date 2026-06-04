@@ -25,7 +25,7 @@ public class Contract : RemoteObject
         {
             this
         };
-        Connection.Invoke("SpaceCenter", "Contract_Accept", args);
+        InvokeVoid("SpaceCenter", "Contract_Accept", args);
     }
 
     /// <summary>
@@ -39,7 +39,7 @@ public class Contract : RemoteObject
         {
             this
         };
-        await Connection.InvokeAsync("SpaceCenter", "Contract_Accept", args);
+        await InvokeVoidAsync("SpaceCenter", "Contract_Accept", args);
     }
 
     /// <summary>
@@ -52,7 +52,7 @@ public class Contract : RemoteObject
         {
             this
         };
-        Connection.Invoke("SpaceCenter", "Contract_Cancel", args);
+        InvokeVoid("SpaceCenter", "Contract_Cancel", args);
     }
 
     /// <summary>
@@ -66,7 +66,7 @@ public class Contract : RemoteObject
         {
             this
         };
-        await Connection.InvokeAsync("SpaceCenter", "Contract_Cancel", args);
+        await InvokeVoidAsync("SpaceCenter", "Contract_Cancel", args);
     }
 
     /// <summary>
@@ -79,7 +79,7 @@ public class Contract : RemoteObject
         {
             this
         };
-        Connection.Invoke("SpaceCenter", "Contract_Decline", args);
+        InvokeVoid("SpaceCenter", "Contract_Decline", args);
     }
 
     /// <summary>
@@ -93,7 +93,7 @@ public class Contract : RemoteObject
         {
             this
         };
-        await Connection.InvokeAsync("SpaceCenter", "Contract_Decline", args);
+        await InvokeVoidAsync("SpaceCenter", "Contract_Decline", args);
     }
 
     /// <summary>
@@ -106,7 +106,7 @@ public class Contract : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "Contract_get_Active", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "Contract_get_Active", args);
     }
 
     /// <summary>
@@ -120,7 +120,7 @@ public class Contract : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "Contract_get_Active", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "Contract_get_Active", args);
     }
 
     /// <summary>
@@ -133,7 +133,7 @@ public class Contract : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "Contract_get_CanBeCanceled", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "Contract_get_CanBeCanceled", args);
     }
 
     /// <summary>
@@ -147,7 +147,7 @@ public class Contract : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "Contract_get_CanBeCanceled", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "Contract_get_CanBeCanceled", args);
     }
 
     /// <summary>
@@ -160,7 +160,7 @@ public class Contract : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "Contract_get_CanBeDeclined", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "Contract_get_CanBeDeclined", args);
     }
 
     /// <summary>
@@ -174,7 +174,7 @@ public class Contract : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "Contract_get_CanBeDeclined", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "Contract_get_CanBeDeclined", args);
     }
 
     /// <summary>
@@ -187,7 +187,7 @@ public class Contract : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "Contract_get_CanBeFailed", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "Contract_get_CanBeFailed", args);
     }
 
     /// <summary>
@@ -201,7 +201,7 @@ public class Contract : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "Contract_get_CanBeFailed", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "Contract_get_CanBeFailed", args);
     }
 
     /// <summary>
@@ -214,7 +214,7 @@ public class Contract : RemoteObject
         {
             this
         };
-        return Connection.Invoke<string>("SpaceCenter", "Contract_get_Description", args);
+        return InvokeNonNullable<string>("SpaceCenter", "Contract_get_Description", args);
     }
 
     /// <summary>
@@ -228,7 +228,7 @@ public class Contract : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<string>("SpaceCenter", "Contract_get_Description", args);
+        return await InvokeNonNullableAsync<string>("SpaceCenter", "Contract_get_Description", args);
     }
 
     /// <summary>
@@ -241,7 +241,7 @@ public class Contract : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "Contract_get_Failed", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "Contract_get_Failed", args);
     }
 
     /// <summary>
@@ -255,7 +255,7 @@ public class Contract : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "Contract_get_Failed", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "Contract_get_Failed", args);
     }
 
     /// <summary>
@@ -268,7 +268,7 @@ public class Contract : RemoteObject
         {
             this
         };
-        return Connection.Invoke<double>("SpaceCenter", "Contract_get_FundsAdvance", args);
+        return InvokeNonNullable<double>("SpaceCenter", "Contract_get_FundsAdvance", args);
     }
 
     /// <summary>
@@ -282,7 +282,7 @@ public class Contract : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<double>("SpaceCenter", "Contract_get_FundsAdvance", args);
+        return await InvokeNonNullableAsync<double>("SpaceCenter", "Contract_get_FundsAdvance", args);
     }
 
     /// <summary>
@@ -295,7 +295,7 @@ public class Contract : RemoteObject
         {
             this
         };
-        return Connection.Invoke<double>("SpaceCenter", "Contract_get_FundsCompletion", args);
+        return InvokeNonNullable<double>("SpaceCenter", "Contract_get_FundsCompletion", args);
     }
 
     /// <summary>
@@ -309,7 +309,7 @@ public class Contract : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<double>("SpaceCenter", "Contract_get_FundsCompletion", args);
+        return await InvokeNonNullableAsync<double>("SpaceCenter", "Contract_get_FundsCompletion", args);
     }
 
     /// <summary>
@@ -322,7 +322,7 @@ public class Contract : RemoteObject
         {
             this
         };
-        return Connection.Invoke<double>("SpaceCenter", "Contract_get_FundsFailure", args);
+        return InvokeNonNullable<double>("SpaceCenter", "Contract_get_FundsFailure", args);
     }
 
     /// <summary>
@@ -336,7 +336,7 @@ public class Contract : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<double>("SpaceCenter", "Contract_get_FundsFailure", args);
+        return await InvokeNonNullableAsync<double>("SpaceCenter", "Contract_get_FundsFailure", args);
     }
 
     /// <summary>
@@ -349,7 +349,7 @@ public class Contract : RemoteObject
         {
             this
         };
-        return Connection.Invoke<IList<string>>("SpaceCenter", "Contract_get_Keywords", args);
+        return InvokeNonNullable<IList<string>>("SpaceCenter", "Contract_get_Keywords", args);
     }
 
     /// <summary>
@@ -363,7 +363,7 @@ public class Contract : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<IList<string>>("SpaceCenter", "Contract_get_Keywords", args);
+        return await InvokeNonNullableAsync<IList<string>>("SpaceCenter", "Contract_get_Keywords", args);
     }
 
     /// <summary>
@@ -376,7 +376,7 @@ public class Contract : RemoteObject
         {
             this
         };
-        return Connection.Invoke<string>("SpaceCenter", "Contract_get_Notes", args);
+        return InvokeNonNullable<string>("SpaceCenter", "Contract_get_Notes", args);
     }
 
     /// <summary>
@@ -390,7 +390,7 @@ public class Contract : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<string>("SpaceCenter", "Contract_get_Notes", args);
+        return await InvokeNonNullableAsync<string>("SpaceCenter", "Contract_get_Notes", args);
     }
 
     /// <summary>
@@ -403,7 +403,7 @@ public class Contract : RemoteObject
         {
             this
         };
-        return Connection.Invoke<IList<ContractParameter>>("SpaceCenter", "Contract_get_Parameters", args);
+        return InvokeNonNullable<IList<ContractParameter>>("SpaceCenter", "Contract_get_Parameters", args);
     }
 
     /// <summary>
@@ -417,7 +417,7 @@ public class Contract : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<IList<ContractParameter>>("SpaceCenter", "Contract_get_Parameters", args);
+        return await InvokeNonNullableAsync<IList<ContractParameter>>("SpaceCenter", "Contract_get_Parameters", args);
     }
 
     /// <summary>
@@ -430,7 +430,7 @@ public class Contract : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "Contract_get_Read", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "Contract_get_Read", args);
     }
 
     /// <summary>
@@ -444,7 +444,7 @@ public class Contract : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "Contract_get_Read", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "Contract_get_Read", args);
     }
 
     /// <summary>
@@ -457,7 +457,7 @@ public class Contract : RemoteObject
         {
             this
         };
-        return Connection.Invoke<double>("SpaceCenter", "Contract_get_ReputationCompletion", args);
+        return InvokeNonNullable<double>("SpaceCenter", "Contract_get_ReputationCompletion", args);
     }
 
     /// <summary>
@@ -471,7 +471,7 @@ public class Contract : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<double>("SpaceCenter", "Contract_get_ReputationCompletion", args);
+        return await InvokeNonNullableAsync<double>("SpaceCenter", "Contract_get_ReputationCompletion", args);
     }
 
     /// <summary>
@@ -484,7 +484,7 @@ public class Contract : RemoteObject
         {
             this
         };
-        return Connection.Invoke<double>("SpaceCenter", "Contract_get_ReputationFailure", args);
+        return InvokeNonNullable<double>("SpaceCenter", "Contract_get_ReputationFailure", args);
     }
 
     /// <summary>
@@ -498,7 +498,7 @@ public class Contract : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<double>("SpaceCenter", "Contract_get_ReputationFailure", args);
+        return await InvokeNonNullableAsync<double>("SpaceCenter", "Contract_get_ReputationFailure", args);
     }
 
     /// <summary>
@@ -511,7 +511,7 @@ public class Contract : RemoteObject
         {
             this
         };
-        return Connection.Invoke<double>("SpaceCenter", "Contract_get_ScienceCompletion", args);
+        return InvokeNonNullable<double>("SpaceCenter", "Contract_get_ScienceCompletion", args);
     }
 
     /// <summary>
@@ -525,7 +525,7 @@ public class Contract : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<double>("SpaceCenter", "Contract_get_ScienceCompletion", args);
+        return await InvokeNonNullableAsync<double>("SpaceCenter", "Contract_get_ScienceCompletion", args);
     }
 
     /// <summary>
@@ -538,7 +538,7 @@ public class Contract : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "Contract_get_Seen", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "Contract_get_Seen", args);
     }
 
     /// <summary>
@@ -552,7 +552,7 @@ public class Contract : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "Contract_get_Seen", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "Contract_get_Seen", args);
     }
 
     /// <summary>
@@ -565,7 +565,7 @@ public class Contract : RemoteObject
         {
             this
         };
-        return Connection.Invoke<ContractState>("SpaceCenter", "Contract_get_State", args);
+        return InvokeNonNullable<ContractState>("SpaceCenter", "Contract_get_State", args);
     }
 
     /// <summary>
@@ -579,7 +579,7 @@ public class Contract : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<ContractState>("SpaceCenter", "Contract_get_State", args);
+        return await InvokeNonNullableAsync<ContractState>("SpaceCenter", "Contract_get_State", args);
     }
 
     /// <summary>
@@ -592,7 +592,7 @@ public class Contract : RemoteObject
         {
             this
         };
-        return Connection.Invoke<string>("SpaceCenter", "Contract_get_Synopsis", args);
+        return InvokeNonNullable<string>("SpaceCenter", "Contract_get_Synopsis", args);
     }
 
     /// <summary>
@@ -606,7 +606,7 @@ public class Contract : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<string>("SpaceCenter", "Contract_get_Synopsis", args);
+        return await InvokeNonNullableAsync<string>("SpaceCenter", "Contract_get_Synopsis", args);
     }
 
     /// <summary>
@@ -619,7 +619,7 @@ public class Contract : RemoteObject
         {
             this
         };
-        return Connection.Invoke<string>("SpaceCenter", "Contract_get_Title", args);
+        return InvokeNonNullable<string>("SpaceCenter", "Contract_get_Title", args);
     }
 
     /// <summary>
@@ -633,7 +633,7 @@ public class Contract : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<string>("SpaceCenter", "Contract_get_Title", args);
+        return await InvokeNonNullableAsync<string>("SpaceCenter", "Contract_get_Title", args);
     }
 
     /// <summary>
@@ -646,7 +646,7 @@ public class Contract : RemoteObject
         {
             this
         };
-        return Connection.Invoke<string>("SpaceCenter", "Contract_get_Type", args);
+        return InvokeNonNullable<string>("SpaceCenter", "Contract_get_Type", args);
     }
 
     /// <summary>
@@ -660,6 +660,6 @@ public class Contract : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<string>("SpaceCenter", "Contract_get_Type", args);
+        return await InvokeNonNullableAsync<string>("SpaceCenter", "Contract_get_Type", args);
     }
 }

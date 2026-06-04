@@ -1,24 +1,17 @@
-using kRPC.Client.Boost.Connection;
-using System;
 using kRPC.Client.Boost.Attributes;
-using System.Collections.Generic;
-using kRPC.Client.Boost.Services.SpaceCenter;
-using MathNet.Spatial.Euclidean;
-using System.Threading.Tasks;
+using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects;
+using MathNet.Spatial.Euclidean;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
 /// <summary>
 /// SpaceCenter service.
 /// </summary>
-public class SpaceCenter
+public class SpaceCenter : ServiceObject
 {
-    private readonly IConnectionMultiplexer _connection;
-
-    internal SpaceCenter(IConnectionMultiplexer connection)
+    internal SpaceCenter(IConnectionMultiplexer connection) : base(connection)
     {
-        _connection = connection;
     }
 
     /// <summary>
@@ -36,7 +29,7 @@ public class SpaceCenter
         {
             factor
         };
-        return _connection.Invoke<bool>("SpaceCenter", "CanRailsWarpAt", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "CanRailsWarpAt", args);
     }
 
     /// <summary>
@@ -55,7 +48,7 @@ public class SpaceCenter
         {
             factor
         };
-        return await _connection.InvokeAsync<bool>("SpaceCenter", "CanRailsWarpAt", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "CanRailsWarpAt", args);
     }
 
     /// <summary>
@@ -64,7 +57,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "CanRevertToLaunch")]
     public bool CanRevertToLaunch()
     {
-        return _connection.Invoke<bool>("SpaceCenter", "CanRevertToLaunch");
+        return InvokeNonNullable<bool>("SpaceCenter", "CanRevertToLaunch");
     }
 
     /// <summary>
@@ -74,7 +67,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "CanRevertToLaunch")]
     public async Task<bool> CanRevertToLaunchAsync()
     {
-        return await _connection.InvokeAsync<bool>("SpaceCenter", "CanRevertToLaunch");
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "CanRevertToLaunch");
     }
 
     /// <summary>
@@ -83,7 +76,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "ClearTarget")]
     public void ClearTarget()
     {
-        _connection.Invoke("SpaceCenter", "ClearTarget");
+        InvokeVoid("SpaceCenter", "ClearTarget");
     }
 
     /// <summary>
@@ -93,7 +86,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "ClearTarget")]
     public async Task ClearTargetAsync()
     {
-        await _connection.InvokeAsync("SpaceCenter", "ClearTarget");
+        await InvokeVoidAsync("SpaceCenter", "ClearTarget");
     }
 
     /// <summary>
@@ -111,7 +104,7 @@ public class SpaceCenter
             job,
             male
         };
-        _connection.Invoke("SpaceCenter", "CreateKerbal", args);
+        InvokeVoid("SpaceCenter", "CreateKerbal", args);
     }
 
     /// <summary>
@@ -130,7 +123,7 @@ public class SpaceCenter
             job,
             male
         };
-        await _connection.InvokeAsync("SpaceCenter", "CreateKerbal", args);
+        await InvokeVoidAsync("SpaceCenter", "CreateKerbal", args);
     }
 
     /// <summary>
@@ -145,7 +138,7 @@ public class SpaceCenter
         {
             name
         };
-        return _connection.Invoke<CrewMember?>("SpaceCenter", "GetKerbal", args);
+        return InvokeNullable<CrewMember>("SpaceCenter", "GetKerbal", args);
     }
 
     /// <summary>
@@ -161,7 +154,7 @@ public class SpaceCenter
         {
             name
         };
-        return await _connection.InvokeAsync<CrewMember?>("SpaceCenter", "GetKerbal", args);
+        return await InvokeNullableAsync<CrewMember>("SpaceCenter", "GetKerbal", args);
     }
 
     /// <summary>
@@ -193,7 +186,7 @@ public class SpaceCenter
             new(crew, typeof(List<string>)),
             flagUrl
         };
-        _connection.Invoke("SpaceCenter", "LaunchVessel", args);
+        InvokeVoid("SpaceCenter", "LaunchVessel", args);
     }
 
     /// <summary>
@@ -226,7 +219,7 @@ public class SpaceCenter
             new(crew, typeof(List<string>)),
             flagUrl
         };
-        await _connection.InvokeAsync("SpaceCenter", "LaunchVessel", args);
+        await InvokeVoidAsync("SpaceCenter", "LaunchVessel", args);
     }
 
     /// <summary>
@@ -248,7 +241,7 @@ public class SpaceCenter
             name,
             recover
         };
-        _connection.Invoke("SpaceCenter", "LaunchVesselFromSPH", args);
+        InvokeVoid("SpaceCenter", "LaunchVesselFromSPH", args);
     }
 
     /// <summary>
@@ -271,7 +264,7 @@ public class SpaceCenter
             name,
             recover
         };
-        await _connection.InvokeAsync("SpaceCenter", "LaunchVesselFromSPH", args);
+        await InvokeVoidAsync("SpaceCenter", "LaunchVesselFromSPH", args);
     }
 
     /// <summary>
@@ -293,7 +286,7 @@ public class SpaceCenter
             name,
             recover
         };
-        _connection.Invoke("SpaceCenter", "LaunchVesselFromVAB", args);
+        InvokeVoid("SpaceCenter", "LaunchVesselFromVAB", args);
     }
 
     /// <summary>
@@ -316,7 +309,7 @@ public class SpaceCenter
             name,
             recover
         };
-        await _connection.InvokeAsync("SpaceCenter", "LaunchVesselFromVAB", args);
+        await InvokeVoidAsync("SpaceCenter", "LaunchVesselFromVAB", args);
     }
 
     /// <summary>
@@ -332,7 +325,7 @@ public class SpaceCenter
         {
             craftDirectory
         };
-        return _connection.Invoke<IList<string>>("SpaceCenter", "LaunchableVessels", args);
+        return InvokeNonNullable<IList<string>>("SpaceCenter", "LaunchableVessels", args);
     }
 
     /// <summary>
@@ -349,7 +342,7 @@ public class SpaceCenter
         {
             craftDirectory
         };
-        return await _connection.InvokeAsync<IList<string>>("SpaceCenter", "LaunchableVessels", args);
+        return await InvokeNonNullableAsync<IList<string>>("SpaceCenter", "LaunchableVessels", args);
     }
 
     /// <summary>
@@ -365,7 +358,7 @@ public class SpaceCenter
         {
             name
         };
-        _connection.Invoke("SpaceCenter", "Load", args);
+        InvokeVoid("SpaceCenter", "Load", args);
     }
 
     /// <summary>
@@ -382,7 +375,7 @@ public class SpaceCenter
         {
             name
         };
-        await _connection.InvokeAsync("SpaceCenter", "Load", args);
+        await InvokeVoidAsync("SpaceCenter", "Load", args);
     }
 
     /// <summary>
@@ -391,7 +384,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "LoadSpaceCenter")]
     public void LoadSpaceCenter()
     {
-        _connection.Invoke("SpaceCenter", "LoadSpaceCenter");
+        InvokeVoid("SpaceCenter", "LoadSpaceCenter");
     }
 
     /// <summary>
@@ -401,7 +394,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "LoadSpaceCenter")]
     public async Task LoadSpaceCenterAsync()
     {
-        await _connection.InvokeAsync("SpaceCenter", "LoadSpaceCenter");
+        await InvokeVoidAsync("SpaceCenter", "LoadSpaceCenter");
     }
 
     /// <summary>
@@ -413,7 +406,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "Quickload")]
     public void Quickload()
     {
-        _connection.Invoke("SpaceCenter", "Quickload");
+        InvokeVoid("SpaceCenter", "Quickload");
     }
 
     /// <summary>
@@ -426,7 +419,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "Quickload")]
     public async Task QuickloadAsync()
     {
-        await _connection.InvokeAsync("SpaceCenter", "Quickload");
+        await InvokeVoidAsync("SpaceCenter", "Quickload");
     }
 
     /// <summary>
@@ -438,7 +431,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "Quicksave")]
     public void Quicksave()
     {
-        _connection.Invoke("SpaceCenter", "Quicksave");
+        InvokeVoid("SpaceCenter", "Quicksave");
     }
 
     /// <summary>
@@ -451,7 +444,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "Quicksave")]
     public async Task QuicksaveAsync()
     {
-        await _connection.InvokeAsync("SpaceCenter", "Quicksave");
+        await InvokeVoidAsync("SpaceCenter", "Quicksave");
     }
 
     /// <summary>
@@ -471,7 +464,7 @@ public class SpaceCenter
             direction,
             referenceFrame
         };
-        return _connection.Invoke<double>("SpaceCenter", "RaycastDistance", args);
+        return InvokeNonNullable<double>("SpaceCenter", "RaycastDistance", args);
     }
 
     /// <summary>
@@ -492,7 +485,7 @@ public class SpaceCenter
             direction,
             referenceFrame
         };
-        return await _connection.InvokeAsync<double>("SpaceCenter", "RaycastDistance", args);
+        return await InvokeNonNullableAsync<double>("SpaceCenter", "RaycastDistance", args);
     }
 
     /// <summary>
@@ -512,7 +505,7 @@ public class SpaceCenter
             direction,
             referenceFrame
         };
-        return _connection.Invoke<Part?>("SpaceCenter", "RaycastPart", args);
+        return InvokeNullable<Part>("SpaceCenter", "RaycastPart", args);
     }
 
     /// <summary>
@@ -533,7 +526,7 @@ public class SpaceCenter
             direction,
             referenceFrame
         };
-        return await _connection.InvokeAsync<Part?>("SpaceCenter", "RaycastPart", args);
+        return await InvokeNullableAsync<Part>("SpaceCenter", "RaycastPart", args);
     }
 
     /// <summary>
@@ -542,7 +535,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "RevertToLaunch")]
     public void RevertToLaunch()
     {
-        _connection.Invoke("SpaceCenter", "RevertToLaunch");
+        InvokeVoid("SpaceCenter", "RevertToLaunch");
     }
 
     /// <summary>
@@ -552,7 +545,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "RevertToLaunch")]
     public async Task RevertToLaunchAsync()
     {
-        await _connection.InvokeAsync("SpaceCenter", "RevertToLaunch");
+        await InvokeVoidAsync("SpaceCenter", "RevertToLaunch");
     }
 
     /// <summary>
@@ -568,7 +561,7 @@ public class SpaceCenter
         {
             name
         };
-        _connection.Invoke("SpaceCenter", "Save", args);
+        InvokeVoid("SpaceCenter", "Save", args);
     }
 
     /// <summary>
@@ -585,7 +578,7 @@ public class SpaceCenter
         {
             name
         };
-        await _connection.InvokeAsync("SpaceCenter", "Save", args);
+        await InvokeVoidAsync("SpaceCenter", "Save", args);
     }
 
     /// <summary>
@@ -601,7 +594,7 @@ public class SpaceCenter
             filePath,
             scale
         };
-        _connection.Invoke("SpaceCenter", "Screenshot", args);
+        InvokeVoid("SpaceCenter", "Screenshot", args);
     }
 
     /// <summary>
@@ -618,7 +611,7 @@ public class SpaceCenter
             filePath,
             scale
         };
-        await _connection.InvokeAsync("SpaceCenter", "Screenshot", args);
+        await InvokeVoidAsync("SpaceCenter", "Screenshot", args);
     }
 
     /// <summary>
@@ -634,7 +627,7 @@ public class SpaceCenter
             crewMember,
             targetPart
         };
-        _connection.Invoke("SpaceCenter", "TransferCrew", args);
+        InvokeVoid("SpaceCenter", "TransferCrew", args);
     }
 
     /// <summary>
@@ -651,7 +644,7 @@ public class SpaceCenter
             crewMember,
             targetPart
         };
-        await _connection.InvokeAsync("SpaceCenter", "TransferCrew", args);
+        await InvokeVoidAsync("SpaceCenter", "TransferCrew", args);
     }
 
     /// <summary>
@@ -672,7 +665,7 @@ public class SpaceCenter
             from,
             to
         };
-        return _connection.Invoke<Vector3D>("SpaceCenter", "TransformDirection", args);
+        return InvokeNonNullable<Vector3D>("SpaceCenter", "TransformDirection", args);
     }
 
     /// <summary>
@@ -694,7 +687,7 @@ public class SpaceCenter
             from,
             to
         };
-        return await _connection.InvokeAsync<Vector3D>("SpaceCenter", "TransformDirection", args);
+        return await InvokeNonNullableAsync<Vector3D>("SpaceCenter", "TransformDirection", args);
     }
 
     /// <summary>
@@ -715,7 +708,7 @@ public class SpaceCenter
             from,
             to
         };
-        return _connection.Invoke<Vector3D>("SpaceCenter", "TransformPosition", args);
+        return InvokeNonNullable<Vector3D>("SpaceCenter", "TransformPosition", args);
     }
 
     /// <summary>
@@ -737,7 +730,7 @@ public class SpaceCenter
             from,
             to
         };
-        return await _connection.InvokeAsync<Vector3D>("SpaceCenter", "TransformPosition", args);
+        return await InvokeNonNullableAsync<Vector3D>("SpaceCenter", "TransformPosition", args);
     }
 
     /// <summary>
@@ -758,7 +751,7 @@ public class SpaceCenter
             from,
             to
         };
-        return _connection.Invoke<Quaternion>("SpaceCenter", "TransformRotation", args);
+        return InvokeNonNullable<Quaternion>("SpaceCenter", "TransformRotation", args);
     }
 
     /// <summary>
@@ -780,7 +773,7 @@ public class SpaceCenter
             from,
             to
         };
-        return await _connection.InvokeAsync<Quaternion>("SpaceCenter", "TransformRotation", args);
+        return await InvokeNonNullableAsync<Quaternion>("SpaceCenter", "TransformRotation", args);
     }
 
     /// <summary>
@@ -807,7 +800,7 @@ public class SpaceCenter
             from,
             to
         };
-        return _connection.Invoke<Vector3D>("SpaceCenter", "TransformVelocity", args);
+        return InvokeNonNullable<Vector3D>("SpaceCenter", "TransformVelocity", args);
     }
 
     /// <summary>
@@ -835,7 +828,7 @@ public class SpaceCenter
             from,
             to
         };
-        return await _connection.InvokeAsync<Vector3D>("SpaceCenter", "TransformVelocity", args);
+        return await InvokeNonNullableAsync<Vector3D>("SpaceCenter", "TransformVelocity", args);
     }
 
     /// <summary>
@@ -861,7 +854,7 @@ public class SpaceCenter
             maxRailsRate,
             maxPhysicsRate
         };
-        _connection.Invoke("SpaceCenter", "WarpTo", args);
+        InvokeVoid("SpaceCenter", "WarpTo", args);
     }
 
     /// <summary>
@@ -888,7 +881,7 @@ public class SpaceCenter
             maxRailsRate,
             maxPhysicsRate
         };
-        await _connection.InvokeAsync("SpaceCenter", "WarpTo", args);
+        await InvokeVoidAsync("SpaceCenter", "WarpTo", args);
     }
 
     /// <summary>
@@ -897,7 +890,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "get_ActiveVessel")]
     public Vessel GetActiveVessel()
     {
-        return _connection.Invoke<Vessel>("SpaceCenter", "get_ActiveVessel");
+        return InvokeNonNullable<Vessel>("SpaceCenter", "get_ActiveVessel");
     }
 
     /// <summary>
@@ -907,7 +900,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "get_ActiveVessel")]
     public async Task<Vessel> GetActiveVesselAsync()
     {
-        return await _connection.InvokeAsync<Vessel>("SpaceCenter", "get_ActiveVessel");
+        return await InvokeNonNullableAsync<Vessel>("SpaceCenter", "get_ActiveVessel");
     }
 
     /// <summary>
@@ -921,7 +914,7 @@ public class SpaceCenter
         {
             value
         };
-        _connection.Invoke("SpaceCenter", "set_ActiveVessel", args);
+        InvokeVoid("SpaceCenter", "set_ActiveVessel", args);
     }
 
     /// <summary>
@@ -936,7 +929,7 @@ public class SpaceCenter
         {
             value
         };
-        await _connection.InvokeAsync("SpaceCenter", "set_ActiveVessel", args);
+        await InvokeVoidAsync("SpaceCenter", "set_ActiveVessel", args);
     }
 
     /// <summary>
@@ -945,7 +938,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "get_AlarmManager")]
     public AlarmManager GetAlarmManager()
     {
-        return _connection.Invoke<AlarmManager>("SpaceCenter", "get_AlarmManager");
+        return InvokeNonNullable<AlarmManager>("SpaceCenter", "get_AlarmManager");
     }
 
     /// <summary>
@@ -955,7 +948,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "get_AlarmManager")]
     public async Task<AlarmManager> GetAlarmManagerAsync()
     {
-        return await _connection.InvokeAsync<AlarmManager>("SpaceCenter", "get_AlarmManager");
+        return await InvokeNonNullableAsync<AlarmManager>("SpaceCenter", "get_AlarmManager");
     }
 
     /// <summary>
@@ -965,7 +958,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "get_Bodies")]
     public IDictionary<string,CelestialBody> GetBodies()
     {
-        return _connection.Invoke<IDictionary<string,CelestialBody>>("SpaceCenter", "get_Bodies");
+        return InvokeNonNullable<IDictionary<string,CelestialBody>>("SpaceCenter", "get_Bodies");
     }
 
     /// <summary>
@@ -976,7 +969,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "get_Bodies")]
     public async Task<IDictionary<string,CelestialBody>> GetBodiesAsync()
     {
-        return await _connection.InvokeAsync<IDictionary<string,CelestialBody>>("SpaceCenter", "get_Bodies");
+        return await InvokeNonNullableAsync<IDictionary<string,CelestialBody>>("SpaceCenter", "get_Bodies");
     }
 
     /// <summary>
@@ -985,7 +978,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "get_Camera")]
     public Camera GetCamera()
     {
-        return _connection.Invoke<Camera>("SpaceCenter", "get_Camera");
+        return InvokeNonNullable<Camera>("SpaceCenter", "get_Camera");
     }
 
     /// <summary>
@@ -995,7 +988,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "get_Camera")]
     public async Task<Camera> GetCameraAsync()
     {
-        return await _connection.InvokeAsync<Camera>("SpaceCenter", "get_Camera");
+        return await InvokeNonNullableAsync<Camera>("SpaceCenter", "get_Camera");
     }
 
     /// <summary>
@@ -1004,7 +997,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "get_ContractManager")]
     public ContractManager GetContractManager()
     {
-        return _connection.Invoke<ContractManager>("SpaceCenter", "get_ContractManager");
+        return InvokeNonNullable<ContractManager>("SpaceCenter", "get_ContractManager");
     }
 
     /// <summary>
@@ -1014,7 +1007,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "get_ContractManager")]
     public async Task<ContractManager> GetContractManagerAsync()
     {
-        return await _connection.InvokeAsync<ContractManager>("SpaceCenter", "get_ContractManager");
+        return await InvokeNonNullableAsync<ContractManager>("SpaceCenter", "get_ContractManager");
     }
 
     /// <summary>
@@ -1023,7 +1016,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "get_FARAvailable")]
     public bool GetFARAvailable()
     {
-        return _connection.Invoke<bool>("SpaceCenter", "get_FARAvailable");
+        return InvokeNonNullable<bool>("SpaceCenter", "get_FARAvailable");
     }
 
     /// <summary>
@@ -1033,7 +1026,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "get_FARAvailable")]
     public async Task<bool> GetFARAvailableAsync()
     {
-        return await _connection.InvokeAsync<bool>("SpaceCenter", "get_FARAvailable");
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "get_FARAvailable");
     }
 
     /// <summary>
@@ -1042,7 +1035,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "get_Funds")]
     public double GetFunds()
     {
-        return _connection.Invoke<double>("SpaceCenter", "get_Funds");
+        return InvokeNonNullable<double>("SpaceCenter", "get_Funds");
     }
 
     /// <summary>
@@ -1052,7 +1045,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "get_Funds")]
     public async Task<double> GetFundsAsync()
     {
-        return await _connection.InvokeAsync<double>("SpaceCenter", "get_Funds");
+        return await InvokeNonNullableAsync<double>("SpaceCenter", "get_Funds");
     }
 
     /// <summary>
@@ -1062,7 +1055,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "get_G")]
     public double GetG()
     {
-        return _connection.Invoke<double>("SpaceCenter", "get_G");
+        return InvokeNonNullable<double>("SpaceCenter", "get_G");
     }
 
     /// <summary>
@@ -1073,7 +1066,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "get_G")]
     public async Task<double> GetGAsync()
     {
-        return await _connection.InvokeAsync<double>("SpaceCenter", "get_G");
+        return await InvokeNonNullableAsync<double>("SpaceCenter", "get_G");
     }
 
     /// <summary>
@@ -1082,7 +1075,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "get_GameMode")]
     public GameMode GetGameMode()
     {
-        return _connection.Invoke<GameMode>("SpaceCenter", "get_GameMode");
+        return InvokeNonNullable<GameMode>("SpaceCenter", "get_GameMode");
     }
 
     /// <summary>
@@ -1092,7 +1085,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "get_GameMode")]
     public async Task<GameMode> GetGameModeAsync()
     {
-        return await _connection.InvokeAsync<GameMode>("SpaceCenter", "get_GameMode");
+        return await InvokeNonNullableAsync<GameMode>("SpaceCenter", "get_GameMode");
     }
 
     /// <summary>
@@ -1101,7 +1094,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "get_LaunchSites")]
     public IList<LaunchSite> GetLaunchSites()
     {
-        return _connection.Invoke<IList<LaunchSite>>("SpaceCenter", "get_LaunchSites");
+        return InvokeNonNullable<IList<LaunchSite>>("SpaceCenter", "get_LaunchSites");
     }
 
     /// <summary>
@@ -1111,7 +1104,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "get_LaunchSites")]
     public async Task<IList<LaunchSite>> GetLaunchSitesAsync()
     {
-        return await _connection.InvokeAsync<IList<LaunchSite>>("SpaceCenter", "get_LaunchSites");
+        return await InvokeNonNullableAsync<IList<LaunchSite>>("SpaceCenter", "get_LaunchSites");
     }
 
     /// <summary>
@@ -1120,7 +1113,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "get_MapFilter")]
     public MapFilterType GetMapFilter()
     {
-        return _connection.Invoke<MapFilterType>("SpaceCenter", "get_MapFilter");
+        return InvokeNonNullable<MapFilterType>("SpaceCenter", "get_MapFilter");
     }
 
     /// <summary>
@@ -1130,7 +1123,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "get_MapFilter")]
     public async Task<MapFilterType> GetMapFilterAsync()
     {
-        return await _connection.InvokeAsync<MapFilterType>("SpaceCenter", "get_MapFilter");
+        return await InvokeNonNullableAsync<MapFilterType>("SpaceCenter", "get_MapFilter");
     }
 
     /// <summary>
@@ -1144,7 +1137,7 @@ public class SpaceCenter
         {
             value
         };
-        _connection.Invoke("SpaceCenter", "set_MapFilter", args);
+        InvokeVoid("SpaceCenter", "set_MapFilter", args);
     }
 
     /// <summary>
@@ -1159,7 +1152,7 @@ public class SpaceCenter
         {
             value
         };
-        await _connection.InvokeAsync("SpaceCenter", "set_MapFilter", args);
+        await InvokeVoidAsync("SpaceCenter", "set_MapFilter", args);
     }
 
     /// <summary>
@@ -1171,7 +1164,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "get_MaximumRailsWarpFactor")]
     public int GetMaximumRailsWarpFactor()
     {
-        return _connection.Invoke<int>("SpaceCenter", "get_MaximumRailsWarpFactor");
+        return InvokeNonNullable<int>("SpaceCenter", "get_MaximumRailsWarpFactor");
     }
 
     /// <summary>
@@ -1184,7 +1177,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "get_MaximumRailsWarpFactor")]
     public async Task<int> GetMaximumRailsWarpFactorAsync()
     {
-        return await _connection.InvokeAsync<int>("SpaceCenter", "get_MaximumRailsWarpFactor");
+        return await InvokeNonNullableAsync<int>("SpaceCenter", "get_MaximumRailsWarpFactor");
     }
 
     /// <summary>
@@ -1193,7 +1186,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "get_Navball")]
     public bool GetNavball()
     {
-        return _connection.Invoke<bool>("SpaceCenter", "get_Navball");
+        return InvokeNonNullable<bool>("SpaceCenter", "get_Navball");
     }
 
     /// <summary>
@@ -1203,7 +1196,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "get_Navball")]
     public async Task<bool> GetNavballAsync()
     {
-        return await _connection.InvokeAsync<bool>("SpaceCenter", "get_Navball");
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "get_Navball");
     }
 
     /// <summary>
@@ -1217,7 +1210,7 @@ public class SpaceCenter
         {
             value
         };
-        _connection.Invoke("SpaceCenter", "set_Navball", args);
+        InvokeVoid("SpaceCenter", "set_Navball", args);
     }
 
     /// <summary>
@@ -1232,7 +1225,7 @@ public class SpaceCenter
         {
             value
         };
-        await _connection.InvokeAsync("SpaceCenter", "set_Navball", args);
+        await InvokeVoidAsync("SpaceCenter", "set_Navball", args);
     }
 
     /// <summary>
@@ -1242,7 +1235,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "get_PhysicsWarpFactor")]
     public int GetPhysicsWarpFactor()
     {
-        return _connection.Invoke<int>("SpaceCenter", "get_PhysicsWarpFactor");
+        return InvokeNonNullable<int>("SpaceCenter", "get_PhysicsWarpFactor");
     }
 
     /// <summary>
@@ -1253,7 +1246,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "get_PhysicsWarpFactor")]
     public async Task<int> GetPhysicsWarpFactorAsync()
     {
-        return await _connection.InvokeAsync<int>("SpaceCenter", "get_PhysicsWarpFactor");
+        return await InvokeNonNullableAsync<int>("SpaceCenter", "get_PhysicsWarpFactor");
     }
 
     /// <summary>
@@ -1268,7 +1261,7 @@ public class SpaceCenter
         {
             value
         };
-        _connection.Invoke("SpaceCenter", "set_PhysicsWarpFactor", args);
+        InvokeVoid("SpaceCenter", "set_PhysicsWarpFactor", args);
     }
 
     /// <summary>
@@ -1284,7 +1277,7 @@ public class SpaceCenter
         {
             value
         };
-        await _connection.InvokeAsync("SpaceCenter", "set_PhysicsWarpFactor", args);
+        await InvokeVoidAsync("SpaceCenter", "set_PhysicsWarpFactor", args);
     }
 
     /// <summary>
@@ -1300,7 +1293,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "get_RailsWarpFactor")]
     public int GetRailsWarpFactor()
     {
-        return _connection.Invoke<int>("SpaceCenter", "get_RailsWarpFactor");
+        return InvokeNonNullable<int>("SpaceCenter", "get_RailsWarpFactor");
     }
 
     /// <summary>
@@ -1317,7 +1310,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "get_RailsWarpFactor")]
     public async Task<int> GetRailsWarpFactorAsync()
     {
-        return await _connection.InvokeAsync<int>("SpaceCenter", "get_RailsWarpFactor");
+        return await InvokeNonNullableAsync<int>("SpaceCenter", "get_RailsWarpFactor");
     }
 
     /// <summary>
@@ -1338,7 +1331,7 @@ public class SpaceCenter
         {
             value
         };
-        _connection.Invoke("SpaceCenter", "set_RailsWarpFactor", args);
+        InvokeVoid("SpaceCenter", "set_RailsWarpFactor", args);
     }
 
     /// <summary>
@@ -1360,7 +1353,7 @@ public class SpaceCenter
         {
             value
         };
-        await _connection.InvokeAsync("SpaceCenter", "set_RailsWarpFactor", args);
+        await InvokeVoidAsync("SpaceCenter", "set_RailsWarpFactor", args);
     }
 
     /// <summary>
@@ -1369,7 +1362,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "get_Reputation")]
     public float GetReputation()
     {
-        return _connection.Invoke<float>("SpaceCenter", "get_Reputation");
+        return InvokeNonNullable<float>("SpaceCenter", "get_Reputation");
     }
 
     /// <summary>
@@ -1379,7 +1372,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "get_Reputation")]
     public async Task<float> GetReputationAsync()
     {
-        return await _connection.InvokeAsync<float>("SpaceCenter", "get_Reputation");
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "get_Reputation");
     }
 
     /// <summary>
@@ -1388,7 +1381,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "get_Science")]
     public float GetScience()
     {
-        return _connection.Invoke<float>("SpaceCenter", "get_Science");
+        return InvokeNonNullable<float>("SpaceCenter", "get_Science");
     }
 
     /// <summary>
@@ -1398,7 +1391,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "get_Science")]
     public async Task<float> GetScienceAsync()
     {
-        return await _connection.InvokeAsync<float>("SpaceCenter", "get_Science");
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "get_Science");
     }
 
     /// <summary>
@@ -1407,7 +1400,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "get_TargetBody")]
     public CelestialBody GetTargetBody()
     {
-        return _connection.Invoke<CelestialBody>("SpaceCenter", "get_TargetBody");
+        return InvokeNonNullable<CelestialBody>("SpaceCenter", "get_TargetBody");
     }
 
     /// <summary>
@@ -1417,7 +1410,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "get_TargetBody")]
     public async Task<CelestialBody> GetTargetBodyAsync()
     {
-        return await _connection.InvokeAsync<CelestialBody>("SpaceCenter", "get_TargetBody");
+        return await InvokeNonNullableAsync<CelestialBody>("SpaceCenter", "get_TargetBody");
     }
 
     /// <summary>
@@ -1431,7 +1424,7 @@ public class SpaceCenter
         {
             value
         };
-        _connection.Invoke("SpaceCenter", "set_TargetBody", args);
+        InvokeVoid("SpaceCenter", "set_TargetBody", args);
     }
 
     /// <summary>
@@ -1446,7 +1439,7 @@ public class SpaceCenter
         {
             value
         };
-        await _connection.InvokeAsync("SpaceCenter", "set_TargetBody", args);
+        await InvokeVoidAsync("SpaceCenter", "set_TargetBody", args);
     }
 
     /// <summary>
@@ -1455,7 +1448,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "get_TargetDockingPort")]
     public DockingPort GetTargetDockingPort()
     {
-        return _connection.Invoke<DockingPort>("SpaceCenter", "get_TargetDockingPort");
+        return InvokeNonNullable<DockingPort>("SpaceCenter", "get_TargetDockingPort");
     }
 
     /// <summary>
@@ -1465,7 +1458,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "get_TargetDockingPort")]
     public async Task<DockingPort> GetTargetDockingPortAsync()
     {
-        return await _connection.InvokeAsync<DockingPort>("SpaceCenter", "get_TargetDockingPort");
+        return await InvokeNonNullableAsync<DockingPort>("SpaceCenter", "get_TargetDockingPort");
     }
 
     /// <summary>
@@ -1479,7 +1472,7 @@ public class SpaceCenter
         {
             value
         };
-        _connection.Invoke("SpaceCenter", "set_TargetDockingPort", args);
+        InvokeVoid("SpaceCenter", "set_TargetDockingPort", args);
     }
 
     /// <summary>
@@ -1494,7 +1487,7 @@ public class SpaceCenter
         {
             value
         };
-        await _connection.InvokeAsync("SpaceCenter", "set_TargetDockingPort", args);
+        await InvokeVoidAsync("SpaceCenter", "set_TargetDockingPort", args);
     }
 
     /// <summary>
@@ -1503,7 +1496,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "get_TargetVessel")]
     public Vessel GetTargetVessel()
     {
-        return _connection.Invoke<Vessel>("SpaceCenter", "get_TargetVessel");
+        return InvokeNonNullable<Vessel>("SpaceCenter", "get_TargetVessel");
     }
 
     /// <summary>
@@ -1513,7 +1506,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "get_TargetVessel")]
     public async Task<Vessel> GetTargetVesselAsync()
     {
-        return await _connection.InvokeAsync<Vessel>("SpaceCenter", "get_TargetVessel");
+        return await InvokeNonNullableAsync<Vessel>("SpaceCenter", "get_TargetVessel");
     }
 
     /// <summary>
@@ -1527,7 +1520,7 @@ public class SpaceCenter
         {
             value
         };
-        _connection.Invoke("SpaceCenter", "set_TargetVessel", args);
+        InvokeVoid("SpaceCenter", "set_TargetVessel", args);
     }
 
     /// <summary>
@@ -1542,7 +1535,7 @@ public class SpaceCenter
         {
             value
         };
-        await _connection.InvokeAsync("SpaceCenter", "set_TargetVessel", args);
+        await InvokeVoidAsync("SpaceCenter", "set_TargetVessel", args);
     }
 
     /// <summary>
@@ -1551,7 +1544,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "get_UIVisible")]
     public bool GetUIVisible()
     {
-        return _connection.Invoke<bool>("SpaceCenter", "get_UIVisible");
+        return InvokeNonNullable<bool>("SpaceCenter", "get_UIVisible");
     }
 
     /// <summary>
@@ -1561,7 +1554,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "get_UIVisible")]
     public async Task<bool> GetUIVisibleAsync()
     {
-        return await _connection.InvokeAsync<bool>("SpaceCenter", "get_UIVisible");
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "get_UIVisible");
     }
 
     /// <summary>
@@ -1575,7 +1568,7 @@ public class SpaceCenter
         {
             value
         };
-        _connection.Invoke("SpaceCenter", "set_UIVisible", args);
+        InvokeVoid("SpaceCenter", "set_UIVisible", args);
     }
 
     /// <summary>
@@ -1590,7 +1583,7 @@ public class SpaceCenter
         {
             value
         };
-        await _connection.InvokeAsync("SpaceCenter", "set_UIVisible", args);
+        await InvokeVoidAsync("SpaceCenter", "set_UIVisible", args);
     }
 
     /// <summary>
@@ -1599,7 +1592,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "get_UT")]
     public double GetUT()
     {
-        return _connection.Invoke<double>("SpaceCenter", "get_UT");
+        return InvokeNonNullable<double>("SpaceCenter", "get_UT");
     }
 
     /// <summary>
@@ -1609,7 +1602,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "get_UT")]
     public async Task<double> GetUTAsync()
     {
-        return await _connection.InvokeAsync<double>("SpaceCenter", "get_UT");
+        return await InvokeNonNullableAsync<double>("SpaceCenter", "get_UT");
     }
 
     /// <summary>
@@ -1618,7 +1611,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "get_Vessels")]
     public IList<Vessel> GetVessels()
     {
-        return _connection.Invoke<IList<Vessel>>("SpaceCenter", "get_Vessels");
+        return InvokeNonNullable<IList<Vessel>>("SpaceCenter", "get_Vessels");
     }
 
     /// <summary>
@@ -1628,7 +1621,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "get_Vessels")]
     public async Task<IList<Vessel>> GetVesselsAsync()
     {
-        return await _connection.InvokeAsync<IList<Vessel>>("SpaceCenter", "get_Vessels");
+        return await InvokeNonNullableAsync<IList<Vessel>>("SpaceCenter", "get_Vessels");
     }
 
     /// <summary>
@@ -1641,7 +1634,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "get_WarpFactor")]
     public float GetWarpFactor()
     {
-        return _connection.Invoke<float>("SpaceCenter", "get_WarpFactor");
+        return InvokeNonNullable<float>("SpaceCenter", "get_WarpFactor");
     }
 
     /// <summary>
@@ -1655,7 +1648,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "get_WarpFactor")]
     public async Task<float> GetWarpFactorAsync()
     {
-        return await _connection.InvokeAsync<float>("SpaceCenter", "get_WarpFactor");
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "get_WarpFactor");
     }
 
     /// <summary>
@@ -1666,7 +1659,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "get_WarpMode")]
     public WarpMode GetWarpMode()
     {
-        return _connection.Invoke<WarpMode>("SpaceCenter", "get_WarpMode");
+        return InvokeNonNullable<WarpMode>("SpaceCenter", "get_WarpMode");
     }
 
     /// <summary>
@@ -1678,7 +1671,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "get_WarpMode")]
     public async Task<WarpMode> GetWarpModeAsync()
     {
-        return await _connection.InvokeAsync<WarpMode>("SpaceCenter", "get_WarpMode");
+        return await InvokeNonNullableAsync<WarpMode>("SpaceCenter", "get_WarpMode");
     }
 
     /// <summary>
@@ -1690,7 +1683,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "get_WarpRate")]
     public float GetWarpRate()
     {
-        return _connection.Invoke<float>("SpaceCenter", "get_WarpRate");
+        return InvokeNonNullable<float>("SpaceCenter", "get_WarpRate");
     }
 
     /// <summary>
@@ -1703,7 +1696,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "get_WarpRate")]
     public async Task<float> GetWarpRateAsync()
     {
-        return await _connection.InvokeAsync<float>("SpaceCenter", "get_WarpRate");
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "get_WarpRate");
     }
 
     /// <summary>
@@ -1712,7 +1705,7 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "get_WaypointManager")]
     public WaypointManager GetWaypointManager()
     {
-        return _connection.Invoke<WaypointManager>("SpaceCenter", "get_WaypointManager");
+        return InvokeNonNullable<WaypointManager>("SpaceCenter", "get_WaypointManager");
     }
 
     /// <summary>
@@ -1722,6 +1715,6 @@ public class SpaceCenter
     [Rpc("SpaceCenter", "get_WaypointManager")]
     public async Task<WaypointManager> GetWaypointManagerAsync()
     {
-        return await _connection.InvokeAsync<WaypointManager>("SpaceCenter", "get_WaypointManager");
+        return await InvokeNonNullableAsync<WaypointManager>("SpaceCenter", "get_WaypointManager");
     }
 }

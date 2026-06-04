@@ -37,7 +37,7 @@ public class Engine : RemoteObject
             this,
             pressure
         };
-        return Connection.Invoke<float>("SpaceCenter", "Engine_AvailableThrustAt", args);
+        return InvokeNonNullable<float>("SpaceCenter", "Engine_AvailableThrustAt", args);
     }
 
     /// <summary>
@@ -56,7 +56,7 @@ public class Engine : RemoteObject
             this,
             pressure
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "Engine_AvailableThrustAt", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "Engine_AvailableThrustAt", args);
     }
 
     /// <summary>
@@ -73,7 +73,7 @@ public class Engine : RemoteObject
             this,
             pressure
         };
-        return Connection.Invoke<float>("SpaceCenter", "Engine_MaxThrustAt", args);
+        return InvokeNonNullable<float>("SpaceCenter", "Engine_MaxThrustAt", args);
     }
 
     /// <summary>
@@ -91,7 +91,7 @@ public class Engine : RemoteObject
             this,
             pressure
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "Engine_MaxThrustAt", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "Engine_MaxThrustAt", args);
     }
 
     /// <summary>
@@ -107,7 +107,7 @@ public class Engine : RemoteObject
             this,
             pressure
         };
-        return Connection.Invoke<float>("SpaceCenter", "Engine_SpecificImpulseAt", args);
+        return InvokeNonNullable<float>("SpaceCenter", "Engine_SpecificImpulseAt", args);
     }
 
     /// <summary>
@@ -124,7 +124,7 @@ public class Engine : RemoteObject
             this,
             pressure
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "Engine_SpecificImpulseAt", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "Engine_SpecificImpulseAt", args);
     }
 
     /// <summary>
@@ -137,7 +137,7 @@ public class Engine : RemoteObject
         {
             this
         };
-        Connection.Invoke("SpaceCenter", "Engine_ToggleMode", args);
+        InvokeVoid("SpaceCenter", "Engine_ToggleMode", args);
     }
 
     /// <summary>
@@ -151,7 +151,7 @@ public class Engine : RemoteObject
         {
             this
         };
-        await Connection.InvokeAsync("SpaceCenter", "Engine_ToggleMode", args);
+        await InvokeVoidAsync("SpaceCenter", "Engine_ToggleMode", args);
     }
 
     /// <summary>
@@ -165,7 +165,7 @@ public class Engine : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "Engine_get_Active", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "Engine_get_Active", args);
     }
 
     /// <summary>
@@ -180,7 +180,7 @@ public class Engine : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "Engine_get_Active", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "Engine_get_Active", args);
     }
 
     /// <summary>
@@ -196,7 +196,7 @@ public class Engine : RemoteObject
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "Engine_set_Active", args);
+        InvokeVoid("SpaceCenter", "Engine_set_Active", args);
     }
 
     /// <summary>
@@ -213,7 +213,7 @@ public class Engine : RemoteObject
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "Engine_set_Active", args);
+        await InvokeVoidAsync("SpaceCenter", "Engine_set_Active", args);
     }
 
     /// <summary>
@@ -226,7 +226,7 @@ public class Engine : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "Engine_get_AutoModeSwitch", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "Engine_get_AutoModeSwitch", args);
     }
 
     /// <summary>
@@ -240,7 +240,7 @@ public class Engine : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "Engine_get_AutoModeSwitch", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "Engine_get_AutoModeSwitch", args);
     }
 
     /// <summary>
@@ -255,7 +255,7 @@ public class Engine : RemoteObject
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "Engine_set_AutoModeSwitch", args);
+        InvokeVoid("SpaceCenter", "Engine_set_AutoModeSwitch", args);
     }
 
     /// <summary>
@@ -271,7 +271,7 @@ public class Engine : RemoteObject
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "Engine_set_AutoModeSwitch", args);
+        await InvokeVoidAsync("SpaceCenter", "Engine_set_AutoModeSwitch", args);
     }
 
     /// <summary>
@@ -288,7 +288,7 @@ public class Engine : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "Engine_get_AvailableThrust", args);
+        return InvokeNonNullable<float>("SpaceCenter", "Engine_get_AvailableThrust", args);
     }
 
     /// <summary>
@@ -306,7 +306,7 @@ public class Engine : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "Engine_get_AvailableThrust", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "Engine_get_AvailableThrust", args);
     }
 
     /// <summary>
@@ -322,7 +322,7 @@ public class Engine : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Tuple<Vector3D,Vector3D>>("SpaceCenter", "Engine_get_AvailableTorque", args);
+        return InvokeNonNullable<Tuple<Vector3D,Vector3D>>("SpaceCenter", "Engine_get_AvailableTorque", args);
     }
 
     /// <summary>
@@ -339,7 +339,7 @@ public class Engine : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Tuple<Vector3D,Vector3D>>("SpaceCenter", "Engine_get_AvailableTorque", args);
+        return await InvokeNonNullableAsync<Tuple<Vector3D,Vector3D>>("SpaceCenter", "Engine_get_AvailableTorque", args);
     }
 
     /// <summary>
@@ -354,7 +354,7 @@ public class Engine : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "Engine_get_CanRestart", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "Engine_get_CanRestart", args);
     }
 
     /// <summary>
@@ -370,7 +370,7 @@ public class Engine : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "Engine_get_CanRestart", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "Engine_get_CanRestart", args);
     }
 
     /// <summary>
@@ -384,7 +384,7 @@ public class Engine : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "Engine_get_CanShutdown", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "Engine_get_CanShutdown", args);
     }
 
     /// <summary>
@@ -399,7 +399,7 @@ public class Engine : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "Engine_get_CanShutdown", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "Engine_get_CanShutdown", args);
     }
 
     /// <summary>
@@ -413,7 +413,7 @@ public class Engine : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "Engine_get_GimbalLimit", args);
+        return InvokeNonNullable<float>("SpaceCenter", "Engine_get_GimbalLimit", args);
     }
 
     /// <summary>
@@ -428,7 +428,7 @@ public class Engine : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "Engine_get_GimbalLimit", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "Engine_get_GimbalLimit", args);
     }
 
     /// <summary>
@@ -444,7 +444,7 @@ public class Engine : RemoteObject
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "Engine_set_GimbalLimit", args);
+        InvokeVoid("SpaceCenter", "Engine_set_GimbalLimit", args);
     }
 
     /// <summary>
@@ -461,7 +461,7 @@ public class Engine : RemoteObject
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "Engine_set_GimbalLimit", args);
+        await InvokeVoidAsync("SpaceCenter", "Engine_set_GimbalLimit", args);
     }
 
     /// <summary>
@@ -475,7 +475,7 @@ public class Engine : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "Engine_get_GimbalLocked", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "Engine_get_GimbalLocked", args);
     }
 
     /// <summary>
@@ -490,7 +490,7 @@ public class Engine : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "Engine_get_GimbalLocked", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "Engine_get_GimbalLocked", args);
     }
 
     /// <summary>
@@ -506,7 +506,7 @@ public class Engine : RemoteObject
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "Engine_set_GimbalLocked", args);
+        InvokeVoid("SpaceCenter", "Engine_set_GimbalLocked", args);
     }
 
     /// <summary>
@@ -523,7 +523,7 @@ public class Engine : RemoteObject
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "Engine_set_GimbalLocked", args);
+        await InvokeVoidAsync("SpaceCenter", "Engine_set_GimbalLocked", args);
     }
 
     /// <summary>
@@ -537,7 +537,7 @@ public class Engine : RemoteObject
         {
             this
         };
-        var result = Connection.Invoke<float>("SpaceCenter", "Engine_get_GimbalRange", args);
+        var result = InvokeNonNullable<float>("SpaceCenter", "Engine_get_GimbalRange", args);
         return Angle.FromDegrees(result);
     }
 
@@ -553,7 +553,7 @@ public class Engine : RemoteObject
         {
             this
         };
-        var result = await Connection.InvokeAsync<float>("SpaceCenter", "Engine_get_GimbalRange", args);
+        var result = await InvokeNonNullableAsync<float>("SpaceCenter", "Engine_get_GimbalRange", args);
         return Angle.FromDegrees(result);
     }
 
@@ -567,7 +567,7 @@ public class Engine : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "Engine_get_Gimballed", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "Engine_get_Gimballed", args);
     }
 
     /// <summary>
@@ -581,7 +581,7 @@ public class Engine : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "Engine_get_Gimballed", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "Engine_get_Gimballed", args);
     }
 
     /// <summary>
@@ -594,7 +594,7 @@ public class Engine : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "Engine_get_HasFuel", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "Engine_get_HasFuel", args);
     }
 
     /// <summary>
@@ -608,7 +608,7 @@ public class Engine : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "Engine_get_HasFuel", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "Engine_get_HasFuel", args);
     }
 
     /// <summary>
@@ -621,7 +621,7 @@ public class Engine : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "Engine_get_HasModes", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "Engine_get_HasModes", args);
     }
 
     /// <summary>
@@ -635,7 +635,7 @@ public class Engine : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "Engine_get_HasModes", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "Engine_get_HasModes", args);
     }
 
     /// <summary>
@@ -648,7 +648,7 @@ public class Engine : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "Engine_get_IndependentThrottle", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "Engine_get_IndependentThrottle", args);
     }
 
     /// <summary>
@@ -662,7 +662,7 @@ public class Engine : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "Engine_get_IndependentThrottle", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "Engine_get_IndependentThrottle", args);
     }
 
     /// <summary>
@@ -677,7 +677,7 @@ public class Engine : RemoteObject
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "Engine_set_IndependentThrottle", args);
+        InvokeVoid("SpaceCenter", "Engine_set_IndependentThrottle", args);
     }
 
     /// <summary>
@@ -693,7 +693,7 @@ public class Engine : RemoteObject
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "Engine_set_IndependentThrottle", args);
+        await InvokeVoidAsync("SpaceCenter", "Engine_set_IndependentThrottle", args);
     }
 
     /// <summary>
@@ -706,7 +706,7 @@ public class Engine : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "Engine_get_KerbinSeaLevelSpecificImpulse", args);
+        return InvokeNonNullable<float>("SpaceCenter", "Engine_get_KerbinSeaLevelSpecificImpulse", args);
     }
 
     /// <summary>
@@ -720,7 +720,7 @@ public class Engine : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "Engine_get_KerbinSeaLevelSpecificImpulse", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "Engine_get_KerbinSeaLevelSpecificImpulse", args);
     }
 
     /// <summary>
@@ -734,7 +734,7 @@ public class Engine : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "Engine_get_MaxThrust", args);
+        return InvokeNonNullable<float>("SpaceCenter", "Engine_get_MaxThrust", args);
     }
 
     /// <summary>
@@ -749,7 +749,7 @@ public class Engine : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "Engine_get_MaxThrust", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "Engine_get_MaxThrust", args);
     }
 
     /// <summary>
@@ -765,7 +765,7 @@ public class Engine : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "Engine_get_MaxVacuumThrust", args);
+        return InvokeNonNullable<float>("SpaceCenter", "Engine_get_MaxVacuumThrust", args);
     }
 
     /// <summary>
@@ -782,7 +782,7 @@ public class Engine : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "Engine_get_MaxVacuumThrust", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "Engine_get_MaxVacuumThrust", args);
     }
 
     /// <summary>
@@ -795,7 +795,7 @@ public class Engine : RemoteObject
         {
             this
         };
-        return Connection.Invoke<string>("SpaceCenter", "Engine_get_Mode", args);
+        return InvokeNonNullable<string>("SpaceCenter", "Engine_get_Mode", args);
     }
 
     /// <summary>
@@ -809,7 +809,7 @@ public class Engine : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<string>("SpaceCenter", "Engine_get_Mode", args);
+        return await InvokeNonNullableAsync<string>("SpaceCenter", "Engine_get_Mode", args);
     }
 
     /// <summary>
@@ -824,7 +824,7 @@ public class Engine : RemoteObject
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "Engine_set_Mode", args);
+        InvokeVoid("SpaceCenter", "Engine_set_Mode", args);
     }
 
     /// <summary>
@@ -840,7 +840,7 @@ public class Engine : RemoteObject
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "Engine_set_Mode", args);
+        await InvokeVoidAsync("SpaceCenter", "Engine_set_Mode", args);
     }
 
     /// <summary>
@@ -854,7 +854,7 @@ public class Engine : RemoteObject
         {
             this
         };
-        return Connection.Invoke<IDictionary<string,Engine>>("SpaceCenter", "Engine_get_Modes", args);
+        return InvokeNonNullable<IDictionary<string,Engine>>("SpaceCenter", "Engine_get_Modes", args);
     }
 
     /// <summary>
@@ -869,7 +869,7 @@ public class Engine : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<IDictionary<string,Engine>>("SpaceCenter", "Engine_get_Modes", args);
+        return await InvokeNonNullableAsync<IDictionary<string,Engine>>("SpaceCenter", "Engine_get_Modes", args);
     }
 
     /// <summary>
@@ -882,7 +882,7 @@ public class Engine : RemoteObject
         {
             this
         };
-        return Connection.Invoke<Part>("SpaceCenter", "Engine_get_Part", args);
+        return InvokeNonNullable<Part>("SpaceCenter", "Engine_get_Part", args);
     }
 
     /// <summary>
@@ -896,7 +896,7 @@ public class Engine : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<Part>("SpaceCenter", "Engine_get_Part", args);
+        return await InvokeNonNullableAsync<Part>("SpaceCenter", "Engine_get_Part", args);
     }
 
     /// <summary>
@@ -909,7 +909,7 @@ public class Engine : RemoteObject
         {
             this
         };
-        return Connection.Invoke<IList<string>>("SpaceCenter", "Engine_get_PropellantNames", args);
+        return InvokeNonNullable<IList<string>>("SpaceCenter", "Engine_get_PropellantNames", args);
     }
 
     /// <summary>
@@ -923,7 +923,7 @@ public class Engine : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<IList<string>>("SpaceCenter", "Engine_get_PropellantNames", args);
+        return await InvokeNonNullableAsync<IList<string>>("SpaceCenter", "Engine_get_PropellantNames", args);
     }
 
     /// <summary>
@@ -941,7 +941,7 @@ public class Engine : RemoteObject
         {
             this
         };
-        return Connection.Invoke<IDictionary<string,float>>("SpaceCenter", "Engine_get_PropellantRatios", args);
+        return InvokeNonNullable<IDictionary<string,float>>("SpaceCenter", "Engine_get_PropellantRatios", args);
     }
 
     /// <summary>
@@ -960,7 +960,7 @@ public class Engine : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<IDictionary<string,float>>("SpaceCenter", "Engine_get_PropellantRatios", args);
+        return await InvokeNonNullableAsync<IDictionary<string,float>>("SpaceCenter", "Engine_get_PropellantRatios", args);
     }
 
     /// <summary>
@@ -973,7 +973,7 @@ public class Engine : RemoteObject
         {
             this
         };
-        return Connection.Invoke<IList<Propellant>>("SpaceCenter", "Engine_get_Propellants", args);
+        return InvokeNonNullable<IList<Propellant>>("SpaceCenter", "Engine_get_Propellants", args);
     }
 
     /// <summary>
@@ -987,7 +987,7 @@ public class Engine : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<IList<Propellant>>("SpaceCenter", "Engine_get_Propellants", args);
+        return await InvokeNonNullableAsync<IList<Propellant>>("SpaceCenter", "Engine_get_Propellants", args);
     }
 
     /// <summary>
@@ -1001,7 +1001,7 @@ public class Engine : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "Engine_get_SpecificImpulse", args);
+        return InvokeNonNullable<float>("SpaceCenter", "Engine_get_SpecificImpulse", args);
     }
 
     /// <summary>
@@ -1016,7 +1016,7 @@ public class Engine : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "Engine_get_SpecificImpulse", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "Engine_get_SpecificImpulse", args);
     }
 
     /// <summary>
@@ -1035,7 +1035,7 @@ public class Engine : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "Engine_get_Throttle", args);
+        return InvokeNonNullable<float>("SpaceCenter", "Engine_get_Throttle", args);
     }
 
     /// <summary>
@@ -1055,7 +1055,7 @@ public class Engine : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "Engine_get_Throttle", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "Engine_get_Throttle", args);
     }
 
     /// <summary>
@@ -1076,7 +1076,7 @@ public class Engine : RemoteObject
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "Engine_set_Throttle", args);
+        InvokeVoid("SpaceCenter", "Engine_set_Throttle", args);
     }
 
     /// <summary>
@@ -1098,7 +1098,7 @@ public class Engine : RemoteObject
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "Engine_set_Throttle", args);
+        await InvokeVoidAsync("SpaceCenter", "Engine_set_Throttle", args);
     }
 
     /// <summary>
@@ -1113,7 +1113,7 @@ public class Engine : RemoteObject
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "Engine_get_ThrottleLocked", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "Engine_get_ThrottleLocked", args);
     }
 
     /// <summary>
@@ -1129,7 +1129,7 @@ public class Engine : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "Engine_get_ThrottleLocked", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "Engine_get_ThrottleLocked", args);
     }
 
     /// <summary>
@@ -1142,7 +1142,7 @@ public class Engine : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "Engine_get_Thrust", args);
+        return InvokeNonNullable<float>("SpaceCenter", "Engine_get_Thrust", args);
     }
 
     /// <summary>
@@ -1156,7 +1156,7 @@ public class Engine : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "Engine_get_Thrust", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "Engine_get_Thrust", args);
     }
 
     /// <summary>
@@ -1171,7 +1171,7 @@ public class Engine : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "Engine_get_ThrustLimit", args);
+        return InvokeNonNullable<float>("SpaceCenter", "Engine_get_ThrustLimit", args);
     }
 
     /// <summary>
@@ -1187,7 +1187,7 @@ public class Engine : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "Engine_get_ThrustLimit", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "Engine_get_ThrustLimit", args);
     }
 
     /// <summary>
@@ -1204,7 +1204,7 @@ public class Engine : RemoteObject
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "Engine_set_ThrustLimit", args);
+        InvokeVoid("SpaceCenter", "Engine_set_ThrustLimit", args);
     }
 
     /// <summary>
@@ -1222,7 +1222,7 @@ public class Engine : RemoteObject
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "Engine_set_ThrustLimit", args);
+        await InvokeVoidAsync("SpaceCenter", "Engine_set_ThrustLimit", args);
     }
 
     /// <summary>
@@ -1241,7 +1241,7 @@ public class Engine : RemoteObject
         {
             this
         };
-        return Connection.Invoke<IList<Thruster>>("SpaceCenter", "Engine_get_Thrusters", args);
+        return InvokeNonNullable<IList<Thruster>>("SpaceCenter", "Engine_get_Thrusters", args);
     }
 
     /// <summary>
@@ -1261,7 +1261,7 @@ public class Engine : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<IList<Thruster>>("SpaceCenter", "Engine_get_Thrusters", args);
+        return await InvokeNonNullableAsync<IList<Thruster>>("SpaceCenter", "Engine_get_Thrusters", args);
     }
 
     /// <summary>
@@ -1274,7 +1274,7 @@ public class Engine : RemoteObject
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "Engine_get_VacuumSpecificImpulse", args);
+        return InvokeNonNullable<float>("SpaceCenter", "Engine_get_VacuumSpecificImpulse", args);
     }
 
     /// <summary>
@@ -1288,6 +1288,6 @@ public class Engine : RemoteObject
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "Engine_get_VacuumSpecificImpulse", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "Engine_get_VacuumSpecificImpulse", args);
     }
 }
