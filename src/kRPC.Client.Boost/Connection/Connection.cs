@@ -296,18 +296,17 @@ internal abstract class Connection : IDisposable
 
     private static ProcedureCall GetCall(MethodCallExpression expression)
     {
-        var attribute = expression.Method.GetCustomAttribute<RpcAttribute>();
-        if (attribute == null)
-            throw new ArgumentException("Invalid expression. Method must call a remote procedure.");
+        var attribute = expression.Method.GetCustomAttribute<RpcAttribute>()
+            ?? throw new ArgumentException("Invalid expression. Method must call a remote procedure.");
         
-        var service = attribute!.Service;
-        var procedure = attribute!.Procedure;
+        var service = attribute.Service;
+        var procedure = attribute.Procedure;
         var arguments = expression.Arguments.Select(x =>
         {
             if (x is not ConstantExpression constantExpression)
                 throw new ArgumentException("Invalid expression. Method arguments must be compile time constants.");
 
-            return constantExpression.Value;
+            return new ProcedureArgument(constantExpression.Value, constantExpression.Type);
         });
 
         var call = new ProcedureCall
@@ -319,7 +318,7 @@ internal abstract class Connection : IDisposable
         var position = 0u;
         foreach (var argument in arguments)
         {
-            var encodedValue = Codec.Encode(argument);
+            var encodedValue = Codec.Encode(argument.Value, argument.Type);
             var arg = new Argument
             {
                 Position = position,
