@@ -4,7 +4,7 @@ using kRPC.Client.Boost.Connection;
 namespace kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects;
 
 /// <summary>
-/// A contract. Can be accessed using <see cref="M:SpaceCenter.GetContractManager" />.
+/// A contract. Can be accessed using <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.SpaceCenter.GetContractManager" />.
 /// </summary>
 public class Contract : RemoteObject
 {

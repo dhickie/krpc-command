@@ -4,7 +4,7 @@ using kRPC.Client.Boost.Connection;
 namespace kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects;
 
 /// <summary>
-/// A propellant for an engine. Obtains by calling <see cref="M:SpaceCenter.Engine.GetPropellants" />.
+/// A propellant for an engine. Obtains by calling <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Engine.GetPropellants" />.
 /// </summary>
 public class Propellant : RemoteObject
 {

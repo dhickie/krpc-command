@@ -5,7 +5,7 @@ using MathNet.Spatial.Euclidean;
 namespace kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects;
 
 /// <summary>
-/// An RCS block or thruster. Obtained by calling <see cref="M:SpaceCenter.Part.GetRCS" />.
+/// An RCS block or thruster. Obtained by calling <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Part.GetRCS" />.
 /// </summary>
 public class RCS : RemoteObject
 {
@@ -19,8 +19,8 @@ public class RCS : RemoteObject
     /// <summary>
     /// Gets whether the RCS thrusters are active.
     /// An RCS thruster is inactive if the RCS action group is disabled
-    /// (<see cref="M:SpaceCenter.Control.GetRCS" />), the RCS thruster itself is not enabled
-    /// (<see cref="M:SpaceCenter.RCS.GetEnabled" />) or it is covered by a fairing (<see cref="M:SpaceCenter.Part.GetShielded" />).
+    /// (<see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Control.GetRCS" />), the RCS thruster itself is not enabled
+    /// (<see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.RCS.GetEnabled" />) or it is covered by a fairing (<see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Part.GetShielded" />).
     /// </summary>
     [Rpc("SpaceCenter", "RCS_get_Active")]
     public bool GetActive()
@@ -35,8 +35,8 @@ public class RCS : RemoteObject
     /// <summary>
     /// Gets whether the RCS thrusters are active.
     /// An RCS thruster is inactive if the RCS action group is disabled
-    /// (<see cref="M:SpaceCenter.Control.GetRCS" />), the RCS thruster itself is not enabled
-    /// (<see cref="M:SpaceCenter.RCS.GetEnabled" />) or it is covered by a fairing (<see cref="M:SpaceCenter.Part.GetShielded" />).
+    /// (<see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Control.GetRCS" />), the RCS thruster itself is not enabled
+    /// (<see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.RCS.GetEnabled" />) or it is covered by a fairing (<see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Part.GetShielded" />).
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "RCS_get_Active")]
@@ -52,7 +52,7 @@ public class RCS : RemoteObject
     /// <summary>
     /// Gets the available force, in Newtons, that can be produced by this RCS,
     /// in the positive and negative x, y and z axes of the vessel. These axes
-    /// correspond to the coordinate axes of the <see cref="M:SpaceCenter.Vessel.GetReferenceFrame" />.
+    /// correspond to the coordinate axes of the <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Vessel.GetReferenceFrame" />.
     /// Returns zero if RCS is disabled.
     /// </summary>
     [Rpc("SpaceCenter", "RCS_get_AvailableForce")]
@@ -68,7 +68,7 @@ public class RCS : RemoteObject
     /// <summary>
     /// Gets the available force, in Newtons, that can be produced by this RCS,
     /// in the positive and negative x, y and z axes of the vessel. These axes
-    /// correspond to the coordinate axes of the <see cref="M:SpaceCenter.Vessel.GetReferenceFrame" />.
+    /// correspond to the coordinate axes of the <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Vessel.GetReferenceFrame" />.
     /// Returns zero if RCS is disabled.
     /// Executes asynchronously.
     /// </summary>
@@ -85,7 +85,7 @@ public class RCS : RemoteObject
     /// <summary>
     /// Gets the amount of thrust, in Newtons, that would be produced by the thruster when activated.
     /// Returns zero if the thruster does not have any fuel.
-    /// Takes the thrusters current <see cref="M:SpaceCenter.RCS.GetThrustLimit" /> and atmospheric conditions
+    /// Takes the thrusters current <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.RCS.GetThrustLimit" /> and atmospheric conditions
     /// into account.
     /// </summary>
     [Rpc("SpaceCenter", "RCS_get_AvailableThrust")]
@@ -101,7 +101,7 @@ public class RCS : RemoteObject
     /// <summary>
     /// Gets the amount of thrust, in Newtons, that would be produced by the thruster when activated.
     /// Returns zero if the thruster does not have any fuel.
-    /// Takes the thrusters current <see cref="M:SpaceCenter.RCS.GetThrustLimit" /> and atmospheric conditions
+    /// Takes the thrusters current <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.RCS.GetThrustLimit" /> and atmospheric conditions
     /// into account.
     /// Executes asynchronously.
     /// </summary>
@@ -118,7 +118,7 @@ public class RCS : RemoteObject
     /// <summary>
     /// Gets the available torque, in Newton meters, that can be produced by this RCS,
     /// in the positive and negative pitch, roll and yaw axes of the vessel. These axes
-    /// correspond to the coordinate axes of the <see cref="M:SpaceCenter.Vessel.GetReferenceFrame" />.
+    /// correspond to the coordinate axes of the <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Vessel.GetReferenceFrame" />.
     /// Returns zero if RCS is disable.
     /// </summary>
     [Rpc("SpaceCenter", "RCS_get_AvailableTorque")]
@@ -134,7 +134,7 @@ public class RCS : RemoteObject
     /// <summary>
     /// Gets the available torque, in Newton meters, that can be produced by this RCS,
     /// in the positive and negative pitch, roll and yaw axes of the vessel. These axes
-    /// correspond to the coordinate axes of the <see cref="M:SpaceCenter.Vessel.GetReferenceFrame" />.
+    /// correspond to the coordinate axes of the <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Vessel.GetReferenceFrame" />.
     /// Returns zero if RCS is disable.
     /// Executes asynchronously.
     /// </summary>
@@ -321,7 +321,7 @@ public class RCS : RemoteObject
     /// <summary>
     /// Gets the maximum amount of thrust that can be produced by the RCS thrusters when active,
     /// in Newtons.
-    /// Takes the thrusters current <see cref="M:SpaceCenter.RCS.GetThrustLimit" /> and atmospheric conditions
+    /// Takes the thrusters current <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.RCS.GetThrustLimit" /> and atmospheric conditions
     /// into account.
     /// </summary>
     [Rpc("SpaceCenter", "RCS_get_MaxThrust")]
@@ -337,7 +337,7 @@ public class RCS : RemoteObject
     /// <summary>
     /// Gets the maximum amount of thrust that can be produced by the RCS thrusters when active,
     /// in Newtons.
-    /// Takes the thrusters current <see cref="M:SpaceCenter.RCS.GetThrustLimit" /> and atmospheric conditions
+    /// Takes the thrusters current <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.RCS.GetThrustLimit" /> and atmospheric conditions
     /// into account.
     /// Executes asynchronously.
     /// </summary>

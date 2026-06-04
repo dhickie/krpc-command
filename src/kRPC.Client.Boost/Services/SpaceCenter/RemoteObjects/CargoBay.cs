@@ -4,7 +4,7 @@ using kRPC.Client.Boost.Connection;
 namespace kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects;
 
 /// <summary>
-/// A cargo bay. Obtained by calling <see cref="M:SpaceCenter.Part.GetCargoBay" />.
+/// A cargo bay. Obtained by calling <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Part.GetCargoBay" />.
 /// </summary>
 public class CargoBay : RemoteObject
 {

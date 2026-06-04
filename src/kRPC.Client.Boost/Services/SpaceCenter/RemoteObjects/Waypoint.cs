@@ -5,7 +5,7 @@ using MathNet.Spatial.Units;
 namespace kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects;
 
 /// <summary>
-/// Represents a waypoint. Can be created using <see cref="M:SpaceCenter.WaypointManager.AddWaypoint" />.
+/// Represents a waypoint. Can be created using <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.WaypointManager.AddWaypoint" />.
 /// </summary>
 public class Waypoint : RemoteObject
 {
@@ -167,7 +167,7 @@ public class Waypoint : RemoteObject
     /// Returns <c>true</c> if this waypoint is part of a set of clustered waypoints with greek letter
     /// names appended (Alpha, Beta, Gamma, etc).
     /// If <c>true</c>, there is a one-to-one correspondence with the greek letter name and
-    /// the <see cref="M:SpaceCenter.Waypoint.GetIndex" />.
+    /// the <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Waypoint.GetIndex" />.
     /// </summary>
     [Rpc("SpaceCenter", "Waypoint_get_Clustered")]
     public bool GetClustered()
@@ -183,7 +183,7 @@ public class Waypoint : RemoteObject
     /// Returns <c>true</c> if this waypoint is part of a set of clustered waypoints with greek letter
     /// names appended (Alpha, Beta, Gamma, etc).
     /// If <c>true</c>, there is a one-to-one correspondence with the greek letter name and
-    /// the <see cref="M:SpaceCenter.Waypoint.GetIndex" />.
+    /// the <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Waypoint.GetIndex" />.
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Waypoint_get_Clustered")]
@@ -197,7 +197,7 @@ public class Waypoint : RemoteObject
     }
 
     /// <summary>
-    /// Gets the seed of the icon color. See <see cref="M:SpaceCenter.WaypointManager.GetColors" /> for example colors.
+    /// Gets the seed of the icon color. See <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.WaypointManager.GetColors" /> for example colors.
     /// </summary>
     [Rpc("SpaceCenter", "Waypoint_get_Color")]
     public int GetColor()
@@ -210,7 +210,7 @@ public class Waypoint : RemoteObject
     }
 
     /// <summary>
-    /// Gets the seed of the icon color. See <see cref="M:SpaceCenter.WaypointManager.GetColors" /> for example colors.
+    /// Gets the seed of the icon color. See <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.WaypointManager.GetColors" /> for example colors.
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Waypoint_get_Color")]
@@ -224,7 +224,7 @@ public class Waypoint : RemoteObject
     }
 
     /// <summary>
-    /// Sets the seed of the icon color. See <see cref="M:SpaceCenter.WaypointManager.GetColors" /> for example colors.
+    /// Sets the seed of the icon color. See <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.WaypointManager.GetColors" /> for example colors.
     /// </summary>
     /// <param name="value">The value to set.</param>
     [Rpc("SpaceCenter", "Waypoint_set_Color")]
@@ -239,7 +239,7 @@ public class Waypoint : RemoteObject
     }
 
     /// <summary>
-    /// Sets the seed of the icon color. See <see cref="M:SpaceCenter.WaypointManager.GetColors" /> for example colors.
+    /// Sets the seed of the icon color. See <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.WaypointManager.GetColors" /> for example colors.
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
@@ -398,7 +398,7 @@ public class Waypoint : RemoteObject
     /// In other words, when you have a cluster of waypoints called "Somewhere Alpha",
     /// "Somewhere Beta" and "Somewhere Gamma", the alpha site has index 0, the beta
     /// site has index 1 and the gamma site has index 2.
-    /// When <see cref="M:SpaceCenter.Waypoint.GetClustered" /> is <c>false</c>, this is zero.
+    /// When <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Waypoint.GetClustered" /> is <c>false</c>, this is zero.
     /// </summary>
     [Rpc("SpaceCenter", "Waypoint_get_Index")]
     public int GetIndex()
@@ -415,7 +415,7 @@ public class Waypoint : RemoteObject
     /// In other words, when you have a cluster of waypoints called "Somewhere Alpha",
     /// "Somewhere Beta" and "Somewhere Gamma", the alpha site has index 0, the beta
     /// site has index 1 and the gamma site has index 2.
-    /// When <see cref="M:SpaceCenter.Waypoint.GetClustered" /> is <c>false</c>, this is zero.
+    /// When <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Waypoint.GetClustered" /> is <c>false</c>, this is zero.
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Waypoint_get_Index")]

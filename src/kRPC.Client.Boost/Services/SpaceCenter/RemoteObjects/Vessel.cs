@@ -7,7 +7,7 @@ namespace kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects;
 /// <summary>
 /// These objects are used to interact with vessels in KSP. This includes getting
 /// orbital and flight data, manipulating control inputs and managing resources.
-/// Created using <see cref="M:SpaceCenter.GetActiveVessel" /> or <see cref="M:SpaceCenter.GetVessels" />.
+/// Created using <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.SpaceCenter.GetActiveVessel" /> or <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.SpaceCenter.GetVessels" />.
 /// </summary>
 public class Vessel : RemoteObject
 {
@@ -60,7 +60,7 @@ public class Vessel : RemoteObject
     /// <summary>
     /// Gets the total available thrust that can be produced by the vessel's
     /// active engines, in Newtons. This is computed by summing
-    /// <see cref="M:SpaceCenter.Engine.AvailableThrustAt" /> for every active engine in the vessel.
+    /// <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Engine.AvailableThrustAt" /> for every active engine in the vessel.
     /// Takes the given pressure into account.
     /// </summary>
     /// <param name="pressure">Atmospheric pressure in atmospheres</param>
@@ -78,7 +78,7 @@ public class Vessel : RemoteObject
     /// <summary>
     /// Gets the total available thrust that can be produced by the vessel's
     /// active engines, in Newtons. This is computed by summing
-    /// <see cref="M:SpaceCenter.Engine.AvailableThrustAt" /> for every active engine in the vessel.
+    /// <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Engine.AvailableThrustAt" /> for every active engine in the vessel.
     /// Takes the given pressure into account.
     /// Executes asynchronously.
     /// </summary>
@@ -167,12 +167,12 @@ public class Vessel : RemoteObject
     }
 
     /// <summary>
-    /// Returns a <see cref="T:SpaceCenter.Flight" /> object that can be used to get flight
+    /// Returns a <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Flight" /> object that can be used to get flight
     /// telemetry for the vessel, in the specified reference frame.
     /// </summary>
     /// <param name="referenceFrame">
     /// Reference frame. Defaults to the vessel's surface reference frame
-    /// (<see cref="M:SpaceCenter.Vessel.GetSurfaceReferenceFrame" />).
+    /// (<see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Vessel.GetSurfaceReferenceFrame" />).
     /// </param>
     [Rpc("SpaceCenter", "Vessel_Flight")]
     public Flight Flight(ReferenceFrame? referenceFrame = null)
@@ -186,13 +186,13 @@ public class Vessel : RemoteObject
     }
 
     /// <summary>
-    /// Returns a <see cref="T:SpaceCenter.Flight" /> object that can be used to get flight
+    /// Returns a <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Flight" /> object that can be used to get flight
     /// telemetry for the vessel, in the specified reference frame.
     /// Executes asynchronously.
     /// </summary>
     /// <param name="referenceFrame">
     /// Reference frame. Defaults to the vessel's surface reference frame
-    /// (<see cref="M:SpaceCenter.Vessel.GetSurfaceReferenceFrame" />).
+    /// (<see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Vessel.GetSurfaceReferenceFrame" />).
     /// </param>
     [Rpc("SpaceCenter", "Vessel_Flight")]
     public async Task<Flight> FlightAsync(ReferenceFrame? referenceFrame = null)
@@ -208,7 +208,7 @@ public class Vessel : RemoteObject
     /// <summary>
     /// The total maximum thrust that can be produced by the vessel's active
     /// engines, in Newtons. This is computed by summing
-    /// <see cref="M:SpaceCenter.Engine.MaxThrustAt" /> for every active engine.
+    /// <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Engine.MaxThrustAt" /> for every active engine.
     /// Takes the given pressure into account.
     /// </summary>
     /// <param name="pressure">Atmospheric pressure in atmospheres</param>
@@ -226,7 +226,7 @@ public class Vessel : RemoteObject
     /// <summary>
     /// The total maximum thrust that can be produced by the vessel's active
     /// engines, in Newtons. This is computed by summing
-    /// <see cref="M:SpaceCenter.Engine.MaxThrustAt" /> for every active engine.
+    /// <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Engine.MaxThrustAt" /> for every active engine.
     /// Takes the given pressure into account.
     /// Executes asynchronously.
     /// </summary>
@@ -305,7 +305,7 @@ public class Vessel : RemoteObject
     }
 
     /// <summary>
-    /// Returns a <see cref="T:SpaceCenter.Resources" /> object, that can used to get
+    /// Returns a <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Resources" /> object, that can used to get
     /// information about resources stored in a given <paramref name="stage" />.
     /// </summary>
     /// <param name="stage">Get resources for parts that are decoupled in this stage.</param>
@@ -325,7 +325,7 @@ public class Vessel : RemoteObject
     }
 
     /// <summary>
-    /// Returns a <see cref="T:SpaceCenter.Resources" /> object, that can used to get
+    /// Returns a <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Resources" /> object, that can used to get
     /// information about resources stored in a given <paramref name="stage" />.
     /// Executes asynchronously.
     /// </summary>
@@ -453,7 +453,7 @@ public class Vessel : RemoteObject
     }
 
     /// <summary>
-    /// Gets an <see cref="T:SpaceCenter.AutoPilot" /> object, that can be used to perform
+    /// Gets an <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.AutoPilot" /> object, that can be used to perform
     /// simple auto-piloting of the vessel.
     /// </summary>
     [Rpc("SpaceCenter", "Vessel_get_AutoPilot")]
@@ -467,7 +467,7 @@ public class Vessel : RemoteObject
     }
 
     /// <summary>
-    /// Gets an <see cref="T:SpaceCenter.AutoPilot" /> object, that can be used to perform
+    /// Gets an <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.AutoPilot" /> object, that can be used to perform
     /// simple auto-piloting of the vessel.
     /// Executes asynchronously.
     /// </summary>
@@ -484,7 +484,7 @@ public class Vessel : RemoteObject
     /// <summary>
     /// Gets the maximum torque that the aerodynamic control surfaces can generate.
     /// Returns the torques in <math>N.m</math> around each of the coordinate axes of the
-    /// vessels reference frame (<see cref="T:SpaceCenter.ReferenceFrame" />).
+    /// vessels reference frame (<see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ReferenceFrame" />).
     /// These axes are equivalent to the pitch, roll and yaw axes of the vessel.
     /// </summary>
     [Rpc("SpaceCenter", "Vessel_get_AvailableControlSurfaceTorque")]
@@ -500,7 +500,7 @@ public class Vessel : RemoteObject
     /// <summary>
     /// Gets the maximum torque that the aerodynamic control surfaces can generate.
     /// Returns the torques in <math>N.m</math> around each of the coordinate axes of the
-    /// vessels reference frame (<see cref="T:SpaceCenter.ReferenceFrame" />).
+    /// vessels reference frame (<see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ReferenceFrame" />).
     /// These axes are equivalent to the pitch, roll and yaw axes of the vessel.
     /// Executes asynchronously.
     /// </summary>
@@ -517,7 +517,7 @@ public class Vessel : RemoteObject
     /// <summary>
     /// Gets the maximum torque that the currently active and gimballed engines can generate.
     /// Returns the torques in <math>N.m</math> around each of the coordinate axes of the
-    /// vessels reference frame (<see cref="T:SpaceCenter.ReferenceFrame" />).
+    /// vessels reference frame (<see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ReferenceFrame" />).
     /// These axes are equivalent to the pitch, roll and yaw axes of the vessel.
     /// </summary>
     [Rpc("SpaceCenter", "Vessel_get_AvailableEngineTorque")]
@@ -533,7 +533,7 @@ public class Vessel : RemoteObject
     /// <summary>
     /// Gets the maximum torque that the currently active and gimballed engines can generate.
     /// Returns the torques in <math>N.m</math> around each of the coordinate axes of the
-    /// vessels reference frame (<see cref="T:SpaceCenter.ReferenceFrame" />).
+    /// vessels reference frame (<see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ReferenceFrame" />).
     /// These axes are equivalent to the pitch, roll and yaw axes of the vessel.
     /// Executes asynchronously.
     /// </summary>
@@ -551,7 +551,7 @@ public class Vessel : RemoteObject
     /// Gets the maximum torque that parts (excluding reaction wheels, gimballed engines,
     /// RCS and control surfaces) can generate.
     /// Returns the torques in <math>N.m</math> around each of the coordinate axes of the
-    /// vessels reference frame (<see cref="T:SpaceCenter.ReferenceFrame" />).
+    /// vessels reference frame (<see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ReferenceFrame" />).
     /// These axes are equivalent to the pitch, roll and yaw axes of the vessel.
     /// </summary>
     [Rpc("SpaceCenter", "Vessel_get_AvailableOtherTorque")]
@@ -568,7 +568,7 @@ public class Vessel : RemoteObject
     /// Gets the maximum torque that parts (excluding reaction wheels, gimballed engines,
     /// RCS and control surfaces) can generate.
     /// Returns the torques in <math>N.m</math> around each of the coordinate axes of the
-    /// vessels reference frame (<see cref="T:SpaceCenter.ReferenceFrame" />).
+    /// vessels reference frame (<see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ReferenceFrame" />).
     /// These axes are equivalent to the pitch, roll and yaw axes of the vessel.
     /// Executes asynchronously.
     /// </summary>
@@ -585,7 +585,7 @@ public class Vessel : RemoteObject
     /// <summary>
     /// Gets the maximum force that the currently active RCS thrusters can generate.
     /// Returns the forces in <math>N</math> along each of the coordinate axes of the
-    /// vessels reference frame (<see cref="T:SpaceCenter.ReferenceFrame" />).
+    /// vessels reference frame (<see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ReferenceFrame" />).
     /// These axes are equivalent to the right, forward and bottom directions of the vessel.
     /// </summary>
     [Rpc("SpaceCenter", "Vessel_get_AvailableRCSForce")]
@@ -601,7 +601,7 @@ public class Vessel : RemoteObject
     /// <summary>
     /// Gets the maximum force that the currently active RCS thrusters can generate.
     /// Returns the forces in <math>N</math> along each of the coordinate axes of the
-    /// vessels reference frame (<see cref="T:SpaceCenter.ReferenceFrame" />).
+    /// vessels reference frame (<see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ReferenceFrame" />).
     /// These axes are equivalent to the right, forward and bottom directions of the vessel.
     /// Executes asynchronously.
     /// </summary>
@@ -618,7 +618,7 @@ public class Vessel : RemoteObject
     /// <summary>
     /// Gets the maximum torque that the currently active RCS thrusters can generate.
     /// Returns the torques in <math>N.m</math> around each of the coordinate axes of the
-    /// vessels reference frame (<see cref="T:SpaceCenter.ReferenceFrame" />).
+    /// vessels reference frame (<see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ReferenceFrame" />).
     /// These axes are equivalent to the pitch, roll and yaw axes of the vessel.
     /// </summary>
     [Rpc("SpaceCenter", "Vessel_get_AvailableRCSTorque")]
@@ -634,7 +634,7 @@ public class Vessel : RemoteObject
     /// <summary>
     /// Gets the maximum torque that the currently active RCS thrusters can generate.
     /// Returns the torques in <math>N.m</math> around each of the coordinate axes of the
-    /// vessels reference frame (<see cref="T:SpaceCenter.ReferenceFrame" />).
+    /// vessels reference frame (<see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ReferenceFrame" />).
     /// These axes are equivalent to the pitch, roll and yaw axes of the vessel.
     /// Executes asynchronously.
     /// </summary>
@@ -651,7 +651,7 @@ public class Vessel : RemoteObject
     /// <summary>
     /// Gets the maximum torque that the currently active and powered reaction wheels can generate.
     /// Returns the torques in <math>N.m</math> around each of the coordinate axes of the
-    /// vessels reference frame (<see cref="T:SpaceCenter.ReferenceFrame" />).
+    /// vessels reference frame (<see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ReferenceFrame" />).
     /// These axes are equivalent to the pitch, roll and yaw axes of the vessel.
     /// </summary>
     [Rpc("SpaceCenter", "Vessel_get_AvailableReactionWheelTorque")]
@@ -667,7 +667,7 @@ public class Vessel : RemoteObject
     /// <summary>
     /// Gets the maximum torque that the currently active and powered reaction wheels can generate.
     /// Returns the torques in <math>N.m</math> around each of the coordinate axes of the
-    /// vessels reference frame (<see cref="T:SpaceCenter.ReferenceFrame" />).
+    /// vessels reference frame (<see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ReferenceFrame" />).
     /// These axes are equivalent to the pitch, roll and yaw axes of the vessel.
     /// Executes asynchronously.
     /// </summary>
@@ -684,7 +684,7 @@ public class Vessel : RemoteObject
     /// <summary>
     /// Gets the total available thrust that can be produced by the vessel's
     /// active engines, in Newtons. This is computed by summing
-    /// <see cref="M:SpaceCenter.Engine.GetAvailableThrust" /> for every active engine in the vessel.
+    /// <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Engine.GetAvailableThrust" /> for every active engine in the vessel.
     /// </summary>
     [Rpc("SpaceCenter", "Vessel_get_AvailableThrust")]
     public float GetAvailableThrust()
@@ -699,7 +699,7 @@ public class Vessel : RemoteObject
     /// <summary>
     /// Gets the total available thrust that can be produced by the vessel's
     /// active engines, in Newtons. This is computed by summing
-    /// <see cref="M:SpaceCenter.Engine.GetAvailableThrust" /> for every active engine in the vessel.
+    /// <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Engine.GetAvailableThrust" /> for every active engine in the vessel.
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Vessel_get_AvailableThrust")]
@@ -716,7 +716,7 @@ public class Vessel : RemoteObject
     /// Gets the maximum torque that the vessel generates. Includes contributions from
     /// reaction wheels, RCS, gimballed engines and aerodynamic control surfaces.
     /// Returns the torques in <math>N.m</math> around each of the coordinate axes of the
-    /// vessels reference frame (<see cref="T:SpaceCenter.ReferenceFrame" />).
+    /// vessels reference frame (<see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ReferenceFrame" />).
     /// These axes are equivalent to the pitch, roll and yaw axes of the vessel.
     /// </summary>
     [Rpc("SpaceCenter", "Vessel_get_AvailableTorque")]
@@ -733,7 +733,7 @@ public class Vessel : RemoteObject
     /// Gets the maximum torque that the vessel generates. Includes contributions from
     /// reaction wheels, RCS, gimballed engines and aerodynamic control surfaces.
     /// Returns the torques in <math>N.m</math> around each of the coordinate axes of the
-    /// vessels reference frame (<see cref="T:SpaceCenter.ReferenceFrame" />).
+    /// vessels reference frame (<see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ReferenceFrame" />).
     /// These axes are equivalent to the pitch, roll and yaw axes of the vessel.
     /// Executes asynchronously.
     /// </summary>
@@ -775,7 +775,7 @@ public class Vessel : RemoteObject
     }
 
     /// <summary>
-    /// Returns a <see cref="T:SpaceCenter.Comms" /> object that can be used to interact
+    /// Returns a <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Comms" /> object that can be used to interact
     /// with CommNet for this vessel.
     /// </summary>
     [Rpc("SpaceCenter", "Vessel_get_Comms")]
@@ -789,7 +789,7 @@ public class Vessel : RemoteObject
     }
 
     /// <summary>
-    /// Returns a <see cref="T:SpaceCenter.Comms" /> object that can be used to interact
+    /// Returns a <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Comms" /> object that can be used to interact
     /// with CommNet for this vessel.
     /// Executes asynchronously.
     /// </summary>
@@ -804,7 +804,7 @@ public class Vessel : RemoteObject
     }
 
     /// <summary>
-    /// Returns a <see cref="T:SpaceCenter.Control" /> object that can be used to manipulate
+    /// Returns a <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Control" /> object that can be used to manipulate
     /// the vessel's control inputs. For example, its pitch/yaw/roll controls,
     /// RCS and thrust.
     /// </summary>
@@ -819,7 +819,7 @@ public class Vessel : RemoteObject
     }
 
     /// <summary>
-    /// Returns a <see cref="T:SpaceCenter.Control" /> object that can be used to manipulate
+    /// Returns a <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Control" /> object that can be used to manipulate
     /// the vessel's control inputs. For example, its pitch/yaw/roll controls,
     /// RCS and thrust.
     /// Executes asynchronously.
@@ -944,7 +944,7 @@ public class Vessel : RemoteObject
 
     /// <summary>
     /// Gets the inertia tensor of the vessel around its center of mass,
-    /// in the vessels reference frame (<see cref="T:SpaceCenter.ReferenceFrame" />).
+    /// in the vessels reference frame (<see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ReferenceFrame" />).
     /// Returns the 3x3 matrix as a list of elements, in row-major order.
     /// </summary>
     [Rpc("SpaceCenter", "Vessel_get_InertiaTensor")]
@@ -959,7 +959,7 @@ public class Vessel : RemoteObject
 
     /// <summary>
     /// Gets the inertia tensor of the vessel around its center of mass,
-    /// in the vessels reference frame (<see cref="T:SpaceCenter.ReferenceFrame" />).
+    /// in the vessels reference frame (<see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ReferenceFrame" />).
     /// Returns the 3x3 matrix as a list of elements, in row-major order.
     /// Executes asynchronously.
     /// </summary>
@@ -1061,7 +1061,7 @@ public class Vessel : RemoteObject
     /// <summary>
     /// Gets the total maximum thrust that can be produced by the vessel's active
     /// engines, in Newtons. This is computed by summing
-    /// <see cref="M:SpaceCenter.Engine.GetMaxThrust" /> for every active engine.
+    /// <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Engine.GetMaxThrust" /> for every active engine.
     /// </summary>
     [Rpc("SpaceCenter", "Vessel_get_MaxThrust")]
     public float GetMaxThrust()
@@ -1076,7 +1076,7 @@ public class Vessel : RemoteObject
     /// <summary>
     /// Gets the total maximum thrust that can be produced by the vessel's active
     /// engines, in Newtons. This is computed by summing
-    /// <see cref="M:SpaceCenter.Engine.GetMaxThrust" /> for every active engine.
+    /// <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Engine.GetMaxThrust" /> for every active engine.
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Vessel_get_MaxThrust")]
@@ -1092,7 +1092,7 @@ public class Vessel : RemoteObject
     /// <summary>
     /// Gets the total maximum thrust that can be produced by the vessel's active
     /// engines when the vessel is in a vacuum, in Newtons. This is computed by
-    /// summing <see cref="M:SpaceCenter.Engine.GetMaxVacuumThrust" /> for every active engine.
+    /// summing <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Engine.GetMaxVacuumThrust" /> for every active engine.
     /// </summary>
     [Rpc("SpaceCenter", "Vessel_get_MaxVacuumThrust")]
     public float GetMaxVacuumThrust()
@@ -1107,7 +1107,7 @@ public class Vessel : RemoteObject
     /// <summary>
     /// Gets the total maximum thrust that can be produced by the vessel's active
     /// engines when the vessel is in a vacuum, in Newtons. This is computed by
-    /// summing <see cref="M:SpaceCenter.Engine.GetMaxVacuumThrust" /> for every active engine.
+    /// summing <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Engine.GetMaxVacuumThrust" /> for every active engine.
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Vessel_get_MaxVacuumThrust")]
@@ -1124,7 +1124,7 @@ public class Vessel : RemoteObject
     /// Gets the moment of inertia of the vessel around its center of mass in <math>kg.m^2</math>.
     /// The inertia values in the returned 3-tuple are around the
     /// pitch, roll and yaw directions respectively.
-    /// This corresponds to the vessels reference frame (<see cref="T:SpaceCenter.ReferenceFrame" />).
+    /// This corresponds to the vessels reference frame (<see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ReferenceFrame" />).
     /// </summary>
     [Rpc("SpaceCenter", "Vessel_get_MomentOfInertia")]
     public Tuple<double,double,double> GetMomentOfInertia()
@@ -1140,7 +1140,7 @@ public class Vessel : RemoteObject
     /// Gets the moment of inertia of the vessel around its center of mass in <math>kg.m^2</math>.
     /// The inertia values in the returned 3-tuple are around the
     /// pitch, roll and yaw directions respectively.
-    /// This corresponds to the vessels reference frame (<see cref="T:SpaceCenter.ReferenceFrame" />).
+    /// This corresponds to the vessels reference frame (<see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ReferenceFrame" />).
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Vessel_get_MomentOfInertia")]
@@ -1276,7 +1276,7 @@ public class Vessel : RemoteObject
     }
 
     /// <summary>
-    /// Gets a <see cref="T:SpaceCenter.Parts" /> object, that can used to interact with the parts that make up this vessel.
+    /// Gets a <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Parts" /> object, that can used to interact with the parts that make up this vessel.
     /// </summary>
     [Rpc("SpaceCenter", "Vessel_get_Parts")]
     public Parts GetParts()
@@ -1289,7 +1289,7 @@ public class Vessel : RemoteObject
     }
 
     /// <summary>
-    /// Gets a <see cref="T:SpaceCenter.Parts" /> object, that can used to interact with the parts that make up this vessel.
+    /// Gets a <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Parts" /> object, that can used to interact with the parts that make up this vessel.
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Vessel_get_Parts")]
@@ -1361,7 +1361,7 @@ public class Vessel : RemoteObject
     }
 
     /// <summary>
-    /// Gets a <see cref="T:SpaceCenter.Resources" /> object, that can used to get information
+    /// Gets a <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Resources" /> object, that can used to get information
     /// about resources stored in the vessel.
     /// </summary>
     [Rpc("SpaceCenter", "Vessel_get_Resources")]
@@ -1375,7 +1375,7 @@ public class Vessel : RemoteObject
     }
 
     /// <summary>
-    /// Gets a <see cref="T:SpaceCenter.Resources" /> object, that can used to get information
+    /// Gets a <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Resources" /> object, that can used to get information
     /// about resources stored in the vessel.
     /// Executes asynchronously.
     /// </summary>
@@ -1533,7 +1533,7 @@ public class Vessel : RemoteObject
 
     /// <summary>
     /// Gets the total thrust currently being produced by the vessel's engines, in
-    /// Newtons. This is computed by summing <see cref="M:SpaceCenter.Engine.GetThrust" /> for
+    /// Newtons. This is computed by summing <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Engine.GetThrust" /> for
     /// every engine in the vessel.
     /// </summary>
     [Rpc("SpaceCenter", "Vessel_get_Thrust")]
@@ -1548,7 +1548,7 @@ public class Vessel : RemoteObject
 
     /// <summary>
     /// Gets the total thrust currently being produced by the vessel's engines, in
-    /// Newtons. This is computed by summing <see cref="M:SpaceCenter.Engine.GetThrust" /> for
+    /// Newtons. This is computed by summing <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Engine.GetThrust" /> for
     /// every engine in the vessel.
     /// Executes asynchronously.
     /// </summary>

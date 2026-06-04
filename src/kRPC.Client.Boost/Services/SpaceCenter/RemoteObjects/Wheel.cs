@@ -6,7 +6,7 @@ namespace kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects;
 
 /// <summary>
 /// A wheel. Includes landing gear and rover wheels.
-/// Obtained by calling <see cref="M:SpaceCenter.Part.GetWheel" />.
+/// Obtained by calling <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Part.GetWheel" />.
 /// Can be used to control the motors, steering and deployment of wheels, among other things.
 /// </summary>
 public class Wheel : RemoteObject

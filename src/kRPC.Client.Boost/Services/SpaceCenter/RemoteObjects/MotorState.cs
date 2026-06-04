@@ -1,7 +1,7 @@
 namespace kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects;
 
 /// <summary>
-/// The state of the motor on a powered wheel. See <see cref="M:SpaceCenter.Wheel.GetMotorState" />.
+/// The state of the motor on a powered wheel. See <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Wheel.GetMotorState" />.
 /// </summary>
 [Serializable]
 public enum MotorState

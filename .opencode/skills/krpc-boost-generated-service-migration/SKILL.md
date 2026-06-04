@@ -164,7 +164,10 @@ Generated XML docs often contain `<see cref="..." />` references that become sta
 
 - Check every changed XML `<see cref="..." />` reference in scoped files, especially `T:` and `M:` references.
 - Ensure referenced classes use their current namespace, not the original generated namespace when the type has moved.
+- For generated service docs that use old short service references such as `T:SpaceCenter.Part` or `M:SpaceCenter.Vessel.GetParts`, map them to the actual generated namespaces. Top-level service procedures should reference the service facade type, such as `M:kRPC.Client.Boost.Services.SpaceCenter.SpaceCenter.GetActiveVessel`. Remote object procedures and remote object types should reference the remote object namespace, such as `M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Vessel.GetParts` or `T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Part`.
 - Update property references to the converted method names, such as `Get...` or `Set...`, when properties are no longer present.
+- Watch for generated members named `Type` that were renamed to avoid `object.GetType()` conflicts. For example, update enum docs from `Vessel.GetType`, `CrewMember.GetType`, or `CommLink.GetType` to the actual wrapper names such as `GetVesselType`, `GetCrewMemberType`, or the generated communication-link type getter.
+- Use the correct XML documentation ID prefix. Types use `T:`, methods use `M:`, and enum values/fields use `F:`. Do not leave enum member references such as `RadiatorState.Extended` with an `M:` prefix.
 - Prefer accurate references over preserving generated text. If the correct target is ambiguous, leave the wording as plain text rather than adding a misleading cref.
 
 ## Verification Checklist
@@ -203,6 +206,8 @@ Check structural invariants:
 - Explicit `ProcedureArgument` construction uses `new(value)` for non-null values and reserves `new(value, typeof(ExpectedType))` for nullable values or intentionally different contract types.
 - Setter XML docs do not describe nullable getter return behavior, and parameter docs mentioning null match the signature default/nullability.
 - XML `<see cref="..." />` references point to existing members/types in their current namespaces after the migration.
+- No scoped XML docs still reference the old generated documentation namespace, such as `cref="T:SpaceCenter.` or `cref="M:SpaceCenter.` after the types have moved into `kRPC.Client.Boost.Services.<ServiceName>` and its `RemoteObjects` namespace.
+- XML documentation IDs use the right kind prefix: `T:` for types, `M:` for methods, and `F:` for enum fields.
 - Type conversions happen only at the RPC boundary; public method signatures should expose `Vector3D`, `Quaternion`, or `Angle` where the migration selected those types.
 
 Build when feasible:

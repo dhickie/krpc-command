@@ -4,7 +4,7 @@ using kRPC.Client.Boost.Connection;
 namespace kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects;
 
 /// <summary>
-/// A robotic rotor. Obtained by calling <see cref="M:SpaceCenter.Part.GetRoboticRotor" />.
+/// A robotic rotor. Obtained by calling <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Part.GetRoboticRotor" />.
 /// </summary>
 public class RoboticRotor : RemoteObject
 {

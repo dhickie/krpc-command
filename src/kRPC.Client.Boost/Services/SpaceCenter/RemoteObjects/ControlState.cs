@@ -2,7 +2,7 @@ namespace kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects;
 
 /// <summary>
 /// The control state of a vessel.
-/// See <see cref="M:SpaceCenter.Control.GetState" />.
+/// See <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Control.GetState" />.
 /// </summary>
 [Serializable]
 public enum ControlState

@@ -4,7 +4,7 @@ using kRPC.Client.Boost.Connection;
 namespace kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects;
 
 /// <summary>
-/// A decoupler. Obtained by calling <see cref="M:SpaceCenter.Part.GetDecoupler" /></summary>
+/// A decoupler. Obtained by calling <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Part.GetDecoupler" /></summary>
 public class Decoupler : RemoteObject
 {
     /// <summary>
@@ -21,7 +21,7 @@ public class Decoupler : RemoteObject
     /// <remarks>
     /// When called, the active vessel may change. It is therefore possible that,
     /// after calling this function, the object(s) returned by previous call(s) to
-    /// <see cref="M:SpaceCenter.GetActiveVessel" /> no longer refer to the active vessel.
+    /// <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.SpaceCenter.GetActiveVessel" /> no longer refer to the active vessel.
     /// </remarks>
     [Rpc("SpaceCenter", "Decoupler_Decouple")]
     public Vessel Decouple()
@@ -41,7 +41,7 @@ public class Decoupler : RemoteObject
     /// <remarks>
     /// When called, the active vessel may change. It is therefore possible that,
     /// after calling this function, the object(s) returned by previous call(s) to
-    /// <see cref="M:SpaceCenter.GetActiveVessel" /> no longer refer to the active vessel.
+    /// <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.SpaceCenter.GetActiveVessel" /> no longer refer to the active vessel.
     /// </remarks>
     [Rpc("SpaceCenter", "Decoupler_Decouple")]
     public async Task<Vessel> DecoupleAsync()

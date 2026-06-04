@@ -4,7 +4,7 @@ using kRPC.Client.Boost.Connection;
 namespace kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects;
 
 /// <summary>
-/// A light. Obtained by calling <see cref="M:SpaceCenter.Part.GetLight" />.
+/// A light. Obtained by calling <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Part.GetLight" />.
 /// </summary>
 public class Light : RemoteObject
 {

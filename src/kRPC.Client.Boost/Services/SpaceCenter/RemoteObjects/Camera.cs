@@ -6,7 +6,7 @@ namespace kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects;
 
 /// <summary>
 /// Controls the game's camera.
-/// Obtained by calling <see cref="M:SpaceCenter.GetCamera" />.
+/// Obtained by calling <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.SpaceCenter.GetCamera" />.
 /// </summary>
 public class Camera : RemoteObject
 {
@@ -46,7 +46,7 @@ public class Camera : RemoteObject
 
     /// <summary>
     /// Gets the distance from the camera to the subject, in meters.
-    /// A value between <see cref="M:SpaceCenter.Camera.GetMinDistance" /> and <see cref="M:SpaceCenter.Camera.GetMaxDistance" />.
+    /// A value between <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Camera.GetMinDistance" /> and <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Camera.GetMaxDistance" />.
     /// </summary>
     [Rpc("SpaceCenter", "Camera_get_Distance")]
     public float GetDistance()
@@ -60,7 +60,7 @@ public class Camera : RemoteObject
 
     /// <summary>
     /// Gets the distance from the camera to the subject, in meters.
-    /// A value between <see cref="M:SpaceCenter.Camera.GetMinDistance" /> and <see cref="M:SpaceCenter.Camera.GetMaxDistance" />.
+    /// A value between <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Camera.GetMinDistance" /> and <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Camera.GetMaxDistance" />.
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Camera_get_Distance")]
@@ -75,7 +75,7 @@ public class Camera : RemoteObject
 
     /// <summary>
     /// Sets the distance from the camera to the subject, in meters.
-    /// A value between <see cref="M:SpaceCenter.Camera.GetMinDistance" /> and <see cref="M:SpaceCenter.Camera.GetMaxDistance" />.
+    /// A value between <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Camera.GetMinDistance" /> and <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Camera.GetMaxDistance" />.
     /// </summary>
     /// <param name="value">The value to set.</param>
     [Rpc("SpaceCenter", "Camera_set_Distance")]
@@ -91,7 +91,7 @@ public class Camera : RemoteObject
 
     /// <summary>
     /// Sets the distance from the camera to the subject, in meters.
-    /// A value between <see cref="M:SpaceCenter.Camera.GetMinDistance" /> and <see cref="M:SpaceCenter.Camera.GetMaxDistance" />.
+    /// A value between <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Camera.GetMinDistance" /> and <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Camera.GetMaxDistance" />.
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
@@ -530,7 +530,7 @@ public class Camera : RemoteObject
 
     /// <summary>
     /// Gets the pitch of the camera.
-    /// A value between <see cref="M:SpaceCenter.Camera.GetMinPitch" /> and <see cref="M:SpaceCenter.Camera.GetMaxPitch" />
+    /// A value between <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Camera.GetMinPitch" /> and <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Camera.GetMaxPitch" />
     /// </summary>
     [Rpc("SpaceCenter", "Camera_get_Pitch")]
     public Angle GetPitch()
@@ -545,7 +545,7 @@ public class Camera : RemoteObject
 
     /// <summary>
     /// Gets the pitch of the camera.
-    /// A value between <see cref="M:SpaceCenter.Camera.GetMinPitch" /> and <see cref="M:SpaceCenter.Camera.GetMaxPitch" />
+    /// A value between <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Camera.GetMinPitch" /> and <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Camera.GetMaxPitch" />
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Camera_get_Pitch")]
@@ -561,7 +561,7 @@ public class Camera : RemoteObject
 
     /// <summary>
     /// Sets the pitch of the camera.
-    /// A value between <see cref="M:SpaceCenter.Camera.GetMinPitch" /> and <see cref="M:SpaceCenter.Camera.GetMaxPitch" />
+    /// A value between <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Camera.GetMinPitch" /> and <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Camera.GetMaxPitch" />
     /// </summary>
     /// <param name="value">The value to set.</param>
     [Rpc("SpaceCenter", "Camera_set_Pitch")]
@@ -577,7 +577,7 @@ public class Camera : RemoteObject
 
     /// <summary>
     /// Sets the pitch of the camera.
-    /// A value between <see cref="M:SpaceCenter.Camera.GetMinPitch" /> and <see cref="M:SpaceCenter.Camera.GetMaxPitch" />
+    /// A value between <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Camera.GetMinPitch" /> and <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Camera.GetMaxPitch" />
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>

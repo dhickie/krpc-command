@@ -4,7 +4,7 @@ using kRPC.Client.Boost.Connection;
 namespace kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects;
 
 /// <summary>
-/// A contract parameter. See <see cref="M:SpaceCenter.Contract.GetParameters" />.
+/// A contract parameter. See <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Contract.GetParameters" />.
 /// </summary>
 public class ContractParameter : RemoteObject
 {

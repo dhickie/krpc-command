@@ -7,7 +7,7 @@ namespace kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects;
 
 /// <summary>
 /// Provides basic auto-piloting utilities for a vessel.
-/// Created by calling <see cref="M:SpaceCenter.Vessel.GetAutoPilot" />.
+/// Created by calling <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Vessel.GetAutoPilot" />.
 /// </summary>
 /// <remarks>
 /// If a client engages the auto-pilot and then closes its connection to the server,
@@ -220,7 +220,7 @@ public class AutoPilot : RemoteObject
     /// <summary>
     /// Gets whether the rotation rate controllers PID parameters should be automatically tuned
     /// using the vessels moment of inertia and available torque. Defaults to <c>true</c>.
-    /// See <see cref="M:SpaceCenter.AutoPilot.GetTimeToPeak" /> and <see cref="M:SpaceCenter.AutoPilot.GetOvershoot" />.
+    /// See <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.AutoPilot.GetTimeToPeak" /> and <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.AutoPilot.GetOvershoot" />.
     /// </summary>
     [Rpc("SpaceCenter", "AutoPilot_get_AutoTune")]
     public bool GetAutoTune()
@@ -235,7 +235,7 @@ public class AutoPilot : RemoteObject
     /// <summary>
     /// Gets whether the rotation rate controllers PID parameters should be automatically tuned
     /// using the vessels moment of inertia and available torque. Defaults to <c>true</c>.
-    /// See <see cref="M:SpaceCenter.AutoPilot.GetTimeToPeak" /> and <see cref="M:SpaceCenter.AutoPilot.GetOvershoot" />.
+    /// See <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.AutoPilot.GetTimeToPeak" /> and <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.AutoPilot.GetOvershoot" />.
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "AutoPilot_get_AutoTune")]
@@ -251,7 +251,7 @@ public class AutoPilot : RemoteObject
     /// <summary>
     /// Sets whether the rotation rate controllers PID parameters should be automatically tuned
     /// using the vessels moment of inertia and available torque. Defaults to <c>true</c>.
-    /// See <see cref="M:SpaceCenter.AutoPilot.GetTimeToPeak" /> and <see cref="M:SpaceCenter.AutoPilot.GetOvershoot" />.
+    /// See <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.AutoPilot.GetTimeToPeak" /> and <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.AutoPilot.GetOvershoot" />.
     /// </summary>
     /// <param name="value">The value to set.</param>
     [Rpc("SpaceCenter", "AutoPilot_set_AutoTune")]
@@ -268,7 +268,7 @@ public class AutoPilot : RemoteObject
     /// <summary>
     /// Sets whether the rotation rate controllers PID parameters should be automatically tuned
     /// using the vessels moment of inertia and available torque. Defaults to <c>true</c>.
-    /// See <see cref="M:SpaceCenter.AutoPilot.GetTimeToPeak" /> and <see cref="M:SpaceCenter.AutoPilot.GetOvershoot" />.
+    /// See <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.AutoPilot.GetTimeToPeak" /> and <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.AutoPilot.GetOvershoot" />.
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
@@ -518,7 +518,7 @@ public class AutoPilot : RemoteObject
     /// Gains for the pitch PID controller.
     /// </summary>
     /// <remarks>
-    /// When <see cref="M:SpaceCenter.AutoPilot.GetAutoTune" /> is true, these values are updated automatically,
+    /// When <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.AutoPilot.GetAutoTune" /> is true, these values are updated automatically,
     /// which will overwrite any manual changes.
     /// </remarks>
     [Rpc("SpaceCenter", "AutoPilot_get_PitchPIDGains")]
@@ -536,7 +536,7 @@ public class AutoPilot : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <remarks>
-    /// When <see cref="M:SpaceCenter.AutoPilot.GetAutoTune" /> is true, these values are updated automatically,
+    /// When <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.AutoPilot.GetAutoTune" /> is true, these values are updated automatically,
     /// which will overwrite any manual changes.
     /// </remarks>
     [Rpc("SpaceCenter", "AutoPilot_get_PitchPIDGains")]
@@ -581,7 +581,7 @@ public class AutoPilot : RemoteObject
     }
 
     /// <summary>
-    /// Gets the reference frame for the target direction (<see cref="M:SpaceCenter.AutoPilot.GetTargetDirection" />).
+    /// Gets the reference frame for the target direction (<see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.AutoPilot.GetTargetDirection" />).
     /// </summary>
     /// <remarks>
     /// An error will be thrown if this property is set to a reference frame that rotates with
@@ -599,7 +599,7 @@ public class AutoPilot : RemoteObject
     }
 
     /// <summary>
-    /// Gets the reference frame for the target direction (<see cref="M:SpaceCenter.AutoPilot.GetTargetDirection" />).
+    /// Gets the reference frame for the target direction (<see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.AutoPilot.GetTargetDirection" />).
     /// Executes asynchronously.
     /// </summary>
     /// <remarks>
@@ -618,7 +618,7 @@ public class AutoPilot : RemoteObject
     }
 
     /// <summary>
-    /// Sets the reference frame for the target direction (<see cref="M:SpaceCenter.AutoPilot.GetTargetDirection" />).
+    /// Sets the reference frame for the target direction (<see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.AutoPilot.GetTargetDirection" />).
     /// </summary>
     /// <param name="value">The value to set.</param>
     [Rpc("SpaceCenter", "AutoPilot_set_ReferenceFrame")]
@@ -633,7 +633,7 @@ public class AutoPilot : RemoteObject
     }
 
     /// <summary>
-    /// Sets the reference frame for the target direction (<see cref="M:SpaceCenter.AutoPilot.GetTargetDirection" />).
+    /// Sets the reference frame for the target direction (<see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.AutoPilot.GetTargetDirection" />).
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
@@ -683,7 +683,7 @@ public class AutoPilot : RemoteObject
     /// Gains for the roll PID controller.
     /// </summary>
     /// <remarks>
-    /// When <see cref="M:SpaceCenter.AutoPilot.GetAutoTune" /> is true, these values are updated automatically,
+    /// When <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.AutoPilot.GetAutoTune" /> is true, these values are updated automatically,
     /// which will overwrite any manual changes.
     /// </remarks>
     [Rpc("SpaceCenter", "AutoPilot_get_RollPIDGains")]
@@ -701,7 +701,7 @@ public class AutoPilot : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <remarks>
-    /// When <see cref="M:SpaceCenter.AutoPilot.GetAutoTune" /> is true, these values are updated automatically,
+    /// When <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.AutoPilot.GetAutoTune" /> is true, these values are updated automatically,
     /// which will overwrite any manual changes.
     /// </remarks>
     [Rpc("SpaceCenter", "AutoPilot_get_RollPIDGains")]
@@ -812,7 +812,7 @@ public class AutoPilot : RemoteObject
     /// <summary>
     /// Gets the state of SAS.
     /// </summary>
-    /// <remarks>Equivalent to <see cref="M:SpaceCenter.Control.GetSAS" /></remarks>
+    /// <remarks>Equivalent to <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Control.GetSAS" /></remarks>
     [Rpc("SpaceCenter", "AutoPilot_get_SAS")]
     public bool GetSAS()
     {
@@ -827,7 +827,7 @@ public class AutoPilot : RemoteObject
     /// Gets the state of SAS.
     /// Executes asynchronously.
     /// </summary>
-    /// <remarks>Equivalent to <see cref="M:SpaceCenter.Control.GetSAS" /></remarks>
+    /// <remarks>Equivalent to <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Control.GetSAS" /></remarks>
     [Rpc("SpaceCenter", "AutoPilot_get_SAS")]
     public async Task<bool> GetSASAsync()
     {
@@ -870,11 +870,11 @@ public class AutoPilot : RemoteObject
     }
 
     /// <summary>
-    /// Gets the current <see cref="T:SpaceCenter.SASMode" />.
+    /// Gets the current <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.SASMode" />.
     /// These modes are equivalent to the mode buttons to the left of the navball that appear
     /// when SAS is enabled.
     /// </summary>
-    /// <remarks>Equivalent to <see cref="M:SpaceCenter.Control.GetSASMode" /></remarks>
+    /// <remarks>Equivalent to <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Control.GetSASMode" /></remarks>
     [Rpc("SpaceCenter", "AutoPilot_get_SASMode")]
     public SASMode GetSASMode()
     {
@@ -886,12 +886,12 @@ public class AutoPilot : RemoteObject
     }
 
     /// <summary>
-    /// Gets the current <see cref="T:SpaceCenter.SASMode" />.
+    /// Gets the current <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.SASMode" />.
     /// These modes are equivalent to the mode buttons to the left of the navball that appear
     /// when SAS is enabled.
     /// Executes asynchronously.
     /// </summary>
-    /// <remarks>Equivalent to <see cref="M:SpaceCenter.Control.GetSASMode" /></remarks>
+    /// <remarks>Equivalent to <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Control.GetSASMode" /></remarks>
     [Rpc("SpaceCenter", "AutoPilot_get_SASMode")]
     public async Task<SASMode> GetSASModeAsync()
     {
@@ -903,7 +903,7 @@ public class AutoPilot : RemoteObject
     }
 
     /// <summary>
-    /// Sets the current <see cref="T:SpaceCenter.SASMode" />.
+    /// Sets the current <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.SASMode" />.
     /// These modes are equivalent to the mode buttons to the left of the navball that appear
     /// when SAS is enabled.
     /// </summary>
@@ -920,7 +920,7 @@ public class AutoPilot : RemoteObject
     }
 
     /// <summary>
-    /// Sets the current <see cref="T:SpaceCenter.SASMode" />.
+    /// Sets the current <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.SASMode" />.
     /// These modes are equivalent to the mode buttons to the left of the navball that appear
     /// when SAS is enabled.
     /// Executes asynchronously.
@@ -1009,7 +1009,7 @@ public class AutoPilot : RemoteObject
 
     /// <summary>
     /// Direction vector corresponding to the target pitch and heading.
-    /// This is in the reference frame specified by <see cref="T:SpaceCenter.ReferenceFrame" />.
+    /// This is in the reference frame specified by <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ReferenceFrame" />.
     /// </summary>
     [Rpc("SpaceCenter", "AutoPilot_get_TargetDirection")]
     public Vector3D GetTargetDirection()
@@ -1023,7 +1023,7 @@ public class AutoPilot : RemoteObject
 
     /// <summary>
     /// Direction vector corresponding to the target pitch and heading.
-    /// This is in the reference frame specified by <see cref="T:SpaceCenter.ReferenceFrame" />.
+    /// This is in the reference frame specified by <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ReferenceFrame" />.
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "AutoPilot_get_TargetDirection")]
@@ -1038,7 +1038,7 @@ public class AutoPilot : RemoteObject
 
     /// <summary>
     /// Sets direction vector corresponding to the target pitch and heading.
-    /// This is in the reference frame specified by <see cref="T:SpaceCenter.ReferenceFrame" />.
+    /// This is in the reference frame specified by <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ReferenceFrame" />.
     /// </summary>
     /// <param name="value">The value to set.</param>
     [Rpc("SpaceCenter", "AutoPilot_set_TargetDirection")]
@@ -1054,7 +1054,7 @@ public class AutoPilot : RemoteObject
 
     /// <summary>
     /// Sets direction vector corresponding to the target pitch and heading.
-    /// This is in the reference frame specified by <see cref="T:SpaceCenter.ReferenceFrame" />.
+    /// This is in the reference frame specified by <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ReferenceFrame" />.
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
@@ -1319,7 +1319,7 @@ public class AutoPilot : RemoteObject
     /// Gains for the yaw PID controller.
     /// </summary>
     /// <remarks>
-    /// When <see cref="M:SpaceCenter.AutoPilot.GetAutoTune" /> is true, these values are updated automatically,
+    /// When <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.AutoPilot.GetAutoTune" /> is true, these values are updated automatically,
     /// which will overwrite any manual changes.
     /// </remarks>
     [Rpc("SpaceCenter", "AutoPilot_get_YawPIDGains")]
@@ -1337,7 +1337,7 @@ public class AutoPilot : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <remarks>
-    /// When <see cref="M:SpaceCenter.AutoPilot.GetAutoTune" /> is true, these values are updated automatically,
+    /// When <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.AutoPilot.GetAutoTune" /> is true, these values are updated automatically,
     /// which will overwrite any manual changes.
     /// </remarks>
     [Rpc("SpaceCenter", "AutoPilot_get_YawPIDGains")]

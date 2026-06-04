@@ -1,7 +1,7 @@
 namespace kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects;
 
 /// <summary>
-/// The state of a contract. See <see cref="M:SpaceCenter.Contract.GetState" />.
+/// The state of a contract. See <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Contract.GetState" />.
 /// </summary>
 [Serializable]
 public enum ContractState

@@ -6,7 +6,7 @@ using MathNet.Spatial.Units;
 namespace kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects;
 
 /// <summary>
-/// A docking port. Obtained by calling <see cref="M:SpaceCenter.Part.GetDockingPort" /></summary>
+/// A docking port. Obtained by calling <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Part.GetDockingPort" /></summary>
 public class DockingPort : RemoteObject
 {
     /// <summary>
@@ -122,14 +122,14 @@ public class DockingPort : RemoteObject
     }
 
     /// <summary>
-    /// Undocks the docking port and returns the new <see cref="T:SpaceCenter.Vessel" /> that is created.
+    /// Undocks the docking port and returns the new <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Vessel" /> that is created.
     /// This method can be called for either docking port in a docked pair.
     /// Throws an exception if the docking port is not docked to anything.
     /// </summary>
     /// <remarks>
     /// When called, the active vessel may change. It is therefore possible that,
     /// after calling this function, the object(s) returned by previous call(s) to
-    /// <see cref="M:SpaceCenter.GetActiveVessel" /> no longer refer to the active vessel.
+    /// <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.SpaceCenter.GetActiveVessel" /> no longer refer to the active vessel.
     /// </remarks>
     [Rpc("SpaceCenter", "DockingPort_Undock")]
     public Vessel Undock()
@@ -142,7 +142,7 @@ public class DockingPort : RemoteObject
     }
 
     /// <summary>
-    /// Undocks the docking port and returns the new <see cref="T:SpaceCenter.Vessel" /> that is created.
+    /// Undocks the docking port and returns the new <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Vessel" /> that is created.
     /// This method can be called for either docking port in a docked pair.
     /// Throws an exception if the docking port is not docked to anything.
     /// Executes asynchronously.
@@ -150,7 +150,7 @@ public class DockingPort : RemoteObject
     /// <remarks>
     /// When called, the active vessel may change. It is therefore possible that,
     /// after calling this function, the object(s) returned by previous call(s) to
-    /// <see cref="M:SpaceCenter.GetActiveVessel" /> no longer refer to the active vessel.
+    /// <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.SpaceCenter.GetActiveVessel" /> no longer refer to the active vessel.
     /// </remarks>
     [Rpc("SpaceCenter", "DockingPort_Undock")]
     public async Task<Vessel> UndockAsync()
@@ -370,7 +370,7 @@ public class DockingPort : RemoteObject
     /// </summary>
     /// <remarks>
     /// This reference frame is not necessarily equivalent to the reference frame
-    /// for the part, returned by <see cref="M:SpaceCenter.Part.GetReferenceFrame" />.
+    /// for the part, returned by <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Part.GetReferenceFrame" />.
     /// </remarks>
     [Rpc("SpaceCenter", "DockingPort_get_ReferenceFrame")]
     public ReferenceFrame GetReferenceFrame()
@@ -394,7 +394,7 @@ public class DockingPort : RemoteObject
     /// </summary>
     /// <remarks>
     /// This reference frame is not necessarily equivalent to the reference frame
-    /// for the part, returned by <see cref="M:SpaceCenter.Part.GetReferenceFrame" />.
+    /// for the part, returned by <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Part.GetReferenceFrame" />.
     /// </remarks>
     [Rpc("SpaceCenter", "DockingPort_get_ReferenceFrame")]
     public async Task<ReferenceFrame> GetReferenceFrameAsync()

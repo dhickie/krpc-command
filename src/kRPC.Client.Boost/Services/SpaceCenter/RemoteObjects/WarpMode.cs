@@ -2,7 +2,7 @@ namespace kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects;
 
 /// <summary>
 /// The time warp mode.
-/// Returned by <see cref="T:SpaceCenter.WarpMode" /></summary>
+/// Returned by <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.WarpMode" /></summary>
 [Serializable]
 public enum WarpMode
 {

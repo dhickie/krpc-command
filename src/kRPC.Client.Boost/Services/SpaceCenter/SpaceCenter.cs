@@ -229,7 +229,7 @@ public class SpaceCenter : ServiceObject
     /// <param name="recover">If true and there is a vessel on the runway,
     /// recover it before launching.</param>
     /// <remarks>
-    /// This is equivalent to calling <see cref="M:SpaceCenter.LaunchVessel" /> with the craft directory
+    /// This is equivalent to calling <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.SpaceCenter.LaunchVessel" /> with the craft directory
     /// set to "SPH" and the launch site set to "Runway".
     /// Throws an exception if any of the games pre-flight checks fail.
     /// </remarks>
@@ -252,7 +252,7 @@ public class SpaceCenter : ServiceObject
     /// <param name="recover">If true and there is a vessel on the runway,
     /// recover it before launching.</param>
     /// <remarks>
-    /// This is equivalent to calling <see cref="M:SpaceCenter.LaunchVessel" /> with the craft directory
+    /// This is equivalent to calling <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.SpaceCenter.LaunchVessel" /> with the craft directory
     /// set to "SPH" and the launch site set to "Runway".
     /// Throws an exception if any of the games pre-flight checks fail.
     /// </remarks>
@@ -274,7 +274,7 @@ public class SpaceCenter : ServiceObject
     /// <param name="recover">If true and there is a vessel on the launch pad,
     /// recover it before launching.</param>
     /// <remarks>
-    /// This is equivalent to calling <see cref="M:SpaceCenter.LaunchVessel" /> with the craft directory
+    /// This is equivalent to calling <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.SpaceCenter.LaunchVessel" /> with the craft directory
     /// set to "VAB" and the launch site set to "LaunchPad".
     /// Throws an exception if any of the games pre-flight checks fail.
     /// </remarks>
@@ -297,7 +297,7 @@ public class SpaceCenter : ServiceObject
     /// <param name="recover">If true and there is a vessel on the launch pad,
     /// recover it before launching.</param>
     /// <remarks>
-    /// This is equivalent to calling <see cref="M:SpaceCenter.LaunchVessel" /> with the craft directory
+    /// This is equivalent to calling <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.SpaceCenter.LaunchVessel" /> with the craft directory
     /// set to "VAB" and the launch site set to "LaunchPad".
     /// Throws an exception if any of the games pre-flight checks fail.
     /// </remarks>
@@ -401,7 +401,7 @@ public class SpaceCenter : ServiceObject
     /// Load a quicksave.
     /// </summary>
     /// <remarks>
-    /// This is the same as calling <see cref="M:SpaceCenter.Load" /> with the name "quicksave".
+    /// This is the same as calling <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.SpaceCenter.Load" /> with the name "quicksave".
     /// </remarks>
     [Rpc("SpaceCenter", "Quickload")]
     public void Quickload()
@@ -414,7 +414,7 @@ public class SpaceCenter : ServiceObject
     /// Executes asynchronously.
     /// </summary>
     /// <remarks>
-    /// This is the same as calling <see cref="M:SpaceCenter.Load" /> with the name "quicksave".
+    /// This is the same as calling <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.SpaceCenter.Load" /> with the name "quicksave".
     /// </remarks>
     [Rpc("SpaceCenter", "Quickload")]
     public async Task QuickloadAsync()
@@ -426,7 +426,7 @@ public class SpaceCenter : ServiceObject
     /// Save a quicksave.
     /// </summary>
     /// <remarks>
-    /// This is the same as calling <see cref="M:SpaceCenter.Save" /> with the name "quicksave".
+    /// This is the same as calling <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.SpaceCenter.Save" /> with the name "quicksave".
     /// </remarks>
     [Rpc("SpaceCenter", "Quicksave")]
     public void Quicksave()
@@ -439,7 +439,7 @@ public class SpaceCenter : ServiceObject
     /// Executes asynchronously.
     /// </summary>
     /// <remarks>
-    /// This is the same as calling <see cref="M:SpaceCenter.Save" /> with the name "quicksave".
+    /// This is the same as calling <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.SpaceCenter.Save" /> with the name "quicksave".
     /// </remarks>
     [Rpc("SpaceCenter", "Quicksave")]
     public async Task QuicksaveAsync()
@@ -1628,8 +1628,8 @@ public class SpaceCenter : ServiceObject
     /// Gets the current warp factor. This is the index of the rate at which time
     /// is passing for either regular "on-rails" or physical time warp. Returns 0
     /// if time warp is not active. When in on-rails time warp, this is equal to
-    /// <see cref="M:SpaceCenter.GetRailsWarpFactor" />, and in physics time warp, this is equal to
-    /// <see cref="M:SpaceCenter.GetPhysicsWarpFactor" />.
+    /// <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.SpaceCenter.GetRailsWarpFactor" />, and in physics time warp, this is equal to
+    /// <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.SpaceCenter.GetPhysicsWarpFactor" />.
     /// </summary>
     [Rpc("SpaceCenter", "get_WarpFactor")]
     public float GetWarpFactor()
@@ -1641,8 +1641,8 @@ public class SpaceCenter : ServiceObject
     /// Gets the current warp factor. This is the index of the rate at which time
     /// is passing for either regular "on-rails" or physical time warp. Returns 0
     /// if time warp is not active. When in on-rails time warp, this is equal to
-    /// <see cref="M:SpaceCenter.GetRailsWarpFactor" />, and in physics time warp, this is equal to
-    /// <see cref="M:SpaceCenter.GetPhysicsWarpFactor" />.
+    /// <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.SpaceCenter.GetRailsWarpFactor" />, and in physics time warp, this is equal to
+    /// <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.SpaceCenter.GetPhysicsWarpFactor" />.
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "get_WarpFactor")]
@@ -1652,9 +1652,9 @@ public class SpaceCenter : ServiceObject
     }
 
     /// <summary>
-    /// Gets the current time warp mode. Returns <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.WarpMode.None" /> if time
-    /// warp is not active, <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.WarpMode.Rails" /> if regular "on-rails" time warp
-    /// is active, or <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.WarpMode.Physics" /> if physical time warp is active.
+    /// Gets the current time warp mode. Returns <see cref="F:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.WarpMode.None" /> if time
+    /// warp is not active, <see cref="F:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.WarpMode.Rails" /> if regular "on-rails" time warp
+    /// is active, or <see cref="F:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.WarpMode.Physics" /> if physical time warp is active.
     /// </summary>
     [Rpc("SpaceCenter", "get_WarpMode")]
     public WarpMode GetWarpMode()
@@ -1663,9 +1663,9 @@ public class SpaceCenter : ServiceObject
     }
 
     /// <summary>
-    /// Gets the current time warp mode. Returns <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.WarpMode.None" /> if time
-    /// warp is not active, <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.WarpMode.Rails" /> if regular "on-rails" time warp
-    /// is active, or <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.WarpMode.Physics" /> if physical time warp is active.
+    /// Gets the current time warp mode. Returns <see cref="F:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.WarpMode.None" /> if time
+    /// warp is not active, <see cref="F:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.WarpMode.Rails" /> if regular "on-rails" time warp
+    /// is active, or <see cref="F:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.WarpMode.Physics" /> if physical time warp is active.
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "get_WarpMode")]

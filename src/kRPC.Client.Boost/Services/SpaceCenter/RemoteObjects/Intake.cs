@@ -4,7 +4,7 @@ using kRPC.Client.Boost.Connection;
 namespace kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects;
 
 /// <summary>
-/// An air intake. Obtained by calling <see cref="M:SpaceCenter.Part.GetIntake" />.
+/// An air intake. Obtained by calling <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Part.GetIntake" />.
 /// </summary>
 public class Intake : RemoteObject
 {

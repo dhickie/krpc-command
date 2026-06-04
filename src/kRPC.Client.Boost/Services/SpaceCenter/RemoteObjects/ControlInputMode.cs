@@ -1,7 +1,7 @@
 namespace kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects;
 
 /// <summary>
-/// See <see cref="M:SpaceCenter.Control.GetInputMode" />.
+/// See <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Control.GetInputMode" />.
 /// </summary>
 [Serializable]
 public enum ControlInputMode

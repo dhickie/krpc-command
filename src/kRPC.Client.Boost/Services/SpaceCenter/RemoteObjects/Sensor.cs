@@ -4,7 +4,7 @@ using kRPC.Client.Boost.Connection;
 namespace kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects;
 
 /// <summary>
-/// A sensor, such as a thermometer. Obtained by calling <see cref="M:SpaceCenter.Part.GetSensor" />.
+/// A sensor, such as a thermometer. Obtained by calling <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Part.GetSensor" />.
 /// </summary>
 public class Sensor : RemoteObject
 {

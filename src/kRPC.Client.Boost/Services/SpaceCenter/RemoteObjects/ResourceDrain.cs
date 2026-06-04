@@ -4,7 +4,7 @@ using kRPC.Client.Boost.Connection;
 namespace kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects;
 
 /// <summary>
-/// A resource drain. Obtained by calling <see cref="M:SpaceCenter.Part.GetResourceDrain" />.
+/// A resource drain. Obtained by calling <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Part.GetResourceDrain" />.
 /// </summary>
 public class ResourceDrain : RemoteObject
 {

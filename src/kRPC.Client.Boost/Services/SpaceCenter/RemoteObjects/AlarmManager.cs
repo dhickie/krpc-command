@@ -5,7 +5,7 @@ namespace kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects;
 
 /// <summary>
 /// Alarm manager.
-/// Obtained by calling <see cref="M:SpaceCenter.GetAlarmManager" />.
+/// Obtained by calling <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.SpaceCenter.GetAlarmManager" />.
 /// </summary>
 public class AlarmManager : RemoteObject
 {

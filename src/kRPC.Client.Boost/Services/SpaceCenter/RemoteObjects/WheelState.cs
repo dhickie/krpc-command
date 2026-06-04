@@ -1,7 +1,7 @@
 namespace kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects;
 
 /// <summary>
-/// The state of a wheel. See <see cref="M:SpaceCenter.Wheel.GetState" />.
+/// The state of a wheel. See <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Wheel.GetState" />.
 /// </summary>
 [Serializable]
 public enum WheelState

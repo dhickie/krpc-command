@@ -4,7 +4,7 @@ using kRPC.Client.Boost.Connection;
 namespace kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects;
 
 /// <summary>
-/// Obtained by calling <see cref="M:SpaceCenter.Experiment.GetScienceSubject" />.
+/// Obtained by calling <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Experiment.GetScienceSubject" />.
 /// </summary>
 public class ScienceSubject : RemoteObject
 {

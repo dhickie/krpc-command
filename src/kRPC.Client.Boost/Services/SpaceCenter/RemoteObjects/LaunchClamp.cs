@@ -4,7 +4,7 @@ using kRPC.Client.Boost.Connection;
 namespace kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects;
 
 /// <summary>
-/// A launch clamp. Obtained by calling <see cref="M:SpaceCenter.Part.GetLaunchClamp" />.
+/// A launch clamp. Obtained by calling <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Part.GetLaunchClamp" />.
 /// </summary>
 public class LaunchClamp : RemoteObject
 {

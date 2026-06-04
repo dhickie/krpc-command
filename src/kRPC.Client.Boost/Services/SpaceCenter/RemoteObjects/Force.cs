@@ -5,7 +5,7 @@ using MathNet.Spatial.Euclidean;
 namespace kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects;
 
 /// <summary>
-/// Obtained by calling <see cref="M:SpaceCenter.Part.AddForce" />.
+/// Obtained by calling <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Part.AddForce" />.
 /// </summary>
 public class Force : RemoteObject
 {
@@ -133,7 +133,7 @@ public class Force : RemoteObject
     }
 
     /// <summary>
-    /// Gets the position at which the force acts, in reference frame <see cref="T:SpaceCenter.ReferenceFrame" />.
+    /// Gets the position at which the force acts, in reference frame <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ReferenceFrame" />.
     /// </summary>
     /// <returns>The position as a vector.</returns>
     [Rpc("SpaceCenter", "Force_get_Position")]
@@ -147,7 +147,7 @@ public class Force : RemoteObject
     }
 
     /// <summary>
-    /// Gets the position at which the force acts, in reference frame <see cref="T:SpaceCenter.ReferenceFrame" />.
+    /// Gets the position at which the force acts, in reference frame <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ReferenceFrame" />.
     /// Executes asynchronously.
     /// </summary>
     /// <returns>The position as a vector.</returns>
@@ -162,7 +162,7 @@ public class Force : RemoteObject
     }
 
     /// <summary>
-    /// Sets the position at which the force acts, in reference frame <see cref="T:SpaceCenter.ReferenceFrame" />.
+    /// Sets the position at which the force acts, in reference frame <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ReferenceFrame" />.
     /// </summary>
     /// <param name="value">The value to set.</param>
     [Rpc("SpaceCenter", "Force_set_Position")]
@@ -177,7 +177,7 @@ public class Force : RemoteObject
     }
 
     /// <summary>
-    /// Sets the position at which the force acts, in reference frame <see cref="T:SpaceCenter.ReferenceFrame" />.
+    /// Sets the position at which the force acts, in reference frame <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ReferenceFrame" />.
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>

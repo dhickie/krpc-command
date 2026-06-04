@@ -2,7 +2,7 @@ namespace kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects;
 
 /// <summary>
 /// The type of a communication link.
-/// See <see cref="M:SpaceCenter.CommLink.GetType" />.
+/// See <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.CommLink.GetComLinkType" />.
 /// </summary>
 [Serializable]
 public enum CommLinkType

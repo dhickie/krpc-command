@@ -5,7 +5,7 @@ namespace kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects;
 
 /// <summary>
 /// Instances of this class are used to interact with the parts of a vessel.
-/// An instance can be obtained by calling <see cref="M:SpaceCenter.Vessel.GetParts" />.
+/// An instance can be obtained by calling <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Vessel.GetParts" />.
 /// </summary>
 public class Parts : RemoteObject
 {
@@ -80,7 +80,7 @@ public class Parts : RemoteObject
 
     /// <summary>
     /// A list of modules (combined across all parts in the vessel) whose
-    /// <see cref="M:SpaceCenter.Module.GetName" /> is <paramref name="moduleName" />.
+    /// <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Module.GetName" /> is <paramref name="moduleName" />.
     /// </summary>
     /// <param name="moduleName"></param>
     [Rpc("SpaceCenter", "Parts_ModulesWithName")]
@@ -96,7 +96,7 @@ public class Parts : RemoteObject
 
     /// <summary>
     /// A list of modules (combined across all parts in the vessel) whose
-    /// <see cref="M:SpaceCenter.Module.GetName" /> is <paramref name="moduleName" />.
+    /// <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Module.GetName" /> is <paramref name="moduleName" />.
     /// Executes asynchronously.
     /// </summary>
     /// <param name="moduleName"></param>
@@ -112,8 +112,8 @@ public class Parts : RemoteObject
     }
 
     /// <summary>
-    /// A list of all parts that contain a <see cref="T:SpaceCenter.Module" /> whose
-    /// <see cref="M:SpaceCenter.Module.GetName" /> is <paramref name="moduleName" />.
+    /// A list of all parts that contain a <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Module" /> whose
+    /// <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Module.GetName" /> is <paramref name="moduleName" />.
     /// </summary>
     /// <param name="moduleName"></param>
     [Rpc("SpaceCenter", "Parts_WithModule")]
@@ -128,8 +128,8 @@ public class Parts : RemoteObject
     }
 
     /// <summary>
-    /// A list of all parts that contain a <see cref="T:SpaceCenter.Module" /> whose
-    /// <see cref="M:SpaceCenter.Module.GetName" /> is <paramref name="moduleName" />.
+    /// A list of all parts that contain a <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Module" /> whose
+    /// <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Module.GetName" /> is <paramref name="moduleName" />.
     /// Executes asynchronously.
     /// </summary>
     /// <param name="moduleName"></param>
@@ -145,7 +145,7 @@ public class Parts : RemoteObject
     }
 
     /// <summary>
-    /// A list of parts whose <see cref="M:SpaceCenter.Part.GetName" /> is <paramref name="name" />.
+    /// A list of parts whose <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Part.GetName" /> is <paramref name="name" />.
     /// </summary>
     /// <param name="name"></param>
     [Rpc("SpaceCenter", "Parts_WithName")]
@@ -160,7 +160,7 @@ public class Parts : RemoteObject
     }
 
     /// <summary>
-    /// A list of parts whose <see cref="M:SpaceCenter.Part.GetName" /> is <paramref name="name" />.
+    /// A list of parts whose <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Part.GetName" /> is <paramref name="name" />.
     /// Executes asynchronously.
     /// </summary>
     /// <param name="name"></param>
@@ -176,7 +176,7 @@ public class Parts : RemoteObject
     }
 
     /// <summary>
-    /// A list of all parts whose <see cref="M:SpaceCenter.Part.GetTag" /> is <paramref name="tag" />.
+    /// A list of all parts whose <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Part.GetTag" /> is <paramref name="tag" />.
     /// </summary>
     /// <param name="tag"></param>
     [Rpc("SpaceCenter", "Parts_WithTag")]
@@ -191,7 +191,7 @@ public class Parts : RemoteObject
     }
 
     /// <summary>
-    /// A list of all parts whose <see cref="M:SpaceCenter.Part.GetTag" /> is <paramref name="tag" />.
+    /// A list of all parts whose <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Part.GetTag" /> is <paramref name="tag" />.
     /// Executes asynchronously.
     /// </summary>
     /// <param name="tag"></param>
@@ -207,7 +207,7 @@ public class Parts : RemoteObject
     }
 
     /// <summary>
-    /// A list of all parts whose <see cref="M:SpaceCenter.Part.GetTitle" /> is <paramref name="title" />.
+    /// A list of all parts whose <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Part.GetTitle" /> is <paramref name="title" />.
     /// </summary>
     /// <param name="title"></param>
     [Rpc("SpaceCenter", "Parts_WithTitle")]
@@ -222,7 +222,7 @@ public class Parts : RemoteObject
     }
 
     /// <summary>
-    /// A list of all parts whose <see cref="M:SpaceCenter.Part.GetTitle" /> is <paramref name="title" />.
+    /// A list of all parts whose <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Part.GetTitle" /> is <paramref name="title" />.
     /// Executes asynchronously.
     /// </summary>
     /// <param name="title"></param>

@@ -2,7 +2,7 @@ namespace kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects;
 
 /// <summary>
 /// The type of a crew member.
-/// See <see cref="M:SpaceCenter.CrewMember.GetType" />.
+/// See <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.CrewMember.GetCrewMemberType" />.
 /// </summary>
 [Serializable]
 public enum CrewMemberType

@@ -1,7 +1,7 @@
 namespace kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects;
 
 /// <summary>
-/// The state of a resource harvester. See <see cref="M:SpaceCenter.ResourceHarvester.GetState" />.
+/// The state of a resource harvester. See <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ResourceHarvester.GetState" />.
 /// </summary>
 [Serializable]
 public enum ResourceHarvesterState

@@ -20,8 +20,8 @@ public class ResourceTransfer : RemoteObject
     /// at most <paramref name="maxAmount" /> units of the resource, depending on how much of
     /// the resource is available in the source part and how much storage is available in the
     /// destination part.
-    /// Use <see cref="M:SpaceCenter.ResourceTransfer.GetComplete" /> to check if the transfer is complete.
-    /// Use <see cref="M:SpaceCenter.ResourceTransfer.GetAmount" /> to see how much of the resource has been transferred.
+    /// Use <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ResourceTransfer.GetComplete" /> to check if the transfer is complete.
+    /// Use <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ResourceTransfer.GetAmount" /> to see how much of the resource has been transferred.
     /// </summary>
     /// <param name="fromPart">The part to transfer to.</param>
     /// <param name="toPart">The part to transfer from.</param>
@@ -45,8 +45,8 @@ public class ResourceTransfer : RemoteObject
     /// at most <paramref name="maxAmount" /> units of the resource, depending on how much of
     /// the resource is available in the source part and how much storage is available in the
     /// destination part.
-    /// Use <see cref="M:SpaceCenter.ResourceTransfer.GetComplete" /> to check if the transfer is complete.
-    /// Use <see cref="M:SpaceCenter.ResourceTransfer.GetAmount" /> to see how much of the resource has been transferred.
+    /// Use <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ResourceTransfer.GetComplete" /> to check if the transfer is complete.
+    /// Use <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ResourceTransfer.GetAmount" /> to see how much of the resource has been transferred.
     /// Executes asynchronously.
     /// </summary>
     /// <param name="fromPart">The part to transfer to.</param>

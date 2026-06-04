@@ -6,8 +6,8 @@ using MathNet.Spatial.Units;
 namespace kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects;
 
 /// <summary>
-/// The component of an <see cref="T:SpaceCenter.Engine" /> or <see cref="T:SpaceCenter.RCS" /> part that generates thrust.
-/// Can be obtained by calling <see cref="M:SpaceCenter.Engine.GetThrusters" /> or <see cref="M:SpaceCenter.RCS.GetThrusters" />.
+/// The component of an <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Engine" /> or <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.RCS" /> part that generates thrust.
+/// Can be obtained by calling <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Engine.GetThrusters" /> or <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.RCS.GetThrusters" />.
 /// </summary>
 /// <remarks>
 /// Engines can consist of multiple thrusters.
@@ -275,7 +275,7 @@ public class Thruster : RemoteObject
     }
 
     /// <summary>
-    /// Gets the <see cref="T:SpaceCenter.Part" /> that contains this thruster.
+    /// Gets the <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Part" /> that contains this thruster.
     /// </summary>
     [Rpc("SpaceCenter", "Thruster_get_Part")]
     public Part GetPart()
@@ -288,7 +288,7 @@ public class Thruster : RemoteObject
     }
 
     /// <summary>
-    /// Gets the <see cref="T:SpaceCenter.Part" /> that contains this thruster.
+    /// Gets the <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Part" /> that contains this thruster.
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Thruster_get_Part")]
@@ -303,11 +303,11 @@ public class Thruster : RemoteObject
 
     /// <summary>
     /// Gets a reference frame that is fixed relative to the thruster and orientated with
-    /// its thrust direction (<see cref="M:SpaceCenter.Thruster.ThrustDirection" />).
+    /// its thrust direction (<see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Thruster.ThrustDirection" />).
     /// For gimballed engines, this takes into account the current rotation of the gimbal.
     /// <list type="bullet"><item><description>
     /// The origin is at the position of thrust for this thruster
-    /// (<see cref="M:SpaceCenter.Thruster.ThrustPosition" />).</description></item><item><description>
+    /// (<see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Thruster.ThrustPosition" />).</description></item><item><description>
     /// The axes rotate with the thrust direction.
     /// This is the direction in which the thruster expels propellant, including any gimballing.
     /// </description></item><item><description>The y-axis points along the thrust direction.</description></item><item><description>The x-axis and z-axis are perpendicular to the thrust direction.
@@ -325,11 +325,11 @@ public class Thruster : RemoteObject
 
     /// <summary>
     /// Gets a reference frame that is fixed relative to the thruster and orientated with
-    /// its thrust direction (<see cref="M:SpaceCenter.Thruster.ThrustDirection" />).
+    /// its thrust direction (<see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Thruster.ThrustDirection" />).
     /// For gimballed engines, this takes into account the current rotation of the gimbal.
     /// <list type="bullet"><item><description>
     /// The origin is at the position of thrust for this thruster
-    /// (<see cref="M:SpaceCenter.Thruster.ThrustPosition" />).</description></item><item><description>
+    /// (<see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Thruster.ThrustPosition" />).</description></item><item><description>
     /// The axes rotate with the thrust direction.
     /// This is the direction in which the thruster expels propellant, including any gimballing.
     /// </description></item><item><description>The y-axis points along the thrust direction.</description></item><item><description>The x-axis and z-axis are perpendicular to the thrust direction.

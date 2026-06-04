@@ -1,7 +1,7 @@
 namespace kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects;
 
 /// <summary>
-/// The state of an auto-strut. <see cref="M:SpaceCenter.Part.GetAutoStrutMode" /></summary>
+/// The state of an auto-strut. <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Part.GetAutoStrutMode" /></summary>
 [Serializable]
 public enum AutoStrutMode
 {

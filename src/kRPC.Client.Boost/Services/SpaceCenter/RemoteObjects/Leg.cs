@@ -4,7 +4,7 @@ using kRPC.Client.Boost.Connection;
 namespace kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects;
 
 /// <summary>
-/// A landing leg. Obtained by calling <see cref="M:SpaceCenter.Part.GetLeg" />.
+/// A landing leg. Obtained by calling <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Part.GetLeg" />.
 /// </summary>
 public class Leg : RemoteObject
 {

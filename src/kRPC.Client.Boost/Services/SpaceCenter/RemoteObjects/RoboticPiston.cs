@@ -5,7 +5,7 @@ using MathNet.Spatial.Units;
 namespace kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects;
 
 /// <summary>
-/// A robotic piston part. Obtained by calling <see cref="M:SpaceCenter.Part.GetRoboticPiston" />.
+/// A robotic piston part. Obtained by calling <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Part.GetRoboticPiston" />.
 /// </summary>
 public class RoboticPiston : RemoteObject
 {

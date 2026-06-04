@@ -2,7 +2,7 @@ namespace kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects;
 
 /// <summary>
 /// A crew member's suit type.
-/// See <see cref="M:SpaceCenter.CrewMember.GetSuitType" />.
+/// See <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.CrewMember.GetSuitType" />.
 /// </summary>
 [Serializable]
 public enum SuitType

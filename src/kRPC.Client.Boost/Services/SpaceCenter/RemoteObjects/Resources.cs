@@ -5,9 +5,9 @@ namespace kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects;
 
 /// <summary>
 /// Represents the collection of resources stored in a vessel, stage or part.
-/// Created by calling <see cref="M:SpaceCenter.Vessel.GetResources" />,
-/// <see cref="M:SpaceCenter.Vessel.ResourcesInDecoupleStage" /> or
-/// <see cref="M:SpaceCenter.Part.GetResources" />.
+/// Created by calling <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Vessel.GetResources" />,
+/// <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Vessel.ResourcesInDecoupleStage" /> or
+/// <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Part.GetResources" />.
 /// </summary>
 public class Resources : RemoteObject
 {

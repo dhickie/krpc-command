@@ -5,7 +5,7 @@ using MathNet.Spatial.Euclidean;
 namespace kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects;
 
 /// <summary>
-/// Represents a maneuver node. Can be created using <see cref="M:SpaceCenter.Control.AddNode" />.
+/// Represents a maneuver node. Can be created using <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Control.AddNode" />.
 /// </summary>
 public class Node : RemoteObject
 {
@@ -20,12 +20,12 @@ public class Node : RemoteObject
     /// Returns the burn vector for the maneuver node.
     /// </summary>
     /// <param name="referenceFrame">The reference frame that the returned vector is in.
-    /// Defaults to <see cref="M:SpaceCenter.Vessel.GetOrbitalReferenceFrame" />.</param>
+    /// Defaults to <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Vessel.GetOrbitalReferenceFrame" />.</param>
     /// <returns>A vector whose direction is the direction of the maneuver node burn, and
     /// magnitude is the delta-v of the burn in meters per second.
     /// </returns>
     /// <remarks>
-    /// Does not change when executing the maneuver node. See <see cref="M:SpaceCenter.Node.RemainingBurnVector" />.
+    /// Does not change when executing the maneuver node. See <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Node.RemainingBurnVector" />.
     /// </remarks>
     [Rpc("SpaceCenter", "Node_BurnVector")]
     public Vector3D BurnVector(ReferenceFrame? referenceFrame = null)
@@ -43,12 +43,12 @@ public class Node : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="referenceFrame">The reference frame that the returned vector is in.
-    /// Defaults to <see cref="M:SpaceCenter.Vessel.GetOrbitalReferenceFrame" />.</param>
+    /// Defaults to <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Vessel.GetOrbitalReferenceFrame" />.</param>
     /// <returns>A vector whose direction is the direction of the maneuver node burn, and
     /// magnitude is the delta-v of the burn in meters per second.
     /// </returns>
     /// <remarks>
-    /// Does not change when executing the maneuver node. See <see cref="M:SpaceCenter.Node.RemainingBurnVector" />.
+    /// Does not change when executing the maneuver node. See <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Node.RemainingBurnVector" />.
     /// </remarks>
     [Rpc("SpaceCenter", "Node_BurnVector")]
     public async Task<Vector3D> BurnVectorAsync(ReferenceFrame? referenceFrame = null)
@@ -135,12 +135,12 @@ public class Node : RemoteObject
     /// Returns the remaining burn vector for the maneuver node.
     /// </summary>
     /// <param name="referenceFrame">The reference frame that the returned vector is in.
-    /// Defaults to <see cref="M:SpaceCenter.Vessel.GetOrbitalReferenceFrame" />.</param>
+    /// Defaults to <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Vessel.GetOrbitalReferenceFrame" />.</param>
     /// <returns>A vector whose direction is the direction of the maneuver node burn, and
     /// magnitude is the delta-v of the burn in meters per second.
     /// </returns>
     /// <remarks>
-    /// Changes as the maneuver node is executed. See <see cref="M:SpaceCenter.Node.BurnVector" />.
+    /// Changes as the maneuver node is executed. See <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Node.BurnVector" />.
     /// </remarks>
     [Rpc("SpaceCenter", "Node_RemainingBurnVector")]
     public Vector3D RemainingBurnVector(ReferenceFrame? referenceFrame = null)
@@ -158,12 +158,12 @@ public class Node : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="referenceFrame">The reference frame that the returned vector is in.
-    /// Defaults to <see cref="M:SpaceCenter.Vessel.GetOrbitalReferenceFrame" />.</param>
+    /// Defaults to <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Vessel.GetOrbitalReferenceFrame" />.</param>
     /// <returns>A vector whose direction is the direction of the maneuver node burn, and
     /// magnitude is the delta-v of the burn in meters per second.
     /// </returns>
     /// <remarks>
-    /// Changes as the maneuver node is executed. See <see cref="M:SpaceCenter.Node.BurnVector" />.
+    /// Changes as the maneuver node is executed. See <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Node.BurnVector" />.
     /// </remarks>
     [Rpc("SpaceCenter", "Node_RemainingBurnVector")]
     public async Task<Vector3D> RemainingBurnVectorAsync(ReferenceFrame? referenceFrame = null)
@@ -207,7 +207,7 @@ public class Node : RemoteObject
     /// Gets the delta-v of the maneuver node, in meters per second.
     /// </summary>
     /// <remarks>
-    /// Does not change when executing the maneuver node. See <see cref="M:SpaceCenter.Node.GetRemainingDeltaV" />.
+    /// Does not change when executing the maneuver node. See <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Node.GetRemainingDeltaV" />.
     /// </remarks>
     [Rpc("SpaceCenter", "Node_get_DeltaV")]
     public double GetDeltaV()
@@ -224,7 +224,7 @@ public class Node : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <remarks>
-    /// Does not change when executing the maneuver node. See <see cref="M:SpaceCenter.Node.GetRemainingDeltaV" />.
+    /// Does not change when executing the maneuver node. See <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Node.GetRemainingDeltaV" />.
     /// </remarks>
     [Rpc("SpaceCenter", "Node_get_DeltaV")]
     public async Task<double> GetDeltaVAsync()

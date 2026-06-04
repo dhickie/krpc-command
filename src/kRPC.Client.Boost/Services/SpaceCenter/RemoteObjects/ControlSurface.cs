@@ -5,7 +5,7 @@ using MathNet.Spatial.Euclidean;
 namespace kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects;
 
 /// <summary>
-/// An aerodynamic control surface. Obtained by calling <see cref="M:SpaceCenter.Part.GetControlSurface" />.
+/// An aerodynamic control surface. Obtained by calling <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Part.GetControlSurface" />.
 /// </summary>
 public class ControlSurface : RemoteObject
 {
@@ -81,7 +81,7 @@ public class ControlSurface : RemoteObject
     /// <summary>
     /// Gets the available torque, in Newton meters, that can be produced by this control surface,
     /// in the positive and negative pitch, roll and yaw axes of the vessel. These axes
-    /// correspond to the coordinate axes of the <see cref="M:SpaceCenter.Vessel.GetReferenceFrame" />.
+    /// correspond to the coordinate axes of the <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Vessel.GetReferenceFrame" />.
     /// </summary>
     [Rpc("SpaceCenter", "ControlSurface_get_AvailableTorque")]
     public Tuple<Vector3D,Vector3D> GetAvailableTorque()
@@ -96,7 +96,7 @@ public class ControlSurface : RemoteObject
     /// <summary>
     /// Gets the available torque, in Newton meters, that can be produced by this control surface,
     /// in the positive and negative pitch, roll and yaw axes of the vessel. These axes
-    /// correspond to the coordinate axes of the <see cref="M:SpaceCenter.Vessel.GetReferenceFrame" />.
+    /// correspond to the coordinate axes of the <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Vessel.GetReferenceFrame" />.
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "ControlSurface_get_AvailableTorque")]

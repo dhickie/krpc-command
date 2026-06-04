@@ -7,7 +7,7 @@ namespace kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects;
 
 /// <summary>
 /// Represents a celestial body (such as a planet or moon).
-/// See <see cref="M:SpaceCenter.GetBodies" />.
+/// See <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.SpaceCenter.GetBodies" />.
 /// </summary>
 public class CelestialBody : RemoteObject
 {

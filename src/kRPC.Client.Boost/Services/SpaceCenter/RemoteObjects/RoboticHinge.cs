@@ -5,7 +5,7 @@ using MathNet.Spatial.Units;
 namespace kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects;
 
 /// <summary>
-/// A robotic hinge. Obtained by calling <see cref="M:SpaceCenter.Part.GetRoboticHinge" />.
+/// A robotic hinge. Obtained by calling <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Part.GetRoboticHinge" />.
 /// </summary>
 public class RoboticHinge : RemoteObject
 {

@@ -862,7 +862,7 @@ public class Module : RemoteObject
     /// </summary>
     /// <remarks>
     /// Throws an exception if there is more than one field with the same name.
-    /// In that case, use <see cref="M:SpaceCenter.Module.GetFieldsById" /> to get the fields by identifier.
+    /// In that case, use <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Module.GetFieldsById" /> to get the fields by identifier.
     /// </remarks>
     [Rpc("SpaceCenter", "Module_get_Fields")]
     public IDictionary<string,string> GetFields()
@@ -881,7 +881,7 @@ public class Module : RemoteObject
     /// </summary>
     /// <remarks>
     /// Throws an exception if there is more than one field with the same name.
-    /// In that case, use <see cref="M:SpaceCenter.Module.GetFieldsById" /> to get the fields by identifier.
+    /// In that case, use <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Module.GetFieldsById" /> to get the fields by identifier.
     /// </remarks>
     [Rpc("SpaceCenter", "Module_get_Fields")]
     public async Task<IDictionary<string,string>> GetFieldsAsync()

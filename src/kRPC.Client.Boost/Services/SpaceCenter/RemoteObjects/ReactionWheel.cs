@@ -5,7 +5,7 @@ using MathNet.Spatial.Euclidean;
 namespace kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects;
 
 /// <summary>
-/// A reaction wheel. Obtained by calling <see cref="M:SpaceCenter.Part.GetReactionWheel" />.
+/// A reaction wheel. Obtained by calling <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Part.GetReactionWheel" />.
 /// </summary>
 public class ReactionWheel : RemoteObject
 {
@@ -77,7 +77,7 @@ public class ReactionWheel : RemoteObject
     /// <summary>
     /// Gets the available torque, in Newton meters, that can be produced by this reaction wheel,
     /// in the positive and negative pitch, roll and yaw axes of the vessel. These axes
-    /// correspond to the coordinate axes of the <see cref="M:SpaceCenter.Vessel.GetReferenceFrame" />.
+    /// correspond to the coordinate axes of the <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Vessel.GetReferenceFrame" />.
     /// Returns zero if the reaction wheel is inactive or broken.
     /// </summary>
     [Rpc("SpaceCenter", "ReactionWheel_get_AvailableTorque")]
@@ -93,7 +93,7 @@ public class ReactionWheel : RemoteObject
     /// <summary>
     /// Gets the available torque, in Newton meters, that can be produced by this reaction wheel,
     /// in the positive and negative pitch, roll and yaw axes of the vessel. These axes
-    /// correspond to the coordinate axes of the <see cref="M:SpaceCenter.Vessel.GetReferenceFrame" />.
+    /// correspond to the coordinate axes of the <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Vessel.GetReferenceFrame" />.
     /// Returns zero if the reaction wheel is inactive or broken.
     /// Executes asynchronously.
     /// </summary>
@@ -137,7 +137,7 @@ public class ReactionWheel : RemoteObject
     /// <summary>
     /// Gets the maximum torque, in Newton meters, that can be produced by this reaction wheel,
     /// when it is active, in the positive and negative pitch, roll and yaw axes of the vessel.
-    /// These axes correspond to the coordinate axes of the <see cref="M:SpaceCenter.Vessel.GetReferenceFrame" />.
+    /// These axes correspond to the coordinate axes of the <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Vessel.GetReferenceFrame" />.
     /// </summary>
     [Rpc("SpaceCenter", "ReactionWheel_get_MaxTorque")]
     public Tuple<Vector3D,Vector3D> GetMaxTorque()
@@ -152,7 +152,7 @@ public class ReactionWheel : RemoteObject
     /// <summary>
     /// Gets the maximum torque, in Newton meters, that can be produced by this reaction wheel,
     /// when it is active, in the positive and negative pitch, roll and yaw axes of the vessel.
-    /// These axes correspond to the coordinate axes of the <see cref="M:SpaceCenter.Vessel.GetReferenceFrame" />.
+    /// These axes correspond to the coordinate axes of the <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Vessel.GetReferenceFrame" />.
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "ReactionWheel_get_MaxTorque")]

@@ -7,8 +7,8 @@ namespace kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects;
 
 /// <summary>
 /// Describes an orbit. For example, the orbit of a vessel, obtained by calling
-/// <see cref="M:SpaceCenter.Vessel.GetOrbit" />, or a celestial body, obtained by calling
-/// <see cref="M:SpaceCenter.CelestialBody.GetOrbit" />.
+/// <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Vessel.GetOrbit" />, or a celestial body, obtained by calling
+/// <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.CelestialBody.GetOrbit" />.
 /// </summary>
 public class Orbit : RemoteObject
 {
@@ -600,7 +600,7 @@ public class Orbit : RemoteObject
     /// </summary>
     /// <remarks>
     /// For the apoapsis altitude reported on the in-game map view,
-    /// use <see cref="M:SpaceCenter.Orbit.GetApoapsisAltitude" />.
+    /// use <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Orbit.GetApoapsisAltitude" />.
     /// </remarks>
     [Rpc("SpaceCenter", "Orbit_get_Apoapsis")]
     public double GetApoapsis()
@@ -619,7 +619,7 @@ public class Orbit : RemoteObject
     /// </summary>
     /// <remarks>
     /// For the apoapsis altitude reported on the in-game map view,
-    /// use <see cref="M:SpaceCenter.Orbit.GetApoapsisAltitude" />.
+    /// use <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Orbit.GetApoapsisAltitude" />.
     /// </remarks>
     [Rpc("SpaceCenter", "Orbit_get_Apoapsis")]
     public async Task<double> GetApoapsisAsync()
@@ -635,7 +635,7 @@ public class Orbit : RemoteObject
     /// Gets the apoapsis of the orbit, in meters, above the sea level of the body being orbited.
     /// </summary>
     /// <remarks>
-    /// This is equal to <see cref="M:SpaceCenter.Orbit.GetApoapsis" /> minus the equatorial radius of the body.
+    /// This is equal to <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Orbit.GetApoapsis" /> minus the equatorial radius of the body.
     /// </remarks>
     [Rpc("SpaceCenter", "Orbit_get_ApoapsisAltitude")]
     public double GetApoapsisAltitude()
@@ -652,7 +652,7 @@ public class Orbit : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <remarks>
-    /// This is equal to <see cref="M:SpaceCenter.Orbit.GetApoapsis" /> minus the equatorial radius of the body.
+    /// This is equal to <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Orbit.GetApoapsis" /> minus the equatorial radius of the body.
     /// </remarks>
     [Rpc("SpaceCenter", "Orbit_get_ApoapsisAltitude")]
     public async Task<double> GetApoapsisAltitudeAsync()
@@ -993,7 +993,7 @@ public class Orbit : RemoteObject
     /// </summary>
     /// <remarks>
     /// For the periapsis altitude reported on the in-game map view,
-    /// use <see cref="M:SpaceCenter.Orbit.GetPeriapsisAltitude" />.
+    /// use <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Orbit.GetPeriapsisAltitude" />.
     /// </remarks>
     [Rpc("SpaceCenter", "Orbit_get_Periapsis")]
     public double GetPeriapsis()
@@ -1012,7 +1012,7 @@ public class Orbit : RemoteObject
     /// </summary>
     /// <remarks>
     /// For the periapsis altitude reported on the in-game map view,
-    /// use <see cref="M:SpaceCenter.Orbit.GetPeriapsisAltitude" />.
+    /// use <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Orbit.GetPeriapsisAltitude" />.
     /// </remarks>
     [Rpc("SpaceCenter", "Orbit_get_Periapsis")]
     public async Task<double> GetPeriapsisAsync()
@@ -1028,7 +1028,7 @@ public class Orbit : RemoteObject
     /// Gets the periapsis of the orbit, in meters, above the sea level of the body being orbited.
     /// </summary>
     /// <remarks>
-    /// This is equal to <see cref="M:SpaceCenter.Orbit.GetPeriapsis" /> minus the equatorial radius of the body.
+    /// This is equal to <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Orbit.GetPeriapsis" /> minus the equatorial radius of the body.
     /// </remarks>
     [Rpc("SpaceCenter", "Orbit_get_PeriapsisAltitude")]
     public double GetPeriapsisAltitude()
@@ -1045,7 +1045,7 @@ public class Orbit : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <remarks>
-    /// This is equal to <see cref="M:SpaceCenter.Orbit.GetPeriapsis" /> minus the equatorial radius of the body.
+    /// This is equal to <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Orbit.GetPeriapsis" /> minus the equatorial radius of the body.
     /// </remarks>
     [Rpc("SpaceCenter", "Orbit_get_PeriapsisAltitude")]
     public async Task<double> GetPeriapsisAltitudeAsync()

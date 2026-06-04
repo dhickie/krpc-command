@@ -5,7 +5,7 @@ namespace kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects;
 
 /// <summary>
 /// Used to interact with CommNet for a given vessel.
-/// Obtained by calling <see cref="M:SpaceCenter.Vessel.GetComms" />.
+/// Obtained by calling <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Vessel.GetComms" />.
 /// </summary>
 public class Comms : RemoteObject
 {

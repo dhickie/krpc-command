@@ -5,7 +5,7 @@ namespace kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects;
 
 /// <summary>
 /// An individual resource stored within a part.
-/// Created using methods in the <see cref="T:SpaceCenter.Resources" /> class.
+/// Created using methods in the <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Resources" /> class.
 /// </summary>
 public class Resource : RemoteObject
 {

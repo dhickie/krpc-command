@@ -1,7 +1,7 @@
 namespace kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects;
 
 /// <summary>
-/// The state of a cargo bay. See <see cref="M:SpaceCenter.CargoBay.GetState" />.
+/// The state of a cargo bay. See <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.CargoBay.GetState" />.
 /// </summary>
 [Serializable]
 public enum CargoBayState

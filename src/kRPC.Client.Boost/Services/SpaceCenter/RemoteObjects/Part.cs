@@ -6,7 +6,7 @@ namespace kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects;
 
 /// <summary>
 /// Represents an individual part. Vessels are made up of multiple parts.
-/// Instances of this class can be obtained by several methods in <see cref="T:SpaceCenter.Parts" />.
+/// Instances of this class can be obtained by several methods in <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Parts" />.
 /// </summary>
 public class Part : RemoteObject
 {
@@ -72,7 +72,7 @@ public class Part : RemoteObject
     /// <remarks>
     /// This is computed from the collision mesh of the part.
     /// If the part is not collidable, the box has zero volume and is centered on
-    /// the <see cref="M:SpaceCenter.Part.Position" /> of the part.
+    /// the <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Part.Position" /> of the part.
     /// </remarks>
     [Rpc("SpaceCenter", "Part_BoundingBox")]
     public Tuple<Vector3D,Vector3D> BoundingBox(ReferenceFrame referenceFrame)
@@ -96,7 +96,7 @@ public class Part : RemoteObject
     /// <remarks>
     /// This is computed from the collision mesh of the part.
     /// If the part is not collidable, the box has zero volume and is centered on
-    /// the <see cref="M:SpaceCenter.Part.Position" /> of the part.
+    /// the <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Part.Position" /> of the part.
     /// </remarks>
     [Rpc("SpaceCenter", "Part_BoundingBox")]
     public async Task<Tuple<Vector3D,Vector3D>> BoundingBoxAsync(ReferenceFrame referenceFrame)
@@ -111,7 +111,7 @@ public class Part : RemoteObject
 
     /// <summary>
     /// The position of the parts center of mass in the given reference frame.
-    /// If the part is physicsless, this is equivalent to <see cref="M:SpaceCenter.Part.Position" />.
+    /// If the part is physicsless, this is equivalent to <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Part.Position" />.
     /// </summary>
     /// <returns>The position as a vector.</returns>
     /// <param name="referenceFrame">The reference frame that the returned
@@ -129,7 +129,7 @@ public class Part : RemoteObject
 
     /// <summary>
     /// The position of the parts center of mass in the given reference frame.
-    /// If the part is physicsless, this is equivalent to <see cref="M:SpaceCenter.Part.Position" />.
+    /// If the part is physicsless, this is equivalent to <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Part.Position" />.
     /// Executes asynchronously.
     /// </summary>
     /// <returns>The position as a vector.</returns>
@@ -235,7 +235,7 @@ public class Part : RemoteObject
     /// <remarks>
     /// This is a fixed position in the part, defined by the parts model.
     /// It s not necessarily the same as the parts center of mass.
-    /// Use <see cref="M:SpaceCenter.Part.CenterOfMass" /> to get the parts center of mass.
+    /// Use <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Part.CenterOfMass" /> to get the parts center of mass.
     /// </remarks>
     [Rpc("SpaceCenter", "Part_Position")]
     public Vector3D Position(ReferenceFrame referenceFrame)
@@ -258,7 +258,7 @@ public class Part : RemoteObject
     /// <remarks>
     /// This is a fixed position in the part, defined by the parts model.
     /// It s not necessarily the same as the parts center of mass.
-    /// Use <see cref="M:SpaceCenter.Part.CenterOfMass" /> to get the parts center of mass.
+    /// Use <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Part.CenterOfMass" /> to get the parts center of mass.
     /// </remarks>
     [Rpc("SpaceCenter", "Part_Position")]
     public async Task<Vector3D> PositionAsync(ReferenceFrame referenceFrame)
@@ -344,7 +344,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// Gets an <see cref="T:SpaceCenter.Antenna" /> if the part is an antenna, otherwise <c>null</c>.
+    /// Gets an <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Antenna" /> if the part is an antenna, otherwise <c>null</c>.
     /// </summary>
     /// <remarks>
     /// If RemoteTech is installed, this will always return <c>null</c>.
@@ -361,7 +361,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// Gets an <see cref="T:SpaceCenter.Antenna" /> if the part is an antenna, otherwise <c>null</c>.
+    /// Gets an <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Antenna" /> if the part is an antenna, otherwise <c>null</c>.
     /// Executes asynchronously.
     /// </summary>
     /// <remarks>
@@ -462,7 +462,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// Gets a <see cref="T:SpaceCenter.CargoBay" /> if the part is a cargo bay, otherwise <c>null</c>.
+    /// Gets a <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.CargoBay" /> if the part is a cargo bay, otherwise <c>null</c>.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_CargoBay")]
     public CargoBay? GetCargoBay()
@@ -475,7 +475,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// Gets a <see cref="T:SpaceCenter.CargoBay" /> if the part is a cargo bay, otherwise <c>null</c>.
+    /// Gets a <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.CargoBay" /> if the part is a cargo bay, otherwise <c>null</c>.
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_CargoBay")]
@@ -492,13 +492,13 @@ public class Part : RemoteObject
     /// Gets the reference frame that is fixed relative to this part, and centered on its
     /// center of mass.
     /// <list type="bullet"><item><description>The origin is at the center of mass of the part, as returned by
-    /// <see cref="M:SpaceCenter.Part.CenterOfMass" />.</description></item><item><description>The axes rotate with the part.</description></item><item><description>The x, y and z axis directions depend on the design of the part.
+    /// <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Part.CenterOfMass" />.</description></item><item><description>The axes rotate with the part.</description></item><item><description>The x, y and z axis directions depend on the design of the part.
     /// </description></item></list>
     /// </summary>
     /// <remarks>
     /// For docking port parts, this reference frame is not necessarily equivalent to the
     /// reference frame for the docking port, returned by
-    /// <see cref="M:SpaceCenter.DockingPort.GetReferenceFrame" />.
+    /// <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.DockingPort.GetReferenceFrame" />.
     /// </remarks>
     [Rpc("SpaceCenter", "Part_get_CenterOfMassReferenceFrame")]
     public ReferenceFrame GetCenterOfMassReferenceFrame()
@@ -514,14 +514,14 @@ public class Part : RemoteObject
     /// Gets the reference frame that is fixed relative to this part, and centered on its
     /// center of mass.
     /// <list type="bullet"><item><description>The origin is at the center of mass of the part, as returned by
-    /// <see cref="M:SpaceCenter.Part.CenterOfMass" />.</description></item><item><description>The axes rotate with the part.</description></item><item><description>The x, y and z axis directions depend on the design of the part.
+    /// <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Part.CenterOfMass" />.</description></item><item><description>The axes rotate with the part.</description></item><item><description>The x, y and z axis directions depend on the design of the part.
     /// </description></item></list>
     /// Executes asynchronously.
     /// </summary>
     /// <remarks>
     /// For docking port parts, this reference frame is not necessarily equivalent to the
     /// reference frame for the docking port, returned by
-    /// <see cref="M:SpaceCenter.DockingPort.GetReferenceFrame" />.
+    /// <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.DockingPort.GetReferenceFrame" />.
     /// </remarks>
     [Rpc("SpaceCenter", "Part_get_CenterOfMassReferenceFrame")]
     public async Task<ReferenceFrame> GetCenterOfMassReferenceFrameAsync()
@@ -535,7 +535,7 @@ public class Part : RemoteObject
 
     /// <summary>
     /// Gets the parts children. Returns an empty list if the part has no children.
-    /// This, in combination with <see cref="M:SpaceCenter.Part.GetParent" />, can be used to traverse the vessels
+    /// This, in combination with <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Part.GetParent" />, can be used to traverse the vessels
     /// parts tree.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_Children")]
@@ -550,7 +550,7 @@ public class Part : RemoteObject
 
     /// <summary>
     /// Gets the parts children. Returns an empty list if the part has no children.
-    /// This, in combination with <see cref="M:SpaceCenter.Part.GetParent" />, can be used to traverse the vessels
+    /// This, in combination with <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Part.GetParent" />, can be used to traverse the vessels
     /// parts tree.
     /// Executes asynchronously.
     /// </summary>
@@ -565,7 +565,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// Gets a <see cref="T:SpaceCenter.ControlSurface" /> if the part is an aerodynamic control surface,
+    /// Gets a <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ControlSurface" /> if the part is an aerodynamic control surface,
     /// otherwise <c>null</c>.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_ControlSurface")]
@@ -579,7 +579,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// Gets a <see cref="T:SpaceCenter.ControlSurface" /> if the part is an aerodynamic control surface,
+    /// Gets a <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ControlSurface" /> if the part is an aerodynamic control surface,
     /// otherwise <c>null</c>.
     /// Executes asynchronously.
     /// </summary>
@@ -677,7 +677,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// Gets a <see cref="T:SpaceCenter.Decoupler" /> if the part is a decoupler, otherwise <c>null</c>.
+    /// Gets a <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Decoupler" /> if the part is a decoupler, otherwise <c>null</c>.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_Decoupler")]
     public Decoupler? GetDecoupler()
@@ -690,7 +690,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// Gets a <see cref="T:SpaceCenter.Decoupler" /> if the part is a decoupler, otherwise <c>null</c>.
+    /// Gets a <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Decoupler" /> if the part is a decoupler, otherwise <c>null</c>.
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_Decoupler")]
@@ -704,7 +704,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// Gets a <see cref="T:SpaceCenter.DockingPort" /> if the part is a docking port, otherwise <c>null</c>.
+    /// Gets a <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.DockingPort" /> if the part is a docking port, otherwise <c>null</c>.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_DockingPort")]
     public DockingPort? GetDockingPort()
@@ -717,7 +717,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// Gets a <see cref="T:SpaceCenter.DockingPort" /> if the part is a docking port, otherwise <c>null</c>.
+    /// Gets a <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.DockingPort" /> if the part is a docking port, otherwise <c>null</c>.
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_DockingPort")]
@@ -787,7 +787,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// Gets an <see cref="T:SpaceCenter.Engine" /> if the part is an engine, otherwise <c>null</c>.
+    /// Gets an <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Engine" /> if the part is an engine, otherwise <c>null</c>.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_Engine")]
     public Engine? GetEngine()
@@ -800,7 +800,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// Gets an <see cref="T:SpaceCenter.Engine" /> if the part is an engine, otherwise <c>null</c>.
+    /// Gets an <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Engine" /> if the part is an engine, otherwise <c>null</c>.
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_Engine")]
@@ -814,12 +814,12 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// Gets an <see cref="T:SpaceCenter.Experiment" /> if the part contains a
+    /// Gets an <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Experiment" /> if the part contains a
     /// single science experiment, otherwise <c>null</c>.
     /// </summary>
     /// <remarks>
     /// Throws an exception if the part contains more than one experiment.
-    /// In that case, use <see cref="M:SpaceCenter.Part.GetExperiments" /> to get the list of experiments in the part.
+    /// In that case, use <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Part.GetExperiments" /> to get the list of experiments in the part.
     /// </remarks>
     [Rpc("SpaceCenter", "Part_get_Experiment")]
     public Experiment? GetExperiment()
@@ -832,13 +832,13 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// Gets an <see cref="T:SpaceCenter.Experiment" /> if the part contains a
+    /// Gets an <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Experiment" /> if the part contains a
     /// single science experiment, otherwise <c>null</c>.
     /// Executes asynchronously.
     /// </summary>
     /// <remarks>
     /// Throws an exception if the part contains more than one experiment.
-    /// In that case, use <see cref="M:SpaceCenter.Part.GetExperiments" /> to get the list of experiments in the part.
+    /// In that case, use <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Part.GetExperiments" /> to get the list of experiments in the part.
     /// </remarks>
     [Rpc("SpaceCenter", "Part_get_Experiment")]
     public async Task<Experiment?> GetExperimentAsync()
@@ -851,7 +851,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// Gets a list of <see cref="T:SpaceCenter.Experiment" /> objects that the part contains.
+    /// Gets a list of <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Experiment" /> objects that the part contains.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_Experiments")]
     public IList<Experiment> GetExperiments()
@@ -864,7 +864,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// Gets a list of <see cref="T:SpaceCenter.Experiment" /> objects that the part contains.
+    /// Gets a list of <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Experiment" /> objects that the part contains.
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_Experiments")]
@@ -878,7 +878,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// Gets a <see cref="T:SpaceCenter.Fairing" /> if the part is a fairing, otherwise <c>null</c>.
+    /// Gets a <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Fairing" /> if the part is a fairing, otherwise <c>null</c>.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_Fairing")]
     public Fairing? GetFairing()
@@ -891,7 +891,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// Gets a <see cref="T:SpaceCenter.Fairing" /> if the part is a fairing, otherwise <c>null</c>.
+    /// Gets a <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Fairing" /> if the part is a fairing, otherwise <c>null</c>.
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_Fairing")]
@@ -1194,7 +1194,7 @@ public class Part : RemoteObject
 
     /// <summary>
     /// Gets the inertia tensor of the part in the parts reference frame
-    /// (<see cref="T:SpaceCenter.ReferenceFrame" />).
+    /// (<see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ReferenceFrame" />).
     /// Returns the 3x3 matrix as a list of elements, in row-major order.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_InertiaTensor")]
@@ -1209,7 +1209,7 @@ public class Part : RemoteObject
 
     /// <summary>
     /// Gets the inertia tensor of the part in the parts reference frame
-    /// (<see cref="T:SpaceCenter.ReferenceFrame" />).
+    /// (<see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ReferenceFrame" />).
     /// Returns the 3x3 matrix as a list of elements, in row-major order.
     /// Executes asynchronously.
     /// </summary>
@@ -1224,12 +1224,12 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// Gets an <see cref="T:SpaceCenter.Intake" /> if the part is an intake, otherwise <c>null</c>.
+    /// Gets an <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Intake" /> if the part is an intake, otherwise <c>null</c>.
     /// </summary>
     /// <remarks>
     /// This includes any part that generates thrust. This covers many different types
     /// of engine, including liquid fuel rockets, solid rocket boosters and jet engines.
-    /// For RCS thrusters see <see cref="T:SpaceCenter.RCS" />.
+    /// For RCS thrusters see <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.RCS" />.
     /// </remarks>
     [Rpc("SpaceCenter", "Part_get_Intake")]
     public Intake? GetIntake()
@@ -1242,13 +1242,13 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// Gets an <see cref="T:SpaceCenter.Intake" /> if the part is an intake, otherwise <c>null</c>.
+    /// Gets an <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Intake" /> if the part is an intake, otherwise <c>null</c>.
     /// Executes asynchronously.
     /// </summary>
     /// <remarks>
     /// This includes any part that generates thrust. This covers many different types
     /// of engine, including liquid fuel rockets, solid rocket boosters and jet engines.
-    /// For RCS thrusters see <see cref="T:SpaceCenter.RCS" />.
+    /// For RCS thrusters see <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.RCS" />.
     /// </remarks>
     [Rpc("SpaceCenter", "Part_get_Intake")]
     public async Task<Intake?> GetIntakeAsync()
@@ -1288,7 +1288,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// Gets a <see cref="T:SpaceCenter.LaunchClamp" /> if the part is a launch clamp, otherwise <c>null</c>.
+    /// Gets a <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.LaunchClamp" /> if the part is a launch clamp, otherwise <c>null</c>.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_LaunchClamp")]
     public LaunchClamp? GetLaunchClamp()
@@ -1301,7 +1301,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// Gets a <see cref="T:SpaceCenter.LaunchClamp" /> if the part is a launch clamp, otherwise <c>null</c>.
+    /// Gets a <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.LaunchClamp" /> if the part is a launch clamp, otherwise <c>null</c>.
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_LaunchClamp")]
@@ -1315,7 +1315,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// Gets a <see cref="T:SpaceCenter.Leg" /> if the part is a landing leg, otherwise <c>null</c>.
+    /// Gets a <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Leg" /> if the part is a landing leg, otherwise <c>null</c>.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_Leg")]
     public Leg? GetLeg()
@@ -1328,7 +1328,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// Gets a <see cref="T:SpaceCenter.Leg" /> if the part is a landing leg, otherwise <c>null</c>.
+    /// Gets a <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Leg" /> if the part is a landing leg, otherwise <c>null</c>.
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_Leg")]
@@ -1342,7 +1342,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// Gets a <see cref="T:SpaceCenter.Light" /> if the part is a light, otherwise <c>null</c>.
+    /// Gets a <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Light" /> if the part is a light, otherwise <c>null</c>.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_Light")]
     public Light? GetLight()
@@ -1355,7 +1355,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// Gets a <see cref="T:SpaceCenter.Light" /> if the part is a light, otherwise <c>null</c>.
+    /// Gets a <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Light" /> if the part is a light, otherwise <c>null</c>.
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_Light")]
@@ -1509,7 +1509,7 @@ public class Part : RemoteObject
 
     /// <summary>
     /// Gets the moment of inertia of the part in <math>kg.m^2</math> around its center of mass
-    /// in the parts reference frame (<see cref="T:SpaceCenter.ReferenceFrame" />).
+    /// in the parts reference frame (<see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ReferenceFrame" />).
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_MomentOfInertia")]
     public Tuple<double,double,double> GetMomentOfInertia()
@@ -1523,7 +1523,7 @@ public class Part : RemoteObject
 
     /// <summary>
     /// Gets the moment of inertia of the part in <math>kg.m^2</math> around its center of mass
-    /// in the parts reference frame (<see cref="T:SpaceCenter.ReferenceFrame" />).
+    /// in the parts reference frame (<see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ReferenceFrame" />).
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_MomentOfInertia")]
@@ -1568,7 +1568,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// Gets a <see cref="T:SpaceCenter.Parachute" /> if the part is a parachute, otherwise <c>null</c>.
+    /// Gets a <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Parachute" /> if the part is a parachute, otherwise <c>null</c>.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_Parachute")]
     public Parachute? GetParachute()
@@ -1581,7 +1581,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// Gets a <see cref="T:SpaceCenter.Parachute" /> if the part is a parachute, otherwise <c>null</c>.
+    /// Gets a <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Parachute" /> if the part is a parachute, otherwise <c>null</c>.
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_Parachute")]
@@ -1596,7 +1596,7 @@ public class Part : RemoteObject
 
     /// <summary>
     /// Gets the parts parent. Returns <c>null</c> if the part does not have a parent.
-    /// This, in combination with <see cref="M:SpaceCenter.Part.GetChildren" />, can be used to traverse the vessels
+    /// This, in combination with <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Part.GetChildren" />, can be used to traverse the vessels
     /// parts tree.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_Parent")]
@@ -1611,7 +1611,7 @@ public class Part : RemoteObject
 
     /// <summary>
     /// Gets the parts parent. Returns <c>null</c> if the part does not have a parent.
-    /// This, in combination with <see cref="M:SpaceCenter.Part.GetChildren" />, can be used to traverse the vessels
+    /// This, in combination with <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Part.GetChildren" />, can be used to traverse the vessels
     /// parts tree.
     /// Executes asynchronously.
     /// </summary>
@@ -1626,7 +1626,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// Gets a <see cref="T:SpaceCenter.RCS" /> if the part is an RCS block/thruster, otherwise <c>null</c>.
+    /// Gets a <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.RCS" /> if the part is an RCS block/thruster, otherwise <c>null</c>.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_RCS")]
     public RCS? GetRCS()
@@ -1639,7 +1639,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// Gets a <see cref="T:SpaceCenter.RCS" /> if the part is an RCS block/thruster, otherwise <c>null</c>.
+    /// Gets a <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.RCS" /> if the part is an RCS block/thruster, otherwise <c>null</c>.
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_RCS")]
@@ -1682,7 +1682,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// Gets a <see cref="T:SpaceCenter.Radiator" /> if the part is a radiator, otherwise <c>null</c>.
+    /// Gets a <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Radiator" /> if the part is a radiator, otherwise <c>null</c>.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_Radiator")]
     public Radiator? GetRadiator()
@@ -1695,7 +1695,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// Gets a <see cref="T:SpaceCenter.Radiator" /> if the part is a radiator, otherwise <c>null</c>.
+    /// Gets a <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Radiator" /> if the part is a radiator, otherwise <c>null</c>.
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_Radiator")]
@@ -1709,7 +1709,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// Gets a <see cref="T:SpaceCenter.ReactionWheel" /> if the part is a reaction wheel, otherwise <c>null</c>.
+    /// Gets a <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ReactionWheel" /> if the part is a reaction wheel, otherwise <c>null</c>.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_ReactionWheel")]
     public ReactionWheel? GetReactionWheel()
@@ -1722,7 +1722,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// Gets a <see cref="T:SpaceCenter.ReactionWheel" /> if the part is a reaction wheel, otherwise <c>null</c>.
+    /// Gets a <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ReactionWheel" /> if the part is a reaction wheel, otherwise <c>null</c>.
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_ReactionWheel")]
@@ -1739,13 +1739,13 @@ public class Part : RemoteObject
     /// Gets the reference frame that is fixed relative to this part, and centered on a fixed
     /// position within the part, defined by the parts model.
     /// <list type="bullet"><item><description>The origin is at the position of the part, as returned by
-    /// <see cref="M:SpaceCenter.Part.Position" />.</description></item><item><description>The axes rotate with the part.</description></item><item><description>The x, y and z axis directions depend on the design of the part.
+    /// <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Part.Position" />.</description></item><item><description>The axes rotate with the part.</description></item><item><description>The x, y and z axis directions depend on the design of the part.
     /// </description></item></list>
     /// </summary>
     /// <remarks>
     /// For docking port parts, this reference frame is not necessarily equivalent to the
     /// reference frame for the docking port, returned by
-    /// <see cref="M:SpaceCenter.DockingPort.GetReferenceFrame" />.
+    /// <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.DockingPort.GetReferenceFrame" />.
     /// </remarks>
     [Rpc("SpaceCenter", "Part_get_ReferenceFrame")]
     public ReferenceFrame GetReferenceFrame()
@@ -1761,14 +1761,14 @@ public class Part : RemoteObject
     /// Gets the reference frame that is fixed relative to this part, and centered on a fixed
     /// position within the part, defined by the parts model.
     /// <list type="bullet"><item><description>The origin is at the position of the part, as returned by
-    /// <see cref="M:SpaceCenter.Part.Position" />.</description></item><item><description>The axes rotate with the part.</description></item><item><description>The x, y and z axis directions depend on the design of the part.
+    /// <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Part.Position" />.</description></item><item><description>The axes rotate with the part.</description></item><item><description>The x, y and z axis directions depend on the design of the part.
     /// </description></item></list>
     /// Executes asynchronously.
     /// </summary>
     /// <remarks>
     /// For docking port parts, this reference frame is not necessarily equivalent to the
     /// reference frame for the docking port, returned by
-    /// <see cref="M:SpaceCenter.DockingPort.GetReferenceFrame" />.
+    /// <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.DockingPort.GetReferenceFrame" />.
     /// </remarks>
     [Rpc("SpaceCenter", "Part_get_ReferenceFrame")]
     public async Task<ReferenceFrame> GetReferenceFrameAsync()
@@ -1781,7 +1781,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// Gets a <see cref="T:SpaceCenter.ResourceConverter" /> if the part is a resource converter,
+    /// Gets a <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ResourceConverter" /> if the part is a resource converter,
     /// otherwise <c>null</c>.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_ResourceConverter")]
@@ -1795,7 +1795,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// Gets a <see cref="T:SpaceCenter.ResourceConverter" /> if the part is a resource converter,
+    /// Gets a <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ResourceConverter" /> if the part is a resource converter,
     /// otherwise <c>null</c>.
     /// Executes asynchronously.
     /// </summary>
@@ -1810,7 +1810,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// Gets a <see cref="T:SpaceCenter.ResourceDrain" /> if the part is a resource drain, otherwise <c>null</c>.
+    /// Gets a <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ResourceDrain" /> if the part is a resource drain, otherwise <c>null</c>.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_ResourceDrain")]
     public ResourceDrain? GetResourceDrain()
@@ -1823,7 +1823,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// Gets a <see cref="T:SpaceCenter.ResourceDrain" /> if the part is a resource drain, otherwise <c>null</c>.
+    /// Gets a <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ResourceDrain" /> if the part is a resource drain, otherwise <c>null</c>.
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_ResourceDrain")]
@@ -1837,7 +1837,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// Gets a <see cref="T:SpaceCenter.ResourceHarvester" /> if the part is a resource harvester,
+    /// Gets a <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ResourceHarvester" /> if the part is a resource harvester,
     /// otherwise <c>null</c>.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_ResourceHarvester")]
@@ -1851,7 +1851,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// Gets a <see cref="T:SpaceCenter.ResourceHarvester" /> if the part is a resource harvester,
+    /// Gets a <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ResourceHarvester" /> if the part is a resource harvester,
     /// otherwise <c>null</c>.
     /// Executes asynchronously.
     /// </summary>
@@ -1866,7 +1866,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// Gets a <see cref="T:SpaceCenter.Resources" /> object for the part.
+    /// Gets a <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Resources" /> object for the part.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_Resources")]
     public Resources GetResources()
@@ -1879,7 +1879,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// Gets a <see cref="T:SpaceCenter.Resources" /> object for the part.
+    /// Gets a <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Resources" /> object for the part.
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_Resources")]
@@ -1893,7 +1893,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// Gets a <see cref="T:SpaceCenter.RoboticController" /> if the part is a robotic controller,
+    /// Gets a <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.RoboticController" /> if the part is a robotic controller,
     /// otherwise <c>null</c>.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_RoboticController")]
@@ -1907,7 +1907,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// Gets a <see cref="T:SpaceCenter.RoboticController" /> if the part is a robotic controller,
+    /// Gets a <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.RoboticController" /> if the part is a robotic controller,
     /// otherwise <c>null</c>.
     /// Executes asynchronously.
     /// </summary>
@@ -1922,7 +1922,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// Gets a <see cref="T:SpaceCenter.RoboticHinge" /> if the part is a robotic hinge, otherwise <c>null</c>.
+    /// Gets a <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.RoboticHinge" /> if the part is a robotic hinge, otherwise <c>null</c>.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_RoboticHinge")]
     public RoboticHinge? GetRoboticHinge()
@@ -1935,7 +1935,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// Gets a <see cref="T:SpaceCenter.RoboticHinge" /> if the part is a robotic hinge, otherwise <c>null</c>.
+    /// Gets a <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.RoboticHinge" /> if the part is a robotic hinge, otherwise <c>null</c>.
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_RoboticHinge")]
@@ -1949,7 +1949,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// Gets a <see cref="T:SpaceCenter.RoboticPiston" /> if the part is a robotic piston, otherwise <c>null</c>.
+    /// Gets a <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.RoboticPiston" /> if the part is a robotic piston, otherwise <c>null</c>.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_RoboticPiston")]
     public RoboticPiston? GetRoboticPiston()
@@ -1962,7 +1962,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// Gets a <see cref="T:SpaceCenter.RoboticPiston" /> if the part is a robotic piston, otherwise <c>null</c>.
+    /// Gets a <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.RoboticPiston" /> if the part is a robotic piston, otherwise <c>null</c>.
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_RoboticPiston")]
@@ -1976,7 +1976,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// Gets a <see cref="T:SpaceCenter.RoboticRotation" /> if the part is a robotic rotation servo, otherwise <c>null</c>.
+    /// Gets a <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.RoboticRotation" /> if the part is a robotic rotation servo, otherwise <c>null</c>.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_RoboticRotation")]
     public RoboticRotation? GetRoboticRotation()
@@ -1989,7 +1989,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// Gets a <see cref="T:SpaceCenter.RoboticRotation" /> if the part is a robotic rotation servo, otherwise <c>null</c>.
+    /// Gets a <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.RoboticRotation" /> if the part is a robotic rotation servo, otherwise <c>null</c>.
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_RoboticRotation")]
@@ -2003,7 +2003,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// Gets a <see cref="T:SpaceCenter.RoboticRotor" /> if the part is a robotic rotor, otherwise <c>null</c>.
+    /// Gets a <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.RoboticRotor" /> if the part is a robotic rotor, otherwise <c>null</c>.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_RoboticRotor")]
     public RoboticRotor? GetRoboticRotor()
@@ -2016,7 +2016,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// Gets a <see cref="T:SpaceCenter.RoboticRotor" /> if the part is a robotic rotor, otherwise <c>null</c>.
+    /// Gets a <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.RoboticRotor" /> if the part is a robotic rotor, otherwise <c>null</c>.
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_RoboticRotor")]
@@ -2030,7 +2030,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// Gets a <see cref="T:SpaceCenter.Sensor" /> if the part is a sensor, otherwise <c>null</c>.
+    /// Gets a <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Sensor" /> if the part is a sensor, otherwise <c>null</c>.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_Sensor")]
     public Sensor? GetSensor()
@@ -2043,7 +2043,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// Gets a <see cref="T:SpaceCenter.Sensor" /> if the part is a sensor, otherwise <c>null</c>.
+    /// Gets a <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Sensor" /> if the part is a sensor, otherwise <c>null</c>.
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_Sensor")]
@@ -2111,7 +2111,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// Gets a <see cref="T:SpaceCenter.SolarPanel" /> if the part is a solar panel, otherwise <c>null</c>.
+    /// Gets a <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.SolarPanel" /> if the part is a solar panel, otherwise <c>null</c>.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_SolarPanel")]
     public SolarPanel? GetSolarPanel()
@@ -2124,7 +2124,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// Gets a <see cref="T:SpaceCenter.SolarPanel" /> if the part is a solar panel, otherwise <c>null</c>.
+    /// Gets a <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.SolarPanel" /> if the part is a solar panel, otherwise <c>null</c>.
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_SolarPanel")]
@@ -2574,7 +2574,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// Gets a <see cref="T:SpaceCenter.Wheel" /> if the part is a wheel, otherwise <c>null</c>.
+    /// Gets a <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Wheel" /> if the part is a wheel, otherwise <c>null</c>.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_Wheel")]
     public Wheel? GetWheel()
@@ -2587,7 +2587,7 @@ public class Part : RemoteObject
     }
 
     /// <summary>
-    /// Gets a <see cref="T:SpaceCenter.Wheel" /> if the part is a wheel, otherwise <c>null</c>.
+    /// Gets a <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Wheel" /> if the part is a wheel, otherwise <c>null</c>.
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Part_get_Wheel")]

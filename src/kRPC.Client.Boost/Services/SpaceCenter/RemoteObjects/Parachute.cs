@@ -4,7 +4,7 @@ using kRPC.Client.Boost.Connection;
 namespace kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects;
 
 /// <summary>
-/// A parachute. Obtained by calling <see cref="M:SpaceCenter.Part.GetParachute" />.
+/// A parachute. Obtained by calling <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Part.GetParachute" />.
 /// </summary>
 public class Parachute : RemoteObject
 {

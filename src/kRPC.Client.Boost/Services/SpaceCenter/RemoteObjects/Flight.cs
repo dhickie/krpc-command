@@ -6,13 +6,13 @@ using MathNet.Spatial.Units;
 namespace kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects;
 
 /// <summary>
-/// Used to get flight telemetry for a vessel, by calling <see cref="M:SpaceCenter.Vessel.Flight" />.
+/// Used to get flight telemetry for a vessel, by calling <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Vessel.Flight" />.
 /// All of the information returned by this class is given in the reference frame
 /// passed to that method.
-/// Obtained by calling <see cref="M:SpaceCenter.Vessel.Flight" />.
+/// Obtained by calling <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Vessel.Flight" />.
 /// </summary>
 /// <remarks>
-/// To get orbital information, such as the apoapsis or inclination, see <see cref="T:SpaceCenter.Orbit" />.
+/// To get orbital information, such as the apoapsis or inclination, see <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Orbit" />.
 /// </remarks>
 public class Flight : RemoteObject
 {
@@ -66,7 +66,7 @@ public class Flight : RemoteObject
 
     /// <summary>
     /// Gets the total aerodynamic forces acting on the vessel,
-    /// in reference frame <see cref="T:SpaceCenter.ReferenceFrame" />.
+    /// in reference frame <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ReferenceFrame" />.
     /// </summary>
     /// <returns>A vector pointing in the direction that the force acts,
     /// with its magnitude equal to the strength of the force in Newtons.</returns>
@@ -82,7 +82,7 @@ public class Flight : RemoteObject
 
     /// <summary>
     /// Gets the total aerodynamic forces acting on the vessel,
-    /// in reference frame <see cref="T:SpaceCenter.ReferenceFrame" />.
+    /// in reference frame <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ReferenceFrame" />.
     /// Executes asynchronously.
     /// </summary>
     /// <returns>A vector pointing in the direction that the force acts,
@@ -128,7 +128,7 @@ public class Flight : RemoteObject
 
     /// <summary>
     /// Gets the direction opposite to the normal of the vessels orbit,
-    /// in the reference frame <see cref="T:SpaceCenter.ReferenceFrame" />.
+    /// in the reference frame <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ReferenceFrame" />.
     /// </summary>
     /// <returns>The direction as a unit vector.</returns>
     [Rpc("SpaceCenter", "Flight_get_AntiNormal")]
@@ -143,7 +143,7 @@ public class Flight : RemoteObject
 
     /// <summary>
     /// Gets the direction opposite to the normal of the vessels orbit,
-    /// in the reference frame <see cref="T:SpaceCenter.ReferenceFrame" />.
+    /// in the reference frame <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ReferenceFrame" />.
     /// Executes asynchronously.
     /// </summary>
     /// <returns>The direction as a unit vector.</returns>
@@ -159,7 +159,7 @@ public class Flight : RemoteObject
 
     /// <summary>
     /// Gets the direction opposite to the radial direction of the vessels orbit,
-    /// in the reference frame <see cref="T:SpaceCenter.ReferenceFrame" />.
+    /// in the reference frame <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ReferenceFrame" />.
     /// </summary>
     /// <returns>The direction as a unit vector.</returns>
     [Rpc("SpaceCenter", "Flight_get_AntiRadial")]
@@ -174,7 +174,7 @@ public class Flight : RemoteObject
 
     /// <summary>
     /// Gets the direction opposite to the radial direction of the vessels orbit,
-    /// in the reference frame <see cref="T:SpaceCenter.ReferenceFrame" />.
+    /// in the reference frame <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ReferenceFrame" />.
     /// Executes asynchronously.
     /// </summary>
     /// <returns>The direction as a unit vector.</returns>
@@ -279,7 +279,7 @@ public class Flight : RemoteObject
 
     /// <summary>
     /// Gets the position of the center of mass of the vessel,
-    /// in the reference frame <see cref="T:SpaceCenter.ReferenceFrame" />
+    /// in the reference frame <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ReferenceFrame" />
     /// </summary>
     /// <returns>The position as a vector.</returns>
     [Rpc("SpaceCenter", "Flight_get_CenterOfMass")]
@@ -294,7 +294,7 @@ public class Flight : RemoteObject
 
     /// <summary>
     /// Gets the position of the center of mass of the vessel,
-    /// in the reference frame <see cref="T:SpaceCenter.ReferenceFrame" />
+    /// in the reference frame <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ReferenceFrame" />
     /// Executes asynchronously.
     /// </summary>
     /// <returns>The position as a vector.</returns>
@@ -310,7 +310,7 @@ public class Flight : RemoteObject
 
     /// <summary>
     /// Gets the direction that the vessel is pointing in,
-    /// in the reference frame <see cref="T:SpaceCenter.ReferenceFrame" />.
+    /// in the reference frame <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ReferenceFrame" />.
     /// </summary>
     /// <returns>The direction as a unit vector.</returns>
     [Rpc("SpaceCenter", "Flight_get_Direction")]
@@ -325,7 +325,7 @@ public class Flight : RemoteObject
 
     /// <summary>
     /// Gets the direction that the vessel is pointing in,
-    /// in the reference frame <see cref="T:SpaceCenter.ReferenceFrame" />.
+    /// in the reference frame <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ReferenceFrame" />.
     /// Executes asynchronously.
     /// </summary>
     /// <returns>The direction as a unit vector.</returns>
@@ -556,7 +556,7 @@ public class Flight : RemoteObject
 
     /// <summary>
     /// Gets the horizontal speed of the vessel in meters per second,
-    /// in the reference frame <see cref="T:SpaceCenter.ReferenceFrame" />.
+    /// in the reference frame <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ReferenceFrame" />.
     /// </summary>
     [Rpc("SpaceCenter", "Flight_get_HorizontalSpeed")]
     public double GetHorizontalSpeed()
@@ -570,7 +570,7 @@ public class Flight : RemoteObject
 
     /// <summary>
     /// Gets the horizontal speed of the vessel in meters per second,
-    /// in the reference frame <see cref="T:SpaceCenter.ReferenceFrame" />.
+    /// in the reference frame <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ReferenceFrame" />.
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Flight_get_HorizontalSpeed")]
@@ -767,7 +767,7 @@ public class Flight : RemoteObject
 
     /// <summary>
     /// Gets the direction normal to the vessels orbit,
-    /// in the reference frame <see cref="T:SpaceCenter.ReferenceFrame" />.
+    /// in the reference frame <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ReferenceFrame" />.
     /// </summary>
     /// <returns>The direction as a unit vector.</returns>
     [Rpc("SpaceCenter", "Flight_get_Normal")]
@@ -782,7 +782,7 @@ public class Flight : RemoteObject
 
     /// <summary>
     /// Gets the direction normal to the vessels orbit,
-    /// in the reference frame <see cref="T:SpaceCenter.ReferenceFrame" />.
+    /// in the reference frame <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ReferenceFrame" />.
     /// Executes asynchronously.
     /// </summary>
     /// <returns>The direction as a unit vector.</returns>
@@ -829,7 +829,7 @@ public class Flight : RemoteObject
 
     /// <summary>
     /// Gets the prograde direction of the vessels orbit,
-    /// in the reference frame <see cref="T:SpaceCenter.ReferenceFrame" />.
+    /// in the reference frame <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ReferenceFrame" />.
     /// </summary>
     /// <returns>The direction as a unit vector.</returns>
     [Rpc("SpaceCenter", "Flight_get_Prograde")]
@@ -844,7 +844,7 @@ public class Flight : RemoteObject
 
     /// <summary>
     /// Gets the prograde direction of the vessels orbit,
-    /// in the reference frame <see cref="T:SpaceCenter.ReferenceFrame" />.
+    /// in the reference frame <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ReferenceFrame" />.
     /// Executes asynchronously.
     /// </summary>
     /// <returns>The direction as a unit vector.</returns>
@@ -860,7 +860,7 @@ public class Flight : RemoteObject
 
     /// <summary>
     /// Gets the radial direction of the vessels orbit,
-    /// in the reference frame <see cref="T:SpaceCenter.ReferenceFrame" />.
+    /// in the reference frame <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ReferenceFrame" />.
     /// </summary>
     /// <returns>The direction as a unit vector.</returns>
     [Rpc("SpaceCenter", "Flight_get_Radial")]
@@ -875,7 +875,7 @@ public class Flight : RemoteObject
 
     /// <summary>
     /// Gets the radial direction of the vessels orbit,
-    /// in the reference frame <see cref="T:SpaceCenter.ReferenceFrame" />.
+    /// in the reference frame <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ReferenceFrame" />.
     /// Executes asynchronously.
     /// </summary>
     /// <returns>The direction as a unit vector.</returns>
@@ -891,7 +891,7 @@ public class Flight : RemoteObject
 
     /// <summary>
     /// Gets the retrograde direction of the vessels orbit,
-    /// in the reference frame <see cref="T:SpaceCenter.ReferenceFrame" />.
+    /// in the reference frame <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ReferenceFrame" />.
     /// </summary>
     /// <returns>The direction as a unit vector.</returns>
     [Rpc("SpaceCenter", "Flight_get_Retrograde")]
@@ -906,7 +906,7 @@ public class Flight : RemoteObject
 
     /// <summary>
     /// Gets the retrograde direction of the vessels orbit,
-    /// in the reference frame <see cref="T:SpaceCenter.ReferenceFrame" />.
+    /// in the reference frame <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ReferenceFrame" />.
     /// Executes asynchronously.
     /// </summary>
     /// <returns>The direction as a unit vector.</returns>
@@ -985,7 +985,7 @@ public class Flight : RemoteObject
     }
 
     /// <summary>
-    /// Gets the rotation of the vessel, in the reference frame <see cref="T:SpaceCenter.ReferenceFrame" />
+    /// Gets the rotation of the vessel, in the reference frame <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ReferenceFrame" />
     /// </summary>
     /// <returns>The rotation as a quaternion of the form <math>(x, y, z, w)</math>.</returns>
     [Rpc("SpaceCenter", "Flight_get_Rotation")]
@@ -999,7 +999,7 @@ public class Flight : RemoteObject
     }
 
     /// <summary>
-    /// Gets the rotation of the vessel, in the reference frame <see cref="T:SpaceCenter.ReferenceFrame" />
+    /// Gets the rotation of the vessel, in the reference frame <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ReferenceFrame" />
     /// Executes asynchronously.
     /// </summary>
     /// <returns>The rotation as a quaternion of the form <math>(x, y, z, w)</math>.</returns>
@@ -1044,7 +1044,7 @@ public class Flight : RemoteObject
 
     /// <summary>
     /// Gets the speed of the vessel in meters per second,
-    /// in the reference frame <see cref="T:SpaceCenter.ReferenceFrame" />.
+    /// in the reference frame <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ReferenceFrame" />.
     /// </summary>
     [Rpc("SpaceCenter", "Flight_get_Speed")]
     public double GetSpeed()
@@ -1058,7 +1058,7 @@ public class Flight : RemoteObject
 
     /// <summary>
     /// Gets the speed of the vessel in meters per second,
-    /// in the reference frame <see cref="T:SpaceCenter.ReferenceFrame" />.
+    /// in the reference frame <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ReferenceFrame" />.
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Flight_get_Speed")]
@@ -1316,7 +1316,7 @@ public class Flight : RemoteObject
     /// <summary>
     /// Gets the <a href="https://en.wikipedia.org/wiki/Total_air_temperature">total air temperature</a>
     /// of the atmosphere around the vessel, in Kelvin.
-    /// This includes the <see cref="M:SpaceCenter.Flight.GetStaticAirTemperature" /> and the vessel's kinetic energy.
+    /// This includes the <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Flight.GetStaticAirTemperature" /> and the vessel's kinetic energy.
     /// </summary>
     [Rpc("SpaceCenter", "Flight_get_TotalAirTemperature")]
     public float GetTotalAirTemperature()
@@ -1331,7 +1331,7 @@ public class Flight : RemoteObject
     /// <summary>
     /// Gets the <a href="https://en.wikipedia.org/wiki/Total_air_temperature">total air temperature</a>
     /// of the atmosphere around the vessel, in Kelvin.
-    /// This includes the <see cref="M:SpaceCenter.Flight.GetStaticAirTemperature" /> and the vessel's kinetic energy.
+    /// This includes the <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Flight.GetStaticAirTemperature" /> and the vessel's kinetic energy.
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Flight_get_TotalAirTemperature")]
@@ -1374,7 +1374,7 @@ public class Flight : RemoteObject
     }
 
     /// <summary>
-    /// Gets the velocity of the vessel, in the reference frame <see cref="T:SpaceCenter.ReferenceFrame" />.
+    /// Gets the velocity of the vessel, in the reference frame <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ReferenceFrame" />.
     /// </summary>
     /// <returns>The velocity as a vector. The vector points in the direction of travel,
     /// and its magnitude is the speed of the vessel in meters per second.</returns>
@@ -1389,7 +1389,7 @@ public class Flight : RemoteObject
     }
 
     /// <summary>
-    /// Gets the velocity of the vessel, in the reference frame <see cref="T:SpaceCenter.ReferenceFrame" />.
+    /// Gets the velocity of the vessel, in the reference frame <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ReferenceFrame" />.
     /// Executes asynchronously.
     /// </summary>
     /// <returns>The velocity as a vector. The vector points in the direction of travel,
@@ -1406,7 +1406,7 @@ public class Flight : RemoteObject
 
     /// <summary>
     /// Gets the vertical speed of the vessel in meters per second,
-    /// in the reference frame <see cref="T:SpaceCenter.ReferenceFrame" />.
+    /// in the reference frame <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ReferenceFrame" />.
     /// </summary>
     [Rpc("SpaceCenter", "Flight_get_VerticalSpeed")]
     public double GetVerticalSpeed()
@@ -1420,7 +1420,7 @@ public class Flight : RemoteObject
 
     /// <summary>
     /// Gets the vertical speed of the vessel in meters per second,
-    /// in the reference frame <see cref="T:SpaceCenter.ReferenceFrame" />.
+    /// in the reference frame <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ReferenceFrame" />.
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Flight_get_VerticalSpeed")]

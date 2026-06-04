@@ -2,7 +2,7 @@ namespace kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects;
 
 /// <summary>
 /// The mode of the speed reported in the navball.
-/// See <see cref="M:SpaceCenter.Control.GetSpeedMode" />.
+/// See <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Control.GetSpeedMode" />.
 /// </summary>
 [Serializable]
 public enum SpeedMode

@@ -5,7 +5,7 @@ using MathNet.Spatial.Units;
 namespace kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects;
 
 /// <summary>
-/// A robotic rotation servo. Obtained by calling <see cref="M:SpaceCenter.Part.GetRoboticRotation" />.
+/// A robotic rotation servo. Obtained by calling <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Part.GetRoboticRotation" />.
 /// </summary>
 public class RoboticRotation : RemoteObject
 {

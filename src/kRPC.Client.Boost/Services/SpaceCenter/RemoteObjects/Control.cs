@@ -7,7 +7,7 @@ namespace kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects;
 /// Used to manipulate the controls of a vessel. This includes adjusting the
 /// throttle, enabling/disabling systems such as SAS and RCS, or altering the
 /// direction in which the vessel is pointing.
-/// Obtained by calling <see cref="M:SpaceCenter.Vessel.GetControl" />.
+/// Obtained by calling <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Vessel.GetControl" />.
 /// </summary>
 /// <remarks>
 /// Control inputs (such as pitch, yaw and roll) are zeroed when all clients
@@ -29,7 +29,7 @@ public class Control : RemoteObject
     /// <remarks>
     /// When called, the active vessel may change. It is therefore possible that,
     /// after calling this function, the object(s) returned by previous call(s) to
-    /// <see cref="M:SpaceCenter.GetActiveVessel" /> no longer refer to the active vessel.
+    /// <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.SpaceCenter.GetActiveVessel" /> no longer refer to the active vessel.
     /// Throws an exception if staging is locked.
     /// </remarks>
     [Rpc("SpaceCenter", "Control_ActivateNextStage")]
@@ -50,7 +50,7 @@ public class Control : RemoteObject
     /// <remarks>
     /// When called, the active vessel may change. It is therefore possible that,
     /// after calling this function, the object(s) returned by previous call(s) to
-    /// <see cref="M:SpaceCenter.GetActiveVessel" /> no longer refer to the active vessel.
+    /// <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.SpaceCenter.GetActiveVessel" /> no longer refer to the active vessel.
     /// Throws an exception if staging is locked.
     /// </remarks>
     [Rpc("SpaceCenter", "Control_ActivateNextStage")]
@@ -65,7 +65,7 @@ public class Control : RemoteObject
 
     /// <summary>
     /// Creates a maneuver node at the given universal time, and returns a
-    /// <see cref="T:SpaceCenter.Node" /> object that can be used to modify it.
+    /// <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Node" /> object that can be used to modify it.
     /// Optionally sets the magnitude of the delta-v for the maneuver node
     /// in the prograde, normal and radial directions.
     /// </summary>
@@ -89,7 +89,7 @@ public class Control : RemoteObject
 
     /// <summary>
     /// Creates a maneuver node at the given universal time, and returns a
-    /// <see cref="T:SpaceCenter.Node" /> object that can be used to modify it.
+    /// <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Node" /> object that can be used to modify it.
     /// Optionally sets the magnitude of the delta-v for the maneuver node
     /// in the prograde, normal and radial directions.
     /// Executes asynchronously.
@@ -314,7 +314,7 @@ public class Control : RemoteObject
 
     /// <summary>
     /// Returns whether all antennas on the vessel are deployed.
-    /// See <see cref="M:SpaceCenter.Antenna.GetDeployed" />.
+    /// See <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Antenna.GetDeployed" />.
     /// </summary>
     [Rpc("SpaceCenter", "Control_get_Antennas")]
     public bool GetAntennas()
@@ -328,7 +328,7 @@ public class Control : RemoteObject
 
     /// <summary>
     /// Returns whether all antennas on the vessel are deployed.
-    /// See <see cref="M:SpaceCenter.Antenna.GetDeployed" />.
+    /// See <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Antenna.GetDeployed" />.
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Control_get_Antennas")]
@@ -343,7 +343,7 @@ public class Control : RemoteObject
 
     /// <summary>
     /// Sets the deployment state of all antennas.
-    /// See <see cref="M:SpaceCenter.Antenna.GetDeployed" />.
+    /// See <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Antenna.GetDeployed" />.
     /// </summary>
     /// <param name="value">The value to set.</param>
     [Rpc("SpaceCenter", "Control_set_Antennas")]
@@ -359,7 +359,7 @@ public class Control : RemoteObject
 
     /// <summary>
     /// Sets the deployment state of all antennas.
-    /// See <see cref="M:SpaceCenter.Antenna.GetDeployed" />.
+    /// See <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Antenna.GetDeployed" />.
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
@@ -434,7 +434,7 @@ public class Control : RemoteObject
 
     /// <summary>
     /// Returns whether any of the cargo bays on the vessel are open.
-    /// See <see cref="M:SpaceCenter.CargoBay.GetOpen" />.
+    /// See <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.CargoBay.GetOpen" />.
     /// </summary>
     [Rpc("SpaceCenter", "Control_get_CargoBays")]
     public bool GetCargoBays()
@@ -448,7 +448,7 @@ public class Control : RemoteObject
 
     /// <summary>
     /// Returns whether any of the cargo bays on the vessel are open.
-    /// See <see cref="M:SpaceCenter.CargoBay.GetOpen" />.
+    /// See <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.CargoBay.GetOpen" />.
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Control_get_CargoBays")]
@@ -463,7 +463,7 @@ public class Control : RemoteObject
 
     /// <summary>
     /// Sets the open state of all cargo bays.
-    /// See <see cref="M:SpaceCenter.CargoBay.GetOpen" />.
+    /// See <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.CargoBay.GetOpen" />.
     /// </summary>
     /// <param name="value">The value to set.</param>
     [Rpc("SpaceCenter", "Control_set_CargoBays")]
@@ -479,7 +479,7 @@ public class Control : RemoteObject
 
     /// <summary>
     /// Sets the open state of all cargo bays.
-    /// See <see cref="M:SpaceCenter.CargoBay.GetOpen" />.
+    /// See <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.CargoBay.GetOpen" />.
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
@@ -975,7 +975,7 @@ public class Control : RemoteObject
 
     /// <summary>
     /// Returns whether all of the air intakes on the vessel are open.
-    /// See <see cref="M:SpaceCenter.Intake.GetOpen" />.
+    /// See <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Intake.GetOpen" />.
     /// </summary>
     [Rpc("SpaceCenter", "Control_get_Intakes")]
     public bool GetIntakes()
@@ -989,7 +989,7 @@ public class Control : RemoteObject
 
     /// <summary>
     /// Returns whether all of the air intakes on the vessel are open.
-    /// See <see cref="M:SpaceCenter.Intake.GetOpen" />.
+    /// See <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Intake.GetOpen" />.
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Control_get_Intakes")]
@@ -1004,7 +1004,7 @@ public class Control : RemoteObject
 
     /// <summary>
     /// Sets the open state of all air intakes.
-    /// See <see cref="M:SpaceCenter.Intake.GetOpen" />.
+    /// See <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Intake.GetOpen" />.
     /// </summary>
     /// <param name="value">The value to set.</param>
     [Rpc("SpaceCenter", "Control_set_Intakes")]
@@ -1020,7 +1020,7 @@ public class Control : RemoteObject
 
     /// <summary>
     /// Sets the open state of all air intakes.
-    /// See <see cref="M:SpaceCenter.Intake.GetOpen" />.
+    /// See <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Intake.GetOpen" />.
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
@@ -1038,7 +1038,7 @@ public class Control : RemoteObject
     /// <summary>
     /// Returns whether all landing legs on the vessel are deployed.
     /// Does not include wheels (for example landing gear).
-    /// See <see cref="M:SpaceCenter.Leg.GetDeployed" />.
+    /// See <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Leg.GetDeployed" />.
     /// </summary>
     [Rpc("SpaceCenter", "Control_get_Legs")]
     public bool GetLegs()
@@ -1053,7 +1053,7 @@ public class Control : RemoteObject
     /// <summary>
     /// Returns whether all landing legs on the vessel are deployed.
     /// Does not include wheels (for example landing gear).
-    /// See <see cref="M:SpaceCenter.Leg.GetDeployed" />.
+    /// See <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Leg.GetDeployed" />.
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Control_get_Legs")]
@@ -1069,7 +1069,7 @@ public class Control : RemoteObject
     /// <summary>
     /// Sets the deployment state of all landing legs.
     /// Does not include wheels (for example landing gear).
-    /// See <see cref="M:SpaceCenter.Leg.GetDeployed" />.
+    /// See <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Leg.GetDeployed" />.
     /// </summary>
     /// <param name="value">The value to set.</param>
     [Rpc("SpaceCenter", "Control_set_Legs")]
@@ -1086,7 +1086,7 @@ public class Control : RemoteObject
     /// <summary>
     /// Sets the deployment state of all landing legs.
     /// Does not include wheels (for example landing gear).
-    /// See <see cref="M:SpaceCenter.Leg.GetDeployed" />.
+    /// See <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Leg.GetDeployed" />.
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
@@ -1189,7 +1189,7 @@ public class Control : RemoteObject
     /// <summary>
     /// Returns whether all parachutes on the vessel are deployed.
     /// Cannot be set to <c>false</c>.
-    /// See <see cref="M:SpaceCenter.Parachute.GetDeployed" />.
+    /// See <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Parachute.GetDeployed" />.
     /// </summary>
     [Rpc("SpaceCenter", "Control_get_Parachutes")]
     public bool GetParachutes()
@@ -1204,7 +1204,7 @@ public class Control : RemoteObject
     /// <summary>
     /// Returns whether all parachutes on the vessel are deployed.
     /// Cannot be set to <c>false</c>.
-    /// See <see cref="M:SpaceCenter.Parachute.GetDeployed" />.
+    /// See <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Parachute.GetDeployed" />.
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Control_get_Parachutes")]
@@ -1220,7 +1220,7 @@ public class Control : RemoteObject
     /// <summary>
     /// Sets the deployment state of all parachutes.
     /// Cannot be set to <c>false</c>.
-    /// See <see cref="M:SpaceCenter.Parachute.GetDeployed" />.
+    /// See <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Parachute.GetDeployed" />.
     /// </summary>
     /// <param name="value">The value to set.</param>
     [Rpc("SpaceCenter", "Control_set_Parachutes")]
@@ -1237,7 +1237,7 @@ public class Control : RemoteObject
     /// <summary>
     /// Sets the deployment state of all parachutes.
     /// Cannot be set to <c>false</c>.
-    /// See <see cref="M:SpaceCenter.Parachute.GetDeployed" />.
+    /// See <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Parachute.GetDeployed" />.
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
@@ -1378,7 +1378,7 @@ public class Control : RemoteObject
 
     /// <summary>
     /// Returns whether all radiators on the vessel are deployed.
-    /// See <see cref="M:SpaceCenter.Radiator.GetDeployed" />.
+    /// See <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Radiator.GetDeployed" />.
     /// </summary>
     [Rpc("SpaceCenter", "Control_get_Radiators")]
     public bool GetRadiators()
@@ -1392,7 +1392,7 @@ public class Control : RemoteObject
 
     /// <summary>
     /// Returns whether all radiators on the vessel are deployed.
-    /// See <see cref="M:SpaceCenter.Radiator.GetDeployed" />.
+    /// See <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Radiator.GetDeployed" />.
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Control_get_Radiators")]
@@ -1407,7 +1407,7 @@ public class Control : RemoteObject
 
     /// <summary>
     /// Sets the deployment state of all radiators.
-    /// See <see cref="M:SpaceCenter.Radiator.GetDeployed" />.
+    /// See <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Radiator.GetDeployed" />.
     /// </summary>
     /// <param name="value">The value to set.</param>
     [Rpc("SpaceCenter", "Control_set_Radiators")]
@@ -1423,7 +1423,7 @@ public class Control : RemoteObject
 
     /// <summary>
     /// Sets the deployment state of all radiators.
-    /// See <see cref="M:SpaceCenter.Radiator.GetDeployed" />.
+    /// See <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Radiator.GetDeployed" />.
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
@@ -1440,7 +1440,7 @@ public class Control : RemoteObject
 
     /// <summary>
     /// Returns whether all reactive wheels on the vessel are active.
-    /// See <see cref="M:SpaceCenter.ReactionWheel.GetActive" />.
+    /// See <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ReactionWheel.GetActive" />.
     /// </summary>
     [Rpc("SpaceCenter", "Control_get_ReactionWheels")]
     public bool GetReactionWheels()
@@ -1454,7 +1454,7 @@ public class Control : RemoteObject
 
     /// <summary>
     /// Returns whether all reactive wheels on the vessel are active.
-    /// See <see cref="M:SpaceCenter.ReactionWheel.GetActive" />.
+    /// See <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ReactionWheel.GetActive" />.
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Control_get_ReactionWheels")]
@@ -1469,7 +1469,7 @@ public class Control : RemoteObject
 
     /// <summary>
     /// Sets the active state of all reaction wheels.
-    /// See <see cref="M:SpaceCenter.ReactionWheel.GetActive" />.
+    /// See <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ReactionWheel.GetActive" />.
     /// </summary>
     /// <param name="value">The value to set.</param>
     [Rpc("SpaceCenter", "Control_set_ReactionWheels")]
@@ -1485,7 +1485,7 @@ public class Control : RemoteObject
 
     /// <summary>
     /// Sets the active state of all reaction wheels.
-    /// See <see cref="M:SpaceCenter.ReactionWheel.GetActive" />.
+    /// See <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ReactionWheel.GetActive" />.
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
@@ -1502,7 +1502,7 @@ public class Control : RemoteObject
 
     /// <summary>
     /// Returns whether all of the resource harvesters on the vessel are deployed.
-    /// See <see cref="M:SpaceCenter.ResourceHarvester.GetDeployed" />.
+    /// See <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ResourceHarvester.GetDeployed" />.
     /// </summary>
     [Rpc("SpaceCenter", "Control_get_ResourceHarvesters")]
     public bool GetResourceHarvesters()
@@ -1516,7 +1516,7 @@ public class Control : RemoteObject
 
     /// <summary>
     /// Returns whether all of the resource harvesters on the vessel are deployed.
-    /// See <see cref="M:SpaceCenter.ResourceHarvester.GetDeployed" />.
+    /// See <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ResourceHarvester.GetDeployed" />.
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Control_get_ResourceHarvesters")]
@@ -1531,7 +1531,7 @@ public class Control : RemoteObject
 
     /// <summary>
     /// Sets the deployment state of all resource harvesters.
-    /// See <see cref="M:SpaceCenter.ResourceHarvester.GetDeployed" />.
+    /// See <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ResourceHarvester.GetDeployed" />.
     /// </summary>
     /// <param name="value">The value to set.</param>
     [Rpc("SpaceCenter", "Control_set_ResourceHarvesters")]
@@ -1547,7 +1547,7 @@ public class Control : RemoteObject
 
     /// <summary>
     /// Sets the deployment state of all resource harvesters.
-    /// See <see cref="M:SpaceCenter.ResourceHarvester.GetDeployed" />.
+    /// See <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ResourceHarvester.GetDeployed" />.
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
@@ -1564,7 +1564,7 @@ public class Control : RemoteObject
 
     /// <summary>
     /// Returns whether any of the resource harvesters on the vessel are active.
-    /// See <see cref="M:SpaceCenter.ResourceHarvester.GetActive" />.
+    /// See <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ResourceHarvester.GetActive" />.
     /// </summary>
     [Rpc("SpaceCenter", "Control_get_ResourceHarvestersActive")]
     public bool GetResourceHarvestersActive()
@@ -1578,7 +1578,7 @@ public class Control : RemoteObject
 
     /// <summary>
     /// Returns whether any of the resource harvesters on the vessel are active.
-    /// See <see cref="M:SpaceCenter.ResourceHarvester.GetActive" />.
+    /// See <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ResourceHarvester.GetActive" />.
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Control_get_ResourceHarvestersActive")]
@@ -1593,7 +1593,7 @@ public class Control : RemoteObject
 
     /// <summary>
     /// Sets the active state of all resource harvesters.
-    /// See <see cref="M:SpaceCenter.ResourceHarvester.GetActive" />.
+    /// See <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ResourceHarvester.GetActive" />.
     /// </summary>
     /// <param name="value">The value to set.</param>
     [Rpc("SpaceCenter", "Control_set_ResourceHarvestersActive")]
@@ -1609,7 +1609,7 @@ public class Control : RemoteObject
 
     /// <summary>
     /// Sets the active state of all resource harvesters.
-    /// See <see cref="M:SpaceCenter.ResourceHarvester.GetActive" />.
+    /// See <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ResourceHarvester.GetActive" />.
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
@@ -1759,7 +1759,7 @@ public class Control : RemoteObject
     /// <summary>
     /// Gets the state of SAS.
     /// </summary>
-    /// <remarks>Equivalent to <see cref="M:SpaceCenter.AutoPilot.GetSAS" /></remarks>
+    /// <remarks>Equivalent to <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.AutoPilot.GetSAS" /></remarks>
     [Rpc("SpaceCenter", "Control_get_SAS")]
     public bool GetSAS()
     {
@@ -1774,7 +1774,7 @@ public class Control : RemoteObject
     /// Gets the state of SAS.
     /// Executes asynchronously.
     /// </summary>
-    /// <remarks>Equivalent to <see cref="M:SpaceCenter.AutoPilot.GetSAS" /></remarks>
+    /// <remarks>Equivalent to <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.AutoPilot.GetSAS" /></remarks>
     [Rpc("SpaceCenter", "Control_get_SAS")]
     public async Task<bool> GetSASAsync()
     {
@@ -1817,11 +1817,11 @@ public class Control : RemoteObject
     }
 
     /// <summary>
-    /// Gets the current <see cref="T:SpaceCenter.SASMode" />.
+    /// Gets the current <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.SASMode" />.
     /// These modes are equivalent to the mode buttons to
     /// the left of the navball that appear when SAS is enabled.
     /// </summary>
-    /// <remarks>Equivalent to <see cref="M:SpaceCenter.AutoPilot.GetSASMode" /></remarks>
+    /// <remarks>Equivalent to <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.AutoPilot.GetSASMode" /></remarks>
     [Rpc("SpaceCenter", "Control_get_SASMode")]
     public SASMode GetSASMode()
     {
@@ -1833,12 +1833,12 @@ public class Control : RemoteObject
     }
 
     /// <summary>
-    /// Gets the current <see cref="T:SpaceCenter.SASMode" />.
+    /// Gets the current <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.SASMode" />.
     /// These modes are equivalent to the mode buttons to
     /// the left of the navball that appear when SAS is enabled.
     /// Executes asynchronously.
     /// </summary>
-    /// <remarks>Equivalent to <see cref="M:SpaceCenter.AutoPilot.GetSASMode" /></remarks>
+    /// <remarks>Equivalent to <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.AutoPilot.GetSASMode" /></remarks>
     [Rpc("SpaceCenter", "Control_get_SASMode")]
     public async Task<SASMode> GetSASModeAsync()
     {
@@ -1850,7 +1850,7 @@ public class Control : RemoteObject
     }
 
     /// <summary>
-    /// Sets the current <see cref="T:SpaceCenter.SASMode" />.
+    /// Sets the current <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.SASMode" />.
     /// These modes are equivalent to the mode buttons to
     /// the left of the navball that appear when SAS is enabled.
     /// </summary>
@@ -1867,7 +1867,7 @@ public class Control : RemoteObject
     }
 
     /// <summary>
-    /// Sets the current <see cref="T:SpaceCenter.SASMode" />.
+    /// Sets the current <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.SASMode" />.
     /// These modes are equivalent to the mode buttons to
     /// the left of the navball that appear when SAS is enabled.
     /// Executes asynchronously.
@@ -1886,7 +1886,7 @@ public class Control : RemoteObject
 
     /// <summary>
     /// Returns whether all solar panels on the vessel are deployed.
-    /// See <see cref="M:SpaceCenter.SolarPanel.GetDeployed" />.
+    /// See <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.SolarPanel.GetDeployed" />.
     /// </summary>
     [Rpc("SpaceCenter", "Control_get_SolarPanels")]
     public bool GetSolarPanels()
@@ -1900,7 +1900,7 @@ public class Control : RemoteObject
 
     /// <summary>
     /// Returns whether all solar panels on the vessel are deployed.
-    /// See <see cref="M:SpaceCenter.SolarPanel.GetDeployed" />.
+    /// See <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.SolarPanel.GetDeployed" />.
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Control_get_SolarPanels")]
@@ -1915,7 +1915,7 @@ public class Control : RemoteObject
 
     /// <summary>
     /// Sets the deployment state of all solar panels.
-    /// See <see cref="M:SpaceCenter.SolarPanel.GetDeployed" />.
+    /// See <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.SolarPanel.GetDeployed" />.
     /// </summary>
     /// <param name="value">The value to set.</param>
     [Rpc("SpaceCenter", "Control_set_SolarPanels")]
@@ -1931,7 +1931,7 @@ public class Control : RemoteObject
 
     /// <summary>
     /// Sets the deployment state of all solar panels.
-    /// See <see cref="M:SpaceCenter.SolarPanel.GetDeployed" />.
+    /// See <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.SolarPanel.GetDeployed" />.
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
@@ -1974,7 +1974,7 @@ public class Control : RemoteObject
     }
 
     /// <summary>
-    /// Gets the current <see cref="T:SpaceCenter.SpeedMode" /> of the navball.
+    /// Gets the current <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.SpeedMode" /> of the navball.
     /// This is the mode displayed next to the speed at the top of the navball.
     /// </summary>
     [Rpc("SpaceCenter", "Control_get_SpeedMode")]
@@ -1988,7 +1988,7 @@ public class Control : RemoteObject
     }
 
     /// <summary>
-    /// Gets the current <see cref="T:SpaceCenter.SpeedMode" /> of the navball.
+    /// Gets the current <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.SpeedMode" /> of the navball.
     /// This is the mode displayed next to the speed at the top of the navball.
     /// Executes asynchronously.
     /// </summary>
@@ -2003,7 +2003,7 @@ public class Control : RemoteObject
     }
 
     /// <summary>
-    /// Sets the current <see cref="T:SpaceCenter.SpeedMode" /> of the navball.
+    /// Sets the current <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.SpeedMode" /> of the navball.
     /// This is the mode displayed next to the speed at the top of the navball.
     /// </summary>
     /// <param name="value">The value to set.</param>
@@ -2019,7 +2019,7 @@ public class Control : RemoteObject
     }
 
     /// <summary>
-    /// Sets the current <see cref="T:SpaceCenter.SpeedMode" /> of the navball.
+    /// Sets the current <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.SpeedMode" /> of the navball.
     /// This is the mode displayed next to the speed at the top of the navball.
     /// Executes asynchronously.
     /// </summary>
@@ -2389,7 +2389,7 @@ public class Control : RemoteObject
     /// <summary>
     /// Returns whether all wheels on the vessel are deployed.
     /// Does not include landing legs.
-    /// See <see cref="M:SpaceCenter.Wheel.GetDeployed" />.
+    /// See <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Wheel.GetDeployed" />.
     /// </summary>
     [Rpc("SpaceCenter", "Control_get_Wheels")]
     public bool GetWheels()
@@ -2404,7 +2404,7 @@ public class Control : RemoteObject
     /// <summary>
     /// Returns whether all wheels on the vessel are deployed.
     /// Does not include landing legs.
-    /// See <see cref="M:SpaceCenter.Wheel.GetDeployed" />.
+    /// See <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Wheel.GetDeployed" />.
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Control_get_Wheels")]
@@ -2420,7 +2420,7 @@ public class Control : RemoteObject
     /// <summary>
     /// Sets the deployment state of all wheels.
     /// Does not include landing legs.
-    /// See <see cref="M:SpaceCenter.Wheel.GetDeployed" />.
+    /// See <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Wheel.GetDeployed" />.
     /// </summary>
     /// <param name="value">The value to set.</param>
     [Rpc("SpaceCenter", "Control_set_Wheels")]
@@ -2437,7 +2437,7 @@ public class Control : RemoteObject
     /// <summary>
     /// Sets the deployment state of all wheels.
     /// Does not include landing legs.
-    /// See <see cref="M:SpaceCenter.Wheel.GetDeployed" />.
+    /// See <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Wheel.GetDeployed" />.
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>

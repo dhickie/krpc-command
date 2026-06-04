@@ -5,7 +5,7 @@ namespace kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects;
 
 /// <summary>
 /// Contracts manager.
-/// Obtained by calling <see cref="M:SpaceCenter.GetContractManager" />.
+/// Obtained by calling <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.SpaceCenter.GetContractManager" />.
 /// </summary>
 public class ContractManager : RemoteObject
 {

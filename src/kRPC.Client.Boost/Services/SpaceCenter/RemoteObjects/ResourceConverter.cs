@@ -4,7 +4,7 @@ using kRPC.Client.Boost.Connection;
 namespace kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects;
 
 /// <summary>
-/// A resource converter. Obtained by calling <see cref="M:SpaceCenter.Part.GetResourceConverter" />.
+/// A resource converter. Obtained by calling <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Part.GetResourceConverter" />.
 /// </summary>
 public class ResourceConverter : RemoteObject
 {

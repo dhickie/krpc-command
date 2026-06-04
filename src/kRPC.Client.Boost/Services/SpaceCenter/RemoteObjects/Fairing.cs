@@ -4,7 +4,7 @@ using kRPC.Client.Boost.Connection;
 namespace kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects;
 
 /// <summary>
-/// A fairing. Obtained by calling <see cref="M:SpaceCenter.Part.GetFairing" />.
+/// A fairing. Obtained by calling <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Part.GetFairing" />.
 /// Supports both stock fairings, and those from the ProceduralFairings mod.
 /// </summary>
 public class Fairing : RemoteObject

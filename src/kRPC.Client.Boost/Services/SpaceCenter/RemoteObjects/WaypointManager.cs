@@ -7,7 +7,7 @@ namespace kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects;
 /// <summary>
 /// Waypoints are the location markers you can see on the map view showing you where contracts are targeted for.
 /// With this structure, you can obtain coordinate data for the locations of these waypoints.
-/// Obtained by calling <see cref="M:SpaceCenter.GetWaypointManager" />.
+/// Obtained by calling <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.SpaceCenter.GetWaypointManager" />.
 /// </summary>
 public class WaypointManager : RemoteObject
 {
@@ -20,7 +20,7 @@ public class WaypointManager : RemoteObject
 
     /// <summary>
     /// Creates a waypoint at the given position at ground level, and returns a
-    /// <see cref="T:SpaceCenter.Waypoint" /> object that can be used to modify it.
+    /// <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Waypoint" /> object that can be used to modify it.
     /// </summary>
     /// <param name="latitude">Latitude of the waypoint.</param>
     /// <param name="longitude">Longitude of the waypoint.</param>
@@ -43,7 +43,7 @@ public class WaypointManager : RemoteObject
 
     /// <summary>
     /// Creates a waypoint at the given position at ground level, and returns a
-    /// <see cref="T:SpaceCenter.Waypoint" /> object that can be used to modify it.
+    /// <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Waypoint" /> object that can be used to modify it.
     /// Executes asynchronously.
     /// </summary>
     /// <param name="latitude">Latitude of the waypoint.</param>
@@ -67,7 +67,7 @@ public class WaypointManager : RemoteObject
 
     /// <summary>
     /// Creates a waypoint at the given position and altitude, and returns a
-    /// <see cref="T:SpaceCenter.Waypoint" /> object that can be used to modify it.
+    /// <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Waypoint" /> object that can be used to modify it.
     /// </summary>
     /// <param name="latitude">Latitude of the waypoint.</param>
     /// <param name="longitude">Longitude of the waypoint.</param>
@@ -92,7 +92,7 @@ public class WaypointManager : RemoteObject
 
     /// <summary>
     /// Creates a waypoint at the given position and altitude, and returns a
-    /// <see cref="T:SpaceCenter.Waypoint" /> object that can be used to modify it.
+    /// <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Waypoint" /> object that can be used to modify it.
     /// Executes asynchronously.
     /// </summary>
     /// <param name="latitude">Latitude of the waypoint.</param>

@@ -4,7 +4,7 @@ using kRPC.Client.Boost.Connection;
 namespace kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects;
 
 /// <summary>
-/// Represents crew in a vessel. Can be obtained using <see cref="M:SpaceCenter.Vessel.GetCrew" />.
+/// Represents crew in a vessel. Can be obtained using <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Vessel.GetCrew" />.
 /// </summary>
 public class CrewMember : RemoteObject
 {

@@ -4,7 +4,7 @@ using kRPC.Client.Boost.Connection;
 namespace kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects;
 
 /// <summary>
-/// A radiator. Obtained by calling <see cref="M:SpaceCenter.Part.GetRadiator" />.
+/// A radiator. Obtained by calling <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Part.GetRadiator" />.
 /// </summary>
 public class Radiator : RemoteObject
 {
@@ -135,7 +135,7 @@ public class Radiator : RemoteObject
     /// Gets the current state of the radiator.
     /// </summary>
     /// <remarks>
-    /// A fixed radiator is always <see cref="M:SpaceCenter.RadiatorState.Extended" />.
+    /// A fixed radiator is always <see cref="F:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.RadiatorState.Extended" />.
     /// </remarks>
     [Rpc("SpaceCenter", "Radiator_get_State")]
     public RadiatorState GetState()
@@ -152,7 +152,7 @@ public class Radiator : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <remarks>
-    /// A fixed radiator is always <see cref="M:SpaceCenter.RadiatorState.Extended" />.
+    /// A fixed radiator is always <see cref="F:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.RadiatorState.Extended" />.
     /// </remarks>
     [Rpc("SpaceCenter", "Radiator_get_State")]
     public async Task<RadiatorState> GetStateAsync()

@@ -8,10 +8,10 @@ namespace kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects;
 /// <summary>
 /// An engine, including ones of various types.
 /// For example liquid fuelled gimballed engines, solid rocket boosters and jet engines.
-/// Obtained by calling <see cref="M:SpaceCenter.Part.GetEngine" />.
+/// Obtained by calling <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Part.GetEngine" />.
 /// </summary>
 /// <remarks>
-/// For RCS thrusters <see cref="M:SpaceCenter.Part.GetRCS" />.
+/// For RCS thrusters <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Part.GetRCS" />.
 /// </remarks>
 public class Engine : RemoteObject
 {
@@ -156,7 +156,7 @@ public class Engine : RemoteObject
 
     /// <summary>
     /// Gets whether the engine is active. Setting this attribute may have no effect,
-    /// depending on <see cref="M:SpaceCenter.Engine.GetCanShutdown" /> and <see cref="M:SpaceCenter.Engine.GetCanRestart" />.
+    /// depending on <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Engine.GetCanShutdown" /> and <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Engine.GetCanRestart" />.
     /// </summary>
     [Rpc("SpaceCenter", "Engine_get_Active")]
     public bool GetActive()
@@ -170,7 +170,7 @@ public class Engine : RemoteObject
 
     /// <summary>
     /// Gets whether the engine is active. Setting this attribute may have no effect,
-    /// depending on <see cref="M:SpaceCenter.Engine.GetCanShutdown" /> and <see cref="M:SpaceCenter.Engine.GetCanRestart" />.
+    /// depending on <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Engine.GetCanShutdown" /> and <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Engine.GetCanRestart" />.
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Engine_get_Active")]
@@ -185,7 +185,7 @@ public class Engine : RemoteObject
 
     /// <summary>
     /// Sets whether the engine is active. Setting this attribute may have no effect,
-    /// depending on <see cref="M:SpaceCenter.Engine.GetCanShutdown" /> and <see cref="M:SpaceCenter.Engine.GetCanRestart" />.
+    /// depending on <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Engine.GetCanShutdown" /> and <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Engine.GetCanRestart" />.
     /// </summary>
     /// <param name="value">The value to set.</param>
     [Rpc("SpaceCenter", "Engine_set_Active")]
@@ -201,7 +201,7 @@ public class Engine : RemoteObject
 
     /// <summary>
     /// Sets whether the engine is active. Setting this attribute may have no effect,
-    /// depending on <see cref="M:SpaceCenter.Engine.GetCanShutdown" /> and <see cref="M:SpaceCenter.Engine.GetCanRestart" />.
+    /// depending on <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Engine.GetCanShutdown" /> and <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Engine.GetCanRestart" />.
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
@@ -278,7 +278,7 @@ public class Engine : RemoteObject
     /// Gets the amount of thrust, in Newtons, that would be produced by the engine
     /// when activated and with its throttle set to 100%.
     /// Returns zero if the engine does not have any fuel.
-    /// Takes the engine's current <see cref="M:SpaceCenter.Engine.GetThrustLimit" /> and atmospheric conditions
+    /// Takes the engine's current <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Engine.GetThrustLimit" /> and atmospheric conditions
     /// into account.
     /// </summary>
     [Rpc("SpaceCenter", "Engine_get_AvailableThrust")]
@@ -295,7 +295,7 @@ public class Engine : RemoteObject
     /// Gets the amount of thrust, in Newtons, that would be produced by the engine
     /// when activated and with its throttle set to 100%.
     /// Returns zero if the engine does not have any fuel.
-    /// Takes the engine's current <see cref="M:SpaceCenter.Engine.GetThrustLimit" /> and atmospheric conditions
+    /// Takes the engine's current <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Engine.GetThrustLimit" /> and atmospheric conditions
     /// into account.
     /// Executes asynchronously.
     /// </summary>
@@ -312,7 +312,7 @@ public class Engine : RemoteObject
     /// <summary>
     /// Gets the available torque, in Newton meters, that can be produced by this engine,
     /// in the positive and negative pitch, roll and yaw axes of the vessel. These axes
-    /// correspond to the coordinate axes of the <see cref="M:SpaceCenter.Vessel.GetReferenceFrame" />.
+    /// correspond to the coordinate axes of the <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Vessel.GetReferenceFrame" />.
     /// Returns zero if the engine is inactive, or not gimballed.
     /// </summary>
     [Rpc("SpaceCenter", "Engine_get_AvailableTorque")]
@@ -328,7 +328,7 @@ public class Engine : RemoteObject
     /// <summary>
     /// Gets the available torque, in Newton meters, that can be produced by this engine,
     /// in the positive and negative pitch, roll and yaw axes of the vessel. These axes
-    /// correspond to the coordinate axes of the <see cref="M:SpaceCenter.Vessel.GetReferenceFrame" />.
+    /// correspond to the coordinate axes of the <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Vessel.GetReferenceFrame" />.
     /// Returns zero if the engine is inactive, or not gimballed.
     /// Executes asynchronously.
     /// </summary>
@@ -755,7 +755,7 @@ public class Engine : RemoteObject
     /// <summary>
     /// Gets the maximum amount of thrust that can be produced by the engine in a
     /// vacuum, in Newtons. This is the amount of thrust produced by the engine
-    /// when activated, <see cref="M:SpaceCenter.Engine.GetThrustLimit" /> is set to 100%, the main
+    /// when activated, <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Engine.GetThrustLimit" /> is set to 100%, the main
     /// vessel's throttle is set to 100% and the engine is in a vacuum.
     /// </summary>
     [Rpc("SpaceCenter", "Engine_get_MaxVacuumThrust")]
@@ -771,7 +771,7 @@ public class Engine : RemoteObject
     /// <summary>
     /// Gets the maximum amount of thrust that can be produced by the engine in a
     /// vacuum, in Newtons. This is the amount of thrust produced by the engine
-    /// when activated, <see cref="M:SpaceCenter.Engine.GetThrustLimit" /> is set to 100%, the main
+    /// when activated, <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Engine.GetThrustLimit" /> is set to 100%, the main
     /// vessel's throttle is set to 100% and the engine is in a vacuum.
     /// Executes asynchronously.
     /// </summary>
@@ -845,7 +845,7 @@ public class Engine : RemoteObject
 
     /// <summary>
     /// Gets the available modes for the engine.
-    /// A dictionary mapping mode names to <see cref="T:SpaceCenter.Engine" /> objects.
+    /// A dictionary mapping mode names to <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Engine" /> objects.
     /// </summary>
     [Rpc("SpaceCenter", "Engine_get_Modes")]
     public IDictionary<string,Engine> GetModes()
@@ -859,7 +859,7 @@ public class Engine : RemoteObject
 
     /// <summary>
     /// Gets the available modes for the engine.
-    /// A dictionary mapping mode names to <see cref="T:SpaceCenter.Engine" /> objects.
+    /// A dictionary mapping mode names to <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Engine" /> objects.
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Engine_get_Modes")]
@@ -1026,7 +1026,7 @@ public class Engine : RemoteObject
     /// (such as jet engines), or independent throttle may be enabled.
     ///
     /// When the engine's independent throttle is enabled
-    /// (see <see cref="M:SpaceCenter.Engine.GetIndependentThrottle" />), can be used to set the throttle percentage.
+    /// (see <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Engine.GetIndependentThrottle" />), can be used to set the throttle percentage.
     /// </summary>
     [Rpc("SpaceCenter", "Engine_get_Throttle")]
     public float GetThrottle()
@@ -1045,7 +1045,7 @@ public class Engine : RemoteObject
     /// (such as jet engines), or independent throttle may be enabled.
     ///
     /// When the engine's independent throttle is enabled
-    /// (see <see cref="M:SpaceCenter.Engine.GetIndependentThrottle" />), can be used to set the throttle percentage.
+    /// (see <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Engine.GetIndependentThrottle" />), can be used to set the throttle percentage.
     /// Executes asynchronously.
     /// </summary>
     [Rpc("SpaceCenter", "Engine_get_Throttle")]
@@ -1065,7 +1065,7 @@ public class Engine : RemoteObject
     /// (such as jet engines), or independent throttle may be enabled.
     ///
     /// When the engine's independent throttle is enabled
-    /// (see <see cref="M:SpaceCenter.Engine.GetIndependentThrottle" />), can be used to set the throttle percentage.
+    /// (see <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Engine.GetIndependentThrottle" />), can be used to set the throttle percentage.
     /// </summary>
     /// <param name="value">The value to set.</param>
     [Rpc("SpaceCenter", "Engine_set_Throttle")]
@@ -1086,7 +1086,7 @@ public class Engine : RemoteObject
     /// (such as jet engines), or independent throttle may be enabled.
     ///
     /// When the engine's independent throttle is enabled
-    /// (see <see cref="M:SpaceCenter.Engine.GetIndependentThrottle" />), can be used to set the throttle percentage.
+    /// (see <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Engine.GetIndependentThrottle" />), can be used to set the throttle percentage.
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
@@ -1102,7 +1102,7 @@ public class Engine : RemoteObject
     }
 
     /// <summary>
-    /// Gets whether the <see cref="M:SpaceCenter.Control.GetThrottle" /> affects the engine. For example,
+    /// Gets whether the <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Control.GetThrottle" /> affects the engine. For example,
     /// this is <c>true</c> for liquid fueled rockets, and <c>false</c> for solid rocket
     /// boosters.
     /// </summary>
@@ -1117,7 +1117,7 @@ public class Engine : RemoteObject
     }
 
     /// <summary>
-    /// Gets whether the <see cref="M:SpaceCenter.Control.GetThrottle" /> affects the engine. For example,
+    /// Gets whether the <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Control.GetThrottle" /> affects the engine. For example,
     /// this is <c>true</c> for liquid fueled rockets, and <c>false</c> for solid rocket
     /// boosters.
     /// Executes asynchronously.
@@ -1231,8 +1231,8 @@ public class Engine : RemoteObject
     /// <remarks>
     /// For example, this corresponds to the rocket nozzel on a solid rocket booster,
     /// or the individual nozzels on a RAPIER engine.
-    /// The overall thrust produced by the engine, as reported by <see cref="M:SpaceCenter.Engine.GetAvailableThrust" />,
-    /// <see cref="M:SpaceCenter.Engine.GetMaxThrust" /> and others, is the sum of the thrust generated by each thruster.
+    /// The overall thrust produced by the engine, as reported by <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Engine.GetAvailableThrust" />,
+    /// <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Engine.GetMaxThrust" /> and others, is the sum of the thrust generated by each thruster.
     /// </remarks>
     [Rpc("SpaceCenter", "Engine_get_Thrusters")]
     public IList<Thruster> GetThrusters()
@@ -1251,8 +1251,8 @@ public class Engine : RemoteObject
     /// <remarks>
     /// For example, this corresponds to the rocket nozzel on a solid rocket booster,
     /// or the individual nozzels on a RAPIER engine.
-    /// The overall thrust produced by the engine, as reported by <see cref="M:SpaceCenter.Engine.GetAvailableThrust" />,
-    /// <see cref="M:SpaceCenter.Engine.GetMaxThrust" /> and others, is the sum of the thrust generated by each thruster.
+    /// The overall thrust produced by the engine, as reported by <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Engine.GetAvailableThrust" />,
+    /// <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Engine.GetMaxThrust" /> and others, is the sum of the thrust generated by each thruster.
     /// </remarks>
     [Rpc("SpaceCenter", "Engine_get_Thrusters")]
     public async Task<IList<Thruster>> GetThrustersAsync()
