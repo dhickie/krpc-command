@@ -1,6 +1,7 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Linq.Expressions;
 using kRPC.Client.Boost.Connection;
+using kRPC.Client.Boost.Helpers;
 using kRPC.Client.Boost.Services.KRPC.RemoteObjects;
 
 namespace kRPC.Client.Boost.Streams;
@@ -39,19 +40,14 @@ internal sealed class LocalStream<T> : LocalStream where T : class
         if (_initialised)
             return;
 
-        _initLock.EnterWriteLock();
-        try
+        Sync.WithWriteLock(_initLock, () => 
         {
             if (_initialised)
                 return;
 
             RemoteStream = _connection.AddStream(_expression, true);
             _initialised = true;
-        }
-        finally
-        {
-            _initLock.ExitWriteLock();
-        }
+        });
     }
     
     /// <inheritdoc/>
@@ -60,8 +56,7 @@ internal sealed class LocalStream<T> : LocalStream where T : class
         if (!_initialised)
             return;
 
-        _initLock.EnterWriteLock();
-        try
+        Sync.WithWriteLock(_initLock, () =>
         {
             if (!_initialised)
                 return;
@@ -69,49 +64,46 @@ internal sealed class LocalStream<T> : LocalStream where T : class
             RemoteStream?.Remove();
             RemoteStream = null;
             _initialised = false;
-        }
-        finally
-        {
-            _initLock.ExitWriteLock();
-        }
+        });
     }
     
     protected override bool TryGetImpl<TOut>(out TOut? value) where TOut : class
     {
-        _initLock.EnterReadLock();
-        try
+        var result = false;
+        TOut? innerValue = null; 
+        
+        Sync.WithReadLock(_initLock, () =>
         {
             if (!_initialised)
             {
-                value = null;
-                return false;
+                result = false;
+                return;
             }
 
-            value = Volatile.Read(ref _value) as TOut;
+            innerValue = Volatile.Read(ref _value) as TOut;
 
-            return value != null;
-        }
-        finally
-        {
-            _initLock.ExitReadLock();
-        }
+            result = innerValue != null;
+        });
+        
+        value = innerValue;
+        return result;
     }
     
     protected override bool TrySetImpl(object? value)
     {
+        var result = false;
+        
         _initLock.EnterReadLock();
-        try
+        Sync.WithReadLock(_initLock, () =>
         {
             if (!_initialised)
-                return false;
+                return;
 
             Volatile.Write(ref _value, value as T);
-            return true;
-        }
-        finally
-        {
-            _initLock.ExitReadLock();
-        }
+            result = true;
+        });
+
+        return result;
     }
 }
 
@@ -171,7 +163,6 @@ internal abstract class LocalStream(Type dataType)
     /// This should only be called by the stream manager after receiving an update from the server.
     /// </summary>
     /// <param name="value">The value to set for the stream</param>
-    /// <typeparam name="T">The type of the value being set</typeparam>
     /// <returns>Whether the value was successfully set</returns>
     /// <exception cref="ArgumentException">
     ///     Thrown if the type of the provided value doesn't match the data type contained in the stream.

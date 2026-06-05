@@ -6,6 +6,7 @@ using kRPC.Client.Boost.Attributes;
 using kRPC.Client.Boost.Config;
 using kRPC.Client.Boost.Connection.Schema;
 using kRPC.Client.Boost.Exceptions;
+using kRPC.Client.Boost.Helpers;
 using Exception = System.Exception;
 using RequestType = kRPC.Client.Boost.Connection.Schema.ConnectionRequest.Types.Type;
 
@@ -21,7 +22,6 @@ internal abstract class Connection : IDisposable
     private readonly object _connectionLock = new();
     private bool _disposed;
     private readonly ReaderWriterLockSlim _disposeLock = new();
-    private readonly CancellationTokenSource _disposeTokenSource = new();
     
     private readonly TcpClient _rpcClient;
     private readonly NetworkStream _rpcStream;
@@ -75,8 +75,7 @@ internal abstract class Connection : IDisposable
     /// </summary>
     private void Dispose(bool disposing)
     {
-        _disposeLock.EnterWriteLock();
-        try
+        Sync.WithWriteLock(_disposeLock, () => 
         {
             if (_disposed)
                 return;
@@ -87,12 +86,7 @@ internal abstract class Connection : IDisposable
             }
 
             _disposed = true;
-            _disposeTokenSource.Cancel();
-        }
-        finally
-        {
-            _disposeLock.ExitWriteLock();
-        }
+        });
     }
     
     /// <summary>
@@ -153,10 +147,15 @@ internal abstract class Connection : IDisposable
     /// <param name="service">The service the procedure is in</param>
     /// <param name="procedure">The name of the procedure</param>
     /// <param name="arguments">Arguments to the procedure</param>
+    /// <param name="cancellationToken">The cancellation token for cancelling the invocation</param>
     /// <returns>The result object</returns>
-    protected object? Invoke(System.Type resultType, string service, string procedure, IList<ProcedureArgument>? arguments = null)
+    protected object? Invoke(System.Type resultType, 
+        string service, 
+        string procedure, 
+        IList<ProcedureArgument>? arguments, 
+        CancellationToken cancellationToken)
     {
-        var result = Invoke(GetCall(service, procedure, arguments));
+        var result = Invoke(GetCall(service, procedure, arguments), cancellationToken);
         return Codec.Decode(result, resultType, _connection);
     }
 
@@ -166,9 +165,13 @@ internal abstract class Connection : IDisposable
     /// <param name="service">The service the procedure is in</param>
     /// <param name="procedure">The name of the procedure</param>
     /// <param name="arguments">Arguments to the procedure</param>
-    protected void Invoke(string service, string procedure, IEnumerable<ProcedureArgument>? arguments = null)
+    /// <param name="cancellationToken">The cancellation token for cancelling the invocation</param>
+    protected void Invoke(string service, 
+        string procedure, 
+        IEnumerable<ProcedureArgument>? arguments, 
+        CancellationToken cancellationToken)
     {
-        Invoke(GetCall(service, procedure, arguments));
+        Invoke(GetCall(service, procedure, arguments), cancellationToken);
     }
     
     /// <summary>
@@ -225,26 +228,37 @@ internal abstract class Connection : IDisposable
         }
     }
 
-    private ByteString Invoke(ProcedureCall call)
+    private ByteString Invoke(ProcedureCall call, CancellationToken cancellationToken)
     {
         var request = new Request();
         request.Calls.Add(call);
-        Response response;
+        Response? response = null;
 
-        lock (_connectionLock) 
+        Sync.WithReadLock(_disposeLock, () =>
         {
-            // Send request to server
-            _codedRpcStream.WriteLength(request.CalculateSize());
-            request.WriteTo(_codedRpcStream);
-            _codedRpcStream.Flush();
+            if (_disposed)
+                throw new ObjectDisposedException(nameof(Connection));
+                
+            lock (_connectionLock)
+            {
+                // Send request to server
+                cancellationToken.ThrowIfCancellationRequested();
+                _codedRpcStream.WriteLength(request.CalculateSize());
+                request.WriteTo(_codedRpcStream);
+                _codedRpcStream.Flush();
             
-            // Receive response
-            var size = ReadMessageData(_rpcStream, ref _responseBuffer);
-            response = Response.Parser.ParseFrom(new CodedInputStream(_responseBuffer, 0, size));
-        }
+                // Receive response
+                cancellationToken.ThrowIfCancellationRequested();
+                var size = ReadMessageData(_rpcStream, ref _responseBuffer, cancellationToken);
+                if (size == 0)
+                    throw new OperationCanceledException("Cancellation requested due to disposal");
+                
+                response = Response.Parser.ParseFrom(new CodedInputStream(_responseBuffer, 0, size));
+            }
+        });
 
         AssertSuccess(response);
-        return response.Results[0].Value;
+        return response!.Results[0].Value;
     }
 
     private static ProcedureCall GetCall(string service, string procedure, IEnumerable<ProcedureArgument>? arguments = null)
@@ -331,8 +345,11 @@ internal abstract class Connection : IDisposable
         return call;
     }
     
-    private static void AssertSuccess(Response response)
+    private static void AssertSuccess(Response? response)
     {
+        if (response == null)
+            throw new ProcedureException("Response object is null");
+        
         if (response.Error != null)
             throw GetException(response.Error);
         

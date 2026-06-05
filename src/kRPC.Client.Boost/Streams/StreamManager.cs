@@ -5,6 +5,7 @@ using System.Linq.Expressions;
 using kRPC.Client.Boost.Config;
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Exceptions;
+using kRPC.Client.Boost.Helpers;
 using kRPC.Client.Boost.Logging;
 using Microsoft.Extensions.Logging;
 
@@ -79,15 +80,10 @@ internal static class StreamManager
         // Any number of threads can enter in read mode, unless compaction is in progress and has a write lock or 
         // is about to start and is waiting to obtain a write lock.
         // We only want to "stop the world" when compacting the lock and stream dictionaries.
-        CompactionLock.EnterReadLock();
-        try
+        Sync.WithReadLock(CompactionLock, () =>
         {
             AddSubscriptionImpl(key, expression);
-        }
-        finally
-        {
-            CompactionLock.ExitReadLock();
-        }
+        });
     }
     
     /// <summary>
@@ -98,15 +94,10 @@ internal static class StreamManager
     {
         ValidateState();
 
-        CompactionLock.EnterReadLock();
-        try
+        Sync.WithReadLock(CompactionLock, () =>
         {
             RemoveSubscriptionImpl(key);
-        }
-        finally
-        {
-            CompactionLock.ExitReadLock();
-        }
+        });
     }
     
     /// <summary>
@@ -259,9 +250,7 @@ internal static class StreamManager
         
         // Obtain the write lock - this prevents any read locks from being acquired and waits until
         // all threads inside the lock have exited
-        CompactionLock.EnterWriteLock();
-
-        try
+        Sync.WithWriteLock(CompactionLock, () =>
         {
             // Check again in case another timer execution did a compaction while waiting for the lock
             if (Locks.Count <= _currentMaxDictionarySize)
@@ -296,10 +285,6 @@ internal static class StreamManager
             }
                 
             _currentMaxDictionarySize = nextMax;
-        }
-        finally
-        {
-            CompactionLock.ExitWriteLock();
-        }
+        });
     }
 }

@@ -4,6 +4,7 @@ using Google.Protobuf;
 using kRPC.Client.Boost.Config;
 using kRPC.Client.Boost.Connection.Requests;
 using kRPC.Client.Boost.Connection.Schema;
+using kRPC.Client.Boost.Helpers;
 using kRPC.Client.Boost.Logging;
 using kRPC.Client.Boost.Services.KRPC.RemoteObjects;
 using kRPC.Client.Boost.Streams;
@@ -76,33 +77,37 @@ internal class StreamConnection : PollingConnection<StreamRequest, StreamConnect
         StartPolling();
     }
 
-    private void Invoke(StreamRequest request, ProcedureResult response)
+    private void Invoke(StreamRequest request, ProcedureResult response, CancellationToken cancellationToken)
     {
         switch (request)
         {
             case AddStreamRequest r:
-                HandleAddStream(r, response);
+                HandleAddStream(r, response, cancellationToken);
                 break;
             case RemoveStreamRequest r:
-                HandleRemoveStream(r, response);
+                HandleRemoveStream(r, response, cancellationToken);
                 break;
             default:
                 throw new NotSupportedException($"Stream request type {request.GetType().Name} is not supported");
         }
     }
 
-    private void HandleAddStream(AddStreamRequest request, ProcedureResult response)
+    private void HandleAddStream(AddStreamRequest request, ProcedureResult response, CancellationToken cancellationToken)
     {
-        var result = Invoke(typeof(RemoteStream), request.Service, request.Procedure, request.Arguments);
+        var result = Invoke(typeof(RemoteStream), 
+            request.Service, 
+            request.Procedure, 
+            request.Arguments, 
+            cancellationToken);
         var stream = result as RemoteStream;
         
         _streamTypes[stream!.Id] = request.StreamType;
         response.MarkComplete(result);
     }
 
-    private void HandleRemoveStream(RemoveStreamRequest request, ProcedureResult response)
+    private void HandleRemoveStream(RemoveStreamRequest request, ProcedureResult response, CancellationToken cancellationToken)
     {
-        Invoke(request.Service, request.Procedure, request.Arguments);
+        Invoke(request.Service, request.Procedure, request.Arguments, cancellationToken);
         _streamTypes.TryRemove(request.StreamId, out _);
         
         response.MarkComplete();
@@ -116,36 +121,34 @@ internal class StreamConnection : PollingConnection<StreamRequest, StreamConnect
             if (size == 0)
                 break; // ReadMessageData returns 0 if cancellation is requested due to disposal
 
-            _disposeLock.EnterReadLock();
-            try
+            Sync.WithReadLock(_disposeLock, () =>
             {
-                var update = StreamUpdate.Parser.ParseFrom(new CodedInputStream(_streamBuffer, 0, size));
-                _logger.LogDebug("Processing stream update for {numStreams} streams", update.Results.Count);
-
-                foreach (var result in update.Results)
+                try
                 {
-                    if (!_streamTypes.TryGetValue(result.Id, out var type))
-                    {
-                        // This should only happen for streams that have very recently been torn down
-                        _logger.LogDebug("Received stream update for unknown stream with ID {streamId}", result.Id);
-                        continue;
-                    }
+                    var update = StreamUpdate.Parser.ParseFrom(new CodedInputStream(_streamBuffer, 0, size));
+                    _logger.LogDebug("Processing stream update for {numStreams} streams", update.Results.Count);
 
-                    var resultValue = Codec.Decode(result.Result.Value, type, _connection);
-                    _logger.LogTrace("Setting stream with ID {streamId} of type {streamType} to {resultValue}", 
-                        result.Id, type, resultValue);
-                    StreamManager.SetValue(result.Id, resultValue);
+                    foreach (var result in update.Results)
+                    {
+                        if (!_streamTypes.TryGetValue(result.Id, out var type))
+                        {
+                            // This should only happen for streams that have very recently been torn down
+                            _logger.LogDebug("Received stream update for unknown stream with ID {streamId}", result.Id);
+                            continue;
+                        }
+
+                        var resultValue = Codec.Decode(result.Result.Value, type, _connection);
+                        _logger.LogTrace("Setting stream with ID {streamId} of type {streamType} to {resultValue}", 
+                            result.Id, type, resultValue);
+                        StreamManager.SetValue(result.Id, resultValue);
+                    }
                 }
-            }
-            catch (System.Exception e)
-            {
-                _logger.LogError(e, "Exception occured while processing stream update");
-                throw;
-            }
-            finally
-            {
-                _disposeLock.ExitReadLock();
-            }
+                catch (System.Exception e)
+                {
+                    _logger.LogError(e, "Exception occured while processing stream update");
+                    throw;
+                }
+            });
         }
     }
     
@@ -171,8 +174,7 @@ internal class StreamConnection : PollingConnection<StreamRequest, StreamConnect
     /// </summary>
     private void Dispose(bool disposing)
     {
-        _disposeLock.EnterWriteLock();
-        try
+        Sync.WithWriteLock(_disposeLock, () =>
         {
             if (_disposed)
                 return;
@@ -185,11 +187,7 @@ internal class StreamConnection : PollingConnection<StreamRequest, StreamConnect
 
             _disposed = true;
             _disposeTokenSource.Cancel();
-        }
-        finally
-        {
-            _disposeLock.ExitWriteLock();
-        }
+        });
     }
     
     protected override void LogRequestStart(StreamRequest request)

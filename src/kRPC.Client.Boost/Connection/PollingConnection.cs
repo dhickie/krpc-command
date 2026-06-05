@@ -2,6 +2,8 @@ using System.Collections.Concurrent;
 using System.Diagnostics;
 using kRPC.Client.Boost.Config;
 using kRPC.Client.Boost.Connection.Requests;
+using kRPC.Client.Boost.Exceptions;
+using kRPC.Client.Boost.Helpers;
 using Microsoft.Extensions.Logging;
 
 namespace kRPC.Client.Boost.Connection;
@@ -22,7 +24,7 @@ internal abstract class PollingConnection<TRequest,TConnection> : Connection, ID
     private readonly CancellationTokenSource _disposeTokenSource = new();
     
     private ILogger<TConnection>? _logger;
-    private Action<TRequest, ProcedureResult>? _invokeAction;
+    private Action<TRequest, ProcedureResult, CancellationToken>? _invokeAction;
     private bool _setupComplete;
 
     /// <summary>
@@ -49,7 +51,7 @@ internal abstract class PollingConnection<TRequest,TConnection> : Connection, ID
     /// </summary>
     /// <param name="logger">The logger to use for this connection</param>
     /// <param name="action">The action to invoke</param>
-    protected void Setup(ILogger<TConnection> logger, Action<TRequest, ProcedureResult> action)
+    protected void Setup(ILogger<TConnection> logger, Action<TRequest, ProcedureResult, CancellationToken> action)
     {
         _logger = logger;
         _invokeAction = action;
@@ -96,25 +98,27 @@ internal abstract class PollingConnection<TRequest,TConnection> : Connection, ID
                     continue;
                 }
 
-                _disposeLock.EnterReadLock();
                 try
                 {
-                    // Kill the thread if the connection has been disposed
-                    if (_disposed)
-                        break;
+                    Sync.WithReadLock(_disposeLock, () =>
+                    {
+                        // Kill the thread if the connection has been disposed
+                        if (_disposed)
+                            throw new LoopKillException();
 
-                    _invokeAction!(request, response);
-                    success = true;
+                        _invokeAction!(request, response, _disposeTokenSource.Token);
+                        success = true;
+                    });
+                }
+                catch (LoopKillException)
+                {
+                    break;
                 }
                 catch (Exception e)
                 {
                     _logger!.LogError(e, "An exception occured trying to invoke the requested procedure");
                     response.MarkFaulted(e);
                     success = false;
-                }
-                finally
-                {
-                    _disposeLock.ExitReadLock();
                 }
             }
             finally
@@ -137,8 +141,7 @@ internal abstract class PollingConnection<TRequest,TConnection> : Connection, ID
     /// </summary>
     public new void Dispose()
     {
-        _disposeLock.EnterWriteLock();
-        try
+        Sync.WithWriteLock(_disposeLock, () => 
         {
             if (_disposed)
                 return;
@@ -146,11 +149,7 @@ internal abstract class PollingConnection<TRequest,TConnection> : Connection, ID
             _disposed = true;
             _disposeTokenSource.Cancel();
             base.Dispose();
-        }
-        finally
-        {
-            _disposeLock.ExitWriteLock();
-        }
+        });
         
         GC.SuppressFinalize(this);
     }
