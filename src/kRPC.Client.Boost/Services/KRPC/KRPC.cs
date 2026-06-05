@@ -23,7 +23,7 @@ public class KRPC : ServiceObject
     }
     
     /// <summary>
-    /// Synchronously dds a stream to the server.
+    /// Synchronously adds a stream to the server.
     /// </summary>
     /// <param name="expression">The expression for the stream</param>
     /// <param name="start">Whether to start the stream immediately</param>
@@ -35,7 +35,7 @@ public class KRPC : ServiceObject
     }
 
     /// <summary>
-    /// Asynchronously dds a stream to the server.
+    /// Asynchronously adds a stream to the server.
     /// </summary>
     /// <param name="expression">The expression for the stream</param>
     /// <param name="start">Whether to start the stream immediately</param>
