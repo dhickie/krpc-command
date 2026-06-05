@@ -119,11 +119,8 @@ namespace kRPC.Client.Boost.Connection
         private static ByteString EncodeObject(object? value, Type type, MemoryStream buffer, CodedOutputStream stream)
         {
             buffer.SetLength(0);
-
-            if (value != null && type == null)
-                throw new CodecException("Encode passed a non null value for a null type");
             
-            if (value != null && !type!.IsInstanceOfType(value))
+            if (value != null && !type.IsInstanceOfType(value))
                 throw new CodecException("Value of type " + value.GetType() + " cannot be encoded to type " + type);
             
             if (value == null && !IsARemoteObjectType(type) && !IsACollectionType(type))

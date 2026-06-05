@@ -3,6 +3,7 @@ using System.Reflection;
 using AutoFixture;
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Connection.Schema;
+using kRPC.Client.Boost.Exceptions;
 using kRPC.Client.Boost.Services;
 using kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects;
 using kRPC.Client.Boost.UnitTests.Fakes;
@@ -25,6 +26,7 @@ public class CodecTests
     [InlineData(typeof(uint), 3U, "3")]
     [InlineData(typeof(ulong), 4U, "4")]
     [InlineData(typeof(string), "hello", "hello")]
+    [InlineData(typeof(bool), true, "True")]
     public void ReturnsCorrectValue_WhenWorkingWithPrimitiveTypes(Type type, object value, string expectedValue)
     {
         var byteString = Codec.Encode(value);
@@ -45,23 +47,33 @@ public class CodecTests
         Assert.Null(decodedValue);
     }
 
-    [Fact]
-    public void DoesntThrow_WhenEncodingNullCollections()
+    [Theory]
+    [InlineData(typeof(Tuple<Vessel, int, FakeEnum>))]
+    [InlineData(typeof(List<bool>))]
+    [InlineData(typeof(long[]))]
+    [InlineData(typeof(HashSet<Vector3D>))]
+    [InlineData(typeof(Dictionary<string, Quaternion>))]
+    public void DoesntThrow_WhenEncodingNullCollections(Type type)
     {
-        Type[] types =
-        [
-            typeof(Tuple<Vessel, int, FakeEnum>),
-            typeof(List<bool>),
-            typeof(long[]),
-            typeof(HashSet<Vector3D>),
-            typeof(Dictionary<string, Quaternion>)
-        ];
+        // The protocol supports encoding null collections, but not decoding them in clients
+        Codec.Encode(null, type);
+    }
 
-        foreach (var type in types)
-        {
-            // The protocol supports encoding null collections, but not decoding them in clients
-            Codec.Encode(null, type);
-        }
+    [Theory]
+    [InlineData(typeof(double))]
+    [InlineData(typeof(float))]
+    [InlineData(typeof(int))]
+    [InlineData(typeof(long))]
+    [InlineData(typeof(uint))]
+    [InlineData(typeof(ulong))]
+    [InlineData(typeof(string))]
+    [InlineData(typeof(bool))]
+    [InlineData(typeof(Vector3D))]
+    [InlineData(typeof(Quaternion))]
+    [InlineData(typeof(FakeEnum))]
+    public void ThrowsException_WhenEncodingUnsupportedNullValues(Type type)
+    {
+        Assert.Throws<CodecException>(() => Codec.Encode(null, type));
     }
 
     [Fact]
@@ -258,5 +270,12 @@ public class CodecTests
         );
 
         Codec.Encode(call);
+    }
+
+    [Fact]
+    public void ThrowsException_WhenProvidedValueIsNotOfProvidedType()
+    {
+        const int value = 1;
+        Assert.Throws<CodecException>(() => Codec.Encode(value, typeof(string)));
     }
 }
