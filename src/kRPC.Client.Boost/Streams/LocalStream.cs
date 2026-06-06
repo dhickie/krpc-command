@@ -91,8 +91,7 @@ internal sealed class LocalStream<T> : LocalStream
             }
 
             innerValue = _value;
-
-            result = innerValue != null;
+            result = true;
         });
         
         value = innerValue;

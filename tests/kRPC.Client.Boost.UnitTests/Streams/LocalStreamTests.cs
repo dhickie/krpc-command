@@ -185,6 +185,51 @@ public class LocalStreamTests
         // Act & Assert
         Assert.Throws<InvalidOperationException>(() => localStream.RemoveSubscriber());
     }
+
+    [Theory]
+    [InlineData(true, true, true)]
+    [InlineData(true, false, true)]
+    [InlineData(false, true, false)]
+    [InlineData(false, false, false)]
+    public async Task WaitsForInitOrTearDown_WhenGettingOrSettingValues(bool isInit, bool isSet, bool expectedResult)
+    {
+        // Arrange
+        var initEvent = new ManualResetEvent(false);
+        var continueEvent = new ManualResetEvent(false);
+        var localStream = new LocalStream<string>(_connection, _expression);
+        if (isInit)
+            localStream.TearDown();
+        Action<IConnectionMultiplexer> method = isInit 
+            ? x => x.AddStream(Arg.Any<Expression<Func<string>>>(), Arg.Any<bool>())
+            : x => x.RemoveStream(Arg.Any<ulong>());
+        _connection
+            .When(method)
+            .Do(x =>
+            {
+                initEvent.Set();
+                continueEvent.WaitOne();
+            });
+        
+        // Act
+        var initTask = isInit 
+            ? Task.Run(() => localStream.InitialiseStream())
+            : Task.Run(() => localStream.TearDown());
+        initEvent.WaitOne(); // Wait for the initialisation to be in progress
+        var getOrSetTask = isSet
+            ? Task.Run(() => localStream.TrySet(_fixture.Create<string>()))
+            : Task.Run(() => localStream.TryGet(out _));
+        
+        // Assert
+        Assert.False(initTask.IsCompleted); // Both should be in a deadlock initially
+        Assert.False(getOrSetTask.IsCompleted);
+
+        continueEvent.Set(); // Let the init/teardown finish
+        await initTask;
+        var result = await getOrSetTask;
+        Assert.True(initTask.IsCompleted);
+        Assert.True(getOrSetTask.IsCompleted);
+        Assert.Equal(expectedResult, result);
+    }
     
     private void SetRemoteStreamId(ulong id)
     {
