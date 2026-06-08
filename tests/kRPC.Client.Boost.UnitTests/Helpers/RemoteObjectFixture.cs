@@ -3,6 +3,7 @@ using AutoFixture;
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services;
 using kRPC.Client.Boost.UnitTests.Fakes;
+using NSubstitute;
 
 namespace kRPC.Client.Boost.UnitTests.Helpers;
 
@@ -13,7 +14,7 @@ namespace kRPC.Client.Boost.UnitTests.Helpers;
 public static class RemoteObjectFixture
 {
     private static readonly Fixture Fixture = new();
-    private static readonly FakeConnectionMultiplexer Connection = new();
+    private static readonly IConnectionMultiplexer Connection = Substitute.For<IConnectionMultiplexer>();
 
     public static T Create<T>() where T : RemoteObject
     {

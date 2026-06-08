@@ -29,7 +29,7 @@ public class LocalStreamTests
     }
     
     [Fact]
-    public void AddsStream_OnCreation()
+    public void Constructor_AddsStream()
     {
         // Act
         var localStream = new LocalStream<string>(_connection, _expression);
@@ -40,7 +40,7 @@ public class LocalStreamTests
     }
 
     [Fact]
-    public void RemovesStream_OnTearDown()
+    public void TearDown_RemovesStream()
     {
         // Arrange
         var localStream = new LocalStream<string>(_connection, _expression);
@@ -53,7 +53,7 @@ public class LocalStreamTests
     }
 
     [Fact]
-    public void ReAddsStream_OnReInitialise()
+    public void InitialiseStream_ReAddsStream_WhenNotInitialised()
     {
         // Arrange
         var localStream = new LocalStream<string>(_connection, _expression);
@@ -74,7 +74,39 @@ public class LocalStreamTests
     }
 
     [Fact]
-    public void ReturnsTrue_WhenSettingValueOnInitialisedStream()
+    public async Task InitialiseStream_OnlyAddsStreamOnce_WhenCalledMultipleTimes()
+    {
+        // Arrange
+        var localStream = new LocalStream<string>(_connection, _expression);
+        _connection.ClearReceivedCalls();
+        var newStreamId = _fixture.Create<ulong>();
+        
+        var initEvent =  new ManualResetEventSlim(false);
+        var continueEvent = new ManualResetEventSlim(false);
+        SetRemoteStreamId(newStreamId);
+        _connection
+            .When(x => x.AddStream(_expression, true))
+            .Do(_ =>
+            {
+                initEvent.Set();
+                continueEvent.Wait();
+            });
+        localStream.TearDown();
+        
+        // Act
+        var initTaskA = Task.Run(() => localStream.InitialiseStream());
+        initEvent.Wait();
+        var initTaskB = Task.Run(() => localStream.InitialiseStream());
+        continueEvent.Set();
+        
+        // Assert
+        await initTaskA;
+        await initTaskB;
+        _connection.Received(1).AddStream(_expression, true);
+    }
+
+    [Fact]
+    public void TrySet_ReturnsTrue_WhenStreamIsInitialised()
     {
         // Arrange
         var localStream = new LocalStream<string>(_connection, _expression);
@@ -88,7 +120,7 @@ public class LocalStreamTests
     }
     
     [Fact]
-    public void ReturnsFalse_WhenSettingValueOnUninitialisedStream()
+    public void TrySet_ReturnsFalse_WhenStreamIsUninitialised()
     {
         // Arrange
         var localStream = new LocalStream<string>(_connection, _expression);
@@ -103,7 +135,7 @@ public class LocalStreamTests
     }
     
     [Fact]
-    public void ThrowsArgumentException_WhenSettingValueOfWrongType()
+    public void TrySet_ThrowsArgumentException_WhenSettingValueOfWrongType()
     {
         // Arrange
         var localStream = new LocalStream<string>(_connection, _expression);
@@ -114,7 +146,7 @@ public class LocalStreamTests
     }
     
     [Fact]
-    public void ReturnsCorrectValue_WhenGettingCurrentValue()
+    public void TryGet_ReturnsCorrectValue_WhenGettingCurrentValue()
     {
         // Arrange
         var localStream = new LocalStream<string>(_connection, _expression);
@@ -130,7 +162,7 @@ public class LocalStreamTests
     }
 
     [Fact]
-    public void ThrowsArgumentException_WhenGettingValueOfWrongType()
+    public void TryGet_ThrowsArgumentException_WhenGettingValueOfWrongType()
     {
         // Arrange
         var localStream = new LocalStream<string>(_connection, _expression);
@@ -144,7 +176,7 @@ public class LocalStreamTests
     [Theory]
     [InlineData(0, true)]
     [InlineData(1, false)]
-    public void ReturnsCorrectly_WhenAddingSubscriber(int numPreExistingSubscribers, bool expectedResult)
+    public void AddSubscriber_ReturnsCorrectly_DependingOnNumberOfSubscribers(int numPreExistingSubscribers, bool expectedResult)
     {
         // Arrange
         var localStream = new LocalStream<string>(_connection, _expression);
@@ -162,7 +194,7 @@ public class LocalStreamTests
     [Theory]
     [InlineData(1, false)]
     [InlineData(2, true)]
-    public void ReturnsCorrectly_WhenRemovingSubscriber(int numPreExistingSubscribers, bool expectedResult)
+    public void RemoveSubscriber_ReturnsCorrectly_DependingOnNumberOfSubscribers(int numPreExistingSubscribers, bool expectedResult)
     {
         // Arrange
         var localStream = new LocalStream<string>(_connection, _expression);
@@ -177,7 +209,7 @@ public class LocalStreamTests
     }
 
     [Fact]
-    public void ThrowsException_WhenRemovingSubscriberFromStreamWithNoSubscribers()
+    public void RemoveSubscriber_ThrowsException_WhenStreamHasNoSubscribers()
     {
         // Arrange
         var localStream = new LocalStream<string>(_connection, _expression);
@@ -192,7 +224,7 @@ public class LocalStreamTests
     [InlineData(true, false, true)]
     [InlineData(false, true, false)]
     [InlineData(false, false, false)]
-    public async Task WaitsForInitOrTearDown_WhenGettingOrSettingValues(bool isInit, bool isSet, bool expectedResult)
+    public async Task TrySetOrTryGet_WaitsForInitOrTearDown(bool isInit, bool isSet, bool expectedResult)
     {
         // Arrange
         var initEvent = new ManualResetEventSlim(false);
@@ -235,7 +267,7 @@ public class LocalStreamTests
     [Theory]
     [InlineData(true)]
     [InlineData(false)]
-    public async Task WaitsForGetOrSet_WhenTearingDownStream(bool isSet)
+    public async Task TearDown_WaitsForGetOrSet(bool isSet)
     {
         // Arrange
         var initEvent = new ManualResetEventSlim(false);

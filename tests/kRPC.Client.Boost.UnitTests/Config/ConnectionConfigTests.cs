@@ -9,7 +9,7 @@ public class ConnectionConfigTests : ConfigTestBase
     [InlineData("0.0.0.0")]
     [InlineData("255.255.255.255")]
     [InlineData("::")]
-    public void ValidationFails_WhenIPIsInvalid(string ipAddress)
+    public void Validate_ReturnsError_WhenIPIsInvalid(string ipAddress)
     {
         var ip = IPAddress.Parse(ipAddress);
         var config = new ConnectionConfig
@@ -26,7 +26,7 @@ public class ConnectionConfigTests : ConfigTestBase
     [InlineData(65536, 80)]
     [InlineData(80, 65536)]
     [InlineData(80, 80)]
-    public void ValidationFails_WhenPortIsInvalid(int rpcPort, int streamPort)
+    public void Validate_ReturnsError_WhenPortIsInvalid(int rpcPort, int streamPort)
     {
         var config = new ConnectionConfig
         {
@@ -38,14 +38,14 @@ public class ConnectionConfigTests : ConfigTestBase
     }
 
     [Fact]
-    public void ValidationPasses_WhenUsingDefaults()
+    public void Validate_Passes_WhenUsingDefaults()
     {
         var config = new ConnectionConfig();
         AssertConfigIsValid(config);
     }
 
     [Fact]
-    public void ValidationPasses_WhenUsingValidCustomValues()
+    public void Validate_Passes_WhenUsingValidCustomValues()
     {
         var config = new ConnectionConfig
         {

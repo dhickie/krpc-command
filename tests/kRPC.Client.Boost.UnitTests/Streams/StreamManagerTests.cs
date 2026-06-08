@@ -14,7 +14,7 @@ public class StreamManagerTests
     private readonly StreamConfig _config = new();
     
     [Fact]
-    public async Task OnlyInitialisesOnce_WhenInitialiseCalledMultipleTimes()
+    public async Task Initialise_OnlyInitialisesOnce_WhenCalledMultipleTimes()
     {
         // Arrange
         var initEvent = new ManualResetEventSlim(false);
@@ -43,7 +43,7 @@ public class StreamManagerTests
     }
 
     [Fact]
-    public void ThrowsException_WhenAddingSubscriberWhileUninitialised()
+    public void AddSubscription_ThrowsException_WhenNotInitialised()
     {
         var key = _fixture.Create<string>();
         var expressionReturn = _fixture.Create<string>();
@@ -51,21 +51,21 @@ public class StreamManagerTests
     }
 
     [Fact]
-    public void ThrowsException_WhenRemovingSubscriberWhileUninitialised()
+    public void RemoveSubscription_ThrowsException_WhenUninitialised()
     {
         var key = _fixture.Create<string>();
         Assert.Throws<InvalidOperationException>(() => StreamManager.RemoveSubscription(key));
     }
     
     [Fact]
-    public void ThrowsException_WhenGettingValueWhileUninitialised()
+    public void TryGet_ThrowsException_WhenUninitialised()
     {
         var key = _fixture.Create<string>();
         Assert.Throws<InvalidOperationException>(() => StreamManager.TryGet<string>(key, out _));
     }
 
     [Fact]
-    public void ThrowsException_WhenSettingValueWhileUninitialised()
+    public void SetValue_ThrowsException_WhenUninitialised()
     {
         var key = _fixture.Create<ulong>();
         var value = _fixture.Create<string>();

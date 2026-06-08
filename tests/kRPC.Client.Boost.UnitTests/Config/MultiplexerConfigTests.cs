@@ -7,7 +7,7 @@ public class MultiplexerConfigTests : ConfigTestBase
     [Theory]
     [InlineData(-1)]
     [InlineData(0)]
-    public void ValidationFails_WhenNumRpcConnectionsIsInvalid(int numRpcConnections)
+    public void Validate_ReturnsError_WhenNumRpcConnectionsIsInvalid(int numRpcConnections)
     {
         var config = new MultiplexerConfig
         {
@@ -21,7 +21,7 @@ public class MultiplexerConfigTests : ConfigTestBase
     [InlineData("")]
     [InlineData(" ")]
     [InlineData("   ")]
-    public void ValidationFails_WhenClientNameIsInvalid(string clientName)
+    public void Validate_ReturnsError_WhenClientNameIsInvalid(string clientName)
     {
         var config = new MultiplexerConfig
         {
@@ -32,14 +32,14 @@ public class MultiplexerConfigTests : ConfigTestBase
     }
 
     [Fact]
-    public void ValidationPasses_WhenUsingDefaults()
+    public void Validate_Passes_WhenUsingDefaults()
     {
         var config = new MultiplexerConfig();
         AssertConfigIsValid(config);
     }
 
     [Fact]
-    public void ValidationPasses_WhenUsingValidCustomValues()
+    public void Validate_Passes_WhenUsingValidCustomValues()
     {
         var config = new MultiplexerConfig
         {

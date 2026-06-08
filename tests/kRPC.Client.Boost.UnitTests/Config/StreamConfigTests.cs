@@ -5,7 +5,7 @@ namespace kRPC.Client.Boost.UnitTests.Config;
 public class StreamConfigTests : ConfigTestBase
 {
     [Fact]
-    public void ValidationFails_WhenCompactionIntervalIsInvalid()
+    public void Validate_ReturnsError_WhenCompactionIntervalIsInvalid()
     {
         var config = new StreamConfig
         {
@@ -21,7 +21,7 @@ public class StreamConfigTests : ConfigTestBase
     [InlineData(100, 0)]
     [InlineData(100, -1)]
     [InlineData(100, 50)]
-    public void ValidationFails_WhenDictionarySizesAreInvalid(int initialSize, int maxSize)
+    public void Validate_ReturnsError_WhenDictionarySizesAreInvalid(int initialSize, int maxSize)
     {
         var config = new StreamConfig
         {
@@ -35,7 +35,7 @@ public class StreamConfigTests : ConfigTestBase
     [Theory]
     [InlineData(0)]
     [InlineData(-1)]
-    public void ValidationFails_WhenDictionaryIncreaseIntervalIsInvalid(int interval)
+    public void Validate_ReturnsError_WhenDictionaryIncreaseIntervalIsInvalid(int interval)
     {
         var config = new StreamConfig
         {
@@ -46,14 +46,14 @@ public class StreamConfigTests : ConfigTestBase
     }
 
     [Fact]
-    public void ValidationPasses_WhenUsingDefaults()
+    public void Validate_Passes_WhenUsingDefaults()
     {
         var config = new StreamConfig();
         AssertConfigIsValid(config);
     }
 
     [Fact]
-    public void ValidationPasses_WhenUsingCustomValidValues()
+    public void Validate_Passes_WhenUsingCustomValidValues()
     {
         var config = new StreamConfig
         {

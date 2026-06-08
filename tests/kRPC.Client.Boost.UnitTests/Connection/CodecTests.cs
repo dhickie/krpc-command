@@ -9,13 +9,14 @@ using kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects;
 using kRPC.Client.Boost.UnitTests.Fakes;
 using kRPC.Client.Boost.UnitTests.Helpers;
 using MathNet.Spatial.Euclidean;
+using NSubstitute;
 using Type = System.Type;
 
 namespace kRPC.Client.Boost.UnitTests.Connection;
 
 public class CodecTests
 {
-    private readonly IConnectionMultiplexer _connection = new FakeConnectionMultiplexer();
+    private readonly IConnectionMultiplexer _connection = Substitute.For<IConnectionMultiplexer>();
     private readonly Fixture _fixture = new Fixture();
     
     [Theory]
@@ -27,7 +28,7 @@ public class CodecTests
     [InlineData(typeof(ulong), 4U, "4")]
     [InlineData(typeof(string), "hello", "hello")]
     [InlineData(typeof(bool), true, "True")]
-    public void ReturnsCorrectValue_WhenWorkingWithPrimitiveTypes(Type type, object value, string expectedValue)
+    public void Decode_ReturnsCorrectValue_WhenWorkingWithPrimitiveTypes(Type type, object value, string expectedValue)
     {
         var byteString = Codec.Encode(value);
         var decodedValue = Codec.Decode(byteString, type, _connection);
@@ -38,7 +39,7 @@ public class CodecTests
     }
 
     [Fact]
-    public void ReturnsCorrectValue_WhenWorkingWithNullRemoteObjects()
+    public void Decode_ReturnsCorrectValue_WhenWorkingWithNullRemoteObjects()
     {
         Vessel? value = null;
         var byteString = Codec.Encode(value, typeof(Vessel));
@@ -53,7 +54,7 @@ public class CodecTests
     [InlineData(typeof(long[]))]
     [InlineData(typeof(HashSet<Vector3D>))]
     [InlineData(typeof(Dictionary<string, Quaternion>))]
-    public void DoesntThrow_WhenEncodingNullCollections(Type type)
+    public void Encode_DoesntThrow_WhenEncodingNullCollections(Type type)
     {
         // The protocol supports encoding null collections, but not decoding them in clients
         Codec.Encode(null, type);
@@ -71,13 +72,13 @@ public class CodecTests
     [InlineData(typeof(Vector3D))]
     [InlineData(typeof(Quaternion))]
     [InlineData(typeof(FakeEnum))]
-    public void ThrowsException_WhenEncodingUnsupportedNullValues(Type type)
+    public void Encode_ThrowsException_WhenEncodingUnsupportedNullValues(Type type)
     {
         Assert.Throws<CodecException>(() => Codec.Encode(null, type));
     }
 
     [Fact]
-    public void ReturnsCorrectValue_WhenWorkingWithEnums()
+    public void Decode_ReturnsCorrectValue_WhenWorkingWithEnums()
     {
         const FakeEnum enumValue = FakeEnum.Value2;
         var byteString = Codec.Encode(enumValue);
@@ -87,7 +88,7 @@ public class CodecTests
     }
 
     [Fact]
-    public void ReturnsCorrectValue_WhenWorkingWithByteArrays()
+    public void Decode_ReturnsCorrectValue_WhenWorkingWithByteArrays()
     {
         var value = new byte[] {10, 20, 30};
         var byteString = Codec.Encode(value);
@@ -97,7 +98,7 @@ public class CodecTests
     }
 
     [Fact]
-    public void ReturnsCorrectValue_WhenWorkingWithRemoteObjects()
+    public void Decode_ReturnsCorrectValue_WhenWorkingWithRemoteObjects()
     {
         // Find all instances of remote objects
         var remoteObjects = Assembly.GetAssembly(typeof(RemoteObject))!
@@ -119,7 +120,7 @@ public class CodecTests
     [Theory]
     [InlineData(true)]
     [InlineData(false)]
-    public void DoesntThrow_WhenEncodingValidLambdaExpressions(bool useAsync)
+    public void Encode_DoesntThrow_WhenEncodingValidLambdaExpressions(bool useAsync)
     {
         var vessel = new Vessel(_connection, 1);
         LambdaExpression expression = useAsync ? () => vessel.GetBiomeAsync() : () => vessel.GetBiome();
@@ -129,7 +130,7 @@ public class CodecTests
     }
 
     [Fact]
-    public void ReturnsCorrectValue_WhenWorkingWithTuples()
+    public void Decode_ReturnsCorrectValue_WhenWorkingWithTuples()
     {
         var vesselId = _fixture.Create<ulong>();
         var vessel = new Vessel(_connection, vesselId);
@@ -149,7 +150,7 @@ public class CodecTests
     }
 
     [Fact]
-    public void ReturnsCorrectValue_WhenWorkingWithListTypes()
+    public void Decode_ReturnsCorrectValue_WhenWorkingWithListTypes()
     {
         var arrayValue = _fixture.CreateMany<string>(3).ToArray();
         var listValue = _fixture.CreateMany<string>(3).ToList();
@@ -174,7 +175,7 @@ public class CodecTests
     }
 
     [Fact]
-    public void ReturnsCorrectValue_WhenWorkingWithSetTypes()
+    public void Decode_ReturnsCorrectValue_WhenWorkingWithSetTypes()
     {
         var set = _fixture.CreateMany<string>().ToHashSet();
         var encodedSet = Codec.Encode(set);
@@ -192,7 +193,7 @@ public class CodecTests
     }
 
     [Fact]
-    public void ReturnsCorrectValue_WhenWorkingWithDictionaries()
+    public void Decode_ReturnsCorrectValue_WhenWorkingWithDictionaries()
     {
         var dictionary = _fixture.CreateMany<string>()
             .ToDictionary(x => x, y => _fixture.Create<long>());
@@ -211,7 +212,7 @@ public class CodecTests
     }
 
     [Fact]
-    public void ReturnsCorrectValue_WhenWorkingWithVectors()
+    public void Decode_ReturnsCorrectValue_WhenWorkingWithVectors()
     {
         var vector = _fixture.Create<Vector3D>();
         var encodedVector = Codec.Encode(vector);
@@ -226,7 +227,7 @@ public class CodecTests
     }
 
     [Fact]
-    public void ReturnsCorrectValue_WhenWorkingWithQuaternions()
+    public void Decode_ReturnsCorrectValue_WhenWorkingWithQuaternions()
     {
         var quaternion = new Quaternion(
             _fixture.Create<double>(),
@@ -247,7 +248,7 @@ public class CodecTests
     }
 
     [Fact]
-    public void DoesntThrow_WhenEncodingMessageTypes()
+    public void Encode_DoesntThrow_WhenEncodingMessageTypes()
     {
         var arg1 = RemoteObjectFixture.Create<Vessel>();
         var arg2 = _fixture.Create<bool>();
@@ -273,7 +274,7 @@ public class CodecTests
     }
 
     [Fact]
-    public void ThrowsException_WhenProvidedValueIsNotOfProvidedType()
+    public void Encode_ThrowsException_WhenProvidedValueIsNotOfProvidedType()
     {
         const int value = 1;
         Assert.Throws<CodecException>(() => Codec.Encode(value, typeof(string)));

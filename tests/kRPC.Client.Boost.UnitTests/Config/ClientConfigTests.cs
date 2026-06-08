@@ -6,7 +6,7 @@ namespace kRPC.Client.Boost.UnitTests.Config;
 public class ClientConfigTests
 {
     [Fact]
-    public void ThrowsException_WhenConfigIsInvalid()
+    public void Validate_ThrowsException_WhenConfigIsInvalid()
     {
         var config = new ClientConfig
         {
@@ -20,7 +20,7 @@ public class ClientConfigTests
     }
 
     [Fact]
-    public void DoesNothing_WhenConfigIsValid()
+    public void Validate_DoesNothing_WhenConfigIsValid()
     {
         var config = new ClientConfig();
         config.Validate();
