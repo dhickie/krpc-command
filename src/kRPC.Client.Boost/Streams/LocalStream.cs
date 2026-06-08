@@ -95,7 +95,7 @@ internal sealed class LocalStream<T> : LocalStream
                 return;
             }
 
-            StaticMethodInjector.DoWork(RemoteId);
+            MethodInjector.DoWork(RemoteId);
             innerValue = _value;
             result = true;
         });
@@ -113,7 +113,7 @@ internal sealed class LocalStream<T> : LocalStream
             if (!_initialised)
                 return;
 
-            StaticMethodInjector.DoWork(RemoteId);
+            MethodInjector.DoWork(RemoteId);
             _value = value;
             result = true;
         });

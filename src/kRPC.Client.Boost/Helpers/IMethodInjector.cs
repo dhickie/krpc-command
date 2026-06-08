@@ -1,3 +1,4 @@
+// ReSharper disable UnusedParameter.Global
 namespace kRPC.Client.Boost.Helpers;
 
 /// <summary>
@@ -6,5 +7,5 @@ namespace kRPC.Client.Boost.Helpers;
 /// </summary>
 internal interface IMethodInjector
 {
-    void DoWork(object? operationId);
+    void DoWork(object operationId, Dictionary<string,object>? bag = null);
 }

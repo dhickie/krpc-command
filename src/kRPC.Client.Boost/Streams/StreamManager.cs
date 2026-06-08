@@ -42,8 +42,7 @@ internal static class StreamManager
     /// </summary>
     /// <param name="connection">The kRPC connection</param>
     /// <param name="config">The stream configuration to use</param>
-    /// <param name="initialisationId">An ID for this initialisation operation - only needed by tests</param>
-    public static void Initialise(IConnectionMultiplexer connection, StreamConfig config, string? initialisationId = null)
+    public static void Initialise(IConnectionMultiplexer connection, StreamConfig config)
     {
         if (_initialised)
             return;
@@ -53,7 +52,7 @@ internal static class StreamManager
             if (_initialised)
                 return;
 
-            StaticMethodInjector.DoWork(initialisationId);
+            MethodInjector.DoWork(nameof(Initialise));
             _connection = connection;
             
             Locks.Clear();
@@ -102,7 +101,7 @@ internal static class StreamManager
     /// <param name="key">The key to subscribe to</param>
     /// <param name="expression">The expression to use to initialise the stream if it doesn't exist yet</param>
     /// <typeparam name="T">The data type returned by the stream</typeparam>
-    public static void AddSubscription<T>(string key, Expression<Func<T>> expression) where T : class
+    public static void AddSubscription<T>(string key, Expression<Func<T>> expression)
     {
         ValidateState();
 
@@ -136,14 +135,14 @@ internal static class StreamManager
     /// <param name="value">The value of the stream</param>
     /// <typeparam name="T">The datatype returned by the stream</typeparam>
     /// <returns>Whether the value was successfully retrieved</returns>
-    public static bool TryGet<T>(string key, out T? value) where T : class
+    public static bool TryGet<T>(string key, out T? value)
     {
         ValidateState();
         
         if (Streams.TryGetValue(key, out var streamRegistration))
             return streamRegistration.TryGet(out value);
 
-        value = null;
+        value = default;
         return false;
     }
 
@@ -164,8 +163,7 @@ internal static class StreamManager
             Logger.LogInformation("Failed to set value of stream with key {key}", key);
     }
 
-    private static void AddSubscriptionImpl<T>(string key, 
-        Expression<Func<T>> expression) where T : class
+    private static void AddSubscriptionImpl<T>(string key, Expression<Func<T>> expression)
     {
         // Lock the registration to prevent multiple threads adding or removing
         // subscribers at the same time
@@ -238,8 +236,8 @@ internal static class StreamManager
                 if (sw.Elapsed > nextCycle)
                 {
                     Logger.LogWarning(
-                        "Compaction cycle took longer than loop interval - next cycle is due at {nextCycle}, but stopwatch is already at {elapsed}", 
-                        nextCycle.TotalSeconds, 
+                        "Compaction cycle took longer than loop interval - next cycle is due at {nextCycle}, but stopwatch is already at {elapsed}",
+                        nextCycle.TotalSeconds,
                         sw.Elapsed.TotalSeconds);
                     continue;
                 }
@@ -247,6 +245,10 @@ internal static class StreamManager
                 // Wait until we hit the next cycle or the cancellation token is cancelled
                 if (!cancellationToken.WaitHandle.WaitOne((int)(nextCycle - sw.Elapsed).TotalMilliseconds))
                     CompactDictionaries();
+            }
+            catch (Exception e)
+            {
+                Logger.LogError(e, "An error occured while trying to perform dictionary compaction");
             }
             finally
             {
@@ -266,46 +268,63 @@ internal static class StreamManager
     /// <exception cref="Exception">Thrown if we fail to remove an entry from either dictionary. In theory, this should never happen.</exception>
     private static void CompactDictionaries()
     {
-        if (Locks.Count <= _currentMaxDictionarySize)
-            return;
-        
-        // Obtain the write lock - this prevents any read locks from being acquired and waits until
-        // all threads inside the lock have exited
-        Sync.WithWriteLock(CompactionLock, () =>
+        MethodInjector.DoWork($"{nameof(CompactDictionaries)}.Hold");
+        MethodInjector.DoWork($"{nameof(CompactDictionaries)}.Start", new Dictionary<string, object>
         {
-            // Check again in case another timer execution did a compaction while waiting for the lock
+            {"NumEntries", Locks.Count},
+            {"MaxSize", _currentMaxDictionarySize}
+        });
+
+        try
+        {
             if (Locks.Count <= _currentMaxDictionarySize)
                 return;
 
-            foreach (var key in Streams.Keys)
+            // Obtain the write lock - this prevents any read locks from being acquired and waits until
+            // all threads inside the lock have exited
+            Sync.WithWriteLock(CompactionLock, () =>
             {
-                if (!Streams.TryGetValue(key, out var streamRegistration))
-                    continue;
+                MethodInjector.DoWork($"{nameof(CompactDictionaries)}.InsideLock");
+                foreach (var key in Streams.Keys)
+                {
+                    if (!Streams.TryGetValue(key, out var streamRegistration))
+                        continue;
 
-                if (streamRegistration.Subscribers > 0)
-                    continue;
+                    if (streamRegistration.Subscribers > 0)
+                        continue;
 
-                var lockRemoved = Locks.TryRemove(key, out _);
-                var streamRemoved = Streams.TryRemove(key, out _);
+                    var lockRemoved = Locks.TryRemove(key, out _);
+                    var streamRemoved = Streams.TryRemove(key, out _);
 
-                if (!lockRemoved || !streamRemoved)
-                    throw new Exception("Unable to remove lock or stream from dictionaries during compaction");
-            }
-            
-            // If the dictionary count is still above the limit, then increase the limit if possible
-            if (Locks.Count < _currentMaxDictionarySize) 
-                return;
-            
-            var nextMax = _currentMaxDictionarySize + _maxDictionarySizeIncreaseInterval;
-            if (nextMax > _maxDictionarySize)
+                    if (!lockRemoved || !streamRemoved)
+                        throw new Exception("Unable to remove lock or stream from dictionaries during compaction");
+                }
+
+                // If the dictionary count is still above the limit, then increase the limit if possible
+                if (Locks.Count < _currentMaxDictionarySize)
+                    return;
+
+                var nextMax = _currentMaxDictionarySize + _maxDictionarySizeIncreaseInterval;
+                if (nextMax > _maxDictionarySize)
+                {
+                    Logger.LogWarning(
+                        "Lock and stream collections are above max size limit: Max size: {maxSize}, current size: {currentSize}",
+                        nextMax,
+                        _maxDictionarySize);
+                }
+                else
+                {
+                    _currentMaxDictionarySize = nextMax;
+                }
+            });
+        }
+        finally
+        {
+            MethodInjector.DoWork($"{nameof(CompactDictionaries)}.End", new Dictionary<string, object>
             {
-                Logger.LogWarning(
-                    "Lock and stream collections are above max size limit: Max size: {maxSize}, current size: {currentSize}", 
-                    nextMax, 
-                    _maxDictionarySize);
-            }
-                
-            _currentMaxDictionarySize = nextMax;
-        });
+                {"NumEntries", Locks.Count},
+                {"MaxSize", _currentMaxDictionarySize}
+            });
+        }
     }
 }

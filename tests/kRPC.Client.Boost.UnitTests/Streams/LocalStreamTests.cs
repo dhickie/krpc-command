@@ -5,6 +5,7 @@ using kRPC.Client.Boost.Helpers;
 using kRPC.Client.Boost.Services.KRPC.RemoteObjects;
 using kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects;
 using kRPC.Client.Boost.Streams;
+using kRPC.Client.Boost.UnitTests.Helpers;
 using NSubstitute;
 
 namespace kRPC.Client.Boost.UnitTests.Streams;
@@ -273,15 +274,14 @@ public class LocalStreamTests
         var initEvent = new ManualResetEventSlim(false);
         var continueEvent = new ManualResetEventSlim(false);
         var localStream = new LocalStream<string>(_connection, _expression);
-        var injector = Substitute.For<IMethodInjector>();
+        var injector = InjectorHelper.GetInjector();
         injector
-            .When(x => x.DoWork(localStream.RemoteId))
+            .When(x => x.DoWork(localStream.RemoteId!))
             .Do(x =>
             {
                 initEvent.Set();
                 continueEvent.Wait();
             });
-        StaticMethodInjector.MethodInjector = injector;
         
         // Act
         var getOrSetTaskA = isSet 

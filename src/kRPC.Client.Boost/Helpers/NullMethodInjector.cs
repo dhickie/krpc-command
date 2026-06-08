@@ -5,7 +5,7 @@ namespace kRPC.Client.Boost.Helpers;
 /// </summary>
 internal class NullMethodInjector : IMethodInjector
 {
-    public void DoWork(object? operationId)
+    public void DoWork(object operationId, Dictionary<string,object>? bag = null)
     {
     }
 }
