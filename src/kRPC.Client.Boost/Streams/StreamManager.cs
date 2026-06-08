@@ -28,6 +28,7 @@ internal static class StreamManager
     private static bool _initialised;
     private static readonly object InitLock = new();
     private static IConnectionMultiplexer? _connection;
+    private static CancellationTokenSource? _compactionToken;
     private static Thread? _compactionThread;
     private static readonly ReaderWriterLockSlim CompactionLock = new();
     private static readonly ConcurrentDictionary<string, object> Locks = new();
@@ -54,17 +55,43 @@ internal static class StreamManager
 
             StaticMethodInjector.DoWork(initialisationId);
             _connection = connection;
+            
+            Locks.Clear();
+            Streams.Clear();
+            IdMap.Clear();
+            
             _compactionInterval = config.CompactionInterval;
             _maxDictionarySize = config.MaxDictionarySize;
             _maxDictionarySizeIncreaseInterval = config.MaxDictionarySizeIncreaseInterval;
             _currentMaxDictionarySize = config.InitialDictionarySize;
+            _compactionToken = new CancellationTokenSource();
             _compactionThread = new Thread(() =>
             {
                 Thread.CurrentThread.IsBackground = true;
-                CompactionLoop();
+                CompactionLoop(_compactionToken.Token);
             });
             _compactionThread.Start();
             _initialised = true;
+        }
+    }
+
+    /// <summary>
+    /// Resets the stream manager into its uninitialised state. Only used by tests to ensure clean state for each test.
+    /// </summary>
+    public static void Reset()
+    {
+        if (!_initialised)
+            return;
+        
+        lock (InitLock)
+        {
+            if (!_initialised)
+                return;
+            
+            // Kill the compaction thread, other state will be overwritten when reinitialised
+            _compactionToken!.Cancel();
+            SpinWait.SpinUntil(() => !_compactionThread!.IsAlive);
+            _initialised = false;
         }
     }
 
@@ -198,13 +225,13 @@ internal static class StreamManager
             throw new InvalidOperationException("StreamManager must be initialised before use");
     }
 
-    private static void CompactionLoop()
+    private static void CompactionLoop(CancellationToken cancellationToken)
     {
         var sw = new Stopwatch();
         sw.Start();
         
         var nextCycle = sw.Elapsed + _compactionInterval;
-        while (true)
+        while (!cancellationToken.IsCancellationRequested)
         {
             try
             {
@@ -217,8 +244,9 @@ internal static class StreamManager
                     continue;
                 }
 
-                Thread.Sleep(nextCycle - sw.Elapsed);
-                CompactDictionaries();
+                // Wait until we hit the next cycle or the cancellation token is cancelled
+                if (!cancellationToken.WaitHandle.WaitOne((int)(nextCycle - sw.Elapsed).TotalMilliseconds))
+                    CompactDictionaries();
             }
             finally
             {
