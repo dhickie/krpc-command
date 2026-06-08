@@ -20,6 +20,11 @@ internal sealed class LocalStream<T> : LocalStream
     private readonly IConnectionMultiplexer _connection;
     private readonly Expression<Func<T>> _expression;
     private object? _value;
+
+    /// <summary>
+    /// Used in testing when simulating race conditions - should not be used in application code
+    /// </summary>
+    internal int NumInitLockWriteWaiters => _initLock.WaitingWriteCount;
     
     /// <summary>
     /// Register a stream with the provided expression.
@@ -90,6 +95,7 @@ internal sealed class LocalStream<T> : LocalStream
                 return;
             }
 
+            StaticMethodInjector.DoWork(RemoteId);
             innerValue = _value;
             result = true;
         });
@@ -107,6 +113,7 @@ internal sealed class LocalStream<T> : LocalStream
             if (!_initialised)
                 return;
 
+            StaticMethodInjector.DoWork(RemoteId);
             _value = value;
             result = true;
         });

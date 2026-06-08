@@ -23,7 +23,6 @@ internal class ConnectionMultiplexer : IDisposable, IConnectionMultiplexer
     private readonly BlockingCollection<ProcedureRequest> _rpcRequests;
     private readonly ConcurrentDictionary<string, ProcedureResult> _results;
     
-    private readonly LogManager _logManager;
     private readonly ILogger<ConnectionMultiplexer> _logger;
 
     private readonly CancellationTokenSource _disposalTokenSource = new();
@@ -39,7 +38,8 @@ internal class ConnectionMultiplexer : IDisposable, IConnectionMultiplexer
     {
         try
         {
-            _logManager = new LogManager(loggerFactory);
+            if (loggerFactory != null)
+                LogManager.LoggerFactory = loggerFactory;
             _logger = LogManager.GetLogger<ConnectionMultiplexer>();
             config ??= new ClientConfig();
             config.Validate();

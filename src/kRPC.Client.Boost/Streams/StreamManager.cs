@@ -41,7 +41,8 @@ internal static class StreamManager
     /// </summary>
     /// <param name="connection">The kRPC connection</param>
     /// <param name="config">The stream configuration to use</param>
-    public static void Initialise(ConnectionMultiplexer connection, StreamConfig config)
+    /// <param name="initialisationId">An ID for this initialisation operation - only needed by tests</param>
+    public static void Initialise(IConnectionMultiplexer connection, StreamConfig config, string? initialisationId = null)
     {
         if (_initialised)
             return;
@@ -50,7 +51,8 @@ internal static class StreamManager
         {
             if (_initialised)
                 return;
-            
+
+            StaticMethodInjector.DoWork(initialisationId);
             _connection = connection;
             _compactionInterval = config.CompactionInterval;
             _maxDictionarySize = config.MaxDictionarySize;
@@ -112,26 +114,17 @@ internal static class StreamManager
         ValidateState();
         
         if (Streams.TryGetValue(key, out var streamRegistration))
-        {
-            try
-            {
-                return streamRegistration.TryGet(out value);
-            }
-            catch (Exception e)
-            {
-                // The get can fail if there's a server side issue or if the stream has been closed elsewhere.
-                // If this happens, just return false.
-                Logger.LogWarning(
-                    e, "An error occured trying to get the latest value out of a stream, returning false");
-                value = null;
-                return false;
-            }
-        }
+            return streamRegistration.TryGet(out value);
 
         value = null;
         return false;
     }
 
+    /// <summary>
+    /// Sets the current value of a stream using its remote stream ID.
+    /// </summary>
+    /// <param name="remoteId">The remote ID of the stream.</param>
+    /// <param name="value">The value to set</param>
     public static void SetValue(ulong remoteId, object? value)
     {
         ValidateState();

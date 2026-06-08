@@ -1,6 +1,7 @@
 using System.Linq.Expressions;
 using AutoFixture;
 using kRPC.Client.Boost.Connection;
+using kRPC.Client.Boost.Helpers;
 using kRPC.Client.Boost.Services.KRPC.RemoteObjects;
 using kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects;
 using kRPC.Client.Boost.Streams;
@@ -194,8 +195,8 @@ public class LocalStreamTests
     public async Task WaitsForInitOrTearDown_WhenGettingOrSettingValues(bool isInit, bool isSet, bool expectedResult)
     {
         // Arrange
-        var initEvent = new ManualResetEvent(false);
-        var continueEvent = new ManualResetEvent(false);
+        var initEvent = new ManualResetEventSlim(false);
+        var continueEvent = new ManualResetEventSlim(false);
         var localStream = new LocalStream<string>(_connection, _expression);
         if (isInit)
             localStream.TearDown();
@@ -207,14 +208,14 @@ public class LocalStreamTests
             .Do(x =>
             {
                 initEvent.Set();
-                continueEvent.WaitOne();
+                continueEvent.Wait();
             });
         
         // Act
         var initTask = isInit 
             ? Task.Run(() => localStream.InitialiseStream())
             : Task.Run(() => localStream.TearDown());
-        initEvent.WaitOne(); // Wait for the initialisation to be in progress
+        initEvent.Wait(); // Wait for the initialisation to be in progress
         var getOrSetTask = isSet
             ? Task.Run(() => localStream.TrySet(_fixture.Create<string>()))
             : Task.Run(() => localStream.TryGet(out _));
@@ -229,6 +230,53 @@ public class LocalStreamTests
         Assert.True(initTask.IsCompleted);
         Assert.True(getOrSetTask.IsCompleted);
         Assert.Equal(expectedResult, result);
+    }
+
+    [Theory]
+    [InlineData(true)]
+    [InlineData(false)]
+    public async Task WaitsForGetOrSet_WhenTearingDownStream(bool isSet)
+    {
+        // Arrange
+        var initEvent = new ManualResetEventSlim(false);
+        var continueEvent = new ManualResetEventSlim(false);
+        var localStream = new LocalStream<string>(_connection, _expression);
+        var injector = Substitute.For<IMethodInjector>();
+        injector
+            .When(x => x.DoWork(localStream.RemoteId))
+            .Do(x =>
+            {
+                initEvent.Set();
+                continueEvent.Wait();
+            });
+        StaticMethodInjector.MethodInjector = injector;
+        
+        // Act
+        var getOrSetTaskA = isSet 
+            ? Task.Run(() => localStream.TrySet(_fixture.Create<string>()))
+            : Task.Run(() => localStream.TryGet(out _));
+        initEvent.Wait(); // Wait for the set/get to be in progress
+        var teardownTask = Task.Run(() => localStream.TearDown());
+        // Wait for the teardown thead to hit the write lock
+        SpinWait.SpinUntil(() => localStream.NumInitLockWriteWaiters > 0);
+        var getOrSetTaskB = isSet
+            ? Task.Run(() => localStream.TrySet(_fixture.Create<string>()))
+            : Task.Run(() => localStream.TryGet(out _));
+        
+        // Assert
+        Assert.False(teardownTask.IsCompleted); // All should be in a deadlock initially
+        Assert.False(getOrSetTaskA.IsCompleted);
+        Assert.False(getOrSetTaskB.IsCompleted);
+
+        continueEvent.Set(); // Let the get/set finish
+        await teardownTask;
+        var resultA = await getOrSetTaskA;
+        var resultB = await getOrSetTaskB;
+        Assert.True(teardownTask.IsCompleted);
+        Assert.True(getOrSetTaskA.IsCompleted);
+        Assert.True(getOrSetTaskB.IsCompleted);
+        Assert.True(resultA);
+        Assert.False(resultB);
     }
     
     private void SetRemoteStreamId(ulong id)
