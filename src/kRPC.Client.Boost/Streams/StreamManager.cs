@@ -38,6 +38,11 @@ internal static class StreamManager
     private static readonly ILogger Logger = LogManager.GetLogger(typeof(StreamManager));
 
     /// <summary>
+    /// Returns how many writers are waiting to enter the compaction lock. Should only be used by tests.
+    /// </summary>
+    internal static int NumCompactionLockWriteWaiters => CompactionLock.WaitingWriteCount;
+
+    /// <summary>
     /// Initialises the StreamManager's internal state and starts the compaction thread.
     /// </summary>
     /// <param name="connection">The kRPC connection</param>
@@ -271,20 +276,25 @@ internal static class StreamManager
         MethodInjector.DoWork($"{nameof(CompactDictionaries)}.Hold");
         MethodInjector.DoWork($"{nameof(CompactDictionaries)}.Start", new Dictionary<string, object>
         {
-            {"NumEntries", Locks.Count},
+            {"NumEntries", Streams.Count},
             {"MaxSize", _currentMaxDictionarySize}
         });
 
         try
         {
-            if (Locks.Count <= _currentMaxDictionarySize)
+            // Max size of 0 just means run compaction on every cycle
+            if (Streams.Count <= _currentMaxDictionarySize && _currentMaxDictionarySize > 0)
                 return;
 
             // Obtain the write lock - this prevents any read locks from being acquired and waits until
             // all threads inside the lock have exited
             Sync.WithWriteLock(CompactionLock, () =>
             {
-                MethodInjector.DoWork($"{nameof(CompactDictionaries)}.InsideLock");
+                MethodInjector.DoWork($"{nameof(CompactDictionaries)}.InsideLock", new Dictionary<string, object>
+                {
+                    {"NumEntries", Streams.Count},
+                    {"MaxSize", _currentMaxDictionarySize}
+                });
                 foreach (var key in Streams.Keys)
                 {
                     if (!Streams.TryGetValue(key, out var streamRegistration))
@@ -301,7 +311,7 @@ internal static class StreamManager
                 }
 
                 // If the dictionary count is still above the limit, then increase the limit if possible
-                if (Locks.Count < _currentMaxDictionarySize)
+                if (Streams.Count < _currentMaxDictionarySize)
                     return;
 
                 var nextMax = _currentMaxDictionarySize + _maxDictionarySizeIncreaseInterval;

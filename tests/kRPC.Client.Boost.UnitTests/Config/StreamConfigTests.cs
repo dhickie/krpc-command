@@ -16,7 +16,6 @@ public class StreamConfigTests : ConfigTestBase
     }
 
     [Theory]
-    [InlineData(0, 100)]
     [InlineData(-1, 100)]
     [InlineData(100, 0)]
     [InlineData(100, -1)]

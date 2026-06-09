@@ -313,10 +313,9 @@ public class StreamManagerTests
         
         // Act
         StreamManager.Initialise(_connection, _config);
-        context.StartEvent.Set();
+        context.ContinueStartEvent.Set();
         context.EndEvent.Wait();
         context.CompletionToken.Cancel();
-        StreamManager.Reset();
 
         // Assert
         Assert.Equal(context.InitialSize, context.FinalSize);
@@ -340,10 +339,9 @@ public class StreamManagerTests
         StreamManager.AddSubscription(keyB, expression);
         StreamManager.RemoveSubscription(keyA);
         StreamManager.RemoveSubscription(keyB);
-        context.StartEvent.Set();
+        context.ContinueStartEvent.Set();
         context.EndEvent.Wait();
         context.CompletionToken.Cancel();
-        StreamManager.Reset();
         
         // Assert
         Assert.Equal(2, context.InitialSize);
@@ -367,10 +365,9 @@ public class StreamManagerTests
         StreamManager.Initialise(_connection, _config);
         StreamManager.AddSubscription(_fixture.Create<string>(), expression);
         StreamManager.AddSubscription(_fixture.Create<string>(), expression);
-        context.StartEvent.Set();
+        context.ContinueStartEvent.Set();
         context.EndEvent.Wait();
         context.CompletionToken.Cancel();
-        StreamManager.Reset();
         
         // Assert
         Assert.Equal(2, context.InitialSize);
@@ -378,6 +375,92 @@ public class StreamManagerTests
         Assert.Equal(2, context.FinalSize);
         Assert.Equal(expectedFinalMaxSize, context.FinalMaxSize);
         context.Injector.Received(1).DoWork(InsideLockOperationId, Arg.Any<Dictionary<string,object>>());
+    }
+
+    [Fact]
+    public async Task CompactionLoop_WaitsForInProgressAddSubscription()
+    {
+        // Arrange
+        var context = SetupCompactionTest(0);
+        var initEvent = new ManualResetEventSlim();
+        var continueEvent = new ManualResetEventSlim();
+        
+        var value = _fixture.Create<string>();
+        Expression<Func<string>> expression = () => value;
+        _connection
+            .When(x => x.AddStream(Arg.Any<Expression<Func<string>>>(), true))
+            .Do(_ =>
+            {
+                initEvent.Set();
+                continueEvent.Wait();
+            });
+        _connection
+            .AddStream(Arg.Any<Expression<Func<string>>>(), true)
+            .Returns(new RemoteStream(_connection, _fixture.Create<ulong>()));
+        
+        StreamManager.Initialise(_connection, _config);
+        
+        // Act
+        context.InitStartEvent.Wait(); // Wait for the compaction cycle to start, before it obtains the write lock
+        var streamTask = Task.Run(() => StreamManager.AddSubscription(_fixture.Create<string>(), expression)); // Start to initialise the stream
+        initEvent.Wait(); // Wait to stream creation to start
+        context.ContinueStartEvent.Set(); // Let the compaction thread continue
+        SpinWait.SpinUntil(() => StreamManager.NumCompactionLockWriteWaiters > 0); // Wait for compaction to hit the lock
+        continueEvent.Set(); // Let the stream creation continue
+        context.EndEvent.Wait(); // Wait for the compaction cycle to complete
+        context.CompletionToken.Cancel(); // Kill the compaction thread
+        
+        // Assert
+        await streamTask;
+        // Check that the compaction cycle started, then the stream was created, and then the compaction thread
+        // obtained the lock
+        Assert.Equal(0, context.InitialSize);
+        Assert.Equal(1, context.InsideSize);
+        Assert.Equal(1, context.FinalSize);
+    }
+    
+    [Fact]
+    public async Task CompactionLoop_WaitsForInProgressRemoveSubscription()
+    {
+        // Arrange
+        var context = SetupCompactionTest(0);
+        var initEvent = new ManualResetEventSlim();
+        var continueEvent = new ManualResetEventSlim();
+        
+        var key = _fixture.Create<string>();
+        var value = _fixture.Create<string>();
+        Expression<Func<string>> expression = () => value;
+        _connection
+            .When(x => x.RemoveStream(Arg.Any<ulong>()))
+            .Do(_ =>
+            {
+                initEvent.Set();
+                continueEvent.Wait();
+            });
+        _connection
+            .AddStream(Arg.Any<Expression<Func<string>>>(), true)
+            .Returns(new RemoteStream(_connection, _fixture.Create<ulong>()));
+        
+        StreamManager.Initialise(_connection, _config);
+        StreamManager.AddSubscription(key, expression);
+        
+        // Act
+        context.InitStartEvent.Wait(); // Wait for the compaction cycle to start, before it obtains the write lock
+        var streamTask = Task.Run(() => StreamManager.RemoveSubscription(key)); // Start to remove the stream
+        initEvent.Wait(); // Wait to stream removal to start
+        context.ContinueStartEvent.Set(); // Let the compaction thread continue
+        SpinWait.SpinUntil(() => StreamManager.NumCompactionLockWriteWaiters > 0); // Wait for compaction to hit the lock
+        continueEvent.Set(); // Let the stream removal continue
+        context.EndEvent.Wait(); // Wait for the compaction cycle to complete
+        context.CompletionToken.Cancel(); // Kill the compaction thread
+        
+        // Assert
+        await streamTask;
+        // Check that the compaction cycle started, then the stream was created, and then the compaction thread
+        // obtained the lock
+        Assert.Equal(1, context.InitialSize);
+        Assert.Equal(1, context.InsideSize);
+        Assert.Equal(0, context.FinalSize);
     }
 
     private CompactionTestContext SetupCompactionTest(int initialMaxSize, 
@@ -389,6 +472,7 @@ public class StreamManagerTests
         const string maxSize = "MaxSize";
         const string start = "CompactDictionaries.Start";
         const string hold = "CompactDictionaries.Hold";
+        const string inside = "CompactDictionaries.InsideLock";
         const string end = "CompactDictionaries.End";
         
         // Variables
@@ -398,9 +482,12 @@ public class StreamManagerTests
         {
             InitialSize = 0,
             InitialMaxSize = 0,
+            InsideSize = 0,
+            InsideMaxSize = 0,
             FinalSize = 0,
             FinalMaxSize = 0,
-            StartEvent = new AutoResetEvent(false),
+            InitStartEvent =  new ManualResetEventSlim(),
+            ContinueStartEvent = new AutoResetEvent(false),
             EndEvent = new ManualResetEventSlim(),
             Injector = injector,
             CompletionToken = new CancellationTokenSource()
@@ -412,11 +499,13 @@ public class StreamManagerTests
                 Arg.Any<Dictionary<string,object>>()))
             .Do(x =>
             {
+                context.InitStartEvent.Set();
+                
                 // Wait until we're given the signal to start another compaction cycle or
                 // we're told that the test is complete and the compaction thread can be killed
                 WaitHandle.WaitAny(
                 [
-                    context.StartEvent,
+                    context.ContinueStartEvent,
                     context.CompletionToken.Token.WaitHandle
                 ]);
 
@@ -431,6 +520,15 @@ public class StreamManagerTests
                 var args = x.Arg<Dictionary<string,object>?>();
                 context.InitialSize = (int)args![size];
                 context.InitialMaxSize = (int)args![maxSize];
+            });
+        injector
+            .When(x => x.DoWork(inside, 
+                Arg.Any<Dictionary<string,object>>()))
+            .Do(x =>
+            {
+                var args = x.Arg<Dictionary<string,object>?>();
+                context.InsideSize = (int)args![size];
+                context.InsideMaxSize = (int)args![maxSize];
             });
         injector
             .When(x => x.DoWork(end, 
@@ -462,10 +560,13 @@ internal class CompactionTestContext
 {
     public required int InitialSize;
     public required int InitialMaxSize;
+    public required int InsideSize; // Inside the write lock
+    public required int InsideMaxSize;
     public required int FinalSize;
     public required int FinalMaxSize;
-    public required AutoResetEvent StartEvent;
-    public required ManualResetEventSlim EndEvent;
-    public required CancellationTokenSource CompletionToken;
+    public required ManualResetEventSlim InitStartEvent; // Compaction cycle has started when set
+    public required AutoResetEvent ContinueStartEvent; // Compaction cycle continues when set
+    public required ManualResetEventSlim EndEvent; // Completion cycle has finished when set
+    public required CancellationTokenSource CompletionToken; // Kills the compaction thread when cancelled
     public required IMethodInjector Injector;
 }
