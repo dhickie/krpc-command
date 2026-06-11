@@ -189,6 +189,17 @@ public class StreamSubscriptionTests
         // Assert
         _connection.Received(2).AddStream(Arg.Any<Expression<Func<Vector3D>>>(), true);
     }
+    
+    [Fact]
+    public void Constructor_ThrowsException_WhenCalledWithSetterRpc()
+    {
+        // Arrange
+        var vessel = RemoteObjectFixture.Create<Vessel>();
+        
+        // Act & Assert
+        Assert.Throws<ArgumentException>(() => 
+            new StreamSubscription(() => vessel.SetName(_fixture.Create<string>())));
+    }
 
     [Theory]
     [InlineData(1)]

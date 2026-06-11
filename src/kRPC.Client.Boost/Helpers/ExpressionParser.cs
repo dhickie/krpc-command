@@ -38,9 +38,9 @@ public class ExpressionParser
         if (body is not MethodCallExpression methodCallExpression)
             throw new ArgumentException("Invalid expression. Expressions must be an Expression<Func<T>> that calls a single function with no chaining and no input parameters");
         
-        var attribute = methodCallExpression.Method.GetCustomAttribute<RpcAttribute>();
+        var attribute = methodCallExpression.Method.GetCustomAttribute<GetRpcAttribute>();
         if (attribute == null)
-            throw new ArgumentException("Invalid expression. Method must call a remote procedure.");
+            throw new ArgumentException("Invalid expression. Method must call a remote procedure that gets a value.");
         
         // Populate the service and procedure
         Service = attribute.Service;
