@@ -19,7 +19,7 @@ public class RoboticHinge : RemoteObject
     /// <summary>
     /// Move hinge to it's built position.
     /// </summary>
-    [Rpc("SpaceCenter", "RoboticHinge_MoveHome")]
+    [SetRpc("SpaceCenter", "RoboticHinge_MoveHome")]
     public void MoveHome()
     {
         var args = new ProcedureArgument[]
@@ -33,7 +33,7 @@ public class RoboticHinge : RemoteObject
     /// Move hinge to it's built position.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "RoboticHinge_MoveHome")]
+    [SetRpc("SpaceCenter", "RoboticHinge_MoveHome")]
     public async Task MoveHomeAsync()
     {
         var args = new ProcedureArgument[]
@@ -46,7 +46,7 @@ public class RoboticHinge : RemoteObject
     /// <summary>
     /// Gets the current angle.
     /// </summary>
-    [Rpc("SpaceCenter", "RoboticHinge_get_CurrentAngle")]
+    [GetRpc("SpaceCenter", "RoboticHinge_get_CurrentAngle")]
     public Angle GetCurrentAngle()
     {
         var args = new ProcedureArgument[]
@@ -61,7 +61,7 @@ public class RoboticHinge : RemoteObject
     /// Gets the current angle.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "RoboticHinge_get_CurrentAngle")]
+    [GetRpc("SpaceCenter", "RoboticHinge_get_CurrentAngle")]
     public async Task<Angle> GetCurrentAngleAsync()
     {
         var args = new ProcedureArgument[]
@@ -75,7 +75,7 @@ public class RoboticHinge : RemoteObject
     /// <summary>
     /// Damping percentage.
     /// </summary>
-    [Rpc("SpaceCenter", "RoboticHinge_get_Damping")]
+    [GetRpc("SpaceCenter", "RoboticHinge_get_Damping")]
     public float GetDamping()
     {
         var args = new ProcedureArgument[]
@@ -89,7 +89,7 @@ public class RoboticHinge : RemoteObject
     /// Damping percentage.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "RoboticHinge_get_Damping")]
+    [GetRpc("SpaceCenter", "RoboticHinge_get_Damping")]
     public async Task<float> GetDampingAsync()
     {
         var args = new ProcedureArgument[]
@@ -103,7 +103,7 @@ public class RoboticHinge : RemoteObject
     /// Sets the damping percentage.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "RoboticHinge_set_Damping")]
+    [SetRpc("SpaceCenter", "RoboticHinge_set_Damping")]
     public void SetDamping(float value)
     {
         var args = new ProcedureArgument[]
@@ -119,7 +119,7 @@ public class RoboticHinge : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "RoboticHinge_set_Damping")]
+    [SetRpc("SpaceCenter", "RoboticHinge_set_Damping")]
     public async Task SetDampingAsync(float value)
     {
         var args = new ProcedureArgument[]
@@ -133,7 +133,7 @@ public class RoboticHinge : RemoteObject
     /// <summary>
     /// Lock movement.
     /// </summary>
-    [Rpc("SpaceCenter", "RoboticHinge_get_Locked")]
+    [GetRpc("SpaceCenter", "RoboticHinge_get_Locked")]
     public bool GetLocked()
     {
         var args = new ProcedureArgument[]
@@ -147,7 +147,7 @@ public class RoboticHinge : RemoteObject
     /// Lock movement.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "RoboticHinge_get_Locked")]
+    [GetRpc("SpaceCenter", "RoboticHinge_get_Locked")]
     public async Task<bool> GetLockedAsync()
     {
         var args = new ProcedureArgument[]
@@ -161,7 +161,7 @@ public class RoboticHinge : RemoteObject
     /// Sets whether movement is locked.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "RoboticHinge_set_Locked")]
+    [SetRpc("SpaceCenter", "RoboticHinge_set_Locked")]
     public void SetLocked(bool value)
     {
         var args = new ProcedureArgument[]
@@ -177,7 +177,7 @@ public class RoboticHinge : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "RoboticHinge_set_Locked")]
+    [SetRpc("SpaceCenter", "RoboticHinge_set_Locked")]
     public async Task SetLockedAsync(bool value)
     {
         var args = new ProcedureArgument[]
@@ -191,7 +191,7 @@ public class RoboticHinge : RemoteObject
     /// <summary>
     /// Gets whether the motor is engaged.
     /// </summary>
-    [Rpc("SpaceCenter", "RoboticHinge_get_MotorEngaged")]
+    [GetRpc("SpaceCenter", "RoboticHinge_get_MotorEngaged")]
     public bool GetMotorEngaged()
     {
         var args = new ProcedureArgument[]
@@ -205,7 +205,7 @@ public class RoboticHinge : RemoteObject
     /// Gets whether the motor is engaged.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "RoboticHinge_get_MotorEngaged")]
+    [GetRpc("SpaceCenter", "RoboticHinge_get_MotorEngaged")]
     public async Task<bool> GetMotorEngagedAsync()
     {
         var args = new ProcedureArgument[]
@@ -219,7 +219,7 @@ public class RoboticHinge : RemoteObject
     /// Sets whether the motor is engaged.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "RoboticHinge_set_MotorEngaged")]
+    [SetRpc("SpaceCenter", "RoboticHinge_set_MotorEngaged")]
     public void SetMotorEngaged(bool value)
     {
         var args = new ProcedureArgument[]
@@ -235,7 +235,7 @@ public class RoboticHinge : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "RoboticHinge_set_MotorEngaged")]
+    [SetRpc("SpaceCenter", "RoboticHinge_set_MotorEngaged")]
     public async Task SetMotorEngagedAsync(bool value)
     {
         var args = new ProcedureArgument[]
@@ -249,7 +249,7 @@ public class RoboticHinge : RemoteObject
     /// <summary>
     /// Gets the part object for this robotic hinge.
     /// </summary>
-    [Rpc("SpaceCenter", "RoboticHinge_get_Part")]
+    [GetRpc("SpaceCenter", "RoboticHinge_get_Part")]
     public Part GetPart()
     {
         var args = new ProcedureArgument[]
@@ -263,7 +263,7 @@ public class RoboticHinge : RemoteObject
     /// Gets the part object for this robotic hinge.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "RoboticHinge_get_Part")]
+    [GetRpc("SpaceCenter", "RoboticHinge_get_Part")]
     public async Task<Part> GetPartAsync()
     {
         var args = new ProcedureArgument[]
@@ -276,7 +276,7 @@ public class RoboticHinge : RemoteObject
     /// <summary>
     /// Gets the target movement rate as an angle per second.
     /// </summary>
-    [Rpc("SpaceCenter", "RoboticHinge_get_Rate")]
+    [GetRpc("SpaceCenter", "RoboticHinge_get_Rate")]
     public Angle GetRate()
     {
         var args = new ProcedureArgument[]
@@ -291,7 +291,7 @@ public class RoboticHinge : RemoteObject
     /// Gets the target movement rate as an angle per second.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "RoboticHinge_get_Rate")]
+    [GetRpc("SpaceCenter", "RoboticHinge_get_Rate")]
     public async Task<Angle> GetRateAsync()
     {
         var args = new ProcedureArgument[]
@@ -306,7 +306,7 @@ public class RoboticHinge : RemoteObject
     /// Sets the target movement rate as an angle per second.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "RoboticHinge_set_Rate")]
+    [SetRpc("SpaceCenter", "RoboticHinge_set_Rate")]
     public void SetRate(Angle value)
     {
         var args = new ProcedureArgument[]
@@ -322,7 +322,7 @@ public class RoboticHinge : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "RoboticHinge_set_Rate")]
+    [SetRpc("SpaceCenter", "RoboticHinge_set_Rate")]
     public async Task SetRateAsync(Angle value)
     {
         var args = new ProcedureArgument[]
@@ -336,7 +336,7 @@ public class RoboticHinge : RemoteObject
     /// <summary>
     /// Target angle.
     /// </summary>
-    [Rpc("SpaceCenter", "RoboticHinge_get_TargetAngle")]
+    [GetRpc("SpaceCenter", "RoboticHinge_get_TargetAngle")]
     public Angle GetTargetAngle()
     {
         var args = new ProcedureArgument[]
@@ -351,7 +351,7 @@ public class RoboticHinge : RemoteObject
     /// Target angle.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "RoboticHinge_get_TargetAngle")]
+    [GetRpc("SpaceCenter", "RoboticHinge_get_TargetAngle")]
     public async Task<Angle> GetTargetAngleAsync()
     {
         var args = new ProcedureArgument[]
@@ -366,7 +366,7 @@ public class RoboticHinge : RemoteObject
     /// Sets the target angle.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "RoboticHinge_set_TargetAngle")]
+    [SetRpc("SpaceCenter", "RoboticHinge_set_TargetAngle")]
     public void SetTargetAngle(Angle value)
     {
         var args = new ProcedureArgument[]
@@ -382,7 +382,7 @@ public class RoboticHinge : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "RoboticHinge_set_TargetAngle")]
+    [SetRpc("SpaceCenter", "RoboticHinge_set_TargetAngle")]
     public async Task SetTargetAngleAsync(Angle value)
     {
         var args = new ProcedureArgument[]

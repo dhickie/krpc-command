@@ -20,7 +20,7 @@ public class Parts : RemoteObject
     /// A list of all parts that are decoupled in the given <paramref name="stage" />.
     /// </summary>
     /// <param name="stage"></param>
-    [Rpc("SpaceCenter", "Parts_InDecoupleStage")]
+    [GetRpc("SpaceCenter", "Parts_InDecoupleStage")]
     public IList<Part> InDecoupleStage(int stage)
     {
         var args = new ProcedureArgument[]
@@ -36,7 +36,7 @@ public class Parts : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="stage"></param>
-    [Rpc("SpaceCenter", "Parts_InDecoupleStage")]
+    [GetRpc("SpaceCenter", "Parts_InDecoupleStage")]
     public async Task<IList<Part>> InDecoupleStageAsync(int stage)
     {
         var args = new ProcedureArgument[]
@@ -51,7 +51,7 @@ public class Parts : RemoteObject
     /// A list of all parts that are activated in the given <paramref name="stage" />.
     /// </summary>
     /// <param name="stage"></param>
-    [Rpc("SpaceCenter", "Parts_InStage")]
+    [GetRpc("SpaceCenter", "Parts_InStage")]
     public IList<Part> InStage(int stage)
     {
         var args = new ProcedureArgument[]
@@ -67,7 +67,7 @@ public class Parts : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="stage"></param>
-    [Rpc("SpaceCenter", "Parts_InStage")]
+    [GetRpc("SpaceCenter", "Parts_InStage")]
     public async Task<IList<Part>> InStageAsync(int stage)
     {
         var args = new ProcedureArgument[]
@@ -83,7 +83,7 @@ public class Parts : RemoteObject
     /// <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Module.GetName" /> is <paramref name="moduleName" />.
     /// </summary>
     /// <param name="moduleName"></param>
-    [Rpc("SpaceCenter", "Parts_ModulesWithName")]
+    [GetRpc("SpaceCenter", "Parts_ModulesWithName")]
     public IList<Module> ModulesWithName(string moduleName)
     {
         var args = new ProcedureArgument[]
@@ -100,7 +100,7 @@ public class Parts : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="moduleName"></param>
-    [Rpc("SpaceCenter", "Parts_ModulesWithName")]
+    [GetRpc("SpaceCenter", "Parts_ModulesWithName")]
     public async Task<IList<Module>> ModulesWithNameAsync(string moduleName)
     {
         var args = new ProcedureArgument[]
@@ -116,7 +116,7 @@ public class Parts : RemoteObject
     /// <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Module.GetName" /> is <paramref name="moduleName" />.
     /// </summary>
     /// <param name="moduleName"></param>
-    [Rpc("SpaceCenter", "Parts_WithModule")]
+    [GetRpc("SpaceCenter", "Parts_WithModule")]
     public IList<Part> WithModule(string moduleName)
     {
         var args = new ProcedureArgument[]
@@ -133,7 +133,7 @@ public class Parts : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="moduleName"></param>
-    [Rpc("SpaceCenter", "Parts_WithModule")]
+    [GetRpc("SpaceCenter", "Parts_WithModule")]
     public async Task<IList<Part>> WithModuleAsync(string moduleName)
     {
         var args = new ProcedureArgument[]
@@ -148,7 +148,7 @@ public class Parts : RemoteObject
     /// A list of parts whose <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Part.GetName" /> is <paramref name="name" />.
     /// </summary>
     /// <param name="name"></param>
-    [Rpc("SpaceCenter", "Parts_WithName")]
+    [GetRpc("SpaceCenter", "Parts_WithName")]
     public IList<Part> WithName(string name)
     {
         var args = new ProcedureArgument[]
@@ -164,7 +164,7 @@ public class Parts : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="name"></param>
-    [Rpc("SpaceCenter", "Parts_WithName")]
+    [GetRpc("SpaceCenter", "Parts_WithName")]
     public async Task<IList<Part>> WithNameAsync(string name)
     {
         var args = new ProcedureArgument[]
@@ -179,7 +179,7 @@ public class Parts : RemoteObject
     /// A list of all parts whose <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Part.GetTag" /> is <paramref name="tag" />.
     /// </summary>
     /// <param name="tag"></param>
-    [Rpc("SpaceCenter", "Parts_WithTag")]
+    [GetRpc("SpaceCenter", "Parts_WithTag")]
     public IList<Part> WithTag(string tag)
     {
         var args = new ProcedureArgument[]
@@ -195,7 +195,7 @@ public class Parts : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="tag"></param>
-    [Rpc("SpaceCenter", "Parts_WithTag")]
+    [GetRpc("SpaceCenter", "Parts_WithTag")]
     public async Task<IList<Part>> WithTagAsync(string tag)
     {
         var args = new ProcedureArgument[]
@@ -210,7 +210,7 @@ public class Parts : RemoteObject
     /// A list of all parts whose <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Part.GetTitle" /> is <paramref name="title" />.
     /// </summary>
     /// <param name="title"></param>
-    [Rpc("SpaceCenter", "Parts_WithTitle")]
+    [GetRpc("SpaceCenter", "Parts_WithTitle")]
     public IList<Part> WithTitle(string title)
     {
         var args = new ProcedureArgument[]
@@ -226,7 +226,7 @@ public class Parts : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="title"></param>
-    [Rpc("SpaceCenter", "Parts_WithTitle")]
+    [GetRpc("SpaceCenter", "Parts_WithTitle")]
     public async Task<IList<Part>> WithTitleAsync(string title)
     {
         var args = new ProcedureArgument[]
@@ -240,7 +240,7 @@ public class Parts : RemoteObject
     /// <summary>
     /// Gets a list of all of the vessels parts.
     /// </summary>
-    [Rpc("SpaceCenter", "Parts_get_All")]
+    [GetRpc("SpaceCenter", "Parts_get_All")]
     public IList<Part> GetAll()
     {
         var args = new ProcedureArgument[]
@@ -254,7 +254,7 @@ public class Parts : RemoteObject
     /// Gets a list of all of the vessels parts.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Parts_get_All")]
+    [GetRpc("SpaceCenter", "Parts_get_All")]
     public async Task<IList<Part>> GetAllAsync()
     {
         var args = new ProcedureArgument[]
@@ -271,7 +271,7 @@ public class Parts : RemoteObject
     /// If RemoteTech is installed, this will always return an empty list.
     /// To interact with RemoteTech antennas, use the RemoteTech service APIs.
     /// </remarks>
-    [Rpc("SpaceCenter", "Parts_get_Antennas")]
+    [GetRpc("SpaceCenter", "Parts_get_Antennas")]
     public IList<Antenna> GetAntennas()
     {
         var args = new ProcedureArgument[]
@@ -289,7 +289,7 @@ public class Parts : RemoteObject
     /// If RemoteTech is installed, this will always return an empty list.
     /// To interact with RemoteTech antennas, use the RemoteTech service APIs.
     /// </remarks>
-    [Rpc("SpaceCenter", "Parts_get_Antennas")]
+    [GetRpc("SpaceCenter", "Parts_get_Antennas")]
     public async Task<IList<Antenna>> GetAntennasAsync()
     {
         var args = new ProcedureArgument[]
@@ -302,7 +302,7 @@ public class Parts : RemoteObject
     /// <summary>
     /// Gets a list of all cargo bays in the vessel.
     /// </summary>
-    [Rpc("SpaceCenter", "Parts_get_CargoBays")]
+    [GetRpc("SpaceCenter", "Parts_get_CargoBays")]
     public IList<CargoBay> GetCargoBays()
     {
         var args = new ProcedureArgument[]
@@ -316,7 +316,7 @@ public class Parts : RemoteObject
     /// Gets a list of all cargo bays in the vessel.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Parts_get_CargoBays")]
+    [GetRpc("SpaceCenter", "Parts_get_CargoBays")]
     public async Task<IList<CargoBay>> GetCargoBaysAsync()
     {
         var args = new ProcedureArgument[]
@@ -329,7 +329,7 @@ public class Parts : RemoteObject
     /// <summary>
     /// Gets a list of all control surfaces in the vessel.
     /// </summary>
-    [Rpc("SpaceCenter", "Parts_get_ControlSurfaces")]
+    [GetRpc("SpaceCenter", "Parts_get_ControlSurfaces")]
     public IList<ControlSurface> GetControlSurfaces()
     {
         var args = new ProcedureArgument[]
@@ -343,7 +343,7 @@ public class Parts : RemoteObject
     /// Gets a list of all control surfaces in the vessel.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Parts_get_ControlSurfaces")]
+    [GetRpc("SpaceCenter", "Parts_get_ControlSurfaces")]
     public async Task<IList<ControlSurface>> GetControlSurfacesAsync()
     {
         var args = new ProcedureArgument[]
@@ -356,7 +356,7 @@ public class Parts : RemoteObject
     /// <summary>
     /// Gets the part from which the vessel is controlled.
     /// </summary>
-    [Rpc("SpaceCenter", "Parts_get_Controlling")]
+    [GetRpc("SpaceCenter", "Parts_get_Controlling")]
     public Part GetControlling()
     {
         var args = new ProcedureArgument[]
@@ -370,7 +370,7 @@ public class Parts : RemoteObject
     /// Gets the part from which the vessel is controlled.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Parts_get_Controlling")]
+    [GetRpc("SpaceCenter", "Parts_get_Controlling")]
     public async Task<Part> GetControllingAsync()
     {
         var args = new ProcedureArgument[]
@@ -384,7 +384,7 @@ public class Parts : RemoteObject
     /// Sets the part from which the vessel is controlled.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "Parts_set_Controlling")]
+    [SetRpc("SpaceCenter", "Parts_set_Controlling")]
     public void SetControlling(Part value)
     {
         var args = new ProcedureArgument[]
@@ -400,7 +400,7 @@ public class Parts : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "Parts_set_Controlling")]
+    [SetRpc("SpaceCenter", "Parts_set_Controlling")]
     public async Task SetControllingAsync(Part value)
     {
         var args = new ProcedureArgument[]
@@ -414,7 +414,7 @@ public class Parts : RemoteObject
     /// <summary>
     /// Gets a list of all decouplers in the vessel.
     /// </summary>
-    [Rpc("SpaceCenter", "Parts_get_Decouplers")]
+    [GetRpc("SpaceCenter", "Parts_get_Decouplers")]
     public IList<Decoupler> GetDecouplers()
     {
         var args = new ProcedureArgument[]
@@ -428,7 +428,7 @@ public class Parts : RemoteObject
     /// Gets a list of all decouplers in the vessel.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Parts_get_Decouplers")]
+    [GetRpc("SpaceCenter", "Parts_get_Decouplers")]
     public async Task<IList<Decoupler>> GetDecouplersAsync()
     {
         var args = new ProcedureArgument[]
@@ -441,7 +441,7 @@ public class Parts : RemoteObject
     /// <summary>
     /// Gets a list of all docking ports in the vessel.
     /// </summary>
-    [Rpc("SpaceCenter", "Parts_get_DockingPorts")]
+    [GetRpc("SpaceCenter", "Parts_get_DockingPorts")]
     public IList<DockingPort> GetDockingPorts()
     {
         var args = new ProcedureArgument[]
@@ -455,7 +455,7 @@ public class Parts : RemoteObject
     /// Gets a list of all docking ports in the vessel.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Parts_get_DockingPorts")]
+    [GetRpc("SpaceCenter", "Parts_get_DockingPorts")]
     public async Task<IList<DockingPort>> GetDockingPortsAsync()
     {
         var args = new ProcedureArgument[]
@@ -473,7 +473,7 @@ public class Parts : RemoteObject
     /// of engine, including liquid fuel rockets, solid rocket boosters, jet engines and
     /// RCS thrusters.
     /// </remarks>
-    [Rpc("SpaceCenter", "Parts_get_Engines")]
+    [GetRpc("SpaceCenter", "Parts_get_Engines")]
     public IList<Engine> GetEngines()
     {
         var args = new ProcedureArgument[]
@@ -492,7 +492,7 @@ public class Parts : RemoteObject
     /// of engine, including liquid fuel rockets, solid rocket boosters, jet engines and
     /// RCS thrusters.
     /// </remarks>
-    [Rpc("SpaceCenter", "Parts_get_Engines")]
+    [GetRpc("SpaceCenter", "Parts_get_Engines")]
     public async Task<IList<Engine>> GetEnginesAsync()
     {
         var args = new ProcedureArgument[]
@@ -505,7 +505,7 @@ public class Parts : RemoteObject
     /// <summary>
     /// Gets a list of all science experiments in the vessel.
     /// </summary>
-    [Rpc("SpaceCenter", "Parts_get_Experiments")]
+    [GetRpc("SpaceCenter", "Parts_get_Experiments")]
     public IList<Experiment> GetExperiments()
     {
         var args = new ProcedureArgument[]
@@ -519,7 +519,7 @@ public class Parts : RemoteObject
     /// Gets a list of all science experiments in the vessel.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Parts_get_Experiments")]
+    [GetRpc("SpaceCenter", "Parts_get_Experiments")]
     public async Task<IList<Experiment>> GetExperimentsAsync()
     {
         var args = new ProcedureArgument[]
@@ -532,7 +532,7 @@ public class Parts : RemoteObject
     /// <summary>
     /// Gets a list of all fairings in the vessel.
     /// </summary>
-    [Rpc("SpaceCenter", "Parts_get_Fairings")]
+    [GetRpc("SpaceCenter", "Parts_get_Fairings")]
     public IList<Fairing> GetFairings()
     {
         var args = new ProcedureArgument[]
@@ -546,7 +546,7 @@ public class Parts : RemoteObject
     /// Gets a list of all fairings in the vessel.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Parts_get_Fairings")]
+    [GetRpc("SpaceCenter", "Parts_get_Fairings")]
     public async Task<IList<Fairing>> GetFairingsAsync()
     {
         var args = new ProcedureArgument[]
@@ -559,7 +559,7 @@ public class Parts : RemoteObject
     /// <summary>
     /// Gets a list of all intakes in the vessel.
     /// </summary>
-    [Rpc("SpaceCenter", "Parts_get_Intakes")]
+    [GetRpc("SpaceCenter", "Parts_get_Intakes")]
     public IList<Intake> GetIntakes()
     {
         var args = new ProcedureArgument[]
@@ -573,7 +573,7 @@ public class Parts : RemoteObject
     /// Gets a list of all intakes in the vessel.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Parts_get_Intakes")]
+    [GetRpc("SpaceCenter", "Parts_get_Intakes")]
     public async Task<IList<Intake>> GetIntakesAsync()
     {
         var args = new ProcedureArgument[]
@@ -586,7 +586,7 @@ public class Parts : RemoteObject
     /// <summary>
     /// Gets a list of all launch clamps attached to the vessel.
     /// </summary>
-    [Rpc("SpaceCenter", "Parts_get_LaunchClamps")]
+    [GetRpc("SpaceCenter", "Parts_get_LaunchClamps")]
     public IList<LaunchClamp> GetLaunchClamps()
     {
         var args = new ProcedureArgument[]
@@ -600,7 +600,7 @@ public class Parts : RemoteObject
     /// Gets a list of all launch clamps attached to the vessel.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Parts_get_LaunchClamps")]
+    [GetRpc("SpaceCenter", "Parts_get_LaunchClamps")]
     public async Task<IList<LaunchClamp>> GetLaunchClampsAsync()
     {
         var args = new ProcedureArgument[]
@@ -613,7 +613,7 @@ public class Parts : RemoteObject
     /// <summary>
     /// Gets a list of all landing legs attached to the vessel.
     /// </summary>
-    [Rpc("SpaceCenter", "Parts_get_Legs")]
+    [GetRpc("SpaceCenter", "Parts_get_Legs")]
     public IList<Leg> GetLegs()
     {
         var args = new ProcedureArgument[]
@@ -627,7 +627,7 @@ public class Parts : RemoteObject
     /// Gets a list of all landing legs attached to the vessel.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Parts_get_Legs")]
+    [GetRpc("SpaceCenter", "Parts_get_Legs")]
     public async Task<IList<Leg>> GetLegsAsync()
     {
         var args = new ProcedureArgument[]
@@ -640,7 +640,7 @@ public class Parts : RemoteObject
     /// <summary>
     /// Gets a list of all lights in the vessel.
     /// </summary>
-    [Rpc("SpaceCenter", "Parts_get_Lights")]
+    [GetRpc("SpaceCenter", "Parts_get_Lights")]
     public IList<Light> GetLights()
     {
         var args = new ProcedureArgument[]
@@ -654,7 +654,7 @@ public class Parts : RemoteObject
     /// Gets a list of all lights in the vessel.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Parts_get_Lights")]
+    [GetRpc("SpaceCenter", "Parts_get_Lights")]
     public async Task<IList<Light>> GetLightsAsync()
     {
         var args = new ProcedureArgument[]
@@ -667,7 +667,7 @@ public class Parts : RemoteObject
     /// <summary>
     /// Gets a list of all parachutes in the vessel.
     /// </summary>
-    [Rpc("SpaceCenter", "Parts_get_Parachutes")]
+    [GetRpc("SpaceCenter", "Parts_get_Parachutes")]
     public IList<Parachute> GetParachutes()
     {
         var args = new ProcedureArgument[]
@@ -681,7 +681,7 @@ public class Parts : RemoteObject
     /// Gets a list of all parachutes in the vessel.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Parts_get_Parachutes")]
+    [GetRpc("SpaceCenter", "Parts_get_Parachutes")]
     public async Task<IList<Parachute>> GetParachutesAsync()
     {
         var args = new ProcedureArgument[]
@@ -694,7 +694,7 @@ public class Parts : RemoteObject
     /// <summary>
     /// Gets a list of all RCS blocks/thrusters in the vessel.
     /// </summary>
-    [Rpc("SpaceCenter", "Parts_get_RCS")]
+    [GetRpc("SpaceCenter", "Parts_get_RCS")]
     public IList<RCS> GetRCS()
     {
         var args = new ProcedureArgument[]
@@ -708,7 +708,7 @@ public class Parts : RemoteObject
     /// Gets a list of all RCS blocks/thrusters in the vessel.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Parts_get_RCS")]
+    [GetRpc("SpaceCenter", "Parts_get_RCS")]
     public async Task<IList<RCS>> GetRCSAsync()
     {
         var args = new ProcedureArgument[]
@@ -721,7 +721,7 @@ public class Parts : RemoteObject
     /// <summary>
     /// Gets a list of all radiators in the vessel.
     /// </summary>
-    [Rpc("SpaceCenter", "Parts_get_Radiators")]
+    [GetRpc("SpaceCenter", "Parts_get_Radiators")]
     public IList<Radiator> GetRadiators()
     {
         var args = new ProcedureArgument[]
@@ -735,7 +735,7 @@ public class Parts : RemoteObject
     /// Gets a list of all radiators in the vessel.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Parts_get_Radiators")]
+    [GetRpc("SpaceCenter", "Parts_get_Radiators")]
     public async Task<IList<Radiator>> GetRadiatorsAsync()
     {
         var args = new ProcedureArgument[]
@@ -748,7 +748,7 @@ public class Parts : RemoteObject
     /// <summary>
     /// Gets a list of all reaction wheels in the vessel.
     /// </summary>
-    [Rpc("SpaceCenter", "Parts_get_ReactionWheels")]
+    [GetRpc("SpaceCenter", "Parts_get_ReactionWheels")]
     public IList<ReactionWheel> GetReactionWheels()
     {
         var args = new ProcedureArgument[]
@@ -762,7 +762,7 @@ public class Parts : RemoteObject
     /// Gets a list of all reaction wheels in the vessel.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Parts_get_ReactionWheels")]
+    [GetRpc("SpaceCenter", "Parts_get_ReactionWheels")]
     public async Task<IList<ReactionWheel>> GetReactionWheelsAsync()
     {
         var args = new ProcedureArgument[]
@@ -775,7 +775,7 @@ public class Parts : RemoteObject
     /// <summary>
     /// Gets a list of all resource converters in the vessel.
     /// </summary>
-    [Rpc("SpaceCenter", "Parts_get_ResourceConverters")]
+    [GetRpc("SpaceCenter", "Parts_get_ResourceConverters")]
     public IList<ResourceConverter> GetResourceConverters()
     {
         var args = new ProcedureArgument[]
@@ -789,7 +789,7 @@ public class Parts : RemoteObject
     /// Gets a list of all resource converters in the vessel.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Parts_get_ResourceConverters")]
+    [GetRpc("SpaceCenter", "Parts_get_ResourceConverters")]
     public async Task<IList<ResourceConverter>> GetResourceConvertersAsync()
     {
         var args = new ProcedureArgument[]
@@ -802,7 +802,7 @@ public class Parts : RemoteObject
     /// <summary>
     /// Gets a list of all resource drains in the vessel.
     /// </summary>
-    [Rpc("SpaceCenter", "Parts_get_ResourceDrains")]
+    [GetRpc("SpaceCenter", "Parts_get_ResourceDrains")]
     public IList<ResourceDrain> GetResourceDrains()
     {
         var args = new ProcedureArgument[]
@@ -816,7 +816,7 @@ public class Parts : RemoteObject
     /// Gets a list of all resource drains in the vessel.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Parts_get_ResourceDrains")]
+    [GetRpc("SpaceCenter", "Parts_get_ResourceDrains")]
     public async Task<IList<ResourceDrain>> GetResourceDrainsAsync()
     {
         var args = new ProcedureArgument[]
@@ -829,7 +829,7 @@ public class Parts : RemoteObject
     /// <summary>
     /// Gets a list of all resource harvesters in the vessel.
     /// </summary>
-    [Rpc("SpaceCenter", "Parts_get_ResourceHarvesters")]
+    [GetRpc("SpaceCenter", "Parts_get_ResourceHarvesters")]
     public IList<ResourceHarvester> GetResourceHarvesters()
     {
         var args = new ProcedureArgument[]
@@ -843,7 +843,7 @@ public class Parts : RemoteObject
     /// Gets a list of all resource harvesters in the vessel.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Parts_get_ResourceHarvesters")]
+    [GetRpc("SpaceCenter", "Parts_get_ResourceHarvesters")]
     public async Task<IList<ResourceHarvester>> GetResourceHarvestersAsync()
     {
         var args = new ProcedureArgument[]
@@ -856,7 +856,7 @@ public class Parts : RemoteObject
     /// <summary>
     /// Gets a list of all robotic hinges in the vessel.
     /// </summary>
-    [Rpc("SpaceCenter", "Parts_get_RoboticHinges")]
+    [GetRpc("SpaceCenter", "Parts_get_RoboticHinges")]
     public IList<RoboticHinge> GetRoboticHinges()
     {
         var args = new ProcedureArgument[]
@@ -870,7 +870,7 @@ public class Parts : RemoteObject
     /// Gets a list of all robotic hinges in the vessel.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Parts_get_RoboticHinges")]
+    [GetRpc("SpaceCenter", "Parts_get_RoboticHinges")]
     public async Task<IList<RoboticHinge>> GetRoboticHingesAsync()
     {
         var args = new ProcedureArgument[]
@@ -883,7 +883,7 @@ public class Parts : RemoteObject
     /// <summary>
     /// Gets a list of all robotic pistons in the vessel.
     /// </summary>
-    [Rpc("SpaceCenter", "Parts_get_RoboticPistons")]
+    [GetRpc("SpaceCenter", "Parts_get_RoboticPistons")]
     public IList<RoboticPiston> GetRoboticPistons()
     {
         var args = new ProcedureArgument[]
@@ -897,7 +897,7 @@ public class Parts : RemoteObject
     /// Gets a list of all robotic pistons in the vessel.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Parts_get_RoboticPistons")]
+    [GetRpc("SpaceCenter", "Parts_get_RoboticPistons")]
     public async Task<IList<RoboticPiston>> GetRoboticPistonsAsync()
     {
         var args = new ProcedureArgument[]
@@ -910,7 +910,7 @@ public class Parts : RemoteObject
     /// <summary>
     /// Gets a list of all robotic rotations in the vessel.
     /// </summary>
-    [Rpc("SpaceCenter", "Parts_get_RoboticRotations")]
+    [GetRpc("SpaceCenter", "Parts_get_RoboticRotations")]
     public IList<RoboticRotation> GetRoboticRotations()
     {
         var args = new ProcedureArgument[]
@@ -924,7 +924,7 @@ public class Parts : RemoteObject
     /// Gets a list of all robotic rotations in the vessel.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Parts_get_RoboticRotations")]
+    [GetRpc("SpaceCenter", "Parts_get_RoboticRotations")]
     public async Task<IList<RoboticRotation>> GetRoboticRotationsAsync()
     {
         var args = new ProcedureArgument[]
@@ -937,7 +937,7 @@ public class Parts : RemoteObject
     /// <summary>
     /// Gets a list of all robotic rotors in the vessel.
     /// </summary>
-    [Rpc("SpaceCenter", "Parts_get_RoboticRotors")]
+    [GetRpc("SpaceCenter", "Parts_get_RoboticRotors")]
     public IList<RoboticRotor> GetRoboticRotors()
     {
         var args = new ProcedureArgument[]
@@ -951,7 +951,7 @@ public class Parts : RemoteObject
     /// Gets a list of all robotic rotors in the vessel.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Parts_get_RoboticRotors")]
+    [GetRpc("SpaceCenter", "Parts_get_RoboticRotors")]
     public async Task<IList<RoboticRotor>> GetRoboticRotorsAsync()
     {
         var args = new ProcedureArgument[]
@@ -964,7 +964,7 @@ public class Parts : RemoteObject
     /// <summary>
     /// Gets the vessels root part.
     /// </summary>
-    [Rpc("SpaceCenter", "Parts_get_Root")]
+    [GetRpc("SpaceCenter", "Parts_get_Root")]
     public Part GetRoot()
     {
         var args = new ProcedureArgument[]
@@ -978,7 +978,7 @@ public class Parts : RemoteObject
     /// Gets the vessels root part.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Parts_get_Root")]
+    [GetRpc("SpaceCenter", "Parts_get_Root")]
     public async Task<Part> GetRootAsync()
     {
         var args = new ProcedureArgument[]
@@ -991,7 +991,7 @@ public class Parts : RemoteObject
     /// <summary>
     /// Gets a list of all sensors in the vessel.
     /// </summary>
-    [Rpc("SpaceCenter", "Parts_get_Sensors")]
+    [GetRpc("SpaceCenter", "Parts_get_Sensors")]
     public IList<Sensor> GetSensors()
     {
         var args = new ProcedureArgument[]
@@ -1005,7 +1005,7 @@ public class Parts : RemoteObject
     /// Gets a list of all sensors in the vessel.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Parts_get_Sensors")]
+    [GetRpc("SpaceCenter", "Parts_get_Sensors")]
     public async Task<IList<Sensor>> GetSensorsAsync()
     {
         var args = new ProcedureArgument[]
@@ -1018,7 +1018,7 @@ public class Parts : RemoteObject
     /// <summary>
     /// Gets a list of all solar panels in the vessel.
     /// </summary>
-    [Rpc("SpaceCenter", "Parts_get_SolarPanels")]
+    [GetRpc("SpaceCenter", "Parts_get_SolarPanels")]
     public IList<SolarPanel> GetSolarPanels()
     {
         var args = new ProcedureArgument[]
@@ -1032,7 +1032,7 @@ public class Parts : RemoteObject
     /// Gets a list of all solar panels in the vessel.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Parts_get_SolarPanels")]
+    [GetRpc("SpaceCenter", "Parts_get_SolarPanels")]
     public async Task<IList<SolarPanel>> GetSolarPanelsAsync()
     {
         var args = new ProcedureArgument[]
@@ -1045,7 +1045,7 @@ public class Parts : RemoteObject
     /// <summary>
     /// Gets a list of all wheels in the vessel.
     /// </summary>
-    [Rpc("SpaceCenter", "Parts_get_Wheels")]
+    [GetRpc("SpaceCenter", "Parts_get_Wheels")]
     public IList<Wheel> GetWheels()
     {
         var args = new ProcedureArgument[]
@@ -1059,7 +1059,7 @@ public class Parts : RemoteObject
     /// Gets a list of all wheels in the vessel.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Parts_get_Wheels")]
+    [GetRpc("SpaceCenter", "Parts_get_Wheels")]
     public async Task<IList<Wheel>> GetWheelsAsync()
     {
         var args = new ProcedureArgument[]

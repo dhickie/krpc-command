@@ -19,7 +19,7 @@ public class Force : RemoteObject
     /// <summary>
     /// Remove the force.
     /// </summary>
-    [Rpc("SpaceCenter", "Force_Remove")]
+    [SetRpc("SpaceCenter", "Force_Remove")]
     public void Remove()
     {
         var args = new ProcedureArgument[]
@@ -33,7 +33,7 @@ public class Force : RemoteObject
     /// Remove the force.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Force_Remove")]
+    [SetRpc("SpaceCenter", "Force_Remove")]
     public async Task RemoveAsync()
     {
         var args = new ProcedureArgument[]
@@ -48,7 +48,7 @@ public class Force : RemoteObject
     /// </summary>
     /// <returns>A vector pointing in the direction that the force acts,
     /// with its magnitude equal to the strength of the force in Newtons.</returns>
-    [Rpc("SpaceCenter", "Force_get_ForceVector")]
+    [GetRpc("SpaceCenter", "Force_get_ForceVector")]
     public Vector3D GetForceVector()
     {
         var args = new ProcedureArgument[]
@@ -64,7 +64,7 @@ public class Force : RemoteObject
     /// </summary>
     /// <returns>A vector pointing in the direction that the force acts,
     /// with its magnitude equal to the strength of the force in Newtons.</returns>
-    [Rpc("SpaceCenter", "Force_get_ForceVector")]
+    [GetRpc("SpaceCenter", "Force_get_ForceVector")]
     public async Task<Vector3D> GetForceVectorAsync()
     {
         var args = new ProcedureArgument[]
@@ -78,7 +78,7 @@ public class Force : RemoteObject
     /// Sets the force vector, in Newtons.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "Force_set_ForceVector")]
+    [SetRpc("SpaceCenter", "Force_set_ForceVector")]
     public void SetForceVector(Vector3D value)
     {
         var args = new ProcedureArgument[]
@@ -94,7 +94,7 @@ public class Force : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "Force_set_ForceVector")]
+    [SetRpc("SpaceCenter", "Force_set_ForceVector")]
     public async Task SetForceVectorAsync(Vector3D value)
     {
         var args = new ProcedureArgument[]
@@ -108,7 +108,7 @@ public class Force : RemoteObject
     /// <summary>
     /// Gets the part that this force is applied to.
     /// </summary>
-    [Rpc("SpaceCenter", "Force_get_Part")]
+    [GetRpc("SpaceCenter", "Force_get_Part")]
     public Part GetPart()
     {
         var args = new ProcedureArgument[]
@@ -122,7 +122,7 @@ public class Force : RemoteObject
     /// Gets the part that this force is applied to.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Force_get_Part")]
+    [GetRpc("SpaceCenter", "Force_get_Part")]
     public async Task<Part> GetPartAsync()
     {
         var args = new ProcedureArgument[]
@@ -136,7 +136,7 @@ public class Force : RemoteObject
     /// Gets the position at which the force acts, in reference frame <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ReferenceFrame" />.
     /// </summary>
     /// <returns>The position as a vector.</returns>
-    [Rpc("SpaceCenter", "Force_get_Position")]
+    [GetRpc("SpaceCenter", "Force_get_Position")]
     public Vector3D GetPosition()
     {
         var args = new ProcedureArgument[]
@@ -151,7 +151,7 @@ public class Force : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <returns>The position as a vector.</returns>
-    [Rpc("SpaceCenter", "Force_get_Position")]
+    [GetRpc("SpaceCenter", "Force_get_Position")]
     public async Task<Vector3D> GetPositionAsync()
     {
         var args = new ProcedureArgument[]
@@ -165,7 +165,7 @@ public class Force : RemoteObject
     /// Sets the position at which the force acts, in reference frame <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ReferenceFrame" />.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "Force_set_Position")]
+    [SetRpc("SpaceCenter", "Force_set_Position")]
     public void SetPosition(Vector3D value)
     {
         var args = new ProcedureArgument[]
@@ -181,7 +181,7 @@ public class Force : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "Force_set_Position")]
+    [SetRpc("SpaceCenter", "Force_set_Position")]
     public async Task SetPositionAsync(Vector3D value)
     {
         var args = new ProcedureArgument[]
@@ -195,7 +195,7 @@ public class Force : RemoteObject
     /// <summary>
     /// Gets the reference frame of the force vector and position.
     /// </summary>
-    [Rpc("SpaceCenter", "Force_get_ReferenceFrame")]
+    [GetRpc("SpaceCenter", "Force_get_ReferenceFrame")]
     public ReferenceFrame GetReferenceFrame()
     {
         var args = new ProcedureArgument[]
@@ -209,7 +209,7 @@ public class Force : RemoteObject
     /// Gets the reference frame of the force vector and position.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Force_get_ReferenceFrame")]
+    [GetRpc("SpaceCenter", "Force_get_ReferenceFrame")]
     public async Task<ReferenceFrame> GetReferenceFrameAsync()
     {
         var args = new ProcedureArgument[]
@@ -223,7 +223,7 @@ public class Force : RemoteObject
     /// Sets the reference frame of the force vector and position.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "Force_set_ReferenceFrame")]
+    [SetRpc("SpaceCenter", "Force_set_ReferenceFrame")]
     public void SetReferenceFrame(ReferenceFrame value)
     {
         var args = new ProcedureArgument[]
@@ -239,7 +239,7 @@ public class Force : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "Force_set_ReferenceFrame")]
+    [SetRpc("SpaceCenter", "Force_set_ReferenceFrame")]
     public async Task SetReferenceFrameAsync(ReferenceFrame value)
     {
         var args = new ProcedureArgument[]

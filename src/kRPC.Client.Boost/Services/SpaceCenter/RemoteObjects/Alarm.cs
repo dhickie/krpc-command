@@ -18,7 +18,7 @@ public class Alarm : RemoteObject
     /// <summary>
     /// Description of the alarm.
     /// </summary>
-    [Rpc("SpaceCenter", "Alarm_get_Description")]
+    [GetRpc("SpaceCenter", "Alarm_get_Description")]
     public string GetDescription()
     {
         var args = new ProcedureArgument[]
@@ -32,7 +32,7 @@ public class Alarm : RemoteObject
     /// Description of the alarm.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Alarm_get_Description")]
+    [GetRpc("SpaceCenter", "Alarm_get_Description")]
     public async Task<string> GetDescriptionAsync()
     {
         var args = new ProcedureArgument[]
@@ -45,7 +45,7 @@ public class Alarm : RemoteObject
     /// <summary>
     /// Seconds between the alarm going off and the event it references.
     /// </summary>
-    [Rpc("SpaceCenter", "Alarm_get_EventOffset")]
+    [GetRpc("SpaceCenter", "Alarm_get_EventOffset")]
     public double GetEventOffset()
     {
         var args = new ProcedureArgument[]
@@ -59,7 +59,7 @@ public class Alarm : RemoteObject
     /// Seconds between the alarm going off and the event it references.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Alarm_get_EventOffset")]
+    [GetRpc("SpaceCenter", "Alarm_get_EventOffset")]
     public async Task<double> GetEventOffsetAsync()
     {
         var args = new ProcedureArgument[]
@@ -74,7 +74,7 @@ public class Alarm : RemoteObject
     /// KSP destroys and recreates an alarm when it is edited.
     /// This id will remain constant between the old and new alarms.
     /// </summary>
-    [Rpc("SpaceCenter", "Alarm_get_ID")]
+    [GetRpc("SpaceCenter", "Alarm_get_ID")]
     public uint GetID()
     {
         var args = new ProcedureArgument[]
@@ -90,7 +90,7 @@ public class Alarm : RemoteObject
     /// This id will remain constant between the old and new alarms.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Alarm_get_ID")]
+    [GetRpc("SpaceCenter", "Alarm_get_ID")]
     public async Task<uint> GetIDAsync()
     {
         var args = new ProcedureArgument[]
@@ -103,7 +103,7 @@ public class Alarm : RemoteObject
     /// <summary>
     /// Time the alarm will trigger.
     /// </summary>
-    [Rpc("SpaceCenter", "Alarm_get_Time")]
+    [GetRpc("SpaceCenter", "Alarm_get_Time")]
     public double GetTime()
     {
         var args = new ProcedureArgument[]
@@ -117,7 +117,7 @@ public class Alarm : RemoteObject
     /// Time the alarm will trigger.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Alarm_get_Time")]
+    [GetRpc("SpaceCenter", "Alarm_get_Time")]
     public async Task<double> GetTimeAsync()
     {
         var args = new ProcedureArgument[]
@@ -130,7 +130,7 @@ public class Alarm : RemoteObject
     /// <summary>
     /// Time until the alarm triggers.
     /// </summary>
-    [Rpc("SpaceCenter", "Alarm_get_TimeUntil")]
+    [GetRpc("SpaceCenter", "Alarm_get_TimeUntil")]
     public double GetTimeUntil()
     {
         var args = new ProcedureArgument[]
@@ -144,7 +144,7 @@ public class Alarm : RemoteObject
     /// Time until the alarm triggers.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Alarm_get_TimeUntil")]
+    [GetRpc("SpaceCenter", "Alarm_get_TimeUntil")]
     public async Task<double> GetTimeUntilAsync()
     {
         var args = new ProcedureArgument[]
@@ -157,7 +157,7 @@ public class Alarm : RemoteObject
     /// <summary>
     /// Title of the alarm
     /// </summary>
-    [Rpc("SpaceCenter", "Alarm_get_Title")]
+    [GetRpc("SpaceCenter", "Alarm_get_Title")]
     public string GetTitle()
     {
         var args = new ProcedureArgument[]
@@ -171,7 +171,7 @@ public class Alarm : RemoteObject
     /// Title of the alarm
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Alarm_get_Title")]
+    [GetRpc("SpaceCenter", "Alarm_get_Title")]
     public async Task<string> GetTitleAsync()
     {
         var args = new ProcedureArgument[]
@@ -184,7 +184,7 @@ public class Alarm : RemoteObject
     /// <summary>
     /// Type of alarm
     /// </summary>
-    [Rpc("SpaceCenter", "Alarm_get_Type")]
+    [GetRpc("SpaceCenter", "Alarm_get_Type")]
     public string GetAlarmType()
     {
         var args = new ProcedureArgument[]
@@ -198,7 +198,7 @@ public class Alarm : RemoteObject
     /// Type of alarm
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Alarm_get_Type")]
+    [GetRpc("SpaceCenter", "Alarm_get_Type")]
     public async Task<string> GetAlarmTypeAsync()
     {
         var args = new ProcedureArgument[]
@@ -211,7 +211,7 @@ public class Alarm : RemoteObject
     /// <summary>
     /// Vessel the alarm references. <c>null</c> if it does not reference a vessel.
     /// </summary>
-    [Rpc("SpaceCenter", "Alarm_get_Vessel")]
+    [GetRpc("SpaceCenter", "Alarm_get_Vessel")]
     public Vessel? GetVessel()
     {
         var args = new ProcedureArgument[]
@@ -225,7 +225,7 @@ public class Alarm : RemoteObject
     /// Vessel the alarm references. <c>null</c> if it does not reference a vessel.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Alarm_get_Vessel")]
+    [GetRpc("SpaceCenter", "Alarm_get_Vessel")]
     public async Task<Vessel?> GetVesselAsync()
     {
         var args = new ProcedureArgument[]

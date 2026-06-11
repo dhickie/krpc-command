@@ -18,7 +18,7 @@ public class ScienceData : RemoteObject
     /// <summary>
     /// Data amount.
     /// </summary>
-    [Rpc("SpaceCenter", "ScienceData_get_DataAmount")]
+    [GetRpc("SpaceCenter", "ScienceData_get_DataAmount")]
     public float GetDataAmount()
     {
         var args = new ProcedureArgument[]
@@ -32,7 +32,7 @@ public class ScienceData : RemoteObject
     /// Data amount.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "ScienceData_get_DataAmount")]
+    [GetRpc("SpaceCenter", "ScienceData_get_DataAmount")]
     public async Task<float> GetDataAmountAsync()
     {
         var args = new ProcedureArgument[]
@@ -45,7 +45,7 @@ public class ScienceData : RemoteObject
     /// <summary>
     /// Science value.
     /// </summary>
-    [Rpc("SpaceCenter", "ScienceData_get_ScienceValue")]
+    [GetRpc("SpaceCenter", "ScienceData_get_ScienceValue")]
     public float GetScienceValue()
     {
         var args = new ProcedureArgument[]
@@ -59,7 +59,7 @@ public class ScienceData : RemoteObject
     /// Science value.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "ScienceData_get_ScienceValue")]
+    [GetRpc("SpaceCenter", "ScienceData_get_ScienceValue")]
     public async Task<float> GetScienceValueAsync()
     {
         var args = new ProcedureArgument[]
@@ -72,7 +72,7 @@ public class ScienceData : RemoteObject
     /// <summary>
     /// Transmit value.
     /// </summary>
-    [Rpc("SpaceCenter", "ScienceData_get_TransmitValue")]
+    [GetRpc("SpaceCenter", "ScienceData_get_TransmitValue")]
     public float GetTransmitValue()
     {
         var args = new ProcedureArgument[]
@@ -86,7 +86,7 @@ public class ScienceData : RemoteObject
     /// Transmit value.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "ScienceData_get_TransmitValue")]
+    [GetRpc("SpaceCenter", "ScienceData_get_TransmitValue")]
     public async Task<float> GetTransmitValueAsync()
     {
         var args = new ProcedureArgument[]

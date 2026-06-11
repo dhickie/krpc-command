@@ -19,7 +19,7 @@ public class Parachute : RemoteObject
     /// Deploys the parachute. This has no effect if the parachute has already
     /// been armed or deployed.
     /// </summary>
-    [Rpc("SpaceCenter", "Parachute_Arm")]
+    [SetRpc("SpaceCenter", "Parachute_Arm")]
     public void Arm()
     {
         var args = new ProcedureArgument[]
@@ -34,7 +34,7 @@ public class Parachute : RemoteObject
     /// been armed or deployed.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Parachute_Arm")]
+    [SetRpc("SpaceCenter", "Parachute_Arm")]
     public async Task ArmAsync()
     {
         var args = new ProcedureArgument[]
@@ -47,7 +47,7 @@ public class Parachute : RemoteObject
     /// <summary>
     /// Cuts the parachute.
     /// </summary>
-    [Rpc("SpaceCenter", "Parachute_Cut")]
+    [SetRpc("SpaceCenter", "Parachute_Cut")]
     public void Cut()
     {
         var args = new ProcedureArgument[]
@@ -61,7 +61,7 @@ public class Parachute : RemoteObject
     /// Cuts the parachute.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Parachute_Cut")]
+    [SetRpc("SpaceCenter", "Parachute_Cut")]
     public async Task CutAsync()
     {
         var args = new ProcedureArgument[]
@@ -75,7 +75,7 @@ public class Parachute : RemoteObject
     /// Deploys the parachute. This has no effect if the parachute has already
     /// been deployed.
     /// </summary>
-    [Rpc("SpaceCenter", "Parachute_Deploy")]
+    [SetRpc("SpaceCenter", "Parachute_Deploy")]
     public void Deploy()
     {
         var args = new ProcedureArgument[]
@@ -90,7 +90,7 @@ public class Parachute : RemoteObject
     /// been deployed.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Parachute_Deploy")]
+    [SetRpc("SpaceCenter", "Parachute_Deploy")]
     public async Task DeployAsync()
     {
         var args = new ProcedureArgument[]
@@ -103,7 +103,7 @@ public class Parachute : RemoteObject
     /// <summary>
     /// Gets whether the parachute has been armed or deployed.
     /// </summary>
-    [Rpc("SpaceCenter", "Parachute_get_Armed")]
+    [GetRpc("SpaceCenter", "Parachute_get_Armed")]
     public bool GetArmed()
     {
         var args = new ProcedureArgument[]
@@ -117,7 +117,7 @@ public class Parachute : RemoteObject
     /// Gets whether the parachute has been armed or deployed.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Parachute_get_Armed")]
+    [GetRpc("SpaceCenter", "Parachute_get_Armed")]
     public async Task<bool> GetArmedAsync()
     {
         var args = new ProcedureArgument[]
@@ -131,7 +131,7 @@ public class Parachute : RemoteObject
     /// Gets the altitude at which the parachute will full deploy, in meters.
     /// Only applicable to stock parachutes.
     /// </summary>
-    [Rpc("SpaceCenter", "Parachute_get_DeployAltitude")]
+    [GetRpc("SpaceCenter", "Parachute_get_DeployAltitude")]
     public float GetDeployAltitude()
     {
         var args = new ProcedureArgument[]
@@ -146,7 +146,7 @@ public class Parachute : RemoteObject
     /// Only applicable to stock parachutes.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Parachute_get_DeployAltitude")]
+    [GetRpc("SpaceCenter", "Parachute_get_DeployAltitude")]
     public async Task<float> GetDeployAltitudeAsync()
     {
         var args = new ProcedureArgument[]
@@ -161,7 +161,7 @@ public class Parachute : RemoteObject
     /// Only applicable to stock parachutes.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "Parachute_set_DeployAltitude")]
+    [SetRpc("SpaceCenter", "Parachute_set_DeployAltitude")]
     public void SetDeployAltitude(float value)
     {
         var args = new ProcedureArgument[]
@@ -178,7 +178,7 @@ public class Parachute : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "Parachute_set_DeployAltitude")]
+    [SetRpc("SpaceCenter", "Parachute_set_DeployAltitude")]
     public async Task SetDeployAltitudeAsync(float value)
     {
         var args = new ProcedureArgument[]
@@ -193,7 +193,7 @@ public class Parachute : RemoteObject
     /// Gets the minimum pressure at which the parachute will semi-deploy, in atmospheres.
     /// Only applicable to stock parachutes.
     /// </summary>
-    [Rpc("SpaceCenter", "Parachute_get_DeployMinPressure")]
+    [GetRpc("SpaceCenter", "Parachute_get_DeployMinPressure")]
     public float GetDeployMinPressure()
     {
         var args = new ProcedureArgument[]
@@ -208,7 +208,7 @@ public class Parachute : RemoteObject
     /// Only applicable to stock parachutes.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Parachute_get_DeployMinPressure")]
+    [GetRpc("SpaceCenter", "Parachute_get_DeployMinPressure")]
     public async Task<float> GetDeployMinPressureAsync()
     {
         var args = new ProcedureArgument[]
@@ -223,7 +223,7 @@ public class Parachute : RemoteObject
     /// Only applicable to stock parachutes.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "Parachute_set_DeployMinPressure")]
+    [SetRpc("SpaceCenter", "Parachute_set_DeployMinPressure")]
     public void SetDeployMinPressure(float value)
     {
         var args = new ProcedureArgument[]
@@ -240,7 +240,7 @@ public class Parachute : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "Parachute_set_DeployMinPressure")]
+    [SetRpc("SpaceCenter", "Parachute_set_DeployMinPressure")]
     public async Task SetDeployMinPressureAsync(float value)
     {
         var args = new ProcedureArgument[]
@@ -254,7 +254,7 @@ public class Parachute : RemoteObject
     /// <summary>
     /// Gets whether the parachute has been deployed.
     /// </summary>
-    [Rpc("SpaceCenter", "Parachute_get_Deployed")]
+    [GetRpc("SpaceCenter", "Parachute_get_Deployed")]
     public bool GetDeployed()
     {
         var args = new ProcedureArgument[]
@@ -268,7 +268,7 @@ public class Parachute : RemoteObject
     /// Gets whether the parachute has been deployed.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Parachute_get_Deployed")]
+    [GetRpc("SpaceCenter", "Parachute_get_Deployed")]
     public async Task<bool> GetDeployedAsync()
     {
         var args = new ProcedureArgument[]
@@ -281,7 +281,7 @@ public class Parachute : RemoteObject
     /// <summary>
     /// Gets the part object for this parachute.
     /// </summary>
-    [Rpc("SpaceCenter", "Parachute_get_Part")]
+    [GetRpc("SpaceCenter", "Parachute_get_Part")]
     public Part GetPart()
     {
         var args = new ProcedureArgument[]
@@ -295,7 +295,7 @@ public class Parachute : RemoteObject
     /// Gets the part object for this parachute.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Parachute_get_Part")]
+    [GetRpc("SpaceCenter", "Parachute_get_Part")]
     public async Task<Part> GetPartAsync()
     {
         var args = new ProcedureArgument[]
@@ -308,7 +308,7 @@ public class Parachute : RemoteObject
     /// <summary>
     /// Gets the current state of the parachute.
     /// </summary>
-    [Rpc("SpaceCenter", "Parachute_get_State")]
+    [GetRpc("SpaceCenter", "Parachute_get_State")]
     public ParachuteState GetState()
     {
         var args = new ProcedureArgument[]
@@ -322,7 +322,7 @@ public class Parachute : RemoteObject
     /// Gets the current state of the parachute.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Parachute_get_State")]
+    [GetRpc("SpaceCenter", "Parachute_get_State")]
     public async Task<ParachuteState> GetStateAsync()
     {
         var args = new ProcedureArgument[]

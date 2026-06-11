@@ -18,7 +18,7 @@ public class LaunchClamp : RemoteObject
     /// <summary>
     /// Releases the docking clamp. Has no effect if the clamp has already been released.
     /// </summary>
-    [Rpc("SpaceCenter", "LaunchClamp_Release")]
+    [SetRpc("SpaceCenter", "LaunchClamp_Release")]
     public void Release()
     {
         var args = new ProcedureArgument[]
@@ -32,7 +32,7 @@ public class LaunchClamp : RemoteObject
     /// Releases the docking clamp. Has no effect if the clamp has already been released.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "LaunchClamp_Release")]
+    [SetRpc("SpaceCenter", "LaunchClamp_Release")]
     public async Task ReleaseAsync()
     {
         var args = new ProcedureArgument[]
@@ -45,7 +45,7 @@ public class LaunchClamp : RemoteObject
     /// <summary>
     /// Gets the part object for this launch clamp.
     /// </summary>
-    [Rpc("SpaceCenter", "LaunchClamp_get_Part")]
+    [GetRpc("SpaceCenter", "LaunchClamp_get_Part")]
     public Part GetPart()
     {
         var args = new ProcedureArgument[]
@@ -59,7 +59,7 @@ public class LaunchClamp : RemoteObject
     /// Gets the part object for this launch clamp.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "LaunchClamp_get_Part")]
+    [GetRpc("SpaceCenter", "LaunchClamp_get_Part")]
     public async Task<Part> GetPartAsync()
     {
         var args = new ProcedureArgument[]

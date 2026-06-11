@@ -20,7 +20,7 @@ public class ControlSurface : RemoteObject
     /// Gets the authority limiter for the control surface, which controls how far the
     /// control surface will move.
     /// </summary>
-    [Rpc("SpaceCenter", "ControlSurface_get_AuthorityLimiter")]
+    [GetRpc("SpaceCenter", "ControlSurface_get_AuthorityLimiter")]
     public float GetAuthorityLimiter()
     {
         var args = new ProcedureArgument[]
@@ -35,7 +35,7 @@ public class ControlSurface : RemoteObject
     /// control surface will move.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "ControlSurface_get_AuthorityLimiter")]
+    [GetRpc("SpaceCenter", "ControlSurface_get_AuthorityLimiter")]
     public async Task<float> GetAuthorityLimiterAsync()
     {
         var args = new ProcedureArgument[]
@@ -50,7 +50,7 @@ public class ControlSurface : RemoteObject
     /// control surface will move.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "ControlSurface_set_AuthorityLimiter")]
+    [SetRpc("SpaceCenter", "ControlSurface_set_AuthorityLimiter")]
     public void SetAuthorityLimiter(float value)
     {
         var args = new ProcedureArgument[]
@@ -67,7 +67,7 @@ public class ControlSurface : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "ControlSurface_set_AuthorityLimiter")]
+    [SetRpc("SpaceCenter", "ControlSurface_set_AuthorityLimiter")]
     public async Task SetAuthorityLimiterAsync(float value)
     {
         var args = new ProcedureArgument[]
@@ -83,7 +83,7 @@ public class ControlSurface : RemoteObject
     /// in the positive and negative pitch, roll and yaw axes of the vessel. These axes
     /// correspond to the coordinate axes of the <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Vessel.GetReferenceFrame" />.
     /// </summary>
-    [Rpc("SpaceCenter", "ControlSurface_get_AvailableTorque")]
+    [GetRpc("SpaceCenter", "ControlSurface_get_AvailableTorque")]
     public Tuple<Vector3D,Vector3D> GetAvailableTorque()
     {
         var args = new ProcedureArgument[]
@@ -99,7 +99,7 @@ public class ControlSurface : RemoteObject
     /// correspond to the coordinate axes of the <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Vessel.GetReferenceFrame" />.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "ControlSurface_get_AvailableTorque")]
+    [GetRpc("SpaceCenter", "ControlSurface_get_AvailableTorque")]
     public async Task<Tuple<Vector3D,Vector3D>> GetAvailableTorqueAsync()
     {
         var args = new ProcedureArgument[]
@@ -112,7 +112,7 @@ public class ControlSurface : RemoteObject
     /// <summary>
     /// Gets whether the control surface has been fully deployed.
     /// </summary>
-    [Rpc("SpaceCenter", "ControlSurface_get_Deployed")]
+    [GetRpc("SpaceCenter", "ControlSurface_get_Deployed")]
     public bool GetDeployed()
     {
         var args = new ProcedureArgument[]
@@ -126,7 +126,7 @@ public class ControlSurface : RemoteObject
     /// Gets whether the control surface has been fully deployed.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "ControlSurface_get_Deployed")]
+    [GetRpc("SpaceCenter", "ControlSurface_get_Deployed")]
     public async Task<bool> GetDeployedAsync()
     {
         var args = new ProcedureArgument[]
@@ -140,7 +140,7 @@ public class ControlSurface : RemoteObject
     /// Sets whether the control surface has been fully deployed.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "ControlSurface_set_Deployed")]
+    [SetRpc("SpaceCenter", "ControlSurface_set_Deployed")]
     public void SetDeployed(bool value)
     {
         var args = new ProcedureArgument[]
@@ -156,7 +156,7 @@ public class ControlSurface : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "ControlSurface_set_Deployed")]
+    [SetRpc("SpaceCenter", "ControlSurface_set_Deployed")]
     public async Task SetDeployedAsync(bool value)
     {
         var args = new ProcedureArgument[]
@@ -170,7 +170,7 @@ public class ControlSurface : RemoteObject
     /// <summary>
     /// Gets whether the control surface movement is inverted.
     /// </summary>
-    [Rpc("SpaceCenter", "ControlSurface_get_Inverted")]
+    [GetRpc("SpaceCenter", "ControlSurface_get_Inverted")]
     public bool GetInverted()
     {
         var args = new ProcedureArgument[]
@@ -184,7 +184,7 @@ public class ControlSurface : RemoteObject
     /// Gets whether the control surface movement is inverted.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "ControlSurface_get_Inverted")]
+    [GetRpc("SpaceCenter", "ControlSurface_get_Inverted")]
     public async Task<bool> GetInvertedAsync()
     {
         var args = new ProcedureArgument[]
@@ -198,7 +198,7 @@ public class ControlSurface : RemoteObject
     /// Sets whether the control surface movement is inverted.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "ControlSurface_set_Inverted")]
+    [SetRpc("SpaceCenter", "ControlSurface_set_Inverted")]
     public void SetInverted(bool value)
     {
         var args = new ProcedureArgument[]
@@ -214,7 +214,7 @@ public class ControlSurface : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "ControlSurface_set_Inverted")]
+    [SetRpc("SpaceCenter", "ControlSurface_set_Inverted")]
     public async Task SetInvertedAsync(bool value)
     {
         var args = new ProcedureArgument[]
@@ -228,7 +228,7 @@ public class ControlSurface : RemoteObject
     /// <summary>
     /// Gets the part object for this control surface.
     /// </summary>
-    [Rpc("SpaceCenter", "ControlSurface_get_Part")]
+    [GetRpc("SpaceCenter", "ControlSurface_get_Part")]
     public Part GetPart()
     {
         var args = new ProcedureArgument[]
@@ -242,7 +242,7 @@ public class ControlSurface : RemoteObject
     /// Gets the part object for this control surface.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "ControlSurface_get_Part")]
+    [GetRpc("SpaceCenter", "ControlSurface_get_Part")]
     public async Task<Part> GetPartAsync()
     {
         var args = new ProcedureArgument[]
@@ -255,7 +255,7 @@ public class ControlSurface : RemoteObject
     /// <summary>
     /// Gets whether the control surface has pitch control enabled.
     /// </summary>
-    [Rpc("SpaceCenter", "ControlSurface_get_PitchEnabled")]
+    [GetRpc("SpaceCenter", "ControlSurface_get_PitchEnabled")]
     public bool GetPitchEnabled()
     {
         var args = new ProcedureArgument[]
@@ -269,7 +269,7 @@ public class ControlSurface : RemoteObject
     /// Gets whether the control surface has pitch control enabled.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "ControlSurface_get_PitchEnabled")]
+    [GetRpc("SpaceCenter", "ControlSurface_get_PitchEnabled")]
     public async Task<bool> GetPitchEnabledAsync()
     {
         var args = new ProcedureArgument[]
@@ -283,7 +283,7 @@ public class ControlSurface : RemoteObject
     /// Sets whether the control surface has pitch control enabled.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "ControlSurface_set_PitchEnabled")]
+    [SetRpc("SpaceCenter", "ControlSurface_set_PitchEnabled")]
     public void SetPitchEnabled(bool value)
     {
         var args = new ProcedureArgument[]
@@ -299,7 +299,7 @@ public class ControlSurface : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "ControlSurface_set_PitchEnabled")]
+    [SetRpc("SpaceCenter", "ControlSurface_set_PitchEnabled")]
     public async Task SetPitchEnabledAsync(bool value)
     {
         var args = new ProcedureArgument[]
@@ -313,7 +313,7 @@ public class ControlSurface : RemoteObject
     /// <summary>
     /// Gets whether the control surface has roll control enabled.
     /// </summary>
-    [Rpc("SpaceCenter", "ControlSurface_get_RollEnabled")]
+    [GetRpc("SpaceCenter", "ControlSurface_get_RollEnabled")]
     public bool GetRollEnabled()
     {
         var args = new ProcedureArgument[]
@@ -327,7 +327,7 @@ public class ControlSurface : RemoteObject
     /// Gets whether the control surface has roll control enabled.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "ControlSurface_get_RollEnabled")]
+    [GetRpc("SpaceCenter", "ControlSurface_get_RollEnabled")]
     public async Task<bool> GetRollEnabledAsync()
     {
         var args = new ProcedureArgument[]
@@ -341,7 +341,7 @@ public class ControlSurface : RemoteObject
     /// Sets whether the control surface has roll control enabled.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "ControlSurface_set_RollEnabled")]
+    [SetRpc("SpaceCenter", "ControlSurface_set_RollEnabled")]
     public void SetRollEnabled(bool value)
     {
         var args = new ProcedureArgument[]
@@ -357,7 +357,7 @@ public class ControlSurface : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "ControlSurface_set_RollEnabled")]
+    [SetRpc("SpaceCenter", "ControlSurface_set_RollEnabled")]
     public async Task SetRollEnabledAsync(bool value)
     {
         var args = new ProcedureArgument[]
@@ -371,7 +371,7 @@ public class ControlSurface : RemoteObject
     /// <summary>
     /// Surface area of the control surface in <math>m^2</math>.
     /// </summary>
-    [Rpc("SpaceCenter", "ControlSurface_get_SurfaceArea")]
+    [GetRpc("SpaceCenter", "ControlSurface_get_SurfaceArea")]
     public float GetSurfaceArea()
     {
         var args = new ProcedureArgument[]
@@ -385,7 +385,7 @@ public class ControlSurface : RemoteObject
     /// Surface area of the control surface in <math>m^2</math>.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "ControlSurface_get_SurfaceArea")]
+    [GetRpc("SpaceCenter", "ControlSurface_get_SurfaceArea")]
     public async Task<float> GetSurfaceAreaAsync()
     {
         var args = new ProcedureArgument[]
@@ -398,7 +398,7 @@ public class ControlSurface : RemoteObject
     /// <summary>
     /// Gets whether the control surface has yaw control enabled.
     /// </summary>
-    [Rpc("SpaceCenter", "ControlSurface_get_YawEnabled")]
+    [GetRpc("SpaceCenter", "ControlSurface_get_YawEnabled")]
     public bool GetYawEnabled()
     {
         var args = new ProcedureArgument[]
@@ -412,7 +412,7 @@ public class ControlSurface : RemoteObject
     /// Gets whether the control surface has yaw control enabled.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "ControlSurface_get_YawEnabled")]
+    [GetRpc("SpaceCenter", "ControlSurface_get_YawEnabled")]
     public async Task<bool> GetYawEnabledAsync()
     {
         var args = new ProcedureArgument[]
@@ -426,7 +426,7 @@ public class ControlSurface : RemoteObject
     /// Sets whether the control surface has yaw control enabled.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "ControlSurface_set_YawEnabled")]
+    [SetRpc("SpaceCenter", "ControlSurface_set_YawEnabled")]
     public void SetYawEnabled(bool value)
     {
         var args = new ProcedureArgument[]
@@ -442,7 +442,7 @@ public class ControlSurface : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "ControlSurface_set_YawEnabled")]
+    [SetRpc("SpaceCenter", "ControlSurface_set_YawEnabled")]
     public async Task SetYawEnabledAsync(bool value)
     {
         var args = new ProcedureArgument[]

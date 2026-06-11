@@ -19,7 +19,7 @@ public class Comms : RemoteObject
     /// <summary>
     /// Gets whether the vessel can communicate with KSC.
     /// </summary>
-    [Rpc("SpaceCenter", "Comms_get_CanCommunicate")]
+    [GetRpc("SpaceCenter", "Comms_get_CanCommunicate")]
     public bool GetCanCommunicate()
     {
         var args = new ProcedureArgument[]
@@ -33,7 +33,7 @@ public class Comms : RemoteObject
     /// Gets whether the vessel can communicate with KSC.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Comms_get_CanCommunicate")]
+    [GetRpc("SpaceCenter", "Comms_get_CanCommunicate")]
     public async Task<bool> GetCanCommunicateAsync()
     {
         var args = new ProcedureArgument[]
@@ -46,7 +46,7 @@ public class Comms : RemoteObject
     /// <summary>
     /// Gets whether the vessel can transmit science data to KSC.
     /// </summary>
-    [Rpc("SpaceCenter", "Comms_get_CanTransmitScience")]
+    [GetRpc("SpaceCenter", "Comms_get_CanTransmitScience")]
     public bool GetCanTransmitScience()
     {
         var args = new ProcedureArgument[]
@@ -60,7 +60,7 @@ public class Comms : RemoteObject
     /// Gets whether the vessel can transmit science data to KSC.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Comms_get_CanTransmitScience")]
+    [GetRpc("SpaceCenter", "Comms_get_CanTransmitScience")]
     public async Task<bool> GetCanTransmitScienceAsync()
     {
         var args = new ProcedureArgument[]
@@ -73,7 +73,7 @@ public class Comms : RemoteObject
     /// <summary>
     /// Gets the communication path used to control the vessel.
     /// </summary>
-    [Rpc("SpaceCenter", "Comms_get_ControlPath")]
+    [GetRpc("SpaceCenter", "Comms_get_ControlPath")]
     public IList<CommLink> GetControlPath()
     {
         var args = new ProcedureArgument[]
@@ -87,7 +87,7 @@ public class Comms : RemoteObject
     /// Gets the communication path used to control the vessel.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Comms_get_ControlPath")]
+    [GetRpc("SpaceCenter", "Comms_get_ControlPath")]
     public async Task<IList<CommLink>> GetControlPathAsync()
     {
         var args = new ProcedureArgument[]
@@ -100,7 +100,7 @@ public class Comms : RemoteObject
     /// <summary>
     /// Gets the combined power of all active antennae on the vessel.
     /// </summary>
-    [Rpc("SpaceCenter", "Comms_get_Power")]
+    [GetRpc("SpaceCenter", "Comms_get_Power")]
     public double GetPower()
     {
         var args = new ProcedureArgument[]
@@ -114,7 +114,7 @@ public class Comms : RemoteObject
     /// Gets the combined power of all active antennae on the vessel.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Comms_get_Power")]
+    [GetRpc("SpaceCenter", "Comms_get_Power")]
     public async Task<double> GetPowerAsync()
     {
         var args = new ProcedureArgument[]
@@ -127,7 +127,7 @@ public class Comms : RemoteObject
     /// <summary>
     /// Signal delay to KSC in seconds.
     /// </summary>
-    [Rpc("SpaceCenter", "Comms_get_SignalDelay")]
+    [GetRpc("SpaceCenter", "Comms_get_SignalDelay")]
     public double GetSignalDelay()
     {
         var args = new ProcedureArgument[]
@@ -141,7 +141,7 @@ public class Comms : RemoteObject
     /// Signal delay to KSC in seconds.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Comms_get_SignalDelay")]
+    [GetRpc("SpaceCenter", "Comms_get_SignalDelay")]
     public async Task<double> GetSignalDelayAsync()
     {
         var args = new ProcedureArgument[]
@@ -154,7 +154,7 @@ public class Comms : RemoteObject
     /// <summary>
     /// Signal strength to KSC.
     /// </summary>
-    [Rpc("SpaceCenter", "Comms_get_SignalStrength")]
+    [GetRpc("SpaceCenter", "Comms_get_SignalStrength")]
     public double GetSignalStrength()
     {
         var args = new ProcedureArgument[]
@@ -168,7 +168,7 @@ public class Comms : RemoteObject
     /// Signal strength to KSC.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Comms_get_SignalStrength")]
+    [GetRpc("SpaceCenter", "Comms_get_SignalStrength")]
     public async Task<double> GetSignalStrengthAsync()
     {
         var args = new ProcedureArgument[]

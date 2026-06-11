@@ -1,6 +1,6 @@
 ---
 name: krpc-boost-generated-service-migration
-description: "Use when migrating generated kRPC C# service client code to kRPC.Client.Boost conventions. Use this skill whenever the user mentions repeating CONTEXT.md updates, generated kRPC service migrations, kRPC.Client.Boost generated services, ConnectionMultiplexer/IConnectionMultiplexer, ServiceObject/RemoteObject invoke helpers, RemoteObject constructor access, RPCAttribute/Rpc cleanup, Encoder/Decode removal, ProcedureArgument arrays, property-to-method conversion, async RPC wrappers, nullable generated RPCs, XML comment cleanup, see cref namespace fixes, or Vector3D/Quaternion/Angle conversions for generated kRPC clients, even if they name a service other than SpaceCenter."
+description: "Use when migrating generated kRPC C# service client code to kRPC.Client.Boost conventions. Use this skill whenever the user mentions repeating CONTEXT.md updates, generated kRPC service migrations, kRPC.Client.Boost generated services, ConnectionMultiplexer/IConnectionMultiplexer, ServiceObject/RemoteObject invoke helpers, RemoteObject constructor access, RPCAttribute/Rpc/GetRpcAttribute/SetRpcAttribute cleanup, Encoder/Decode removal, ProcedureArgument arrays, property-to-method conversion, async RPC wrappers, nullable generated RPCs, XML comment cleanup, see cref namespace fixes, or Vector3D/Quaternion/Angle conversions for generated kRPC clients, even if they name a service other than SpaceCenter."
 ---
 
 # kRPC Boost Generated Service Migration
@@ -59,11 +59,15 @@ For generated helper methods on remote object classes:
 
 ### 2. Replace RPC Metadata Attributes
 
-- Replace stock `global::KRPC.Client.Attributes.RPCAttribute` references with the project-local `RpcAttribute` or `[Rpc(...)]` shorthand.
+- Replace stock `global::KRPC.Client.Attributes.RPCAttribute` references with the project-local `GetRpcAttribute` / `SetRpcAttribute`, normally using `[GetRpc(...)]` / `[SetRpc(...)]` shorthand.
+- Do not use the project-local base `RpcAttribute` or `[Rpc(...)]` shorthand in generated service wrappers. It is the shared metadata base; generated RPC wrappers should declare whether the RPC is a read/query or a mutation/command.
 - Add `using kRPC.Client.Boost.Attributes;` where needed.
 - Preserve the original service and procedure arguments, in the same order.
-- Add immediate `[Rpc("Service", "Procedure")]` attributes before generated setter methods as well as getter and normal RPC methods.
-- For setters, the procedure in the attribute must match the procedure invoked in the method body, such as `Service_set_Property`.
+- Use `[GetRpc("Service", "Procedure")]` for functions that fetch, compute, query, or transform values without mutating game state. This includes generated property getters (`get_...` or `_get_...`) and query-style methods such as `Get...`, `Has...`, `Can...`, `With...`, `...At`, `...Position`, `...Velocity`, `Raycast...`, and coordinate transform helpers.
+- Use `[SetRpc("Service", "Procedure")]` for functions that set values or send commands. This includes generated property setters (`set_...` or `_set_...`) and action methods such as `Engage`, `Disengage`, `Add...`, `Create...`, `Launch...`, `Load...`, `Quickload`, `Quicksave`, `Save`, `Remove`, `Reset`, `Start`, `Stop`, `Toggle`, `Trigger`, `Undock`, `Decouple`, `Recover`, `Transfer...`, `WarpTo`, and similar commands.
+- A `[SetRpc(...)]` method is allowed to return a value when the command creates, starts, or changes something and returns the created object, affected object, transfer handle, or status flag. Examples include adding alarms or waypoints, adding manoeuvre nodes, decoupling/undocking and returning the resulting vessel, starting a resource transfer, and robotic controller commands that return success. Do not reclassify these as `[GetRpc(...)]` solely because the return type is not `void` or `Task`.
+- Add immediate metadata attributes before generated setter methods, getter methods, normal RPC methods, and async counterparts.
+- The procedure in the attribute must match the procedure invoked in the method body, such as `Service_get_Property`, `Service_set_Property`, or `Service_Command`.
 
 ### 3. Remove Direct Encoder and ByteString Usage
 
@@ -85,8 +89,8 @@ Generated properties should become explicit method pairs:
 
 - Getter property `X` becomes `GetX()`.
 - Setter property `X` becomes `SetX(value)`.
-- Getter methods keep RPC metadata for the original `get_...` procedure.
-- Setter methods get RPC metadata for the original `set_...` procedure.
+- Getter methods keep `[GetRpc(...)]` metadata for the original `get_...` procedure.
+- Setter methods get `[SetRpc(...)]` metadata for the original `set_...` procedure.
 - Update references in XML docs from converted properties to the corresponding `Get...` method where appropriate.
 
 When splitting XML documentation:
@@ -106,7 +110,7 @@ For every generated synchronous RPC wrapper, add an async counterpart unless one
 - Return `Task<T>` when the synchronous method returns `T`.
 - Return `Task` when the synchronous method returns `void`.
 - Mark the method `async` and await `InvokeVoidAsync(...)`, `InvokeNonNullableAsync<T>(...)`, or `InvokeNullableAsync<T>(...)` as appropriate.
-- Copy the same `[Rpc(...)]` metadata.
+- Copy the same `[GetRpc(...)]` or `[SetRpc(...)]` metadata classification as the synchronous wrapper.
 - Copy XML docs and add `Executes asynchronously.` to the summary.
 - Add `using System.Threading.Tasks;` where needed.
 
@@ -179,6 +183,7 @@ Search for old generated patterns that should be gone from scoped files:
 ```text
 global::KRPC.Client
 KRPC.Client.Attributes.RPCAttribute
+[Rpc(
 Encoder.Encode
 Encoder.Decode
 ByteString
@@ -198,7 +203,12 @@ Check structural invariants:
 - No generated `RemoteObject` subclass has a public constructor that accepts `IConnectionMultiplexer`.
 - Non-constructor remote object methods no longer accept `ConnectionMultiplexer connection` unless the method genuinely needs an external connection rather than the instance connection.
 - There are no leftover generated properties where the selected migration requires method pairs.
-- Every generated getter, setter, synchronous RPC wrapper, and async RPC wrapper has an immediate `[Rpc(...)]` attribute with the same procedure name used by the body.
+- Every generated getter, setter, synchronous RPC wrapper, and async RPC wrapper has an immediate `[GetRpc(...)]` or `[SetRpc(...)]` attribute with the same procedure name used by the body.
+- Generated property getters (`get_...` or `_get_...`) use `[GetRpc(...)]`; generated property setters (`set_...` or `_set_...`) use `[SetRpc(...)]`.
+- Query/calculation helpers that return values without changing state use `[GetRpc(...)]`, even when their names are not prefixed with `Get`.
+- Command/mutation helpers use `[SetRpc(...)]`, even when they return a created object, affected object, handle, or status value.
+- Search for suspicious mismatches such as `[GetRpc("...", "...set_...")]`, `[SetRpc("...", "...get_...")]`, and command-like names accidentally classified as getters.
+- As a sanity check, list `[SetRpc(...)]` methods whose return type is not exactly `void` or `Task`; inspect each result, but treat non-void command returns as acceptable when the RPC semantics are mutation/command-oriented.
 - Every synchronous generated RPC wrapper has an async counterpart, and async bodies use the async `ServiceObject`/`RemoteObject` helper with `await`.
 - Generated remote objects and service facades call inherited invoke helpers: `InvokeNonNullable*` for non-nullable returns, `InvokeNullable*` for nullable returns, and `InvokeVoid*` for void procedures.
 - Nullable public return types use `InvokeNullable<T>` / `InvokeNullableAsync<T>` with non-nullable generic type arguments; non-nullable public return types use `InvokeNonNullable<T>` / `InvokeNonNullableAsync<T>`.

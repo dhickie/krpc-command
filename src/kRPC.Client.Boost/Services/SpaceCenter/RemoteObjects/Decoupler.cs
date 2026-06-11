@@ -23,7 +23,7 @@ public class Decoupler : RemoteObject
     /// after calling this function, the object(s) returned by previous call(s) to
     /// <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.SpaceCenter.GetActiveVessel" /> no longer refer to the active vessel.
     /// </remarks>
-    [Rpc("SpaceCenter", "Decoupler_Decouple")]
+    [SetRpc("SpaceCenter", "Decoupler_Decouple")]
     public Vessel Decouple()
     {
         var args = new ProcedureArgument[]
@@ -43,7 +43,7 @@ public class Decoupler : RemoteObject
     /// after calling this function, the object(s) returned by previous call(s) to
     /// <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.SpaceCenter.GetActiveVessel" /> no longer refer to the active vessel.
     /// </remarks>
-    [Rpc("SpaceCenter", "Decoupler_Decouple")]
+    [SetRpc("SpaceCenter", "Decoupler_Decouple")]
     public async Task<Vessel> DecoupleAsync()
     {
         var args = new ProcedureArgument[]
@@ -56,7 +56,7 @@ public class Decoupler : RemoteObject
     /// <summary>
     /// Gets the part attached to this decoupler's explosive node.
     /// </summary>
-    [Rpc("SpaceCenter", "Decoupler_get_AttachedPart")]
+    [GetRpc("SpaceCenter", "Decoupler_get_AttachedPart")]
     public Part GetAttachedPart()
     {
         var args = new ProcedureArgument[]
@@ -70,7 +70,7 @@ public class Decoupler : RemoteObject
     /// Gets the part attached to this decoupler's explosive node.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Decoupler_get_AttachedPart")]
+    [GetRpc("SpaceCenter", "Decoupler_get_AttachedPart")]
     public async Task<Part> GetAttachedPartAsync()
     {
         var args = new ProcedureArgument[]
@@ -83,7 +83,7 @@ public class Decoupler : RemoteObject
     /// <summary>
     /// Gets whether the decoupler has fired.
     /// </summary>
-    [Rpc("SpaceCenter", "Decoupler_get_Decoupled")]
+    [GetRpc("SpaceCenter", "Decoupler_get_Decoupled")]
     public bool GetDecoupled()
     {
         var args = new ProcedureArgument[]
@@ -97,7 +97,7 @@ public class Decoupler : RemoteObject
     /// Gets whether the decoupler has fired.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Decoupler_get_Decoupled")]
+    [GetRpc("SpaceCenter", "Decoupler_get_Decoupled")]
     public async Task<bool> GetDecoupledAsync()
     {
         var args = new ProcedureArgument[]
@@ -110,7 +110,7 @@ public class Decoupler : RemoteObject
     /// <summary>
     /// Gets the impulse that the decoupler imparts when it is fired, in Newton seconds.
     /// </summary>
-    [Rpc("SpaceCenter", "Decoupler_get_Impulse")]
+    [GetRpc("SpaceCenter", "Decoupler_get_Impulse")]
     public float GetImpulse()
     {
         var args = new ProcedureArgument[]
@@ -124,7 +124,7 @@ public class Decoupler : RemoteObject
     /// Gets the impulse that the decoupler imparts when it is fired, in Newton seconds.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Decoupler_get_Impulse")]
+    [GetRpc("SpaceCenter", "Decoupler_get_Impulse")]
     public async Task<float> GetImpulseAsync()
     {
         var args = new ProcedureArgument[]
@@ -137,7 +137,7 @@ public class Decoupler : RemoteObject
     /// <summary>
     /// Gets whether the decoupler is an omni-decoupler (e.g. stack separator)
     /// </summary>
-    [Rpc("SpaceCenter", "Decoupler_get_IsOmniDecoupler")]
+    [GetRpc("SpaceCenter", "Decoupler_get_IsOmniDecoupler")]
     public bool GetIsOmniDecoupler()
     {
         var args = new ProcedureArgument[]
@@ -151,7 +151,7 @@ public class Decoupler : RemoteObject
     /// Gets whether the decoupler is an omni-decoupler (e.g. stack separator)
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Decoupler_get_IsOmniDecoupler")]
+    [GetRpc("SpaceCenter", "Decoupler_get_IsOmniDecoupler")]
     public async Task<bool> GetIsOmniDecouplerAsync()
     {
         var args = new ProcedureArgument[]
@@ -164,7 +164,7 @@ public class Decoupler : RemoteObject
     /// <summary>
     /// Gets the part object for this decoupler.
     /// </summary>
-    [Rpc("SpaceCenter", "Decoupler_get_Part")]
+    [GetRpc("SpaceCenter", "Decoupler_get_Part")]
     public Part GetPart()
     {
         var args = new ProcedureArgument[]
@@ -178,7 +178,7 @@ public class Decoupler : RemoteObject
     /// Gets the part object for this decoupler.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Decoupler_get_Part")]
+    [GetRpc("SpaceCenter", "Decoupler_get_Part")]
     public async Task<Part> GetPartAsync()
     {
         var args = new ProcedureArgument[]
@@ -191,7 +191,7 @@ public class Decoupler : RemoteObject
     /// <summary>
     /// Gets whether the decoupler is enabled in the staging sequence.
     /// </summary>
-    [Rpc("SpaceCenter", "Decoupler_get_Staged")]
+    [GetRpc("SpaceCenter", "Decoupler_get_Staged")]
     public bool GetStaged()
     {
         var args = new ProcedureArgument[]
@@ -205,7 +205,7 @@ public class Decoupler : RemoteObject
     /// Gets whether the decoupler is enabled in the staging sequence.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Decoupler_get_Staged")]
+    [GetRpc("SpaceCenter", "Decoupler_get_Staged")]
     public async Task<bool> GetStagedAsync()
     {
         var args = new ProcedureArgument[]

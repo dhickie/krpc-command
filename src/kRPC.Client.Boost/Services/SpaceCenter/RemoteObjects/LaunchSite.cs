@@ -19,7 +19,7 @@ public class LaunchSite : RemoteObject
     /// <summary>
     /// Gets the celestial body the launch site is on.
     /// </summary>
-    [Rpc("SpaceCenter", "LaunchSite_get_Body")]
+    [GetRpc("SpaceCenter", "LaunchSite_get_Body")]
     public CelestialBody GetBody()
     {
         var args = new ProcedureArgument[]
@@ -33,7 +33,7 @@ public class LaunchSite : RemoteObject
     /// Gets the celestial body the launch site is on.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "LaunchSite_get_Body")]
+    [GetRpc("SpaceCenter", "LaunchSite_get_Body")]
     public async Task<CelestialBody> GetBodyAsync()
     {
         var args = new ProcedureArgument[]
@@ -46,7 +46,7 @@ public class LaunchSite : RemoteObject
     /// <summary>
     /// Which editor is normally used for this launch site.
     /// </summary>
-    [Rpc("SpaceCenter", "LaunchSite_get_EditorFacility")]
+    [GetRpc("SpaceCenter", "LaunchSite_get_EditorFacility")]
     public EditorFacility GetEditorFacility()
     {
         var args = new ProcedureArgument[]
@@ -60,7 +60,7 @@ public class LaunchSite : RemoteObject
     /// Which editor is normally used for this launch site.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "LaunchSite_get_EditorFacility")]
+    [GetRpc("SpaceCenter", "LaunchSite_get_EditorFacility")]
     public async Task<EditorFacility> GetEditorFacilityAsync()
     {
         var args = new ProcedureArgument[]
@@ -73,7 +73,7 @@ public class LaunchSite : RemoteObject
     /// <summary>
     /// Gets the name of the launch site.
     /// </summary>
-    [Rpc("SpaceCenter", "LaunchSite_get_Name")]
+    [GetRpc("SpaceCenter", "LaunchSite_get_Name")]
     public string GetName()
     {
         var args = new ProcedureArgument[]
@@ -87,7 +87,7 @@ public class LaunchSite : RemoteObject
     /// Gets the name of the launch site.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "LaunchSite_get_Name")]
+    [GetRpc("SpaceCenter", "LaunchSite_get_Name")]
     public async Task<string> GetNameAsync()
     {
         var args = new ProcedureArgument[]

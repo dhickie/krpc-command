@@ -18,7 +18,7 @@ public class CommLink : RemoteObject
     /// <summary>
     /// Start point of the link.
     /// </summary>
-    [Rpc("SpaceCenter", "CommLink_get_End")]
+    [GetRpc("SpaceCenter", "CommLink_get_End")]
     public CommNode GetEnd()
     {
         var args = new ProcedureArgument[]
@@ -32,7 +32,7 @@ public class CommLink : RemoteObject
     /// Start point of the link.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "CommLink_get_End")]
+    [GetRpc("SpaceCenter", "CommLink_get_End")]
     public async Task<CommNode> GetEndAsync()
     {
         var args = new ProcedureArgument[]
@@ -45,7 +45,7 @@ public class CommLink : RemoteObject
     /// <summary>
     /// Signal strength of the link.
     /// </summary>
-    [Rpc("SpaceCenter", "CommLink_get_SignalStrength")]
+    [GetRpc("SpaceCenter", "CommLink_get_SignalStrength")]
     public double GetSignalStrength()
     {
         var args = new ProcedureArgument[]
@@ -59,7 +59,7 @@ public class CommLink : RemoteObject
     /// Signal strength of the link.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "CommLink_get_SignalStrength")]
+    [GetRpc("SpaceCenter", "CommLink_get_SignalStrength")]
     public async Task<double> GetSignalStrengthAsync()
     {
         var args = new ProcedureArgument[]
@@ -72,7 +72,7 @@ public class CommLink : RemoteObject
     /// <summary>
     /// Start point of the link.
     /// </summary>
-    [Rpc("SpaceCenter", "CommLink_get_Start")]
+    [GetRpc("SpaceCenter", "CommLink_get_Start")]
     public CommNode GetStart()
     {
         var args = new ProcedureArgument[]
@@ -86,7 +86,7 @@ public class CommLink : RemoteObject
     /// Start point of the link.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "CommLink_get_Start")]
+    [GetRpc("SpaceCenter", "CommLink_get_Start")]
     public async Task<CommNode> GetStartAsync()
     {
         var args = new ProcedureArgument[]
@@ -99,7 +99,7 @@ public class CommLink : RemoteObject
     /// <summary>
     /// Gets the type of link.
     /// </summary>
-    [Rpc("SpaceCenter", "CommLink_get_Type")]
+    [GetRpc("SpaceCenter", "CommLink_get_Type")]
     public CommLinkType GetComLinkType()
     {
         var args = new ProcedureArgument[]
@@ -113,7 +113,7 @@ public class CommLink : RemoteObject
     /// Gets the type of link.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "CommLink_get_Type")]
+    [GetRpc("SpaceCenter", "CommLink_get_Type")]
     public async Task<CommLinkType> GetComLinkTypeAsync()
     {
         var args = new ProcedureArgument[]

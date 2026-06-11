@@ -18,7 +18,7 @@ public class Leg : RemoteObject
     /// <summary>
     /// Gets whether the leg is deployable.
     /// </summary>
-    [Rpc("SpaceCenter", "Leg_get_Deployable")]
+    [GetRpc("SpaceCenter", "Leg_get_Deployable")]
     public bool GetDeployable()
     {
         var args = new ProcedureArgument[]
@@ -32,7 +32,7 @@ public class Leg : RemoteObject
     /// Gets whether the leg is deployable.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Leg_get_Deployable")]
+    [GetRpc("SpaceCenter", "Leg_get_Deployable")]
     public async Task<bool> GetDeployableAsync()
     {
         var args = new ProcedureArgument[]
@@ -49,7 +49,7 @@ public class Leg : RemoteObject
     /// Fixed landing legs are always deployed.
     /// Returns an error if you try to deploy fixed landing gear.
     /// </remarks>
-    [Rpc("SpaceCenter", "Leg_get_Deployed")]
+    [GetRpc("SpaceCenter", "Leg_get_Deployed")]
     public bool GetDeployed()
     {
         var args = new ProcedureArgument[]
@@ -67,7 +67,7 @@ public class Leg : RemoteObject
     /// Fixed landing legs are always deployed.
     /// Returns an error if you try to deploy fixed landing gear.
     /// </remarks>
-    [Rpc("SpaceCenter", "Leg_get_Deployed")]
+    [GetRpc("SpaceCenter", "Leg_get_Deployed")]
     public async Task<bool> GetDeployedAsync()
     {
         var args = new ProcedureArgument[]
@@ -81,7 +81,7 @@ public class Leg : RemoteObject
     /// Sets whether the landing leg is deployed.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "Leg_set_Deployed")]
+    [SetRpc("SpaceCenter", "Leg_set_Deployed")]
     public void SetDeployed(bool value)
     {
         var args = new ProcedureArgument[]
@@ -97,7 +97,7 @@ public class Leg : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "Leg_set_Deployed")]
+    [SetRpc("SpaceCenter", "Leg_set_Deployed")]
     public async Task SetDeployedAsync(bool value)
     {
         var args = new ProcedureArgument[]
@@ -111,7 +111,7 @@ public class Leg : RemoteObject
     /// <summary>
     /// Returns whether the leg is touching the ground.
     /// </summary>
-    [Rpc("SpaceCenter", "Leg_get_IsGrounded")]
+    [GetRpc("SpaceCenter", "Leg_get_IsGrounded")]
     public bool GetIsGrounded()
     {
         var args = new ProcedureArgument[]
@@ -125,7 +125,7 @@ public class Leg : RemoteObject
     /// Returns whether the leg is touching the ground.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Leg_get_IsGrounded")]
+    [GetRpc("SpaceCenter", "Leg_get_IsGrounded")]
     public async Task<bool> GetIsGroundedAsync()
     {
         var args = new ProcedureArgument[]
@@ -138,7 +138,7 @@ public class Leg : RemoteObject
     /// <summary>
     /// Gets the part object for this landing leg.
     /// </summary>
-    [Rpc("SpaceCenter", "Leg_get_Part")]
+    [GetRpc("SpaceCenter", "Leg_get_Part")]
     public Part GetPart()
     {
         var args = new ProcedureArgument[]
@@ -152,7 +152,7 @@ public class Leg : RemoteObject
     /// Gets the part object for this landing leg.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Leg_get_Part")]
+    [GetRpc("SpaceCenter", "Leg_get_Part")]
     public async Task<Part> GetPartAsync()
     {
         var args = new ProcedureArgument[]
@@ -165,7 +165,7 @@ public class Leg : RemoteObject
     /// <summary>
     /// Gets the current state of the landing leg.
     /// </summary>
-    [Rpc("SpaceCenter", "Leg_get_State")]
+    [GetRpc("SpaceCenter", "Leg_get_State")]
     public LegState GetState()
     {
         var args = new ProcedureArgument[]
@@ -179,7 +179,7 @@ public class Leg : RemoteObject
     /// Gets the current state of the landing leg.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Leg_get_State")]
+    [GetRpc("SpaceCenter", "Leg_get_State")]
     public async Task<LegState> GetStateAsync()
     {
         var args = new ProcedureArgument[]

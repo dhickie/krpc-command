@@ -18,7 +18,7 @@ public class Intake : RemoteObject
     /// <summary>
     /// Gets the area of the intake's opening, in square meters.
     /// </summary>
-    [Rpc("SpaceCenter", "Intake_get_Area")]
+    [GetRpc("SpaceCenter", "Intake_get_Area")]
     public float GetArea()
     {
         var args = new ProcedureArgument[]
@@ -32,7 +32,7 @@ public class Intake : RemoteObject
     /// Gets the area of the intake's opening, in square meters.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Intake_get_Area")]
+    [GetRpc("SpaceCenter", "Intake_get_Area")]
     public async Task<float> GetAreaAsync()
     {
         var args = new ProcedureArgument[]
@@ -45,7 +45,7 @@ public class Intake : RemoteObject
     /// <summary>
     /// Gets the rate of flow into the intake, in units of resource per second.
     /// </summary>
-    [Rpc("SpaceCenter", "Intake_get_Flow")]
+    [GetRpc("SpaceCenter", "Intake_get_Flow")]
     public float GetFlow()
     {
         var args = new ProcedureArgument[]
@@ -59,7 +59,7 @@ public class Intake : RemoteObject
     /// Gets the rate of flow into the intake, in units of resource per second.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Intake_get_Flow")]
+    [GetRpc("SpaceCenter", "Intake_get_Flow")]
     public async Task<float> GetFlowAsync()
     {
         var args = new ProcedureArgument[]
@@ -72,7 +72,7 @@ public class Intake : RemoteObject
     /// <summary>
     /// Gets whether the intake is open.
     /// </summary>
-    [Rpc("SpaceCenter", "Intake_get_Open")]
+    [GetRpc("SpaceCenter", "Intake_get_Open")]
     public bool GetOpen()
     {
         var args = new ProcedureArgument[]
@@ -86,7 +86,7 @@ public class Intake : RemoteObject
     /// Gets whether the intake is open.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Intake_get_Open")]
+    [GetRpc("SpaceCenter", "Intake_get_Open")]
     public async Task<bool> GetOpenAsync()
     {
         var args = new ProcedureArgument[]
@@ -100,7 +100,7 @@ public class Intake : RemoteObject
     /// Sets whether the intake is open.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "Intake_set_Open")]
+    [SetRpc("SpaceCenter", "Intake_set_Open")]
     public void SetOpen(bool value)
     {
         var args = new ProcedureArgument[]
@@ -116,7 +116,7 @@ public class Intake : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "Intake_set_Open")]
+    [SetRpc("SpaceCenter", "Intake_set_Open")]
     public async Task SetOpenAsync(bool value)
     {
         var args = new ProcedureArgument[]
@@ -130,7 +130,7 @@ public class Intake : RemoteObject
     /// <summary>
     /// Gets the part object for this intake.
     /// </summary>
-    [Rpc("SpaceCenter", "Intake_get_Part")]
+    [GetRpc("SpaceCenter", "Intake_get_Part")]
     public Part GetPart()
     {
         var args = new ProcedureArgument[]
@@ -144,7 +144,7 @@ public class Intake : RemoteObject
     /// Gets the part object for this intake.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Intake_get_Part")]
+    [GetRpc("SpaceCenter", "Intake_get_Part")]
     public async Task<Part> GetPartAsync()
     {
         var args = new ProcedureArgument[]
@@ -157,7 +157,7 @@ public class Intake : RemoteObject
     /// <summary>
     /// Speed of the flow into the intake, in <math>m/s</math>.
     /// </summary>
-    [Rpc("SpaceCenter", "Intake_get_Speed")]
+    [GetRpc("SpaceCenter", "Intake_get_Speed")]
     public float GetSpeed()
     {
         var args = new ProcedureArgument[]
@@ -171,7 +171,7 @@ public class Intake : RemoteObject
     /// Speed of the flow into the intake, in <math>m/s</math>.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Intake_get_Speed")]
+    [GetRpc("SpaceCenter", "Intake_get_Speed")]
     public async Task<float> GetSpeedAsync()
     {
         var args = new ProcedureArgument[]

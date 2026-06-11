@@ -18,7 +18,7 @@ public class Radiator : RemoteObject
     /// <summary>
     /// Gets whether the radiator is deployable.
     /// </summary>
-    [Rpc("SpaceCenter", "Radiator_get_Deployable")]
+    [GetRpc("SpaceCenter", "Radiator_get_Deployable")]
     public bool GetDeployable()
     {
         var args = new ProcedureArgument[]
@@ -32,7 +32,7 @@ public class Radiator : RemoteObject
     /// Gets whether the radiator is deployable.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Radiator_get_Deployable")]
+    [GetRpc("SpaceCenter", "Radiator_get_Deployable")]
     public async Task<bool> GetDeployableAsync()
     {
         var args = new ProcedureArgument[]
@@ -46,7 +46,7 @@ public class Radiator : RemoteObject
     /// Returns <c>true</c> if a deployable radiator is extended.
     /// If the radiator is not deployable, this is always <c>true</c>.
     /// </summary>
-    [Rpc("SpaceCenter", "Radiator_get_Deployed")]
+    [GetRpc("SpaceCenter", "Radiator_get_Deployed")]
     public bool GetDeployed()
     {
         var args = new ProcedureArgument[]
@@ -61,7 +61,7 @@ public class Radiator : RemoteObject
     /// If the radiator is not deployable, this is always <c>true</c>.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Radiator_get_Deployed")]
+    [GetRpc("SpaceCenter", "Radiator_get_Deployed")]
     public async Task<bool> GetDeployedAsync()
     {
         var args = new ProcedureArgument[]
@@ -76,7 +76,7 @@ public class Radiator : RemoteObject
     /// If the radiator is not deployable, this is always <c>true</c>.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "Radiator_set_Deployed")]
+    [SetRpc("SpaceCenter", "Radiator_set_Deployed")]
     public void SetDeployed(bool value)
     {
         var args = new ProcedureArgument[]
@@ -93,7 +93,7 @@ public class Radiator : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "Radiator_set_Deployed")]
+    [SetRpc("SpaceCenter", "Radiator_set_Deployed")]
     public async Task SetDeployedAsync(bool value)
     {
         var args = new ProcedureArgument[]
@@ -107,7 +107,7 @@ public class Radiator : RemoteObject
     /// <summary>
     /// Gets the part object for this radiator.
     /// </summary>
-    [Rpc("SpaceCenter", "Radiator_get_Part")]
+    [GetRpc("SpaceCenter", "Radiator_get_Part")]
     public Part GetPart()
     {
         var args = new ProcedureArgument[]
@@ -121,7 +121,7 @@ public class Radiator : RemoteObject
     /// Gets the part object for this radiator.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Radiator_get_Part")]
+    [GetRpc("SpaceCenter", "Radiator_get_Part")]
     public async Task<Part> GetPartAsync()
     {
         var args = new ProcedureArgument[]
@@ -137,7 +137,7 @@ public class Radiator : RemoteObject
     /// <remarks>
     /// A fixed radiator is always <see cref="F:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.RadiatorState.Extended" />.
     /// </remarks>
-    [Rpc("SpaceCenter", "Radiator_get_State")]
+    [GetRpc("SpaceCenter", "Radiator_get_State")]
     public RadiatorState GetState()
     {
         var args = new ProcedureArgument[]
@@ -154,7 +154,7 @@ public class Radiator : RemoteObject
     /// <remarks>
     /// A fixed radiator is always <see cref="F:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.RadiatorState.Extended" />.
     /// </remarks>
-    [Rpc("SpaceCenter", "Radiator_get_State")]
+    [GetRpc("SpaceCenter", "Radiator_get_State")]
     public async Task<RadiatorState> GetStateAsync()
     {
         var args = new ProcedureArgument[]

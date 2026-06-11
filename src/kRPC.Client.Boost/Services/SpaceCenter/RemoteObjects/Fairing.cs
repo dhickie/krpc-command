@@ -19,7 +19,7 @@ public class Fairing : RemoteObject
     /// <summary>
     /// Jettison the fairing. Has no effect if it has already been jettisoned.
     /// </summary>
-    [Rpc("SpaceCenter", "Fairing_Jettison")]
+    [SetRpc("SpaceCenter", "Fairing_Jettison")]
     public void Jettison()
     {
         var args = new ProcedureArgument[]
@@ -33,7 +33,7 @@ public class Fairing : RemoteObject
     /// Jettison the fairing. Has no effect if it has already been jettisoned.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Fairing_Jettison")]
+    [SetRpc("SpaceCenter", "Fairing_Jettison")]
     public async Task JettisonAsync()
     {
         var args = new ProcedureArgument[]
@@ -46,7 +46,7 @@ public class Fairing : RemoteObject
     /// <summary>
     /// Gets whether the fairing has been jettisoned.
     /// </summary>
-    [Rpc("SpaceCenter", "Fairing_get_Jettisoned")]
+    [GetRpc("SpaceCenter", "Fairing_get_Jettisoned")]
     public bool GetJettisoned()
     {
         var args = new ProcedureArgument[]
@@ -60,7 +60,7 @@ public class Fairing : RemoteObject
     /// Gets whether the fairing has been jettisoned.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Fairing_get_Jettisoned")]
+    [GetRpc("SpaceCenter", "Fairing_get_Jettisoned")]
     public async Task<bool> GetJettisonedAsync()
     {
         var args = new ProcedureArgument[]
@@ -73,7 +73,7 @@ public class Fairing : RemoteObject
     /// <summary>
     /// Gets the part object for this fairing.
     /// </summary>
-    [Rpc("SpaceCenter", "Fairing_get_Part")]
+    [GetRpc("SpaceCenter", "Fairing_get_Part")]
     public Part GetPart()
     {
         var args = new ProcedureArgument[]
@@ -87,7 +87,7 @@ public class Fairing : RemoteObject
     /// Gets the part object for this fairing.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Fairing_get_Part")]
+    [GetRpc("SpaceCenter", "Fairing_get_Part")]
     public async Task<Part> GetPartAsync()
     {
         var args = new ProcedureArgument[]

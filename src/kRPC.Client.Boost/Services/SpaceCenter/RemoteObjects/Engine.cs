@@ -29,7 +29,7 @@ public class Engine : RemoteObject
     /// Takes the given pressure into account.
     /// </summary>
     /// <param name="pressure">Atmospheric pressure in atmospheres</param>
-    [Rpc("SpaceCenter", "Engine_AvailableThrustAt")]
+    [GetRpc("SpaceCenter", "Engine_AvailableThrustAt")]
     public float AvailableThrustAt(double pressure)
     {
         var args = new ProcedureArgument[]
@@ -48,7 +48,7 @@ public class Engine : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="pressure">Atmospheric pressure in atmospheres</param>
-    [Rpc("SpaceCenter", "Engine_AvailableThrustAt")]
+    [GetRpc("SpaceCenter", "Engine_AvailableThrustAt")]
     public async Task<float> AvailableThrustAtAsync(double pressure)
     {
         var args = new ProcedureArgument[]
@@ -65,7 +65,7 @@ public class Engine : RemoteObject
     /// Takes the given pressure into account.
     /// </summary>
     /// <param name="pressure">Atmospheric pressure in atmospheres</param>
-    [Rpc("SpaceCenter", "Engine_MaxThrustAt")]
+    [GetRpc("SpaceCenter", "Engine_MaxThrustAt")]
     public float MaxThrustAt(double pressure)
     {
         var args = new ProcedureArgument[]
@@ -83,7 +83,7 @@ public class Engine : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="pressure">Atmospheric pressure in atmospheres</param>
-    [Rpc("SpaceCenter", "Engine_MaxThrustAt")]
+    [GetRpc("SpaceCenter", "Engine_MaxThrustAt")]
     public async Task<float> MaxThrustAtAsync(double pressure)
     {
         var args = new ProcedureArgument[]
@@ -99,7 +99,7 @@ public class Engine : RemoteObject
     /// if the engine is not active.
     /// </summary>
     /// <param name="pressure">Atmospheric pressure in atmospheres</param>
-    [Rpc("SpaceCenter", "Engine_SpecificImpulseAt")]
+    [GetRpc("SpaceCenter", "Engine_SpecificImpulseAt")]
     public float SpecificImpulseAt(double pressure)
     {
         var args = new ProcedureArgument[]
@@ -116,7 +116,7 @@ public class Engine : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="pressure">Atmospheric pressure in atmospheres</param>
-    [Rpc("SpaceCenter", "Engine_SpecificImpulseAt")]
+    [GetRpc("SpaceCenter", "Engine_SpecificImpulseAt")]
     public async Task<float> SpecificImpulseAtAsync(double pressure)
     {
         var args = new ProcedureArgument[]
@@ -130,7 +130,7 @@ public class Engine : RemoteObject
     /// <summary>
     /// Toggle the current engine mode.
     /// </summary>
-    [Rpc("SpaceCenter", "Engine_ToggleMode")]
+    [SetRpc("SpaceCenter", "Engine_ToggleMode")]
     public void ToggleMode()
     {
         var args = new ProcedureArgument[]
@@ -144,7 +144,7 @@ public class Engine : RemoteObject
     /// Toggle the current engine mode.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Engine_ToggleMode")]
+    [SetRpc("SpaceCenter", "Engine_ToggleMode")]
     public async Task ToggleModeAsync()
     {
         var args = new ProcedureArgument[]
@@ -158,7 +158,7 @@ public class Engine : RemoteObject
     /// Gets whether the engine is active. Setting this attribute may have no effect,
     /// depending on <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Engine.GetCanShutdown" /> and <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Engine.GetCanRestart" />.
     /// </summary>
-    [Rpc("SpaceCenter", "Engine_get_Active")]
+    [GetRpc("SpaceCenter", "Engine_get_Active")]
     public bool GetActive()
     {
         var args = new ProcedureArgument[]
@@ -173,7 +173,7 @@ public class Engine : RemoteObject
     /// depending on <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Engine.GetCanShutdown" /> and <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Engine.GetCanRestart" />.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Engine_get_Active")]
+    [GetRpc("SpaceCenter", "Engine_get_Active")]
     public async Task<bool> GetActiveAsync()
     {
         var args = new ProcedureArgument[]
@@ -188,7 +188,7 @@ public class Engine : RemoteObject
     /// depending on <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Engine.GetCanShutdown" /> and <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Engine.GetCanRestart" />.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "Engine_set_Active")]
+    [SetRpc("SpaceCenter", "Engine_set_Active")]
     public void SetActive(bool value)
     {
         var args = new ProcedureArgument[]
@@ -205,7 +205,7 @@ public class Engine : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "Engine_set_Active")]
+    [SetRpc("SpaceCenter", "Engine_set_Active")]
     public async Task SetActiveAsync(bool value)
     {
         var args = new ProcedureArgument[]
@@ -219,7 +219,7 @@ public class Engine : RemoteObject
     /// <summary>
     /// Gets whether the engine will automatically switch modes.
     /// </summary>
-    [Rpc("SpaceCenter", "Engine_get_AutoModeSwitch")]
+    [GetRpc("SpaceCenter", "Engine_get_AutoModeSwitch")]
     public bool GetAutoModeSwitch()
     {
         var args = new ProcedureArgument[]
@@ -233,7 +233,7 @@ public class Engine : RemoteObject
     /// Gets whether the engine will automatically switch modes.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Engine_get_AutoModeSwitch")]
+    [GetRpc("SpaceCenter", "Engine_get_AutoModeSwitch")]
     public async Task<bool> GetAutoModeSwitchAsync()
     {
         var args = new ProcedureArgument[]
@@ -247,7 +247,7 @@ public class Engine : RemoteObject
     /// Sets whether the engine will automatically switch modes.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "Engine_set_AutoModeSwitch")]
+    [SetRpc("SpaceCenter", "Engine_set_AutoModeSwitch")]
     public void SetAutoModeSwitch(bool value)
     {
         var args = new ProcedureArgument[]
@@ -263,7 +263,7 @@ public class Engine : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "Engine_set_AutoModeSwitch")]
+    [SetRpc("SpaceCenter", "Engine_set_AutoModeSwitch")]
     public async Task SetAutoModeSwitchAsync(bool value)
     {
         var args = new ProcedureArgument[]
@@ -281,7 +281,7 @@ public class Engine : RemoteObject
     /// Takes the engine's current <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Engine.GetThrustLimit" /> and atmospheric conditions
     /// into account.
     /// </summary>
-    [Rpc("SpaceCenter", "Engine_get_AvailableThrust")]
+    [GetRpc("SpaceCenter", "Engine_get_AvailableThrust")]
     public float GetAvailableThrust()
     {
         var args = new ProcedureArgument[]
@@ -299,7 +299,7 @@ public class Engine : RemoteObject
     /// into account.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Engine_get_AvailableThrust")]
+    [GetRpc("SpaceCenter", "Engine_get_AvailableThrust")]
     public async Task<float> GetAvailableThrustAsync()
     {
         var args = new ProcedureArgument[]
@@ -315,7 +315,7 @@ public class Engine : RemoteObject
     /// correspond to the coordinate axes of the <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Vessel.GetReferenceFrame" />.
     /// Returns zero if the engine is inactive, or not gimballed.
     /// </summary>
-    [Rpc("SpaceCenter", "Engine_get_AvailableTorque")]
+    [GetRpc("SpaceCenter", "Engine_get_AvailableTorque")]
     public Tuple<Vector3D,Vector3D> GetAvailableTorque()
     {
         var args = new ProcedureArgument[]
@@ -332,7 +332,7 @@ public class Engine : RemoteObject
     /// Returns zero if the engine is inactive, or not gimballed.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Engine_get_AvailableTorque")]
+    [GetRpc("SpaceCenter", "Engine_get_AvailableTorque")]
     public async Task<Tuple<Vector3D,Vector3D>> GetAvailableTorqueAsync()
     {
         var args = new ProcedureArgument[]
@@ -347,7 +347,7 @@ public class Engine : RemoteObject
     /// returns <c>false</c>. For example, this is <c>true</c> for liquid fueled rockets
     /// and <c>false</c> for solid rocket boosters.
     /// </summary>
-    [Rpc("SpaceCenter", "Engine_get_CanRestart")]
+    [GetRpc("SpaceCenter", "Engine_get_CanRestart")]
     public bool GetCanRestart()
     {
         var args = new ProcedureArgument[]
@@ -363,7 +363,7 @@ public class Engine : RemoteObject
     /// and <c>false</c> for solid rocket boosters.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Engine_get_CanRestart")]
+    [GetRpc("SpaceCenter", "Engine_get_CanRestart")]
     public async Task<bool> GetCanRestartAsync()
     {
         var args = new ProcedureArgument[]
@@ -377,7 +377,7 @@ public class Engine : RemoteObject
     /// Gets whether the engine can be shutdown once activated. For example, this is
     /// <c>true</c> for liquid fueled rockets and <c>false</c> for solid rocket boosters.
     /// </summary>
-    [Rpc("SpaceCenter", "Engine_get_CanShutdown")]
+    [GetRpc("SpaceCenter", "Engine_get_CanShutdown")]
     public bool GetCanShutdown()
     {
         var args = new ProcedureArgument[]
@@ -392,7 +392,7 @@ public class Engine : RemoteObject
     /// <c>true</c> for liquid fueled rockets and <c>false</c> for solid rocket boosters.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Engine_get_CanShutdown")]
+    [GetRpc("SpaceCenter", "Engine_get_CanShutdown")]
     public async Task<bool> GetCanShutdownAsync()
     {
         var args = new ProcedureArgument[]
@@ -406,7 +406,7 @@ public class Engine : RemoteObject
     /// Gets the gimbal limiter of the engine. A value between 0 and 1.
     /// Returns 0 if the gimbal is locked.
     /// </summary>
-    [Rpc("SpaceCenter", "Engine_get_GimbalLimit")]
+    [GetRpc("SpaceCenter", "Engine_get_GimbalLimit")]
     public float GetGimbalLimit()
     {
         var args = new ProcedureArgument[]
@@ -421,7 +421,7 @@ public class Engine : RemoteObject
     /// Returns 0 if the gimbal is locked.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Engine_get_GimbalLimit")]
+    [GetRpc("SpaceCenter", "Engine_get_GimbalLimit")]
     public async Task<float> GetGimbalLimitAsync()
     {
         var args = new ProcedureArgument[]
@@ -436,7 +436,7 @@ public class Engine : RemoteObject
     /// Returns 0 if the gimbal is locked.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "Engine_set_GimbalLimit")]
+    [SetRpc("SpaceCenter", "Engine_set_GimbalLimit")]
     public void SetGimbalLimit(float value)
     {
         var args = new ProcedureArgument[]
@@ -453,7 +453,7 @@ public class Engine : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "Engine_set_GimbalLimit")]
+    [SetRpc("SpaceCenter", "Engine_set_GimbalLimit")]
     public async Task SetGimbalLimitAsync(float value)
     {
         var args = new ProcedureArgument[]
@@ -468,7 +468,7 @@ public class Engine : RemoteObject
     /// Gets whether the engines gimbal is locked in place. Setting this attribute has
     /// no effect if the engine is not gimballed.
     /// </summary>
-    [Rpc("SpaceCenter", "Engine_get_GimbalLocked")]
+    [GetRpc("SpaceCenter", "Engine_get_GimbalLocked")]
     public bool GetGimbalLocked()
     {
         var args = new ProcedureArgument[]
@@ -483,7 +483,7 @@ public class Engine : RemoteObject
     /// no effect if the engine is not gimballed.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Engine_get_GimbalLocked")]
+    [GetRpc("SpaceCenter", "Engine_get_GimbalLocked")]
     public async Task<bool> GetGimbalLockedAsync()
     {
         var args = new ProcedureArgument[]
@@ -498,7 +498,7 @@ public class Engine : RemoteObject
     /// no effect if the engine is not gimballed.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "Engine_set_GimbalLocked")]
+    [SetRpc("SpaceCenter", "Engine_set_GimbalLocked")]
     public void SetGimbalLocked(bool value)
     {
         var args = new ProcedureArgument[]
@@ -515,7 +515,7 @@ public class Engine : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "Engine_set_GimbalLocked")]
+    [SetRpc("SpaceCenter", "Engine_set_GimbalLocked")]
     public async Task SetGimbalLockedAsync(bool value)
     {
         var args = new ProcedureArgument[]
@@ -530,7 +530,7 @@ public class Engine : RemoteObject
     /// Gets the range over which the gimbal can move.
     /// Returns 0 if the engine is not gimballed.
     /// </summary>
-    [Rpc("SpaceCenter", "Engine_get_GimbalRange")]
+    [GetRpc("SpaceCenter", "Engine_get_GimbalRange")]
     public Angle GetGimbalRange()
     {
         var args = new ProcedureArgument[]
@@ -546,7 +546,7 @@ public class Engine : RemoteObject
     /// Returns 0 if the engine is not gimballed.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Engine_get_GimbalRange")]
+    [GetRpc("SpaceCenter", "Engine_get_GimbalRange")]
     public async Task<Angle> GetGimbalRangeAsync()
     {
         var args = new ProcedureArgument[]
@@ -560,7 +560,7 @@ public class Engine : RemoteObject
     /// <summary>
     /// Gets whether the engine is gimballed.
     /// </summary>
-    [Rpc("SpaceCenter", "Engine_get_Gimballed")]
+    [GetRpc("SpaceCenter", "Engine_get_Gimballed")]
     public bool GetGimballed()
     {
         var args = new ProcedureArgument[]
@@ -574,7 +574,7 @@ public class Engine : RemoteObject
     /// Gets whether the engine is gimballed.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Engine_get_Gimballed")]
+    [GetRpc("SpaceCenter", "Engine_get_Gimballed")]
     public async Task<bool> GetGimballedAsync()
     {
         var args = new ProcedureArgument[]
@@ -587,7 +587,7 @@ public class Engine : RemoteObject
     /// <summary>
     /// Gets whether the engine has any fuel available.
     /// </summary>
-    [Rpc("SpaceCenter", "Engine_get_HasFuel")]
+    [GetRpc("SpaceCenter", "Engine_get_HasFuel")]
     public bool GetHasFuel()
     {
         var args = new ProcedureArgument[]
@@ -601,7 +601,7 @@ public class Engine : RemoteObject
     /// Gets whether the engine has any fuel available.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Engine_get_HasFuel")]
+    [GetRpc("SpaceCenter", "Engine_get_HasFuel")]
     public async Task<bool> GetHasFuelAsync()
     {
         var args = new ProcedureArgument[]
@@ -614,7 +614,7 @@ public class Engine : RemoteObject
     /// <summary>
     /// Gets whether the engine has multiple modes of operation.
     /// </summary>
-    [Rpc("SpaceCenter", "Engine_get_HasModes")]
+    [GetRpc("SpaceCenter", "Engine_get_HasModes")]
     public bool GetHasModes()
     {
         var args = new ProcedureArgument[]
@@ -628,7 +628,7 @@ public class Engine : RemoteObject
     /// Gets whether the engine has multiple modes of operation.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Engine_get_HasModes")]
+    [GetRpc("SpaceCenter", "Engine_get_HasModes")]
     public async Task<bool> GetHasModesAsync()
     {
         var args = new ProcedureArgument[]
@@ -641,7 +641,7 @@ public class Engine : RemoteObject
     /// <summary>
     /// Gets whether the independent throttle is enabled for the engine.
     /// </summary>
-    [Rpc("SpaceCenter", "Engine_get_IndependentThrottle")]
+    [GetRpc("SpaceCenter", "Engine_get_IndependentThrottle")]
     public bool GetIndependentThrottle()
     {
         var args = new ProcedureArgument[]
@@ -655,7 +655,7 @@ public class Engine : RemoteObject
     /// Gets whether the independent throttle is enabled for the engine.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Engine_get_IndependentThrottle")]
+    [GetRpc("SpaceCenter", "Engine_get_IndependentThrottle")]
     public async Task<bool> GetIndependentThrottleAsync()
     {
         var args = new ProcedureArgument[]
@@ -669,7 +669,7 @@ public class Engine : RemoteObject
     /// Sets whether the independent throttle is enabled for the engine.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "Engine_set_IndependentThrottle")]
+    [SetRpc("SpaceCenter", "Engine_set_IndependentThrottle")]
     public void SetIndependentThrottle(bool value)
     {
         var args = new ProcedureArgument[]
@@ -685,7 +685,7 @@ public class Engine : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "Engine_set_IndependentThrottle")]
+    [SetRpc("SpaceCenter", "Engine_set_IndependentThrottle")]
     public async Task SetIndependentThrottleAsync(bool value)
     {
         var args = new ProcedureArgument[]
@@ -699,7 +699,7 @@ public class Engine : RemoteObject
     /// <summary>
     /// Gets the specific impulse of the engine at sea level on Kerbin, in seconds.
     /// </summary>
-    [Rpc("SpaceCenter", "Engine_get_KerbinSeaLevelSpecificImpulse")]
+    [GetRpc("SpaceCenter", "Engine_get_KerbinSeaLevelSpecificImpulse")]
     public float GetKerbinSeaLevelSpecificImpulse()
     {
         var args = new ProcedureArgument[]
@@ -713,7 +713,7 @@ public class Engine : RemoteObject
     /// Gets the specific impulse of the engine at sea level on Kerbin, in seconds.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Engine_get_KerbinSeaLevelSpecificImpulse")]
+    [GetRpc("SpaceCenter", "Engine_get_KerbinSeaLevelSpecificImpulse")]
     public async Task<float> GetKerbinSeaLevelSpecificImpulseAsync()
     {
         var args = new ProcedureArgument[]
@@ -727,7 +727,7 @@ public class Engine : RemoteObject
     /// Gets the amount of thrust, in Newtons, that would be produced by the engine
     /// when activated and fueled, with its throttle and throttle limiter set to 100%.
     /// </summary>
-    [Rpc("SpaceCenter", "Engine_get_MaxThrust")]
+    [GetRpc("SpaceCenter", "Engine_get_MaxThrust")]
     public float GetMaxThrust()
     {
         var args = new ProcedureArgument[]
@@ -742,7 +742,7 @@ public class Engine : RemoteObject
     /// when activated and fueled, with its throttle and throttle limiter set to 100%.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Engine_get_MaxThrust")]
+    [GetRpc("SpaceCenter", "Engine_get_MaxThrust")]
     public async Task<float> GetMaxThrustAsync()
     {
         var args = new ProcedureArgument[]
@@ -758,7 +758,7 @@ public class Engine : RemoteObject
     /// when activated, <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Engine.GetThrustLimit" /> is set to 100%, the main
     /// vessel's throttle is set to 100% and the engine is in a vacuum.
     /// </summary>
-    [Rpc("SpaceCenter", "Engine_get_MaxVacuumThrust")]
+    [GetRpc("SpaceCenter", "Engine_get_MaxVacuumThrust")]
     public float GetMaxVacuumThrust()
     {
         var args = new ProcedureArgument[]
@@ -775,7 +775,7 @@ public class Engine : RemoteObject
     /// vessel's throttle is set to 100% and the engine is in a vacuum.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Engine_get_MaxVacuumThrust")]
+    [GetRpc("SpaceCenter", "Engine_get_MaxVacuumThrust")]
     public async Task<float> GetMaxVacuumThrustAsync()
     {
         var args = new ProcedureArgument[]
@@ -788,7 +788,7 @@ public class Engine : RemoteObject
     /// <summary>
     /// Gets the name of the current engine mode.
     /// </summary>
-    [Rpc("SpaceCenter", "Engine_get_Mode")]
+    [GetRpc("SpaceCenter", "Engine_get_Mode")]
     public string GetMode()
     {
         var args = new ProcedureArgument[]
@@ -802,7 +802,7 @@ public class Engine : RemoteObject
     /// Gets the name of the current engine mode.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Engine_get_Mode")]
+    [GetRpc("SpaceCenter", "Engine_get_Mode")]
     public async Task<string> GetModeAsync()
     {
         var args = new ProcedureArgument[]
@@ -816,7 +816,7 @@ public class Engine : RemoteObject
     /// Sets the name of the current engine mode.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "Engine_set_Mode")]
+    [SetRpc("SpaceCenter", "Engine_set_Mode")]
     public void SetMode(string value)
     {
         var args = new ProcedureArgument[]
@@ -832,7 +832,7 @@ public class Engine : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "Engine_set_Mode")]
+    [SetRpc("SpaceCenter", "Engine_set_Mode")]
     public async Task SetModeAsync(string value)
     {
         var args = new ProcedureArgument[]
@@ -847,7 +847,7 @@ public class Engine : RemoteObject
     /// Gets the available modes for the engine.
     /// A dictionary mapping mode names to <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Engine" /> objects.
     /// </summary>
-    [Rpc("SpaceCenter", "Engine_get_Modes")]
+    [GetRpc("SpaceCenter", "Engine_get_Modes")]
     public IDictionary<string,Engine> GetModes()
     {
         var args = new ProcedureArgument[]
@@ -862,7 +862,7 @@ public class Engine : RemoteObject
     /// A dictionary mapping mode names to <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Engine" /> objects.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Engine_get_Modes")]
+    [GetRpc("SpaceCenter", "Engine_get_Modes")]
     public async Task<IDictionary<string,Engine>> GetModesAsync()
     {
         var args = new ProcedureArgument[]
@@ -875,7 +875,7 @@ public class Engine : RemoteObject
     /// <summary>
     /// Gets the part object for this engine.
     /// </summary>
-    [Rpc("SpaceCenter", "Engine_get_Part")]
+    [GetRpc("SpaceCenter", "Engine_get_Part")]
     public Part GetPart()
     {
         var args = new ProcedureArgument[]
@@ -889,7 +889,7 @@ public class Engine : RemoteObject
     /// Gets the part object for this engine.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Engine_get_Part")]
+    [GetRpc("SpaceCenter", "Engine_get_Part")]
     public async Task<Part> GetPartAsync()
     {
         var args = new ProcedureArgument[]
@@ -902,7 +902,7 @@ public class Engine : RemoteObject
     /// <summary>
     /// Gets the names of the propellants that the engine consumes.
     /// </summary>
-    [Rpc("SpaceCenter", "Engine_get_PropellantNames")]
+    [GetRpc("SpaceCenter", "Engine_get_PropellantNames")]
     public IList<string> GetPropellantNames()
     {
         var args = new ProcedureArgument[]
@@ -916,7 +916,7 @@ public class Engine : RemoteObject
     /// Gets the names of the propellants that the engine consumes.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Engine_get_PropellantNames")]
+    [GetRpc("SpaceCenter", "Engine_get_PropellantNames")]
     public async Task<IList<string>> GetPropellantNamesAsync()
     {
         var args = new ProcedureArgument[]
@@ -934,7 +934,7 @@ public class Engine : RemoteObject
     /// For example, if the ratios are 0.6 for LiquidFuel and 0.4 for Oxidizer, then for every
     /// 0.6 units of LiquidFuel that the engine burns, it will burn 0.4 units of Oxidizer.
     /// </remarks>
-    [Rpc("SpaceCenter", "Engine_get_PropellantRatios")]
+    [GetRpc("SpaceCenter", "Engine_get_PropellantRatios")]
     public IDictionary<string,float> GetPropellantRatios()
     {
         var args = new ProcedureArgument[]
@@ -953,7 +953,7 @@ public class Engine : RemoteObject
     /// For example, if the ratios are 0.6 for LiquidFuel and 0.4 for Oxidizer, then for every
     /// 0.6 units of LiquidFuel that the engine burns, it will burn 0.4 units of Oxidizer.
     /// </remarks>
-    [Rpc("SpaceCenter", "Engine_get_PropellantRatios")]
+    [GetRpc("SpaceCenter", "Engine_get_PropellantRatios")]
     public async Task<IDictionary<string,float>> GetPropellantRatiosAsync()
     {
         var args = new ProcedureArgument[]
@@ -966,7 +966,7 @@ public class Engine : RemoteObject
     /// <summary>
     /// Gets the propellants that the engine consumes.
     /// </summary>
-    [Rpc("SpaceCenter", "Engine_get_Propellants")]
+    [GetRpc("SpaceCenter", "Engine_get_Propellants")]
     public IList<Propellant> GetPropellants()
     {
         var args = new ProcedureArgument[]
@@ -980,7 +980,7 @@ public class Engine : RemoteObject
     /// Gets the propellants that the engine consumes.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Engine_get_Propellants")]
+    [GetRpc("SpaceCenter", "Engine_get_Propellants")]
     public async Task<IList<Propellant>> GetPropellantsAsync()
     {
         var args = new ProcedureArgument[]
@@ -994,7 +994,7 @@ public class Engine : RemoteObject
     /// Gets the current specific impulse of the engine, in seconds. Returns zero
     /// if the engine is not active.
     /// </summary>
-    [Rpc("SpaceCenter", "Engine_get_SpecificImpulse")]
+    [GetRpc("SpaceCenter", "Engine_get_SpecificImpulse")]
     public float GetSpecificImpulse()
     {
         var args = new ProcedureArgument[]
@@ -1009,7 +1009,7 @@ public class Engine : RemoteObject
     /// if the engine is not active.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Engine_get_SpecificImpulse")]
+    [GetRpc("SpaceCenter", "Engine_get_SpecificImpulse")]
     public async Task<float> GetSpecificImpulseAsync()
     {
         var args = new ProcedureArgument[]
@@ -1028,7 +1028,7 @@ public class Engine : RemoteObject
     /// When the engine's independent throttle is enabled
     /// (see <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Engine.GetIndependentThrottle" />), can be used to set the throttle percentage.
     /// </summary>
-    [Rpc("SpaceCenter", "Engine_get_Throttle")]
+    [GetRpc("SpaceCenter", "Engine_get_Throttle")]
     public float GetThrottle()
     {
         var args = new ProcedureArgument[]
@@ -1048,7 +1048,7 @@ public class Engine : RemoteObject
     /// (see <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Engine.GetIndependentThrottle" />), can be used to set the throttle percentage.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Engine_get_Throttle")]
+    [GetRpc("SpaceCenter", "Engine_get_Throttle")]
     public async Task<float> GetThrottleAsync()
     {
         var args = new ProcedureArgument[]
@@ -1068,7 +1068,7 @@ public class Engine : RemoteObject
     /// (see <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Engine.GetIndependentThrottle" />), can be used to set the throttle percentage.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "Engine_set_Throttle")]
+    [SetRpc("SpaceCenter", "Engine_set_Throttle")]
     public void SetThrottle(float value)
     {
         var args = new ProcedureArgument[]
@@ -1090,7 +1090,7 @@ public class Engine : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "Engine_set_Throttle")]
+    [SetRpc("SpaceCenter", "Engine_set_Throttle")]
     public async Task SetThrottleAsync(float value)
     {
         var args = new ProcedureArgument[]
@@ -1106,7 +1106,7 @@ public class Engine : RemoteObject
     /// this is <c>true</c> for liquid fueled rockets, and <c>false</c> for solid rocket
     /// boosters.
     /// </summary>
-    [Rpc("SpaceCenter", "Engine_get_ThrottleLocked")]
+    [GetRpc("SpaceCenter", "Engine_get_ThrottleLocked")]
     public bool GetThrottleLocked()
     {
         var args = new ProcedureArgument[]
@@ -1122,7 +1122,7 @@ public class Engine : RemoteObject
     /// boosters.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Engine_get_ThrottleLocked")]
+    [GetRpc("SpaceCenter", "Engine_get_ThrottleLocked")]
     public async Task<bool> GetThrottleLockedAsync()
     {
         var args = new ProcedureArgument[]
@@ -1135,7 +1135,7 @@ public class Engine : RemoteObject
     /// <summary>
     /// Gets the current amount of thrust being produced by the engine, in Newtons.
     /// </summary>
-    [Rpc("SpaceCenter", "Engine_get_Thrust")]
+    [GetRpc("SpaceCenter", "Engine_get_Thrust")]
     public float GetThrust()
     {
         var args = new ProcedureArgument[]
@@ -1149,7 +1149,7 @@ public class Engine : RemoteObject
     /// Gets the current amount of thrust being produced by the engine, in Newtons.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Engine_get_Thrust")]
+    [GetRpc("SpaceCenter", "Engine_get_Thrust")]
     public async Task<float> GetThrustAsync()
     {
         var args = new ProcedureArgument[]
@@ -1164,7 +1164,7 @@ public class Engine : RemoteObject
     /// attribute may have no effect, for example the thrust limit for a solid
     /// rocket booster cannot be changed in flight.
     /// </summary>
-    [Rpc("SpaceCenter", "Engine_get_ThrustLimit")]
+    [GetRpc("SpaceCenter", "Engine_get_ThrustLimit")]
     public float GetThrustLimit()
     {
         var args = new ProcedureArgument[]
@@ -1180,7 +1180,7 @@ public class Engine : RemoteObject
     /// rocket booster cannot be changed in flight.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Engine_get_ThrustLimit")]
+    [GetRpc("SpaceCenter", "Engine_get_ThrustLimit")]
     public async Task<float> GetThrustLimitAsync()
     {
         var args = new ProcedureArgument[]
@@ -1196,7 +1196,7 @@ public class Engine : RemoteObject
     /// rocket booster cannot be changed in flight.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "Engine_set_ThrustLimit")]
+    [SetRpc("SpaceCenter", "Engine_set_ThrustLimit")]
     public void SetThrustLimit(float value)
     {
         var args = new ProcedureArgument[]
@@ -1214,7 +1214,7 @@ public class Engine : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "Engine_set_ThrustLimit")]
+    [SetRpc("SpaceCenter", "Engine_set_ThrustLimit")]
     public async Task SetThrustLimitAsync(float value)
     {
         var args = new ProcedureArgument[]
@@ -1234,7 +1234,7 @@ public class Engine : RemoteObject
     /// The overall thrust produced by the engine, as reported by <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Engine.GetAvailableThrust" />,
     /// <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Engine.GetMaxThrust" /> and others, is the sum of the thrust generated by each thruster.
     /// </remarks>
-    [Rpc("SpaceCenter", "Engine_get_Thrusters")]
+    [GetRpc("SpaceCenter", "Engine_get_Thrusters")]
     public IList<Thruster> GetThrusters()
     {
         var args = new ProcedureArgument[]
@@ -1254,7 +1254,7 @@ public class Engine : RemoteObject
     /// The overall thrust produced by the engine, as reported by <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Engine.GetAvailableThrust" />,
     /// <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Engine.GetMaxThrust" /> and others, is the sum of the thrust generated by each thruster.
     /// </remarks>
-    [Rpc("SpaceCenter", "Engine_get_Thrusters")]
+    [GetRpc("SpaceCenter", "Engine_get_Thrusters")]
     public async Task<IList<Thruster>> GetThrustersAsync()
     {
         var args = new ProcedureArgument[]
@@ -1267,7 +1267,7 @@ public class Engine : RemoteObject
     /// <summary>
     /// Gets the vacuum specific impulse of the engine, in seconds.
     /// </summary>
-    [Rpc("SpaceCenter", "Engine_get_VacuumSpecificImpulse")]
+    [GetRpc("SpaceCenter", "Engine_get_VacuumSpecificImpulse")]
     public float GetVacuumSpecificImpulse()
     {
         var args = new ProcedureArgument[]
@@ -1281,7 +1281,7 @@ public class Engine : RemoteObject
     /// Gets the vacuum specific impulse of the engine, in seconds.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Engine_get_VacuumSpecificImpulse")]
+    [GetRpc("SpaceCenter", "Engine_get_VacuumSpecificImpulse")]
     public async Task<float> GetVacuumSpecificImpulseAsync()
     {
         var args = new ProcedureArgument[]

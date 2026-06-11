@@ -18,7 +18,7 @@ public class ResourceDrain : RemoteObject
     /// <summary>
     /// Whether the provided resource is enabled for draining.
     /// </summary>
-    [Rpc("SpaceCenter", "ResourceDrain_CheckResource")]
+    [GetRpc("SpaceCenter", "ResourceDrain_CheckResource")]
     public bool CheckResource(Resource resource)
     {
         var args = new ProcedureArgument[]
@@ -33,7 +33,7 @@ public class ResourceDrain : RemoteObject
     /// Whether the provided resource is enabled for draining.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "ResourceDrain_CheckResource")]
+    [GetRpc("SpaceCenter", "ResourceDrain_CheckResource")]
     public async Task<bool> CheckResourceAsync(Resource resource)
     {
         var args = new ProcedureArgument[]
@@ -47,7 +47,7 @@ public class ResourceDrain : RemoteObject
     /// <summary>
     /// Whether the given resource should be drained.
     /// </summary>
-    [Rpc("SpaceCenter", "ResourceDrain_SetResource")]
+    [SetRpc("SpaceCenter", "ResourceDrain_SetResource")]
     public void SetResource(Resource resource, bool enabled)
     {
         var args = new ProcedureArgument[]
@@ -63,7 +63,7 @@ public class ResourceDrain : RemoteObject
     /// Whether the given resource should be drained.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "ResourceDrain_SetResource")]
+    [SetRpc("SpaceCenter", "ResourceDrain_SetResource")]
     public async Task SetResourceAsync(Resource resource, bool enabled)
     {
         var args = new ProcedureArgument[]
@@ -78,7 +78,7 @@ public class ResourceDrain : RemoteObject
     /// <summary>
     /// Activates resource draining for all enabled parts.
     /// </summary>
-    [Rpc("SpaceCenter", "ResourceDrain_Start")]
+    [SetRpc("SpaceCenter", "ResourceDrain_Start")]
     public void Start()
     {
         var args = new ProcedureArgument[]
@@ -92,7 +92,7 @@ public class ResourceDrain : RemoteObject
     /// Activates resource draining for all enabled parts.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "ResourceDrain_Start")]
+    [SetRpc("SpaceCenter", "ResourceDrain_Start")]
     public async Task StartAsync()
     {
         var args = new ProcedureArgument[]
@@ -105,7 +105,7 @@ public class ResourceDrain : RemoteObject
     /// <summary>
     /// Turns off resource draining.
     /// </summary>
-    [Rpc("SpaceCenter", "ResourceDrain_Stop")]
+    [SetRpc("SpaceCenter", "ResourceDrain_Stop")]
     public void Stop()
     {
         var args = new ProcedureArgument[]
@@ -119,7 +119,7 @@ public class ResourceDrain : RemoteObject
     /// Turns off resource draining.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "ResourceDrain_Stop")]
+    [SetRpc("SpaceCenter", "ResourceDrain_Stop")]
     public async Task StopAsync()
     {
         var args = new ProcedureArgument[]
@@ -132,7 +132,7 @@ public class ResourceDrain : RemoteObject
     /// <summary>
     /// Gets the list of available resources.
     /// </summary>
-    [Rpc("SpaceCenter", "ResourceDrain_get_AvailableResources")]
+    [GetRpc("SpaceCenter", "ResourceDrain_get_AvailableResources")]
     public IList<Resource> GetAvailableResources()
     {
         var args = new ProcedureArgument[]
@@ -146,7 +146,7 @@ public class ResourceDrain : RemoteObject
     /// Gets the list of available resources.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "ResourceDrain_get_AvailableResources")]
+    [GetRpc("SpaceCenter", "ResourceDrain_get_AvailableResources")]
     public async Task<IList<Resource>> GetAvailableResourcesAsync()
     {
         var args = new ProcedureArgument[]
@@ -159,7 +159,7 @@ public class ResourceDrain : RemoteObject
     /// <summary>
     /// Gets the drain mode.
     /// </summary>
-    [Rpc("SpaceCenter", "ResourceDrain_get_DrainMode")]
+    [GetRpc("SpaceCenter", "ResourceDrain_get_DrainMode")]
     public DrainMode GetDrainMode()
     {
         var args = new ProcedureArgument[]
@@ -173,7 +173,7 @@ public class ResourceDrain : RemoteObject
     /// Gets the drain mode.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "ResourceDrain_get_DrainMode")]
+    [GetRpc("SpaceCenter", "ResourceDrain_get_DrainMode")]
     public async Task<DrainMode> GetDrainModeAsync()
     {
         var args = new ProcedureArgument[]
@@ -187,7 +187,7 @@ public class ResourceDrain : RemoteObject
     /// Sets the drain mode.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "ResourceDrain_set_DrainMode")]
+    [SetRpc("SpaceCenter", "ResourceDrain_set_DrainMode")]
     public void SetDrainMode(DrainMode value)
     {
         var args = new ProcedureArgument[]
@@ -203,7 +203,7 @@ public class ResourceDrain : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "ResourceDrain_set_DrainMode")]
+    [SetRpc("SpaceCenter", "ResourceDrain_set_DrainMode")]
     public async Task SetDrainModeAsync(DrainMode value)
     {
         var args = new ProcedureArgument[]
@@ -217,7 +217,7 @@ public class ResourceDrain : RemoteObject
     /// <summary>
     /// Gets the maximum possible drain rate.
     /// </summary>
-    [Rpc("SpaceCenter", "ResourceDrain_get_MaxRate")]
+    [GetRpc("SpaceCenter", "ResourceDrain_get_MaxRate")]
     public float GetMaxRate()
     {
         var args = new ProcedureArgument[]
@@ -231,7 +231,7 @@ public class ResourceDrain : RemoteObject
     /// Gets the maximum possible drain rate.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "ResourceDrain_get_MaxRate")]
+    [GetRpc("SpaceCenter", "ResourceDrain_get_MaxRate")]
     public async Task<float> GetMaxRateAsync()
     {
         var args = new ProcedureArgument[]
@@ -244,7 +244,7 @@ public class ResourceDrain : RemoteObject
     /// <summary>
     /// Gets the minimum possible drain rate
     /// </summary>
-    [Rpc("SpaceCenter", "ResourceDrain_get_MinRate")]
+    [GetRpc("SpaceCenter", "ResourceDrain_get_MinRate")]
     public float GetMinRate()
     {
         var args = new ProcedureArgument[]
@@ -258,7 +258,7 @@ public class ResourceDrain : RemoteObject
     /// Gets the minimum possible drain rate
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "ResourceDrain_get_MinRate")]
+    [GetRpc("SpaceCenter", "ResourceDrain_get_MinRate")]
     public async Task<float> GetMinRateAsync()
     {
         var args = new ProcedureArgument[]
@@ -271,7 +271,7 @@ public class ResourceDrain : RemoteObject
     /// <summary>
     /// Gets the part object for this resource drain.
     /// </summary>
-    [Rpc("SpaceCenter", "ResourceDrain_get_Part")]
+    [GetRpc("SpaceCenter", "ResourceDrain_get_Part")]
     public Part GetPart()
     {
         var args = new ProcedureArgument[]
@@ -285,7 +285,7 @@ public class ResourceDrain : RemoteObject
     /// Gets the part object for this resource drain.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "ResourceDrain_get_Part")]
+    [GetRpc("SpaceCenter", "ResourceDrain_get_Part")]
     public async Task<Part> GetPartAsync()
     {
         var args = new ProcedureArgument[]
@@ -298,7 +298,7 @@ public class ResourceDrain : RemoteObject
     /// <summary>
     /// Gets the current drain rate.
     /// </summary>
-    [Rpc("SpaceCenter", "ResourceDrain_get_Rate")]
+    [GetRpc("SpaceCenter", "ResourceDrain_get_Rate")]
     public float GetRate()
     {
         var args = new ProcedureArgument[]
@@ -312,7 +312,7 @@ public class ResourceDrain : RemoteObject
     /// Gets the current drain rate.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "ResourceDrain_get_Rate")]
+    [GetRpc("SpaceCenter", "ResourceDrain_get_Rate")]
     public async Task<float> GetRateAsync()
     {
         var args = new ProcedureArgument[]
@@ -326,7 +326,7 @@ public class ResourceDrain : RemoteObject
     /// Sets the current drain rate.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "ResourceDrain_set_Rate")]
+    [SetRpc("SpaceCenter", "ResourceDrain_set_Rate")]
     public void SetRate(float value)
     {
         var args = new ProcedureArgument[]
@@ -342,7 +342,7 @@ public class ResourceDrain : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "ResourceDrain_set_Rate")]
+    [SetRpc("SpaceCenter", "ResourceDrain_set_Rate")]
     public async Task SetRateAsync(float value)
     {
         var args = new ProcedureArgument[]

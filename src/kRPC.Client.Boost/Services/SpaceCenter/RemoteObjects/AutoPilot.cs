@@ -26,7 +26,7 @@ public class AutoPilot : RemoteObject
     /// <summary>
     /// Disengage the auto-pilot.
     /// </summary>
-    [Rpc("SpaceCenter", "AutoPilot_Disengage")]
+    [SetRpc("SpaceCenter", "AutoPilot_Disengage")]
     public void Disengage()
     {
         var args = new ProcedureArgument[]
@@ -40,7 +40,7 @@ public class AutoPilot : RemoteObject
     /// Disengage the auto-pilot.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "AutoPilot_Disengage")]
+    [SetRpc("SpaceCenter", "AutoPilot_Disengage")]
     public async Task DisengageAsync()
     {
         var args = new ProcedureArgument[]
@@ -53,7 +53,7 @@ public class AutoPilot : RemoteObject
     /// <summary>
     /// Engage the auto-pilot.
     /// </summary>
-    [Rpc("SpaceCenter", "AutoPilot_Engage")]
+    [SetRpc("SpaceCenter", "AutoPilot_Engage")]
     public void Engage()
     {
         var args = new ProcedureArgument[]
@@ -67,7 +67,7 @@ public class AutoPilot : RemoteObject
     /// Engage the auto-pilot.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "AutoPilot_Engage")]
+    [SetRpc("SpaceCenter", "AutoPilot_Engage")]
     public async Task EngageAsync()
     {
         var args = new ProcedureArgument[]
@@ -82,7 +82,7 @@ public class AutoPilot : RemoteObject
     /// </summary>
     /// <param name="pitch">Target pitch angle, between -90° and +90°.</param>
     /// <param name="heading">Target heading angle, between 0° and 360°.</param>
-    [Rpc("SpaceCenter", "AutoPilot_TargetPitchAndHeading")]
+    [SetRpc("SpaceCenter", "AutoPilot_TargetPitchAndHeading")]
     public void TargetPitchAndHeading(Angle pitch, Angle heading)
     {
         var args = new ProcedureArgument[]
@@ -100,7 +100,7 @@ public class AutoPilot : RemoteObject
     /// </summary>
     /// <param name="pitch">Target pitch angle, between -90° and +90°.</param>
     /// <param name="heading">Target heading angle, between 0° and 360°.</param>
-    [Rpc("SpaceCenter", "AutoPilot_TargetPitchAndHeading")]
+    [SetRpc("SpaceCenter", "AutoPilot_TargetPitchAndHeading")]
     public async Task TargetPitchAndHeadingAsync(Angle pitch, Angle heading)
     {
         var args = new ProcedureArgument[]
@@ -116,7 +116,7 @@ public class AutoPilot : RemoteObject
     /// Blocks until the vessel is pointing in the target direction and has
     /// the target roll (if set). Throws an exception if the auto-pilot has not been engaged.
     /// </summary>
-    [Rpc("SpaceCenter", "AutoPilot_Wait")]
+    [SetRpc("SpaceCenter", "AutoPilot_Wait")]
     public void Wait()
     {
         var args = new ProcedureArgument[]
@@ -131,7 +131,7 @@ public class AutoPilot : RemoteObject
     /// the target roll (if set). Throws an exception if the auto-pilot has not been engaged.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "AutoPilot_Wait")]
+    [SetRpc("SpaceCenter", "AutoPilot_Wait")]
     public async Task WaitAsync()
     {
         var args = new ProcedureArgument[]
@@ -148,7 +148,7 @@ public class AutoPilot : RemoteObject
     /// A vector of three angles, one for each of the pitch, roll and yaw axes.
     /// Defaults to 1° for each axis.
     /// </summary>
-    [Rpc("SpaceCenter", "AutoPilot_get_AttenuationAngle")]
+    [GetRpc("SpaceCenter", "AutoPilot_get_AttenuationAngle")]
     public Tuple<Angle,Angle,Angle> GetAttenuationAngle()
     {
         var args = new ProcedureArgument[]
@@ -167,7 +167,7 @@ public class AutoPilot : RemoteObject
     /// Defaults to 1° for each axis.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "AutoPilot_get_AttenuationAngle")]
+    [GetRpc("SpaceCenter", "AutoPilot_get_AttenuationAngle")]
     public async Task<Tuple<Angle,Angle,Angle>> GetAttenuationAngleAsync()
     {
         var args = new ProcedureArgument[]
@@ -186,7 +186,7 @@ public class AutoPilot : RemoteObject
     /// Defaults to 1° for each axis.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "AutoPilot_set_AttenuationAngle")]
+    [SetRpc("SpaceCenter", "AutoPilot_set_AttenuationAngle")]
     public void SetAttenuationAngle(Tuple<Angle,Angle,Angle> value)
     {
         var args = new ProcedureArgument[]
@@ -206,7 +206,7 @@ public class AutoPilot : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "AutoPilot_set_AttenuationAngle")]
+    [SetRpc("SpaceCenter", "AutoPilot_set_AttenuationAngle")]
     public async Task SetAttenuationAngleAsync(Tuple<Angle,Angle,Angle> value)
     {
         var args = new ProcedureArgument[]
@@ -222,7 +222,7 @@ public class AutoPilot : RemoteObject
     /// using the vessels moment of inertia and available torque. Defaults to <c>true</c>.
     /// See <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.AutoPilot.GetTimeToPeak" /> and <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.AutoPilot.GetOvershoot" />.
     /// </summary>
-    [Rpc("SpaceCenter", "AutoPilot_get_AutoTune")]
+    [GetRpc("SpaceCenter", "AutoPilot_get_AutoTune")]
     public bool GetAutoTune()
     {
         var args = new ProcedureArgument[]
@@ -238,7 +238,7 @@ public class AutoPilot : RemoteObject
     /// See <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.AutoPilot.GetTimeToPeak" /> and <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.AutoPilot.GetOvershoot" />.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "AutoPilot_get_AutoTune")]
+    [GetRpc("SpaceCenter", "AutoPilot_get_AutoTune")]
     public async Task<bool> GetAutoTuneAsync()
     {
         var args = new ProcedureArgument[]
@@ -254,7 +254,7 @@ public class AutoPilot : RemoteObject
     /// See <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.AutoPilot.GetTimeToPeak" /> and <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.AutoPilot.GetOvershoot" />.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "AutoPilot_set_AutoTune")]
+    [SetRpc("SpaceCenter", "AutoPilot_set_AutoTune")]
     public void SetAutoTune(bool value)
     {
         var args = new ProcedureArgument[]
@@ -272,7 +272,7 @@ public class AutoPilot : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "AutoPilot_set_AutoTune")]
+    [SetRpc("SpaceCenter", "AutoPilot_set_AutoTune")]
     public async Task SetAutoTuneAsync(bool value)
     {
         var args = new ProcedureArgument[]
@@ -289,7 +289,7 @@ public class AutoPilot : RemoteObject
     /// A vector of three times, in seconds, one for each of the pitch, roll and yaw axes.
     /// Defaults to 5 seconds for each axis.
     /// </summary>
-    [Rpc("SpaceCenter", "AutoPilot_get_DecelerationTime")]
+    [GetRpc("SpaceCenter", "AutoPilot_get_DecelerationTime")]
     public Tuple<double,double,double> GetDecelerationTime()
     {
         var args = new ProcedureArgument[]
@@ -306,7 +306,7 @@ public class AutoPilot : RemoteObject
     /// Defaults to 5 seconds for each axis.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "AutoPilot_get_DecelerationTime")]
+    [GetRpc("SpaceCenter", "AutoPilot_get_DecelerationTime")]
     public async Task<Tuple<double,double,double>> GetDecelerationTimeAsync()
     {
         var args = new ProcedureArgument[]
@@ -323,7 +323,7 @@ public class AutoPilot : RemoteObject
     /// Defaults to 5 seconds for each axis.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "AutoPilot_set_DecelerationTime")]
+    [SetRpc("SpaceCenter", "AutoPilot_set_DecelerationTime")]
     public void SetDecelerationTime(Tuple<double,double,double> value)
     {
         var args = new ProcedureArgument[]
@@ -342,7 +342,7 @@ public class AutoPilot : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "AutoPilot_set_DecelerationTime")]
+    [SetRpc("SpaceCenter", "AutoPilot_set_DecelerationTime")]
     public async Task SetDecelerationTimeAsync(Tuple<double,double,double> value)
     {
         var args = new ProcedureArgument[]
@@ -358,7 +358,7 @@ public class AutoPilot : RemoteObject
     /// to point in and the direction it is pointing in. Throws an exception if the auto-pilot
     /// has not been engaged and SAS is not enabled or is in stability assist mode.
     /// </summary>
-    [Rpc("SpaceCenter", "AutoPilot_get_Error")]
+    [GetRpc("SpaceCenter", "AutoPilot_get_Error")]
     public Angle GetError()
     {
         var args = new ProcedureArgument[]
@@ -375,7 +375,7 @@ public class AutoPilot : RemoteObject
     /// has not been engaged and SAS is not enabled or is in stability assist mode.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "AutoPilot_get_Error")]
+    [GetRpc("SpaceCenter", "AutoPilot_get_Error")]
     public async Task<Angle> GetErrorAsync()
     {
         var args = new ProcedureArgument[]
@@ -390,7 +390,7 @@ public class AutoPilot : RemoteObject
     /// Gets the error between the vessels current and target heading.
     /// Throws an exception if the auto-pilot has not been engaged.
     /// </summary>
-    [Rpc("SpaceCenter", "AutoPilot_get_HeadingError")]
+    [GetRpc("SpaceCenter", "AutoPilot_get_HeadingError")]
     public Angle GetHeadingError()
     {
         var args = new ProcedureArgument[]
@@ -406,7 +406,7 @@ public class AutoPilot : RemoteObject
     /// Throws an exception if the auto-pilot has not been engaged.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "AutoPilot_get_HeadingError")]
+    [GetRpc("SpaceCenter", "AutoPilot_get_HeadingError")]
     public async Task<Angle> GetHeadingErrorAsync()
     {
         var args = new ProcedureArgument[]
@@ -422,7 +422,7 @@ public class AutoPilot : RemoteObject
     /// A vector of three values, between 0 and 1, for each of the pitch, roll and yaw axes.
     /// Defaults to 0.01 for each axis.
     /// </summary>
-    [Rpc("SpaceCenter", "AutoPilot_get_Overshoot")]
+    [GetRpc("SpaceCenter", "AutoPilot_get_Overshoot")]
     public Tuple<double,double,double> GetOvershoot()
     {
         var args = new ProcedureArgument[]
@@ -438,7 +438,7 @@ public class AutoPilot : RemoteObject
     /// Defaults to 0.01 for each axis.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "AutoPilot_get_Overshoot")]
+    [GetRpc("SpaceCenter", "AutoPilot_get_Overshoot")]
     public async Task<Tuple<double,double,double>> GetOvershootAsync()
     {
         var args = new ProcedureArgument[]
@@ -454,7 +454,7 @@ public class AutoPilot : RemoteObject
     /// Defaults to 0.01 for each axis.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "AutoPilot_set_Overshoot")]
+    [SetRpc("SpaceCenter", "AutoPilot_set_Overshoot")]
     public void SetOvershoot(Tuple<double,double,double> value)
     {
         var args = new ProcedureArgument[]
@@ -472,7 +472,7 @@ public class AutoPilot : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "AutoPilot_set_Overshoot")]
+    [SetRpc("SpaceCenter", "AutoPilot_set_Overshoot")]
     public async Task SetOvershootAsync(Tuple<double,double,double> value)
     {
         var args = new ProcedureArgument[]
@@ -487,7 +487,7 @@ public class AutoPilot : RemoteObject
     /// Gets the error between the vessels current and target pitch.
     /// Throws an exception if the auto-pilot has not been engaged.
     /// </summary>
-    [Rpc("SpaceCenter", "AutoPilot_get_PitchError")]
+    [GetRpc("SpaceCenter", "AutoPilot_get_PitchError")]
     public Angle GetPitchError()
     {
         var args = new ProcedureArgument[]
@@ -503,7 +503,7 @@ public class AutoPilot : RemoteObject
     /// Throws an exception if the auto-pilot has not been engaged.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "AutoPilot_get_PitchError")]
+    [GetRpc("SpaceCenter", "AutoPilot_get_PitchError")]
     public async Task<Angle> GetPitchErrorAsync()
     {
         var args = new ProcedureArgument[]
@@ -521,7 +521,7 @@ public class AutoPilot : RemoteObject
     /// When <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.AutoPilot.GetAutoTune" /> is true, these values are updated automatically,
     /// which will overwrite any manual changes.
     /// </remarks>
-    [Rpc("SpaceCenter", "AutoPilot_get_PitchPIDGains")]
+    [GetRpc("SpaceCenter", "AutoPilot_get_PitchPIDGains")]
     public Tuple<double,double,double> GetPitchPIDGains()
     {
         var args = new ProcedureArgument[]
@@ -539,7 +539,7 @@ public class AutoPilot : RemoteObject
     /// When <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.AutoPilot.GetAutoTune" /> is true, these values are updated automatically,
     /// which will overwrite any manual changes.
     /// </remarks>
-    [Rpc("SpaceCenter", "AutoPilot_get_PitchPIDGains")]
+    [GetRpc("SpaceCenter", "AutoPilot_get_PitchPIDGains")]
     public async Task<Tuple<double,double,double>> GetPitchPIDGainsAsync()
     {
         var args = new ProcedureArgument[]
@@ -553,7 +553,7 @@ public class AutoPilot : RemoteObject
     /// Sets gains for the pitch PID controller.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "AutoPilot_set_PitchPIDGains")]
+    [SetRpc("SpaceCenter", "AutoPilot_set_PitchPIDGains")]
     public void SetPitchPIDGains(Tuple<double,double,double> value)
     {
         var args = new ProcedureArgument[]
@@ -569,7 +569,7 @@ public class AutoPilot : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "AutoPilot_set_PitchPIDGains")]
+    [SetRpc("SpaceCenter", "AutoPilot_set_PitchPIDGains")]
     public async Task SetPitchPIDGainsAsync(Tuple<double,double,double> value)
     {
         var args = new ProcedureArgument[]
@@ -588,7 +588,7 @@ public class AutoPilot : RemoteObject
     /// the vessel being controlled, as it is impossible to rotate the vessel in such a
     /// reference frame.
     /// </remarks>
-    [Rpc("SpaceCenter", "AutoPilot_get_ReferenceFrame")]
+    [GetRpc("SpaceCenter", "AutoPilot_get_ReferenceFrame")]
     public ReferenceFrame GetReferenceFrame()
     {
         var args = new ProcedureArgument[]
@@ -607,7 +607,7 @@ public class AutoPilot : RemoteObject
     /// the vessel being controlled, as it is impossible to rotate the vessel in such a
     /// reference frame.
     /// </remarks>
-    [Rpc("SpaceCenter", "AutoPilot_get_ReferenceFrame")]
+    [GetRpc("SpaceCenter", "AutoPilot_get_ReferenceFrame")]
     public async Task<ReferenceFrame> GetReferenceFrameAsync()
     {
         var args = new ProcedureArgument[]
@@ -621,7 +621,7 @@ public class AutoPilot : RemoteObject
     /// Sets the reference frame for the target direction (<see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.AutoPilot.GetTargetDirection" />).
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "AutoPilot_set_ReferenceFrame")]
+    [SetRpc("SpaceCenter", "AutoPilot_set_ReferenceFrame")]
     public void SetReferenceFrame(ReferenceFrame value)
     {
         var args = new ProcedureArgument[]
@@ -637,7 +637,7 @@ public class AutoPilot : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "AutoPilot_set_ReferenceFrame")]
+    [SetRpc("SpaceCenter", "AutoPilot_set_ReferenceFrame")]
     public async Task SetReferenceFrameAsync(ReferenceFrame value)
     {
         var args = new ProcedureArgument[]
@@ -652,7 +652,7 @@ public class AutoPilot : RemoteObject
     /// Gets the error between the vessels current and target roll.
     /// Throws an exception if the auto-pilot has not been engaged or no target roll is set.
     /// </summary>
-    [Rpc("SpaceCenter", "AutoPilot_get_RollError")]
+    [GetRpc("SpaceCenter", "AutoPilot_get_RollError")]
     public Angle GetRollError()
     {
         var args = new ProcedureArgument[]
@@ -668,7 +668,7 @@ public class AutoPilot : RemoteObject
     /// Throws an exception if the auto-pilot has not been engaged or no target roll is set.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "AutoPilot_get_RollError")]
+    [GetRpc("SpaceCenter", "AutoPilot_get_RollError")]
     public async Task<Angle> GetRollErrorAsync()
     {
         var args = new ProcedureArgument[]
@@ -686,7 +686,7 @@ public class AutoPilot : RemoteObject
     /// When <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.AutoPilot.GetAutoTune" /> is true, these values are updated automatically,
     /// which will overwrite any manual changes.
     /// </remarks>
-    [Rpc("SpaceCenter", "AutoPilot_get_RollPIDGains")]
+    [GetRpc("SpaceCenter", "AutoPilot_get_RollPIDGains")]
     public Tuple<double,double,double> GetRollPIDGains()
     {
         var args = new ProcedureArgument[]
@@ -704,7 +704,7 @@ public class AutoPilot : RemoteObject
     /// When <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.AutoPilot.GetAutoTune" /> is true, these values are updated automatically,
     /// which will overwrite any manual changes.
     /// </remarks>
-    [Rpc("SpaceCenter", "AutoPilot_get_RollPIDGains")]
+    [GetRpc("SpaceCenter", "AutoPilot_get_RollPIDGains")]
     public async Task<Tuple<double,double,double>> GetRollPIDGainsAsync()
     {
         var args = new ProcedureArgument[]
@@ -718,7 +718,7 @@ public class AutoPilot : RemoteObject
     /// Sets gains for the roll PID controller.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "AutoPilot_set_RollPIDGains")]
+    [SetRpc("SpaceCenter", "AutoPilot_set_RollPIDGains")]
     public void SetRollPIDGains(Tuple<double,double,double> value)
     {
         var args = new ProcedureArgument[]
@@ -734,7 +734,7 @@ public class AutoPilot : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "AutoPilot_set_RollPIDGains")]
+    [SetRpc("SpaceCenter", "AutoPilot_set_RollPIDGains")]
     public async Task SetRollPIDGainsAsync(Tuple<double,double,double> value)
     {
         var args = new ProcedureArgument[]
@@ -749,7 +749,7 @@ public class AutoPilot : RemoteObject
     /// Gets the threshold at which the autopilot will try to match the target roll angle, if any.
     /// Defaults to 5 degrees.
     /// </summary>
-    [Rpc("SpaceCenter", "AutoPilot_get_RollThreshold")]
+    [GetRpc("SpaceCenter", "AutoPilot_get_RollThreshold")]
     public Angle GetRollThreshold()
     {
         var args = new ProcedureArgument[]
@@ -765,7 +765,7 @@ public class AutoPilot : RemoteObject
     /// Defaults to 5 degrees.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "AutoPilot_get_RollThreshold")]
+    [GetRpc("SpaceCenter", "AutoPilot_get_RollThreshold")]
     public async Task<Angle> GetRollThresholdAsync()
     {
         var args = new ProcedureArgument[]
@@ -781,7 +781,7 @@ public class AutoPilot : RemoteObject
     /// Defaults to 5 degrees.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "AutoPilot_set_RollThreshold")]
+    [SetRpc("SpaceCenter", "AutoPilot_set_RollThreshold")]
     public void SetRollThreshold(Angle value)
     {
         var args = new ProcedureArgument[]
@@ -798,7 +798,7 @@ public class AutoPilot : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "AutoPilot_set_RollThreshold")]
+    [SetRpc("SpaceCenter", "AutoPilot_set_RollThreshold")]
     public async Task SetRollThresholdAsync(Angle value)
     {
         var args = new ProcedureArgument[]
@@ -813,7 +813,7 @@ public class AutoPilot : RemoteObject
     /// Gets the state of SAS.
     /// </summary>
     /// <remarks>Equivalent to <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Control.GetSAS" /></remarks>
-    [Rpc("SpaceCenter", "AutoPilot_get_SAS")]
+    [GetRpc("SpaceCenter", "AutoPilot_get_SAS")]
     public bool GetSAS()
     {
         var args = new ProcedureArgument[]
@@ -828,7 +828,7 @@ public class AutoPilot : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <remarks>Equivalent to <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Control.GetSAS" /></remarks>
-    [Rpc("SpaceCenter", "AutoPilot_get_SAS")]
+    [GetRpc("SpaceCenter", "AutoPilot_get_SAS")]
     public async Task<bool> GetSASAsync()
     {
         var args = new ProcedureArgument[]
@@ -842,7 +842,7 @@ public class AutoPilot : RemoteObject
     /// Sets the state of SAS.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "AutoPilot_set_SAS")]
+    [SetRpc("SpaceCenter", "AutoPilot_set_SAS")]
     public void SetSAS(bool value)
     {
         var args = new ProcedureArgument[]
@@ -858,7 +858,7 @@ public class AutoPilot : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "AutoPilot_set_SAS")]
+    [SetRpc("SpaceCenter", "AutoPilot_set_SAS")]
     public async Task SetSASAsync(bool value)
     {
         var args = new ProcedureArgument[]
@@ -875,7 +875,7 @@ public class AutoPilot : RemoteObject
     /// when SAS is enabled.
     /// </summary>
     /// <remarks>Equivalent to <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Control.GetSASMode" /></remarks>
-    [Rpc("SpaceCenter", "AutoPilot_get_SASMode")]
+    [GetRpc("SpaceCenter", "AutoPilot_get_SASMode")]
     public SASMode GetSASMode()
     {
         var args = new ProcedureArgument[]
@@ -892,7 +892,7 @@ public class AutoPilot : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <remarks>Equivalent to <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Control.GetSASMode" /></remarks>
-    [Rpc("SpaceCenter", "AutoPilot_get_SASMode")]
+    [GetRpc("SpaceCenter", "AutoPilot_get_SASMode")]
     public async Task<SASMode> GetSASModeAsync()
     {
         var args = new ProcedureArgument[]
@@ -908,7 +908,7 @@ public class AutoPilot : RemoteObject
     /// when SAS is enabled.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "AutoPilot_set_SASMode")]
+    [SetRpc("SpaceCenter", "AutoPilot_set_SASMode")]
     public void SetSASMode(SASMode value)
     {
         var args = new ProcedureArgument[]
@@ -926,7 +926,7 @@ public class AutoPilot : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "AutoPilot_set_SASMode")]
+    [SetRpc("SpaceCenter", "AutoPilot_set_SASMode")]
     public async Task SetSASModeAsync(SASMode value)
     {
         var args = new ProcedureArgument[]
@@ -943,7 +943,7 @@ public class AutoPilot : RemoteObject
     /// A vector of three stopping times, in seconds, one for each of the pitch, roll
     /// and yaw axes. Defaults to 0.5 seconds for each axis.
     /// </summary>
-    [Rpc("SpaceCenter", "AutoPilot_get_StoppingTime")]
+    [GetRpc("SpaceCenter", "AutoPilot_get_StoppingTime")]
     public Tuple<double,double,double> GetStoppingTime()
     {
         var args = new ProcedureArgument[]
@@ -960,7 +960,7 @@ public class AutoPilot : RemoteObject
     /// and yaw axes. Defaults to 0.5 seconds for each axis.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "AutoPilot_get_StoppingTime")]
+    [GetRpc("SpaceCenter", "AutoPilot_get_StoppingTime")]
     public async Task<Tuple<double,double,double>> GetStoppingTimeAsync()
     {
         var args = new ProcedureArgument[]
@@ -977,7 +977,7 @@ public class AutoPilot : RemoteObject
     /// and yaw axes. Defaults to 0.5 seconds for each axis.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "AutoPilot_set_StoppingTime")]
+    [SetRpc("SpaceCenter", "AutoPilot_set_StoppingTime")]
     public void SetStoppingTime(Tuple<double,double,double> value)
     {
         var args = new ProcedureArgument[]
@@ -996,7 +996,7 @@ public class AutoPilot : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "AutoPilot_set_StoppingTime")]
+    [SetRpc("SpaceCenter", "AutoPilot_set_StoppingTime")]
     public async Task SetStoppingTimeAsync(Tuple<double,double,double> value)
     {
         var args = new ProcedureArgument[]
@@ -1011,7 +1011,7 @@ public class AutoPilot : RemoteObject
     /// Direction vector corresponding to the target pitch and heading.
     /// This is in the reference frame specified by <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ReferenceFrame" />.
     /// </summary>
-    [Rpc("SpaceCenter", "AutoPilot_get_TargetDirection")]
+    [GetRpc("SpaceCenter", "AutoPilot_get_TargetDirection")]
     public Vector3D GetTargetDirection()
     {
         var args = new ProcedureArgument[]
@@ -1026,7 +1026,7 @@ public class AutoPilot : RemoteObject
     /// This is in the reference frame specified by <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ReferenceFrame" />.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "AutoPilot_get_TargetDirection")]
+    [GetRpc("SpaceCenter", "AutoPilot_get_TargetDirection")]
     public async Task<Vector3D> GetTargetDirectionAsync()
     {
         var args = new ProcedureArgument[]
@@ -1041,7 +1041,7 @@ public class AutoPilot : RemoteObject
     /// This is in the reference frame specified by <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ReferenceFrame" />.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "AutoPilot_set_TargetDirection")]
+    [SetRpc("SpaceCenter", "AutoPilot_set_TargetDirection")]
     public void SetTargetDirection(Vector3D value)
     {
         var args = new ProcedureArgument[]
@@ -1058,7 +1058,7 @@ public class AutoPilot : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "AutoPilot_set_TargetDirection")]
+    [SetRpc("SpaceCenter", "AutoPilot_set_TargetDirection")]
     public async Task SetTargetDirectionAsync(Vector3D value)
     {
         var args = new ProcedureArgument[]
@@ -1072,7 +1072,7 @@ public class AutoPilot : RemoteObject
     /// <summary>
     /// Gets the target heading, between 0° and 360°.
     /// </summary>
-    [Rpc("SpaceCenter", "AutoPilot_get_TargetHeading")]
+    [GetRpc("SpaceCenter", "AutoPilot_get_TargetHeading")]
     public Angle GetTargetHeading()
     {
         var args = new ProcedureArgument[]
@@ -1087,7 +1087,7 @@ public class AutoPilot : RemoteObject
     /// Gets the target heading, between 0° and 360°.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "AutoPilot_get_TargetHeading")]
+    [GetRpc("SpaceCenter", "AutoPilot_get_TargetHeading")]
     public async Task<Angle> GetTargetHeadingAsync()
     {
         var args = new ProcedureArgument[]
@@ -1102,7 +1102,7 @@ public class AutoPilot : RemoteObject
     /// Sets the target heading, between 0° and 360°.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "AutoPilot_set_TargetHeading")]
+    [SetRpc("SpaceCenter", "AutoPilot_set_TargetHeading")]
     public void SetTargetHeading(Angle value)
     {
         var args = new ProcedureArgument[]
@@ -1118,7 +1118,7 @@ public class AutoPilot : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "AutoPilot_set_TargetHeading")]
+    [SetRpc("SpaceCenter", "AutoPilot_set_TargetHeading")]
     public async Task SetTargetHeadingAsync(Angle value)
     {
         var args = new ProcedureArgument[]
@@ -1132,7 +1132,7 @@ public class AutoPilot : RemoteObject
     /// <summary>
     /// Gets the target pitch, between -90° and +90°.
     /// </summary>
-    [Rpc("SpaceCenter", "AutoPilot_get_TargetPitch")]
+    [GetRpc("SpaceCenter", "AutoPilot_get_TargetPitch")]
     public Angle GetTargetPitch()
     {
         var args = new ProcedureArgument[]
@@ -1147,7 +1147,7 @@ public class AutoPilot : RemoteObject
     /// Gets the target pitch, between -90° and +90°.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "AutoPilot_get_TargetPitch")]
+    [GetRpc("SpaceCenter", "AutoPilot_get_TargetPitch")]
     public async Task<Angle> GetTargetPitchAsync()
     {
         var args = new ProcedureArgument[]
@@ -1162,7 +1162,7 @@ public class AutoPilot : RemoteObject
     /// Sets the target pitch, between -90° and +90°.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "AutoPilot_set_TargetPitch")]
+    [SetRpc("SpaceCenter", "AutoPilot_set_TargetPitch")]
     public void SetTargetPitch(Angle value)
     {
         var args = new ProcedureArgument[]
@@ -1178,7 +1178,7 @@ public class AutoPilot : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "AutoPilot_set_TargetPitch")]
+    [SetRpc("SpaceCenter", "AutoPilot_set_TargetPitch")]
     public async Task SetTargetPitchAsync(Angle value)
     {
         var args = new ProcedureArgument[]
@@ -1192,7 +1192,7 @@ public class AutoPilot : RemoteObject
     /// <summary>
     /// Gets the target roll. <c>NaN</c> if no target roll is set.
     /// </summary>
-    [Rpc("SpaceCenter", "AutoPilot_get_TargetRoll")]
+    [GetRpc("SpaceCenter", "AutoPilot_get_TargetRoll")]
     public Angle GetTargetRoll()
     {
         var args = new ProcedureArgument[]
@@ -1207,7 +1207,7 @@ public class AutoPilot : RemoteObject
     /// Gets the target roll. <c>NaN</c> if no target roll is set.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "AutoPilot_get_TargetRoll")]
+    [GetRpc("SpaceCenter", "AutoPilot_get_TargetRoll")]
     public async Task<Angle> GetTargetRollAsync()
     {
         var args = new ProcedureArgument[]
@@ -1222,7 +1222,7 @@ public class AutoPilot : RemoteObject
     /// Sets the target roll. <c>NaN</c> if no target roll is set.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "AutoPilot_set_TargetRoll")]
+    [SetRpc("SpaceCenter", "AutoPilot_set_TargetRoll")]
     public void SetTargetRoll(Angle value)
     {
         var args = new ProcedureArgument[]
@@ -1238,7 +1238,7 @@ public class AutoPilot : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "AutoPilot_set_TargetRoll")]
+    [SetRpc("SpaceCenter", "AutoPilot_set_TargetRoll")]
     public async Task SetTargetRollAsync(Angle value)
     {
         var args = new ProcedureArgument[]
@@ -1254,7 +1254,7 @@ public class AutoPilot : RemoteObject
     /// A vector of three times, in seconds, for each of the pitch, roll and yaw axes.
     /// Defaults to 3 seconds for each axis.
     /// </summary>
-    [Rpc("SpaceCenter", "AutoPilot_get_TimeToPeak")]
+    [GetRpc("SpaceCenter", "AutoPilot_get_TimeToPeak")]
     public Tuple<double,double,double> GetTimeToPeak()
     {
         var args = new ProcedureArgument[]
@@ -1270,7 +1270,7 @@ public class AutoPilot : RemoteObject
     /// Defaults to 3 seconds for each axis.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "AutoPilot_get_TimeToPeak")]
+    [GetRpc("SpaceCenter", "AutoPilot_get_TimeToPeak")]
     public async Task<Tuple<double,double,double>> GetTimeToPeakAsync()
     {
         var args = new ProcedureArgument[]
@@ -1286,7 +1286,7 @@ public class AutoPilot : RemoteObject
     /// Defaults to 3 seconds for each axis.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "AutoPilot_set_TimeToPeak")]
+    [SetRpc("SpaceCenter", "AutoPilot_set_TimeToPeak")]
     public void SetTimeToPeak(Tuple<double,double,double> value)
     {
         var args = new ProcedureArgument[]
@@ -1304,7 +1304,7 @@ public class AutoPilot : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "AutoPilot_set_TimeToPeak")]
+    [SetRpc("SpaceCenter", "AutoPilot_set_TimeToPeak")]
     public async Task SetTimeToPeakAsync(Tuple<double,double,double> value)
     {
         var args = new ProcedureArgument[]
@@ -1322,7 +1322,7 @@ public class AutoPilot : RemoteObject
     /// When <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.AutoPilot.GetAutoTune" /> is true, these values are updated automatically,
     /// which will overwrite any manual changes.
     /// </remarks>
-    [Rpc("SpaceCenter", "AutoPilot_get_YawPIDGains")]
+    [GetRpc("SpaceCenter", "AutoPilot_get_YawPIDGains")]
     public Tuple<double,double,double> GetYawPIDGains()
     {
         var args = new ProcedureArgument[]
@@ -1340,7 +1340,7 @@ public class AutoPilot : RemoteObject
     /// When <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.AutoPilot.GetAutoTune" /> is true, these values are updated automatically,
     /// which will overwrite any manual changes.
     /// </remarks>
-    [Rpc("SpaceCenter", "AutoPilot_get_YawPIDGains")]
+    [GetRpc("SpaceCenter", "AutoPilot_get_YawPIDGains")]
     public async Task<Tuple<double,double,double>> GetYawPIDGainsAsync()
     {
         var args = new ProcedureArgument[]
@@ -1354,7 +1354,7 @@ public class AutoPilot : RemoteObject
     /// Sets gains for the yaw PID controller.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "AutoPilot_set_YawPIDGains")]
+    [SetRpc("SpaceCenter", "AutoPilot_set_YawPIDGains")]
     public void SetYawPIDGains(Tuple<double,double,double> value)
     {
         var args = new ProcedureArgument[]
@@ -1370,7 +1370,7 @@ public class AutoPilot : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "AutoPilot_set_YawPIDGains")]
+    [SetRpc("SpaceCenter", "AutoPilot_set_YawPIDGains")]
     public async Task SetYawPIDGainsAsync(Tuple<double,double,double> value)
     {
         var args = new ProcedureArgument[]

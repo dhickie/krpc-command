@@ -19,7 +19,7 @@ public class Resource : RemoteObject
     /// <summary>
     /// Gets the amount of the resource that is currently stored in the part.
     /// </summary>
-    [Rpc("SpaceCenter", "Resource_get_Amount")]
+    [GetRpc("SpaceCenter", "Resource_get_Amount")]
     public float GetAmount()
     {
         var args = new ProcedureArgument[]
@@ -33,7 +33,7 @@ public class Resource : RemoteObject
     /// Gets the amount of the resource that is currently stored in the part.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Resource_get_Amount")]
+    [GetRpc("SpaceCenter", "Resource_get_Amount")]
     public async Task<float> GetAmountAsync()
     {
         var args = new ProcedureArgument[]
@@ -46,7 +46,7 @@ public class Resource : RemoteObject
     /// <summary>
     /// Gets the density of the resource, in <math>kg/l</math>.
     /// </summary>
-    [Rpc("SpaceCenter", "Resource_get_Density")]
+    [GetRpc("SpaceCenter", "Resource_get_Density")]
     public float GetDensity()
     {
         var args = new ProcedureArgument[]
@@ -60,7 +60,7 @@ public class Resource : RemoteObject
     /// Gets the density of the resource, in <math>kg/l</math>.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Resource_get_Density")]
+    [GetRpc("SpaceCenter", "Resource_get_Density")]
     public async Task<float> GetDensityAsync()
     {
         var args = new ProcedureArgument[]
@@ -73,7 +73,7 @@ public class Resource : RemoteObject
     /// <summary>
     /// Gets whether use of this resource is enabled.
     /// </summary>
-    [Rpc("SpaceCenter", "Resource_get_Enabled")]
+    [GetRpc("SpaceCenter", "Resource_get_Enabled")]
     public bool GetEnabled()
     {
         var args = new ProcedureArgument[]
@@ -87,7 +87,7 @@ public class Resource : RemoteObject
     /// Gets whether use of this resource is enabled.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Resource_get_Enabled")]
+    [GetRpc("SpaceCenter", "Resource_get_Enabled")]
     public async Task<bool> GetEnabledAsync()
     {
         var args = new ProcedureArgument[]
@@ -101,7 +101,7 @@ public class Resource : RemoteObject
     /// Sets whether use of this resource is enabled.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "Resource_set_Enabled")]
+    [SetRpc("SpaceCenter", "Resource_set_Enabled")]
     public void SetEnabled(bool value)
     {
         var args = new ProcedureArgument[]
@@ -117,7 +117,7 @@ public class Resource : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "Resource_set_Enabled")]
+    [SetRpc("SpaceCenter", "Resource_set_Enabled")]
     public async Task SetEnabledAsync(bool value)
     {
         var args = new ProcedureArgument[]
@@ -131,7 +131,7 @@ public class Resource : RemoteObject
     /// <summary>
     /// Gets the flow mode of the resource.
     /// </summary>
-    [Rpc("SpaceCenter", "Resource_get_FlowMode")]
+    [GetRpc("SpaceCenter", "Resource_get_FlowMode")]
     public ResourceFlowMode GetFlowMode()
     {
         var args = new ProcedureArgument[]
@@ -145,7 +145,7 @@ public class Resource : RemoteObject
     /// Gets the flow mode of the resource.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Resource_get_FlowMode")]
+    [GetRpc("SpaceCenter", "Resource_get_FlowMode")]
     public async Task<ResourceFlowMode> GetFlowModeAsync()
     {
         var args = new ProcedureArgument[]
@@ -158,7 +158,7 @@ public class Resource : RemoteObject
     /// <summary>
     /// Gets the total amount of the resource that can be stored in the part.
     /// </summary>
-    [Rpc("SpaceCenter", "Resource_get_Max")]
+    [GetRpc("SpaceCenter", "Resource_get_Max")]
     public float GetMax()
     {
         var args = new ProcedureArgument[]
@@ -172,7 +172,7 @@ public class Resource : RemoteObject
     /// Gets the total amount of the resource that can be stored in the part.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Resource_get_Max")]
+    [GetRpc("SpaceCenter", "Resource_get_Max")]
     public async Task<float> GetMaxAsync()
     {
         var args = new ProcedureArgument[]
@@ -185,7 +185,7 @@ public class Resource : RemoteObject
     /// <summary>
     /// Gets the name of the resource.
     /// </summary>
-    [Rpc("SpaceCenter", "Resource_get_Name")]
+    [GetRpc("SpaceCenter", "Resource_get_Name")]
     public string GetName()
     {
         var args = new ProcedureArgument[]
@@ -199,7 +199,7 @@ public class Resource : RemoteObject
     /// Gets the name of the resource.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Resource_get_Name")]
+    [GetRpc("SpaceCenter", "Resource_get_Name")]
     public async Task<string> GetNameAsync()
     {
         var args = new ProcedureArgument[]
@@ -212,7 +212,7 @@ public class Resource : RemoteObject
     /// <summary>
     /// Gets the part containing the resource.
     /// </summary>
-    [Rpc("SpaceCenter", "Resource_get_Part")]
+    [GetRpc("SpaceCenter", "Resource_get_Part")]
     public Part GetPart()
     {
         var args = new ProcedureArgument[]
@@ -226,7 +226,7 @@ public class Resource : RemoteObject
     /// Gets the part containing the resource.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Resource_get_Part")]
+    [GetRpc("SpaceCenter", "Resource_get_Part")]
     public async Task<Part> GetPartAsync()
     {
         var args = new ProcedureArgument[]

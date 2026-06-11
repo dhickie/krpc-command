@@ -18,7 +18,7 @@ public class CargoBay : RemoteObject
     /// <summary>
     /// Gets whether the cargo bay is open.
     /// </summary>
-    [Rpc("SpaceCenter", "CargoBay_get_Open")]
+    [GetRpc("SpaceCenter", "CargoBay_get_Open")]
     public bool GetOpen()
     {
         var args = new ProcedureArgument[]
@@ -32,7 +32,7 @@ public class CargoBay : RemoteObject
     /// Gets whether the cargo bay is open.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "CargoBay_get_Open")]
+    [GetRpc("SpaceCenter", "CargoBay_get_Open")]
     public async Task<bool> GetOpenAsync()
     {
         var args = new ProcedureArgument[]
@@ -46,7 +46,7 @@ public class CargoBay : RemoteObject
     /// Sets whether the cargo bay is open.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "CargoBay_set_Open")]
+    [SetRpc("SpaceCenter", "CargoBay_set_Open")]
     public void SetOpen(bool value)
     {
         var args = new ProcedureArgument[]
@@ -62,7 +62,7 @@ public class CargoBay : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "CargoBay_set_Open")]
+    [SetRpc("SpaceCenter", "CargoBay_set_Open")]
     public async Task SetOpenAsync(bool value)
     {
         var args = new ProcedureArgument[]
@@ -76,7 +76,7 @@ public class CargoBay : RemoteObject
     /// <summary>
     /// Gets the part object for this cargo bay.
     /// </summary>
-    [Rpc("SpaceCenter", "CargoBay_get_Part")]
+    [GetRpc("SpaceCenter", "CargoBay_get_Part")]
     public Part GetPart()
     {
         var args = new ProcedureArgument[]
@@ -90,7 +90,7 @@ public class CargoBay : RemoteObject
     /// Gets the part object for this cargo bay.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "CargoBay_get_Part")]
+    [GetRpc("SpaceCenter", "CargoBay_get_Part")]
     public async Task<Part> GetPartAsync()
     {
         var args = new ProcedureArgument[]
@@ -103,7 +103,7 @@ public class CargoBay : RemoteObject
     /// <summary>
     /// Gets the state of the cargo bay.
     /// </summary>
-    [Rpc("SpaceCenter", "CargoBay_get_State")]
+    [GetRpc("SpaceCenter", "CargoBay_get_State")]
     public CargoBayState GetState()
     {
         var args = new ProcedureArgument[]
@@ -117,7 +117,7 @@ public class CargoBay : RemoteObject
     /// Gets the state of the cargo bay.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "CargoBay_get_State")]
+    [GetRpc("SpaceCenter", "CargoBay_get_State")]
     public async Task<CargoBayState> GetStateAsync()
     {
         var args = new ProcedureArgument[]

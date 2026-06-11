@@ -18,7 +18,7 @@ public class Sensor : RemoteObject
     /// <summary>
     /// Gets whether the sensor is active.
     /// </summary>
-    [Rpc("SpaceCenter", "Sensor_get_Active")]
+    [GetRpc("SpaceCenter", "Sensor_get_Active")]
     public bool GetActive()
     {
         var args = new ProcedureArgument[]
@@ -32,7 +32,7 @@ public class Sensor : RemoteObject
     /// Gets whether the sensor is active.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Sensor_get_Active")]
+    [GetRpc("SpaceCenter", "Sensor_get_Active")]
     public async Task<bool> GetActiveAsync()
     {
         var args = new ProcedureArgument[]
@@ -46,7 +46,7 @@ public class Sensor : RemoteObject
     /// Sets whether the sensor is active.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "Sensor_set_Active")]
+    [SetRpc("SpaceCenter", "Sensor_set_Active")]
     public void SetActive(bool value)
     {
         var args = new ProcedureArgument[]
@@ -62,7 +62,7 @@ public class Sensor : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "Sensor_set_Active")]
+    [SetRpc("SpaceCenter", "Sensor_set_Active")]
     public async Task SetActiveAsync(bool value)
     {
         var args = new ProcedureArgument[]
@@ -76,7 +76,7 @@ public class Sensor : RemoteObject
     /// <summary>
     /// Gets the part object for this sensor.
     /// </summary>
-    [Rpc("SpaceCenter", "Sensor_get_Part")]
+    [GetRpc("SpaceCenter", "Sensor_get_Part")]
     public Part GetPart()
     {
         var args = new ProcedureArgument[]
@@ -90,7 +90,7 @@ public class Sensor : RemoteObject
     /// Gets the part object for this sensor.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Sensor_get_Part")]
+    [GetRpc("SpaceCenter", "Sensor_get_Part")]
     public async Task<Part> GetPartAsync()
     {
         var args = new ProcedureArgument[]
@@ -103,7 +103,7 @@ public class Sensor : RemoteObject
     /// <summary>
     /// Gets the current value of the sensor.
     /// </summary>
-    [Rpc("SpaceCenter", "Sensor_get_Value")]
+    [GetRpc("SpaceCenter", "Sensor_get_Value")]
     public string GetValue()
     {
         var args = new ProcedureArgument[]
@@ -117,7 +117,7 @@ public class Sensor : RemoteObject
     /// Gets the current value of the sensor.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Sensor_get_Value")]
+    [GetRpc("SpaceCenter", "Sensor_get_Value")]
     public async Task<string> GetValueAsync()
     {
         var args = new ProcedureArgument[]

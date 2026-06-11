@@ -20,7 +20,7 @@ public class Camera : RemoteObject
     /// <summary>
     /// Default distance from the camera to the subject, in meters.
     /// </summary>
-    [Rpc("SpaceCenter", "Camera_get_DefaultDistance")]
+    [GetRpc("SpaceCenter", "Camera_get_DefaultDistance")]
     public float GetDefaultDistance()
     {
         var args = new ProcedureArgument[]
@@ -34,7 +34,7 @@ public class Camera : RemoteObject
     /// Default distance from the camera to the subject, in meters.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Camera_get_DefaultDistance")]
+    [GetRpc("SpaceCenter", "Camera_get_DefaultDistance")]
     public async Task<float> GetDefaultDistanceAsync()
     {
         var args = new ProcedureArgument[]
@@ -48,7 +48,7 @@ public class Camera : RemoteObject
     /// Gets the distance from the camera to the subject, in meters.
     /// A value between <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Camera.GetMinDistance" /> and <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Camera.GetMaxDistance" />.
     /// </summary>
-    [Rpc("SpaceCenter", "Camera_get_Distance")]
+    [GetRpc("SpaceCenter", "Camera_get_Distance")]
     public float GetDistance()
     {
         var args = new ProcedureArgument[]
@@ -63,7 +63,7 @@ public class Camera : RemoteObject
     /// A value between <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Camera.GetMinDistance" /> and <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Camera.GetMaxDistance" />.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Camera_get_Distance")]
+    [GetRpc("SpaceCenter", "Camera_get_Distance")]
     public async Task<float> GetDistanceAsync()
     {
         var args = new ProcedureArgument[]
@@ -78,7 +78,7 @@ public class Camera : RemoteObject
     /// A value between <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Camera.GetMinDistance" /> and <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Camera.GetMaxDistance" />.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "Camera_set_Distance")]
+    [SetRpc("SpaceCenter", "Camera_set_Distance")]
     public void SetDistance(float value)
     {
         var args = new ProcedureArgument[]
@@ -95,7 +95,7 @@ public class Camera : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "Camera_set_Distance")]
+    [SetRpc("SpaceCenter", "Camera_set_Distance")]
     public async Task SetDistanceAsync(float value)
     {
         var args = new ProcedureArgument[]
@@ -111,7 +111,7 @@ public class Camera : RemoteObject
     /// Returns <c>null</c> if the camera is not focussed on a celestial body.
     /// Returns an error is the camera is not in map mode.
     /// </summary>
-    [Rpc("SpaceCenter", "Camera_get_FocussedBody")]
+    [GetRpc("SpaceCenter", "Camera_get_FocussedBody")]
     public CelestialBody? GetFocussedBody()
     {
         var args = new ProcedureArgument[]
@@ -127,7 +127,7 @@ public class Camera : RemoteObject
     /// Returns an error is the camera is not in map mode.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Camera_get_FocussedBody")]
+    [GetRpc("SpaceCenter", "Camera_get_FocussedBody")]
     public async Task<CelestialBody?> GetFocussedBodyAsync()
     {
         var args = new ProcedureArgument[]
@@ -142,7 +142,7 @@ public class Camera : RemoteObject
     /// Returns an error is the camera is not in map mode.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "Camera_set_FocussedBody")]
+    [SetRpc("SpaceCenter", "Camera_set_FocussedBody")]
     public void SetFocussedBody(CelestialBody value)
     {
         var args = new ProcedureArgument[]
@@ -159,7 +159,7 @@ public class Camera : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "Camera_set_FocussedBody")]
+    [SetRpc("SpaceCenter", "Camera_set_FocussedBody")]
     public async Task SetFocussedBodyAsync(CelestialBody value)
     {
         var args = new ProcedureArgument[]
@@ -175,7 +175,7 @@ public class Camera : RemoteObject
     /// Returns <c>null</c> if the camera is not focussed on a maneuver node.
     /// Returns an error is the camera is not in map mode.
     /// </summary>
-    [Rpc("SpaceCenter", "Camera_get_FocussedNode")]
+    [GetRpc("SpaceCenter", "Camera_get_FocussedNode")]
     public Node? GetFocussedNode()
     {
         var args = new ProcedureArgument[]
@@ -191,7 +191,7 @@ public class Camera : RemoteObject
     /// Returns an error is the camera is not in map mode.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Camera_get_FocussedNode")]
+    [GetRpc("SpaceCenter", "Camera_get_FocussedNode")]
     public async Task<Node?> GetFocussedNodeAsync()
     {
         var args = new ProcedureArgument[]
@@ -206,7 +206,7 @@ public class Camera : RemoteObject
     /// Returns an error is the camera is not in map mode.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "Camera_set_FocussedNode")]
+    [SetRpc("SpaceCenter", "Camera_set_FocussedNode")]
     public void SetFocussedNode(Node value)
     {
         var args = new ProcedureArgument[]
@@ -223,7 +223,7 @@ public class Camera : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "Camera_set_FocussedNode")]
+    [SetRpc("SpaceCenter", "Camera_set_FocussedNode")]
     public async Task SetFocussedNodeAsync(Node value)
     {
         var args = new ProcedureArgument[]
@@ -239,7 +239,7 @@ public class Camera : RemoteObject
     /// Returns <c>null</c> if the camera is not focussed on a vessel.
     /// Returns an error is the camera is not in map mode.
     /// </summary>
-    [Rpc("SpaceCenter", "Camera_get_FocussedVessel")]
+    [GetRpc("SpaceCenter", "Camera_get_FocussedVessel")]
     public Vessel? GetFocussedVessel()
     {
         var args = new ProcedureArgument[]
@@ -255,7 +255,7 @@ public class Camera : RemoteObject
     /// Returns an error is the camera is not in map mode.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Camera_get_FocussedVessel")]
+    [GetRpc("SpaceCenter", "Camera_get_FocussedVessel")]
     public async Task<Vessel?> GetFocussedVesselAsync()
     {
         var args = new ProcedureArgument[]
@@ -270,7 +270,7 @@ public class Camera : RemoteObject
     /// Returns an error is the camera is not in map mode.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "Camera_set_FocussedVessel")]
+    [SetRpc("SpaceCenter", "Camera_set_FocussedVessel")]
     public void SetFocussedVessel(Vessel value)
     {
         var args = new ProcedureArgument[]
@@ -287,7 +287,7 @@ public class Camera : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "Camera_set_FocussedVessel")]
+    [SetRpc("SpaceCenter", "Camera_set_FocussedVessel")]
     public async Task SetFocussedVesselAsync(Vessel value)
     {
         var args = new ProcedureArgument[]
@@ -301,7 +301,7 @@ public class Camera : RemoteObject
     /// <summary>
     /// Gets the heading of the camera.
     /// </summary>
-    [Rpc("SpaceCenter", "Camera_get_Heading")]
+    [GetRpc("SpaceCenter", "Camera_get_Heading")]
     public Angle GetHeading()
     {
         var args = new ProcedureArgument[]
@@ -316,7 +316,7 @@ public class Camera : RemoteObject
     /// Gets the heading of the camera.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Camera_get_Heading")]
+    [GetRpc("SpaceCenter", "Camera_get_Heading")]
     public async Task<Angle> GetHeadingAsync()
     {
         var args = new ProcedureArgument[]
@@ -331,7 +331,7 @@ public class Camera : RemoteObject
     /// Sets the heading of the camera.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "Camera_set_Heading")]
+    [SetRpc("SpaceCenter", "Camera_set_Heading")]
     public void SetHeading(Angle value)
     {
         var args = new ProcedureArgument[]
@@ -347,7 +347,7 @@ public class Camera : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "Camera_set_Heading")]
+    [SetRpc("SpaceCenter", "Camera_set_Heading")]
     public async Task SetHeadingAsync(Angle value)
     {
         var args = new ProcedureArgument[]
@@ -361,7 +361,7 @@ public class Camera : RemoteObject
     /// <summary>
     /// Gets the maximum distance from the camera to the subject, in meters.
     /// </summary>
-    [Rpc("SpaceCenter", "Camera_get_MaxDistance")]
+    [GetRpc("SpaceCenter", "Camera_get_MaxDistance")]
     public float GetMaxDistance()
     {
         var args = new ProcedureArgument[]
@@ -375,7 +375,7 @@ public class Camera : RemoteObject
     /// Gets the maximum distance from the camera to the subject, in meters.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Camera_get_MaxDistance")]
+    [GetRpc("SpaceCenter", "Camera_get_MaxDistance")]
     public async Task<float> GetMaxDistanceAsync()
     {
         var args = new ProcedureArgument[]
@@ -388,7 +388,7 @@ public class Camera : RemoteObject
     /// <summary>
     /// Gets the maximum pitch of the camera.
     /// </summary>
-    [Rpc("SpaceCenter", "Camera_get_MaxPitch")]
+    [GetRpc("SpaceCenter", "Camera_get_MaxPitch")]
     public Angle GetMaxPitch()
     {
         var args = new ProcedureArgument[]
@@ -403,7 +403,7 @@ public class Camera : RemoteObject
     /// Gets the maximum pitch of the camera.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Camera_get_MaxPitch")]
+    [GetRpc("SpaceCenter", "Camera_get_MaxPitch")]
     public async Task<Angle> GetMaxPitchAsync()
     {
         var args = new ProcedureArgument[]
@@ -417,7 +417,7 @@ public class Camera : RemoteObject
     /// <summary>
     /// Gets the minimum distance from the camera to the subject, in meters.
     /// </summary>
-    [Rpc("SpaceCenter", "Camera_get_MinDistance")]
+    [GetRpc("SpaceCenter", "Camera_get_MinDistance")]
     public float GetMinDistance()
     {
         var args = new ProcedureArgument[]
@@ -431,7 +431,7 @@ public class Camera : RemoteObject
     /// Gets the minimum distance from the camera to the subject, in meters.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Camera_get_MinDistance")]
+    [GetRpc("SpaceCenter", "Camera_get_MinDistance")]
     public async Task<float> GetMinDistanceAsync()
     {
         var args = new ProcedureArgument[]
@@ -444,7 +444,7 @@ public class Camera : RemoteObject
     /// <summary>
     /// Gets the minimum pitch of the camera.
     /// </summary>
-    [Rpc("SpaceCenter", "Camera_get_MinPitch")]
+    [GetRpc("SpaceCenter", "Camera_get_MinPitch")]
     public Angle GetMinPitch()
     {
         var args = new ProcedureArgument[]
@@ -459,7 +459,7 @@ public class Camera : RemoteObject
     /// Gets the minimum pitch of the camera.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Camera_get_MinPitch")]
+    [GetRpc("SpaceCenter", "Camera_get_MinPitch")]
     public async Task<Angle> GetMinPitchAsync()
     {
         var args = new ProcedureArgument[]
@@ -473,7 +473,7 @@ public class Camera : RemoteObject
     /// <summary>
     /// Gets the current mode of the camera.
     /// </summary>
-    [Rpc("SpaceCenter", "Camera_get_Mode")]
+    [GetRpc("SpaceCenter", "Camera_get_Mode")]
     public CameraMode GetMode()
     {
         var args = new ProcedureArgument[]
@@ -487,7 +487,7 @@ public class Camera : RemoteObject
     /// Gets the current mode of the camera.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Camera_get_Mode")]
+    [GetRpc("SpaceCenter", "Camera_get_Mode")]
     public async Task<CameraMode> GetModeAsync()
     {
         var args = new ProcedureArgument[]
@@ -501,7 +501,7 @@ public class Camera : RemoteObject
     /// Sets the current mode of the camera.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "Camera_set_Mode")]
+    [SetRpc("SpaceCenter", "Camera_set_Mode")]
     public void SetMode(CameraMode value)
     {
         var args = new ProcedureArgument[]
@@ -517,7 +517,7 @@ public class Camera : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "Camera_set_Mode")]
+    [SetRpc("SpaceCenter", "Camera_set_Mode")]
     public async Task SetModeAsync(CameraMode value)
     {
         var args = new ProcedureArgument[]
@@ -532,7 +532,7 @@ public class Camera : RemoteObject
     /// Gets the pitch of the camera.
     /// A value between <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Camera.GetMinPitch" /> and <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Camera.GetMaxPitch" />
     /// </summary>
-    [Rpc("SpaceCenter", "Camera_get_Pitch")]
+    [GetRpc("SpaceCenter", "Camera_get_Pitch")]
     public Angle GetPitch()
     {
         var args = new ProcedureArgument[]
@@ -548,7 +548,7 @@ public class Camera : RemoteObject
     /// A value between <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Camera.GetMinPitch" /> and <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Camera.GetMaxPitch" />
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Camera_get_Pitch")]
+    [GetRpc("SpaceCenter", "Camera_get_Pitch")]
     public async Task<Angle> GetPitchAsync()
     {
         var args = new ProcedureArgument[]
@@ -564,7 +564,7 @@ public class Camera : RemoteObject
     /// A value between <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Camera.GetMinPitch" /> and <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Camera.GetMaxPitch" />
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "Camera_set_Pitch")]
+    [SetRpc("SpaceCenter", "Camera_set_Pitch")]
     public void SetPitch(Angle value)
     {
         var args = new ProcedureArgument[]
@@ -581,7 +581,7 @@ public class Camera : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "Camera_set_Pitch")]
+    [SetRpc("SpaceCenter", "Camera_set_Pitch")]
     public async Task SetPitchAsync(Angle value)
     {
         var args = new ProcedureArgument[]

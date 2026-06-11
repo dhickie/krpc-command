@@ -19,7 +19,7 @@ public class ResourceConverter : RemoteObject
     /// True if the specified converter is active.
     /// </summary>
     /// <param name="index">Index of the converter.</param>
-    [Rpc("SpaceCenter", "ResourceConverter_Active")]
+    [GetRpc("SpaceCenter", "ResourceConverter_Active")]
     public bool Active(int index)
     {
         var args = new ProcedureArgument[]
@@ -35,7 +35,7 @@ public class ResourceConverter : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="index">Index of the converter.</param>
-    [Rpc("SpaceCenter", "ResourceConverter_Active")]
+    [GetRpc("SpaceCenter", "ResourceConverter_Active")]
     public async Task<bool> ActiveAsync(int index)
     {
         var args = new ProcedureArgument[]
@@ -50,7 +50,7 @@ public class ResourceConverter : RemoteObject
     /// List of the names of resources consumed by the specified converter.
     /// </summary>
     /// <param name="index">Index of the converter.</param>
-    [Rpc("SpaceCenter", "ResourceConverter_Inputs")]
+    [GetRpc("SpaceCenter", "ResourceConverter_Inputs")]
     public IList<string> Inputs(int index)
     {
         var args = new ProcedureArgument[]
@@ -66,7 +66,7 @@ public class ResourceConverter : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="index">Index of the converter.</param>
-    [Rpc("SpaceCenter", "ResourceConverter_Inputs")]
+    [GetRpc("SpaceCenter", "ResourceConverter_Inputs")]
     public async Task<IList<string>> InputsAsync(int index)
     {
         var args = new ProcedureArgument[]
@@ -81,7 +81,7 @@ public class ResourceConverter : RemoteObject
     /// The name of the specified converter.
     /// </summary>
     /// <param name="index">Index of the converter.</param>
-    [Rpc("SpaceCenter", "ResourceConverter_Name")]
+    [GetRpc("SpaceCenter", "ResourceConverter_Name")]
     public string Name(int index)
     {
         var args = new ProcedureArgument[]
@@ -97,7 +97,7 @@ public class ResourceConverter : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="index">Index of the converter.</param>
-    [Rpc("SpaceCenter", "ResourceConverter_Name")]
+    [GetRpc("SpaceCenter", "ResourceConverter_Name")]
     public async Task<string> NameAsync(int index)
     {
         var args = new ProcedureArgument[]
@@ -112,7 +112,7 @@ public class ResourceConverter : RemoteObject
     /// List of the names of resources produced by the specified converter.
     /// </summary>
     /// <param name="index">Index of the converter.</param>
-    [Rpc("SpaceCenter", "ResourceConverter_Outputs")]
+    [GetRpc("SpaceCenter", "ResourceConverter_Outputs")]
     public IList<string> Outputs(int index)
     {
         var args = new ProcedureArgument[]
@@ -128,7 +128,7 @@ public class ResourceConverter : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="index">Index of the converter.</param>
-    [Rpc("SpaceCenter", "ResourceConverter_Outputs")]
+    [GetRpc("SpaceCenter", "ResourceConverter_Outputs")]
     public async Task<IList<string>> OutputsAsync(int index)
     {
         var args = new ProcedureArgument[]
@@ -143,7 +143,7 @@ public class ResourceConverter : RemoteObject
     /// Start the specified converter.
     /// </summary>
     /// <param name="index">Index of the converter.</param>
-    [Rpc("SpaceCenter", "ResourceConverter_Start")]
+    [SetRpc("SpaceCenter", "ResourceConverter_Start")]
     public void Start(int index)
     {
         var args = new ProcedureArgument[]
@@ -159,7 +159,7 @@ public class ResourceConverter : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="index">Index of the converter.</param>
-    [Rpc("SpaceCenter", "ResourceConverter_Start")]
+    [SetRpc("SpaceCenter", "ResourceConverter_Start")]
     public async Task StartAsync(int index)
     {
         var args = new ProcedureArgument[]
@@ -174,7 +174,7 @@ public class ResourceConverter : RemoteObject
     /// The state of the specified converter.
     /// </summary>
     /// <param name="index">Index of the converter.</param>
-    [Rpc("SpaceCenter", "ResourceConverter_State")]
+    [GetRpc("SpaceCenter", "ResourceConverter_State")]
     public ResourceConverterState State(int index)
     {
         var args = new ProcedureArgument[]
@@ -190,7 +190,7 @@ public class ResourceConverter : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="index">Index of the converter.</param>
-    [Rpc("SpaceCenter", "ResourceConverter_State")]
+    [GetRpc("SpaceCenter", "ResourceConverter_State")]
     public async Task<ResourceConverterState> StateAsync(int index)
     {
         var args = new ProcedureArgument[]
@@ -206,7 +206,7 @@ public class ResourceConverter : RemoteObject
     /// This is the full status message shown in the in-game UI.
     /// </summary>
     /// <param name="index">Index of the converter.</param>
-    [Rpc("SpaceCenter", "ResourceConverter_StatusInfo")]
+    [GetRpc("SpaceCenter", "ResourceConverter_StatusInfo")]
     public string StatusInfo(int index)
     {
         var args = new ProcedureArgument[]
@@ -223,7 +223,7 @@ public class ResourceConverter : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="index">Index of the converter.</param>
-    [Rpc("SpaceCenter", "ResourceConverter_StatusInfo")]
+    [GetRpc("SpaceCenter", "ResourceConverter_StatusInfo")]
     public async Task<string> StatusInfoAsync(int index)
     {
         var args = new ProcedureArgument[]
@@ -238,7 +238,7 @@ public class ResourceConverter : RemoteObject
     /// Stop the specified converter.
     /// </summary>
     /// <param name="index">Index of the converter.</param>
-    [Rpc("SpaceCenter", "ResourceConverter_Stop")]
+    [SetRpc("SpaceCenter", "ResourceConverter_Stop")]
     public void Stop(int index)
     {
         var args = new ProcedureArgument[]
@@ -254,7 +254,7 @@ public class ResourceConverter : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="index">Index of the converter.</param>
-    [Rpc("SpaceCenter", "ResourceConverter_Stop")]
+    [SetRpc("SpaceCenter", "ResourceConverter_Stop")]
     public async Task StopAsync(int index)
     {
         var args = new ProcedureArgument[]
@@ -268,7 +268,7 @@ public class ResourceConverter : RemoteObject
     /// <summary>
     /// Gets the core temperature of the converter, in Kelvin.
     /// </summary>
-    [Rpc("SpaceCenter", "ResourceConverter_get_CoreTemperature")]
+    [GetRpc("SpaceCenter", "ResourceConverter_get_CoreTemperature")]
     public float GetCoreTemperature()
     {
         var args = new ProcedureArgument[]
@@ -282,7 +282,7 @@ public class ResourceConverter : RemoteObject
     /// Gets the core temperature of the converter, in Kelvin.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "ResourceConverter_get_CoreTemperature")]
+    [GetRpc("SpaceCenter", "ResourceConverter_get_CoreTemperature")]
     public async Task<float> GetCoreTemperatureAsync()
     {
         var args = new ProcedureArgument[]
@@ -295,7 +295,7 @@ public class ResourceConverter : RemoteObject
     /// <summary>
     /// Gets the number of converters in the part.
     /// </summary>
-    [Rpc("SpaceCenter", "ResourceConverter_get_Count")]
+    [GetRpc("SpaceCenter", "ResourceConverter_get_Count")]
     public int GetCount()
     {
         var args = new ProcedureArgument[]
@@ -309,7 +309,7 @@ public class ResourceConverter : RemoteObject
     /// Gets the number of converters in the part.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "ResourceConverter_get_Count")]
+    [GetRpc("SpaceCenter", "ResourceConverter_get_Count")]
     public async Task<int> GetCountAsync()
     {
         var args = new ProcedureArgument[]
@@ -322,7 +322,7 @@ public class ResourceConverter : RemoteObject
     /// <summary>
     /// Gets the core temperature at which the converter will operate with peak efficiency, in Kelvin.
     /// </summary>
-    [Rpc("SpaceCenter", "ResourceConverter_get_OptimumCoreTemperature")]
+    [GetRpc("SpaceCenter", "ResourceConverter_get_OptimumCoreTemperature")]
     public float GetOptimumCoreTemperature()
     {
         var args = new ProcedureArgument[]
@@ -336,7 +336,7 @@ public class ResourceConverter : RemoteObject
     /// Gets the core temperature at which the converter will operate with peak efficiency, in Kelvin.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "ResourceConverter_get_OptimumCoreTemperature")]
+    [GetRpc("SpaceCenter", "ResourceConverter_get_OptimumCoreTemperature")]
     public async Task<float> GetOptimumCoreTemperatureAsync()
     {
         var args = new ProcedureArgument[]
@@ -349,7 +349,7 @@ public class ResourceConverter : RemoteObject
     /// <summary>
     /// Gets the part object for this converter.
     /// </summary>
-    [Rpc("SpaceCenter", "ResourceConverter_get_Part")]
+    [GetRpc("SpaceCenter", "ResourceConverter_get_Part")]
     public Part GetPart()
     {
         var args = new ProcedureArgument[]
@@ -363,7 +363,7 @@ public class ResourceConverter : RemoteObject
     /// Gets the part object for this converter.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "ResourceConverter_get_Part")]
+    [GetRpc("SpaceCenter", "ResourceConverter_get_Part")]
     public async Task<Part> GetPartAsync()
     {
         var args = new ProcedureArgument[]
@@ -376,7 +376,7 @@ public class ResourceConverter : RemoteObject
     /// <summary>
     /// Gets the thermal efficiency of the converter, as a percentage of its maximum.
     /// </summary>
-    [Rpc("SpaceCenter", "ResourceConverter_get_ThermalEfficiency")]
+    [GetRpc("SpaceCenter", "ResourceConverter_get_ThermalEfficiency")]
     public float GetThermalEfficiency()
     {
         var args = new ProcedureArgument[]
@@ -390,7 +390,7 @@ public class ResourceConverter : RemoteObject
     /// Gets the thermal efficiency of the converter, as a percentage of its maximum.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "ResourceConverter_get_ThermalEfficiency")]
+    [GetRpc("SpaceCenter", "ResourceConverter_get_ThermalEfficiency")]
     public async Task<float> GetThermalEfficiencyAsync()
     {
         var args = new ProcedureArgument[]

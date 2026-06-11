@@ -27,7 +27,7 @@ public class ResourceTransfer : RemoteObject
     /// <param name="toPart">The part to transfer from.</param>
     /// <param name="resource">The name of the resource to transfer.</param>
     /// <param name="maxAmount">The maximum amount of resource to transfer.</param>
-    [Rpc("SpaceCenter", "ResourceTransfer_static_Start")]
+    [SetRpc("SpaceCenter", "ResourceTransfer_static_Start")]
     public ResourceTransfer Start(Part fromPart, Part toPart, string resource, float maxAmount)
     {
         var args = new ProcedureArgument[]
@@ -53,7 +53,7 @@ public class ResourceTransfer : RemoteObject
     /// <param name="toPart">The part to transfer from.</param>
     /// <param name="resource">The name of the resource to transfer.</param>
     /// <param name="maxAmount">The maximum amount of resource to transfer.</param>
-    [Rpc("SpaceCenter", "ResourceTransfer_static_Start")]
+    [SetRpc("SpaceCenter", "ResourceTransfer_static_Start")]
     public async Task<ResourceTransfer> StartAsync(Part fromPart, Part toPart, string resource, float maxAmount)
     {
         var args = new ProcedureArgument[]
@@ -69,7 +69,7 @@ public class ResourceTransfer : RemoteObject
     /// <summary>
     /// Gets the amount of the resource that has been transferred.
     /// </summary>
-    [Rpc("SpaceCenter", "ResourceTransfer_get_Amount")]
+    [GetRpc("SpaceCenter", "ResourceTransfer_get_Amount")]
     public float GetAmount()
     {
         var args = new ProcedureArgument[]
@@ -83,7 +83,7 @@ public class ResourceTransfer : RemoteObject
     /// Gets the amount of the resource that has been transferred.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "ResourceTransfer_get_Amount")]
+    [GetRpc("SpaceCenter", "ResourceTransfer_get_Amount")]
     public async Task<float> GetAmountAsync()
     {
         var args = new ProcedureArgument[]
@@ -96,7 +96,7 @@ public class ResourceTransfer : RemoteObject
     /// <summary>
     /// Gets whether the transfer has completed.
     /// </summary>
-    [Rpc("SpaceCenter", "ResourceTransfer_get_Complete")]
+    [GetRpc("SpaceCenter", "ResourceTransfer_get_Complete")]
     public bool GetComplete()
     {
         var args = new ProcedureArgument[]
@@ -110,7 +110,7 @@ public class ResourceTransfer : RemoteObject
     /// Gets whether the transfer has completed.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "ResourceTransfer_get_Complete")]
+    [GetRpc("SpaceCenter", "ResourceTransfer_get_Complete")]
     public async Task<bool> GetCompleteAsync()
     {
         var args = new ProcedureArgument[]

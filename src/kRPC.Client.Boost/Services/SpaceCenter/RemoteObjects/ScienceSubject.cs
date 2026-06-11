@@ -18,7 +18,7 @@ public class ScienceSubject : RemoteObject
     /// <summary>
     /// Multiply science value by this to determine data amount in mits.
     /// </summary>
-    [Rpc("SpaceCenter", "ScienceSubject_get_DataScale")]
+    [GetRpc("SpaceCenter", "ScienceSubject_get_DataScale")]
     public float GetDataScale()
     {
         var args = new ProcedureArgument[]
@@ -32,7 +32,7 @@ public class ScienceSubject : RemoteObject
     /// Multiply science value by this to determine data amount in mits.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "ScienceSubject_get_DataScale")]
+    [GetRpc("SpaceCenter", "ScienceSubject_get_DataScale")]
     public async Task<float> GetDataScaleAsync()
     {
         var args = new ProcedureArgument[]
@@ -45,7 +45,7 @@ public class ScienceSubject : RemoteObject
     /// <summary>
     /// Gets whether the experiment has been completed.
     /// </summary>
-    [Rpc("SpaceCenter", "ScienceSubject_get_IsComplete")]
+    [GetRpc("SpaceCenter", "ScienceSubject_get_IsComplete")]
     public bool GetIsComplete()
     {
         var args = new ProcedureArgument[]
@@ -59,7 +59,7 @@ public class ScienceSubject : RemoteObject
     /// Gets whether the experiment has been completed.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "ScienceSubject_get_IsComplete")]
+    [GetRpc("SpaceCenter", "ScienceSubject_get_IsComplete")]
     public async Task<bool> GetIsCompleteAsync()
     {
         var args = new ProcedureArgument[]
@@ -73,7 +73,7 @@ public class ScienceSubject : RemoteObject
     /// Amount of science already earned from this subject, not updated until after
     /// transmission/recovery.
     /// </summary>
-    [Rpc("SpaceCenter", "ScienceSubject_get_Science")]
+    [GetRpc("SpaceCenter", "ScienceSubject_get_Science")]
     public float GetScience()
     {
         var args = new ProcedureArgument[]
@@ -88,7 +88,7 @@ public class ScienceSubject : RemoteObject
     /// transmission/recovery.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "ScienceSubject_get_Science")]
+    [GetRpc("SpaceCenter", "ScienceSubject_get_Science")]
     public async Task<float> GetScienceAsync()
     {
         var args = new ProcedureArgument[]
@@ -101,7 +101,7 @@ public class ScienceSubject : RemoteObject
     /// <summary>
     /// Gets the total science allowable for this subject.
     /// </summary>
-    [Rpc("SpaceCenter", "ScienceSubject_get_ScienceCap")]
+    [GetRpc("SpaceCenter", "ScienceSubject_get_ScienceCap")]
     public float GetScienceCap()
     {
         var args = new ProcedureArgument[]
@@ -115,7 +115,7 @@ public class ScienceSubject : RemoteObject
     /// Gets the total science allowable for this subject.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "ScienceSubject_get_ScienceCap")]
+    [GetRpc("SpaceCenter", "ScienceSubject_get_ScienceCap")]
     public async Task<float> GetScienceCapAsync()
     {
         var args = new ProcedureArgument[]
@@ -129,7 +129,7 @@ public class ScienceSubject : RemoteObject
     /// Diminishing value multiplier for decreasing the science value returned from repeated
     /// experiments.
     /// </summary>
-    [Rpc("SpaceCenter", "ScienceSubject_get_ScientificValue")]
+    [GetRpc("SpaceCenter", "ScienceSubject_get_ScientificValue")]
     public float GetScientificValue()
     {
         var args = new ProcedureArgument[]
@@ -144,7 +144,7 @@ public class ScienceSubject : RemoteObject
     /// experiments.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "ScienceSubject_get_ScientificValue")]
+    [GetRpc("SpaceCenter", "ScienceSubject_get_ScientificValue")]
     public async Task<float> GetScientificValueAsync()
     {
         var args = new ProcedureArgument[]
@@ -157,7 +157,7 @@ public class ScienceSubject : RemoteObject
     /// <summary>
     /// Multiplier for specific Celestial Body/Experiment Situation combination.
     /// </summary>
-    [Rpc("SpaceCenter", "ScienceSubject_get_SubjectValue")]
+    [GetRpc("SpaceCenter", "ScienceSubject_get_SubjectValue")]
     public float GetSubjectValue()
     {
         var args = new ProcedureArgument[]
@@ -171,7 +171,7 @@ public class ScienceSubject : RemoteObject
     /// Multiplier for specific Celestial Body/Experiment Situation combination.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "ScienceSubject_get_SubjectValue")]
+    [GetRpc("SpaceCenter", "ScienceSubject_get_SubjectValue")]
     public async Task<float> GetSubjectValueAsync()
     {
         var args = new ProcedureArgument[]
@@ -184,7 +184,7 @@ public class ScienceSubject : RemoteObject
     /// <summary>
     /// Title of science subject, displayed in science archives
     /// </summary>
-    [Rpc("SpaceCenter", "ScienceSubject_get_Title")]
+    [GetRpc("SpaceCenter", "ScienceSubject_get_Title")]
     public string GetTitle()
     {
         var args = new ProcedureArgument[]
@@ -198,7 +198,7 @@ public class ScienceSubject : RemoteObject
     /// Title of science subject, displayed in science archives
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "ScienceSubject_get_Title")]
+    [GetRpc("SpaceCenter", "ScienceSubject_get_Title")]
     public async Task<string> GetTitleAsync()
     {
         var args = new ProcedureArgument[]

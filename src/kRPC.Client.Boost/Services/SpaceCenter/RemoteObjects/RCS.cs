@@ -22,7 +22,7 @@ public class RCS : RemoteObject
     /// (<see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Control.GetRCS" />), the RCS thruster itself is not enabled
     /// (<see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.RCS.GetEnabled" />) or it is covered by a fairing (<see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Part.GetShielded" />).
     /// </summary>
-    [Rpc("SpaceCenter", "RCS_get_Active")]
+    [GetRpc("SpaceCenter", "RCS_get_Active")]
     public bool GetActive()
     {
         var args = new ProcedureArgument[]
@@ -39,7 +39,7 @@ public class RCS : RemoteObject
     /// (<see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.RCS.GetEnabled" />) or it is covered by a fairing (<see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Part.GetShielded" />).
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "RCS_get_Active")]
+    [GetRpc("SpaceCenter", "RCS_get_Active")]
     public async Task<bool> GetActiveAsync()
     {
         var args = new ProcedureArgument[]
@@ -55,7 +55,7 @@ public class RCS : RemoteObject
     /// correspond to the coordinate axes of the <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Vessel.GetReferenceFrame" />.
     /// Returns zero if RCS is disabled.
     /// </summary>
-    [Rpc("SpaceCenter", "RCS_get_AvailableForce")]
+    [GetRpc("SpaceCenter", "RCS_get_AvailableForce")]
     public Tuple<Vector3D,Vector3D> GetAvailableForce()
     {
         var args = new ProcedureArgument[]
@@ -72,7 +72,7 @@ public class RCS : RemoteObject
     /// Returns zero if RCS is disabled.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "RCS_get_AvailableForce")]
+    [GetRpc("SpaceCenter", "RCS_get_AvailableForce")]
     public async Task<Tuple<Vector3D,Vector3D>> GetAvailableForceAsync()
     {
         var args = new ProcedureArgument[]
@@ -88,7 +88,7 @@ public class RCS : RemoteObject
     /// Takes the thrusters current <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.RCS.GetThrustLimit" /> and atmospheric conditions
     /// into account.
     /// </summary>
-    [Rpc("SpaceCenter", "RCS_get_AvailableThrust")]
+    [GetRpc("SpaceCenter", "RCS_get_AvailableThrust")]
     public float GetAvailableThrust()
     {
         var args = new ProcedureArgument[]
@@ -105,7 +105,7 @@ public class RCS : RemoteObject
     /// into account.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "RCS_get_AvailableThrust")]
+    [GetRpc("SpaceCenter", "RCS_get_AvailableThrust")]
     public async Task<float> GetAvailableThrustAsync()
     {
         var args = new ProcedureArgument[]
@@ -121,7 +121,7 @@ public class RCS : RemoteObject
     /// correspond to the coordinate axes of the <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Vessel.GetReferenceFrame" />.
     /// Returns zero if RCS is disable.
     /// </summary>
-    [Rpc("SpaceCenter", "RCS_get_AvailableTorque")]
+    [GetRpc("SpaceCenter", "RCS_get_AvailableTorque")]
     public Tuple<Vector3D,Vector3D> GetAvailableTorque()
     {
         var args = new ProcedureArgument[]
@@ -138,7 +138,7 @@ public class RCS : RemoteObject
     /// Returns zero if RCS is disable.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "RCS_get_AvailableTorque")]
+    [GetRpc("SpaceCenter", "RCS_get_AvailableTorque")]
     public async Task<Tuple<Vector3D,Vector3D>> GetAvailableTorqueAsync()
     {
         var args = new ProcedureArgument[]
@@ -151,7 +151,7 @@ public class RCS : RemoteObject
     /// <summary>
     /// Gets whether the RCS thrusters are enabled.
     /// </summary>
-    [Rpc("SpaceCenter", "RCS_get_Enabled")]
+    [GetRpc("SpaceCenter", "RCS_get_Enabled")]
     public bool GetEnabled()
     {
         var args = new ProcedureArgument[]
@@ -165,7 +165,7 @@ public class RCS : RemoteObject
     /// Gets whether the RCS thrusters are enabled.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "RCS_get_Enabled")]
+    [GetRpc("SpaceCenter", "RCS_get_Enabled")]
     public async Task<bool> GetEnabledAsync()
     {
         var args = new ProcedureArgument[]
@@ -179,7 +179,7 @@ public class RCS : RemoteObject
     /// Sets whether the RCS thrusters are enabled.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "RCS_set_Enabled")]
+    [SetRpc("SpaceCenter", "RCS_set_Enabled")]
     public void SetEnabled(bool value)
     {
         var args = new ProcedureArgument[]
@@ -195,7 +195,7 @@ public class RCS : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "RCS_set_Enabled")]
+    [SetRpc("SpaceCenter", "RCS_set_Enabled")]
     public async Task SetEnabledAsync(bool value)
     {
         var args = new ProcedureArgument[]
@@ -209,7 +209,7 @@ public class RCS : RemoteObject
     /// <summary>
     /// Gets whether the RCS thruster will fire when pitch control input is given.
     /// </summary>
-    [Rpc("SpaceCenter", "RCS_get_ForwardEnabled")]
+    [GetRpc("SpaceCenter", "RCS_get_ForwardEnabled")]
     public bool GetForwardEnabled()
     {
         var args = new ProcedureArgument[]
@@ -223,7 +223,7 @@ public class RCS : RemoteObject
     /// Gets whether the RCS thruster will fire when pitch control input is given.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "RCS_get_ForwardEnabled")]
+    [GetRpc("SpaceCenter", "RCS_get_ForwardEnabled")]
     public async Task<bool> GetForwardEnabledAsync()
     {
         var args = new ProcedureArgument[]
@@ -237,7 +237,7 @@ public class RCS : RemoteObject
     /// Sets whether the RCS thruster will fire when pitch control input is given.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "RCS_set_ForwardEnabled")]
+    [SetRpc("SpaceCenter", "RCS_set_ForwardEnabled")]
     public void SetForwardEnabled(bool value)
     {
         var args = new ProcedureArgument[]
@@ -253,7 +253,7 @@ public class RCS : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "RCS_set_ForwardEnabled")]
+    [SetRpc("SpaceCenter", "RCS_set_ForwardEnabled")]
     public async Task SetForwardEnabledAsync(bool value)
     {
         var args = new ProcedureArgument[]
@@ -267,7 +267,7 @@ public class RCS : RemoteObject
     /// <summary>
     /// Gets whether the RCS has fuel available.
     /// </summary>
-    [Rpc("SpaceCenter", "RCS_get_HasFuel")]
+    [GetRpc("SpaceCenter", "RCS_get_HasFuel")]
     public bool GetHasFuel()
     {
         var args = new ProcedureArgument[]
@@ -281,7 +281,7 @@ public class RCS : RemoteObject
     /// Gets whether the RCS has fuel available.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "RCS_get_HasFuel")]
+    [GetRpc("SpaceCenter", "RCS_get_HasFuel")]
     public async Task<bool> GetHasFuelAsync()
     {
         var args = new ProcedureArgument[]
@@ -294,7 +294,7 @@ public class RCS : RemoteObject
     /// <summary>
     /// Gets the specific impulse of the RCS at sea level on Kerbin, in seconds.
     /// </summary>
-    [Rpc("SpaceCenter", "RCS_get_KerbinSeaLevelSpecificImpulse")]
+    [GetRpc("SpaceCenter", "RCS_get_KerbinSeaLevelSpecificImpulse")]
     public float GetKerbinSeaLevelSpecificImpulse()
     {
         var args = new ProcedureArgument[]
@@ -308,7 +308,7 @@ public class RCS : RemoteObject
     /// Gets the specific impulse of the RCS at sea level on Kerbin, in seconds.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "RCS_get_KerbinSeaLevelSpecificImpulse")]
+    [GetRpc("SpaceCenter", "RCS_get_KerbinSeaLevelSpecificImpulse")]
     public async Task<float> GetKerbinSeaLevelSpecificImpulseAsync()
     {
         var args = new ProcedureArgument[]
@@ -324,7 +324,7 @@ public class RCS : RemoteObject
     /// Takes the thrusters current <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.RCS.GetThrustLimit" /> and atmospheric conditions
     /// into account.
     /// </summary>
-    [Rpc("SpaceCenter", "RCS_get_MaxThrust")]
+    [GetRpc("SpaceCenter", "RCS_get_MaxThrust")]
     public float GetMaxThrust()
     {
         var args = new ProcedureArgument[]
@@ -341,7 +341,7 @@ public class RCS : RemoteObject
     /// into account.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "RCS_get_MaxThrust")]
+    [GetRpc("SpaceCenter", "RCS_get_MaxThrust")]
     public async Task<float> GetMaxThrustAsync()
     {
         var args = new ProcedureArgument[]
@@ -355,7 +355,7 @@ public class RCS : RemoteObject
     /// Gets the maximum amount of thrust that can be produced by the RCS thrusters when active
     /// in a vacuum, in Newtons.
     /// </summary>
-    [Rpc("SpaceCenter", "RCS_get_MaxVacuumThrust")]
+    [GetRpc("SpaceCenter", "RCS_get_MaxVacuumThrust")]
     public float GetMaxVacuumThrust()
     {
         var args = new ProcedureArgument[]
@@ -370,7 +370,7 @@ public class RCS : RemoteObject
     /// in a vacuum, in Newtons.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "RCS_get_MaxVacuumThrust")]
+    [GetRpc("SpaceCenter", "RCS_get_MaxVacuumThrust")]
     public async Task<float> GetMaxVacuumThrustAsync()
     {
         var args = new ProcedureArgument[]
@@ -383,7 +383,7 @@ public class RCS : RemoteObject
     /// <summary>
     /// Gets the part object for this RCS.
     /// </summary>
-    [Rpc("SpaceCenter", "RCS_get_Part")]
+    [GetRpc("SpaceCenter", "RCS_get_Part")]
     public Part GetPart()
     {
         var args = new ProcedureArgument[]
@@ -397,7 +397,7 @@ public class RCS : RemoteObject
     /// Gets the part object for this RCS.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "RCS_get_Part")]
+    [GetRpc("SpaceCenter", "RCS_get_Part")]
     public async Task<Part> GetPartAsync()
     {
         var args = new ProcedureArgument[]
@@ -410,7 +410,7 @@ public class RCS : RemoteObject
     /// <summary>
     /// Gets whether the RCS thruster will fire when pitch control input is given.
     /// </summary>
-    [Rpc("SpaceCenter", "RCS_get_PitchEnabled")]
+    [GetRpc("SpaceCenter", "RCS_get_PitchEnabled")]
     public bool GetPitchEnabled()
     {
         var args = new ProcedureArgument[]
@@ -424,7 +424,7 @@ public class RCS : RemoteObject
     /// Gets whether the RCS thruster will fire when pitch control input is given.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "RCS_get_PitchEnabled")]
+    [GetRpc("SpaceCenter", "RCS_get_PitchEnabled")]
     public async Task<bool> GetPitchEnabledAsync()
     {
         var args = new ProcedureArgument[]
@@ -438,7 +438,7 @@ public class RCS : RemoteObject
     /// Sets whether the RCS thruster will fire when pitch control input is given.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "RCS_set_PitchEnabled")]
+    [SetRpc("SpaceCenter", "RCS_set_PitchEnabled")]
     public void SetPitchEnabled(bool value)
     {
         var args = new ProcedureArgument[]
@@ -454,7 +454,7 @@ public class RCS : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "RCS_set_PitchEnabled")]
+    [SetRpc("SpaceCenter", "RCS_set_PitchEnabled")]
     public async Task SetPitchEnabledAsync(bool value)
     {
         var args = new ProcedureArgument[]
@@ -469,7 +469,7 @@ public class RCS : RemoteObject
     /// Gets the ratios of resources that the RCS consumes. A dictionary mapping resource names
     /// to the ratios at which they are consumed by the RCS.
     /// </summary>
-    [Rpc("SpaceCenter", "RCS_get_PropellantRatios")]
+    [GetRpc("SpaceCenter", "RCS_get_PropellantRatios")]
     public IDictionary<string,float> GetPropellantRatios()
     {
         var args = new ProcedureArgument[]
@@ -484,7 +484,7 @@ public class RCS : RemoteObject
     /// to the ratios at which they are consumed by the RCS.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "RCS_get_PropellantRatios")]
+    [GetRpc("SpaceCenter", "RCS_get_PropellantRatios")]
     public async Task<IDictionary<string,float>> GetPropellantRatiosAsync()
     {
         var args = new ProcedureArgument[]
@@ -497,7 +497,7 @@ public class RCS : RemoteObject
     /// <summary>
     /// Gets the names of resources that the RCS consumes.
     /// </summary>
-    [Rpc("SpaceCenter", "RCS_get_Propellants")]
+    [GetRpc("SpaceCenter", "RCS_get_Propellants")]
     public IList<string> GetPropellants()
     {
         var args = new ProcedureArgument[]
@@ -511,7 +511,7 @@ public class RCS : RemoteObject
     /// Gets the names of resources that the RCS consumes.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "RCS_get_Propellants")]
+    [GetRpc("SpaceCenter", "RCS_get_Propellants")]
     public async Task<IList<string>> GetPropellantsAsync()
     {
         var args = new ProcedureArgument[]
@@ -524,7 +524,7 @@ public class RCS : RemoteObject
     /// <summary>
     /// Gets whether the RCS thruster will fire when roll control input is given.
     /// </summary>
-    [Rpc("SpaceCenter", "RCS_get_RightEnabled")]
+    [GetRpc("SpaceCenter", "RCS_get_RightEnabled")]
     public bool GetRightEnabled()
     {
         var args = new ProcedureArgument[]
@@ -538,7 +538,7 @@ public class RCS : RemoteObject
     /// Gets whether the RCS thruster will fire when roll control input is given.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "RCS_get_RightEnabled")]
+    [GetRpc("SpaceCenter", "RCS_get_RightEnabled")]
     public async Task<bool> GetRightEnabledAsync()
     {
         var args = new ProcedureArgument[]
@@ -552,7 +552,7 @@ public class RCS : RemoteObject
     /// Sets whether the RCS thruster will fire when roll control input is given.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "RCS_set_RightEnabled")]
+    [SetRpc("SpaceCenter", "RCS_set_RightEnabled")]
     public void SetRightEnabled(bool value)
     {
         var args = new ProcedureArgument[]
@@ -568,7 +568,7 @@ public class RCS : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "RCS_set_RightEnabled")]
+    [SetRpc("SpaceCenter", "RCS_set_RightEnabled")]
     public async Task SetRightEnabledAsync(bool value)
     {
         var args = new ProcedureArgument[]
@@ -582,7 +582,7 @@ public class RCS : RemoteObject
     /// <summary>
     /// Gets whether the RCS thruster will fire when roll control input is given.
     /// </summary>
-    [Rpc("SpaceCenter", "RCS_get_RollEnabled")]
+    [GetRpc("SpaceCenter", "RCS_get_RollEnabled")]
     public bool GetRollEnabled()
     {
         var args = new ProcedureArgument[]
@@ -596,7 +596,7 @@ public class RCS : RemoteObject
     /// Gets whether the RCS thruster will fire when roll control input is given.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "RCS_get_RollEnabled")]
+    [GetRpc("SpaceCenter", "RCS_get_RollEnabled")]
     public async Task<bool> GetRollEnabledAsync()
     {
         var args = new ProcedureArgument[]
@@ -610,7 +610,7 @@ public class RCS : RemoteObject
     /// Sets whether the RCS thruster will fire when roll control input is given.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "RCS_set_RollEnabled")]
+    [SetRpc("SpaceCenter", "RCS_set_RollEnabled")]
     public void SetRollEnabled(bool value)
     {
         var args = new ProcedureArgument[]
@@ -626,7 +626,7 @@ public class RCS : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "RCS_set_RollEnabled")]
+    [SetRpc("SpaceCenter", "RCS_set_RollEnabled")]
     public async Task SetRollEnabledAsync(bool value)
     {
         var args = new ProcedureArgument[]
@@ -641,7 +641,7 @@ public class RCS : RemoteObject
     /// Gets the current specific impulse of the RCS, in seconds. Returns zero
     /// if the RCS is not active.
     /// </summary>
-    [Rpc("SpaceCenter", "RCS_get_SpecificImpulse")]
+    [GetRpc("SpaceCenter", "RCS_get_SpecificImpulse")]
     public float GetSpecificImpulse()
     {
         var args = new ProcedureArgument[]
@@ -656,7 +656,7 @@ public class RCS : RemoteObject
     /// if the RCS is not active.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "RCS_get_SpecificImpulse")]
+    [GetRpc("SpaceCenter", "RCS_get_SpecificImpulse")]
     public async Task<float> GetSpecificImpulseAsync()
     {
         var args = new ProcedureArgument[]
@@ -669,7 +669,7 @@ public class RCS : RemoteObject
     /// <summary>
     /// Gets the thrust limiter of the thruster. A value between 0 and 1.
     /// </summary>
-    [Rpc("SpaceCenter", "RCS_get_ThrustLimit")]
+    [GetRpc("SpaceCenter", "RCS_get_ThrustLimit")]
     public float GetThrustLimit()
     {
         var args = new ProcedureArgument[]
@@ -683,7 +683,7 @@ public class RCS : RemoteObject
     /// Gets the thrust limiter of the thruster. A value between 0 and 1.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "RCS_get_ThrustLimit")]
+    [GetRpc("SpaceCenter", "RCS_get_ThrustLimit")]
     public async Task<float> GetThrustLimitAsync()
     {
         var args = new ProcedureArgument[]
@@ -697,7 +697,7 @@ public class RCS : RemoteObject
     /// Sets the thrust limiter of the thruster. A value between 0 and 1.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "RCS_set_ThrustLimit")]
+    [SetRpc("SpaceCenter", "RCS_set_ThrustLimit")]
     public void SetThrustLimit(float value)
     {
         var args = new ProcedureArgument[]
@@ -713,7 +713,7 @@ public class RCS : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "RCS_set_ThrustLimit")]
+    [SetRpc("SpaceCenter", "RCS_set_ThrustLimit")]
     public async Task SetThrustLimitAsync(float value)
     {
         var args = new ProcedureArgument[]
@@ -727,7 +727,7 @@ public class RCS : RemoteObject
     /// <summary>
     /// Gets a list of thrusters, one of each nozzel in the RCS part.
     /// </summary>
-    [Rpc("SpaceCenter", "RCS_get_Thrusters")]
+    [GetRpc("SpaceCenter", "RCS_get_Thrusters")]
     public IList<Thruster> GetThrusters()
     {
         var args = new ProcedureArgument[]
@@ -741,7 +741,7 @@ public class RCS : RemoteObject
     /// Gets a list of thrusters, one of each nozzel in the RCS part.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "RCS_get_Thrusters")]
+    [GetRpc("SpaceCenter", "RCS_get_Thrusters")]
     public async Task<IList<Thruster>> GetThrustersAsync()
     {
         var args = new ProcedureArgument[]
@@ -754,7 +754,7 @@ public class RCS : RemoteObject
     /// <summary>
     /// Gets whether the RCS thruster will fire when yaw control input is given.
     /// </summary>
-    [Rpc("SpaceCenter", "RCS_get_UpEnabled")]
+    [GetRpc("SpaceCenter", "RCS_get_UpEnabled")]
     public bool GetUpEnabled()
     {
         var args = new ProcedureArgument[]
@@ -768,7 +768,7 @@ public class RCS : RemoteObject
     /// Gets whether the RCS thruster will fire when yaw control input is given.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "RCS_get_UpEnabled")]
+    [GetRpc("SpaceCenter", "RCS_get_UpEnabled")]
     public async Task<bool> GetUpEnabledAsync()
     {
         var args = new ProcedureArgument[]
@@ -782,7 +782,7 @@ public class RCS : RemoteObject
     /// Sets whether the RCS thruster will fire when yaw control input is given.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "RCS_set_UpEnabled")]
+    [SetRpc("SpaceCenter", "RCS_set_UpEnabled")]
     public void SetUpEnabled(bool value)
     {
         var args = new ProcedureArgument[]
@@ -798,7 +798,7 @@ public class RCS : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "RCS_set_UpEnabled")]
+    [SetRpc("SpaceCenter", "RCS_set_UpEnabled")]
     public async Task SetUpEnabledAsync(bool value)
     {
         var args = new ProcedureArgument[]
@@ -812,7 +812,7 @@ public class RCS : RemoteObject
     /// <summary>
     /// Gets the vacuum specific impulse of the RCS, in seconds.
     /// </summary>
-    [Rpc("SpaceCenter", "RCS_get_VacuumSpecificImpulse")]
+    [GetRpc("SpaceCenter", "RCS_get_VacuumSpecificImpulse")]
     public float GetVacuumSpecificImpulse()
     {
         var args = new ProcedureArgument[]
@@ -826,7 +826,7 @@ public class RCS : RemoteObject
     /// Gets the vacuum specific impulse of the RCS, in seconds.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "RCS_get_VacuumSpecificImpulse")]
+    [GetRpc("SpaceCenter", "RCS_get_VacuumSpecificImpulse")]
     public async Task<float> GetVacuumSpecificImpulseAsync()
     {
         var args = new ProcedureArgument[]
@@ -839,7 +839,7 @@ public class RCS : RemoteObject
     /// <summary>
     /// Gets whether the RCS thruster will fire when yaw control input is given.
     /// </summary>
-    [Rpc("SpaceCenter", "RCS_get_YawEnabled")]
+    [GetRpc("SpaceCenter", "RCS_get_YawEnabled")]
     public bool GetYawEnabled()
     {
         var args = new ProcedureArgument[]
@@ -853,7 +853,7 @@ public class RCS : RemoteObject
     /// Gets whether the RCS thruster will fire when yaw control input is given.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "RCS_get_YawEnabled")]
+    [GetRpc("SpaceCenter", "RCS_get_YawEnabled")]
     public async Task<bool> GetYawEnabledAsync()
     {
         var args = new ProcedureArgument[]
@@ -867,7 +867,7 @@ public class RCS : RemoteObject
     /// Sets whether the RCS thruster will fire when yaw control input is given.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "RCS_set_YawEnabled")]
+    [SetRpc("SpaceCenter", "RCS_set_YawEnabled")]
     public void SetYawEnabled(bool value)
     {
         var args = new ProcedureArgument[]
@@ -883,7 +883,7 @@ public class RCS : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "RCS_set_YawEnabled")]
+    [SetRpc("SpaceCenter", "RCS_set_YawEnabled")]
     public async Task SetYawEnabledAsync(bool value)
     {
         var args = new ProcedureArgument[]

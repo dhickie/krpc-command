@@ -27,7 +27,7 @@ public class Node : RemoteObject
     /// <remarks>
     /// Does not change when executing the maneuver node. See <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Node.RemainingBurnVector" />.
     /// </remarks>
-    [Rpc("SpaceCenter", "Node_BurnVector")]
+    [GetRpc("SpaceCenter", "Node_BurnVector")]
     public Vector3D BurnVector(ReferenceFrame? referenceFrame = null)
     {
         var args = new ProcedureArgument[]
@@ -50,7 +50,7 @@ public class Node : RemoteObject
     /// <remarks>
     /// Does not change when executing the maneuver node. See <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Node.RemainingBurnVector" />.
     /// </remarks>
-    [Rpc("SpaceCenter", "Node_BurnVector")]
+    [GetRpc("SpaceCenter", "Node_BurnVector")]
     public async Task<Vector3D> BurnVectorAsync(ReferenceFrame? referenceFrame = null)
     {
         var args = new ProcedureArgument[]
@@ -67,7 +67,7 @@ public class Node : RemoteObject
     /// <returns>The direction as a unit vector.</returns>
     /// <param name="referenceFrame">The reference frame that the returned
     /// direction is in.</param>
-    [Rpc("SpaceCenter", "Node_Direction")]
+    [GetRpc("SpaceCenter", "Node_Direction")]
     public Vector3D Direction(ReferenceFrame referenceFrame)
     {
         var args = new ProcedureArgument[]
@@ -85,7 +85,7 @@ public class Node : RemoteObject
     /// <returns>The direction as a unit vector.</returns>
     /// <param name="referenceFrame">The reference frame that the returned
     /// direction is in.</param>
-    [Rpc("SpaceCenter", "Node_Direction")]
+    [GetRpc("SpaceCenter", "Node_Direction")]
     public async Task<Vector3D> DirectionAsync(ReferenceFrame referenceFrame)
     {
         var args = new ProcedureArgument[]
@@ -102,7 +102,7 @@ public class Node : RemoteObject
     /// <returns>The position as a vector.</returns>
     /// <param name="referenceFrame">The reference frame that the returned
     /// position vector is in.</param>
-    [Rpc("SpaceCenter", "Node_Position")]
+    [GetRpc("SpaceCenter", "Node_Position")]
     public Vector3D Position(ReferenceFrame referenceFrame)
     {
         var args = new ProcedureArgument[]
@@ -120,7 +120,7 @@ public class Node : RemoteObject
     /// <returns>The position as a vector.</returns>
     /// <param name="referenceFrame">The reference frame that the returned
     /// position vector is in.</param>
-    [Rpc("SpaceCenter", "Node_Position")]
+    [GetRpc("SpaceCenter", "Node_Position")]
     public async Task<Vector3D> PositionAsync(ReferenceFrame referenceFrame)
     {
         var args = new ProcedureArgument[]
@@ -142,7 +142,7 @@ public class Node : RemoteObject
     /// <remarks>
     /// Changes as the maneuver node is executed. See <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Node.BurnVector" />.
     /// </remarks>
-    [Rpc("SpaceCenter", "Node_RemainingBurnVector")]
+    [GetRpc("SpaceCenter", "Node_RemainingBurnVector")]
     public Vector3D RemainingBurnVector(ReferenceFrame? referenceFrame = null)
     {
         var args = new ProcedureArgument[]
@@ -165,7 +165,7 @@ public class Node : RemoteObject
     /// <remarks>
     /// Changes as the maneuver node is executed. See <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Node.BurnVector" />.
     /// </remarks>
-    [Rpc("SpaceCenter", "Node_RemainingBurnVector")]
+    [GetRpc("SpaceCenter", "Node_RemainingBurnVector")]
     public async Task<Vector3D> RemainingBurnVectorAsync(ReferenceFrame? referenceFrame = null)
     {
         var args = new ProcedureArgument[]
@@ -179,7 +179,7 @@ public class Node : RemoteObject
     /// <summary>
     /// Removes the maneuver node.
     /// </summary>
-    [Rpc("SpaceCenter", "Node_Remove")]
+    [SetRpc("SpaceCenter", "Node_Remove")]
     public void Remove()
     {
         var args = new ProcedureArgument[]
@@ -193,7 +193,7 @@ public class Node : RemoteObject
     /// Removes the maneuver node.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Node_Remove")]
+    [SetRpc("SpaceCenter", "Node_Remove")]
     public async Task RemoveAsync()
     {
         var args = new ProcedureArgument[]
@@ -209,7 +209,7 @@ public class Node : RemoteObject
     /// <remarks>
     /// Does not change when executing the maneuver node. See <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Node.GetRemainingDeltaV" />.
     /// </remarks>
-    [Rpc("SpaceCenter", "Node_get_DeltaV")]
+    [GetRpc("SpaceCenter", "Node_get_DeltaV")]
     public double GetDeltaV()
     {
         var args = new ProcedureArgument[]
@@ -226,7 +226,7 @@ public class Node : RemoteObject
     /// <remarks>
     /// Does not change when executing the maneuver node. See <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Node.GetRemainingDeltaV" />.
     /// </remarks>
-    [Rpc("SpaceCenter", "Node_get_DeltaV")]
+    [GetRpc("SpaceCenter", "Node_get_DeltaV")]
     public async Task<double> GetDeltaVAsync()
     {
         var args = new ProcedureArgument[]
@@ -240,7 +240,7 @@ public class Node : RemoteObject
     /// Sets the delta-v of the maneuver node, in meters per second.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "Node_set_DeltaV")]
+    [SetRpc("SpaceCenter", "Node_set_DeltaV")]
     public void SetDeltaV(double value)
     {
         var args = new ProcedureArgument[]
@@ -256,7 +256,7 @@ public class Node : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "Node_set_DeltaV")]
+    [SetRpc("SpaceCenter", "Node_set_DeltaV")]
     public async Task SetDeltaVAsync(double value)
     {
         var args = new ProcedureArgument[]
@@ -271,7 +271,7 @@ public class Node : RemoteObject
     /// Gets the magnitude of the maneuver nodes delta-v in the normal direction,
     /// in meters per second.
     /// </summary>
-    [Rpc("SpaceCenter", "Node_get_Normal")]
+    [GetRpc("SpaceCenter", "Node_get_Normal")]
     public double GetNormal()
     {
         var args = new ProcedureArgument[]
@@ -286,7 +286,7 @@ public class Node : RemoteObject
     /// in meters per second.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Node_get_Normal")]
+    [GetRpc("SpaceCenter", "Node_get_Normal")]
     public async Task<double> GetNormalAsync()
     {
         var args = new ProcedureArgument[]
@@ -301,7 +301,7 @@ public class Node : RemoteObject
     /// in meters per second.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "Node_set_Normal")]
+    [SetRpc("SpaceCenter", "Node_set_Normal")]
     public void SetNormal(double value)
     {
         var args = new ProcedureArgument[]
@@ -318,7 +318,7 @@ public class Node : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "Node_set_Normal")]
+    [SetRpc("SpaceCenter", "Node_set_Normal")]
     public async Task SetNormalAsync(double value)
     {
         var args = new ProcedureArgument[]
@@ -332,7 +332,7 @@ public class Node : RemoteObject
     /// <summary>
     /// Gets the orbit that results from executing the maneuver node.
     /// </summary>
-    [Rpc("SpaceCenter", "Node_get_Orbit")]
+    [GetRpc("SpaceCenter", "Node_get_Orbit")]
     public Orbit GetOrbit()
     {
         var args = new ProcedureArgument[]
@@ -346,7 +346,7 @@ public class Node : RemoteObject
     /// Gets the orbit that results from executing the maneuver node.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Node_get_Orbit")]
+    [GetRpc("SpaceCenter", "Node_get_Orbit")]
     public async Task<Orbit> GetOrbitAsync()
     {
         var args = new ProcedureArgument[]
@@ -365,7 +365,7 @@ public class Node : RemoteObject
     /// orbit, at the position of the maneuver node.</description></item><item><description>The z-axis points in the orbital normal direction of the original orbit,
     /// at the position of the maneuver node.</description></item></list>
     /// </summary>
-    [Rpc("SpaceCenter", "Node_get_OrbitalReferenceFrame")]
+    [GetRpc("SpaceCenter", "Node_get_OrbitalReferenceFrame")]
     public ReferenceFrame GetOrbitalReferenceFrame()
     {
         var args = new ProcedureArgument[]
@@ -385,7 +385,7 @@ public class Node : RemoteObject
     /// at the position of the maneuver node.</description></item></list>
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Node_get_OrbitalReferenceFrame")]
+    [GetRpc("SpaceCenter", "Node_get_OrbitalReferenceFrame")]
     public async Task<ReferenceFrame> GetOrbitalReferenceFrameAsync()
     {
         var args = new ProcedureArgument[]
@@ -399,7 +399,7 @@ public class Node : RemoteObject
     /// Gets the magnitude of the maneuver nodes delta-v in the prograde direction,
     /// in meters per second.
     /// </summary>
-    [Rpc("SpaceCenter", "Node_get_Prograde")]
+    [GetRpc("SpaceCenter", "Node_get_Prograde")]
     public double GetPrograde()
     {
         var args = new ProcedureArgument[]
@@ -414,7 +414,7 @@ public class Node : RemoteObject
     /// in meters per second.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Node_get_Prograde")]
+    [GetRpc("SpaceCenter", "Node_get_Prograde")]
     public async Task<double> GetProgradeAsync()
     {
         var args = new ProcedureArgument[]
@@ -429,7 +429,7 @@ public class Node : RemoteObject
     /// in meters per second.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "Node_set_Prograde")]
+    [SetRpc("SpaceCenter", "Node_set_Prograde")]
     public void SetPrograde(double value)
     {
         var args = new ProcedureArgument[]
@@ -446,7 +446,7 @@ public class Node : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "Node_set_Prograde")]
+    [SetRpc("SpaceCenter", "Node_set_Prograde")]
     public async Task SetProgradeAsync(double value)
     {
         var args = new ProcedureArgument[]
@@ -461,7 +461,7 @@ public class Node : RemoteObject
     /// Gets the magnitude of the maneuver nodes delta-v in the radial direction,
     /// in meters per second.
     /// </summary>
-    [Rpc("SpaceCenter", "Node_get_Radial")]
+    [GetRpc("SpaceCenter", "Node_get_Radial")]
     public double GetRadial()
     {
         var args = new ProcedureArgument[]
@@ -476,7 +476,7 @@ public class Node : RemoteObject
     /// in meters per second.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Node_get_Radial")]
+    [GetRpc("SpaceCenter", "Node_get_Radial")]
     public async Task<double> GetRadialAsync()
     {
         var args = new ProcedureArgument[]
@@ -491,7 +491,7 @@ public class Node : RemoteObject
     /// in meters per second.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "Node_set_Radial")]
+    [SetRpc("SpaceCenter", "Node_set_Radial")]
     public void SetRadial(double value)
     {
         var args = new ProcedureArgument[]
@@ -508,7 +508,7 @@ public class Node : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "Node_set_Radial")]
+    [SetRpc("SpaceCenter", "Node_set_Radial")]
     public async Task SetRadialAsync(double value)
     {
         var args = new ProcedureArgument[]
@@ -523,7 +523,7 @@ public class Node : RemoteObject
     /// Gets the reference frame that is fixed relative to the maneuver node's burn.
     /// <list type="bullet"><item><description>The origin is at the position of the maneuver node.</description></item><item><description>The y-axis points in the direction of the burn.</description></item><item><description>The x-axis and z-axis point in arbitrary but fixed directions.</description></item></list>
     /// </summary>
-    [Rpc("SpaceCenter", "Node_get_ReferenceFrame")]
+    [GetRpc("SpaceCenter", "Node_get_ReferenceFrame")]
     public ReferenceFrame GetReferenceFrame()
     {
         var args = new ProcedureArgument[]
@@ -538,7 +538,7 @@ public class Node : RemoteObject
     /// <list type="bullet"><item><description>The origin is at the position of the maneuver node.</description></item><item><description>The y-axis points in the direction of the burn.</description></item><item><description>The x-axis and z-axis point in arbitrary but fixed directions.</description></item></list>
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Node_get_ReferenceFrame")]
+    [GetRpc("SpaceCenter", "Node_get_ReferenceFrame")]
     public async Task<ReferenceFrame> GetReferenceFrameAsync()
     {
         var args = new ProcedureArgument[]
@@ -552,7 +552,7 @@ public class Node : RemoteObject
     /// Gets the remaining delta-v of the maneuver node, in meters per second. Changes as the
     /// node is executed. This is equivalent to the delta-v reported in-game.
     /// </summary>
-    [Rpc("SpaceCenter", "Node_get_RemainingDeltaV")]
+    [GetRpc("SpaceCenter", "Node_get_RemainingDeltaV")]
     public double GetRemainingDeltaV()
     {
         var args = new ProcedureArgument[]
@@ -567,7 +567,7 @@ public class Node : RemoteObject
     /// node is executed. This is equivalent to the delta-v reported in-game.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Node_get_RemainingDeltaV")]
+    [GetRpc("SpaceCenter", "Node_get_RemainingDeltaV")]
     public async Task<double> GetRemainingDeltaVAsync()
     {
         var args = new ProcedureArgument[]
@@ -580,7 +580,7 @@ public class Node : RemoteObject
     /// <summary>
     /// Gets the time until the maneuver node will be encountered, in seconds.
     /// </summary>
-    [Rpc("SpaceCenter", "Node_get_TimeTo")]
+    [GetRpc("SpaceCenter", "Node_get_TimeTo")]
     public double GetTimeTo()
     {
         var args = new ProcedureArgument[]
@@ -594,7 +594,7 @@ public class Node : RemoteObject
     /// Gets the time until the maneuver node will be encountered, in seconds.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Node_get_TimeTo")]
+    [GetRpc("SpaceCenter", "Node_get_TimeTo")]
     public async Task<double> GetTimeToAsync()
     {
         var args = new ProcedureArgument[]
@@ -607,7 +607,7 @@ public class Node : RemoteObject
     /// <summary>
     /// Gets the universal time at which the maneuver will occur, in seconds.
     /// </summary>
-    [Rpc("SpaceCenter", "Node_get_UT")]
+    [GetRpc("SpaceCenter", "Node_get_UT")]
     public double GetUT()
     {
         var args = new ProcedureArgument[]
@@ -621,7 +621,7 @@ public class Node : RemoteObject
     /// Gets the universal time at which the maneuver will occur, in seconds.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Node_get_UT")]
+    [GetRpc("SpaceCenter", "Node_get_UT")]
     public async Task<double> GetUTAsync()
     {
         var args = new ProcedureArgument[]
@@ -635,7 +635,7 @@ public class Node : RemoteObject
     /// Sets the universal time at which the maneuver will occur, in seconds.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "Node_set_UT")]
+    [SetRpc("SpaceCenter", "Node_set_UT")]
     public void SetUT(double value)
     {
         var args = new ProcedureArgument[]
@@ -651,7 +651,7 @@ public class Node : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "Node_set_UT")]
+    [SetRpc("SpaceCenter", "Node_set_UT")]
     public async Task SetUTAsync(double value)
     {
         var args = new ProcedureArgument[]

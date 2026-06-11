@@ -26,7 +26,7 @@ public class Vessel : RemoteObject
     /// axis of rotation, using the right-hand rule.</returns>
     /// <param name="referenceFrame">The reference frame the returned
     /// angular velocity is in.</param>
-    [Rpc("SpaceCenter", "Vessel_AngularVelocity")]
+    [GetRpc("SpaceCenter", "Vessel_AngularVelocity")]
     public Vector3D AngularVelocity(ReferenceFrame referenceFrame)
     {
         var args = new ProcedureArgument[]
@@ -46,7 +46,7 @@ public class Vessel : RemoteObject
     /// axis of rotation, using the right-hand rule.</returns>
     /// <param name="referenceFrame">The reference frame the returned
     /// angular velocity is in.</param>
-    [Rpc("SpaceCenter", "Vessel_AngularVelocity")]
+    [GetRpc("SpaceCenter", "Vessel_AngularVelocity")]
     public async Task<Vector3D> AngularVelocityAsync(ReferenceFrame referenceFrame)
     {
         var args = new ProcedureArgument[]
@@ -64,7 +64,7 @@ public class Vessel : RemoteObject
     /// Takes the given pressure into account.
     /// </summary>
     /// <param name="pressure">Atmospheric pressure in atmospheres</param>
-    [Rpc("SpaceCenter", "Vessel_AvailableThrustAt")]
+    [GetRpc("SpaceCenter", "Vessel_AvailableThrustAt")]
     public float AvailableThrustAt(double pressure)
     {
         var args = new ProcedureArgument[]
@@ -83,7 +83,7 @@ public class Vessel : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="pressure">Atmospheric pressure in atmospheres</param>
-    [Rpc("SpaceCenter", "Vessel_AvailableThrustAt")]
+    [GetRpc("SpaceCenter", "Vessel_AvailableThrustAt")]
     public async Task<float> AvailableThrustAtAsync(double pressure)
     {
         var args = new ProcedureArgument[]
@@ -101,7 +101,7 @@ public class Vessel : RemoteObject
     /// as position vectors.</returns>
     /// <param name="referenceFrame">The reference frame that the returned
     /// position vectors are in.</param>
-    [Rpc("SpaceCenter", "Vessel_BoundingBox")]
+    [GetRpc("SpaceCenter", "Vessel_BoundingBox")]
     public Tuple<Vector3D,Vector3D> BoundingBox(ReferenceFrame referenceFrame)
     {
         var args = new ProcedureArgument[]
@@ -120,7 +120,7 @@ public class Vessel : RemoteObject
     /// as position vectors.</returns>
     /// <param name="referenceFrame">The reference frame that the returned
     /// position vectors are in.</param>
-    [Rpc("SpaceCenter", "Vessel_BoundingBox")]
+    [GetRpc("SpaceCenter", "Vessel_BoundingBox")]
     public async Task<Tuple<Vector3D,Vector3D>> BoundingBoxAsync(ReferenceFrame referenceFrame)
     {
         var args = new ProcedureArgument[]
@@ -137,7 +137,7 @@ public class Vessel : RemoteObject
     /// <returns>The direction as a unit vector.</returns>
     /// <param name="referenceFrame">The reference frame that the returned
     /// direction is in.</param>
-    [Rpc("SpaceCenter", "Vessel_Direction")]
+    [GetRpc("SpaceCenter", "Vessel_Direction")]
     public Vector3D Direction(ReferenceFrame referenceFrame)
     {
         var args = new ProcedureArgument[]
@@ -155,7 +155,7 @@ public class Vessel : RemoteObject
     /// <returns>The direction as a unit vector.</returns>
     /// <param name="referenceFrame">The reference frame that the returned
     /// direction is in.</param>
-    [Rpc("SpaceCenter", "Vessel_Direction")]
+    [GetRpc("SpaceCenter", "Vessel_Direction")]
     public async Task<Vector3D> DirectionAsync(ReferenceFrame referenceFrame)
     {
         var args = new ProcedureArgument[]
@@ -174,7 +174,7 @@ public class Vessel : RemoteObject
     /// Reference frame. Defaults to the vessel's surface reference frame
     /// (<see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Vessel.GetSurfaceReferenceFrame" />).
     /// </param>
-    [Rpc("SpaceCenter", "Vessel_Flight")]
+    [GetRpc("SpaceCenter", "Vessel_Flight")]
     public Flight Flight(ReferenceFrame? referenceFrame = null)
     {
         var args = new ProcedureArgument[]
@@ -194,7 +194,7 @@ public class Vessel : RemoteObject
     /// Reference frame. Defaults to the vessel's surface reference frame
     /// (<see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Vessel.GetSurfaceReferenceFrame" />).
     /// </param>
-    [Rpc("SpaceCenter", "Vessel_Flight")]
+    [GetRpc("SpaceCenter", "Vessel_Flight")]
     public async Task<Flight> FlightAsync(ReferenceFrame? referenceFrame = null)
     {
         var args = new ProcedureArgument[]
@@ -212,7 +212,7 @@ public class Vessel : RemoteObject
     /// Takes the given pressure into account.
     /// </summary>
     /// <param name="pressure">Atmospheric pressure in atmospheres</param>
-    [Rpc("SpaceCenter", "Vessel_MaxThrustAt")]
+    [GetRpc("SpaceCenter", "Vessel_MaxThrustAt")]
     public float MaxThrustAt(double pressure)
     {
         var args = new ProcedureArgument[]
@@ -231,7 +231,7 @@ public class Vessel : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="pressure">Atmospheric pressure in atmospheres</param>
-    [Rpc("SpaceCenter", "Vessel_MaxThrustAt")]
+    [GetRpc("SpaceCenter", "Vessel_MaxThrustAt")]
     public async Task<float> MaxThrustAtAsync(double pressure)
     {
         var args = new ProcedureArgument[]
@@ -248,7 +248,7 @@ public class Vessel : RemoteObject
     /// <returns>The position as a vector.</returns>
     /// <param name="referenceFrame">The reference frame that the returned
     /// position vector is in.</param>
-    [Rpc("SpaceCenter", "Vessel_Position")]
+    [GetRpc("SpaceCenter", "Vessel_Position")]
     public Vector3D Position(ReferenceFrame referenceFrame)
     {
         var args = new ProcedureArgument[]
@@ -266,7 +266,7 @@ public class Vessel : RemoteObject
     /// <returns>The position as a vector.</returns>
     /// <param name="referenceFrame">The reference frame that the returned
     /// position vector is in.</param>
-    [Rpc("SpaceCenter", "Vessel_Position")]
+    [GetRpc("SpaceCenter", "Vessel_Position")]
     public async Task<Vector3D> PositionAsync(ReferenceFrame referenceFrame)
     {
         var args = new ProcedureArgument[]
@@ -280,7 +280,7 @@ public class Vessel : RemoteObject
     /// <summary>
     /// Recover the vessel.
     /// </summary>
-    [Rpc("SpaceCenter", "Vessel_Recover")]
+    [SetRpc("SpaceCenter", "Vessel_Recover")]
     public void Recover()
     {
         var args = new ProcedureArgument[]
@@ -294,7 +294,7 @@ public class Vessel : RemoteObject
     /// Recover the vessel.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Vessel_Recover")]
+    [SetRpc("SpaceCenter", "Vessel_Recover")]
     public async Task RecoverAsync()
     {
         var args = new ProcedureArgument[]
@@ -312,7 +312,7 @@ public class Vessel : RemoteObject
     /// <param name="cumulative">When <c>false</c>, returns the resources for parts
     /// decoupled in just the given stage. When <c>true</c> returns the resources decoupled in
     /// the given stage and all subsequent stages combined.</param>
-    [Rpc("SpaceCenter", "Vessel_ResourcesInDecoupleStage")]
+    [GetRpc("SpaceCenter", "Vessel_ResourcesInDecoupleStage")]
     public Resources ResourcesInDecoupleStage(int stage, bool cumulative = true)
     {
         var args = new ProcedureArgument[]
@@ -333,7 +333,7 @@ public class Vessel : RemoteObject
     /// <param name="cumulative">When <c>false</c>, returns the resources for parts
     /// decoupled in just the given stage. When <c>true</c> returns the resources decoupled in
     /// the given stage and all subsequent stages combined.</param>
-    [Rpc("SpaceCenter", "Vessel_ResourcesInDecoupleStage")]
+    [GetRpc("SpaceCenter", "Vessel_ResourcesInDecoupleStage")]
     public async Task<Resources> ResourcesInDecoupleStageAsync(int stage, bool cumulative = true)
     {
         var args = new ProcedureArgument[]
@@ -351,7 +351,7 @@ public class Vessel : RemoteObject
     /// <returns>The rotation as a quaternion of the form <math>(x, y, z, w)</math>.</returns>
     /// <param name="referenceFrame">The reference frame that the returned
     /// rotation is in.</param>
-    [Rpc("SpaceCenter", "Vessel_Rotation")]
+    [GetRpc("SpaceCenter", "Vessel_Rotation")]
     public Quaternion Rotation(ReferenceFrame referenceFrame)
     {
         var args = new ProcedureArgument[]
@@ -369,7 +369,7 @@ public class Vessel : RemoteObject
     /// <returns>The rotation as a quaternion of the form <math>(x, y, z, w)</math>.</returns>
     /// <param name="referenceFrame">The reference frame that the returned
     /// rotation is in.</param>
-    [Rpc("SpaceCenter", "Vessel_Rotation")]
+    [GetRpc("SpaceCenter", "Vessel_Rotation")]
     public async Task<Quaternion> RotationAsync(ReferenceFrame referenceFrame)
     {
         var args = new ProcedureArgument[]
@@ -386,7 +386,7 @@ public class Vessel : RemoteObject
     /// Takes the given pressure into account.
     /// </summary>
     /// <param name="pressure">Atmospheric pressure in atmospheres</param>
-    [Rpc("SpaceCenter", "Vessel_SpecificImpulseAt")]
+    [GetRpc("SpaceCenter", "Vessel_SpecificImpulseAt")]
     public float SpecificImpulseAt(double pressure)
     {
         var args = new ProcedureArgument[]
@@ -404,7 +404,7 @@ public class Vessel : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="pressure">Atmospheric pressure in atmospheres</param>
-    [Rpc("SpaceCenter", "Vessel_SpecificImpulseAt")]
+    [GetRpc("SpaceCenter", "Vessel_SpecificImpulseAt")]
     public async Task<float> SpecificImpulseAtAsync(double pressure)
     {
         var args = new ProcedureArgument[]
@@ -422,7 +422,7 @@ public class Vessel : RemoteObject
     /// and its magnitude is the speed of the body in meters per second.</returns>
     /// <param name="referenceFrame">The reference frame that the returned
     /// velocity vector is in.</param>
-    [Rpc("SpaceCenter", "Vessel_Velocity")]
+    [GetRpc("SpaceCenter", "Vessel_Velocity")]
     public Vector3D Velocity(ReferenceFrame referenceFrame)
     {
         var args = new ProcedureArgument[]
@@ -441,7 +441,7 @@ public class Vessel : RemoteObject
     /// and its magnitude is the speed of the body in meters per second.</returns>
     /// <param name="referenceFrame">The reference frame that the returned
     /// velocity vector is in.</param>
-    [Rpc("SpaceCenter", "Vessel_Velocity")]
+    [GetRpc("SpaceCenter", "Vessel_Velocity")]
     public async Task<Vector3D> VelocityAsync(ReferenceFrame referenceFrame)
     {
         var args = new ProcedureArgument[]
@@ -456,7 +456,7 @@ public class Vessel : RemoteObject
     /// Gets an <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.AutoPilot" /> object, that can be used to perform
     /// simple auto-piloting of the vessel.
     /// </summary>
-    [Rpc("SpaceCenter", "Vessel_get_AutoPilot")]
+    [GetRpc("SpaceCenter", "Vessel_get_AutoPilot")]
     public AutoPilot GetAutoPilot()
     {
         var args = new ProcedureArgument[]
@@ -471,7 +471,7 @@ public class Vessel : RemoteObject
     /// simple auto-piloting of the vessel.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Vessel_get_AutoPilot")]
+    [GetRpc("SpaceCenter", "Vessel_get_AutoPilot")]
     public async Task<AutoPilot> GetAutoPilotAsync()
     {
         var args = new ProcedureArgument[]
@@ -487,7 +487,7 @@ public class Vessel : RemoteObject
     /// vessels reference frame (<see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ReferenceFrame" />).
     /// These axes are equivalent to the pitch, roll and yaw axes of the vessel.
     /// </summary>
-    [Rpc("SpaceCenter", "Vessel_get_AvailableControlSurfaceTorque")]
+    [GetRpc("SpaceCenter", "Vessel_get_AvailableControlSurfaceTorque")]
     public Tuple<Vector3D,Vector3D> GetAvailableControlSurfaceTorque()
     {
         var args = new ProcedureArgument[]
@@ -504,7 +504,7 @@ public class Vessel : RemoteObject
     /// These axes are equivalent to the pitch, roll and yaw axes of the vessel.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Vessel_get_AvailableControlSurfaceTorque")]
+    [GetRpc("SpaceCenter", "Vessel_get_AvailableControlSurfaceTorque")]
     public async Task<Tuple<Vector3D,Vector3D>> GetAvailableControlSurfaceTorqueAsync()
     {
         var args = new ProcedureArgument[]
@@ -520,7 +520,7 @@ public class Vessel : RemoteObject
     /// vessels reference frame (<see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ReferenceFrame" />).
     /// These axes are equivalent to the pitch, roll and yaw axes of the vessel.
     /// </summary>
-    [Rpc("SpaceCenter", "Vessel_get_AvailableEngineTorque")]
+    [GetRpc("SpaceCenter", "Vessel_get_AvailableEngineTorque")]
     public Tuple<Vector3D,Vector3D> GetAvailableEngineTorque()
     {
         var args = new ProcedureArgument[]
@@ -537,7 +537,7 @@ public class Vessel : RemoteObject
     /// These axes are equivalent to the pitch, roll and yaw axes of the vessel.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Vessel_get_AvailableEngineTorque")]
+    [GetRpc("SpaceCenter", "Vessel_get_AvailableEngineTorque")]
     public async Task<Tuple<Vector3D,Vector3D>> GetAvailableEngineTorqueAsync()
     {
         var args = new ProcedureArgument[]
@@ -554,7 +554,7 @@ public class Vessel : RemoteObject
     /// vessels reference frame (<see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ReferenceFrame" />).
     /// These axes are equivalent to the pitch, roll and yaw axes of the vessel.
     /// </summary>
-    [Rpc("SpaceCenter", "Vessel_get_AvailableOtherTorque")]
+    [GetRpc("SpaceCenter", "Vessel_get_AvailableOtherTorque")]
     public Tuple<Vector3D,Vector3D> GetAvailableOtherTorque()
     {
         var args = new ProcedureArgument[]
@@ -572,7 +572,7 @@ public class Vessel : RemoteObject
     /// These axes are equivalent to the pitch, roll and yaw axes of the vessel.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Vessel_get_AvailableOtherTorque")]
+    [GetRpc("SpaceCenter", "Vessel_get_AvailableOtherTorque")]
     public async Task<Tuple<Vector3D,Vector3D>> GetAvailableOtherTorqueAsync()
     {
         var args = new ProcedureArgument[]
@@ -588,7 +588,7 @@ public class Vessel : RemoteObject
     /// vessels reference frame (<see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ReferenceFrame" />).
     /// These axes are equivalent to the right, forward and bottom directions of the vessel.
     /// </summary>
-    [Rpc("SpaceCenter", "Vessel_get_AvailableRCSForce")]
+    [GetRpc("SpaceCenter", "Vessel_get_AvailableRCSForce")]
     public Tuple<Vector3D,Vector3D> GetAvailableRCSForce()
     {
         var args = new ProcedureArgument[]
@@ -605,7 +605,7 @@ public class Vessel : RemoteObject
     /// These axes are equivalent to the right, forward and bottom directions of the vessel.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Vessel_get_AvailableRCSForce")]
+    [GetRpc("SpaceCenter", "Vessel_get_AvailableRCSForce")]
     public async Task<Tuple<Vector3D,Vector3D>> GetAvailableRCSForceAsync()
     {
         var args = new ProcedureArgument[]
@@ -621,7 +621,7 @@ public class Vessel : RemoteObject
     /// vessels reference frame (<see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ReferenceFrame" />).
     /// These axes are equivalent to the pitch, roll and yaw axes of the vessel.
     /// </summary>
-    [Rpc("SpaceCenter", "Vessel_get_AvailableRCSTorque")]
+    [GetRpc("SpaceCenter", "Vessel_get_AvailableRCSTorque")]
     public Tuple<Vector3D,Vector3D> GetAvailableRCSTorque()
     {
         var args = new ProcedureArgument[]
@@ -638,7 +638,7 @@ public class Vessel : RemoteObject
     /// These axes are equivalent to the pitch, roll and yaw axes of the vessel.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Vessel_get_AvailableRCSTorque")]
+    [GetRpc("SpaceCenter", "Vessel_get_AvailableRCSTorque")]
     public async Task<Tuple<Vector3D,Vector3D>> GetAvailableRCSTorqueAsync()
     {
         var args = new ProcedureArgument[]
@@ -654,7 +654,7 @@ public class Vessel : RemoteObject
     /// vessels reference frame (<see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ReferenceFrame" />).
     /// These axes are equivalent to the pitch, roll and yaw axes of the vessel.
     /// </summary>
-    [Rpc("SpaceCenter", "Vessel_get_AvailableReactionWheelTorque")]
+    [GetRpc("SpaceCenter", "Vessel_get_AvailableReactionWheelTorque")]
     public Tuple<Vector3D,Vector3D> GetAvailableReactionWheelTorque()
     {
         var args = new ProcedureArgument[]
@@ -671,7 +671,7 @@ public class Vessel : RemoteObject
     /// These axes are equivalent to the pitch, roll and yaw axes of the vessel.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Vessel_get_AvailableReactionWheelTorque")]
+    [GetRpc("SpaceCenter", "Vessel_get_AvailableReactionWheelTorque")]
     public async Task<Tuple<Vector3D,Vector3D>> GetAvailableReactionWheelTorqueAsync()
     {
         var args = new ProcedureArgument[]
@@ -686,7 +686,7 @@ public class Vessel : RemoteObject
     /// active engines, in Newtons. This is computed by summing
     /// <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Engine.GetAvailableThrust" /> for every active engine in the vessel.
     /// </summary>
-    [Rpc("SpaceCenter", "Vessel_get_AvailableThrust")]
+    [GetRpc("SpaceCenter", "Vessel_get_AvailableThrust")]
     public float GetAvailableThrust()
     {
         var args = new ProcedureArgument[]
@@ -702,7 +702,7 @@ public class Vessel : RemoteObject
     /// <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Engine.GetAvailableThrust" /> for every active engine in the vessel.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Vessel_get_AvailableThrust")]
+    [GetRpc("SpaceCenter", "Vessel_get_AvailableThrust")]
     public async Task<float> GetAvailableThrustAsync()
     {
         var args = new ProcedureArgument[]
@@ -719,7 +719,7 @@ public class Vessel : RemoteObject
     /// vessels reference frame (<see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ReferenceFrame" />).
     /// These axes are equivalent to the pitch, roll and yaw axes of the vessel.
     /// </summary>
-    [Rpc("SpaceCenter", "Vessel_get_AvailableTorque")]
+    [GetRpc("SpaceCenter", "Vessel_get_AvailableTorque")]
     public Tuple<Vector3D,Vector3D> GetAvailableTorque()
     {
         var args = new ProcedureArgument[]
@@ -737,7 +737,7 @@ public class Vessel : RemoteObject
     /// These axes are equivalent to the pitch, roll and yaw axes of the vessel.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Vessel_get_AvailableTorque")]
+    [GetRpc("SpaceCenter", "Vessel_get_AvailableTorque")]
     public async Task<Tuple<Vector3D,Vector3D>> GetAvailableTorqueAsync()
     {
         var args = new ProcedureArgument[]
@@ -750,7 +750,7 @@ public class Vessel : RemoteObject
     /// <summary>
     /// Gets the name of the biome the vessel is currently in.
     /// </summary>
-    [Rpc("SpaceCenter", "Vessel_get_Biome")]
+    [GetRpc("SpaceCenter", "Vessel_get_Biome")]
     public string GetBiome()
     {
         var args = new ProcedureArgument[]
@@ -764,7 +764,7 @@ public class Vessel : RemoteObject
     /// Gets the name of the biome the vessel is currently in.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Vessel_get_Biome")]
+    [GetRpc("SpaceCenter", "Vessel_get_Biome")]
     public async Task<string> GetBiomeAsync()
     {
         var args = new ProcedureArgument[]
@@ -778,7 +778,7 @@ public class Vessel : RemoteObject
     /// Returns a <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Comms" /> object that can be used to interact
     /// with CommNet for this vessel.
     /// </summary>
-    [Rpc("SpaceCenter", "Vessel_get_Comms")]
+    [GetRpc("SpaceCenter", "Vessel_get_Comms")]
     public Comms GetComms()
     {
         var args = new ProcedureArgument[]
@@ -793,7 +793,7 @@ public class Vessel : RemoteObject
     /// with CommNet for this vessel.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Vessel_get_Comms")]
+    [GetRpc("SpaceCenter", "Vessel_get_Comms")]
     public async Task<Comms> GetCommsAsync()
     {
         var args = new ProcedureArgument[]
@@ -808,7 +808,7 @@ public class Vessel : RemoteObject
     /// the vessel's control inputs. For example, its pitch/yaw/roll controls,
     /// RCS and thrust.
     /// </summary>
-    [Rpc("SpaceCenter", "Vessel_get_Control")]
+    [GetRpc("SpaceCenter", "Vessel_get_Control")]
     public Control GetControl()
     {
         var args = new ProcedureArgument[]
@@ -824,7 +824,7 @@ public class Vessel : RemoteObject
     /// RCS and thrust.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Vessel_get_Control")]
+    [GetRpc("SpaceCenter", "Vessel_get_Control")]
     public async Task<Control> GetControlAsync()
     {
         var args = new ProcedureArgument[]
@@ -837,7 +837,7 @@ public class Vessel : RemoteObject
     /// <summary>
     /// Gets the crew in the vessel.
     /// </summary>
-    [Rpc("SpaceCenter", "Vessel_get_Crew")]
+    [GetRpc("SpaceCenter", "Vessel_get_Crew")]
     public IList<CrewMember> GetCrew()
     {
         var args = new ProcedureArgument[]
@@ -851,7 +851,7 @@ public class Vessel : RemoteObject
     /// Gets the crew in the vessel.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Vessel_get_Crew")]
+    [GetRpc("SpaceCenter", "Vessel_get_Crew")]
     public async Task<IList<CrewMember>> GetCrewAsync()
     {
         var args = new ProcedureArgument[]
@@ -864,7 +864,7 @@ public class Vessel : RemoteObject
     /// <summary>
     /// Gets the number of crew that can occupy the vessel.
     /// </summary>
-    [Rpc("SpaceCenter", "Vessel_get_CrewCapacity")]
+    [GetRpc("SpaceCenter", "Vessel_get_CrewCapacity")]
     public int GetCrewCapacity()
     {
         var args = new ProcedureArgument[]
@@ -878,7 +878,7 @@ public class Vessel : RemoteObject
     /// Gets the number of crew that can occupy the vessel.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Vessel_get_CrewCapacity")]
+    [GetRpc("SpaceCenter", "Vessel_get_CrewCapacity")]
     public async Task<int> GetCrewCapacityAsync()
     {
         var args = new ProcedureArgument[]
@@ -891,7 +891,7 @@ public class Vessel : RemoteObject
     /// <summary>
     /// Gets the number of crew that are occupying the vessel.
     /// </summary>
-    [Rpc("SpaceCenter", "Vessel_get_CrewCount")]
+    [GetRpc("SpaceCenter", "Vessel_get_CrewCount")]
     public int GetCrewCount()
     {
         var args = new ProcedureArgument[]
@@ -905,7 +905,7 @@ public class Vessel : RemoteObject
     /// Gets the number of crew that are occupying the vessel.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Vessel_get_CrewCount")]
+    [GetRpc("SpaceCenter", "Vessel_get_CrewCount")]
     public async Task<int> GetCrewCountAsync()
     {
         var args = new ProcedureArgument[]
@@ -918,7 +918,7 @@ public class Vessel : RemoteObject
     /// <summary>
     /// Gets the total mass of the vessel, excluding resources, in kg.
     /// </summary>
-    [Rpc("SpaceCenter", "Vessel_get_DryMass")]
+    [GetRpc("SpaceCenter", "Vessel_get_DryMass")]
     public float GetDryMass()
     {
         var args = new ProcedureArgument[]
@@ -932,7 +932,7 @@ public class Vessel : RemoteObject
     /// Gets the total mass of the vessel, excluding resources, in kg.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Vessel_get_DryMass")]
+    [GetRpc("SpaceCenter", "Vessel_get_DryMass")]
     public async Task<float> GetDryMassAsync()
     {
         var args = new ProcedureArgument[]
@@ -947,7 +947,7 @@ public class Vessel : RemoteObject
     /// in the vessels reference frame (<see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ReferenceFrame" />).
     /// Returns the 3x3 matrix as a list of elements, in row-major order.
     /// </summary>
-    [Rpc("SpaceCenter", "Vessel_get_InertiaTensor")]
+    [GetRpc("SpaceCenter", "Vessel_get_InertiaTensor")]
     public IList<double> GetInertiaTensor()
     {
         var args = new ProcedureArgument[]
@@ -963,7 +963,7 @@ public class Vessel : RemoteObject
     /// Returns the 3x3 matrix as a list of elements, in row-major order.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Vessel_get_InertiaTensor")]
+    [GetRpc("SpaceCenter", "Vessel_get_InertiaTensor")]
     public async Task<IList<double>> GetInertiaTensorAsync()
     {
         var args = new ProcedureArgument[]
@@ -978,7 +978,7 @@ public class Vessel : RemoteObject
     /// This is computed using the formula
     /// <a href="https://wiki.kerbalspaceprogram.com/wiki/Specific_impulse#Multiple_engines">described here</a>.
     /// </summary>
-    [Rpc("SpaceCenter", "Vessel_get_KerbinSeaLevelSpecificImpulse")]
+    [GetRpc("SpaceCenter", "Vessel_get_KerbinSeaLevelSpecificImpulse")]
     public float GetKerbinSeaLevelSpecificImpulse()
     {
         var args = new ProcedureArgument[]
@@ -994,7 +994,7 @@ public class Vessel : RemoteObject
     /// <a href="https://wiki.kerbalspaceprogram.com/wiki/Specific_impulse#Multiple_engines">described here</a>.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Vessel_get_KerbinSeaLevelSpecificImpulse")]
+    [GetRpc("SpaceCenter", "Vessel_get_KerbinSeaLevelSpecificImpulse")]
     public async Task<float> GetKerbinSeaLevelSpecificImpulseAsync()
     {
         var args = new ProcedureArgument[]
@@ -1007,7 +1007,7 @@ public class Vessel : RemoteObject
     /// <summary>
     /// Gets the mission elapsed time in seconds.
     /// </summary>
-    [Rpc("SpaceCenter", "Vessel_get_MET")]
+    [GetRpc("SpaceCenter", "Vessel_get_MET")]
     public double GetMET()
     {
         var args = new ProcedureArgument[]
@@ -1021,7 +1021,7 @@ public class Vessel : RemoteObject
     /// Gets the mission elapsed time in seconds.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Vessel_get_MET")]
+    [GetRpc("SpaceCenter", "Vessel_get_MET")]
     public async Task<double> GetMETAsync()
     {
         var args = new ProcedureArgument[]
@@ -1034,7 +1034,7 @@ public class Vessel : RemoteObject
     /// <summary>
     /// Gets the total mass of the vessel, including resources, in kg.
     /// </summary>
-    [Rpc("SpaceCenter", "Vessel_get_Mass")]
+    [GetRpc("SpaceCenter", "Vessel_get_Mass")]
     public float GetMass()
     {
         var args = new ProcedureArgument[]
@@ -1048,7 +1048,7 @@ public class Vessel : RemoteObject
     /// Gets the total mass of the vessel, including resources, in kg.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Vessel_get_Mass")]
+    [GetRpc("SpaceCenter", "Vessel_get_Mass")]
     public async Task<float> GetMassAsync()
     {
         var args = new ProcedureArgument[]
@@ -1063,7 +1063,7 @@ public class Vessel : RemoteObject
     /// engines, in Newtons. This is computed by summing
     /// <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Engine.GetMaxThrust" /> for every active engine.
     /// </summary>
-    [Rpc("SpaceCenter", "Vessel_get_MaxThrust")]
+    [GetRpc("SpaceCenter", "Vessel_get_MaxThrust")]
     public float GetMaxThrust()
     {
         var args = new ProcedureArgument[]
@@ -1079,7 +1079,7 @@ public class Vessel : RemoteObject
     /// <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Engine.GetMaxThrust" /> for every active engine.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Vessel_get_MaxThrust")]
+    [GetRpc("SpaceCenter", "Vessel_get_MaxThrust")]
     public async Task<float> GetMaxThrustAsync()
     {
         var args = new ProcedureArgument[]
@@ -1094,7 +1094,7 @@ public class Vessel : RemoteObject
     /// engines when the vessel is in a vacuum, in Newtons. This is computed by
     /// summing <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Engine.GetMaxVacuumThrust" /> for every active engine.
     /// </summary>
-    [Rpc("SpaceCenter", "Vessel_get_MaxVacuumThrust")]
+    [GetRpc("SpaceCenter", "Vessel_get_MaxVacuumThrust")]
     public float GetMaxVacuumThrust()
     {
         var args = new ProcedureArgument[]
@@ -1110,7 +1110,7 @@ public class Vessel : RemoteObject
     /// summing <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Engine.GetMaxVacuumThrust" /> for every active engine.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Vessel_get_MaxVacuumThrust")]
+    [GetRpc("SpaceCenter", "Vessel_get_MaxVacuumThrust")]
     public async Task<float> GetMaxVacuumThrustAsync()
     {
         var args = new ProcedureArgument[]
@@ -1126,7 +1126,7 @@ public class Vessel : RemoteObject
     /// pitch, roll and yaw directions respectively.
     /// This corresponds to the vessels reference frame (<see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ReferenceFrame" />).
     /// </summary>
-    [Rpc("SpaceCenter", "Vessel_get_MomentOfInertia")]
+    [GetRpc("SpaceCenter", "Vessel_get_MomentOfInertia")]
     public Tuple<double,double,double> GetMomentOfInertia()
     {
         var args = new ProcedureArgument[]
@@ -1143,7 +1143,7 @@ public class Vessel : RemoteObject
     /// This corresponds to the vessels reference frame (<see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ReferenceFrame" />).
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Vessel_get_MomentOfInertia")]
+    [GetRpc("SpaceCenter", "Vessel_get_MomentOfInertia")]
     public async Task<Tuple<double,double,double>> GetMomentOfInertiaAsync()
     {
         var args = new ProcedureArgument[]
@@ -1156,7 +1156,7 @@ public class Vessel : RemoteObject
     /// <summary>
     /// Gets the name of the vessel.
     /// </summary>
-    [Rpc("SpaceCenter", "Vessel_get_Name")]
+    [GetRpc("SpaceCenter", "Vessel_get_Name")]
     public string GetName()
     {
         var args = new ProcedureArgument[]
@@ -1170,7 +1170,7 @@ public class Vessel : RemoteObject
     /// Gets the name of the vessel.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Vessel_get_Name")]
+    [GetRpc("SpaceCenter", "Vessel_get_Name")]
     public async Task<string> GetNameAsync()
     {
         var args = new ProcedureArgument[]
@@ -1184,7 +1184,7 @@ public class Vessel : RemoteObject
     /// Sets the name of the vessel.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "Vessel_set_Name")]
+    [SetRpc("SpaceCenter", "Vessel_set_Name")]
     public void SetName(string value)
     {
         var args = new ProcedureArgument[]
@@ -1200,7 +1200,7 @@ public class Vessel : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "Vessel_set_Name")]
+    [SetRpc("SpaceCenter", "Vessel_set_Name")]
     public async Task SetNameAsync(string value)
     {
         var args = new ProcedureArgument[]
@@ -1214,7 +1214,7 @@ public class Vessel : RemoteObject
     /// <summary>
     /// Gets the current orbit of the vessel.
     /// </summary>
-    [Rpc("SpaceCenter", "Vessel_get_Orbit")]
+    [GetRpc("SpaceCenter", "Vessel_get_Orbit")]
     public Orbit GetOrbit()
     {
         var args = new ProcedureArgument[]
@@ -1228,7 +1228,7 @@ public class Vessel : RemoteObject
     /// Gets the current orbit of the vessel.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Vessel_get_Orbit")]
+    [GetRpc("SpaceCenter", "Vessel_get_Orbit")]
     public async Task<Orbit> GetOrbitAsync()
     {
         var args = new ProcedureArgument[]
@@ -1246,7 +1246,7 @@ public class Vessel : RemoteObject
     /// <remarks>
     /// Be careful not to confuse this with 'orbit' mode on the navball.
     /// </remarks>
-    [Rpc("SpaceCenter", "Vessel_get_OrbitalReferenceFrame")]
+    [GetRpc("SpaceCenter", "Vessel_get_OrbitalReferenceFrame")]
     public ReferenceFrame GetOrbitalReferenceFrame()
     {
         var args = new ProcedureArgument[]
@@ -1265,7 +1265,7 @@ public class Vessel : RemoteObject
     /// <remarks>
     /// Be careful not to confuse this with 'orbit' mode on the navball.
     /// </remarks>
-    [Rpc("SpaceCenter", "Vessel_get_OrbitalReferenceFrame")]
+    [GetRpc("SpaceCenter", "Vessel_get_OrbitalReferenceFrame")]
     public async Task<ReferenceFrame> GetOrbitalReferenceFrameAsync()
     {
         var args = new ProcedureArgument[]
@@ -1278,7 +1278,7 @@ public class Vessel : RemoteObject
     /// <summary>
     /// Gets a <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Parts" /> object, that can used to interact with the parts that make up this vessel.
     /// </summary>
-    [Rpc("SpaceCenter", "Vessel_get_Parts")]
+    [GetRpc("SpaceCenter", "Vessel_get_Parts")]
     public Parts GetParts()
     {
         var args = new ProcedureArgument[]
@@ -1292,7 +1292,7 @@ public class Vessel : RemoteObject
     /// Gets a <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Parts" /> object, that can used to interact with the parts that make up this vessel.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Vessel_get_Parts")]
+    [GetRpc("SpaceCenter", "Vessel_get_Parts")]
     public async Task<Parts> GetPartsAsync()
     {
         var args = new ProcedureArgument[]
@@ -1305,7 +1305,7 @@ public class Vessel : RemoteObject
     /// <summary>
     /// Gets whether the vessel is recoverable.
     /// </summary>
-    [Rpc("SpaceCenter", "Vessel_get_Recoverable")]
+    [GetRpc("SpaceCenter", "Vessel_get_Recoverable")]
     public bool GetRecoverable()
     {
         var args = new ProcedureArgument[]
@@ -1319,7 +1319,7 @@ public class Vessel : RemoteObject
     /// Gets whether the vessel is recoverable.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Vessel_get_Recoverable")]
+    [GetRpc("SpaceCenter", "Vessel_get_Recoverable")]
     public async Task<bool> GetRecoverableAsync()
     {
         var args = new ProcedureArgument[]
@@ -1334,7 +1334,7 @@ public class Vessel : RemoteObject
     /// and orientated with the vessel.
     /// <list type="bullet"><item><description>The origin is at the center of mass of the vessel.</description></item><item><description>The axes rotate with the vessel.</description></item><item><description>The x-axis points out to the right of the vessel.</description></item><item><description>The y-axis points in the forward direction of the vessel.</description></item><item><description>The z-axis points out of the bottom off the vessel.</description></item></list>
     /// </summary>
-    [Rpc("SpaceCenter", "Vessel_get_ReferenceFrame")]
+    [GetRpc("SpaceCenter", "Vessel_get_ReferenceFrame")]
     public ReferenceFrame GetReferenceFrame()
     {
         var args = new ProcedureArgument[]
@@ -1350,7 +1350,7 @@ public class Vessel : RemoteObject
     /// <list type="bullet"><item><description>The origin is at the center of mass of the vessel.</description></item><item><description>The axes rotate with the vessel.</description></item><item><description>The x-axis points out to the right of the vessel.</description></item><item><description>The y-axis points in the forward direction of the vessel.</description></item><item><description>The z-axis points out of the bottom off the vessel.</description></item></list>
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Vessel_get_ReferenceFrame")]
+    [GetRpc("SpaceCenter", "Vessel_get_ReferenceFrame")]
     public async Task<ReferenceFrame> GetReferenceFrameAsync()
     {
         var args = new ProcedureArgument[]
@@ -1364,7 +1364,7 @@ public class Vessel : RemoteObject
     /// Gets a <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Resources" /> object, that can used to get information
     /// about resources stored in the vessel.
     /// </summary>
-    [Rpc("SpaceCenter", "Vessel_get_Resources")]
+    [GetRpc("SpaceCenter", "Vessel_get_Resources")]
     public Resources GetResources()
     {
         var args = new ProcedureArgument[]
@@ -1379,7 +1379,7 @@ public class Vessel : RemoteObject
     /// about resources stored in the vessel.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Vessel_get_Resources")]
+    [GetRpc("SpaceCenter", "Vessel_get_Resources")]
     public async Task<Resources> GetResourcesAsync()
     {
         var args = new ProcedureArgument[]
@@ -1392,7 +1392,7 @@ public class Vessel : RemoteObject
     /// <summary>
     /// Gets the situation the vessel is in.
     /// </summary>
-    [Rpc("SpaceCenter", "Vessel_get_Situation")]
+    [GetRpc("SpaceCenter", "Vessel_get_Situation")]
     public VesselSituation GetSituation()
     {
         var args = new ProcedureArgument[]
@@ -1406,7 +1406,7 @@ public class Vessel : RemoteObject
     /// Gets the situation the vessel is in.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Vessel_get_Situation")]
+    [GetRpc("SpaceCenter", "Vessel_get_Situation")]
     public async Task<VesselSituation> GetSituationAsync()
     {
         var args = new ProcedureArgument[]
@@ -1420,7 +1420,7 @@ public class Vessel : RemoteObject
     /// Gets the combined specific impulse of all active engines, in seconds. This is computed using the formula
     /// <a href="https://wiki.kerbalspaceprogram.com/wiki/Specific_impulse#Multiple_engines">described here</a>.
     /// </summary>
-    [Rpc("SpaceCenter", "Vessel_get_SpecificImpulse")]
+    [GetRpc("SpaceCenter", "Vessel_get_SpecificImpulse")]
     public float GetSpecificImpulse()
     {
         var args = new ProcedureArgument[]
@@ -1435,7 +1435,7 @@ public class Vessel : RemoteObject
     /// <a href="https://wiki.kerbalspaceprogram.com/wiki/Specific_impulse#Multiple_engines">described here</a>.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Vessel_get_SpecificImpulse")]
+    [GetRpc("SpaceCenter", "Vessel_get_SpecificImpulse")]
     public async Task<float> GetSpecificImpulseAsync()
     {
         var args = new ProcedureArgument[]
@@ -1459,7 +1459,7 @@ public class Vessel : RemoteObject
     /// <remarks>
     /// Be careful not to confuse this with 'surface' mode on the navball.
     /// </remarks>
-    [Rpc("SpaceCenter", "Vessel_get_SurfaceReferenceFrame")]
+    [GetRpc("SpaceCenter", "Vessel_get_SurfaceReferenceFrame")]
     public ReferenceFrame GetSurfaceReferenceFrame()
     {
         var args = new ProcedureArgument[]
@@ -1484,7 +1484,7 @@ public class Vessel : RemoteObject
     /// <remarks>
     /// Be careful not to confuse this with 'surface' mode on the navball.
     /// </remarks>
-    [Rpc("SpaceCenter", "Vessel_get_SurfaceReferenceFrame")]
+    [GetRpc("SpaceCenter", "Vessel_get_SurfaceReferenceFrame")]
     public async Task<ReferenceFrame> GetSurfaceReferenceFrameAsync()
     {
         var args = new ProcedureArgument[]
@@ -1502,7 +1502,7 @@ public class Vessel : RemoteObject
     /// relative to the surface of the body being orbited.</description></item><item><description>The z-axis is in the plane of the
     /// <a href="https://en.wikipedia.org/wiki/Horizon">astronomical horizon</a>.</description></item><item><description>The x-axis is orthogonal to the other two axes.</description></item></list>
     /// </summary>
-    [Rpc("SpaceCenter", "Vessel_get_SurfaceVelocityReferenceFrame")]
+    [GetRpc("SpaceCenter", "Vessel_get_SurfaceVelocityReferenceFrame")]
     public ReferenceFrame GetSurfaceVelocityReferenceFrame()
     {
         var args = new ProcedureArgument[]
@@ -1521,7 +1521,7 @@ public class Vessel : RemoteObject
     /// <a href="https://en.wikipedia.org/wiki/Horizon">astronomical horizon</a>.</description></item><item><description>The x-axis is orthogonal to the other two axes.</description></item></list>
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Vessel_get_SurfaceVelocityReferenceFrame")]
+    [GetRpc("SpaceCenter", "Vessel_get_SurfaceVelocityReferenceFrame")]
     public async Task<ReferenceFrame> GetSurfaceVelocityReferenceFrameAsync()
     {
         var args = new ProcedureArgument[]
@@ -1536,7 +1536,7 @@ public class Vessel : RemoteObject
     /// Newtons. This is computed by summing <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Engine.GetThrust" /> for
     /// every engine in the vessel.
     /// </summary>
-    [Rpc("SpaceCenter", "Vessel_get_Thrust")]
+    [GetRpc("SpaceCenter", "Vessel_get_Thrust")]
     public float GetThrust()
     {
         var args = new ProcedureArgument[]
@@ -1552,7 +1552,7 @@ public class Vessel : RemoteObject
     /// every engine in the vessel.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Vessel_get_Thrust")]
+    [GetRpc("SpaceCenter", "Vessel_get_Thrust")]
     public async Task<float> GetThrustAsync()
     {
         var args = new ProcedureArgument[]
@@ -1565,7 +1565,7 @@ public class Vessel : RemoteObject
     /// <summary>
     /// Gets the type of the vessel.
     /// </summary>
-    [Rpc("SpaceCenter", "Vessel_get_Type")]
+    [GetRpc("SpaceCenter", "Vessel_get_Type")]
     public VesselType GetVesselType()
     {
         var args = new ProcedureArgument[]
@@ -1579,7 +1579,7 @@ public class Vessel : RemoteObject
     /// Gets the type of the vessel.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Vessel_get_Type")]
+    [GetRpc("SpaceCenter", "Vessel_get_Type")]
     public async Task<VesselType> GetVesselTypeAsync()
     {
         var args = new ProcedureArgument[]
@@ -1593,7 +1593,7 @@ public class Vessel : RemoteObject
     /// Sets the type of the vessel.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "Vessel_set_Type")]
+    [SetRpc("SpaceCenter", "Vessel_set_Type")]
     public void SetType(VesselType value)
     {
         var args = new ProcedureArgument[]
@@ -1609,7 +1609,7 @@ public class Vessel : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "Vessel_set_Type")]
+    [SetRpc("SpaceCenter", "Vessel_set_Type")]
     public async Task SetTypeAsync(VesselType value)
     {
         var args = new ProcedureArgument[]
@@ -1624,7 +1624,7 @@ public class Vessel : RemoteObject
     /// Gets the combined vacuum specific impulse of all active engines, in seconds. This is computed using the formula
     /// <a href="https://wiki.kerbalspaceprogram.com/wiki/Specific_impulse#Multiple_engines">described here</a>.
     /// </summary>
-    [Rpc("SpaceCenter", "Vessel_get_VacuumSpecificImpulse")]
+    [GetRpc("SpaceCenter", "Vessel_get_VacuumSpecificImpulse")]
     public float GetVacuumSpecificImpulse()
     {
         var args = new ProcedureArgument[]
@@ -1639,7 +1639,7 @@ public class Vessel : RemoteObject
     /// <a href="https://wiki.kerbalspaceprogram.com/wiki/Specific_impulse#Multiple_engines">described here</a>.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Vessel_get_VacuumSpecificImpulse")]
+    [GetRpc("SpaceCenter", "Vessel_get_VacuumSpecificImpulse")]
     public async Task<float> GetVacuumSpecificImpulseAsync()
     {
         var args = new ProcedureArgument[]

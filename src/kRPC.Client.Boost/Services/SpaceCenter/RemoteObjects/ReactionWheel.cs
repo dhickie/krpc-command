@@ -19,7 +19,7 @@ public class ReactionWheel : RemoteObject
     /// <summary>
     /// Gets whether the reaction wheel is active.
     /// </summary>
-    [Rpc("SpaceCenter", "ReactionWheel_get_Active")]
+    [GetRpc("SpaceCenter", "ReactionWheel_get_Active")]
     public bool GetActive()
     {
         var args = new ProcedureArgument[]
@@ -33,7 +33,7 @@ public class ReactionWheel : RemoteObject
     /// Gets whether the reaction wheel is active.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "ReactionWheel_get_Active")]
+    [GetRpc("SpaceCenter", "ReactionWheel_get_Active")]
     public async Task<bool> GetActiveAsync()
     {
         var args = new ProcedureArgument[]
@@ -47,7 +47,7 @@ public class ReactionWheel : RemoteObject
     /// Sets whether the reaction wheel is active.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "ReactionWheel_set_Active")]
+    [SetRpc("SpaceCenter", "ReactionWheel_set_Active")]
     public void SetActive(bool value)
     {
         var args = new ProcedureArgument[]
@@ -63,7 +63,7 @@ public class ReactionWheel : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "ReactionWheel_set_Active")]
+    [SetRpc("SpaceCenter", "ReactionWheel_set_Active")]
     public async Task SetActiveAsync(bool value)
     {
         var args = new ProcedureArgument[]
@@ -80,7 +80,7 @@ public class ReactionWheel : RemoteObject
     /// correspond to the coordinate axes of the <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Vessel.GetReferenceFrame" />.
     /// Returns zero if the reaction wheel is inactive or broken.
     /// </summary>
-    [Rpc("SpaceCenter", "ReactionWheel_get_AvailableTorque")]
+    [GetRpc("SpaceCenter", "ReactionWheel_get_AvailableTorque")]
     public Tuple<Vector3D,Vector3D> GetAvailableTorque()
     {
         var args = new ProcedureArgument[]
@@ -97,7 +97,7 @@ public class ReactionWheel : RemoteObject
     /// Returns zero if the reaction wheel is inactive or broken.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "ReactionWheel_get_AvailableTorque")]
+    [GetRpc("SpaceCenter", "ReactionWheel_get_AvailableTorque")]
     public async Task<Tuple<Vector3D,Vector3D>> GetAvailableTorqueAsync()
     {
         var args = new ProcedureArgument[]
@@ -110,7 +110,7 @@ public class ReactionWheel : RemoteObject
     /// <summary>
     /// Gets whether the reaction wheel is broken.
     /// </summary>
-    [Rpc("SpaceCenter", "ReactionWheel_get_Broken")]
+    [GetRpc("SpaceCenter", "ReactionWheel_get_Broken")]
     public bool GetBroken()
     {
         var args = new ProcedureArgument[]
@@ -124,7 +124,7 @@ public class ReactionWheel : RemoteObject
     /// Gets whether the reaction wheel is broken.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "ReactionWheel_get_Broken")]
+    [GetRpc("SpaceCenter", "ReactionWheel_get_Broken")]
     public async Task<bool> GetBrokenAsync()
     {
         var args = new ProcedureArgument[]
@@ -139,7 +139,7 @@ public class ReactionWheel : RemoteObject
     /// when it is active, in the positive and negative pitch, roll and yaw axes of the vessel.
     /// These axes correspond to the coordinate axes of the <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Vessel.GetReferenceFrame" />.
     /// </summary>
-    [Rpc("SpaceCenter", "ReactionWheel_get_MaxTorque")]
+    [GetRpc("SpaceCenter", "ReactionWheel_get_MaxTorque")]
     public Tuple<Vector3D,Vector3D> GetMaxTorque()
     {
         var args = new ProcedureArgument[]
@@ -155,7 +155,7 @@ public class ReactionWheel : RemoteObject
     /// These axes correspond to the coordinate axes of the <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Vessel.GetReferenceFrame" />.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "ReactionWheel_get_MaxTorque")]
+    [GetRpc("SpaceCenter", "ReactionWheel_get_MaxTorque")]
     public async Task<Tuple<Vector3D,Vector3D>> GetMaxTorqueAsync()
     {
         var args = new ProcedureArgument[]
@@ -168,7 +168,7 @@ public class ReactionWheel : RemoteObject
     /// <summary>
     /// Gets the part object for this reaction wheel.
     /// </summary>
-    [Rpc("SpaceCenter", "ReactionWheel_get_Part")]
+    [GetRpc("SpaceCenter", "ReactionWheel_get_Part")]
     public Part GetPart()
     {
         var args = new ProcedureArgument[]
@@ -182,7 +182,7 @@ public class ReactionWheel : RemoteObject
     /// Gets the part object for this reaction wheel.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "ReactionWheel_get_Part")]
+    [GetRpc("SpaceCenter", "ReactionWheel_get_Part")]
     public async Task<Part> GetPartAsync()
     {
         var args = new ProcedureArgument[]
