@@ -72,10 +72,10 @@ public class Part : RemoteObject
     /// <remarks>
     /// This is computed from the collision mesh of the part.
     /// If the part is not collidable, the box has zero volume and is centered on
-    /// the <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Part.Position" /> of the part.
+    /// the <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Part.GetPosition" /> of the part.
     /// </remarks>
     [GetRpc("SpaceCenter", "Part_BoundingBox")]
-    public Tuple<Vector3D,Vector3D> BoundingBox(ReferenceFrame referenceFrame)
+    public Tuple<Vector3D,Vector3D> GetBoundingBox(ReferenceFrame referenceFrame)
     {
         var args = new ProcedureArgument[]
         {
@@ -96,10 +96,10 @@ public class Part : RemoteObject
     /// <remarks>
     /// This is computed from the collision mesh of the part.
     /// If the part is not collidable, the box has zero volume and is centered on
-    /// the <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Part.Position" /> of the part.
+    /// the <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Part.GetPosition" /> of the part.
     /// </remarks>
     [GetRpc("SpaceCenter", "Part_BoundingBox")]
-    public async Task<Tuple<Vector3D,Vector3D>> BoundingBoxAsync(ReferenceFrame referenceFrame)
+    public async Task<Tuple<Vector3D,Vector3D>> GetBoundingBoxAsync(ReferenceFrame referenceFrame)
     {
         var args = new ProcedureArgument[]
         {
@@ -111,13 +111,13 @@ public class Part : RemoteObject
 
     /// <summary>
     /// The position of the parts center of mass in the given reference frame.
-    /// If the part is physicsless, this is equivalent to <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Part.Position" />.
+    /// If the part is physicsless, this is equivalent to <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Part.GetPosition" />.
     /// </summary>
     /// <returns>The position as a vector.</returns>
     /// <param name="referenceFrame">The reference frame that the returned
     /// position vector is in.</param>
     [GetRpc("SpaceCenter", "Part_CenterOfMass")]
-    public Vector3D CenterOfMass(ReferenceFrame referenceFrame)
+    public Vector3D GetCenterOfMass(ReferenceFrame referenceFrame)
     {
         var args = new ProcedureArgument[]
         {
@@ -129,14 +129,14 @@ public class Part : RemoteObject
 
     /// <summary>
     /// The position of the parts center of mass in the given reference frame.
-    /// If the part is physicsless, this is equivalent to <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Part.Position" />.
+    /// If the part is physicsless, this is equivalent to <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Part.GetPosition" />.
     /// Executes asynchronously.
     /// </summary>
     /// <returns>The position as a vector.</returns>
     /// <param name="referenceFrame">The reference frame that the returned
     /// position vector is in.</param>
     [GetRpc("SpaceCenter", "Part_CenterOfMass")]
-    public async Task<Vector3D> CenterOfMassAsync(ReferenceFrame referenceFrame)
+    public async Task<Vector3D> GetCenterOfMassAsync(ReferenceFrame referenceFrame)
     {
         var args = new ProcedureArgument[]
         {
@@ -153,7 +153,7 @@ public class Part : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// direction is in.</param>
     [GetRpc("SpaceCenter", "Part_Direction")]
-    public Vector3D Direction(ReferenceFrame referenceFrame)
+    public Vector3D GetDirection(ReferenceFrame referenceFrame)
     {
         var args = new ProcedureArgument[]
         {
@@ -171,7 +171,7 @@ public class Part : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// direction is in.</param>
     [GetRpc("SpaceCenter", "Part_Direction")]
-    public async Task<Vector3D> DirectionAsync(ReferenceFrame referenceFrame)
+    public async Task<Vector3D> GetDirectionAsync(ReferenceFrame referenceFrame)
     {
         var args = new ProcedureArgument[]
         {
@@ -238,7 +238,7 @@ public class Part : RemoteObject
     /// Use <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Part.CenterOfMass" /> to get the parts center of mass.
     /// </remarks>
     [GetRpc("SpaceCenter", "Part_Position")]
-    public Vector3D Position(ReferenceFrame referenceFrame)
+    public Vector3D GetPosition(ReferenceFrame referenceFrame)
     {
         var args = new ProcedureArgument[]
         {
@@ -261,7 +261,7 @@ public class Part : RemoteObject
     /// Use <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Part.CenterOfMass" /> to get the parts center of mass.
     /// </remarks>
     [GetRpc("SpaceCenter", "Part_Position")]
-    public async Task<Vector3D> PositionAsync(ReferenceFrame referenceFrame)
+    public async Task<Vector3D> GetPositionAsync(ReferenceFrame referenceFrame)
     {
         var args = new ProcedureArgument[]
         {
@@ -278,7 +278,7 @@ public class Part : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// rotation is in.</param>
     [GetRpc("SpaceCenter", "Part_Rotation")]
-    public Quaternion Rotation(ReferenceFrame referenceFrame)
+    public Quaternion GetRotation(ReferenceFrame referenceFrame)
     {
         var args = new ProcedureArgument[]
         {
@@ -296,7 +296,7 @@ public class Part : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// rotation is in.</param>
     [GetRpc("SpaceCenter", "Part_Rotation")]
-    public async Task<Quaternion> RotationAsync(ReferenceFrame referenceFrame)
+    public async Task<Quaternion> GetRotationAsync(ReferenceFrame referenceFrame)
     {
         var args = new ProcedureArgument[]
         {
@@ -314,7 +314,7 @@ public class Part : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// velocity vector is in.</param>
     [GetRpc("SpaceCenter", "Part_Velocity")]
-    public Vector3D Velocity(ReferenceFrame referenceFrame)
+    public Vector3D GetVelocity(ReferenceFrame referenceFrame)
     {
         var args = new ProcedureArgument[]
         {
@@ -333,7 +333,7 @@ public class Part : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// velocity vector is in.</param>
     [GetRpc("SpaceCenter", "Part_Velocity")]
-    public async Task<Vector3D> VelocityAsync(ReferenceFrame referenceFrame)
+    public async Task<Vector3D> GetVelocityAsync(ReferenceFrame referenceFrame)
     {
         var args = new ProcedureArgument[]
         {
@@ -1739,7 +1739,7 @@ public class Part : RemoteObject
     /// Gets the reference frame that is fixed relative to this part, and centered on a fixed
     /// position within the part, defined by the parts model.
     /// <list type="bullet"><item><description>The origin is at the position of the part, as returned by
-    /// <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Part.Position" />.</description></item><item><description>The axes rotate with the part.</description></item><item><description>The x, y and z axis directions depend on the design of the part.
+    /// <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Part.GetPosition" />.</description></item><item><description>The axes rotate with the part.</description></item><item><description>The x, y and z axis directions depend on the design of the part.
     /// </description></item></list>
     /// </summary>
     /// <remarks>
@@ -1761,7 +1761,7 @@ public class Part : RemoteObject
     /// Gets the reference frame that is fixed relative to this part, and centered on a fixed
     /// position within the part, defined by the parts model.
     /// <list type="bullet"><item><description>The origin is at the position of the part, as returned by
-    /// <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Part.Position" />.</description></item><item><description>The axes rotate with the part.</description></item><item><description>The x, y and z axis directions depend on the design of the part.
+    /// <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Part.GetPosition" />.</description></item><item><description>The axes rotate with the part.</description></item><item><description>The x, y and z axis directions depend on the design of the part.
     /// </description></item></list>
     /// Executes asynchronously.
     /// </summary>

@@ -28,7 +28,7 @@ public class Node : RemoteObject
     /// Does not change when executing the maneuver node. See <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Node.RemainingBurnVector" />.
     /// </remarks>
     [GetRpc("SpaceCenter", "Node_BurnVector")]
-    public Vector3D BurnVector(ReferenceFrame? referenceFrame = null)
+    public Vector3D GetBurnVector(ReferenceFrame? referenceFrame = null)
     {
         var args = new ProcedureArgument[]
         {
@@ -51,7 +51,7 @@ public class Node : RemoteObject
     /// Does not change when executing the maneuver node. See <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Node.RemainingBurnVector" />.
     /// </remarks>
     [GetRpc("SpaceCenter", "Node_BurnVector")]
-    public async Task<Vector3D> BurnVectorAsync(ReferenceFrame? referenceFrame = null)
+    public async Task<Vector3D> GetBurnVectorAsync(ReferenceFrame? referenceFrame = null)
     {
         var args = new ProcedureArgument[]
         {
@@ -68,7 +68,7 @@ public class Node : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// direction is in.</param>
     [GetRpc("SpaceCenter", "Node_Direction")]
-    public Vector3D Direction(ReferenceFrame referenceFrame)
+    public Vector3D GetDirection(ReferenceFrame referenceFrame)
     {
         var args = new ProcedureArgument[]
         {
@@ -86,7 +86,7 @@ public class Node : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// direction is in.</param>
     [GetRpc("SpaceCenter", "Node_Direction")]
-    public async Task<Vector3D> DirectionAsync(ReferenceFrame referenceFrame)
+    public async Task<Vector3D> GetDirectionAsync(ReferenceFrame referenceFrame)
     {
         var args = new ProcedureArgument[]
         {
@@ -103,7 +103,7 @@ public class Node : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// position vector is in.</param>
     [GetRpc("SpaceCenter", "Node_Position")]
-    public Vector3D Position(ReferenceFrame referenceFrame)
+    public Vector3D GetPosition(ReferenceFrame referenceFrame)
     {
         var args = new ProcedureArgument[]
         {
@@ -121,7 +121,7 @@ public class Node : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// position vector is in.</param>
     [GetRpc("SpaceCenter", "Node_Position")]
-    public async Task<Vector3D> PositionAsync(ReferenceFrame referenceFrame)
+    public async Task<Vector3D> GetPositionAsync(ReferenceFrame referenceFrame)
     {
         var args = new ProcedureArgument[]
         {
@@ -143,7 +143,7 @@ public class Node : RemoteObject
     /// Changes as the maneuver node is executed. See <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Node.BurnVector" />.
     /// </remarks>
     [GetRpc("SpaceCenter", "Node_RemainingBurnVector")]
-    public Vector3D RemainingBurnVector(ReferenceFrame? referenceFrame = null)
+    public Vector3D GetRemainingBurnVector(ReferenceFrame? referenceFrame = null)
     {
         var args = new ProcedureArgument[]
         {
@@ -166,7 +166,7 @@ public class Node : RemoteObject
     /// Changes as the maneuver node is executed. See <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Node.BurnVector" />.
     /// </remarks>
     [GetRpc("SpaceCenter", "Node_RemainingBurnVector")]
-    public async Task<Vector3D> RemainingBurnVectorAsync(ReferenceFrame? referenceFrame = null)
+    public async Task<Vector3D> GetRemainingBurnVectorAsync(ReferenceFrame? referenceFrame = null)
     {
         var args = new ProcedureArgument[]
         {

@@ -23,7 +23,7 @@ public class DockingPort : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// direction is in.</param>
     [GetRpc("SpaceCenter", "DockingPort_Direction")]
-    public Vector3D Direction(ReferenceFrame referenceFrame)
+    public Vector3D GetDirection(ReferenceFrame referenceFrame)
     {
         var args = new ProcedureArgument[]
         {
@@ -41,7 +41,7 @@ public class DockingPort : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// direction is in.</param>
     [GetRpc("SpaceCenter", "DockingPort_Direction")]
-    public async Task<Vector3D> DirectionAsync(ReferenceFrame referenceFrame)
+    public async Task<Vector3D> GetDirectionAsync(ReferenceFrame referenceFrame)
     {
         var args = new ProcedureArgument[]
         {
@@ -58,7 +58,7 @@ public class DockingPort : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// position vector is in.</param>
     [GetRpc("SpaceCenter", "DockingPort_Position")]
-    public Vector3D Position(ReferenceFrame referenceFrame)
+    public Vector3D GetPosition(ReferenceFrame referenceFrame)
     {
         var args = new ProcedureArgument[]
         {
@@ -76,7 +76,7 @@ public class DockingPort : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// position vector is in.</param>
     [GetRpc("SpaceCenter", "DockingPort_Position")]
-    public async Task<Vector3D> PositionAsync(ReferenceFrame referenceFrame)
+    public async Task<Vector3D> GetPositionAsync(ReferenceFrame referenceFrame)
     {
         var args = new ProcedureArgument[]
         {
@@ -93,7 +93,7 @@ public class DockingPort : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// rotation is in.</param>
     [GetRpc("SpaceCenter", "DockingPort_Rotation")]
-    public Quaternion Rotation(ReferenceFrame referenceFrame)
+    public Quaternion GetRotation(ReferenceFrame referenceFrame)
     {
         var args = new ProcedureArgument[]
         {
@@ -111,7 +111,7 @@ public class DockingPort : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// rotation is in.</param>
     [GetRpc("SpaceCenter", "DockingPort_Rotation")]
-    public async Task<Quaternion> RotationAsync(ReferenceFrame referenceFrame)
+    public async Task<Quaternion> GetRotationAsync(ReferenceFrame referenceFrame)
     {
         var args = new ProcedureArgument[]
         {

@@ -24,7 +24,7 @@ public class Orbit : RemoteObject
     /// </summary>
     /// <param name="target">Target orbit.</param>
     [GetRpc("SpaceCenter", "Orbit_DistanceAtClosestApproach")]
-    public double DistanceAtClosestApproach(Orbit target)
+    public double GetDistanceAtClosestApproach(Orbit target)
     {
         var args = new ProcedureArgument[]
         {
@@ -40,7 +40,7 @@ public class Orbit : RemoteObject
     /// </summary>
     /// <param name="target">Target orbit.</param>
     [GetRpc("SpaceCenter", "Orbit_DistanceAtClosestApproach")]
-    public async Task<double> DistanceAtClosestApproachAsync(Orbit target)
+    public async Task<double> GetDistanceAtClosestApproachAsync(Orbit target)
     {
         var args = new ProcedureArgument[]
         {
@@ -55,7 +55,7 @@ public class Orbit : RemoteObject
     /// </summary>
     /// <param name="ut">The universal time, in seconds.</param>
     [GetRpc("SpaceCenter", "Orbit_EccentricAnomalyAtUT")]
-    public Angle EccentricAnomalyAtUT(double ut)
+    public Angle GetEccentricAnomalyAtUT(double ut)
     {
         var args = new ProcedureArgument[]
         {
@@ -72,7 +72,7 @@ public class Orbit : RemoteObject
     /// </summary>
     /// <param name="ut">The universal time, in seconds.</param>
     [GetRpc("SpaceCenter", "Orbit_EccentricAnomalyAtUT")]
-    public async Task<Angle> EccentricAnomalyAtUTAsync(double ut)
+    public async Task<Angle> GetEccentricAnomalyAtUTAsync(double ut)
     {
         var args = new ProcedureArgument[]
         {
@@ -94,7 +94,7 @@ public class Orbit : RemoteObject
     /// <param name="target">Target orbit.</param>
     /// <param name="orbits">The number of future orbits to search.</param>
     [GetRpc("SpaceCenter", "Orbit_ListClosestApproaches")]
-    public IList<IList<double>> ListClosestApproaches(Orbit target, int orbits)
+    public IList<IList<double>> GetListClosestApproaches(Orbit target, int orbits)
     {
         var args = new ProcedureArgument[]
         {
@@ -117,7 +117,7 @@ public class Orbit : RemoteObject
     /// <param name="target">Target orbit.</param>
     /// <param name="orbits">The number of future orbits to search.</param>
     [GetRpc("SpaceCenter", "Orbit_ListClosestApproaches")]
-    public async Task<IList<IList<double>>> ListClosestApproachesAsync(Orbit target, int orbits)
+    public async Task<IList<IList<double>>> GetListClosestApproachesAsync(Orbit target, int orbits)
     {
         var args = new ProcedureArgument[]
         {
@@ -133,7 +133,7 @@ public class Orbit : RemoteObject
     /// </summary>
     /// <param name="ut">The universal time in seconds.</param>
     [GetRpc("SpaceCenter", "Orbit_MeanAnomalyAtUT")]
-    public Angle MeanAnomalyAtUT(double ut)
+    public Angle GetMeanAnomalyAtUT(double ut)
     {
         var args = new ProcedureArgument[]
         {
@@ -150,7 +150,7 @@ public class Orbit : RemoteObject
     /// </summary>
     /// <param name="ut">The universal time in seconds.</param>
     [GetRpc("SpaceCenter", "Orbit_MeanAnomalyAtUT")]
-    public async Task<Angle> MeanAnomalyAtUTAsync(double ut)
+    public async Task<Angle> GetMeanAnomalyAtUTAsync(double ut)
     {
         var args = new ProcedureArgument[]
         {
@@ -166,7 +166,7 @@ public class Orbit : RemoteObject
     /// </summary>
     /// <param name="time">Time from now, in seconds.</param>
     [GetRpc("SpaceCenter", "Orbit_OrbitalSpeedAt")]
-    public double OrbitalSpeedAt(double time)
+    public double GetOrbitalSpeedAt(double time)
     {
         var args = new ProcedureArgument[]
         {
@@ -182,7 +182,7 @@ public class Orbit : RemoteObject
     /// </summary>
     /// <param name="time">Time from now, in seconds.</param>
     [GetRpc("SpaceCenter", "Orbit_OrbitalSpeedAt")]
-    public async Task<double> OrbitalSpeedAtAsync(double time)
+    public async Task<double> GetOrbitalSpeedAtAsync(double time)
     {
         var args = new ProcedureArgument[]
         {
@@ -200,7 +200,7 @@ public class Orbit : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// position vector is in.</param>
     [GetRpc("SpaceCenter", "Orbit_PositionAt")]
-    public Vector3D PositionAt(double ut, ReferenceFrame referenceFrame)
+    public Vector3D GetPositionAt(double ut, ReferenceFrame referenceFrame)
     {
         var args = new ProcedureArgument[]
         {
@@ -220,7 +220,7 @@ public class Orbit : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// position vector is in.</param>
     [GetRpc("SpaceCenter", "Orbit_PositionAt")]
-    public async Task<Vector3D> PositionAtAsync(double ut, ReferenceFrame referenceFrame)
+    public async Task<Vector3D> GetPositionAtAsync(double ut, ReferenceFrame referenceFrame)
     {
         var args = new ProcedureArgument[]
         {
@@ -236,7 +236,7 @@ public class Orbit : RemoteObject
     /// </summary>
     /// <param name="ut">The universal time to measure the radius at.</param>
     [GetRpc("SpaceCenter", "Orbit_RadiusAt")]
-    public double RadiusAt(double ut)
+    public double GetRadiusAt(double ut)
     {
         var args = new ProcedureArgument[]
         {
@@ -252,7 +252,7 @@ public class Orbit : RemoteObject
     /// </summary>
     /// <param name="ut">The universal time to measure the radius at.</param>
     [GetRpc("SpaceCenter", "Orbit_RadiusAt")]
-    public async Task<double> RadiusAtAsync(double ut)
+    public async Task<double> GetRadiusAtAsync(double ut)
     {
         var args = new ProcedureArgument[]
         {
@@ -267,7 +267,7 @@ public class Orbit : RemoteObject
     /// </summary>
     /// <param name="trueAnomaly">The true anomaly.</param>
     [GetRpc("SpaceCenter", "Orbit_RadiusAtTrueAnomaly")]
-    public double RadiusAtTrueAnomaly(Angle trueAnomaly)
+    public double GetRadiusAtTrueAnomaly(Angle trueAnomaly)
     {
         var args = new ProcedureArgument[]
         {
@@ -283,7 +283,7 @@ public class Orbit : RemoteObject
     /// </summary>
     /// <param name="trueAnomaly">The true anomaly.</param>
     [GetRpc("SpaceCenter", "Orbit_RadiusAtTrueAnomaly")]
-    public async Task<double> RadiusAtTrueAnomalyAsync(Angle trueAnomaly)
+    public async Task<double> GetRadiusAtTrueAnomalyAsync(Angle trueAnomaly)
     {
         var args = new ProcedureArgument[]
         {
@@ -298,7 +298,7 @@ public class Orbit : RemoteObject
     /// </summary>
     /// <param name="target">Target orbit.</param>
     [GetRpc("SpaceCenter", "Orbit_RelativeInclination")]
-    public Angle RelativeInclination(Orbit target)
+    public Angle GetRelativeInclination(Orbit target)
     {
         var args = new ProcedureArgument[]
         {
@@ -315,7 +315,7 @@ public class Orbit : RemoteObject
     /// </summary>
     /// <param name="target">Target orbit.</param>
     [GetRpc("SpaceCenter", "Orbit_RelativeInclination")]
-    public async Task<Angle> RelativeInclinationAsync(Orbit target)
+    public async Task<Angle> GetRelativeInclinationAsync(Orbit target)
     {
         var args = new ProcedureArgument[]
         {
@@ -332,7 +332,7 @@ public class Orbit : RemoteObject
     /// <returns>The universal time at closest approach, in seconds.</returns>
     /// <param name="target">Target orbit.</param>
     [GetRpc("SpaceCenter", "Orbit_TimeOfClosestApproach")]
-    public double TimeOfClosestApproach(Orbit target)
+    public double GetTimeOfClosestApproach(Orbit target)
     {
         var args = new ProcedureArgument[]
         {
@@ -349,7 +349,7 @@ public class Orbit : RemoteObject
     /// <returns>The universal time at closest approach, in seconds.</returns>
     /// <param name="target">Target orbit.</param>
     [GetRpc("SpaceCenter", "Orbit_TimeOfClosestApproach")]
-    public async Task<double> TimeOfClosestApproachAsync(Orbit target)
+    public async Task<double> GetTimeOfClosestApproachAsync(Orbit target)
     {
         var args = new ProcedureArgument[]
         {
@@ -364,7 +364,7 @@ public class Orbit : RemoteObject
     /// </summary>
     /// <param name="target">Target orbit.</param>
     [GetRpc("SpaceCenter", "Orbit_TrueAnomalyAtAN")]
-    public Angle TrueAnomalyAtAN(Orbit target)
+    public Angle GetTrueAnomalyAtAN(Orbit target)
     {
         var args = new ProcedureArgument[]
         {
@@ -381,7 +381,7 @@ public class Orbit : RemoteObject
     /// </summary>
     /// <param name="target">Target orbit.</param>
     [GetRpc("SpaceCenter", "Orbit_TrueAnomalyAtAN")]
-    public async Task<Angle> TrueAnomalyAtANAsync(Orbit target)
+    public async Task<Angle> GetTrueAnomalyAtANAsync(Orbit target)
     {
         var args = new ProcedureArgument[]
         {
@@ -397,7 +397,7 @@ public class Orbit : RemoteObject
     /// </summary>
     /// <param name="target">Target orbit.</param>
     [GetRpc("SpaceCenter", "Orbit_TrueAnomalyAtDN")]
-    public Angle TrueAnomalyAtDN(Orbit target)
+    public Angle GetTrueAnomalyAtDN(Orbit target)
     {
         var args = new ProcedureArgument[]
         {
@@ -414,7 +414,7 @@ public class Orbit : RemoteObject
     /// </summary>
     /// <param name="target">Target orbit.</param>
     [GetRpc("SpaceCenter", "Orbit_TrueAnomalyAtDN")]
-    public async Task<Angle> TrueAnomalyAtDNAsync(Orbit target)
+    public async Task<Angle> GetTrueAnomalyAtDNAsync(Orbit target)
     {
         var args = new ProcedureArgument[]
         {
@@ -430,7 +430,7 @@ public class Orbit : RemoteObject
     /// </summary>
     /// <param name="radius">The orbital radius in meters.</param>
     [GetRpc("SpaceCenter", "Orbit_TrueAnomalyAtRadius")]
-    public Angle TrueAnomalyAtRadius(double radius)
+    public Angle GetTrueAnomalyAtRadius(double radius)
     {
         var args = new ProcedureArgument[]
         {
@@ -447,7 +447,7 @@ public class Orbit : RemoteObject
     /// </summary>
     /// <param name="radius">The orbital radius in meters.</param>
     [GetRpc("SpaceCenter", "Orbit_TrueAnomalyAtRadius")]
-    public async Task<Angle> TrueAnomalyAtRadiusAsync(double radius)
+    public async Task<Angle> GetTrueAnomalyAtRadiusAsync(double radius)
     {
         var args = new ProcedureArgument[]
         {
@@ -463,7 +463,7 @@ public class Orbit : RemoteObject
     /// </summary>
     /// <param name="ut">The universal time in seconds.</param>
     [GetRpc("SpaceCenter", "Orbit_TrueAnomalyAtUT")]
-    public Angle TrueAnomalyAtUT(double ut)
+    public Angle GetTrueAnomalyAtUT(double ut)
     {
         var args = new ProcedureArgument[]
         {
@@ -480,7 +480,7 @@ public class Orbit : RemoteObject
     /// </summary>
     /// <param name="ut">The universal time in seconds.</param>
     [GetRpc("SpaceCenter", "Orbit_TrueAnomalyAtUT")]
-    public async Task<Angle> TrueAnomalyAtUTAsync(double ut)
+    public async Task<Angle> GetTrueAnomalyAtUTAsync(double ut)
     {
         var args = new ProcedureArgument[]
         {
@@ -496,7 +496,7 @@ public class Orbit : RemoteObject
     /// </summary>
     /// <param name="trueAnomaly">True anomaly.</param>
     [GetRpc("SpaceCenter", "Orbit_UTAtTrueAnomaly")]
-    public double UTAtTrueAnomaly(Angle trueAnomaly)
+    public double GetUTAtTrueAnomaly(Angle trueAnomaly)
     {
         var args = new ProcedureArgument[]
         {
@@ -512,7 +512,7 @@ public class Orbit : RemoteObject
     /// </summary>
     /// <param name="trueAnomaly">True anomaly.</param>
     [GetRpc("SpaceCenter", "Orbit_UTAtTrueAnomaly")]
-    public async Task<double> UTAtTrueAnomalyAsync(Angle trueAnomaly)
+    public async Task<double> GetUTAtTrueAnomalyAsync(Angle trueAnomaly)
     {
         var args = new ProcedureArgument[]
         {
@@ -530,7 +530,7 @@ public class Orbit : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// direction is in.</param>
     [GetRpc("SpaceCenter", "Orbit_static_ReferencePlaneDirection")]
-    public Vector3D ReferencePlaneDirection(ReferenceFrame referenceFrame)
+    public Vector3D GetReferencePlaneDirection(ReferenceFrame referenceFrame)
     {
         var args = new ProcedureArgument[]
         {
@@ -548,7 +548,7 @@ public class Orbit : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// direction is in.</param>
     [GetRpc("SpaceCenter", "Orbit_static_ReferencePlaneDirection")]
-    public async Task<Vector3D> ReferencePlaneDirectionAsync(ReferenceFrame referenceFrame)
+    public async Task<Vector3D> GetReferencePlaneDirectionAsync(ReferenceFrame referenceFrame)
     {
         var args = new ProcedureArgument[]
         {
@@ -566,7 +566,7 @@ public class Orbit : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// direction is in.</param>
     [GetRpc("SpaceCenter", "Orbit_static_ReferencePlaneNormal")]
-    public Vector3D ReferencePlaneNormal(ReferenceFrame referenceFrame)
+    public Vector3D GetReferencePlaneNormal(ReferenceFrame referenceFrame)
     {
         var args = new ProcedureArgument[]
         {
@@ -585,7 +585,7 @@ public class Orbit : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// direction is in.</param>
     [GetRpc("SpaceCenter", "Orbit_static_ReferencePlaneNormal")]
-    public async Task<Vector3D> ReferencePlaneNormalAsync(ReferenceFrame referenceFrame)
+    public async Task<Vector3D> GetReferencePlaneNormalAsync(ReferenceFrame referenceFrame)
     {
         var args = new ProcedureArgument[]
         {

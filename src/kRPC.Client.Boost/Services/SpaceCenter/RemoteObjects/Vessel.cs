@@ -27,7 +27,7 @@ public class Vessel : RemoteObject
     /// <param name="referenceFrame">The reference frame the returned
     /// angular velocity is in.</param>
     [GetRpc("SpaceCenter", "Vessel_AngularVelocity")]
-    public Vector3D AngularVelocity(ReferenceFrame referenceFrame)
+    public Vector3D GetAngularVelocity(ReferenceFrame referenceFrame)
     {
         var args = new ProcedureArgument[]
         {
@@ -47,7 +47,7 @@ public class Vessel : RemoteObject
     /// <param name="referenceFrame">The reference frame the returned
     /// angular velocity is in.</param>
     [GetRpc("SpaceCenter", "Vessel_AngularVelocity")]
-    public async Task<Vector3D> AngularVelocityAsync(ReferenceFrame referenceFrame)
+    public async Task<Vector3D> GetAngularVelocityAsync(ReferenceFrame referenceFrame)
     {
         var args = new ProcedureArgument[]
         {
@@ -65,7 +65,7 @@ public class Vessel : RemoteObject
     /// </summary>
     /// <param name="pressure">Atmospheric pressure in atmospheres</param>
     [GetRpc("SpaceCenter", "Vessel_AvailableThrustAt")]
-    public float AvailableThrustAt(double pressure)
+    public float GetAvailableThrustAt(double pressure)
     {
         var args = new ProcedureArgument[]
         {
@@ -84,7 +84,7 @@ public class Vessel : RemoteObject
     /// </summary>
     /// <param name="pressure">Atmospheric pressure in atmospheres</param>
     [GetRpc("SpaceCenter", "Vessel_AvailableThrustAt")]
-    public async Task<float> AvailableThrustAtAsync(double pressure)
+    public async Task<float> GetAvailableThrustAtAsync(double pressure)
     {
         var args = new ProcedureArgument[]
         {
@@ -102,7 +102,7 @@ public class Vessel : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// position vectors are in.</param>
     [GetRpc("SpaceCenter", "Vessel_BoundingBox")]
-    public Tuple<Vector3D,Vector3D> BoundingBox(ReferenceFrame referenceFrame)
+    public Tuple<Vector3D,Vector3D> GetBoundingBox(ReferenceFrame referenceFrame)
     {
         var args = new ProcedureArgument[]
         {
@@ -121,7 +121,7 @@ public class Vessel : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// position vectors are in.</param>
     [GetRpc("SpaceCenter", "Vessel_BoundingBox")]
-    public async Task<Tuple<Vector3D,Vector3D>> BoundingBoxAsync(ReferenceFrame referenceFrame)
+    public async Task<Tuple<Vector3D,Vector3D>> GetBoundingBoxAsync(ReferenceFrame referenceFrame)
     {
         var args = new ProcedureArgument[]
         {
@@ -138,7 +138,7 @@ public class Vessel : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// direction is in.</param>
     [GetRpc("SpaceCenter", "Vessel_Direction")]
-    public Vector3D Direction(ReferenceFrame referenceFrame)
+    public Vector3D GetDirection(ReferenceFrame referenceFrame)
     {
         var args = new ProcedureArgument[]
         {
@@ -156,7 +156,7 @@ public class Vessel : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// direction is in.</param>
     [GetRpc("SpaceCenter", "Vessel_Direction")]
-    public async Task<Vector3D> DirectionAsync(ReferenceFrame referenceFrame)
+    public async Task<Vector3D> GetDirectionAsync(ReferenceFrame referenceFrame)
     {
         var args = new ProcedureArgument[]
         {
@@ -175,7 +175,7 @@ public class Vessel : RemoteObject
     /// (<see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Vessel.GetSurfaceReferenceFrame" />).
     /// </param>
     [GetRpc("SpaceCenter", "Vessel_Flight")]
-    public Flight Flight(ReferenceFrame? referenceFrame = null)
+    public Flight GetFlight(ReferenceFrame? referenceFrame = null)
     {
         var args = new ProcedureArgument[]
         {
@@ -195,7 +195,7 @@ public class Vessel : RemoteObject
     /// (<see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Vessel.GetSurfaceReferenceFrame" />).
     /// </param>
     [GetRpc("SpaceCenter", "Vessel_Flight")]
-    public async Task<Flight> FlightAsync(ReferenceFrame? referenceFrame = null)
+    public async Task<Flight> GetFlightAsync(ReferenceFrame? referenceFrame = null)
     {
         var args = new ProcedureArgument[]
         {
@@ -213,7 +213,7 @@ public class Vessel : RemoteObject
     /// </summary>
     /// <param name="pressure">Atmospheric pressure in atmospheres</param>
     [GetRpc("SpaceCenter", "Vessel_MaxThrustAt")]
-    public float MaxThrustAt(double pressure)
+    public float GetMaxThrustAt(double pressure)
     {
         var args = new ProcedureArgument[]
         {
@@ -232,7 +232,7 @@ public class Vessel : RemoteObject
     /// </summary>
     /// <param name="pressure">Atmospheric pressure in atmospheres</param>
     [GetRpc("SpaceCenter", "Vessel_MaxThrustAt")]
-    public async Task<float> MaxThrustAtAsync(double pressure)
+    public async Task<float> GetMaxThrustAtAsync(double pressure)
     {
         var args = new ProcedureArgument[]
         {
@@ -249,7 +249,7 @@ public class Vessel : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// position vector is in.</param>
     [GetRpc("SpaceCenter", "Vessel_Position")]
-    public Vector3D Position(ReferenceFrame referenceFrame)
+    public Vector3D GetPosition(ReferenceFrame referenceFrame)
     {
         var args = new ProcedureArgument[]
         {
@@ -267,7 +267,7 @@ public class Vessel : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// position vector is in.</param>
     [GetRpc("SpaceCenter", "Vessel_Position")]
-    public async Task<Vector3D> PositionAsync(ReferenceFrame referenceFrame)
+    public async Task<Vector3D> GetPositionAsync(ReferenceFrame referenceFrame)
     {
         var args = new ProcedureArgument[]
         {
@@ -313,7 +313,7 @@ public class Vessel : RemoteObject
     /// decoupled in just the given stage. When <c>true</c> returns the resources decoupled in
     /// the given stage and all subsequent stages combined.</param>
     [GetRpc("SpaceCenter", "Vessel_ResourcesInDecoupleStage")]
-    public Resources ResourcesInDecoupleStage(int stage, bool cumulative = true)
+    public Resources GetResourcesInDecoupleStage(int stage, bool cumulative = true)
     {
         var args = new ProcedureArgument[]
         {
@@ -334,7 +334,7 @@ public class Vessel : RemoteObject
     /// decoupled in just the given stage. When <c>true</c> returns the resources decoupled in
     /// the given stage and all subsequent stages combined.</param>
     [GetRpc("SpaceCenter", "Vessel_ResourcesInDecoupleStage")]
-    public async Task<Resources> ResourcesInDecoupleStageAsync(int stage, bool cumulative = true)
+    public async Task<Resources> GetResourcesInDecoupleStageAsync(int stage, bool cumulative = true)
     {
         var args = new ProcedureArgument[]
         {
@@ -352,7 +352,7 @@ public class Vessel : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// rotation is in.</param>
     [GetRpc("SpaceCenter", "Vessel_Rotation")]
-    public Quaternion Rotation(ReferenceFrame referenceFrame)
+    public Quaternion GetRotation(ReferenceFrame referenceFrame)
     {
         var args = new ProcedureArgument[]
         {
@@ -370,7 +370,7 @@ public class Vessel : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// rotation is in.</param>
     [GetRpc("SpaceCenter", "Vessel_Rotation")]
-    public async Task<Quaternion> RotationAsync(ReferenceFrame referenceFrame)
+    public async Task<Quaternion> GetRotationAsync(ReferenceFrame referenceFrame)
     {
         var args = new ProcedureArgument[]
         {
@@ -387,7 +387,7 @@ public class Vessel : RemoteObject
     /// </summary>
     /// <param name="pressure">Atmospheric pressure in atmospheres</param>
     [GetRpc("SpaceCenter", "Vessel_SpecificImpulseAt")]
-    public float SpecificImpulseAt(double pressure)
+    public float GetSpecificImpulseAt(double pressure)
     {
         var args = new ProcedureArgument[]
         {
@@ -405,7 +405,7 @@ public class Vessel : RemoteObject
     /// </summary>
     /// <param name="pressure">Atmospheric pressure in atmospheres</param>
     [GetRpc("SpaceCenter", "Vessel_SpecificImpulseAt")]
-    public async Task<float> SpecificImpulseAtAsync(double pressure)
+    public async Task<float> GetSpecificImpulseAtAsync(double pressure)
     {
         var args = new ProcedureArgument[]
         {
@@ -423,7 +423,7 @@ public class Vessel : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// velocity vector is in.</param>
     [GetRpc("SpaceCenter", "Vessel_Velocity")]
-    public Vector3D Velocity(ReferenceFrame referenceFrame)
+    public Vector3D GetVelocity(ReferenceFrame referenceFrame)
     {
         var args = new ProcedureArgument[]
         {
@@ -442,7 +442,7 @@ public class Vessel : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// velocity vector is in.</param>
     [GetRpc("SpaceCenter", "Vessel_Velocity")]
-    public async Task<Vector3D> VelocityAsync(ReferenceFrame referenceFrame)
+    public async Task<Vector3D> GetVelocityAsync(ReferenceFrame referenceFrame)
     {
         var args = new ProcedureArgument[]
         {

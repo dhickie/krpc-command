@@ -319,7 +319,7 @@ public class SpaceCenter : ServiceObject
     /// <param name="craftDirectory">Name of the directory in the current saves
     /// "Ships" directory. For example <c>"VAB"</c> or <c>"SPH"</c>.</param>
     [GetRpc("SpaceCenter", "LaunchableVessels")]
-    public IList<string> LaunchableVessels(string craftDirectory)
+    public IList<string> GetLaunchableVessels(string craftDirectory)
     {
         var args = new ProcedureArgument[]
         {
@@ -336,7 +336,7 @@ public class SpaceCenter : ServiceObject
     /// <param name="craftDirectory">Name of the directory in the current saves
     /// "Ships" directory. For example <c>"VAB"</c> or <c>"SPH"</c>.</param>
     [GetRpc("SpaceCenter", "LaunchableVessels")]
-    public async Task<IList<string>> LaunchableVesselsAsync(string craftDirectory)
+    public async Task<IList<string>> GetLaunchableVesselsAsync(string craftDirectory)
     {
         var args = new ProcedureArgument[]
         {

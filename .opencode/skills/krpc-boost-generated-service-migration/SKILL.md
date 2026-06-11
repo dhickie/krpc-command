@@ -1,6 +1,6 @@
 ---
 name: krpc-boost-generated-service-migration
-description: "Use when migrating generated kRPC C# service client code to kRPC.Client.Boost conventions. Use this skill whenever the user mentions repeating CONTEXT.md updates, generated kRPC service migrations, kRPC.Client.Boost generated services, ConnectionMultiplexer/IConnectionMultiplexer, ServiceObject/RemoteObject invoke helpers, RemoteObject constructor access, RPCAttribute/Rpc/GetRpcAttribute/SetRpcAttribute cleanup, Encoder/Decode removal, ProcedureArgument arrays, property-to-method conversion, async RPC wrappers, nullable generated RPCs, XML comment cleanup, see cref namespace fixes, or Vector3D/Quaternion/Angle conversions for generated kRPC clients, even if they name a service other than SpaceCenter."
+description: "Use when migrating generated kRPC C# service client code to kRPC.Client.Boost conventions. Use this skill whenever the user mentions repeating CONTEXT.md updates, generated kRPC service migrations, kRPC.Client.Boost generated services, ConnectionMultiplexer/IConnectionMultiplexer, ServiceObject/RemoteObject invoke helpers, RemoteObject constructor access, RPCAttribute/Rpc/GetRpcAttribute/SetRpcAttribute cleanup, GetRpc public method naming, Encoder/Decode removal, ProcedureArgument arrays, property-to-method conversion, async RPC wrappers, nullable generated RPCs, XML comment cleanup, see cref namespace fixes, or Vector3D/Quaternion/Angle conversions for generated kRPC clients, even if they name a service other than SpaceCenter."
 ---
 
 # kRPC Boost Generated Service Migration
@@ -102,7 +102,32 @@ When splitting XML documentation:
 - When XML comments mention null values for parameters, compare the comment to the method signature. If the parameter default is non-null, such as `""`, update the wording to name that default and make the parameter non-nullable unless the generated contract explicitly allows null.
 - Place XML comments before attributes, not between an attribute and the method declaration.
 
-### 5. Add Async Counterparts
+### 5. Normalize `GetRpc` Public Method Names
+
+Generated query methods that use `[GetRpc(...)]` should make their value-returning nature obvious at the public API boundary:
+
+- For `[GetRpc(...)]` methods that return a non-boolean value, prefix the public method name with `Get` unless the method is covered by an explicit exception below. Apply the same base name to the async counterpart, with `Async` appended after the new name.
+- Do not rename methods that already start with `Get`.
+- Do not add `Get` to boolean query methods returning `bool` or `Task<bool>`. Names such as `Has...`, `Can...`, `Is...`, `Active`, `Check...`, or other predicate-style names are clearer without a `Get` prefix.
+- Preserve the `[GetRpc(...)]` service and procedure metadata exactly. Rename only the C# wrapper method and any matching XML `cref` references or generated-code call sites in the same scoped Boost client surface.
+- Do not rewrite manually maintained application code that still uses stock `KRPC.Client.Services.*` types; those APIs may intentionally keep the original generated names.
+
+SpaceCenter-specific exceptions from the established migration:
+
+- Keep `SpaceCenter.RaycastDistance`, `SpaceCenter.RaycastPart`, `SpaceCenter.TransformDirection`, `SpaceCenter.TransformPosition`, `SpaceCenter.TransformRotation`, and `SpaceCenter.TransformVelocity` without a `Get` prefix because their names describe operations rather than simple value accessors.
+- Keep `Flight.SimulateAerodynamicForceAt` without a `Get` prefix for the same reason.
+
+SpaceCenter collection helpers use more descriptive names than a plain `Get` prefix:
+
+- In `Parts`, rename `InDecoupleStage` to `GetPartsInDecoupleStage` and `InDecoupleStageAsync` to `GetPartsInDecoupleStageAsync`.
+- In `Parts`, rename `InStage` to `GetPartsInStage` and `InStageAsync` to `GetPartsInStageAsync`.
+- In `Parts`, rename `WithModule`, `WithName`, `WithTag`, and `WithTitle` to `GetPartsWithModule`, `GetPartsWithName`, `GetPartsWithTag`, and `GetPartsWithTitle`; apply the same names to async counterparts before `Async`.
+- In `Parts`, use the simple rule for `ModulesWithName`: `GetModulesWithName` / `GetModulesWithNameAsync`.
+- In `Resources`, rename `WithResource` to `GetResourcesWithName` and `WithResourceAsync` to `GetResourcesWithNameAsync`.
+
+When applying this rule to services other than SpaceCenter, infer equivalent domain-specific collection names conservatively. Prefer a plain `Get` prefix when there is no clear, established domain name.
+
+### 6. Add Async Counterparts
 
 For every generated synchronous RPC wrapper, add an async counterpart unless one already exists:
 
@@ -116,7 +141,7 @@ For every generated synchronous RPC wrapper, add an async counterpart unless one
 
 Async wrappers should not call synchronous `Invoke(...)` methods.
 
-### 6. Apply Nullable Reference Type Corrections
+### 7. Apply Nullable Reference Type Corrections
 
 Infer nullability from generated defaults and XML documentation:
 
@@ -128,7 +153,7 @@ Infer nullability from generated defaults and XML documentation:
 
 Do not remove nullable markers merely because the RPC transport type is non-nullable internally. The public generated API should reflect documented null behavior.
 
-### 7. Migrate Domain Types Conservatively
+### 8. Migrate Domain Types Conservatively
 
 Use XML documentation, procedure names, parameter names, and surrounding methods to infer type meaning. Prefer no migration over a misleading migration when the meaning is unclear.
 
@@ -155,14 +180,14 @@ Angles:
 - Preserve per-second meaning in XML docs for angular rates, even when the public type is `Angle`.
 - Remove explicit degrees/radians wording from docs when the `Angle` type now carries unit semantics, except where rate wording remains important.
 
-### 8. Normalize Generated Formatting
+### 9. Normalize Generated Formatting
 
 - Remove extra whitespace before method declaration and invocation parentheses.
 - Put initializer braces such as `new ProcedureArgument[]` on their own line.
 - Preserve normal control-flow spacing such as `if (...)`.
 - Do not churn formatting outside the scoped generated files.
 
-### 9. Validate XML Code References
+### 10. Validate XML Code References
 
 Generated XML docs often contain `<see cref="..." />` references that become stale after classes move namespaces or properties convert to methods:
 
@@ -206,6 +231,9 @@ Check structural invariants:
 - Every generated getter, setter, synchronous RPC wrapper, and async RPC wrapper has an immediate `[GetRpc(...)]` or `[SetRpc(...)]` attribute with the same procedure name used by the body.
 - Generated property getters (`get_...` or `_get_...`) use `[GetRpc(...)]`; generated property setters (`set_...` or `_set_...`) use `[SetRpc(...)]`.
 - Query/calculation helpers that return values without changing state use `[GetRpc(...)]`, even when their names are not prefixed with `Get`.
+- Non-boolean `[GetRpc(...)]` public wrapper names are prefixed with `Get`, except for explicit operation-style exceptions such as SpaceCenter `Raycast...`, SpaceCenter `Transform...`, and `Flight.SimulateAerodynamicForceAt`.
+- Boolean `[GetRpc(...)]` wrappers returning `bool` or `Task<bool>` keep predicate-style names such as `Has...`, `Can...`, `Is...`, `Active`, or similar names rather than becoming `Get...`.
+- SpaceCenter collection helper names follow the established custom names: `GetPartsInDecoupleStage`, `GetPartsInStage`, `GetPartsWithModule`, `GetPartsWithName`, `GetPartsWithTag`, `GetPartsWithTitle`, and `GetResourcesWithName`, with matching async counterparts.
 - Command/mutation helpers use `[SetRpc(...)]`, even when they return a created object, affected object, handle, or status value.
 - Search for suspicious mismatches such as `[GetRpc("...", "...set_...")]`, `[SetRpc("...", "...get_...")]`, and command-like names accidentally classified as getters.
 - As a sanity check, list `[SetRpc(...)]` methods whose return type is not exactly `void` or `Task`; inspect each result, but treat non-void command returns as acceptable when the RPC semantics are mutation/command-oriented.

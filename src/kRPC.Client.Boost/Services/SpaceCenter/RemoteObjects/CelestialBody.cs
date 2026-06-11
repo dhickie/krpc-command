@@ -24,7 +24,7 @@ public class CelestialBody : RemoteObject
     /// <param name="position">Position as a vector.</param>
     /// <param name="referenceFrame">Reference frame for the position vector.</param>
     [GetRpc("SpaceCenter", "CelestialBody_AltitudeAtPosition")]
-    public double AltitudeAtPosition(Vector3D position, ReferenceFrame referenceFrame)
+    public double GetAltitudeAtPosition(Vector3D position, ReferenceFrame referenceFrame)
     {
         var args = new ProcedureArgument[]
         {
@@ -42,7 +42,7 @@ public class CelestialBody : RemoteObject
     /// <param name="position">Position as a vector.</param>
     /// <param name="referenceFrame">Reference frame for the position vector.</param>
     [GetRpc("SpaceCenter", "CelestialBody_AltitudeAtPosition")]
-    public async Task<double> AltitudeAtPositionAsync(Vector3D position, ReferenceFrame referenceFrame)
+    public async Task<double> GetAltitudeAtPositionAsync(Vector3D position, ReferenceFrame referenceFrame)
     {
         var args = new ProcedureArgument[]
         {
@@ -62,7 +62,7 @@ public class CelestialBody : RemoteObject
     /// <param name="referenceFrame">The reference frame the returned
     /// angular velocity is in.</param>
     [GetRpc("SpaceCenter", "CelestialBody_AngularVelocity")]
-    public Vector3D AngularVelocity(ReferenceFrame referenceFrame)
+    public Vector3D GetAngularVelocity(ReferenceFrame referenceFrame)
     {
         var args = new ProcedureArgument[]
         {
@@ -82,7 +82,7 @@ public class CelestialBody : RemoteObject
     /// <param name="referenceFrame">The reference frame the returned
     /// angular velocity is in.</param>
     [GetRpc("SpaceCenter", "CelestialBody_AngularVelocity")]
-    public async Task<Vector3D> AngularVelocityAsync(ReferenceFrame referenceFrame)
+    public async Task<Vector3D> GetAngularVelocityAsync(ReferenceFrame referenceFrame)
     {
         var args = new ProcedureArgument[]
         {
@@ -99,7 +99,7 @@ public class CelestialBody : RemoteObject
     /// <param name="position">The position vector at which to measure the density.</param>
     /// <param name="referenceFrame">Reference frame that the position vector is in.</param>
     [GetRpc("SpaceCenter", "CelestialBody_AtmosphericDensityAtPosition")]
-    public double AtmosphericDensityAtPosition(Vector3D position, ReferenceFrame referenceFrame)
+    public double GetAtmosphericDensityAtPosition(Vector3D position, ReferenceFrame referenceFrame)
     {
         var args = new ProcedureArgument[]
         {
@@ -118,7 +118,7 @@ public class CelestialBody : RemoteObject
     /// <param name="position">The position vector at which to measure the density.</param>
     /// <param name="referenceFrame">Reference frame that the position vector is in.</param>
     [GetRpc("SpaceCenter", "CelestialBody_AtmosphericDensityAtPosition")]
-    public async Task<double> AtmosphericDensityAtPositionAsync(Vector3D position, ReferenceFrame referenceFrame)
+    public async Task<double> GetAtmosphericDensityAtPositionAsync(Vector3D position, ReferenceFrame referenceFrame)
     {
         var args = new ProcedureArgument[]
         {
@@ -137,7 +137,7 @@ public class CelestialBody : RemoteObject
     /// <param name="latitude">Latitude.</param>
     /// <param name="longitude">Longitude.</param>
     [GetRpc("SpaceCenter", "CelestialBody_BedrockHeight")]
-    public double BedrockHeight(Angle latitude, Angle longitude)
+    public double GetBedrockHeight(Angle latitude, Angle longitude)
     {
         var args = new ProcedureArgument[]
         {
@@ -157,7 +157,7 @@ public class CelestialBody : RemoteObject
     /// <param name="latitude">Latitude.</param>
     /// <param name="longitude">Longitude.</param>
     [GetRpc("SpaceCenter", "CelestialBody_BedrockHeight")]
-    public async Task<double> BedrockHeightAsync(Angle latitude, Angle longitude)
+    public async Task<double> GetBedrockHeightAsync(Angle latitude, Angle longitude)
     {
         var args = new ProcedureArgument[]
         {
@@ -177,7 +177,7 @@ public class CelestialBody : RemoteObject
     /// <param name="longitude">Longitude.</param>
     /// <param name="referenceFrame">Reference frame for the returned position vector.</param>
     [GetRpc("SpaceCenter", "CelestialBody_BedrockPosition")]
-    public Vector3D BedrockPosition(Angle latitude, Angle longitude, ReferenceFrame referenceFrame)
+    public Vector3D GetBedrockPosition(Angle latitude, Angle longitude, ReferenceFrame referenceFrame)
     {
         var args = new ProcedureArgument[]
         {
@@ -199,7 +199,7 @@ public class CelestialBody : RemoteObject
     /// <param name="longitude">Longitude.</param>
     /// <param name="referenceFrame">Reference frame for the returned position vector.</param>
     [GetRpc("SpaceCenter", "CelestialBody_BedrockPosition")]
-    public async Task<Vector3D> BedrockPositionAsync(Angle latitude, Angle longitude, ReferenceFrame referenceFrame)
+    public async Task<Vector3D> GetBedrockPositionAsync(Angle latitude, Angle longitude, ReferenceFrame referenceFrame)
     {
         var args = new ProcedureArgument[]
         {
@@ -215,7 +215,7 @@ public class CelestialBody : RemoteObject
     /// The biome at the given latitude and longitude.
     /// </summary>
     [GetRpc("SpaceCenter", "CelestialBody_BiomeAt")]
-    public string BiomeAt(Angle latitude, Angle longitude)
+    public string GetBiomeAt(Angle latitude, Angle longitude)
     {
         var args = new ProcedureArgument[]
         {
@@ -231,7 +231,7 @@ public class CelestialBody : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [GetRpc("SpaceCenter", "CelestialBody_BiomeAt")]
-    public async Task<string> BiomeAtAsync(Angle latitude, Angle longitude)
+    public async Task<string> GetBiomeAtAsync(Angle latitude, Angle longitude)
     {
         var args = new ProcedureArgument[]
         {
@@ -254,7 +254,7 @@ public class CelestialBody : RemoteObject
     /// for trajectory prediction.
     /// </remarks>
     [GetRpc("SpaceCenter", "CelestialBody_DensityAt")]
-    public double DensityAt(double altitude)
+    public double GetDensityAt(double altitude)
     {
         var args = new ProcedureArgument[]
         {
@@ -277,7 +277,7 @@ public class CelestialBody : RemoteObject
     /// for trajectory prediction.
     /// </remarks>
     [GetRpc("SpaceCenter", "CelestialBody_DensityAt")]
-    public async Task<double> DensityAtAsync(double altitude)
+    public async Task<double> GetDensityAtAsync(double altitude)
     {
         var args = new ProcedureArgument[]
         {
@@ -295,7 +295,7 @@ public class CelestialBody : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// direction is in.</param>
     [GetRpc("SpaceCenter", "CelestialBody_Direction")]
-    public Vector3D Direction(ReferenceFrame referenceFrame)
+    public Vector3D GetDirection(ReferenceFrame referenceFrame)
     {
         var args = new ProcedureArgument[]
         {
@@ -314,7 +314,7 @@ public class CelestialBody : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// direction is in.</param>
     [GetRpc("SpaceCenter", "CelestialBody_Direction")]
-    public async Task<Vector3D> DirectionAsync(ReferenceFrame referenceFrame)
+    public async Task<Vector3D> GetDirectionAsync(ReferenceFrame referenceFrame)
     {
         var args = new ProcedureArgument[]
         {
@@ -330,7 +330,7 @@ public class CelestialBody : RemoteObject
     /// <param name="position">Position as a vector.</param>
     /// <param name="referenceFrame">Reference frame for the position vector.</param>
     [GetRpc("SpaceCenter", "CelestialBody_LatitudeAtPosition")]
-    public Angle LatitudeAtPosition(Vector3D position, ReferenceFrame referenceFrame)
+    public Angle GetLatitudeAtPosition(Vector3D position, ReferenceFrame referenceFrame)
     {
         var args = new ProcedureArgument[]
         {
@@ -349,7 +349,7 @@ public class CelestialBody : RemoteObject
     /// <param name="position">Position as a vector.</param>
     /// <param name="referenceFrame">Reference frame for the position vector.</param>
     [GetRpc("SpaceCenter", "CelestialBody_LatitudeAtPosition")]
-    public async Task<Angle> LatitudeAtPositionAsync(Vector3D position, ReferenceFrame referenceFrame)
+    public async Task<Angle> GetLatitudeAtPositionAsync(Vector3D position, ReferenceFrame referenceFrame)
     {
         var args = new ProcedureArgument[]
         {
@@ -367,7 +367,7 @@ public class CelestialBody : RemoteObject
     /// <param name="position">Position as a vector.</param>
     /// <param name="referenceFrame">Reference frame for the position vector.</param>
     [GetRpc("SpaceCenter", "CelestialBody_LongitudeAtPosition")]
-    public Angle LongitudeAtPosition(Vector3D position, ReferenceFrame referenceFrame)
+    public Angle GetLongitudeAtPosition(Vector3D position, ReferenceFrame referenceFrame)
     {
         var args = new ProcedureArgument[]
         {
@@ -386,7 +386,7 @@ public class CelestialBody : RemoteObject
     /// <param name="position">Position as a vector.</param>
     /// <param name="referenceFrame">Reference frame for the position vector.</param>
     [GetRpc("SpaceCenter", "CelestialBody_LongitudeAtPosition")]
-    public async Task<Angle> LongitudeAtPositionAsync(Vector3D position, ReferenceFrame referenceFrame)
+    public async Task<Angle> GetLongitudeAtPositionAsync(Vector3D position, ReferenceFrame referenceFrame)
     {
         var args = new ProcedureArgument[]
         {
@@ -407,7 +407,7 @@ public class CelestialBody : RemoteObject
     /// <param name="longitude">Longitude.</param>
     /// <param name="referenceFrame">Reference frame for the returned position vector.</param>
     [GetRpc("SpaceCenter", "CelestialBody_MSLPosition")]
-    public Vector3D MSLPosition(Angle latitude, Angle longitude, ReferenceFrame referenceFrame)
+    public Vector3D GetMSLPosition(Angle latitude, Angle longitude, ReferenceFrame referenceFrame)
     {
         var args = new ProcedureArgument[]
         {
@@ -429,7 +429,7 @@ public class CelestialBody : RemoteObject
     /// <param name="longitude">Longitude.</param>
     /// <param name="referenceFrame">Reference frame for the returned position vector.</param>
     [GetRpc("SpaceCenter", "CelestialBody_MSLPosition")]
-    public async Task<Vector3D> MSLPositionAsync(Angle latitude, Angle longitude, ReferenceFrame referenceFrame)
+    public async Task<Vector3D> GetMSLPositionAsync(Angle latitude, Angle longitude, ReferenceFrame referenceFrame)
     {
         var args = new ProcedureArgument[]
         {
@@ -448,7 +448,7 @@ public class CelestialBody : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// position vector is in.</param>
     [GetRpc("SpaceCenter", "CelestialBody_Position")]
-    public Vector3D Position(ReferenceFrame referenceFrame)
+    public Vector3D GetPosition(ReferenceFrame referenceFrame)
     {
         var args = new ProcedureArgument[]
         {
@@ -466,7 +466,7 @@ public class CelestialBody : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// position vector is in.</param>
     [GetRpc("SpaceCenter", "CelestialBody_Position")]
-    public async Task<Vector3D> PositionAsync(ReferenceFrame referenceFrame)
+    public async Task<Vector3D> GetPositionAsync(ReferenceFrame referenceFrame)
     {
         var args = new ProcedureArgument[]
         {
@@ -485,7 +485,7 @@ public class CelestialBody : RemoteObject
     /// <param name="altitude">Altitude in meters above sea level.</param>
     /// <param name="referenceFrame">Reference frame for the returned position vector.</param>
     [GetRpc("SpaceCenter", "CelestialBody_PositionAtAltitude")]
-    public Vector3D PositionAtAltitude(Angle latitude, Angle longitude, double altitude, ReferenceFrame referenceFrame)
+    public Vector3D GetPositionAtAltitude(Angle latitude, Angle longitude, double altitude, ReferenceFrame referenceFrame)
     {
         var args = new ProcedureArgument[]
         {
@@ -508,7 +508,7 @@ public class CelestialBody : RemoteObject
     /// <param name="altitude">Altitude in meters above sea level.</param>
     /// <param name="referenceFrame">Reference frame for the returned position vector.</param>
     [GetRpc("SpaceCenter", "CelestialBody_PositionAtAltitude")]
-    public async Task<Vector3D> PositionAtAltitudeAsync(Angle latitude, Angle longitude, double altitude, ReferenceFrame referenceFrame)
+    public async Task<Vector3D> GetPositionAtAltitudeAsync(Angle latitude, Angle longitude, double altitude, ReferenceFrame referenceFrame)
     {
         var args = new ProcedureArgument[]
         {
@@ -526,7 +526,7 @@ public class CelestialBody : RemoteObject
     /// altitude above sea level, in meters.
     /// </summary>
     [GetRpc("SpaceCenter", "CelestialBody_PressureAt")]
-    public double PressureAt(double altitude)
+    public double GetPressureAt(double altitude)
     {
         var args = new ProcedureArgument[]
         {
@@ -542,7 +542,7 @@ public class CelestialBody : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [GetRpc("SpaceCenter", "CelestialBody_PressureAt")]
-    public async Task<double> PressureAtAsync(double altitude)
+    public async Task<double> GetPressureAtAsync(double altitude)
     {
         var args = new ProcedureArgument[]
         {
@@ -559,7 +559,7 @@ public class CelestialBody : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// rotation is in.</param>
     [GetRpc("SpaceCenter", "CelestialBody_Rotation")]
-    public Quaternion Rotation(ReferenceFrame referenceFrame)
+    public Quaternion GetRotation(ReferenceFrame referenceFrame)
     {
         var args = new ProcedureArgument[]
         {
@@ -577,7 +577,7 @@ public class CelestialBody : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// rotation is in.</param>
     [GetRpc("SpaceCenter", "CelestialBody_Rotation")]
-    public async Task<Quaternion> RotationAsync(ReferenceFrame referenceFrame)
+    public async Task<Quaternion> GetRotationAsync(ReferenceFrame referenceFrame)
     {
         var args = new ProcedureArgument[]
         {
@@ -594,7 +594,7 @@ public class CelestialBody : RemoteObject
     /// <param name="latitude">Latitude.</param>
     /// <param name="longitude">Longitude.</param>
     [GetRpc("SpaceCenter", "CelestialBody_SurfaceHeight")]
-    public double SurfaceHeight(Angle latitude, Angle longitude)
+    public double GetSurfaceHeight(Angle latitude, Angle longitude)
     {
         var args = new ProcedureArgument[]
         {
@@ -613,7 +613,7 @@ public class CelestialBody : RemoteObject
     /// <param name="latitude">Latitude.</param>
     /// <param name="longitude">Longitude.</param>
     [GetRpc("SpaceCenter", "CelestialBody_SurfaceHeight")]
-    public async Task<double> SurfaceHeightAsync(Angle latitude, Angle longitude)
+    public async Task<double> GetSurfaceHeightAsync(Angle latitude, Angle longitude)
     {
         var args = new ProcedureArgument[]
         {
@@ -633,7 +633,7 @@ public class CelestialBody : RemoteObject
     /// <param name="longitude">Longitude.</param>
     /// <param name="referenceFrame">Reference frame for the returned position vector.</param>
     [GetRpc("SpaceCenter", "CelestialBody_SurfacePosition")]
-    public Vector3D SurfacePosition(Angle latitude, Angle longitude, ReferenceFrame referenceFrame)
+    public Vector3D GetSurfacePosition(Angle latitude, Angle longitude, ReferenceFrame referenceFrame)
     {
         var args = new ProcedureArgument[]
         {
@@ -655,7 +655,7 @@ public class CelestialBody : RemoteObject
     /// <param name="longitude">Longitude.</param>
     /// <param name="referenceFrame">Reference frame for the returned position vector.</param>
     [GetRpc("SpaceCenter", "CelestialBody_SurfacePosition")]
-    public async Task<Vector3D> SurfacePositionAsync(Angle latitude, Angle longitude, ReferenceFrame referenceFrame)
+    public async Task<Vector3D> GetSurfacePositionAsync(Angle latitude, Angle longitude, ReferenceFrame referenceFrame)
     {
         var args = new ProcedureArgument[]
         {
@@ -677,7 +677,7 @@ public class CelestialBody : RemoteObject
     /// the value could be wrong if you want to know the temperature in the far future.
     /// </remarks>
     [GetRpc("SpaceCenter", "CelestialBody_TemperatureAt")]
-    public double TemperatureAt(Vector3D position, ReferenceFrame referenceFrame)
+    public double GetTemperatureAt(Vector3D position, ReferenceFrame referenceFrame)
     {
         var args = new ProcedureArgument[]
         {
@@ -699,7 +699,7 @@ public class CelestialBody : RemoteObject
     /// the value could be wrong if you want to know the temperature in the far future.
     /// </remarks>
     [GetRpc("SpaceCenter", "CelestialBody_TemperatureAt")]
-    public async Task<double> TemperatureAtAsync(Vector3D position, ReferenceFrame referenceFrame)
+    public async Task<double> GetTemperatureAtAsync(Vector3D position, ReferenceFrame referenceFrame)
     {
         var args = new ProcedureArgument[]
         {
@@ -718,7 +718,7 @@ public class CelestialBody : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// velocity vector is in.</param>
     [GetRpc("SpaceCenter", "CelestialBody_Velocity")]
-    public Vector3D Velocity(ReferenceFrame referenceFrame)
+    public Vector3D GetVelocity(ReferenceFrame referenceFrame)
     {
         var args = new ProcedureArgument[]
         {
@@ -737,7 +737,7 @@ public class CelestialBody : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// velocity vector is in.</param>
     [GetRpc("SpaceCenter", "CelestialBody_Velocity")]
-    public async Task<Vector3D> VelocityAsync(ReferenceFrame referenceFrame)
+    public async Task<Vector3D> GetVelocityAsync(ReferenceFrame referenceFrame)
     {
         var args = new ProcedureArgument[]
         {

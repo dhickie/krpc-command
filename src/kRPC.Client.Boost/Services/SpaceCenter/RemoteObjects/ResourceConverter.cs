@@ -51,7 +51,7 @@ public class ResourceConverter : RemoteObject
     /// </summary>
     /// <param name="index">Index of the converter.</param>
     [GetRpc("SpaceCenter", "ResourceConverter_Inputs")]
-    public IList<string> Inputs(int index)
+    public IList<string> GetInputs(int index)
     {
         var args = new ProcedureArgument[]
         {
@@ -67,7 +67,7 @@ public class ResourceConverter : RemoteObject
     /// </summary>
     /// <param name="index">Index of the converter.</param>
     [GetRpc("SpaceCenter", "ResourceConverter_Inputs")]
-    public async Task<IList<string>> InputsAsync(int index)
+    public async Task<IList<string>> GetInputsAsync(int index)
     {
         var args = new ProcedureArgument[]
         {
@@ -82,7 +82,7 @@ public class ResourceConverter : RemoteObject
     /// </summary>
     /// <param name="index">Index of the converter.</param>
     [GetRpc("SpaceCenter", "ResourceConverter_Name")]
-    public string Name(int index)
+    public string GetName(int index)
     {
         var args = new ProcedureArgument[]
         {
@@ -98,7 +98,7 @@ public class ResourceConverter : RemoteObject
     /// </summary>
     /// <param name="index">Index of the converter.</param>
     [GetRpc("SpaceCenter", "ResourceConverter_Name")]
-    public async Task<string> NameAsync(int index)
+    public async Task<string> GetNameAsync(int index)
     {
         var args = new ProcedureArgument[]
         {
@@ -113,7 +113,7 @@ public class ResourceConverter : RemoteObject
     /// </summary>
     /// <param name="index">Index of the converter.</param>
     [GetRpc("SpaceCenter", "ResourceConverter_Outputs")]
-    public IList<string> Outputs(int index)
+    public IList<string> GetOutputs(int index)
     {
         var args = new ProcedureArgument[]
         {
@@ -129,7 +129,7 @@ public class ResourceConverter : RemoteObject
     /// </summary>
     /// <param name="index">Index of the converter.</param>
     [GetRpc("SpaceCenter", "ResourceConverter_Outputs")]
-    public async Task<IList<string>> OutputsAsync(int index)
+    public async Task<IList<string>> GetOutputsAsync(int index)
     {
         var args = new ProcedureArgument[]
         {
@@ -175,7 +175,7 @@ public class ResourceConverter : RemoteObject
     /// </summary>
     /// <param name="index">Index of the converter.</param>
     [GetRpc("SpaceCenter", "ResourceConverter_State")]
-    public ResourceConverterState State(int index)
+    public ResourceConverterState GetState(int index)
     {
         var args = new ProcedureArgument[]
         {
@@ -191,7 +191,7 @@ public class ResourceConverter : RemoteObject
     /// </summary>
     /// <param name="index">Index of the converter.</param>
     [GetRpc("SpaceCenter", "ResourceConverter_State")]
-    public async Task<ResourceConverterState> StateAsync(int index)
+    public async Task<ResourceConverterState> GetStateAsync(int index)
     {
         var args = new ProcedureArgument[]
         {
@@ -207,7 +207,7 @@ public class ResourceConverter : RemoteObject
     /// </summary>
     /// <param name="index">Index of the converter.</param>
     [GetRpc("SpaceCenter", "ResourceConverter_StatusInfo")]
-    public string StatusInfo(int index)
+    public string GetStatusInfo(int index)
     {
         var args = new ProcedureArgument[]
         {
@@ -224,7 +224,7 @@ public class ResourceConverter : RemoteObject
     /// </summary>
     /// <param name="index">Index of the converter.</param>
     [GetRpc("SpaceCenter", "ResourceConverter_StatusInfo")]
-    public async Task<string> StatusInfoAsync(int index)
+    public async Task<string> GetStatusInfoAsync(int index)
     {
         var args = new ProcedureArgument[]
         {

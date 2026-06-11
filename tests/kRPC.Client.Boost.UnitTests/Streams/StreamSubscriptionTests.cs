@@ -166,7 +166,7 @@ public class StreamSubscriptionTests
         ConfigureConnection<Vector3D>();
         
         // Act
-        _ = new StreamSubscription(() => vessel.Velocity(rFrame));
+        _ = new StreamSubscription(() => vessel.GetVelocity(rFrame));
         
         // Assert
         _connection.Received(1).AddStream(Arg.Any<Expression<Func<Vector3D>>>(), true);
@@ -183,8 +183,8 @@ public class StreamSubscriptionTests
         
         // Act
         _ = new StreamSubscription(
-            () => vessel.Velocity(rFrameA),
-            () => vessel.Velocity(rFrameB));
+            () => vessel.GetVelocity(rFrameA),
+            () => vessel.GetVelocity(rFrameB));
         
         // Assert
         _connection.Received(2).AddStream(Arg.Any<Expression<Func<Vector3D>>>(), true);

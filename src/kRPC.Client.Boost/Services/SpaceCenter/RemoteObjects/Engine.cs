@@ -30,7 +30,7 @@ public class Engine : RemoteObject
     /// </summary>
     /// <param name="pressure">Atmospheric pressure in atmospheres</param>
     [GetRpc("SpaceCenter", "Engine_AvailableThrustAt")]
-    public float AvailableThrustAt(double pressure)
+    public float GetAvailableThrustAt(double pressure)
     {
         var args = new ProcedureArgument[]
         {
@@ -49,7 +49,7 @@ public class Engine : RemoteObject
     /// </summary>
     /// <param name="pressure">Atmospheric pressure in atmospheres</param>
     [GetRpc("SpaceCenter", "Engine_AvailableThrustAt")]
-    public async Task<float> AvailableThrustAtAsync(double pressure)
+    public async Task<float> GetAvailableThrustAtAsync(double pressure)
     {
         var args = new ProcedureArgument[]
         {
@@ -66,7 +66,7 @@ public class Engine : RemoteObject
     /// </summary>
     /// <param name="pressure">Atmospheric pressure in atmospheres</param>
     [GetRpc("SpaceCenter", "Engine_MaxThrustAt")]
-    public float MaxThrustAt(double pressure)
+    public float GetMaxThrustAt(double pressure)
     {
         var args = new ProcedureArgument[]
         {
@@ -84,7 +84,7 @@ public class Engine : RemoteObject
     /// </summary>
     /// <param name="pressure">Atmospheric pressure in atmospheres</param>
     [GetRpc("SpaceCenter", "Engine_MaxThrustAt")]
-    public async Task<float> MaxThrustAtAsync(double pressure)
+    public async Task<float> GetMaxThrustAtAsync(double pressure)
     {
         var args = new ProcedureArgument[]
         {
@@ -100,7 +100,7 @@ public class Engine : RemoteObject
     /// </summary>
     /// <param name="pressure">Atmospheric pressure in atmospheres</param>
     [GetRpc("SpaceCenter", "Engine_SpecificImpulseAt")]
-    public float SpecificImpulseAt(double pressure)
+    public float GetSpecificImpulseAt(double pressure)
     {
         var args = new ProcedureArgument[]
         {
@@ -117,7 +117,7 @@ public class Engine : RemoteObject
     /// </summary>
     /// <param name="pressure">Atmospheric pressure in atmospheres</param>
     [GetRpc("SpaceCenter", "Engine_SpecificImpulseAt")]
-    public async Task<float> SpecificImpulseAtAsync(double pressure)
+    public async Task<float> GetSpecificImpulseAtAsync(double pressure)
     {
         var args = new ProcedureArgument[]
         {

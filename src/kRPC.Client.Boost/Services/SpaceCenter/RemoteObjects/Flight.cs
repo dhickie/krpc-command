@@ -6,10 +6,10 @@ using MathNet.Spatial.Units;
 namespace kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects;
 
 /// <summary>
-/// Used to get flight telemetry for a vessel, by calling <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Vessel.Flight" />.
+/// Used to get flight telemetry for a vessel, by calling <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Vessel.GetFlight" />.
 /// All of the information returned by this class is given in the reference frame
 /// passed to that method.
-/// Obtained by calling <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Vessel.Flight" />.
+/// Obtained by calling <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Vessel.GetFlight" />.
 /// </summary>
 /// <remarks>
 /// To get orbital information, such as the apoapsis or inclination, see <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Orbit" />.

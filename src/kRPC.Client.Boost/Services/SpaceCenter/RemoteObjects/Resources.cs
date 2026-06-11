@@ -6,7 +6,7 @@ namespace kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects;
 /// <summary>
 /// Represents the collection of resources stored in a vessel, stage or part.
 /// Created by calling <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Vessel.GetResources" />,
-/// <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Vessel.ResourcesInDecoupleStage" /> or
+/// <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Vessel.GetResourcesInDecoupleStage" /> or
 /// <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Part.GetResources" />.
 /// </summary>
 public class Resources : RemoteObject
@@ -23,7 +23,7 @@ public class Resources : RemoteObject
     /// </summary>
     /// <param name="name">The name of the resource.</param>
     [GetRpc("SpaceCenter", "Resources_Amount")]
-    public float Amount(string name)
+    public float GetAmount(string name)
     {
         var args = new ProcedureArgument[]
         {
@@ -39,7 +39,7 @@ public class Resources : RemoteObject
     /// </summary>
     /// <param name="name">The name of the resource.</param>
     [GetRpc("SpaceCenter", "Resources_Amount")]
-    public async Task<float> AmountAsync(string name)
+    public async Task<float> GetAmountAsync(string name)
     {
         var args = new ProcedureArgument[]
         {
@@ -85,7 +85,7 @@ public class Resources : RemoteObject
     /// </summary>
     /// <param name="name">The name of the resource.</param>
     [GetRpc("SpaceCenter", "Resources_Max")]
-    public float Max(string name)
+    public float GetMax(string name)
     {
         var args = new ProcedureArgument[]
         {
@@ -101,7 +101,7 @@ public class Resources : RemoteObject
     /// </summary>
     /// <param name="name">The name of the resource.</param>
     [GetRpc("SpaceCenter", "Resources_Max")]
-    public async Task<float> MaxAsync(string name)
+    public async Task<float> GetMaxAsync(string name)
     {
         var args = new ProcedureArgument[]
         {
@@ -115,7 +115,7 @@ public class Resources : RemoteObject
     /// All the individual resources with the given name that can be stored.
     /// </summary>
     [GetRpc("SpaceCenter", "Resources_WithResource")]
-    public IList<Resource> WithResource(string name)
+    public IList<Resource> GetResourcesWithName(string name)
     {
         var args = new ProcedureArgument[]
         {
@@ -130,7 +130,7 @@ public class Resources : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [GetRpc("SpaceCenter", "Resources_WithResource")]
-    public async Task<IList<Resource>> WithResourceAsync(string name)
+    public async Task<IList<Resource>> GetResourcesWithNameAsync(string name)
     {
         var args = new ProcedureArgument[]
         {
@@ -145,7 +145,7 @@ public class Resources : RemoteObject
     /// </summary>
     /// <param name="name">The name of the resource.</param>
     [GetRpc("SpaceCenter", "Resources_static_Density")]
-    public float Density(string name)
+    public float GetDensity(string name)
     {
         var args = new ProcedureArgument[]
         {
@@ -160,7 +160,7 @@ public class Resources : RemoteObject
     /// </summary>
     /// <param name="name">The name of the resource.</param>
     [GetRpc("SpaceCenter", "Resources_static_Density")]
-    public async Task<float> DensityAsync(string name)
+    public async Task<float> GetDensityAsync(string name)
     {
         var args = new ProcedureArgument[]
         {
@@ -174,7 +174,7 @@ public class Resources : RemoteObject
     /// </summary>
     /// <param name="name">The name of the resource.</param>
     [GetRpc("SpaceCenter", "Resources_static_FlowMode")]
-    public ResourceFlowMode FlowMode(string name)
+    public ResourceFlowMode GetFlowMode(string name)
     {
         var args = new ProcedureArgument[]
         {
@@ -189,7 +189,7 @@ public class Resources : RemoteObject
     /// </summary>
     /// <param name="name">The name of the resource.</param>
     [GetRpc("SpaceCenter", "Resources_static_FlowMode")]
-    public async Task<ResourceFlowMode> FlowModeAsync(string name)
+    public async Task<ResourceFlowMode> GetFlowModeAsync(string name)
     {
         var args = new ProcedureArgument[]
         {

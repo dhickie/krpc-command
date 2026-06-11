@@ -21,7 +21,7 @@ public class Parts : RemoteObject
     /// </summary>
     /// <param name="stage"></param>
     [GetRpc("SpaceCenter", "Parts_InDecoupleStage")]
-    public IList<Part> InDecoupleStage(int stage)
+    public IList<Part> GetPartsInDecoupleStage(int stage)
     {
         var args = new ProcedureArgument[]
         {
@@ -37,7 +37,7 @@ public class Parts : RemoteObject
     /// </summary>
     /// <param name="stage"></param>
     [GetRpc("SpaceCenter", "Parts_InDecoupleStage")]
-    public async Task<IList<Part>> InDecoupleStageAsync(int stage)
+    public async Task<IList<Part>> GetPartsInDecoupleStageAsync(int stage)
     {
         var args = new ProcedureArgument[]
         {
@@ -52,7 +52,7 @@ public class Parts : RemoteObject
     /// </summary>
     /// <param name="stage"></param>
     [GetRpc("SpaceCenter", "Parts_InStage")]
-    public IList<Part> InStage(int stage)
+    public IList<Part> GetPartsInStage(int stage)
     {
         var args = new ProcedureArgument[]
         {
@@ -68,7 +68,7 @@ public class Parts : RemoteObject
     /// </summary>
     /// <param name="stage"></param>
     [GetRpc("SpaceCenter", "Parts_InStage")]
-    public async Task<IList<Part>> InStageAsync(int stage)
+    public async Task<IList<Part>> GetPartsInStageAsync(int stage)
     {
         var args = new ProcedureArgument[]
         {
@@ -84,7 +84,7 @@ public class Parts : RemoteObject
     /// </summary>
     /// <param name="moduleName"></param>
     [GetRpc("SpaceCenter", "Parts_ModulesWithName")]
-    public IList<Module> ModulesWithName(string moduleName)
+    public IList<Module> GetModulesWithName(string moduleName)
     {
         var args = new ProcedureArgument[]
         {
@@ -101,7 +101,7 @@ public class Parts : RemoteObject
     /// </summary>
     /// <param name="moduleName"></param>
     [GetRpc("SpaceCenter", "Parts_ModulesWithName")]
-    public async Task<IList<Module>> ModulesWithNameAsync(string moduleName)
+    public async Task<IList<Module>> GetModulesWithNameAsync(string moduleName)
     {
         var args = new ProcedureArgument[]
         {
@@ -117,7 +117,7 @@ public class Parts : RemoteObject
     /// </summary>
     /// <param name="moduleName"></param>
     [GetRpc("SpaceCenter", "Parts_WithModule")]
-    public IList<Part> WithModule(string moduleName)
+    public IList<Part> GetPartsWithModule(string moduleName)
     {
         var args = new ProcedureArgument[]
         {
@@ -134,7 +134,7 @@ public class Parts : RemoteObject
     /// </summary>
     /// <param name="moduleName"></param>
     [GetRpc("SpaceCenter", "Parts_WithModule")]
-    public async Task<IList<Part>> WithModuleAsync(string moduleName)
+    public async Task<IList<Part>> GetPartsWithModuleAsync(string moduleName)
     {
         var args = new ProcedureArgument[]
         {
@@ -149,7 +149,7 @@ public class Parts : RemoteObject
     /// </summary>
     /// <param name="name"></param>
     [GetRpc("SpaceCenter", "Parts_WithName")]
-    public IList<Part> WithName(string name)
+    public IList<Part> GetPartsWithName(string name)
     {
         var args = new ProcedureArgument[]
         {
@@ -165,7 +165,7 @@ public class Parts : RemoteObject
     /// </summary>
     /// <param name="name"></param>
     [GetRpc("SpaceCenter", "Parts_WithName")]
-    public async Task<IList<Part>> WithNameAsync(string name)
+    public async Task<IList<Part>> GetPartsWithNameAsync(string name)
     {
         var args = new ProcedureArgument[]
         {
@@ -180,7 +180,7 @@ public class Parts : RemoteObject
     /// </summary>
     /// <param name="tag"></param>
     [GetRpc("SpaceCenter", "Parts_WithTag")]
-    public IList<Part> WithTag(string tag)
+    public IList<Part> GetPartsWithTag(string tag)
     {
         var args = new ProcedureArgument[]
         {
@@ -196,7 +196,7 @@ public class Parts : RemoteObject
     /// </summary>
     /// <param name="tag"></param>
     [GetRpc("SpaceCenter", "Parts_WithTag")]
-    public async Task<IList<Part>> WithTagAsync(string tag)
+    public async Task<IList<Part>> GetPartsWithTagAsync(string tag)
     {
         var args = new ProcedureArgument[]
         {
@@ -211,7 +211,7 @@ public class Parts : RemoteObject
     /// </summary>
     /// <param name="title"></param>
     [GetRpc("SpaceCenter", "Parts_WithTitle")]
-    public IList<Part> WithTitle(string title)
+    public IList<Part> GetPartsWithTitle(string title)
     {
         var args = new ProcedureArgument[]
         {
@@ -227,7 +227,7 @@ public class Parts : RemoteObject
     /// </summary>
     /// <param name="title"></param>
     [GetRpc("SpaceCenter", "Parts_WithTitle")]
-    public async Task<IList<Part>> WithTitleAsync(string title)
+    public async Task<IList<Part>> GetPartsWithTitleAsync(string title)
     {
         var args = new ProcedureArgument[]
         {

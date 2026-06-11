@@ -30,7 +30,7 @@ public class Thruster : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// position vector is in.</param>
     [GetRpc("SpaceCenter", "Thruster_GimbalPosition")]
-    public Vector3D GimbalPosition(ReferenceFrame referenceFrame)
+    public Vector3D GetGimbalPosition(ReferenceFrame referenceFrame)
     {
         var args = new ProcedureArgument[]
         {
@@ -48,7 +48,7 @@ public class Thruster : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// position vector is in.</param>
     [GetRpc("SpaceCenter", "Thruster_GimbalPosition")]
-    public async Task<Vector3D> GimbalPositionAsync(ReferenceFrame referenceFrame)
+    public async Task<Vector3D> GetGimbalPositionAsync(ReferenceFrame referenceFrame)
     {
         var args = new ProcedureArgument[]
         {
@@ -67,7 +67,7 @@ public class Thruster : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// direction is in.</param>
     [GetRpc("SpaceCenter", "Thruster_InitialThrustDirection")]
-    public Vector3D InitialThrustDirection(ReferenceFrame referenceFrame)
+    public Vector3D GetInitialThrustDirection(ReferenceFrame referenceFrame)
     {
         var args = new ProcedureArgument[]
         {
@@ -87,7 +87,7 @@ public class Thruster : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// direction is in.</param>
     [GetRpc("SpaceCenter", "Thruster_InitialThrustDirection")]
-    public async Task<Vector3D> InitialThrustDirectionAsync(ReferenceFrame referenceFrame)
+    public async Task<Vector3D> GetInitialThrustDirectionAsync(ReferenceFrame referenceFrame)
     {
         var args = new ProcedureArgument[]
         {
@@ -109,7 +109,7 @@ public class Thruster : RemoteObject
     /// gimbal position are not necessarily the same.
     /// </remarks>
     [GetRpc("SpaceCenter", "Thruster_InitialThrustPosition")]
-    public Vector3D InitialThrustPosition(ReferenceFrame referenceFrame)
+    public Vector3D GetInitialThrustPosition(ReferenceFrame referenceFrame)
     {
         var args = new ProcedureArgument[]
         {
@@ -132,7 +132,7 @@ public class Thruster : RemoteObject
     /// gimbal position are not necessarily the same.
     /// </remarks>
     [GetRpc("SpaceCenter", "Thruster_InitialThrustPosition")]
-    public async Task<Vector3D> InitialThrustPositionAsync(ReferenceFrame referenceFrame)
+    public async Task<Vector3D> GetInitialThrustPositionAsync(ReferenceFrame referenceFrame)
     {
         var args = new ProcedureArgument[]
         {
@@ -151,7 +151,7 @@ public class Thruster : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// direction is in.</param>
     [GetRpc("SpaceCenter", "Thruster_ThrustDirection")]
-    public Vector3D ThrustDirection(ReferenceFrame referenceFrame)
+    public Vector3D GetThrustDirection(ReferenceFrame referenceFrame)
     {
         var args = new ProcedureArgument[]
         {
@@ -171,7 +171,7 @@ public class Thruster : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// direction is in.</param>
     [GetRpc("SpaceCenter", "Thruster_ThrustDirection")]
-    public async Task<Vector3D> ThrustDirectionAsync(ReferenceFrame referenceFrame)
+    public async Task<Vector3D> GetThrustDirectionAsync(ReferenceFrame referenceFrame)
     {
         var args = new ProcedureArgument[]
         {
@@ -189,7 +189,7 @@ public class Thruster : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// position vector is in.</param>
     [GetRpc("SpaceCenter", "Thruster_ThrustPosition")]
-    public Vector3D ThrustPosition(ReferenceFrame referenceFrame)
+    public Vector3D GetThrustPosition(ReferenceFrame referenceFrame)
     {
         var args = new ProcedureArgument[]
         {
@@ -208,7 +208,7 @@ public class Thruster : RemoteObject
     /// <param name="referenceFrame">The reference frame that the returned
     /// position vector is in.</param>
     [GetRpc("SpaceCenter", "Thruster_ThrustPosition")]
-    public async Task<Vector3D> ThrustPositionAsync(ReferenceFrame referenceFrame)
+    public async Task<Vector3D> GetThrustPositionAsync(ReferenceFrame referenceFrame)
     {
         var args = new ProcedureArgument[]
         {
