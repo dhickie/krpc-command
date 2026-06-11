@@ -13,7 +13,7 @@ using NSubstitute.ClearExtensions;
 namespace kRPC.Client.Boost.UnitTests.Streams;
 
 // StreamManager tests have to run with parallelisation disabled so they don't share conflicting static state
-[Collection(nameof(StreamManagerTests))]
+[Collection("Serial")]
 public class StreamManagerTests
 {
     private readonly Fixture _fixture = new();
@@ -549,11 +549,6 @@ public class StreamManagerTests
 
         return context;
     }
-}
-
-[CollectionDefinition(nameof(StreamManagerTests), DisableParallelization = true)]
-public sealed class StreamManagerTestCollection
-{
 }
 
 internal class CompactionTestContext

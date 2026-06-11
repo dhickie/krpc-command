@@ -300,39 +300,17 @@ internal abstract class Connection : IDisposable
         if (ReferenceEquals(expression, null))
             throw new ArgumentNullException(nameof(expression));
 
-        var body = expression.Body;
-
-        if (body is MethodCallExpression methodCallExpression)
-            return GetCall(methodCallExpression);
-
-        throw new ArgumentException("Invalid expression. Must consist of a method call only.");
-    }
-
-    private static ProcedureCall GetCall(MethodCallExpression expression)
-    {
-        var attribute = expression.Method.GetCustomAttribute<RpcAttribute>()
-            ?? throw new ArgumentException("Invalid expression. Method must call a remote procedure.");
-        
-        var service = attribute.Service;
-        var procedure = attribute.Procedure;
-        var arguments = expression.Arguments.Select(x =>
-        {
-            if (x is not ConstantExpression constantExpression)
-                throw new ArgumentException("Invalid expression. Method arguments must be compile time constants.");
-
-            return new ProcedureArgument(constantExpression.Value, constantExpression.Type);
-        });
-
+        var parser = new ExpressionParser(expression);
         var call = new ProcedureCall
         {
-            Procedure = procedure,
-            Service = service
+            Procedure = parser.Procedure,
+            Service = parser.Service
         };
 
         var position = 0u;
-        foreach (var argument in arguments)
+        foreach (var argument in parser.Arguments)
         {
-            var encodedValue = Codec.Encode(argument.Value, argument.Type);
+            var encodedValue = Codec.Encode(argument.value, argument.type);
             var arg = new Argument
             {
                 Position = position,

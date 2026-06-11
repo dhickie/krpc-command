@@ -213,12 +213,12 @@ namespace kRPC.Client.Boost.Connection
 
         private static bool IsARemoteObjectType(Type type)
         {
-            return type.IsSubclassOf(typeof(RemoteObject));
+            return type.IsAssignableTo(typeof(RemoteObject));
         }
 
         private static bool IsAMessageType(Type type)
         {
-            return typeof(IMessage).IsAssignableFrom(type);
+            return type.IsAssignableTo(typeof(IMessage));
         }
         
         private static bool IsACollectionType(Type type)
