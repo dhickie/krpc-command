@@ -2,6 +2,7 @@ using System.Linq.Expressions;
 using System.Reflection;
 using kRPC.Client.Boost.Helpers;
 using kRPC.Client.Boost.Services;
+using MathNet.Spatial.Euclidean;
 
 namespace kRPC.Client.Boost.Streams;
 
@@ -24,11 +25,15 @@ public sealed class StreamSubscription : IDisposable
     /// <exception cref="ArgumentException">Thrown if provided with expressions of an invalid type.</exception>
     public StreamSubscription(params LambdaExpression[] expressions)
     {
-        var expressionDictionary = expressions.ToDictionary(
-            GetStreamKey,
-            e => e);
+        // Get all the keys first in case any expressions are invalid or contain duplicates
+        var dictionary = new Dictionary<string, LambdaExpression>();
+        foreach (var expression in expressions)
+        {
+            var key = GetStreamKey(expression);
+            dictionary.TryAdd(key, expression);
+        }
 
-        foreach (var kvp in expressionDictionary)
+        foreach (var kvp in dictionary)
         {
             AddSubscription(kvp.Key, kvp.Value);
         }
@@ -65,7 +70,7 @@ public sealed class StreamSubscription : IDisposable
         foreach (var argument in parser.Arguments)
         {
             var argumentValue = argument.value;
-            if (argument.type == typeof(RemoteObject))
+            if (argument.type.IsAssignableTo(typeof(RemoteObject)))
             {
                 var remoteObject = argument.value as RemoteObject;
                 argumentValue = remoteObject?.Id;
