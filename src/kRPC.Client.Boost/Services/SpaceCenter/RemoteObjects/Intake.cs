@@ -4,111 +4,111 @@ using kRPC.Client.Boost.Connection;
 namespace kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects;
 
 /// <summary>
-/// An air intake. Obtained by calling <see cref="M:SpaceCenter.Part.GetIntake" />.
+/// An air intake. Obtained by calling <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Part.GetIntake" />.
 /// </summary>
 public class Intake : RemoteObject
 {
     /// <summary>
     /// Construct an instance of this remote object. Should not be called directly. This interface is intended for internal decoding.
     /// </summary>
-    public Intake(ConnectionMultiplexer connection, ulong id) : base(connection, id)
+    internal Intake(IConnectionMultiplexer connection, ulong id) : base(connection, id)
     {
     }
 
     /// <summary>
     /// Gets the area of the intake's opening, in square meters.
     /// </summary>
-    [Rpc("SpaceCenter", "Intake_get_Area")]
+    [GetRpc("SpaceCenter", "Intake_get_Area")]
     public float GetArea()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "Intake_get_Area", args);
+        return InvokeNonNullable<float>("SpaceCenter", "Intake_get_Area", args);
     }
 
     /// <summary>
     /// Gets the area of the intake's opening, in square meters.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Intake_get_Area")]
+    [GetRpc("SpaceCenter", "Intake_get_Area")]
     public async Task<float> GetAreaAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "Intake_get_Area", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "Intake_get_Area", args);
     }
 
     /// <summary>
     /// Gets the rate of flow into the intake, in units of resource per second.
     /// </summary>
-    [Rpc("SpaceCenter", "Intake_get_Flow")]
+    [GetRpc("SpaceCenter", "Intake_get_Flow")]
     public float GetFlow()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "Intake_get_Flow", args);
+        return InvokeNonNullable<float>("SpaceCenter", "Intake_get_Flow", args);
     }
 
     /// <summary>
     /// Gets the rate of flow into the intake, in units of resource per second.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Intake_get_Flow")]
+    [GetRpc("SpaceCenter", "Intake_get_Flow")]
     public async Task<float> GetFlowAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "Intake_get_Flow", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "Intake_get_Flow", args);
     }
 
     /// <summary>
     /// Gets whether the intake is open.
     /// </summary>
-    [Rpc("SpaceCenter", "Intake_get_Open")]
+    [GetRpc("SpaceCenter", "Intake_get_Open")]
     public bool GetOpen()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "Intake_get_Open", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "Intake_get_Open", args);
     }
 
     /// <summary>
     /// Gets whether the intake is open.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Intake_get_Open")]
+    [GetRpc("SpaceCenter", "Intake_get_Open")]
     public async Task<bool> GetOpenAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "Intake_get_Open", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "Intake_get_Open", args);
     }
 
     /// <summary>
     /// Sets whether the intake is open.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "Intake_set_Open")]
+    [SetRpc("SpaceCenter", "Intake_set_Open")]
     public void SetOpen(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "Intake_set_Open", args);
+        InvokeVoid("SpaceCenter", "Intake_set_Open", args);
     }
 
     /// <summary>
@@ -116,68 +116,68 @@ public class Intake : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "Intake_set_Open")]
+    [SetRpc("SpaceCenter", "Intake_set_Open")]
     public async Task SetOpenAsync(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "Intake_set_Open", args);
+        await InvokeVoidAsync("SpaceCenter", "Intake_set_Open", args);
     }
 
     /// <summary>
     /// Gets the part object for this intake.
     /// </summary>
-    [Rpc("SpaceCenter", "Intake_get_Part")]
+    [GetRpc("SpaceCenter", "Intake_get_Part")]
     public Part GetPart()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
-        return Connection.Invoke<Part>("SpaceCenter", "Intake_get_Part", args);
+        return InvokeNonNullable<Part>("SpaceCenter", "Intake_get_Part", args);
     }
 
     /// <summary>
     /// Gets the part object for this intake.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Intake_get_Part")]
+    [GetRpc("SpaceCenter", "Intake_get_Part")]
     public async Task<Part> GetPartAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
-        return await Connection.InvokeAsync<Part>("SpaceCenter", "Intake_get_Part", args);
+        return await InvokeNonNullableAsync<Part>("SpaceCenter", "Intake_get_Part", args);
     }
 
     /// <summary>
     /// Speed of the flow into the intake, in <math>m/s</math>.
     /// </summary>
-    [Rpc("SpaceCenter", "Intake_get_Speed")]
+    [GetRpc("SpaceCenter", "Intake_get_Speed")]
     public float GetSpeed()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "Intake_get_Speed", args);
+        return InvokeNonNullable<float>("SpaceCenter", "Intake_get_Speed", args);
     }
 
     /// <summary>
     /// Speed of the flow into the intake, in <math>m/s</math>.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Intake_get_Speed")]
+    [GetRpc("SpaceCenter", "Intake_get_Speed")]
     public async Task<float> GetSpeedAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "Intake_get_Speed", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "Intake_get_Speed", args);
     }
 }

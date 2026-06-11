@@ -17,7 +17,7 @@ public class ReferenceFrame : RemoteObject
     /// <summary>
     /// Construct an instance of this remote object. Should not be called directly. This interface is intended for internal decoding.
     /// </summary>
-    public ReferenceFrame(ConnectionMultiplexer connection, ulong id) : base(connection, id)
+    internal ReferenceFrame(IConnectionMultiplexer connection, ulong id) : base(connection, id)
     {
     }
 
@@ -36,17 +36,17 @@ public class ReferenceFrame : RemoteObject
     /// reference frames are optional. If omitted, they are set to the
     /// <paramref name="position" /> reference frame.
     /// </remarks>
-    [Rpc("SpaceCenter", "ReferenceFrame_static_CreateHybrid")]
+    [SetRpc("SpaceCenter", "ReferenceFrame_static_CreateHybrid")]
     public ReferenceFrame CreateHybrid(ReferenceFrame position, ReferenceFrame? rotation = null, ReferenceFrame? velocity = null, ReferenceFrame? angularVelocity = null)
     {
-        var args = new object?[]
+        var args = new ProcedureArgument[]
         {
             position,
             rotation,
             velocity,
             angularVelocity
         };
-        return Connection.Invoke<ReferenceFrame>("SpaceCenter", "ReferenceFrame_static_CreateHybrid", args);
+        return InvokeNonNullable<ReferenceFrame>("SpaceCenter", "ReferenceFrame_static_CreateHybrid", args);
     }
 
     /// <summary>
@@ -65,17 +65,17 @@ public class ReferenceFrame : RemoteObject
     /// reference frames are optional. If omitted, they are set to the
     /// <paramref name="position" /> reference frame.
     /// </remarks>
-    [Rpc("SpaceCenter", "ReferenceFrame_static_CreateHybrid")]
+    [SetRpc("SpaceCenter", "ReferenceFrame_static_CreateHybrid")]
     public async Task<ReferenceFrame> CreateHybridAsync(ReferenceFrame position, ReferenceFrame? rotation = null, ReferenceFrame? velocity = null, ReferenceFrame? angularVelocity = null)
     {
-        var args = new object?[]
+        var args = new ProcedureArgument[]
         {
             position,
             rotation,
             velocity,
             angularVelocity
         };
-        return await Connection.InvokeAsync<ReferenceFrame>("SpaceCenter", "ReferenceFrame_static_CreateHybrid", args);
+        return await InvokeNonNullableAsync<ReferenceFrame>("SpaceCenter", "ReferenceFrame_static_CreateHybrid", args);
     }
 
     /// <summary>
@@ -96,10 +96,10 @@ public class ReferenceFrame : RemoteObject
     /// as a vector. This vector points in the direction of the axis of rotation,
     /// and its magnitude is the speed of the rotation in radians per second.
     /// Defaults to <math>(0, 0, 0)</math>.</param>
-    [Rpc("SpaceCenter", "ReferenceFrame_static_CreateRelative")]
+    [SetRpc("SpaceCenter", "ReferenceFrame_static_CreateRelative")]
     public ReferenceFrame CreateRelative(ReferenceFrame referenceFrame, Vector3D? position = null, Quaternion? rotation = null, Vector3D? velocity = null, Vector3D? angularVelocity = null)
     {
-        var args = new object?[]
+        var args = new ProcedureArgument[]
         {
             referenceFrame,
             position ?? new Vector3D(0.0, 0.0, 0.0),
@@ -107,7 +107,7 @@ public class ReferenceFrame : RemoteObject
             velocity ?? new Vector3D(0.0, 0.0, 0.0),
             angularVelocity ?? new Vector3D(0.0, 0.0, 0.0)
         };
-        return Connection.Invoke<ReferenceFrame>("SpaceCenter", "ReferenceFrame_static_CreateRelative", args);
+        return InvokeNonNullable<ReferenceFrame>("SpaceCenter", "ReferenceFrame_static_CreateRelative", args);
     }
 
     /// <summary>
@@ -129,10 +129,10 @@ public class ReferenceFrame : RemoteObject
     /// as a vector. This vector points in the direction of the axis of rotation,
     /// and its magnitude is the speed of the rotation in radians per second.
     /// Defaults to <math>(0, 0, 0)</math>.</param>
-    [Rpc("SpaceCenter", "ReferenceFrame_static_CreateRelative")]
+    [SetRpc("SpaceCenter", "ReferenceFrame_static_CreateRelative")]
     public async Task<ReferenceFrame> CreateRelativeAsync(ReferenceFrame referenceFrame, Vector3D? position = null, Quaternion? rotation = null, Vector3D? velocity = null, Vector3D? angularVelocity = null)
     {
-        var args = new object?[]
+        var args = new ProcedureArgument[]
         {
             referenceFrame,
             position ?? new Vector3D(0.0, 0.0, 0.0),
@@ -140,6 +140,6 @@ public class ReferenceFrame : RemoteObject
             velocity ?? new Vector3D(0.0, 0.0, 0.0),
             angularVelocity ?? new Vector3D(0.0, 0.0, 0.0)
         };
-        return await Connection.InvokeAsync<ReferenceFrame>("SpaceCenter", "ReferenceFrame_static_CreateRelative", args);
+        return await InvokeNonNullableAsync<ReferenceFrame>("SpaceCenter", "ReferenceFrame_static_CreateRelative", args);
     }
 }

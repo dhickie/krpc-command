@@ -1,7 +1,7 @@
 namespace kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects;
 
 /// <summary>
-/// The way in which a resource flows between parts. See <see cref="M:SpaceCenter.Resources.FlowMode" />.
+/// The way in which a resource flows between parts. See <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Resources.FlowMode" />.
 /// </summary>
 [Serializable]
 public enum ResourceFlowMode

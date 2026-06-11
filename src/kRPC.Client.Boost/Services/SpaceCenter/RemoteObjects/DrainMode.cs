@@ -2,7 +2,7 @@ namespace kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects;
 
 /// <summary>
 /// Resource drain mode.
-/// See <see cref="M:SpaceCenter.ResourceDrain.GetDrainMode" />.
+/// See <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ResourceDrain.GetDrainMode" />.
 /// </summary>
 [Serializable]
 public enum DrainMode

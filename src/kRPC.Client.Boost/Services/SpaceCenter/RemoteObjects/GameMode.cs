@@ -2,7 +2,7 @@ namespace kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects;
 
 /// <summary>
 /// The game mode.
-/// Returned by <see cref="T:SpaceCenter.GameMode" /></summary>
+/// Returned by <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.GameMode" /></summary>
 [Serializable]
 public enum GameMode
 {

@@ -4,13 +4,13 @@ using kRPC.Client.Boost.Connection;
 namespace kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects;
 
 /// <summary>
-/// A decoupler. Obtained by calling <see cref="M:SpaceCenter.Part.GetDecoupler" /></summary>
+/// A decoupler. Obtained by calling <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Part.GetDecoupler" /></summary>
 public class Decoupler : RemoteObject
 {
     /// <summary>
     /// Construct an instance of this remote object. Should not be called directly. This interface is intended for internal decoding.
     /// </summary>
-    public Decoupler(ConnectionMultiplexer connection, ulong id) : base(connection, id)
+    internal Decoupler(IConnectionMultiplexer connection, ulong id) : base(connection, id)
     {
     }
 
@@ -21,16 +21,16 @@ public class Decoupler : RemoteObject
     /// <remarks>
     /// When called, the active vessel may change. It is therefore possible that,
     /// after calling this function, the object(s) returned by previous call(s) to
-    /// <see cref="M:SpaceCenter.GetActiveVessel" /> no longer refer to the active vessel.
+    /// <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.SpaceCenter.GetActiveVessel" /> no longer refer to the active vessel.
     /// </remarks>
-    [Rpc("SpaceCenter", "Decoupler_Decouple")]
+    [SetRpc("SpaceCenter", "Decoupler_Decouple")]
     public Vessel Decouple()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
-        return Connection.Invoke<Vessel>("SpaceCenter", "Decoupler_Decouple", args);
+        return InvokeNonNullable<Vessel>("SpaceCenter", "Decoupler_Decouple", args);
     }
 
     /// <summary>
@@ -41,177 +41,177 @@ public class Decoupler : RemoteObject
     /// <remarks>
     /// When called, the active vessel may change. It is therefore possible that,
     /// after calling this function, the object(s) returned by previous call(s) to
-    /// <see cref="M:SpaceCenter.GetActiveVessel" /> no longer refer to the active vessel.
+    /// <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.SpaceCenter.GetActiveVessel" /> no longer refer to the active vessel.
     /// </remarks>
-    [Rpc("SpaceCenter", "Decoupler_Decouple")]
+    [SetRpc("SpaceCenter", "Decoupler_Decouple")]
     public async Task<Vessel> DecoupleAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
-        return await Connection.InvokeAsync<Vessel>("SpaceCenter", "Decoupler_Decouple", args);
+        return await InvokeNonNullableAsync<Vessel>("SpaceCenter", "Decoupler_Decouple", args);
     }
 
     /// <summary>
     /// Gets the part attached to this decoupler's explosive node.
     /// </summary>
-    [Rpc("SpaceCenter", "Decoupler_get_AttachedPart")]
+    [GetRpc("SpaceCenter", "Decoupler_get_AttachedPart")]
     public Part GetAttachedPart()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
-        return Connection.Invoke<Part>("SpaceCenter", "Decoupler_get_AttachedPart", args);
+        return InvokeNonNullable<Part>("SpaceCenter", "Decoupler_get_AttachedPart", args);
     }
 
     /// <summary>
     /// Gets the part attached to this decoupler's explosive node.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Decoupler_get_AttachedPart")]
+    [GetRpc("SpaceCenter", "Decoupler_get_AttachedPart")]
     public async Task<Part> GetAttachedPartAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
-        return await Connection.InvokeAsync<Part>("SpaceCenter", "Decoupler_get_AttachedPart", args);
+        return await InvokeNonNullableAsync<Part>("SpaceCenter", "Decoupler_get_AttachedPart", args);
     }
 
     /// <summary>
     /// Gets whether the decoupler has fired.
     /// </summary>
-    [Rpc("SpaceCenter", "Decoupler_get_Decoupled")]
+    [GetRpc("SpaceCenter", "Decoupler_get_Decoupled")]
     public bool GetDecoupled()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "Decoupler_get_Decoupled", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "Decoupler_get_Decoupled", args);
     }
 
     /// <summary>
     /// Gets whether the decoupler has fired.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Decoupler_get_Decoupled")]
+    [GetRpc("SpaceCenter", "Decoupler_get_Decoupled")]
     public async Task<bool> GetDecoupledAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "Decoupler_get_Decoupled", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "Decoupler_get_Decoupled", args);
     }
 
     /// <summary>
     /// Gets the impulse that the decoupler imparts when it is fired, in Newton seconds.
     /// </summary>
-    [Rpc("SpaceCenter", "Decoupler_get_Impulse")]
+    [GetRpc("SpaceCenter", "Decoupler_get_Impulse")]
     public float GetImpulse()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "Decoupler_get_Impulse", args);
+        return InvokeNonNullable<float>("SpaceCenter", "Decoupler_get_Impulse", args);
     }
 
     /// <summary>
     /// Gets the impulse that the decoupler imparts when it is fired, in Newton seconds.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Decoupler_get_Impulse")]
+    [GetRpc("SpaceCenter", "Decoupler_get_Impulse")]
     public async Task<float> GetImpulseAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "Decoupler_get_Impulse", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "Decoupler_get_Impulse", args);
     }
 
     /// <summary>
     /// Gets whether the decoupler is an omni-decoupler (e.g. stack separator)
     /// </summary>
-    [Rpc("SpaceCenter", "Decoupler_get_IsOmniDecoupler")]
+    [GetRpc("SpaceCenter", "Decoupler_get_IsOmniDecoupler")]
     public bool GetIsOmniDecoupler()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "Decoupler_get_IsOmniDecoupler", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "Decoupler_get_IsOmniDecoupler", args);
     }
 
     /// <summary>
     /// Gets whether the decoupler is an omni-decoupler (e.g. stack separator)
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Decoupler_get_IsOmniDecoupler")]
+    [GetRpc("SpaceCenter", "Decoupler_get_IsOmniDecoupler")]
     public async Task<bool> GetIsOmniDecouplerAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "Decoupler_get_IsOmniDecoupler", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "Decoupler_get_IsOmniDecoupler", args);
     }
 
     /// <summary>
     /// Gets the part object for this decoupler.
     /// </summary>
-    [Rpc("SpaceCenter", "Decoupler_get_Part")]
+    [GetRpc("SpaceCenter", "Decoupler_get_Part")]
     public Part GetPart()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
-        return Connection.Invoke<Part>("SpaceCenter", "Decoupler_get_Part", args);
+        return InvokeNonNullable<Part>("SpaceCenter", "Decoupler_get_Part", args);
     }
 
     /// <summary>
     /// Gets the part object for this decoupler.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Decoupler_get_Part")]
+    [GetRpc("SpaceCenter", "Decoupler_get_Part")]
     public async Task<Part> GetPartAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
-        return await Connection.InvokeAsync<Part>("SpaceCenter", "Decoupler_get_Part", args);
+        return await InvokeNonNullableAsync<Part>("SpaceCenter", "Decoupler_get_Part", args);
     }
 
     /// <summary>
     /// Gets whether the decoupler is enabled in the staging sequence.
     /// </summary>
-    [Rpc("SpaceCenter", "Decoupler_get_Staged")]
+    [GetRpc("SpaceCenter", "Decoupler_get_Staged")]
     public bool GetStaged()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "Decoupler_get_Staged", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "Decoupler_get_Staged", args);
     }
 
     /// <summary>
     /// Gets whether the decoupler is enabled in the staging sequence.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Decoupler_get_Staged")]
+    [GetRpc("SpaceCenter", "Decoupler_get_Staged")]
     public async Task<bool> GetStagedAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "Decoupler_get_Staged", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "Decoupler_get_Staged", args);
     }
 }

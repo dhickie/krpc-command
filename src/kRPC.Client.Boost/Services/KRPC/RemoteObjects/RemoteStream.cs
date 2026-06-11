@@ -10,9 +10,9 @@ public class RemoteStream : RemoteObject
     /// <summary>
     /// Create a new remote stream.
     /// </summary>
-    /// <param name="id">The ID of the stream</param>
     /// <param name="connection">The multiplexer that provides access to the server</param>
-    protected RemoteStream(ulong id, ConnectionMultiplexer connection) : base(connection, id)
+    /// <param name="id">The ID of the stream</param>
+    internal RemoteStream(IConnectionMultiplexer connection, ulong id) : base(connection, id)
     {}
     
     /// <summary>

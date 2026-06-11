@@ -2,7 +2,7 @@ namespace kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects;
 
 /// <summary>
 /// A crew member's roster status.
-/// See <see cref="M:SpaceCenter.CrewMember.GetRosterStatus" />.
+/// See <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.CrewMember.GetRosterStatus" />.
 /// </summary>
 [Serializable]
 public enum RosterStatus

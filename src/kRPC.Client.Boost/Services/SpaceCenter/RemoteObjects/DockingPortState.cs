@@ -1,7 +1,7 @@
 namespace kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects;
 
 /// <summary>
-/// The state of a docking port. See <see cref="M:SpaceCenter.DockingPort.GetState" />.
+/// The state of a docking port. See <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.DockingPort.GetState" />.
 /// </summary>
 [Serializable]
 public enum DockingPortState
@@ -23,7 +23,7 @@ public enum DockingPortState
     /// <summary>
     /// The docking port has just been undocked from another docking port,
     /// and is disabled until it moves away by a sufficient distance
-    /// (<see cref="M:SpaceCenter.DockingPort.GetReengageDistance" />).
+    /// (<see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.DockingPort.GetReengageDistance" />).
     /// </summary>
     Undocking = 3,
     /// <summary>

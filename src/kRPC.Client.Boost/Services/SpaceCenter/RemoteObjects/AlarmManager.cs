@@ -5,14 +5,14 @@ namespace kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects;
 
 /// <summary>
 /// Alarm manager.
-/// Obtained by calling <see cref="M:SpaceCenter.GetAlarmManager" />.
+/// Obtained by calling <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.SpaceCenter.GetAlarmManager" />.
 /// </summary>
 public class AlarmManager : RemoteObject
 {
     /// <summary>
     /// Construct an instance of this remote object. Should not be called directly. This interface is intended for internal decoding.
     /// </summary>
-    public AlarmManager(ConnectionMultiplexer connection, ulong id) : base(connection, id)
+    internal AlarmManager(IConnectionMultiplexer connection, ulong id) : base(connection, id)
     {
     }
 
@@ -22,16 +22,16 @@ public class AlarmManager : RemoteObject
     /// <param name="time">Number of seconds from now that the alarm should trigger.</param>
     /// <param name="title">Title for the alarm.</param>
     /// <param name="description">Description for the alarm.</param>
-    [Rpc("SpaceCenter", "AlarmManager_static_AddAlarm")]
+    [SetRpc("SpaceCenter", "AlarmManager_static_AddAlarm")]
     public Alarm AddAlarm(double time, string title = "Alarm", string description = "")
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             time,
             title,
             description
         };
-        return Connection.Invoke<Alarm>("SpaceCenter", "AlarmManager_static_AddAlarm", args);
+        return InvokeNonNullable<Alarm>("SpaceCenter", "AlarmManager_static_AddAlarm", args);
     }
 
     /// <summary>
@@ -41,16 +41,16 @@ public class AlarmManager : RemoteObject
     /// <param name="time">Number of seconds from now that the alarm should trigger.</param>
     /// <param name="title">Title for the alarm.</param>
     /// <param name="description">Description for the alarm.</param>
-    [Rpc("SpaceCenter", "AlarmManager_static_AddAlarm")]
+    [SetRpc("SpaceCenter", "AlarmManager_static_AddAlarm")]
     public async Task<Alarm> AddAlarmAsync(double time, string title = "Alarm", string description = "")
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             time,
             title,
             description
         };
-        return await Connection.InvokeAsync<Alarm>("SpaceCenter", "AlarmManager_static_AddAlarm", args);
+        return await InvokeNonNullableAsync<Alarm>("SpaceCenter", "AlarmManager_static_AddAlarm", args);
     }
 
     /// <summary>
@@ -60,17 +60,17 @@ public class AlarmManager : RemoteObject
     /// <param name="offset">Time in seconds to offset the alarm by.</param>
     /// <param name="title">Title for the alarm.</param>
     /// <param name="description">Description for the alarm.</param>
-    [Rpc("SpaceCenter", "AlarmManager_static_AddApoapsisAlarm")]
+    [SetRpc("SpaceCenter", "AlarmManager_static_AddApoapsisAlarm")]
     public Alarm AddApoapsisAlarm(Vessel vessel, double offset = 60.0, string title = "Apoapsis Alarm", string description = "")
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             vessel,
             offset,
             title,
             description
         };
-        return Connection.Invoke<Alarm>("SpaceCenter", "AlarmManager_static_AddApoapsisAlarm", args);
+        return InvokeNonNullable<Alarm>("SpaceCenter", "AlarmManager_static_AddApoapsisAlarm", args);
     }
 
     /// <summary>
@@ -81,17 +81,17 @@ public class AlarmManager : RemoteObject
     /// <param name="offset">Time in seconds to offset the alarm by.</param>
     /// <param name="title">Title for the alarm.</param>
     /// <param name="description">Description for the alarm.</param>
-    [Rpc("SpaceCenter", "AlarmManager_static_AddApoapsisAlarm")]
+    [SetRpc("SpaceCenter", "AlarmManager_static_AddApoapsisAlarm")]
     public async Task<Alarm> AddApoapsisAlarmAsync(Vessel vessel, double offset = 60.0, string title = "Apoapsis Alarm", string description = "")
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             vessel,
             offset,
             title,
             description
         };
-        return await Connection.InvokeAsync<Alarm>("SpaceCenter", "AlarmManager_static_AddApoapsisAlarm", args);
+        return await InvokeNonNullableAsync<Alarm>("SpaceCenter", "AlarmManager_static_AddApoapsisAlarm", args);
     }
 
     /// <summary>
@@ -103,10 +103,10 @@ public class AlarmManager : RemoteObject
     /// <param name="addBurnTime">Whether the node's burn time should be included in the alarm.</param>
     /// <param name="title">Title for the alarm.</param>
     /// <param name="description">Description for the alarm.</param>
-    [Rpc("SpaceCenter", "AlarmManager_static_AddManeuverNodeAlarm")]
+    [SetRpc("SpaceCenter", "AlarmManager_static_AddManeuverNodeAlarm")]
     public Alarm AddManeuverNodeAlarm(Vessel vessel, Node node, double offset = 60.0, bool addBurnTime = true, string title = "Maneuver Node Alarm", string description = "")
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             vessel,
             node,
@@ -115,7 +115,7 @@ public class AlarmManager : RemoteObject
             title,
             description
         };
-        return Connection.Invoke<Alarm>("SpaceCenter", "AlarmManager_static_AddManeuverNodeAlarm", args);
+        return InvokeNonNullable<Alarm>("SpaceCenter", "AlarmManager_static_AddManeuverNodeAlarm", args);
     }
 
     /// <summary>
@@ -128,10 +128,10 @@ public class AlarmManager : RemoteObject
     /// <param name="addBurnTime">Whether the node's burn time should be included in the alarm.</param>
     /// <param name="title">Title for the alarm.</param>
     /// <param name="description">Description for the alarm.</param>
-    [Rpc("SpaceCenter", "AlarmManager_static_AddManeuverNodeAlarm")]
+    [SetRpc("SpaceCenter", "AlarmManager_static_AddManeuverNodeAlarm")]
     public async Task<Alarm> AddManeuverNodeAlarmAsync(Vessel vessel, Node node, double offset = 60.0, bool addBurnTime = true, string title = "Maneuver Node Alarm", string description = "")
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             vessel,
             node,
@@ -140,7 +140,7 @@ public class AlarmManager : RemoteObject
             title,
             description
         };
-        return await Connection.InvokeAsync<Alarm>("SpaceCenter", "AlarmManager_static_AddManeuverNodeAlarm", args);
+        return await InvokeNonNullableAsync<Alarm>("SpaceCenter", "AlarmManager_static_AddManeuverNodeAlarm", args);
     }
 
     /// <summary>
@@ -150,17 +150,17 @@ public class AlarmManager : RemoteObject
     /// <param name="offset">Time in seconds to offset the alarm by.</param>
     /// <param name="title">Title for the alarm.</param>
     /// <param name="description">Description for the alarm.</param>
-    [Rpc("SpaceCenter", "AlarmManager_static_AddPeriapsisAlarm")]
+    [SetRpc("SpaceCenter", "AlarmManager_static_AddPeriapsisAlarm")]
     public Alarm AddPeriapsisAlarm(Vessel vessel, double offset = 60.0, string title = "Periapsis Alarm", string description = "")
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             vessel,
             offset,
             title,
             description
         };
-        return Connection.Invoke<Alarm>("SpaceCenter", "AlarmManager_static_AddPeriapsisAlarm", args);
+        return InvokeNonNullable<Alarm>("SpaceCenter", "AlarmManager_static_AddPeriapsisAlarm", args);
     }
 
     /// <summary>
@@ -171,17 +171,17 @@ public class AlarmManager : RemoteObject
     /// <param name="offset">Time in seconds to offset the alarm by.</param>
     /// <param name="title">Title for the alarm.</param>
     /// <param name="description">Description for the alarm.</param>
-    [Rpc("SpaceCenter", "AlarmManager_static_AddPeriapsisAlarm")]
+    [SetRpc("SpaceCenter", "AlarmManager_static_AddPeriapsisAlarm")]
     public async Task<Alarm> AddPeriapsisAlarmAsync(Vessel vessel, double offset = 60.0, string title = "Periapsis Alarm", string description = "")
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             vessel,
             offset,
             title,
             description
         };
-        return await Connection.InvokeAsync<Alarm>("SpaceCenter", "AlarmManager_static_AddPeriapsisAlarm", args);
+        return await InvokeNonNullableAsync<Alarm>("SpaceCenter", "AlarmManager_static_AddPeriapsisAlarm", args);
     }
 
     /// <summary>
@@ -191,17 +191,17 @@ public class AlarmManager : RemoteObject
     /// <param name="offset">Time in seconds to offset the alarm by.</param>
     /// <param name="title">Title for the alarm.</param>
     /// <param name="description">Description for the alarm.</param>
-    [Rpc("SpaceCenter", "AlarmManager_static_AddSOIAlarm")]
+    [SetRpc("SpaceCenter", "AlarmManager_static_AddSOIAlarm")]
     public Alarm AddSOIAlarm(Vessel vessel, double offset = 60.0, string title = "SOI Change Alarm", string description = "")
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             vessel,
             offset,
             title,
             description
         };
-        return Connection.Invoke<Alarm>("SpaceCenter", "AlarmManager_static_AddSOIAlarm", args);
+        return InvokeNonNullable<Alarm>("SpaceCenter", "AlarmManager_static_AddSOIAlarm", args);
     }
 
     /// <summary>
@@ -212,17 +212,17 @@ public class AlarmManager : RemoteObject
     /// <param name="offset">Time in seconds to offset the alarm by.</param>
     /// <param name="title">Title for the alarm.</param>
     /// <param name="description">Description for the alarm.</param>
-    [Rpc("SpaceCenter", "AlarmManager_static_AddSOIAlarm")]
+    [SetRpc("SpaceCenter", "AlarmManager_static_AddSOIAlarm")]
     public async Task<Alarm> AddSOIAlarmAsync(Vessel vessel, double offset = 60.0, string title = "SOI Change Alarm", string description = "")
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             vessel,
             offset,
             title,
             description
         };
-        return await Connection.InvokeAsync<Alarm>("SpaceCenter", "AlarmManager_static_AddSOIAlarm", args);
+        return await InvokeNonNullableAsync<Alarm>("SpaceCenter", "AlarmManager_static_AddSOIAlarm", args);
     }
 
     /// <summary>
@@ -232,17 +232,17 @@ public class AlarmManager : RemoteObject
     /// <param name="vessel">Vessel to link the alarm to.</param>
     /// <param name="title">Title for the alarm.</param>
     /// <param name="description">Description for the alarm.</param>
-    [Rpc("SpaceCenter", "AlarmManager_static_AddVesselAlarm")]
+    [SetRpc("SpaceCenter", "AlarmManager_static_AddVesselAlarm")]
     public Alarm AddVesselAlarm(double time, Vessel vessel, string title = "Vessel Alarm", string description = "")
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             time,
             vessel,
             title,
             description
         };
-        return Connection.Invoke<Alarm>("SpaceCenter", "AlarmManager_static_AddVesselAlarm", args);
+        return InvokeNonNullable<Alarm>("SpaceCenter", "AlarmManager_static_AddVesselAlarm", args);
     }
 
     /// <summary>
@@ -253,43 +253,43 @@ public class AlarmManager : RemoteObject
     /// <param name="vessel">Vessel to link the alarm to.</param>
     /// <param name="title">Title for the alarm.</param>
     /// <param name="description">Description for the alarm.</param>
-    [Rpc("SpaceCenter", "AlarmManager_static_AddVesselAlarm")]
+    [SetRpc("SpaceCenter", "AlarmManager_static_AddVesselAlarm")]
     public async Task<Alarm> AddVesselAlarmAsync(double time, Vessel vessel, string title = "Vessel Alarm", string description = "")
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             time,
             vessel,
             title,
             description
         };
-        return await Connection.InvokeAsync<Alarm>("SpaceCenter", "AlarmManager_static_AddVesselAlarm", args);
+        return await InvokeNonNullableAsync<Alarm>("SpaceCenter", "AlarmManager_static_AddVesselAlarm", args);
     }
 
     /// <summary>
     /// Gets a list of all alarms.
     /// </summary>
-    [Rpc("SpaceCenter", "AlarmManager_get_Alarms")]
+    [GetRpc("SpaceCenter", "AlarmManager_get_Alarms")]
     public IList<Alarm> GetAlarms()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
-        return Connection.Invoke<IList<Alarm>>("SpaceCenter", "AlarmManager_get_Alarms", args);
+        return InvokeNonNullable<IList<Alarm>>("SpaceCenter", "AlarmManager_get_Alarms", args);
     }
 
     /// <summary>
     /// Gets a list of all alarms.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "AlarmManager_get_Alarms")]
+    [GetRpc("SpaceCenter", "AlarmManager_get_Alarms")]
     public async Task<IList<Alarm>> GetAlarmsAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
-        return await Connection.InvokeAsync<IList<Alarm>>("SpaceCenter", "AlarmManager_get_Alarms", args);
+        return await InvokeNonNullableAsync<IList<Alarm>>("SpaceCenter", "AlarmManager_get_Alarms", args);
     }
 }

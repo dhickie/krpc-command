@@ -5,56 +5,56 @@ using MathNet.Spatial.Units;
 namespace kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects;
 
 /// <summary>
-/// Represents a waypoint. Can be created using <see cref="M:SpaceCenter.WaypointManager.AddWaypoint" />.
+/// Represents a waypoint. Can be created using <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.WaypointManager.AddWaypoint" />.
 /// </summary>
 public class Waypoint : RemoteObject
 {
     /// <summary>
     /// Construct an instance of this remote object. Should not be called directly. This interface is intended for internal decoding.
     /// </summary>
-    public Waypoint(ConnectionMultiplexer connection, ulong id) : base(connection, id)
+    internal Waypoint(IConnectionMultiplexer connection, ulong id) : base(connection, id)
     {
     }
 
     /// <summary>
     /// Removes the waypoint.
     /// </summary>
-    [Rpc("SpaceCenter", "Waypoint_Remove")]
+    [SetRpc("SpaceCenter", "Waypoint_Remove")]
     public void Remove()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
-        Connection.Invoke("SpaceCenter", "Waypoint_Remove", args);
+        InvokeVoid("SpaceCenter", "Waypoint_Remove", args);
     }
 
     /// <summary>
     /// Removes the waypoint.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Waypoint_Remove")]
+    [SetRpc("SpaceCenter", "Waypoint_Remove")]
     public async Task RemoveAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
-        await Connection.InvokeAsync("SpaceCenter", "Waypoint_Remove", args);
+        await InvokeVoidAsync("SpaceCenter", "Waypoint_Remove", args);
     }
 
     /// <summary>
     /// Gets the altitude of the waypoint above the surface of the body, in meters.
     /// When over water, this is the altitude above the sea floor.
     /// </summary>
-    [Rpc("SpaceCenter", "Waypoint_get_BedrockAltitude")]
+    [GetRpc("SpaceCenter", "Waypoint_get_BedrockAltitude")]
     public double GetBedrockAltitude()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
-        return Connection.Invoke<double>("SpaceCenter", "Waypoint_get_BedrockAltitude", args);
+        return InvokeNonNullable<double>("SpaceCenter", "Waypoint_get_BedrockAltitude", args);
     }
 
     /// <summary>
@@ -62,14 +62,14 @@ public class Waypoint : RemoteObject
     /// When over water, this is the altitude above the sea floor.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Waypoint_get_BedrockAltitude")]
+    [GetRpc("SpaceCenter", "Waypoint_get_BedrockAltitude")]
     public async Task<double> GetBedrockAltitudeAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
-        return await Connection.InvokeAsync<double>("SpaceCenter", "Waypoint_get_BedrockAltitude", args);
+        return await InvokeNonNullableAsync<double>("SpaceCenter", "Waypoint_get_BedrockAltitude", args);
     }
 
     /// <summary>
@@ -77,15 +77,15 @@ public class Waypoint : RemoteObject
     /// When over water, this is the altitude above the sea floor.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "Waypoint_set_BedrockAltitude")]
+    [SetRpc("SpaceCenter", "Waypoint_set_BedrockAltitude")]
     public void SetBedrockAltitude(double value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "Waypoint_set_BedrockAltitude", args);
+        InvokeVoid("SpaceCenter", "Waypoint_set_BedrockAltitude", args);
     }
 
     /// <summary>
@@ -94,57 +94,57 @@ public class Waypoint : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "Waypoint_set_BedrockAltitude")]
+    [SetRpc("SpaceCenter", "Waypoint_set_BedrockAltitude")]
     public async Task SetBedrockAltitudeAsync(double value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "Waypoint_set_BedrockAltitude", args);
+        await InvokeVoidAsync("SpaceCenter", "Waypoint_set_BedrockAltitude", args);
     }
 
     /// <summary>
     /// Gets the celestial body the waypoint is attached to.
     /// </summary>
-    [Rpc("SpaceCenter", "Waypoint_get_Body")]
+    [GetRpc("SpaceCenter", "Waypoint_get_Body")]
     public CelestialBody GetBody()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
-        return Connection.Invoke<CelestialBody>("SpaceCenter", "Waypoint_get_Body", args);
+        return InvokeNonNullable<CelestialBody>("SpaceCenter", "Waypoint_get_Body", args);
     }
 
     /// <summary>
     /// Gets the celestial body the waypoint is attached to.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Waypoint_get_Body")]
+    [GetRpc("SpaceCenter", "Waypoint_get_Body")]
     public async Task<CelestialBody> GetBodyAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
-        return await Connection.InvokeAsync<CelestialBody>("SpaceCenter", "Waypoint_get_Body", args);
+        return await InvokeNonNullableAsync<CelestialBody>("SpaceCenter", "Waypoint_get_Body", args);
     }
 
     /// <summary>
     /// Sets the celestial body the waypoint is attached to.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "Waypoint_set_Body")]
+    [SetRpc("SpaceCenter", "Waypoint_set_Body")]
     public void SetBody(CelestialBody value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "Waypoint_set_Body", args);
+        InvokeVoid("SpaceCenter", "Waypoint_set_Body", args);
     }
 
     /// <summary>
@@ -152,229 +152,229 @@ public class Waypoint : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "Waypoint_set_Body")]
+    [SetRpc("SpaceCenter", "Waypoint_set_Body")]
     public async Task SetBodyAsync(CelestialBody value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "Waypoint_set_Body", args);
+        await InvokeVoidAsync("SpaceCenter", "Waypoint_set_Body", args);
     }
 
     /// <summary>
     /// Returns <c>true</c> if this waypoint is part of a set of clustered waypoints with greek letter
     /// names appended (Alpha, Beta, Gamma, etc).
     /// If <c>true</c>, there is a one-to-one correspondence with the greek letter name and
-    /// the <see cref="M:SpaceCenter.Waypoint.GetIndex" />.
+    /// the <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Waypoint.GetIndex" />.
     /// </summary>
-    [Rpc("SpaceCenter", "Waypoint_get_Clustered")]
+    [GetRpc("SpaceCenter", "Waypoint_get_Clustered")]
     public bool GetClustered()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "Waypoint_get_Clustered", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "Waypoint_get_Clustered", args);
     }
 
     /// <summary>
     /// Returns <c>true</c> if this waypoint is part of a set of clustered waypoints with greek letter
     /// names appended (Alpha, Beta, Gamma, etc).
     /// If <c>true</c>, there is a one-to-one correspondence with the greek letter name and
-    /// the <see cref="M:SpaceCenter.Waypoint.GetIndex" />.
+    /// the <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Waypoint.GetIndex" />.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Waypoint_get_Clustered")]
+    [GetRpc("SpaceCenter", "Waypoint_get_Clustered")]
     public async Task<bool> GetClusteredAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "Waypoint_get_Clustered", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "Waypoint_get_Clustered", args);
     }
 
     /// <summary>
-    /// Gets the seed of the icon color. See <see cref="M:SpaceCenter.WaypointManager.GetColors" /> for example colors.
+    /// Gets the seed of the icon color. See <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.WaypointManager.GetColors" /> for example colors.
     /// </summary>
-    [Rpc("SpaceCenter", "Waypoint_get_Color")]
+    [GetRpc("SpaceCenter", "Waypoint_get_Color")]
     public int GetColor()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
-        return Connection.Invoke<int>("SpaceCenter", "Waypoint_get_Color", args);
+        return InvokeNonNullable<int>("SpaceCenter", "Waypoint_get_Color", args);
     }
 
     /// <summary>
-    /// Gets the seed of the icon color. See <see cref="M:SpaceCenter.WaypointManager.GetColors" /> for example colors.
+    /// Gets the seed of the icon color. See <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.WaypointManager.GetColors" /> for example colors.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Waypoint_get_Color")]
+    [GetRpc("SpaceCenter", "Waypoint_get_Color")]
     public async Task<int> GetColorAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
-        return await Connection.InvokeAsync<int>("SpaceCenter", "Waypoint_get_Color", args);
+        return await InvokeNonNullableAsync<int>("SpaceCenter", "Waypoint_get_Color", args);
     }
 
     /// <summary>
-    /// Sets the seed of the icon color. See <see cref="M:SpaceCenter.WaypointManager.GetColors" /> for example colors.
+    /// Sets the seed of the icon color. See <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.WaypointManager.GetColors" /> for example colors.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "Waypoint_set_Color")]
+    [SetRpc("SpaceCenter", "Waypoint_set_Color")]
     public void SetColor(int value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "Waypoint_set_Color", args);
+        InvokeVoid("SpaceCenter", "Waypoint_set_Color", args);
     }
 
     /// <summary>
-    /// Sets the seed of the icon color. See <see cref="M:SpaceCenter.WaypointManager.GetColors" /> for example colors.
+    /// Sets the seed of the icon color. See <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.WaypointManager.GetColors" /> for example colors.
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "Waypoint_set_Color")]
+    [SetRpc("SpaceCenter", "Waypoint_set_Color")]
     public async Task SetColorAsync(int value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "Waypoint_set_Color", args);
+        await InvokeVoidAsync("SpaceCenter", "Waypoint_set_Color", args);
     }
 
     /// <summary>
     /// Gets the associated contract.
     /// </summary>
-    [Rpc("SpaceCenter", "Waypoint_get_Contract")]
+    [GetRpc("SpaceCenter", "Waypoint_get_Contract")]
     public Contract GetContract()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
-        return Connection.Invoke<Contract>("SpaceCenter", "Waypoint_get_Contract", args);
+        return InvokeNonNullable<Contract>("SpaceCenter", "Waypoint_get_Contract", args);
     }
 
     /// <summary>
     /// Gets the associated contract.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Waypoint_get_Contract")]
+    [GetRpc("SpaceCenter", "Waypoint_get_Contract")]
     public async Task<Contract> GetContractAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
-        return await Connection.InvokeAsync<Contract>("SpaceCenter", "Waypoint_get_Contract", args);
+        return await InvokeNonNullableAsync<Contract>("SpaceCenter", "Waypoint_get_Contract", args);
     }
 
     /// <summary>
     /// Returns <c>true</c> if the waypoint is attached to the ground.
     /// </summary>
-    [Rpc("SpaceCenter", "Waypoint_get_Grounded")]
+    [GetRpc("SpaceCenter", "Waypoint_get_Grounded")]
     public bool GetGrounded()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "Waypoint_get_Grounded", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "Waypoint_get_Grounded", args);
     }
 
     /// <summary>
     /// Returns <c>true</c> if the waypoint is attached to the ground.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Waypoint_get_Grounded")]
+    [GetRpc("SpaceCenter", "Waypoint_get_Grounded")]
     public async Task<bool> GetGroundedAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "Waypoint_get_Grounded", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "Waypoint_get_Grounded", args);
     }
 
     /// <summary>
     /// Gets whether the waypoint belongs to a contract.
     /// </summary>
-    [Rpc("SpaceCenter", "Waypoint_get_HasContract")]
+    [GetRpc("SpaceCenter", "Waypoint_get_HasContract")]
     public bool GetHasContract()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "Waypoint_get_HasContract", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "Waypoint_get_HasContract", args);
     }
 
     /// <summary>
     /// Gets whether the waypoint belongs to a contract.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Waypoint_get_HasContract")]
+    [GetRpc("SpaceCenter", "Waypoint_get_HasContract")]
     public async Task<bool> GetHasContractAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "Waypoint_get_HasContract", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "Waypoint_get_HasContract", args);
     }
 
     /// <summary>
     /// Gets the icon of the waypoint.
     /// </summary>
-    [Rpc("SpaceCenter", "Waypoint_get_Icon")]
+    [GetRpc("SpaceCenter", "Waypoint_get_Icon")]
     public string GetIcon()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
-        return Connection.Invoke<string>("SpaceCenter", "Waypoint_get_Icon", args);
+        return InvokeNonNullable<string>("SpaceCenter", "Waypoint_get_Icon", args);
     }
 
     /// <summary>
     /// Gets the icon of the waypoint.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Waypoint_get_Icon")]
+    [GetRpc("SpaceCenter", "Waypoint_get_Icon")]
     public async Task<string> GetIconAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
-        return await Connection.InvokeAsync<string>("SpaceCenter", "Waypoint_get_Icon", args);
+        return await InvokeNonNullableAsync<string>("SpaceCenter", "Waypoint_get_Icon", args);
     }
 
     /// <summary>
     /// Sets the icon of the waypoint.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "Waypoint_set_Icon")]
+    [SetRpc("SpaceCenter", "Waypoint_set_Icon")]
     public void SetIcon(string value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "Waypoint_set_Icon", args);
+        InvokeVoid("SpaceCenter", "Waypoint_set_Icon", args);
     }
 
     /// <summary>
@@ -382,15 +382,15 @@ public class Waypoint : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "Waypoint_set_Icon")]
+    [SetRpc("SpaceCenter", "Waypoint_set_Icon")]
     public async Task SetIconAsync(string value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "Waypoint_set_Icon", args);
+        await InvokeVoidAsync("SpaceCenter", "Waypoint_set_Icon", args);
     }
 
     /// <summary>
@@ -398,16 +398,16 @@ public class Waypoint : RemoteObject
     /// In other words, when you have a cluster of waypoints called "Somewhere Alpha",
     /// "Somewhere Beta" and "Somewhere Gamma", the alpha site has index 0, the beta
     /// site has index 1 and the gamma site has index 2.
-    /// When <see cref="M:SpaceCenter.Waypoint.GetClustered" /> is <c>false</c>, this is zero.
+    /// When <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Waypoint.GetClustered" /> is <c>false</c>, this is zero.
     /// </summary>
-    [Rpc("SpaceCenter", "Waypoint_get_Index")]
+    [GetRpc("SpaceCenter", "Waypoint_get_Index")]
     public int GetIndex()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
-        return Connection.Invoke<int>("SpaceCenter", "Waypoint_get_Index", args);
+        return InvokeNonNullable<int>("SpaceCenter", "Waypoint_get_Index", args);
     }
 
     /// <summary>
@@ -415,30 +415,30 @@ public class Waypoint : RemoteObject
     /// In other words, when you have a cluster of waypoints called "Somewhere Alpha",
     /// "Somewhere Beta" and "Somewhere Gamma", the alpha site has index 0, the beta
     /// site has index 1 and the gamma site has index 2.
-    /// When <see cref="M:SpaceCenter.Waypoint.GetClustered" /> is <c>false</c>, this is zero.
+    /// When <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Waypoint.GetClustered" /> is <c>false</c>, this is zero.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Waypoint_get_Index")]
+    [GetRpc("SpaceCenter", "Waypoint_get_Index")]
     public async Task<int> GetIndexAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
-        return await Connection.InvokeAsync<int>("SpaceCenter", "Waypoint_get_Index", args);
+        return await InvokeNonNullableAsync<int>("SpaceCenter", "Waypoint_get_Index", args);
     }
 
     /// <summary>
     /// Gets the latitude of the waypoint.
     /// </summary>
-    [Rpc("SpaceCenter", "Waypoint_get_Latitude")]
+    [GetRpc("SpaceCenter", "Waypoint_get_Latitude")]
     public Angle GetLatitude()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
-        var result = Connection.Invoke<double>("SpaceCenter", "Waypoint_get_Latitude", args);
+        var result = InvokeNonNullable<double>("SpaceCenter", "Waypoint_get_Latitude", args);
         return Angle.FromDegrees(result);
     }
 
@@ -446,14 +446,14 @@ public class Waypoint : RemoteObject
     /// Gets the latitude of the waypoint.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Waypoint_get_Latitude")]
+    [GetRpc("SpaceCenter", "Waypoint_get_Latitude")]
     public async Task<Angle> GetLatitudeAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
-        var result = await Connection.InvokeAsync<double>("SpaceCenter", "Waypoint_get_Latitude", args);
+        var result = await InvokeNonNullableAsync<double>("SpaceCenter", "Waypoint_get_Latitude", args);
         return Angle.FromDegrees(result);
     }
 
@@ -461,15 +461,15 @@ public class Waypoint : RemoteObject
     /// Sets the latitude of the waypoint.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "Waypoint_set_Latitude")]
+    [SetRpc("SpaceCenter", "Waypoint_set_Latitude")]
     public void SetLatitude(Angle value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value.Degrees
         };
-        Connection.Invoke("SpaceCenter", "Waypoint_set_Latitude", args);
+        InvokeVoid("SpaceCenter", "Waypoint_set_Latitude", args);
     }
 
     /// <summary>
@@ -477,28 +477,28 @@ public class Waypoint : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "Waypoint_set_Latitude")]
+    [SetRpc("SpaceCenter", "Waypoint_set_Latitude")]
     public async Task SetLatitudeAsync(Angle value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value.Degrees
         };
-        await Connection.InvokeAsync("SpaceCenter", "Waypoint_set_Latitude", args);
+        await InvokeVoidAsync("SpaceCenter", "Waypoint_set_Latitude", args);
     }
 
     /// <summary>
     /// Gets the longitude of the waypoint.
     /// </summary>
-    [Rpc("SpaceCenter", "Waypoint_get_Longitude")]
+    [GetRpc("SpaceCenter", "Waypoint_get_Longitude")]
     public Angle GetLongitude()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
-        var result = Connection.Invoke<double>("SpaceCenter", "Waypoint_get_Longitude", args);
+        var result = InvokeNonNullable<double>("SpaceCenter", "Waypoint_get_Longitude", args);
         return Angle.FromDegrees(result);
     }
 
@@ -506,14 +506,14 @@ public class Waypoint : RemoteObject
     /// Gets the longitude of the waypoint.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Waypoint_get_Longitude")]
+    [GetRpc("SpaceCenter", "Waypoint_get_Longitude")]
     public async Task<Angle> GetLongitudeAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
-        var result = await Connection.InvokeAsync<double>("SpaceCenter", "Waypoint_get_Longitude", args);
+        var result = await InvokeNonNullableAsync<double>("SpaceCenter", "Waypoint_get_Longitude", args);
         return Angle.FromDegrees(result);
     }
 
@@ -521,15 +521,15 @@ public class Waypoint : RemoteObject
     /// Sets the longitude of the waypoint.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "Waypoint_set_Longitude")]
+    [SetRpc("SpaceCenter", "Waypoint_set_Longitude")]
     public void SetLongitude(Angle value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value.Degrees
         };
-        Connection.Invoke("SpaceCenter", "Waypoint_set_Longitude", args);
+        InvokeVoid("SpaceCenter", "Waypoint_set_Longitude", args);
     }
 
     /// <summary>
@@ -537,57 +537,57 @@ public class Waypoint : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "Waypoint_set_Longitude")]
+    [SetRpc("SpaceCenter", "Waypoint_set_Longitude")]
     public async Task SetLongitudeAsync(Angle value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value.Degrees
         };
-        await Connection.InvokeAsync("SpaceCenter", "Waypoint_set_Longitude", args);
+        await InvokeVoidAsync("SpaceCenter", "Waypoint_set_Longitude", args);
     }
 
     /// <summary>
     /// Gets the altitude of the waypoint above sea level, in meters.
     /// </summary>
-    [Rpc("SpaceCenter", "Waypoint_get_MeanAltitude")]
+    [GetRpc("SpaceCenter", "Waypoint_get_MeanAltitude")]
     public double GetMeanAltitude()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
-        return Connection.Invoke<double>("SpaceCenter", "Waypoint_get_MeanAltitude", args);
+        return InvokeNonNullable<double>("SpaceCenter", "Waypoint_get_MeanAltitude", args);
     }
 
     /// <summary>
     /// Gets the altitude of the waypoint above sea level, in meters.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Waypoint_get_MeanAltitude")]
+    [GetRpc("SpaceCenter", "Waypoint_get_MeanAltitude")]
     public async Task<double> GetMeanAltitudeAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
-        return await Connection.InvokeAsync<double>("SpaceCenter", "Waypoint_get_MeanAltitude", args);
+        return await InvokeNonNullableAsync<double>("SpaceCenter", "Waypoint_get_MeanAltitude", args);
     }
 
     /// <summary>
     /// Sets the altitude of the waypoint above sea level, in meters.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "Waypoint_set_MeanAltitude")]
+    [SetRpc("SpaceCenter", "Waypoint_set_MeanAltitude")]
     public void SetMeanAltitude(double value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "Waypoint_set_MeanAltitude", args);
+        InvokeVoid("SpaceCenter", "Waypoint_set_MeanAltitude", args);
     }
 
     /// <summary>
@@ -595,57 +595,57 @@ public class Waypoint : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "Waypoint_set_MeanAltitude")]
+    [SetRpc("SpaceCenter", "Waypoint_set_MeanAltitude")]
     public async Task SetMeanAltitudeAsync(double value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "Waypoint_set_MeanAltitude", args);
+        await InvokeVoidAsync("SpaceCenter", "Waypoint_set_MeanAltitude", args);
     }
 
     /// <summary>
     /// Gets the name of the waypoint as it appears on the map and the contract.
     /// </summary>
-    [Rpc("SpaceCenter", "Waypoint_get_Name")]
+    [GetRpc("SpaceCenter", "Waypoint_get_Name")]
     public string GetName()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
-        return Connection.Invoke<string>("SpaceCenter", "Waypoint_get_Name", args);
+        return InvokeNonNullable<string>("SpaceCenter", "Waypoint_get_Name", args);
     }
 
     /// <summary>
     /// Gets the name of the waypoint as it appears on the map and the contract.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Waypoint_get_Name")]
+    [GetRpc("SpaceCenter", "Waypoint_get_Name")]
     public async Task<string> GetNameAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
-        return await Connection.InvokeAsync<string>("SpaceCenter", "Waypoint_get_Name", args);
+        return await InvokeNonNullableAsync<string>("SpaceCenter", "Waypoint_get_Name", args);
     }
 
     /// <summary>
     /// Sets the name of the waypoint as it appears on the map and the contract.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "Waypoint_set_Name")]
+    [SetRpc("SpaceCenter", "Waypoint_set_Name")]
     public void SetName(string value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "Waypoint_set_Name", args);
+        InvokeVoid("SpaceCenter", "Waypoint_set_Name", args);
     }
 
     /// <summary>
@@ -653,56 +653,56 @@ public class Waypoint : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "Waypoint_set_Name")]
+    [SetRpc("SpaceCenter", "Waypoint_set_Name")]
     public async Task SetNameAsync(string value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "Waypoint_set_Name", args);
+        await InvokeVoidAsync("SpaceCenter", "Waypoint_set_Name", args);
     }
 
     /// <summary>
     /// Returns <c>true</c> if the waypoint is near to the surface of a body.
     /// </summary>
-    [Rpc("SpaceCenter", "Waypoint_get_NearSurface")]
+    [GetRpc("SpaceCenter", "Waypoint_get_NearSurface")]
     public bool GetNearSurface()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "Waypoint_get_NearSurface", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "Waypoint_get_NearSurface", args);
     }
 
     /// <summary>
     /// Returns <c>true</c> if the waypoint is near to the surface of a body.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Waypoint_get_NearSurface")]
+    [GetRpc("SpaceCenter", "Waypoint_get_NearSurface")]
     public async Task<bool> GetNearSurfaceAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "Waypoint_get_NearSurface", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "Waypoint_get_NearSurface", args);
     }
 
     /// <summary>
     /// Gets the altitude of the waypoint above the surface of the body or sea level,
     /// whichever is closer, in meters.
     /// </summary>
-    [Rpc("SpaceCenter", "Waypoint_get_SurfaceAltitude")]
+    [GetRpc("SpaceCenter", "Waypoint_get_SurfaceAltitude")]
     public double GetSurfaceAltitude()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
-        return Connection.Invoke<double>("SpaceCenter", "Waypoint_get_SurfaceAltitude", args);
+        return InvokeNonNullable<double>("SpaceCenter", "Waypoint_get_SurfaceAltitude", args);
     }
 
     /// <summary>
@@ -710,14 +710,14 @@ public class Waypoint : RemoteObject
     /// whichever is closer, in meters.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Waypoint_get_SurfaceAltitude")]
+    [GetRpc("SpaceCenter", "Waypoint_get_SurfaceAltitude")]
     public async Task<double> GetSurfaceAltitudeAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
-        return await Connection.InvokeAsync<double>("SpaceCenter", "Waypoint_get_SurfaceAltitude", args);
+        return await InvokeNonNullableAsync<double>("SpaceCenter", "Waypoint_get_SurfaceAltitude", args);
     }
 
     /// <summary>
@@ -725,15 +725,15 @@ public class Waypoint : RemoteObject
     /// whichever is closer, in meters.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "Waypoint_set_SurfaceAltitude")]
+    [SetRpc("SpaceCenter", "Waypoint_set_SurfaceAltitude")]
     public void SetSurfaceAltitude(double value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "Waypoint_set_SurfaceAltitude", args);
+        InvokeVoid("SpaceCenter", "Waypoint_set_SurfaceAltitude", args);
     }
 
     /// <summary>
@@ -742,14 +742,14 @@ public class Waypoint : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "Waypoint_set_SurfaceAltitude")]
+    [SetRpc("SpaceCenter", "Waypoint_set_SurfaceAltitude")]
     public async Task SetSurfaceAltitudeAsync(double value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "Waypoint_set_SurfaceAltitude", args);
+        await InvokeVoidAsync("SpaceCenter", "Waypoint_set_SurfaceAltitude", args);
     }
 }

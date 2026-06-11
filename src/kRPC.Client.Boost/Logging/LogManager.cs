@@ -2,28 +2,28 @@ using Microsoft.Extensions.Logging;
 
 namespace kRPC.Client.Boost.Logging;
 
-internal class LogManager
+internal static class LogManager
 {
-    private static ILoggerFactory? _loggerFactory;
+    public static ILoggerFactory LoggerFactory { get; set; }
 
-    public LogManager(ILoggerFactory? loggerFactory)
+    static LogManager()
     {
-        _loggerFactory = loggerFactory ?? LoggerFactory.Create(builder => builder.AddConsole());
+        LoggerFactory = Microsoft.Extensions.Logging.LoggerFactory.Create(builder => builder.AddConsole());
     }
 
     public static ILogger<T> GetLogger<T>()
     {
-        if (_loggerFactory == null)
+        if (LoggerFactory == null)
             throw new InvalidOperationException("Cannot create a logger before the logger factory is initialised");
         
-        return _loggerFactory.CreateLogger<T>();
+        return LoggerFactory.CreateLogger<T>();
     }
 
     public static ILogger GetLogger(Type classType)
     {
-        if (_loggerFactory == null)
+        if (LoggerFactory == null)
             throw new InvalidOperationException("Cannot create a logger before the logger factory is initialised");
         
-        return _loggerFactory.CreateLogger(classType.FullName ?? classType.Name);
+        return LoggerFactory.CreateLogger(classType.FullName ?? classType.Name);
     }
 }

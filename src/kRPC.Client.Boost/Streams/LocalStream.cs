@@ -1,6 +1,7 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Linq.Expressions;
 using kRPC.Client.Boost.Connection;
+using kRPC.Client.Boost.Helpers;
 using kRPC.Client.Boost.Services.KRPC.RemoteObjects;
 
 namespace kRPC.Client.Boost.Streams;
@@ -8,24 +9,29 @@ namespace kRPC.Client.Boost.Streams;
 /// <summary>
 /// LocalStream encapsulates the local state of a server side stream that can be used by multiple subscribers.
 /// It can be torn down, removing the stream from the server, and then re-initialised without re-providing the expression
-/// that retrieves the desired data.
+/// that retrieves the desired data. This type is not threadsafe.
 /// </summary>
 /// <typeparam name="T">The datatype that's contained in the stream</typeparam>
 [SuppressMessage("ReSharper", "InconsistentlySynchronizedField")]
-internal sealed class LocalStream<T> : LocalStream where T : class
+internal sealed class LocalStream<T> : LocalStream
 {
     private bool _initialised;
     private readonly ReaderWriterLockSlim _initLock = new();
-    private readonly ConnectionMultiplexer _connection;
+    private readonly IConnectionMultiplexer _connection;
     private readonly Expression<Func<T>> _expression;
-    private T? _value;
+    private object? _value;
+
+    /// <summary>
+    /// Used in testing when simulating race conditions - should not be used in application code
+    /// </summary>
+    internal int NumInitLockWriteWaiters => _initLock.WaitingWriteCount;
     
     /// <summary>
     /// Register a stream with the provided expression.
     /// </summary>
     /// <param name="connection">The kRPC connection.</param>
     /// <param name="expression">The expression to register</param>
-    public LocalStream(ConnectionMultiplexer connection, Expression<Func<T>> expression) : base(typeof(T))
+    public LocalStream(IConnectionMultiplexer connection, Expression<Func<T>> expression) : base(typeof(T))
     {
         _connection = connection;
         _expression = expression;
@@ -39,19 +45,14 @@ internal sealed class LocalStream<T> : LocalStream where T : class
         if (_initialised)
             return;
 
-        _initLock.EnterWriteLock();
-        try
+        Sync.WithWriteLock(_initLock, () => 
         {
             if (_initialised)
                 return;
 
             RemoteStream = _connection.AddStream(_expression, true);
             _initialised = true;
-        }
-        finally
-        {
-            _initLock.ExitWriteLock();
-        }
+        });
     }
     
     /// <inheritdoc/>
@@ -60,8 +61,7 @@ internal sealed class LocalStream<T> : LocalStream where T : class
         if (!_initialised)
             return;
 
-        _initLock.EnterWriteLock();
-        try
+        Sync.WithWriteLock(_initLock, () =>
         {
             if (!_initialised)
                 return;
@@ -69,49 +69,56 @@ internal sealed class LocalStream<T> : LocalStream where T : class
             RemoteStream?.Remove();
             RemoteStream = null;
             _initialised = false;
-        }
-        finally
-        {
-            _initLock.ExitWriteLock();
-        }
+        });
+    }
+
+    /// <summary>
+    /// Gets the current value of the stream.
+    /// </summary>
+    /// <param name="value">The value as an out parameter</param>
+    /// <returns>Whether the value was successfully obtained</returns>
+    public bool TryGet(out T? value)
+    {
+        return TryGet<T>(out value);
     }
     
-    protected override bool TryGetImpl<TOut>(out TOut? value) where TOut : class
+    protected override bool TryGetImpl(out object? value)
     {
-        _initLock.EnterReadLock();
-        try
+        var result = false;
+        object? innerValue = null; 
+        
+        Sync.WithReadLock(_initLock, () =>
         {
             if (!_initialised)
             {
-                value = null;
-                return false;
+                result = false;
+                return;
             }
 
-            value = Volatile.Read(ref _value) as TOut;
-
-            return value != null;
-        }
-        finally
-        {
-            _initLock.ExitReadLock();
-        }
+            MethodInjector.DoWork(RemoteId!);
+            innerValue = _value;
+            result = true;
+        });
+        
+        value = innerValue;
+        return result;
     }
     
     protected override bool TrySetImpl(object? value)
     {
-        _initLock.EnterReadLock();
-        try
+        var result = false;
+        
+        Sync.WithReadLock(_initLock, () =>
         {
             if (!_initialised)
-                return false;
+                return;
 
-            Volatile.Write(ref _value, value as T);
-            return true;
-        }
-        finally
-        {
-            _initLock.ExitReadLock();
-        }
+            MethodInjector.DoWork(RemoteId!);
+            _value = value;
+            result = true;
+        });
+
+        return result;
     }
 }
 
@@ -139,9 +146,7 @@ internal abstract class LocalStream(Type dataType)
     public bool RemoveSubscriber()
     {
         if (Subscribers == 0)
-        {
             throw new InvalidOperationException("Cannot remove a stream subscriber from a stream with no subscribers");
-        }
         
         Subscribers--;
         return Subscribers != 0;
@@ -154,16 +159,16 @@ internal abstract class LocalStream(Type dataType)
     /// <typeparam name="T">The datatype of the stream.</typeparam>
     /// <returns>Whether the value was successfully obtained.</returns>
     /// <exception cref="ArgumentException">Thrown if the provided data type doesn't match the actual type in the stream</exception>
-    public bool TryGet<T>(out T? value) where T : class
+    public bool TryGet<T>(out T? value)
     {
         var requestedType = typeof(T);
         if (requestedType != dataType)
-        {
             throw new ArgumentException(
                 $"Attempt to get stream value of type {requestedType.Name} from stream containing data type {dataType.Name}");
-        }
 
-        return TryGetImpl(out value);
+        var result = TryGetImpl(out var innerValue);
+        value = (T?)innerValue;
+        return result;
     }
 
     /// <summary>
@@ -171,7 +176,6 @@ internal abstract class LocalStream(Type dataType)
     /// This should only be called by the stream manager after receiving an update from the server.
     /// </summary>
     /// <param name="value">The value to set for the stream</param>
-    /// <typeparam name="T">The type of the value being set</typeparam>
     /// <returns>Whether the value was successfully set</returns>
     /// <exception cref="ArgumentException">
     ///     Thrown if the type of the provided value doesn't match the data type contained in the stream.
@@ -180,10 +184,8 @@ internal abstract class LocalStream(Type dataType)
     {
         var valueType = value?.GetType();
         if (valueType != null && valueType != dataType)
-        {
             throw new ArgumentException(
                 $"Attempt to set stream value of type {valueType.Name} on a stream containing data type {dataType.Name}");
-        }
 
         return TrySetImpl(value);
     }
@@ -198,7 +200,7 @@ internal abstract class LocalStream(Type dataType)
     /// </summary>
     public abstract void InitialiseStream();
     
-    protected abstract bool TryGetImpl<T>(out T? value) where T : class;
+    protected abstract bool TryGetImpl(out object? value);
 
     protected abstract bool TrySetImpl(object? value);
 }

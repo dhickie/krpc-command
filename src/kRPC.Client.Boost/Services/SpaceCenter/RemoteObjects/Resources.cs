@@ -5,16 +5,16 @@ namespace kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects;
 
 /// <summary>
 /// Represents the collection of resources stored in a vessel, stage or part.
-/// Created by calling <see cref="M:SpaceCenter.Vessel.GetResources" />,
-/// <see cref="M:SpaceCenter.Vessel.ResourcesInDecoupleStage" /> or
-/// <see cref="M:SpaceCenter.Part.GetResources" />.
+/// Created by calling <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Vessel.GetResources" />,
+/// <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Vessel.GetResourcesInDecoupleStage" /> or
+/// <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Part.GetResources" />.
 /// </summary>
 public class Resources : RemoteObject
 {
     /// <summary>
     /// Construct an instance of this remote object. Should not be called directly. This interface is intended for internal decoding.
     /// </summary>
-    public Resources(ConnectionMultiplexer connection, ulong id) : base(connection, id)
+    internal Resources(IConnectionMultiplexer connection, ulong id) : base(connection, id)
     {
     }
 
@@ -22,15 +22,15 @@ public class Resources : RemoteObject
     /// Returns the amount of a resource that is currently stored.
     /// </summary>
     /// <param name="name">The name of the resource.</param>
-    [Rpc("SpaceCenter", "Resources_Amount")]
-    public float Amount(string name)
+    [GetRpc("SpaceCenter", "Resources_Amount")]
+    public float GetAmount(string name)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             name
         };
-        return Connection.Invoke<float>("SpaceCenter", "Resources_Amount", args);
+        return InvokeNonNullable<float>("SpaceCenter", "Resources_Amount", args);
     }
 
     /// <summary>
@@ -38,30 +38,30 @@ public class Resources : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="name">The name of the resource.</param>
-    [Rpc("SpaceCenter", "Resources_Amount")]
-    public async Task<float> AmountAsync(string name)
+    [GetRpc("SpaceCenter", "Resources_Amount")]
+    public async Task<float> GetAmountAsync(string name)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             name
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "Resources_Amount", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "Resources_Amount", args);
     }
 
     /// <summary>
     /// Check whether the named resource can be stored.
     /// </summary>
     /// <param name="name">The name of the resource.</param>
-    [Rpc("SpaceCenter", "Resources_HasResource")]
+    [GetRpc("SpaceCenter", "Resources_HasResource")]
     public bool HasResource(string name)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             name
         };
-        return Connection.Invoke<bool>("SpaceCenter", "Resources_HasResource", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "Resources_HasResource", args);
     }
 
     /// <summary>
@@ -69,30 +69,30 @@ public class Resources : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="name">The name of the resource.</param>
-    [Rpc("SpaceCenter", "Resources_HasResource")]
+    [GetRpc("SpaceCenter", "Resources_HasResource")]
     public async Task<bool> HasResourceAsync(string name)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             name
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "Resources_HasResource", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "Resources_HasResource", args);
     }
 
     /// <summary>
     /// Returns the amount of a resource that can be stored.
     /// </summary>
     /// <param name="name">The name of the resource.</param>
-    [Rpc("SpaceCenter", "Resources_Max")]
-    public float Max(string name)
+    [GetRpc("SpaceCenter", "Resources_Max")]
+    public float GetMax(string name)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             name
         };
-        return Connection.Invoke<float>("SpaceCenter", "Resources_Max", args);
+        return InvokeNonNullable<float>("SpaceCenter", "Resources_Max", args);
     }
 
     /// <summary>
@@ -100,58 +100,58 @@ public class Resources : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="name">The name of the resource.</param>
-    [Rpc("SpaceCenter", "Resources_Max")]
-    public async Task<float> MaxAsync(string name)
+    [GetRpc("SpaceCenter", "Resources_Max")]
+    public async Task<float> GetMaxAsync(string name)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             name
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "Resources_Max", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "Resources_Max", args);
     }
 
     /// <summary>
     /// All the individual resources with the given name that can be stored.
     /// </summary>
-    [Rpc("SpaceCenter", "Resources_WithResource")]
-    public IList<Resource> WithResource(string name)
+    [GetRpc("SpaceCenter", "Resources_WithResource")]
+    public IList<Resource> GetResourcesWithName(string name)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             name
         };
-        return Connection.Invoke<IList<Resource>>("SpaceCenter", "Resources_WithResource", args);
+        return InvokeNonNullable<IList<Resource>>("SpaceCenter", "Resources_WithResource", args);
     }
 
     /// <summary>
     /// All the individual resources with the given name that can be stored.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Resources_WithResource")]
-    public async Task<IList<Resource>> WithResourceAsync(string name)
+    [GetRpc("SpaceCenter", "Resources_WithResource")]
+    public async Task<IList<Resource>> GetResourcesWithNameAsync(string name)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             name
         };
-        return await Connection.InvokeAsync<IList<Resource>>("SpaceCenter", "Resources_WithResource", args);
+        return await InvokeNonNullableAsync<IList<Resource>>("SpaceCenter", "Resources_WithResource", args);
     }
 
     /// <summary>
     /// Returns the density of a resource, in <math>kg/l</math>.
     /// </summary>
     /// <param name="name">The name of the resource.</param>
-    [Rpc("SpaceCenter", "Resources_static_Density")]
-    public float Density(string name)
+    [GetRpc("SpaceCenter", "Resources_static_Density")]
+    public float GetDensity(string name)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             name
         };
-        return Connection.Invoke<float>("SpaceCenter", "Resources_static_Density", args);
+        return InvokeNonNullable<float>("SpaceCenter", "Resources_static_Density", args);
     }
 
     /// <summary>
@@ -159,28 +159,28 @@ public class Resources : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="name">The name of the resource.</param>
-    [Rpc("SpaceCenter", "Resources_static_Density")]
-    public async Task<float> DensityAsync(string name)
+    [GetRpc("SpaceCenter", "Resources_static_Density")]
+    public async Task<float> GetDensityAsync(string name)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             name
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "Resources_static_Density", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "Resources_static_Density", args);
     }
 
     /// <summary>
     /// Returns the flow mode of a resource.
     /// </summary>
     /// <param name="name">The name of the resource.</param>
-    [Rpc("SpaceCenter", "Resources_static_FlowMode")]
-    public ResourceFlowMode FlowMode(string name)
+    [GetRpc("SpaceCenter", "Resources_static_FlowMode")]
+    public ResourceFlowMode GetFlowMode(string name)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             name
         };
-        return Connection.Invoke<ResourceFlowMode>("SpaceCenter", "Resources_static_FlowMode", args);
+        return InvokeNonNullable<ResourceFlowMode>("SpaceCenter", "Resources_static_FlowMode", args);
     }
 
     /// <summary>
@@ -188,41 +188,41 @@ public class Resources : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="name">The name of the resource.</param>
-    [Rpc("SpaceCenter", "Resources_static_FlowMode")]
-    public async Task<ResourceFlowMode> FlowModeAsync(string name)
+    [GetRpc("SpaceCenter", "Resources_static_FlowMode")]
+    public async Task<ResourceFlowMode> GetFlowModeAsync(string name)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             name
         };
-        return await Connection.InvokeAsync<ResourceFlowMode>("SpaceCenter", "Resources_static_FlowMode", args);
+        return await InvokeNonNullableAsync<ResourceFlowMode>("SpaceCenter", "Resources_static_FlowMode", args);
     }
 
     /// <summary>
     /// Gets all the individual resources that can be stored.
     /// </summary>
-    [Rpc("SpaceCenter", "Resources_get_All")]
+    [GetRpc("SpaceCenter", "Resources_get_All")]
     public IList<Resource> GetAll()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
-        return Connection.Invoke<IList<Resource>>("SpaceCenter", "Resources_get_All", args);
+        return InvokeNonNullable<IList<Resource>>("SpaceCenter", "Resources_get_All", args);
     }
 
     /// <summary>
     /// Gets all the individual resources that can be stored.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Resources_get_All")]
+    [GetRpc("SpaceCenter", "Resources_get_All")]
     public async Task<IList<Resource>> GetAllAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
-        return await Connection.InvokeAsync<IList<Resource>>("SpaceCenter", "Resources_get_All", args);
+        return await InvokeNonNullableAsync<IList<Resource>>("SpaceCenter", "Resources_get_All", args);
     }
 
     /// <summary>
@@ -232,14 +232,14 @@ public class Resources : RemoteObject
     /// This is <c>true</c> if all of the resources are enabled.
     /// If any of the resources are not enabled, this is <c>false</c>.
     /// </remarks>
-    [Rpc("SpaceCenter", "Resources_get_Enabled")]
+    [GetRpc("SpaceCenter", "Resources_get_Enabled")]
     public bool GetEnabled()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "Resources_get_Enabled", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "Resources_get_Enabled", args);
     }
 
     /// <summary>
@@ -250,29 +250,29 @@ public class Resources : RemoteObject
     /// This is <c>true</c> if all of the resources are enabled.
     /// If any of the resources are not enabled, this is <c>false</c>.
     /// </remarks>
-    [Rpc("SpaceCenter", "Resources_get_Enabled")]
+    [GetRpc("SpaceCenter", "Resources_get_Enabled")]
     public async Task<bool> GetEnabledAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "Resources_get_Enabled", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "Resources_get_Enabled", args);
     }
 
     /// <summary>
     /// Sets whether all resources are enabled.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "Resources_set_Enabled")]
+    [SetRpc("SpaceCenter", "Resources_set_Enabled")]
     public void SetEnabled(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "Resources_set_Enabled", args);
+        InvokeVoid("SpaceCenter", "Resources_set_Enabled", args);
     }
 
     /// <summary>
@@ -280,41 +280,41 @@ public class Resources : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "Resources_set_Enabled")]
+    [SetRpc("SpaceCenter", "Resources_set_Enabled")]
     public async Task SetEnabledAsync(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "Resources_set_Enabled", args);
+        await InvokeVoidAsync("SpaceCenter", "Resources_set_Enabled", args);
     }
 
     /// <summary>
     /// Gets a list of resource names that can be stored.
     /// </summary>
-    [Rpc("SpaceCenter", "Resources_get_Names")]
+    [GetRpc("SpaceCenter", "Resources_get_Names")]
     public IList<string> GetNames()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
-        return Connection.Invoke<IList<string>>("SpaceCenter", "Resources_get_Names", args);
+        return InvokeNonNullable<IList<string>>("SpaceCenter", "Resources_get_Names", args);
     }
 
     /// <summary>
     /// Gets a list of resource names that can be stored.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "Resources_get_Names")]
+    [GetRpc("SpaceCenter", "Resources_get_Names")]
     public async Task<IList<string>> GetNamesAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
-        return await Connection.InvokeAsync<IList<string>>("SpaceCenter", "Resources_get_Names", args);
+        return await InvokeNonNullableAsync<IList<string>>("SpaceCenter", "Resources_get_Names", args);
     }
 }

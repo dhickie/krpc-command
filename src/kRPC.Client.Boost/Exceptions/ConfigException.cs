@@ -5,7 +5,7 @@ public class ConfigException(List<string> configErrors)
 {
     internal static void ThrowIfContainsErrors(List<string> configErrors)
     {
-        if (configErrors.Count == 0)
+        if (configErrors.Count != 0)
             throw new ConfigException(configErrors);
     }
 }

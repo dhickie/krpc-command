@@ -4,95 +4,95 @@ using kRPC.Client.Boost.Connection;
 namespace kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects;
 
 /// <summary>
-/// Obtained by calling <see cref="M:SpaceCenter.Experiment.GetData" />.
+/// Obtained by calling <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Experiment.GetData" />.
 /// </summary>
 public class ScienceData : RemoteObject
 {
     /// <summary>
     /// Construct an instance of this remote object. Should not be called directly. This interface is intended for internal decoding.
     /// </summary>
-    public ScienceData(ConnectionMultiplexer connection, ulong id) : base(connection, id)
+    internal ScienceData(IConnectionMultiplexer connection, ulong id) : base(connection, id)
     {
     }
 
     /// <summary>
     /// Data amount.
     /// </summary>
-    [Rpc("SpaceCenter", "ScienceData_get_DataAmount")]
+    [GetRpc("SpaceCenter", "ScienceData_get_DataAmount")]
     public float GetDataAmount()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "ScienceData_get_DataAmount", args);
+        return InvokeNonNullable<float>("SpaceCenter", "ScienceData_get_DataAmount", args);
     }
 
     /// <summary>
     /// Data amount.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "ScienceData_get_DataAmount")]
+    [GetRpc("SpaceCenter", "ScienceData_get_DataAmount")]
     public async Task<float> GetDataAmountAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "ScienceData_get_DataAmount", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "ScienceData_get_DataAmount", args);
     }
 
     /// <summary>
     /// Science value.
     /// </summary>
-    [Rpc("SpaceCenter", "ScienceData_get_ScienceValue")]
+    [GetRpc("SpaceCenter", "ScienceData_get_ScienceValue")]
     public float GetScienceValue()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "ScienceData_get_ScienceValue", args);
+        return InvokeNonNullable<float>("SpaceCenter", "ScienceData_get_ScienceValue", args);
     }
 
     /// <summary>
     /// Science value.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "ScienceData_get_ScienceValue")]
+    [GetRpc("SpaceCenter", "ScienceData_get_ScienceValue")]
     public async Task<float> GetScienceValueAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "ScienceData_get_ScienceValue", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "ScienceData_get_ScienceValue", args);
     }
 
     /// <summary>
     /// Transmit value.
     /// </summary>
-    [Rpc("SpaceCenter", "ScienceData_get_TransmitValue")]
+    [GetRpc("SpaceCenter", "ScienceData_get_TransmitValue")]
     public float GetTransmitValue()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "ScienceData_get_TransmitValue", args);
+        return InvokeNonNullable<float>("SpaceCenter", "ScienceData_get_TransmitValue", args);
     }
 
     /// <summary>
     /// Transmit value.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "ScienceData_get_TransmitValue")]
+    [GetRpc("SpaceCenter", "ScienceData_get_TransmitValue")]
     public async Task<float> GetTransmitValueAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "ScienceData_get_TransmitValue", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "ScienceData_get_TransmitValue", args);
     }
 }

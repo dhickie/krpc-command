@@ -34,16 +34,20 @@ internal class RpcConnection : PollingConnection<ProcedureRequest, RpcConnection
         StartPolling();
     }
 
-    private void Invoke(ProcedureRequest request, ProcedureResult response)
+    private void Invoke(ProcedureRequest request, ProcedureResult response, CancellationToken cancellationToken)
     {
         if (request is ReturningProcedureRequest returningRequest)
         {
-            var result = Invoke(returningRequest.ResultType, request.Service, request.Procedure, request.Arguments);
+            var result = Invoke(returningRequest.ResultType, 
+                request.Service, 
+                request.Procedure, 
+                request.Arguments, 
+                cancellationToken);
             response.MarkComplete(result);
         }
         else
         {
-            Invoke(request.Service, request.Procedure, request.Arguments);
+            Invoke(request.Service, request.Procedure, request.Arguments, cancellationToken);
             response.MarkComplete();
         }
     }

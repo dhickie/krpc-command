@@ -1,7 +1,8 @@
 using System.Linq.Expressions;
 using System.Reflection;
-using kRPC.Client.Boost.Attributes;
-using kRPC.Client.Boost.Connection.Schema;
+using kRPC.Client.Boost.Helpers;
+using kRPC.Client.Boost.Services;
+using MathNet.Spatial.Euclidean;
 
 namespace kRPC.Client.Boost.Streams;
 
@@ -24,12 +25,17 @@ public sealed class StreamSubscription : IDisposable
     /// <exception cref="ArgumentException">Thrown if provided with expressions of an invalid type.</exception>
     public StreamSubscription(params LambdaExpression[] expressions)
     {
-        if (expressions.Any(e => !IsValidExpressionType(e)))
-            throw new ArgumentException("Expressions must be an Expression<Func<T>> that calls a single function with no chaining and no parameters");
-
+        // Get all the keys first in case any expressions are invalid or contain duplicates
+        var dictionary = new Dictionary<string, LambdaExpression>();
         foreach (var expression in expressions)
         {
-            AddSubscription(expression);
+            var key = GetStreamKey(expression);
+            dictionary.TryAdd(key, expression);
+        }
+
+        foreach (var kvp in dictionary)
+        {
+            AddSubscription(kvp.Key, kvp.Value);
         }
     }
 
@@ -45,49 +51,33 @@ public sealed class StreamSubscription : IDisposable
             StreamManager.RemoveSubscription(key);
         }
     }
-
-    private bool IsValidExpressionType(LambdaExpression expression)
-    {
-        return expression.Type.IsGenericType &&
-               expression.Type.GetGenericTypeDefinition() == typeof(Func<>) &&
-               expression.Parameters.Count == 0 &&
-               expression.Body.GetType() == typeof(MethodCallExpression);
-    }
     
-    private void AddSubscription(LambdaExpression expression)
+    private void AddSubscription(string key, LambdaExpression expression)
     {
         var methodCallExpression = expression.Body as MethodCallExpression;
         var returnType = methodCallExpression!.Method.ReturnType;
         var addMethod = _addSubscription.MakeGenericMethod(returnType);
         
-        var key = GetStreamKey(expression);
         _managedKeys.Add(key);
         addMethod.Invoke(null, [key, expression]);
     }
 
-    private string GetStreamKey(LambdaExpression expression)
+    private static string GetStreamKey(LambdaExpression expression)
     {
-        var body = expression.Body;
-        if (body is not MethodCallExpression methodCallExpression)
-            throw new ArgumentException("Expressions must be an Expression<Func<T>> that calls a single function with no chaining and no parameters");
-        
-        var attribute = methodCallExpression.Method.GetCustomAttribute<RpcAttribute>();
-        if (attribute == null)
-            throw new ArgumentException("Invalid expression. Method must call a remote procedure.");
-        
-        var service = attribute!.Service;
-        var procedure = attribute!.Procedure;
-        var arguments = methodCallExpression.Arguments.Select(x =>
+        var parser = new ExpressionParser(expression);
+        var key = $"{parser.Service}_{parser.Procedure}";
+
+        foreach (var argument in parser.Arguments)
         {
-            if (x is not ConstantExpression constantExpression)
-                throw new ArgumentException("Invalid expression. Method arguments must be compile time constants.");
-
-            return constantExpression.Value?.ToString();
-        });
-
-        var key = $"{service}_{procedure}";
-        foreach (var argument in arguments)
-            key += $"_{argument ?? string.Empty}";
+            var argumentValue = argument.value;
+            if (argument.type.IsAssignableTo(typeof(RemoteObject)))
+            {
+                var remoteObject = argument.value as RemoteObject;
+                argumentValue = remoteObject?.Id;
+            }
+            
+            key += $"_{argumentValue?.ToString() ?? "null"}";
+        }
 
         return key;
     }

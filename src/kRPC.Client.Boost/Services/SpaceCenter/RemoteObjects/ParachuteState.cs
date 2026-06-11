@@ -1,7 +1,7 @@
 namespace kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects;
 
 /// <summary>
-/// The state of a parachute. See <see cref="M:SpaceCenter.Parachute.GetState" />.
+/// The state of a parachute. See <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Parachute.GetState" />.
 /// </summary>
 [Serializable]
 public enum ParachuteState

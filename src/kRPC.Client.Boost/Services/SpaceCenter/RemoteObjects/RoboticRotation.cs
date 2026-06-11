@@ -5,55 +5,55 @@ using MathNet.Spatial.Units;
 namespace kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects;
 
 /// <summary>
-/// A robotic rotation servo. Obtained by calling <see cref="M:SpaceCenter.Part.GetRoboticRotation" />.
+/// A robotic rotation servo. Obtained by calling <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Part.GetRoboticRotation" />.
 /// </summary>
 public class RoboticRotation : RemoteObject
 {
     /// <summary>
     /// Construct an instance of this remote object. Should not be called directly. This interface is intended for internal decoding.
     /// </summary>
-    public RoboticRotation(ConnectionMultiplexer connection, ulong id) : base(connection, id)
+    internal RoboticRotation(IConnectionMultiplexer connection, ulong id) : base(connection, id)
     {
     }
 
     /// <summary>
     /// Move rotation servo to it's built position.
     /// </summary>
-    [Rpc("SpaceCenter", "RoboticRotation_MoveHome")]
+    [SetRpc("SpaceCenter", "RoboticRotation_MoveHome")]
     public void MoveHome()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
-        Connection.Invoke("SpaceCenter", "RoboticRotation_MoveHome", args);
+        InvokeVoid("SpaceCenter", "RoboticRotation_MoveHome", args);
     }
 
     /// <summary>
     /// Move rotation servo to it's built position.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "RoboticRotation_MoveHome")]
+    [SetRpc("SpaceCenter", "RoboticRotation_MoveHome")]
     public async Task MoveHomeAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
-        await Connection.InvokeAsync("SpaceCenter", "RoboticRotation_MoveHome", args);
+        await InvokeVoidAsync("SpaceCenter", "RoboticRotation_MoveHome", args);
     }
 
     /// <summary>
     /// Gets the current angle.
     /// </summary>
-    [Rpc("SpaceCenter", "RoboticRotation_get_CurrentAngle")]
+    [GetRpc("SpaceCenter", "RoboticRotation_get_CurrentAngle")]
     public Angle GetCurrentAngle()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
-        var result = Connection.Invoke<float>("SpaceCenter", "RoboticRotation_get_CurrentAngle", args);
+        var result = InvokeNonNullable<float>("SpaceCenter", "RoboticRotation_get_CurrentAngle", args);
         return Angle.FromDegrees(result);
     }
 
@@ -61,57 +61,57 @@ public class RoboticRotation : RemoteObject
     /// Gets the current angle.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "RoboticRotation_get_CurrentAngle")]
+    [GetRpc("SpaceCenter", "RoboticRotation_get_CurrentAngle")]
     public async Task<Angle> GetCurrentAngleAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
-        var result = await Connection.InvokeAsync<float>("SpaceCenter", "RoboticRotation_get_CurrentAngle", args);
+        var result = await InvokeNonNullableAsync<float>("SpaceCenter", "RoboticRotation_get_CurrentAngle", args);
         return Angle.FromDegrees(result);
     }
 
     /// <summary>
     /// Damping percentage.
     /// </summary>
-    [Rpc("SpaceCenter", "RoboticRotation_get_Damping")]
+    [GetRpc("SpaceCenter", "RoboticRotation_get_Damping")]
     public float GetDamping()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
-        return Connection.Invoke<float>("SpaceCenter", "RoboticRotation_get_Damping", args);
+        return InvokeNonNullable<float>("SpaceCenter", "RoboticRotation_get_Damping", args);
     }
 
     /// <summary>
     /// Damping percentage.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "RoboticRotation_get_Damping")]
+    [GetRpc("SpaceCenter", "RoboticRotation_get_Damping")]
     public async Task<float> GetDampingAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
-        return await Connection.InvokeAsync<float>("SpaceCenter", "RoboticRotation_get_Damping", args);
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "RoboticRotation_get_Damping", args);
     }
 
     /// <summary>
     /// Sets the damping percentage.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "RoboticRotation_set_Damping")]
+    [SetRpc("SpaceCenter", "RoboticRotation_set_Damping")]
     public void SetDamping(float value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "RoboticRotation_set_Damping", args);
+        InvokeVoid("SpaceCenter", "RoboticRotation_set_Damping", args);
     }
 
     /// <summary>
@@ -119,57 +119,57 @@ public class RoboticRotation : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "RoboticRotation_set_Damping")]
+    [SetRpc("SpaceCenter", "RoboticRotation_set_Damping")]
     public async Task SetDampingAsync(float value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "RoboticRotation_set_Damping", args);
+        await InvokeVoidAsync("SpaceCenter", "RoboticRotation_set_Damping", args);
     }
 
     /// <summary>
     /// Lock Movement
     /// </summary>
-    [Rpc("SpaceCenter", "RoboticRotation_get_Locked")]
+    [GetRpc("SpaceCenter", "RoboticRotation_get_Locked")]
     public bool GetLocked()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "RoboticRotation_get_Locked", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "RoboticRotation_get_Locked", args);
     }
 
     /// <summary>
     /// Lock Movement
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "RoboticRotation_get_Locked")]
+    [GetRpc("SpaceCenter", "RoboticRotation_get_Locked")]
     public async Task<bool> GetLockedAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "RoboticRotation_get_Locked", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "RoboticRotation_get_Locked", args);
     }
 
     /// <summary>
     /// Sets whether movement is locked.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "RoboticRotation_set_Locked")]
+    [SetRpc("SpaceCenter", "RoboticRotation_set_Locked")]
     public void SetLocked(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "RoboticRotation_set_Locked", args);
+        InvokeVoid("SpaceCenter", "RoboticRotation_set_Locked", args);
     }
 
     /// <summary>
@@ -177,57 +177,57 @@ public class RoboticRotation : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "RoboticRotation_set_Locked")]
+    [SetRpc("SpaceCenter", "RoboticRotation_set_Locked")]
     public async Task SetLockedAsync(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "RoboticRotation_set_Locked", args);
+        await InvokeVoidAsync("SpaceCenter", "RoboticRotation_set_Locked", args);
     }
 
     /// <summary>
     /// Gets whether the motor is engaged.
     /// </summary>
-    [Rpc("SpaceCenter", "RoboticRotation_get_MotorEngaged")]
+    [GetRpc("SpaceCenter", "RoboticRotation_get_MotorEngaged")]
     public bool GetMotorEngaged()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
-        return Connection.Invoke<bool>("SpaceCenter", "RoboticRotation_get_MotorEngaged", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "RoboticRotation_get_MotorEngaged", args);
     }
 
     /// <summary>
     /// Gets whether the motor is engaged.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "RoboticRotation_get_MotorEngaged")]
+    [GetRpc("SpaceCenter", "RoboticRotation_get_MotorEngaged")]
     public async Task<bool> GetMotorEngagedAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
-        return await Connection.InvokeAsync<bool>("SpaceCenter", "RoboticRotation_get_MotorEngaged", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "RoboticRotation_get_MotorEngaged", args);
     }
 
     /// <summary>
     /// Sets whether the motor is engaged.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "RoboticRotation_set_MotorEngaged")]
+    [SetRpc("SpaceCenter", "RoboticRotation_set_MotorEngaged")]
     public void SetMotorEngaged(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
         };
-        Connection.Invoke("SpaceCenter", "RoboticRotation_set_MotorEngaged", args);
+        InvokeVoid("SpaceCenter", "RoboticRotation_set_MotorEngaged", args);
     }
 
     /// <summary>
@@ -235,55 +235,55 @@ public class RoboticRotation : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "RoboticRotation_set_MotorEngaged")]
+    [SetRpc("SpaceCenter", "RoboticRotation_set_MotorEngaged")]
     public async Task SetMotorEngagedAsync(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             value
         };
-        await Connection.InvokeAsync("SpaceCenter", "RoboticRotation_set_MotorEngaged", args);
+        await InvokeVoidAsync("SpaceCenter", "RoboticRotation_set_MotorEngaged", args);
     }
 
     /// <summary>
     /// Gets the part object for this robotic rotation servo.
     /// </summary>
-    [Rpc("SpaceCenter", "RoboticRotation_get_Part")]
+    [GetRpc("SpaceCenter", "RoboticRotation_get_Part")]
     public Part GetPart()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
-        return Connection.Invoke<Part>("SpaceCenter", "RoboticRotation_get_Part", args);
+        return InvokeNonNullable<Part>("SpaceCenter", "RoboticRotation_get_Part", args);
     }
 
     /// <summary>
     /// Gets the part object for this robotic rotation servo.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "RoboticRotation_get_Part")]
+    [GetRpc("SpaceCenter", "RoboticRotation_get_Part")]
     public async Task<Part> GetPartAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
-        return await Connection.InvokeAsync<Part>("SpaceCenter", "RoboticRotation_get_Part", args);
+        return await InvokeNonNullableAsync<Part>("SpaceCenter", "RoboticRotation_get_Part", args);
     }
 
     /// <summary>
     /// Gets the target movement rate as an angle per second.
     /// </summary>
-    [Rpc("SpaceCenter", "RoboticRotation_get_Rate")]
+    [GetRpc("SpaceCenter", "RoboticRotation_get_Rate")]
     public Angle GetRate()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
-        var result = Connection.Invoke<float>("SpaceCenter", "RoboticRotation_get_Rate", args);
+        var result = InvokeNonNullable<float>("SpaceCenter", "RoboticRotation_get_Rate", args);
         return Angle.FromDegrees(result);
     }
 
@@ -291,14 +291,14 @@ public class RoboticRotation : RemoteObject
     /// Gets the target movement rate as an angle per second.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "RoboticRotation_get_Rate")]
+    [GetRpc("SpaceCenter", "RoboticRotation_get_Rate")]
     public async Task<Angle> GetRateAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
-        var result = await Connection.InvokeAsync<float>("SpaceCenter", "RoboticRotation_get_Rate", args);
+        var result = await InvokeNonNullableAsync<float>("SpaceCenter", "RoboticRotation_get_Rate", args);
         return Angle.FromDegrees(result);
     }
 
@@ -306,15 +306,15 @@ public class RoboticRotation : RemoteObject
     /// Sets the target movement rate as an angle per second.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "RoboticRotation_set_Rate")]
+    [SetRpc("SpaceCenter", "RoboticRotation_set_Rate")]
     public void SetRate(Angle value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             (float)value.Degrees
         };
-        Connection.Invoke("SpaceCenter", "RoboticRotation_set_Rate", args);
+        InvokeVoid("SpaceCenter", "RoboticRotation_set_Rate", args);
     }
 
     /// <summary>
@@ -322,28 +322,28 @@ public class RoboticRotation : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "RoboticRotation_set_Rate")]
+    [SetRpc("SpaceCenter", "RoboticRotation_set_Rate")]
     public async Task SetRateAsync(Angle value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             (float)value.Degrees
         };
-        await Connection.InvokeAsync("SpaceCenter", "RoboticRotation_set_Rate", args);
+        await InvokeVoidAsync("SpaceCenter", "RoboticRotation_set_Rate", args);
     }
 
     /// <summary>
     /// Target angle.
     /// </summary>
-    [Rpc("SpaceCenter", "RoboticRotation_get_TargetAngle")]
+    [GetRpc("SpaceCenter", "RoboticRotation_get_TargetAngle")]
     public Angle GetTargetAngle()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
-        var result = Connection.Invoke<float>("SpaceCenter", "RoboticRotation_get_TargetAngle", args);
+        var result = InvokeNonNullable<float>("SpaceCenter", "RoboticRotation_get_TargetAngle", args);
         return Angle.FromDegrees(result);
     }
 
@@ -351,14 +351,14 @@ public class RoboticRotation : RemoteObject
     /// Target angle.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "RoboticRotation_get_TargetAngle")]
+    [GetRpc("SpaceCenter", "RoboticRotation_get_TargetAngle")]
     public async Task<Angle> GetTargetAngleAsync()
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this
         };
-        var result = await Connection.InvokeAsync<float>("SpaceCenter", "RoboticRotation_get_TargetAngle", args);
+        var result = await InvokeNonNullableAsync<float>("SpaceCenter", "RoboticRotation_get_TargetAngle", args);
         return Angle.FromDegrees(result);
     }
 
@@ -366,15 +366,15 @@ public class RoboticRotation : RemoteObject
     /// Sets the target angle.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "RoboticRotation_set_TargetAngle")]
+    [SetRpc("SpaceCenter", "RoboticRotation_set_TargetAngle")]
     public void SetTargetAngle(Angle value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             (float)value.Degrees
         };
-        Connection.Invoke("SpaceCenter", "RoboticRotation_set_TargetAngle", args);
+        InvokeVoid("SpaceCenter", "RoboticRotation_set_TargetAngle", args);
     }
 
     /// <summary>
@@ -382,14 +382,14 @@ public class RoboticRotation : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "RoboticRotation_set_TargetAngle")]
+    [SetRpc("SpaceCenter", "RoboticRotation_set_TargetAngle")]
     public async Task SetTargetAngleAsync(Angle value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             this,
             (float)value.Degrees
         };
-        await Connection.InvokeAsync("SpaceCenter", "RoboticRotation_set_TargetAngle", args);
+        await InvokeVoidAsync("SpaceCenter", "RoboticRotation_set_TargetAngle", args);
     }
 }

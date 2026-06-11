@@ -1,7 +1,7 @@
 namespace kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects;
 
 /// <summary>
-/// The behavior of the SAS auto-pilot. See <see cref="M:SpaceCenter.AutoPilot.GetSASMode" />.
+/// The behavior of the SAS auto-pilot. See <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.AutoPilot.GetSASMode" />.
 /// </summary>
 [Serializable]
 public enum SASMode

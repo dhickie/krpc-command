@@ -2,7 +2,7 @@ namespace kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects;
 
 /// <summary>
 /// The control source of a vessel.
-/// See <see cref="M:SpaceCenter.Control.GetSource" />.
+/// See <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Control.GetSource" />.
 /// </summary>
 [Serializable]
 public enum ControlSource

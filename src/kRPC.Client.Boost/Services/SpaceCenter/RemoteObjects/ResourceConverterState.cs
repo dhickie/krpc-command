@@ -1,7 +1,7 @@
 namespace kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects;
 
 /// <summary>
-/// The state of a resource converter. See <see cref="M:SpaceCenter.ResourceConverter.State" />.
+/// The state of a resource converter. See <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ResourceConverter.State" />.
 /// </summary>
 [Serializable]
 public enum ResourceConverterState
@@ -28,7 +28,7 @@ public enum ResourceConverterState
     Capacity = 4,
     /// <summary>
     /// Unknown state. Possible with modified resource converters.
-    /// In this case, check <see cref="M:SpaceCenter.ResourceConverter.StatusInfo" /> for more information.
+    /// In this case, check <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.ResourceConverter.StatusInfo" /> for more information.
     /// </summary>
     Unknown = 5
 }

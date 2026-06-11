@@ -4,15 +4,26 @@ using kRPC.Client.Boost.Services.KRPC.RemoteObjects;
 
 namespace kRPC.Client.Boost.Services.KRPC;
 
+
 /// <summary>
 /// Provides top level access to the KRPC service.
 /// </summary>
-/// <param name="connection">The connection multiplexer that provides access to the server</param>
 // ReSharper disable once InconsistentNaming
-public class KRPC(ConnectionMultiplexer connection)
+public class KRPC : ServiceObject
 {
+    private readonly IConnectionMultiplexer _connection;
+    
     /// <summary>
-    /// Synchronously dds a stream to the server.
+    /// Creates a KRPC object for accessing KRPC procedures.
+    /// </summary>
+    /// <param name="connection">The connection multiplexer that provides access to the server</param>
+    internal KRPC(IConnectionMultiplexer connection) : base(connection)
+    {
+        _connection = connection;
+    }
+    
+    /// <summary>
+    /// Synchronously adds a stream to the server.
     /// </summary>
     /// <param name="expression">The expression for the stream</param>
     /// <param name="start">Whether to start the stream immediately</param>
@@ -20,11 +31,11 @@ public class KRPC(ConnectionMultiplexer connection)
     /// <returns>The created remote stream object</returns>
     internal RemoteStream AddStream<T>(Expression<Func<T>> expression, bool start)
     {
-        return connection.AddStream(expression, start);
+        return _connection.AddStream(expression, start);
     }
 
     /// <summary>
-    /// Asynchronously dds a stream to the server.
+    /// Asynchronously adds a stream to the server.
     /// </summary>
     /// <param name="expression">The expression for the stream</param>
     /// <param name="start">Whether to start the stream immediately</param>
@@ -32,6 +43,6 @@ public class KRPC(ConnectionMultiplexer connection)
     /// <returns>The created remote stream object</returns>
     internal async Task<RemoteStream> AddStreamAsync<T>(Expression<Func<T>> expression, bool start)
     {
-        return await connection.AddStreamAsync(expression, start);
+        return await _connection.AddStreamAsync(expression, start);
     }
 }

@@ -1,24 +1,17 @@
-using kRPC.Client.Boost.Connection;
-using System;
 using kRPC.Client.Boost.Attributes;
-using System.Collections.Generic;
-using kRPC.Client.Boost.Services.SpaceCenter;
-using MathNet.Spatial.Euclidean;
-using System.Threading.Tasks;
+using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects;
+using MathNet.Spatial.Euclidean;
 
 namespace kRPC.Client.Boost.Services.SpaceCenter;
 
 /// <summary>
 /// SpaceCenter service.
 /// </summary>
-public class SpaceCenter
+public class SpaceCenter : ServiceObject
 {
-    private readonly ConnectionMultiplexer _connection;
-
-    internal SpaceCenter(ConnectionMultiplexer serverConnection)
+    internal SpaceCenter(IConnectionMultiplexer connection) : base(connection)
     {
-        _connection = serverConnection;
     }
 
     /// <summary>
@@ -29,14 +22,14 @@ public class SpaceCenter
     /// for details.
     /// </summary>
     /// <param name="factor">The warp factor to check.</param>
-    [Rpc("SpaceCenter", "CanRailsWarpAt")]
+    [GetRpc("SpaceCenter", "CanRailsWarpAt")]
     public bool CanRailsWarpAt(int factor = 1)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             factor
         };
-        return _connection.Invoke<bool>("SpaceCenter", "CanRailsWarpAt", args);
+        return InvokeNonNullable<bool>("SpaceCenter", "CanRailsWarpAt", args);
     }
 
     /// <summary>
@@ -48,52 +41,52 @@ public class SpaceCenter
     /// Executes asynchronously.
     /// </summary>
     /// <param name="factor">The warp factor to check.</param>
-    [Rpc("SpaceCenter", "CanRailsWarpAt")]
+    [GetRpc("SpaceCenter", "CanRailsWarpAt")]
     public async Task<bool> CanRailsWarpAtAsync(int factor = 1)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             factor
         };
-        return await _connection.InvokeAsync<bool>("SpaceCenter", "CanRailsWarpAt", args);
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "CanRailsWarpAt", args);
     }
 
     /// <summary>
     /// Whether the current flight can be reverted to launch.
     /// </summary>
-    [Rpc("SpaceCenter", "CanRevertToLaunch")]
+    [GetRpc("SpaceCenter", "CanRevertToLaunch")]
     public bool CanRevertToLaunch()
     {
-        return _connection.Invoke<bool>("SpaceCenter", "CanRevertToLaunch");
+        return InvokeNonNullable<bool>("SpaceCenter", "CanRevertToLaunch");
     }
 
     /// <summary>
     /// Whether the current flight can be reverted to launch.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "CanRevertToLaunch")]
+    [GetRpc("SpaceCenter", "CanRevertToLaunch")]
     public async Task<bool> CanRevertToLaunchAsync()
     {
-        return await _connection.InvokeAsync<bool>("SpaceCenter", "CanRevertToLaunch");
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "CanRevertToLaunch");
     }
 
     /// <summary>
     /// Clears the current target.
     /// </summary>
-    [Rpc("SpaceCenter", "ClearTarget")]
+    [SetRpc("SpaceCenter", "ClearTarget")]
     public void ClearTarget()
     {
-        _connection.Invoke("SpaceCenter", "ClearTarget");
+        InvokeVoid("SpaceCenter", "ClearTarget");
     }
 
     /// <summary>
     /// Clears the current target.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "ClearTarget")]
+    [SetRpc("SpaceCenter", "ClearTarget")]
     public async Task ClearTargetAsync()
     {
-        await _connection.InvokeAsync("SpaceCenter", "ClearTarget");
+        await InvokeVoidAsync("SpaceCenter", "ClearTarget");
     }
 
     /// <summary>
@@ -102,16 +95,16 @@ public class SpaceCenter
     /// <param name="name"></param>
     /// <param name="job"></param>
     /// <param name="male"></param>
-    [Rpc("SpaceCenter", "CreateKerbal")]
+    [SetRpc("SpaceCenter", "CreateKerbal")]
     public void CreateKerbal(string name, string job, bool male)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             name,
             job,
             male
         };
-        _connection.Invoke("SpaceCenter", "CreateKerbal", args);
+        InvokeVoid("SpaceCenter", "CreateKerbal", args);
     }
 
     /// <summary>
@@ -121,16 +114,16 @@ public class SpaceCenter
     /// <param name="name"></param>
     /// <param name="job"></param>
     /// <param name="male"></param>
-    [Rpc("SpaceCenter", "CreateKerbal")]
+    [SetRpc("SpaceCenter", "CreateKerbal")]
     public async Task CreateKerbalAsync(string name, string job, bool male)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             name,
             job,
             male
         };
-        await _connection.InvokeAsync("SpaceCenter", "CreateKerbal", args);
+        await InvokeVoidAsync("SpaceCenter", "CreateKerbal", args);
     }
 
     /// <summary>
@@ -138,14 +131,14 @@ public class SpaceCenter
     /// </summary>
     /// <param name="name"></param>
     /// <returns><c>null</c> if no Kerbal with the given name exists.</returns>
-    [Rpc("SpaceCenter", "GetKerbal")]
+    [GetRpc("SpaceCenter", "GetKerbal")]
     public CrewMember? GetKerbal(string name)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             name
         };
-        return _connection.Invoke<CrewMember?>("SpaceCenter", "GetKerbal", args);
+        return InvokeNullable<CrewMember>("SpaceCenter", "GetKerbal", args);
     }
 
     /// <summary>
@@ -154,14 +147,14 @@ public class SpaceCenter
     /// </summary>
     /// <param name="name"></param>
     /// <returns><c>null</c> if no Kerbal with the given name exists.</returns>
-    [Rpc("SpaceCenter", "GetKerbal")]
+    [GetRpc("SpaceCenter", "GetKerbal")]
     public async Task<CrewMember?> GetKerbalAsync(string name)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             name
         };
-        return await _connection.InvokeAsync<CrewMember?>("SpaceCenter", "GetKerbal", args);
+        return await InvokeNullableAsync<CrewMember>("SpaceCenter", "GetKerbal", args);
     }
 
     /// <summary>
@@ -181,19 +174,19 @@ public class SpaceCenter
     /// <remarks>
     /// Throws an exception if any of the games pre-flight checks fail.
     /// </remarks>
-    [Rpc("SpaceCenter", "LaunchVessel")]
-    public void LaunchVessel(string craftDirectory, string name, string launchSite, bool recover = true, IList<string>? crew = null, string? flagUrl = "")
+    [SetRpc("SpaceCenter", "LaunchVessel")]
+    public void LaunchVessel(string craftDirectory, string name, string launchSite, bool recover = true, IList<string>? crew = null, string flagUrl = "")
     {
-        var args = new object?[]
+        var args = new ProcedureArgument[]
         {
             craftDirectory,
             name,
             launchSite,
             recover,
-            crew ?? null,
+            new(crew, typeof(List<string>)),
             flagUrl
         };
-        _connection.Invoke("SpaceCenter", "LaunchVessel", args);
+        InvokeVoid("SpaceCenter", "LaunchVessel", args);
     }
 
     /// <summary>
@@ -214,19 +207,19 @@ public class SpaceCenter
     /// <remarks>
     /// Throws an exception if any of the games pre-flight checks fail.
     /// </remarks>
-    [Rpc("SpaceCenter", "LaunchVessel")]
-    public async Task LaunchVesselAsync(string craftDirectory, string name, string launchSite, bool recover = true, IList<string>? crew = null, string? flagUrl = "")
+    [SetRpc("SpaceCenter", "LaunchVessel")]
+    public async Task LaunchVesselAsync(string craftDirectory, string name, string launchSite, bool recover = true, IList<string>? crew = null, string flagUrl = "")
     {
-        var args = new object?[]
+        var args = new ProcedureArgument[]
         {
             craftDirectory,
             name,
             launchSite,
             recover,
-            crew ?? null,
+            new(crew, typeof(List<string>)),
             flagUrl
         };
-        await _connection.InvokeAsync("SpaceCenter", "LaunchVessel", args);
+        await InvokeVoidAsync("SpaceCenter", "LaunchVessel", args);
     }
 
     /// <summary>
@@ -236,19 +229,19 @@ public class SpaceCenter
     /// <param name="recover">If true and there is a vessel on the runway,
     /// recover it before launching.</param>
     /// <remarks>
-    /// This is equivalent to calling <see cref="M:SpaceCenter.LaunchVessel" /> with the craft directory
+    /// This is equivalent to calling <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.SpaceCenter.LaunchVessel" /> with the craft directory
     /// set to "SPH" and the launch site set to "Runway".
     /// Throws an exception if any of the games pre-flight checks fail.
     /// </remarks>
-    [Rpc("SpaceCenter", "LaunchVesselFromSPH")]
+    [SetRpc("SpaceCenter", "LaunchVesselFromSPH")]
     public void LaunchVesselFromSPH(string name, bool recover = true)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             name,
             recover
         };
-        _connection.Invoke("SpaceCenter", "LaunchVesselFromSPH", args);
+        InvokeVoid("SpaceCenter", "LaunchVesselFromSPH", args);
     }
 
     /// <summary>
@@ -259,19 +252,19 @@ public class SpaceCenter
     /// <param name="recover">If true and there is a vessel on the runway,
     /// recover it before launching.</param>
     /// <remarks>
-    /// This is equivalent to calling <see cref="M:SpaceCenter.LaunchVessel" /> with the craft directory
+    /// This is equivalent to calling <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.SpaceCenter.LaunchVessel" /> with the craft directory
     /// set to "SPH" and the launch site set to "Runway".
     /// Throws an exception if any of the games pre-flight checks fail.
     /// </remarks>
-    [Rpc("SpaceCenter", "LaunchVesselFromSPH")]
+    [SetRpc("SpaceCenter", "LaunchVesselFromSPH")]
     public async Task LaunchVesselFromSPHAsync(string name, bool recover = true)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             name,
             recover
         };
-        await _connection.InvokeAsync("SpaceCenter", "LaunchVesselFromSPH", args);
+        await InvokeVoidAsync("SpaceCenter", "LaunchVesselFromSPH", args);
     }
 
     /// <summary>
@@ -281,19 +274,19 @@ public class SpaceCenter
     /// <param name="recover">If true and there is a vessel on the launch pad,
     /// recover it before launching.</param>
     /// <remarks>
-    /// This is equivalent to calling <see cref="M:SpaceCenter.LaunchVessel" /> with the craft directory
+    /// This is equivalent to calling <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.SpaceCenter.LaunchVessel" /> with the craft directory
     /// set to "VAB" and the launch site set to "LaunchPad".
     /// Throws an exception if any of the games pre-flight checks fail.
     /// </remarks>
-    [Rpc("SpaceCenter", "LaunchVesselFromVAB")]
+    [SetRpc("SpaceCenter", "LaunchVesselFromVAB")]
     public void LaunchVesselFromVAB(string name, bool recover = true)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             name,
             recover
         };
-        _connection.Invoke("SpaceCenter", "LaunchVesselFromVAB", args);
+        InvokeVoid("SpaceCenter", "LaunchVesselFromVAB", args);
     }
 
     /// <summary>
@@ -304,19 +297,19 @@ public class SpaceCenter
     /// <param name="recover">If true and there is a vessel on the launch pad,
     /// recover it before launching.</param>
     /// <remarks>
-    /// This is equivalent to calling <see cref="M:SpaceCenter.LaunchVessel" /> with the craft directory
+    /// This is equivalent to calling <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.SpaceCenter.LaunchVessel" /> with the craft directory
     /// set to "VAB" and the launch site set to "LaunchPad".
     /// Throws an exception if any of the games pre-flight checks fail.
     /// </remarks>
-    [Rpc("SpaceCenter", "LaunchVesselFromVAB")]
+    [SetRpc("SpaceCenter", "LaunchVesselFromVAB")]
     public async Task LaunchVesselFromVABAsync(string name, bool recover = true)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             name,
             recover
         };
-        await _connection.InvokeAsync("SpaceCenter", "LaunchVesselFromVAB", args);
+        await InvokeVoidAsync("SpaceCenter", "LaunchVesselFromVAB", args);
     }
 
     /// <summary>
@@ -325,14 +318,14 @@ public class SpaceCenter
     /// </summary>
     /// <param name="craftDirectory">Name of the directory in the current saves
     /// "Ships" directory. For example <c>"VAB"</c> or <c>"SPH"</c>.</param>
-    [Rpc("SpaceCenter", "LaunchableVessels")]
-    public IList<string> LaunchableVessels(string craftDirectory)
+    [GetRpc("SpaceCenter", "LaunchableVessels")]
+    public IList<string> GetLaunchableVessels(string craftDirectory)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             craftDirectory
         };
-        return _connection.Invoke<IList<string>>("SpaceCenter", "LaunchableVessels", args);
+        return InvokeNonNullable<IList<string>>("SpaceCenter", "LaunchableVessels", args);
     }
 
     /// <summary>
@@ -342,14 +335,14 @@ public class SpaceCenter
     /// </summary>
     /// <param name="craftDirectory">Name of the directory in the current saves
     /// "Ships" directory. For example <c>"VAB"</c> or <c>"SPH"</c>.</param>
-    [Rpc("SpaceCenter", "LaunchableVessels")]
-    public async Task<IList<string>> LaunchableVesselsAsync(string craftDirectory)
+    [GetRpc("SpaceCenter", "LaunchableVessels")]
+    public async Task<IList<string>> GetLaunchableVesselsAsync(string craftDirectory)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             craftDirectory
         };
-        return await _connection.InvokeAsync<IList<string>>("SpaceCenter", "LaunchableVessels", args);
+        return await InvokeNonNullableAsync<IList<string>>("SpaceCenter", "LaunchableVessels", args);
     }
 
     /// <summary>
@@ -358,14 +351,14 @@ public class SpaceCenter
     /// current save game.
     /// </summary>
     /// <param name="name">Name of the save.</param>
-    [Rpc("SpaceCenter", "Load")]
+    [SetRpc("SpaceCenter", "Load")]
     public void Load(string name)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             name
         };
-        _connection.Invoke("SpaceCenter", "Load", args);
+        InvokeVoid("SpaceCenter", "Load", args);
     }
 
     /// <summary>
@@ -375,45 +368,45 @@ public class SpaceCenter
     /// Executes asynchronously.
     /// </summary>
     /// <param name="name">Name of the save.</param>
-    [Rpc("SpaceCenter", "Load")]
+    [SetRpc("SpaceCenter", "Load")]
     public async Task LoadAsync(string name)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             name
         };
-        await _connection.InvokeAsync("SpaceCenter", "Load", args);
+        await InvokeVoidAsync("SpaceCenter", "Load", args);
     }
 
     /// <summary>
     /// Switch to the space center view.
     /// </summary>
-    [Rpc("SpaceCenter", "LoadSpaceCenter")]
+    [SetRpc("SpaceCenter", "LoadSpaceCenter")]
     public void LoadSpaceCenter()
     {
-        _connection.Invoke("SpaceCenter", "LoadSpaceCenter");
+        InvokeVoid("SpaceCenter", "LoadSpaceCenter");
     }
 
     /// <summary>
     /// Switch to the space center view.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "LoadSpaceCenter")]
+    [SetRpc("SpaceCenter", "LoadSpaceCenter")]
     public async Task LoadSpaceCenterAsync()
     {
-        await _connection.InvokeAsync("SpaceCenter", "LoadSpaceCenter");
+        await InvokeVoidAsync("SpaceCenter", "LoadSpaceCenter");
     }
 
     /// <summary>
     /// Load a quicksave.
     /// </summary>
     /// <remarks>
-    /// This is the same as calling <see cref="M:SpaceCenter.Load" /> with the name "quicksave".
+    /// This is the same as calling <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.SpaceCenter.Load" /> with the name "quicksave".
     /// </remarks>
-    [Rpc("SpaceCenter", "Quickload")]
+    [SetRpc("SpaceCenter", "Quickload")]
     public void Quickload()
     {
-        _connection.Invoke("SpaceCenter", "Quickload");
+        InvokeVoid("SpaceCenter", "Quickload");
     }
 
     /// <summary>
@@ -421,24 +414,24 @@ public class SpaceCenter
     /// Executes asynchronously.
     /// </summary>
     /// <remarks>
-    /// This is the same as calling <see cref="M:SpaceCenter.Load" /> with the name "quicksave".
+    /// This is the same as calling <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.SpaceCenter.Load" /> with the name "quicksave".
     /// </remarks>
-    [Rpc("SpaceCenter", "Quickload")]
+    [SetRpc("SpaceCenter", "Quickload")]
     public async Task QuickloadAsync()
     {
-        await _connection.InvokeAsync("SpaceCenter", "Quickload");
+        await InvokeVoidAsync("SpaceCenter", "Quickload");
     }
 
     /// <summary>
     /// Save a quicksave.
     /// </summary>
     /// <remarks>
-    /// This is the same as calling <see cref="M:SpaceCenter.Save" /> with the name "quicksave".
+    /// This is the same as calling <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.SpaceCenter.Save" /> with the name "quicksave".
     /// </remarks>
-    [Rpc("SpaceCenter", "Quicksave")]
+    [SetRpc("SpaceCenter", "Quicksave")]
     public void Quicksave()
     {
-        _connection.Invoke("SpaceCenter", "Quicksave");
+        InvokeVoid("SpaceCenter", "Quicksave");
     }
 
     /// <summary>
@@ -446,12 +439,12 @@ public class SpaceCenter
     /// Executes asynchronously.
     /// </summary>
     /// <remarks>
-    /// This is the same as calling <see cref="M:SpaceCenter.Save" /> with the name "quicksave".
+    /// This is the same as calling <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.SpaceCenter.Save" /> with the name "quicksave".
     /// </remarks>
-    [Rpc("SpaceCenter", "Quicksave")]
+    [SetRpc("SpaceCenter", "Quicksave")]
     public async Task QuicksaveAsync()
     {
-        await _connection.InvokeAsync("SpaceCenter", "Quicksave");
+        await InvokeVoidAsync("SpaceCenter", "Quicksave");
     }
 
     /// <summary>
@@ -462,16 +455,16 @@ public class SpaceCenter
     /// <param name="direction">Direction of the ray, as a unit vector.</param>
     /// <param name="referenceFrame">The reference frame that the position and direction are in.</param>
     /// <returns>The distance to the hit, in meters, or infinity if there was no hit.</returns>
-    [Rpc("SpaceCenter", "RaycastDistance")]
+    [GetRpc("SpaceCenter", "RaycastDistance")]
     public double RaycastDistance(Vector3D position, Vector3D direction, ReferenceFrame referenceFrame)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             position,
             direction,
             referenceFrame
         };
-        return _connection.Invoke<double>("SpaceCenter", "RaycastDistance", args);
+        return InvokeNonNullable<double>("SpaceCenter", "RaycastDistance", args);
     }
 
     /// <summary>
@@ -483,16 +476,16 @@ public class SpaceCenter
     /// <param name="direction">Direction of the ray, as a unit vector.</param>
     /// <param name="referenceFrame">The reference frame that the position and direction are in.</param>
     /// <returns>The distance to the hit, in meters, or infinity if there was no hit.</returns>
-    [Rpc("SpaceCenter", "RaycastDistance")]
+    [GetRpc("SpaceCenter", "RaycastDistance")]
     public async Task<double> RaycastDistanceAsync(Vector3D position, Vector3D direction, ReferenceFrame referenceFrame)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             position,
             direction,
             referenceFrame
         };
-        return await _connection.InvokeAsync<double>("SpaceCenter", "RaycastDistance", args);
+        return await InvokeNonNullableAsync<double>("SpaceCenter", "RaycastDistance", args);
     }
 
     /// <summary>
@@ -503,16 +496,16 @@ public class SpaceCenter
     /// <param name="direction">Direction of the ray, as a unit vector.</param>
     /// <param name="referenceFrame">The reference frame that the position and direction are in.</param>
     /// <returns>The part that was hit or <c>null</c> if there was no hit.</returns>
-    [Rpc("SpaceCenter", "RaycastPart")]
+    [GetRpc("SpaceCenter", "RaycastPart")]
     public Part? RaycastPart(Vector3D position, Vector3D direction, ReferenceFrame referenceFrame)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             position,
             direction,
             referenceFrame
         };
-        return _connection.Invoke<Part?>("SpaceCenter", "RaycastPart", args);
+        return InvokeNullable<Part>("SpaceCenter", "RaycastPart", args);
     }
 
     /// <summary>
@@ -524,35 +517,35 @@ public class SpaceCenter
     /// <param name="direction">Direction of the ray, as a unit vector.</param>
     /// <param name="referenceFrame">The reference frame that the position and direction are in.</param>
     /// <returns>The part that was hit or <c>null</c> if there was no hit.</returns>
-    [Rpc("SpaceCenter", "RaycastPart")]
+    [GetRpc("SpaceCenter", "RaycastPart")]
     public async Task<Part?> RaycastPartAsync(Vector3D position, Vector3D direction, ReferenceFrame referenceFrame)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             position,
             direction,
             referenceFrame
         };
-        return await _connection.InvokeAsync<Part?>("SpaceCenter", "RaycastPart", args);
+        return await InvokeNullableAsync<Part>("SpaceCenter", "RaycastPart", args);
     }
 
     /// <summary>
     /// Revert the current flight to launch.
     /// </summary>
-    [Rpc("SpaceCenter", "RevertToLaunch")]
+    [SetRpc("SpaceCenter", "RevertToLaunch")]
     public void RevertToLaunch()
     {
-        _connection.Invoke("SpaceCenter", "RevertToLaunch");
+        InvokeVoid("SpaceCenter", "RevertToLaunch");
     }
 
     /// <summary>
     /// Revert the current flight to launch.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "RevertToLaunch")]
+    [SetRpc("SpaceCenter", "RevertToLaunch")]
     public async Task RevertToLaunchAsync()
     {
-        await _connection.InvokeAsync("SpaceCenter", "RevertToLaunch");
+        await InvokeVoidAsync("SpaceCenter", "RevertToLaunch");
     }
 
     /// <summary>
@@ -561,14 +554,14 @@ public class SpaceCenter
     /// current save game.
     /// </summary>
     /// <param name="name">Name of the save.</param>
-    [Rpc("SpaceCenter", "Save")]
+    [SetRpc("SpaceCenter", "Save")]
     public void Save(string name)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             name
         };
-        _connection.Invoke("SpaceCenter", "Save", args);
+        InvokeVoid("SpaceCenter", "Save", args);
     }
 
     /// <summary>
@@ -578,14 +571,14 @@ public class SpaceCenter
     /// Executes asynchronously.
     /// </summary>
     /// <param name="name">Name of the save.</param>
-    [Rpc("SpaceCenter", "Save")]
+    [SetRpc("SpaceCenter", "Save")]
     public async Task SaveAsync(string name)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             name
         };
-        await _connection.InvokeAsync("SpaceCenter", "Save", args);
+        await InvokeVoidAsync("SpaceCenter", "Save", args);
     }
 
     /// <summary>
@@ -593,15 +586,15 @@ public class SpaceCenter
     /// </summary>
     /// <param name="filePath">The path of the file to save.</param>
     /// <param name="scale">Resolution scaling factor</param>
-    [Rpc("SpaceCenter", "Screenshot")]
+    [SetRpc("SpaceCenter", "Screenshot")]
     public void Screenshot(string filePath, int scale = 1)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             filePath,
             scale
         };
-        _connection.Invoke("SpaceCenter", "Screenshot", args);
+        InvokeVoid("SpaceCenter", "Screenshot", args);
     }
 
     /// <summary>
@@ -610,15 +603,15 @@ public class SpaceCenter
     /// </summary>
     /// <param name="filePath">The path of the file to save.</param>
     /// <param name="scale">Resolution scaling factor</param>
-    [Rpc("SpaceCenter", "Screenshot")]
+    [SetRpc("SpaceCenter", "Screenshot")]
     public async Task ScreenshotAsync(string filePath, int scale = 1)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             filePath,
             scale
         };
-        await _connection.InvokeAsync("SpaceCenter", "Screenshot", args);
+        await InvokeVoidAsync("SpaceCenter", "Screenshot", args);
     }
 
     /// <summary>
@@ -626,15 +619,15 @@ public class SpaceCenter
     /// </summary>
     /// <param name="crewMember">The crew member to transfer.</param>
     /// <param name="targetPart">The part to move them to.</param>
-    [Rpc("SpaceCenter", "TransferCrew")]
+    [SetRpc("SpaceCenter", "TransferCrew")]
     public void TransferCrew(CrewMember crewMember, Part targetPart)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             crewMember,
             targetPart
         };
-        _connection.Invoke("SpaceCenter", "TransferCrew", args);
+        InvokeVoid("SpaceCenter", "TransferCrew", args);
     }
 
     /// <summary>
@@ -643,15 +636,15 @@ public class SpaceCenter
     /// </summary>
     /// <param name="crewMember">The crew member to transfer.</param>
     /// <param name="targetPart">The part to move them to.</param>
-    [Rpc("SpaceCenter", "TransferCrew")]
+    [SetRpc("SpaceCenter", "TransferCrew")]
     public async Task TransferCrewAsync(CrewMember crewMember, Part targetPart)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             crewMember,
             targetPart
         };
-        await _connection.InvokeAsync("SpaceCenter", "TransferCrew", args);
+        await InvokeVoidAsync("SpaceCenter", "TransferCrew", args);
     }
 
     /// <summary>
@@ -663,16 +656,16 @@ public class SpaceCenter
     /// <param name="to">The reference frame to covert the direction to.</param>
     /// <returns>The corresponding direction, as a vector, in reference frame
     /// <paramref name="to" />.</returns>
-    [Rpc("SpaceCenter", "TransformDirection")]
+    [GetRpc("SpaceCenter", "TransformDirection")]
     public Vector3D TransformDirection(Vector3D direction, ReferenceFrame from, ReferenceFrame to)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             direction,
             from,
             to
         };
-        return _connection.Invoke<Vector3D>("SpaceCenter", "TransformDirection", args);
+        return InvokeNonNullable<Vector3D>("SpaceCenter", "TransformDirection", args);
     }
 
     /// <summary>
@@ -685,16 +678,16 @@ public class SpaceCenter
     /// <param name="to">The reference frame to covert the direction to.</param>
     /// <returns>The corresponding direction, as a vector, in reference frame
     /// <paramref name="to" />.</returns>
-    [Rpc("SpaceCenter", "TransformDirection")]
+    [GetRpc("SpaceCenter", "TransformDirection")]
     public async Task<Vector3D> TransformDirectionAsync(Vector3D direction, ReferenceFrame from, ReferenceFrame to)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             direction,
             from,
             to
         };
-        return await _connection.InvokeAsync<Vector3D>("SpaceCenter", "TransformDirection", args);
+        return await InvokeNonNullableAsync<Vector3D>("SpaceCenter", "TransformDirection", args);
     }
 
     /// <summary>
@@ -706,16 +699,16 @@ public class SpaceCenter
     /// <param name="to">The reference frame to covert the position to.</param>
     /// <returns>The corresponding position, as a vector, in reference frame
     /// <paramref name="to" />.</returns>
-    [Rpc("SpaceCenter", "TransformPosition")]
+    [GetRpc("SpaceCenter", "TransformPosition")]
     public Vector3D TransformPosition(Vector3D position, ReferenceFrame from, ReferenceFrame to)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             position,
             from,
             to
         };
-        return _connection.Invoke<Vector3D>("SpaceCenter", "TransformPosition", args);
+        return InvokeNonNullable<Vector3D>("SpaceCenter", "TransformPosition", args);
     }
 
     /// <summary>
@@ -728,16 +721,16 @@ public class SpaceCenter
     /// <param name="to">The reference frame to covert the position to.</param>
     /// <returns>The corresponding position, as a vector, in reference frame
     /// <paramref name="to" />.</returns>
-    [Rpc("SpaceCenter", "TransformPosition")]
+    [GetRpc("SpaceCenter", "TransformPosition")]
     public async Task<Vector3D> TransformPositionAsync(Vector3D position, ReferenceFrame from, ReferenceFrame to)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             position,
             from,
             to
         };
-        return await _connection.InvokeAsync<Vector3D>("SpaceCenter", "TransformPosition", args);
+        return await InvokeNonNullableAsync<Vector3D>("SpaceCenter", "TransformPosition", args);
     }
 
     /// <summary>
@@ -749,16 +742,16 @@ public class SpaceCenter
     /// <param name="to">The reference frame to covert the rotation to.</param>
     /// <returns>The corresponding rotation, as a quaternion of the form
     /// <math>(x, y, z, w)</math>, in reference frame <paramref name="to" />.</returns>
-    [Rpc("SpaceCenter", "TransformRotation")]
+    [GetRpc("SpaceCenter", "TransformRotation")]
     public Quaternion TransformRotation(Quaternion rotation, ReferenceFrame from, ReferenceFrame to)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             rotation,
             from,
             to
         };
-        return _connection.Invoke<Quaternion>("SpaceCenter", "TransformRotation", args);
+        return InvokeNonNullable<Quaternion>("SpaceCenter", "TransformRotation", args);
     }
 
     /// <summary>
@@ -771,16 +764,16 @@ public class SpaceCenter
     /// <param name="to">The reference frame to covert the rotation to.</param>
     /// <returns>The corresponding rotation, as a quaternion of the form
     /// <math>(x, y, z, w)</math>, in reference frame <paramref name="to" />.</returns>
-    [Rpc("SpaceCenter", "TransformRotation")]
+    [GetRpc("SpaceCenter", "TransformRotation")]
     public async Task<Quaternion> TransformRotationAsync(Quaternion rotation, ReferenceFrame from, ReferenceFrame to)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             rotation,
             from,
             to
         };
-        return await _connection.InvokeAsync<Quaternion>("SpaceCenter", "TransformRotation", args);
+        return await InvokeNonNullableAsync<Quaternion>("SpaceCenter", "TransformRotation", args);
     }
 
     /// <summary>
@@ -797,17 +790,17 @@ public class SpaceCenter
     /// <param name="to">The reference frame to covert the velocity to.</param>
     /// <returns>The corresponding velocity, as a vector, in reference frame
     /// <paramref name="to" />.</returns>
-    [Rpc("SpaceCenter", "TransformVelocity")]
+    [GetRpc("SpaceCenter", "TransformVelocity")]
     public Vector3D TransformVelocity(Vector3D position, Vector3D velocity, ReferenceFrame from, ReferenceFrame to)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             position,
             velocity,
             from,
             to
         };
-        return _connection.Invoke<Vector3D>("SpaceCenter", "TransformVelocity", args);
+        return InvokeNonNullable<Vector3D>("SpaceCenter", "TransformVelocity", args);
     }
 
     /// <summary>
@@ -825,17 +818,17 @@ public class SpaceCenter
     /// <param name="to">The reference frame to covert the velocity to.</param>
     /// <returns>The corresponding velocity, as a vector, in reference frame
     /// <paramref name="to" />.</returns>
-    [Rpc("SpaceCenter", "TransformVelocity")]
+    [GetRpc("SpaceCenter", "TransformVelocity")]
     public async Task<Vector3D> TransformVelocityAsync(Vector3D position, Vector3D velocity, ReferenceFrame from, ReferenceFrame to)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             position,
             velocity,
             from,
             to
         };
-        return await _connection.InvokeAsync<Vector3D>("SpaceCenter", "TransformVelocity", args);
+        return await InvokeNonNullableAsync<Vector3D>("SpaceCenter", "TransformVelocity", args);
     }
 
     /// <summary>
@@ -852,16 +845,16 @@ public class SpaceCenter
     /// </param>
     /// <param name="maxPhysicsRate">The maximum warp rate in physical time warp.</param>
     /// <returns>When the time warp is complete.</returns>
-    [Rpc("SpaceCenter", "WarpTo")]
+    [SetRpc("SpaceCenter", "WarpTo")]
     public void WarpTo(double ut, float maxRailsRate = 100000.0f, float maxPhysicsRate = 2.0f)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             ut,
             maxRailsRate,
             maxPhysicsRate
         };
-        _connection.Invoke("SpaceCenter", "WarpTo", args);
+        InvokeVoid("SpaceCenter", "WarpTo", args);
     }
 
     /// <summary>
@@ -879,49 +872,49 @@ public class SpaceCenter
     /// </param>
     /// <param name="maxPhysicsRate">The maximum warp rate in physical time warp.</param>
     /// <returns>When the time warp is complete.</returns>
-    [Rpc("SpaceCenter", "WarpTo")]
+    [SetRpc("SpaceCenter", "WarpTo")]
     public async Task WarpToAsync(double ut, float maxRailsRate = 100000.0f, float maxPhysicsRate = 2.0f)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             ut,
             maxRailsRate,
             maxPhysicsRate
         };
-        await _connection.InvokeAsync("SpaceCenter", "WarpTo", args);
+        await InvokeVoidAsync("SpaceCenter", "WarpTo", args);
     }
 
     /// <summary>
     /// Gets the currently active vessel.
     /// </summary>
-    [Rpc("SpaceCenter", "get_ActiveVessel")]
+    [GetRpc("SpaceCenter", "get_ActiveVessel")]
     public Vessel GetActiveVessel()
     {
-        return _connection.Invoke<Vessel>("SpaceCenter", "get_ActiveVessel");
+        return InvokeNonNullable<Vessel>("SpaceCenter", "get_ActiveVessel");
     }
 
     /// <summary>
     /// Gets the currently active vessel.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "get_ActiveVessel")]
+    [GetRpc("SpaceCenter", "get_ActiveVessel")]
     public async Task<Vessel> GetActiveVesselAsync()
     {
-        return await _connection.InvokeAsync<Vessel>("SpaceCenter", "get_ActiveVessel");
+        return await InvokeNonNullableAsync<Vessel>("SpaceCenter", "get_ActiveVessel");
     }
 
     /// <summary>
     /// Sets the currently active vessel.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "set_ActiveVessel")]
+    [SetRpc("SpaceCenter", "set_ActiveVessel")]
     public void SetActiveVessel(Vessel value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             value
         };
-        _connection.Invoke("SpaceCenter", "set_ActiveVessel", args);
+        InvokeVoid("SpaceCenter", "set_ActiveVessel", args);
     }
 
     /// <summary>
@@ -929,43 +922,43 @@ public class SpaceCenter
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "set_ActiveVessel")]
+    [SetRpc("SpaceCenter", "set_ActiveVessel")]
     public async Task SetActiveVesselAsync(Vessel value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             value
         };
-        await _connection.InvokeAsync("SpaceCenter", "set_ActiveVessel", args);
+        await InvokeVoidAsync("SpaceCenter", "set_ActiveVessel", args);
     }
 
     /// <summary>
     /// Gets the alarm manager.
     /// </summary>
-    [Rpc("SpaceCenter", "get_AlarmManager")]
+    [GetRpc("SpaceCenter", "get_AlarmManager")]
     public AlarmManager GetAlarmManager()
     {
-        return _connection.Invoke<AlarmManager>("SpaceCenter", "get_AlarmManager");
+        return InvokeNonNullable<AlarmManager>("SpaceCenter", "get_AlarmManager");
     }
 
     /// <summary>
     /// Gets the alarm manager.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "get_AlarmManager")]
+    [GetRpc("SpaceCenter", "get_AlarmManager")]
     public async Task<AlarmManager> GetAlarmManagerAsync()
     {
-        return await _connection.InvokeAsync<AlarmManager>("SpaceCenter", "get_AlarmManager");
+        return await InvokeNonNullableAsync<AlarmManager>("SpaceCenter", "get_AlarmManager");
     }
 
     /// <summary>
     /// Gets a dictionary of all celestial bodies (planets, moons, etc.) in the game,
     /// keyed by the name of the body.
     /// </summary>
-    [Rpc("SpaceCenter", "get_Bodies")]
+    [GetRpc("SpaceCenter", "get_Bodies")]
     public IDictionary<string,CelestialBody> GetBodies()
     {
-        return _connection.Invoke<IDictionary<string,CelestialBody>>("SpaceCenter", "get_Bodies");
+        return InvokeNonNullable<IDictionary<string,CelestialBody>>("SpaceCenter", "get_Bodies");
     }
 
     /// <summary>
@@ -973,96 +966,96 @@ public class SpaceCenter
     /// keyed by the name of the body.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "get_Bodies")]
+    [GetRpc("SpaceCenter", "get_Bodies")]
     public async Task<IDictionary<string,CelestialBody>> GetBodiesAsync()
     {
-        return await _connection.InvokeAsync<IDictionary<string,CelestialBody>>("SpaceCenter", "get_Bodies");
+        return await InvokeNonNullableAsync<IDictionary<string,CelestialBody>>("SpaceCenter", "get_Bodies");
     }
 
     /// <summary>
     /// Gets an object that can be used to control the camera.
     /// </summary>
-    [Rpc("SpaceCenter", "get_Camera")]
+    [GetRpc("SpaceCenter", "get_Camera")]
     public Camera GetCamera()
     {
-        return _connection.Invoke<Camera>("SpaceCenter", "get_Camera");
+        return InvokeNonNullable<Camera>("SpaceCenter", "get_Camera");
     }
 
     /// <summary>
     /// Gets an object that can be used to control the camera.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "get_Camera")]
+    [GetRpc("SpaceCenter", "get_Camera")]
     public async Task<Camera> GetCameraAsync()
     {
-        return await _connection.InvokeAsync<Camera>("SpaceCenter", "get_Camera");
+        return await InvokeNonNullableAsync<Camera>("SpaceCenter", "get_Camera");
     }
 
     /// <summary>
     /// Gets the contract manager.
     /// </summary>
-    [Rpc("SpaceCenter", "get_ContractManager")]
+    [GetRpc("SpaceCenter", "get_ContractManager")]
     public ContractManager GetContractManager()
     {
-        return _connection.Invoke<ContractManager>("SpaceCenter", "get_ContractManager");
+        return InvokeNonNullable<ContractManager>("SpaceCenter", "get_ContractManager");
     }
 
     /// <summary>
     /// Gets the contract manager.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "get_ContractManager")]
+    [GetRpc("SpaceCenter", "get_ContractManager")]
     public async Task<ContractManager> GetContractManagerAsync()
     {
-        return await _connection.InvokeAsync<ContractManager>("SpaceCenter", "get_ContractManager");
+        return await InvokeNonNullableAsync<ContractManager>("SpaceCenter", "get_ContractManager");
     }
 
     /// <summary>
     /// Gets whether <a href="https://forum.kerbalspaceprogram.com/index.php?/topic/19321-130-ferram-aerospace-research-v0159-liebe-82117/">Ferram Aerospace Research</a> is installed.
     /// </summary>
-    [Rpc("SpaceCenter", "get_FARAvailable")]
+    [GetRpc("SpaceCenter", "get_FARAvailable")]
     public bool GetFARAvailable()
     {
-        return _connection.Invoke<bool>("SpaceCenter", "get_FARAvailable");
+        return InvokeNonNullable<bool>("SpaceCenter", "get_FARAvailable");
     }
 
     /// <summary>
     /// Gets whether <a href="https://forum.kerbalspaceprogram.com/index.php?/topic/19321-130-ferram-aerospace-research-v0159-liebe-82117/">Ferram Aerospace Research</a> is installed.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "get_FARAvailable")]
+    [GetRpc("SpaceCenter", "get_FARAvailable")]
     public async Task<bool> GetFARAvailableAsync()
     {
-        return await _connection.InvokeAsync<bool>("SpaceCenter", "get_FARAvailable");
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "get_FARAvailable");
     }
 
     /// <summary>
     /// Gets the current amount of funds.
     /// </summary>
-    [Rpc("SpaceCenter", "get_Funds")]
+    [GetRpc("SpaceCenter", "get_Funds")]
     public double GetFunds()
     {
-        return _connection.Invoke<double>("SpaceCenter", "get_Funds");
+        return InvokeNonNullable<double>("SpaceCenter", "get_Funds");
     }
 
     /// <summary>
     /// Gets the current amount of funds.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "get_Funds")]
+    [GetRpc("SpaceCenter", "get_Funds")]
     public async Task<double> GetFundsAsync()
     {
-        return await _connection.InvokeAsync<double>("SpaceCenter", "get_Funds");
+        return await InvokeNonNullableAsync<double>("SpaceCenter", "get_Funds");
     }
 
     /// <summary>
     /// Gets the value of the <a href="https://en.wikipedia.org/wiki/Gravitational_constant">
     /// gravitational constant</a> G in <math>N(m/kg)^2</math>.
     /// </summary>
-    [Rpc("SpaceCenter", "get_G")]
+    [GetRpc("SpaceCenter", "get_G")]
     public double GetG()
     {
-        return _connection.Invoke<double>("SpaceCenter", "get_G");
+        return InvokeNonNullable<double>("SpaceCenter", "get_G");
     }
 
     /// <summary>
@@ -1070,81 +1063,81 @@ public class SpaceCenter
     /// gravitational constant</a> G in <math>N(m/kg)^2</math>.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "get_G")]
+    [GetRpc("SpaceCenter", "get_G")]
     public async Task<double> GetGAsync()
     {
-        return await _connection.InvokeAsync<double>("SpaceCenter", "get_G");
+        return await InvokeNonNullableAsync<double>("SpaceCenter", "get_G");
     }
 
     /// <summary>
     /// Gets the current mode the game is in.
     /// </summary>
-    [Rpc("SpaceCenter", "get_GameMode")]
+    [GetRpc("SpaceCenter", "get_GameMode")]
     public GameMode GetGameMode()
     {
-        return _connection.Invoke<GameMode>("SpaceCenter", "get_GameMode");
+        return InvokeNonNullable<GameMode>("SpaceCenter", "get_GameMode");
     }
 
     /// <summary>
     /// Gets the current mode the game is in.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "get_GameMode")]
+    [GetRpc("SpaceCenter", "get_GameMode")]
     public async Task<GameMode> GetGameModeAsync()
     {
-        return await _connection.InvokeAsync<GameMode>("SpaceCenter", "get_GameMode");
+        return await InvokeNonNullableAsync<GameMode>("SpaceCenter", "get_GameMode");
     }
 
     /// <summary>
     /// Gets a list of available launch sites.
     /// </summary>
-    [Rpc("SpaceCenter", "get_LaunchSites")]
+    [GetRpc("SpaceCenter", "get_LaunchSites")]
     public IList<LaunchSite> GetLaunchSites()
     {
-        return _connection.Invoke<IList<LaunchSite>>("SpaceCenter", "get_LaunchSites");
+        return InvokeNonNullable<IList<LaunchSite>>("SpaceCenter", "get_LaunchSites");
     }
 
     /// <summary>
     /// Gets a list of available launch sites.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "get_LaunchSites")]
+    [GetRpc("SpaceCenter", "get_LaunchSites")]
     public async Task<IList<LaunchSite>> GetLaunchSitesAsync()
     {
-        return await _connection.InvokeAsync<IList<LaunchSite>>("SpaceCenter", "get_LaunchSites");
+        return await InvokeNonNullableAsync<IList<LaunchSite>>("SpaceCenter", "get_LaunchSites");
     }
 
     /// <summary>
     /// Gets the visible objects in map mode.
     /// </summary>
-    [Rpc("SpaceCenter", "get_MapFilter")]
+    [GetRpc("SpaceCenter", "get_MapFilter")]
     public MapFilterType GetMapFilter()
     {
-        return _connection.Invoke<MapFilterType>("SpaceCenter", "get_MapFilter");
+        return InvokeNonNullable<MapFilterType>("SpaceCenter", "get_MapFilter");
     }
 
     /// <summary>
     /// Gets the visible objects in map mode.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "get_MapFilter")]
+    [GetRpc("SpaceCenter", "get_MapFilter")]
     public async Task<MapFilterType> GetMapFilterAsync()
     {
-        return await _connection.InvokeAsync<MapFilterType>("SpaceCenter", "get_MapFilter");
+        return await InvokeNonNullableAsync<MapFilterType>("SpaceCenter", "get_MapFilter");
     }
 
     /// <summary>
     /// Sets the visible objects in map mode.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "set_MapFilter")]
+    [SetRpc("SpaceCenter", "set_MapFilter")]
     public void SetMapFilter(MapFilterType value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             value
         };
-        _connection.Invoke("SpaceCenter", "set_MapFilter", args);
+        InvokeVoid("SpaceCenter", "set_MapFilter", args);
     }
 
     /// <summary>
@@ -1152,14 +1145,14 @@ public class SpaceCenter
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "set_MapFilter")]
+    [SetRpc("SpaceCenter", "set_MapFilter")]
     public async Task SetMapFilterAsync(MapFilterType value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             value
         };
-        await _connection.InvokeAsync("SpaceCenter", "set_MapFilter", args);
+        await InvokeVoidAsync("SpaceCenter", "set_MapFilter", args);
     }
 
     /// <summary>
@@ -1168,10 +1161,10 @@ public class SpaceCenter
     /// <a href="https://wiki.kerbalspaceprogram.com/wiki/Time_warp">the KSP wiki</a>
     /// for details.
     /// </summary>
-    [Rpc("SpaceCenter", "get_MaximumRailsWarpFactor")]
+    [GetRpc("SpaceCenter", "get_MaximumRailsWarpFactor")]
     public int GetMaximumRailsWarpFactor()
     {
-        return _connection.Invoke<int>("SpaceCenter", "get_MaximumRailsWarpFactor");
+        return InvokeNonNullable<int>("SpaceCenter", "get_MaximumRailsWarpFactor");
     }
 
     /// <summary>
@@ -1181,43 +1174,43 @@ public class SpaceCenter
     /// for details.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "get_MaximumRailsWarpFactor")]
+    [GetRpc("SpaceCenter", "get_MaximumRailsWarpFactor")]
     public async Task<int> GetMaximumRailsWarpFactorAsync()
     {
-        return await _connection.InvokeAsync<int>("SpaceCenter", "get_MaximumRailsWarpFactor");
+        return await InvokeNonNullableAsync<int>("SpaceCenter", "get_MaximumRailsWarpFactor");
     }
 
     /// <summary>
     /// Gets whether the navball is visible.
     /// </summary>
-    [Rpc("SpaceCenter", "get_Navball")]
+    [GetRpc("SpaceCenter", "get_Navball")]
     public bool GetNavball()
     {
-        return _connection.Invoke<bool>("SpaceCenter", "get_Navball");
+        return InvokeNonNullable<bool>("SpaceCenter", "get_Navball");
     }
 
     /// <summary>
     /// Gets whether the navball is visible.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "get_Navball")]
+    [GetRpc("SpaceCenter", "get_Navball")]
     public async Task<bool> GetNavballAsync()
     {
-        return await _connection.InvokeAsync<bool>("SpaceCenter", "get_Navball");
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "get_Navball");
     }
 
     /// <summary>
     /// Sets whether the navball is visible.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "set_Navball")]
+    [SetRpc("SpaceCenter", "set_Navball")]
     public void SetNavball(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             value
         };
-        _connection.Invoke("SpaceCenter", "set_Navball", args);
+        InvokeVoid("SpaceCenter", "set_Navball", args);
     }
 
     /// <summary>
@@ -1225,24 +1218,24 @@ public class SpaceCenter
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "set_Navball")]
+    [SetRpc("SpaceCenter", "set_Navball")]
     public async Task SetNavballAsync(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             value
         };
-        await _connection.InvokeAsync("SpaceCenter", "set_Navball", args);
+        await InvokeVoidAsync("SpaceCenter", "set_Navball", args);
     }
 
     /// <summary>
     /// Gets the physical time warp rate. A value between 0 and 3 inclusive. 0 means
     /// no time warp. Returns 0 if regular "on-rails" time warp is active.
     /// </summary>
-    [Rpc("SpaceCenter", "get_PhysicsWarpFactor")]
+    [GetRpc("SpaceCenter", "get_PhysicsWarpFactor")]
     public int GetPhysicsWarpFactor()
     {
-        return _connection.Invoke<int>("SpaceCenter", "get_PhysicsWarpFactor");
+        return InvokeNonNullable<int>("SpaceCenter", "get_PhysicsWarpFactor");
     }
 
     /// <summary>
@@ -1250,10 +1243,10 @@ public class SpaceCenter
     /// no time warp. Returns 0 if regular "on-rails" time warp is active.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "get_PhysicsWarpFactor")]
+    [GetRpc("SpaceCenter", "get_PhysicsWarpFactor")]
     public async Task<int> GetPhysicsWarpFactorAsync()
     {
-        return await _connection.InvokeAsync<int>("SpaceCenter", "get_PhysicsWarpFactor");
+        return await InvokeNonNullableAsync<int>("SpaceCenter", "get_PhysicsWarpFactor");
     }
 
     /// <summary>
@@ -1261,14 +1254,14 @@ public class SpaceCenter
     /// no time warp. Returns 0 if regular "on-rails" time warp is active.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "set_PhysicsWarpFactor")]
+    [SetRpc("SpaceCenter", "set_PhysicsWarpFactor")]
     public void SetPhysicsWarpFactor(int value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             value
         };
-        _connection.Invoke("SpaceCenter", "set_PhysicsWarpFactor", args);
+        InvokeVoid("SpaceCenter", "set_PhysicsWarpFactor", args);
     }
 
     /// <summary>
@@ -1277,14 +1270,14 @@ public class SpaceCenter
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "set_PhysicsWarpFactor")]
+    [SetRpc("SpaceCenter", "set_PhysicsWarpFactor")]
     public async Task SetPhysicsWarpFactorAsync(int value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             value
         };
-        await _connection.InvokeAsync("SpaceCenter", "set_PhysicsWarpFactor", args);
+        await InvokeVoidAsync("SpaceCenter", "set_PhysicsWarpFactor", args);
     }
 
     /// <summary>
@@ -1297,10 +1290,10 @@ public class SpaceCenter
     /// planet. See <a href="https://wiki.kerbalspaceprogram.com/wiki/Time_warp">
     /// the KSP wiki</a> for details.
     /// </summary>
-    [Rpc("SpaceCenter", "get_RailsWarpFactor")]
+    [GetRpc("SpaceCenter", "get_RailsWarpFactor")]
     public int GetRailsWarpFactor()
     {
-        return _connection.Invoke<int>("SpaceCenter", "get_RailsWarpFactor");
+        return InvokeNonNullable<int>("SpaceCenter", "get_RailsWarpFactor");
     }
 
     /// <summary>
@@ -1314,10 +1307,10 @@ public class SpaceCenter
     /// the KSP wiki</a> for details.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "get_RailsWarpFactor")]
+    [GetRpc("SpaceCenter", "get_RailsWarpFactor")]
     public async Task<int> GetRailsWarpFactorAsync()
     {
-        return await _connection.InvokeAsync<int>("SpaceCenter", "get_RailsWarpFactor");
+        return await InvokeNonNullableAsync<int>("SpaceCenter", "get_RailsWarpFactor");
     }
 
     /// <summary>
@@ -1331,14 +1324,14 @@ public class SpaceCenter
     /// the KSP wiki</a> for details.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "set_RailsWarpFactor")]
+    [SetRpc("SpaceCenter", "set_RailsWarpFactor")]
     public void SetRailsWarpFactor(int value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             value
         };
-        _connection.Invoke("SpaceCenter", "set_RailsWarpFactor", args);
+        InvokeVoid("SpaceCenter", "set_RailsWarpFactor", args);
     }
 
     /// <summary>
@@ -1353,85 +1346,85 @@ public class SpaceCenter
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "set_RailsWarpFactor")]
+    [SetRpc("SpaceCenter", "set_RailsWarpFactor")]
     public async Task SetRailsWarpFactorAsync(int value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             value
         };
-        await _connection.InvokeAsync("SpaceCenter", "set_RailsWarpFactor", args);
+        await InvokeVoidAsync("SpaceCenter", "set_RailsWarpFactor", args);
     }
 
     /// <summary>
     /// Gets the current amount of reputation.
     /// </summary>
-    [Rpc("SpaceCenter", "get_Reputation")]
+    [GetRpc("SpaceCenter", "get_Reputation")]
     public float GetReputation()
     {
-        return _connection.Invoke<float>("SpaceCenter", "get_Reputation");
+        return InvokeNonNullable<float>("SpaceCenter", "get_Reputation");
     }
 
     /// <summary>
     /// Gets the current amount of reputation.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "get_Reputation")]
+    [GetRpc("SpaceCenter", "get_Reputation")]
     public async Task<float> GetReputationAsync()
     {
-        return await _connection.InvokeAsync<float>("SpaceCenter", "get_Reputation");
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "get_Reputation");
     }
 
     /// <summary>
     /// Gets the current amount of science.
     /// </summary>
-    [Rpc("SpaceCenter", "get_Science")]
+    [GetRpc("SpaceCenter", "get_Science")]
     public float GetScience()
     {
-        return _connection.Invoke<float>("SpaceCenter", "get_Science");
+        return InvokeNonNullable<float>("SpaceCenter", "get_Science");
     }
 
     /// <summary>
     /// Gets the current amount of science.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "get_Science")]
+    [GetRpc("SpaceCenter", "get_Science")]
     public async Task<float> GetScienceAsync()
     {
-        return await _connection.InvokeAsync<float>("SpaceCenter", "get_Science");
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "get_Science");
     }
 
     /// <summary>
     /// Gets the currently targeted celestial body.
     /// </summary>
-    [Rpc("SpaceCenter", "get_TargetBody")]
+    [GetRpc("SpaceCenter", "get_TargetBody")]
     public CelestialBody GetTargetBody()
     {
-        return _connection.Invoke<CelestialBody>("SpaceCenter", "get_TargetBody");
+        return InvokeNonNullable<CelestialBody>("SpaceCenter", "get_TargetBody");
     }
 
     /// <summary>
     /// Gets the currently targeted celestial body.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "get_TargetBody")]
+    [GetRpc("SpaceCenter", "get_TargetBody")]
     public async Task<CelestialBody> GetTargetBodyAsync()
     {
-        return await _connection.InvokeAsync<CelestialBody>("SpaceCenter", "get_TargetBody");
+        return await InvokeNonNullableAsync<CelestialBody>("SpaceCenter", "get_TargetBody");
     }
 
     /// <summary>
     /// Sets the currently targeted celestial body.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "set_TargetBody")]
+    [SetRpc("SpaceCenter", "set_TargetBody")]
     public void SetTargetBody(CelestialBody value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             value
         };
-        _connection.Invoke("SpaceCenter", "set_TargetBody", args);
+        InvokeVoid("SpaceCenter", "set_TargetBody", args);
     }
 
     /// <summary>
@@ -1439,47 +1432,47 @@ public class SpaceCenter
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "set_TargetBody")]
+    [SetRpc("SpaceCenter", "set_TargetBody")]
     public async Task SetTargetBodyAsync(CelestialBody value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             value
         };
-        await _connection.InvokeAsync("SpaceCenter", "set_TargetBody", args);
+        await InvokeVoidAsync("SpaceCenter", "set_TargetBody", args);
     }
 
     /// <summary>
     /// Gets the currently targeted docking port.
     /// </summary>
-    [Rpc("SpaceCenter", "get_TargetDockingPort")]
+    [GetRpc("SpaceCenter", "get_TargetDockingPort")]
     public DockingPort GetTargetDockingPort()
     {
-        return _connection.Invoke<DockingPort>("SpaceCenter", "get_TargetDockingPort");
+        return InvokeNonNullable<DockingPort>("SpaceCenter", "get_TargetDockingPort");
     }
 
     /// <summary>
     /// Gets the currently targeted docking port.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "get_TargetDockingPort")]
+    [GetRpc("SpaceCenter", "get_TargetDockingPort")]
     public async Task<DockingPort> GetTargetDockingPortAsync()
     {
-        return await _connection.InvokeAsync<DockingPort>("SpaceCenter", "get_TargetDockingPort");
+        return await InvokeNonNullableAsync<DockingPort>("SpaceCenter", "get_TargetDockingPort");
     }
 
     /// <summary>
     /// Sets the currently targeted docking port.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "set_TargetDockingPort")]
+    [SetRpc("SpaceCenter", "set_TargetDockingPort")]
     public void SetTargetDockingPort(DockingPort value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             value
         };
-        _connection.Invoke("SpaceCenter", "set_TargetDockingPort", args);
+        InvokeVoid("SpaceCenter", "set_TargetDockingPort", args);
     }
 
     /// <summary>
@@ -1487,47 +1480,47 @@ public class SpaceCenter
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "set_TargetDockingPort")]
+    [SetRpc("SpaceCenter", "set_TargetDockingPort")]
     public async Task SetTargetDockingPortAsync(DockingPort value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             value
         };
-        await _connection.InvokeAsync("SpaceCenter", "set_TargetDockingPort", args);
+        await InvokeVoidAsync("SpaceCenter", "set_TargetDockingPort", args);
     }
 
     /// <summary>
     /// Gets the currently targeted vessel.
     /// </summary>
-    [Rpc("SpaceCenter", "get_TargetVessel")]
+    [GetRpc("SpaceCenter", "get_TargetVessel")]
     public Vessel GetTargetVessel()
     {
-        return _connection.Invoke<Vessel>("SpaceCenter", "get_TargetVessel");
+        return InvokeNonNullable<Vessel>("SpaceCenter", "get_TargetVessel");
     }
 
     /// <summary>
     /// Gets the currently targeted vessel.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "get_TargetVessel")]
+    [GetRpc("SpaceCenter", "get_TargetVessel")]
     public async Task<Vessel> GetTargetVesselAsync()
     {
-        return await _connection.InvokeAsync<Vessel>("SpaceCenter", "get_TargetVessel");
+        return await InvokeNonNullableAsync<Vessel>("SpaceCenter", "get_TargetVessel");
     }
 
     /// <summary>
     /// Sets the currently targeted vessel.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "set_TargetVessel")]
+    [SetRpc("SpaceCenter", "set_TargetVessel")]
     public void SetTargetVessel(Vessel value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             value
         };
-        _connection.Invoke("SpaceCenter", "set_TargetVessel", args);
+        InvokeVoid("SpaceCenter", "set_TargetVessel", args);
     }
 
     /// <summary>
@@ -1535,47 +1528,47 @@ public class SpaceCenter
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "set_TargetVessel")]
+    [SetRpc("SpaceCenter", "set_TargetVessel")]
     public async Task SetTargetVesselAsync(Vessel value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             value
         };
-        await _connection.InvokeAsync("SpaceCenter", "set_TargetVessel", args);
+        await InvokeVoidAsync("SpaceCenter", "set_TargetVessel", args);
     }
 
     /// <summary>
     /// Gets whether the UI is visible.
     /// </summary>
-    [Rpc("SpaceCenter", "get_UIVisible")]
+    [GetRpc("SpaceCenter", "get_UIVisible")]
     public bool GetUIVisible()
     {
-        return _connection.Invoke<bool>("SpaceCenter", "get_UIVisible");
+        return InvokeNonNullable<bool>("SpaceCenter", "get_UIVisible");
     }
 
     /// <summary>
     /// Gets whether the UI is visible.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "get_UIVisible")]
+    [GetRpc("SpaceCenter", "get_UIVisible")]
     public async Task<bool> GetUIVisibleAsync()
     {
-        return await _connection.InvokeAsync<bool>("SpaceCenter", "get_UIVisible");
+        return await InvokeNonNullableAsync<bool>("SpaceCenter", "get_UIVisible");
     }
 
     /// <summary>
     /// Sets whether the UI is visible.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "set_UIVisible")]
+    [SetRpc("SpaceCenter", "set_UIVisible")]
     public void SetUIVisible(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             value
         };
-        _connection.Invoke("SpaceCenter", "set_UIVisible", args);
+        InvokeVoid("SpaceCenter", "set_UIVisible", args);
     }
 
     /// <summary>
@@ -1583,102 +1576,102 @@ public class SpaceCenter
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
-    [Rpc("SpaceCenter", "set_UIVisible")]
+    [SetRpc("SpaceCenter", "set_UIVisible")]
     public async Task SetUIVisibleAsync(bool value)
     {
-        var args = new object[]
+        var args = new ProcedureArgument[]
         {
             value
         };
-        await _connection.InvokeAsync("SpaceCenter", "set_UIVisible", args);
+        await InvokeVoidAsync("SpaceCenter", "set_UIVisible", args);
     }
 
     /// <summary>
     /// Gets the current universal time in seconds.
     /// </summary>
-    [Rpc("SpaceCenter", "get_UT")]
+    [GetRpc("SpaceCenter", "get_UT")]
     public double GetUT()
     {
-        return _connection.Invoke<double>("SpaceCenter", "get_UT");
+        return InvokeNonNullable<double>("SpaceCenter", "get_UT");
     }
 
     /// <summary>
     /// Gets the current universal time in seconds.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "get_UT")]
+    [GetRpc("SpaceCenter", "get_UT")]
     public async Task<double> GetUTAsync()
     {
-        return await _connection.InvokeAsync<double>("SpaceCenter", "get_UT");
+        return await InvokeNonNullableAsync<double>("SpaceCenter", "get_UT");
     }
 
     /// <summary>
     /// Gets a list of all the vessels in the game.
     /// </summary>
-    [Rpc("SpaceCenter", "get_Vessels")]
+    [GetRpc("SpaceCenter", "get_Vessels")]
     public IList<Vessel> GetVessels()
     {
-        return _connection.Invoke<IList<Vessel>>("SpaceCenter", "get_Vessels");
+        return InvokeNonNullable<IList<Vessel>>("SpaceCenter", "get_Vessels");
     }
 
     /// <summary>
     /// Gets a list of all the vessels in the game.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "get_Vessels")]
+    [GetRpc("SpaceCenter", "get_Vessels")]
     public async Task<IList<Vessel>> GetVesselsAsync()
     {
-        return await _connection.InvokeAsync<IList<Vessel>>("SpaceCenter", "get_Vessels");
+        return await InvokeNonNullableAsync<IList<Vessel>>("SpaceCenter", "get_Vessels");
     }
 
     /// <summary>
     /// Gets the current warp factor. This is the index of the rate at which time
     /// is passing for either regular "on-rails" or physical time warp. Returns 0
     /// if time warp is not active. When in on-rails time warp, this is equal to
-    /// <see cref="M:SpaceCenter.GetRailsWarpFactor" />, and in physics time warp, this is equal to
-    /// <see cref="M:SpaceCenter.GetPhysicsWarpFactor" />.
+    /// <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.SpaceCenter.GetRailsWarpFactor" />, and in physics time warp, this is equal to
+    /// <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.SpaceCenter.GetPhysicsWarpFactor" />.
     /// </summary>
-    [Rpc("SpaceCenter", "get_WarpFactor")]
+    [GetRpc("SpaceCenter", "get_WarpFactor")]
     public float GetWarpFactor()
     {
-        return _connection.Invoke<float>("SpaceCenter", "get_WarpFactor");
+        return InvokeNonNullable<float>("SpaceCenter", "get_WarpFactor");
     }
 
     /// <summary>
     /// Gets the current warp factor. This is the index of the rate at which time
     /// is passing for either regular "on-rails" or physical time warp. Returns 0
     /// if time warp is not active. When in on-rails time warp, this is equal to
-    /// <see cref="M:SpaceCenter.GetRailsWarpFactor" />, and in physics time warp, this is equal to
-    /// <see cref="M:SpaceCenter.GetPhysicsWarpFactor" />.
+    /// <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.SpaceCenter.GetRailsWarpFactor" />, and in physics time warp, this is equal to
+    /// <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.SpaceCenter.GetPhysicsWarpFactor" />.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "get_WarpFactor")]
+    [GetRpc("SpaceCenter", "get_WarpFactor")]
     public async Task<float> GetWarpFactorAsync()
     {
-        return await _connection.InvokeAsync<float>("SpaceCenter", "get_WarpFactor");
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "get_WarpFactor");
     }
 
     /// <summary>
-    /// Gets the current time warp mode. Returns <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.WarpMode.None" /> if time
-    /// warp is not active, <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.WarpMode.Rails" /> if regular "on-rails" time warp
-    /// is active, or <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.WarpMode.Physics" /> if physical time warp is active.
+    /// Gets the current time warp mode. Returns <see cref="F:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.WarpMode.None" /> if time
+    /// warp is not active, <see cref="F:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.WarpMode.Rails" /> if regular "on-rails" time warp
+    /// is active, or <see cref="F:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.WarpMode.Physics" /> if physical time warp is active.
     /// </summary>
-    [Rpc("SpaceCenter", "get_WarpMode")]
+    [GetRpc("SpaceCenter", "get_WarpMode")]
     public WarpMode GetWarpMode()
     {
-        return _connection.Invoke<WarpMode>("SpaceCenter", "get_WarpMode");
+        return InvokeNonNullable<WarpMode>("SpaceCenter", "get_WarpMode");
     }
 
     /// <summary>
-    /// Gets the current time warp mode. Returns <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.WarpMode.None" /> if time
-    /// warp is not active, <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.WarpMode.Rails" /> if regular "on-rails" time warp
-    /// is active, or <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.WarpMode.Physics" /> if physical time warp is active.
+    /// Gets the current time warp mode. Returns <see cref="F:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.WarpMode.None" /> if time
+    /// warp is not active, <see cref="F:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.WarpMode.Rails" /> if regular "on-rails" time warp
+    /// is active, or <see cref="F:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.WarpMode.Physics" /> if physical time warp is active.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "get_WarpMode")]
+    [GetRpc("SpaceCenter", "get_WarpMode")]
     public async Task<WarpMode> GetWarpModeAsync()
     {
-        return await _connection.InvokeAsync<WarpMode>("SpaceCenter", "get_WarpMode");
+        return await InvokeNonNullableAsync<WarpMode>("SpaceCenter", "get_WarpMode");
     }
 
     /// <summary>
@@ -1687,10 +1680,10 @@ public class SpaceCenter
     /// time is passing 10x faster than normal. Returns 1 if time warp is not
     /// active.
     /// </summary>
-    [Rpc("SpaceCenter", "get_WarpRate")]
+    [GetRpc("SpaceCenter", "get_WarpRate")]
     public float GetWarpRate()
     {
-        return _connection.Invoke<float>("SpaceCenter", "get_WarpRate");
+        return InvokeNonNullable<float>("SpaceCenter", "get_WarpRate");
     }
 
     /// <summary>
@@ -1700,28 +1693,28 @@ public class SpaceCenter
     /// active.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "get_WarpRate")]
+    [GetRpc("SpaceCenter", "get_WarpRate")]
     public async Task<float> GetWarpRateAsync()
     {
-        return await _connection.InvokeAsync<float>("SpaceCenter", "get_WarpRate");
+        return await InvokeNonNullableAsync<float>("SpaceCenter", "get_WarpRate");
     }
 
     /// <summary>
     /// Gets the waypoint manager.
     /// </summary>
-    [Rpc("SpaceCenter", "get_WaypointManager")]
+    [GetRpc("SpaceCenter", "get_WaypointManager")]
     public WaypointManager GetWaypointManager()
     {
-        return _connection.Invoke<WaypointManager>("SpaceCenter", "get_WaypointManager");
+        return InvokeNonNullable<WaypointManager>("SpaceCenter", "get_WaypointManager");
     }
 
     /// <summary>
     /// Gets the waypoint manager.
     /// Executes asynchronously.
     /// </summary>
-    [Rpc("SpaceCenter", "get_WaypointManager")]
+    [GetRpc("SpaceCenter", "get_WaypointManager")]
     public async Task<WaypointManager> GetWaypointManagerAsync()
     {
-        return await _connection.InvokeAsync<WaypointManager>("SpaceCenter", "get_WaypointManager");
+        return await InvokeNonNullableAsync<WaypointManager>("SpaceCenter", "get_WaypointManager");
     }
 }
