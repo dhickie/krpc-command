@@ -33,6 +33,20 @@ internal class TcpConnection : IDisposable
         _inputStream = _client.GetStream();
         _outputStream = new CodedOutputStream(_inputStream, true);
     }
+
+    /// <summary>
+    /// Creates a TCP connection from a pre-existing TcpClient that's already connected
+    /// </summary>
+    /// <param name="client">The TCP client</param>
+    public TcpConnection(TcpClient client)
+    {
+        _client = client;
+        if (!_client.Connected)
+            throw new ArgumentException("Pre-existing TcpClient instances must already be connected");
+                
+        _inputStream = _client.GetStream();
+        _outputStream = new CodedOutputStream(_inputStream, true);
+    }
     
     /// <summary>
     /// Finalize the TCP connection.
@@ -71,10 +85,10 @@ internal class TcpConnection : IDisposable
     }
 
     /// <summary>
-    /// Send a connection request.
+    /// Send a message.
     /// </summary>
     /// <param name="request">The request to send</param>
-    public void Send(ConnectionRequest request)
+    public void Send(IMessage request)
     {
         _outputStream.WriteLength(request.CalculateSize());
         request.WriteTo(_outputStream);
@@ -82,18 +96,7 @@ internal class TcpConnection : IDisposable
     }
 
     /// <summary>
-    /// Send an RPC request.
-    /// </summary>
-    /// <param name="request">The request to send</param>
-    public void Send(Request request)
-    {
-        _outputStream.WriteLength(request.CalculateSize());
-        request.WriteTo(_outputStream);
-        _outputStream.Flush();
-    }
-
-    /// <summary>
-    /// Receive a message from the server. Assumes that the incoming message is of the expected type.
+    /// Receive a message. Assumes that the incoming message is of the expected type.
     /// </summary>
     /// <param name="parser">The protobuf parser that parses the incoming bytes</param>
     /// <param name="cancellationToken">The cancellation token to cancel the operation</param>

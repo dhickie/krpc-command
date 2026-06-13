@@ -2,6 +2,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 
 [assembly: InternalsVisibleTo("kRPC.Client.Boost.UnitTests")]
+[assembly: InternalsVisibleTo("kRPC.Client.Boost.IntegrationTests")]
 [assembly: InternalsVisibleTo("DynamicProxyGenAssembly2")] // For NSubstitute support
 namespace kRPC.Client.Boost.Config;
 
