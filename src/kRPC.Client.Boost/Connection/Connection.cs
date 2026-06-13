@@ -1,8 +1,5 @@
 using System.Linq.Expressions;
-using System.Net.Sockets;
-using System.Reflection;
 using Google.Protobuf;
-using kRPC.Client.Boost.Attributes;
 using kRPC.Client.Boost.Config;
 using kRPC.Client.Boost.Connection.Schema;
 using kRPC.Client.Boost.Exceptions;
@@ -22,14 +19,8 @@ internal abstract class Connection : IDisposable
     private readonly object _connectionLock = new();
     private bool _disposed;
     private readonly ReaderWriterLockSlim _disposeLock = new();
-    
-    private readonly TcpClient _rpcClient;
-    private readonly NetworkStream _rpcStream;
-    private readonly CodedOutputStream _codedRpcStream;
-    
-    protected const int BufferInitialSize = 1 * 1024 * 1024;
-    private const int BufferIncreaseSize = 512 * 1024;
-    private byte[] _responseBuffer = new byte[BufferInitialSize];
+
+    private readonly TcpConnection _tcpConnection;
 
     private readonly ByteString _clientId;
 
@@ -41,16 +32,11 @@ internal abstract class Connection : IDisposable
     /// <param name="connectionName">The name of this connection</param>
     protected Connection(ConnectionMultiplexer connection, ConnectionConfig config, string connectionName)
     {
-        ArgumentOutOfRangeException.ThrowIfNegativeOrZero(config.RpcPort);
-
         _connection = connection;
 
         // Initialise the RCP connection
-        _rpcClient = new TcpClient();
-        _rpcClient.Connect(config.Address, config.RpcPort);
-        _rpcStream = _rpcClient.GetStream();
-        _codedRpcStream = new CodedOutputStream(_rpcStream, true);
-        _clientId = Connect(_codedRpcStream, _rpcStream, ref _responseBuffer, RequestType.Rpc, connectionName);
+        _tcpConnection = new TcpConnection(config.Address, config.RpcPort);
+        _clientId = Connect(RequestType.Rpc, connectionName);
     }
 
     /// <summary>
@@ -82,7 +68,7 @@ internal abstract class Connection : IDisposable
 
             if (disposing)
             {
-                _rpcClient.Close();
+                _tcpConnection.Dispose();
             }
 
             _disposed = true;
@@ -92,20 +78,13 @@ internal abstract class Connection : IDisposable
     /// <summary>
     /// Connects to the kRPC server.
     /// </summary>
-    /// <param name="codedStream">The coded stream used by the TCP connection</param>
-    /// <param name="networkStream">The raw network stream used by the TCP connection</param>
-    /// <param name="buffer">The byte buffer for reading from the TCP connection</param>
     /// <param name="type">Whether this is connecting to the RPC or Stream server</param>
     /// <param name="clientName">The name of the client</param>
     /// <returns></returns>
     /// <exception cref="ArgumentNullException">Thrown when trying to create an RPC connection with no client name</exception>
     /// <exception cref="ArgumentOutOfRangeException">Thrown if passed an unexpected RequestType</exception>
     /// <exception cref="ConnectionException">Thrown if the client is unable to connect with the server</exception>
-    protected ByteString Connect(CodedOutputStream codedStream, 
-        System.IO.Stream networkStream,
-        ref byte[] buffer,
-        RequestType type, 
-        string? clientName = null)
+    protected ByteString Connect(RequestType type, string? clientName = null)
     {
         var request = new ConnectionRequest
         {
@@ -126,13 +105,10 @@ internal abstract class Connection : IDisposable
         }
 
         // Request
-        codedStream.WriteLength(request.CalculateSize());
-        request.WriteTo(codedStream);
-        codedStream.Flush();
+        _tcpConnection.Send(request);
 
         // Response
-        var size = ReadMessageData(networkStream, ref buffer);
-        var response = ConnectionResponse.Parser.ParseFrom(new CodedInputStream(buffer, 0, size));
+        var response = _tcpConnection.Receive(ConnectionResponse.Parser);
 
         // Check we're successfully connected
         return response.Status != ConnectionResponse.Types.Status.Ok 
@@ -173,60 +149,6 @@ internal abstract class Connection : IDisposable
     {
         Invoke(GetCall(service, procedure, arguments), cancellationToken);
     }
-    
-    /// <summary>
-    /// Read the data for a message from a stream.
-    /// Continues to read until an entire message has been received.
-    /// May reallocate the buffer if it is too small to receive the message.
-    /// </summary>
-    /// <param name="stream">The stream to read the message from</param>
-    /// <param name="buffer">The byte buffer to read the message into</param>
-    /// <param name="cancellationToken">The cancellation token for the operation</param>
-    /// <returns>The size of the read message in bytes, or 0 if the cancellation token is canceled</returns>
-    protected static int ReadMessageData(System.IO.Stream stream, ref byte[] buffer, CancellationToken? cancellationToken = null)
-    {
-        var bufferSize = 0;
-        var messageSize = 0;
-
-        // Read the offset and size of the message data
-        while (!Stop()) 
-        {
-            bufferSize += stream.Read(buffer, bufferSize, 1);
-            try 
-            {
-                var codedStream = new CodedInputStream(buffer, 0, bufferSize);
-                messageSize = (int)codedStream.ReadUInt32();
-                break;
-            }
-            catch (InvalidProtocolBufferException) 
-            {
-            }
-        }
-        
-        if (Stop())
-            return 0;
-
-        // Read the response data
-        bufferSize = 0;
-        while (!Stop() && bufferSize < messageSize) 
-        {
-            // Increase the size of the buffer if the remaining space is low
-            if (buffer.Length - bufferSize < BufferIncreaseSize) 
-            {
-                var newBuffer = new byte[buffer.Length + BufferIncreaseSize];
-                Array.Copy(buffer, newBuffer, bufferSize);
-                buffer = newBuffer;
-            }
-            bufferSize += stream.Read(buffer, bufferSize, messageSize - bufferSize);
-        }
-        
-        return Stop() ? 0 : messageSize;
-
-        bool Stop()
-        {
-            return cancellationToken?.IsCancellationRequested ?? false;
-        }
-    }
 
     private ByteString Invoke(ProcedureCall call, CancellationToken cancellationToken)
     {
@@ -243,17 +165,11 @@ internal abstract class Connection : IDisposable
             {
                 // Send request to server
                 cancellationToken.ThrowIfCancellationRequested();
-                _codedRpcStream.WriteLength(request.CalculateSize());
-                request.WriteTo(_codedRpcStream);
-                _codedRpcStream.Flush();
+                _tcpConnection.Send(request);
             
                 // Receive response
                 cancellationToken.ThrowIfCancellationRequested();
-                var size = ReadMessageData(_rpcStream, ref _responseBuffer, cancellationToken);
-                if (size == 0)
-                    throw new OperationCanceledException("Cancellation requested due to disposal");
-                
-                response = Response.Parser.ParseFrom(new CodedInputStream(_responseBuffer, 0, size));
+                response = _tcpConnection.Receive(Response.Parser, cancellationToken);
             }
         });
 
