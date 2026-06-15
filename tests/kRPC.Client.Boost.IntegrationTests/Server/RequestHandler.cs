@@ -12,14 +12,16 @@ namespace kRPC.Client.Boost.IntegrationTests.Server;
 
 public class RequestHandler
 {
-    private Dictionary<string, ServiceDefinition> _services;
-    private IConnectionMultiplexer _connection = Substitute.For<IConnectionMultiplexer>();
-    private ConcurrentDictionary<string, Func<object?>> _configuredCalls;
+    private readonly Dictionary<string, ServiceDefinition> _services;
+    private readonly IConnectionMultiplexer _connection = Substitute.For<IConnectionMultiplexer>();
+    private readonly ConcurrentDictionary<string, Func<object?>> _configuredCalls;
+    private ConcurrentDictionary<string, ConcurrentBag<CallInfo>> _calls;
 
     public RequestHandler()
     {
         _services = new Dictionary<string, ServiceDefinition>();
         _configuredCalls = new ConcurrentDictionary<string, Func<object?>>();
+        _calls = [];
         
         LoadDefinitions();
     }
@@ -31,6 +33,12 @@ public class RequestHandler
     {
         var key = $"{clientId}_{service}_{procedure}";
         _configuredCalls.AddOrUpdate(key, _ => response, (_, _) => response);
+    }
+
+    public bool Received(string clientId, Func<CallInfo, bool> predicate)
+    {
+        var calls = _calls[clientId];
+        return calls.Any(predicate);
     }
 
     public Response Respond(string clientId, Request request)
@@ -59,6 +67,12 @@ public class RequestHandler
         return response;
     }
 
+    private void RecordCall(string clientId, string service, string procedure, object?[]? arguments)
+    {
+        var calls = _calls.GetOrAdd(clientId, _ => []);
+        calls.Add(new CallInfo(service, procedure, arguments));
+    }
+
     private bool TryProcessCall(string clientId, ProcedureCall call, out ByteString? returnValue, out string[]? errors)
     {
         returnValue = null;
@@ -77,20 +91,18 @@ public class RequestHandler
             return false;
         }
 
-        // Get the return value that's been set up for this call
-        if (!_configuredCalls.TryGetValue($"{clientId}_{call.Service}_{call.Procedure}", out var configuredCall))
+        if (def!.ReturnType != null)
         {
-            errors = null;
-            return true;
-        }
-        else
-        {
-            var result = configuredCall();
-            var resultType = GetArgumentType(def!.ReturnType);
+            // Get the return value that's been set up for this call
+            _configuredCalls.TryGetValue($"{clientId}_{call.Service}_{call.Procedure}", out var configuredCall);
+            var result = configuredCall?.Invoke();
+            var resultType = GetArgumentType(def.ReturnType);
             returnValue = Codec.Encode(result, resultType);
-            errors = null;
-            return true;
         }
+        
+        RecordCall(clientId, call.Service, call.Procedure, args);
+        errors = null;
+        return true;
     }
 
     private bool TryGetCallArguments(ProcedureDefinition def, ProcedureCall call, out object?[]? args, out string[]? errors)

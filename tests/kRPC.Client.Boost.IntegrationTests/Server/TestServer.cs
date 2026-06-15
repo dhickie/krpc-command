@@ -1,3 +1,4 @@
+using System.Collections.Concurrent;
 using System.Net;
 using System.Net.Sockets;
 using kRPC.Client.Boost.Connection;
@@ -7,17 +8,24 @@ namespace kRPC.Client.Boost.IntegrationTests.Server;
 
 public class TestServer
 {
-    private TcpListener _rpcListener;
-    private Thread _newClientThread;
-    private Dictionary<string, ClientConnection> _clients;
-    private Dictionary<string, Thread> _clientThreads;
+    private readonly TcpListener _rpcListener;
+    private readonly Thread _newClientThread;
+    private readonly ConcurrentDictionary<string, TcpConnection> _clients;
+    private readonly ConcurrentDictionary<string, string> _clientNameMap;
+    private readonly ConcurrentDictionary<string, Thread> _clientThreads;
     private const int RpcPort = 5000;
+    
+    private readonly RequestHandler _requestHandler;
 
     public TestServer()
     {
-        _clients = new Dictionary<string, ClientConnection>();
+        _clientThreads = new ConcurrentDictionary<string, Thread>();
+        _clients = new ConcurrentDictionary<string, TcpConnection>();
+        _clientNameMap = new ConcurrentDictionary<string, string>();
         _rpcListener = new TcpListener(IPAddress.Any, RpcPort);
         _rpcListener.Start();
+        
+        _requestHandler = new RequestHandler();
 
         _newClientThread = new Thread(() =>
         {
@@ -27,25 +35,46 @@ public class TestServer
         _newClientThread.Start();
     }
 
+    public void ConfigureResponse(string clientName, string service, string procedure, Func<object?> response)
+    {
+        if (!_clientNameMap.TryGetValue(clientName, out var clientId))
+            throw new ArgumentException($"No client ID found for name '{clientName}'");
+
+        _requestHandler.ConfigureResponse(clientId, service, procedure, response);
+    }
+
+    public void Received(string clientName, Func<CallInfo, bool> predicate)
+    {
+        if (!_clientNameMap.TryGetValue(clientName, out var clientId))
+            throw new ArgumentException($"No client ID found for name '{clientName}'");
+        
+        var received = _requestHandler.Received(clientId, predicate);
+        Assert.True(received);
+    }
+
     private void ClientLoop(string clientId)
     {
-        var client = _clients[clientId].Connection;
+        var client = _clients[clientId];
         
         // Read the connection request and provide the client with an ID
         var clientByteString = Codec.Encode(clientId);
-        client.Receive(ConnectionRequest.Parser);
-        var response = new ConnectionResponse
+        var connectionRequest = client.Receive(ConnectionRequest.Parser);
+        _clientNameMap[connectionRequest.ClientName] = clientId;
+        var connectionResponse = new ConnectionResponse
         {
             Status = ConnectionResponse.Types.Status.Ok,
             Message = string.Empty,
             ClientIdentifier = clientByteString
         };
-        client.Send(response);
+        client.Send(connectionResponse);
         
         while (true)
         {
-            var request = client.Receive(Request.Parser);
+            var request = client.Receive(Request.Parser)
+                ?? throw new InvalidOperationException("Received null request");
             
+            var response = _requestHandler.Respond(clientId, request);
+            client.Send(response);
         }
     }
     
@@ -55,7 +84,7 @@ public class TestServer
         {
             var clientId = Guid.NewGuid().ToString();
             var client = _rpcListener.AcceptTcpClient();
-            _clients.Add(clientId, new ClientConnection(new TcpConnection(client)));
+            _clients.TryAdd(clientId, new TcpConnection(client));
 
             var newThread = new Thread(() =>
             {
@@ -63,7 +92,7 @@ public class TestServer
                 ClientLoop(clientId);
             });
             newThread.Start();
-            _clientThreads.Add(clientId, newThread);
+            _clientThreads.TryAdd(clientId, newThread);
         }
     }
 }
