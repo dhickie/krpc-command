@@ -1,6 +1,6 @@
 using System.Linq.Expressions;
 using AutoFixture;
-using kRPC.Client.Boost.Config;
+using kRPC.Client.Boost.Configuration;
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Helpers;
 using kRPC.Client.Boost.Services.KRPC.RemoteObjects;

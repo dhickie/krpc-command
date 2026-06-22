@@ -1,6 +1,6 @@
 using System.Collections.Concurrent;
 using System.Diagnostics;
-using kRPC.Client.Boost.Config;
+using kRPC.Client.Boost.Configuration;
 using kRPC.Client.Boost.Connection.Requests;
 using kRPC.Client.Boost.Exceptions;
 using kRPC.Client.Boost.Helpers;

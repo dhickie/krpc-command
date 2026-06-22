@@ -13,9 +13,10 @@ public class TestServer
     private readonly ConcurrentDictionary<string, TcpConnection> _clients;
     private readonly ConcurrentDictionary<string, string> _clientNameMap;
     private readonly ConcurrentDictionary<string, Thread> _clientThreads;
-    private const int RpcPort = 5000;
     
     private readonly RequestHandler _requestHandler;
+
+    public const int RpcPort = 16253;
 
     public TestServer()
     {

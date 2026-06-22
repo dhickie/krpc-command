@@ -221,7 +221,7 @@ namespace kRPC.Client.Boost.Connection
             return type.IsAssignableTo(typeof(IMessage));
         }
         
-        private static bool IsACollectionType(Type type)
+        internal static bool IsACollectionType(Type type)
         {
             return IsATupleType(type) 
                    || IsAnArrayType(type) 
@@ -249,7 +249,7 @@ namespace kRPC.Client.Boost.Connection
             encodedCall.WriteTo(stream);
         }
         
-        private static bool IsATupleType(Type type)
+        internal static bool IsATupleType(Type type)
         {
             return
                 IsAGenericType(type, typeof(Tuple<>)) ||
@@ -303,12 +303,12 @@ namespace kRPC.Client.Boost.Connection
             return tuple;
         }
         
-        private static bool IsAListType(Type type)
+        internal static bool IsAListType(Type type)
         {
             return IsAGenericType(type, typeof(IList<>)) && !IsAnArrayType(type);
         }
 
-        private static bool IsAnArrayType(Type type)
+        internal static bool IsAnArrayType(Type type)
         {
             return type.IsAssignableTo(typeof(Array));
         }
@@ -362,7 +362,7 @@ namespace kRPC.Client.Boost.Connection
             return array;
         }
         
-        private static bool IsASetType(Type type)
+        internal static bool IsASetType(Type type)
         {
             return IsAGenericType(type, typeof(ISet<>));
         }
@@ -399,7 +399,7 @@ namespace kRPC.Client.Boost.Connection
             return set;
         }
         
-        private static bool IsADictionaryType(Type type)
+        internal static bool IsADictionaryType(Type type)
         {
             return IsAGenericType(type, typeof(IDictionary<,>));
         }

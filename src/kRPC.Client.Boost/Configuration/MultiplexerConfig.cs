@@ -4,7 +4,7 @@ using System.Text;
 [assembly: InternalsVisibleTo("kRPC.Client.Boost.UnitTests")]
 [assembly: InternalsVisibleTo("kRPC.Client.Boost.IntegrationTests")]
 [assembly: InternalsVisibleTo("DynamicProxyGenAssembly2")] // For NSubstitute support
-namespace kRPC.Client.Boost.Config;
+namespace kRPC.Client.Boost.Configuration;
 
 /// <summary>
 /// Encapsulates all configuration related to the <see cref="Connection.ConnectionMultiplexer">connection multiplexer</see>.

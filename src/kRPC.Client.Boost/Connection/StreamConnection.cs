@@ -1,7 +1,7 @@
 using System.Collections.Concurrent;
 using System.Net.Sockets;
 using Google.Protobuf;
-using kRPC.Client.Boost.Config;
+using kRPC.Client.Boost.Configuration;
 using kRPC.Client.Boost.Connection.Requests;
 using kRPC.Client.Boost.Connection.Schema;
 using kRPC.Client.Boost.Helpers;

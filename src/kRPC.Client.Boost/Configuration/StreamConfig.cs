@@ -1,6 +1,6 @@
 using System.Text;
 
-namespace kRPC.Client.Boost.Config;
+namespace kRPC.Client.Boost.Configuration;
 
 /// <summary>
 /// Encapsulates all configuration related to stream management.

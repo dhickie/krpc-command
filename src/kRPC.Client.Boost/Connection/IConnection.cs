@@ -7,7 +7,7 @@ namespace kRPC.Client.Boost.Connection;
 /// A connection to the kRPC server.
 /// All interaction with kRPC starts with an instance of this interface.
 /// </summary>
-public interface IConnection
+public interface IConnection : IDisposable
 {
     /// <summary>
     /// Returns an object providing access to the KRPC service.

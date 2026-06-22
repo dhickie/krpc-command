@@ -1,6 +1,6 @@
 using System.Linq.Expressions;
 using Google.Protobuf;
-using kRPC.Client.Boost.Config;
+using kRPC.Client.Boost.Configuration;
 using kRPC.Client.Boost.Connection.Schema;
 using kRPC.Client.Boost.Exceptions;
 using kRPC.Client.Boost.Helpers;
