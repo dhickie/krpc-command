@@ -27,7 +27,7 @@ public class SpaceCenterTests(TestServer server)
     };
 
     [Fact]
-    public void SynchronousGetRpcs_FunctionCorrectly()
+    public void SynchronousGetRpcs_ReturnCorrectValues()
     {
         var serviceType = typeof(SpaceCenter);
         var clientName = _fixture.Create<string>();
@@ -68,76 +68,88 @@ public class SpaceCenterTests(TestServer server)
     private void TestRpc(string clientName, IConnectionMultiplexer connection, Type instanceType, ProcedureInfo rpc)
     {
         // Arrange
-        var parameters = rpc.ParameterTypes.Select(CreateRandomValue).ToArray();
+        var arguments = rpc.ArgumentTypes.Select(CreateRandomValue).ToArray();
         var returnValue = CreateRandomValue(rpc.ReturnType);
         var instance = CreateInstance(instanceType, connection);
         
         server.ConfigureResponse(clientName, rpc.Service, rpc.Procedure, () => returnValue);
         
         // Act
-        var result = rpc.Method.Invoke(instance, parameters);
+        var result = rpc.Method.Invoke(instance, arguments);
         
         // Assert
-        AssertResponseValue(rpc.ReturnType, returnValue, result);
+        Assert.True(ValuesAreEqual(rpc.ReturnType, returnValue, result));
+        server.Received(clientName, callInfo =>
+        {
+            if (callInfo.Service != rpc.Service)
+                return false;
+
+            if (callInfo.Procedure != rpc.Procedure)
+                return false;
+
+            if (callInfo.Arguments!.Length != arguments.Length)
+                return false;
+
+            for (var i = 0; i < arguments.Length; i++)
+            {
+                var argType = arguments[i]?.GetType() ?? typeof(object);
+                if (!ValuesAreEqual(argType, arguments[i], callInfo.Arguments[i]))
+                    return false;
+            }
+
+            return true;
+        });
     }
 
-    private void AssertResponseValue(Type responseType, object? expectedValue, object? actualValue)
+    private bool ValuesAreEqual(Type responseType, object? expectedValue, object? actualValue)
     {
         if (expectedValue == null || actualValue == null)
-            Assert.Equal(expectedValue, actualValue);
-        else
-        {
-            Assert.Equal(responseType, expectedValue.GetType());
-            Assert.Equal(responseType, actualValue.GetType());
+            return expectedValue == actualValue;
+
+        if (responseType != expectedValue.GetType() || responseType != actualValue.GetType())
+            return false;
         
-            if (responseType.IsSubclassOf(typeof(RemoteObject)))
-                Assert.Equal((RemoteObject)expectedValue, (RemoteObject)actualValue);
-            else if (responseType.IsEnum)
-                Assert.Equal((int)expectedValue, (int)actualValue);
-            else if (Codec.IsACollectionType(responseType))
-                AssertCollectionValue(responseType, expectedValue, actualValue);
-            else if (responseType == typeof(string))
-                Assert.Equal((string)expectedValue, (string)actualValue);
-            else if (responseType == typeof(float))
-                Assert.Equal((float)expectedValue, (float)actualValue);
-            else if (responseType == typeof(double))
-                Assert.Equal((double)expectedValue, (double)actualValue);
-            else if (responseType == typeof(int))
-                Assert.Equal((int)expectedValue, (int)actualValue);
-            else if (responseType == typeof(long))
-                Assert.Equal((long)expectedValue, (long)actualValue);
-            else if (responseType == typeof(uint))
-                Assert.Equal((uint)expectedValue, (uint)actualValue);
-            else if (responseType == typeof(ulong))
-                Assert.Equal((ulong)expectedValue, (ulong)actualValue);
-            else if (responseType == typeof(bool))
-                Assert.Equal((bool)expectedValue, (bool)actualValue);
-            else if (responseType == typeof(byte[]))
-                Assert.Equal((byte[])expectedValue, (byte[])actualValue);
-            else if (responseType == typeof(Vector3D))
-                Assert.Equal((Vector3D)expectedValue, (Vector3D)actualValue);
-            else if (responseType == typeof(Quaternion))
-                Assert.Equal((Quaternion)expectedValue, (Quaternion)actualValue);
-            else
-                throw new ArgumentException($"Unable to assert value of type {responseType.Name}");
-        }
+        if (responseType.IsSubclassOf(typeof(RemoteObject)))
+            return ((RemoteObject)expectedValue).Id == ((RemoteObject)actualValue).Id;
+        
+        if (Codec.IsACollectionType(responseType))
+            return CollectionValuesAreEqual(responseType, expectedValue, actualValue);
+        
+        if (responseType.IsEnum 
+            || responseType == typeof(string) 
+            || responseType == typeof(float) 
+            || responseType == typeof(double) 
+            || responseType == typeof(int) 
+            || responseType == typeof(long) 
+            || responseType == typeof(uint) 
+            || responseType == typeof(ulong) 
+            || responseType == typeof(bool) 
+            || responseType == typeof(byte[]) 
+            || responseType == typeof(Vector3D) 
+            || responseType == typeof(Quaternion))
+            return expectedValue == actualValue;
+        
+        throw new ArgumentException($"Unable to assert value of type {responseType.Name}");
     }
 
-    private void AssertCollectionValue(Type responseType, object expectedValue, object actualValue)
+    private bool CollectionValuesAreEqual(Type responseType, object expectedValue, object actualValue)
     {
         if (Codec.IsATupleType(responseType))
-            AssertTupleValue(responseType, expectedValue, actualValue);
-        else if (Codec.IsAnArrayType(responseType) || Codec.IsAListType(responseType))
-            AssertArrayOrListValue(responseType, expectedValue, actualValue);
-        else if (Codec.IsADictionaryType(responseType))
-            AssertDictionaryValue(responseType, expectedValue, actualValue);
-        else if (Codec.IsASetType(responseType))
-            AssertSetValue(responseType, expectedValue, actualValue);
-        else
-            throw new ArgumentException($"Unable to assert value of unknown collection type: {responseType.Name}");
+            return TupleValuesAreEqual(responseType, expectedValue, actualValue);
+        
+        if (Codec.IsAnArrayType(responseType) || Codec.IsAListType(responseType))
+            return ArrayOrListValuesAreEqual(responseType, expectedValue, actualValue);
+        
+        if (Codec.IsADictionaryType(responseType))
+            return DictionaryValuesAreEqual(responseType, expectedValue, actualValue);
+        
+        if (Codec.IsASetType(responseType))
+            return SetValuesAreEqual(responseType, expectedValue, actualValue);
+        
+        throw new ArgumentException($"Unable to assert value of unknown collection type: {responseType.Name}");
     }
 
-    private void AssertTupleValue(Type responseType, object expectedValue, object actualValue)
+    private bool TupleValuesAreEqual(Type responseType, object expectedValue, object actualValue)
     {
         var typeArguments = responseType.GenericTypeArguments;
         for (var i = 0; i < typeArguments.Length; i++)
@@ -146,12 +158,15 @@ public class SpaceCenterTests(TestServer server)
                 ?? throw new ArgumentException($"Unable to find item field {i} on type {responseType.Name}");
             var expectedFieldValue = fieldInfo.GetValue(expectedValue);
             var actualFieldValue = fieldInfo.GetValue(actualValue);
-            
-            AssertResponseValue(typeArguments[i], expectedFieldValue, actualFieldValue);
+
+            if (!ValuesAreEqual(typeArguments[i], expectedFieldValue, actualFieldValue))
+                return false;
         }
+
+        return true;
     }
 
-    private void AssertArrayOrListValue(Type responseType, object expectedValue, object actualValue)
+    private bool ArrayOrListValuesAreEqual(Type responseType, object expectedValue, object actualValue)
     {
         var listInterface = responseType.GetInterface("IList`1")
             ?? throw new ArgumentException($"Unable to find IList interface on array type {responseType.Name}");
@@ -159,19 +174,23 @@ public class SpaceCenterTests(TestServer server)
         
         var expectedArrayValue = (IList)expectedValue;
         var actualArrayValue = (IList)actualValue;
-        
-        Assert.Equal(expectedArrayValue.Count, actualArrayValue.Count);
+
+        if (expectedArrayValue.Count != actualArrayValue.Count)
+            return false;
 
         for (var i = 0; i < expectedArrayValue.Count; i++)
         {
             var expectedElementValue = expectedArrayValue[i];
             var actualElementValue = actualArrayValue[i];
-            
-            AssertResponseValue(valueType, expectedElementValue, actualElementValue);
+
+            if (!ValuesAreEqual(valueType, expectedElementValue, actualElementValue))
+                return false;
         }
+
+        return true;
     }
 
-    private void AssertDictionaryValue(Type responseType, object expectedValue, object actualValue)
+    private bool DictionaryValuesAreEqual(Type responseType, object expectedValue, object actualValue)
     {
         var dictionaryInterface = responseType.GetInterface("IDictionary`2")
             ?? throw new ArgumentException($"Unable to find dictionary interface on type {responseType.Name}");
@@ -180,18 +199,19 @@ public class SpaceCenterTests(TestServer server)
         
         var expectedDictionary = (IDictionary)expectedValue;
         var actualDictionary = (IDictionary)actualValue;
-        
-        Assert.Equal(expectedDictionary.Count, actualDictionary.Count);
 
-        foreach (var key in expectedDictionary.Keys)
-        {
-            Assert.NotNull(key);
-            Assert.True(actualDictionary.Contains(key));
-            AssertResponseValue(valueType, expectedDictionary[key], actualDictionary[key]);
-        }
+        if (expectedDictionary.Count != actualDictionary.Count)
+            return false;
+
+        return expectedDictionary.Keys
+            .Cast<object?>()
+            .All(key => 
+                key != null 
+                && actualDictionary.Contains(key) 
+                && ValuesAreEqual(valueType, expectedDictionary[key], actualDictionary[key]));
     }
 
-    private void AssertSetValue(Type responseType, object expectedValue, object actualValue)
+    private bool SetValuesAreEqual(Type responseType, object expectedValue, object actualValue)
     {
         var setInterface = responseType.GetInterface("ISet`1")
             ?? throw new ArgumentException($"Unable to find set interface on type {responseType.Name}");
@@ -205,10 +225,17 @@ public class SpaceCenterTests(TestServer server)
             .Cast<object>()
             .OrderBy(x => x)
             .ToArray();
-        
-        Assert.Equal(expectedValues.Length, actualValues.Length);
+
+        if (expectedValues.Length != actualValues.Length)
+            return false;
+
         for (var i = 0; i < expectedValues.Length; i++)
-            AssertResponseValue(valueType, expectedValues[i], actualValues[i]);
+        {
+            if (!ValuesAreEqual(valueType, expectedValues[i], actualValues[i]))
+                return false;
+        }
+
+        return true;
     }
 
     private object CreateInstance(Type instanceType, IConnectionMultiplexer connection)
@@ -258,7 +285,7 @@ public class SpaceCenterTests(TestServer server)
                     Method = m,
                     Service = attribute!.Service,
                     Procedure = attribute!.Procedure,
-                    ParameterTypes = m.GetParameters().Select(x => x.ParameterType).ToArray(),
+                    ArgumentTypes = m.GetParameters().Select(x => x.ParameterType).ToArray(),
                     ReturnType = m.ReturnType,
                     ChildProcedures = childProcedures
                 };
@@ -272,7 +299,7 @@ public class ProcedureInfo
     public required MethodInfo Method { get; init; }
     public required string Service { get; init; }
     public required string Procedure { get; init; }
-    public required Type[] ParameterTypes { get; init; }
+    public required Type[] ArgumentTypes { get; init; }
     public required Type ReturnType { get; init; }
     public required ProcedureInfo[] ChildProcedures { get; init; }
 }
