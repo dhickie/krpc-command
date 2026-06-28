@@ -1,10 +1,9 @@
 using System.Collections.Concurrent;
+using System.Diagnostics;
 using System.Net;
 using System.Net.Sockets;
-using Google.Protobuf;
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Connection.Schema;
-using NSubstitute;
 using ConnectionType = kRPC.Client.Boost.Connection.Schema.ConnectionRequest.Types.Type;
 
 namespace kRPC.Client.Boost.IntegrationTests.Server;
@@ -108,9 +107,18 @@ public class TestServer
 
     private void StreamClientLoop()
     {
+        var sw = new Stopwatch();
+        const int updateHz = 60;
+        var tickRate = TimeSpan.FromSeconds(1) / updateHz;
         while (true)
         {
-            // Do stuff
+            var start = sw.Elapsed;
+            var nextStart = start + tickRate;
+            
+            // TODO: actually send stream updates
+
+            var sleepTime = nextStart - sw.Elapsed;
+            Thread.Sleep(sleepTime);
         }
     }
     
@@ -207,17 +215,4 @@ public class TestServer
         client.Send(response);
         return clientId;
     }
-}
-
-public class ClientId(string id)
-{
-    private readonly string _stringId = id;
-    private static readonly IConnectionMultiplexer FakeConnection = Substitute.For<IConnectionMultiplexer>();
-
-    public static implicit operator ByteString(ClientId id) => Codec.Encode(id);
-    public static implicit operator string(ClientId id) => id._stringId;
-    
-    public static implicit operator ClientId(string id) => new(id);
-    public static implicit operator ClientId(ByteString id) =>
-        new((string)Codec.Decode(id, typeof(string), FakeConnection)!);
 }
