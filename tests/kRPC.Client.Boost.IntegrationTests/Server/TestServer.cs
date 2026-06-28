@@ -1,39 +1,79 @@
 using System.Collections.Concurrent;
 using System.Net;
 using System.Net.Sockets;
+using Google.Protobuf;
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Connection.Schema;
+using NSubstitute;
+using ConnectionType = kRPC.Client.Boost.Connection.Schema.ConnectionRequest.Types.Type;
 
 namespace kRPC.Client.Boost.IntegrationTests.Server;
 
 public class TestServer
 {
     private readonly TcpListener _rpcListener;
-    private readonly Thread _newClientThread;
-    private readonly ConcurrentDictionary<string, TcpConnection> _clients;
-    private readonly ConcurrentDictionary<string, string> _clientNameMap;
-    private readonly ConcurrentDictionary<string, Thread> _clientThreads;
+    private readonly TcpListener _streamListener;
+    private readonly Thread _newRpcClientThread;
+    private readonly Thread _newStreamClientThread;
+    private readonly Thread _pendingClientsThread;
+    private readonly Thread _streamClientThread;
+    private readonly ConcurrentDictionary<ClientId, Thread> _rpcClientThreads;
+    private readonly ConcurrentDictionary<ClientId, TcpConnection> _rpcClients;
+    private readonly ConcurrentDictionary<ClientId, TcpConnection> _streamClients;
+    private readonly ConcurrentDictionary<string, ClientId> _clientNameMap;
+    
+    private readonly BlockingCollection<(TcpConnection, ConnectionType)> _pendingClients = new();
     
     private readonly RequestHandler _requestHandler;
 
     public const int RpcPort = 16253;
+    public const int StreamPort = 16254;
 
     public TestServer()
     {
-        _clientThreads = new ConcurrentDictionary<string, Thread>();
-        _clients = new ConcurrentDictionary<string, TcpConnection>();
-        _clientNameMap = new ConcurrentDictionary<string, string>();
+        // Collections
+        _rpcClientThreads = new ConcurrentDictionary<ClientId, Thread>();
+        _rpcClients = new ConcurrentDictionary<ClientId, TcpConnection>();
+        _streamClients = new ConcurrentDictionary<ClientId, TcpConnection>();
+        _clientNameMap = new ConcurrentDictionary<string, ClientId>();
+        
+        // Listeners
         _rpcListener = new TcpListener(IPAddress.Any, RpcPort);
         _rpcListener.Start();
+        _streamListener = new TcpListener(IPAddress.Any, StreamPort);
+        _streamListener.Start();
         
+        // Request handler
         _requestHandler = new RequestHandler();
 
-        _newClientThread = new Thread(() =>
+        // Threads
+        _newRpcClientThread = new Thread(() =>
         {
             Thread.CurrentThread.IsBackground = true;
-            NewClientLoop();
+            NewRpcClientLoop();
         });
-        _newClientThread.Start();
+        _newRpcClientThread.Start();
+        
+        _newStreamClientThread = new Thread(() =>
+        {
+            Thread.CurrentThread.IsBackground = true;
+            NewStreamClientLoop();
+        });
+        _newStreamClientThread.Start();
+
+        _pendingClientsThread = new Thread(() =>
+        {
+            Thread.CurrentThread.IsBackground = true;
+            PendingClientsLoop();
+        });
+        _pendingClientsThread.Start();
+
+        _streamClientThread = new Thread(() =>
+        {
+            Thread.CurrentThread.IsBackground = true;
+            StreamClientLoop();
+        });
+        _streamClientThread.Start();
     }
 
     public void ConfigureResponse(string clientName, string service, string procedure, Func<object?> response)
@@ -53,22 +93,9 @@ public class TestServer
         Assert.True(received);
     }
 
-    private void ClientLoop(string clientId)
+    private void RpcClientLoop(string clientId)
     {
-        var client = _clients[clientId];
-        
-        // Read the connection request and provide the client with an ID
-        var clientByteString = Codec.Encode(clientId);
-        var connectionRequest = client.Receive(ConnectionRequest.Parser);
-        _clientNameMap[connectionRequest.ClientName] = clientId;
-        var connectionResponse = new ConnectionResponse
-        {
-            Status = ConnectionResponse.Types.Status.Ok,
-            Message = string.Empty,
-            ClientIdentifier = clientByteString
-        };
-        client.Send(connectionResponse);
-        
+        var client = _rpcClients[clientId];
         while (true)
         {
             var request = client.Receive(Request.Parser)
@@ -78,22 +105,119 @@ public class TestServer
             client.Send(response);
         }
     }
-    
-    private void NewClientLoop()
+
+    private void StreamClientLoop()
     {
         while (true)
         {
-            var clientId = Guid.NewGuid().ToString();
-            var client = _rpcListener.AcceptTcpClient();
-            _clients.TryAdd(clientId, new TcpConnection(client));
-
-            var newThread = new Thread(() =>
-            {
-                Thread.CurrentThread.IsBackground = true;
-                ClientLoop(clientId);
-            });
-            newThread.Start();
-            _clientThreads.TryAdd(clientId, newThread);
+            // Do stuff
         }
     }
+    
+    private void NewRpcClientLoop()
+    {
+        while (true)
+        {
+            var client = _rpcListener.AcceptTcpClient();
+            _pendingClients.Add((new TcpConnection(client), ConnectionType.Rpc));
+        }
+    }
+    
+    private void NewStreamClientLoop()
+    {
+        while (true)
+        {
+            var client = _streamListener.AcceptTcpClient();
+            _pendingClients.Add((new TcpConnection(client), ConnectionType.Stream));
+        }
+    }
+
+    private void PendingClientsLoop()
+    {
+        while (true)
+        {
+            var (pendingClient, connectionType) = _pendingClients.Take();
+            
+            // Accept the connection
+            var clientId = AcceptClient(pendingClient, connectionType, () => Guid.NewGuid().ToString());
+            if (clientId != null && connectionType == ConnectionType.Rpc)
+            {
+                // RPC clients are given their own thread for processing requests
+                var newThread = new Thread(() =>
+                {
+                    Thread.CurrentThread.IsBackground = true;
+                    RpcClientLoop(clientId);
+                });
+                newThread.Start();
+                _rpcClientThreads.TryAdd(clientId, newThread);
+            }
+            
+            // Stream clients are sent updates from a single update loop, so no need to start a client thread
+        }
+    }
+    
+    private ClientId? AcceptClient(TcpConnection client, ConnectionType expectedConnectionType, Func<string> clientIdFactory)
+    {
+        var errorMessage = string.Empty;
+        var request = client.Receive(ConnectionRequest.Parser);
+        
+        if (request.Type != expectedConnectionType)
+            errorMessage = $"Received connection request for unexpected connection type. Expected {expectedConnectionType} but received {request.Type}.";
+
+        ClientId? clientId = null;
+        if (request.Type == ConnectionType.Stream)
+        {
+            if (!_rpcClients.TryGetValue(request.ClientIdentifier, out _))
+            {
+                errorMessage = "Received streaming connection request for client with no RPC connection";
+            }
+            else
+            {
+                clientId = request.ClientIdentifier;
+                _streamClients.TryAdd(clientId, client);
+            }
+        }
+        else if (errorMessage == string.Empty)
+        {
+            clientId = clientIdFactory();
+            _clientNameMap[request.ClientName] = clientId;
+            _rpcClients.TryAdd(request.ClientIdentifier, client);
+        }
+        
+        ConnectionResponse response;
+        if (errorMessage != string.Empty)
+        {
+            response = new ConnectionResponse
+            {
+                Status = ConnectionResponse.Types.Status.WrongType,
+                Message = errorMessage,
+                ClientIdentifier = null
+            };
+        }
+        else
+        {
+            response = new ConnectionResponse
+            {
+                Status = ConnectionResponse.Types.Status.Ok,
+                Message = string.Empty,
+                ClientIdentifier = clientId!
+            };
+        }
+        
+        client.Send(response);
+        return clientId;
+    }
+}
+
+public class ClientId(string id)
+{
+    private readonly string _stringId = id;
+    private static readonly IConnectionMultiplexer FakeConnection = Substitute.For<IConnectionMultiplexer>();
+
+    public static implicit operator ByteString(ClientId id) => Codec.Encode(id);
+    public static implicit operator string(ClientId id) => id._stringId;
+    
+    public static implicit operator ClientId(string id) => new(id);
+    public static implicit operator ClientId(ByteString id) =>
+        new((string)Codec.Decode(id, typeof(string), FakeConnection)!);
 }
