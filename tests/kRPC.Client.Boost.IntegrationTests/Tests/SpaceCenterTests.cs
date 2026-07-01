@@ -6,11 +6,13 @@ using AutoFixture.Kernel;
 using kRPC.Client.Boost.Attributes;
 using kRPC.Client.Boost.Configuration;
 using kRPC.Client.Boost.Connection;
+using kRPC.Client.Boost.Connection.Schema;
 using kRPC.Client.Boost.IntegrationTests.Exceptions;
 using kRPC.Client.Boost.IntegrationTests.Server;
 using kRPC.Client.Boost.Services;
 using kRPC.Client.Boost.Services.SpaceCenter;
 using MathNet.Spatial.Euclidean;
+using Type = System.Type;
 
 namespace kRPC.Client.Boost.IntegrationTests.Tests;
 
@@ -23,7 +25,7 @@ public class SpaceCenterTests(TestServer server)
     {
         Address = IPAddress.Loopback,
         RpcPort = TestServer.RpcPort,
-        StreamPort = TestServer.RpcPort
+        StreamPort = TestServer.StreamPort
     };
 
     [Fact]
@@ -32,9 +34,10 @@ public class SpaceCenterTests(TestServer server)
         var serviceType = typeof(SpaceCenter);
         var clientName = _fixture.Create<string>();
         using var connection = Connect(clientName);
-        var rpcMethods = GetRpcMethods(serviceType, true, false);
+        var rpcs = new Dictionary<Type, ProcedureInfo[]>();
+        GetRpcMethods(serviceType, true, false, rpcs);
 
-        TestRpcTree(clientName, connection, serviceType, rpcMethods);
+        TestRpcs(clientName, connection, rpcs);
     }
 
     private IConnectionMultiplexer Connect(string clientName)
@@ -52,16 +55,18 @@ public class SpaceCenterTests(TestServer server)
         return (IConnectionMultiplexer)ConnectionBuilder.NewConnection(config);
     }
 
-    private void TestRpcTree(string clientName,
+    private void TestRpcs(string clientName,
         IConnectionMultiplexer connection,
-        Type initialInstanceType,
-        ProcedureInfo[] rpcs)
+        Dictionary<Type, ProcedureInfo[]> rpcs)
     {
-        foreach (var rpc in rpcs)
+        foreach (var serviceType in rpcs.Keys)
         {
-            TestRpc(clientName, connection, initialInstanceType, rpc);
-            if (rpc.ChildProcedures.Length != 0)
-                TestRpcTree(clientName, connection, rpc.ReturnType, rpc.ChildProcedures);
+            var typeRpcs = rpcs[serviceType];
+            foreach (var rpc in typeRpcs)
+            {
+                TestRpc(clientName, connection, serviceType, rpc);
+            }
+            
         }
     }
 
@@ -263,34 +268,51 @@ public class SpaceCenterTests(TestServer server)
         return new SpecimenContext(_fixture).Resolve(type);
     }
 
-    private ProcedureInfo[] GetRpcMethods(Type serviceType, bool isGet, bool isAsync)
+    private void GetRpcMethods(Type serviceType, bool isGet, bool isAsync, Dictionary<Type, ProcedureInfo[]> rpcMethods)
     {
-        var attributeType = isGet ? typeof(GetRpcAttribute) : typeof(SetRpcAttribute);
+        // Get all methods on the provided service type
+        var getAtt = typeof(GetRpcAttribute);
+        var setAtt = typeof(SetRpcAttribute);
         var allMethods = serviceType
             .GetMethods()
-            .Where(x => x.GetCustomAttributes().Any(y => y.GetType() == attributeType));
+            .Where(m => 
+                m.CustomAttributes.Any(a => a.AttributeType == getAtt || a.AttributeType == setAtt));
 
-        Func<MethodInfo, bool> methodMatcher = isAsync 
+        // Work out how we identify the methods we're actually interested in
+        Func<MethodInfo, bool> isAsyncMethodMatcher = isAsync 
             ? x => x.ReturnType.IsAssignableTo(typeof(Task))
             : x => !x.ReturnType.IsAssignableTo(typeof(Task));
+        Func<MethodInfo, bool> isGetMethodMatcher = isGet
+            ? x => x.CustomAttributes.Any(a => a.AttributeType == getAtt)
+            : x => x.CustomAttributes.Any(a => a.AttributeType == setAtt);
+
+        // Add the current type to the dictionary with an empty collection to prevent any recursive calls doing the same work
+        rpcMethods.Add(serviceType, []);
+        var typeMethods = new List<MethodInfo>();
+        foreach (var method in allMethods)
+        {
+            if (isAsyncMethodMatcher(method) && isGetMethodMatcher(method))
+                typeMethods.Add(method);
             
-        return allMethods
-            .Where(methodMatcher)
-            .Select(m =>
+            // We want to look at RPCs on the return type even if this method is one we're not interested in - the return
+            // type might have methods we _are_ interested in
+            if (method.ReturnType.IsAssignableTo(typeof(ServiceObject)) && !rpcMethods.ContainsKey(method.ReturnType))
+                GetRpcMethods(method.ReturnType, isGet, isAsync, rpcMethods);
+        }
+
+        rpcMethods[serviceType] = typeMethods.Select(m =>
+        {
+            var att = isGet ? getAtt : setAtt;
+            var attribute = m.GetCustomAttribute(att) as RpcAttribute;
+            return new ProcedureInfo
             {
-                var childProcedures = GetRpcMethods(m.ReturnType, isGet, isAsync);
-                var attribute = m.GetCustomAttribute(attributeType) as RpcAttribute;
-                return new ProcedureInfo
-                {
-                    Method = m,
-                    Service = attribute!.Service,
-                    Procedure = attribute!.Procedure,
-                    ArgumentTypes = m.GetParameters().Select(x => x.ParameterType).ToArray(),
-                    ReturnType = m.ReturnType,
-                    ChildProcedures = childProcedures
-                };
-            })
-            .ToArray();
+                Method = m,
+                Service = attribute!.Service,
+                Procedure = attribute!.Procedure,
+                ArgumentTypes = m.GetParameters().Select(x => x.ParameterType).ToArray(),
+                ReturnType = m.ReturnType
+            };
+        }).ToArray();
     }
 }
 
@@ -301,5 +323,4 @@ public class ProcedureInfo
     public required string Procedure { get; init; }
     public required Type[] ArgumentTypes { get; init; }
     public required Type ReturnType { get; init; }
-    public required ProcedureInfo[] ChildProcedures { get; init; }
 }

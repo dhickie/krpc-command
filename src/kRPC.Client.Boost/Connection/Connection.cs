@@ -36,7 +36,7 @@ internal abstract class Connection : IDisposable
 
         // Initialise the RCP connection
         _tcpConnection = new TcpConnection(config.Address, config.RpcPort);
-        _clientId = Connect(RequestType.Rpc, connectionName);
+        _clientId = Connect(RequestType.Rpc, _tcpConnection, connectionName);
     }
 
     /// <summary>
@@ -74,17 +74,18 @@ internal abstract class Connection : IDisposable
             _disposed = true;
         });
     }
-    
+
     /// <summary>
     /// Connects to the kRPC server.
     /// </summary>
     /// <param name="type">Whether this is connecting to the RPC or Stream server</param>
+    /// <param name="connection">The TCP connection to send the connection request to</param>
     /// <param name="clientName">The name of the client</param>
     /// <returns></returns>
     /// <exception cref="ArgumentNullException">Thrown when trying to create an RPC connection with no client name</exception>
     /// <exception cref="ArgumentOutOfRangeException">Thrown if passed an unexpected RequestType</exception>
     /// <exception cref="ConnectionException">Thrown if the client is unable to connect with the server</exception>
-    protected ByteString Connect(RequestType type, string? clientName = null)
+    protected ByteString Connect(RequestType type, TcpConnection connection, string? clientName = null)
     {
         var request = new ConnectionRequest
         {
@@ -105,10 +106,10 @@ internal abstract class Connection : IDisposable
         }
 
         // Request
-        _tcpConnection.Send(request);
+        connection.Send(request);
 
         // Response
-        var response = _tcpConnection.Receive(ConnectionResponse.Parser);
+        var response = connection.Receive(ConnectionResponse.Parser);
 
         // Check we're successfully connected
         return response.Status != ConnectionResponse.Types.Status.Ok 

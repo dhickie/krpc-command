@@ -54,7 +54,7 @@ internal class StreamConnection : PollingConnection<StreamRequest, StreamConnect
         
         // Establish the Stream connection once the base connection has established the RPC connection
         _tcpConnection = new TcpConnection(config.Address, config.StreamPort);
-        Connect(RequestType.Stream);
+        Connect(RequestType.Stream, _tcpConnection);
         
         // Set the polling function for Stream RPC requests (create stream, remove stream etc.) & setup logger
         Setup(_logger, Invoke);

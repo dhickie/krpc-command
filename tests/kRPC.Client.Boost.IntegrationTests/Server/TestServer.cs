@@ -189,7 +189,7 @@ public class TestServer
         {
             clientId = clientIdFactory();
             _clientNameMap[request.ClientName] = clientId;
-            _rpcClients.TryAdd(request.ClientIdentifier, client);
+            _rpcClients.TryAdd(clientId, client);
         }
         
         ConnectionResponse response;
