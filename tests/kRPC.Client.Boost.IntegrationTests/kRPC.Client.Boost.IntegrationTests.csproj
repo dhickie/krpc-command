@@ -26,7 +26,7 @@
 
     <ItemGroup>
       <None Update="ProcedureDefinitions\KRPC.SpaceCenter.json">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
     </ItemGroup>
 

@@ -2,6 +2,7 @@ using System.Collections.Concurrent;
 using System.Diagnostics;
 using System.Net;
 using System.Net.Sockets;
+using System.Text.RegularExpressions;
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Connection.Schema;
 using ConnectionType = kRPC.Client.Boost.Connection.Schema.ConnectionRequest.Types.Type;
@@ -187,8 +188,12 @@ public class TestServer
         }
         else if (errorMessage == string.Empty)
         {
+            // This client will have the original client name with an extra string appended to the end
+            // to support multiplexing, so we have to extract the original client name in order for tests
+            // to be able to just pass in the original client name
+            var originalClientName = ExtractOriginalClientName(request.ClientName);
             clientId = clientIdFactory();
-            _clientNameMap[request.ClientName] = clientId;
+            _clientNameMap[originalClientName] = clientId;
             _rpcClients.TryAdd(clientId, client);
         }
         
@@ -214,5 +219,17 @@ public class TestServer
         
         client.Send(response);
         return clientId;
+    }
+
+    private string ExtractOriginalClientName(string multiplexedClientName)
+    {
+        var match = Regex.Match(multiplexedClientName, @"^(.*?)_(?:stream|rpc)_\d+$");
+
+        if (match.Success)
+        {
+            return match.Groups[1].Value;
+        }
+
+        throw new ArgumentException($"The provided multiplexed client name did not match the expected pattern");
     }
 }

@@ -66,7 +66,6 @@ public class SpaceCenterTests(TestServer server)
             {
                 TestRpc(clientName, connection, serviceType, rpc);
             }
-            
         }
     }
 
@@ -249,16 +248,23 @@ public class SpaceCenterTests(TestServer server)
             throw new TestSetupException(
                 $"Cannot invoke RPC on {instanceType.Name} - it is not a service object or remote object");
 
-        object? instance;
+        object?[]? args;
         if (instanceType.IsSubclassOf(typeof(RemoteObject)))
         {
             var id = _fixture.Create<ulong>();
-            instance = Activator.CreateInstance(instanceType, connection, id);
+            args = [connection, id];
         }
         else
         {
-            instance = Activator.CreateInstance(instanceType, connection);
+            args = [connection];
         }
+        
+        var instance = Activator.CreateInstance(
+            instanceType,
+            BindingFlags.Instance | BindingFlags.NonPublic,
+            null,
+            args,
+            null);
         
         return instance ?? throw new TestSetupException($"Failed to create instance of {instanceType.Name}");
     }

@@ -179,6 +179,7 @@ public class RequestHandler
     private void LoadDefinitions()
     {
         var path = Environment.CurrentDirectory;
+        path = Path.Combine(path, "ProcedureDefinitions");
         var files = Directory.GetFiles(path, "KRPC.*.json");
 
         foreach (var file in files)
