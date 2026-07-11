@@ -82,6 +82,7 @@ public class SpaceCenterTests(TestServer server)
         var result = rpc.Method.Invoke(instance, arguments);
         
         // Assert
+        var equal = ValuesAreEqual(rpc.ReturnType, returnValue, result);
         Assert.True(ValuesAreEqual(rpc.ReturnType, returnValue, result));
         server.Received(clientName, callInfo =>
         {
@@ -131,7 +132,7 @@ public class SpaceCenterTests(TestServer server)
             || responseType == typeof(byte[]) 
             || responseType == typeof(Vector3D) 
             || responseType == typeof(Quaternion))
-            return expectedValue == actualValue;
+            return Equals(expectedValue, actualValue);
         
         throw new ArgumentException($"Unable to assert value of type {responseType.Name}");
     }

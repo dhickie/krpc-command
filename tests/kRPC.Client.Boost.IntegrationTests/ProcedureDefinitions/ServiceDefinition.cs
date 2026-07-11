@@ -23,7 +23,7 @@ public class ServiceDefinition
     /// The procedures exposed by the service, keyed by procedure name.
     /// </summary>
     [JsonPropertyName("procedures")]
-    public Dictionary<string, ProcedureDefinition> Procedures { get; } = [];
+    public Dictionary<string, ProcedureDefinition> Procedures { get; set; } = [];
 
     /// <summary>
     /// The classes exposed by the service, keyed by class name.
