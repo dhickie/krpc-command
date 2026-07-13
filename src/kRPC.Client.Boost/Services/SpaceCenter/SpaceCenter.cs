@@ -319,13 +319,13 @@ public class SpaceCenter : ServiceObject
     /// <param name="craftDirectory">Name of the directory in the current saves
     /// "Ships" directory. For example <c>"VAB"</c> or <c>"SPH"</c>.</param>
     [GetRpc("SpaceCenter", "LaunchableVessels")]
-    public IList<string> GetLaunchableVessels(string craftDirectory)
+    public List<string> GetLaunchableVessels(string craftDirectory)
     {
         var args = new ProcedureArgument[]
         {
             craftDirectory
         };
-        return InvokeNonNullable<IList<string>>("SpaceCenter", "LaunchableVessels", args);
+        return InvokeNonNullable<List<string>>("SpaceCenter", "LaunchableVessels", args);
     }
 
     /// <summary>
@@ -336,13 +336,13 @@ public class SpaceCenter : ServiceObject
     /// <param name="craftDirectory">Name of the directory in the current saves
     /// "Ships" directory. For example <c>"VAB"</c> or <c>"SPH"</c>.</param>
     [GetRpc("SpaceCenter", "LaunchableVessels")]
-    public async Task<IList<string>> GetLaunchableVesselsAsync(string craftDirectory)
+    public async Task<List<string>> GetLaunchableVesselsAsync(string craftDirectory)
     {
         var args = new ProcedureArgument[]
         {
             craftDirectory
         };
-        return await InvokeNonNullableAsync<IList<string>>("SpaceCenter", "LaunchableVessels", args);
+        return await InvokeNonNullableAsync<List<string>>("SpaceCenter", "LaunchableVessels", args);
     }
 
     /// <summary>

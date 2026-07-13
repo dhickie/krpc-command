@@ -194,7 +194,7 @@ namespace kRPC.Client.Boost.Connection
             return ByteString.CopyFrom(buffer.GetBuffer(), 0, (int)buffer.Length);
         }
         
-        private static bool IsAGenericType(Type type, Type genericType)
+        internal static bool IsAGenericType(Type type, Type genericType)
         {
             var t = type;
             while (!ReferenceEquals(t, null))

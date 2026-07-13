@@ -6,12 +6,12 @@ using AutoFixture.Kernel;
 using kRPC.Client.Boost.Attributes;
 using kRPC.Client.Boost.Configuration;
 using kRPC.Client.Boost.Connection;
-using kRPC.Client.Boost.Connection.Schema;
 using kRPC.Client.Boost.IntegrationTests.Exceptions;
 using kRPC.Client.Boost.IntegrationTests.Server;
 using kRPC.Client.Boost.Services;
 using kRPC.Client.Boost.Services.SpaceCenter;
 using MathNet.Spatial.Euclidean;
+using NSubstitute;
 using Type = System.Type;
 
 namespace kRPC.Client.Boost.IntegrationTests.Tests;
@@ -20,6 +20,7 @@ namespace kRPC.Client.Boost.IntegrationTests.Tests;
 public class SpaceCenterTests(TestServer server)
 {
     private readonly Fixture _fixture = new();
+    private readonly IConnectionMultiplexer _fakeConnection = Substitute.For<IConnectionMultiplexer>();
     
     private readonly ConnectionConfig _connectionConfig = new()
     {
@@ -72,9 +73,11 @@ public class SpaceCenterTests(TestServer server)
     private void TestRpc(string clientName, IConnectionMultiplexer connection, Type instanceType, ProcedureInfo rpc)
     {
         // Arrange
-        var arguments = rpc.ArgumentTypes.Select(CreateRandomValue).ToArray();
-        var returnValue = CreateRandomValue(rpc.ReturnType);
-        var instance = CreateInstance(instanceType, connection);
+        var arguments = rpc.ArgumentTypes
+            .Select(x => CreateRandomValue(x, connection))
+            .ToArray();
+        var returnValue = CreateRandomValue(rpc.ReturnType, connection);
+        var instance = CreateRandomValue(instanceType, connection);
         
         server.ConfigureResponse(clientName, rpc.Service, rpc.Procedure, () => returnValue);
         
@@ -106,35 +109,62 @@ public class SpaceCenterTests(TestServer server)
         });
     }
 
-    private bool ValuesAreEqual(Type responseType, object? expectedValue, object? actualValue)
+    private bool ValuesAreEqual(Type type, object? expectedValue, object? actualValue)
     {
         if (expectedValue == null || actualValue == null)
             return expectedValue == actualValue;
+        
+        // We have to convert some types due to client side type conversions
+        var convertedActualValue = ConvertTypesIfRequired(type, actualValue);
 
-        if (responseType != expectedValue.GetType() || responseType != actualValue.GetType())
+        if (type != expectedValue.GetType() || type != convertedActualValue.GetType())
             return false;
         
-        if (responseType.IsSubclassOf(typeof(RemoteObject)))
-            return ((RemoteObject)expectedValue).Id == ((RemoteObject)actualValue).Id;
+        if (type.IsSubclassOf(typeof(RemoteObject)))
+            return ((RemoteObject)expectedValue).Id == ((RemoteObject)convertedActualValue).Id;
         
-        if (Codec.IsACollectionType(responseType))
-            return CollectionValuesAreEqual(responseType, expectedValue, actualValue);
+        if (Codec.IsACollectionType(type))
+            return CollectionValuesAreEqual(type, expectedValue, convertedActualValue);
         
-        if (responseType.IsEnum 
-            || responseType == typeof(string) 
-            || responseType == typeof(float) 
-            || responseType == typeof(double) 
-            || responseType == typeof(int) 
-            || responseType == typeof(long) 
-            || responseType == typeof(uint) 
-            || responseType == typeof(ulong) 
-            || responseType == typeof(bool) 
-            || responseType == typeof(byte[]) 
-            || responseType == typeof(Vector3D) 
-            || responseType == typeof(Quaternion))
-            return Equals(expectedValue, actualValue);
+        if (type.IsEnum 
+            || type == typeof(string) 
+            || type == typeof(float) 
+            || type == typeof(double) 
+            || type == typeof(int) 
+            || type == typeof(long) 
+            || type == typeof(uint) 
+            || type == typeof(ulong) 
+            || type == typeof(bool) 
+            || type == typeof(byte[]) 
+            || type == typeof(Vector3D) 
+            || type == typeof(Quaternion))
+            return Equals(expectedValue, convertedActualValue);
         
-        throw new ArgumentException($"Unable to assert value of type {responseType.Name}");
+        throw new ArgumentException($"Unable to assert value of type {type.Name}");
+    }
+
+    // The client converts some types, which is unknown to the server. If that is the case, we have to convert
+    // the actualValue into that type so that equality can be tested correctly
+    private object ConvertTypesIfRequired(Type type, object actualValue)
+    {
+        var actualType = actualValue.GetType();
+        
+        if (type == typeof(Vector3D) && Codec.IsAGenericType(actualType, typeof(Tuple<,,>)))
+        {
+            // Easiest to just encode and decode
+            var encoded = Codec.Encode(actualValue);
+            return Codec.Decode(encoded, typeof(Vector3D), _fakeConnection)
+                ?? throw new ArgumentException($"Unable to assert value of type {actualType} to Vector3D");
+        }
+        
+        if (type == typeof(Quaternion) && Codec.IsAGenericType(actualType, typeof(Tuple<,,,>)))
+        {
+            var encoded = Codec.Encode(actualValue);
+            return Codec.Decode(encoded, typeof(Quaternion), _fakeConnection)
+                ?? throw new ArgumentException($"Unable to assert value of type {actualType} to Quaternion");
+        }
+        
+        return actualValue;
     }
 
     private bool CollectionValuesAreEqual(Type responseType, object expectedValue, object actualValue)
@@ -243,14 +273,15 @@ public class SpaceCenterTests(TestServer server)
         return true;
     }
 
-    private object CreateInstance(Type instanceType, IConnectionMultiplexer connection)
+    private object CreateRandomValue(Type type, IConnectionMultiplexer connection)
     {
-        if (!instanceType.IsSubclassOf(typeof(ServiceObject)))
-            throw new TestSetupException(
-                $"Cannot invoke RPC on {instanceType.Name} - it is not a service object or remote object");
+        if (!type.IsSubclassOf(typeof(ServiceObject)))
+        {
+            return new SpecimenContext(_fixture).Resolve(type);
+        }
 
         object?[]? args;
-        if (instanceType.IsSubclassOf(typeof(RemoteObject)))
+        if (type.IsSubclassOf(typeof(RemoteObject)))
         {
             var id = _fixture.Create<ulong>();
             args = [connection, id];
@@ -261,18 +292,13 @@ public class SpaceCenterTests(TestServer server)
         }
         
         var instance = Activator.CreateInstance(
-            instanceType,
+            type,
             BindingFlags.Instance | BindingFlags.NonPublic,
             null,
             args,
             null);
         
-        return instance ?? throw new TestSetupException($"Failed to create instance of {instanceType.Name}");
-    }
-
-    private object? CreateRandomValue(Type type)
-    {
-        return new SpecimenContext(_fixture).Resolve(type);
+        return instance ?? throw new TestSetupException($"Failed to create instance of {type.Name}");
     }
 
     private void GetRpcMethods(Type serviceType, bool isGet, bool isAsync, Dictionary<Type, ProcedureInfo[]> rpcMethods)

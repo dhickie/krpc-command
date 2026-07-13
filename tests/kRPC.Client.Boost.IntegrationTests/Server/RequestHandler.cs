@@ -4,6 +4,7 @@ using Google.Protobuf;
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Connection.Schema;
 using kRPC.Client.Boost.IntegrationTests.ProcedureDefinitions;
+using MathNet.Spatial.Euclidean;
 using NSubstitute;
 using ProcedureResult = kRPC.Client.Boost.Connection.Schema.ProcedureResult;
 using Type = System.Type;
@@ -96,8 +97,9 @@ public class RequestHandler
             // Get the return value that's been set up for this call
             _configuredCalls.TryGetValue($"{clientId}_{call.Service}_{call.Procedure}", out var configuredCall);
             var result = configuredCall?.Invoke();
+            var convertedResult = ConvertResultObjectIfRequired(result);
             var resultType = GetArgumentType(def.ReturnType);
-            returnValue = Codec.Encode(result, resultType);
+            returnValue = Codec.Encode(convertedResult, resultType);
         }
         
         RecordCall(clientId, call.Service, call.Procedure, args);
@@ -147,6 +149,25 @@ public class RequestHandler
         args = decodedArgs;
         errors = null;
         return true;
+    }
+    
+    // The client does some type conversions - we have to convert the configured result object into the converted type
+    // in order for the codec to encode it successfully according to the RPC definition's result type
+    private object? ConvertResultObjectIfRequired(object? result)
+    {
+        if (result?.GetType() == typeof(Vector3D))
+        {
+            var vec = (Vector3D)result;
+            return new Tuple<double, double, double>(vec.X, vec.Y, vec.Z);
+        }
+
+        if (result?.GetType() == typeof(Quaternion))
+        {
+            var quat = (Quaternion)result;
+            return new Tuple<double, double, double, double>(quat.Real, quat.ImagX, quat.ImagY, quat.ImagZ);
+        }
+
+        return result;
     }
 
     private bool TryDecodeArgument(ByteString argument, 
@@ -248,8 +269,8 @@ public class RequestHandler
 
     private Type GetClassOrEnumerationArgumentType(RpcParameterType defType)
     {
-        var typeString = $"kRPC.Client.Boost.Services.{defType.Service}.{defType.Name}";
-        return Type.GetType(typeString)
-               ?? throw new InvalidOperationException($"Unable to find class {defType.Name} in service {defType.Service}");
+        var typeString = $"kRPC.Client.Boost.Services.{defType.Service}.RemoteObjects.{defType.Name}";
+        var allTypes = typeof(IConnectionMultiplexer).Assembly.GetTypes();
+        return allTypes.Single(x => x.FullName == typeString);
     }
 }
