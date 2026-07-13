@@ -33,13 +33,13 @@ public class Control : RemoteObject
     /// Throws an exception if staging is locked.
     /// </remarks>
     [SetRpc("SpaceCenter", "Control_ActivateNextStage")]
-    public IList<Vessel> ActivateNextStage()
+    public List<Vessel> ActivateNextStage()
     {
         var args = new ProcedureArgument[]
         {
             this
         };
-        return InvokeNonNullable<IList<Vessel>>("SpaceCenter", "Control_ActivateNextStage", args);
+        return InvokeNonNullable<List<Vessel>>("SpaceCenter", "Control_ActivateNextStage", args);
     }
 
     /// <summary>
@@ -54,13 +54,13 @@ public class Control : RemoteObject
     /// Throws an exception if staging is locked.
     /// </remarks>
     [SetRpc("SpaceCenter", "Control_ActivateNextStage")]
-    public async Task<IList<Vessel>> ActivateNextStageAsync()
+    public async Task<List<Vessel>> ActivateNextStageAsync()
     {
         var args = new ProcedureArgument[]
         {
             this
         };
-        return await InvokeNonNullableAsync<IList<Vessel>>("SpaceCenter", "Control_ActivateNextStage", args);
+        return await InvokeNonNullableAsync<List<Vessel>>("SpaceCenter", "Control_ActivateNextStage", args);
     }
 
     /// <summary>
@@ -1163,13 +1163,13 @@ public class Control : RemoteObject
     /// Returns a list of all existing maneuver nodes, ordered by time from first to last.
     /// </summary>
     [GetRpc("SpaceCenter", "Control_get_Nodes")]
-    public IList<Node> GetNodes()
+    public List<Node> GetNodes()
     {
         var args = new ProcedureArgument[]
         {
             this
         };
-        return InvokeNonNullable<IList<Node>>("SpaceCenter", "Control_get_Nodes", args);
+        return InvokeNonNullable<List<Node>>("SpaceCenter", "Control_get_Nodes", args);
     }
 
     /// <summary>
@@ -1177,13 +1177,13 @@ public class Control : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [GetRpc("SpaceCenter", "Control_get_Nodes")]
-    public async Task<IList<Node>> GetNodesAsync()
+    public async Task<List<Node>> GetNodesAsync()
     {
         var args = new ProcedureArgument[]
         {
             this
         };
-        return await InvokeNonNullableAsync<IList<Node>>("SpaceCenter", "Control_get_Nodes", args);
+        return await InvokeNonNullableAsync<List<Node>>("SpaceCenter", "Control_get_Nodes", args);
     }
 
     /// <summary>

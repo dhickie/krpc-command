@@ -77,13 +77,13 @@ public class CrewMember : RemoteObject
     /// Gets the flight IDs for each entry in the career flight log.
     /// </summary>
     [GetRpc("SpaceCenter", "CrewMember_get_CareerLogFlights")]
-    public IList<int> GetCareerLogFlights()
+    public List<int> GetCareerLogFlights()
     {
         var args = new ProcedureArgument[]
         {
             this
         };
-        return InvokeNonNullable<IList<int>>("SpaceCenter", "CrewMember_get_CareerLogFlights", args);
+        return InvokeNonNullable<List<int>>("SpaceCenter", "CrewMember_get_CareerLogFlights", args);
     }
 
     /// <summary>
@@ -91,26 +91,26 @@ public class CrewMember : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [GetRpc("SpaceCenter", "CrewMember_get_CareerLogFlights")]
-    public async Task<IList<int>> GetCareerLogFlightsAsync()
+    public async Task<List<int>> GetCareerLogFlightsAsync()
     {
         var args = new ProcedureArgument[]
         {
             this
         };
-        return await InvokeNonNullableAsync<IList<int>>("SpaceCenter", "CrewMember_get_CareerLogFlights", args);
+        return await InvokeNonNullableAsync<List<int>>("SpaceCenter", "CrewMember_get_CareerLogFlights", args);
     }
 
     /// <summary>
     /// Gets the body name for each entry in the career flight log.
     /// </summary>
     [GetRpc("SpaceCenter", "CrewMember_get_CareerLogTargets")]
-    public IList<string> GetCareerLogTargets()
+    public List<string> GetCareerLogTargets()
     {
         var args = new ProcedureArgument[]
         {
             this
         };
-        return InvokeNonNullable<IList<string>>("SpaceCenter", "CrewMember_get_CareerLogTargets", args);
+        return InvokeNonNullable<List<string>>("SpaceCenter", "CrewMember_get_CareerLogTargets", args);
     }
 
     /// <summary>
@@ -118,26 +118,26 @@ public class CrewMember : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [GetRpc("SpaceCenter", "CrewMember_get_CareerLogTargets")]
-    public async Task<IList<string>> GetCareerLogTargetsAsync()
+    public async Task<List<string>> GetCareerLogTargetsAsync()
     {
         var args = new ProcedureArgument[]
         {
             this
         };
-        return await InvokeNonNullableAsync<IList<string>>("SpaceCenter", "CrewMember_get_CareerLogTargets", args);
+        return await InvokeNonNullableAsync<List<string>>("SpaceCenter", "CrewMember_get_CareerLogTargets", args);
     }
 
     /// <summary>
     /// Gets the type for each entry in the career flight log.
     /// </summary>
     [GetRpc("SpaceCenter", "CrewMember_get_CareerLogTypes")]
-    public IList<string> GetCareerLogTypes()
+    public List<string> GetCareerLogTypes()
     {
         var args = new ProcedureArgument[]
         {
             this
         };
-        return InvokeNonNullable<IList<string>>("SpaceCenter", "CrewMember_get_CareerLogTypes", args);
+        return InvokeNonNullable<List<string>>("SpaceCenter", "CrewMember_get_CareerLogTypes", args);
     }
 
     /// <summary>
@@ -145,13 +145,13 @@ public class CrewMember : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [GetRpc("SpaceCenter", "CrewMember_get_CareerLogTypes")]
-    public async Task<IList<string>> GetCareerLogTypesAsync()
+    public async Task<List<string>> GetCareerLogTypesAsync()
     {
         var args = new ProcedureArgument[]
         {
             this
         };
-        return await InvokeNonNullableAsync<IList<string>>("SpaceCenter", "CrewMember_get_CareerLogTypes", args);
+        return await InvokeNonNullableAsync<List<string>>("SpaceCenter", "CrewMember_get_CareerLogTypes", args);
     }
 
     /// <summary>

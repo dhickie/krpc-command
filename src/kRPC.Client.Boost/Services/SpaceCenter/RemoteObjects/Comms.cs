@@ -74,13 +74,13 @@ public class Comms : RemoteObject
     /// Gets the communication path used to control the vessel.
     /// </summary>
     [GetRpc("SpaceCenter", "Comms_get_ControlPath")]
-    public IList<CommLink> GetControlPath()
+    public List<CommLink> GetControlPath()
     {
         var args = new ProcedureArgument[]
         {
             this
         };
-        return InvokeNonNullable<IList<CommLink>>("SpaceCenter", "Comms_get_ControlPath", args);
+        return InvokeNonNullable<List<CommLink>>("SpaceCenter", "Comms_get_ControlPath", args);
     }
 
     /// <summary>
@@ -88,13 +88,13 @@ public class Comms : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [GetRpc("SpaceCenter", "Comms_get_ControlPath")]
-    public async Task<IList<CommLink>> GetControlPathAsync()
+    public async Task<List<CommLink>> GetControlPathAsync()
     {
         var args = new ProcedureArgument[]
         {
             this
         };
-        return await InvokeNonNullableAsync<IList<CommLink>>("SpaceCenter", "Comms_get_ControlPath", args);
+        return await InvokeNonNullableAsync<List<CommLink>>("SpaceCenter", "Comms_get_ControlPath", args);
     }
 
     /// <summary>

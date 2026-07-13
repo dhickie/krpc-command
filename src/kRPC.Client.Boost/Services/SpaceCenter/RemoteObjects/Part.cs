@@ -539,13 +539,13 @@ public class Part : RemoteObject
     /// parts tree.
     /// </summary>
     [GetRpc("SpaceCenter", "Part_get_Children")]
-    public IList<Part> GetChildren()
+    public List<Part> GetChildren()
     {
         var args = new ProcedureArgument[]
         {
             this
         };
-        return InvokeNonNullable<IList<Part>>("SpaceCenter", "Part_get_Children", args);
+        return InvokeNonNullable<List<Part>>("SpaceCenter", "Part_get_Children", args);
     }
 
     /// <summary>
@@ -555,13 +555,13 @@ public class Part : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [GetRpc("SpaceCenter", "Part_get_Children")]
-    public async Task<IList<Part>> GetChildrenAsync()
+    public async Task<List<Part>> GetChildrenAsync()
     {
         var args = new ProcedureArgument[]
         {
             this
         };
-        return await InvokeNonNullableAsync<IList<Part>>("SpaceCenter", "Part_get_Children", args);
+        return await InvokeNonNullableAsync<List<Part>>("SpaceCenter", "Part_get_Children", args);
     }
 
     /// <summary>
@@ -854,13 +854,13 @@ public class Part : RemoteObject
     /// Gets a list of <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Experiment" /> objects that the part contains.
     /// </summary>
     [GetRpc("SpaceCenter", "Part_get_Experiments")]
-    public IList<Experiment> GetExperiments()
+    public List<Experiment> GetExperiments()
     {
         var args = new ProcedureArgument[]
         {
             this
         };
-        return InvokeNonNullable<IList<Experiment>>("SpaceCenter", "Part_get_Experiments", args);
+        return InvokeNonNullable<List<Experiment>>("SpaceCenter", "Part_get_Experiments", args);
     }
 
     /// <summary>
@@ -868,13 +868,13 @@ public class Part : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [GetRpc("SpaceCenter", "Part_get_Experiments")]
-    public async Task<IList<Experiment>> GetExperimentsAsync()
+    public async Task<List<Experiment>> GetExperimentsAsync()
     {
         var args = new ProcedureArgument[]
         {
             this
         };
-        return await InvokeNonNullableAsync<IList<Experiment>>("SpaceCenter", "Part_get_Experiments", args);
+        return await InvokeNonNullableAsync<List<Experiment>>("SpaceCenter", "Part_get_Experiments", args);
     }
 
     /// <summary>
@@ -967,13 +967,13 @@ public class Part : RemoteObject
     /// fuel line is into this part.
     /// </summary>
     [GetRpc("SpaceCenter", "Part_get_FuelLinesFrom")]
-    public IList<Part> GetFuelLinesFrom()
+    public List<Part> GetFuelLinesFrom()
     {
         var args = new ProcedureArgument[]
         {
             this
         };
-        return InvokeNonNullable<IList<Part>>("SpaceCenter", "Part_get_FuelLinesFrom", args);
+        return InvokeNonNullable<List<Part>>("SpaceCenter", "Part_get_FuelLinesFrom", args);
     }
 
     /// <summary>
@@ -982,13 +982,13 @@ public class Part : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [GetRpc("SpaceCenter", "Part_get_FuelLinesFrom")]
-    public async Task<IList<Part>> GetFuelLinesFromAsync()
+    public async Task<List<Part>> GetFuelLinesFromAsync()
     {
         var args = new ProcedureArgument[]
         {
             this
         };
-        return await InvokeNonNullableAsync<IList<Part>>("SpaceCenter", "Part_get_FuelLinesFrom", args);
+        return await InvokeNonNullableAsync<List<Part>>("SpaceCenter", "Part_get_FuelLinesFrom", args);
     }
 
     /// <summary>
@@ -996,13 +996,13 @@ public class Part : RemoteObject
     /// fuel line is out of this part.
     /// </summary>
     [GetRpc("SpaceCenter", "Part_get_FuelLinesTo")]
-    public IList<Part> GetFuelLinesTo()
+    public List<Part> GetFuelLinesTo()
     {
         var args = new ProcedureArgument[]
         {
             this
         };
-        return InvokeNonNullable<IList<Part>>("SpaceCenter", "Part_get_FuelLinesTo", args);
+        return InvokeNonNullable<List<Part>>("SpaceCenter", "Part_get_FuelLinesTo", args);
     }
 
     /// <summary>
@@ -1011,13 +1011,13 @@ public class Part : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [GetRpc("SpaceCenter", "Part_get_FuelLinesTo")]
-    public async Task<IList<Part>> GetFuelLinesToAsync()
+    public async Task<List<Part>> GetFuelLinesToAsync()
     {
         var args = new ProcedureArgument[]
         {
             this
         };
-        return await InvokeNonNullableAsync<IList<Part>>("SpaceCenter", "Part_get_FuelLinesTo", args);
+        return await InvokeNonNullableAsync<List<Part>>("SpaceCenter", "Part_get_FuelLinesTo", args);
     }
 
     /// <summary>
@@ -1198,13 +1198,13 @@ public class Part : RemoteObject
     /// Returns the 3x3 matrix as a list of elements, in row-major order.
     /// </summary>
     [GetRpc("SpaceCenter", "Part_get_InertiaTensor")]
-    public IList<double> GetInertiaTensor()
+    public List<double> GetInertiaTensor()
     {
         var args = new ProcedureArgument[]
         {
             this
         };
-        return InvokeNonNullable<IList<double>>("SpaceCenter", "Part_get_InertiaTensor", args);
+        return InvokeNonNullable<List<double>>("SpaceCenter", "Part_get_InertiaTensor", args);
     }
 
     /// <summary>
@@ -1214,13 +1214,13 @@ public class Part : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [GetRpc("SpaceCenter", "Part_get_InertiaTensor")]
-    public async Task<IList<double>> GetInertiaTensorAsync()
+    public async Task<List<double>> GetInertiaTensorAsync()
     {
         var args = new ProcedureArgument[]
         {
             this
         };
-        return await InvokeNonNullableAsync<IList<double>>("SpaceCenter", "Part_get_InertiaTensor", args);
+        return await InvokeNonNullableAsync<List<double>>("SpaceCenter", "Part_get_InertiaTensor", args);
     }
 
     /// <summary>
@@ -1484,13 +1484,13 @@ public class Part : RemoteObject
     /// Gets the modules for this part.
     /// </summary>
     [GetRpc("SpaceCenter", "Part_get_Modules")]
-    public IList<Module> GetModules()
+    public List<Module> GetModules()
     {
         var args = new ProcedureArgument[]
         {
             this
         };
-        return InvokeNonNullable<IList<Module>>("SpaceCenter", "Part_get_Modules", args);
+        return InvokeNonNullable<List<Module>>("SpaceCenter", "Part_get_Modules", args);
     }
 
     /// <summary>
@@ -1498,13 +1498,13 @@ public class Part : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [GetRpc("SpaceCenter", "Part_get_Modules")]
-    public async Task<IList<Module>> GetModulesAsync()
+    public async Task<List<Module>> GetModulesAsync()
     {
         var args = new ProcedureArgument[]
         {
             this
         };
-        return await InvokeNonNullableAsync<IList<Module>>("SpaceCenter", "Part_get_Modules", args);
+        return await InvokeNonNullableAsync<List<Module>>("SpaceCenter", "Part_get_Modules", args);
     }
 
     /// <summary>

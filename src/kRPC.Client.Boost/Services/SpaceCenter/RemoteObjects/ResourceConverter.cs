@@ -51,14 +51,14 @@ public class ResourceConverter : RemoteObject
     /// </summary>
     /// <param name="index">Index of the converter.</param>
     [GetRpc("SpaceCenter", "ResourceConverter_Inputs")]
-    public IList<string> GetInputs(int index)
+    public List<string> GetInputs(int index)
     {
         var args = new ProcedureArgument[]
         {
             this,
             index
         };
-        return InvokeNonNullable<IList<string>>("SpaceCenter", "ResourceConverter_Inputs", args);
+        return InvokeNonNullable<List<string>>("SpaceCenter", "ResourceConverter_Inputs", args);
     }
 
     /// <summary>
@@ -67,14 +67,14 @@ public class ResourceConverter : RemoteObject
     /// </summary>
     /// <param name="index">Index of the converter.</param>
     [GetRpc("SpaceCenter", "ResourceConverter_Inputs")]
-    public async Task<IList<string>> GetInputsAsync(int index)
+    public async Task<List<string>> GetInputsAsync(int index)
     {
         var args = new ProcedureArgument[]
         {
             this,
             index
         };
-        return await InvokeNonNullableAsync<IList<string>>("SpaceCenter", "ResourceConverter_Inputs", args);
+        return await InvokeNonNullableAsync<List<string>>("SpaceCenter", "ResourceConverter_Inputs", args);
     }
 
     /// <summary>
@@ -113,14 +113,14 @@ public class ResourceConverter : RemoteObject
     /// </summary>
     /// <param name="index">Index of the converter.</param>
     [GetRpc("SpaceCenter", "ResourceConverter_Outputs")]
-    public IList<string> GetOutputs(int index)
+    public List<string> GetOutputs(int index)
     {
         var args = new ProcedureArgument[]
         {
             this,
             index
         };
-        return InvokeNonNullable<IList<string>>("SpaceCenter", "ResourceConverter_Outputs", args);
+        return InvokeNonNullable<List<string>>("SpaceCenter", "ResourceConverter_Outputs", args);
     }
 
     /// <summary>
@@ -129,14 +129,14 @@ public class ResourceConverter : RemoteObject
     /// </summary>
     /// <param name="index">Index of the converter.</param>
     [GetRpc("SpaceCenter", "ResourceConverter_Outputs")]
-    public async Task<IList<string>> GetOutputsAsync(int index)
+    public async Task<List<string>> GetOutputsAsync(int index)
     {
         var args = new ProcedureArgument[]
         {
             this,
             index
         };
-        return await InvokeNonNullableAsync<IList<string>>("SpaceCenter", "ResourceConverter_Outputs", args);
+        return await InvokeNonNullableAsync<List<string>>("SpaceCenter", "ResourceConverter_Outputs", args);
     }
 
     /// <summary>

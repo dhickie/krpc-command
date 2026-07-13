@@ -838,13 +838,13 @@ public class Vessel : RemoteObject
     /// Gets the crew in the vessel.
     /// </summary>
     [GetRpc("SpaceCenter", "Vessel_get_Crew")]
-    public IList<CrewMember> GetCrew()
+    public List<CrewMember> GetCrew()
     {
         var args = new ProcedureArgument[]
         {
             this
         };
-        return InvokeNonNullable<IList<CrewMember>>("SpaceCenter", "Vessel_get_Crew", args);
+        return InvokeNonNullable<List<CrewMember>>("SpaceCenter", "Vessel_get_Crew", args);
     }
 
     /// <summary>
@@ -852,13 +852,13 @@ public class Vessel : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [GetRpc("SpaceCenter", "Vessel_get_Crew")]
-    public async Task<IList<CrewMember>> GetCrewAsync()
+    public async Task<List<CrewMember>> GetCrewAsync()
     {
         var args = new ProcedureArgument[]
         {
             this
         };
-        return await InvokeNonNullableAsync<IList<CrewMember>>("SpaceCenter", "Vessel_get_Crew", args);
+        return await InvokeNonNullableAsync<List<CrewMember>>("SpaceCenter", "Vessel_get_Crew", args);
     }
 
     /// <summary>
@@ -948,13 +948,13 @@ public class Vessel : RemoteObject
     /// Returns the 3x3 matrix as a list of elements, in row-major order.
     /// </summary>
     [GetRpc("SpaceCenter", "Vessel_get_InertiaTensor")]
-    public IList<double> GetInertiaTensor()
+    public List<double> GetInertiaTensor()
     {
         var args = new ProcedureArgument[]
         {
             this
         };
-        return InvokeNonNullable<IList<double>>("SpaceCenter", "Vessel_get_InertiaTensor", args);
+        return InvokeNonNullable<List<double>>("SpaceCenter", "Vessel_get_InertiaTensor", args);
     }
 
     /// <summary>
@@ -964,13 +964,13 @@ public class Vessel : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [GetRpc("SpaceCenter", "Vessel_get_InertiaTensor")]
-    public async Task<IList<double>> GetInertiaTensorAsync()
+    public async Task<List<double>> GetInertiaTensorAsync()
     {
         var args = new ProcedureArgument[]
         {
             this
         };
-        return await InvokeNonNullableAsync<IList<double>>("SpaceCenter", "Vessel_get_InertiaTensor", args);
+        return await InvokeNonNullableAsync<List<double>>("SpaceCenter", "Vessel_get_InertiaTensor", args);
     }
 
     /// <summary>

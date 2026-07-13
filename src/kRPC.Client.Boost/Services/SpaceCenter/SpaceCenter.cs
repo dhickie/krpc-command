@@ -1092,9 +1092,9 @@ public class SpaceCenter : ServiceObject
     /// Gets a list of available launch sites.
     /// </summary>
     [GetRpc("SpaceCenter", "get_LaunchSites")]
-    public IList<LaunchSite> GetLaunchSites()
+    public List<LaunchSite> GetLaunchSites()
     {
-        return InvokeNonNullable<IList<LaunchSite>>("SpaceCenter", "get_LaunchSites");
+        return InvokeNonNullable<List<LaunchSite>>("SpaceCenter", "get_LaunchSites");
     }
 
     /// <summary>
@@ -1102,9 +1102,9 @@ public class SpaceCenter : ServiceObject
     /// Executes asynchronously.
     /// </summary>
     [GetRpc("SpaceCenter", "get_LaunchSites")]
-    public async Task<IList<LaunchSite>> GetLaunchSitesAsync()
+    public async Task<List<LaunchSite>> GetLaunchSitesAsync()
     {
-        return await InvokeNonNullableAsync<IList<LaunchSite>>("SpaceCenter", "get_LaunchSites");
+        return await InvokeNonNullableAsync<List<LaunchSite>>("SpaceCenter", "get_LaunchSites");
     }
 
     /// <summary>
@@ -1609,9 +1609,9 @@ public class SpaceCenter : ServiceObject
     /// Gets a list of all the vessels in the game.
     /// </summary>
     [GetRpc("SpaceCenter", "get_Vessels")]
-    public IList<Vessel> GetVessels()
+    public List<Vessel> GetVessels()
     {
-        return InvokeNonNullable<IList<Vessel>>("SpaceCenter", "get_Vessels");
+        return InvokeNonNullable<List<Vessel>>("SpaceCenter", "get_Vessels");
     }
 
     /// <summary>
@@ -1619,9 +1619,9 @@ public class SpaceCenter : ServiceObject
     /// Executes asynchronously.
     /// </summary>
     [GetRpc("SpaceCenter", "get_Vessels")]
-    public async Task<IList<Vessel>> GetVesselsAsync()
+    public async Task<List<Vessel>> GetVesselsAsync()
     {
-        return await InvokeNonNullableAsync<IList<Vessel>>("SpaceCenter", "get_Vessels");
+        return await InvokeNonNullableAsync<List<Vessel>>("SpaceCenter", "get_Vessels");
     }
 
     /// <summary>

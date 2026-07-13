@@ -133,13 +133,13 @@ public class ResourceDrain : RemoteObject
     /// Gets the list of available resources.
     /// </summary>
     [GetRpc("SpaceCenter", "ResourceDrain_get_AvailableResources")]
-    public IList<Resource> GetAvailableResources()
+    public List<Resource> GetAvailableResources()
     {
         var args = new ProcedureArgument[]
         {
             this
         };
-        return InvokeNonNullable<IList<Resource>>("SpaceCenter", "ResourceDrain_get_AvailableResources", args);
+        return InvokeNonNullable<List<Resource>>("SpaceCenter", "ResourceDrain_get_AvailableResources", args);
     }
 
     /// <summary>
@@ -147,13 +147,13 @@ public class ResourceDrain : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [GetRpc("SpaceCenter", "ResourceDrain_get_AvailableResources")]
-    public async Task<IList<Resource>> GetAvailableResourcesAsync()
+    public async Task<List<Resource>> GetAvailableResourcesAsync()
     {
         var args = new ProcedureArgument[]
         {
             this
         };
-        return await InvokeNonNullableAsync<IList<Resource>>("SpaceCenter", "ResourceDrain_get_AvailableResources", args);
+        return await InvokeNonNullableAsync<List<Resource>>("SpaceCenter", "ResourceDrain_get_AvailableResources", args);
     }
 
     /// <summary>

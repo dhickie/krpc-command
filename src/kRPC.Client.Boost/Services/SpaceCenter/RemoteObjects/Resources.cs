@@ -115,14 +115,14 @@ public class Resources : RemoteObject
     /// All the individual resources with the given name that can be stored.
     /// </summary>
     [GetRpc("SpaceCenter", "Resources_WithResource")]
-    public IList<Resource> GetResourcesWithName(string name)
+    public List<Resource> GetResourcesWithName(string name)
     {
         var args = new ProcedureArgument[]
         {
             this,
             name
         };
-        return InvokeNonNullable<IList<Resource>>("SpaceCenter", "Resources_WithResource", args);
+        return InvokeNonNullable<List<Resource>>("SpaceCenter", "Resources_WithResource", args);
     }
 
     /// <summary>
@@ -130,14 +130,14 @@ public class Resources : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [GetRpc("SpaceCenter", "Resources_WithResource")]
-    public async Task<IList<Resource>> GetResourcesWithNameAsync(string name)
+    public async Task<List<Resource>> GetResourcesWithNameAsync(string name)
     {
         var args = new ProcedureArgument[]
         {
             this,
             name
         };
-        return await InvokeNonNullableAsync<IList<Resource>>("SpaceCenter", "Resources_WithResource", args);
+        return await InvokeNonNullableAsync<List<Resource>>("SpaceCenter", "Resources_WithResource", args);
     }
 
     /// <summary>
@@ -202,13 +202,13 @@ public class Resources : RemoteObject
     /// Gets all the individual resources that can be stored.
     /// </summary>
     [GetRpc("SpaceCenter", "Resources_get_All")]
-    public IList<Resource> GetAll()
+    public List<Resource> GetAll()
     {
         var args = new ProcedureArgument[]
         {
             this
         };
-        return InvokeNonNullable<IList<Resource>>("SpaceCenter", "Resources_get_All", args);
+        return InvokeNonNullable<List<Resource>>("SpaceCenter", "Resources_get_All", args);
     }
 
     /// <summary>
@@ -216,13 +216,13 @@ public class Resources : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [GetRpc("SpaceCenter", "Resources_get_All")]
-    public async Task<IList<Resource>> GetAllAsync()
+    public async Task<List<Resource>> GetAllAsync()
     {
         var args = new ProcedureArgument[]
         {
             this
         };
-        return await InvokeNonNullableAsync<IList<Resource>>("SpaceCenter", "Resources_get_All", args);
+        return await InvokeNonNullableAsync<List<Resource>>("SpaceCenter", "Resources_get_All", args);
     }
 
     /// <summary>
@@ -295,13 +295,13 @@ public class Resources : RemoteObject
     /// Gets a list of resource names that can be stored.
     /// </summary>
     [GetRpc("SpaceCenter", "Resources_get_Names")]
-    public IList<string> GetNames()
+    public List<string> GetNames()
     {
         var args = new ProcedureArgument[]
         {
             this
         };
-        return InvokeNonNullable<IList<string>>("SpaceCenter", "Resources_get_Names", args);
+        return InvokeNonNullable<List<string>>("SpaceCenter", "Resources_get_Names", args);
     }
 
     /// <summary>
@@ -309,12 +309,12 @@ public class Resources : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [GetRpc("SpaceCenter", "Resources_get_Names")]
-    public async Task<IList<string>> GetNamesAsync()
+    public async Task<List<string>> GetNamesAsync()
     {
         var args = new ProcedureArgument[]
         {
             this
         };
-        return await InvokeNonNullableAsync<IList<string>>("SpaceCenter", "Resources_get_Names", args);
+        return await InvokeNonNullableAsync<List<string>>("SpaceCenter", "Resources_get_Names", args);
     }
 }

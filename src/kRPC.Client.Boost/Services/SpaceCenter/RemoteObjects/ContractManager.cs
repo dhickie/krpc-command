@@ -20,13 +20,13 @@ public class ContractManager : RemoteObject
     /// Gets a list of all active contracts.
     /// </summary>
     [GetRpc("SpaceCenter", "ContractManager_get_ActiveContracts")]
-    public IList<Contract> GetActiveContracts()
+    public List<Contract> GetActiveContracts()
     {
         var args = new ProcedureArgument[]
         {
             this
         };
-        return InvokeNonNullable<IList<Contract>>("SpaceCenter", "ContractManager_get_ActiveContracts", args);
+        return InvokeNonNullable<List<Contract>>("SpaceCenter", "ContractManager_get_ActiveContracts", args);
     }
 
     /// <summary>
@@ -34,26 +34,26 @@ public class ContractManager : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [GetRpc("SpaceCenter", "ContractManager_get_ActiveContracts")]
-    public async Task<IList<Contract>> GetActiveContractsAsync()
+    public async Task<List<Contract>> GetActiveContractsAsync()
     {
         var args = new ProcedureArgument[]
         {
             this
         };
-        return await InvokeNonNullableAsync<IList<Contract>>("SpaceCenter", "ContractManager_get_ActiveContracts", args);
+        return await InvokeNonNullableAsync<List<Contract>>("SpaceCenter", "ContractManager_get_ActiveContracts", args);
     }
 
     /// <summary>
     /// Gets a list of all contracts.
     /// </summary>
     [GetRpc("SpaceCenter", "ContractManager_get_AllContracts")]
-    public IList<Contract> GetAllContracts()
+    public List<Contract> GetAllContracts()
     {
         var args = new ProcedureArgument[]
         {
             this
         };
-        return InvokeNonNullable<IList<Contract>>("SpaceCenter", "ContractManager_get_AllContracts", args);
+        return InvokeNonNullable<List<Contract>>("SpaceCenter", "ContractManager_get_AllContracts", args);
     }
 
     /// <summary>
@@ -61,26 +61,26 @@ public class ContractManager : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [GetRpc("SpaceCenter", "ContractManager_get_AllContracts")]
-    public async Task<IList<Contract>> GetAllContractsAsync()
+    public async Task<List<Contract>> GetAllContractsAsync()
     {
         var args = new ProcedureArgument[]
         {
             this
         };
-        return await InvokeNonNullableAsync<IList<Contract>>("SpaceCenter", "ContractManager_get_AllContracts", args);
+        return await InvokeNonNullableAsync<List<Contract>>("SpaceCenter", "ContractManager_get_AllContracts", args);
     }
 
     /// <summary>
     /// Gets a list of all completed contracts.
     /// </summary>
     [GetRpc("SpaceCenter", "ContractManager_get_CompletedContracts")]
-    public IList<Contract> GetCompletedContracts()
+    public List<Contract> GetCompletedContracts()
     {
         var args = new ProcedureArgument[]
         {
             this
         };
-        return InvokeNonNullable<IList<Contract>>("SpaceCenter", "ContractManager_get_CompletedContracts", args);
+        return InvokeNonNullable<List<Contract>>("SpaceCenter", "ContractManager_get_CompletedContracts", args);
     }
 
     /// <summary>
@@ -88,26 +88,26 @@ public class ContractManager : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [GetRpc("SpaceCenter", "ContractManager_get_CompletedContracts")]
-    public async Task<IList<Contract>> GetCompletedContractsAsync()
+    public async Task<List<Contract>> GetCompletedContractsAsync()
     {
         var args = new ProcedureArgument[]
         {
             this
         };
-        return await InvokeNonNullableAsync<IList<Contract>>("SpaceCenter", "ContractManager_get_CompletedContracts", args);
+        return await InvokeNonNullableAsync<List<Contract>>("SpaceCenter", "ContractManager_get_CompletedContracts", args);
     }
 
     /// <summary>
     /// Gets a list of all failed contracts.
     /// </summary>
     [GetRpc("SpaceCenter", "ContractManager_get_FailedContracts")]
-    public IList<Contract> GetFailedContracts()
+    public List<Contract> GetFailedContracts()
     {
         var args = new ProcedureArgument[]
         {
             this
         };
-        return InvokeNonNullable<IList<Contract>>("SpaceCenter", "ContractManager_get_FailedContracts", args);
+        return InvokeNonNullable<List<Contract>>("SpaceCenter", "ContractManager_get_FailedContracts", args);
     }
 
     /// <summary>
@@ -115,26 +115,26 @@ public class ContractManager : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [GetRpc("SpaceCenter", "ContractManager_get_FailedContracts")]
-    public async Task<IList<Contract>> GetFailedContractsAsync()
+    public async Task<List<Contract>> GetFailedContractsAsync()
     {
         var args = new ProcedureArgument[]
         {
             this
         };
-        return await InvokeNonNullableAsync<IList<Contract>>("SpaceCenter", "ContractManager_get_FailedContracts", args);
+        return await InvokeNonNullableAsync<List<Contract>>("SpaceCenter", "ContractManager_get_FailedContracts", args);
     }
 
     /// <summary>
     /// Gets a list of all offered, but unaccepted, contracts.
     /// </summary>
     [GetRpc("SpaceCenter", "ContractManager_get_OfferedContracts")]
-    public IList<Contract> GetOfferedContracts()
+    public List<Contract> GetOfferedContracts()
     {
         var args = new ProcedureArgument[]
         {
             this
         };
-        return InvokeNonNullable<IList<Contract>>("SpaceCenter", "ContractManager_get_OfferedContracts", args);
+        return InvokeNonNullable<List<Contract>>("SpaceCenter", "ContractManager_get_OfferedContracts", args);
     }
 
     /// <summary>
@@ -142,13 +142,13 @@ public class ContractManager : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [GetRpc("SpaceCenter", "ContractManager_get_OfferedContracts")]
-    public async Task<IList<Contract>> GetOfferedContractsAsync()
+    public async Task<List<Contract>> GetOfferedContractsAsync()
     {
         var args = new ProcedureArgument[]
         {
             this
         };
-        return await InvokeNonNullableAsync<IList<Contract>>("SpaceCenter", "ContractManager_get_OfferedContracts", args);
+        return await InvokeNonNullableAsync<List<Contract>>("SpaceCenter", "ContractManager_get_OfferedContracts", args);
     }
 
     /// <summary>

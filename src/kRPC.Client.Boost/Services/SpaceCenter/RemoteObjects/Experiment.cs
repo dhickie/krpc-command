@@ -181,13 +181,13 @@ public class Experiment : RemoteObject
     /// Gets the data contained in this experiment.
     /// </summary>
     [GetRpc("SpaceCenter", "Experiment_get_Data")]
-    public IList<ScienceData> GetData()
+    public List<ScienceData> GetData()
     {
         var args = new ProcedureArgument[]
         {
             this
         };
-        return InvokeNonNullable<IList<ScienceData>>("SpaceCenter", "Experiment_get_Data", args);
+        return InvokeNonNullable<List<ScienceData>>("SpaceCenter", "Experiment_get_Data", args);
     }
 
     /// <summary>
@@ -195,13 +195,13 @@ public class Experiment : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [GetRpc("SpaceCenter", "Experiment_get_Data")]
-    public async Task<IList<ScienceData>> GetDataAsync()
+    public async Task<List<ScienceData>> GetDataAsync()
     {
         var args = new ProcedureArgument[]
         {
             this
         };
-        return await InvokeNonNullableAsync<IList<ScienceData>>("SpaceCenter", "Experiment_get_Data", args);
+        return await InvokeNonNullableAsync<List<ScienceData>>("SpaceCenter", "Experiment_get_Data", args);
     }
 
     /// <summary>

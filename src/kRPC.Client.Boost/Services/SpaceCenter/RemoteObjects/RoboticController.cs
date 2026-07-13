@@ -89,13 +89,13 @@ public class RoboticController : RemoteObject
     /// The axes for the controller.
     /// </summary>
     [GetRpc("SpaceCenter", "RoboticController_Axes")]
-    public IList<IList<string>> GetAxes()
+    public List<List<string>> GetAxes()
     {
         var args = new ProcedureArgument[]
         {
             this
         };
-        return InvokeNonNullable<IList<IList<string>>>("SpaceCenter", "RoboticController_Axes", args);
+        return InvokeNonNullable<List<List<string>>>("SpaceCenter", "RoboticController_Axes", args);
     }
 
     /// <summary>
@@ -103,13 +103,13 @@ public class RoboticController : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [GetRpc("SpaceCenter", "RoboticController_Axes")]
-    public async Task<IList<IList<string>>> GetAxesAsync()
+    public async Task<List<List<string>>> GetAxesAsync()
     {
         var args = new ProcedureArgument[]
         {
             this
         };
-        return await InvokeNonNullableAsync<IList<IList<string>>>("SpaceCenter", "RoboticController_Axes", args);
+        return await InvokeNonNullableAsync<List<List<string>>>("SpaceCenter", "RoboticController_Axes", args);
     }
 
     /// <summary>

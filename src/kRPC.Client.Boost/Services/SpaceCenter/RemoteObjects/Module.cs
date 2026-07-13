@@ -745,13 +745,13 @@ public class Module : RemoteObject
     /// be assigned to action groups in the in-game editor.
     /// </summary>
     [GetRpc("SpaceCenter", "Module_get_Actions")]
-    public IList<string> GetActions()
+    public List<string> GetActions()
     {
         var args = new ProcedureArgument[]
         {
             this
         };
-        return InvokeNonNullable<IList<string>>("SpaceCenter", "Module_get_Actions", args);
+        return InvokeNonNullable<List<string>>("SpaceCenter", "Module_get_Actions", args);
     }
 
     /// <summary>
@@ -760,13 +760,13 @@ public class Module : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [GetRpc("SpaceCenter", "Module_get_Actions")]
-    public async Task<IList<string>> GetActionsAsync()
+    public async Task<List<string>> GetActionsAsync()
     {
         var args = new ProcedureArgument[]
         {
             this
         };
-        return await InvokeNonNullableAsync<IList<string>>("SpaceCenter", "Module_get_Actions", args);
+        return await InvokeNonNullableAsync<List<string>>("SpaceCenter", "Module_get_Actions", args);
     }
 
     /// <summary>
@@ -774,13 +774,13 @@ public class Module : RemoteObject
     /// that can be assigned to action groups in the in-game editor.
     /// </summary>
     [GetRpc("SpaceCenter", "Module_get_ActionsById")]
-    public IList<string> GetActionsById()
+    public List<string> GetActionsById()
     {
         var args = new ProcedureArgument[]
         {
             this
         };
-        return InvokeNonNullable<IList<string>>("SpaceCenter", "Module_get_ActionsById", args);
+        return InvokeNonNullable<List<string>>("SpaceCenter", "Module_get_ActionsById", args);
     }
 
     /// <summary>
@@ -789,13 +789,13 @@ public class Module : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [GetRpc("SpaceCenter", "Module_get_ActionsById")]
-    public async Task<IList<string>> GetActionsByIdAsync()
+    public async Task<List<string>> GetActionsByIdAsync()
     {
         var args = new ProcedureArgument[]
         {
             this
         };
-        return await InvokeNonNullableAsync<IList<string>>("SpaceCenter", "Module_get_ActionsById", args);
+        return await InvokeNonNullableAsync<List<string>>("SpaceCenter", "Module_get_ActionsById", args);
     }
 
     /// <summary>
@@ -803,13 +803,13 @@ public class Module : RemoteObject
     /// visible in the right-click menu of the part.
     /// </summary>
     [GetRpc("SpaceCenter", "Module_get_Events")]
-    public IList<string> GetEvents()
+    public List<string> GetEvents()
     {
         var args = new ProcedureArgument[]
         {
             this
         };
-        return InvokeNonNullable<IList<string>>("SpaceCenter", "Module_get_Events", args);
+        return InvokeNonNullable<List<string>>("SpaceCenter", "Module_get_Events", args);
     }
 
     /// <summary>
@@ -818,13 +818,13 @@ public class Module : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [GetRpc("SpaceCenter", "Module_get_Events")]
-    public async Task<IList<string>> GetEventsAsync()
+    public async Task<List<string>> GetEventsAsync()
     {
         var args = new ProcedureArgument[]
         {
             this
         };
-        return await InvokeNonNullableAsync<IList<string>>("SpaceCenter", "Module_get_Events", args);
+        return await InvokeNonNullableAsync<List<string>>("SpaceCenter", "Module_get_Events", args);
     }
 
     /// <summary>
@@ -832,13 +832,13 @@ public class Module : RemoteObject
     /// visible in the right-click menu of the part.
     /// </summary>
     [GetRpc("SpaceCenter", "Module_get_EventsById")]
-    public IList<string> GetEventsById()
+    public List<string> GetEventsById()
     {
         var args = new ProcedureArgument[]
         {
             this
         };
-        return InvokeNonNullable<IList<string>>("SpaceCenter", "Module_get_EventsById", args);
+        return InvokeNonNullable<List<string>>("SpaceCenter", "Module_get_EventsById", args);
     }
 
     /// <summary>
@@ -847,13 +847,13 @@ public class Module : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [GetRpc("SpaceCenter", "Module_get_EventsById")]
-    public async Task<IList<string>> GetEventsByIdAsync()
+    public async Task<List<string>> GetEventsByIdAsync()
     {
         var args = new ProcedureArgument[]
         {
             this
         };
-        return await InvokeNonNullableAsync<IList<string>>("SpaceCenter", "Module_get_EventsById", args);
+        return await InvokeNonNullableAsync<List<string>>("SpaceCenter", "Module_get_EventsById", args);
     }
 
     /// <summary>

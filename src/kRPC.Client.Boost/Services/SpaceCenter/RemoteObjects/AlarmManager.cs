@@ -270,13 +270,13 @@ public class AlarmManager : RemoteObject
     /// Gets a list of all alarms.
     /// </summary>
     [GetRpc("SpaceCenter", "AlarmManager_get_Alarms")]
-    public IList<Alarm> GetAlarms()
+    public List<Alarm> GetAlarms()
     {
         var args = new ProcedureArgument[]
         {
             this
         };
-        return InvokeNonNullable<IList<Alarm>>("SpaceCenter", "AlarmManager_get_Alarms", args);
+        return InvokeNonNullable<List<Alarm>>("SpaceCenter", "AlarmManager_get_Alarms", args);
     }
 
     /// <summary>
@@ -284,12 +284,12 @@ public class AlarmManager : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [GetRpc("SpaceCenter", "AlarmManager_get_Alarms")]
-    public async Task<IList<Alarm>> GetAlarmsAsync()
+    public async Task<List<Alarm>> GetAlarmsAsync()
     {
         var args = new ProcedureArgument[]
         {
             this
         };
-        return await InvokeNonNullableAsync<IList<Alarm>>("SpaceCenter", "AlarmManager_get_Alarms", args);
+        return await InvokeNonNullableAsync<List<Alarm>>("SpaceCenter", "AlarmManager_get_Alarms", args);
     }
 }

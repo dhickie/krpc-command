@@ -19,13 +19,13 @@ public class ContractParameter : RemoteObject
     /// Child contract parameters.
     /// </summary>
     [GetRpc("SpaceCenter", "ContractParameter_get_Children")]
-    public IList<ContractParameter> GetChildren()
+    public List<ContractParameter> GetChildren()
     {
         var args = new ProcedureArgument[]
         {
             this
         };
-        return InvokeNonNullable<IList<ContractParameter>>("SpaceCenter", "ContractParameter_get_Children", args);
+        return InvokeNonNullable<List<ContractParameter>>("SpaceCenter", "ContractParameter_get_Children", args);
     }
 
     /// <summary>
@@ -33,13 +33,13 @@ public class ContractParameter : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [GetRpc("SpaceCenter", "ContractParameter_get_Children")]
-    public async Task<IList<ContractParameter>> GetChildrenAsync()
+    public async Task<List<ContractParameter>> GetChildrenAsync()
     {
         var args = new ProcedureArgument[]
         {
             this
         };
-        return await InvokeNonNullableAsync<IList<ContractParameter>>("SpaceCenter", "ContractParameter_get_Children", args);
+        return await InvokeNonNullableAsync<List<ContractParameter>>("SpaceCenter", "ContractParameter_get_Children", args);
     }
 
     /// <summary>

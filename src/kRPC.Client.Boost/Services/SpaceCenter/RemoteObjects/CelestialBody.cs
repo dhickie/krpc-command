@@ -1314,13 +1314,13 @@ public class CelestialBody : RemoteObject
     /// Gets a list of celestial bodies that are in orbit around this celestial body.
     /// </summary>
     [GetRpc("SpaceCenter", "CelestialBody_get_Satellites")]
-    public IList<CelestialBody> GetSatellites()
+    public List<CelestialBody> GetSatellites()
     {
         var args = new ProcedureArgument[]
         {
             this
         };
-        return InvokeNonNullable<IList<CelestialBody>>("SpaceCenter", "CelestialBody_get_Satellites", args);
+        return InvokeNonNullable<List<CelestialBody>>("SpaceCenter", "CelestialBody_get_Satellites", args);
     }
 
     /// <summary>
@@ -1328,13 +1328,13 @@ public class CelestialBody : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [GetRpc("SpaceCenter", "CelestialBody_get_Satellites")]
-    public async Task<IList<CelestialBody>> GetSatellitesAsync()
+    public async Task<List<CelestialBody>> GetSatellitesAsync()
     {
         var args = new ProcedureArgument[]
         {
             this
         };
-        return await InvokeNonNullableAsync<IList<CelestialBody>>("SpaceCenter", "CelestialBody_get_Satellites", args);
+        return await InvokeNonNullableAsync<List<CelestialBody>>("SpaceCenter", "CelestialBody_get_Satellites", args);
     }
 
     /// <summary>

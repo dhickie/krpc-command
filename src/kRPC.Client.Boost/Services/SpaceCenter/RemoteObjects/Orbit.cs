@@ -94,7 +94,7 @@ public class Orbit : RemoteObject
     /// <param name="target">Target orbit.</param>
     /// <param name="orbits">The number of future orbits to search.</param>
     [GetRpc("SpaceCenter", "Orbit_ListClosestApproaches")]
-    public IList<IList<double>> GetListClosestApproaches(Orbit target, int orbits)
+    public List<List<double>> GetListClosestApproaches(Orbit target, int orbits)
     {
         var args = new ProcedureArgument[]
         {
@@ -102,7 +102,7 @@ public class Orbit : RemoteObject
             target,
             orbits
         };
-        return InvokeNonNullable<IList<IList<double>>>("SpaceCenter", "Orbit_ListClosestApproaches", args);
+        return InvokeNonNullable<List<List<double>>>("SpaceCenter", "Orbit_ListClosestApproaches", args);
     }
 
     /// <summary>
@@ -117,7 +117,7 @@ public class Orbit : RemoteObject
     /// <param name="target">Target orbit.</param>
     /// <param name="orbits">The number of future orbits to search.</param>
     [GetRpc("SpaceCenter", "Orbit_ListClosestApproaches")]
-    public async Task<IList<IList<double>>> GetListClosestApproachesAsync(Orbit target, int orbits)
+    public async Task<List<List<double>>> GetListClosestApproachesAsync(Orbit target, int orbits)
     {
         var args = new ProcedureArgument[]
         {
@@ -125,7 +125,7 @@ public class Orbit : RemoteObject
             target,
             orbits
         };
-        return await InvokeNonNullableAsync<IList<IList<double>>>("SpaceCenter", "Orbit_ListClosestApproaches", args);
+        return await InvokeNonNullableAsync<List<List<double>>>("SpaceCenter", "Orbit_ListClosestApproaches", args);
     }
 
     /// <summary>

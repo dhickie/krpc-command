@@ -498,13 +498,13 @@ public class RCS : RemoteObject
     /// Gets the names of resources that the RCS consumes.
     /// </summary>
     [GetRpc("SpaceCenter", "RCS_get_Propellants")]
-    public IList<string> GetPropellants()
+    public List<string> GetPropellants()
     {
         var args = new ProcedureArgument[]
         {
             this
         };
-        return InvokeNonNullable<IList<string>>("SpaceCenter", "RCS_get_Propellants", args);
+        return InvokeNonNullable<List<string>>("SpaceCenter", "RCS_get_Propellants", args);
     }
 
     /// <summary>
@@ -512,13 +512,13 @@ public class RCS : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [GetRpc("SpaceCenter", "RCS_get_Propellants")]
-    public async Task<IList<string>> GetPropellantsAsync()
+    public async Task<List<string>> GetPropellantsAsync()
     {
         var args = new ProcedureArgument[]
         {
             this
         };
-        return await InvokeNonNullableAsync<IList<string>>("SpaceCenter", "RCS_get_Propellants", args);
+        return await InvokeNonNullableAsync<List<string>>("SpaceCenter", "RCS_get_Propellants", args);
     }
 
     /// <summary>
@@ -728,13 +728,13 @@ public class RCS : RemoteObject
     /// Gets a list of thrusters, one of each nozzel in the RCS part.
     /// </summary>
     [GetRpc("SpaceCenter", "RCS_get_Thrusters")]
-    public IList<Thruster> GetThrusters()
+    public List<Thruster> GetThrusters()
     {
         var args = new ProcedureArgument[]
         {
             this
         };
-        return InvokeNonNullable<IList<Thruster>>("SpaceCenter", "RCS_get_Thrusters", args);
+        return InvokeNonNullable<List<Thruster>>("SpaceCenter", "RCS_get_Thrusters", args);
     }
 
     /// <summary>
@@ -742,13 +742,13 @@ public class RCS : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [GetRpc("SpaceCenter", "RCS_get_Thrusters")]
-    public async Task<IList<Thruster>> GetThrustersAsync()
+    public async Task<List<Thruster>> GetThrustersAsync()
     {
         var args = new ProcedureArgument[]
         {
             this
         };
-        return await InvokeNonNullableAsync<IList<Thruster>>("SpaceCenter", "RCS_get_Thrusters", args);
+        return await InvokeNonNullableAsync<List<Thruster>>("SpaceCenter", "RCS_get_Thrusters", args);
     }
 
     /// <summary>

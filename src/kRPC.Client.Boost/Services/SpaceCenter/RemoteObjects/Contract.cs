@@ -343,13 +343,13 @@ public class Contract : RemoteObject
     /// Keywords for the contract.
     /// </summary>
     [GetRpc("SpaceCenter", "Contract_get_Keywords")]
-    public IList<string> GetKeywords()
+    public List<string> GetKeywords()
     {
         var args = new ProcedureArgument[]
         {
             this
         };
-        return InvokeNonNullable<IList<string>>("SpaceCenter", "Contract_get_Keywords", args);
+        return InvokeNonNullable<List<string>>("SpaceCenter", "Contract_get_Keywords", args);
     }
 
     /// <summary>
@@ -357,13 +357,13 @@ public class Contract : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [GetRpc("SpaceCenter", "Contract_get_Keywords")]
-    public async Task<IList<string>> GetKeywordsAsync()
+    public async Task<List<string>> GetKeywordsAsync()
     {
         var args = new ProcedureArgument[]
         {
             this
         };
-        return await InvokeNonNullableAsync<IList<string>>("SpaceCenter", "Contract_get_Keywords", args);
+        return await InvokeNonNullableAsync<List<string>>("SpaceCenter", "Contract_get_Keywords", args);
     }
 
     /// <summary>
@@ -397,13 +397,13 @@ public class Contract : RemoteObject
     /// Parameters for the contract.
     /// </summary>
     [GetRpc("SpaceCenter", "Contract_get_Parameters")]
-    public IList<ContractParameter> GetParameters()
+    public List<ContractParameter> GetParameters()
     {
         var args = new ProcedureArgument[]
         {
             this
         };
-        return InvokeNonNullable<IList<ContractParameter>>("SpaceCenter", "Contract_get_Parameters", args);
+        return InvokeNonNullable<List<ContractParameter>>("SpaceCenter", "Contract_get_Parameters", args);
     }
 
     /// <summary>
@@ -411,13 +411,13 @@ public class Contract : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [GetRpc("SpaceCenter", "Contract_get_Parameters")]
-    public async Task<IList<ContractParameter>> GetParametersAsync()
+    public async Task<List<ContractParameter>> GetParametersAsync()
     {
         var args = new ProcedureArgument[]
         {
             this
         };
-        return await InvokeNonNullableAsync<IList<ContractParameter>>("SpaceCenter", "Contract_get_Parameters", args);
+        return await InvokeNonNullableAsync<List<ContractParameter>>("SpaceCenter", "Contract_get_Parameters", args);
     }
 
     /// <summary>

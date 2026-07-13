@@ -149,13 +149,13 @@ public class WaypointManager : RemoteObject
     /// Returns all available icons (from "GameData/Squad/Contracts/Icons/").
     /// </summary>
     [GetRpc("SpaceCenter", "WaypointManager_get_Icons")]
-    public IList<string> GetIcons()
+    public List<string> GetIcons()
     {
         var args = new ProcedureArgument[]
         {
             this
         };
-        return InvokeNonNullable<IList<string>>("SpaceCenter", "WaypointManager_get_Icons", args);
+        return InvokeNonNullable<List<string>>("SpaceCenter", "WaypointManager_get_Icons", args);
     }
 
     /// <summary>
@@ -163,26 +163,26 @@ public class WaypointManager : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [GetRpc("SpaceCenter", "WaypointManager_get_Icons")]
-    public async Task<IList<string>> GetIconsAsync()
+    public async Task<List<string>> GetIconsAsync()
     {
         var args = new ProcedureArgument[]
         {
             this
         };
-        return await InvokeNonNullableAsync<IList<string>>("SpaceCenter", "WaypointManager_get_Icons", args);
+        return await InvokeNonNullableAsync<List<string>>("SpaceCenter", "WaypointManager_get_Icons", args);
     }
 
     /// <summary>
     /// Gets a list of all existing waypoints.
     /// </summary>
     [GetRpc("SpaceCenter", "WaypointManager_get_Waypoints")]
-    public IList<Waypoint> GetWaypoints()
+    public List<Waypoint> GetWaypoints()
     {
         var args = new ProcedureArgument[]
         {
             this
         };
-        return InvokeNonNullable<IList<Waypoint>>("SpaceCenter", "WaypointManager_get_Waypoints", args);
+        return InvokeNonNullable<List<Waypoint>>("SpaceCenter", "WaypointManager_get_Waypoints", args);
     }
 
     /// <summary>
@@ -190,12 +190,12 @@ public class WaypointManager : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [GetRpc("SpaceCenter", "WaypointManager_get_Waypoints")]
-    public async Task<IList<Waypoint>> GetWaypointsAsync()
+    public async Task<List<Waypoint>> GetWaypointsAsync()
     {
         var args = new ProcedureArgument[]
         {
             this
         };
-        return await InvokeNonNullableAsync<IList<Waypoint>>("SpaceCenter", "WaypointManager_get_Waypoints", args);
+        return await InvokeNonNullableAsync<List<Waypoint>>("SpaceCenter", "WaypointManager_get_Waypoints", args);
     }
 }
