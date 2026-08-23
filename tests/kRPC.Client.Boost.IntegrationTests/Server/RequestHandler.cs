@@ -4,7 +4,6 @@ using Google.Protobuf;
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.Connection.Schema;
 using kRPC.Client.Boost.IntegrationTests.ProcedureDefinitions;
-using MathNet.Spatial.Euclidean;
 using NSubstitute;
 using ProcedureResult = kRPC.Client.Boost.Connection.Schema.ProcedureResult;
 using Type = System.Type;
@@ -33,7 +32,8 @@ public class RequestHandler
         Func<object?> response)
     {
         var key = $"{clientId}_{service}_{procedure}";
-        _configuredCalls.AddOrUpdate(key, _ => response, (_, _) => response);
+        var responseFuncWrapper = () => ClientObjectConverter.ConvertClientObject(response());
+        _configuredCalls.AddOrUpdate(key, _ => responseFuncWrapper, (_, _) => responseFuncWrapper);
     }
 
     public bool Received(string clientId, Func<CallInfo, bool> predicate)
@@ -97,9 +97,8 @@ public class RequestHandler
             // Get the return value that's been set up for this call
             _configuredCalls.TryGetValue($"{clientId}_{call.Service}_{call.Procedure}", out var configuredCall);
             var result = configuredCall?.Invoke();
-            var convertedResult = ConvertResultObjectIfRequired(result);
             var resultType = GetArgumentType(def.ReturnType);
-            returnValue = Codec.Encode(convertedResult, resultType);
+            returnValue = Codec.Encode(result, resultType);
         }
         
         RecordCall(clientId, call.Service, call.Procedure, args);
@@ -149,25 +148,6 @@ public class RequestHandler
         args = decodedArgs;
         errors = null;
         return true;
-    }
-    
-    // The client does some type conversions - we have to convert the configured result object into the converted type
-    // in order for the codec to encode it successfully according to the RPC definition's result type
-    private object? ConvertResultObjectIfRequired(object? result)
-    {
-        if (result?.GetType() == typeof(Vector3D))
-        {
-            var vec = (Vector3D)result;
-            return new Tuple<double, double, double>(vec.X, vec.Y, vec.Z);
-        }
-
-        if (result?.GetType() == typeof(Quaternion))
-        {
-            var quat = (Quaternion)result;
-            return new Tuple<double, double, double, double>(quat.Real, quat.ImagX, quat.ImagY, quat.ImagZ);
-        }
-
-        return result;
     }
 
     private bool TryDecodeArgument(ByteString argument, 

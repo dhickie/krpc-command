@@ -6,21 +6,24 @@ using AutoFixture.Kernel;
 using kRPC.Client.Boost.Attributes;
 using kRPC.Client.Boost.Configuration;
 using kRPC.Client.Boost.Connection;
+using kRPC.Client.Boost.IntegrationTests.AutoFixture;
 using kRPC.Client.Boost.IntegrationTests.Exceptions;
+using kRPC.Client.Boost.IntegrationTests.Extensions;
 using kRPC.Client.Boost.IntegrationTests.Server;
 using kRPC.Client.Boost.Services;
 using kRPC.Client.Boost.Services.SpaceCenter;
 using MathNet.Spatial.Euclidean;
 using NSubstitute;
+using MethodInvoker = AutoFixture.Kernel.MethodInvoker;
 using Type = System.Type;
 
 namespace kRPC.Client.Boost.IntegrationTests.Tests;
 
 [Collection("IntegrationTests")]
-public class SpaceCenterTests(TestServer server)
+public class SpaceCenterTests
 {
-    private readonly Fixture _fixture = new();
-    private readonly IConnectionMultiplexer _fakeConnection = Substitute.For<IConnectionMultiplexer>();
+    private readonly Fixture _fixture;
+    private readonly IConnectionMultiplexer _fakeConnection;
     
     private readonly ConnectionConfig _connectionConfig = new()
     {
@@ -28,6 +31,19 @@ public class SpaceCenterTests(TestServer server)
         RpcPort = TestServer.RpcPort,
         StreamPort = TestServer.StreamPort
     };
+    
+    private readonly TestServer _server;
+
+    public SpaceCenterTests(TestServer server)
+    {
+        _server = server;
+        _fixture = new Fixture();
+        _fixture.Customize(new ServiceObjectCustomisation()); // Enables creation of service and remote objects
+        _fixture.Customize<Quaternion>(c => c.FromFactory(
+            new MethodInvoker(
+                new GreedyConstructorQuery()))); // Needed to ensure the right constructor is used
+        _fakeConnection = Substitute.For<IConnectionMultiplexer>();
+    }
 
     [Fact]
     public void SynchronousGetRpcs_ReturnCorrectValues()
@@ -35,10 +51,11 @@ public class SpaceCenterTests(TestServer server)
         var serviceType = typeof(SpaceCenter);
         var clientName = _fixture.Create<string>();
         using var connection = Connect(clientName);
+        ServiceObjectCustomisation.ServiceObjectBuilder.SetConnection(connection); // So that test data has access to the connection
         var rpcs = new Dictionary<Type, ProcedureInfo[]>();
         GetRpcMethods(serviceType, true, false, rpcs);
 
-        TestRpcs(clientName, connection, rpcs);
+        TestRpcs(clientName, rpcs);
     }
 
     private IConnectionMultiplexer Connect(string clientName)
@@ -57,7 +74,6 @@ public class SpaceCenterTests(TestServer server)
     }
 
     private void TestRpcs(string clientName,
-        IConnectionMultiplexer connection,
         Dictionary<Type, ProcedureInfo[]> rpcs)
     {
         foreach (var serviceType in rpcs.Keys)
@@ -65,21 +81,21 @@ public class SpaceCenterTests(TestServer server)
             var typeRpcs = rpcs[serviceType];
             foreach (var rpc in typeRpcs)
             {
-                TestRpc(clientName, connection, serviceType, rpc);
+                TestRpc(clientName, serviceType, rpc);
             }
         }
     }
 
-    private void TestRpc(string clientName, IConnectionMultiplexer connection, Type instanceType, ProcedureInfo rpc)
+    private void TestRpc(string clientName, Type instanceType, ProcedureInfo rpc)
     {
         // Arrange
         var arguments = rpc.ArgumentTypes
-            .Select(x => CreateRandomValue(x, connection))
+            .Select(x => _fixture.Create(x))
             .ToArray();
-        var returnValue = CreateRandomValue(rpc.ReturnType, connection);
-        var instance = CreateRandomValue(instanceType, connection);
+        var returnValue = _fixture.Create(rpc.ReturnType);
+        var instance = _fixture.Create(instanceType);
         
-        server.ConfigureResponse(clientName, rpc.Service, rpc.Procedure, () => returnValue);
+        _server.ConfigureResponse(clientName, rpc.Service, rpc.Procedure, () => returnValue);
         
         // Act
         var result = rpc.Method.Invoke(instance, arguments);
@@ -87,7 +103,7 @@ public class SpaceCenterTests(TestServer server)
         // Assert
         var equal = ValuesAreEqual(rpc.ReturnType, returnValue, result);
         Assert.True(ValuesAreEqual(rpc.ReturnType, returnValue, result));
-        server.Received(clientName, callInfo =>
+        _server.Received(clientName, callInfo =>
         {
             if (callInfo.Service != rpc.Service)
                 return false;
@@ -95,14 +111,33 @@ public class SpaceCenterTests(TestServer server)
             if (callInfo.Procedure != rpc.Procedure)
                 return false;
 
-            if (callInfo.Arguments!.Length != arguments.Length)
-                return false;
-
-            for (var i = 0; i < arguments.Length; i++)
+            // RPCs on remote objects will send the remote object as the first argument
+            if (instanceType.IsAssignableTo(typeof(RemoteObject)))
             {
-                var argType = arguments[i]?.GetType() ?? typeof(object);
-                if (!ValuesAreEqual(argType, arguments[i], callInfo.Arguments[i]))
+                if (callInfo.Arguments!.Length != arguments.Length + 1)
                     return false;
+
+                if (!ValuesAreEqual(instanceType, instance, callInfo.Arguments[0]))
+                    return false;
+                
+                for (var i = 0; i < arguments.Length; i++)
+                {
+                    var argType = arguments[i]?.GetType() ?? typeof(object);
+                    if (!ValuesAreEqual(argType, arguments[i], callInfo.Arguments[i+1]))
+                        return false;
+                }
+            }
+            else
+            {
+                if (callInfo.Arguments!.Length != arguments.Length)
+                    return false;
+
+                for (var i = 0; i < arguments.Length; i++)
+                {
+                    var argType = arguments[i]?.GetType() ?? typeof(object);
+                    if (!ValuesAreEqual(argType, arguments[i], callInfo.Arguments[i]))
+                        return false;
+                }
             }
 
             return true;
@@ -117,7 +152,7 @@ public class SpaceCenterTests(TestServer server)
         // We have to convert some types due to client side type conversions
         var convertedActualValue = ConvertTypesIfRequired(type, actualValue);
 
-        if (type != expectedValue.GetType() || type != convertedActualValue.GetType())
+        if (!type.IsInstanceOfType(expectedValue) || !type.IsInstanceOfType(convertedActualValue))
             return false;
         
         if (type.IsSubclassOf(typeof(RemoteObject)))
@@ -227,8 +262,12 @@ public class SpaceCenterTests(TestServer server)
 
     private bool DictionaryValuesAreEqual(Type responseType, object expectedValue, object actualValue)
     {
-        var dictionaryInterface = responseType.GetInterface("IDictionary`2")
-            ?? throw new ArgumentException($"Unable to find dictionary interface on type {responseType.Name}");
+        var dictionaryInterface = responseType.GetGenericTypeDefinition() == typeof(IDictionary<,>) ?
+            responseType :
+            responseType.GetInterface("IDictionary`2");
+        if (dictionaryInterface == null)
+            throw new ArgumentException($"Unable to find dictionary interface for type {responseType.Name}");
+        
         var typeArgs = dictionaryInterface.GetGenericArguments();
         var valueType = typeArgs[1];
         
@@ -273,34 +312,6 @@ public class SpaceCenterTests(TestServer server)
         return true;
     }
 
-    private object CreateRandomValue(Type type, IConnectionMultiplexer connection)
-    {
-        if (!type.IsSubclassOf(typeof(ServiceObject)))
-        {
-            return new SpecimenContext(_fixture).Resolve(type);
-        }
-
-        object?[]? args;
-        if (type.IsSubclassOf(typeof(RemoteObject)))
-        {
-            var id = _fixture.Create<ulong>();
-            args = [connection, id];
-        }
-        else
-        {
-            args = [connection];
-        }
-        
-        var instance = Activator.CreateInstance(
-            type,
-            BindingFlags.Instance | BindingFlags.NonPublic,
-            null,
-            args,
-            null);
-        
-        return instance ?? throw new TestSetupException($"Failed to create instance of {type.Name}");
-    }
-
     private void GetRpcMethods(Type serviceType, bool isGet, bool isAsync, Dictionary<Type, ProcedureInfo[]> rpcMethods)
     {
         // Get all methods on the provided service type
@@ -308,11 +319,11 @@ public class SpaceCenterTests(TestServer server)
         var setAtt = typeof(SetRpcAttribute);
         var allMethods = serviceType
             .GetMethods()
-            .Where(m => 
+            .Where(m =>
                 m.CustomAttributes.Any(a => a.AttributeType == getAtt || a.AttributeType == setAtt));
 
         // Work out how we identify the methods we're actually interested in
-        Func<MethodInfo, bool> isAsyncMethodMatcher = isAsync 
+        Func<MethodInfo, bool> isAsyncMethodMatcher = isAsync
             ? x => x.ReturnType.IsAssignableTo(typeof(Task))
             : x => !x.ReturnType.IsAssignableTo(typeof(Task));
         Func<MethodInfo, bool> isGetMethodMatcher = isGet
@@ -326,14 +337,14 @@ public class SpaceCenterTests(TestServer server)
         {
             if (isAsyncMethodMatcher(method) && isGetMethodMatcher(method))
                 typeMethods.Add(method);
-            
+
             // We want to look at RPCs on the return type even if this method is one we're not interested in - the return
             // type might have methods we _are_ interested in
             if (method.ReturnType.IsAssignableTo(typeof(ServiceObject)) && !rpcMethods.ContainsKey(method.ReturnType))
                 GetRpcMethods(method.ReturnType, isGet, isAsync, rpcMethods);
         }
 
-        rpcMethods[serviceType] = typeMethods.Select(m =>
+        var serviceTypeMethods = typeMethods.Select(m =>
         {
             var att = isGet ? getAtt : setAtt;
             var attribute = m.GetCustomAttribute(att) as RpcAttribute;
@@ -345,7 +356,23 @@ public class SpaceCenterTests(TestServer server)
                 ArgumentTypes = m.GetParameters().Select(x => x.ParameterType).ToArray(),
                 ReturnType = m.ReturnType
             };
-        }).ToArray();
+        });
+
+        // Useful in testing - get specific RPCs to make diagnosing errors easier
+        (string, string)[] targetRpcs =
+        [
+        ];
+
+        if (targetRpcs.Length > 0)
+        {
+            rpcMethods[serviceType] = serviceTypeMethods
+                .Where(x => targetRpcs.Contains((x.Service, x.Procedure)))
+                .ToArray();
+        }
+        else
+        {
+            rpcMethods[serviceType] = serviceTypeMethods.ToArray();
+        }
     }
 }
 

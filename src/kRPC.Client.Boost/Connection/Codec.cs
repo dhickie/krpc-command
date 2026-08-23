@@ -50,7 +50,7 @@ namespace kRPC.Client.Boost.Connection
             
             var stream = value.CreateCodedInput();
             if (type.IsEnum)
-                return stream.ReadSInt32();
+                return Enum.ToObject(type, stream.ReadSInt32());
             switch (Type.GetTypeCode(type))
             {
                 case TypeCode.Double:

@@ -958,7 +958,7 @@ public class SpaceCenter : ServiceObject
     [GetRpc("SpaceCenter", "get_Bodies")]
     public IDictionary<string,CelestialBody> GetBodies()
     {
-        return InvokeNonNullable<IDictionary<string,CelestialBody>>("SpaceCenter", "get_Bodies");
+        return InvokeNonNullable<Dictionary<string,CelestialBody>>("SpaceCenter", "get_Bodies");
     }
 
     /// <summary>
