@@ -13,6 +13,7 @@ using kRPC.Client.Boost.IntegrationTests.Server;
 using kRPC.Client.Boost.Services;
 using kRPC.Client.Boost.Services.SpaceCenter;
 using MathNet.Spatial.Euclidean;
+using MathNet.Spatial.Units;
 using NSubstitute;
 using MethodInvoker = AutoFixture.Kernel.MethodInvoker;
 using Type = System.Type;
@@ -95,14 +96,18 @@ public class SpaceCenterTests
         var returnValue = _fixture.Create(rpc.ReturnType);
         var instance = _fixture.Create(instanceType);
         
-        _server.ConfigureResponse(clientName, rpc.Service, rpc.Procedure, () => returnValue);
+        _server.ConfigureResponse(clientName, rpc.Service, rpc.Procedure, () =>
+        {
+            var converter = new ClientObjectConverter(rpc.AngleType, rpc.AngleDataType);
+            return converter.ConvertClientObject(returnValue);
+        });
         
         // Act
         var result = rpc.Method.Invoke(instance, arguments);
         
         // Assert
-        var equal = ValuesAreEqual(rpc.ReturnType, returnValue, result);
-        Assert.True(ValuesAreEqual(rpc.ReturnType, returnValue, result));
+        var equal = ValuesAreEqual(rpc.ReturnType, returnValue, result, rpc);
+        Assert.True(ValuesAreEqual(rpc.ReturnType, returnValue, result, rpc));
         _server.Received(clientName, callInfo =>
         {
             if (callInfo.Service != rpc.Service)
@@ -117,13 +122,13 @@ public class SpaceCenterTests
                 if (callInfo.Arguments!.Length != arguments.Length + 1)
                     return false;
 
-                if (!ValuesAreEqual(instanceType, instance, callInfo.Arguments[0]))
+                if (!ValuesAreEqual(instanceType, instance, callInfo.Arguments[0], rpc))
                     return false;
                 
                 for (var i = 0; i < arguments.Length; i++)
                 {
                     var argType = arguments[i]?.GetType() ?? typeof(object);
-                    if (!ValuesAreEqual(argType, arguments[i], callInfo.Arguments[i+1]))
+                    if (!ValuesAreEqual(argType, arguments[i], callInfo.Arguments[i+1], rpc))
                         return false;
                 }
             }
@@ -135,7 +140,7 @@ public class SpaceCenterTests
                 for (var i = 0; i < arguments.Length; i++)
                 {
                     var argType = arguments[i]?.GetType() ?? typeof(object);
-                    if (!ValuesAreEqual(argType, arguments[i], callInfo.Arguments[i]))
+                    if (!ValuesAreEqual(argType, arguments[i], callInfo.Arguments[i], rpc))
                         return false;
                 }
             }
@@ -144,24 +149,29 @@ public class SpaceCenterTests
         });
     }
 
-    private bool ValuesAreEqual(Type type, object? expectedValue, object? actualValue)
+    private bool ValuesAreEqual(Type type, object? expectedValue, object? actualValue, ProcedureInfo rpc)
     {
         if (expectedValue == null || actualValue == null)
             return expectedValue == actualValue;
         
-        // We have to convert some types due to client side type conversions
-        var convertedActualValue = ConvertTypesIfRequired(type, actualValue);
+        // Some client side types are unknown to the server, so convert the expected and actual values into types
+        // the server would understand. This ensures the assertion works both for checking the return value from
+        // the RPC and the RPC parameters received by the server.
+        var converter = new ClientObjectConverter(rpc.AngleType, rpc.AngleDataType);
+        var convertedExpectedValue = converter.ConvertClientObject(expectedValue);
+        var convertedActualValue = converter.ConvertClientObject(actualValue);
+        var convertedType = converter.ConvertClientType(type);
 
-        if (!type.IsInstanceOfType(expectedValue) || !type.IsInstanceOfType(convertedActualValue))
+        if (!convertedType.IsInstanceOfType(convertedExpectedValue) || !convertedType.IsInstanceOfType(convertedActualValue))
             return false;
         
-        if (type.IsSubclassOf(typeof(RemoteObject)))
-            return ((RemoteObject)expectedValue).Id == ((RemoteObject)convertedActualValue).Id;
+        if (convertedType.IsSubclassOf(typeof(RemoteObject)))
+            return ((RemoteObject)convertedExpectedValue).Id == ((RemoteObject)convertedActualValue).Id;
         
-        if (Codec.IsACollectionType(type))
-            return CollectionValuesAreEqual(type, expectedValue, convertedActualValue);
+        if (Codec.IsACollectionType(convertedType))
+            return CollectionValuesAreEqual(convertedType, convertedExpectedValue, convertedActualValue, rpc);
         
-        if (type.IsEnum 
+        if (convertedType.IsEnum 
             || type == typeof(string) 
             || type == typeof(float) 
             || type == typeof(double) 
@@ -170,73 +180,47 @@ public class SpaceCenterTests
             || type == typeof(uint) 
             || type == typeof(ulong) 
             || type == typeof(bool) 
-            || type == typeof(byte[]) 
-            || type == typeof(Vector3D) 
-            || type == typeof(Quaternion))
-            return Equals(expectedValue, convertedActualValue);
+            || type == typeof(byte[]))
+            return Equals(convertedExpectedValue, convertedActualValue);
         
         throw new ArgumentException($"Unable to assert value of type {type.Name}");
     }
 
-    // The client converts some types, which is unknown to the server. If that is the case, we have to convert
-    // the actualValue into that type so that equality can be tested correctly
-    private object ConvertTypesIfRequired(Type type, object actualValue)
-    {
-        var actualType = actualValue.GetType();
-        
-        if (type == typeof(Vector3D) && Codec.IsAGenericType(actualType, typeof(Tuple<,,>)))
-        {
-            // Easiest to just encode and decode
-            var encoded = Codec.Encode(actualValue);
-            return Codec.Decode(encoded, typeof(Vector3D), _fakeConnection)
-                ?? throw new ArgumentException($"Unable to assert value of type {actualType} to Vector3D");
-        }
-        
-        if (type == typeof(Quaternion) && Codec.IsAGenericType(actualType, typeof(Tuple<,,,>)))
-        {
-            var encoded = Codec.Encode(actualValue);
-            return Codec.Decode(encoded, typeof(Quaternion), _fakeConnection)
-                ?? throw new ArgumentException($"Unable to assert value of type {actualType} to Quaternion");
-        }
-        
-        return actualValue;
-    }
-
-    private bool CollectionValuesAreEqual(Type responseType, object expectedValue, object actualValue)
+    private bool CollectionValuesAreEqual(Type responseType, object expectedValue, object actualValue, ProcedureInfo rpc)
     {
         if (Codec.IsATupleType(responseType))
-            return TupleValuesAreEqual(responseType, expectedValue, actualValue);
+            return TupleValuesAreEqual(responseType, expectedValue, actualValue, rpc);
         
         if (Codec.IsAnArrayType(responseType) || Codec.IsAListType(responseType))
-            return ArrayOrListValuesAreEqual(responseType, expectedValue, actualValue);
+            return ArrayOrListValuesAreEqual(responseType, expectedValue, actualValue, rpc);
         
         if (Codec.IsADictionaryType(responseType))
-            return DictionaryValuesAreEqual(responseType, expectedValue, actualValue);
+            return DictionaryValuesAreEqual(responseType, expectedValue, actualValue, rpc);
         
         if (Codec.IsASetType(responseType))
-            return SetValuesAreEqual(responseType, expectedValue, actualValue);
+            return SetValuesAreEqual(responseType, expectedValue, actualValue, rpc);
         
         throw new ArgumentException($"Unable to assert value of unknown collection type: {responseType.Name}");
     }
 
-    private bool TupleValuesAreEqual(Type responseType, object expectedValue, object actualValue)
+    private bool TupleValuesAreEqual(Type responseType, object expectedValue, object actualValue, ProcedureInfo rpc)
     {
         var typeArguments = responseType.GenericTypeArguments;
         for (var i = 0; i < typeArguments.Length; i++)
         {
-            var fieldInfo = responseType.GetField($"Item{i+1}")
+            var fieldInfo = responseType.GetProperty($"Item{i+1}")
                 ?? throw new ArgumentException($"Unable to find item field {i} on type {responseType.Name}");
             var expectedFieldValue = fieldInfo.GetValue(expectedValue);
             var actualFieldValue = fieldInfo.GetValue(actualValue);
 
-            if (!ValuesAreEqual(typeArguments[i], expectedFieldValue, actualFieldValue))
+            if (!ValuesAreEqual(typeArguments[i], expectedFieldValue, actualFieldValue, rpc))
                 return false;
         }
 
         return true;
     }
 
-    private bool ArrayOrListValuesAreEqual(Type responseType, object expectedValue, object actualValue)
+    private bool ArrayOrListValuesAreEqual(Type responseType, object expectedValue, object actualValue, ProcedureInfo rpc)
     {
         var listInterface = responseType.GetInterface("IList`1")
             ?? throw new ArgumentException($"Unable to find IList interface on array type {responseType.Name}");
@@ -253,14 +237,14 @@ public class SpaceCenterTests
             var expectedElementValue = expectedArrayValue[i];
             var actualElementValue = actualArrayValue[i];
 
-            if (!ValuesAreEqual(valueType, expectedElementValue, actualElementValue))
+            if (!ValuesAreEqual(valueType, expectedElementValue, actualElementValue, rpc))
                 return false;
         }
 
         return true;
     }
 
-    private bool DictionaryValuesAreEqual(Type responseType, object expectedValue, object actualValue)
+    private bool DictionaryValuesAreEqual(Type responseType, object expectedValue, object actualValue, ProcedureInfo rpc)
     {
         var dictionaryInterface = responseType.GetGenericTypeDefinition() == typeof(IDictionary<,>) ?
             responseType :
@@ -282,10 +266,10 @@ public class SpaceCenterTests
             .All(key => 
                 key != null 
                 && actualDictionary.Contains(key) 
-                && ValuesAreEqual(valueType, expectedDictionary[key], actualDictionary[key]));
+                && ValuesAreEqual(valueType, expectedDictionary[key], actualDictionary[key], rpc));
     }
 
-    private bool SetValuesAreEqual(Type responseType, object expectedValue, object actualValue)
+    private bool SetValuesAreEqual(Type responseType, object expectedValue, object actualValue, ProcedureInfo rpc)
     {
         var setInterface = responseType.GetInterface("ISet`1")
             ?? throw new ArgumentException($"Unable to find set interface on type {responseType.Name}");
@@ -305,7 +289,7 @@ public class SpaceCenterTests
 
         for (var i = 0; i < expectedValues.Length; i++)
         {
-            if (!ValuesAreEqual(valueType, expectedValues[i], actualValues[i]))
+            if (!ValuesAreEqual(valueType, expectedValues[i], actualValues[i], rpc))
                 return false;
         }
 
@@ -347,20 +331,24 @@ public class SpaceCenterTests
         var serviceTypeMethods = typeMethods.Select(m =>
         {
             var att = isGet ? getAtt : setAtt;
-            var attribute = m.GetCustomAttribute(att) as RpcAttribute;
+            var rpcAttribute = m.GetCustomAttribute(att) as RpcAttribute;
+            var conversionAttribute = m.GetCustomAttribute<AngleConversion>();
             return new ProcedureInfo
             {
                 Method = m,
-                Service = attribute!.Service,
-                Procedure = attribute!.Procedure,
+                Service = rpcAttribute!.Service,
+                Procedure = rpcAttribute!.Procedure,
                 ArgumentTypes = m.GetParameters().Select(x => x.ParameterType).ToArray(),
-                ReturnType = m.ReturnType
+                ReturnType = m.ReturnType,
+                AngleType = conversionAttribute?.AngleType,
+                AngleDataType = conversionAttribute?.AngleDataType
             };
         });
 
         // Useful in testing - get specific RPCs to make diagnosing errors easier
         (string, string)[] targetRpcs =
         [
+            //("SpaceCenter", "TransformDirection")
         ];
 
         if (targetRpcs.Length > 0)
@@ -383,4 +371,6 @@ public class ProcedureInfo
     public required string Procedure { get; init; }
     public required Type[] ArgumentTypes { get; init; }
     public required Type ReturnType { get; init; }
+    public required AngleType? AngleType { get; init; }
+    public required Type? AngleDataType { get; init; }
 }

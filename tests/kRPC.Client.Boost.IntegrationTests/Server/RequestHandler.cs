@@ -32,8 +32,7 @@ public class RequestHandler
         Func<object?> response)
     {
         var key = $"{clientId}_{service}_{procedure}";
-        var responseFuncWrapper = () => ClientObjectConverter.ConvertClientObject(response());
-        _configuredCalls.AddOrUpdate(key, _ => responseFuncWrapper, (_, _) => responseFuncWrapper);
+        _configuredCalls.AddOrUpdate(key, _ => response, (_, _) => response);
     }
 
     public bool Received(string clientId, Func<CallInfo, bool> predicate)

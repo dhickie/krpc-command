@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Runtime.CompilerServices;
+using kRPC.Client.Boost.Attributes;
 using kRPC.Client.Boost.Connection;
 using MathNet.Spatial.Euclidean;
+using MathNet.Spatial.Units;
 
 namespace kRPC.Client.Boost.IntegrationTests.Server;
 
@@ -9,7 +11,7 @@ namespace kRPC.Client.Boost.IntegrationTests.Server;
 /// Provides the ability to convert client specific objects, like Vectors and Quaternions, into their server side
 /// equivalent types.
 /// </summary>
-public static class ClientObjectConverter
+public class ClientObjectConverter(AngleType? angleType, Type? angleDataType)
 {
     /// <summary>
     /// Converts a client side object into its server side equivalent.
@@ -17,7 +19,7 @@ public static class ClientObjectConverter
     /// </summary>
     /// <param name="clientObject">The object to convert</param>
     /// <returns>The converted object.</returns>
-    public static object? ConvertClientObject(object? clientObject)
+    public object? ConvertClientObject(object? clientObject)
     {
         if (clientObject == null)
             return clientObject;
@@ -39,10 +41,38 @@ public static class ClientObjectConverter
             return new Tuple<double, double, double, double>(quat.Real, quat.ImagX, quat.ImagY, quat.ImagZ);
         }
 
+        if (clientObject?.GetType() == typeof(Angle))
+        {
+            if (angleType == null || angleDataType == null)
+                throw new InvalidOperationException(
+                    $"Either {nameof(angleType)} or {nameof(angleDataType)} is null. {nameof(angleType)}: {angleType}, {nameof(angleDataType)}: {angleDataType}");
+            
+            var angle = (Angle)clientObject;
+            var numericalValue = angleType == AngleType.Degrees ? angle.Degrees : angle.Radians;
+            return Convert.ChangeType(numericalValue, Type.GetTypeCode(angleDataType));
+        }
+
         return clientObject;
     }
     
-    private static object ConvertClientCollectionObject(object clientObject)
+    /// <summary>
+    /// Converts a client side type into a server side type.
+    /// </summary>
+    /// <param name="clientType">The type to convert</param>
+    /// <returns>The converted type</returns>
+    public Type ConvertClientType(Type clientType)
+    {
+        if (Codec.IsACollectionType(clientType))
+            return ConvertClientCollectionType(clientType);
+        if (clientType == typeof(Vector3D))
+            return typeof(Tuple<double, double, double>);
+        if (clientType == typeof(Quaternion))
+            return typeof(Tuple<double, double, double, double>);
+
+        return clientType;
+    }
+    
+    private object ConvertClientCollectionObject(object clientObject)
     {
         var clientObjectType = clientObject.GetType();
         var convertedType = ConvertClientType(clientObjectType);
@@ -62,7 +92,7 @@ public static class ClientObjectConverter
         throw new ArgumentException("Unsupported object type", nameof(clientObject));
     }
 
-    private static object ConvertClientArrayOrListObject(object clientObject, Type convertedType)
+    private object ConvertClientArrayOrListObject(object clientObject, Type convertedType)
     {
         var arrayClientObject = (IList)clientObject;
         var itemCount = arrayClientObject.Count;
@@ -84,7 +114,7 @@ public static class ClientObjectConverter
         return serverObject;
     }
 
-    private static object ConvertClientTupleObject(object clientObject, Type convertedType)
+    private object ConvertClientTupleObject(object clientObject, Type convertedType)
     {
         var typeArgs = convertedType.GetGenericArguments();
         var numArgs = typeArgs.Length;
@@ -101,7 +131,7 @@ public static class ClientObjectConverter
         return constructor.Invoke(convertedElements);
     }
     
-    private static object ConvertClientDictionaryObject(object clientObject, Type convertedType)
+    private object ConvertClientDictionaryObject(object clientObject, Type convertedType)
     {
         var typeArgs = convertedType.GetGenericArguments();
         var constructor = convertedType.GetConstructor(typeArgs)
@@ -122,7 +152,7 @@ public static class ClientObjectConverter
         return serverObject;
     }
 
-    private static object ConvertClientSetObject(object clientObject, Type convertedType)
+    private object ConvertClientSetObject(object clientObject, Type convertedType)
     {
         var constructor = convertedType.GetConstructor(Type.EmptyTypes)
             ?? throw new InvalidOperationException($"Failed to find constructor for type {convertedType.Name}");
@@ -141,19 +171,7 @@ public static class ClientObjectConverter
         return serverObject;
     }
 
-    private static Type ConvertClientType(Type clientType)
-    {
-        if (Codec.IsACollectionType(clientType))
-            return ConvertClientCollectionType(clientType);
-        else if (clientType == typeof(Vector3D))
-            return typeof(Tuple<double, double, double, double>);
-        else if (clientType == typeof(Quaternion))
-            return typeof(Tuple<double, double, double, double>);
-
-        return clientType;
-    }
-
-    private static Type ConvertClientCollectionType(Type clientType)
+    private Type ConvertClientCollectionType(Type clientType)
     {
         if (Codec.IsAnArrayType(clientType))
             return ConvertClientArrayType(clientType);
@@ -169,7 +187,7 @@ public static class ClientObjectConverter
         throw new InvalidOperationException($"{clientType.Name} is not a supported collection type");
     }
 
-    private static Type ConvertClientArrayType(Type clientType)
+    private Type ConvertClientArrayType(Type clientType)
     {
         var elementType = clientType.GetElementType() 
                           ?? throw new ArgumentException($"{nameof(clientType)} is not an array type");
@@ -177,7 +195,7 @@ public static class ClientObjectConverter
         return newElementType.MakeArrayType();
     }
 
-    private static Type ConvertClientTupleType(Type clientType)
+    private Type ConvertClientTupleType(Type clientType)
     {
         var typeArgs = clientType.GenericTypeArguments;
         var genericType = typeArgs.Length switch
@@ -191,7 +209,7 @@ public static class ClientObjectConverter
         return ConvertClientGenericType(clientType, genericType);
     }
 
-    private static Type ConvertClientGenericType(Type clientType, Type genericType)
+    private Type ConvertClientGenericType(Type clientType, Type genericType)
     {
         var typeArgs = clientType.GenericTypeArguments;
         var typeChanged = false;
