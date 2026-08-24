@@ -543,7 +543,7 @@ public class Orbit : RemoteObject
     /// <returns>The direction as a unit vector.</returns>
     /// <param name="referenceFrame">The reference frame that the returned
     /// direction is in.</param>
-    [GetRpc("SpaceCenter", "Orbit_static_ReferencePlaneDirection")]
+    [StaticRpc("SpaceCenter", "Orbit_static_ReferencePlaneDirection")]
     public Vector3D GetReferencePlaneDirection(ReferenceFrame referenceFrame)
     {
         var args = new ProcedureArgument[]
@@ -561,7 +561,7 @@ public class Orbit : RemoteObject
     /// <returns>The direction as a unit vector.</returns>
     /// <param name="referenceFrame">The reference frame that the returned
     /// direction is in.</param>
-    [GetRpc("SpaceCenter", "Orbit_static_ReferencePlaneDirection")]
+    [StaticRpc("SpaceCenter", "Orbit_static_ReferencePlaneDirection")]
     public async Task<Vector3D> GetReferencePlaneDirectionAsync(ReferenceFrame referenceFrame)
     {
         var args = new ProcedureArgument[]
@@ -579,7 +579,7 @@ public class Orbit : RemoteObject
     /// <returns>The direction as a unit vector.</returns>
     /// <param name="referenceFrame">The reference frame that the returned
     /// direction is in.</param>
-    [GetRpc("SpaceCenter", "Orbit_static_ReferencePlaneNormal")]
+    [StaticRpc("SpaceCenter", "Orbit_static_ReferencePlaneNormal")]
     public Vector3D GetReferencePlaneNormal(ReferenceFrame referenceFrame)
     {
         var args = new ProcedureArgument[]
@@ -598,7 +598,7 @@ public class Orbit : RemoteObject
     /// <returns>The direction as a unit vector.</returns>
     /// <param name="referenceFrame">The reference frame that the returned
     /// direction is in.</param>
-    [GetRpc("SpaceCenter", "Orbit_static_ReferencePlaneNormal")]
+    [StaticRpc("SpaceCenter", "Orbit_static_ReferencePlaneNormal")]
     public async Task<Vector3D> GetReferencePlaneNormalAsync(ReferenceFrame referenceFrame)
     {
         var args = new ProcedureArgument[]

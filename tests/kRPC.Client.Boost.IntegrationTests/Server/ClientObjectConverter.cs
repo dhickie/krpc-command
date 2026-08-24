@@ -68,6 +68,10 @@ public class ClientObjectConverter(AngleType? angleType, Type? angleDataType)
             return typeof(Tuple<double, double, double>);
         if (clientType == typeof(Quaternion))
             return typeof(Tuple<double, double, double, double>);
+        if (clientType == typeof(Angle))
+            return angleDataType
+                   ?? throw new InvalidOperationException(
+                       "Cannot convert angle with no angle data type configuration");
 
         return clientType;
     }

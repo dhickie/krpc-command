@@ -54,7 +54,7 @@ public class SpaceCenterTests
         using var connection = Connect(clientName);
         ServiceObjectCustomisation.ServiceObjectBuilder.SetConnection(connection); // So that test data has access to the connection
         var rpcs = new Dictionary<Type, ProcedureInfo[]>();
-        GetRpcMethods(serviceType, true, false, rpcs);
+        GetRpcMethods(serviceType, RpcType.Get, false, rpcs);
 
         TestRpcs(clientName, rpcs);
     }
@@ -106,7 +106,6 @@ public class SpaceCenterTests
         var result = rpc.Method.Invoke(instance, arguments);
         
         // Assert
-        var equal = ValuesAreEqual(rpc.ReturnType, returnValue, result, rpc);
         Assert.True(ValuesAreEqual(rpc.ReturnType, returnValue, result, rpc));
         _server.Received(clientName, callInfo =>
         {
@@ -172,15 +171,15 @@ public class SpaceCenterTests
             return CollectionValuesAreEqual(convertedType, convertedExpectedValue, convertedActualValue, rpc);
         
         if (convertedType.IsEnum 
-            || type == typeof(string) 
-            || type == typeof(float) 
-            || type == typeof(double) 
-            || type == typeof(int) 
-            || type == typeof(long) 
-            || type == typeof(uint) 
-            || type == typeof(ulong) 
-            || type == typeof(bool) 
-            || type == typeof(byte[]))
+            || convertedType == typeof(string) 
+            || convertedType == typeof(float) 
+            || convertedType == typeof(double) 
+            || convertedType == typeof(int) 
+            || convertedType == typeof(long) 
+            || convertedType == typeof(uint) 
+            || convertedType == typeof(ulong) 
+            || convertedType == typeof(bool) 
+            || convertedType == typeof(byte[]))
             return Equals(convertedExpectedValue, convertedActualValue);
         
         throw new ArgumentException($"Unable to assert value of type {type.Name}");
@@ -296,41 +295,58 @@ public class SpaceCenterTests
         return true;
     }
 
-    private void GetRpcMethods(Type serviceType, bool isGet, bool isAsync, Dictionary<Type, ProcedureInfo[]> rpcMethods)
+    private void GetRpcMethods(Type serviceType, RpcType rpcType, bool isAsync, Dictionary<Type, ProcedureInfo[]> rpcMethods)
     {
         // Get all methods on the provided service type
         var getAtt = typeof(GetRpcAttribute);
         var setAtt = typeof(SetRpcAttribute);
+        var staticAtt = typeof(StaticRpcAttribute);
         var allMethods = serviceType
             .GetMethods()
             .Where(m =>
-                m.CustomAttributes.Any(a => a.AttributeType == getAtt || a.AttributeType == setAtt));
+                m.CustomAttributes.Any(
+                    a => a.AttributeType == getAtt || a.AttributeType == setAtt || a.AttributeType == staticAtt));
 
         // Work out how we identify the methods we're actually interested in
         Func<MethodInfo, bool> isAsyncMethodMatcher = isAsync
             ? x => x.ReturnType.IsAssignableTo(typeof(Task))
             : x => !x.ReturnType.IsAssignableTo(typeof(Task));
-        Func<MethodInfo, bool> isGetMethodMatcher = isGet
-            ? x => x.CustomAttributes.Any(a => a.AttributeType == getAtt)
-            : x => x.CustomAttributes.Any(a => a.AttributeType == setAtt);
+
+        bool RpcTypeMethodMatcher(MethodInfo x)
+        {
+            if (rpcType == RpcType.Get) 
+                return x.CustomAttributes.Any(a => a.AttributeType == getAtt);
+            if (rpcType == RpcType.Set) 
+                return x.CustomAttributes.Any(a => a.AttributeType == setAtt);
+            if (rpcType == RpcType.Static) 
+                return x.CustomAttributes.Any(a => a.AttributeType == staticAtt);
+
+            throw new InvalidOperationException($"Unsupported RpcType: {rpcType}");
+        }
 
         // Add the current type to the dictionary with an empty collection to prevent any recursive calls doing the same work
         rpcMethods.Add(serviceType, []);
         var typeMethods = new List<MethodInfo>();
         foreach (var method in allMethods)
         {
-            if (isAsyncMethodMatcher(method) && isGetMethodMatcher(method))
+            if (isAsyncMethodMatcher(method) && RpcTypeMethodMatcher(method))
                 typeMethods.Add(method);
 
             // We want to look at RPCs on the return type even if this method is one we're not interested in - the return
             // type might have methods we _are_ interested in
             if (method.ReturnType.IsAssignableTo(typeof(ServiceObject)) && !rpcMethods.ContainsKey(method.ReturnType))
-                GetRpcMethods(method.ReturnType, isGet, isAsync, rpcMethods);
+                GetRpcMethods(method.ReturnType, rpcType, isAsync, rpcMethods);
         }
 
         var serviceTypeMethods = typeMethods.Select(m =>
         {
-            var att = isGet ? getAtt : setAtt;
+            var att = rpcType switch
+            {
+                RpcType.Get => typeof(GetRpcAttribute),
+                RpcType.Set => typeof(SetRpcAttribute),
+                RpcType.Static => typeof(StaticRpcAttribute),
+                _ => throw new InvalidOperationException($"Unsupported RpcType: {rpcType}")
+            };
             var rpcAttribute = m.GetCustomAttribute(att) as RpcAttribute;
             var conversionAttribute = m.GetCustomAttribute<AngleConversion>();
             return new ProcedureInfo
@@ -348,7 +364,7 @@ public class SpaceCenterTests
         // Useful in testing - get specific RPCs to make diagnosing errors easier
         (string, string)[] targetRpcs =
         [
-            //("SpaceCenter", "TransformDirection")
+            //("SpaceCenter", "Resources_static_Density")
         ];
 
         if (targetRpcs.Length > 0)
@@ -373,4 +389,11 @@ public class ProcedureInfo
     public required Type ReturnType { get; init; }
     public required AngleType? AngleType { get; init; }
     public required Type? AngleDataType { get; init; }
+}
+
+public enum RpcType
+{
+    Get,
+    Set,
+    Static
 }

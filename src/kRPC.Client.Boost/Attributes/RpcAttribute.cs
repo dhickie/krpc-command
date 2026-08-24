@@ -11,3 +11,6 @@ internal class GetRpcAttribute(string service, string procedure) : RpcAttribute(
 
 [AttributeUsage(AttributeTargets.Method)]
 internal class SetRpcAttribute(string service, string procedure) : RpcAttribute(service, procedure);
+
+[AttributeUsage(AttributeTargets.Method)]
+internal class StaticRpcAttribute(string service, string procedure) : RpcAttribute(service, procedure);
