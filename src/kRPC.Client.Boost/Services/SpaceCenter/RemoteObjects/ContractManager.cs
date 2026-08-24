@@ -26,7 +26,7 @@ public class ContractManager : RemoteObject
         {
             this
         };
-        return InvokeNonNullable<IList<Contract>>("SpaceCenter", "ContractManager_get_ActiveContracts", args);
+        return InvokeNonNullable<List<Contract>>("SpaceCenter", "ContractManager_get_ActiveContracts", args);
     }
 
     /// <summary>
@@ -40,7 +40,7 @@ public class ContractManager : RemoteObject
         {
             this
         };
-        return await InvokeNonNullableAsync<IList<Contract>>("SpaceCenter", "ContractManager_get_ActiveContracts", args);
+        return await InvokeNonNullableAsync<List<Contract>>("SpaceCenter", "ContractManager_get_ActiveContracts", args);
     }
 
     /// <summary>
@@ -53,7 +53,7 @@ public class ContractManager : RemoteObject
         {
             this
         };
-        return InvokeNonNullable<IList<Contract>>("SpaceCenter", "ContractManager_get_AllContracts", args);
+        return InvokeNonNullable<List<Contract>>("SpaceCenter", "ContractManager_get_AllContracts", args);
     }
 
     /// <summary>
@@ -67,7 +67,7 @@ public class ContractManager : RemoteObject
         {
             this
         };
-        return await InvokeNonNullableAsync<IList<Contract>>("SpaceCenter", "ContractManager_get_AllContracts", args);
+        return await InvokeNonNullableAsync<List<Contract>>("SpaceCenter", "ContractManager_get_AllContracts", args);
     }
 
     /// <summary>
@@ -80,7 +80,7 @@ public class ContractManager : RemoteObject
         {
             this
         };
-        return InvokeNonNullable<IList<Contract>>("SpaceCenter", "ContractManager_get_CompletedContracts", args);
+        return InvokeNonNullable<List<Contract>>("SpaceCenter", "ContractManager_get_CompletedContracts", args);
     }
 
     /// <summary>
@@ -94,7 +94,7 @@ public class ContractManager : RemoteObject
         {
             this
         };
-        return await InvokeNonNullableAsync<IList<Contract>>("SpaceCenter", "ContractManager_get_CompletedContracts", args);
+        return await InvokeNonNullableAsync<List<Contract>>("SpaceCenter", "ContractManager_get_CompletedContracts", args);
     }
 
     /// <summary>
@@ -107,7 +107,7 @@ public class ContractManager : RemoteObject
         {
             this
         };
-        return InvokeNonNullable<IList<Contract>>("SpaceCenter", "ContractManager_get_FailedContracts", args);
+        return InvokeNonNullable<List<Contract>>("SpaceCenter", "ContractManager_get_FailedContracts", args);
     }
 
     /// <summary>
@@ -121,7 +121,7 @@ public class ContractManager : RemoteObject
         {
             this
         };
-        return await InvokeNonNullableAsync<IList<Contract>>("SpaceCenter", "ContractManager_get_FailedContracts", args);
+        return await InvokeNonNullableAsync<List<Contract>>("SpaceCenter", "ContractManager_get_FailedContracts", args);
     }
 
     /// <summary>
@@ -134,7 +134,7 @@ public class ContractManager : RemoteObject
         {
             this
         };
-        return InvokeNonNullable<IList<Contract>>("SpaceCenter", "ContractManager_get_OfferedContracts", args);
+        return InvokeNonNullable<List<Contract>>("SpaceCenter", "ContractManager_get_OfferedContracts", args);
     }
 
     /// <summary>
@@ -148,7 +148,7 @@ public class ContractManager : RemoteObject
         {
             this
         };
-        return await InvokeNonNullableAsync<IList<Contract>>("SpaceCenter", "ContractManager_get_OfferedContracts", args);
+        return await InvokeNonNullableAsync<List<Contract>>("SpaceCenter", "ContractManager_get_OfferedContracts", args);
     }
 
     /// <summary>
@@ -161,7 +161,7 @@ public class ContractManager : RemoteObject
         {
             this
         };
-        return InvokeNonNullable<ISet<string>>("SpaceCenter", "ContractManager_get_Types", args);
+        return InvokeNonNullable<HashSet<string>>("SpaceCenter", "ContractManager_get_Types", args);
     }
 
     /// <summary>
@@ -175,6 +175,6 @@ public class ContractManager : RemoteObject
         {
             this
         };
-        return await InvokeNonNullableAsync<ISet<string>>("SpaceCenter", "ContractManager_get_Types", args);
+        return await InvokeNonNullableAsync<HashSet<string>>("SpaceCenter", "ContractManager_get_Types", args);
     }
 }

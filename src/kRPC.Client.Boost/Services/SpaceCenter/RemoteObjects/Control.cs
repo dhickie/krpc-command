@@ -39,7 +39,7 @@ public class Control : RemoteObject
         {
             this
         };
-        return InvokeNonNullable<IList<Vessel>>("SpaceCenter", "Control_ActivateNextStage", args);
+        return InvokeNonNullable<List<Vessel>>("SpaceCenter", "Control_ActivateNextStage", args);
     }
 
     /// <summary>
@@ -60,7 +60,7 @@ public class Control : RemoteObject
         {
             this
         };
-        return await InvokeNonNullableAsync<IList<Vessel>>("SpaceCenter", "Control_ActivateNextStage", args);
+        return await InvokeNonNullableAsync<List<Vessel>>("SpaceCenter", "Control_ActivateNextStage", args);
     }
 
     /// <summary>
@@ -1169,7 +1169,7 @@ public class Control : RemoteObject
         {
             this
         };
-        return InvokeNonNullable<IList<Node>>("SpaceCenter", "Control_get_Nodes", args);
+        return InvokeNonNullable<List<Node>>("SpaceCenter", "Control_get_Nodes", args);
     }
 
     /// <summary>
@@ -1183,7 +1183,7 @@ public class Control : RemoteObject
         {
             this
         };
-        return await InvokeNonNullableAsync<IList<Node>>("SpaceCenter", "Control_get_Nodes", args);
+        return await InvokeNonNullableAsync<List<Node>>("SpaceCenter", "Control_get_Nodes", args);
     }
 
     /// <summary>

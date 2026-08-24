@@ -83,7 +83,7 @@ public class CrewMember : RemoteObject
         {
             this
         };
-        return InvokeNonNullable<IList<int>>("SpaceCenter", "CrewMember_get_CareerLogFlights", args);
+        return InvokeNonNullable<List<int>>("SpaceCenter", "CrewMember_get_CareerLogFlights", args);
     }
 
     /// <summary>
@@ -97,7 +97,7 @@ public class CrewMember : RemoteObject
         {
             this
         };
-        return await InvokeNonNullableAsync<IList<int>>("SpaceCenter", "CrewMember_get_CareerLogFlights", args);
+        return await InvokeNonNullableAsync<List<int>>("SpaceCenter", "CrewMember_get_CareerLogFlights", args);
     }
 
     /// <summary>
@@ -110,7 +110,7 @@ public class CrewMember : RemoteObject
         {
             this
         };
-        return InvokeNonNullable<IList<string>>("SpaceCenter", "CrewMember_get_CareerLogTargets", args);
+        return InvokeNonNullable<List<string>>("SpaceCenter", "CrewMember_get_CareerLogTargets", args);
     }
 
     /// <summary>
@@ -124,7 +124,7 @@ public class CrewMember : RemoteObject
         {
             this
         };
-        return await InvokeNonNullableAsync<IList<string>>("SpaceCenter", "CrewMember_get_CareerLogTargets", args);
+        return await InvokeNonNullableAsync<List<string>>("SpaceCenter", "CrewMember_get_CareerLogTargets", args);
     }
 
     /// <summary>
@@ -137,7 +137,7 @@ public class CrewMember : RemoteObject
         {
             this
         };
-        return InvokeNonNullable<IList<string>>("SpaceCenter", "CrewMember_get_CareerLogTypes", args);
+        return InvokeNonNullable<List<string>>("SpaceCenter", "CrewMember_get_CareerLogTypes", args);
     }
 
     /// <summary>
@@ -151,7 +151,7 @@ public class CrewMember : RemoteObject
         {
             this
         };
-        return await InvokeNonNullableAsync<IList<string>>("SpaceCenter", "CrewMember_get_CareerLogTypes", args);
+        return await InvokeNonNullableAsync<List<string>>("SpaceCenter", "CrewMember_get_CareerLogTypes", args);
     }
 
     /// <summary>

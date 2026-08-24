@@ -187,7 +187,7 @@ public class Experiment : RemoteObject
         {
             this
         };
-        return InvokeNonNullable<IList<ScienceData>>("SpaceCenter", "Experiment_get_Data", args);
+        return InvokeNonNullable<List<ScienceData>>("SpaceCenter", "Experiment_get_Data", args);
     }
 
     /// <summary>
@@ -201,7 +201,7 @@ public class Experiment : RemoteObject
         {
             this
         };
-        return await InvokeNonNullableAsync<IList<ScienceData>>("SpaceCenter", "Experiment_get_Data", args);
+        return await InvokeNonNullableAsync<List<ScienceData>>("SpaceCenter", "Experiment_get_Data", args);
     }
 
     /// <summary>

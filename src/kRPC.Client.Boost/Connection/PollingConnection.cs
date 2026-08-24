@@ -1,6 +1,6 @@
 using System.Collections.Concurrent;
 using System.Diagnostics;
-using kRPC.Client.Boost.Config;
+using kRPC.Client.Boost.Configuration;
 using kRPC.Client.Boost.Connection.Requests;
 using kRPC.Client.Boost.Exceptions;
 using kRPC.Client.Boost.Helpers;
@@ -81,13 +81,23 @@ internal abstract class PollingConnection<TRequest,TConnection> : Connection, ID
         var success = false;
         
         sw.Start();
-        
+
         while (true)
         {
-            var request = _requestQueue.Take(_disposeTokenSource.Token);
+            TRequest request;
+            try
+            {
+                request = _requestQueue.Take(_disposeTokenSource.Token);
+            }
+            catch (OperationCanceledException)
+            {
+                _logger!.LogInformation("Connection disposed - stopping polling thread.");
+                break;
+            }
+                
             LogRequestStart(request);
             var start = sw.Elapsed;
-            
+
             try
             {
                 if (!_responses.TryGetValue(request.RequestId, out var response))

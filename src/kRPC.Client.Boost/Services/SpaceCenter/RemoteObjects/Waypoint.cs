@@ -431,6 +431,7 @@ public class Waypoint : RemoteObject
     /// <summary>
     /// Gets the latitude of the waypoint.
     /// </summary>
+    [AngleConversion(AngleType.Degrees, typeof(double))]
     [GetRpc("SpaceCenter", "Waypoint_get_Latitude")]
     public Angle GetLatitude()
     {
@@ -446,6 +447,7 @@ public class Waypoint : RemoteObject
     /// Gets the latitude of the waypoint.
     /// Executes asynchronously.
     /// </summary>
+    [AngleConversion(AngleType.Degrees, typeof(double))]
     [GetRpc("SpaceCenter", "Waypoint_get_Latitude")]
     public async Task<Angle> GetLatitudeAsync()
     {
@@ -461,6 +463,7 @@ public class Waypoint : RemoteObject
     /// Sets the latitude of the waypoint.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [AngleConversion(AngleType.Degrees, typeof(double))]
     [SetRpc("SpaceCenter", "Waypoint_set_Latitude")]
     public void SetLatitude(Angle value)
     {
@@ -477,6 +480,7 @@ public class Waypoint : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [AngleConversion(AngleType.Degrees, typeof(double))]
     [SetRpc("SpaceCenter", "Waypoint_set_Latitude")]
     public async Task SetLatitudeAsync(Angle value)
     {
@@ -491,6 +495,7 @@ public class Waypoint : RemoteObject
     /// <summary>
     /// Gets the longitude of the waypoint.
     /// </summary>
+    [AngleConversion(AngleType.Degrees, typeof(double))]
     [GetRpc("SpaceCenter", "Waypoint_get_Longitude")]
     public Angle GetLongitude()
     {
@@ -506,6 +511,7 @@ public class Waypoint : RemoteObject
     /// Gets the longitude of the waypoint.
     /// Executes asynchronously.
     /// </summary>
+    [AngleConversion(AngleType.Degrees, typeof(double))]
     [GetRpc("SpaceCenter", "Waypoint_get_Longitude")]
     public async Task<Angle> GetLongitudeAsync()
     {
@@ -521,6 +527,7 @@ public class Waypoint : RemoteObject
     /// Sets the longitude of the waypoint.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [AngleConversion(AngleType.Degrees, typeof(double))]
     [SetRpc("SpaceCenter", "Waypoint_set_Longitude")]
     public void SetLongitude(Angle value)
     {
@@ -537,6 +544,7 @@ public class Waypoint : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [AngleConversion(AngleType.Degrees, typeof(double))]
     [SetRpc("SpaceCenter", "Waypoint_set_Longitude")]
     public async Task SetLongitudeAsync(Angle value)
     {

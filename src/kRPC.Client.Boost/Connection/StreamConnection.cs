@@ -1,7 +1,7 @@
 using System.Collections.Concurrent;
 using System.Net.Sockets;
 using Google.Protobuf;
-using kRPC.Client.Boost.Config;
+using kRPC.Client.Boost.Configuration;
 using kRPC.Client.Boost.Connection.Requests;
 using kRPC.Client.Boost.Connection.Schema;
 using kRPC.Client.Boost.Helpers;
@@ -25,15 +25,12 @@ internal class StreamConnection : PollingConnection<StreamRequest, StreamConnect
     private readonly ConnectionMultiplexer _connection;
     private readonly string _connectionName;
     private readonly Thread _streamThread;
-    
-    private readonly TcpClient _streamClient;
-    private readonly NetworkStream _streamStream;
+
+    private readonly TcpConnection _tcpConnection;
 
     private bool _disposed;
     private readonly ReaderWriterLockSlim _disposeLock = new();
     private readonly CancellationTokenSource _disposeTokenSource = new();
-    
-    private byte[] _streamBuffer = new byte[BufferInitialSize];
     
     private readonly ConcurrentDictionary<ulong, System.Type> _streamTypes = new();
 
@@ -56,11 +53,8 @@ internal class StreamConnection : PollingConnection<StreamRequest, StreamConnect
         _connection = connection;
         
         // Establish the Stream connection once the base connection has established the RPC connection
-        _streamClient = new TcpClient();
-        _streamClient.Connect(config.Address, config.StreamPort);
-        _streamStream = _streamClient.GetStream();
-        var codedStreamStream = new CodedOutputStream(_streamStream, true);
-        Connect(codedStreamStream, _streamStream, ref _streamBuffer, RequestType.Stream);
+        _tcpConnection = new TcpConnection(config.Address, config.StreamPort);
+        Connect(RequestType.Stream, _tcpConnection);
         
         // Set the polling function for Stream RPC requests (create stream, remove stream etc.) & setup logger
         Setup(_logger, Invoke);
@@ -117,15 +111,12 @@ internal class StreamConnection : PollingConnection<StreamRequest, StreamConnect
     {
         while (true)
         {
-            var size = ReadMessageData(_streamStream, ref _streamBuffer, _disposeTokenSource.Token);
-            if (size == 0)
-                break; // ReadMessageData returns 0 if cancellation is requested due to disposal
+            var update = _tcpConnection.Receive(StreamUpdate.Parser, _disposeTokenSource.Token);
 
             Sync.WithReadLock(_disposeLock, () =>
             {
                 try
                 {
-                    var update = StreamUpdate.Parser.ParseFrom(new CodedInputStream(_streamBuffer, 0, size));
                     _logger.LogDebug("Processing stream update for {numStreams} streams", update.Results.Count);
 
                     foreach (var result in update.Results)
@@ -182,7 +173,7 @@ internal class StreamConnection : PollingConnection<StreamRequest, StreamConnect
             if (disposing)
             {
                 base.Dispose();
-                _streamClient.Close();
+                _tcpConnection.Dispose();
             }
 
             _disposed = true;

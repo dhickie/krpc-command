@@ -139,7 +139,7 @@ public class ResourceDrain : RemoteObject
         {
             this
         };
-        return InvokeNonNullable<IList<Resource>>("SpaceCenter", "ResourceDrain_get_AvailableResources", args);
+        return InvokeNonNullable<List<Resource>>("SpaceCenter", "ResourceDrain_get_AvailableResources", args);
     }
 
     /// <summary>
@@ -153,7 +153,7 @@ public class ResourceDrain : RemoteObject
         {
             this
         };
-        return await InvokeNonNullableAsync<IList<Resource>>("SpaceCenter", "ResourceDrain_get_AvailableResources", args);
+        return await InvokeNonNullableAsync<List<Resource>>("SpaceCenter", "ResourceDrain_get_AvailableResources", args);
     }
 
     /// <summary>

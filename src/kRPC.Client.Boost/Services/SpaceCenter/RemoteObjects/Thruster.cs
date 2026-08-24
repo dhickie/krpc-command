@@ -221,6 +221,7 @@ public class Thruster : RemoteObject
     /// <summary>
     /// Gets the current gimbal angle in the pitch, roll and yaw axes.
     /// </summary>
+    [AngleConversion(AngleType.Degrees, typeof(double))]
     [GetRpc("SpaceCenter", "Thruster_get_GimbalAngle")]
     public Tuple<Angle,Angle,Angle> GetGimbalAngle()
     {
@@ -236,6 +237,7 @@ public class Thruster : RemoteObject
     /// Gets the current gimbal angle in the pitch, roll and yaw axes.
     /// Executes asynchronously.
     /// </summary>
+    [AngleConversion(AngleType.Degrees, typeof(double))]
     [GetRpc("SpaceCenter", "Thruster_get_GimbalAngle")]
     public async Task<Tuple<Angle,Angle,Angle>> GetGimbalAngleAsync()
     {

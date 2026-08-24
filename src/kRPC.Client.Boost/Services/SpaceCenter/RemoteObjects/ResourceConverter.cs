@@ -58,7 +58,7 @@ public class ResourceConverter : RemoteObject
             this,
             index
         };
-        return InvokeNonNullable<IList<string>>("SpaceCenter", "ResourceConverter_Inputs", args);
+        return InvokeNonNullable<List<string>>("SpaceCenter", "ResourceConverter_Inputs", args);
     }
 
     /// <summary>
@@ -74,7 +74,7 @@ public class ResourceConverter : RemoteObject
             this,
             index
         };
-        return await InvokeNonNullableAsync<IList<string>>("SpaceCenter", "ResourceConverter_Inputs", args);
+        return await InvokeNonNullableAsync<List<string>>("SpaceCenter", "ResourceConverter_Inputs", args);
     }
 
     /// <summary>
@@ -120,7 +120,7 @@ public class ResourceConverter : RemoteObject
             this,
             index
         };
-        return InvokeNonNullable<IList<string>>("SpaceCenter", "ResourceConverter_Outputs", args);
+        return InvokeNonNullable<List<string>>("SpaceCenter", "ResourceConverter_Outputs", args);
     }
 
     /// <summary>
@@ -136,7 +136,7 @@ public class ResourceConverter : RemoteObject
             this,
             index
         };
-        return await InvokeNonNullableAsync<IList<string>>("SpaceCenter", "ResourceConverter_Outputs", args);
+        return await InvokeNonNullableAsync<List<string>>("SpaceCenter", "ResourceConverter_Outputs", args);
     }
 
     /// <summary>

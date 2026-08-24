@@ -545,7 +545,7 @@ public class Part : RemoteObject
         {
             this
         };
-        return InvokeNonNullable<IList<Part>>("SpaceCenter", "Part_get_Children", args);
+        return InvokeNonNullable<List<Part>>("SpaceCenter", "Part_get_Children", args);
     }
 
     /// <summary>
@@ -561,7 +561,7 @@ public class Part : RemoteObject
         {
             this
         };
-        return await InvokeNonNullableAsync<IList<Part>>("SpaceCenter", "Part_get_Children", args);
+        return await InvokeNonNullableAsync<List<Part>>("SpaceCenter", "Part_get_Children", args);
     }
 
     /// <summary>
@@ -860,7 +860,7 @@ public class Part : RemoteObject
         {
             this
         };
-        return InvokeNonNullable<IList<Experiment>>("SpaceCenter", "Part_get_Experiments", args);
+        return InvokeNonNullable<List<Experiment>>("SpaceCenter", "Part_get_Experiments", args);
     }
 
     /// <summary>
@@ -874,7 +874,7 @@ public class Part : RemoteObject
         {
             this
         };
-        return await InvokeNonNullableAsync<IList<Experiment>>("SpaceCenter", "Part_get_Experiments", args);
+        return await InvokeNonNullableAsync<List<Experiment>>("SpaceCenter", "Part_get_Experiments", args);
     }
 
     /// <summary>
@@ -973,7 +973,7 @@ public class Part : RemoteObject
         {
             this
         };
-        return InvokeNonNullable<IList<Part>>("SpaceCenter", "Part_get_FuelLinesFrom", args);
+        return InvokeNonNullable<List<Part>>("SpaceCenter", "Part_get_FuelLinesFrom", args);
     }
 
     /// <summary>
@@ -988,7 +988,7 @@ public class Part : RemoteObject
         {
             this
         };
-        return await InvokeNonNullableAsync<IList<Part>>("SpaceCenter", "Part_get_FuelLinesFrom", args);
+        return await InvokeNonNullableAsync<List<Part>>("SpaceCenter", "Part_get_FuelLinesFrom", args);
     }
 
     /// <summary>
@@ -1002,7 +1002,7 @@ public class Part : RemoteObject
         {
             this
         };
-        return InvokeNonNullable<IList<Part>>("SpaceCenter", "Part_get_FuelLinesTo", args);
+        return InvokeNonNullable<List<Part>>("SpaceCenter", "Part_get_FuelLinesTo", args);
     }
 
     /// <summary>
@@ -1017,7 +1017,7 @@ public class Part : RemoteObject
         {
             this
         };
-        return await InvokeNonNullableAsync<IList<Part>>("SpaceCenter", "Part_get_FuelLinesTo", args);
+        return await InvokeNonNullableAsync<List<Part>>("SpaceCenter", "Part_get_FuelLinesTo", args);
     }
 
     /// <summary>
@@ -1204,7 +1204,7 @@ public class Part : RemoteObject
         {
             this
         };
-        return InvokeNonNullable<IList<double>>("SpaceCenter", "Part_get_InertiaTensor", args);
+        return InvokeNonNullable<List<double>>("SpaceCenter", "Part_get_InertiaTensor", args);
     }
 
     /// <summary>
@@ -1220,7 +1220,7 @@ public class Part : RemoteObject
         {
             this
         };
-        return await InvokeNonNullableAsync<IList<double>>("SpaceCenter", "Part_get_InertiaTensor", args);
+        return await InvokeNonNullableAsync<List<double>>("SpaceCenter", "Part_get_InertiaTensor", args);
     }
 
     /// <summary>
@@ -1490,7 +1490,7 @@ public class Part : RemoteObject
         {
             this
         };
-        return InvokeNonNullable<IList<Module>>("SpaceCenter", "Part_get_Modules", args);
+        return InvokeNonNullable<List<Module>>("SpaceCenter", "Part_get_Modules", args);
     }
 
     /// <summary>
@@ -1504,7 +1504,7 @@ public class Part : RemoteObject
         {
             this
         };
-        return await InvokeNonNullableAsync<IList<Module>>("SpaceCenter", "Part_get_Modules", args);
+        return await InvokeNonNullableAsync<List<Module>>("SpaceCenter", "Part_get_Modules", args);
     }
 
     /// <summary>

@@ -27,7 +27,7 @@ public class ResourceTransfer : RemoteObject
     /// <param name="toPart">The part to transfer from.</param>
     /// <param name="resource">The name of the resource to transfer.</param>
     /// <param name="maxAmount">The maximum amount of resource to transfer.</param>
-    [SetRpc("SpaceCenter", "ResourceTransfer_static_Start")]
+    [StaticRpc("SpaceCenter", "ResourceTransfer_static_Start")]
     public ResourceTransfer Start(Part fromPart, Part toPart, string resource, float maxAmount)
     {
         var args = new ProcedureArgument[]
@@ -53,7 +53,7 @@ public class ResourceTransfer : RemoteObject
     /// <param name="toPart">The part to transfer from.</param>
     /// <param name="resource">The name of the resource to transfer.</param>
     /// <param name="maxAmount">The maximum amount of resource to transfer.</param>
-    [SetRpc("SpaceCenter", "ResourceTransfer_static_Start")]
+    [StaticRpc("SpaceCenter", "ResourceTransfer_static_Start")]
     public async Task<ResourceTransfer> StartAsync(Part fromPart, Part toPart, string resource, float maxAmount)
     {
         var args = new ProcedureArgument[]

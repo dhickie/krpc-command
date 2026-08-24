@@ -349,7 +349,7 @@ public class Contract : RemoteObject
         {
             this
         };
-        return InvokeNonNullable<IList<string>>("SpaceCenter", "Contract_get_Keywords", args);
+        return InvokeNonNullable<List<string>>("SpaceCenter", "Contract_get_Keywords", args);
     }
 
     /// <summary>
@@ -363,7 +363,7 @@ public class Contract : RemoteObject
         {
             this
         };
-        return await InvokeNonNullableAsync<IList<string>>("SpaceCenter", "Contract_get_Keywords", args);
+        return await InvokeNonNullableAsync<List<string>>("SpaceCenter", "Contract_get_Keywords", args);
     }
 
     /// <summary>
@@ -403,7 +403,7 @@ public class Contract : RemoteObject
         {
             this
         };
-        return InvokeNonNullable<IList<ContractParameter>>("SpaceCenter", "Contract_get_Parameters", args);
+        return InvokeNonNullable<List<ContractParameter>>("SpaceCenter", "Contract_get_Parameters", args);
     }
 
     /// <summary>
@@ -417,7 +417,7 @@ public class Contract : RemoteObject
         {
             this
         };
-        return await InvokeNonNullableAsync<IList<ContractParameter>>("SpaceCenter", "Contract_get_Parameters", args);
+        return await InvokeNonNullableAsync<List<ContractParameter>>("SpaceCenter", "Contract_get_Parameters", args);
     }
 
     /// <summary>

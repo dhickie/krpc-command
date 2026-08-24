@@ -530,6 +530,7 @@ public class Engine : RemoteObject
     /// Gets the range over which the gimbal can move.
     /// Returns 0 if the engine is not gimballed.
     /// </summary>
+    [AngleConversion(AngleType.Degrees, typeof(float))]
     [GetRpc("SpaceCenter", "Engine_get_GimbalRange")]
     public Angle GetGimbalRange()
     {
@@ -546,6 +547,7 @@ public class Engine : RemoteObject
     /// Returns 0 if the engine is not gimballed.
     /// Executes asynchronously.
     /// </summary>
+    [AngleConversion(AngleType.Degrees, typeof(float))]
     [GetRpc("SpaceCenter", "Engine_get_GimbalRange")]
     public async Task<Angle> GetGimbalRangeAsync()
     {
@@ -854,7 +856,7 @@ public class Engine : RemoteObject
         {
             this
         };
-        return InvokeNonNullable<IDictionary<string,Engine>>("SpaceCenter", "Engine_get_Modes", args);
+        return InvokeNonNullable<Dictionary<string,Engine>>("SpaceCenter", "Engine_get_Modes", args);
     }
 
     /// <summary>
@@ -869,7 +871,7 @@ public class Engine : RemoteObject
         {
             this
         };
-        return await InvokeNonNullableAsync<IDictionary<string,Engine>>("SpaceCenter", "Engine_get_Modes", args);
+        return await InvokeNonNullableAsync<Dictionary<string,Engine>>("SpaceCenter", "Engine_get_Modes", args);
     }
 
     /// <summary>
@@ -909,7 +911,7 @@ public class Engine : RemoteObject
         {
             this
         };
-        return InvokeNonNullable<IList<string>>("SpaceCenter", "Engine_get_PropellantNames", args);
+        return InvokeNonNullable<List<string>>("SpaceCenter", "Engine_get_PropellantNames", args);
     }
 
     /// <summary>
@@ -923,7 +925,7 @@ public class Engine : RemoteObject
         {
             this
         };
-        return await InvokeNonNullableAsync<IList<string>>("SpaceCenter", "Engine_get_PropellantNames", args);
+        return await InvokeNonNullableAsync<List<string>>("SpaceCenter", "Engine_get_PropellantNames", args);
     }
 
     /// <summary>
@@ -941,7 +943,7 @@ public class Engine : RemoteObject
         {
             this
         };
-        return InvokeNonNullable<IDictionary<string,float>>("SpaceCenter", "Engine_get_PropellantRatios", args);
+        return InvokeNonNullable<Dictionary<string,float>>("SpaceCenter", "Engine_get_PropellantRatios", args);
     }
 
     /// <summary>
@@ -960,7 +962,7 @@ public class Engine : RemoteObject
         {
             this
         };
-        return await InvokeNonNullableAsync<IDictionary<string,float>>("SpaceCenter", "Engine_get_PropellantRatios", args);
+        return await InvokeNonNullableAsync<Dictionary<string,float>>("SpaceCenter", "Engine_get_PropellantRatios", args);
     }
 
     /// <summary>
@@ -973,7 +975,7 @@ public class Engine : RemoteObject
         {
             this
         };
-        return InvokeNonNullable<IList<Propellant>>("SpaceCenter", "Engine_get_Propellants", args);
+        return InvokeNonNullable<List<Propellant>>("SpaceCenter", "Engine_get_Propellants", args);
     }
 
     /// <summary>
@@ -987,7 +989,7 @@ public class Engine : RemoteObject
         {
             this
         };
-        return await InvokeNonNullableAsync<IList<Propellant>>("SpaceCenter", "Engine_get_Propellants", args);
+        return await InvokeNonNullableAsync<List<Propellant>>("SpaceCenter", "Engine_get_Propellants", args);
     }
 
     /// <summary>
@@ -1241,7 +1243,7 @@ public class Engine : RemoteObject
         {
             this
         };
-        return InvokeNonNullable<IList<Thruster>>("SpaceCenter", "Engine_get_Thrusters", args);
+        return InvokeNonNullable<List<Thruster>>("SpaceCenter", "Engine_get_Thrusters", args);
     }
 
     /// <summary>
@@ -1261,7 +1263,7 @@ public class Engine : RemoteObject
         {
             this
         };
-        return await InvokeNonNullableAsync<IList<Thruster>>("SpaceCenter", "Engine_get_Thrusters", args);
+        return await InvokeNonNullableAsync<List<Thruster>>("SpaceCenter", "Engine_get_Thrusters", args);
     }
 
     /// <summary>

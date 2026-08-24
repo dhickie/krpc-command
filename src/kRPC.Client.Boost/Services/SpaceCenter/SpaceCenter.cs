@@ -325,7 +325,7 @@ public class SpaceCenter : ServiceObject
         {
             craftDirectory
         };
-        return InvokeNonNullable<IList<string>>("SpaceCenter", "LaunchableVessels", args);
+        return InvokeNonNullable<List<string>>("SpaceCenter", "LaunchableVessels", args);
     }
 
     /// <summary>
@@ -342,7 +342,7 @@ public class SpaceCenter : ServiceObject
         {
             craftDirectory
         };
-        return await InvokeNonNullableAsync<IList<string>>("SpaceCenter", "LaunchableVessels", args);
+        return await InvokeNonNullableAsync<List<string>>("SpaceCenter", "LaunchableVessels", args);
     }
 
     /// <summary>
@@ -958,7 +958,7 @@ public class SpaceCenter : ServiceObject
     [GetRpc("SpaceCenter", "get_Bodies")]
     public IDictionary<string,CelestialBody> GetBodies()
     {
-        return InvokeNonNullable<IDictionary<string,CelestialBody>>("SpaceCenter", "get_Bodies");
+        return InvokeNonNullable<Dictionary<string,CelestialBody>>("SpaceCenter", "get_Bodies");
     }
 
     /// <summary>
@@ -969,7 +969,7 @@ public class SpaceCenter : ServiceObject
     [GetRpc("SpaceCenter", "get_Bodies")]
     public async Task<IDictionary<string,CelestialBody>> GetBodiesAsync()
     {
-        return await InvokeNonNullableAsync<IDictionary<string,CelestialBody>>("SpaceCenter", "get_Bodies");
+        return await InvokeNonNullableAsync<Dictionary<string,CelestialBody>>("SpaceCenter", "get_Bodies");
     }
 
     /// <summary>
@@ -1094,7 +1094,7 @@ public class SpaceCenter : ServiceObject
     [GetRpc("SpaceCenter", "get_LaunchSites")]
     public IList<LaunchSite> GetLaunchSites()
     {
-        return InvokeNonNullable<IList<LaunchSite>>("SpaceCenter", "get_LaunchSites");
+        return InvokeNonNullable<List<LaunchSite>>("SpaceCenter", "get_LaunchSites");
     }
 
     /// <summary>
@@ -1104,7 +1104,7 @@ public class SpaceCenter : ServiceObject
     [GetRpc("SpaceCenter", "get_LaunchSites")]
     public async Task<IList<LaunchSite>> GetLaunchSitesAsync()
     {
-        return await InvokeNonNullableAsync<IList<LaunchSite>>("SpaceCenter", "get_LaunchSites");
+        return await InvokeNonNullableAsync<List<LaunchSite>>("SpaceCenter", "get_LaunchSites");
     }
 
     /// <summary>
@@ -1611,7 +1611,7 @@ public class SpaceCenter : ServiceObject
     [GetRpc("SpaceCenter", "get_Vessels")]
     public IList<Vessel> GetVessels()
     {
-        return InvokeNonNullable<IList<Vessel>>("SpaceCenter", "get_Vessels");
+        return InvokeNonNullable<List<Vessel>>("SpaceCenter", "get_Vessels");
     }
 
     /// <summary>
@@ -1621,7 +1621,7 @@ public class SpaceCenter : ServiceObject
     [GetRpc("SpaceCenter", "get_Vessels")]
     public async Task<IList<Vessel>> GetVesselsAsync()
     {
-        return await InvokeNonNullableAsync<IList<Vessel>>("SpaceCenter", "get_Vessels");
+        return await InvokeNonNullableAsync<List<Vessel>>("SpaceCenter", "get_Vessels");
     }
 
     /// <summary>

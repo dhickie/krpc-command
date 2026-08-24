@@ -1,7 +1,7 @@
 using System.Net;
 using System.Text;
 
-namespace kRPC.Client.Boost.Config;
+namespace kRPC.Client.Boost.Configuration;
 
 /// <summary>
 /// Encapsulates all configuration for connecting to the kRPC server.

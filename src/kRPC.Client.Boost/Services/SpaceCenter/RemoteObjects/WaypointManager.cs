@@ -27,6 +27,7 @@ public class WaypointManager : RemoteObject
     /// <param name="body">Celestial body the waypoint is attached to.</param>
     /// <param name="name">Name of the waypoint.</param>
     /// <returns></returns>
+    [AngleConversion(AngleType.Degrees, typeof(double))]
     [SetRpc("SpaceCenter", "WaypointManager_AddWaypoint")]
     public Waypoint AddWaypoint(Angle latitude, Angle longitude, CelestialBody body, string name)
     {
@@ -51,6 +52,7 @@ public class WaypointManager : RemoteObject
     /// <param name="body">Celestial body the waypoint is attached to.</param>
     /// <param name="name">Name of the waypoint.</param>
     /// <returns></returns>
+    [AngleConversion(AngleType.Degrees, typeof(double))]
     [SetRpc("SpaceCenter", "WaypointManager_AddWaypoint")]
     public async Task<Waypoint> AddWaypointAsync(Angle latitude, Angle longitude, CelestialBody body, string name)
     {
@@ -75,6 +77,7 @@ public class WaypointManager : RemoteObject
     /// <param name="body">Celestial body the waypoint is attached to.</param>
     /// <param name="name">Name of the waypoint.</param>
     /// <returns></returns>
+    [AngleConversion(AngleType.Degrees, typeof(double))]
     [SetRpc("SpaceCenter", "WaypointManager_AddWaypointAtAltitude")]
     public Waypoint AddWaypointAtAltitude(Angle latitude, Angle longitude, double altitude, CelestialBody body, string name)
     {
@@ -101,6 +104,7 @@ public class WaypointManager : RemoteObject
     /// <param name="body">Celestial body the waypoint is attached to.</param>
     /// <param name="name">Name of the waypoint.</param>
     /// <returns></returns>
+    [AngleConversion(AngleType.Degrees, typeof(double))]
     [SetRpc("SpaceCenter", "WaypointManager_AddWaypointAtAltitude")]
     public async Task<Waypoint> AddWaypointAtAltitudeAsync(Angle latitude, Angle longitude, double altitude, CelestialBody body, string name)
     {
@@ -127,7 +131,7 @@ public class WaypointManager : RemoteObject
         {
             this
         };
-        return InvokeNonNullable<IDictionary<string,int>>("SpaceCenter", "WaypointManager_get_Colors", args);
+        return InvokeNonNullable<Dictionary<string,int>>("SpaceCenter", "WaypointManager_get_Colors", args);
     }
 
     /// <summary>
@@ -142,7 +146,7 @@ public class WaypointManager : RemoteObject
         {
             this
         };
-        return await InvokeNonNullableAsync<IDictionary<string,int>>("SpaceCenter", "WaypointManager_get_Colors", args);
+        return await InvokeNonNullableAsync<Dictionary<string,int>>("SpaceCenter", "WaypointManager_get_Colors", args);
     }
 
     /// <summary>
@@ -155,7 +159,7 @@ public class WaypointManager : RemoteObject
         {
             this
         };
-        return InvokeNonNullable<IList<string>>("SpaceCenter", "WaypointManager_get_Icons", args);
+        return InvokeNonNullable<List<string>>("SpaceCenter", "WaypointManager_get_Icons", args);
     }
 
     /// <summary>
@@ -169,7 +173,7 @@ public class WaypointManager : RemoteObject
         {
             this
         };
-        return await InvokeNonNullableAsync<IList<string>>("SpaceCenter", "WaypointManager_get_Icons", args);
+        return await InvokeNonNullableAsync<List<string>>("SpaceCenter", "WaypointManager_get_Icons", args);
     }
 
     /// <summary>
@@ -182,7 +186,7 @@ public class WaypointManager : RemoteObject
         {
             this
         };
-        return InvokeNonNullable<IList<Waypoint>>("SpaceCenter", "WaypointManager_get_Waypoints", args);
+        return InvokeNonNullable<List<Waypoint>>("SpaceCenter", "WaypointManager_get_Waypoints", args);
     }
 
     /// <summary>
@@ -196,6 +200,6 @@ public class WaypointManager : RemoteObject
         {
             this
         };
-        return await InvokeNonNullableAsync<IList<Waypoint>>("SpaceCenter", "WaypointManager_get_Waypoints", args);
+        return await InvokeNonNullableAsync<List<Waypoint>>("SpaceCenter", "WaypointManager_get_Waypoints", args);
     }
 }

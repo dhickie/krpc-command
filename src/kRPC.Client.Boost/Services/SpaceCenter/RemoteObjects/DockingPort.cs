@@ -248,6 +248,7 @@ public class DockingPort : RemoteObject
     /// <summary>
     /// Gets the maximum rotation angle.
     /// </summary>
+    [AngleConversion(AngleType.Degrees, typeof(float))]
     [GetRpc("SpaceCenter", "DockingPort_get_MaximumRotation")]
     public Angle GetMaximumRotation()
     {
@@ -263,6 +264,7 @@ public class DockingPort : RemoteObject
     /// Gets the maximum rotation angle.
     /// Executes asynchronously.
     /// </summary>
+    [AngleConversion(AngleType.Degrees, typeof(float))]
     [GetRpc("SpaceCenter", "DockingPort_get_MaximumRotation")]
     public async Task<Angle> GetMaximumRotationAsync()
     {
@@ -277,6 +279,7 @@ public class DockingPort : RemoteObject
     /// <summary>
     /// Gets the minimum rotation angle.
     /// </summary>
+    [AngleConversion(AngleType.Degrees, typeof(float))]
     [GetRpc("SpaceCenter", "DockingPort_get_MinimumRotation")]
     public Angle GetMinimumRotation()
     {
@@ -292,6 +295,7 @@ public class DockingPort : RemoteObject
     /// Gets the minimum rotation angle.
     /// Executes asynchronously.
     /// </summary>
+    [AngleConversion(AngleType.Degrees, typeof(float))]
     [GetRpc("SpaceCenter", "DockingPort_get_MinimumRotation")]
     public async Task<Angle> GetMinimumRotationAsync()
     {
@@ -467,6 +471,7 @@ public class DockingPort : RemoteObject
     /// <summary>
     /// Gets the rotation target angle.
     /// </summary>
+    [AngleConversion(AngleType.Degrees, typeof(float))]
     [GetRpc("SpaceCenter", "DockingPort_get_RotationTarget")]
     public Angle GetRotationTarget()
     {
@@ -482,6 +487,7 @@ public class DockingPort : RemoteObject
     /// Gets the rotation target angle.
     /// Executes asynchronously.
     /// </summary>
+    [AngleConversion(AngleType.Degrees, typeof(float))]
     [GetRpc("SpaceCenter", "DockingPort_get_RotationTarget")]
     public async Task<Angle> GetRotationTargetAsync()
     {
@@ -497,6 +503,7 @@ public class DockingPort : RemoteObject
     /// Sets the rotation target angle.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [AngleConversion(AngleType.Degrees, typeof(float))]
     [SetRpc("SpaceCenter", "DockingPort_set_RotationTarget")]
     public void SetRotationTarget(Angle value)
     {
@@ -513,6 +520,7 @@ public class DockingPort : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [AngleConversion(AngleType.Degrees, typeof(float))]
     [SetRpc("SpaceCenter", "DockingPort_set_RotationTarget")]
     public async Task SetRotationTargetAsync(Angle value)
     {

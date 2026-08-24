@@ -476,7 +476,7 @@ public class RCS : RemoteObject
         {
             this
         };
-        return InvokeNonNullable<IDictionary<string,float>>("SpaceCenter", "RCS_get_PropellantRatios", args);
+        return InvokeNonNullable<Dictionary<string,float>>("SpaceCenter", "RCS_get_PropellantRatios", args);
     }
 
     /// <summary>
@@ -491,7 +491,7 @@ public class RCS : RemoteObject
         {
             this
         };
-        return await InvokeNonNullableAsync<IDictionary<string,float>>("SpaceCenter", "RCS_get_PropellantRatios", args);
+        return await InvokeNonNullableAsync<Dictionary<string,float>>("SpaceCenter", "RCS_get_PropellantRatios", args);
     }
 
     /// <summary>
@@ -504,7 +504,7 @@ public class RCS : RemoteObject
         {
             this
         };
-        return InvokeNonNullable<IList<string>>("SpaceCenter", "RCS_get_Propellants", args);
+        return InvokeNonNullable<List<string>>("SpaceCenter", "RCS_get_Propellants", args);
     }
 
     /// <summary>
@@ -518,7 +518,7 @@ public class RCS : RemoteObject
         {
             this
         };
-        return await InvokeNonNullableAsync<IList<string>>("SpaceCenter", "RCS_get_Propellants", args);
+        return await InvokeNonNullableAsync<List<string>>("SpaceCenter", "RCS_get_Propellants", args);
     }
 
     /// <summary>
@@ -734,7 +734,7 @@ public class RCS : RemoteObject
         {
             this
         };
-        return InvokeNonNullable<IList<Thruster>>("SpaceCenter", "RCS_get_Thrusters", args);
+        return InvokeNonNullable<List<Thruster>>("SpaceCenter", "RCS_get_Thrusters", args);
     }
 
     /// <summary>
@@ -748,7 +748,7 @@ public class RCS : RemoteObject
         {
             this
         };
-        return await InvokeNonNullableAsync<IList<Thruster>>("SpaceCenter", "RCS_get_Thrusters", args);
+        return await InvokeNonNullableAsync<List<Thruster>>("SpaceCenter", "RCS_get_Thrusters", args);
     }
 
     /// <summary>

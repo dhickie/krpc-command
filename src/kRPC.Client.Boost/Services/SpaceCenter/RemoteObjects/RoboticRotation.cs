@@ -46,6 +46,7 @@ public class RoboticRotation : RemoteObject
     /// <summary>
     /// Gets the current angle.
     /// </summary>
+    [AngleConversion(AngleType.Degrees, typeof(float))]
     [GetRpc("SpaceCenter", "RoboticRotation_get_CurrentAngle")]
     public Angle GetCurrentAngle()
     {
@@ -61,6 +62,7 @@ public class RoboticRotation : RemoteObject
     /// Gets the current angle.
     /// Executes asynchronously.
     /// </summary>
+    [AngleConversion(AngleType.Degrees, typeof(float))]
     [GetRpc("SpaceCenter", "RoboticRotation_get_CurrentAngle")]
     public async Task<Angle> GetCurrentAngleAsync()
     {
@@ -276,6 +278,7 @@ public class RoboticRotation : RemoteObject
     /// <summary>
     /// Gets the target movement rate as an angle per second.
     /// </summary>
+    [AngleConversion(AngleType.Degrees, typeof(float))]
     [GetRpc("SpaceCenter", "RoboticRotation_get_Rate")]
     public Angle GetRate()
     {
@@ -291,6 +294,7 @@ public class RoboticRotation : RemoteObject
     /// Gets the target movement rate as an angle per second.
     /// Executes asynchronously.
     /// </summary>
+    [AngleConversion(AngleType.Degrees, typeof(float))]
     [GetRpc("SpaceCenter", "RoboticRotation_get_Rate")]
     public async Task<Angle> GetRateAsync()
     {
@@ -306,6 +310,7 @@ public class RoboticRotation : RemoteObject
     /// Sets the target movement rate as an angle per second.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [AngleConversion(AngleType.Degrees, typeof(float))]
     [SetRpc("SpaceCenter", "RoboticRotation_set_Rate")]
     public void SetRate(Angle value)
     {
@@ -322,6 +327,7 @@ public class RoboticRotation : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [AngleConversion(AngleType.Degrees, typeof(float))]
     [SetRpc("SpaceCenter", "RoboticRotation_set_Rate")]
     public async Task SetRateAsync(Angle value)
     {
@@ -336,6 +342,7 @@ public class RoboticRotation : RemoteObject
     /// <summary>
     /// Target angle.
     /// </summary>
+    [AngleConversion(AngleType.Degrees, typeof(float))]
     [GetRpc("SpaceCenter", "RoboticRotation_get_TargetAngle")]
     public Angle GetTargetAngle()
     {
@@ -351,6 +358,7 @@ public class RoboticRotation : RemoteObject
     /// Target angle.
     /// Executes asynchronously.
     /// </summary>
+    [AngleConversion(AngleType.Degrees, typeof(float))]
     [GetRpc("SpaceCenter", "RoboticRotation_get_TargetAngle")]
     public async Task<Angle> GetTargetAngleAsync()
     {
@@ -366,6 +374,7 @@ public class RoboticRotation : RemoteObject
     /// Sets the target angle.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [AngleConversion(AngleType.Degrees, typeof(float))]
     [SetRpc("SpaceCenter", "RoboticRotation_set_TargetAngle")]
     public void SetTargetAngle(Angle value)
     {
@@ -382,6 +391,7 @@ public class RoboticRotation : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [AngleConversion(AngleType.Degrees, typeof(float))]
     [SetRpc("SpaceCenter", "RoboticRotation_set_TargetAngle")]
     public async Task SetTargetAngleAsync(Angle value)
     {

@@ -1,4 +1,4 @@
-using kRPC.Client.Boost.Config;
+using kRPC.Client.Boost.Configuration;
 using kRPC.Client.Boost.Exceptions;
 
 namespace kRPC.Client.Boost.UnitTests.Config;

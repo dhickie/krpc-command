@@ -1,6 +1,6 @@
 ---
 name: krpc-boost-generated-service-migration
-description: "Use when migrating generated kRPC C# service client code to kRPC.Client.Boost conventions. Use this skill whenever the user mentions repeating CONTEXT.md updates, generated kRPC service migrations, kRPC.Client.Boost generated services, ConnectionMultiplexer/IConnectionMultiplexer, ServiceObject/RemoteObject invoke helpers, RemoteObject constructor access, RPCAttribute/Rpc/GetRpcAttribute/SetRpcAttribute cleanup, GetRpc public method naming, Encoder/Decode removal, ProcedureArgument arrays, property-to-method conversion, async RPC wrappers, nullable generated RPCs, XML comment cleanup, see cref namespace fixes, or Vector3D/Quaternion/Angle conversions for generated kRPC clients, even if they name a service other than SpaceCenter."
+description: "Use when migrating generated kRPC C# service client code to kRPC.Client.Boost conventions. Use this skill whenever the user mentions repeating CONTEXT.md updates, generated kRPC service migrations, kRPC.Client.Boost generated services, ConnectionMultiplexer/IConnectionMultiplexer, ServiceObject/RemoteObject invoke helpers, RemoteObject constructor access, RPCAttribute/Rpc/GetRpcAttribute/SetRpcAttribute/StaticRpcAttribute cleanup, static RPC metadata, GetRpc public method naming, Encoder/Decode removal, ProcedureArgument arrays, IList public collection returns with concrete List invoke types, ISet-to-HashSet invoke return conversion, IDictionary-to-Dictionary invoke return conversion, generic or non-generic dictionary RPC returns, collection return types, property-to-method conversion, async RPC wrappers, nullable generated RPCs, XML comment cleanup, see cref namespace fixes, or Vector3D/Quaternion/Angle conversions for generated kRPC clients, even if they name a service other than SpaceCenter."
 ---
 
 # kRPC Boost Generated Service Migration
@@ -59,13 +59,16 @@ For generated helper methods on remote object classes:
 
 ### 2. Replace RPC Metadata Attributes
 
-- Replace stock `global::KRPC.Client.Attributes.RPCAttribute` references with the project-local `GetRpcAttribute` / `SetRpcAttribute`, normally using `[GetRpc(...)]` / `[SetRpc(...)]` shorthand.
-- Do not use the project-local base `RpcAttribute` or `[Rpc(...)]` shorthand in generated service wrappers. It is the shared metadata base; generated RPC wrappers should declare whether the RPC is a read/query or a mutation/command.
+- Replace stock `global::KRPC.Client.Attributes.RPCAttribute` references with the project-local `GetRpcAttribute`, `SetRpcAttribute`, or `StaticRpcAttribute`, normally using `[GetRpc(...)]`, `[SetRpc(...)]`, or `[StaticRpc(...)]` shorthand.
+- Do not use the project-local base `RpcAttribute` or `[Rpc(...)]` shorthand in generated service wrappers. It is the shared metadata base; generated RPC wrappers should declare whether the RPC is a read/query, mutation/command, or static procedure.
 - Add `using kRPC.Client.Boost.Attributes;` where needed.
 - Preserve the original service and procedure arguments, in the same order.
 - Use `[GetRpc("Service", "Procedure")]` for functions that fetch, compute, query, or transform values without mutating game state. This includes generated property getters (`get_...` or `_get_...`) and query-style methods such as `Get...`, `Has...`, `Can...`, `With...`, `...At`, `...Position`, `...Velocity`, `Raycast...`, and coordinate transform helpers.
 - Use `[SetRpc("Service", "Procedure")]` for functions that set values or send commands. This includes generated property setters (`set_...` or `_set_...`) and action methods such as `Engage`, `Disengage`, `Add...`, `Create...`, `Launch...`, `Load...`, `Quickload`, `Quicksave`, `Save`, `Remove`, `Reset`, `Start`, `Stop`, `Toggle`, `Trigger`, `Undock`, `Decouple`, `Recover`, `Transfer...`, `WarpTo`, and similar commands.
 - A `[SetRpc(...)]` method is allowed to return a value when the command creates, starts, or changes something and returns the created object, affected object, transfer handle, or status flag. Examples include adding alarms or waypoints, adding manoeuvre nodes, decoupling/undocking and returning the resulting vessel, starting a resource transfer, and robotic controller commands that return success. Do not reclassify these as `[GetRpc(...)]` solely because the return type is not `void` or `Task`.
+- Use `[StaticRpc("Service", "Procedure")]` for procedures whose generated procedure name contains the `_static_` marker, such as `Resources_static_Density` or `ReferenceFrame_static_CreateHybrid`.
+- A static RPC may be exposed as an instance method on a remote-object class, but its procedure does not operate on that remote-object instance. Do not add `this` as the first `ProcedureArgument` for static RPCs. Classify based on the generated procedure marker, not on whether the C# wrapper method is declared `static`.
+- Replace both `[GetRpc(...)]` and `[SetRpc(...)]` with `[StaticRpc(...)]` for `_static_` procedures; do not preserve getter/command classification for these metadata attributes.
 - Add immediate metadata attributes before generated setter methods, getter methods, normal RPC methods, and async counterparts.
 - The procedure in the attribute must match the procedure invoked in the method body, such as `Service_get_Property`, `Service_set_Property`, or `Service_Command`.
 
@@ -82,6 +85,30 @@ For generated helper methods on remote object classes:
 - For nullable return values, call the inherited `InvokeNullable<T>(...)` or `InvokeNullableAsync<T>(...)` helper with the non-nullable generic type argument. For example, a public `Part?` return should call `InvokeNullable<Part>(...)`, not `InvokeNullable<Part?>(...)`.
 - For methods with no return value, call the inherited `InvokeVoid(...)` or `InvokeVoidAsync(...)` helper.
 - Remote object and service facade generated code should use the inherited `ServiceObject`/`RemoteObject` invoke helpers rather than calling `Connection.Invoke...` or `_connection.Invoke...` directly.
+
+Generated list returns should expose interface types while decoding concretely:
+
+- For generated RPC wrappers that return a list, use `IList<T>` as the public return type.
+- For async counterparts, use `Task<IList<T>>`.
+- Convert the outer list return to `IList<T>` while preserving concrete nested list element types when required by C# variance, such as `List<List<double>>` to `IList<List<double>>`.
+- Pass the concrete list type as the invoke helper generic argument, such as `InvokeNonNullable<List<T>>(...)`, `InvokeNonNullableAsync<List<T>>(...)`, `InvokeNullable<List<T>>(...)`, or `InvokeNullableAsync<List<T>>(...)`. Do not pass `IList<T>` to an invoke helper.
+- Apply this to both `[GetRpc(...)]` query wrappers and `[SetRpc(...)]` command wrappers that return collections. A command returning a list, such as staging returning affected vessels, still uses `[SetRpc(...)]`.
+- Do not change collection parameters solely because collection returns use interface list types publicly and concrete lists at the invoke boundary. Parameter shape should continue to follow generated defaults and documented nullability unless the user explicitly asks for parameter migration.
+
+Generated set returns should use a concrete transport type:
+
+- Preserve a documented/public `ISet<T>` return type, including `Task<ISet<T>>` for its async counterpart, when that is the generated API contract.
+- Pass `HashSet<T>` as the generic type to the invoke helper for both synchronous and asynchronous wrappers, such as `InvokeNonNullable<HashSet<T>>(...)` and `InvokeNonNullableAsync<HashSet<T>>(...)`. The decoder needs the concrete set type even when the public wrapper exposes the interface.
+- Apply the same rule to nullable set returns with `InvokeNullable<HashSet<T>>(...)` and `InvokeNullableAsync<HashSet<T>>(...)`.
+- Preserve nested element types when selecting `HashSet<T>`; do not change set parameters solely because set returns use `HashSet<T>` at the RPC boundary.
+
+Generated dictionary returns should use a concrete transport type:
+
+- Preserve a documented/public `IDictionary<TKey,TValue>` return type, including `Task<IDictionary<TKey,TValue>>` for its async counterpart, when that is the generated API contract.
+- Pass `Dictionary<TKey,TValue>` as the generic type to the invoke helper for both synchronous and asynchronous wrappers, such as `InvokeNonNullable<Dictionary<TKey,TValue>>(...)` and `InvokeNonNullableAsync<Dictionary<TKey,TValue>>(...)`. The decoder needs the concrete dictionary type even when the public wrapper exposes the interface.
+- Apply the same rule to nullable dictionary returns with `InvokeNullable<Dictionary<TKey,TValue>>(...)` and `InvokeNullableAsync<Dictionary<TKey,TValue>>(...)`.
+- For a non-generic `IDictionary` return, identify the RPC's concrete key and value types from the generated contract and use the corresponding closed `Dictionary<TKey,TValue>` invoke type; never pass non-generic `IDictionary` to an invoke helper.
+- Preserve nested key/value types when selecting `Dictionary<TKey,TValue>`; do not change dictionary parameters solely because dictionary returns use `Dictionary<TKey,TValue>` at the RPC boundary.
 
 ### 4. Convert Generated Properties to Method Pairs
 
@@ -135,7 +162,7 @@ For every generated synchronous RPC wrapper, add an async counterpart unless one
 - Return `Task<T>` when the synchronous method returns `T`.
 - Return `Task` when the synchronous method returns `void`.
 - Mark the method `async` and await `InvokeVoidAsync(...)`, `InvokeNonNullableAsync<T>(...)`, or `InvokeNullableAsync<T>(...)` as appropriate.
-- Copy the same `[GetRpc(...)]` or `[SetRpc(...)]` metadata classification as the synchronous wrapper.
+- Copy the same `[GetRpc(...)]`, `[SetRpc(...)]`, or `[StaticRpc(...)]` metadata classification as the synchronous wrapper.
 - Copy XML docs and add `Executes asynchronously.` to the summary.
 - Add `using System.Threading.Tasks;` where needed.
 
@@ -146,6 +173,7 @@ Async wrappers should not call synchronous `Invoke(...)` methods.
 Infer nullability from generated defaults and XML documentation:
 
 - Parameters with `null` defaults should use nullable annotations, such as `SomeRemoteObject? value = null`, `IList<string>? names = null`, or `string? text = ""` when the generated default allows null.
+- Collection return wrappers use `IList<T>`, while their invoke helpers use `List<T>`; collection parameters may remain `IList<T>` when that best reflects the generated parameter contract.
 - Parameters with non-null defaults should not be nullable merely because older XML docs mentioned null. Update the XML docs to reflect the actual default value and remove the nullable marker unless the generated contract explicitly allows null.
 - Methods documented as returning `<c>null</c>` should use nullable public return types.
 - Nullable return wrappers should call `InvokeNullable<T>` / `InvokeNullableAsync<T>` with the non-nullable generic type argument. Non-nullable return wrappers should call `InvokeNonNullable<T>` / `InvokeNonNullableAsync<T>` so unexpected null RPC responses are checked centrally.
@@ -179,6 +207,17 @@ Angles:
 - For angle triples that are not geometric vectors, use `Tuple<Angle,Angle,Angle>` and convert each item at the RPC boundary.
 - Preserve per-second meaning in XML docs for angular rates, even when the public type is `Angle`.
 - Remove explicit degrees/radians wording from docs when the `Angle` type now carries unit semantics, except where rate wording remains important.
+
+Angle conversion metadata:
+
+- When an RPC wrapper converts a numeric angle at the RPC boundary, add `[AngleConversion(AngleType.Degrees/Radians, typeof(float/double))]` immediately before its `[GetRpc(...)]` or `[SetRpc(...)]` attribute.
+- Apply `AngleConversion` to both synchronous and asynchronous counterparts. The attribute targets methods, so annotating only one overload leaves test discovery incomplete.
+- Add the attribute when a getter converts a server-returned numeric angle into `Angle`, and when any RPC argument converts an `Angle` into `.Degrees` or `.Radians`. This includes setters and command methods.
+- Set the `AngleType` value from the actual boundary conversion: `.Degrees` or `Angle.FromDegrees(...)` means `AngleType.Degrees`; `.Radians` or `Angle.FromRadians(...)` means `AngleType.Radians`.
+- Set the `angleDataType` argument to the numeric type used at the server boundary (`typeof(float)` or `typeof(double)`), not the public `Angle` type or the RPC's unrelated return type. For input arguments, use the cast or argument expression to determine the type; an uncast `value.Degrees`/`value.Radians` expression is `double`.
+- Inspect converted angle collections recursively. For tuples, lists, dictionaries, arrays, sets, and nested combinations, record the numeric element type and annotate the method with that element type. For example, a `Tuple<Angle,Angle,Angle>` backed by `Tuple<double,double,double>` uses `typeof(double)` for both its getter and setter RPC methods.
+- If a method has multiple angle arguments, all must use the same metadata because `AngleConversion` stores one unit and numeric type per method. If the arguments use different units or numeric types, identify that limitation rather than applying an inaccurate attribute.
+- Distinguish RPC boundary conversions from unrelated application-level `Angle.FromDegrees(...)` or `Angle.FromRadians(...)` calls; only RPC wrappers need this metadata.
 
 ### 9. Normalize Generated Formatting
 
@@ -228,8 +267,9 @@ Check structural invariants:
 - No generated `RemoteObject` subclass has a public constructor that accepts `IConnectionMultiplexer`.
 - Non-constructor remote object methods no longer accept `ConnectionMultiplexer connection` unless the method genuinely needs an external connection rather than the instance connection.
 - There are no leftover generated properties where the selected migration requires method pairs.
-- Every generated getter, setter, synchronous RPC wrapper, and async RPC wrapper has an immediate `[GetRpc(...)]` or `[SetRpc(...)]` attribute with the same procedure name used by the body.
+- Every generated getter, setter, synchronous RPC wrapper, and async RPC wrapper has an immediate `[GetRpc(...)]`, `[SetRpc(...)]`, or `[StaticRpc(...)]` attribute with the same procedure name used by the body.
 - Generated property getters (`get_...` or `_get_...`) use `[GetRpc(...)]`; generated property setters (`set_...` or `_set_...`) use `[SetRpc(...)]`.
+- Procedures containing `_static_` use `[StaticRpc(...)]`, and their `ProcedureArgument[]` arrays omit `this` as the first entry even when the C# wrapper is an instance method.
 - Query/calculation helpers that return values without changing state use `[GetRpc(...)]`, even when their names are not prefixed with `Get`.
 - Non-boolean `[GetRpc(...)]` public wrapper names are prefixed with `Get`, except for explicit operation-style exceptions such as SpaceCenter `Raycast...`, SpaceCenter `Transform...`, and `Flight.SimulateAerodynamicForceAt`.
 - Boolean `[GetRpc(...)]` wrappers returning `bool` or `Task<bool>` keep predicate-style names such as `Has...`, `Can...`, `Is...`, `Active`, or similar names rather than becoming `Get...`.
@@ -240,6 +280,11 @@ Check structural invariants:
 - Every synchronous generated RPC wrapper has an async counterpart, and async bodies use the async `ServiceObject`/`RemoteObject` helper with `await`.
 - Generated remote objects and service facades call inherited invoke helpers: `InvokeNonNullable*` for non-nullable returns, `InvokeNullable*` for nullable returns, and `InvokeVoid*` for void procedures.
 - Nullable public return types use `InvokeNullable<T>` / `InvokeNullableAsync<T>` with non-nullable generic type arguments; non-nullable public return types use `InvokeNonNullable<T>` / `InvokeNonNullableAsync<T>`.
+- Generated RPC wrappers expose `IList<T>` or `Task<IList<T>>` for list returns, while invoke helpers use concrete `List<T>` generic arguments.
+- Generated nested collection returns use an interface for the outer list and concrete nested list elements when required for assignability, such as `IList<List<double>>`, while invoke helpers use nested concrete lists such as `List<List<double>>`.
+- Generated collection-return invoke helpers use concrete list generic arguments, such as `InvokeNonNullable<List<T>>`, not `InvokeNonNullable<IList<T>>`.
+- Generated set-return invoke helpers use concrete hash-set generic arguments, such as `InvokeNonNullable<HashSet<T>>` or `InvokeNonNullableAsync<HashSet<T>>`, not `InvokeNonNullable<ISet<T>>` or `InvokeNonNullableAsync<ISet<T>>`, while the public return type may remain `ISet<T>`.
+- Generated dictionary-return invoke helpers use concrete dictionary generic arguments, such as `InvokeNonNullable<Dictionary<TKey,TValue>>` or `InvokeNonNullableAsync<Dictionary<TKey,TValue>>`, not `InvokeNonNullable<IDictionary<TKey,TValue>>` or `InvokeNonNullableAsync<IDictionary<TKey,TValue>>`, while the public return type may remain `IDictionary<TKey,TValue>`.
 - Generated wrappers use `ProcedureArgument[]` argument arrays, not `object[]` or `object?[]`.
 - Explicit `ProcedureArgument` construction uses `new(value)` for non-null values and reserves `new(value, typeof(ExpectedType))` for nullable values or intentionally different contract types.
 - Setter XML docs do not describe nullable getter return behavior, and parameter docs mentioning null match the signature default/nullability.

@@ -1,4 +1,4 @@
-using kRPC.Client.Boost.Config;
+using kRPC.Client.Boost.Configuration;
 
 namespace kRPC.Client.Boost.UnitTests.Config;
 

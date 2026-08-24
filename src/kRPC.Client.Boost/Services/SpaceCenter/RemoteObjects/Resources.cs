@@ -122,7 +122,7 @@ public class Resources : RemoteObject
             this,
             name
         };
-        return InvokeNonNullable<IList<Resource>>("SpaceCenter", "Resources_WithResource", args);
+        return InvokeNonNullable<List<Resource>>("SpaceCenter", "Resources_WithResource", args);
     }
 
     /// <summary>
@@ -137,14 +137,14 @@ public class Resources : RemoteObject
             this,
             name
         };
-        return await InvokeNonNullableAsync<IList<Resource>>("SpaceCenter", "Resources_WithResource", args);
+        return await InvokeNonNullableAsync<List<Resource>>("SpaceCenter", "Resources_WithResource", args);
     }
 
     /// <summary>
     /// Returns the density of a resource, in <math>kg/l</math>.
     /// </summary>
     /// <param name="name">The name of the resource.</param>
-    [GetRpc("SpaceCenter", "Resources_static_Density")]
+    [StaticRpc("SpaceCenter", "Resources_static_Density")]
     public float GetDensity(string name)
     {
         var args = new ProcedureArgument[]
@@ -159,7 +159,7 @@ public class Resources : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="name">The name of the resource.</param>
-    [GetRpc("SpaceCenter", "Resources_static_Density")]
+    [StaticRpc("SpaceCenter", "Resources_static_Density")]
     public async Task<float> GetDensityAsync(string name)
     {
         var args = new ProcedureArgument[]
@@ -173,7 +173,7 @@ public class Resources : RemoteObject
     /// Returns the flow mode of a resource.
     /// </summary>
     /// <param name="name">The name of the resource.</param>
-    [GetRpc("SpaceCenter", "Resources_static_FlowMode")]
+    [StaticRpc("SpaceCenter", "Resources_static_FlowMode")]
     public ResourceFlowMode GetFlowMode(string name)
     {
         var args = new ProcedureArgument[]
@@ -188,7 +188,7 @@ public class Resources : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="name">The name of the resource.</param>
-    [GetRpc("SpaceCenter", "Resources_static_FlowMode")]
+    [StaticRpc("SpaceCenter", "Resources_static_FlowMode")]
     public async Task<ResourceFlowMode> GetFlowModeAsync(string name)
     {
         var args = new ProcedureArgument[]
@@ -208,7 +208,7 @@ public class Resources : RemoteObject
         {
             this
         };
-        return InvokeNonNullable<IList<Resource>>("SpaceCenter", "Resources_get_All", args);
+        return InvokeNonNullable<List<Resource>>("SpaceCenter", "Resources_get_All", args);
     }
 
     /// <summary>
@@ -222,7 +222,7 @@ public class Resources : RemoteObject
         {
             this
         };
-        return await InvokeNonNullableAsync<IList<Resource>>("SpaceCenter", "Resources_get_All", args);
+        return await InvokeNonNullableAsync<List<Resource>>("SpaceCenter", "Resources_get_All", args);
     }
 
     /// <summary>
@@ -301,7 +301,7 @@ public class Resources : RemoteObject
         {
             this
         };
-        return InvokeNonNullable<IList<string>>("SpaceCenter", "Resources_get_Names", args);
+        return InvokeNonNullable<List<string>>("SpaceCenter", "Resources_get_Names", args);
     }
 
     /// <summary>
@@ -315,6 +315,6 @@ public class Resources : RemoteObject
         {
             this
         };
-        return await InvokeNonNullableAsync<IList<string>>("SpaceCenter", "Resources_get_Names", args);
+        return await InvokeNonNullableAsync<List<string>>("SpaceCenter", "Resources_get_Names", args);
     }
 }

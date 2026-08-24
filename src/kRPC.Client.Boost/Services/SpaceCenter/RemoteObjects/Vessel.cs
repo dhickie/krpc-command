@@ -844,7 +844,7 @@ public class Vessel : RemoteObject
         {
             this
         };
-        return InvokeNonNullable<IList<CrewMember>>("SpaceCenter", "Vessel_get_Crew", args);
+        return InvokeNonNullable<List<CrewMember>>("SpaceCenter", "Vessel_get_Crew", args);
     }
 
     /// <summary>
@@ -858,7 +858,7 @@ public class Vessel : RemoteObject
         {
             this
         };
-        return await InvokeNonNullableAsync<IList<CrewMember>>("SpaceCenter", "Vessel_get_Crew", args);
+        return await InvokeNonNullableAsync<List<CrewMember>>("SpaceCenter", "Vessel_get_Crew", args);
     }
 
     /// <summary>
@@ -954,7 +954,7 @@ public class Vessel : RemoteObject
         {
             this
         };
-        return InvokeNonNullable<IList<double>>("SpaceCenter", "Vessel_get_InertiaTensor", args);
+        return InvokeNonNullable<List<double>>("SpaceCenter", "Vessel_get_InertiaTensor", args);
     }
 
     /// <summary>
@@ -970,7 +970,7 @@ public class Vessel : RemoteObject
         {
             this
         };
-        return await InvokeNonNullableAsync<IList<double>>("SpaceCenter", "Vessel_get_InertiaTensor", args);
+        return await InvokeNonNullableAsync<List<double>>("SpaceCenter", "Vessel_get_InertiaTensor", args);
     }
 
     /// <summary>

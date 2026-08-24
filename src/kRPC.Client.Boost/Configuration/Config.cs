@@ -1,4 +1,4 @@
-namespace kRPC.Client.Boost.Config;
+namespace kRPC.Client.Boost.Configuration;
 
 /// <summary>
 /// Abstract base class from which all other configuration classes are derived.

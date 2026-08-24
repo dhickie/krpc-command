@@ -751,7 +751,7 @@ public class Module : RemoteObject
         {
             this
         };
-        return InvokeNonNullable<IList<string>>("SpaceCenter", "Module_get_Actions", args);
+        return InvokeNonNullable<List<string>>("SpaceCenter", "Module_get_Actions", args);
     }
 
     /// <summary>
@@ -766,7 +766,7 @@ public class Module : RemoteObject
         {
             this
         };
-        return await InvokeNonNullableAsync<IList<string>>("SpaceCenter", "Module_get_Actions", args);
+        return await InvokeNonNullableAsync<List<string>>("SpaceCenter", "Module_get_Actions", args);
     }
 
     /// <summary>
@@ -780,7 +780,7 @@ public class Module : RemoteObject
         {
             this
         };
-        return InvokeNonNullable<IList<string>>("SpaceCenter", "Module_get_ActionsById", args);
+        return InvokeNonNullable<List<string>>("SpaceCenter", "Module_get_ActionsById", args);
     }
 
     /// <summary>
@@ -795,7 +795,7 @@ public class Module : RemoteObject
         {
             this
         };
-        return await InvokeNonNullableAsync<IList<string>>("SpaceCenter", "Module_get_ActionsById", args);
+        return await InvokeNonNullableAsync<List<string>>("SpaceCenter", "Module_get_ActionsById", args);
     }
 
     /// <summary>
@@ -809,7 +809,7 @@ public class Module : RemoteObject
         {
             this
         };
-        return InvokeNonNullable<IList<string>>("SpaceCenter", "Module_get_Events", args);
+        return InvokeNonNullable<List<string>>("SpaceCenter", "Module_get_Events", args);
     }
 
     /// <summary>
@@ -824,7 +824,7 @@ public class Module : RemoteObject
         {
             this
         };
-        return await InvokeNonNullableAsync<IList<string>>("SpaceCenter", "Module_get_Events", args);
+        return await InvokeNonNullableAsync<List<string>>("SpaceCenter", "Module_get_Events", args);
     }
 
     /// <summary>
@@ -838,7 +838,7 @@ public class Module : RemoteObject
         {
             this
         };
-        return InvokeNonNullable<IList<string>>("SpaceCenter", "Module_get_EventsById", args);
+        return InvokeNonNullable<List<string>>("SpaceCenter", "Module_get_EventsById", args);
     }
 
     /// <summary>
@@ -853,7 +853,7 @@ public class Module : RemoteObject
         {
             this
         };
-        return await InvokeNonNullableAsync<IList<string>>("SpaceCenter", "Module_get_EventsById", args);
+        return await InvokeNonNullableAsync<List<string>>("SpaceCenter", "Module_get_EventsById", args);
     }
 
     /// <summary>
@@ -871,7 +871,7 @@ public class Module : RemoteObject
         {
             this
         };
-        return InvokeNonNullable<IDictionary<string,string>>("SpaceCenter", "Module_get_Fields", args);
+        return InvokeNonNullable<Dictionary<string,string>>("SpaceCenter", "Module_get_Fields", args);
     }
 
     /// <summary>
@@ -890,7 +890,7 @@ public class Module : RemoteObject
         {
             this
         };
-        return await InvokeNonNullableAsync<IDictionary<string,string>>("SpaceCenter", "Module_get_Fields", args);
+        return await InvokeNonNullableAsync<Dictionary<string,string>>("SpaceCenter", "Module_get_Fields", args);
     }
 
     /// <summary>
@@ -904,7 +904,7 @@ public class Module : RemoteObject
         {
             this
         };
-        return InvokeNonNullable<IDictionary<string,string>>("SpaceCenter", "Module_get_FieldsById", args);
+        return InvokeNonNullable<Dictionary<string,string>>("SpaceCenter", "Module_get_FieldsById", args);
     }
 
     /// <summary>
@@ -919,7 +919,7 @@ public class Module : RemoteObject
         {
             this
         };
-        return await InvokeNonNullableAsync<IDictionary<string,string>>("SpaceCenter", "Module_get_FieldsById", args);
+        return await InvokeNonNullableAsync<Dictionary<string,string>>("SpaceCenter", "Module_get_FieldsById", args);
     }
 
     /// <summary>

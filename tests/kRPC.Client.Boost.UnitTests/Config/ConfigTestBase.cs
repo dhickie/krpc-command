@@ -1,10 +1,8 @@
-using kRPC.Client.Boost.Config;
-
 namespace kRPC.Client.Boost.UnitTests.Config;
 
 public class ConfigTestBase
 {
-    protected static void AssertConfigHasValidationErrors(Boost.Config.Config config)
+    protected static void AssertConfigHasValidationErrors(Configuration.Config config)
     {
         var errors = new List<string>();
         config.Validate(errors);
@@ -12,7 +10,7 @@ public class ConfigTestBase
         Assert.True(errors.Count > 0);
     }
     
-    protected static void AssertConfigIsValid(Boost.Config.Config config)
+    protected static void AssertConfigIsValid(Configuration.Config config)
     {
         var errors = new List<string>();
         config.Validate(errors);

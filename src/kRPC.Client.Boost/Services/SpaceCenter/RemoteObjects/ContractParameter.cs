@@ -25,7 +25,7 @@ public class ContractParameter : RemoteObject
         {
             this
         };
-        return InvokeNonNullable<IList<ContractParameter>>("SpaceCenter", "ContractParameter_get_Children", args);
+        return InvokeNonNullable<List<ContractParameter>>("SpaceCenter", "ContractParameter_get_Children", args);
     }
 
     /// <summary>
@@ -39,7 +39,7 @@ public class ContractParameter : RemoteObject
         {
             this
         };
-        return await InvokeNonNullableAsync<IList<ContractParameter>>("SpaceCenter", "ContractParameter_get_Children", args);
+        return await InvokeNonNullableAsync<List<ContractParameter>>("SpaceCenter", "ContractParameter_get_Children", args);
     }
 
     /// <summary>
