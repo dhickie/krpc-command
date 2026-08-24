@@ -838,7 +838,7 @@ public class Vessel : RemoteObject
     /// Gets the crew in the vessel.
     /// </summary>
     [GetRpc("SpaceCenter", "Vessel_get_Crew")]
-    public List<CrewMember> GetCrew()
+    public IList<CrewMember> GetCrew()
     {
         var args = new ProcedureArgument[]
         {
@@ -852,7 +852,7 @@ public class Vessel : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [GetRpc("SpaceCenter", "Vessel_get_Crew")]
-    public async Task<List<CrewMember>> GetCrewAsync()
+    public async Task<IList<CrewMember>> GetCrewAsync()
     {
         var args = new ProcedureArgument[]
         {
@@ -948,7 +948,7 @@ public class Vessel : RemoteObject
     /// Returns the 3x3 matrix as a list of elements, in row-major order.
     /// </summary>
     [GetRpc("SpaceCenter", "Vessel_get_InertiaTensor")]
-    public List<double> GetInertiaTensor()
+    public IList<double> GetInertiaTensor()
     {
         var args = new ProcedureArgument[]
         {
@@ -964,7 +964,7 @@ public class Vessel : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [GetRpc("SpaceCenter", "Vessel_get_InertiaTensor")]
-    public async Task<List<double>> GetInertiaTensorAsync()
+    public async Task<IList<double>> GetInertiaTensorAsync()
     {
         var args = new ProcedureArgument[]
         {

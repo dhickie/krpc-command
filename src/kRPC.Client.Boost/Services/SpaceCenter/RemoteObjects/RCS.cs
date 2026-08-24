@@ -498,7 +498,7 @@ public class RCS : RemoteObject
     /// Gets the names of resources that the RCS consumes.
     /// </summary>
     [GetRpc("SpaceCenter", "RCS_get_Propellants")]
-    public List<string> GetPropellants()
+    public IList<string> GetPropellants()
     {
         var args = new ProcedureArgument[]
         {
@@ -512,7 +512,7 @@ public class RCS : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [GetRpc("SpaceCenter", "RCS_get_Propellants")]
-    public async Task<List<string>> GetPropellantsAsync()
+    public async Task<IList<string>> GetPropellantsAsync()
     {
         var args = new ProcedureArgument[]
         {
@@ -728,7 +728,7 @@ public class RCS : RemoteObject
     /// Gets a list of thrusters, one of each nozzel in the RCS part.
     /// </summary>
     [GetRpc("SpaceCenter", "RCS_get_Thrusters")]
-    public List<Thruster> GetThrusters()
+    public IList<Thruster> GetThrusters()
     {
         var args = new ProcedureArgument[]
         {
@@ -742,7 +742,7 @@ public class RCS : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [GetRpc("SpaceCenter", "RCS_get_Thrusters")]
-    public async Task<List<Thruster>> GetThrustersAsync()
+    public async Task<IList<Thruster>> GetThrustersAsync()
     {
         var args = new ProcedureArgument[]
         {

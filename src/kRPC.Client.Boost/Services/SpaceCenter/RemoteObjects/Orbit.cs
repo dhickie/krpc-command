@@ -96,7 +96,7 @@ public class Orbit : RemoteObject
     /// <param name="target">Target orbit.</param>
     /// <param name="orbits">The number of future orbits to search.</param>
     [GetRpc("SpaceCenter", "Orbit_ListClosestApproaches")]
-    public List<List<double>> GetListClosestApproaches(Orbit target, int orbits)
+    public IList<List<double>> GetListClosestApproaches(Orbit target, int orbits)
     {
         var args = new ProcedureArgument[]
         {
@@ -119,7 +119,7 @@ public class Orbit : RemoteObject
     /// <param name="target">Target orbit.</param>
     /// <param name="orbits">The number of future orbits to search.</param>
     [GetRpc("SpaceCenter", "Orbit_ListClosestApproaches")]
-    public async Task<List<List<double>>> GetListClosestApproachesAsync(Orbit target, int orbits)
+    public async Task<IList<List<double>>> GetListClosestApproachesAsync(Orbit target, int orbits)
     {
         var args = new ProcedureArgument[]
         {

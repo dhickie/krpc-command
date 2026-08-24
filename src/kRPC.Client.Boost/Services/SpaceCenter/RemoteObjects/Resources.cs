@@ -115,7 +115,7 @@ public class Resources : RemoteObject
     /// All the individual resources with the given name that can be stored.
     /// </summary>
     [GetRpc("SpaceCenter", "Resources_WithResource")]
-    public List<Resource> GetResourcesWithName(string name)
+    public IList<Resource> GetResourcesWithName(string name)
     {
         var args = new ProcedureArgument[]
         {
@@ -130,7 +130,7 @@ public class Resources : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [GetRpc("SpaceCenter", "Resources_WithResource")]
-    public async Task<List<Resource>> GetResourcesWithNameAsync(string name)
+    public async Task<IList<Resource>> GetResourcesWithNameAsync(string name)
     {
         var args = new ProcedureArgument[]
         {
@@ -202,7 +202,7 @@ public class Resources : RemoteObject
     /// Gets all the individual resources that can be stored.
     /// </summary>
     [GetRpc("SpaceCenter", "Resources_get_All")]
-    public List<Resource> GetAll()
+    public IList<Resource> GetAll()
     {
         var args = new ProcedureArgument[]
         {
@@ -216,7 +216,7 @@ public class Resources : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [GetRpc("SpaceCenter", "Resources_get_All")]
-    public async Task<List<Resource>> GetAllAsync()
+    public async Task<IList<Resource>> GetAllAsync()
     {
         var args = new ProcedureArgument[]
         {
@@ -295,7 +295,7 @@ public class Resources : RemoteObject
     /// Gets a list of resource names that can be stored.
     /// </summary>
     [GetRpc("SpaceCenter", "Resources_get_Names")]
-    public List<string> GetNames()
+    public IList<string> GetNames()
     {
         var args = new ProcedureArgument[]
         {
@@ -309,7 +309,7 @@ public class Resources : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [GetRpc("SpaceCenter", "Resources_get_Names")]
-    public async Task<List<string>> GetNamesAsync()
+    public async Task<IList<string>> GetNamesAsync()
     {
         var args = new ProcedureArgument[]
         {

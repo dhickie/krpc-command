@@ -133,7 +133,7 @@ public class ResourceDrain : RemoteObject
     /// Gets the list of available resources.
     /// </summary>
     [GetRpc("SpaceCenter", "ResourceDrain_get_AvailableResources")]
-    public List<Resource> GetAvailableResources()
+    public IList<Resource> GetAvailableResources()
     {
         var args = new ProcedureArgument[]
         {
@@ -147,7 +147,7 @@ public class ResourceDrain : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [GetRpc("SpaceCenter", "ResourceDrain_get_AvailableResources")]
-    public async Task<List<Resource>> GetAvailableResourcesAsync()
+    public async Task<IList<Resource>> GetAvailableResourcesAsync()
     {
         var args = new ProcedureArgument[]
         {

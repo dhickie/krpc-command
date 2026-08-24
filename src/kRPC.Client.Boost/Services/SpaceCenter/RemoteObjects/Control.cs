@@ -33,7 +33,7 @@ public class Control : RemoteObject
     /// Throws an exception if staging is locked.
     /// </remarks>
     [SetRpc("SpaceCenter", "Control_ActivateNextStage")]
-    public List<Vessel> ActivateNextStage()
+    public IList<Vessel> ActivateNextStage()
     {
         var args = new ProcedureArgument[]
         {
@@ -54,7 +54,7 @@ public class Control : RemoteObject
     /// Throws an exception if staging is locked.
     /// </remarks>
     [SetRpc("SpaceCenter", "Control_ActivateNextStage")]
-    public async Task<List<Vessel>> ActivateNextStageAsync()
+    public async Task<IList<Vessel>> ActivateNextStageAsync()
     {
         var args = new ProcedureArgument[]
         {
@@ -1163,7 +1163,7 @@ public class Control : RemoteObject
     /// Returns a list of all existing maneuver nodes, ordered by time from first to last.
     /// </summary>
     [GetRpc("SpaceCenter", "Control_get_Nodes")]
-    public List<Node> GetNodes()
+    public IList<Node> GetNodes()
     {
         var args = new ProcedureArgument[]
         {
@@ -1177,7 +1177,7 @@ public class Control : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [GetRpc("SpaceCenter", "Control_get_Nodes")]
-    public async Task<List<Node>> GetNodesAsync()
+    public async Task<IList<Node>> GetNodesAsync()
     {
         var args = new ProcedureArgument[]
         {

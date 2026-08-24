@@ -745,7 +745,7 @@ public class Module : RemoteObject
     /// be assigned to action groups in the in-game editor.
     /// </summary>
     [GetRpc("SpaceCenter", "Module_get_Actions")]
-    public List<string> GetActions()
+    public IList<string> GetActions()
     {
         var args = new ProcedureArgument[]
         {
@@ -760,7 +760,7 @@ public class Module : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [GetRpc("SpaceCenter", "Module_get_Actions")]
-    public async Task<List<string>> GetActionsAsync()
+    public async Task<IList<string>> GetActionsAsync()
     {
         var args = new ProcedureArgument[]
         {
@@ -774,7 +774,7 @@ public class Module : RemoteObject
     /// that can be assigned to action groups in the in-game editor.
     /// </summary>
     [GetRpc("SpaceCenter", "Module_get_ActionsById")]
-    public List<string> GetActionsById()
+    public IList<string> GetActionsById()
     {
         var args = new ProcedureArgument[]
         {
@@ -789,7 +789,7 @@ public class Module : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [GetRpc("SpaceCenter", "Module_get_ActionsById")]
-    public async Task<List<string>> GetActionsByIdAsync()
+    public async Task<IList<string>> GetActionsByIdAsync()
     {
         var args = new ProcedureArgument[]
         {
@@ -803,7 +803,7 @@ public class Module : RemoteObject
     /// visible in the right-click menu of the part.
     /// </summary>
     [GetRpc("SpaceCenter", "Module_get_Events")]
-    public List<string> GetEvents()
+    public IList<string> GetEvents()
     {
         var args = new ProcedureArgument[]
         {
@@ -818,7 +818,7 @@ public class Module : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [GetRpc("SpaceCenter", "Module_get_Events")]
-    public async Task<List<string>> GetEventsAsync()
+    public async Task<IList<string>> GetEventsAsync()
     {
         var args = new ProcedureArgument[]
         {
@@ -832,7 +832,7 @@ public class Module : RemoteObject
     /// visible in the right-click menu of the part.
     /// </summary>
     [GetRpc("SpaceCenter", "Module_get_EventsById")]
-    public List<string> GetEventsById()
+    public IList<string> GetEventsById()
     {
         var args = new ProcedureArgument[]
         {
@@ -847,7 +847,7 @@ public class Module : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [GetRpc("SpaceCenter", "Module_get_EventsById")]
-    public async Task<List<string>> GetEventsByIdAsync()
+    public async Task<IList<string>> GetEventsByIdAsync()
     {
         var args = new ProcedureArgument[]
         {

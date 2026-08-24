@@ -343,7 +343,7 @@ public class Contract : RemoteObject
     /// Keywords for the contract.
     /// </summary>
     [GetRpc("SpaceCenter", "Contract_get_Keywords")]
-    public List<string> GetKeywords()
+    public IList<string> GetKeywords()
     {
         var args = new ProcedureArgument[]
         {
@@ -357,7 +357,7 @@ public class Contract : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [GetRpc("SpaceCenter", "Contract_get_Keywords")]
-    public async Task<List<string>> GetKeywordsAsync()
+    public async Task<IList<string>> GetKeywordsAsync()
     {
         var args = new ProcedureArgument[]
         {
@@ -397,7 +397,7 @@ public class Contract : RemoteObject
     /// Parameters for the contract.
     /// </summary>
     [GetRpc("SpaceCenter", "Contract_get_Parameters")]
-    public List<ContractParameter> GetParameters()
+    public IList<ContractParameter> GetParameters()
     {
         var args = new ProcedureArgument[]
         {
@@ -411,7 +411,7 @@ public class Contract : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [GetRpc("SpaceCenter", "Contract_get_Parameters")]
-    public async Task<List<ContractParameter>> GetParametersAsync()
+    public async Task<IList<ContractParameter>> GetParametersAsync()
     {
         var args = new ProcedureArgument[]
         {

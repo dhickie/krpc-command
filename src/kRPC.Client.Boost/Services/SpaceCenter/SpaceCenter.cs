@@ -319,7 +319,7 @@ public class SpaceCenter : ServiceObject
     /// <param name="craftDirectory">Name of the directory in the current saves
     /// "Ships" directory. For example <c>"VAB"</c> or <c>"SPH"</c>.</param>
     [GetRpc("SpaceCenter", "LaunchableVessels")]
-    public List<string> GetLaunchableVessels(string craftDirectory)
+    public IList<string> GetLaunchableVessels(string craftDirectory)
     {
         var args = new ProcedureArgument[]
         {
@@ -336,7 +336,7 @@ public class SpaceCenter : ServiceObject
     /// <param name="craftDirectory">Name of the directory in the current saves
     /// "Ships" directory. For example <c>"VAB"</c> or <c>"SPH"</c>.</param>
     [GetRpc("SpaceCenter", "LaunchableVessels")]
-    public async Task<List<string>> GetLaunchableVesselsAsync(string craftDirectory)
+    public async Task<IList<string>> GetLaunchableVesselsAsync(string craftDirectory)
     {
         var args = new ProcedureArgument[]
         {
@@ -1092,7 +1092,7 @@ public class SpaceCenter : ServiceObject
     /// Gets a list of available launch sites.
     /// </summary>
     [GetRpc("SpaceCenter", "get_LaunchSites")]
-    public List<LaunchSite> GetLaunchSites()
+    public IList<LaunchSite> GetLaunchSites()
     {
         return InvokeNonNullable<List<LaunchSite>>("SpaceCenter", "get_LaunchSites");
     }
@@ -1102,7 +1102,7 @@ public class SpaceCenter : ServiceObject
     /// Executes asynchronously.
     /// </summary>
     [GetRpc("SpaceCenter", "get_LaunchSites")]
-    public async Task<List<LaunchSite>> GetLaunchSitesAsync()
+    public async Task<IList<LaunchSite>> GetLaunchSitesAsync()
     {
         return await InvokeNonNullableAsync<List<LaunchSite>>("SpaceCenter", "get_LaunchSites");
     }
@@ -1609,7 +1609,7 @@ public class SpaceCenter : ServiceObject
     /// Gets a list of all the vessels in the game.
     /// </summary>
     [GetRpc("SpaceCenter", "get_Vessels")]
-    public List<Vessel> GetVessels()
+    public IList<Vessel> GetVessels()
     {
         return InvokeNonNullable<List<Vessel>>("SpaceCenter", "get_Vessels");
     }
@@ -1619,7 +1619,7 @@ public class SpaceCenter : ServiceObject
     /// Executes asynchronously.
     /// </summary>
     [GetRpc("SpaceCenter", "get_Vessels")]
-    public async Task<List<Vessel>> GetVesselsAsync()
+    public async Task<IList<Vessel>> GetVesselsAsync()
     {
         return await InvokeNonNullableAsync<List<Vessel>>("SpaceCenter", "get_Vessels");
     }

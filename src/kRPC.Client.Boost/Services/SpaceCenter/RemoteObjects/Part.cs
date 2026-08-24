@@ -539,7 +539,7 @@ public class Part : RemoteObject
     /// parts tree.
     /// </summary>
     [GetRpc("SpaceCenter", "Part_get_Children")]
-    public List<Part> GetChildren()
+    public IList<Part> GetChildren()
     {
         var args = new ProcedureArgument[]
         {
@@ -555,7 +555,7 @@ public class Part : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [GetRpc("SpaceCenter", "Part_get_Children")]
-    public async Task<List<Part>> GetChildrenAsync()
+    public async Task<IList<Part>> GetChildrenAsync()
     {
         var args = new ProcedureArgument[]
         {
@@ -854,7 +854,7 @@ public class Part : RemoteObject
     /// Gets a list of <see cref="T:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Experiment" /> objects that the part contains.
     /// </summary>
     [GetRpc("SpaceCenter", "Part_get_Experiments")]
-    public List<Experiment> GetExperiments()
+    public IList<Experiment> GetExperiments()
     {
         var args = new ProcedureArgument[]
         {
@@ -868,7 +868,7 @@ public class Part : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [GetRpc("SpaceCenter", "Part_get_Experiments")]
-    public async Task<List<Experiment>> GetExperimentsAsync()
+    public async Task<IList<Experiment>> GetExperimentsAsync()
     {
         var args = new ProcedureArgument[]
         {
@@ -967,7 +967,7 @@ public class Part : RemoteObject
     /// fuel line is into this part.
     /// </summary>
     [GetRpc("SpaceCenter", "Part_get_FuelLinesFrom")]
-    public List<Part> GetFuelLinesFrom()
+    public IList<Part> GetFuelLinesFrom()
     {
         var args = new ProcedureArgument[]
         {
@@ -982,7 +982,7 @@ public class Part : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [GetRpc("SpaceCenter", "Part_get_FuelLinesFrom")]
-    public async Task<List<Part>> GetFuelLinesFromAsync()
+    public async Task<IList<Part>> GetFuelLinesFromAsync()
     {
         var args = new ProcedureArgument[]
         {
@@ -996,7 +996,7 @@ public class Part : RemoteObject
     /// fuel line is out of this part.
     /// </summary>
     [GetRpc("SpaceCenter", "Part_get_FuelLinesTo")]
-    public List<Part> GetFuelLinesTo()
+    public IList<Part> GetFuelLinesTo()
     {
         var args = new ProcedureArgument[]
         {
@@ -1011,7 +1011,7 @@ public class Part : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [GetRpc("SpaceCenter", "Part_get_FuelLinesTo")]
-    public async Task<List<Part>> GetFuelLinesToAsync()
+    public async Task<IList<Part>> GetFuelLinesToAsync()
     {
         var args = new ProcedureArgument[]
         {
@@ -1198,7 +1198,7 @@ public class Part : RemoteObject
     /// Returns the 3x3 matrix as a list of elements, in row-major order.
     /// </summary>
     [GetRpc("SpaceCenter", "Part_get_InertiaTensor")]
-    public List<double> GetInertiaTensor()
+    public IList<double> GetInertiaTensor()
     {
         var args = new ProcedureArgument[]
         {
@@ -1214,7 +1214,7 @@ public class Part : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [GetRpc("SpaceCenter", "Part_get_InertiaTensor")]
-    public async Task<List<double>> GetInertiaTensorAsync()
+    public async Task<IList<double>> GetInertiaTensorAsync()
     {
         var args = new ProcedureArgument[]
         {
@@ -1484,7 +1484,7 @@ public class Part : RemoteObject
     /// Gets the modules for this part.
     /// </summary>
     [GetRpc("SpaceCenter", "Part_get_Modules")]
-    public List<Module> GetModules()
+    public IList<Module> GetModules()
     {
         var args = new ProcedureArgument[]
         {
@@ -1498,7 +1498,7 @@ public class Part : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [GetRpc("SpaceCenter", "Part_get_Modules")]
-    public async Task<List<Module>> GetModulesAsync()
+    public async Task<IList<Module>> GetModulesAsync()
     {
         var args = new ProcedureArgument[]
         {

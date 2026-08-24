@@ -77,7 +77,7 @@ public class CrewMember : RemoteObject
     /// Gets the flight IDs for each entry in the career flight log.
     /// </summary>
     [GetRpc("SpaceCenter", "CrewMember_get_CareerLogFlights")]
-    public List<int> GetCareerLogFlights()
+    public IList<int> GetCareerLogFlights()
     {
         var args = new ProcedureArgument[]
         {
@@ -91,7 +91,7 @@ public class CrewMember : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [GetRpc("SpaceCenter", "CrewMember_get_CareerLogFlights")]
-    public async Task<List<int>> GetCareerLogFlightsAsync()
+    public async Task<IList<int>> GetCareerLogFlightsAsync()
     {
         var args = new ProcedureArgument[]
         {
@@ -104,7 +104,7 @@ public class CrewMember : RemoteObject
     /// Gets the body name for each entry in the career flight log.
     /// </summary>
     [GetRpc("SpaceCenter", "CrewMember_get_CareerLogTargets")]
-    public List<string> GetCareerLogTargets()
+    public IList<string> GetCareerLogTargets()
     {
         var args = new ProcedureArgument[]
         {
@@ -118,7 +118,7 @@ public class CrewMember : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [GetRpc("SpaceCenter", "CrewMember_get_CareerLogTargets")]
-    public async Task<List<string>> GetCareerLogTargetsAsync()
+    public async Task<IList<string>> GetCareerLogTargetsAsync()
     {
         var args = new ProcedureArgument[]
         {
@@ -131,7 +131,7 @@ public class CrewMember : RemoteObject
     /// Gets the type for each entry in the career flight log.
     /// </summary>
     [GetRpc("SpaceCenter", "CrewMember_get_CareerLogTypes")]
-    public List<string> GetCareerLogTypes()
+    public IList<string> GetCareerLogTypes()
     {
         var args = new ProcedureArgument[]
         {
@@ -145,7 +145,7 @@ public class CrewMember : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [GetRpc("SpaceCenter", "CrewMember_get_CareerLogTypes")]
-    public async Task<List<string>> GetCareerLogTypesAsync()
+    public async Task<IList<string>> GetCareerLogTypesAsync()
     {
         var args = new ProcedureArgument[]
         {

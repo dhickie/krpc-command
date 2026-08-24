@@ -24,7 +24,6 @@ namespace kRPC.Client.Boost.IntegrationTests.Tests;
 public class SpaceCenterTests
 {
     private readonly Fixture _fixture;
-    private readonly IConnectionMultiplexer _fakeConnection;
     
     private readonly ConnectionConfig _connectionConfig = new()
     {
@@ -43,7 +42,6 @@ public class SpaceCenterTests
         _fixture.Customize<Quaternion>(c => c.FromFactory(
             new MethodInvoker(
                 new GreedyConstructorQuery()))); // Needed to ensure the right constructor is used
-        _fakeConnection = Substitute.For<IConnectionMultiplexer>();
     }
 
     [Fact]

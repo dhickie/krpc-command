@@ -20,7 +20,7 @@ public class ContractManager : RemoteObject
     /// Gets a list of all active contracts.
     /// </summary>
     [GetRpc("SpaceCenter", "ContractManager_get_ActiveContracts")]
-    public List<Contract> GetActiveContracts()
+    public IList<Contract> GetActiveContracts()
     {
         var args = new ProcedureArgument[]
         {
@@ -34,7 +34,7 @@ public class ContractManager : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [GetRpc("SpaceCenter", "ContractManager_get_ActiveContracts")]
-    public async Task<List<Contract>> GetActiveContractsAsync()
+    public async Task<IList<Contract>> GetActiveContractsAsync()
     {
         var args = new ProcedureArgument[]
         {
@@ -47,7 +47,7 @@ public class ContractManager : RemoteObject
     /// Gets a list of all contracts.
     /// </summary>
     [GetRpc("SpaceCenter", "ContractManager_get_AllContracts")]
-    public List<Contract> GetAllContracts()
+    public IList<Contract> GetAllContracts()
     {
         var args = new ProcedureArgument[]
         {
@@ -61,7 +61,7 @@ public class ContractManager : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [GetRpc("SpaceCenter", "ContractManager_get_AllContracts")]
-    public async Task<List<Contract>> GetAllContractsAsync()
+    public async Task<IList<Contract>> GetAllContractsAsync()
     {
         var args = new ProcedureArgument[]
         {
@@ -74,7 +74,7 @@ public class ContractManager : RemoteObject
     /// Gets a list of all completed contracts.
     /// </summary>
     [GetRpc("SpaceCenter", "ContractManager_get_CompletedContracts")]
-    public List<Contract> GetCompletedContracts()
+    public IList<Contract> GetCompletedContracts()
     {
         var args = new ProcedureArgument[]
         {
@@ -88,7 +88,7 @@ public class ContractManager : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [GetRpc("SpaceCenter", "ContractManager_get_CompletedContracts")]
-    public async Task<List<Contract>> GetCompletedContractsAsync()
+    public async Task<IList<Contract>> GetCompletedContractsAsync()
     {
         var args = new ProcedureArgument[]
         {
@@ -101,7 +101,7 @@ public class ContractManager : RemoteObject
     /// Gets a list of all failed contracts.
     /// </summary>
     [GetRpc("SpaceCenter", "ContractManager_get_FailedContracts")]
-    public List<Contract> GetFailedContracts()
+    public IList<Contract> GetFailedContracts()
     {
         var args = new ProcedureArgument[]
         {
@@ -115,7 +115,7 @@ public class ContractManager : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [GetRpc("SpaceCenter", "ContractManager_get_FailedContracts")]
-    public async Task<List<Contract>> GetFailedContractsAsync()
+    public async Task<IList<Contract>> GetFailedContractsAsync()
     {
         var args = new ProcedureArgument[]
         {
@@ -128,7 +128,7 @@ public class ContractManager : RemoteObject
     /// Gets a list of all offered, but unaccepted, contracts.
     /// </summary>
     [GetRpc("SpaceCenter", "ContractManager_get_OfferedContracts")]
-    public List<Contract> GetOfferedContracts()
+    public IList<Contract> GetOfferedContracts()
     {
         var args = new ProcedureArgument[]
         {
@@ -142,7 +142,7 @@ public class ContractManager : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [GetRpc("SpaceCenter", "ContractManager_get_OfferedContracts")]
-    public async Task<List<Contract>> GetOfferedContractsAsync()
+    public async Task<IList<Contract>> GetOfferedContractsAsync()
     {
         var args = new ProcedureArgument[]
         {

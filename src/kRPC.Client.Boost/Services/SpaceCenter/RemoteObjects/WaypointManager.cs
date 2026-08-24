@@ -153,7 +153,7 @@ public class WaypointManager : RemoteObject
     /// Returns all available icons (from "GameData/Squad/Contracts/Icons/").
     /// </summary>
     [GetRpc("SpaceCenter", "WaypointManager_get_Icons")]
-    public List<string> GetIcons()
+    public IList<string> GetIcons()
     {
         var args = new ProcedureArgument[]
         {
@@ -167,7 +167,7 @@ public class WaypointManager : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [GetRpc("SpaceCenter", "WaypointManager_get_Icons")]
-    public async Task<List<string>> GetIconsAsync()
+    public async Task<IList<string>> GetIconsAsync()
     {
         var args = new ProcedureArgument[]
         {
@@ -180,7 +180,7 @@ public class WaypointManager : RemoteObject
     /// Gets a list of all existing waypoints.
     /// </summary>
     [GetRpc("SpaceCenter", "WaypointManager_get_Waypoints")]
-    public List<Waypoint> GetWaypoints()
+    public IList<Waypoint> GetWaypoints()
     {
         var args = new ProcedureArgument[]
         {
@@ -194,7 +194,7 @@ public class WaypointManager : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [GetRpc("SpaceCenter", "WaypointManager_get_Waypoints")]
-    public async Task<List<Waypoint>> GetWaypointsAsync()
+    public async Task<IList<Waypoint>> GetWaypointsAsync()
     {
         var args = new ProcedureArgument[]
         {

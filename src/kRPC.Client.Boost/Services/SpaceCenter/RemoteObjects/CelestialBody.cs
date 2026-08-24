@@ -1338,7 +1338,7 @@ public class CelestialBody : RemoteObject
     /// Gets a list of celestial bodies that are in orbit around this celestial body.
     /// </summary>
     [GetRpc("SpaceCenter", "CelestialBody_get_Satellites")]
-    public List<CelestialBody> GetSatellites()
+    public IList<CelestialBody> GetSatellites()
     {
         var args = new ProcedureArgument[]
         {
@@ -1352,7 +1352,7 @@ public class CelestialBody : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [GetRpc("SpaceCenter", "CelestialBody_get_Satellites")]
-    public async Task<List<CelestialBody>> GetSatellitesAsync()
+    public async Task<IList<CelestialBody>> GetSatellitesAsync()
     {
         var args = new ProcedureArgument[]
         {

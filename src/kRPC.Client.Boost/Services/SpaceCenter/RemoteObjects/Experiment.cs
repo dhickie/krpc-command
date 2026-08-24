@@ -181,7 +181,7 @@ public class Experiment : RemoteObject
     /// Gets the data contained in this experiment.
     /// </summary>
     [GetRpc("SpaceCenter", "Experiment_get_Data")]
-    public List<ScienceData> GetData()
+    public IList<ScienceData> GetData()
     {
         var args = new ProcedureArgument[]
         {
@@ -195,7 +195,7 @@ public class Experiment : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     [GetRpc("SpaceCenter", "Experiment_get_Data")]
-    public async Task<List<ScienceData>> GetDataAsync()
+    public async Task<IList<ScienceData>> GetDataAsync()
     {
         var args = new ProcedureArgument[]
         {
