@@ -1,6 +1,6 @@
 ---
 name: krpc-boost-generated-service-migration
-description: "Use when migrating generated kRPC C# service client code to kRPC.Client.Boost conventions. Use this skill whenever the user mentions repeating CONTEXT.md updates, generated kRPC service migrations, kRPC.Client.Boost generated services, ConnectionMultiplexer/IConnectionMultiplexer, ServiceObject/RemoteObject invoke helpers, RemoteObject constructor access, RPCAttribute/Rpc/GetRpcAttribute/SetRpcAttribute/StaticRpcAttribute cleanup, static RPC metadata, GetRpc public method naming, Encoder/Decode removal, ProcedureArgument arrays, IList-to-List RPC return conversion, collection return types, property-to-method conversion, async RPC wrappers, nullable generated RPCs, XML comment cleanup, see cref namespace fixes, or Vector3D/Quaternion/Angle conversions for generated kRPC clients, even if they name a service other than SpaceCenter."
+description: "Use when migrating generated kRPC C# service client code to kRPC.Client.Boost conventions. Use this skill whenever the user mentions repeating CONTEXT.md updates, generated kRPC service migrations, kRPC.Client.Boost generated services, ConnectionMultiplexer/IConnectionMultiplexer, ServiceObject/RemoteObject invoke helpers, RemoteObject constructor access, RPCAttribute/Rpc/GetRpcAttribute/SetRpcAttribute/StaticRpcAttribute cleanup, static RPC metadata, GetRpc public method naming, Encoder/Decode removal, ProcedureArgument arrays, IList-to-List RPC return conversion, ISet-to-HashSet invoke return conversion, collection return types, property-to-method conversion, async RPC wrappers, nullable generated RPCs, XML comment cleanup, see cref namespace fixes, or Vector3D/Quaternion/Angle conversions for generated kRPC clients, even if they name a service other than SpaceCenter."
 ---
 
 # kRPC Boost Generated Service Migration
@@ -94,6 +94,13 @@ Generated collection returns should expose concrete list types:
 - Pass the same concrete list type as the invoke helper generic argument, such as `InvokeNonNullable<List<T>>(...)`, `InvokeNonNullableAsync<List<T>>(...)`, `InvokeNullable<List<T>>(...)`, or `InvokeNullableAsync<List<T>>(...)`.
 - Apply this to both `[GetRpc(...)]` query wrappers and `[SetRpc(...)]` command wrappers that return collections. A command returning a list, such as staging returning affected vessels, still uses `[SetRpc(...)]`.
 - Do not change collection parameters solely because collection returns use `List<T>`. Parameter shape should continue to follow generated defaults and documented nullability unless the user explicitly asks for parameter migration.
+
+Generated set returns should use a concrete transport type:
+
+- Preserve a documented/public `ISet<T>` return type, including `Task<ISet<T>>` for its async counterpart, when that is the generated API contract.
+- Pass `HashSet<T>` as the generic type to the invoke helper for both synchronous and asynchronous wrappers, such as `InvokeNonNullable<HashSet<T>>(...)` and `InvokeNonNullableAsync<HashSet<T>>(...)`. The decoder needs the concrete set type even when the public wrapper exposes the interface.
+- Apply the same rule to nullable set returns with `InvokeNullable<HashSet<T>>(...)` and `InvokeNullableAsync<HashSet<T>>(...)`.
+- Preserve nested element types when selecting `HashSet<T>`; do not change set parameters solely because set returns use `HashSet<T>` at the RPC boundary.
 
 ### 4. Convert Generated Properties to Method Pairs
 
@@ -268,6 +275,7 @@ Check structural invariants:
 - Generated RPC wrappers do not expose `IList<T>` or `Task<IList<T>>` as public return types; use `List<T>` and `Task<List<T>>` instead.
 - Generated nested collection returns use nested concrete lists, such as `List<List<double>>`, not `IList<IList<double>>` or `List<IList<double>>`.
 - Generated collection-return invoke helpers use concrete list generic arguments, such as `InvokeNonNullable<List<T>>`, not `InvokeNonNullable<IList<T>>`.
+- Generated set-return invoke helpers use concrete hash-set generic arguments, such as `InvokeNonNullable<HashSet<T>>` or `InvokeNonNullableAsync<HashSet<T>>`, not `InvokeNonNullable<ISet<T>>` or `InvokeNonNullableAsync<ISet<T>>`, while the public return type may remain `ISet<T>`.
 - Generated wrappers use `ProcedureArgument[]` argument arrays, not `object[]` or `object?[]`.
 - Explicit `ProcedureArgument` construction uses `new(value)` for non-null values and reserves `new(value, typeof(ExpectedType))` for nullable values or intentionally different contract types.
 - Setter XML docs do not describe nullable getter return behavior, and parameter docs mentioning null match the signature default/nullability.

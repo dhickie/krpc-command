@@ -802,7 +802,7 @@ public class CelestialBody : RemoteObject
         {
             this
         };
-        return InvokeNonNullable<ISet<string>>("SpaceCenter", "CelestialBody_get_Biomes", args);
+        return InvokeNonNullable<HashSet<string>>("SpaceCenter", "CelestialBody_get_Biomes", args);
     }
 
     /// <summary>
@@ -816,7 +816,7 @@ public class CelestialBody : RemoteObject
         {
             this
         };
-        return await InvokeNonNullableAsync<ISet<string>>("SpaceCenter", "CelestialBody_get_Biomes", args);
+        return await InvokeNonNullableAsync<HashSet<string>>("SpaceCenter", "CelestialBody_get_Biomes", args);
     }
 
     /// <summary>

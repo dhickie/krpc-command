@@ -161,7 +161,7 @@ public class ContractManager : RemoteObject
         {
             this
         };
-        return InvokeNonNullable<ISet<string>>("SpaceCenter", "ContractManager_get_Types", args);
+        return InvokeNonNullable<HashSet<string>>("SpaceCenter", "ContractManager_get_Types", args);
     }
 
     /// <summary>
@@ -175,6 +175,6 @@ public class ContractManager : RemoteObject
         {
             this
         };
-        return await InvokeNonNullableAsync<ISet<string>>("SpaceCenter", "ContractManager_get_Types", args);
+        return await InvokeNonNullableAsync<HashSet<string>>("SpaceCenter", "ContractManager_get_Types", args);
     }
 }
