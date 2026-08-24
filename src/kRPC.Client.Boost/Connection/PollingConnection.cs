@@ -81,13 +81,23 @@ internal abstract class PollingConnection<TRequest,TConnection> : Connection, ID
         var success = false;
         
         sw.Start();
-        
+
         while (true)
         {
-            var request = _requestQueue.Take(_disposeTokenSource.Token);
+            TRequest request;
+            try
+            {
+                request = _requestQueue.Take(_disposeTokenSource.Token);
+            }
+            catch (OperationCanceledException)
+            {
+                _logger!.LogInformation("Connection disposed - stopping polling thread.");
+                break;
+            }
+                
             LogRequestStart(request);
             var start = sw.Elapsed;
-            
+
             try
             {
                 if (!_responses.TryGetValue(request.RequestId, out var response))
