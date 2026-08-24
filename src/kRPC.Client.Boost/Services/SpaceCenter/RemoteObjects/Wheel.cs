@@ -844,6 +844,7 @@ public class Wheel : RemoteObject
     /// <summary>
     /// Gets the steering angle limit.
     /// </summary>
+    [AngleConversion(AngleType.Degrees, typeof(float))]
     [GetRpc("SpaceCenter", "Wheel_get_SteeringAngleLimit")]
     public Angle GetSteeringAngleLimit()
     {
@@ -859,6 +860,7 @@ public class Wheel : RemoteObject
     /// Gets the steering angle limit.
     /// Executes asynchronously.
     /// </summary>
+    [AngleConversion(AngleType.Degrees, typeof(float))]
     [GetRpc("SpaceCenter", "Wheel_get_SteeringAngleLimit")]
     public async Task<Angle> GetSteeringAngleLimitAsync()
     {

@@ -274,6 +274,7 @@ public class RoboticPiston : RemoteObject
     /// <summary>
     /// Gets the target movement rate as an angle per second.
     /// </summary>
+    [AngleConversion(AngleType.Degrees, typeof(float))]
     [GetRpc("SpaceCenter", "RoboticPiston_get_Rate")]
     public Angle GetRate()
     {
@@ -289,6 +290,7 @@ public class RoboticPiston : RemoteObject
     /// Gets the target movement rate as an angle per second.
     /// Executes asynchronously.
     /// </summary>
+    [AngleConversion(AngleType.Degrees, typeof(float))]
     [GetRpc("SpaceCenter", "RoboticPiston_get_Rate")]
     public async Task<Angle> GetRateAsync()
     {

@@ -100,6 +100,7 @@ public class Flight : RemoteObject
     /// <summary>
     /// Gets the pitch angle between the orientation of the vessel and its velocity vector.
     /// </summary>
+    [AngleConversion(AngleType.Degrees, typeof(float))]
     [GetRpc("SpaceCenter", "Flight_get_AngleOfAttack")]
     public Angle GetAngleOfAttack()
     {
@@ -115,6 +116,7 @@ public class Flight : RemoteObject
     /// Gets the pitch angle between the orientation of the vessel and its velocity vector.
     /// Executes asynchronously.
     /// </summary>
+    [AngleConversion(AngleType.Degrees, typeof(float))]
     [GetRpc("SpaceCenter", "Flight_get_AngleOfAttack")]
     public async Task<Angle> GetAngleOfAttackAsync()
     {
@@ -527,6 +529,7 @@ public class Flight : RemoteObject
     /// Gets the heading of the vessel (its angle relative to north).
     /// A value between 0° and 360°.
     /// </summary>
+    [AngleConversion(AngleType.Degrees, typeof(float))]
     [GetRpc("SpaceCenter", "Flight_get_Heading")]
     public Angle GetHeading()
     {
@@ -543,6 +546,7 @@ public class Flight : RemoteObject
     /// A value between 0° and 360°.
     /// Executes asynchronously.
     /// </summary>
+    [AngleConversion(AngleType.Degrees, typeof(float))]
     [GetRpc("SpaceCenter", "Flight_get_Heading")]
     public async Task<Angle> GetHeadingAsync()
     {
@@ -586,6 +590,7 @@ public class Flight : RemoteObject
     /// <summary>
     /// Gets the <a href="https://en.wikipedia.org/wiki/Latitude">latitude</a> of the vessel for the body being orbited.
     /// </summary>
+    [AngleConversion(AngleType.Degrees, typeof(double))]
     [GetRpc("SpaceCenter", "Flight_get_Latitude")]
     public Angle GetLatitude()
     {
@@ -601,6 +606,7 @@ public class Flight : RemoteObject
     /// Gets the <a href="https://en.wikipedia.org/wiki/Latitude">latitude</a> of the vessel for the body being orbited.
     /// Executes asynchronously.
     /// </summary>
+    [AngleConversion(AngleType.Degrees, typeof(double))]
     [GetRpc("SpaceCenter", "Flight_get_Latitude")]
     public async Task<Angle> GetLatitudeAsync()
     {
@@ -683,6 +689,7 @@ public class Flight : RemoteObject
     /// <summary>
     /// Gets the <a href="https://en.wikipedia.org/wiki/Longitude">longitude</a> of the vessel for the body being orbited.
     /// </summary>
+    [AngleConversion(AngleType.Degrees, typeof(double))]
     [GetRpc("SpaceCenter", "Flight_get_Longitude")]
     public Angle GetLongitude()
     {
@@ -698,6 +705,7 @@ public class Flight : RemoteObject
     /// Gets the <a href="https://en.wikipedia.org/wiki/Longitude">longitude</a> of the vessel for the body being orbited.
     /// Executes asynchronously.
     /// </summary>
+    [AngleConversion(AngleType.Degrees, typeof(double))]
     [GetRpc("SpaceCenter", "Flight_get_Longitude")]
     public async Task<Angle> GetLongitudeAsync()
     {
@@ -800,6 +808,7 @@ public class Flight : RemoteObject
     /// Gets the pitch of the vessel relative to the horizon.
     /// A value between -90° and +90°.
     /// </summary>
+    [AngleConversion(AngleType.Degrees, typeof(float))]
     [GetRpc("SpaceCenter", "Flight_get_Pitch")]
     public Angle GetPitch()
     {
@@ -816,6 +825,7 @@ public class Flight : RemoteObject
     /// A value between -90° and +90°.
     /// Executes asynchronously.
     /// </summary>
+    [AngleConversion(AngleType.Degrees, typeof(float))]
     [GetRpc("SpaceCenter", "Flight_get_Pitch")]
     public async Task<Angle> GetPitchAsync()
     {
@@ -957,6 +967,7 @@ public class Flight : RemoteObject
     /// Gets the roll of the vessel relative to the horizon.
     /// A value between -180° and +180°.
     /// </summary>
+    [AngleConversion(AngleType.Degrees, typeof(float))]
     [GetRpc("SpaceCenter", "Flight_get_Roll")]
     public Angle GetRoll()
     {
@@ -973,6 +984,7 @@ public class Flight : RemoteObject
     /// A value between -180° and +180°.
     /// Executes asynchronously.
     /// </summary>
+    [AngleConversion(AngleType.Degrees, typeof(float))]
     [GetRpc("SpaceCenter", "Flight_get_Roll")]
     public async Task<Angle> GetRollAsync()
     {
@@ -1016,6 +1028,7 @@ public class Flight : RemoteObject
     /// <summary>
     /// Gets the yaw angle between the orientation of the vessel and its velocity vector.
     /// </summary>
+    [AngleConversion(AngleType.Degrees, typeof(float))]
     [GetRpc("SpaceCenter", "Flight_get_SideslipAngle")]
     public Angle GetSideslipAngle()
     {
@@ -1031,6 +1044,7 @@ public class Flight : RemoteObject
     /// Gets the yaw angle between the orientation of the vessel and its velocity vector.
     /// Executes asynchronously.
     /// </summary>
+    [AngleConversion(AngleType.Degrees, typeof(float))]
     [GetRpc("SpaceCenter", "Flight_get_SideslipAngle")]
     public async Task<Angle> GetSideslipAngleAsync()
     {

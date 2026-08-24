@@ -530,6 +530,7 @@ public class Engine : RemoteObject
     /// Gets the range over which the gimbal can move.
     /// Returns 0 if the engine is not gimballed.
     /// </summary>
+    [AngleConversion(AngleType.Degrees, typeof(float))]
     [GetRpc("SpaceCenter", "Engine_get_GimbalRange")]
     public Angle GetGimbalRange()
     {
@@ -546,6 +547,7 @@ public class Engine : RemoteObject
     /// Returns 0 if the engine is not gimballed.
     /// Executes asynchronously.
     /// </summary>
+    [AngleConversion(AngleType.Degrees, typeof(float))]
     [GetRpc("SpaceCenter", "Engine_get_GimbalRange")]
     public async Task<Angle> GetGimbalRangeAsync()
     {

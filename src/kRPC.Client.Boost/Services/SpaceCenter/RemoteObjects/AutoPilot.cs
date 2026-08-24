@@ -148,6 +148,7 @@ public class AutoPilot : RemoteObject
     /// A vector of three angles, one for each of the pitch, roll and yaw axes.
     /// Defaults to 1° for each axis.
     /// </summary>
+    [AngleConversion(AngleType.Degrees, typeof(double))]
     [GetRpc("SpaceCenter", "AutoPilot_get_AttenuationAngle")]
     public Tuple<Angle,Angle,Angle> GetAttenuationAngle()
     {
@@ -167,6 +168,7 @@ public class AutoPilot : RemoteObject
     /// Defaults to 1° for each axis.
     /// Executes asynchronously.
     /// </summary>
+    [AngleConversion(AngleType.Degrees, typeof(double))]
     [GetRpc("SpaceCenter", "AutoPilot_get_AttenuationAngle")]
     public async Task<Tuple<Angle,Angle,Angle>> GetAttenuationAngleAsync()
     {
@@ -358,6 +360,7 @@ public class AutoPilot : RemoteObject
     /// to point in and the direction it is pointing in. Throws an exception if the auto-pilot
     /// has not been engaged and SAS is not enabled or is in stability assist mode.
     /// </summary>
+    [AngleConversion(AngleType.Degrees, typeof(float))]
     [GetRpc("SpaceCenter", "AutoPilot_get_Error")]
     public Angle GetError()
     {
@@ -375,6 +378,7 @@ public class AutoPilot : RemoteObject
     /// has not been engaged and SAS is not enabled or is in stability assist mode.
     /// Executes asynchronously.
     /// </summary>
+    [AngleConversion(AngleType.Degrees, typeof(float))]
     [GetRpc("SpaceCenter", "AutoPilot_get_Error")]
     public async Task<Angle> GetErrorAsync()
     {
@@ -390,6 +394,7 @@ public class AutoPilot : RemoteObject
     /// Gets the error between the vessels current and target heading.
     /// Throws an exception if the auto-pilot has not been engaged.
     /// </summary>
+    [AngleConversion(AngleType.Degrees, typeof(float))]
     [GetRpc("SpaceCenter", "AutoPilot_get_HeadingError")]
     public Angle GetHeadingError()
     {
@@ -406,6 +411,7 @@ public class AutoPilot : RemoteObject
     /// Throws an exception if the auto-pilot has not been engaged.
     /// Executes asynchronously.
     /// </summary>
+    [AngleConversion(AngleType.Degrees, typeof(float))]
     [GetRpc("SpaceCenter", "AutoPilot_get_HeadingError")]
     public async Task<Angle> GetHeadingErrorAsync()
     {
@@ -487,6 +493,7 @@ public class AutoPilot : RemoteObject
     /// Gets the error between the vessels current and target pitch.
     /// Throws an exception if the auto-pilot has not been engaged.
     /// </summary>
+    [AngleConversion(AngleType.Degrees, typeof(float))]
     [GetRpc("SpaceCenter", "AutoPilot_get_PitchError")]
     public Angle GetPitchError()
     {
@@ -503,6 +510,7 @@ public class AutoPilot : RemoteObject
     /// Throws an exception if the auto-pilot has not been engaged.
     /// Executes asynchronously.
     /// </summary>
+    [AngleConversion(AngleType.Degrees, typeof(float))]
     [GetRpc("SpaceCenter", "AutoPilot_get_PitchError")]
     public async Task<Angle> GetPitchErrorAsync()
     {
@@ -652,6 +660,7 @@ public class AutoPilot : RemoteObject
     /// Gets the error between the vessels current and target roll.
     /// Throws an exception if the auto-pilot has not been engaged or no target roll is set.
     /// </summary>
+    [AngleConversion(AngleType.Degrees, typeof(float))]
     [GetRpc("SpaceCenter", "AutoPilot_get_RollError")]
     public Angle GetRollError()
     {
@@ -668,6 +677,7 @@ public class AutoPilot : RemoteObject
     /// Throws an exception if the auto-pilot has not been engaged or no target roll is set.
     /// Executes asynchronously.
     /// </summary>
+    [AngleConversion(AngleType.Degrees, typeof(float))]
     [GetRpc("SpaceCenter", "AutoPilot_get_RollError")]
     public async Task<Angle> GetRollErrorAsync()
     {
@@ -749,6 +759,7 @@ public class AutoPilot : RemoteObject
     /// Gets the threshold at which the autopilot will try to match the target roll angle, if any.
     /// Defaults to 5 degrees.
     /// </summary>
+    [AngleConversion(AngleType.Degrees, typeof(double))]
     [GetRpc("SpaceCenter", "AutoPilot_get_RollThreshold")]
     public Angle GetRollThreshold()
     {
@@ -765,6 +776,7 @@ public class AutoPilot : RemoteObject
     /// Defaults to 5 degrees.
     /// Executes asynchronously.
     /// </summary>
+    [AngleConversion(AngleType.Degrees, typeof(double))]
     [GetRpc("SpaceCenter", "AutoPilot_get_RollThreshold")]
     public async Task<Angle> GetRollThresholdAsync()
     {
@@ -1072,6 +1084,7 @@ public class AutoPilot : RemoteObject
     /// <summary>
     /// Gets the target heading, between 0° and 360°.
     /// </summary>
+    [AngleConversion(AngleType.Degrees, typeof(float))]
     [GetRpc("SpaceCenter", "AutoPilot_get_TargetHeading")]
     public Angle GetTargetHeading()
     {
@@ -1087,6 +1100,7 @@ public class AutoPilot : RemoteObject
     /// Gets the target heading, between 0° and 360°.
     /// Executes asynchronously.
     /// </summary>
+    [AngleConversion(AngleType.Degrees, typeof(float))]
     [GetRpc("SpaceCenter", "AutoPilot_get_TargetHeading")]
     public async Task<Angle> GetTargetHeadingAsync()
     {
@@ -1132,6 +1146,7 @@ public class AutoPilot : RemoteObject
     /// <summary>
     /// Gets the target pitch, between -90° and +90°.
     /// </summary>
+    [AngleConversion(AngleType.Degrees, typeof(float))]
     [GetRpc("SpaceCenter", "AutoPilot_get_TargetPitch")]
     public Angle GetTargetPitch()
     {
@@ -1147,6 +1162,7 @@ public class AutoPilot : RemoteObject
     /// Gets the target pitch, between -90° and +90°.
     /// Executes asynchronously.
     /// </summary>
+    [AngleConversion(AngleType.Degrees, typeof(float))]
     [GetRpc("SpaceCenter", "AutoPilot_get_TargetPitch")]
     public async Task<Angle> GetTargetPitchAsync()
     {
@@ -1192,6 +1208,7 @@ public class AutoPilot : RemoteObject
     /// <summary>
     /// Gets the target roll. <c>NaN</c> if no target roll is set.
     /// </summary>
+    [AngleConversion(AngleType.Degrees, typeof(float))]
     [GetRpc("SpaceCenter", "AutoPilot_get_TargetRoll")]
     public Angle GetTargetRoll()
     {
@@ -1207,6 +1224,7 @@ public class AutoPilot : RemoteObject
     /// Gets the target roll. <c>NaN</c> if no target roll is set.
     /// Executes asynchronously.
     /// </summary>
+    [AngleConversion(AngleType.Degrees, typeof(float))]
     [GetRpc("SpaceCenter", "AutoPilot_get_TargetRoll")]
     public async Task<Angle> GetTargetRollAsync()
     {

@@ -46,6 +46,7 @@ public class RoboticHinge : RemoteObject
     /// <summary>
     /// Gets the current angle.
     /// </summary>
+    [AngleConversion(AngleType.Degrees, typeof(float))]
     [GetRpc("SpaceCenter", "RoboticHinge_get_CurrentAngle")]
     public Angle GetCurrentAngle()
     {
@@ -61,6 +62,7 @@ public class RoboticHinge : RemoteObject
     /// Gets the current angle.
     /// Executes asynchronously.
     /// </summary>
+    [AngleConversion(AngleType.Degrees, typeof(float))]
     [GetRpc("SpaceCenter", "RoboticHinge_get_CurrentAngle")]
     public async Task<Angle> GetCurrentAngleAsync()
     {
@@ -276,6 +278,7 @@ public class RoboticHinge : RemoteObject
     /// <summary>
     /// Gets the target movement rate as an angle per second.
     /// </summary>
+    [AngleConversion(AngleType.Degrees, typeof(float))]
     [GetRpc("SpaceCenter", "RoboticHinge_get_Rate")]
     public Angle GetRate()
     {
@@ -291,6 +294,7 @@ public class RoboticHinge : RemoteObject
     /// Gets the target movement rate as an angle per second.
     /// Executes asynchronously.
     /// </summary>
+    [AngleConversion(AngleType.Degrees, typeof(float))]
     [GetRpc("SpaceCenter", "RoboticHinge_get_Rate")]
     public async Task<Angle> GetRateAsync()
     {
@@ -336,6 +340,7 @@ public class RoboticHinge : RemoteObject
     /// <summary>
     /// Target angle.
     /// </summary>
+    [AngleConversion(AngleType.Degrees, typeof(float))]
     [GetRpc("SpaceCenter", "RoboticHinge_get_TargetAngle")]
     public Angle GetTargetAngle()
     {
@@ -351,6 +356,7 @@ public class RoboticHinge : RemoteObject
     /// Target angle.
     /// Executes asynchronously.
     /// </summary>
+    [AngleConversion(AngleType.Degrees, typeof(float))]
     [GetRpc("SpaceCenter", "RoboticHinge_get_TargetAngle")]
     public async Task<Angle> GetTargetAngleAsync()
     {

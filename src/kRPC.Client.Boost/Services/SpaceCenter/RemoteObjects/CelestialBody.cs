@@ -329,6 +329,7 @@ public class CelestialBody : RemoteObject
     /// </summary>
     /// <param name="position">Position as a vector.</param>
     /// <param name="referenceFrame">Reference frame for the position vector.</param>
+    [AngleConversion(AngleType.Degrees, typeof(double))]
     [GetRpc("SpaceCenter", "CelestialBody_LatitudeAtPosition")]
     public Angle GetLatitudeAtPosition(Vector3D position, ReferenceFrame referenceFrame)
     {
@@ -348,6 +349,7 @@ public class CelestialBody : RemoteObject
     /// </summary>
     /// <param name="position">Position as a vector.</param>
     /// <param name="referenceFrame">Reference frame for the position vector.</param>
+    [AngleConversion(AngleType.Degrees, typeof(double))]
     [GetRpc("SpaceCenter", "CelestialBody_LatitudeAtPosition")]
     public async Task<Angle> GetLatitudeAtPositionAsync(Vector3D position, ReferenceFrame referenceFrame)
     {
@@ -366,6 +368,7 @@ public class CelestialBody : RemoteObject
     /// </summary>
     /// <param name="position">Position as a vector.</param>
     /// <param name="referenceFrame">Reference frame for the position vector.</param>
+    [AngleConversion(AngleType.Degrees, typeof(double))]
     [GetRpc("SpaceCenter", "CelestialBody_LongitudeAtPosition")]
     public Angle GetLongitudeAtPosition(Vector3D position, ReferenceFrame referenceFrame)
     {
@@ -385,6 +388,7 @@ public class CelestialBody : RemoteObject
     /// </summary>
     /// <param name="position">Position as a vector.</param>
     /// <param name="referenceFrame">Reference frame for the position vector.</param>
+    [AngleConversion(AngleType.Degrees, typeof(double))]
     [GetRpc("SpaceCenter", "CelestialBody_LongitudeAtPosition")]
     public async Task<Angle> GetLongitudeAtPositionAsync(Vector3D position, ReferenceFrame referenceFrame)
     {
@@ -971,6 +975,7 @@ public class CelestialBody : RemoteObject
     /// Gets the initial rotation angle of the body (at UT 0).
     /// A value between 0 and <math>2\pi</math>
     /// </summary>
+    [AngleConversion(AngleType.Radians, typeof(double))]
     [GetRpc("SpaceCenter", "CelestialBody_get_InitialRotation")]
     public Angle GetInitialRotation()
     {
@@ -987,6 +992,7 @@ public class CelestialBody : RemoteObject
     /// A value between 0 and <math>2\pi</math>
     /// Executes asynchronously.
     /// </summary>
+    [AngleConversion(AngleType.Radians, typeof(double))]
     [GetRpc("SpaceCenter", "CelestialBody_get_InitialRotation")]
     public async Task<Angle> GetInitialRotationAsync()
     {
@@ -1227,6 +1233,7 @@ public class CelestialBody : RemoteObject
     /// Gets the current rotation angle of the body.
     /// A value between 0 and <math>2\pi</math>
     /// </summary>
+    [AngleConversion(AngleType.Radians, typeof(double))]
     [GetRpc("SpaceCenter", "CelestialBody_get_RotationAngle")]
     public Angle GetRotationAngle()
     {
@@ -1243,6 +1250,7 @@ public class CelestialBody : RemoteObject
     /// A value between 0 and <math>2\pi</math>
     /// Executes asynchronously.
     /// </summary>
+    [AngleConversion(AngleType.Radians, typeof(double))]
     [GetRpc("SpaceCenter", "CelestialBody_get_RotationAngle")]
     public async Task<Angle> GetRotationAngleAsync()
     {
@@ -1284,6 +1292,7 @@ public class CelestialBody : RemoteObject
     /// <summary>
     /// Gets the rotational speed of the body as an angle per second.
     /// </summary>
+    [AngleConversion(AngleType.Radians, typeof(double))]
     [GetRpc("SpaceCenter", "CelestialBody_get_RotationalSpeed")]
     public Angle GetRotationalSpeed()
     {
@@ -1299,6 +1308,7 @@ public class CelestialBody : RemoteObject
     /// Gets the rotational speed of the body as an angle per second.
     /// Executes asynchronously.
     /// </summary>
+    [AngleConversion(AngleType.Radians, typeof(double))]
     [GetRpc("SpaceCenter", "CelestialBody_get_RotationalSpeed")]
     public async Task<Angle> GetRotationalSpeedAsync()
     {

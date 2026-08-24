@@ -431,6 +431,7 @@ public class Waypoint : RemoteObject
     /// <summary>
     /// Gets the latitude of the waypoint.
     /// </summary>
+    [AngleConversion(AngleType.Degrees, typeof(double))]
     [GetRpc("SpaceCenter", "Waypoint_get_Latitude")]
     public Angle GetLatitude()
     {
@@ -446,6 +447,7 @@ public class Waypoint : RemoteObject
     /// Gets the latitude of the waypoint.
     /// Executes asynchronously.
     /// </summary>
+    [AngleConversion(AngleType.Degrees, typeof(double))]
     [GetRpc("SpaceCenter", "Waypoint_get_Latitude")]
     public async Task<Angle> GetLatitudeAsync()
     {
@@ -491,6 +493,7 @@ public class Waypoint : RemoteObject
     /// <summary>
     /// Gets the longitude of the waypoint.
     /// </summary>
+    [AngleConversion(AngleType.Degrees, typeof(double))]
     [GetRpc("SpaceCenter", "Waypoint_get_Longitude")]
     public Angle GetLongitude()
     {
@@ -506,6 +509,7 @@ public class Waypoint : RemoteObject
     /// Gets the longitude of the waypoint.
     /// Executes asynchronously.
     /// </summary>
+    [AngleConversion(AngleType.Degrees, typeof(double))]
     [GetRpc("SpaceCenter", "Waypoint_get_Longitude")]
     public async Task<Angle> GetLongitudeAsync()
     {

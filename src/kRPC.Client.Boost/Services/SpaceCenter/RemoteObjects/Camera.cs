@@ -301,6 +301,7 @@ public class Camera : RemoteObject
     /// <summary>
     /// Gets the heading of the camera.
     /// </summary>
+    [AngleConversion(AngleType.Degrees, typeof(float))]
     [GetRpc("SpaceCenter", "Camera_get_Heading")]
     public Angle GetHeading()
     {
@@ -316,6 +317,7 @@ public class Camera : RemoteObject
     /// Gets the heading of the camera.
     /// Executes asynchronously.
     /// </summary>
+    [AngleConversion(AngleType.Degrees, typeof(float))]
     [GetRpc("SpaceCenter", "Camera_get_Heading")]
     public async Task<Angle> GetHeadingAsync()
     {
@@ -388,6 +390,7 @@ public class Camera : RemoteObject
     /// <summary>
     /// Gets the maximum pitch of the camera.
     /// </summary>
+    [AngleConversion(AngleType.Degrees, typeof(float))]
     [GetRpc("SpaceCenter", "Camera_get_MaxPitch")]
     public Angle GetMaxPitch()
     {
@@ -403,6 +406,7 @@ public class Camera : RemoteObject
     /// Gets the maximum pitch of the camera.
     /// Executes asynchronously.
     /// </summary>
+    [AngleConversion(AngleType.Degrees, typeof(float))]
     [GetRpc("SpaceCenter", "Camera_get_MaxPitch")]
     public async Task<Angle> GetMaxPitchAsync()
     {
@@ -444,6 +448,7 @@ public class Camera : RemoteObject
     /// <summary>
     /// Gets the minimum pitch of the camera.
     /// </summary>
+    [AngleConversion(AngleType.Degrees, typeof(float))]
     [GetRpc("SpaceCenter", "Camera_get_MinPitch")]
     public Angle GetMinPitch()
     {
@@ -459,6 +464,7 @@ public class Camera : RemoteObject
     /// Gets the minimum pitch of the camera.
     /// Executes asynchronously.
     /// </summary>
+    [AngleConversion(AngleType.Degrees, typeof(float))]
     [GetRpc("SpaceCenter", "Camera_get_MinPitch")]
     public async Task<Angle> GetMinPitchAsync()
     {
@@ -532,6 +538,7 @@ public class Camera : RemoteObject
     /// Gets the pitch of the camera.
     /// A value between <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Camera.GetMinPitch" /> and <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Camera.GetMaxPitch" />
     /// </summary>
+    [AngleConversion(AngleType.Degrees, typeof(float))]
     [GetRpc("SpaceCenter", "Camera_get_Pitch")]
     public Angle GetPitch()
     {
@@ -548,6 +555,7 @@ public class Camera : RemoteObject
     /// A value between <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Camera.GetMinPitch" /> and <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Camera.GetMaxPitch" />
     /// Executes asynchronously.
     /// </summary>
+    [AngleConversion(AngleType.Degrees, typeof(float))]
     [GetRpc("SpaceCenter", "Camera_get_Pitch")]
     public async Task<Angle> GetPitchAsync()
     {
