@@ -333,6 +333,7 @@ public class Camera : RemoteObject
     /// Sets the heading of the camera.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [AngleConversion(AngleType.Degrees, typeof(float))]
     [SetRpc("SpaceCenter", "Camera_set_Heading")]
     public void SetHeading(Angle value)
     {
@@ -349,6 +350,7 @@ public class Camera : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [AngleConversion(AngleType.Degrees, typeof(float))]
     [SetRpc("SpaceCenter", "Camera_set_Heading")]
     public async Task SetHeadingAsync(Angle value)
     {
@@ -572,6 +574,7 @@ public class Camera : RemoteObject
     /// A value between <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Camera.GetMinPitch" /> and <see cref="M:kRPC.Client.Boost.Services.SpaceCenter.RemoteObjects.Camera.GetMaxPitch" />
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [AngleConversion(AngleType.Degrees, typeof(float))]
     [SetRpc("SpaceCenter", "Camera_set_Pitch")]
     public void SetPitch(Angle value)
     {
@@ -589,6 +592,7 @@ public class Camera : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [AngleConversion(AngleType.Degrees, typeof(float))]
     [SetRpc("SpaceCenter", "Camera_set_Pitch")]
     public async Task SetPitchAsync(Angle value)
     {

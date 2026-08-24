@@ -195,12 +195,13 @@ Angles:
 
 Angle conversion metadata:
 
-- When an RPC wrapper converts a server-returned numeric angle into `Angle`, add `[AngleConversion(AngleType.Degrees/Radians, typeof(float/double))]` immediately before its `[GetRpc(...)]` attribute.
-- Apply `AngleConversion` to both synchronous and asynchronous getter methods. The attribute targets methods, so annotating only one overload leaves test discovery incomplete.
-- Set the `AngleType` value from the actual boundary conversion: `Angle.FromDegrees(...)` means `AngleType.Degrees`, and `Angle.FromRadians(...)` means `AngleType.Radians`.
-- Set the `angleDataType` argument to the numeric type returned by the server-side RPC (`typeof(float)` or `typeof(double)`), not merely the public `Angle` type.
-- Inspect converted angle collections recursively. For tuples, lists, dictionaries, arrays, sets, and nested combinations, record the numeric element type and annotate the method with that element type. For example, a `Tuple<Angle,Angle,Angle>` backed by `Tuple<double,double,double>` uses `typeof(double)`.
-- Annotate only methods that convert returned RPC data. Do not add `AngleConversion` to setters or other input-only methods that convert `Angle` arguments to `.Degrees` or `.Radians`.
+- When an RPC wrapper converts a numeric angle at the RPC boundary, add `[AngleConversion(AngleType.Degrees/Radians, typeof(float/double))]` immediately before its `[GetRpc(...)]` or `[SetRpc(...)]` attribute.
+- Apply `AngleConversion` to both synchronous and asynchronous counterparts. The attribute targets methods, so annotating only one overload leaves test discovery incomplete.
+- Add the attribute when a getter converts a server-returned numeric angle into `Angle`, and when any RPC argument converts an `Angle` into `.Degrees` or `.Radians`. This includes setters and command methods.
+- Set the `AngleType` value from the actual boundary conversion: `.Degrees` or `Angle.FromDegrees(...)` means `AngleType.Degrees`; `.Radians` or `Angle.FromRadians(...)` means `AngleType.Radians`.
+- Set the `angleDataType` argument to the numeric type used at the server boundary (`typeof(float)` or `typeof(double)`), not the public `Angle` type or the RPC's unrelated return type. For input arguments, use the cast or argument expression to determine the type; an uncast `value.Degrees`/`value.Radians` expression is `double`.
+- Inspect converted angle collections recursively. For tuples, lists, dictionaries, arrays, sets, and nested combinations, record the numeric element type and annotate the method with that element type. For example, a `Tuple<Angle,Angle,Angle>` backed by `Tuple<double,double,double>` uses `typeof(double)` for both its getter and setter RPC methods.
+- If a method has multiple angle arguments, all must use the same metadata because `AngleConversion` stores one unit and numeric type per method. If the arguments use different units or numeric types, identify that limitation rather than applying an inaccurate attribute.
 - Distinguish RPC boundary conversions from unrelated application-level `Angle.FromDegrees(...)` or `Angle.FromRadians(...)` calls; only RPC wrappers need this metadata.
 
 ### 9. Normalize Generated Formatting

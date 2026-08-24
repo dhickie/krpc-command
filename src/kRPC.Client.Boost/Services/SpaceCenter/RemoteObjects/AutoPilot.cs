@@ -82,6 +82,7 @@ public class AutoPilot : RemoteObject
     /// </summary>
     /// <param name="pitch">Target pitch angle, between -90° and +90°.</param>
     /// <param name="heading">Target heading angle, between 0° and 360°.</param>
+    [AngleConversion(AngleType.Degrees, typeof(float))]
     [SetRpc("SpaceCenter", "AutoPilot_TargetPitchAndHeading")]
     public void TargetPitchAndHeading(Angle pitch, Angle heading)
     {
@@ -100,6 +101,7 @@ public class AutoPilot : RemoteObject
     /// </summary>
     /// <param name="pitch">Target pitch angle, between -90° and +90°.</param>
     /// <param name="heading">Target heading angle, between 0° and 360°.</param>
+    [AngleConversion(AngleType.Degrees, typeof(float))]
     [SetRpc("SpaceCenter", "AutoPilot_TargetPitchAndHeading")]
     public async Task TargetPitchAndHeadingAsync(Angle pitch, Angle heading)
     {
@@ -188,6 +190,7 @@ public class AutoPilot : RemoteObject
     /// Defaults to 1° for each axis.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [AngleConversion(AngleType.Degrees, typeof(double))]
     [SetRpc("SpaceCenter", "AutoPilot_set_AttenuationAngle")]
     public void SetAttenuationAngle(Tuple<Angle,Angle,Angle> value)
     {
@@ -208,6 +211,7 @@ public class AutoPilot : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [AngleConversion(AngleType.Degrees, typeof(double))]
     [SetRpc("SpaceCenter", "AutoPilot_set_AttenuationAngle")]
     public async Task SetAttenuationAngleAsync(Tuple<Angle,Angle,Angle> value)
     {
@@ -793,6 +797,7 @@ public class AutoPilot : RemoteObject
     /// Defaults to 5 degrees.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [AngleConversion(AngleType.Degrees, typeof(double))]
     [SetRpc("SpaceCenter", "AutoPilot_set_RollThreshold")]
     public void SetRollThreshold(Angle value)
     {
@@ -810,6 +815,7 @@ public class AutoPilot : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [AngleConversion(AngleType.Degrees, typeof(double))]
     [SetRpc("SpaceCenter", "AutoPilot_set_RollThreshold")]
     public async Task SetRollThresholdAsync(Angle value)
     {
@@ -1116,6 +1122,7 @@ public class AutoPilot : RemoteObject
     /// Sets the target heading, between 0° and 360°.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [AngleConversion(AngleType.Degrees, typeof(float))]
     [SetRpc("SpaceCenter", "AutoPilot_set_TargetHeading")]
     public void SetTargetHeading(Angle value)
     {
@@ -1132,6 +1139,7 @@ public class AutoPilot : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [AngleConversion(AngleType.Degrees, typeof(float))]
     [SetRpc("SpaceCenter", "AutoPilot_set_TargetHeading")]
     public async Task SetTargetHeadingAsync(Angle value)
     {
@@ -1178,6 +1186,7 @@ public class AutoPilot : RemoteObject
     /// Sets the target pitch, between -90° and +90°.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [AngleConversion(AngleType.Degrees, typeof(float))]
     [SetRpc("SpaceCenter", "AutoPilot_set_TargetPitch")]
     public void SetTargetPitch(Angle value)
     {
@@ -1194,6 +1203,7 @@ public class AutoPilot : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [AngleConversion(AngleType.Degrees, typeof(float))]
     [SetRpc("SpaceCenter", "AutoPilot_set_TargetPitch")]
     public async Task SetTargetPitchAsync(Angle value)
     {
@@ -1240,6 +1250,7 @@ public class AutoPilot : RemoteObject
     /// Sets the target roll. <c>NaN</c> if no target roll is set.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [AngleConversion(AngleType.Degrees, typeof(float))]
     [SetRpc("SpaceCenter", "AutoPilot_set_TargetRoll")]
     public void SetTargetRoll(Angle value)
     {
@@ -1256,6 +1267,7 @@ public class AutoPilot : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [AngleConversion(AngleType.Degrees, typeof(float))]
     [SetRpc("SpaceCenter", "AutoPilot_set_TargetRoll")]
     public async Task SetTargetRollAsync(Angle value)
     {

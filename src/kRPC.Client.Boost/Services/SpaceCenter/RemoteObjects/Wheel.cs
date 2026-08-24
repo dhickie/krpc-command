@@ -876,6 +876,7 @@ public class Wheel : RemoteObject
     /// Sets the steering angle limit.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [AngleConversion(AngleType.Degrees, typeof(float))]
     [SetRpc("SpaceCenter", "Wheel_set_SteeringAngleLimit")]
     public void SetSteeringAngleLimit(Angle value)
     {
@@ -892,6 +893,7 @@ public class Wheel : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [AngleConversion(AngleType.Degrees, typeof(float))]
     [SetRpc("SpaceCenter", "Wheel_set_SteeringAngleLimit")]
     public async Task SetSteeringAngleLimitAsync(Angle value)
     {

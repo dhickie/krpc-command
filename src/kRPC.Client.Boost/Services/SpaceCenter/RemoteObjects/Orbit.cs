@@ -270,6 +270,7 @@ public class Orbit : RemoteObject
     /// The orbital radius at the point in the orbit given by the true anomaly.
     /// </summary>
     /// <param name="trueAnomaly">The true anomaly.</param>
+    [AngleConversion(AngleType.Radians, typeof(double))]
     [GetRpc("SpaceCenter", "Orbit_RadiusAtTrueAnomaly")]
     public double GetRadiusAtTrueAnomaly(Angle trueAnomaly)
     {
@@ -286,6 +287,7 @@ public class Orbit : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="trueAnomaly">The true anomaly.</param>
+    [AngleConversion(AngleType.Radians, typeof(double))]
     [GetRpc("SpaceCenter", "Orbit_RadiusAtTrueAnomaly")]
     public async Task<double> GetRadiusAtTrueAnomalyAsync(Angle trueAnomaly)
     {
@@ -509,6 +511,7 @@ public class Orbit : RemoteObject
     /// The universal time, in seconds, corresponding to the given true anomaly.
     /// </summary>
     /// <param name="trueAnomaly">True anomaly.</param>
+    [AngleConversion(AngleType.Radians, typeof(double))]
     [GetRpc("SpaceCenter", "Orbit_UTAtTrueAnomaly")]
     public double GetUTAtTrueAnomaly(Angle trueAnomaly)
     {
@@ -525,6 +528,7 @@ public class Orbit : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="trueAnomaly">True anomaly.</param>
+    [AngleConversion(AngleType.Radians, typeof(double))]
     [GetRpc("SpaceCenter", "Orbit_UTAtTrueAnomaly")]
     public async Task<double> GetUTAtTrueAnomalyAsync(Angle trueAnomaly)
     {

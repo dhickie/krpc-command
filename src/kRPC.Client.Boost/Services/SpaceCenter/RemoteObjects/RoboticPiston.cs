@@ -306,6 +306,7 @@ public class RoboticPiston : RemoteObject
     /// Sets the target movement rate as an angle per second.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [AngleConversion(AngleType.Degrees, typeof(float))]
     [SetRpc("SpaceCenter", "RoboticPiston_set_Rate")]
     public void SetRate(Angle value)
     {
@@ -322,6 +323,7 @@ public class RoboticPiston : RemoteObject
     /// Executes asynchronously.
     /// </summary>
     /// <param name="value">The value to set.</param>
+    [AngleConversion(AngleType.Degrees, typeof(float))]
     [SetRpc("SpaceCenter", "RoboticPiston_set_Rate")]
     public async Task SetRateAsync(Angle value)
     {

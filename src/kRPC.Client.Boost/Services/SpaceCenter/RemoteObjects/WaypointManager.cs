@@ -27,6 +27,7 @@ public class WaypointManager : RemoteObject
     /// <param name="body">Celestial body the waypoint is attached to.</param>
     /// <param name="name">Name of the waypoint.</param>
     /// <returns></returns>
+    [AngleConversion(AngleType.Degrees, typeof(double))]
     [SetRpc("SpaceCenter", "WaypointManager_AddWaypoint")]
     public Waypoint AddWaypoint(Angle latitude, Angle longitude, CelestialBody body, string name)
     {
@@ -51,6 +52,7 @@ public class WaypointManager : RemoteObject
     /// <param name="body">Celestial body the waypoint is attached to.</param>
     /// <param name="name">Name of the waypoint.</param>
     /// <returns></returns>
+    [AngleConversion(AngleType.Degrees, typeof(double))]
     [SetRpc("SpaceCenter", "WaypointManager_AddWaypoint")]
     public async Task<Waypoint> AddWaypointAsync(Angle latitude, Angle longitude, CelestialBody body, string name)
     {
@@ -75,6 +77,7 @@ public class WaypointManager : RemoteObject
     /// <param name="body">Celestial body the waypoint is attached to.</param>
     /// <param name="name">Name of the waypoint.</param>
     /// <returns></returns>
+    [AngleConversion(AngleType.Degrees, typeof(double))]
     [SetRpc("SpaceCenter", "WaypointManager_AddWaypointAtAltitude")]
     public Waypoint AddWaypointAtAltitude(Angle latitude, Angle longitude, double altitude, CelestialBody body, string name)
     {
@@ -101,6 +104,7 @@ public class WaypointManager : RemoteObject
     /// <param name="body">Celestial body the waypoint is attached to.</param>
     /// <param name="name">Name of the waypoint.</param>
     /// <returns></returns>
+    [AngleConversion(AngleType.Degrees, typeof(double))]
     [SetRpc("SpaceCenter", "WaypointManager_AddWaypointAtAltitude")]
     public async Task<Waypoint> AddWaypointAtAltitudeAsync(Angle latitude, Angle longitude, double altitude, CelestialBody body, string name)
     {
