@@ -856,7 +856,7 @@ public class Engine : RemoteObject
         {
             this
         };
-        return InvokeNonNullable<IDictionary<string,Engine>>("SpaceCenter", "Engine_get_Modes", args);
+        return InvokeNonNullable<Dictionary<string,Engine>>("SpaceCenter", "Engine_get_Modes", args);
     }
 
     /// <summary>
@@ -871,7 +871,7 @@ public class Engine : RemoteObject
         {
             this
         };
-        return await InvokeNonNullableAsync<IDictionary<string,Engine>>("SpaceCenter", "Engine_get_Modes", args);
+        return await InvokeNonNullableAsync<Dictionary<string,Engine>>("SpaceCenter", "Engine_get_Modes", args);
     }
 
     /// <summary>
@@ -943,7 +943,7 @@ public class Engine : RemoteObject
         {
             this
         };
-        return InvokeNonNullable<IDictionary<string,float>>("SpaceCenter", "Engine_get_PropellantRatios", args);
+        return InvokeNonNullable<Dictionary<string,float>>("SpaceCenter", "Engine_get_PropellantRatios", args);
     }
 
     /// <summary>
@@ -962,7 +962,7 @@ public class Engine : RemoteObject
         {
             this
         };
-        return await InvokeNonNullableAsync<IDictionary<string,float>>("SpaceCenter", "Engine_get_PropellantRatios", args);
+        return await InvokeNonNullableAsync<Dictionary<string,float>>("SpaceCenter", "Engine_get_PropellantRatios", args);
     }
 
     /// <summary>

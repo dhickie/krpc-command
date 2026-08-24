@@ -871,7 +871,7 @@ public class Module : RemoteObject
         {
             this
         };
-        return InvokeNonNullable<IDictionary<string,string>>("SpaceCenter", "Module_get_Fields", args);
+        return InvokeNonNullable<Dictionary<string,string>>("SpaceCenter", "Module_get_Fields", args);
     }
 
     /// <summary>
@@ -890,7 +890,7 @@ public class Module : RemoteObject
         {
             this
         };
-        return await InvokeNonNullableAsync<IDictionary<string,string>>("SpaceCenter", "Module_get_Fields", args);
+        return await InvokeNonNullableAsync<Dictionary<string,string>>("SpaceCenter", "Module_get_Fields", args);
     }
 
     /// <summary>
@@ -904,7 +904,7 @@ public class Module : RemoteObject
         {
             this
         };
-        return InvokeNonNullable<IDictionary<string,string>>("SpaceCenter", "Module_get_FieldsById", args);
+        return InvokeNonNullable<Dictionary<string,string>>("SpaceCenter", "Module_get_FieldsById", args);
     }
 
     /// <summary>
@@ -919,7 +919,7 @@ public class Module : RemoteObject
         {
             this
         };
-        return await InvokeNonNullableAsync<IDictionary<string,string>>("SpaceCenter", "Module_get_FieldsById", args);
+        return await InvokeNonNullableAsync<Dictionary<string,string>>("SpaceCenter", "Module_get_FieldsById", args);
     }
 
     /// <summary>

@@ -221,8 +221,10 @@ public class SpaceCenterTests
 
     private bool ArrayOrListValuesAreEqual(Type responseType, object expectedValue, object actualValue, ProcedureInfo rpc)
     {
-        var listInterface = responseType.GetInterface("IList`1")
-            ?? throw new ArgumentException($"Unable to find IList interface on array type {responseType.Name}");
+        var listInterface = responseType.GetGenericTypeDefinition() == typeof(IList<>) 
+            ? responseType
+            : responseType.GetInterface("IList`1")
+                ?? throw new ArgumentException($"Unable to find IList interface on array type {responseType.Name}");
         var valueType = listInterface.GetGenericArguments().Single();
         
         var expectedArrayValue = (IList)expectedValue;
@@ -270,8 +272,11 @@ public class SpaceCenterTests
 
     private bool SetValuesAreEqual(Type responseType, object expectedValue, object actualValue, ProcedureInfo rpc)
     {
-        var setInterface = responseType.GetInterface("ISet`1")
-            ?? throw new ArgumentException($"Unable to find set interface on type {responseType.Name}");
+        var setInterface = responseType.GetGenericTypeDefinition() == typeof(ISet<>) 
+            ? responseType
+            : responseType.GetInterface("ISet`1")
+              ?? throw new ArgumentException($"Unable to find set interface on type {responseType.Name}");
+        
         var valueType = setInterface.GetGenericArguments().Single();
 
         var expectedValues = ((IEnumerable)expectedValue)

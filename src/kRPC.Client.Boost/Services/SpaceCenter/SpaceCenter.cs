@@ -969,7 +969,7 @@ public class SpaceCenter : ServiceObject
     [GetRpc("SpaceCenter", "get_Bodies")]
     public async Task<IDictionary<string,CelestialBody>> GetBodiesAsync()
     {
-        return await InvokeNonNullableAsync<IDictionary<string,CelestialBody>>("SpaceCenter", "get_Bodies");
+        return await InvokeNonNullableAsync<Dictionary<string,CelestialBody>>("SpaceCenter", "get_Bodies");
     }
 
     /// <summary>

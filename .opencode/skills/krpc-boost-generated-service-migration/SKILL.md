@@ -1,6 +1,6 @@
 ---
 name: krpc-boost-generated-service-migration
-description: "Use when migrating generated kRPC C# service client code to kRPC.Client.Boost conventions. Use this skill whenever the user mentions repeating CONTEXT.md updates, generated kRPC service migrations, kRPC.Client.Boost generated services, ConnectionMultiplexer/IConnectionMultiplexer, ServiceObject/RemoteObject invoke helpers, RemoteObject constructor access, RPCAttribute/Rpc/GetRpcAttribute/SetRpcAttribute/StaticRpcAttribute cleanup, static RPC metadata, GetRpc public method naming, Encoder/Decode removal, ProcedureArgument arrays, IList-to-List RPC return conversion, ISet-to-HashSet invoke return conversion, collection return types, property-to-method conversion, async RPC wrappers, nullable generated RPCs, XML comment cleanup, see cref namespace fixes, or Vector3D/Quaternion/Angle conversions for generated kRPC clients, even if they name a service other than SpaceCenter."
+description: "Use when migrating generated kRPC C# service client code to kRPC.Client.Boost conventions. Use this skill whenever the user mentions repeating CONTEXT.md updates, generated kRPC service migrations, kRPC.Client.Boost generated services, ConnectionMultiplexer/IConnectionMultiplexer, ServiceObject/RemoteObject invoke helpers, RemoteObject constructor access, RPCAttribute/Rpc/GetRpcAttribute/SetRpcAttribute/StaticRpcAttribute cleanup, static RPC metadata, GetRpc public method naming, Encoder/Decode removal, ProcedureArgument arrays, IList-to-List RPC return conversion, ISet-to-HashSet invoke return conversion, IDictionary-to-Dictionary invoke return conversion, generic or non-generic dictionary RPC returns, collection return types, property-to-method conversion, async RPC wrappers, nullable generated RPCs, XML comment cleanup, see cref namespace fixes, or Vector3D/Quaternion/Angle conversions for generated kRPC clients, even if they name a service other than SpaceCenter."
 ---
 
 # kRPC Boost Generated Service Migration
@@ -101,6 +101,14 @@ Generated set returns should use a concrete transport type:
 - Pass `HashSet<T>` as the generic type to the invoke helper for both synchronous and asynchronous wrappers, such as `InvokeNonNullable<HashSet<T>>(...)` and `InvokeNonNullableAsync<HashSet<T>>(...)`. The decoder needs the concrete set type even when the public wrapper exposes the interface.
 - Apply the same rule to nullable set returns with `InvokeNullable<HashSet<T>>(...)` and `InvokeNullableAsync<HashSet<T>>(...)`.
 - Preserve nested element types when selecting `HashSet<T>`; do not change set parameters solely because set returns use `HashSet<T>` at the RPC boundary.
+
+Generated dictionary returns should use a concrete transport type:
+
+- Preserve a documented/public `IDictionary<TKey,TValue>` return type, including `Task<IDictionary<TKey,TValue>>` for its async counterpart, when that is the generated API contract.
+- Pass `Dictionary<TKey,TValue>` as the generic type to the invoke helper for both synchronous and asynchronous wrappers, such as `InvokeNonNullable<Dictionary<TKey,TValue>>(...)` and `InvokeNonNullableAsync<Dictionary<TKey,TValue>>(...)`. The decoder needs the concrete dictionary type even when the public wrapper exposes the interface.
+- Apply the same rule to nullable dictionary returns with `InvokeNullable<Dictionary<TKey,TValue>>(...)` and `InvokeNullableAsync<Dictionary<TKey,TValue>>(...)`.
+- For a non-generic `IDictionary` return, identify the RPC's concrete key and value types from the generated contract and use the corresponding closed `Dictionary<TKey,TValue>` invoke type; never pass non-generic `IDictionary` to an invoke helper.
+- Preserve nested key/value types when selecting `Dictionary<TKey,TValue>`; do not change dictionary parameters solely because dictionary returns use `Dictionary<TKey,TValue>` at the RPC boundary.
 
 ### 4. Convert Generated Properties to Method Pairs
 
@@ -276,6 +284,7 @@ Check structural invariants:
 - Generated nested collection returns use nested concrete lists, such as `List<List<double>>`, not `IList<IList<double>>` or `List<IList<double>>`.
 - Generated collection-return invoke helpers use concrete list generic arguments, such as `InvokeNonNullable<List<T>>`, not `InvokeNonNullable<IList<T>>`.
 - Generated set-return invoke helpers use concrete hash-set generic arguments, such as `InvokeNonNullable<HashSet<T>>` or `InvokeNonNullableAsync<HashSet<T>>`, not `InvokeNonNullable<ISet<T>>` or `InvokeNonNullableAsync<ISet<T>>`, while the public return type may remain `ISet<T>`.
+- Generated dictionary-return invoke helpers use concrete dictionary generic arguments, such as `InvokeNonNullable<Dictionary<TKey,TValue>>` or `InvokeNonNullableAsync<Dictionary<TKey,TValue>>`, not `InvokeNonNullable<IDictionary<TKey,TValue>>` or `InvokeNonNullableAsync<IDictionary<TKey,TValue>>`, while the public return type may remain `IDictionary<TKey,TValue>`.
 - Generated wrappers use `ProcedureArgument[]` argument arrays, not `object[]` or `object?[]`.
 - Explicit `ProcedureArgument` construction uses `new(value)` for non-null values and reserves `new(value, typeof(ExpectedType))` for nullable values or intentionally different contract types.
 - Setter XML docs do not describe nullable getter return behavior, and parameter docs mentioning null match the signature default/nullability.

@@ -131,7 +131,7 @@ public class WaypointManager : RemoteObject
         {
             this
         };
-        return InvokeNonNullable<IDictionary<string,int>>("SpaceCenter", "WaypointManager_get_Colors", args);
+        return InvokeNonNullable<Dictionary<string,int>>("SpaceCenter", "WaypointManager_get_Colors", args);
     }
 
     /// <summary>
@@ -146,7 +146,7 @@ public class WaypointManager : RemoteObject
         {
             this
         };
-        return await InvokeNonNullableAsync<IDictionary<string,int>>("SpaceCenter", "WaypointManager_get_Colors", args);
+        return await InvokeNonNullableAsync<Dictionary<string,int>>("SpaceCenter", "WaypointManager_get_Colors", args);
     }
 
     /// <summary>

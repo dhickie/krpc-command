@@ -476,7 +476,7 @@ public class RCS : RemoteObject
         {
             this
         };
-        return InvokeNonNullable<IDictionary<string,float>>("SpaceCenter", "RCS_get_PropellantRatios", args);
+        return InvokeNonNullable<Dictionary<string,float>>("SpaceCenter", "RCS_get_PropellantRatios", args);
     }
 
     /// <summary>
@@ -491,7 +491,7 @@ public class RCS : RemoteObject
         {
             this
         };
-        return await InvokeNonNullableAsync<IDictionary<string,float>>("SpaceCenter", "RCS_get_PropellantRatios", args);
+        return await InvokeNonNullableAsync<Dictionary<string,float>>("SpaceCenter", "RCS_get_PropellantRatios", args);
     }
 
     /// <summary>
