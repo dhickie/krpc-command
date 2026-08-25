@@ -54,7 +54,7 @@ public class RequestHandler
                     Description = string.Join("\n", errors!)
                 };
             }
-            else
+            else if (returnValue != null)
             {
                 result.Value = returnValue;
             }

@@ -7,14 +7,11 @@ using kRPC.Client.Boost.Attributes;
 using kRPC.Client.Boost.Configuration;
 using kRPC.Client.Boost.Connection;
 using kRPC.Client.Boost.IntegrationTests.AutoFixture;
-using kRPC.Client.Boost.IntegrationTests.Exceptions;
 using kRPC.Client.Boost.IntegrationTests.Extensions;
 using kRPC.Client.Boost.IntegrationTests.Server;
 using kRPC.Client.Boost.Services;
 using kRPC.Client.Boost.Services.SpaceCenter;
 using MathNet.Spatial.Euclidean;
-using MathNet.Spatial.Units;
-using NSubstitute;
 using MethodInvoker = AutoFixture.Kernel.MethodInvoker;
 using Type = System.Type;
 
@@ -24,6 +21,7 @@ namespace kRPC.Client.Boost.IntegrationTests.Tests;
 public class SpaceCenterTests
 {
     private readonly Fixture _fixture;
+    private readonly Type _serviceType = typeof(SpaceCenter);
     
     private readonly ConnectionConfig _connectionConfig = new()
     {
@@ -47,13 +45,24 @@ public class SpaceCenterTests
     [Fact]
     public void SynchronousGetRpcs_ReturnCorrectValues()
     {
-        var serviceType = typeof(SpaceCenter);
         var clientName = _fixture.Create<string>();
         using var connection = Connect(clientName);
         ServiceObjectCustomisation.ServiceObjectBuilder.SetConnection(connection); // So that test data has access to the connection
         var rpcs = new Dictionary<Type, ProcedureInfo[]>();
-        GetRpcMethods(serviceType, RpcType.Get, false, rpcs);
+        GetRpcMethods(_serviceType, RpcType.Get, false, rpcs);
 
+        TestRpcs(clientName, rpcs);
+    }
+
+    [Fact]
+    public void SynchronousSetRpcs_SetCorrectValues()
+    {
+        var clientName = _fixture.Create<string>();
+        using var connection = Connect(clientName);
+        ServiceObjectCustomisation.ServiceObjectBuilder.SetConnection(connection);
+        var rpcs = new Dictionary<Type, ProcedureInfo[]>();
+        GetRpcMethods(_serviceType, RpcType.Set, false, rpcs);
+        
         TestRpcs(clientName, rpcs);
     }
 
@@ -91,20 +100,29 @@ public class SpaceCenterTests
         var arguments = rpc.ArgumentTypes
             .Select(x => _fixture.Create(x))
             .ToArray();
-        var returnValue = _fixture.Create(rpc.ReturnType);
         var instance = _fixture.Create(instanceType);
-        
-        _server.ConfigureResponse(clientName, rpc.Service, rpc.Procedure, () =>
+
+        var returnValue = new object();
+        if (rpc.ReturnType != typeof(void))
         {
-            var converter = new ClientObjectConverter(rpc.AngleType, rpc.AngleDataType);
-            return converter.ConvertClientObject(returnValue);
-        });
+            returnValue = _fixture.Create(rpc.ReturnType);
+        
+            _server.ConfigureResponse(clientName, rpc.Service, rpc.Procedure, () =>
+            {
+                var converter = new ClientObjectConverter(rpc.AngleType, rpc.AngleDataType);
+                return converter.ConvertClientObject(returnValue);
+            });
+        }
         
         // Act
         var result = rpc.Method.Invoke(instance, arguments);
         
         // Assert
-        Assert.True(ValuesAreEqual(rpc.ReturnType, returnValue, result, rpc));
+        if (rpc.ReturnType != typeof(void))
+        {
+            Assert.True(ValuesAreEqual(rpc.ReturnType, returnValue, result, rpc));
+        }
+        
         _server.Received(clientName, callInfo =>
         {
             if (callInfo.Service != rpc.Service)
@@ -367,7 +385,7 @@ public class SpaceCenterTests
         // Useful in testing - get specific RPCs to make diagnosing errors easier
         (string, string)[] targetRpcs =
         [
-            //("SpaceCenter", "Resources_static_Density")
+            //("SpaceCenter", "ClearTarget")
         ];
 
         if (targetRpcs.Length > 0)

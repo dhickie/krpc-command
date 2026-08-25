@@ -1,6 +1,4 @@
 using System.Collections.Concurrent;
-using System.Net.Sockets;
-using Google.Protobuf;
 using kRPC.Client.Boost.Configuration;
 using kRPC.Client.Boost.Connection.Requests;
 using kRPC.Client.Boost.Connection.Schema;
@@ -9,6 +7,7 @@ using kRPC.Client.Boost.Logging;
 using kRPC.Client.Boost.Services.KRPC.RemoteObjects;
 using kRPC.Client.Boost.Streams;
 using Microsoft.Extensions.Logging;
+using Exception = System.Exception;
 using RequestType = kRPC.Client.Boost.Connection.Schema.ConnectionRequest.Types.Type;
 
 namespace kRPC.Client.Boost.Connection;
@@ -111,7 +110,22 @@ internal class StreamConnection : PollingConnection<StreamRequest, StreamConnect
     {
         while (true)
         {
-            var update = _tcpConnection.Receive(StreamUpdate.Parser, _disposeTokenSource.Token);
+            StreamUpdate update;
+            try
+            {
+                update = _tcpConnection.Receive(StreamUpdate.Parser, _disposeTokenSource.Token);
+            }
+            catch (Exception e)
+            {
+                if (_disposeTokenSource.IsCancellationRequested)
+                {
+                    _logger.LogInformation("Streaming connection disposed - stopping stream update thread");
+                    break;
+                }
+                
+                _logger.LogError(e, "An error occured while waiting for stream updates");
+                break;
+            }
 
             Sync.WithReadLock(_disposeLock, () =>
             {
@@ -134,7 +148,7 @@ internal class StreamConnection : PollingConnection<StreamRequest, StreamConnect
                         StreamManager.SetValue(result.Id, resultValue);
                     }
                 }
-                catch (System.Exception e)
+                catch (Exception e)
                 {
                     _logger.LogError(e, "Exception occured while processing stream update");
                     throw;
