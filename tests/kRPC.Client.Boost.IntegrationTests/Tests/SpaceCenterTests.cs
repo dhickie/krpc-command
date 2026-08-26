@@ -42,28 +42,22 @@ public class SpaceCenterTests
                 new GreedyConstructorQuery()))); // Needed to ensure the right constructor is used
     }
 
-    [Fact]
-    public void SynchronousGetRpcs_ReturnCorrectValues()
+    [Theory]
+    [InlineData(RpcType.Get, false)]
+    [InlineData(RpcType.Set, false)]
+    [InlineData(RpcType.Static, false)]
+    [InlineData(RpcType.Get, true)]
+    [InlineData(RpcType.Set, true)]
+    [InlineData(RpcType.Static, true)]
+    public async Task TestService(RpcType rpcType, bool isAsync)
     {
         var clientName = _fixture.Create<string>();
         using var connection = Connect(clientName);
         ServiceObjectCustomisation.ServiceObjectBuilder.SetConnection(connection); // So that test data has access to the connection
         var rpcs = new Dictionary<Type, ProcedureInfo[]>();
-        GetRpcMethods(_serviceType, RpcType.Get, false, rpcs);
+        GetRpcMethods(_serviceType, rpcType, isAsync, rpcs);
 
-        TestRpcs(clientName, rpcs);
-    }
-
-    [Fact]
-    public void SynchronousSetRpcs_SetCorrectValues()
-    {
-        var clientName = _fixture.Create<string>();
-        using var connection = Connect(clientName);
-        ServiceObjectCustomisation.ServiceObjectBuilder.SetConnection(connection);
-        var rpcs = new Dictionary<Type, ProcedureInfo[]>();
-        GetRpcMethods(_serviceType, RpcType.Set, false, rpcs);
-        
-        TestRpcs(clientName, rpcs);
+        await TestRpcsAsync(clientName, rpcs);
     }
 
     private IConnectionMultiplexer Connect(string clientName)
@@ -81,7 +75,7 @@ public class SpaceCenterTests
         return (IConnectionMultiplexer)ConnectionBuilder.NewConnection(config);
     }
 
-    private void TestRpcs(string clientName,
+    private async Task TestRpcsAsync(string clientName,
         Dictionary<Type, ProcedureInfo[]> rpcs)
     {
         foreach (var serviceType in rpcs.Keys)
@@ -89,12 +83,12 @@ public class SpaceCenterTests
             var typeRpcs = rpcs[serviceType];
             foreach (var rpc in typeRpcs)
             {
-                TestRpc(clientName, serviceType, rpc);
+                await TestRpcAsync(clientName, serviceType, rpc);
             }
         }
     }
 
-    private void TestRpc(string clientName, Type instanceType, ProcedureInfo rpc)
+    private async Task TestRpcAsync(string clientName, Type instanceType, ProcedureInfo rpc)
     {
         // Arrange
         var arguments = rpc.ArgumentTypes
@@ -115,7 +109,23 @@ public class SpaceCenterTests
         }
         
         // Act
-        var result = rpc.Method.Invoke(instance, arguments);
+        object? result;
+        if (rpc.IsAsync)
+        {
+            var task = (Task)rpc.Method.Invoke(instance, arguments)!;
+            await task;
+            var taskType = task.GetType();
+            var taskResult = taskType.GetProperty("Result");
+
+            if (taskResult == null && taskType != typeof(Task))
+                throw new InvalidOperationException("Failed to get result property of returning Task RPC result");
+
+            result = taskResult?.GetValue(task);
+        }
+        else
+        {
+            result = rpc.Method.Invoke(instance, arguments);
+        }
         
         // Assert
         if (rpc.ReturnType != typeof(void))
@@ -132,7 +142,7 @@ public class SpaceCenterTests
                 return false;
 
             // RPCs on remote objects will send the remote object as the first argument
-            if (instanceType.IsAssignableTo(typeof(RemoteObject)))
+            if (instanceType.IsAssignableTo(typeof(RemoteObject)) && rpc.RpcType != RpcType.Static)
             {
                 if (callInfo.Arguments!.Length != arguments.Length + 1)
                     return false;
@@ -355,8 +365,9 @@ public class SpaceCenterTests
 
             // We want to look at RPCs on the return type even if this method is one we're not interested in - the return
             // type might have methods we _are_ interested in
-            if (method.ReturnType.IsAssignableTo(typeof(ServiceObject)) && !rpcMethods.ContainsKey(method.ReturnType))
-                GetRpcMethods(method.ReturnType, rpcType, isAsync, rpcMethods);
+            var returnType = GetReturnType(method);
+            if (returnType.IsAssignableTo(typeof(ServiceObject)) && !rpcMethods.ContainsKey(returnType))
+                GetRpcMethods(returnType, rpcType, isAsync, rpcMethods);
         }
 
         var serviceTypeMethods = typeMethods.Select(m =>
@@ -376,7 +387,9 @@ public class SpaceCenterTests
                 Service = rpcAttribute!.Service,
                 Procedure = rpcAttribute!.Procedure,
                 ArgumentTypes = m.GetParameters().Select(x => x.ParameterType).ToArray(),
-                ReturnType = m.ReturnType,
+                ReturnType = GetReturnType(m),
+                IsAsync = isAsync,
+                RpcType = rpcType,
                 AngleType = conversionAttribute?.AngleType,
                 AngleDataType = conversionAttribute?.AngleDataType
             };
@@ -399,6 +412,23 @@ public class SpaceCenterTests
             rpcMethods[serviceType] = serviceTypeMethods.ToArray();
         }
     }
+
+    private Type GetReturnType(MethodInfo method)
+    {
+        if (method.ReturnType == typeof(void) 
+            || !method.ReturnType.IsAssignableTo(typeof(Task)))
+        {
+            return method.ReturnType;
+        }
+
+        if (method.ReturnType == typeof(Task))
+        {
+            return typeof(void);
+        }
+
+        // If it's an async method we need to get the inner type
+        return method.ReturnType.GetGenericArguments().Single();
+    }
 }
 
 public class ProcedureInfo
@@ -408,6 +438,8 @@ public class ProcedureInfo
     public required string Procedure { get; init; }
     public required Type[] ArgumentTypes { get; init; }
     public required Type ReturnType { get; init; }
+    public required bool IsAsync { get; init; }
+    public required RpcType RpcType { get; init; }
     public required AngleType? AngleType { get; init; }
     public required Type? AngleDataType { get; init; }
 }
